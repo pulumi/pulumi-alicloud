@@ -174,6 +174,29 @@ export interface GetZonesZone {
 }
 
 export namespace actiontrail {
+    export interface GetConsumerGroupsGroup {
+        /**
+         * The name of the consumer group.
+         */
+        consumerId: string;
+        /**
+         * The ID of the consumer group, It is formatted to `<instance_id>:<consumer_id>`.
+         */
+        id: string;
+        /**
+         * ID of the ALIKAFKA Instance that owns the consumer groups.
+         */
+        instanceId: string;
+        /**
+         * The remark of the consumer group.
+         */
+        remark: string;
+        /**
+         * A mapping of tags to assign to the consumer group.
+         */
+        tags?: {[key: string]: any};
+    }
+
     export interface GetHistoryDeliveryJobsJob {
         /**
          * The time when the task was created.
@@ -227,6 +250,10 @@ export namespace actiontrail {
 
     export interface GetInstancesInstance {
         /**
+         * The allowed list of the instance.
+         */
+        allowedLists: outputs.actiontrail.GetInstancesInstanceAllowedList[];
+        /**
          * The config the instance.
          */
         config: string;
@@ -235,7 +262,7 @@ export namespace actiontrail {
          */
         createTime: string;
         /**
-         * The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
+         * The deployed type of the instance.
          */
         deployType: number;
         /**
@@ -246,6 +273,10 @@ export namespace actiontrail {
          * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
          */
         diskType: number;
+        /**
+         * The domain point of the instance.
+         */
+        domainEndpoint: string;
         /**
          * The peak bandwidth of the instance.
          */
@@ -279,6 +310,10 @@ export namespace actiontrail {
          */
         paidType: string;
         /**
+         * The SASL domain point of the instance.
+         */
+        saslDomainEndpoint: string;
+        /**
          * The security group of the instance.
          */
         securityGroup: string;
@@ -295,13 +330,25 @@ export namespace actiontrail {
          */
         specType: string;
         /**
+         * The SSL domain point of the instance.
+         */
+        sslDomainEndpoint: string;
+        /**
          * The SSL end point of the instance.
          */
         sslEndPoint: string;
         /**
+         * A mapping of tags to assign to the instance.
+         */
+        tags?: {[key: string]: any};
+        /**
          * The max num of topic can be create of the instance.
          */
         topicQuota: number;
+        /**
+         * The UpgradeServiceDetailInfo List.
+         */
+        upgradeServiceDetailInfos: outputs.actiontrail.GetInstancesInstanceUpgradeServiceDetailInfo[];
         /**
          * The ID of attaching VPC to instance.
          */
@@ -314,6 +361,50 @@ export namespace actiontrail {
          * The ID of attaching zone to instance.
          */
         zoneId: string;
+    }
+
+    export interface GetInstancesInstanceAllowedList {
+        /**
+         * The deployed type of the instance.
+         */
+        deployType: string;
+        /**
+         * The internet list of the instance.
+         */
+        internetLists: outputs.actiontrail.GetInstancesInstanceAllowedListInternetList[];
+        /**
+         * The vpc list of the instance.
+         */
+        vpcLists: outputs.actiontrail.GetInstancesInstanceAllowedListVpcList[];
+    }
+
+    export interface GetInstancesInstanceAllowedListInternetList {
+        /**
+         * The allowed ip list of the internet_list.
+         */
+        allowedIpLists: string[];
+        /**
+         * The port range of the internet_list.
+         */
+        portRange: string;
+    }
+
+    export interface GetInstancesInstanceAllowedListVpcList {
+        /**
+         * The allowed ip list of the internet_list.
+         */
+        allowedIpLists: string[];
+        /**
+         * The port range of the internet_list.
+         */
+        portRange: string;
+    }
+
+    export interface GetInstancesInstanceUpgradeServiceDetailInfo {
+        /**
+         * The Current2OpenSourceVersion of the instance.
+         */
+        current2OpenSourceVersion: string;
     }
 
     export interface GetSaslAclsAcl {
@@ -364,6 +455,14 @@ export namespace actiontrail {
          */
         createTime: string;
         /**
+         * The ID of the topic, It is formatted to `<instance_id>:<topic>`.
+         */
+        id: string;
+        /**
+         * ID of the instance.
+         */
+        instanceId: string;
+        /**
          * whether the current topic is kafka local topic or not.
          */
         localTopic: boolean;
@@ -380,7 +479,15 @@ export namespace actiontrail {
          */
         status: number;
         /**
-         * The name of the topic.
+         * The statusName of the topic.
+         */
+        statusName: string;
+        /**
+         * A mapping of tags to assign to the topic.
+         */
+        tags?: {[key: string]: any};
+        /**
+         * A topic to filter results by the topic name.
          */
         topic: string;
     }
@@ -1193,7 +1300,7 @@ export namespace alb {
         /**
          * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
          *
-         * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new parameter 'load_balancer_business_status' instead.
+         * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.
          */
         loadBalancerBussinessStatus: string;
         /**
@@ -3454,7 +3561,7 @@ export namespace cas {
         /**
          * The cert's name.
          *
-         * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+         * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
          */
         name: string;
         /**
@@ -3529,7 +3636,7 @@ export namespace cas {
          */
         key: string;
         /**
-         * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+         * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
          */
         name: string;
         /**
@@ -10215,6 +10322,60 @@ export namespace dms {
 }
 
 export namespace dns {
+    export interface AccessStrategyDefaultAddrPool {
+        /**
+         * The ID of the address pool in the primary address pool group.
+         */
+        addrPoolId: string;
+        /**
+         * The weight of the address pool in the primary address pool group.
+         */
+        lbaWeight?: number;
+    }
+
+    export interface AccessStrategyFailoverAddrPool {
+        /**
+         * The ID of the address pool in the primary address pool group.
+         */
+        addrPoolId?: string;
+        /**
+         * The weight of the address pool in the primary address pool group.
+         */
+        lbaWeight?: number;
+    }
+
+    export interface AccessStrategyLine {
+        /**
+         * The line code of the source region.
+         */
+        lineCode?: string;
+    }
+
+    export interface AddressPoolAddress {
+        /**
+         * The address that you want to add to the address pool.
+         */
+        address: string;
+        /**
+         * The source region of the address. expressed as a JSON string. The structure is as follows:
+         * * `LineCodes`: List of home lineCodes.
+         * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+         */
+        attributeInfo: string;
+        /**
+         * The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
+         */
+        lbaWeight?: number;
+        /**
+         * The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+         */
+        mode: string;
+        /**
+         * The description of the address.
+         */
+        remark?: string;
+    }
+
     export interface CustomLineIpSegmentList {
         /**
          * The end IP address of the CIDR block.
@@ -10224,6 +10385,240 @@ export namespace dns {
          * The start IP address of the CIDR block.
          */
         startIp: string;
+    }
+
+    export interface GetAccessStrategiesStrategy {
+        /**
+         * The primary/secondary switchover policy for address pool groups.
+         */
+        accessMode: string;
+        /**
+         * The first ID of the resource.
+         */
+        accessStrategyId: string;
+        /**
+         * The time when the access policy was created.
+         */
+        createTime: string;
+        /**
+         * The timestamp that indicates when the access policy was created.
+         */
+        createTimestamp: string;
+        /**
+         * The type of the primary address pool.
+         */
+        defaultAddrPoolType: string;
+        /**
+         * The address pools in the primary address pool group.
+         */
+        defaultAddrPools: outputs.dns.GetAccessStrategiesStrategyDefaultAddrPool[];
+        /**
+         * The number of addresses currently available in the primary address pool.
+         */
+        defaultAvailableAddrNum: number;
+        /**
+         * Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group.
+         */
+        defaultLatencyOptimization: string;
+        /**
+         * The load balancing policy of the primary address pool group.
+         */
+        defaultLbaStrategy: string;
+        /**
+         * The maximum number of addresses returned by the primary address pool set.
+         */
+        defaultMaxReturnAddrNum: number;
+        /**
+         * The minimum number of available addresses for the primary address pool set.
+         */
+        defaultMinAvailableAddrNum: number;
+        /**
+         * The type of the active address pool group.
+         */
+        effectiveAddrPoolGroupType: string;
+        /**
+         * The type of the secondary address pool.
+         */
+        failoverAddrPoolType: string;
+        /**
+         * The address pools in the secondary address pool group.
+         */
+        failoverAddrPools: outputs.dns.GetAccessStrategiesStrategyFailoverAddrPool[];
+        /**
+         * The number of available addresses in the standby address pool.
+         */
+        failoverAvailableAddrNum: number;
+        /**
+         * Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group.
+         */
+        failoverLatencyOptimization: string;
+        /**
+         * The load balancing policy of the secondary address pool group.
+         */
+        failoverLbaStrategy: string;
+        /**
+         * The maximum number of returned addresses in the standby address pool.
+         */
+        failoverMaxReturnAddrNum: number;
+        /**
+         * The minimum number of available addresses in the standby address pool.
+         */
+        failoverMinAvailableAddrNum: number;
+        /**
+         * The ID of the Access Strategy.
+         */
+        id: string;
+        /**
+         * The Id of the associated instance.
+         */
+        instanceId: string;
+        /**
+         * List of source regions.
+         */
+        lines: outputs.dns.GetAccessStrategiesStrategyLine[];
+        /**
+         * The type of the access policy.
+         */
+        strategyMode: string;
+        /**
+         * The name of the access policy.
+         */
+        strategyName: string;
+    }
+
+    export interface GetAccessStrategiesStrategyDefaultAddrPool {
+        /**
+         * The number of addresses in the address pool.
+         */
+        addrCount: number;
+        /**
+         * The ID of the address pool.
+         */
+        addrPoolId: string;
+        /**
+         * The weight of the address pool.
+         */
+        lbaWeight: number;
+        /**
+         * The name of the address pool.
+         */
+        name: string;
+    }
+
+    export interface GetAccessStrategiesStrategyFailoverAddrPool {
+        /**
+         * The number of addresses in the address pool.
+         */
+        addrCount: number;
+        /**
+         * The ID of the address pool.
+         */
+        addrPoolId: string;
+        /**
+         * The weight of the address pool.
+         */
+        lbaWeight: number;
+        /**
+         * The name of the address pool.
+         */
+        name: string;
+    }
+
+    export interface GetAccessStrategiesStrategyLine {
+        /**
+         * The code of the source region group.
+         */
+        groupCode: string;
+        /**
+         * The name of the source region group.
+         */
+        groupName: string;
+        /**
+         * The line code of the source region.
+         */
+        lineCode: string;
+        /**
+         * The line name of the source region.
+         */
+        lineName: string;
+    }
+
+    export interface GetAddressPoolsPool {
+        /**
+         * The first ID of the resource.
+         */
+        addressPoolId: string;
+        /**
+         * The name of the address pool.
+         */
+        addressPoolName: string;
+        /**
+         * The address that you want to add to the address pool.
+         */
+        addresses: outputs.dns.GetAddressPoolsPoolAddress[];
+        /**
+         * The time when the address pool was created.
+         */
+        createTime: string;
+        /**
+         * The timestamp that indicates when the address pool was created.
+         */
+        createTimestamp: string;
+        /**
+         * The ID of the Address Pool.
+         */
+        id: string;
+        /**
+         * The id of the instance.
+         */
+        instanceId: string;
+        /**
+         * The load balancing policy of the address pool.
+         */
+        lbaStrategy: string;
+        /**
+         * The ID of the health check task.
+         */
+        monitorConfigId: string;
+        /**
+         * Indicates whether health checks are configured.
+         */
+        monitorStatus: string;
+        /**
+         * The type of the address pool.
+         */
+        type: string;
+        /**
+         * The time when the address pool was updated.
+         */
+        updateTime: string;
+        /**
+         * The timestamp that indicates when the address pool was updated.
+         */
+        updateTimestamp: string;
+    }
+
+    export interface GetAddressPoolsPoolAddress {
+        /**
+         * The address that you want to add to the address pool.
+         */
+        address: string;
+        /**
+         * The source region of the address.
+         */
+        attributeInfo: string;
+        /**
+         * The weight of the address.
+         */
+        lbaWeight: number;
+        /**
+         * The type of the address.
+         */
+        mode: string;
+        /**
+         * The description of the address.
+         */
+        remark: string;
     }
 
     export interface GetAlidnsDomainGroupsGroup {
@@ -10795,6 +11190,16 @@ export namespace dns {
         smsNotice?: boolean;
     }
 
+    export interface MonitorConfigIspCityNode {
+        /**
+         * The code of the city node to monitor.
+         */
+        cityCode: string;
+        /**
+         * The code of the Internet provider service (ISP) node to monitor.
+         */
+        ispCode: string;
+    }
 }
 
 export namespace drds {
@@ -12272,6 +12677,23 @@ export namespace ecs {
         size: number;
     }
 
+    export interface EcsPrefixListEntry {
+        /**
+         * The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+         * * The total number of entries must not exceed the `maxEntries` value.
+         * * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+         * * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+         * * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+         * * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+         * * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
+         */
+        cidr?: string;
+        /**
+         * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+         */
+        description?: string;
+    }
+
     export interface GetAutoSnapshotPoliciesPolicy {
         /**
          * The ID of the Auto Snapshot Policy.
@@ -13450,6 +13872,50 @@ export namespace ecs {
          * The zone id.
          */
         zoneId: string;
+    }
+
+    export interface GetEcsPrefixListsList {
+        /**
+         * The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+         */
+        addressFamily: string;
+        /**
+         * The amount of associated resources.
+         */
+        associationCount: number;
+        /**
+         * The time when the prefix list was created.
+         */
+        createTime: string;
+        /**
+         * The description of the prefix list.
+         */
+        description: string;
+        entries: outputs.ecs.GetEcsPrefixListsListEntry[];
+        /**
+         * The ID of the prefix list.
+         */
+        id: string;
+        /**
+         * The maximum number of entries that the prefix list supports.
+         */
+        maxEntries: number;
+        /**
+         * The ID of the prefix list.
+         */
+        prefixListId: string;
+        /**
+         * The name of the prefix list.
+         */
+        prefixListName: string;
+    }
+
+    export interface GetEcsPrefixListsListEntry {
+        cidr: string;
+        /**
+         * The description of the prefix list.
+         */
+        description: string;
     }
 
     export interface GetEcsSnapshotsSnapshot {
@@ -19164,6 +19630,13 @@ export namespace hbr {
         vaultId: string;
     }
 
+    export interface GetReplicationVaultRegionsRegion {
+        /**
+         * The ID of the replication region.
+         */
+        replicationRegionId: string;
+    }
+
     export interface GetRestoreJobsJob {
         /**
          * The actual size of Snapshot.
@@ -21595,6 +22068,100 @@ export namespace nas {
         userAccess: string;
     }
 
+    export interface GetAutoSnapshotPoliciesPolicy {
+        /**
+         * The ID of the automatic snapshot policy.
+         */
+        autoSnapshotPolicyId: string;
+        /**
+         * The name of the automatic snapshot policy.
+         */
+        autoSnapshotPolicyName: string;
+        /**
+         * The time when the automatic snapshot policy was created.
+         */
+        createTime: string;
+        /**
+         * The number of file systems to which the automatic snapshot policy applies.
+         */
+        fileSystemNums: number;
+        /**
+         * ID of the Auto Snapshot Policy.
+         */
+        id: string;
+        /**
+         * The day on which an auto snapshot was created.
+         */
+        repeatWeekdays: string[];
+        /**
+         * The number of days for which you want to retain auto snapshots.
+         */
+        retentionDays: number;
+        /**
+         * The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
+         */
+        status: string;
+        /**
+         * The point in time at which an auto snapshot was created. Unit: hours.
+         */
+        timePoints: string[];
+    }
+
+    export interface GetDataFlowsFlow {
+        /**
+         * The time when Fileset was created. Executing the ISO8601 standard means that the return format is: 'yyyy-MM-ddTHH:mm:ssZ'.
+         */
+        createTime: string;
+        /**
+         * The ID of the Data Flow.
+         */
+        dataFlowId: string;
+        /**
+         * The Description of data flow.
+         */
+        description: string;
+        /**
+         * Error message.
+         */
+        errorMessage: string;
+        /**
+         * The ID of the file system.
+         */
+        fileSystemId: string;
+        /**
+         * The path of Fileset in the CPFS file system.
+         */
+        fileSystemPath: string;
+        /**
+         * Description of automatic update.
+         */
+        fsetDescription: string;
+        /**
+         * The ID of the Fileset.
+         */
+        fsetId: string;
+        /**
+         * The resource ID of the data flow. The value formats as `<file_system_id>:<data_flow_id>`.
+         */
+        id: string;
+        /**
+         * The security protection type of the source storage.
+         */
+        sourceSecurityType: string;
+        /**
+         * The access path of the source store. Format: `<storage type>://<path>`.
+         */
+        sourceStorage: string;
+        /**
+         * The status of the Data flow.
+         */
+        status: string;
+        /**
+         * The maximum transmission bandwidth of data flow, unit: `MB/s`.
+         */
+        throughput: number;
+    }
+
     export interface GetFileSystemsSystem {
         /**
          * (Optional, Available in v1.140.0+) The capacity of the file system.
@@ -21657,6 +22224,72 @@ export namespace nas {
         zoneId: string;
     }
 
+    export interface GetFilesetsFileset {
+        /**
+         * The time when Fileset was created.
+         */
+        createTime: string;
+        /**
+         * Description of Fileset.
+         */
+        description: string;
+        /**
+         * The ID of the file system.
+         */
+        fileSystemId: string;
+        /**
+         * The path of Fileset.
+         */
+        fileSystemPath: string;
+        /**
+         * The first ID of the resource.
+         */
+        filesetId: string;
+        /**
+         * The ID of the Fileset.
+         */
+        id: string;
+        /**
+         * The status of the fileset.
+         */
+        status: string;
+        /**
+         * The latest update time of Fileset.
+         */
+        updateTime: string;
+    }
+
+    export interface GetLifecyclePoliciesPolicy {
+        /**
+         * The time when the lifecycle management policy was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the file system.
+         */
+        fileSystemId: string;
+        /**
+         * The ID of the Lifecycle Policy. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The name of the lifecycle management policy.
+         */
+        lifecyclePolicyName: string;
+        /**
+         * The rules in the lifecycle management policy.
+         */
+        lifecycleRuleName: string;
+        /**
+         * The list of absolute paths for multiple directories. In this case, you can associate a lifecycle management policy with each directory.
+         */
+        paths: string[];
+        /**
+         * The storage type of the data that is dumped to the IA storage medium.
+         */
+        storageType: string;
+    }
+
     export interface GetMountTargetsTarget {
         /**
          * Filter results by a specific AccessGroupName.
@@ -21690,6 +22323,61 @@ export namespace nas {
          * Filter results by a specific VSwitchId.
          */
         vswitchId: string;
+    }
+
+    export interface GetSnapshotsSnapshot {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The description of the snapshot.
+         */
+        description: string;
+        /**
+         * The type of the encryption.
+         */
+        encryptType: number;
+        /**
+         * The ID of the Snapshot.
+         */
+        id: string;
+        /**
+         * The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
+         */
+        progress: string;
+        /**
+         * The remaining time that is required to create the snapshot. Unit: seconds.
+         */
+        remainTime: number;
+        /**
+         * The retention period of the automatic snapshot. Unit: days.
+         */
+        retentionDays: number;
+        /**
+         * The ID of the resource.
+         */
+        snapshotId: string;
+        /**
+         * The name of the snapshot.
+         */
+        snapshotName: string;
+        /**
+         * The ID of the source file system.
+         */
+        sourceFileSystemId: string;
+        /**
+         * The capacity of the source file system. Unit: GiB.
+         */
+        sourceFileSystemSize: string;
+        /**
+         * The version of the source file system.
+         */
+        sourceFileSystemVersion: string;
+        /**
+         * The status of the snapshot.
+         */
+        status: string;
     }
 
     export interface GetZonesZone {
@@ -24860,6 +25548,11 @@ export namespace rds {
          * The value of a parameter.
          */
         paramValue: string;
+    }
+
+    export interface RdsUpgradeDbInstanceParameter {
+        name: string;
+        value: string;
     }
 
     export interface ReadOnlyInstanceParameter {
@@ -28323,6 +29016,21 @@ export namespace slb {
          * A list of slb slave zone ids in which the slb master zone.
          */
         slbSlaveZoneIds: string[];
+        /**
+         * (Available in 1.154.0+)A list of available resource which the slb master zone supported.
+         */
+        supportedResources: outputs.slb.GetZonesZoneSupportedResource[];
+    }
+
+    export interface GetZonesZoneSupportedResource {
+        /**
+         * The type of IP address.
+         */
+        addressIpVersion: string;
+        /**
+         * The type of network.
+         */
+        addressType: string;
     }
 
     export interface ListenerXForwardedFor {
@@ -28618,6 +29326,159 @@ export namespace vpc {
          * The ID of the VPC network that is associated with the DHCP options set.
          */
         vpcId?: string;
+    }
+
+    export interface GetBgpGroupsGroup {
+        /**
+         * The key used by the BGP group.
+         */
+        authKey: string;
+        /**
+         * The name of the BGP group.
+         */
+        bgpGroupName: string;
+        /**
+         * Description of the BGP group.
+         */
+        description: string;
+        /**
+         * The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
+         */
+        hold: string;
+        /**
+         * The ID of the Bgp Group.
+         */
+        id: string;
+        /**
+         * IP version.
+         */
+        ipVersion: string;
+        /**
+         * Whether the AS number is false.
+         */
+        isFakeAsn: boolean;
+        /**
+         * The keepalive time.
+         */
+        keepalive: string;
+        /**
+         * The local AS number.
+         */
+        localAsn: number;
+        /**
+         * The autonomous system (AS) number of the BGP peer.
+         */
+        peerAsn: number;
+        /**
+         * Routing limits.
+         */
+        routeLimit: string;
+        /**
+         * The ID of the VBR.
+         */
+        routerId: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetBgpNetworksNetwork {
+        /**
+         * Advertised BGP networks.
+         */
+        dstCidrBlock: string;
+        /**
+         * The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
+         */
+        id: string;
+        /**
+         * The ID of the vRouter.
+         */
+        routerId: string;
+        /**
+         * The state of the advertised BGP network.
+         */
+        status: string;
+    }
+
+    export interface GetBgpPeersPeer {
+        /**
+         * The authentication key of the BGP group.
+         */
+        authKey: string;
+        /**
+         * The BFD hop count.
+         */
+        bfdMultiHop: number;
+        /**
+         * The ID of the BGP group.
+         */
+        bgpGroupId: string;
+        /**
+         * The ID of the BGP neighbor.
+         */
+        bgpPeerId: string;
+        /**
+         * The name of the BGP neighbor.
+         */
+        bgpPeerName: string;
+        /**
+         * The status of the BGP connection.
+         */
+        bgpStatus: string;
+        /**
+         * The description of the BGP group.
+         */
+        description: string;
+        /**
+         * Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
+         */
+        enableBfd: boolean;
+        /**
+         * The hold time.
+         */
+        hold: string;
+        /**
+         * The ID of the Bgp Peer.
+         */
+        id: string;
+        /**
+         * The IP version.
+         */
+        ipVersion: string;
+        /**
+         * Indicates whether a fake AS number is used.
+         */
+        isFake: boolean;
+        /**
+         * The keepalive time.
+         */
+        keepalive: string;
+        /**
+         * The AS number of the device on the Alibaba Cloud side.
+         */
+        localAsn: string;
+        /**
+         * The autonomous system (AS) number of the BGP peer.
+         */
+        peerAsn: string;
+        /**
+         * The IP address of the BGP neighbor.
+         */
+        peerIpAddress: string;
+        /**
+         * The limit on routes.
+         */
+        routeLimit: string;
+        /**
+         * The ID of the router.
+         */
+        routerId: string;
+        /**
+         * The status of the BGP peer.
+         */
+        status: string;
     }
 
     export interface GetCommonBandwidthPackagesPackage {
@@ -30082,9 +30943,9 @@ export namespace vpc {
 export namespace vpn {
     export interface ConnectionIkeConfig {
         /**
-         * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
          */
-        ikeAuthAlg?: string;
+        ikeAuthAlg: string;
         /**
          * The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
          */

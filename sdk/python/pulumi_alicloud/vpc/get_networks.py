@@ -21,7 +21,7 @@ class GetNetworksResult:
     """
     A collection of values returned by getNetworks.
     """
-    def __init__(__self__, cidr_block=None, dhcp_options_set_id=None, dry_run=None, enable_details=None, id=None, ids=None, is_default=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status=None, tags=None, vpc_name=None, vpc_owner_id=None, vpcs=None, vswitch_id=None):
+    def __init__(__self__, cidr_block=None, dhcp_options_set_id=None, dry_run=None, enable_details=None, id=None, ids=None, is_default=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, resource_group_id=None, status=None, tags=None, total_count=None, vpc_name=None, vpc_owner_id=None, vpcs=None, vswitch_id=None):
         if cidr_block and not isinstance(cidr_block, str):
             raise TypeError("Expected argument 'cidr_block' to be a str")
         pulumi.set(__self__, "cidr_block", cidr_block)
@@ -52,6 +52,12 @@ class GetNetworksResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
@@ -61,6 +67,9 @@ class GetNetworksResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
         if vpc_name and not isinstance(vpc_name, str):
             raise TypeError("Expected argument 'vpc_name' to be a str")
         pulumi.set(__self__, "vpc_name", vpc_name)
@@ -140,6 +149,16 @@ class GetNetworksResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
         return pulumi.get(self, "resource_group_id")
@@ -159,6 +178,11 @@ class GetNetworksResult:
         A map of tags assigned to the VPC.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
 
     @property
     @pulumi.getter(name="vpcName")
@@ -203,9 +227,12 @@ class AwaitableGetNetworksResult(GetNetworksResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             resource_group_id=self.resource_group_id,
             status=self.status,
             tags=self.tags,
+            total_count=self.total_count,
             vpc_name=self.vpc_name,
             vpc_owner_id=self.vpc_owner_id,
             vpcs=self.vpcs,
@@ -220,6 +247,8 @@ def get_networks(cidr_block: Optional[str] = None,
                  is_default: Optional[bool] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
+                 page_number: Optional[int] = None,
+                 page_size: Optional[int] = None,
                  resource_group_id: Optional[str] = None,
                  status: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
@@ -266,6 +295,8 @@ def get_networks(cidr_block: Optional[str] = None,
     __args__['isDefault'] = is_default
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
     __args__['tags'] = tags
@@ -289,9 +320,12 @@ def get_networks(cidr_block: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status,
         tags=__ret__.tags,
+        total_count=__ret__.total_count,
         vpc_name=__ret__.vpc_name,
         vpc_owner_id=__ret__.vpc_owner_id,
         vpcs=__ret__.vpcs,
@@ -307,6 +341,8 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
                         is_default: Optional[pulumi.Input[Optional[bool]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,

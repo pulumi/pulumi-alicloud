@@ -135,6 +135,9 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -163,6 +166,9 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
     {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
         [Input("ids")]
         private InputList<string>? _ids;
 
@@ -193,6 +199,7 @@ namespace Pulumi.AliCloud.ActionTrail
     [OutputType]
     public sealed class GetInstancesResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -214,6 +221,8 @@ namespace Pulumi.AliCloud.ActionTrail
 
         [OutputConstructor]
         private GetInstancesResult(
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -226,6 +235,7 @@ namespace Pulumi.AliCloud.ActionTrail
 
             string? outputFile)
         {
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             Instances = instances;

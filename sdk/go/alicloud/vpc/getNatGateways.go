@@ -37,6 +37,8 @@ type GetNatGatewaysArgs struct {
 	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
 	NatType    *string `pulumi:"natType"`
 	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The resource group id of NAT gateway.
@@ -69,6 +71,8 @@ type GetNatGatewaysResult struct {
 	// The type of the NAT gateway.
 	NatType    *string `pulumi:"natType"`
 	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The billing method of the NAT gateway.
 	PaymentType *string `pulumi:"paymentType"`
 	// The ID of the resource group.
@@ -78,7 +82,8 @@ type GetNatGatewaysResult struct {
 	// The status of the NAT gateway.
 	Status *string `pulumi:"status"`
 	// The tags of NAT gateway.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	TotalCount int                    `pulumi:"totalCount"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -107,6 +112,8 @@ type GetNatGatewaysOutputArgs struct {
 	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
 	NatType    pulumi.StringPtrInput `pulumi:"natType"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// The resource group id of NAT gateway.
@@ -186,6 +193,14 @@ func (o GetNatGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetNatGatewaysResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetNatGatewaysResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 // The billing method of the NAT gateway.
 func (o GetNatGatewaysResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
@@ -209,6 +224,10 @@ func (o GetNatGatewaysResultOutput) Status() pulumi.StringPtrOutput {
 // The tags of NAT gateway.
 func (o GetNatGatewaysResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetNatGatewaysResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetNatGatewaysResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 // The ID of the VPC.

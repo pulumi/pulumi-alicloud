@@ -32,6 +32,7 @@ class EcsSnapshotArgs:
         :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
         :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
         :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
@@ -137,6 +138,9 @@ class EcsSnapshotArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -215,6 +219,7 @@ class _EcsSnapshotState:
         :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
         :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
         :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
@@ -324,6 +329,9 @@ class _EcsSnapshotState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -451,6 +459,7 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
         :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
         :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
@@ -587,6 +596,7 @@ class EcsSnapshot(pulumi.CustomResource):
         :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
         :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
         :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         :param pulumi.Input[str] resource_group_id: The resource group id.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
@@ -662,6 +672,9 @@ class EcsSnapshot(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @property

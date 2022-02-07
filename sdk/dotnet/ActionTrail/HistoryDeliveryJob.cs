@@ -16,7 +16,11 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// &gt; **NOTE:** Available in v1.139.0+.
     /// 
-    /// &gt; **NOTE:** Make sure that you have called the `alicloud.actiontrail.Trail` to create a single account trace that is delivered to Log Service SLS. An Alibaba cloud account can only have one running delivery history job at the same time.
+    /// &gt; **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
+    /// 
+    /// &gt; **NOTE:** Make sure that you have called the `alicloud.actiontrail.Trail` to create a single-account or multi-account trace that delivered to Log Service SLS.
+    /// 
+    /// &gt; **NOTE:** An Alibaba cloud account can only have one running delivery history job at the same time.
     /// 
     /// ## Example Usage
     /// 
@@ -39,14 +43,9 @@ namespace Pulumi.AliCloud.ActionTrail
     ///         {
     ///             Description = "tf actiontrail test",
     ///         });
-    ///         var exampleRoles = Output.Create(AliCloud.Ram.GetRoles.InvokeAsync(new AliCloud.Ram.GetRolesArgs
-    ///         {
-    ///             NameRegex = "AliyunActionTrailDefaultRole",
-    ///         }));
     ///         var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new AliCloud.ActionTrail.TrailArgs
     ///         {
     ///             TrailName = "example_value",
-    ///             SlsWriteRoleArn = exampleRoles.Apply(exampleRoles =&gt; exampleRoles.Roles?[0]?.Arn),
     ///             SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
     ///             {
     ///                 var exampleRegions = values.Item1;

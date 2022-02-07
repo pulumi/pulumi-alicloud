@@ -21,6 +21,7 @@ class CaCertificateArgs:
         """
         The set of arguments for constructing a CaCertificate resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
+        :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -53,6 +54,9 @@ class CaCertificateArgs:
     @property
     @pulumi.getter(name="caCertificateName")
     def ca_certificate_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the CA Certificate.
+        """
         return pulumi.get(self, "ca_certificate_name")
 
     @ca_certificate_name.setter
@@ -107,6 +111,7 @@ class _CaCertificateState:
         """
         Input properties used for looking up and filtering CaCertificate resources.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
+        :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -140,6 +145,9 @@ class _CaCertificateState:
     @property
     @pulumi.getter(name="caCertificateName")
     def ca_certificate_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the CA Certificate.
+        """
         return pulumi.get(self, "ca_certificate_name")
 
     @ca_certificate_name.setter
@@ -240,6 +248,7 @@ class CaCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
+        :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -358,6 +367,7 @@ class CaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
+        :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -384,6 +394,9 @@ class CaCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="caCertificateName")
     def ca_certificate_name(self) -> pulumi.Output[str]:
+        """
+        Name of the CA Certificate.
+        """
         return pulumi.get(self, "ca_certificate_name")
 
     @property

@@ -91,7 +91,8 @@ type CaCertificate struct {
 	pulumi.CustomResourceState
 
 	// the content of the CA certificate.
-	CaCertificate     pulumi.StringOutput `pulumi:"caCertificate"`
+	CaCertificate pulumi.StringOutput `pulumi:"caCertificate"`
+	// Name of the CA Certificate.
 	CaCertificateName pulumi.StringOutput `pulumi:"caCertificateName"`
 	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
@@ -136,7 +137,8 @@ func GetCaCertificate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CaCertificate resources.
 type caCertificateState struct {
 	// the content of the CA certificate.
-	CaCertificate     *string `pulumi:"caCertificate"`
+	CaCertificate *string `pulumi:"caCertificate"`
+	// Name of the CA Certificate.
 	CaCertificateName *string `pulumi:"caCertificateName"`
 	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
@@ -150,7 +152,8 @@ type caCertificateState struct {
 
 type CaCertificateState struct {
 	// the content of the CA certificate.
-	CaCertificate     pulumi.StringPtrInput
+	CaCertificate pulumi.StringPtrInput
+	// Name of the CA Certificate.
 	CaCertificateName pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
@@ -168,7 +171,8 @@ func (CaCertificateState) ElementType() reflect.Type {
 
 type caCertificateArgs struct {
 	// the content of the CA certificate.
-	CaCertificate     string  `pulumi:"caCertificate"`
+	CaCertificate string `pulumi:"caCertificate"`
+	// Name of the CA Certificate.
 	CaCertificateName *string `pulumi:"caCertificateName"`
 	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
@@ -183,7 +187,8 @@ type caCertificateArgs struct {
 // The set of arguments for constructing a CaCertificate resource.
 type CaCertificateArgs struct {
 	// the content of the CA certificate.
-	CaCertificate     pulumi.StringInput
+	CaCertificate pulumi.StringInput
+	// Name of the CA Certificate.
 	CaCertificateName pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//

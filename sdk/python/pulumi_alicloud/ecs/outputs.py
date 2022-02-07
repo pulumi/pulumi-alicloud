@@ -15,6 +15,7 @@ __all__ = [
     'EcsLaunchTemplateDataDisk',
     'EcsLaunchTemplateNetworkInterfaces',
     'EcsLaunchTemplateSystemDisk',
+    'EcsPrefixListEntry',
     'ImageDiskDeviceMapping',
     'ImageImportDiskDeviceMapping',
     'InstanceDataDisk',
@@ -49,6 +50,8 @@ __all__ = [
     'GetEcsLaunchTemplatesTemplateNetworkInterfaceResult',
     'GetEcsLaunchTemplatesTemplateSystemDiskResult',
     'GetEcsNetworkInterfacesInterfaceResult',
+    'GetEcsPrefixListsListResult',
+    'GetEcsPrefixListsListEntryResult',
     'GetEcsSnapshotsSnapshotResult',
     'GetEipAddressesAddressResult',
     'GetEipAddressesEipResult',
@@ -509,6 +512,49 @@ class EcsLaunchTemplateSystemDisk(dict):
         The size of the data disk.
         """
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class EcsPrefixListEntry(dict):
+    def __init__(__self__, *,
+                 cidr: Optional[str] = None,
+                 description: Optional[str] = None):
+        """
+        :param str cidr: The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+               * The total number of entries must not exceed the `max_entries` value.
+               * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+               * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+               * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+               * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+               * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+        :param str description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+        """
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> Optional[str]:
+        """
+        The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+        * The total number of entries must not exceed the `max_entries` value.
+        * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+        * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+        * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+        * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+        * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -4588,6 +4634,133 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         The zone id.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetEcsPrefixListsListResult(dict):
+    def __init__(__self__, *,
+                 address_family: str,
+                 association_count: int,
+                 create_time: str,
+                 description: str,
+                 entries: Sequence['outputs.GetEcsPrefixListsListEntryResult'],
+                 id: str,
+                 max_entries: int,
+                 prefix_list_id: str,
+                 prefix_list_name: str):
+        """
+        :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        :param int association_count: The amount of associated resources.
+        :param str create_time: The time when the prefix list was created.
+        :param str description: The description of the prefix list.
+        :param str id: The ID of the prefix list.
+        :param int max_entries: The maximum number of entries that the prefix list supports.
+        :param str prefix_list_id: The ID of the prefix list.
+        :param str prefix_list_name: The name of the prefix list.
+        """
+        pulumi.set(__self__, "address_family", address_family)
+        pulumi.set(__self__, "association_count", association_count)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "entries", entries)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "max_entries", max_entries)
+        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+        pulumi.set(__self__, "prefix_list_name", prefix_list_name)
+
+    @property
+    @pulumi.getter(name="addressFamily")
+    def address_family(self) -> str:
+        """
+        The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        """
+        return pulumi.get(self, "address_family")
+
+    @property
+    @pulumi.getter(name="associationCount")
+    def association_count(self) -> int:
+        """
+        The amount of associated resources.
+        """
+        return pulumi.get(self, "association_count")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the prefix list was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the prefix list.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def entries(self) -> Sequence['outputs.GetEcsPrefixListsListEntryResult']:
+        return pulumi.get(self, "entries")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the prefix list.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxEntries")
+    def max_entries(self) -> int:
+        """
+        The maximum number of entries that the prefix list supports.
+        """
+        return pulumi.get(self, "max_entries")
+
+    @property
+    @pulumi.getter(name="prefixListId")
+    def prefix_list_id(self) -> str:
+        """
+        The ID of the prefix list.
+        """
+        return pulumi.get(self, "prefix_list_id")
+
+    @property
+    @pulumi.getter(name="prefixListName")
+    def prefix_list_name(self) -> str:
+        """
+        The name of the prefix list.
+        """
+        return pulumi.get(self, "prefix_list_name")
+
+
+@pulumi.output_type
+class GetEcsPrefixListsListEntryResult(dict):
+    def __init__(__self__, *,
+                 cidr: str,
+                 description: str):
+        """
+        :param str description: The description of the prefix list.
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the prefix list.
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

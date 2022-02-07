@@ -25,10 +25,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessGroup{}
 	case "alicloud:nas/accessRule:AccessRule":
 		r = &AccessRule{}
+	case "alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy":
+		r = &AutoSnapshotPolicy{}
+	case "alicloud:nas/dataFlow:DataFlow":
+		r = &DataFlow{}
 	case "alicloud:nas/fileSystem:FileSystem":
 		r = &FileSystem{}
+	case "alicloud:nas/fileset:Fileset":
+		r = &Fileset{}
+	case "alicloud:nas/lifecyclePolicy:LifecyclePolicy":
+		r = &LifecyclePolicy{}
 	case "alicloud:nas/mountTarget:MountTarget":
 		r = &MountTarget{}
+	case "alicloud:nas/snapshot:Snapshot":
+		r = &Snapshot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -54,12 +64,37 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"nas/autoSnapshotPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"nas/dataFlow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"nas/fileSystem",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"nas/fileset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"nas/lifecyclePolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"nas/mountTarget",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"nas/snapshot",
 		&module{version},
 	)
 }

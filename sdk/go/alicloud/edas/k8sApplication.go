@@ -72,7 +72,7 @@ type K8sApplication struct {
 	// The url of the package to deploy.Applications deployed through FatJar or WAR packages need to configure it.
 	PackageUrl pulumi.StringPtrOutput `pulumi:"packageUrl"`
 	// The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
-	PackageVersion pulumi.StringPtrOutput `pulumi:"packageVersion"`
+	PackageVersion pulumi.StringOutput `pulumi:"packageVersion"`
 	// Execute script after startup
 	PostStart pulumi.StringPtrOutput `pulumi:"postStart"`
 	// Execute script before stopping

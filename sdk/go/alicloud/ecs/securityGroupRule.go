@@ -27,6 +27,8 @@ type SecurityGroupRule struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange pulumi.StringPtrOutput `pulumi:"portRange"`
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	PrefixListId pulumi.StringOutput `pulumi:"prefixListId"`
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The security group to apply this rule to.
@@ -90,6 +92,8 @@ type securityGroupRuleState struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange *string `pulumi:"portRange"`
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	PrefixListId *string `pulumi:"prefixListId"`
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority *int `pulumi:"priority"`
 	// The security group to apply this rule to.
@@ -116,6 +120,8 @@ type SecurityGroupRuleState struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange pulumi.StringPtrInput
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	PrefixListId pulumi.StringPtrInput
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority pulumi.IntPtrInput
 	// The security group to apply this rule to.
@@ -146,6 +152,8 @@ type securityGroupRuleArgs struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange *string `pulumi:"portRange"`
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	PrefixListId *string `pulumi:"prefixListId"`
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority *int `pulumi:"priority"`
 	// The security group to apply this rule to.
@@ -173,6 +181,8 @@ type SecurityGroupRuleArgs struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange pulumi.StringPtrInput
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	PrefixListId pulumi.StringPtrInput
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority pulumi.IntPtrInput
 	// The security group to apply this rule to.

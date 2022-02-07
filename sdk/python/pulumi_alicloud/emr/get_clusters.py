@@ -21,7 +21,7 @@ class GetClustersResult:
     """
     A collection of values returned by getClusters.
     """
-    def __init__(__self__, cluster_name=None, cluster_type_lists=None, clusters=None, create_type=None, default_status=None, deposit_type=None, enable_details=None, id=None, ids=None, is_desc=None, machine_type=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status_lists=None, vpc_id=None):
+    def __init__(__self__, cluster_name=None, cluster_type_lists=None, clusters=None, create_type=None, default_status=None, deposit_type=None, enable_details=None, id=None, ids=None, is_desc=None, machine_type=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, resource_group_id=None, status_lists=None, total_count=None, vpc_id=None):
         if cluster_name and not isinstance(cluster_name, str):
             raise TypeError("Expected argument 'cluster_name' to be a str")
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -64,12 +64,21 @@ class GetClustersResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status_lists and not isinstance(status_lists, list):
             raise TypeError("Expected argument 'status_lists' to be a list")
         pulumi.set(__self__, "status_lists", status_lists)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -148,6 +157,16 @@ class GetClustersResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
         return pulumi.get(self, "resource_group_id")
@@ -156,6 +175,11 @@ class GetClustersResult:
     @pulumi.getter(name="statusLists")
     def status_lists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "status_lists")
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -183,8 +207,11 @@ class AwaitableGetClustersResult(GetClustersResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             resource_group_id=self.resource_group_id,
             status_lists=self.status_lists,
+            total_count=self.total_count,
             vpc_id=self.vpc_id)
 
 
@@ -199,6 +226,8 @@ def get_clusters(cluster_name: Optional[str] = None,
                  machine_type: Optional[str] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
+                 page_number: Optional[int] = None,
+                 page_size: Optional[int] = None,
                  resource_group_id: Optional[str] = None,
                  status_lists: Optional[Sequence[str]] = None,
                  vpc_id: Optional[str] = None,
@@ -348,6 +377,8 @@ def get_clusters(cluster_name: Optional[str] = None,
     __args__['machineType'] = machine_type
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['resourceGroupId'] = resource_group_id
     __args__['statusLists'] = status_lists
     __args__['vpcId'] = vpc_id
@@ -372,8 +403,11 @@ def get_clusters(cluster_name: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         resource_group_id=__ret__.resource_group_id,
         status_lists=__ret__.status_lists,
+        total_count=__ret__.total_count,
         vpc_id=__ret__.vpc_id)
 
 
@@ -389,6 +423,8 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
                         machine_type: Optional[pulumi.Input[Optional[str]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                         status_lists: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,

@@ -87,6 +87,9 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
@@ -161,6 +164,9 @@ export interface SecurityPolicyState {
      * The status of the resource.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
@@ -188,6 +194,9 @@ export interface SecurityPolicyArgs {
      * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     securityPolicyName: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.

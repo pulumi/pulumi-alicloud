@@ -51,6 +51,12 @@ namespace Pulumi.AliCloud.Adb
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
@@ -111,6 +117,12 @@ namespace Pulumi.AliCloud.Adb
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -166,12 +178,15 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         public readonly string? ResourceGroupId;
         /// <summary>
         /// Status of the cluster.
         /// </summary>
         public readonly string? Status;
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
 
         [OutputConstructor]
         private GetClustersResult(
@@ -191,11 +206,17 @@ namespace Pulumi.AliCloud.Adb
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? resourceGroupId,
 
             string? status,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, object>? tags,
+
+            int totalCount)
         {
             Clusters = clusters;
             Description = description;
@@ -205,9 +226,12 @@ namespace Pulumi.AliCloud.Adb
             Id = id;
             Ids = ids;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             ResourceGroupId = resourceGroupId;
             Status = status;
             Tags = tags;
+            TotalCount = totalCount;
         }
     }
 }

@@ -63,6 +63,9 @@ export interface GetSslVpnClientCertsArgs {
  * A collection of values returned by getSslVpnClientCerts.
  */
 export interface GetSslVpnClientCertsResult {
+    /**
+     * A list of SSL-VPN client certificates. Each element contains the following attributes:
+     */
     readonly certs: outputs.vpc.GetSslVpnClientCertsCert[];
     /**
      * The provider-assigned unique ID for this managed resource.

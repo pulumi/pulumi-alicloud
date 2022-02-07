@@ -16,6 +16,8 @@ export function getStorageBundles(args: GetStorageBundlesArgs, opts?: pulumi.Inv
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -27,6 +29,8 @@ export interface GetStorageBundlesArgs {
     ids?: string[];
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
 }
 
 /**
@@ -43,6 +47,9 @@ export interface GetStorageBundlesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
+    readonly totalCount: number;
 }
 
 export function getStorageBundlesOutput(args: GetStorageBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageBundlesResult> {
@@ -57,4 +64,6 @@ export interface GetStorageBundlesOutputArgs {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
 }

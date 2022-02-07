@@ -25,9 +25,6 @@ namespace Pulumi.AliCloud.Cen
     [AliCloudResourceType("alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment")]
     public partial class TransitRouterVpcAttachment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// Whether to create vpc route automatically. The system default value is `true`.
-        /// </summary>
         [Output("autoCreateVpcRoute")]
         public Output<bool?> AutoCreateVpcRoute { get; private set; } = null!;
 
@@ -103,6 +100,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("vpcOwnerId")]
         public Output<string> VpcOwnerId { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of zone mapping of the VPC.
+        /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.TransitRouterVpcAttachmentZoneMapping>> ZoneMappings { get; private set; } = null!;
 
@@ -152,9 +152,6 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class TransitRouterVpcAttachmentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether to create vpc route automatically. The system default value is `true`.
-        /// </summary>
         [Input("autoCreateVpcRoute")]
         public Input<bool>? AutoCreateVpcRoute { get; set; }
 
@@ -220,6 +217,10 @@ namespace Pulumi.AliCloud.Cen
 
         [Input("zoneMappings", required: true)]
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs>? _zoneMappings;
+
+        /// <summary>
+        /// The list of zone mapping of the VPC.
+        /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs> ZoneMappings
         {
             get => _zoneMappings ?? (_zoneMappings = new InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs>());
@@ -233,9 +234,6 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class TransitRouterVpcAttachmentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether to create vpc route automatically. The system default value is `true`.
-        /// </summary>
         [Input("autoCreateVpcRoute")]
         public Input<bool>? AutoCreateVpcRoute { get; set; }
 
@@ -313,6 +311,10 @@ namespace Pulumi.AliCloud.Cen
 
         [Input("zoneMappings")]
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs>? _zoneMappings;
+
+        /// <summary>
+        /// The list of zone mapping of the VPC.
+        /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs> ZoneMappings
         {
             get => _zoneMappings ?? (_zoneMappings = new InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs>());

@@ -9,9 +9,202 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AccessStrategyDefaultAddrPoolArgs',
+    'AccessStrategyFailoverAddrPoolArgs',
+    'AccessStrategyLineArgs',
+    'AddressPoolAddressArgs',
     'CustomLineIpSegmentListArgs',
     'GtmInstanceAlertConfigArgs',
+    'MonitorConfigIspCityNodeArgs',
 ]
+
+@pulumi.input_type
+class AccessStrategyDefaultAddrPoolArgs:
+    def __init__(__self__, *,
+                 addr_pool_id: pulumi.Input[str],
+                 lba_weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the primary address pool group.
+        :param pulumi.Input[int] lba_weight: The weight of the address pool in the primary address pool group.
+        """
+        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        if lba_weight is not None:
+            pulumi.set(__self__, "lba_weight", lba_weight)
+
+    @property
+    @pulumi.getter(name="addrPoolId")
+    def addr_pool_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the address pool in the primary address pool group.
+        """
+        return pulumi.get(self, "addr_pool_id")
+
+    @addr_pool_id.setter
+    def addr_pool_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "addr_pool_id", value)
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The weight of the address pool in the primary address pool group.
+        """
+        return pulumi.get(self, "lba_weight")
+
+    @lba_weight.setter
+    def lba_weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lba_weight", value)
+
+
+@pulumi.input_type
+class AccessStrategyFailoverAddrPoolArgs:
+    def __init__(__self__, *,
+                 addr_pool_id: Optional[pulumi.Input[str]] = None,
+                 lba_weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the primary address pool group.
+        :param pulumi.Input[int] lba_weight: The weight of the address pool in the primary address pool group.
+        """
+        if addr_pool_id is not None:
+            pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        if lba_weight is not None:
+            pulumi.set(__self__, "lba_weight", lba_weight)
+
+    @property
+    @pulumi.getter(name="addrPoolId")
+    def addr_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the address pool in the primary address pool group.
+        """
+        return pulumi.get(self, "addr_pool_id")
+
+    @addr_pool_id.setter
+    def addr_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "addr_pool_id", value)
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The weight of the address pool in the primary address pool group.
+        """
+        return pulumi.get(self, "lba_weight")
+
+    @lba_weight.setter
+    def lba_weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lba_weight", value)
+
+
+@pulumi.input_type
+class AccessStrategyLineArgs:
+    def __init__(__self__, *,
+                 line_code: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] line_code: The line code of the source region.
+        """
+        if line_code is not None:
+            pulumi.set(__self__, "line_code", line_code)
+
+    @property
+    @pulumi.getter(name="lineCode")
+    def line_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The line code of the source region.
+        """
+        return pulumi.get(self, "line_code")
+
+    @line_code.setter
+    def line_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "line_code", value)
+
+
+@pulumi.input_type
+class AddressPoolAddressArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 attribute_info: pulumi.Input[str],
+                 mode: pulumi.Input[str],
+                 lba_weight: Optional[pulumi.Input[int]] = None,
+                 remark: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: The address that you want to add to the address pool.
+        :param pulumi.Input[str] attribute_info: The source region of the address. expressed as a JSON string. The structure is as follows:
+               * `LineCodes`: List of home lineCodes.
+               * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+        :param pulumi.Input[str] mode: The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+        :param pulumi.Input[int] lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+        :param pulumi.Input[str] remark: The description of the address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "attribute_info", attribute_info)
+        pulumi.set(__self__, "mode", mode)
+        if lba_weight is not None:
+            pulumi.set(__self__, "lba_weight", lba_weight)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        The address that you want to add to the address pool.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="attributeInfo")
+    def attribute_info(self) -> pulumi.Input[str]:
+        """
+        The source region of the address. expressed as a JSON string. The structure is as follows:
+        * `LineCodes`: List of home lineCodes.
+        * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+        """
+        return pulumi.get(self, "attribute_info")
+
+    @attribute_info.setter
+    def attribute_info(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_info", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+        """
+        return pulumi.get(self, "lba_weight")
+
+    @lba_weight.setter
+    def lba_weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lba_weight", value)
+
+    @property
+    @pulumi.getter
+    def remark(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the address.
+        """
+        return pulumi.get(self, "remark")
+
+    @remark.setter
+    def remark(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remark", value)
+
 
 @pulumi.input_type
 class CustomLineIpSegmentListArgs:
@@ -131,5 +324,42 @@ class GtmInstanceAlertConfigArgs:
     @sms_notice.setter
     def sms_notice(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sms_notice", value)
+
+
+@pulumi.input_type
+class MonitorConfigIspCityNodeArgs:
+    def __init__(__self__, *,
+                 city_code: pulumi.Input[str],
+                 isp_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] city_code: The code of the city node to monitor.
+        :param pulumi.Input[str] isp_code: The code of the Internet provider service (ISP) node to monitor.
+        """
+        pulumi.set(__self__, "city_code", city_code)
+        pulumi.set(__self__, "isp_code", isp_code)
+
+    @property
+    @pulumi.getter(name="cityCode")
+    def city_code(self) -> pulumi.Input[str]:
+        """
+        The code of the city node to monitor.
+        """
+        return pulumi.get(self, "city_code")
+
+    @city_code.setter
+    def city_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "city_code", value)
+
+    @property
+    @pulumi.getter(name="ispCode")
+    def isp_code(self) -> pulumi.Input[str]:
+        """
+        The code of the Internet provider service (ISP) node to monitor.
+        """
+        return pulumi.get(self, "isp_code")
+
+    @isp_code.setter
+    def isp_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "isp_code", value)
 
 

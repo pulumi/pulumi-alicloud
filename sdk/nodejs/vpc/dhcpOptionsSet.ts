@@ -65,7 +65,9 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
     }
 
     /**
-     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
+     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     *
+     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
     public readonly associateVpcs!: pulumi.Output<outputs.vpc.DhcpOptionsSetAssociateVpc[] | undefined>;
     /**
@@ -139,7 +141,9 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
  */
 export interface DhcpOptionsSetState {
     /**
-     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
+     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     *
+     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
     associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
     /**
@@ -177,7 +181,9 @@ export interface DhcpOptionsSetState {
  */
 export interface DhcpOptionsSetArgs {
     /**
-     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
+     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     *
+     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
     associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
     /**

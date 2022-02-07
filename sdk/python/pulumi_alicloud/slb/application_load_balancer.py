@@ -36,24 +36,27 @@ class ApplicationLoadBalancerArgs:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationLoadBalancer resource.
-        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         :param pulumi.Input[str] address_ip_version: The IP version of the SLB instance to be created, which can be set to `ipv4` or `ipv6` . Default to `ipv4`. Now, only internet instance support `ipv6` address.
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
         :param pulumi.Input[int] bandwidth: Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
+        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
                Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
-        :param pulumi.Input[str] modification_protection_reason: The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
@@ -113,7 +116,7 @@ class ApplicationLoadBalancerArgs:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         """
         return pulumi.get(self, "address")
 
@@ -174,6 +177,9 @@ class ApplicationLoadBalancerArgs:
     @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -231,7 +237,7 @@ class ApplicationLoadBalancerArgs:
     @pulumi.getter(name="modificationProtectionReason")
     def modification_protection_reason(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         """
         return pulumi.get(self, "modification_protection_reason")
 
@@ -254,6 +260,9 @@ class ApplicationLoadBalancerArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -308,6 +317,9 @@ class ApplicationLoadBalancerArgs:
     @property
     @pulumi.getter
     def specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        """
         return pulumi.get(self, "specification")
 
     @specification.setter
@@ -318,7 +330,7 @@ class ApplicationLoadBalancerArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         """
         return pulumi.get(self, "status")
 
@@ -377,24 +389,27 @@ class _ApplicationLoadBalancerState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApplicationLoadBalancer resources.
-        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         :param pulumi.Input[str] address_ip_version: The IP version of the SLB instance to be created, which can be set to `ipv4` or `ipv6` . Default to `ipv4`. Now, only internet instance support `ipv6` address.
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
         :param pulumi.Input[int] bandwidth: Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
+        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
                Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
-        :param pulumi.Input[str] modification_protection_reason: The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
@@ -454,7 +469,7 @@ class _ApplicationLoadBalancerState:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         """
         return pulumi.get(self, "address")
 
@@ -515,6 +530,9 @@ class _ApplicationLoadBalancerState:
     @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -572,7 +590,7 @@ class _ApplicationLoadBalancerState:
     @pulumi.getter(name="modificationProtectionReason")
     def modification_protection_reason(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         """
         return pulumi.get(self, "modification_protection_reason")
 
@@ -595,6 +613,9 @@ class _ApplicationLoadBalancerState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -649,6 +670,9 @@ class _ApplicationLoadBalancerState:
     @property
     @pulumi.getter
     def specification(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        """
         return pulumi.get(self, "specification")
 
     @specification.setter
@@ -659,7 +683,7 @@ class _ApplicationLoadBalancerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         """
         return pulumi.get(self, "status")
 
@@ -720,42 +744,6 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an Application Load Balancer resource.
-
-        > **NOTE:** Available in 1.123.1+
-
-        > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
-
-        > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-        For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraformtestslbconfig"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", vpc_name=name)
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            address_type="intranet",
-            load_balancer_spec="slb.s2.small",
-            vswitch_id=default_switch.id,
-            tags={
-                "info": "create for internet",
-            })
-        ```
-
         ## Import
 
         Load balancer can be imported using the id, e.g.
@@ -766,24 +754,27 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         :param pulumi.Input[str] address_ip_version: The IP version of the SLB instance to be created, which can be set to `ipv4` or `ipv6` . Default to `ipv4`. Now, only internet instance support `ipv6` address.
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
         :param pulumi.Input[int] bandwidth: Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
+        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
                Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
-        :param pulumi.Input[str] modification_protection_reason: The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
@@ -794,42 +785,6 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
                  args: Optional[ApplicationLoadBalancerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Application Load Balancer resource.
-
-        > **NOTE:** Available in 1.123.1+
-
-        > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
-
-        > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-        For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraformtestslbconfig"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", vpc_name=name)
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            address_type="intranet",
-            load_balancer_spec="slb.s2.small",
-            vswitch_id=default_switch.id,
-            tags={
-                "info": "create for internet",
-            })
-        ```
-
         ## Import
 
         Load balancer can be imported using the id, e.g.
@@ -954,24 +909,27 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         :param pulumi.Input[str] address_ip_version: The IP version of the SLB instance to be created, which can be set to `ipv4` or `ipv6` . Default to `ipv4`. Now, only internet instance support `ipv6` address.
         :param pulumi.Input[str] address_type: The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be `intranet`.
                - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
                - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
         :param pulumi.Input[int] bandwidth: Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
         :param pulumi.Input[str] delete_protection: Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
+        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
                Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
-        :param pulumi.Input[str] modification_protection_reason: The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-        :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
@@ -1006,7 +964,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
         """
-        Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         """
         return pulumi.get(self, "address")
 
@@ -1047,6 +1005,9 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
+        """
+        Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        """
         return pulumi.get(self, "instance_charge_type")
 
     @property
@@ -1084,7 +1045,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="modificationProtectionReason")
     def modification_protection_reason(self) -> pulumi.Output[Optional[str]]:
         """
-        The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         """
         return pulumi.get(self, "modification_protection_reason")
 
@@ -1099,6 +1060,9 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -1133,13 +1097,16 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def specification(self) -> pulumi.Output[str]:
+        """
+        Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        """
         return pulumi.get(self, "specification")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         """
         return pulumi.get(self, "status")
 

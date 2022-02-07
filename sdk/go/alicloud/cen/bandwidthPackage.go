@@ -11,38 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
-//
-// For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cen.NewBandwidthPackage(ctx, "example", &cen.BandwidthPackageArgs{
-// 			Bandwidth:               pulumi.Int(5),
-// 			CenBandwidthPackageName: pulumi.String("tf-testAccCenBandwidthPackageConfig"),
-// 			GeographicRegionAId:     pulumi.String("China"),
-// 			GeographicRegionBId:     pulumi.String("China"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // CEN bandwidth package can be imported using the id, e.g.

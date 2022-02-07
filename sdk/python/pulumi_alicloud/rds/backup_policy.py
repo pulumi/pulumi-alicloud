@@ -37,7 +37,7 @@ class BackupPolicyArgs:
         The set of arguments for constructing a BackupPolicy resource.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
-        :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         :param pulumi.Input[int] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
@@ -142,7 +142,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="archiveBackupKeepPolicy")
     def archive_backup_keep_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         """
         return pulumi.get(self, "archive_backup_keep_policy")
 
@@ -384,7 +384,7 @@ class _BackupPolicyState:
         """
         Input properties used for looking up and filtering BackupPolicy resources.
         :param pulumi.Input[int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
-        :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         :param pulumi.Input[int] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
@@ -479,7 +479,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="archiveBackupKeepPolicy")
     def archive_backup_keep_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         """
         return pulumi.get(self, "archive_backup_keep_policy")
 
@@ -781,7 +781,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
-        :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         :param pulumi.Input[int] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
@@ -977,7 +977,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
-        :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        :param pulumi.Input[str] archive_backup_keep_policy: Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         :param pulumi.Input[int] archive_backup_retention_period: Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
@@ -1038,7 +1038,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="archiveBackupKeepPolicy")
     def archive_backup_keep_policy(self) -> pulumi.Output[str]:
         """
-        Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         """
         return pulumi.get(self, "archive_backup_keep_policy")
 

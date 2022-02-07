@@ -34,7 +34,7 @@ type GetCertificatesCertificate struct {
 	Key    string `pulumi:"key"`
 	// The cert's name.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 	Name string `pulumi:"name"`
 	// The cert's organization.
 	OrgName string `pulumi:"orgName"`
@@ -81,7 +81,7 @@ type GetCertificatesCertificateArgs struct {
 	Key    pulumi.StringInput `pulumi:"key"`
 	// The cert's name.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The cert's organization.
 	OrgName pulumi.StringInput `pulumi:"orgName"`
@@ -206,7 +206,7 @@ func (o GetCertificatesCertificateOutput) Key() pulumi.StringOutput {
 
 // The cert's name.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 func (o GetCertificatesCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -278,7 +278,7 @@ type GetServiceCertificatesCertificate struct {
 	Issuer string `pulumi:"issuer"`
 	// The cert's Keye.
 	Key string `pulumi:"key"`
-	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 	Name string `pulumi:"name"`
 	// The cert's organization.
 	OrgName string `pulumi:"orgName"`
@@ -328,7 +328,7 @@ type GetServiceCertificatesCertificateArgs struct {
 	Issuer pulumi.StringInput `pulumi:"issuer"`
 	// The cert's Keye.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The cert's organization.
 	OrgName pulumi.StringInput `pulumi:"orgName"`
@@ -456,7 +456,7 @@ func (o GetServiceCertificatesCertificateOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 func (o GetServiceCertificatesCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -9,6 +9,10 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.95.0+
  *
+ * > **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
+ * - Deliver events to Log Service: A project is created in Log Service.
+ * - Deliver events to OSS: A bucket is created in OSS.
+ *
  * ## Example Usage
  *
  * ```typescript

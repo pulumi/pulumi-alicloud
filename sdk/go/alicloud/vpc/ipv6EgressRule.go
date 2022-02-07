@@ -17,6 +17,68 @@ import (
 //
 // > **NOTE:** Available in v1.142.0+.
 //
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			VpcName:    pulumi.String("example_value"),
+// 			EnableIpv6: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "exampleIpv6Gateway", &vpc.Ipv6GatewayArgs{
+// 			Ipv6GatewayName: pulumi.String("example_value"),
+// 			VpcId:           defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "ecs_with_ipv6_address"
+// 		opt1 := "Running"
+// 		defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+// 			NameRegex: &opt0,
+// 			Status:    &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := defaultInstances.Instances[0].Id
+// 		opt3 := "Available"
+// 		defaultIpv6Addresses, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
+// 			AssociatedInstanceId: &opt2,
+// 			Status:               &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewIpv6EgressRule(ctx, "exampleIpv6EgressRule", &vpc.Ipv6EgressRuleArgs{
+// 			InstanceId:         pulumi.String(defaultIpv6Addresses.Ids[0]),
+// 			Ipv6EgressRuleName: pulumi.String("example_value"),
+// 			Description:        pulumi.String("example_value"),
+// 			Ipv6GatewayId:      exampleIpv6Gateway.ID(),
+// 			InstanceType:       pulumi.String("Ipv6Address"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // VPC Ipv6 Egress Rule can be imported using the id, e.g.

@@ -75,7 +75,8 @@ type SecurityPolicy struct {
 	SecurityPolicyName pulumi.StringOutput `pulumi:"securityPolicyName"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
-	Tags   pulumi.MapOutput    `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions pulumi.StringArrayOutput `pulumi:"tlsVersions"`
 }
@@ -127,8 +128,9 @@ type securityPolicyState struct {
 	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	SecurityPolicyName *string `pulumi:"securityPolicyName"`
 	// The status of the resource.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions []string `pulumi:"tlsVersions"`
 }
@@ -144,7 +146,8 @@ type SecurityPolicyState struct {
 	SecurityPolicyName pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
-	Tags   pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions pulumi.StringArrayInput
 }
@@ -161,8 +164,9 @@ type securityPolicyArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
-	SecurityPolicyName string                 `pulumi:"securityPolicyName"`
-	Tags               map[string]interface{} `pulumi:"tags"`
+	SecurityPolicyName string `pulumi:"securityPolicyName"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions []string `pulumi:"tlsVersions"`
 }
@@ -177,7 +181,8 @@ type SecurityPolicyArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	SecurityPolicyName pulumi.StringInput
-	Tags               pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions pulumi.StringArrayInput
 }

@@ -22,6 +22,7 @@ from .ecs_key_pair_attachment import *
 from .ecs_launch_template import *
 from .ecs_network_interface import *
 from .ecs_network_interface_attachment import *
+from .ecs_prefix_list import *
 from .ecs_session_manager_status import *
 from .ecs_snapshot import *
 from .eip import *
@@ -37,6 +38,7 @@ from .get_ecs_disks import *
 from .get_ecs_key_pairs import *
 from .get_ecs_launch_templates import *
 from .get_ecs_network_interfaces import *
+from .get_ecs_prefix_lists import *
 from .get_ecs_snapshots import *
 from .get_eip_addresses import *
 from .get_eips import *

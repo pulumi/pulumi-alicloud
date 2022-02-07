@@ -66,6 +66,8 @@ type GetNetworksArgs struct {
 	// A regex string to filter VPCs by name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The Id of resource group which VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
@@ -97,11 +99,14 @@ type GetNetworksResult struct {
 	// A list of VPC names.
 	Names           []string `pulumi:"names"`
 	OutputFile      *string  `pulumi:"outputFile"`
+	PageNumber      *int     `pulumi:"pageNumber"`
+	PageSize        *int     `pulumi:"pageSize"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	// Status of the VPC.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the VPC.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	TotalCount int                    `pulumi:"totalCount"`
 	// Name of the VPC.
 	VpcName    *string `pulumi:"vpcName"`
 	VpcOwnerId *int    `pulumi:"vpcOwnerId"`
@@ -136,6 +141,8 @@ type GetNetworksOutputArgs struct {
 	// A regex string to filter VPCs by name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The Id of resource group which VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
@@ -214,6 +221,14 @@ func (o GetNetworksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetNetworksResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetNetworksResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetNetworksResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworksResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -226,6 +241,10 @@ func (o GetNetworksResultOutput) Status() pulumi.StringPtrOutput {
 // A map of tags assigned to the VPC.
 func (o GetNetworksResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetNetworksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetNetworksResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworksResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 // Name of the VPC.

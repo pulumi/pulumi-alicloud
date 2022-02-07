@@ -404,25 +404,6 @@ class BandwidthPackage(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
-
-        For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cen.BandwidthPackage("example",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf-testAccCenBandwidthPackageConfig",
-            geographic_region_a_id="China",
-            geographic_region_b_id="China")
-        ```
-
         ## Import
 
         CEN bandwidth package can be imported using the id, e.g.
@@ -450,25 +431,6 @@ class BandwidthPackage(pulumi.CustomResource):
                  args: BandwidthPackageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
-
-        For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.cen.BandwidthPackage("example",
-            bandwidth=5,
-            cen_bandwidth_package_name="tf-testAccCenBandwidthPackageConfig",
-            geographic_region_a_id="China",
-            geographic_region_b_id="China")
-        ```
-
         ## Import
 
         CEN bandwidth package can be imported using the id, e.g.

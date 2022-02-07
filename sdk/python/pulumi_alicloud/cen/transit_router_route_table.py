@@ -97,7 +97,9 @@ class _TransitRouterRouteTableState:
         :param pulumi.Input[str] status: The associating status of the Transit Router.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] transit_router_route_table_description: The description of the transit router route table.
+        :param pulumi.Input[str] transit_router_route_table_id: The id of the transit router route table.
         :param pulumi.Input[str] transit_router_route_table_name: The name of the transit router route table.
+        :param pulumi.Input[str] transit_router_route_table_type: The type of the transit router route table. Valid values: `Custom`, `System`.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -165,6 +167,9 @@ class _TransitRouterRouteTableState:
     @property
     @pulumi.getter(name="transitRouterRouteTableId")
     def transit_router_route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the transit router route table.
+        """
         return pulumi.get(self, "transit_router_route_table_id")
 
     @transit_router_route_table_id.setter
@@ -186,6 +191,9 @@ class _TransitRouterRouteTableState:
     @property
     @pulumi.getter(name="transitRouterRouteTableType")
     def transit_router_route_table_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the transit router route table. Valid values: `Custom`, `System`.
+        """
         return pulumi.get(self, "transit_router_route_table_type")
 
     @transit_router_route_table_type.setter
@@ -314,7 +322,9 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         :param pulumi.Input[str] status: The associating status of the Transit Router.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] transit_router_route_table_description: The description of the transit router route table.
+        :param pulumi.Input[str] transit_router_route_table_id: The id of the transit router route table.
         :param pulumi.Input[str] transit_router_route_table_name: The name of the transit router route table.
+        :param pulumi.Input[str] transit_router_route_table_type: The type of the transit router route table. Valid values: `Custom`, `System`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,6 +374,9 @@ class TransitRouterRouteTable(pulumi.CustomResource):
     @property
     @pulumi.getter(name="transitRouterRouteTableId")
     def transit_router_route_table_id(self) -> pulumi.Output[str]:
+        """
+        The id of the transit router route table.
+        """
         return pulumi.get(self, "transit_router_route_table_id")
 
     @property
@@ -377,5 +390,8 @@ class TransitRouterRouteTable(pulumi.CustomResource):
     @property
     @pulumi.getter(name="transitRouterRouteTableType")
     def transit_router_route_table_type(self) -> pulumi.Output[str]:
+        """
+        The type of the transit router route table. Valid values: `Custom`, `System`.
+        """
         return pulumi.get(self, "transit_router_route_table_type")
 

@@ -18,6 +18,8 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
         "enableDetails": args.enableDetails,
         "ids": args.ids,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "resourceGroupId": args.resourceGroupId,
         "status": args.status,
         "tags": args.tags,
@@ -42,6 +44,8 @@ export interface GetClustersArgs {
      */
     ids?: string[];
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     resourceGroupId?: string;
     /**
      * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
@@ -82,12 +86,15 @@ export interface GetClustersResult {
      */
     readonly ids: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly resourceGroupId?: string;
     /**
      * Status of the cluster.
      */
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
 }
 
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
@@ -112,6 +119,8 @@ export interface GetClustersOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).

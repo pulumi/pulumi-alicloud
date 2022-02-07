@@ -21,10 +21,13 @@ class GetTopicsResult:
     """
     A collection of values returned by getTopics.
     """
-    def __init__(__self__, id=None, instance_id=None, name_regex=None, names=None, output_file=None, topics=None):
+    def __init__(__self__, id=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, topic=None, topics=None, total_count=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ids and not isinstance(ids, list):
+            raise TypeError("Expected argument 'ids' to be a list")
+        pulumi.set(__self__, "ids", ids)
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
@@ -37,9 +40,21 @@ class GetTopicsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
+        if topic and not isinstance(topic, str):
+            raise TypeError("Expected argument 'topic' to be a str")
+        pulumi.set(__self__, "topic", topic)
         if topics and not isinstance(topics, list):
             raise TypeError("Expected argument 'topics' to be a list")
         pulumi.set(__self__, "topics", topics)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
 
     @property
     @pulumi.getter
@@ -50,8 +65,16 @@ class GetTopicsResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter
+    def ids(self) -> Sequence[str]:
+        return pulumi.get(self, "ids")
+
+    @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
+        """
+        The instance_id of the instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
@@ -73,12 +96,35 @@ class GetTopicsResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[str]:
+        """
+        The name of the topic.
+        """
+        return pulumi.get(self, "topic")
+
+    @property
     @pulumi.getter
     def topics(self) -> Sequence['outputs.GetTopicsTopicResult']:
         """
         A list of topics. Each element contains the following attributes:
         """
         return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
 
 
 class AwaitableGetTopicsResult(GetTopicsResult):
@@ -88,16 +134,25 @@ class AwaitableGetTopicsResult(GetTopicsResult):
             yield self
         return GetTopicsResult(
             id=self.id,
+            ids=self.ids,
             instance_id=self.instance_id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            topics=self.topics)
+            page_number=self.page_number,
+            page_size=self.page_size,
+            topic=self.topic,
+            topics=self.topics,
+            total_count=self.total_count)
 
 
-def get_topics(instance_id: Optional[str] = None,
+def get_topics(ids: Optional[Sequence[str]] = None,
+               instance_id: Optional[str] = None,
                name_regex: Optional[str] = None,
                output_file: Optional[str] = None,
+               page_number: Optional[int] = None,
+               page_size: Optional[int] = None,
+               topic: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTopicsResult:
     """
     This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
@@ -117,12 +172,19 @@ def get_topics(instance_id: Optional[str] = None,
     ```
 
 
+    :param Sequence[str] ids: A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
+    :param str instance_id: ID of the instance.
     :param str name_regex: A regex string to filter results by the topic name.
+    :param str topic: A topic to filter results by the topic name.
     """
     __args__ = dict()
+    __args__['ids'] = ids
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['topic'] = topic
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -131,17 +193,26 @@ def get_topics(instance_id: Optional[str] = None,
 
     return AwaitableGetTopicsResult(
         id=__ret__.id,
+        ids=__ret__.ids,
         instance_id=__ret__.instance_id,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
-        topics=__ret__.topics)
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
+        topic=__ret__.topic,
+        topics=__ret__.topics,
+        total_count=__ret__.total_count)
 
 
 @_utilities.lift_output_func(get_topics)
-def get_topics_output(instance_id: Optional[pulumi.Input[str]] = None,
+def get_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      instance_id: Optional[pulumi.Input[str]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                      page_size: Optional[pulumi.Input[Optional[int]]] = None,
+                      topic: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicsResult]:
     """
     This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
@@ -161,6 +232,9 @@ def get_topics_output(instance_id: Optional[pulumi.Input[str]] = None,
     ```
 
 
+    :param Sequence[str] ids: A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
+    :param str instance_id: ID of the instance.
     :param str name_regex: A regex string to filter results by the topic name.
+    :param str topic: A topic to filter results by the topic name.
     """
     ...

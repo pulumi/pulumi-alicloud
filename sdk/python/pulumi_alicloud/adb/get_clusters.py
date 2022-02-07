@@ -21,7 +21,7 @@ class GetClustersResult:
     """
     A collection of values returned by getClusters.
     """
-    def __init__(__self__, clusters=None, description=None, description_regex=None, descriptions=None, enable_details=None, id=None, ids=None, output_file=None, resource_group_id=None, status=None, tags=None):
+    def __init__(__self__, clusters=None, description=None, description_regex=None, descriptions=None, enable_details=None, id=None, ids=None, output_file=None, page_number=None, page_size=None, resource_group_id=None, status=None, tags=None, total_count=None):
         if clusters and not isinstance(clusters, list):
             raise TypeError("Expected argument 'clusters' to be a list")
         pulumi.set(__self__, "clusters", clusters)
@@ -46,6 +46,12 @@ class GetClustersResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
@@ -55,6 +61,9 @@ class GetClustersResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
 
     @property
     @pulumi.getter
@@ -112,6 +121,16 @@ class GetClustersResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
         return pulumi.get(self, "resource_group_id")
@@ -129,6 +148,11 @@ class GetClustersResult:
     def tags(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "tags")
 
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
+
 
 class AwaitableGetClustersResult(GetClustersResult):
     # pylint: disable=using-constant-test
@@ -144,9 +168,12 @@ class AwaitableGetClustersResult(GetClustersResult):
             id=self.id,
             ids=self.ids,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             resource_group_id=self.resource_group_id,
             status=self.status,
-            tags=self.tags)
+            tags=self.tags,
+            total_count=self.total_count)
 
 
 def get_clusters(description: Optional[str] = None,
@@ -154,6 +181,8 @@ def get_clusters(description: Optional[str] = None,
                  enable_details: Optional[bool] = None,
                  ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
+                 page_number: Optional[int] = None,
+                 page_size: Optional[int] = None,
                  resource_group_id: Optional[str] = None,
                  status: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
@@ -175,6 +204,8 @@ def get_clusters(description: Optional[str] = None,
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
     __args__['tags'] = tags
@@ -193,9 +224,12 @@ def get_clusters(description: Optional[str] = None,
         id=__ret__.id,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status,
-        tags=__ret__.tags)
+        tags=__ret__.tags,
+        total_count=__ret__.total_count)
 
 
 @_utilities.lift_output_func(get_clusters)
@@ -204,6 +238,8 @@ def get_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = Non
                         enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,

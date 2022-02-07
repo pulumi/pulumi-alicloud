@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RolePolicyAttachment{}
 	case "alicloud:ram/samlProvider:SamlProvider":
 		r = &SamlProvider{}
+	case "alicloud:ram/securityPreference:SecurityPreference":
+		r = &SecurityPreference{}
 	case "alicloud:ram/user:User":
 		r = &User{}
 	case "alicloud:ram/userPolicyAttachment:UserPolicyAttachment":
@@ -127,6 +129,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ram/samlProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ram/securityPreference",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

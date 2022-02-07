@@ -10,58 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
-    /// Provides an Application Load Balancer resource.
-    /// 
-    /// &gt; **NOTE:** Available in 1.123.1+
-    /// 
-    /// &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
-    /// 
-    /// &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-    /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terraformtestslbconfig";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
-    ///         {
-    ///             LoadBalancerName = name,
-    ///             AddressType = "intranet",
-    ///             LoadBalancerSpec = "slb.s2.small",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Tags = 
-    ///             {
-    ///                 { "info", "create for internet" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Load balancer can be imported using the id, e.g.
@@ -74,7 +22,7 @@ namespace Pulumi.AliCloud.Slb
     public partial class ApplicationLoadBalancer : Pulumi.CustomResource
     {
         /// <summary>
-        /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
@@ -105,6 +53,9 @@ namespace Pulumi.AliCloud.Slb
         [Output("deleteProtection")]
         public Output<string?> DeleteProtection { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
@@ -132,7 +83,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> MasterZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         /// </summary>
         [Output("modificationProtectionReason")]
         public Output<string?> ModificationProtectionReason { get; private set; } = null!;
@@ -143,6 +94,9 @@ namespace Pulumi.AliCloud.Slb
         [Output("modificationProtectionStatus")]
         public Output<string> ModificationProtectionStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -167,11 +121,14 @@ namespace Pulumi.AliCloud.Slb
         [Output("slaveZoneId")]
         public Output<string> SlaveZoneId { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        /// </summary>
         [Output("specification")]
         public Output<string> Specification { get; private set; } = null!;
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -235,7 +192,7 @@ namespace Pulumi.AliCloud.Slb
     public sealed class ApplicationLoadBalancerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -266,6 +223,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("deleteProtection")]
         public Input<string>? DeleteProtection { get; set; }
 
+        /// <summary>
+        /// Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
@@ -293,7 +253,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? MasterZoneId { get; set; }
 
         /// <summary>
-        /// The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
@@ -304,6 +264,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("modificationProtectionStatus")]
         public Input<string>? ModificationProtectionStatus { get; set; }
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -328,11 +291,14 @@ namespace Pulumi.AliCloud.Slb
         [Input("slaveZoneId")]
         public Input<string>? SlaveZoneId { get; set; }
 
+        /// <summary>
+        /// Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -363,7 +329,7 @@ namespace Pulumi.AliCloud.Slb
     public sealed class ApplicationLoadBalancerState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+        /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -394,6 +360,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("deleteProtection")]
         public Input<string>? DeleteProtection { get; set; }
 
+        /// <summary>
+        /// Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
@@ -421,7 +390,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? MasterZoneId { get; set; }
 
         /// <summary>
-        /// The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+        /// The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
         /// </summary>
         [Input("modificationProtectionReason")]
         public Input<string>? ModificationProtectionReason { get; set; }
@@ -432,6 +401,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("modificationProtectionStatus")]
         public Input<string>? ModificationProtectionStatus { get; set; }
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -456,11 +428,14 @@ namespace Pulumi.AliCloud.Slb
         [Input("slaveZoneId")]
         public Input<string>? SlaveZoneId { get; set; }
 
+        /// <summary>
+        /// Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
+        /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
 
         /// <summary>
-        /// The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+        /// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

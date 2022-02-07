@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -32,6 +33,7 @@ export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.Inv
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", {
         "consumerIdRegex": args.consumerIdRegex,
+        "ids": args.ids,
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,
     }, opts);
@@ -46,6 +48,10 @@ export interface GetConsumerGroupsArgs {
      */
     consumerIdRegex?: string;
     /**
+     * A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
+     */
+    ids?: string[];
+    /**
      * ID of the ALIKAFKA Instance that owns the consumer groups.
      */
     instanceId: string;
@@ -57,15 +63,24 @@ export interface GetConsumerGroupsArgs {
  */
 export interface GetConsumerGroupsResult {
     readonly consumerIdRegex?: string;
-    /**
-     * A list of consumer group ids.
-     */
     readonly consumerIds: string[];
+    /**
+     * A list of consumer group. Each element contains the following attributes:
+     */
+    readonly groups: outputs.actiontrail.GetConsumerGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
+    /**
+     * The instanceId of the instance.
+     */
     readonly instanceId: string;
+    /**
+     * A list of consumer group names.
+     */
+    readonly names: string[];
     readonly outputFile?: string;
 }
 
@@ -81,6 +96,10 @@ export interface GetConsumerGroupsOutputArgs {
      * A regex string to filter results by the consumer group id.
      */
     consumerIdRegex?: pulumi.Input<string>;
+    /**
+     * A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the ALIKAFKA Instance that owns the consumer groups.
      */

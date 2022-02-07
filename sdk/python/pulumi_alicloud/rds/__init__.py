@@ -22,6 +22,7 @@ from .rds_account import *
 from .rds_backup import *
 from .rds_clone_db_instance import *
 from .rds_parameter_group import *
+from .rds_upgrade_db_instance import *
 from .read_only_instance import *
 from .read_write_splitting_connection import *
 from ._inputs import *

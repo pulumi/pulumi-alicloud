@@ -10,38 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Yundun
 {
     /// <summary>
-    /// Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
-    /// 
-    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-    /// 
-    /// &gt; **NOTE:** Available in 1.62.0+ .
-    /// 
-    /// &gt; **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.Yundun.DBAuditInstance("default", new AliCloud.Yundun.DBAuditInstanceArgs
-    ///         {
-    ///             Description = "Terraform-test",
-    ///             Period = 1,
-    ///             PlanCode = "alpha.professional",
-    ///             VswitchId = "v-testVswitch",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Yundun_dbaudit instance can be imported using the id, e.g.
@@ -60,7 +28,7 @@ namespace Pulumi.AliCloud.Yundun
         public Output<string> Description { get; private set; } = null!;
 
         [Output("period")]
-        public Output<int?> Period { get; private set; } = null!;
+        public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
         /// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
@@ -138,8 +106,8 @@ namespace Pulumi.AliCloud.Yundun
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
-        [Input("period")]
-        public Input<int>? Period { get; set; }
+        [Input("period", required: true)]
+        public Input<int> Period { get; set; } = null!;
 
         /// <summary>
         /// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)

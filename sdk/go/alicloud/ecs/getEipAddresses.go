@@ -70,7 +70,7 @@ type GetEipAddressesArgs struct {
 	IncludeReservationData *bool `pulumi:"includeReservationData"`
 	// The IP address of the EIP.
 	IpAddress *string `pulumi:"ipAddress"`
-	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// The Internet service provider (ISP).
 	Isp *string `pulumi:"isp"`
@@ -98,7 +98,7 @@ type GetEipAddressesResult struct {
 	AssociatedInstanceId   *string                  `pulumi:"associatedInstanceId"`
 	AssociatedInstanceType *string                  `pulumi:"associatedInstanceType"`
 	DryRun                 *bool                    `pulumi:"dryRun"`
-	// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.
+	// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
 	Eips          []GetEipAddressesEip `pulumi:"eips"`
 	EnableDetails *bool                `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
@@ -106,7 +106,7 @@ type GetEipAddressesResult struct {
 	Ids                    []string `pulumi:"ids"`
 	IncludeReservationData *bool    `pulumi:"includeReservationData"`
 	IpAddress              *string  `pulumi:"ipAddress"`
-	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses       []string               `pulumi:"ipAddresses"`
 	Isp               *string                `pulumi:"isp"`
 	LockReason        *string                `pulumi:"lockReason"`
@@ -147,7 +147,7 @@ type GetEipAddressesOutputArgs struct {
 	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
 	// The IP address of the EIP.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// The Internet service provider (ISP).
 	Isp pulumi.StringPtrInput `pulumi:"isp"`
@@ -207,7 +207,7 @@ func (o GetEipAddressesResultOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.
+// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
 func (o GetEipAddressesResultOutput) Eips() GetEipAddressesEipArrayOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) []GetEipAddressesEip { return v.Eips }).(GetEipAddressesEipArrayOutput)
 }
@@ -233,7 +233,7 @@ func (o GetEipAddressesResultOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 func (o GetEipAddressesResultOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEipAddressesResult) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }

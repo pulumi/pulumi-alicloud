@@ -156,6 +156,8 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
         "machineType": args.machineType,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "resourceGroupId": args.resourceGroupId,
         "statusLists": args.statusLists,
         "vpcId": args.vpcId,
@@ -207,6 +209,8 @@ export interface GetClustersArgs {
      */
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * The Resource Group ID.
      */
@@ -242,8 +246,11 @@ export interface GetClustersResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly resourceGroupId?: string;
     readonly statusLists?: string[];
+    readonly totalCount: number;
     readonly vpcId?: string;
 }
 
@@ -296,6 +303,8 @@ export interface GetClustersOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * The Resource Group ID.
      */

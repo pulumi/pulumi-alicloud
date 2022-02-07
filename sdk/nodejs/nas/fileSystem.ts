@@ -43,6 +43,32 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.nas.getZones({
+ *     fileSystemType: "cpfs",
+ * });
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?[0],
+ *     zoneId: defaultZones.zones?[0]?.zoneId,
+ * }));
+ * const foo = new alicloud.nas.FileSystem("foo", {
+ *     protocolType: "cpfs",
+ *     storageType: "advance_200",
+ *     fileSystemType: "cpfs",
+ *     capacity: 3600,
+ *     description: "tf-testacc",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.zoneId),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Nas File System can be imported using the id, e.g.
@@ -97,7 +123,8 @@ export class FileSystem extends pulumi.CustomResource {
      * the type of the file system. 
      * Valid values:
      * `standard` (Default),
-     * `extreme`.
+     * `extreme`,
+     * `cpfs`.
      */
     public readonly fileSystemType!: pulumi.Output<string | undefined>;
     /**
@@ -108,7 +135,8 @@ export class FileSystem extends pulumi.CustomResource {
      * The protocol type of the file system.
      * Valid values:
      * `NFS`,
-     * `SMB` (Available when the `fileSystemType` is `standard`).
+     * `SMB` (Available when the `fileSystemType` is `standard`),
+     * `cpfs` (Available when the `fileSystemType` is `cpfs`).
      */
     public readonly protocolType!: pulumi.Output<string>;
     /**
@@ -116,6 +144,18 @@ export class FileSystem extends pulumi.CustomResource {
      * * Valid values:
      */
     public readonly storageType!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+     */
+    public readonly vpcId!: pulumi.Output<string | undefined>;
+    /**
+     * The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+     */
+    public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
      * The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
      */
@@ -141,6 +181,9 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["protocolType"] = state ? state.protocolType : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FileSystemArgs | undefined;
@@ -157,6 +200,9 @@ export class FileSystem extends pulumi.CustomResource {
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["protocolType"] = args ? args.protocolType : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -186,7 +232,8 @@ export interface FileSystemState {
      * the type of the file system. 
      * Valid values:
      * `standard` (Default),
-     * `extreme`.
+     * `extreme`,
+     * `cpfs`.
      */
     fileSystemType?: pulumi.Input<string>;
     /**
@@ -197,7 +244,8 @@ export interface FileSystemState {
      * The protocol type of the file system.
      * Valid values:
      * `NFS`,
-     * `SMB` (Available when the `fileSystemType` is `standard`).
+     * `SMB` (Available when the `fileSystemType` is `standard`),
+     * `cpfs` (Available when the `fileSystemType` is `cpfs`).
      */
     protocolType?: pulumi.Input<string>;
     /**
@@ -205,6 +253,18 @@ export interface FileSystemState {
      * * Valid values:
      */
     storageType?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+     */
+    vswitchId?: pulumi.Input<string>;
     /**
      * The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
      */
@@ -233,7 +293,8 @@ export interface FileSystemArgs {
      * the type of the file system. 
      * Valid values:
      * `standard` (Default),
-     * `extreme`.
+     * `extreme`,
+     * `cpfs`.
      */
     fileSystemType?: pulumi.Input<string>;
     /**
@@ -244,7 +305,8 @@ export interface FileSystemArgs {
      * The protocol type of the file system.
      * Valid values:
      * `NFS`,
-     * `SMB` (Available when the `fileSystemType` is `standard`).
+     * `SMB` (Available when the `fileSystemType` is `standard`),
+     * `cpfs` (Available when the `fileSystemType` is `cpfs`).
      */
     protocolType: pulumi.Input<string>;
     /**
@@ -252,6 +314,18 @@ export interface FileSystemArgs {
      * * Valid values:
      */
     storageType: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+     */
+    vswitchId?: pulumi.Input<string>;
     /**
      * The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
      */

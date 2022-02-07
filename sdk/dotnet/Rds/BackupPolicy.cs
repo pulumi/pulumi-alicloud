@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> ArchiveBackupKeepCount { get; private set; } = null!;
 
         /// <summary>
-        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         /// </summary>
         [Output("archiveBackupKeepPolicy")]
         public Output<string> ArchiveBackupKeepPolicy { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ArchiveBackupKeepCount { get; set; }
 
         /// <summary>
-        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         /// </summary>
         [Input("archiveBackupKeepPolicy")]
         public Input<string>? ArchiveBackupKeepPolicy { get; set; }
@@ -391,7 +391,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ArchiveBackupKeepCount { get; set; }
 
         /// <summary>
-        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         /// </summary>
         [Input("archiveBackupKeepPolicy")]
         public Input<string>? ArchiveBackupKeepPolicy { get; set; }

@@ -73,6 +73,58 @@ import (
 // }
 // ```
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "cpfs"
+// 		defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+// 			FileSystemType: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := "default-NODELETING"
+// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// 			NameRegex: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := defaultNetworks.Ids[0]
+// 		opt3 := defaultZones.Zones[0].ZoneId
+// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// 			VpcId:  &opt2,
+// 			ZoneId: &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
+// 			ProtocolType:   pulumi.String("cpfs"),
+// 			StorageType:    pulumi.String("advance_200"),
+// 			FileSystemType: pulumi.String("cpfs"),
+// 			Capacity:       pulumi.Int(3600),
+// 			Description:    pulumi.String("tf-testacc"),
+// 			ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
+// 			VpcId:          pulumi.String(defaultNetworks.Ids[0]),
+// 			VswitchId:      pulumi.String(defaultSwitches.Ids[0]),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Nas File System can be imported using the id, e.g.
@@ -94,18 +146,26 @@ type FileSystem struct {
 	// the type of the file system.
 	// Valid values:
 	// `standard` (Default),
-	// `extreme`.
+	// `extreme`,
+	// `cpfs`.
 	FileSystemType pulumi.StringPtrOutput `pulumi:"fileSystemType"`
 	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
 	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
 	// The protocol type of the file system.
 	// Valid values:
 	// `NFS`,
-	// `SMB` (Available when the `fileSystemType` is `standard`).
+	// `SMB` (Available when the `fileSystemType` is `standard`),
+	// `cpfs` (Available when the `fileSystemType` is `cpfs`).
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
+	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -156,18 +216,26 @@ type fileSystemState struct {
 	// the type of the file system.
 	// Valid values:
 	// `standard` (Default),
-	// `extreme`.
+	// `extreme`,
+	// `cpfs`.
 	FileSystemType *string `pulumi:"fileSystemType"`
 	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The protocol type of the file system.
 	// Valid values:
 	// `NFS`,
-	// `SMB` (Available when the `fileSystemType` is `standard`).
+	// `SMB` (Available when the `fileSystemType` is `standard`),
+	// `cpfs` (Available when the `fileSystemType` is `cpfs`).
 	ProtocolType *string `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
 	StorageType *string `pulumi:"storageType"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+	VpcId *string `pulumi:"vpcId"`
+	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+	VswitchId *string `pulumi:"vswitchId"`
 	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -184,18 +252,26 @@ type FileSystemState struct {
 	// the type of the file system.
 	// Valid values:
 	// `standard` (Default),
-	// `extreme`.
+	// `extreme`,
+	// `cpfs`.
 	FileSystemType pulumi.StringPtrInput
 	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
 	KmsKeyId pulumi.StringPtrInput
 	// The protocol type of the file system.
 	// Valid values:
 	// `NFS`,
-	// `SMB` (Available when the `fileSystemType` is `standard`).
+	// `SMB` (Available when the `fileSystemType` is `standard`),
+	// `cpfs` (Available when the `fileSystemType` is `cpfs`).
 	ProtocolType pulumi.StringPtrInput
 	// The storage type of the file System.
 	// * Valid values:
 	StorageType pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
+	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+	VpcId pulumi.StringPtrInput
+	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+	VswitchId pulumi.StringPtrInput
 	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
 	ZoneId pulumi.StringPtrInput
 }
@@ -216,18 +292,26 @@ type fileSystemArgs struct {
 	// the type of the file system.
 	// Valid values:
 	// `standard` (Default),
-	// `extreme`.
+	// `extreme`,
+	// `cpfs`.
 	FileSystemType *string `pulumi:"fileSystemType"`
 	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The protocol type of the file system.
 	// Valid values:
 	// `NFS`,
-	// `SMB` (Available when the `fileSystemType` is `standard`).
+	// `SMB` (Available when the `fileSystemType` is `standard`),
+	// `cpfs` (Available when the `fileSystemType` is `cpfs`).
 	ProtocolType string `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
 	StorageType string `pulumi:"storageType"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+	VpcId *string `pulumi:"vpcId"`
+	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+	VswitchId *string `pulumi:"vswitchId"`
 	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -245,18 +329,26 @@ type FileSystemArgs struct {
 	// the type of the file system.
 	// Valid values:
 	// `standard` (Default),
-	// `extreme`.
+	// `extreme`,
+	// `cpfs`.
 	FileSystemType pulumi.StringPtrInput
 	// The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
 	KmsKeyId pulumi.StringPtrInput
 	// The protocol type of the file system.
 	// Valid values:
 	// `NFS`,
-	// `SMB` (Available when the `fileSystemType` is `standard`).
+	// `SMB` (Available when the `fileSystemType` is `standard`),
+	// `cpfs` (Available when the `fileSystemType` is `cpfs`).
 	ProtocolType pulumi.StringInput
 	// The storage type of the file System.
 	// * Valid values:
 	StorageType pulumi.StringInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
+	// The id of the VPC. The `vpcId` is required when the `fileSystemType` is `cpfs`.
+	VpcId pulumi.StringPtrInput
+	// The id of the vSwitch. The `vswitchId` is required when the `fileSystemType` is `cpfs`.
+	VswitchId pulumi.StringPtrInput
 	// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
 	ZoneId pulumi.StringPtrInput
 }

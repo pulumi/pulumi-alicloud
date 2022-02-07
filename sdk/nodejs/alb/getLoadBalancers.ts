@@ -75,7 +75,7 @@ export interface GetLoadBalancersArgs {
     /**
      * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
      *
-     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.
+     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
     loadBalancerBussinessStatus?: string;
     /**
@@ -131,7 +131,7 @@ export interface GetLoadBalancersResult {
     readonly ids: string[];
     readonly loadBalancerBusinessStatus?: string;
     /**
-     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.
+     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
     readonly loadBalancerBussinessStatus?: string;
     readonly loadBalancerIds?: string[];
@@ -174,7 +174,7 @@ export interface GetLoadBalancersOutputArgs {
     /**
      * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
      *
-     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.
+     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
     loadBalancerBussinessStatus?: pulumi.Input<string>;
     /**

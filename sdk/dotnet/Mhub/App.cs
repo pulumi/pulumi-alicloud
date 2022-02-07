@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Mhub
     /// 
     /// &gt; **NOTE:** Available in v1.138.0+.
     /// 
+    /// &gt; **NOTE:** At present, the resource only supports cn-shanghai region.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

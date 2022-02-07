@@ -37,6 +37,8 @@ export function getDBClusters(args?: GetDBClustersArgs, opts?: pulumi.InvokeOpti
         "enableDetails": args.enableDetails,
         "ids": args.ids,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "resourceGroupId": args.resourceGroupId,
         "status": args.status,
         "tags": args.tags,
@@ -64,6 +66,8 @@ export interface GetDBClustersArgs {
      */
     ids?: string[];
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * The ID of the resource group.
      */
@@ -93,9 +97,12 @@ export interface GetDBClustersResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly resourceGroupId?: string;
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
 }
 
 export function getDBClustersOutput(args?: GetDBClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClustersResult> {
@@ -123,6 +130,8 @@ export interface GetDBClustersOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * The ID of the resource group.
      */

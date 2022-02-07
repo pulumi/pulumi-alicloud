@@ -63,7 +63,7 @@ class ConnectionIkeConfig(dict):
                  ike_version: Optional[str] = None,
                  psk: Optional[str] = None):
         """
-        :param str ike_auth_alg: The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        :param str ike_auth_alg: The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
         :param str ike_enc_alg: The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
         :param int ike_lifetime: The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
         :param str ike_local_id: The identification of the VPN gateway.
@@ -96,7 +96,7 @@ class ConnectionIkeConfig(dict):
     @pulumi.getter(name="ikeAuthAlg")
     def ike_auth_alg(self) -> Optional[str]:
         """
-        The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
         """
         return pulumi.get(self, "ike_auth_alg")
 

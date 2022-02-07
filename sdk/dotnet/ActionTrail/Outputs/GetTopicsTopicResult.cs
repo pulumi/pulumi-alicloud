@@ -22,6 +22,14 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The ID of the topic, It is formatted to `&lt;instance_id&gt;:&lt;topic&gt;`.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// ID of the instance.
+        /// </summary>
+        public readonly string InstanceId;
+        /// <summary>
         /// whether the current topic is kafka local topic or not.
         /// </summary>
         public readonly bool LocalTopic;
@@ -38,7 +46,15 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly int Status;
         /// <summary>
-        /// The name of the topic.
+        /// The status_name of the topic.
+        /// </summary>
+        public readonly string StatusName;
+        /// <summary>
+        /// A mapping of tags to assign to the topic.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
+        /// A topic to filter results by the topic name.
         /// </summary>
         public readonly string Topic;
 
@@ -48,6 +64,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string createTime,
 
+            string id,
+
+            string instanceId,
+
             bool localTopic,
 
             int partitionNum,
@@ -56,14 +76,22 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             int status,
 
+            string statusName,
+
+            ImmutableDictionary<string, object>? tags,
+
             string topic)
         {
             CompactTopic = compactTopic;
             CreateTime = createTime;
+            Id = id;
+            InstanceId = instanceId;
             LocalTopic = localTopic;
             PartitionNum = partitionNum;
             Remark = remark;
             Status = status;
+            StatusName = statusName;
+            Tags = tags;
             Topic = topic;
         }
     }

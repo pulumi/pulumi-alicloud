@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./domain";
 export * from "./domainConfig";
 export * from "./domainNew";
+export * from "./getIpInfo";
 export * from "./getRealTimeLogDeliveries";
 export * from "./getService";
 export * from "./realTimeLogDelivery";

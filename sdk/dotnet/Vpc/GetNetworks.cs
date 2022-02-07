@@ -134,6 +134,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// The Id of resource group which VPC belongs.
         /// </summary>
@@ -234,6 +240,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// The Id of resource group which VPC belongs.
         /// </summary>
@@ -310,6 +322,8 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         public readonly string? ResourceGroupId;
         /// <summary>
         /// Status of the VPC.
@@ -319,6 +333,7 @@ namespace Pulumi.AliCloud.Vpc
         /// A map of tags assigned to the VPC.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
         /// <summary>
         /// Name of the VPC.
         /// </summary>
@@ -352,11 +367,17 @@ namespace Pulumi.AliCloud.Vpc
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? resourceGroupId,
 
             string? status,
 
             ImmutableDictionary<string, object>? tags,
+
+            int totalCount,
 
             string? vpcName,
 
@@ -376,9 +397,12 @@ namespace Pulumi.AliCloud.Vpc
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             ResourceGroupId = resourceGroupId;
             Status = status;
             Tags = tags;
+            TotalCount = totalCount;
             VpcName = vpcName;
             VpcOwnerId = vpcOwnerId;
             Vpcs = vpcs;

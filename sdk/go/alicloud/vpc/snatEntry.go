@@ -32,9 +32,9 @@ type SnatEntry struct {
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
 	SnatTableId pulumi.StringOutput `pulumi:"snatTableId"`
 	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
-	SourceCidr pulumi.StringPtrOutput `pulumi:"sourceCidr"`
+	SourceCidr pulumi.StringOutput `pulumi:"sourceCidr"`
 	// The vswitch ID.
-	SourceVswitchId pulumi.StringPtrOutput `pulumi:"sourceVswitchId"`
+	SourceVswitchId pulumi.StringOutput `pulumi:"sourceVswitchId"`
 	// (Available in 1.119.1+) The status of snat entry.
 	Status pulumi.StringOutput `pulumi:"status"`
 }

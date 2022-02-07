@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NasBackupPlan{}
 	case "alicloud:hbr/ossBackupPlan:OssBackupPlan":
 		r = &OssBackupPlan{}
+	case "alicloud:hbr/replicationVault:ReplicationVault":
+		r = &ReplicationVault{}
 	case "alicloud:hbr/restoreJob:RestoreJob":
 		r = &RestoreJob{}
 	case "alicloud:hbr/serverBackupPlan:ServerBackupPlan":
@@ -66,6 +68,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"hbr/ossBackupPlan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"hbr/replicationVault",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

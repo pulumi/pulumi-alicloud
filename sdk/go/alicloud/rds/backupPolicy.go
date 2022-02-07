@@ -96,7 +96,7 @@ type BackupPolicy struct {
 
 	// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
 	ArchiveBackupKeepCount pulumi.IntOutput `pulumi:"archiveBackupKeepCount"`
-	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
 	ArchiveBackupKeepPolicy pulumi.StringOutput `pulumi:"archiveBackupKeepPolicy"`
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod pulumi.IntOutput `pulumi:"archiveBackupRetentionPeriod"`
@@ -183,7 +183,7 @@ func GetBackupPolicy(ctx *pulumi.Context,
 type backupPolicyState struct {
 	// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
 	ArchiveBackupKeepCount *int `pulumi:"archiveBackupKeepCount"`
-	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
 	ArchiveBackupKeepPolicy *string `pulumi:"archiveBackupKeepPolicy"`
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod *int `pulumi:"archiveBackupRetentionPeriod"`
@@ -239,7 +239,7 @@ type backupPolicyState struct {
 type BackupPolicyState struct {
 	// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
 	ArchiveBackupKeepCount pulumi.IntPtrInput
-	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
 	ArchiveBackupKeepPolicy pulumi.StringPtrInput
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod pulumi.IntPtrInput
@@ -299,7 +299,7 @@ func (BackupPolicyState) ElementType() reflect.Type {
 type backupPolicyArgs struct {
 	// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
 	ArchiveBackupKeepCount *int `pulumi:"archiveBackupKeepCount"`
-	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
 	ArchiveBackupKeepPolicy *string `pulumi:"archiveBackupKeepPolicy"`
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod *int `pulumi:"archiveBackupRetentionPeriod"`
@@ -356,7 +356,7 @@ type backupPolicyArgs struct {
 type BackupPolicyArgs struct {
 	// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
 	ArchiveBackupKeepCount pulumi.IntPtrInput
-	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
 	ArchiveBackupKeepPolicy pulumi.StringPtrInput
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod pulumi.IntPtrInput

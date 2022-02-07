@@ -120,6 +120,12 @@ namespace Pulumi.AliCloud.Adb
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// The ID of the resource group.
         /// </summary>
@@ -184,6 +190,12 @@ namespace Pulumi.AliCloud.Adb
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// The ID of the resource group.
         /// </summary>
@@ -228,9 +240,12 @@ namespace Pulumi.AliCloud.Adb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         public readonly string? ResourceGroupId;
         public readonly string? Status;
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
 
         [OutputConstructor]
         private GetDBClustersResult(
@@ -250,11 +265,17 @@ namespace Pulumi.AliCloud.Adb
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? resourceGroupId,
 
             string? status,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, object>? tags,
+
+            int totalCount)
         {
             Clusters = clusters;
             Description = description;
@@ -264,9 +285,12 @@ namespace Pulumi.AliCloud.Adb
             Id = id;
             Ids = ids;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             ResourceGroupId = resourceGroupId;
             Status = status;
             Tags = tags;
+            TotalCount = totalCount;
         }
     }
 }

@@ -26,10 +26,13 @@ class SslVpnServerArgs:
         :param pulumi.Input[str] client_ip_pool: The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
         :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-        :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
-        :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
+        :param pulumi.Input[str] cipher: The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+               * `AES-128-CBC` - the AES-128-CBC algorithm.
+               * `AES-192-CBC` - the AES-192-CBC algorithm.
+               * `AES-256-CBC` - the AES-256-CBC algorithm.
+        :param pulumi.Input[bool] compress: Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         :param pulumi.Input[str] name: The name of the SSL-VPN server.
-        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         """
         pulumi.set(__self__, "client_ip_pool", client_ip_pool)
@@ -86,7 +89,10 @@ class SslVpnServerArgs:
     @pulumi.getter
     def cipher(self) -> Optional[pulumi.Input[str]]:
         """
-        The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        * `AES-128-CBC` - the AES-128-CBC algorithm.
+        * `AES-192-CBC` - the AES-192-CBC algorithm.
+        * `AES-256-CBC` - the AES-256-CBC algorithm.
         """
         return pulumi.get(self, "cipher")
 
@@ -98,7 +104,7 @@ class SslVpnServerArgs:
     @pulumi.getter
     def compress(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specify whether to compress the communication. Valid value: true (default) | false
+        Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         """
         return pulumi.get(self, "compress")
 
@@ -122,7 +128,7 @@ class SslVpnServerArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         """
         return pulumi.get(self, "port")
 
@@ -159,15 +165,18 @@ class _SslVpnServerState:
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SslVpnServer resources.
-        :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        :param pulumi.Input[str] cipher: The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+               * `AES-128-CBC` - the AES-128-CBC algorithm.
+               * `AES-192-CBC` - the AES-192-CBC algorithm.
+               * `AES-256-CBC` - the AES-256-CBC algorithm.
         :param pulumi.Input[str] client_ip_pool: The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
-        :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
+        :param pulumi.Input[bool] compress: Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         :param pulumi.Input[int] connections: The number of current connections.
         :param pulumi.Input[str] internet_ip: The internet IP of the SSL-VPN server.
         :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         :param pulumi.Input[int] max_connections: The maximum number of connections.
         :param pulumi.Input[str] name: The name of the SSL-VPN server.
-        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
@@ -198,7 +207,10 @@ class _SslVpnServerState:
     @pulumi.getter
     def cipher(self) -> Optional[pulumi.Input[str]]:
         """
-        The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        * `AES-128-CBC` - the AES-128-CBC algorithm.
+        * `AES-192-CBC` - the AES-192-CBC algorithm.
+        * `AES-256-CBC` - the AES-256-CBC algorithm.
         """
         return pulumi.get(self, "cipher")
 
@@ -222,7 +234,7 @@ class _SslVpnServerState:
     @pulumi.getter
     def compress(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specify whether to compress the communication. Valid value: true (default) | false
+        Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         """
         return pulumi.get(self, "compress")
 
@@ -294,7 +306,7 @@ class _SslVpnServerState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         """
         return pulumi.get(self, "port")
 
@@ -352,12 +364,15 @@ class SslVpnServer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        :param pulumi.Input[str] cipher: The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+               * `AES-128-CBC` - the AES-128-CBC algorithm.
+               * `AES-192-CBC` - the AES-192-CBC algorithm.
+               * `AES-256-CBC` - the AES-256-CBC algorithm.
         :param pulumi.Input[str] client_ip_pool: The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
-        :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
+        :param pulumi.Input[bool] compress: Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         :param pulumi.Input[str] name: The name of the SSL-VPN server.
-        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
@@ -456,15 +471,18 @@ class SslVpnServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        :param pulumi.Input[str] cipher: The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+               * `AES-128-CBC` - the AES-128-CBC algorithm.
+               * `AES-192-CBC` - the AES-192-CBC algorithm.
+               * `AES-256-CBC` - the AES-256-CBC algorithm.
         :param pulumi.Input[str] client_ip_pool: The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
-        :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
+        :param pulumi.Input[bool] compress: Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         :param pulumi.Input[int] connections: The number of current connections.
         :param pulumi.Input[str] internet_ip: The internet IP of the SSL-VPN server.
         :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         :param pulumi.Input[int] max_connections: The maximum number of connections.
         :param pulumi.Input[str] name: The name of the SSL-VPN server.
-        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        :param pulumi.Input[int] port: The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
@@ -489,7 +507,10 @@ class SslVpnServer(pulumi.CustomResource):
     @pulumi.getter
     def cipher(self) -> pulumi.Output[Optional[str]]:
         """
-        The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        * `AES-128-CBC` - the AES-128-CBC algorithm.
+        * `AES-192-CBC` - the AES-192-CBC algorithm.
+        * `AES-256-CBC` - the AES-256-CBC algorithm.
         """
         return pulumi.get(self, "cipher")
 
@@ -505,7 +526,7 @@ class SslVpnServer(pulumi.CustomResource):
     @pulumi.getter
     def compress(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specify whether to compress the communication. Valid value: true (default) | false
+        Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         """
         return pulumi.get(self, "compress")
 
@@ -553,7 +574,7 @@ class SslVpnServer(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[int]]:
         """
-        The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         """
         return pulumi.get(self, "port")
 

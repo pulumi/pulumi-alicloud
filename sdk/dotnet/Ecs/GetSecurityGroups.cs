@@ -97,6 +97,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetSecurityGroupsArgs : Pulumi.InvokeArgs
     {
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -117,6 +120,12 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         /// <summary>
         /// The Id of resource group which the security_group belongs.
@@ -169,6 +178,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetSecurityGroupsInvokeArgs : Pulumi.InvokeArgs
     {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
         [Input("ids")]
         private InputList<string>? _ids;
 
@@ -189,6 +201,12 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
+
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         /// <summary>
         /// The Id of resource group which the security_group belongs.
@@ -243,6 +261,7 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetSecurityGroupsResult
     {
+        public readonly bool? EnableDetails;
         /// <summary>
         /// A list of Security Groups. Each element contains the following attributes:
         /// </summary>
@@ -261,6 +280,8 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         /// <summary>
         /// The Id of resource group which the security_group belongs.
         /// </summary>
@@ -269,6 +290,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A map of tags assigned to the ECS instance.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
         /// <summary>
         /// The ID of the VPC that owns the security group.
         /// </summary>
@@ -276,6 +298,8 @@ namespace Pulumi.AliCloud.Ecs
 
         [OutputConstructor]
         private GetSecurityGroupsResult(
+            bool? enableDetails,
+
             ImmutableArray<Outputs.GetSecurityGroupsGroupResult> groups,
 
             string id,
@@ -288,20 +312,30 @@ namespace Pulumi.AliCloud.Ecs
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? resourceGroupId,
 
             ImmutableDictionary<string, object>? tags,
 
+            int totalCount,
+
             string? vpcId)
         {
+            EnableDetails = enableDetails;
             Groups = groups;
             Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             ResourceGroupId = resourceGroupId;
             Tags = tags;
+            TotalCount = totalCount;
             VpcId = vpcId;
         }
     }

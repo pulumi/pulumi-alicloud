@@ -25,6 +25,7 @@ from .role import *
 from .role_attachment import *
 from .role_policy_attachment import *
 from .saml_provider import *
+from .security_preference import *
 from .user import *
 from .user_policy_attachment import *
 from ._inputs import *

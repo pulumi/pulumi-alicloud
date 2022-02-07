@@ -46,9 +46,6 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === TransitRouterVpcAttachment.__pulumiType;
     }
 
-    /**
-     * Whether to create vpc route automatically. The system default value is `true`.
-     */
     public readonly autoCreateVpcRoute!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the CEN.
@@ -98,6 +95,9 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      * The owner id of vpc.
      */
     public readonly vpcOwnerId!: pulumi.Output<string>;
+    /**
+     * The list of zone mapping of the VPC.
+     */
     public readonly zoneMappings!: pulumi.Output<outputs.cen.TransitRouterVpcAttachmentZoneMapping[]>;
 
     /**
@@ -162,9 +162,6 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
  */
 export interface TransitRouterVpcAttachmentState {
-    /**
-     * Whether to create vpc route automatically. The system default value is `true`.
-     */
     autoCreateVpcRoute?: pulumi.Input<boolean>;
     /**
      * The ID of the CEN.
@@ -214,6 +211,9 @@ export interface TransitRouterVpcAttachmentState {
      * The owner id of vpc.
      */
     vpcOwnerId?: pulumi.Input<string>;
+    /**
+     * The list of zone mapping of the VPC.
+     */
     zoneMappings?: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }
 
@@ -221,9 +221,6 @@ export interface TransitRouterVpcAttachmentState {
  * The set of arguments for constructing a TransitRouterVpcAttachment resource.
  */
 export interface TransitRouterVpcAttachmentArgs {
-    /**
-     * Whether to create vpc route automatically. The system default value is `true`.
-     */
     autoCreateVpcRoute?: pulumi.Input<boolean>;
     /**
      * The ID of the CEN.
@@ -265,5 +262,8 @@ export interface TransitRouterVpcAttachmentArgs {
      * The owner id of vpc.
      */
     vpcOwnerId?: pulumi.Input<string>;
+    /**
+     * The list of zone mapping of the VPC.
+     */
     zoneMappings: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }

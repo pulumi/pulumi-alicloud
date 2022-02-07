@@ -294,6 +294,380 @@ func (o GetAccessRulesRuleArrayOutput) Index(i pulumi.IntInput) GetAccessRulesRu
 	}).(GetAccessRulesRuleOutput)
 }
 
+type GetAutoSnapshotPoliciesPolicy struct {
+	// The ID of the automatic snapshot policy.
+	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
+	// The name of the automatic snapshot policy.
+	AutoSnapshotPolicyName string `pulumi:"autoSnapshotPolicyName"`
+	// The time when the automatic snapshot policy was created.
+	CreateTime string `pulumi:"createTime"`
+	// The number of file systems to which the automatic snapshot policy applies.
+	FileSystemNums int `pulumi:"fileSystemNums"`
+	// ID of the Auto Snapshot Policy.
+	Id string `pulumi:"id"`
+	// The day on which an auto snapshot was created.
+	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
+	// The number of days for which you want to retain auto snapshots.
+	RetentionDays int `pulumi:"retentionDays"`
+	// The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
+	Status string `pulumi:"status"`
+	// The point in time at which an auto snapshot was created. Unit: hours.
+	TimePoints []string `pulumi:"timePoints"`
+}
+
+// GetAutoSnapshotPoliciesPolicyInput is an input type that accepts GetAutoSnapshotPoliciesPolicyArgs and GetAutoSnapshotPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetAutoSnapshotPoliciesPolicyInput` via:
+//
+//          GetAutoSnapshotPoliciesPolicyArgs{...}
+type GetAutoSnapshotPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetAutoSnapshotPoliciesPolicyOutput() GetAutoSnapshotPoliciesPolicyOutput
+	ToGetAutoSnapshotPoliciesPolicyOutputWithContext(context.Context) GetAutoSnapshotPoliciesPolicyOutput
+}
+
+type GetAutoSnapshotPoliciesPolicyArgs struct {
+	// The ID of the automatic snapshot policy.
+	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
+	// The name of the automatic snapshot policy.
+	AutoSnapshotPolicyName pulumi.StringInput `pulumi:"autoSnapshotPolicyName"`
+	// The time when the automatic snapshot policy was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The number of file systems to which the automatic snapshot policy applies.
+	FileSystemNums pulumi.IntInput `pulumi:"fileSystemNums"`
+	// ID of the Auto Snapshot Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The day on which an auto snapshot was created.
+	RepeatWeekdays pulumi.StringArrayInput `pulumi:"repeatWeekdays"`
+	// The number of days for which you want to retain auto snapshots.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The point in time at which an auto snapshot was created. Unit: hours.
+	TimePoints pulumi.StringArrayInput `pulumi:"timePoints"`
+}
+
+func (GetAutoSnapshotPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoSnapshotPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetAutoSnapshotPoliciesPolicyArgs) ToGetAutoSnapshotPoliciesPolicyOutput() GetAutoSnapshotPoliciesPolicyOutput {
+	return i.ToGetAutoSnapshotPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetAutoSnapshotPoliciesPolicyArgs) ToGetAutoSnapshotPoliciesPolicyOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoSnapshotPoliciesPolicyOutput)
+}
+
+// GetAutoSnapshotPoliciesPolicyArrayInput is an input type that accepts GetAutoSnapshotPoliciesPolicyArray and GetAutoSnapshotPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetAutoSnapshotPoliciesPolicyArrayInput` via:
+//
+//          GetAutoSnapshotPoliciesPolicyArray{ GetAutoSnapshotPoliciesPolicyArgs{...} }
+type GetAutoSnapshotPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetAutoSnapshotPoliciesPolicyArrayOutput() GetAutoSnapshotPoliciesPolicyArrayOutput
+	ToGetAutoSnapshotPoliciesPolicyArrayOutputWithContext(context.Context) GetAutoSnapshotPoliciesPolicyArrayOutput
+}
+
+type GetAutoSnapshotPoliciesPolicyArray []GetAutoSnapshotPoliciesPolicyInput
+
+func (GetAutoSnapshotPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoSnapshotPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetAutoSnapshotPoliciesPolicyArray) ToGetAutoSnapshotPoliciesPolicyArrayOutput() GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return i.ToGetAutoSnapshotPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAutoSnapshotPoliciesPolicyArray) ToGetAutoSnapshotPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoSnapshotPoliciesPolicyArrayOutput)
+}
+
+type GetAutoSnapshotPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetAutoSnapshotPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoSnapshotPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetAutoSnapshotPoliciesPolicyOutput) ToGetAutoSnapshotPoliciesPolicyOutput() GetAutoSnapshotPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyOutput) ToGetAutoSnapshotPoliciesPolicyOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyOutput {
+	return o
+}
+
+// The ID of the automatic snapshot policy.
+func (o GetAutoSnapshotPoliciesPolicyOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
+}
+
+// The name of the automatic snapshot policy.
+func (o GetAutoSnapshotPoliciesPolicyOutput) AutoSnapshotPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.AutoSnapshotPolicyName }).(pulumi.StringOutput)
+}
+
+// The time when the automatic snapshot policy was created.
+func (o GetAutoSnapshotPoliciesPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The number of file systems to which the automatic snapshot policy applies.
+func (o GetAutoSnapshotPoliciesPolicyOutput) FileSystemNums() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.FileSystemNums }).(pulumi.IntOutput)
+}
+
+// ID of the Auto Snapshot Policy.
+func (o GetAutoSnapshotPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The day on which an auto snapshot was created.
+func (o GetAutoSnapshotPoliciesPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) []string { return v.RepeatWeekdays }).(pulumi.StringArrayOutput)
+}
+
+// The number of days for which you want to retain auto snapshots.
+func (o GetAutoSnapshotPoliciesPolicyOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
+func (o GetAutoSnapshotPoliciesPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The point in time at which an auto snapshot was created. Unit: hours.
+func (o GetAutoSnapshotPoliciesPolicyOutput) TimePoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoSnapshotPoliciesPolicy) []string { return v.TimePoints }).(pulumi.StringArrayOutput)
+}
+
+type GetAutoSnapshotPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAutoSnapshotPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoSnapshotPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetAutoSnapshotPoliciesPolicyArrayOutput) ToGetAutoSnapshotPoliciesPolicyArrayOutput() GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyArrayOutput) ToGetAutoSnapshotPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetAutoSnapshotPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetAutoSnapshotPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetAutoSnapshotPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutoSnapshotPoliciesPolicy {
+		return vs[0].([]GetAutoSnapshotPoliciesPolicy)[vs[1].(int)]
+	}).(GetAutoSnapshotPoliciesPolicyOutput)
+}
+
+type GetDataFlowsFlow struct {
+	// The time when Fileset was created. Executing the ISO8601 standard means that the return format is: 'yyyy-MM-ddTHH:mm:ssZ'.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Data Flow.
+	DataFlowId string `pulumi:"dataFlowId"`
+	// The Description of data flow.
+	Description string `pulumi:"description"`
+	// Error message.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// The ID of the file system.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The path of Fileset in the CPFS file system.
+	FileSystemPath string `pulumi:"fileSystemPath"`
+	// Description of automatic update.
+	FsetDescription string `pulumi:"fsetDescription"`
+	// The ID of the Fileset.
+	FsetId string `pulumi:"fsetId"`
+	// The resource ID of the data flow. The value formats as `<file_system_id>:<data_flow_id>`.
+	Id string `pulumi:"id"`
+	// The security protection type of the source storage.
+	SourceSecurityType string `pulumi:"sourceSecurityType"`
+	// The access path of the source store. Format: `<storage type>://<path>`.
+	SourceStorage string `pulumi:"sourceStorage"`
+	// The status of the Data flow.
+	Status string `pulumi:"status"`
+	// The maximum transmission bandwidth of data flow, unit: `MB/s`.
+	Throughput int `pulumi:"throughput"`
+}
+
+// GetDataFlowsFlowInput is an input type that accepts GetDataFlowsFlowArgs and GetDataFlowsFlowOutput values.
+// You can construct a concrete instance of `GetDataFlowsFlowInput` via:
+//
+//          GetDataFlowsFlowArgs{...}
+type GetDataFlowsFlowInput interface {
+	pulumi.Input
+
+	ToGetDataFlowsFlowOutput() GetDataFlowsFlowOutput
+	ToGetDataFlowsFlowOutputWithContext(context.Context) GetDataFlowsFlowOutput
+}
+
+type GetDataFlowsFlowArgs struct {
+	// The time when Fileset was created. Executing the ISO8601 standard means that the return format is: 'yyyy-MM-ddTHH:mm:ssZ'.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Data Flow.
+	DataFlowId pulumi.StringInput `pulumi:"dataFlowId"`
+	// The Description of data flow.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Error message.
+	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
+	// The ID of the file system.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The path of Fileset in the CPFS file system.
+	FileSystemPath pulumi.StringInput `pulumi:"fileSystemPath"`
+	// Description of automatic update.
+	FsetDescription pulumi.StringInput `pulumi:"fsetDescription"`
+	// The ID of the Fileset.
+	FsetId pulumi.StringInput `pulumi:"fsetId"`
+	// The resource ID of the data flow. The value formats as `<file_system_id>:<data_flow_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The security protection type of the source storage.
+	SourceSecurityType pulumi.StringInput `pulumi:"sourceSecurityType"`
+	// The access path of the source store. Format: `<storage type>://<path>`.
+	SourceStorage pulumi.StringInput `pulumi:"sourceStorage"`
+	// The status of the Data flow.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The maximum transmission bandwidth of data flow, unit: `MB/s`.
+	Throughput pulumi.IntInput `pulumi:"throughput"`
+}
+
+func (GetDataFlowsFlowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataFlowsFlow)(nil)).Elem()
+}
+
+func (i GetDataFlowsFlowArgs) ToGetDataFlowsFlowOutput() GetDataFlowsFlowOutput {
+	return i.ToGetDataFlowsFlowOutputWithContext(context.Background())
+}
+
+func (i GetDataFlowsFlowArgs) ToGetDataFlowsFlowOutputWithContext(ctx context.Context) GetDataFlowsFlowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataFlowsFlowOutput)
+}
+
+// GetDataFlowsFlowArrayInput is an input type that accepts GetDataFlowsFlowArray and GetDataFlowsFlowArrayOutput values.
+// You can construct a concrete instance of `GetDataFlowsFlowArrayInput` via:
+//
+//          GetDataFlowsFlowArray{ GetDataFlowsFlowArgs{...} }
+type GetDataFlowsFlowArrayInput interface {
+	pulumi.Input
+
+	ToGetDataFlowsFlowArrayOutput() GetDataFlowsFlowArrayOutput
+	ToGetDataFlowsFlowArrayOutputWithContext(context.Context) GetDataFlowsFlowArrayOutput
+}
+
+type GetDataFlowsFlowArray []GetDataFlowsFlowInput
+
+func (GetDataFlowsFlowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataFlowsFlow)(nil)).Elem()
+}
+
+func (i GetDataFlowsFlowArray) ToGetDataFlowsFlowArrayOutput() GetDataFlowsFlowArrayOutput {
+	return i.ToGetDataFlowsFlowArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataFlowsFlowArray) ToGetDataFlowsFlowArrayOutputWithContext(ctx context.Context) GetDataFlowsFlowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataFlowsFlowArrayOutput)
+}
+
+type GetDataFlowsFlowOutput struct{ *pulumi.OutputState }
+
+func (GetDataFlowsFlowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataFlowsFlow)(nil)).Elem()
+}
+
+func (o GetDataFlowsFlowOutput) ToGetDataFlowsFlowOutput() GetDataFlowsFlowOutput {
+	return o
+}
+
+func (o GetDataFlowsFlowOutput) ToGetDataFlowsFlowOutputWithContext(ctx context.Context) GetDataFlowsFlowOutput {
+	return o
+}
+
+// The time when Fileset was created. Executing the ISO8601 standard means that the return format is: 'yyyy-MM-ddTHH:mm:ssZ'.
+func (o GetDataFlowsFlowOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Data Flow.
+func (o GetDataFlowsFlowOutput) DataFlowId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.DataFlowId }).(pulumi.StringOutput)
+}
+
+// The Description of data flow.
+func (o GetDataFlowsFlowOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Error message.
+func (o GetDataFlowsFlowOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// The ID of the file system.
+func (o GetDataFlowsFlowOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The path of Fileset in the CPFS file system.
+func (o GetDataFlowsFlowOutput) FileSystemPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.FileSystemPath }).(pulumi.StringOutput)
+}
+
+// Description of automatic update.
+func (o GetDataFlowsFlowOutput) FsetDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.FsetDescription }).(pulumi.StringOutput)
+}
+
+// The ID of the Fileset.
+func (o GetDataFlowsFlowOutput) FsetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.FsetId }).(pulumi.StringOutput)
+}
+
+// The resource ID of the data flow. The value formats as `<file_system_id>:<data_flow_id>`.
+func (o GetDataFlowsFlowOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The security protection type of the source storage.
+func (o GetDataFlowsFlowOutput) SourceSecurityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.SourceSecurityType }).(pulumi.StringOutput)
+}
+
+// The access path of the source store. Format: `<storage type>://<path>`.
+func (o GetDataFlowsFlowOutput) SourceStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.SourceStorage }).(pulumi.StringOutput)
+}
+
+// The status of the Data flow.
+func (o GetDataFlowsFlowOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The maximum transmission bandwidth of data flow, unit: `MB/s`.
+func (o GetDataFlowsFlowOutput) Throughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataFlowsFlow) int { return v.Throughput }).(pulumi.IntOutput)
+}
+
+type GetDataFlowsFlowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataFlowsFlowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataFlowsFlow)(nil)).Elem()
+}
+
+func (o GetDataFlowsFlowArrayOutput) ToGetDataFlowsFlowArrayOutput() GetDataFlowsFlowArrayOutput {
+	return o
+}
+
+func (o GetDataFlowsFlowArrayOutput) ToGetDataFlowsFlowArrayOutputWithContext(ctx context.Context) GetDataFlowsFlowArrayOutput {
+	return o
+}
+
+func (o GetDataFlowsFlowArrayOutput) Index(i pulumi.IntInput) GetDataFlowsFlowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataFlowsFlow {
+		return vs[0].([]GetDataFlowsFlow)[vs[1].(int)]
+	}).(GetDataFlowsFlowOutput)
+}
+
 type GetFileSystemsSystem struct {
 	// (Optional, Available in v1.140.0+) The capacity of the file system.
 	Capacity int `pulumi:"capacity"`
@@ -523,6 +897,317 @@ func (o GetFileSystemsSystemArrayOutput) Index(i pulumi.IntInput) GetFileSystems
 	}).(GetFileSystemsSystemOutput)
 }
 
+type GetFilesetsFileset struct {
+	// The time when Fileset was created.
+	CreateTime string `pulumi:"createTime"`
+	// Description of Fileset.
+	Description string `pulumi:"description"`
+	// The ID of the file system.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The path of Fileset.
+	FileSystemPath string `pulumi:"fileSystemPath"`
+	// The first ID of the resource.
+	FilesetId string `pulumi:"filesetId"`
+	// The ID of the Fileset.
+	Id string `pulumi:"id"`
+	// The status of the fileset.
+	Status string `pulumi:"status"`
+	// The latest update time of Fileset.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetFilesetsFilesetInput is an input type that accepts GetFilesetsFilesetArgs and GetFilesetsFilesetOutput values.
+// You can construct a concrete instance of `GetFilesetsFilesetInput` via:
+//
+//          GetFilesetsFilesetArgs{...}
+type GetFilesetsFilesetInput interface {
+	pulumi.Input
+
+	ToGetFilesetsFilesetOutput() GetFilesetsFilesetOutput
+	ToGetFilesetsFilesetOutputWithContext(context.Context) GetFilesetsFilesetOutput
+}
+
+type GetFilesetsFilesetArgs struct {
+	// The time when Fileset was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Description of Fileset.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the file system.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The path of Fileset.
+	FileSystemPath pulumi.StringInput `pulumi:"fileSystemPath"`
+	// The first ID of the resource.
+	FilesetId pulumi.StringInput `pulumi:"filesetId"`
+	// The ID of the Fileset.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the fileset.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The latest update time of Fileset.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetFilesetsFilesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFilesetsFileset)(nil)).Elem()
+}
+
+func (i GetFilesetsFilesetArgs) ToGetFilesetsFilesetOutput() GetFilesetsFilesetOutput {
+	return i.ToGetFilesetsFilesetOutputWithContext(context.Background())
+}
+
+func (i GetFilesetsFilesetArgs) ToGetFilesetsFilesetOutputWithContext(ctx context.Context) GetFilesetsFilesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFilesetsFilesetOutput)
+}
+
+// GetFilesetsFilesetArrayInput is an input type that accepts GetFilesetsFilesetArray and GetFilesetsFilesetArrayOutput values.
+// You can construct a concrete instance of `GetFilesetsFilesetArrayInput` via:
+//
+//          GetFilesetsFilesetArray{ GetFilesetsFilesetArgs{...} }
+type GetFilesetsFilesetArrayInput interface {
+	pulumi.Input
+
+	ToGetFilesetsFilesetArrayOutput() GetFilesetsFilesetArrayOutput
+	ToGetFilesetsFilesetArrayOutputWithContext(context.Context) GetFilesetsFilesetArrayOutput
+}
+
+type GetFilesetsFilesetArray []GetFilesetsFilesetInput
+
+func (GetFilesetsFilesetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFilesetsFileset)(nil)).Elem()
+}
+
+func (i GetFilesetsFilesetArray) ToGetFilesetsFilesetArrayOutput() GetFilesetsFilesetArrayOutput {
+	return i.ToGetFilesetsFilesetArrayOutputWithContext(context.Background())
+}
+
+func (i GetFilesetsFilesetArray) ToGetFilesetsFilesetArrayOutputWithContext(ctx context.Context) GetFilesetsFilesetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFilesetsFilesetArrayOutput)
+}
+
+type GetFilesetsFilesetOutput struct{ *pulumi.OutputState }
+
+func (GetFilesetsFilesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFilesetsFileset)(nil)).Elem()
+}
+
+func (o GetFilesetsFilesetOutput) ToGetFilesetsFilesetOutput() GetFilesetsFilesetOutput {
+	return o
+}
+
+func (o GetFilesetsFilesetOutput) ToGetFilesetsFilesetOutputWithContext(ctx context.Context) GetFilesetsFilesetOutput {
+	return o
+}
+
+// The time when Fileset was created.
+func (o GetFilesetsFilesetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesetsFileset) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of Fileset.
+func (o GetFilesetsFilesetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesetsFileset) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the file system.
+func (o GetFilesetsFilesetOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesetsFileset) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The path of Fileset.
+func (o GetFilesetsFilesetOutput) FileSystemPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesetsFileset) string { return v.FileSystemPath }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetFilesetsFilesetOutput) FilesetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesetsFileset) string { return v.FilesetId }).(pulumi.StringOutput)
+}
+
+// The ID of the Fileset.
+func (o GetFilesetsFilesetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesetsFileset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the fileset.
+func (o GetFilesetsFilesetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesetsFileset) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The latest update time of Fileset.
+func (o GetFilesetsFilesetOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesetsFileset) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetFilesetsFilesetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFilesetsFilesetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFilesetsFileset)(nil)).Elem()
+}
+
+func (o GetFilesetsFilesetArrayOutput) ToGetFilesetsFilesetArrayOutput() GetFilesetsFilesetArrayOutput {
+	return o
+}
+
+func (o GetFilesetsFilesetArrayOutput) ToGetFilesetsFilesetArrayOutputWithContext(ctx context.Context) GetFilesetsFilesetArrayOutput {
+	return o
+}
+
+func (o GetFilesetsFilesetArrayOutput) Index(i pulumi.IntInput) GetFilesetsFilesetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFilesetsFileset {
+		return vs[0].([]GetFilesetsFileset)[vs[1].(int)]
+	}).(GetFilesetsFilesetOutput)
+}
+
+type GetLifecyclePoliciesPolicy struct {
+	// The time when the lifecycle management policy was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the file system.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The ID of the Lifecycle Policy. Its value is same as Queue Name.
+	Id string `pulumi:"id"`
+	// The name of the lifecycle management policy.
+	LifecyclePolicyName string `pulumi:"lifecyclePolicyName"`
+	// The rules in the lifecycle management policy.
+	LifecycleRuleName string `pulumi:"lifecycleRuleName"`
+	// The list of absolute paths for multiple directories. In this case, you can associate a lifecycle management policy with each directory.
+	Paths []string `pulumi:"paths"`
+	// The storage type of the data that is dumped to the IA storage medium.
+	StorageType string `pulumi:"storageType"`
+}
+
+// GetLifecyclePoliciesPolicyInput is an input type that accepts GetLifecyclePoliciesPolicyArgs and GetLifecyclePoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetLifecyclePoliciesPolicyInput` via:
+//
+//          GetLifecyclePoliciesPolicyArgs{...}
+type GetLifecyclePoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetLifecyclePoliciesPolicyOutput() GetLifecyclePoliciesPolicyOutput
+	ToGetLifecyclePoliciesPolicyOutputWithContext(context.Context) GetLifecyclePoliciesPolicyOutput
+}
+
+type GetLifecyclePoliciesPolicyArgs struct {
+	// The time when the lifecycle management policy was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the file system.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The ID of the Lifecycle Policy. Its value is same as Queue Name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the lifecycle management policy.
+	LifecyclePolicyName pulumi.StringInput `pulumi:"lifecyclePolicyName"`
+	// The rules in the lifecycle management policy.
+	LifecycleRuleName pulumi.StringInput `pulumi:"lifecycleRuleName"`
+	// The list of absolute paths for multiple directories. In this case, you can associate a lifecycle management policy with each directory.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// The storage type of the data that is dumped to the IA storage medium.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+}
+
+func (GetLifecyclePoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLifecyclePoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetLifecyclePoliciesPolicyArgs) ToGetLifecyclePoliciesPolicyOutput() GetLifecyclePoliciesPolicyOutput {
+	return i.ToGetLifecyclePoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetLifecyclePoliciesPolicyArgs) ToGetLifecyclePoliciesPolicyOutputWithContext(ctx context.Context) GetLifecyclePoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLifecyclePoliciesPolicyOutput)
+}
+
+// GetLifecyclePoliciesPolicyArrayInput is an input type that accepts GetLifecyclePoliciesPolicyArray and GetLifecyclePoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetLifecyclePoliciesPolicyArrayInput` via:
+//
+//          GetLifecyclePoliciesPolicyArray{ GetLifecyclePoliciesPolicyArgs{...} }
+type GetLifecyclePoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetLifecyclePoliciesPolicyArrayOutput() GetLifecyclePoliciesPolicyArrayOutput
+	ToGetLifecyclePoliciesPolicyArrayOutputWithContext(context.Context) GetLifecyclePoliciesPolicyArrayOutput
+}
+
+type GetLifecyclePoliciesPolicyArray []GetLifecyclePoliciesPolicyInput
+
+func (GetLifecyclePoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLifecyclePoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetLifecyclePoliciesPolicyArray) ToGetLifecyclePoliciesPolicyArrayOutput() GetLifecyclePoliciesPolicyArrayOutput {
+	return i.ToGetLifecyclePoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetLifecyclePoliciesPolicyArray) ToGetLifecyclePoliciesPolicyArrayOutputWithContext(ctx context.Context) GetLifecyclePoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLifecyclePoliciesPolicyArrayOutput)
+}
+
+type GetLifecyclePoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetLifecyclePoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLifecyclePoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetLifecyclePoliciesPolicyOutput) ToGetLifecyclePoliciesPolicyOutput() GetLifecyclePoliciesPolicyOutput {
+	return o
+}
+
+func (o GetLifecyclePoliciesPolicyOutput) ToGetLifecyclePoliciesPolicyOutputWithContext(ctx context.Context) GetLifecyclePoliciesPolicyOutput {
+	return o
+}
+
+// The time when the lifecycle management policy was created.
+func (o GetLifecyclePoliciesPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLifecyclePoliciesPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the file system.
+func (o GetLifecyclePoliciesPolicyOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLifecyclePoliciesPolicy) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The ID of the Lifecycle Policy. Its value is same as Queue Name.
+func (o GetLifecyclePoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLifecyclePoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the lifecycle management policy.
+func (o GetLifecyclePoliciesPolicyOutput) LifecyclePolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLifecyclePoliciesPolicy) string { return v.LifecyclePolicyName }).(pulumi.StringOutput)
+}
+
+// The rules in the lifecycle management policy.
+func (o GetLifecyclePoliciesPolicyOutput) LifecycleRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLifecyclePoliciesPolicy) string { return v.LifecycleRuleName }).(pulumi.StringOutput)
+}
+
+// The list of absolute paths for multiple directories. In this case, you can associate a lifecycle management policy with each directory.
+func (o GetLifecyclePoliciesPolicyOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLifecyclePoliciesPolicy) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// The storage type of the data that is dumped to the IA storage medium.
+func (o GetLifecyclePoliciesPolicyOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLifecyclePoliciesPolicy) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+type GetLifecyclePoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLifecyclePoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLifecyclePoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetLifecyclePoliciesPolicyArrayOutput) ToGetLifecyclePoliciesPolicyArrayOutput() GetLifecyclePoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetLifecyclePoliciesPolicyArrayOutput) ToGetLifecyclePoliciesPolicyArrayOutputWithContext(ctx context.Context) GetLifecyclePoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetLifecyclePoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetLifecyclePoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLifecyclePoliciesPolicy {
+		return vs[0].([]GetLifecyclePoliciesPolicy)[vs[1].(int)]
+	}).(GetLifecyclePoliciesPolicyOutput)
+}
+
 type GetMountTargetsTarget struct {
 	// Filter results by a specific AccessGroupName.
 	AccessGroupName string `pulumi:"accessGroupName"`
@@ -681,6 +1366,211 @@ func (o GetMountTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetMountTarge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMountTargetsTarget {
 		return vs[0].([]GetMountTargetsTarget)[vs[1].(int)]
 	}).(GetMountTargetsTargetOutput)
+}
+
+type GetSnapshotsSnapshot struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the snapshot.
+	Description string `pulumi:"description"`
+	// The type of the encryption.
+	EncryptType int `pulumi:"encryptType"`
+	// The ID of the Snapshot.
+	Id string `pulumi:"id"`
+	// The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
+	Progress string `pulumi:"progress"`
+	// The remaining time that is required to create the snapshot. Unit: seconds.
+	RemainTime int `pulumi:"remainTime"`
+	// The retention period of the automatic snapshot. Unit: days.
+	RetentionDays int `pulumi:"retentionDays"`
+	// The ID of the resource.
+	SnapshotId string `pulumi:"snapshotId"`
+	// The name of the snapshot.
+	SnapshotName string `pulumi:"snapshotName"`
+	// The ID of the source file system.
+	SourceFileSystemId string `pulumi:"sourceFileSystemId"`
+	// The capacity of the source file system. Unit: GiB.
+	SourceFileSystemSize string `pulumi:"sourceFileSystemSize"`
+	// The version of the source file system.
+	SourceFileSystemVersion string `pulumi:"sourceFileSystemVersion"`
+	// The status of the snapshot.
+	Status string `pulumi:"status"`
+}
+
+// GetSnapshotsSnapshotInput is an input type that accepts GetSnapshotsSnapshotArgs and GetSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetSnapshotsSnapshotInput` via:
+//
+//          GetSnapshotsSnapshotArgs{...}
+type GetSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput
+	ToGetSnapshotsSnapshotOutputWithContext(context.Context) GetSnapshotsSnapshotOutput
+}
+
+type GetSnapshotsSnapshotArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the snapshot.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The type of the encryption.
+	EncryptType pulumi.IntInput `pulumi:"encryptType"`
+	// The ID of the Snapshot.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
+	Progress pulumi.StringInput `pulumi:"progress"`
+	// The remaining time that is required to create the snapshot. Unit: seconds.
+	RemainTime pulumi.IntInput `pulumi:"remainTime"`
+	// The retention period of the automatic snapshot. Unit: days.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// The ID of the resource.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// The name of the snapshot.
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+	// The ID of the source file system.
+	SourceFileSystemId pulumi.StringInput `pulumi:"sourceFileSystemId"`
+	// The capacity of the source file system. Unit: GiB.
+	SourceFileSystemSize pulumi.StringInput `pulumi:"sourceFileSystemSize"`
+	// The version of the source file system.
+	SourceFileSystemVersion pulumi.StringInput `pulumi:"sourceFileSystemVersion"`
+	// The status of the snapshot.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput {
+	return i.ToGetSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotOutput)
+}
+
+// GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
+//
+//          GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
+type GetSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput
+	ToGetSnapshotsSnapshotArrayOutputWithContext(context.Context) GetSnapshotsSnapshotArrayOutput
+}
+
+type GetSnapshotsSnapshotArray []GetSnapshotsSnapshotInput
+
+func (GetSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput {
+	return i.ToGetSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotArrayOutput)
+}
+
+type GetSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the snapshot.
+func (o GetSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of the encryption.
+func (o GetSnapshotsSnapshotOutput) EncryptType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.EncryptType }).(pulumi.IntOutput)
+}
+
+// The ID of the Snapshot.
+func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
+func (o GetSnapshotsSnapshotOutput) Progress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Progress }).(pulumi.StringOutput)
+}
+
+// The remaining time that is required to create the snapshot. Unit: seconds.
+func (o GetSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
+}
+
+// The retention period of the automatic snapshot. Unit: days.
+func (o GetSnapshotsSnapshotOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// The ID of the resource.
+func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// The ID of the source file system.
+func (o GetSnapshotsSnapshotOutput) SourceFileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceFileSystemId }).(pulumi.StringOutput)
+}
+
+// The capacity of the source file system. Unit: GiB.
+func (o GetSnapshotsSnapshotOutput) SourceFileSystemSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceFileSystemSize }).(pulumi.StringOutput)
+}
+
+// The version of the source file system.
+func (o GetSnapshotsSnapshotOutput) SourceFileSystemVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceFileSystemVersion }).(pulumi.StringOutput)
+}
+
+// The status of the snapshot.
+func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotsSnapshot {
+		return vs[0].([]GetSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetSnapshotsSnapshotOutput)
 }
 
 type GetZonesZone struct {
@@ -900,10 +1790,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupArrayInput)(nil)).Elem(), GetAccessGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesRuleInput)(nil)).Elem(), GetAccessRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesRuleArrayInput)(nil)).Elem(), GetAccessRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyArrayInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataFlowsFlowInput)(nil)).Elem(), GetDataFlowsFlowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataFlowsFlowArrayInput)(nil)).Elem(), GetDataFlowsFlowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFileSystemsSystemInput)(nil)).Elem(), GetFileSystemsSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFileSystemsSystemArrayInput)(nil)).Elem(), GetFileSystemsSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesetsFilesetInput)(nil)).Elem(), GetFilesetsFilesetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesetsFilesetArrayInput)(nil)).Elem(), GetFilesetsFilesetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLifecyclePoliciesPolicyInput)(nil)).Elem(), GetLifecyclePoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLifecyclePoliciesPolicyArrayInput)(nil)).Elem(), GetLifecyclePoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMountTargetsTargetInput)(nil)).Elem(), GetMountTargetsTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMountTargetsTargetArrayInput)(nil)).Elem(), GetMountTargetsTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotInput)(nil)).Elem(), GetSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotArrayInput)(nil)).Elem(), GetSnapshotsSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInstanceTypeInput)(nil)).Elem(), GetZonesZoneInstanceTypeArgs{})
@@ -912,10 +1812,20 @@ func init() {
 	pulumi.RegisterOutputType(GetAccessGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetAccessRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetDataFlowsFlowOutput{})
+	pulumi.RegisterOutputType(GetDataFlowsFlowArrayOutput{})
 	pulumi.RegisterOutputType(GetFileSystemsSystemOutput{})
 	pulumi.RegisterOutputType(GetFileSystemsSystemArrayOutput{})
+	pulumi.RegisterOutputType(GetFilesetsFilesetOutput{})
+	pulumi.RegisterOutputType(GetFilesetsFilesetArrayOutput{})
+	pulumi.RegisterOutputType(GetLifecyclePoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetLifecyclePoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetMountTargetsTargetOutput{})
 	pulumi.RegisterOutputType(GetMountTargetsTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneInstanceTypeOutput{})

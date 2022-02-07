@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class ConnectionIkeConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        /// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
         /// </summary>
         [Input("ikeAuthAlg")]
         public Input<string>? IkeAuthAlg { get; set; }

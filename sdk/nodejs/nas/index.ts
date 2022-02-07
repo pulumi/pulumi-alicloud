@@ -7,21 +7,36 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./accessGroup";
 export * from "./accessRule";
+export * from "./autoSnapshotPolicy";
+export * from "./dataFlow";
 export * from "./fileSystem";
+export * from "./fileset";
 export * from "./getAccessGroups";
 export * from "./getAccessRules";
+export * from "./getAutoSnapshotPolicies";
+export * from "./getDataFlows";
 export * from "./getFileSystems";
+export * from "./getFilesets";
+export * from "./getLifecyclePolicies";
 export * from "./getMountTargets";
 export * from "./getProtocols";
 export * from "./getService";
+export * from "./getSnapshots";
 export * from "./getZones";
+export * from "./lifecyclePolicy";
 export * from "./mountTarget";
+export * from "./snapshot";
 
 // Import resources to register:
 import { AccessGroup } from "./accessGroup";
 import { AccessRule } from "./accessRule";
+import { AutoSnapshotPolicy } from "./autoSnapshotPolicy";
+import { DataFlow } from "./dataFlow";
 import { FileSystem } from "./fileSystem";
+import { Fileset } from "./fileset";
+import { LifecyclePolicy } from "./lifecyclePolicy";
 import { MountTarget } from "./mountTarget";
+import { Snapshot } from "./snapshot";
 
 const _module = {
     version: utilities.getVersion(),
@@ -31,10 +46,20 @@ const _module = {
                 return new AccessGroup(name, <any>undefined, { urn })
             case "alicloud:nas/accessRule:AccessRule":
                 return new AccessRule(name, <any>undefined, { urn })
+            case "alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy":
+                return new AutoSnapshotPolicy(name, <any>undefined, { urn })
+            case "alicloud:nas/dataFlow:DataFlow":
+                return new DataFlow(name, <any>undefined, { urn })
             case "alicloud:nas/fileSystem:FileSystem":
                 return new FileSystem(name, <any>undefined, { urn })
+            case "alicloud:nas/fileset:Fileset":
+                return new Fileset(name, <any>undefined, { urn })
+            case "alicloud:nas/lifecyclePolicy:LifecyclePolicy":
+                return new LifecyclePolicy(name, <any>undefined, { urn })
             case "alicloud:nas/mountTarget:MountTarget":
                 return new MountTarget(name, <any>undefined, { urn })
+            case "alicloud:nas/snapshot:Snapshot":
+                return new Snapshot(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -42,5 +67,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "nas/accessGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/accessRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/autoSnapshotPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/dataFlow", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/fileSystem", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/fileset", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/lifecyclePolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/mountTarget", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/snapshot", _module)

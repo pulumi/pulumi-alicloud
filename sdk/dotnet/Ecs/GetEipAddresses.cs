@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("ipAddresses")]
         private List<string>? _ipAddresses;
-        [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.")]
+        [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.")]
         public List<string> IpAddresses
         {
             get => _ipAddresses ?? (_ipAddresses = new List<string>());
@@ -278,7 +278,7 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("ipAddresses")]
         private InputList<string>? _ipAddresses;
-        [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.")]
+        [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.")]
         public InputList<string> IpAddresses
         {
             get => _ipAddresses ?? (_ipAddresses = new InputList<string>());

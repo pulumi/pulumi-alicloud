@@ -5,11 +5,18 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .bgp_group import *
+from .bgp_network import *
+from .bgp_peer import *
 from .common_bandwith_package import *
 from .common_bandwith_package_attachment import *
 from .dhcp_options_set import *
+from .dhcp_options_set_attachment import *
 from .flow_log import *
 from .forward_entry import *
+from .get_bgp_groups import *
+from .get_bgp_networks import *
+from .get_bgp_peers import *
 from .get_common_bandwidth_packages import *
 from .get_dhcp_options_sets import *
 from .get_enhanced_nat_available_zones import *

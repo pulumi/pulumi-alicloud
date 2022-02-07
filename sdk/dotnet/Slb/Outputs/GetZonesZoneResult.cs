@@ -21,15 +21,22 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// A list of slb slave zone ids in which the slb master zone.
         /// </summary>
         public readonly ImmutableArray<string> SlbSlaveZoneIds;
+        /// <summary>
+        /// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZonesZoneSupportedResourceResult> SupportedResources;
 
         [OutputConstructor]
         private GetZonesZoneResult(
             string id,
 
-            ImmutableArray<string> slbSlaveZoneIds)
+            ImmutableArray<string> slbSlaveZoneIds,
+
+            ImmutableArray<Outputs.GetZonesZoneSupportedResourceResult> supportedResources)
         {
             Id = id;
             SlbSlaveZoneIds = slbSlaveZoneIds;
+            SupportedResources = supportedResources;
         }
     }
 }

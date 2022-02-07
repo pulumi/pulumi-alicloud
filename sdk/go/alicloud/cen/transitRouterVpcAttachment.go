@@ -25,7 +25,6 @@ import (
 type TransitRouterVpcAttachment struct {
 	pulumi.CustomResourceState
 
-	// Whether to create vpc route automatically. The system default value is `true`.
 	AutoCreateVpcRoute pulumi.BoolPtrOutput `pulumi:"autoCreateVpcRoute"`
 	// The ID of the CEN.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
@@ -50,7 +49,8 @@ type TransitRouterVpcAttachment struct {
 	// The ID of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The owner id of vpc.
-	VpcOwnerId   pulumi.StringOutput                              `pulumi:"vpcOwnerId"`
+	VpcOwnerId pulumi.StringOutput `pulumi:"vpcOwnerId"`
+	// The list of zone mapping of the VPC.
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayOutput `pulumi:"zoneMappings"`
 }
 
@@ -92,7 +92,6 @@ func GetTransitRouterVpcAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
 type transitRouterVpcAttachmentState struct {
-	// Whether to create vpc route automatically. The system default value is `true`.
 	AutoCreateVpcRoute *bool `pulumi:"autoCreateVpcRoute"`
 	// The ID of the CEN.
 	CenId *string `pulumi:"cenId"`
@@ -117,12 +116,12 @@ type transitRouterVpcAttachmentState struct {
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The owner id of vpc.
-	VpcOwnerId   *string                                 `pulumi:"vpcOwnerId"`
+	VpcOwnerId *string `pulumi:"vpcOwnerId"`
+	// The list of zone mapping of the VPC.
 	ZoneMappings []TransitRouterVpcAttachmentZoneMapping `pulumi:"zoneMappings"`
 }
 
 type TransitRouterVpcAttachmentState struct {
-	// Whether to create vpc route automatically. The system default value is `true`.
 	AutoCreateVpcRoute pulumi.BoolPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringPtrInput
@@ -147,7 +146,8 @@ type TransitRouterVpcAttachmentState struct {
 	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The owner id of vpc.
-	VpcOwnerId   pulumi.StringPtrInput
+	VpcOwnerId pulumi.StringPtrInput
+	// The list of zone mapping of the VPC.
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayInput
 }
 
@@ -156,7 +156,6 @@ func (TransitRouterVpcAttachmentState) ElementType() reflect.Type {
 }
 
 type transitRouterVpcAttachmentArgs struct {
-	// Whether to create vpc route automatically. The system default value is `true`.
 	AutoCreateVpcRoute *bool `pulumi:"autoCreateVpcRoute"`
 	// The ID of the CEN.
 	CenId string `pulumi:"cenId"`
@@ -177,13 +176,13 @@ type transitRouterVpcAttachmentArgs struct {
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 	// The owner id of vpc.
-	VpcOwnerId   *string                                 `pulumi:"vpcOwnerId"`
+	VpcOwnerId *string `pulumi:"vpcOwnerId"`
+	// The list of zone mapping of the VPC.
 	ZoneMappings []TransitRouterVpcAttachmentZoneMapping `pulumi:"zoneMappings"`
 }
 
 // The set of arguments for constructing a TransitRouterVpcAttachment resource.
 type TransitRouterVpcAttachmentArgs struct {
-	// Whether to create vpc route automatically. The system default value is `true`.
 	AutoCreateVpcRoute pulumi.BoolPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringInput
@@ -204,7 +203,8 @@ type TransitRouterVpcAttachmentArgs struct {
 	// The ID of the VPC.
 	VpcId pulumi.StringInput
 	// The owner id of vpc.
-	VpcOwnerId   pulumi.StringPtrInput
+	VpcOwnerId pulumi.StringPtrInput
+	// The list of zone mapping of the VPC.
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayInput
 }
 

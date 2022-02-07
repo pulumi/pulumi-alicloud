@@ -79,15 +79,15 @@ class ListenerArgs:
         :param pulumi.Input[int] forward_port: The port that http redirect to https.
         :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[str] health_check_method: The method of health check. Valid values: ["head", "get"].
+        :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
         :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
@@ -100,8 +100,8 @@ class ListenerArgs:
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
-        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         """
         pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
@@ -421,7 +421,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -469,7 +469,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[pulumi.Input[str]]:
         """
-        The method of health check. Valid values: ["head", "get"].
+        HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         """
         return pulumi.get(self, "health_check_method")
 
@@ -517,7 +517,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -698,7 +698,7 @@ class ListenerArgs:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -710,7 +710,7 @@ class ListenerArgs:
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         """
         return pulumi.get(self, "x_forwarded_for")
 
@@ -784,15 +784,15 @@ class _ListenerState:
         :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
         :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[str] health_check_method: The method of health check. Valid values: ["head", "get"].
+        :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
         :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
@@ -807,8 +807,8 @@ class _ListenerState:
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
-        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
@@ -1107,7 +1107,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -1155,7 +1155,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[pulumi.Input[str]]:
         """
-        The method of health check. Valid values: ["head", "get"].
+        HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         """
         return pulumi.get(self, "health_check_method")
 
@@ -1203,7 +1203,7 @@ class _ListenerState:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -1408,7 +1408,7 @@ class _ListenerState:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -1420,7 +1420,7 @@ class _ListenerState:
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         """
         return pulumi.get(self, "x_forwarded_for")
 
@@ -1559,15 +1559,15 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
         :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[str] health_check_method: The method of health check. Valid values: ["head", "get"].
+        :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
         :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
@@ -1582,8 +1582,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
-        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         """
         ...
     @overload
@@ -1863,15 +1863,15 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
         :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
         :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[str] health_check_method: The method of health check. Valid values: ["head", "get"].
+        :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
         :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
@@ -1886,8 +1886,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
-        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2071,7 +2071,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> pulumi.Output[int]:
         """
-        Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -2103,7 +2103,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> pulumi.Output[str]:
         """
-        The method of health check. Valid values: ["head", "get"].
+        HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         """
         return pulumi.get(self, "health_check_method")
 
@@ -2135,7 +2135,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -2268,7 +2268,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -2276,7 +2276,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> pulumi.Output['outputs.ListenerXForwardedFor']:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         """
         return pulumi.get(self, "x_forwarded_for")
 

@@ -47,6 +47,9 @@ class GetSslVpnClientCertsResult:
     @property
     @pulumi.getter
     def certs(self) -> Sequence['outputs.GetSslVpnClientCertsCertResult']:
+        """
+        A list of SSL-VPN client certificates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "certs")
 
     @property

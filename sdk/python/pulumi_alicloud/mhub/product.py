@@ -71,6 +71,8 @@ class Product(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.138.0+.
 
+        > **NOTE:** At present, the resource only supports cn-shanghai region.
+
         ## Example Usage
 
         Basic Usage
@@ -106,6 +108,8 @@ class Product(pulumi.CustomResource):
         For information about MHUB Product and how to use it, see [What is Product](https://help.aliyun.com/product/65109.html).
 
         > **NOTE:** Available in v1.138.0+.
+
+        > **NOTE:** At present, the resource only supports cn-shanghai region.
 
         ## Example Usage
 

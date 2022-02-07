@@ -5,11 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./bgpGroup";
+export * from "./bgpNetwork";
+export * from "./bgpPeer";
 export * from "./commonBandwithPackage";
 export * from "./commonBandwithPackageAttachment";
 export * from "./dhcpOptionsSet";
+export * from "./dhcpOptionsSetAttachment";
 export * from "./flowLog";
 export * from "./forwardEntry";
+export * from "./getBgpGroups";
+export * from "./getBgpNetworks";
+export * from "./getBgpPeers";
 export * from "./getCommonBandwidthPackages";
 export * from "./getDhcpOptionsSets";
 export * from "./getEnhancedNatAvailableZones";
@@ -66,9 +73,13 @@ export * from "./trafficMirrorSession";
 export * from "./vbrHa";
 
 // Import resources to register:
+import { BgpGroup } from "./bgpGroup";
+import { BgpNetwork } from "./bgpNetwork";
+import { BgpPeer } from "./bgpPeer";
 import { CommonBandwithPackage } from "./commonBandwithPackage";
 import { CommonBandwithPackageAttachment } from "./commonBandwithPackageAttachment";
 import { DhcpOptionsSet } from "./dhcpOptionsSet";
+import { DhcpOptionsSetAttachment } from "./dhcpOptionsSetAttachment";
 import { FlowLog } from "./flowLog";
 import { ForwardEntry } from "./forwardEntry";
 import { HAVip } from "./havip";
@@ -103,12 +114,20 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:vpc/bgpGroup:BgpGroup":
+                return new BgpGroup(name, <any>undefined, { urn })
+            case "alicloud:vpc/bgpNetwork:BgpNetwork":
+                return new BgpNetwork(name, <any>undefined, { urn })
+            case "alicloud:vpc/bgpPeer:BgpPeer":
+                return new BgpPeer(name, <any>undefined, { urn })
             case "alicloud:vpc/commonBandwithPackage:CommonBandwithPackage":
                 return new CommonBandwithPackage(name, <any>undefined, { urn })
             case "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
                 return new CommonBandwithPackageAttachment(name, <any>undefined, { urn })
             case "alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet":
                 return new DhcpOptionsSet(name, <any>undefined, { urn })
+            case "alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment":
+                return new DhcpOptionsSetAttachment(name, <any>undefined, { urn })
             case "alicloud:vpc/flowLog:FlowLog":
                 return new FlowLog(name, <any>undefined, { urn })
             case "alicloud:vpc/forwardEntry:ForwardEntry":
@@ -172,9 +191,13 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "vpc/bgpGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/bgpNetwork", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/bgpPeer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/commonBandwithPackage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/commonBandwithPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/dhcpOptionsSet", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/dhcpOptionsSetAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/flowLog", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/forwardEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVip", _module)

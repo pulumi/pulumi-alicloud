@@ -20,7 +20,7 @@ class DomainExtensionArgs:
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DomainExtension resource.
-        :param pulumi.Input[str] domain: The domain name,
+        :param pulumi.Input[str] domain: The domain name.
         :param pulumi.Input[int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         :param pulumi.Input[str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
@@ -37,7 +37,7 @@ class DomainExtensionArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        The domain name,
+        The domain name.
         """
         return pulumi.get(self, "domain")
 
@@ -105,7 +105,7 @@ class _DomainExtensionState:
         """
         Input properties used for looking up and filtering DomainExtension resources.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] domain: The domain name,
+        :param pulumi.Input[str] domain: The domain name.
         :param pulumi.Input[int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         :param pulumi.Input[str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
@@ -137,7 +137,7 @@ class _DomainExtensionState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain name,
+        The domain name.
         """
         return pulumi.get(self, "domain")
 
@@ -212,7 +212,7 @@ class DomainExtension(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] domain: The domain name,
+        :param pulumi.Input[str] domain: The domain name.
         :param pulumi.Input[int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         :param pulumi.Input[str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
@@ -307,7 +307,7 @@ class DomainExtension(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] domain: The domain name,
+        :param pulumi.Input[str] domain: The domain name.
         :param pulumi.Input[int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         :param pulumi.Input[str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
@@ -335,7 +335,7 @@ class DomainExtension(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        The domain name,
+        The domain name.
         """
         return pulumi.get(self, "domain")
 

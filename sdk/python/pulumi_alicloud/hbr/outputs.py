@@ -17,6 +17,7 @@ __all__ = [
     'GetEcsBackupPlansPlanResult',
     'GetNasBackupPlansPlanResult',
     'GetOssBackupPlansPlanResult',
+    'GetReplicationVaultRegionsRegionResult',
     'GetRestoreJobsJobResult',
     'GetServerBackupPlansFilterResult',
     'GetServerBackupPlansPlanResult',
@@ -1334,6 +1335,24 @@ class GetOssBackupPlansPlanResult(dict):
         The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
+class GetReplicationVaultRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 replication_region_id: str):
+        """
+        :param str replication_region_id: The ID of the replication region.
+        """
+        pulumi.set(__self__, "replication_region_id", replication_region_id)
+
+    @property
+    @pulumi.getter(name="replicationRegionId")
+    def replication_region_id(self) -> str:
+        """
+        The ID of the replication region.
+        """
+        return pulumi.get(self, "replication_region_id")
 
 
 @pulumi.output_type

@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.Edas
         /// The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
         /// </summary>
         [Output("packageVersion")]
-        public Output<string?> PackageVersion { get; private set; } = null!;
+        public Output<string> PackageVersion { get; private set; } = null!;
 
         /// <summary>
         /// Execute script after startup

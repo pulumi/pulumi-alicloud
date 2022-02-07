@@ -72,7 +72,8 @@ type TransitRouter struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The description of the transit router.
 	TransitRouterDescription pulumi.StringPtrOutput `pulumi:"transitRouterDescription"`
-	TransitRouterId          pulumi.StringOutput    `pulumi:"transitRouterId"`
+	// The transit router id of the transit router.
+	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
 	// The name of the transit router.
 	TransitRouterName pulumi.StringPtrOutput `pulumi:"transitRouterName"`
 	// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
@@ -119,7 +120,8 @@ type transitRouterState struct {
 	Status *string `pulumi:"status"`
 	// The description of the transit router.
 	TransitRouterDescription *string `pulumi:"transitRouterDescription"`
-	TransitRouterId          *string `pulumi:"transitRouterId"`
+	// The transit router id of the transit router.
+	TransitRouterId *string `pulumi:"transitRouterId"`
 	// The name of the transit router.
 	TransitRouterName *string `pulumi:"transitRouterName"`
 	// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
@@ -135,7 +137,8 @@ type TransitRouterState struct {
 	Status pulumi.StringPtrInput
 	// The description of the transit router.
 	TransitRouterDescription pulumi.StringPtrInput
-	TransitRouterId          pulumi.StringPtrInput
+	// The transit router id of the transit router.
+	TransitRouterId pulumi.StringPtrInput
 	// The name of the transit router.
 	TransitRouterName pulumi.StringPtrInput
 	// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.

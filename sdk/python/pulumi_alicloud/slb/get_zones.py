@@ -30,6 +30,10 @@ class GetZonesResult:
         pulumi.set(__self__, "available_slb_address_type", available_slb_address_type)
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
+        if enable_details is not None:
+            warnings.warn("""The parameter enable_details has been deprecated from version v1.154.0+""", DeprecationWarning)
+            pulumi.log.warn("""enable_details is deprecated: The parameter enable_details has been deprecated from version v1.154.0+""")
+
         pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -125,7 +129,10 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
 
 
     :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
-    :param str available_slb_address_type: Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+    :param str available_slb_address_type: Filter the results by a slb instance network type. Valid values:
+           * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
+           * classic_internet: a public-facing SLB instance.
+           * classic_intranet: an internal SLB instance that is deployed in a classic network.
     :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
     """
     __args__ = dict()
@@ -171,7 +178,10 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
 
 
     :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
-    :param str available_slb_address_type: Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+    :param str available_slb_address_type: Filter the results by a slb instance network type. Valid values:
+           * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
+           * classic_internet: a public-facing SLB instance.
+           * classic_intranet: an internal SLB instance that is deployed in a classic network.
     :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
     """
     ...

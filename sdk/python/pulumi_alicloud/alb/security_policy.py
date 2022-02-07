@@ -26,6 +26,7 @@ class SecurityPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "ciphers", ciphers)
         pulumi.set(__self__, "security_policy_name", security_policy_name)
@@ -100,6 +101,9 @@ class SecurityPolicyArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -124,6 +128,7 @@ class _SecurityPolicyState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
         """
         if ciphers is not None:
@@ -204,6 +209,9 @@ class _SecurityPolicyState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -277,6 +285,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
         """
         ...
@@ -396,6 +405,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -454,6 +464,9 @@ class SecurityPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property

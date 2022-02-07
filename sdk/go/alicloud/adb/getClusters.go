@@ -29,6 +29,8 @@ type GetClustersArgs struct {
 	// A list of ADB cluster IDs.
 	Ids             []string `pulumi:"ids"`
 	OutputFile      *string  `pulumi:"outputFile"`
+	PageNumber      *int     `pulumi:"pageNumber"`
+	PageSize        *int     `pulumi:"pageSize"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 	Status *string `pulumi:"status"`
@@ -53,10 +55,13 @@ type GetClustersResult struct {
 	// A list of ADB cluster IDs.
 	Ids             []string `pulumi:"ids"`
 	OutputFile      *string  `pulumi:"outputFile"`
+	PageNumber      *int     `pulumi:"pageNumber"`
+	PageSize        *int     `pulumi:"pageSize"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	// Status of the cluster.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status     *string                `pulumi:"status"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	TotalCount int                    `pulumi:"totalCount"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -78,6 +83,8 @@ type GetClustersOutputArgs struct {
 	// A list of ADB cluster IDs.
 	Ids             pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile      pulumi.StringPtrInput   `pulumi:"outputFile"`
+	PageNumber      pulumi.IntPtrInput      `pulumi:"pageNumber"`
+	PageSize        pulumi.IntPtrInput      `pulumi:"pageSize"`
 	ResourceGroupId pulumi.StringPtrInput   `pulumi:"resourceGroupId"`
 	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -143,6 +150,14 @@ func (o GetClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetClustersResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClustersResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetClustersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -154,6 +169,10 @@ func (o GetClustersResultOutput) Status() pulumi.StringPtrOutput {
 
 func (o GetClustersResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetClustersResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 func init() {

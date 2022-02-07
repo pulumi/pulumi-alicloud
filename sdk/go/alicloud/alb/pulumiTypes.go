@@ -6943,7 +6943,7 @@ type GetLoadBalancersBalancer struct {
 	LoadBalancerBusinessStatus string `pulumi:"loadBalancerBusinessStatus"`
 	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
 	//
-	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new parameter 'load_balancer_business_status' instead.
+	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus string `pulumi:"loadBalancerBussinessStatus"`
 	// The edition of the ALB instance.
 	LoadBalancerEdition string `pulumi:"loadBalancerEdition"`
@@ -7004,7 +7004,7 @@ type GetLoadBalancersBalancerArgs struct {
 	LoadBalancerBusinessStatus pulumi.StringInput `pulumi:"loadBalancerBusinessStatus"`
 	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
 	//
-	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new parameter 'load_balancer_business_status' instead.
+	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus pulumi.StringInput `pulumi:"loadBalancerBussinessStatus"`
 	// The edition of the ALB instance.
 	LoadBalancerEdition pulumi.StringInput `pulumi:"loadBalancerEdition"`
@@ -7138,7 +7138,7 @@ func (o GetLoadBalancersBalancerOutput) LoadBalancerBusinessStatus() pulumi.Stri
 
 // Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
 //
-// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new parameter 'load_balancer_business_status' instead.
+// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 func (o GetLoadBalancersBalancerOutput) LoadBalancerBussinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerBussinessStatus }).(pulumi.StringOutput)
 }

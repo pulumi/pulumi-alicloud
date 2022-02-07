@@ -61,6 +61,8 @@ type GetGatewaysArgs struct {
 	// A regex string to filter results by Gateway name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// gateway status.
 	Status *string `pulumi:"status"`
 	// storage bundle id.
@@ -76,8 +78,11 @@ type GetGatewaysResult struct {
 	NameRegex       *string  `pulumi:"nameRegex"`
 	Names           []string `pulumi:"names"`
 	OutputFile      *string  `pulumi:"outputFile"`
+	PageNumber      *int     `pulumi:"pageNumber"`
+	PageSize        *int     `pulumi:"pageSize"`
 	Status          *string  `pulumi:"status"`
 	StorageBundleId string   `pulumi:"storageBundleId"`
+	TotalCount      int      `pulumi:"totalCount"`
 }
 
 func GetGatewaysOutput(ctx *pulumi.Context, args GetGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
@@ -96,6 +101,8 @@ type GetGatewaysOutputArgs struct {
 	// A regex string to filter results by Gateway name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// gateway status.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// storage bundle id.
@@ -146,12 +153,24 @@ func (o GetGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetGatewaysResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetGatewaysResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 func (o GetGatewaysResultOutput) StorageBundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysResult) string { return v.StorageBundleId }).(pulumi.StringOutput)
+}
+
+func (o GetGatewaysResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewaysResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 func init() {

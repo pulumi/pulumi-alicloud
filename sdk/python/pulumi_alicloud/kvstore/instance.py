@@ -106,7 +106,7 @@ class InstanceArgs:
         :param pulumi.Input[str] node_type: "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         :param pulumi.Input[str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead..
-        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -669,7 +669,7 @@ class InstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         """
         return pulumi.get(self, "password")
 
@@ -1009,7 +1009,7 @@ class _InstanceState:
         :param pulumi.Input[str] node_type: "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         :param pulumi.Input[str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead..
-        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -1632,7 +1632,7 @@ class _InstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         """
         return pulumi.get(self, "password")
 
@@ -2081,7 +2081,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] node_type: "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         :param pulumi.Input[str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead..
-        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -2474,7 +2474,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] node_type: "Field 'node_type' has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         :param pulumi.Input[str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default to `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead..
-        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        :param pulumi.Input[str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         :param pulumi.Input[str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default to `PostPaid`.
         :param pulumi.Input[str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -2866,7 +2866,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of the KVStore DBInstance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
         """
         return pulumi.get(self, "password")
 

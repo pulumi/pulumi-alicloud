@@ -23,14 +23,15 @@ class AccountArgs:
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Account resource.
-        :param pulumi.Input[str] account_name: The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+        :param pulumi.Input[str] account_name: The name of the account. The name must meet the following requirements:
+               * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+               * The name can be up to 100 characters in length.
+               * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_privilege: The privilege of account access database. Valid values: 
-               - RoleReadOnly: This value is only for Redis and Memcache
-               - RoleReadWrite: This value is only for Redis and Memcache
-               - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-               Only for Redis which engine version is 4.0 and architecture type is standard
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite` 
+               - `RoleReadOnly`: This value is only for Redis and Memcache
+               - `RoleReadWrite`: This value is only for Redis and Memcache
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
                Default to Normal.
@@ -57,7 +58,10 @@ class AccountArgs:
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Input[str]:
         """
-        The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+        The name of the account. The name must meet the following requirements:
+        * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+        * The name can be up to 100 characters in length.
+        * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         """
         return pulumi.get(self, "account_name")
 
@@ -81,7 +85,7 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "account_password")
 
@@ -93,11 +97,9 @@ class AccountArgs:
     @pulumi.getter(name="accountPrivilege")
     def account_privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege of account access database. Valid values: 
-        - RoleReadOnly: This value is only for Redis and Memcache
-        - RoleReadWrite: This value is only for Redis and Memcache
-        - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-        Only for Redis which engine version is 4.0 and architecture type is standard
+        The privilege of account access database. Default value: `RoleReadWrite` 
+        - `RoleReadOnly`: This value is only for Redis and Memcache
+        - `RoleReadWrite`: This value is only for Redis and Memcache
         """
         return pulumi.get(self, "account_privilege")
 
@@ -170,13 +172,14 @@ class _AccountState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
-        :param pulumi.Input[str] account_name: The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_privilege: The privilege of account access database. Valid values: 
-               - RoleReadOnly: This value is only for Redis and Memcache
-               - RoleReadWrite: This value is only for Redis and Memcache
-               - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-               Only for Redis which engine version is 4.0 and architecture type is standard
+        :param pulumi.Input[str] account_name: The name of the account. The name must meet the following requirements:
+               * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+               * The name can be up to 100 characters in length.
+               * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite` 
+               - `RoleReadOnly`: This value is only for Redis and Memcache
+               - `RoleReadWrite`: This value is only for Redis and Memcache
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
                Default to Normal.
@@ -209,7 +212,10 @@ class _AccountState:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+        The name of the account. The name must meet the following requirements:
+        * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+        * The name can be up to 100 characters in length.
+        * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         """
         return pulumi.get(self, "account_name")
 
@@ -221,7 +227,7 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "account_password")
 
@@ -233,11 +239,9 @@ class _AccountState:
     @pulumi.getter(name="accountPrivilege")
     def account_privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege of account access database. Valid values: 
-        - RoleReadOnly: This value is only for Redis and Memcache
-        - RoleReadWrite: This value is only for Redis and Memcache
-        - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-        Only for Redis which engine version is 4.0 and architecture type is standard
+        The privilege of account access database. Default value: `RoleReadWrite` 
+        - `RoleReadOnly`: This value is only for Redis and Memcache
+        - `RoleReadWrite`: This value is only for Redis and Memcache
         """
         return pulumi.get(self, "account_privilege")
 
@@ -387,13 +391,14 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_name: The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_privilege: The privilege of account access database. Valid values: 
-               - RoleReadOnly: This value is only for Redis and Memcache
-               - RoleReadWrite: This value is only for Redis and Memcache
-               - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-               Only for Redis which engine version is 4.0 and architecture type is standard
+        :param pulumi.Input[str] account_name: The name of the account. The name must meet the following requirements:
+               * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+               * The name can be up to 100 characters in length.
+               * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite` 
+               - `RoleReadOnly`: This value is only for Redis and Memcache
+               - `RoleReadWrite`: This value is only for Redis and Memcache
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
                Default to Normal.
@@ -533,13 +538,14 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_name: The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_privilege: The privilege of account access database. Valid values: 
-               - RoleReadOnly: This value is only for Redis and Memcache
-               - RoleReadWrite: This value is only for Redis and Memcache
-               - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-               Only for Redis which engine version is 4.0 and architecture type is standard
+        :param pulumi.Input[str] account_name: The name of the account. The name must meet the following requirements:
+               * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+               * The name can be up to 100 characters in length.
+               * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite` 
+               - `RoleReadOnly`: This value is only for Redis and Memcache
+               - `RoleReadWrite`: This value is only for Redis and Memcache
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
                Default to Normal.
@@ -568,7 +574,10 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[str]:
         """
-        The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+        The name of the account. The name must meet the following requirements:
+        * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+        * The name can be up to 100 characters in length.
+        * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         """
         return pulumi.get(self, "account_name")
 
@@ -576,7 +585,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[Optional[str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "account_password")
 
@@ -584,11 +593,9 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPrivilege")
     def account_privilege(self) -> pulumi.Output[Optional[str]]:
         """
-        The privilege of account access database. Valid values: 
-        - RoleReadOnly: This value is only for Redis and Memcache
-        - RoleReadWrite: This value is only for Redis and Memcache
-        - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-        Only for Redis which engine version is 4.0 and architecture type is standard
+        The privilege of account access database. Default value: `RoleReadWrite` 
+        - `RoleReadOnly`: This value is only for Redis and Memcache
+        - `RoleReadWrite`: This value is only for Redis and Memcache
         """
         return pulumi.get(self, "account_privilege")
 

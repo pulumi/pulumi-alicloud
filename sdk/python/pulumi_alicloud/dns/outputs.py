@@ -10,8 +10,19 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AccessStrategyDefaultAddrPool',
+    'AccessStrategyFailoverAddrPool',
+    'AccessStrategyLine',
+    'AddressPoolAddress',
     'CustomLineIpSegmentList',
     'GtmInstanceAlertConfig',
+    'MonitorConfigIspCityNode',
+    'GetAccessStrategiesStrategyResult',
+    'GetAccessStrategiesStrategyDefaultAddrPoolResult',
+    'GetAccessStrategiesStrategyFailoverAddrPoolResult',
+    'GetAccessStrategiesStrategyLineResult',
+    'GetAddressPoolsPoolResult',
+    'GetAddressPoolsPoolAddressResult',
     'GetAlidnsDomainGroupsGroupResult',
     'GetAlidnsDomainsDomainResult',
     'GetAlidnsDomainsDomainRecordLineResult',
@@ -30,6 +41,228 @@ __all__ = [
     'GetRecordsRecordResult',
     'GetResolutionLinesLineResult',
 ]
+
+@pulumi.output_type
+class AccessStrategyDefaultAddrPool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addrPoolId":
+            suggest = "addr_pool_id"
+        elif key == "lbaWeight":
+            suggest = "lba_weight"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessStrategyDefaultAddrPool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessStrategyDefaultAddrPool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessStrategyDefaultAddrPool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 addr_pool_id: str,
+                 lba_weight: Optional[int] = None):
+        """
+        :param str addr_pool_id: The ID of the address pool in the primary address pool group.
+        :param int lba_weight: The weight of the address pool in the primary address pool group.
+        """
+        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        if lba_weight is not None:
+            pulumi.set(__self__, "lba_weight", lba_weight)
+
+    @property
+    @pulumi.getter(name="addrPoolId")
+    def addr_pool_id(self) -> str:
+        """
+        The ID of the address pool in the primary address pool group.
+        """
+        return pulumi.get(self, "addr_pool_id")
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> Optional[int]:
+        """
+        The weight of the address pool in the primary address pool group.
+        """
+        return pulumi.get(self, "lba_weight")
+
+
+@pulumi.output_type
+class AccessStrategyFailoverAddrPool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addrPoolId":
+            suggest = "addr_pool_id"
+        elif key == "lbaWeight":
+            suggest = "lba_weight"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessStrategyFailoverAddrPool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessStrategyFailoverAddrPool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessStrategyFailoverAddrPool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 addr_pool_id: Optional[str] = None,
+                 lba_weight: Optional[int] = None):
+        """
+        :param str addr_pool_id: The ID of the address pool in the primary address pool group.
+        :param int lba_weight: The weight of the address pool in the primary address pool group.
+        """
+        if addr_pool_id is not None:
+            pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        if lba_weight is not None:
+            pulumi.set(__self__, "lba_weight", lba_weight)
+
+    @property
+    @pulumi.getter(name="addrPoolId")
+    def addr_pool_id(self) -> Optional[str]:
+        """
+        The ID of the address pool in the primary address pool group.
+        """
+        return pulumi.get(self, "addr_pool_id")
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> Optional[int]:
+        """
+        The weight of the address pool in the primary address pool group.
+        """
+        return pulumi.get(self, "lba_weight")
+
+
+@pulumi.output_type
+class AccessStrategyLine(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lineCode":
+            suggest = "line_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessStrategyLine. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessStrategyLine.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessStrategyLine.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 line_code: Optional[str] = None):
+        """
+        :param str line_code: The line code of the source region.
+        """
+        if line_code is not None:
+            pulumi.set(__self__, "line_code", line_code)
+
+    @property
+    @pulumi.getter(name="lineCode")
+    def line_code(self) -> Optional[str]:
+        """
+        The line code of the source region.
+        """
+        return pulumi.get(self, "line_code")
+
+
+@pulumi.output_type
+class AddressPoolAddress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeInfo":
+            suggest = "attribute_info"
+        elif key == "lbaWeight":
+            suggest = "lba_weight"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddressPoolAddress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddressPoolAddress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddressPoolAddress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: str,
+                 attribute_info: str,
+                 mode: str,
+                 lba_weight: Optional[int] = None,
+                 remark: Optional[str] = None):
+        """
+        :param str address: The address that you want to add to the address pool.
+        :param str attribute_info: The source region of the address. expressed as a JSON string. The structure is as follows:
+               * `LineCodes`: List of home lineCodes.
+               * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+        :param str mode: The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+        :param int lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+        :param str remark: The description of the address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "attribute_info", attribute_info)
+        pulumi.set(__self__, "mode", mode)
+        if lba_weight is not None:
+            pulumi.set(__self__, "lba_weight", lba_weight)
+        if remark is not None:
+            pulumi.set(__self__, "remark", remark)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address that you want to add to the address pool.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="attributeInfo")
+    def attribute_info(self) -> str:
+        """
+        The source region of the address. expressed as a JSON string. The structure is as follows:
+        * `LineCodes`: List of home lineCodes.
+        * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+        """
+        return pulumi.get(self, "attribute_info")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> Optional[int]:
+        """
+        The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
+        """
+        return pulumi.get(self, "lba_weight")
+
+    @property
+    @pulumi.getter
+    def remark(self) -> Optional[str]:
+        """
+        The description of the address.
+        """
+        return pulumi.get(self, "remark")
+
 
 @pulumi.output_type
 class CustomLineIpSegmentList(dict):
@@ -167,6 +400,690 @@ class GtmInstanceAlertConfig(dict):
         Whether to configure SMS notification. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "sms_notice")
+
+
+@pulumi.output_type
+class MonitorConfigIspCityNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cityCode":
+            suggest = "city_code"
+        elif key == "ispCode":
+            suggest = "isp_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorConfigIspCityNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorConfigIspCityNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorConfigIspCityNode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 city_code: str,
+                 isp_code: str):
+        """
+        :param str city_code: The code of the city node to monitor.
+        :param str isp_code: The code of the Internet provider service (ISP) node to monitor.
+        """
+        pulumi.set(__self__, "city_code", city_code)
+        pulumi.set(__self__, "isp_code", isp_code)
+
+    @property
+    @pulumi.getter(name="cityCode")
+    def city_code(self) -> str:
+        """
+        The code of the city node to monitor.
+        """
+        return pulumi.get(self, "city_code")
+
+    @property
+    @pulumi.getter(name="ispCode")
+    def isp_code(self) -> str:
+        """
+        The code of the Internet provider service (ISP) node to monitor.
+        """
+        return pulumi.get(self, "isp_code")
+
+
+@pulumi.output_type
+class GetAccessStrategiesStrategyResult(dict):
+    def __init__(__self__, *,
+                 access_mode: str,
+                 access_strategy_id: str,
+                 create_time: str,
+                 create_timestamp: str,
+                 default_addr_pool_type: str,
+                 default_addr_pools: Sequence['outputs.GetAccessStrategiesStrategyDefaultAddrPoolResult'],
+                 default_available_addr_num: int,
+                 default_latency_optimization: str,
+                 default_lba_strategy: str,
+                 default_max_return_addr_num: int,
+                 default_min_available_addr_num: int,
+                 effective_addr_pool_group_type: str,
+                 failover_addr_pool_type: str,
+                 failover_addr_pools: Sequence['outputs.GetAccessStrategiesStrategyFailoverAddrPoolResult'],
+                 failover_available_addr_num: int,
+                 failover_latency_optimization: str,
+                 failover_lba_strategy: str,
+                 failover_max_return_addr_num: int,
+                 failover_min_available_addr_num: int,
+                 id: str,
+                 instance_id: str,
+                 lines: Sequence['outputs.GetAccessStrategiesStrategyLineResult'],
+                 strategy_mode: str,
+                 strategy_name: str):
+        """
+        :param str access_mode: The primary/secondary switchover policy for address pool groups.
+        :param str access_strategy_id: The first ID of the resource.
+        :param str create_time: The time when the access policy was created.
+        :param str create_timestamp: The timestamp that indicates when the access policy was created.
+        :param str default_addr_pool_type: The type of the primary address pool.
+        :param Sequence['GetAccessStrategiesStrategyDefaultAddrPoolArgs'] default_addr_pools: The address pools in the primary address pool group.
+        :param int default_available_addr_num: The number of addresses currently available in the primary address pool.
+        :param str default_latency_optimization: Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group.
+        :param str default_lba_strategy: The load balancing policy of the primary address pool group.
+        :param int default_max_return_addr_num: The maximum number of addresses returned by the primary address pool set.
+        :param int default_min_available_addr_num: The minimum number of available addresses for the primary address pool set.
+        :param str effective_addr_pool_group_type: The type of the active address pool group.
+        :param str failover_addr_pool_type: The type of the secondary address pool.
+        :param Sequence['GetAccessStrategiesStrategyFailoverAddrPoolArgs'] failover_addr_pools: The address pools in the secondary address pool group.
+        :param int failover_available_addr_num: The number of available addresses in the standby address pool.
+        :param str failover_latency_optimization: Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group.
+        :param str failover_lba_strategy: The load balancing policy of the secondary address pool group.
+        :param int failover_max_return_addr_num: The maximum number of returned addresses in the standby address pool.
+        :param int failover_min_available_addr_num: The minimum number of available addresses in the standby address pool.
+        :param str id: The ID of the Access Strategy.
+        :param str instance_id: The Id of the associated instance.
+        :param Sequence['GetAccessStrategiesStrategyLineArgs'] lines: List of source regions.
+        :param str strategy_mode: The type of the access policy.
+        :param str strategy_name: The name of the access policy.
+        """
+        pulumi.set(__self__, "access_mode", access_mode)
+        pulumi.set(__self__, "access_strategy_id", access_strategy_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "create_timestamp", create_timestamp)
+        pulumi.set(__self__, "default_addr_pool_type", default_addr_pool_type)
+        pulumi.set(__self__, "default_addr_pools", default_addr_pools)
+        pulumi.set(__self__, "default_available_addr_num", default_available_addr_num)
+        pulumi.set(__self__, "default_latency_optimization", default_latency_optimization)
+        pulumi.set(__self__, "default_lba_strategy", default_lba_strategy)
+        pulumi.set(__self__, "default_max_return_addr_num", default_max_return_addr_num)
+        pulumi.set(__self__, "default_min_available_addr_num", default_min_available_addr_num)
+        pulumi.set(__self__, "effective_addr_pool_group_type", effective_addr_pool_group_type)
+        pulumi.set(__self__, "failover_addr_pool_type", failover_addr_pool_type)
+        pulumi.set(__self__, "failover_addr_pools", failover_addr_pools)
+        pulumi.set(__self__, "failover_available_addr_num", failover_available_addr_num)
+        pulumi.set(__self__, "failover_latency_optimization", failover_latency_optimization)
+        pulumi.set(__self__, "failover_lba_strategy", failover_lba_strategy)
+        pulumi.set(__self__, "failover_max_return_addr_num", failover_max_return_addr_num)
+        pulumi.set(__self__, "failover_min_available_addr_num", failover_min_available_addr_num)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "lines", lines)
+        pulumi.set(__self__, "strategy_mode", strategy_mode)
+        pulumi.set(__self__, "strategy_name", strategy_name)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> str:
+        """
+        The primary/secondary switchover policy for address pool groups.
+        """
+        return pulumi.get(self, "access_mode")
+
+    @property
+    @pulumi.getter(name="accessStrategyId")
+    def access_strategy_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "access_strategy_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the access policy was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createTimestamp")
+    def create_timestamp(self) -> str:
+        """
+        The timestamp that indicates when the access policy was created.
+        """
+        return pulumi.get(self, "create_timestamp")
+
+    @property
+    @pulumi.getter(name="defaultAddrPoolType")
+    def default_addr_pool_type(self) -> str:
+        """
+        The type of the primary address pool.
+        """
+        return pulumi.get(self, "default_addr_pool_type")
+
+    @property
+    @pulumi.getter(name="defaultAddrPools")
+    def default_addr_pools(self) -> Sequence['outputs.GetAccessStrategiesStrategyDefaultAddrPoolResult']:
+        """
+        The address pools in the primary address pool group.
+        """
+        return pulumi.get(self, "default_addr_pools")
+
+    @property
+    @pulumi.getter(name="defaultAvailableAddrNum")
+    def default_available_addr_num(self) -> int:
+        """
+        The number of addresses currently available in the primary address pool.
+        """
+        return pulumi.get(self, "default_available_addr_num")
+
+    @property
+    @pulumi.getter(name="defaultLatencyOptimization")
+    def default_latency_optimization(self) -> str:
+        """
+        Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group.
+        """
+        return pulumi.get(self, "default_latency_optimization")
+
+    @property
+    @pulumi.getter(name="defaultLbaStrategy")
+    def default_lba_strategy(self) -> str:
+        """
+        The load balancing policy of the primary address pool group.
+        """
+        return pulumi.get(self, "default_lba_strategy")
+
+    @property
+    @pulumi.getter(name="defaultMaxReturnAddrNum")
+    def default_max_return_addr_num(self) -> int:
+        """
+        The maximum number of addresses returned by the primary address pool set.
+        """
+        return pulumi.get(self, "default_max_return_addr_num")
+
+    @property
+    @pulumi.getter(name="defaultMinAvailableAddrNum")
+    def default_min_available_addr_num(self) -> int:
+        """
+        The minimum number of available addresses for the primary address pool set.
+        """
+        return pulumi.get(self, "default_min_available_addr_num")
+
+    @property
+    @pulumi.getter(name="effectiveAddrPoolGroupType")
+    def effective_addr_pool_group_type(self) -> str:
+        """
+        The type of the active address pool group.
+        """
+        return pulumi.get(self, "effective_addr_pool_group_type")
+
+    @property
+    @pulumi.getter(name="failoverAddrPoolType")
+    def failover_addr_pool_type(self) -> str:
+        """
+        The type of the secondary address pool.
+        """
+        return pulumi.get(self, "failover_addr_pool_type")
+
+    @property
+    @pulumi.getter(name="failoverAddrPools")
+    def failover_addr_pools(self) -> Sequence['outputs.GetAccessStrategiesStrategyFailoverAddrPoolResult']:
+        """
+        The address pools in the secondary address pool group.
+        """
+        return pulumi.get(self, "failover_addr_pools")
+
+    @property
+    @pulumi.getter(name="failoverAvailableAddrNum")
+    def failover_available_addr_num(self) -> int:
+        """
+        The number of available addresses in the standby address pool.
+        """
+        return pulumi.get(self, "failover_available_addr_num")
+
+    @property
+    @pulumi.getter(name="failoverLatencyOptimization")
+    def failover_latency_optimization(self) -> str:
+        """
+        Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group.
+        """
+        return pulumi.get(self, "failover_latency_optimization")
+
+    @property
+    @pulumi.getter(name="failoverLbaStrategy")
+    def failover_lba_strategy(self) -> str:
+        """
+        The load balancing policy of the secondary address pool group.
+        """
+        return pulumi.get(self, "failover_lba_strategy")
+
+    @property
+    @pulumi.getter(name="failoverMaxReturnAddrNum")
+    def failover_max_return_addr_num(self) -> int:
+        """
+        The maximum number of returned addresses in the standby address pool.
+        """
+        return pulumi.get(self, "failover_max_return_addr_num")
+
+    @property
+    @pulumi.getter(name="failoverMinAvailableAddrNum")
+    def failover_min_available_addr_num(self) -> int:
+        """
+        The minimum number of available addresses in the standby address pool.
+        """
+        return pulumi.get(self, "failover_min_available_addr_num")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Access Strategy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The Id of the associated instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def lines(self) -> Sequence['outputs.GetAccessStrategiesStrategyLineResult']:
+        """
+        List of source regions.
+        """
+        return pulumi.get(self, "lines")
+
+    @property
+    @pulumi.getter(name="strategyMode")
+    def strategy_mode(self) -> str:
+        """
+        The type of the access policy.
+        """
+        return pulumi.get(self, "strategy_mode")
+
+    @property
+    @pulumi.getter(name="strategyName")
+    def strategy_name(self) -> str:
+        """
+        The name of the access policy.
+        """
+        return pulumi.get(self, "strategy_name")
+
+
+@pulumi.output_type
+class GetAccessStrategiesStrategyDefaultAddrPoolResult(dict):
+    def __init__(__self__, *,
+                 addr_count: int,
+                 addr_pool_id: str,
+                 lba_weight: int,
+                 name: str):
+        """
+        :param int addr_count: The number of addresses in the address pool.
+        :param str addr_pool_id: The ID of the address pool.
+        :param int lba_weight: The weight of the address pool.
+        :param str name: The name of the address pool.
+        """
+        pulumi.set(__self__, "addr_count", addr_count)
+        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        pulumi.set(__self__, "lba_weight", lba_weight)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="addrCount")
+    def addr_count(self) -> int:
+        """
+        The number of addresses in the address pool.
+        """
+        return pulumi.get(self, "addr_count")
+
+    @property
+    @pulumi.getter(name="addrPoolId")
+    def addr_pool_id(self) -> str:
+        """
+        The ID of the address pool.
+        """
+        return pulumi.get(self, "addr_pool_id")
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> int:
+        """
+        The weight of the address pool.
+        """
+        return pulumi.get(self, "lba_weight")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the address pool.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAccessStrategiesStrategyFailoverAddrPoolResult(dict):
+    def __init__(__self__, *,
+                 addr_count: int,
+                 addr_pool_id: str,
+                 lba_weight: int,
+                 name: str):
+        """
+        :param int addr_count: The number of addresses in the address pool.
+        :param str addr_pool_id: The ID of the address pool.
+        :param int lba_weight: The weight of the address pool.
+        :param str name: The name of the address pool.
+        """
+        pulumi.set(__self__, "addr_count", addr_count)
+        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        pulumi.set(__self__, "lba_weight", lba_weight)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="addrCount")
+    def addr_count(self) -> int:
+        """
+        The number of addresses in the address pool.
+        """
+        return pulumi.get(self, "addr_count")
+
+    @property
+    @pulumi.getter(name="addrPoolId")
+    def addr_pool_id(self) -> str:
+        """
+        The ID of the address pool.
+        """
+        return pulumi.get(self, "addr_pool_id")
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> int:
+        """
+        The weight of the address pool.
+        """
+        return pulumi.get(self, "lba_weight")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the address pool.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAccessStrategiesStrategyLineResult(dict):
+    def __init__(__self__, *,
+                 group_code: str,
+                 group_name: str,
+                 line_code: str,
+                 line_name: str):
+        """
+        :param str group_code: The code of the source region group.
+        :param str group_name: The name of the source region group.
+        :param str line_code: The line code of the source region.
+        :param str line_name: The line name of the source region.
+        """
+        pulumi.set(__self__, "group_code", group_code)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "line_code", line_code)
+        pulumi.set(__self__, "line_name", line_name)
+
+    @property
+    @pulumi.getter(name="groupCode")
+    def group_code(self) -> str:
+        """
+        The code of the source region group.
+        """
+        return pulumi.get(self, "group_code")
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        """
+        The name of the source region group.
+        """
+        return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter(name="lineCode")
+    def line_code(self) -> str:
+        """
+        The line code of the source region.
+        """
+        return pulumi.get(self, "line_code")
+
+    @property
+    @pulumi.getter(name="lineName")
+    def line_name(self) -> str:
+        """
+        The line name of the source region.
+        """
+        return pulumi.get(self, "line_name")
+
+
+@pulumi.output_type
+class GetAddressPoolsPoolResult(dict):
+    def __init__(__self__, *,
+                 address_pool_id: str,
+                 address_pool_name: str,
+                 addresses: Sequence['outputs.GetAddressPoolsPoolAddressResult'],
+                 create_time: str,
+                 create_timestamp: str,
+                 id: str,
+                 instance_id: str,
+                 lba_strategy: str,
+                 monitor_config_id: str,
+                 monitor_status: str,
+                 type: str,
+                 update_time: str,
+                 update_timestamp: str):
+        """
+        :param str address_pool_id: The first ID of the resource.
+        :param str address_pool_name: The name of the address pool.
+        :param Sequence['GetAddressPoolsPoolAddressArgs'] addresses: The address that you want to add to the address pool.
+        :param str create_time: The time when the address pool was created.
+        :param str create_timestamp: The timestamp that indicates when the address pool was created.
+        :param str id: The ID of the Address Pool.
+        :param str instance_id: The id of the instance.
+        :param str lba_strategy: The load balancing policy of the address pool.
+        :param str monitor_config_id: The ID of the health check task.
+        :param str monitor_status: Indicates whether health checks are configured.
+        :param str type: The type of the address pool.
+        :param str update_time: The time when the address pool was updated.
+        :param str update_timestamp: The timestamp that indicates when the address pool was updated.
+        """
+        pulumi.set(__self__, "address_pool_id", address_pool_id)
+        pulumi.set(__self__, "address_pool_name", address_pool_name)
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "create_timestamp", create_timestamp)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "lba_strategy", lba_strategy)
+        pulumi.set(__self__, "monitor_config_id", monitor_config_id)
+        pulumi.set(__self__, "monitor_status", monitor_status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "update_timestamp", update_timestamp)
+
+    @property
+    @pulumi.getter(name="addressPoolId")
+    def address_pool_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "address_pool_id")
+
+    @property
+    @pulumi.getter(name="addressPoolName")
+    def address_pool_name(self) -> str:
+        """
+        The name of the address pool.
+        """
+        return pulumi.get(self, "address_pool_name")
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetAddressPoolsPoolAddressResult']:
+        """
+        The address that you want to add to the address pool.
+        """
+        return pulumi.get(self, "addresses")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the address pool was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createTimestamp")
+    def create_timestamp(self) -> str:
+        """
+        The timestamp that indicates when the address pool was created.
+        """
+        return pulumi.get(self, "create_timestamp")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Address Pool.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The id of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="lbaStrategy")
+    def lba_strategy(self) -> str:
+        """
+        The load balancing policy of the address pool.
+        """
+        return pulumi.get(self, "lba_strategy")
+
+    @property
+    @pulumi.getter(name="monitorConfigId")
+    def monitor_config_id(self) -> str:
+        """
+        The ID of the health check task.
+        """
+        return pulumi.get(self, "monitor_config_id")
+
+    @property
+    @pulumi.getter(name="monitorStatus")
+    def monitor_status(self) -> str:
+        """
+        Indicates whether health checks are configured.
+        """
+        return pulumi.get(self, "monitor_status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the address pool.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time when the address pool was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="updateTimestamp")
+    def update_timestamp(self) -> str:
+        """
+        The timestamp that indicates when the address pool was updated.
+        """
+        return pulumi.get(self, "update_timestamp")
+
+
+@pulumi.output_type
+class GetAddressPoolsPoolAddressResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 attribute_info: str,
+                 lba_weight: int,
+                 mode: str,
+                 remark: str):
+        """
+        :param str address: The address that you want to add to the address pool.
+        :param str attribute_info: The source region of the address.
+        :param int lba_weight: The weight of the address.
+        :param str mode: The type of the address.
+        :param str remark: The description of the address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "attribute_info", attribute_info)
+        pulumi.set(__self__, "lba_weight", lba_weight)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "remark", remark)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address that you want to add to the address pool.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="attributeInfo")
+    def attribute_info(self) -> str:
+        """
+        The source region of the address.
+        """
+        return pulumi.get(self, "attribute_info")
+
+    @property
+    @pulumi.getter(name="lbaWeight")
+    def lba_weight(self) -> int:
+        """
+        The weight of the address.
+        """
+        return pulumi.get(self, "lba_weight")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The type of the address.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def remark(self) -> str:
+        """
+        The description of the address.
+        """
+        return pulumi.get(self, "remark")
 
 
 @pulumi.output_type

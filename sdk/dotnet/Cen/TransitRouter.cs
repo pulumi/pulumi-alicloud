@@ -78,6 +78,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("transitRouterDescription")]
         public Output<string?> TransitRouterDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// The transit router id of the transit router.
+        /// </summary>
         [Output("transitRouterId")]
         public Output<string> TransitRouterId { get; private set; } = null!;
 
@@ -194,6 +197,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("transitRouterDescription")]
         public Input<string>? TransitRouterDescription { get; set; }
 
+        /// <summary>
+        /// The transit router id of the transit router.
+        /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
 

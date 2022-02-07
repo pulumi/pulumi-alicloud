@@ -36,9 +36,12 @@ export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.In
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getSecurityGroups:getSecurityGroups", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "resourceGroupId": args.resourceGroupId,
         "tags": args.tags,
         "vpcId": args.vpcId,
@@ -49,6 +52,7 @@ export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.In
  * A collection of arguments for invoking getSecurityGroups.
  */
 export interface GetSecurityGroupsArgs {
+    enableDetails?: boolean;
     /**
      * A list of Security Group IDs.
      */
@@ -58,6 +62,8 @@ export interface GetSecurityGroupsArgs {
      */
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * The Id of resource group which the securityGroup belongs.
      */
@@ -87,6 +93,7 @@ export interface GetSecurityGroupsArgs {
  * A collection of values returned by getSecurityGroups.
  */
 export interface GetSecurityGroupsResult {
+    readonly enableDetails?: boolean;
     /**
      * A list of Security Groups. Each element contains the following attributes:
      */
@@ -105,6 +112,8 @@ export interface GetSecurityGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     /**
      * The Id of resource group which the securityGroup belongs.
      */
@@ -113,6 +122,7 @@ export interface GetSecurityGroupsResult {
      * A map of tags assigned to the ECS instance.
      */
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * The ID of the VPC that owns the security group.
      */
@@ -127,6 +137,7 @@ export function getSecurityGroupsOutput(args?: GetSecurityGroupsOutputArgs, opts
  * A collection of arguments for invoking getSecurityGroups.
  */
 export interface GetSecurityGroupsOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
     /**
      * A list of Security Group IDs.
      */
@@ -136,6 +147,8 @@ export interface GetSecurityGroupsOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * The Id of resource group which the securityGroup belongs.
      */

@@ -22,7 +22,10 @@ namespace Pulumi.AliCloud.Vpn
     public partial class SslVpnServer : Pulumi.CustomResource
     {
         /// <summary>
-        /// The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        /// * `AES-128-CBC` - the AES-128-CBC algorithm.
+        /// * `AES-192-CBC` - the AES-192-CBC algorithm.
+        /// * `AES-256-CBC` - the AES-256-CBC algorithm.
         /// </summary>
         [Output("cipher")]
         public Output<string?> Cipher { get; private set; } = null!;
@@ -34,7 +37,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> ClientIpPool { get; private set; } = null!;
 
         /// <summary>
-        /// Specify whether to compress the communication. Valid value: true (default) | false
+        /// Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         /// </summary>
         [Output("compress")]
         public Output<bool?> Compress { get; private set; } = null!;
@@ -70,7 +73,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        /// The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
@@ -134,7 +137,10 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class SslVpnServerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        /// * `AES-128-CBC` - the AES-128-CBC algorithm.
+        /// * `AES-192-CBC` - the AES-192-CBC algorithm.
+        /// * `AES-256-CBC` - the AES-256-CBC algorithm.
         /// </summary>
         [Input("cipher")]
         public Input<string>? Cipher { get; set; }
@@ -146,7 +152,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string> ClientIpPool { get; set; } = null!;
 
         /// <summary>
-        /// Specify whether to compress the communication. Valid value: true (default) | false
+        /// Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         /// </summary>
         [Input("compress")]
         public Input<bool>? Compress { get; set; }
@@ -164,7 +170,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        /// The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -189,7 +195,10 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class SslVpnServerState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+        /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+        /// * `AES-128-CBC` - the AES-128-CBC algorithm.
+        /// * `AES-192-CBC` - the AES-192-CBC algorithm.
+        /// * `AES-256-CBC` - the AES-256-CBC algorithm.
         /// </summary>
         [Input("cipher")]
         public Input<string>? Cipher { get; set; }
@@ -201,7 +210,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? ClientIpPool { get; set; }
 
         /// <summary>
-        /// Specify whether to compress the communication. Valid value: true (default) | false
+        /// Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         /// </summary>
         [Input("compress")]
         public Input<bool>? Compress { get; set; }
@@ -237,7 +246,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+        /// The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

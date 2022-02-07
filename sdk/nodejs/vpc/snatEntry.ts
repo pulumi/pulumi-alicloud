@@ -62,11 +62,11 @@ export class SnatEntry extends pulumi.CustomResource {
     /**
      * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
      */
-    public readonly sourceCidr!: pulumi.Output<string | undefined>;
+    public readonly sourceCidr!: pulumi.Output<string>;
     /**
      * The vswitch ID.
      */
-    public readonly sourceVswitchId!: pulumi.Output<string | undefined>;
+    public readonly sourceVswitchId!: pulumi.Output<string>;
     /**
      * (Available in 1.119.1+) The status of snat entry.
      */

@@ -10,6 +10,454 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AccessStrategyDefaultAddrPool struct {
+	// The ID of the address pool in the primary address pool group.
+	AddrPoolId string `pulumi:"addrPoolId"`
+	// The weight of the address pool in the primary address pool group.
+	LbaWeight *int `pulumi:"lbaWeight"`
+}
+
+// AccessStrategyDefaultAddrPoolInput is an input type that accepts AccessStrategyDefaultAddrPoolArgs and AccessStrategyDefaultAddrPoolOutput values.
+// You can construct a concrete instance of `AccessStrategyDefaultAddrPoolInput` via:
+//
+//          AccessStrategyDefaultAddrPoolArgs{...}
+type AccessStrategyDefaultAddrPoolInput interface {
+	pulumi.Input
+
+	ToAccessStrategyDefaultAddrPoolOutput() AccessStrategyDefaultAddrPoolOutput
+	ToAccessStrategyDefaultAddrPoolOutputWithContext(context.Context) AccessStrategyDefaultAddrPoolOutput
+}
+
+type AccessStrategyDefaultAddrPoolArgs struct {
+	// The ID of the address pool in the primary address pool group.
+	AddrPoolId pulumi.StringInput `pulumi:"addrPoolId"`
+	// The weight of the address pool in the primary address pool group.
+	LbaWeight pulumi.IntPtrInput `pulumi:"lbaWeight"`
+}
+
+func (AccessStrategyDefaultAddrPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessStrategyDefaultAddrPool)(nil)).Elem()
+}
+
+func (i AccessStrategyDefaultAddrPoolArgs) ToAccessStrategyDefaultAddrPoolOutput() AccessStrategyDefaultAddrPoolOutput {
+	return i.ToAccessStrategyDefaultAddrPoolOutputWithContext(context.Background())
+}
+
+func (i AccessStrategyDefaultAddrPoolArgs) ToAccessStrategyDefaultAddrPoolOutputWithContext(ctx context.Context) AccessStrategyDefaultAddrPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyDefaultAddrPoolOutput)
+}
+
+// AccessStrategyDefaultAddrPoolArrayInput is an input type that accepts AccessStrategyDefaultAddrPoolArray and AccessStrategyDefaultAddrPoolArrayOutput values.
+// You can construct a concrete instance of `AccessStrategyDefaultAddrPoolArrayInput` via:
+//
+//          AccessStrategyDefaultAddrPoolArray{ AccessStrategyDefaultAddrPoolArgs{...} }
+type AccessStrategyDefaultAddrPoolArrayInput interface {
+	pulumi.Input
+
+	ToAccessStrategyDefaultAddrPoolArrayOutput() AccessStrategyDefaultAddrPoolArrayOutput
+	ToAccessStrategyDefaultAddrPoolArrayOutputWithContext(context.Context) AccessStrategyDefaultAddrPoolArrayOutput
+}
+
+type AccessStrategyDefaultAddrPoolArray []AccessStrategyDefaultAddrPoolInput
+
+func (AccessStrategyDefaultAddrPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessStrategyDefaultAddrPool)(nil)).Elem()
+}
+
+func (i AccessStrategyDefaultAddrPoolArray) ToAccessStrategyDefaultAddrPoolArrayOutput() AccessStrategyDefaultAddrPoolArrayOutput {
+	return i.ToAccessStrategyDefaultAddrPoolArrayOutputWithContext(context.Background())
+}
+
+func (i AccessStrategyDefaultAddrPoolArray) ToAccessStrategyDefaultAddrPoolArrayOutputWithContext(ctx context.Context) AccessStrategyDefaultAddrPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyDefaultAddrPoolArrayOutput)
+}
+
+type AccessStrategyDefaultAddrPoolOutput struct{ *pulumi.OutputState }
+
+func (AccessStrategyDefaultAddrPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessStrategyDefaultAddrPool)(nil)).Elem()
+}
+
+func (o AccessStrategyDefaultAddrPoolOutput) ToAccessStrategyDefaultAddrPoolOutput() AccessStrategyDefaultAddrPoolOutput {
+	return o
+}
+
+func (o AccessStrategyDefaultAddrPoolOutput) ToAccessStrategyDefaultAddrPoolOutputWithContext(ctx context.Context) AccessStrategyDefaultAddrPoolOutput {
+	return o
+}
+
+// The ID of the address pool in the primary address pool group.
+func (o AccessStrategyDefaultAddrPoolOutput) AddrPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessStrategyDefaultAddrPool) string { return v.AddrPoolId }).(pulumi.StringOutput)
+}
+
+// The weight of the address pool in the primary address pool group.
+func (o AccessStrategyDefaultAddrPoolOutput) LbaWeight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessStrategyDefaultAddrPool) *int { return v.LbaWeight }).(pulumi.IntPtrOutput)
+}
+
+type AccessStrategyDefaultAddrPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessStrategyDefaultAddrPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessStrategyDefaultAddrPool)(nil)).Elem()
+}
+
+func (o AccessStrategyDefaultAddrPoolArrayOutput) ToAccessStrategyDefaultAddrPoolArrayOutput() AccessStrategyDefaultAddrPoolArrayOutput {
+	return o
+}
+
+func (o AccessStrategyDefaultAddrPoolArrayOutput) ToAccessStrategyDefaultAddrPoolArrayOutputWithContext(ctx context.Context) AccessStrategyDefaultAddrPoolArrayOutput {
+	return o
+}
+
+func (o AccessStrategyDefaultAddrPoolArrayOutput) Index(i pulumi.IntInput) AccessStrategyDefaultAddrPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessStrategyDefaultAddrPool {
+		return vs[0].([]AccessStrategyDefaultAddrPool)[vs[1].(int)]
+	}).(AccessStrategyDefaultAddrPoolOutput)
+}
+
+type AccessStrategyFailoverAddrPool struct {
+	// The ID of the address pool in the primary address pool group.
+	AddrPoolId *string `pulumi:"addrPoolId"`
+	// The weight of the address pool in the primary address pool group.
+	LbaWeight *int `pulumi:"lbaWeight"`
+}
+
+// AccessStrategyFailoverAddrPoolInput is an input type that accepts AccessStrategyFailoverAddrPoolArgs and AccessStrategyFailoverAddrPoolOutput values.
+// You can construct a concrete instance of `AccessStrategyFailoverAddrPoolInput` via:
+//
+//          AccessStrategyFailoverAddrPoolArgs{...}
+type AccessStrategyFailoverAddrPoolInput interface {
+	pulumi.Input
+
+	ToAccessStrategyFailoverAddrPoolOutput() AccessStrategyFailoverAddrPoolOutput
+	ToAccessStrategyFailoverAddrPoolOutputWithContext(context.Context) AccessStrategyFailoverAddrPoolOutput
+}
+
+type AccessStrategyFailoverAddrPoolArgs struct {
+	// The ID of the address pool in the primary address pool group.
+	AddrPoolId pulumi.StringPtrInput `pulumi:"addrPoolId"`
+	// The weight of the address pool in the primary address pool group.
+	LbaWeight pulumi.IntPtrInput `pulumi:"lbaWeight"`
+}
+
+func (AccessStrategyFailoverAddrPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessStrategyFailoverAddrPool)(nil)).Elem()
+}
+
+func (i AccessStrategyFailoverAddrPoolArgs) ToAccessStrategyFailoverAddrPoolOutput() AccessStrategyFailoverAddrPoolOutput {
+	return i.ToAccessStrategyFailoverAddrPoolOutputWithContext(context.Background())
+}
+
+func (i AccessStrategyFailoverAddrPoolArgs) ToAccessStrategyFailoverAddrPoolOutputWithContext(ctx context.Context) AccessStrategyFailoverAddrPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyFailoverAddrPoolOutput)
+}
+
+// AccessStrategyFailoverAddrPoolArrayInput is an input type that accepts AccessStrategyFailoverAddrPoolArray and AccessStrategyFailoverAddrPoolArrayOutput values.
+// You can construct a concrete instance of `AccessStrategyFailoverAddrPoolArrayInput` via:
+//
+//          AccessStrategyFailoverAddrPoolArray{ AccessStrategyFailoverAddrPoolArgs{...} }
+type AccessStrategyFailoverAddrPoolArrayInput interface {
+	pulumi.Input
+
+	ToAccessStrategyFailoverAddrPoolArrayOutput() AccessStrategyFailoverAddrPoolArrayOutput
+	ToAccessStrategyFailoverAddrPoolArrayOutputWithContext(context.Context) AccessStrategyFailoverAddrPoolArrayOutput
+}
+
+type AccessStrategyFailoverAddrPoolArray []AccessStrategyFailoverAddrPoolInput
+
+func (AccessStrategyFailoverAddrPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessStrategyFailoverAddrPool)(nil)).Elem()
+}
+
+func (i AccessStrategyFailoverAddrPoolArray) ToAccessStrategyFailoverAddrPoolArrayOutput() AccessStrategyFailoverAddrPoolArrayOutput {
+	return i.ToAccessStrategyFailoverAddrPoolArrayOutputWithContext(context.Background())
+}
+
+func (i AccessStrategyFailoverAddrPoolArray) ToAccessStrategyFailoverAddrPoolArrayOutputWithContext(ctx context.Context) AccessStrategyFailoverAddrPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyFailoverAddrPoolArrayOutput)
+}
+
+type AccessStrategyFailoverAddrPoolOutput struct{ *pulumi.OutputState }
+
+func (AccessStrategyFailoverAddrPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessStrategyFailoverAddrPool)(nil)).Elem()
+}
+
+func (o AccessStrategyFailoverAddrPoolOutput) ToAccessStrategyFailoverAddrPoolOutput() AccessStrategyFailoverAddrPoolOutput {
+	return o
+}
+
+func (o AccessStrategyFailoverAddrPoolOutput) ToAccessStrategyFailoverAddrPoolOutputWithContext(ctx context.Context) AccessStrategyFailoverAddrPoolOutput {
+	return o
+}
+
+// The ID of the address pool in the primary address pool group.
+func (o AccessStrategyFailoverAddrPoolOutput) AddrPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessStrategyFailoverAddrPool) *string { return v.AddrPoolId }).(pulumi.StringPtrOutput)
+}
+
+// The weight of the address pool in the primary address pool group.
+func (o AccessStrategyFailoverAddrPoolOutput) LbaWeight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessStrategyFailoverAddrPool) *int { return v.LbaWeight }).(pulumi.IntPtrOutput)
+}
+
+type AccessStrategyFailoverAddrPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessStrategyFailoverAddrPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessStrategyFailoverAddrPool)(nil)).Elem()
+}
+
+func (o AccessStrategyFailoverAddrPoolArrayOutput) ToAccessStrategyFailoverAddrPoolArrayOutput() AccessStrategyFailoverAddrPoolArrayOutput {
+	return o
+}
+
+func (o AccessStrategyFailoverAddrPoolArrayOutput) ToAccessStrategyFailoverAddrPoolArrayOutputWithContext(ctx context.Context) AccessStrategyFailoverAddrPoolArrayOutput {
+	return o
+}
+
+func (o AccessStrategyFailoverAddrPoolArrayOutput) Index(i pulumi.IntInput) AccessStrategyFailoverAddrPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessStrategyFailoverAddrPool {
+		return vs[0].([]AccessStrategyFailoverAddrPool)[vs[1].(int)]
+	}).(AccessStrategyFailoverAddrPoolOutput)
+}
+
+type AccessStrategyLine struct {
+	// The line code of the source region.
+	LineCode *string `pulumi:"lineCode"`
+}
+
+// AccessStrategyLineInput is an input type that accepts AccessStrategyLineArgs and AccessStrategyLineOutput values.
+// You can construct a concrete instance of `AccessStrategyLineInput` via:
+//
+//          AccessStrategyLineArgs{...}
+type AccessStrategyLineInput interface {
+	pulumi.Input
+
+	ToAccessStrategyLineOutput() AccessStrategyLineOutput
+	ToAccessStrategyLineOutputWithContext(context.Context) AccessStrategyLineOutput
+}
+
+type AccessStrategyLineArgs struct {
+	// The line code of the source region.
+	LineCode pulumi.StringPtrInput `pulumi:"lineCode"`
+}
+
+func (AccessStrategyLineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessStrategyLine)(nil)).Elem()
+}
+
+func (i AccessStrategyLineArgs) ToAccessStrategyLineOutput() AccessStrategyLineOutput {
+	return i.ToAccessStrategyLineOutputWithContext(context.Background())
+}
+
+func (i AccessStrategyLineArgs) ToAccessStrategyLineOutputWithContext(ctx context.Context) AccessStrategyLineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyLineOutput)
+}
+
+// AccessStrategyLineArrayInput is an input type that accepts AccessStrategyLineArray and AccessStrategyLineArrayOutput values.
+// You can construct a concrete instance of `AccessStrategyLineArrayInput` via:
+//
+//          AccessStrategyLineArray{ AccessStrategyLineArgs{...} }
+type AccessStrategyLineArrayInput interface {
+	pulumi.Input
+
+	ToAccessStrategyLineArrayOutput() AccessStrategyLineArrayOutput
+	ToAccessStrategyLineArrayOutputWithContext(context.Context) AccessStrategyLineArrayOutput
+}
+
+type AccessStrategyLineArray []AccessStrategyLineInput
+
+func (AccessStrategyLineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessStrategyLine)(nil)).Elem()
+}
+
+func (i AccessStrategyLineArray) ToAccessStrategyLineArrayOutput() AccessStrategyLineArrayOutput {
+	return i.ToAccessStrategyLineArrayOutputWithContext(context.Background())
+}
+
+func (i AccessStrategyLineArray) ToAccessStrategyLineArrayOutputWithContext(ctx context.Context) AccessStrategyLineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessStrategyLineArrayOutput)
+}
+
+type AccessStrategyLineOutput struct{ *pulumi.OutputState }
+
+func (AccessStrategyLineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessStrategyLine)(nil)).Elem()
+}
+
+func (o AccessStrategyLineOutput) ToAccessStrategyLineOutput() AccessStrategyLineOutput {
+	return o
+}
+
+func (o AccessStrategyLineOutput) ToAccessStrategyLineOutputWithContext(ctx context.Context) AccessStrategyLineOutput {
+	return o
+}
+
+// The line code of the source region.
+func (o AccessStrategyLineOutput) LineCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessStrategyLine) *string { return v.LineCode }).(pulumi.StringPtrOutput)
+}
+
+type AccessStrategyLineArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessStrategyLineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessStrategyLine)(nil)).Elem()
+}
+
+func (o AccessStrategyLineArrayOutput) ToAccessStrategyLineArrayOutput() AccessStrategyLineArrayOutput {
+	return o
+}
+
+func (o AccessStrategyLineArrayOutput) ToAccessStrategyLineArrayOutputWithContext(ctx context.Context) AccessStrategyLineArrayOutput {
+	return o
+}
+
+func (o AccessStrategyLineArrayOutput) Index(i pulumi.IntInput) AccessStrategyLineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessStrategyLine {
+		return vs[0].([]AccessStrategyLine)[vs[1].(int)]
+	}).(AccessStrategyLineOutput)
+}
+
+type AddressPoolAddress struct {
+	// The address that you want to add to the address pool.
+	Address string `pulumi:"address"`
+	// The source region of the address. expressed as a JSON string. The structure is as follows:
+	// * `LineCodes`: List of home lineCodes.
+	// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+	AttributeInfo string `pulumi:"attributeInfo"`
+	// The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
+	LbaWeight *int `pulumi:"lbaWeight"`
+	// The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+	Mode string `pulumi:"mode"`
+	// The description of the address.
+	Remark *string `pulumi:"remark"`
+}
+
+// AddressPoolAddressInput is an input type that accepts AddressPoolAddressArgs and AddressPoolAddressOutput values.
+// You can construct a concrete instance of `AddressPoolAddressInput` via:
+//
+//          AddressPoolAddressArgs{...}
+type AddressPoolAddressInput interface {
+	pulumi.Input
+
+	ToAddressPoolAddressOutput() AddressPoolAddressOutput
+	ToAddressPoolAddressOutputWithContext(context.Context) AddressPoolAddressOutput
+}
+
+type AddressPoolAddressArgs struct {
+	// The address that you want to add to the address pool.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The source region of the address. expressed as a JSON string. The structure is as follows:
+	// * `LineCodes`: List of home lineCodes.
+	// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+	AttributeInfo pulumi.StringInput `pulumi:"attributeInfo"`
+	// The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
+	LbaWeight pulumi.IntPtrInput `pulumi:"lbaWeight"`
+	// The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The description of the address.
+	Remark pulumi.StringPtrInput `pulumi:"remark"`
+}
+
+func (AddressPoolAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressPoolAddress)(nil)).Elem()
+}
+
+func (i AddressPoolAddressArgs) ToAddressPoolAddressOutput() AddressPoolAddressOutput {
+	return i.ToAddressPoolAddressOutputWithContext(context.Background())
+}
+
+func (i AddressPoolAddressArgs) ToAddressPoolAddressOutputWithContext(ctx context.Context) AddressPoolAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressPoolAddressOutput)
+}
+
+// AddressPoolAddressArrayInput is an input type that accepts AddressPoolAddressArray and AddressPoolAddressArrayOutput values.
+// You can construct a concrete instance of `AddressPoolAddressArrayInput` via:
+//
+//          AddressPoolAddressArray{ AddressPoolAddressArgs{...} }
+type AddressPoolAddressArrayInput interface {
+	pulumi.Input
+
+	ToAddressPoolAddressArrayOutput() AddressPoolAddressArrayOutput
+	ToAddressPoolAddressArrayOutputWithContext(context.Context) AddressPoolAddressArrayOutput
+}
+
+type AddressPoolAddressArray []AddressPoolAddressInput
+
+func (AddressPoolAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressPoolAddress)(nil)).Elem()
+}
+
+func (i AddressPoolAddressArray) ToAddressPoolAddressArrayOutput() AddressPoolAddressArrayOutput {
+	return i.ToAddressPoolAddressArrayOutputWithContext(context.Background())
+}
+
+func (i AddressPoolAddressArray) ToAddressPoolAddressArrayOutputWithContext(ctx context.Context) AddressPoolAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressPoolAddressArrayOutput)
+}
+
+type AddressPoolAddressOutput struct{ *pulumi.OutputState }
+
+func (AddressPoolAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressPoolAddress)(nil)).Elem()
+}
+
+func (o AddressPoolAddressOutput) ToAddressPoolAddressOutput() AddressPoolAddressOutput {
+	return o
+}
+
+func (o AddressPoolAddressOutput) ToAddressPoolAddressOutputWithContext(ctx context.Context) AddressPoolAddressOutput {
+	return o
+}
+
+// The address that you want to add to the address pool.
+func (o AddressPoolAddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressPoolAddress) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The source region of the address. expressed as a JSON string. The structure is as follows:
+// * `LineCodes`: List of home lineCodes.
+// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+func (o AddressPoolAddressOutput) AttributeInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressPoolAddress) string { return v.AttributeInfo }).(pulumi.StringOutput)
+}
+
+// The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
+func (o AddressPoolAddressOutput) LbaWeight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AddressPoolAddress) *int { return v.LbaWeight }).(pulumi.IntPtrOutput)
+}
+
+// The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+func (o AddressPoolAddressOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressPoolAddress) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The description of the address.
+func (o AddressPoolAddressOutput) Remark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddressPoolAddress) *string { return v.Remark }).(pulumi.StringPtrOutput)
+}
+
+type AddressPoolAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (AddressPoolAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressPoolAddress)(nil)).Elem()
+}
+
+func (o AddressPoolAddressArrayOutput) ToAddressPoolAddressArrayOutput() AddressPoolAddressArrayOutput {
+	return o
+}
+
+func (o AddressPoolAddressArrayOutput) ToAddressPoolAddressArrayOutputWithContext(ctx context.Context) AddressPoolAddressArrayOutput {
+	return o
+}
+
+func (o AddressPoolAddressArrayOutput) Index(i pulumi.IntInput) AddressPoolAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddressPoolAddress {
+		return vs[0].([]AddressPoolAddress)[vs[1].(int)]
+	}).(AddressPoolAddressOutput)
+}
+
 type CustomLineIpSegmentList struct {
 	// The end IP address of the CIDR block.
 	EndIp string `pulumi:"endIp"`
@@ -256,6 +704,1130 @@ func (o GtmInstanceAlertConfigArrayOutput) Index(i pulumi.IntInput) GtmInstanceA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GtmInstanceAlertConfig {
 		return vs[0].([]GtmInstanceAlertConfig)[vs[1].(int)]
 	}).(GtmInstanceAlertConfigOutput)
+}
+
+type MonitorConfigIspCityNode struct {
+	// The code of the city node to monitor.
+	CityCode string `pulumi:"cityCode"`
+	// The code of the Internet provider service (ISP) node to monitor.
+	IspCode string `pulumi:"ispCode"`
+}
+
+// MonitorConfigIspCityNodeInput is an input type that accepts MonitorConfigIspCityNodeArgs and MonitorConfigIspCityNodeOutput values.
+// You can construct a concrete instance of `MonitorConfigIspCityNodeInput` via:
+//
+//          MonitorConfigIspCityNodeArgs{...}
+type MonitorConfigIspCityNodeInput interface {
+	pulumi.Input
+
+	ToMonitorConfigIspCityNodeOutput() MonitorConfigIspCityNodeOutput
+	ToMonitorConfigIspCityNodeOutputWithContext(context.Context) MonitorConfigIspCityNodeOutput
+}
+
+type MonitorConfigIspCityNodeArgs struct {
+	// The code of the city node to monitor.
+	CityCode pulumi.StringInput `pulumi:"cityCode"`
+	// The code of the Internet provider service (ISP) node to monitor.
+	IspCode pulumi.StringInput `pulumi:"ispCode"`
+}
+
+func (MonitorConfigIspCityNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorConfigIspCityNode)(nil)).Elem()
+}
+
+func (i MonitorConfigIspCityNodeArgs) ToMonitorConfigIspCityNodeOutput() MonitorConfigIspCityNodeOutput {
+	return i.ToMonitorConfigIspCityNodeOutputWithContext(context.Background())
+}
+
+func (i MonitorConfigIspCityNodeArgs) ToMonitorConfigIspCityNodeOutputWithContext(ctx context.Context) MonitorConfigIspCityNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigIspCityNodeOutput)
+}
+
+// MonitorConfigIspCityNodeArrayInput is an input type that accepts MonitorConfigIspCityNodeArray and MonitorConfigIspCityNodeArrayOutput values.
+// You can construct a concrete instance of `MonitorConfigIspCityNodeArrayInput` via:
+//
+//          MonitorConfigIspCityNodeArray{ MonitorConfigIspCityNodeArgs{...} }
+type MonitorConfigIspCityNodeArrayInput interface {
+	pulumi.Input
+
+	ToMonitorConfigIspCityNodeArrayOutput() MonitorConfigIspCityNodeArrayOutput
+	ToMonitorConfigIspCityNodeArrayOutputWithContext(context.Context) MonitorConfigIspCityNodeArrayOutput
+}
+
+type MonitorConfigIspCityNodeArray []MonitorConfigIspCityNodeInput
+
+func (MonitorConfigIspCityNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorConfigIspCityNode)(nil)).Elem()
+}
+
+func (i MonitorConfigIspCityNodeArray) ToMonitorConfigIspCityNodeArrayOutput() MonitorConfigIspCityNodeArrayOutput {
+	return i.ToMonitorConfigIspCityNodeArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorConfigIspCityNodeArray) ToMonitorConfigIspCityNodeArrayOutputWithContext(ctx context.Context) MonitorConfigIspCityNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigIspCityNodeArrayOutput)
+}
+
+type MonitorConfigIspCityNodeOutput struct{ *pulumi.OutputState }
+
+func (MonitorConfigIspCityNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorConfigIspCityNode)(nil)).Elem()
+}
+
+func (o MonitorConfigIspCityNodeOutput) ToMonitorConfigIspCityNodeOutput() MonitorConfigIspCityNodeOutput {
+	return o
+}
+
+func (o MonitorConfigIspCityNodeOutput) ToMonitorConfigIspCityNodeOutputWithContext(ctx context.Context) MonitorConfigIspCityNodeOutput {
+	return o
+}
+
+// The code of the city node to monitor.
+func (o MonitorConfigIspCityNodeOutput) CityCode() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorConfigIspCityNode) string { return v.CityCode }).(pulumi.StringOutput)
+}
+
+// The code of the Internet provider service (ISP) node to monitor.
+func (o MonitorConfigIspCityNodeOutput) IspCode() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorConfigIspCityNode) string { return v.IspCode }).(pulumi.StringOutput)
+}
+
+type MonitorConfigIspCityNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorConfigIspCityNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorConfigIspCityNode)(nil)).Elem()
+}
+
+func (o MonitorConfigIspCityNodeArrayOutput) ToMonitorConfigIspCityNodeArrayOutput() MonitorConfigIspCityNodeArrayOutput {
+	return o
+}
+
+func (o MonitorConfigIspCityNodeArrayOutput) ToMonitorConfigIspCityNodeArrayOutputWithContext(ctx context.Context) MonitorConfigIspCityNodeArrayOutput {
+	return o
+}
+
+func (o MonitorConfigIspCityNodeArrayOutput) Index(i pulumi.IntInput) MonitorConfigIspCityNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorConfigIspCityNode {
+		return vs[0].([]MonitorConfigIspCityNode)[vs[1].(int)]
+	}).(MonitorConfigIspCityNodeOutput)
+}
+
+type GetAccessStrategiesStrategy struct {
+	// The primary/secondary switchover policy for address pool groups.
+	AccessMode string `pulumi:"accessMode"`
+	// The first ID of the resource.
+	AccessStrategyId string `pulumi:"accessStrategyId"`
+	// The time when the access policy was created.
+	CreateTime string `pulumi:"createTime"`
+	// The timestamp that indicates when the access policy was created.
+	CreateTimestamp string `pulumi:"createTimestamp"`
+	// The type of the primary address pool.
+	DefaultAddrPoolType string `pulumi:"defaultAddrPoolType"`
+	// The address pools in the primary address pool group.
+	DefaultAddrPools []GetAccessStrategiesStrategyDefaultAddrPool `pulumi:"defaultAddrPools"`
+	// The number of addresses currently available in the primary address pool.
+	DefaultAvailableAddrNum int `pulumi:"defaultAvailableAddrNum"`
+	// Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group.
+	DefaultLatencyOptimization string `pulumi:"defaultLatencyOptimization"`
+	// The load balancing policy of the primary address pool group.
+	DefaultLbaStrategy string `pulumi:"defaultLbaStrategy"`
+	// The maximum number of addresses returned by the primary address pool set.
+	DefaultMaxReturnAddrNum int `pulumi:"defaultMaxReturnAddrNum"`
+	// The minimum number of available addresses for the primary address pool set.
+	DefaultMinAvailableAddrNum int `pulumi:"defaultMinAvailableAddrNum"`
+	// The type of the active address pool group.
+	EffectiveAddrPoolGroupType string `pulumi:"effectiveAddrPoolGroupType"`
+	// The type of the secondary address pool.
+	FailoverAddrPoolType string `pulumi:"failoverAddrPoolType"`
+	// The address pools in the secondary address pool group.
+	FailoverAddrPools []GetAccessStrategiesStrategyFailoverAddrPool `pulumi:"failoverAddrPools"`
+	// The number of available addresses in the standby address pool.
+	FailoverAvailableAddrNum int `pulumi:"failoverAvailableAddrNum"`
+	// Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group.
+	FailoverLatencyOptimization string `pulumi:"failoverLatencyOptimization"`
+	// The load balancing policy of the secondary address pool group.
+	FailoverLbaStrategy string `pulumi:"failoverLbaStrategy"`
+	// The maximum number of returned addresses in the standby address pool.
+	FailoverMaxReturnAddrNum int `pulumi:"failoverMaxReturnAddrNum"`
+	// The minimum number of available addresses in the standby address pool.
+	FailoverMinAvailableAddrNum int `pulumi:"failoverMinAvailableAddrNum"`
+	// The ID of the Access Strategy.
+	Id string `pulumi:"id"`
+	// The Id of the associated instance.
+	InstanceId string `pulumi:"instanceId"`
+	// List of source regions.
+	Lines []GetAccessStrategiesStrategyLine `pulumi:"lines"`
+	// The type of the access policy.
+	StrategyMode string `pulumi:"strategyMode"`
+	// The name of the access policy.
+	StrategyName string `pulumi:"strategyName"`
+}
+
+// GetAccessStrategiesStrategyInput is an input type that accepts GetAccessStrategiesStrategyArgs and GetAccessStrategiesStrategyOutput values.
+// You can construct a concrete instance of `GetAccessStrategiesStrategyInput` via:
+//
+//          GetAccessStrategiesStrategyArgs{...}
+type GetAccessStrategiesStrategyInput interface {
+	pulumi.Input
+
+	ToGetAccessStrategiesStrategyOutput() GetAccessStrategiesStrategyOutput
+	ToGetAccessStrategiesStrategyOutputWithContext(context.Context) GetAccessStrategiesStrategyOutput
+}
+
+type GetAccessStrategiesStrategyArgs struct {
+	// The primary/secondary switchover policy for address pool groups.
+	AccessMode pulumi.StringInput `pulumi:"accessMode"`
+	// The first ID of the resource.
+	AccessStrategyId pulumi.StringInput `pulumi:"accessStrategyId"`
+	// The time when the access policy was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The timestamp that indicates when the access policy was created.
+	CreateTimestamp pulumi.StringInput `pulumi:"createTimestamp"`
+	// The type of the primary address pool.
+	DefaultAddrPoolType pulumi.StringInput `pulumi:"defaultAddrPoolType"`
+	// The address pools in the primary address pool group.
+	DefaultAddrPools GetAccessStrategiesStrategyDefaultAddrPoolArrayInput `pulumi:"defaultAddrPools"`
+	// The number of addresses currently available in the primary address pool.
+	DefaultAvailableAddrNum pulumi.IntInput `pulumi:"defaultAvailableAddrNum"`
+	// Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group.
+	DefaultLatencyOptimization pulumi.StringInput `pulumi:"defaultLatencyOptimization"`
+	// The load balancing policy of the primary address pool group.
+	DefaultLbaStrategy pulumi.StringInput `pulumi:"defaultLbaStrategy"`
+	// The maximum number of addresses returned by the primary address pool set.
+	DefaultMaxReturnAddrNum pulumi.IntInput `pulumi:"defaultMaxReturnAddrNum"`
+	// The minimum number of available addresses for the primary address pool set.
+	DefaultMinAvailableAddrNum pulumi.IntInput `pulumi:"defaultMinAvailableAddrNum"`
+	// The type of the active address pool group.
+	EffectiveAddrPoolGroupType pulumi.StringInput `pulumi:"effectiveAddrPoolGroupType"`
+	// The type of the secondary address pool.
+	FailoverAddrPoolType pulumi.StringInput `pulumi:"failoverAddrPoolType"`
+	// The address pools in the secondary address pool group.
+	FailoverAddrPools GetAccessStrategiesStrategyFailoverAddrPoolArrayInput `pulumi:"failoverAddrPools"`
+	// The number of available addresses in the standby address pool.
+	FailoverAvailableAddrNum pulumi.IntInput `pulumi:"failoverAvailableAddrNum"`
+	// Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group.
+	FailoverLatencyOptimization pulumi.StringInput `pulumi:"failoverLatencyOptimization"`
+	// The load balancing policy of the secondary address pool group.
+	FailoverLbaStrategy pulumi.StringInput `pulumi:"failoverLbaStrategy"`
+	// The maximum number of returned addresses in the standby address pool.
+	FailoverMaxReturnAddrNum pulumi.IntInput `pulumi:"failoverMaxReturnAddrNum"`
+	// The minimum number of available addresses in the standby address pool.
+	FailoverMinAvailableAddrNum pulumi.IntInput `pulumi:"failoverMinAvailableAddrNum"`
+	// The ID of the Access Strategy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Id of the associated instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// List of source regions.
+	Lines GetAccessStrategiesStrategyLineArrayInput `pulumi:"lines"`
+	// The type of the access policy.
+	StrategyMode pulumi.StringInput `pulumi:"strategyMode"`
+	// The name of the access policy.
+	StrategyName pulumi.StringInput `pulumi:"strategyName"`
+}
+
+func (GetAccessStrategiesStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessStrategiesStrategy)(nil)).Elem()
+}
+
+func (i GetAccessStrategiesStrategyArgs) ToGetAccessStrategiesStrategyOutput() GetAccessStrategiesStrategyOutput {
+	return i.ToGetAccessStrategiesStrategyOutputWithContext(context.Background())
+}
+
+func (i GetAccessStrategiesStrategyArgs) ToGetAccessStrategiesStrategyOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessStrategiesStrategyOutput)
+}
+
+// GetAccessStrategiesStrategyArrayInput is an input type that accepts GetAccessStrategiesStrategyArray and GetAccessStrategiesStrategyArrayOutput values.
+// You can construct a concrete instance of `GetAccessStrategiesStrategyArrayInput` via:
+//
+//          GetAccessStrategiesStrategyArray{ GetAccessStrategiesStrategyArgs{...} }
+type GetAccessStrategiesStrategyArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessStrategiesStrategyArrayOutput() GetAccessStrategiesStrategyArrayOutput
+	ToGetAccessStrategiesStrategyArrayOutputWithContext(context.Context) GetAccessStrategiesStrategyArrayOutput
+}
+
+type GetAccessStrategiesStrategyArray []GetAccessStrategiesStrategyInput
+
+func (GetAccessStrategiesStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessStrategiesStrategy)(nil)).Elem()
+}
+
+func (i GetAccessStrategiesStrategyArray) ToGetAccessStrategiesStrategyArrayOutput() GetAccessStrategiesStrategyArrayOutput {
+	return i.ToGetAccessStrategiesStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessStrategiesStrategyArray) ToGetAccessStrategiesStrategyArrayOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessStrategiesStrategyArrayOutput)
+}
+
+type GetAccessStrategiesStrategyOutput struct{ *pulumi.OutputState }
+
+func (GetAccessStrategiesStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessStrategiesStrategy)(nil)).Elem()
+}
+
+func (o GetAccessStrategiesStrategyOutput) ToGetAccessStrategiesStrategyOutput() GetAccessStrategiesStrategyOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyOutput) ToGetAccessStrategiesStrategyOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyOutput {
+	return o
+}
+
+// The primary/secondary switchover policy for address pool groups.
+func (o GetAccessStrategiesStrategyOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.AccessMode }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetAccessStrategiesStrategyOutput) AccessStrategyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.AccessStrategyId }).(pulumi.StringOutput)
+}
+
+// The time when the access policy was created.
+func (o GetAccessStrategiesStrategyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The timestamp that indicates when the access policy was created.
+func (o GetAccessStrategiesStrategyOutput) CreateTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.CreateTimestamp }).(pulumi.StringOutput)
+}
+
+// The type of the primary address pool.
+func (o GetAccessStrategiesStrategyOutput) DefaultAddrPoolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.DefaultAddrPoolType }).(pulumi.StringOutput)
+}
+
+// The address pools in the primary address pool group.
+func (o GetAccessStrategiesStrategyOutput) DefaultAddrPools() GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) []GetAccessStrategiesStrategyDefaultAddrPool {
+		return v.DefaultAddrPools
+	}).(GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput)
+}
+
+// The number of addresses currently available in the primary address pool.
+func (o GetAccessStrategiesStrategyOutput) DefaultAvailableAddrNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) int { return v.DefaultAvailableAddrNum }).(pulumi.IntOutput)
+}
+
+// Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group.
+func (o GetAccessStrategiesStrategyOutput) DefaultLatencyOptimization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.DefaultLatencyOptimization }).(pulumi.StringOutput)
+}
+
+// The load balancing policy of the primary address pool group.
+func (o GetAccessStrategiesStrategyOutput) DefaultLbaStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.DefaultLbaStrategy }).(pulumi.StringOutput)
+}
+
+// The maximum number of addresses returned by the primary address pool set.
+func (o GetAccessStrategiesStrategyOutput) DefaultMaxReturnAddrNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) int { return v.DefaultMaxReturnAddrNum }).(pulumi.IntOutput)
+}
+
+// The minimum number of available addresses for the primary address pool set.
+func (o GetAccessStrategiesStrategyOutput) DefaultMinAvailableAddrNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) int { return v.DefaultMinAvailableAddrNum }).(pulumi.IntOutput)
+}
+
+// The type of the active address pool group.
+func (o GetAccessStrategiesStrategyOutput) EffectiveAddrPoolGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.EffectiveAddrPoolGroupType }).(pulumi.StringOutput)
+}
+
+// The type of the secondary address pool.
+func (o GetAccessStrategiesStrategyOutput) FailoverAddrPoolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.FailoverAddrPoolType }).(pulumi.StringOutput)
+}
+
+// The address pools in the secondary address pool group.
+func (o GetAccessStrategiesStrategyOutput) FailoverAddrPools() GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) []GetAccessStrategiesStrategyFailoverAddrPool {
+		return v.FailoverAddrPools
+	}).(GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput)
+}
+
+// The number of available addresses in the standby address pool.
+func (o GetAccessStrategiesStrategyOutput) FailoverAvailableAddrNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) int { return v.FailoverAvailableAddrNum }).(pulumi.IntOutput)
+}
+
+// Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group.
+func (o GetAccessStrategiesStrategyOutput) FailoverLatencyOptimization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.FailoverLatencyOptimization }).(pulumi.StringOutput)
+}
+
+// The load balancing policy of the secondary address pool group.
+func (o GetAccessStrategiesStrategyOutput) FailoverLbaStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.FailoverLbaStrategy }).(pulumi.StringOutput)
+}
+
+// The maximum number of returned addresses in the standby address pool.
+func (o GetAccessStrategiesStrategyOutput) FailoverMaxReturnAddrNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) int { return v.FailoverMaxReturnAddrNum }).(pulumi.IntOutput)
+}
+
+// The minimum number of available addresses in the standby address pool.
+func (o GetAccessStrategiesStrategyOutput) FailoverMinAvailableAddrNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) int { return v.FailoverMinAvailableAddrNum }).(pulumi.IntOutput)
+}
+
+// The ID of the Access Strategy.
+func (o GetAccessStrategiesStrategyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Id of the associated instance.
+func (o GetAccessStrategiesStrategyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// List of source regions.
+func (o GetAccessStrategiesStrategyOutput) Lines() GetAccessStrategiesStrategyLineArrayOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) []GetAccessStrategiesStrategyLine { return v.Lines }).(GetAccessStrategiesStrategyLineArrayOutput)
+}
+
+// The type of the access policy.
+func (o GetAccessStrategiesStrategyOutput) StrategyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.StrategyMode }).(pulumi.StringOutput)
+}
+
+// The name of the access policy.
+func (o GetAccessStrategiesStrategyOutput) StrategyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategy) string { return v.StrategyName }).(pulumi.StringOutput)
+}
+
+type GetAccessStrategiesStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessStrategiesStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessStrategiesStrategy)(nil)).Elem()
+}
+
+func (o GetAccessStrategiesStrategyArrayOutput) ToGetAccessStrategiesStrategyArrayOutput() GetAccessStrategiesStrategyArrayOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyArrayOutput) ToGetAccessStrategiesStrategyArrayOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyArrayOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyArrayOutput) Index(i pulumi.IntInput) GetAccessStrategiesStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessStrategiesStrategy {
+		return vs[0].([]GetAccessStrategiesStrategy)[vs[1].(int)]
+	}).(GetAccessStrategiesStrategyOutput)
+}
+
+type GetAccessStrategiesStrategyDefaultAddrPool struct {
+	// The number of addresses in the address pool.
+	AddrCount int `pulumi:"addrCount"`
+	// The ID of the address pool.
+	AddrPoolId string `pulumi:"addrPoolId"`
+	// The weight of the address pool.
+	LbaWeight int `pulumi:"lbaWeight"`
+	// The name of the address pool.
+	Name string `pulumi:"name"`
+}
+
+// GetAccessStrategiesStrategyDefaultAddrPoolInput is an input type that accepts GetAccessStrategiesStrategyDefaultAddrPoolArgs and GetAccessStrategiesStrategyDefaultAddrPoolOutput values.
+// You can construct a concrete instance of `GetAccessStrategiesStrategyDefaultAddrPoolInput` via:
+//
+//          GetAccessStrategiesStrategyDefaultAddrPoolArgs{...}
+type GetAccessStrategiesStrategyDefaultAddrPoolInput interface {
+	pulumi.Input
+
+	ToGetAccessStrategiesStrategyDefaultAddrPoolOutput() GetAccessStrategiesStrategyDefaultAddrPoolOutput
+	ToGetAccessStrategiesStrategyDefaultAddrPoolOutputWithContext(context.Context) GetAccessStrategiesStrategyDefaultAddrPoolOutput
+}
+
+type GetAccessStrategiesStrategyDefaultAddrPoolArgs struct {
+	// The number of addresses in the address pool.
+	AddrCount pulumi.IntInput `pulumi:"addrCount"`
+	// The ID of the address pool.
+	AddrPoolId pulumi.StringInput `pulumi:"addrPoolId"`
+	// The weight of the address pool.
+	LbaWeight pulumi.IntInput `pulumi:"lbaWeight"`
+	// The name of the address pool.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAccessStrategiesStrategyDefaultAddrPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessStrategiesStrategyDefaultAddrPool)(nil)).Elem()
+}
+
+func (i GetAccessStrategiesStrategyDefaultAddrPoolArgs) ToGetAccessStrategiesStrategyDefaultAddrPoolOutput() GetAccessStrategiesStrategyDefaultAddrPoolOutput {
+	return i.ToGetAccessStrategiesStrategyDefaultAddrPoolOutputWithContext(context.Background())
+}
+
+func (i GetAccessStrategiesStrategyDefaultAddrPoolArgs) ToGetAccessStrategiesStrategyDefaultAddrPoolOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyDefaultAddrPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessStrategiesStrategyDefaultAddrPoolOutput)
+}
+
+// GetAccessStrategiesStrategyDefaultAddrPoolArrayInput is an input type that accepts GetAccessStrategiesStrategyDefaultAddrPoolArray and GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput values.
+// You can construct a concrete instance of `GetAccessStrategiesStrategyDefaultAddrPoolArrayInput` via:
+//
+//          GetAccessStrategiesStrategyDefaultAddrPoolArray{ GetAccessStrategiesStrategyDefaultAddrPoolArgs{...} }
+type GetAccessStrategiesStrategyDefaultAddrPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessStrategiesStrategyDefaultAddrPoolArrayOutput() GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput
+	ToGetAccessStrategiesStrategyDefaultAddrPoolArrayOutputWithContext(context.Context) GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput
+}
+
+type GetAccessStrategiesStrategyDefaultAddrPoolArray []GetAccessStrategiesStrategyDefaultAddrPoolInput
+
+func (GetAccessStrategiesStrategyDefaultAddrPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessStrategiesStrategyDefaultAddrPool)(nil)).Elem()
+}
+
+func (i GetAccessStrategiesStrategyDefaultAddrPoolArray) ToGetAccessStrategiesStrategyDefaultAddrPoolArrayOutput() GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput {
+	return i.ToGetAccessStrategiesStrategyDefaultAddrPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessStrategiesStrategyDefaultAddrPoolArray) ToGetAccessStrategiesStrategyDefaultAddrPoolArrayOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput)
+}
+
+type GetAccessStrategiesStrategyDefaultAddrPoolOutput struct{ *pulumi.OutputState }
+
+func (GetAccessStrategiesStrategyDefaultAddrPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessStrategiesStrategyDefaultAddrPool)(nil)).Elem()
+}
+
+func (o GetAccessStrategiesStrategyDefaultAddrPoolOutput) ToGetAccessStrategiesStrategyDefaultAddrPoolOutput() GetAccessStrategiesStrategyDefaultAddrPoolOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyDefaultAddrPoolOutput) ToGetAccessStrategiesStrategyDefaultAddrPoolOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyDefaultAddrPoolOutput {
+	return o
+}
+
+// The number of addresses in the address pool.
+func (o GetAccessStrategiesStrategyDefaultAddrPoolOutput) AddrCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyDefaultAddrPool) int { return v.AddrCount }).(pulumi.IntOutput)
+}
+
+// The ID of the address pool.
+func (o GetAccessStrategiesStrategyDefaultAddrPoolOutput) AddrPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyDefaultAddrPool) string { return v.AddrPoolId }).(pulumi.StringOutput)
+}
+
+// The weight of the address pool.
+func (o GetAccessStrategiesStrategyDefaultAddrPoolOutput) LbaWeight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyDefaultAddrPool) int { return v.LbaWeight }).(pulumi.IntOutput)
+}
+
+// The name of the address pool.
+func (o GetAccessStrategiesStrategyDefaultAddrPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyDefaultAddrPool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessStrategiesStrategyDefaultAddrPool)(nil)).Elem()
+}
+
+func (o GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput) ToGetAccessStrategiesStrategyDefaultAddrPoolArrayOutput() GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput) ToGetAccessStrategiesStrategyDefaultAddrPoolArrayOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput) Index(i pulumi.IntInput) GetAccessStrategiesStrategyDefaultAddrPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessStrategiesStrategyDefaultAddrPool {
+		return vs[0].([]GetAccessStrategiesStrategyDefaultAddrPool)[vs[1].(int)]
+	}).(GetAccessStrategiesStrategyDefaultAddrPoolOutput)
+}
+
+type GetAccessStrategiesStrategyFailoverAddrPool struct {
+	// The number of addresses in the address pool.
+	AddrCount int `pulumi:"addrCount"`
+	// The ID of the address pool.
+	AddrPoolId string `pulumi:"addrPoolId"`
+	// The weight of the address pool.
+	LbaWeight int `pulumi:"lbaWeight"`
+	// The name of the address pool.
+	Name string `pulumi:"name"`
+}
+
+// GetAccessStrategiesStrategyFailoverAddrPoolInput is an input type that accepts GetAccessStrategiesStrategyFailoverAddrPoolArgs and GetAccessStrategiesStrategyFailoverAddrPoolOutput values.
+// You can construct a concrete instance of `GetAccessStrategiesStrategyFailoverAddrPoolInput` via:
+//
+//          GetAccessStrategiesStrategyFailoverAddrPoolArgs{...}
+type GetAccessStrategiesStrategyFailoverAddrPoolInput interface {
+	pulumi.Input
+
+	ToGetAccessStrategiesStrategyFailoverAddrPoolOutput() GetAccessStrategiesStrategyFailoverAddrPoolOutput
+	ToGetAccessStrategiesStrategyFailoverAddrPoolOutputWithContext(context.Context) GetAccessStrategiesStrategyFailoverAddrPoolOutput
+}
+
+type GetAccessStrategiesStrategyFailoverAddrPoolArgs struct {
+	// The number of addresses in the address pool.
+	AddrCount pulumi.IntInput `pulumi:"addrCount"`
+	// The ID of the address pool.
+	AddrPoolId pulumi.StringInput `pulumi:"addrPoolId"`
+	// The weight of the address pool.
+	LbaWeight pulumi.IntInput `pulumi:"lbaWeight"`
+	// The name of the address pool.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAccessStrategiesStrategyFailoverAddrPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessStrategiesStrategyFailoverAddrPool)(nil)).Elem()
+}
+
+func (i GetAccessStrategiesStrategyFailoverAddrPoolArgs) ToGetAccessStrategiesStrategyFailoverAddrPoolOutput() GetAccessStrategiesStrategyFailoverAddrPoolOutput {
+	return i.ToGetAccessStrategiesStrategyFailoverAddrPoolOutputWithContext(context.Background())
+}
+
+func (i GetAccessStrategiesStrategyFailoverAddrPoolArgs) ToGetAccessStrategiesStrategyFailoverAddrPoolOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyFailoverAddrPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessStrategiesStrategyFailoverAddrPoolOutput)
+}
+
+// GetAccessStrategiesStrategyFailoverAddrPoolArrayInput is an input type that accepts GetAccessStrategiesStrategyFailoverAddrPoolArray and GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput values.
+// You can construct a concrete instance of `GetAccessStrategiesStrategyFailoverAddrPoolArrayInput` via:
+//
+//          GetAccessStrategiesStrategyFailoverAddrPoolArray{ GetAccessStrategiesStrategyFailoverAddrPoolArgs{...} }
+type GetAccessStrategiesStrategyFailoverAddrPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessStrategiesStrategyFailoverAddrPoolArrayOutput() GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput
+	ToGetAccessStrategiesStrategyFailoverAddrPoolArrayOutputWithContext(context.Context) GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput
+}
+
+type GetAccessStrategiesStrategyFailoverAddrPoolArray []GetAccessStrategiesStrategyFailoverAddrPoolInput
+
+func (GetAccessStrategiesStrategyFailoverAddrPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessStrategiesStrategyFailoverAddrPool)(nil)).Elem()
+}
+
+func (i GetAccessStrategiesStrategyFailoverAddrPoolArray) ToGetAccessStrategiesStrategyFailoverAddrPoolArrayOutput() GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput {
+	return i.ToGetAccessStrategiesStrategyFailoverAddrPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessStrategiesStrategyFailoverAddrPoolArray) ToGetAccessStrategiesStrategyFailoverAddrPoolArrayOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput)
+}
+
+type GetAccessStrategiesStrategyFailoverAddrPoolOutput struct{ *pulumi.OutputState }
+
+func (GetAccessStrategiesStrategyFailoverAddrPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessStrategiesStrategyFailoverAddrPool)(nil)).Elem()
+}
+
+func (o GetAccessStrategiesStrategyFailoverAddrPoolOutput) ToGetAccessStrategiesStrategyFailoverAddrPoolOutput() GetAccessStrategiesStrategyFailoverAddrPoolOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyFailoverAddrPoolOutput) ToGetAccessStrategiesStrategyFailoverAddrPoolOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyFailoverAddrPoolOutput {
+	return o
+}
+
+// The number of addresses in the address pool.
+func (o GetAccessStrategiesStrategyFailoverAddrPoolOutput) AddrCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyFailoverAddrPool) int { return v.AddrCount }).(pulumi.IntOutput)
+}
+
+// The ID of the address pool.
+func (o GetAccessStrategiesStrategyFailoverAddrPoolOutput) AddrPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyFailoverAddrPool) string { return v.AddrPoolId }).(pulumi.StringOutput)
+}
+
+// The weight of the address pool.
+func (o GetAccessStrategiesStrategyFailoverAddrPoolOutput) LbaWeight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyFailoverAddrPool) int { return v.LbaWeight }).(pulumi.IntOutput)
+}
+
+// The name of the address pool.
+func (o GetAccessStrategiesStrategyFailoverAddrPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyFailoverAddrPool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessStrategiesStrategyFailoverAddrPool)(nil)).Elem()
+}
+
+func (o GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput) ToGetAccessStrategiesStrategyFailoverAddrPoolArrayOutput() GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput) ToGetAccessStrategiesStrategyFailoverAddrPoolArrayOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput) Index(i pulumi.IntInput) GetAccessStrategiesStrategyFailoverAddrPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessStrategiesStrategyFailoverAddrPool {
+		return vs[0].([]GetAccessStrategiesStrategyFailoverAddrPool)[vs[1].(int)]
+	}).(GetAccessStrategiesStrategyFailoverAddrPoolOutput)
+}
+
+type GetAccessStrategiesStrategyLine struct {
+	// The code of the source region group.
+	GroupCode string `pulumi:"groupCode"`
+	// The name of the source region group.
+	GroupName string `pulumi:"groupName"`
+	// The line code of the source region.
+	LineCode string `pulumi:"lineCode"`
+	// The line name of the source region.
+	LineName string `pulumi:"lineName"`
+}
+
+// GetAccessStrategiesStrategyLineInput is an input type that accepts GetAccessStrategiesStrategyLineArgs and GetAccessStrategiesStrategyLineOutput values.
+// You can construct a concrete instance of `GetAccessStrategiesStrategyLineInput` via:
+//
+//          GetAccessStrategiesStrategyLineArgs{...}
+type GetAccessStrategiesStrategyLineInput interface {
+	pulumi.Input
+
+	ToGetAccessStrategiesStrategyLineOutput() GetAccessStrategiesStrategyLineOutput
+	ToGetAccessStrategiesStrategyLineOutputWithContext(context.Context) GetAccessStrategiesStrategyLineOutput
+}
+
+type GetAccessStrategiesStrategyLineArgs struct {
+	// The code of the source region group.
+	GroupCode pulumi.StringInput `pulumi:"groupCode"`
+	// The name of the source region group.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The line code of the source region.
+	LineCode pulumi.StringInput `pulumi:"lineCode"`
+	// The line name of the source region.
+	LineName pulumi.StringInput `pulumi:"lineName"`
+}
+
+func (GetAccessStrategiesStrategyLineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessStrategiesStrategyLine)(nil)).Elem()
+}
+
+func (i GetAccessStrategiesStrategyLineArgs) ToGetAccessStrategiesStrategyLineOutput() GetAccessStrategiesStrategyLineOutput {
+	return i.ToGetAccessStrategiesStrategyLineOutputWithContext(context.Background())
+}
+
+func (i GetAccessStrategiesStrategyLineArgs) ToGetAccessStrategiesStrategyLineOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyLineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessStrategiesStrategyLineOutput)
+}
+
+// GetAccessStrategiesStrategyLineArrayInput is an input type that accepts GetAccessStrategiesStrategyLineArray and GetAccessStrategiesStrategyLineArrayOutput values.
+// You can construct a concrete instance of `GetAccessStrategiesStrategyLineArrayInput` via:
+//
+//          GetAccessStrategiesStrategyLineArray{ GetAccessStrategiesStrategyLineArgs{...} }
+type GetAccessStrategiesStrategyLineArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessStrategiesStrategyLineArrayOutput() GetAccessStrategiesStrategyLineArrayOutput
+	ToGetAccessStrategiesStrategyLineArrayOutputWithContext(context.Context) GetAccessStrategiesStrategyLineArrayOutput
+}
+
+type GetAccessStrategiesStrategyLineArray []GetAccessStrategiesStrategyLineInput
+
+func (GetAccessStrategiesStrategyLineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessStrategiesStrategyLine)(nil)).Elem()
+}
+
+func (i GetAccessStrategiesStrategyLineArray) ToGetAccessStrategiesStrategyLineArrayOutput() GetAccessStrategiesStrategyLineArrayOutput {
+	return i.ToGetAccessStrategiesStrategyLineArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessStrategiesStrategyLineArray) ToGetAccessStrategiesStrategyLineArrayOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyLineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessStrategiesStrategyLineArrayOutput)
+}
+
+type GetAccessStrategiesStrategyLineOutput struct{ *pulumi.OutputState }
+
+func (GetAccessStrategiesStrategyLineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessStrategiesStrategyLine)(nil)).Elem()
+}
+
+func (o GetAccessStrategiesStrategyLineOutput) ToGetAccessStrategiesStrategyLineOutput() GetAccessStrategiesStrategyLineOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyLineOutput) ToGetAccessStrategiesStrategyLineOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyLineOutput {
+	return o
+}
+
+// The code of the source region group.
+func (o GetAccessStrategiesStrategyLineOutput) GroupCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyLine) string { return v.GroupCode }).(pulumi.StringOutput)
+}
+
+// The name of the source region group.
+func (o GetAccessStrategiesStrategyLineOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyLine) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The line code of the source region.
+func (o GetAccessStrategiesStrategyLineOutput) LineCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyLine) string { return v.LineCode }).(pulumi.StringOutput)
+}
+
+// The line name of the source region.
+func (o GetAccessStrategiesStrategyLineOutput) LineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessStrategiesStrategyLine) string { return v.LineName }).(pulumi.StringOutput)
+}
+
+type GetAccessStrategiesStrategyLineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessStrategiesStrategyLineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessStrategiesStrategyLine)(nil)).Elem()
+}
+
+func (o GetAccessStrategiesStrategyLineArrayOutput) ToGetAccessStrategiesStrategyLineArrayOutput() GetAccessStrategiesStrategyLineArrayOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyLineArrayOutput) ToGetAccessStrategiesStrategyLineArrayOutputWithContext(ctx context.Context) GetAccessStrategiesStrategyLineArrayOutput {
+	return o
+}
+
+func (o GetAccessStrategiesStrategyLineArrayOutput) Index(i pulumi.IntInput) GetAccessStrategiesStrategyLineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessStrategiesStrategyLine {
+		return vs[0].([]GetAccessStrategiesStrategyLine)[vs[1].(int)]
+	}).(GetAccessStrategiesStrategyLineOutput)
+}
+
+type GetAddressPoolsPool struct {
+	// The first ID of the resource.
+	AddressPoolId string `pulumi:"addressPoolId"`
+	// The name of the address pool.
+	AddressPoolName string `pulumi:"addressPoolName"`
+	// The address that you want to add to the address pool.
+	Addresses []GetAddressPoolsPoolAddress `pulumi:"addresses"`
+	// The time when the address pool was created.
+	CreateTime string `pulumi:"createTime"`
+	// The timestamp that indicates when the address pool was created.
+	CreateTimestamp string `pulumi:"createTimestamp"`
+	// The ID of the Address Pool.
+	Id string `pulumi:"id"`
+	// The id of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The load balancing policy of the address pool.
+	LbaStrategy string `pulumi:"lbaStrategy"`
+	// The ID of the health check task.
+	MonitorConfigId string `pulumi:"monitorConfigId"`
+	// Indicates whether health checks are configured.
+	MonitorStatus string `pulumi:"monitorStatus"`
+	// The type of the address pool.
+	Type string `pulumi:"type"`
+	// The time when the address pool was updated.
+	UpdateTime string `pulumi:"updateTime"`
+	// The timestamp that indicates when the address pool was updated.
+	UpdateTimestamp string `pulumi:"updateTimestamp"`
+}
+
+// GetAddressPoolsPoolInput is an input type that accepts GetAddressPoolsPoolArgs and GetAddressPoolsPoolOutput values.
+// You can construct a concrete instance of `GetAddressPoolsPoolInput` via:
+//
+//          GetAddressPoolsPoolArgs{...}
+type GetAddressPoolsPoolInput interface {
+	pulumi.Input
+
+	ToGetAddressPoolsPoolOutput() GetAddressPoolsPoolOutput
+	ToGetAddressPoolsPoolOutputWithContext(context.Context) GetAddressPoolsPoolOutput
+}
+
+type GetAddressPoolsPoolArgs struct {
+	// The first ID of the resource.
+	AddressPoolId pulumi.StringInput `pulumi:"addressPoolId"`
+	// The name of the address pool.
+	AddressPoolName pulumi.StringInput `pulumi:"addressPoolName"`
+	// The address that you want to add to the address pool.
+	Addresses GetAddressPoolsPoolAddressArrayInput `pulumi:"addresses"`
+	// The time when the address pool was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The timestamp that indicates when the address pool was created.
+	CreateTimestamp pulumi.StringInput `pulumi:"createTimestamp"`
+	// The ID of the Address Pool.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The load balancing policy of the address pool.
+	LbaStrategy pulumi.StringInput `pulumi:"lbaStrategy"`
+	// The ID of the health check task.
+	MonitorConfigId pulumi.StringInput `pulumi:"monitorConfigId"`
+	// Indicates whether health checks are configured.
+	MonitorStatus pulumi.StringInput `pulumi:"monitorStatus"`
+	// The type of the address pool.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The time when the address pool was updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The timestamp that indicates when the address pool was updated.
+	UpdateTimestamp pulumi.StringInput `pulumi:"updateTimestamp"`
+}
+
+func (GetAddressPoolsPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressPoolsPool)(nil)).Elem()
+}
+
+func (i GetAddressPoolsPoolArgs) ToGetAddressPoolsPoolOutput() GetAddressPoolsPoolOutput {
+	return i.ToGetAddressPoolsPoolOutputWithContext(context.Background())
+}
+
+func (i GetAddressPoolsPoolArgs) ToGetAddressPoolsPoolOutputWithContext(ctx context.Context) GetAddressPoolsPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressPoolsPoolOutput)
+}
+
+// GetAddressPoolsPoolArrayInput is an input type that accepts GetAddressPoolsPoolArray and GetAddressPoolsPoolArrayOutput values.
+// You can construct a concrete instance of `GetAddressPoolsPoolArrayInput` via:
+//
+//          GetAddressPoolsPoolArray{ GetAddressPoolsPoolArgs{...} }
+type GetAddressPoolsPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressPoolsPoolArrayOutput() GetAddressPoolsPoolArrayOutput
+	ToGetAddressPoolsPoolArrayOutputWithContext(context.Context) GetAddressPoolsPoolArrayOutput
+}
+
+type GetAddressPoolsPoolArray []GetAddressPoolsPoolInput
+
+func (GetAddressPoolsPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressPoolsPool)(nil)).Elem()
+}
+
+func (i GetAddressPoolsPoolArray) ToGetAddressPoolsPoolArrayOutput() GetAddressPoolsPoolArrayOutput {
+	return i.ToGetAddressPoolsPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressPoolsPoolArray) ToGetAddressPoolsPoolArrayOutputWithContext(ctx context.Context) GetAddressPoolsPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressPoolsPoolArrayOutput)
+}
+
+type GetAddressPoolsPoolOutput struct{ *pulumi.OutputState }
+
+func (GetAddressPoolsPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressPoolsPool)(nil)).Elem()
+}
+
+func (o GetAddressPoolsPoolOutput) ToGetAddressPoolsPoolOutput() GetAddressPoolsPoolOutput {
+	return o
+}
+
+func (o GetAddressPoolsPoolOutput) ToGetAddressPoolsPoolOutputWithContext(ctx context.Context) GetAddressPoolsPoolOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetAddressPoolsPoolOutput) AddressPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.AddressPoolId }).(pulumi.StringOutput)
+}
+
+// The name of the address pool.
+func (o GetAddressPoolsPoolOutput) AddressPoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.AddressPoolName }).(pulumi.StringOutput)
+}
+
+// The address that you want to add to the address pool.
+func (o GetAddressPoolsPoolOutput) Addresses() GetAddressPoolsPoolAddressArrayOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) []GetAddressPoolsPoolAddress { return v.Addresses }).(GetAddressPoolsPoolAddressArrayOutput)
+}
+
+// The time when the address pool was created.
+func (o GetAddressPoolsPoolOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The timestamp that indicates when the address pool was created.
+func (o GetAddressPoolsPoolOutput) CreateTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.CreateTimestamp }).(pulumi.StringOutput)
+}
+
+// The ID of the Address Pool.
+func (o GetAddressPoolsPoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The id of the instance.
+func (o GetAddressPoolsPoolOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The load balancing policy of the address pool.
+func (o GetAddressPoolsPoolOutput) LbaStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.LbaStrategy }).(pulumi.StringOutput)
+}
+
+// The ID of the health check task.
+func (o GetAddressPoolsPoolOutput) MonitorConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.MonitorConfigId }).(pulumi.StringOutput)
+}
+
+// Indicates whether health checks are configured.
+func (o GetAddressPoolsPoolOutput) MonitorStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.MonitorStatus }).(pulumi.StringOutput)
+}
+
+// The type of the address pool.
+func (o GetAddressPoolsPoolOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time when the address pool was updated.
+func (o GetAddressPoolsPoolOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The timestamp that indicates when the address pool was updated.
+func (o GetAddressPoolsPoolOutput) UpdateTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.UpdateTimestamp }).(pulumi.StringOutput)
+}
+
+type GetAddressPoolsPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressPoolsPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressPoolsPool)(nil)).Elem()
+}
+
+func (o GetAddressPoolsPoolArrayOutput) ToGetAddressPoolsPoolArrayOutput() GetAddressPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetAddressPoolsPoolArrayOutput) ToGetAddressPoolsPoolArrayOutputWithContext(ctx context.Context) GetAddressPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetAddressPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetAddressPoolsPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressPoolsPool {
+		return vs[0].([]GetAddressPoolsPool)[vs[1].(int)]
+	}).(GetAddressPoolsPoolOutput)
+}
+
+type GetAddressPoolsPoolAddress struct {
+	// The address that you want to add to the address pool.
+	Address string `pulumi:"address"`
+	// The source region of the address.
+	AttributeInfo string `pulumi:"attributeInfo"`
+	// The weight of the address.
+	LbaWeight int `pulumi:"lbaWeight"`
+	// The type of the address.
+	Mode string `pulumi:"mode"`
+	// The description of the address.
+	Remark string `pulumi:"remark"`
+}
+
+// GetAddressPoolsPoolAddressInput is an input type that accepts GetAddressPoolsPoolAddressArgs and GetAddressPoolsPoolAddressOutput values.
+// You can construct a concrete instance of `GetAddressPoolsPoolAddressInput` via:
+//
+//          GetAddressPoolsPoolAddressArgs{...}
+type GetAddressPoolsPoolAddressInput interface {
+	pulumi.Input
+
+	ToGetAddressPoolsPoolAddressOutput() GetAddressPoolsPoolAddressOutput
+	ToGetAddressPoolsPoolAddressOutputWithContext(context.Context) GetAddressPoolsPoolAddressOutput
+}
+
+type GetAddressPoolsPoolAddressArgs struct {
+	// The address that you want to add to the address pool.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The source region of the address.
+	AttributeInfo pulumi.StringInput `pulumi:"attributeInfo"`
+	// The weight of the address.
+	LbaWeight pulumi.IntInput `pulumi:"lbaWeight"`
+	// The type of the address.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The description of the address.
+	Remark pulumi.StringInput `pulumi:"remark"`
+}
+
+func (GetAddressPoolsPoolAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressPoolsPoolAddress)(nil)).Elem()
+}
+
+func (i GetAddressPoolsPoolAddressArgs) ToGetAddressPoolsPoolAddressOutput() GetAddressPoolsPoolAddressOutput {
+	return i.ToGetAddressPoolsPoolAddressOutputWithContext(context.Background())
+}
+
+func (i GetAddressPoolsPoolAddressArgs) ToGetAddressPoolsPoolAddressOutputWithContext(ctx context.Context) GetAddressPoolsPoolAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressPoolsPoolAddressOutput)
+}
+
+// GetAddressPoolsPoolAddressArrayInput is an input type that accepts GetAddressPoolsPoolAddressArray and GetAddressPoolsPoolAddressArrayOutput values.
+// You can construct a concrete instance of `GetAddressPoolsPoolAddressArrayInput` via:
+//
+//          GetAddressPoolsPoolAddressArray{ GetAddressPoolsPoolAddressArgs{...} }
+type GetAddressPoolsPoolAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressPoolsPoolAddressArrayOutput() GetAddressPoolsPoolAddressArrayOutput
+	ToGetAddressPoolsPoolAddressArrayOutputWithContext(context.Context) GetAddressPoolsPoolAddressArrayOutput
+}
+
+type GetAddressPoolsPoolAddressArray []GetAddressPoolsPoolAddressInput
+
+func (GetAddressPoolsPoolAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressPoolsPoolAddress)(nil)).Elem()
+}
+
+func (i GetAddressPoolsPoolAddressArray) ToGetAddressPoolsPoolAddressArrayOutput() GetAddressPoolsPoolAddressArrayOutput {
+	return i.ToGetAddressPoolsPoolAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressPoolsPoolAddressArray) ToGetAddressPoolsPoolAddressArrayOutputWithContext(ctx context.Context) GetAddressPoolsPoolAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressPoolsPoolAddressArrayOutput)
+}
+
+type GetAddressPoolsPoolAddressOutput struct{ *pulumi.OutputState }
+
+func (GetAddressPoolsPoolAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressPoolsPoolAddress)(nil)).Elem()
+}
+
+func (o GetAddressPoolsPoolAddressOutput) ToGetAddressPoolsPoolAddressOutput() GetAddressPoolsPoolAddressOutput {
+	return o
+}
+
+func (o GetAddressPoolsPoolAddressOutput) ToGetAddressPoolsPoolAddressOutputWithContext(ctx context.Context) GetAddressPoolsPoolAddressOutput {
+	return o
+}
+
+// The address that you want to add to the address pool.
+func (o GetAddressPoolsPoolAddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The source region of the address.
+func (o GetAddressPoolsPoolAddressOutput) AttributeInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.AttributeInfo }).(pulumi.StringOutput)
+}
+
+// The weight of the address.
+func (o GetAddressPoolsPoolAddressOutput) LbaWeight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAddressPoolsPoolAddress) int { return v.LbaWeight }).(pulumi.IntOutput)
+}
+
+// The type of the address.
+func (o GetAddressPoolsPoolAddressOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The description of the address.
+func (o GetAddressPoolsPoolAddressOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+type GetAddressPoolsPoolAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressPoolsPoolAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressPoolsPoolAddress)(nil)).Elem()
+}
+
+func (o GetAddressPoolsPoolAddressArrayOutput) ToGetAddressPoolsPoolAddressArrayOutput() GetAddressPoolsPoolAddressArrayOutput {
+	return o
+}
+
+func (o GetAddressPoolsPoolAddressArrayOutput) ToGetAddressPoolsPoolAddressArrayOutputWithContext(ctx context.Context) GetAddressPoolsPoolAddressArrayOutput {
+	return o
+}
+
+func (o GetAddressPoolsPoolAddressArrayOutput) Index(i pulumi.IntInput) GetAddressPoolsPoolAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressPoolsPoolAddress {
+		return vs[0].([]GetAddressPoolsPoolAddress)[vs[1].(int)]
+	}).(GetAddressPoolsPoolAddressOutput)
 }
 
 type GetAlidnsDomainGroupsGroup struct {
@@ -2958,10 +4530,32 @@ func (o GetResolutionLinesLineArrayOutput) Index(i pulumi.IntInput) GetResolutio
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessStrategyDefaultAddrPoolInput)(nil)).Elem(), AccessStrategyDefaultAddrPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessStrategyDefaultAddrPoolArrayInput)(nil)).Elem(), AccessStrategyDefaultAddrPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessStrategyFailoverAddrPoolInput)(nil)).Elem(), AccessStrategyFailoverAddrPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessStrategyFailoverAddrPoolArrayInput)(nil)).Elem(), AccessStrategyFailoverAddrPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessStrategyLineInput)(nil)).Elem(), AccessStrategyLineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessStrategyLineArrayInput)(nil)).Elem(), AccessStrategyLineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressPoolAddressInput)(nil)).Elem(), AddressPoolAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressPoolAddressArrayInput)(nil)).Elem(), AddressPoolAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomLineIpSegmentListInput)(nil)).Elem(), CustomLineIpSegmentListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomLineIpSegmentListArrayInput)(nil)).Elem(), CustomLineIpSegmentListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GtmInstanceAlertConfigInput)(nil)).Elem(), GtmInstanceAlertConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GtmInstanceAlertConfigArrayInput)(nil)).Elem(), GtmInstanceAlertConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorConfigIspCityNodeInput)(nil)).Elem(), MonitorConfigIspCityNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorConfigIspCityNodeArrayInput)(nil)).Elem(), MonitorConfigIspCityNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessStrategiesStrategyInput)(nil)).Elem(), GetAccessStrategiesStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessStrategiesStrategyArrayInput)(nil)).Elem(), GetAccessStrategiesStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessStrategiesStrategyDefaultAddrPoolInput)(nil)).Elem(), GetAccessStrategiesStrategyDefaultAddrPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessStrategiesStrategyDefaultAddrPoolArrayInput)(nil)).Elem(), GetAccessStrategiesStrategyDefaultAddrPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessStrategiesStrategyFailoverAddrPoolInput)(nil)).Elem(), GetAccessStrategiesStrategyFailoverAddrPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessStrategiesStrategyFailoverAddrPoolArrayInput)(nil)).Elem(), GetAccessStrategiesStrategyFailoverAddrPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessStrategiesStrategyLineInput)(nil)).Elem(), GetAccessStrategiesStrategyLineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessStrategiesStrategyLineArrayInput)(nil)).Elem(), GetAccessStrategiesStrategyLineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressPoolsPoolInput)(nil)).Elem(), GetAddressPoolsPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressPoolsPoolArrayInput)(nil)).Elem(), GetAddressPoolsPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressPoolsPoolAddressInput)(nil)).Elem(), GetAddressPoolsPoolAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressPoolsPoolAddressArrayInput)(nil)).Elem(), GetAddressPoolsPoolAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsDomainGroupsGroupInput)(nil)).Elem(), GetAlidnsDomainGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsDomainGroupsGroupArrayInput)(nil)).Elem(), GetAlidnsDomainGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsDomainsDomainInput)(nil)).Elem(), GetAlidnsDomainsDomainArgs{})
@@ -2996,10 +4590,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordArrayInput)(nil)).Elem(), GetRecordsRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResolutionLinesLineInput)(nil)).Elem(), GetResolutionLinesLineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResolutionLinesLineArrayInput)(nil)).Elem(), GetResolutionLinesLineArray{})
+	pulumi.RegisterOutputType(AccessStrategyDefaultAddrPoolOutput{})
+	pulumi.RegisterOutputType(AccessStrategyDefaultAddrPoolArrayOutput{})
+	pulumi.RegisterOutputType(AccessStrategyFailoverAddrPoolOutput{})
+	pulumi.RegisterOutputType(AccessStrategyFailoverAddrPoolArrayOutput{})
+	pulumi.RegisterOutputType(AccessStrategyLineOutput{})
+	pulumi.RegisterOutputType(AccessStrategyLineArrayOutput{})
+	pulumi.RegisterOutputType(AddressPoolAddressOutput{})
+	pulumi.RegisterOutputType(AddressPoolAddressArrayOutput{})
 	pulumi.RegisterOutputType(CustomLineIpSegmentListOutput{})
 	pulumi.RegisterOutputType(CustomLineIpSegmentListArrayOutput{})
 	pulumi.RegisterOutputType(GtmInstanceAlertConfigOutput{})
 	pulumi.RegisterOutputType(GtmInstanceAlertConfigArrayOutput{})
+	pulumi.RegisterOutputType(MonitorConfigIspCityNodeOutput{})
+	pulumi.RegisterOutputType(MonitorConfigIspCityNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetAccessStrategiesStrategyOutput{})
+	pulumi.RegisterOutputType(GetAccessStrategiesStrategyArrayOutput{})
+	pulumi.RegisterOutputType(GetAccessStrategiesStrategyDefaultAddrPoolOutput{})
+	pulumi.RegisterOutputType(GetAccessStrategiesStrategyDefaultAddrPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetAccessStrategiesStrategyFailoverAddrPoolOutput{})
+	pulumi.RegisterOutputType(GetAccessStrategiesStrategyFailoverAddrPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetAccessStrategiesStrategyLineOutput{})
+	pulumi.RegisterOutputType(GetAccessStrategiesStrategyLineArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressPoolsPoolOutput{})
+	pulumi.RegisterOutputType(GetAddressPoolsPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressPoolsPoolAddressOutput{})
+	pulumi.RegisterOutputType(GetAddressPoolsPoolAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlidnsDomainsDomainOutput{})

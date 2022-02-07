@@ -22,6 +22,7 @@ export * from "./rdsAccount";
 export * from "./rdsBackup";
 export * from "./rdsCloneDbInstance";
 export * from "./rdsParameterGroup";
+export * from "./rdsUpgradeDbInstance";
 export * from "./readOnlyInstance";
 export * from "./readWriteSplittingConnection";
 
@@ -36,6 +37,7 @@ import { RdsAccount } from "./rdsAccount";
 import { RdsBackup } from "./rdsBackup";
 import { RdsCloneDbInstance } from "./rdsCloneDbInstance";
 import { RdsParameterGroup } from "./rdsParameterGroup";
+import { RdsUpgradeDbInstance } from "./rdsUpgradeDbInstance";
 import { ReadOnlyInstance } from "./readOnlyInstance";
 import { ReadWriteSplittingConnection } from "./readWriteSplittingConnection";
 
@@ -63,6 +65,8 @@ const _module = {
                 return new RdsCloneDbInstance(name, <any>undefined, { urn })
             case "alicloud:rds/rdsParameterGroup:RdsParameterGroup":
                 return new RdsParameterGroup(name, <any>undefined, { urn })
+            case "alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance":
+                return new RdsUpgradeDbInstance(name, <any>undefined, { urn })
             case "alicloud:rds/readOnlyInstance:ReadOnlyInstance":
                 return new ReadOnlyInstance(name, <any>undefined, { urn })
             case "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection":
@@ -82,5 +86,6 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/rdsAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsBackup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsCloneDbInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsParameterGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/rdsUpgradeDbInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readOnlyInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readWriteSplittingConnection", _module)

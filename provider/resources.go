@@ -473,6 +473,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_rds_account":                        {Tok: resource(rdsMod, "RdsAccount")},
 			"alicloud_rds_backup":                         {Tok: resource(rdsMod, "RdsBackup")},
 			"alicloud_rds_clone_db_instance":              {Tok: resource(rdsMod, "RdsCloneDbInstance")},
+			"alicloud_rds_upgrade_db_instance":            {Tok: resource(rdsMod, "RdsUpgradeDbInstance")},
 
 			// DCDN
 			"alicloud_dcdn_domain":        {Tok: resource(dcdnMod, "Domain")},
@@ -516,6 +517,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_alidns_domain_attachment": {Tok: resource(dnsMod, "AlidnsDomainAttachment")},
 			"alicloud_alidns_custom_line":       {Tok: resource(dnsMod, "CustomLine")},
 			"alicloud_alidns_gtm_instance":      {Tok: resource(dnsMod, "GtmInstance")},
+			"alicloud_alidns_monitor_config":    {Tok: resource(dnsMod, "MonitorConfig")},
+			"alicloud_alidns_address_pool":      {Tok: resource(dnsMod, "AddressPool")},
+			"alicloud_alidns_access_strategy":   {Tok: resource(dnsMod, "AccessStrategy")},
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
@@ -588,6 +592,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_deployment_set":                  {Tok: resource(ecsMod, "EcsDeploymentSet")},
 			"alicloud_ecs_dedicated_host_cluster":          {Tok: resource(ecsMod, "EcsDedicatedHostCluster")},
 			"alicloud_ecs_session_manager_status":          {Tok: resource(ecsMod, "EcsSessionManagerStatus")},
+			"alicloud_ecs_prefix_list":                     {Tok: resource(ecsMod, "EcsPrefixList")},
 
 			// Edas
 			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
@@ -704,6 +709,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbr_ecs_backup_client":  {Tok: resource(hbrMod, "EcsBackupClient")},
 			"alicloud_hbr_restore_job":        {Tok: resource(hbrMod, "RestoreJob")},
 			"alicloud_hbr_server_backup_plan": {Tok: resource(hbrMod, "ServerBackupPlan")},
+			"alicloud_hbr_replication_vault":  {Tok: resource(hbrMod, "ReplicationVault")},
 
 			// Iot
 			"alicloud_iot_device_group": {Tok: resource(iotMod, "DeviceGroup")},
@@ -785,10 +791,15 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mse_cluster": {Tok: resource(mseMod, "Cluster")},
 
 			// Nas
-			"alicloud_nas_access_group": {Tok: resource(nasMod, "AccessGroup")},
-			"alicloud_nas_access_rule":  {Tok: resource(nasMod, "AccessRule")},
-			"alicloud_nas_file_system":  {Tok: resource(nasMod, "FileSystem")},
-			"alicloud_nas_mount_target": {Tok: resource(nasMod, "MountTarget")},
+			"alicloud_nas_access_group":         {Tok: resource(nasMod, "AccessGroup")},
+			"alicloud_nas_access_rule":          {Tok: resource(nasMod, "AccessRule")},
+			"alicloud_nas_file_system":          {Tok: resource(nasMod, "FileSystem")},
+			"alicloud_nas_mount_target":         {Tok: resource(nasMod, "MountTarget")},
+			"alicloud_nas_snapshot":             {Tok: resource(nasMod, "Snapshot")},
+			"alicloud_nas_lifecycle_policy":     {Tok: resource(nasMod, "LifecyclePolicy")},
+			"alicloud_nas_fileset":              {Tok: resource(nasMod, "Fileset")},
+			"alicloud_nas_data_flow":            {Tok: resource(nasMod, "DataFlow")},
+			"alicloud_nas_auto_snapshot_policy": {Tok: resource(nasMod, "AutoSnapshotPolicy")},
 
 			// Oos
 			"alicloud_oos_template":            {Tok: resource(oosMod, "Template")},
@@ -888,6 +899,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ram_user_policy_attachment":  {Tok: resource(ramMod, "UserPolicyAttachment")},
 			"alicloud_ram_account_password_policy": {Tok: resource(ramMod, "AccountPasswordPolicy")},
 			"alicloud_ram_saml_provider":           {Tok: resource(ramMod, "SamlProvider")},
+			"alicloud_ram_security_preference":     {Tok: resource(ramMod, "SecurityPreference")},
 
 			// Rdc
 			"alicloud_rdc_organization": {Tok: resource(rdcMod, "Organization")},
@@ -1055,6 +1067,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_ipv6_gateway":                       {Tok: resource(vpcMod, "Ipv6Gateway")},
 			"alicloud_vpc_ipv6_internet_bandwidth":            {Tok: resource(vpcMod, "Ipv6InternetBandwidth")},
 			"alicloud_vpc_vbr_ha":                             {Tok: resource(vpcMod, "VbrHa")},
+			"alicloud_vpc_dhcp_options_set_attachment":        {Tok: resource(vpcMod, "DhcpOptionsSetAttachment")},
+			"alicloud_vpc_bgp_peer":                           {Tok: resource(vpcMod, "BgpPeer")},
+			"alicloud_vpc_bgp_network":                        {Tok: resource(vpcMod, "BgpNetwork")},
+			"alicloud_vpc_bgp_group":                          {Tok: resource(vpcMod, "BgpGroup")},
 
 			// Vod
 			"alicloud_vod_domain": {Tok: resource(vodMod, "Domain")},
@@ -1185,6 +1201,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Cdn
 			"alicloud_cdn_service":                  {Tok: dataSource(cdnMod, "getService")},
 			"alicloud_cdn_real_time_log_deliveries": {Tok: dataSource(cdnMod, "getRealTimeLogDeliveries")},
+			"alicloud_cdn_ip_info":                  {Tok: dataSource(cdnMod, "getIpInfo")},
 
 			// Cen
 			"alicloud_cen_bandwidth_limits":            {Tok: dataSource(cenMod, "getBandwidthLimits")},
@@ -1334,20 +1351,22 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dms_enterprise_users":     {Tok: dataSource(dmsMod, "getEnterpriseUsers")},
 
 			// Dns
-			"alicloud_dns_domain_groups":    {Tok: dataSource(dnsMod, "getDomainGroups")},
-			"alicloud_dns_domain_records":   {Tok: dataSource(dnsMod, "getDomainRecords")},
-			"alicloud_dns_domains":          {Tok: dataSource(dnsMod, "getDomains")},
-			"alicloud_dns_groups":           {Tok: dataSource(dnsMod, "getGroups")},
-			"alicloud_dns_records":          {Tok: dataSource(dnsMod, "getRecords")},
-			"alicloud_dns_resolution_lines": {Tok: dataSource(dnsMod, "getResolutionLines")},
-			"alicloud_dns_domain_txt_guid":  {Tok: dataSource(dnsMod, "getDomainTxtGuid")},
-			"alicloud_dns_instances":        {Tok: dataSource(dnsMod, "getInstances")},
-			"alicloud_alidns_domain_groups": {Tok: dataSource(dnsMod, "getAlidnsDomainGroups")},
-			"alicloud_alidns_records":       {Tok: dataSource(dnsMod, "getAlidnsRecords")},
-			"alicloud_alidns_domains":       {Tok: dataSource(dnsMod, "getAlidnsDomains")},
-			"alicloud_alidns_instances":     {Tok: dataSource(dnsMod, "getAlidnsInstances")},
-			"alicloud_alidns_gtm_instances": {Tok: dataSource(dnsMod, "getGtmInstances")},
-			"alicloud_alidns_custom_lines":  {Tok: dataSource(dnsMod, "getCustomLines")},
+			"alicloud_dns_domain_groups":        {Tok: dataSource(dnsMod, "getDomainGroups")},
+			"alicloud_dns_domain_records":       {Tok: dataSource(dnsMod, "getDomainRecords")},
+			"alicloud_dns_domains":              {Tok: dataSource(dnsMod, "getDomains")},
+			"alicloud_dns_groups":               {Tok: dataSource(dnsMod, "getGroups")},
+			"alicloud_dns_records":              {Tok: dataSource(dnsMod, "getRecords")},
+			"alicloud_dns_resolution_lines":     {Tok: dataSource(dnsMod, "getResolutionLines")},
+			"alicloud_dns_domain_txt_guid":      {Tok: dataSource(dnsMod, "getDomainTxtGuid")},
+			"alicloud_dns_instances":            {Tok: dataSource(dnsMod, "getInstances")},
+			"alicloud_alidns_domain_groups":     {Tok: dataSource(dnsMod, "getAlidnsDomainGroups")},
+			"alicloud_alidns_records":           {Tok: dataSource(dnsMod, "getAlidnsRecords")},
+			"alicloud_alidns_domains":           {Tok: dataSource(dnsMod, "getAlidnsDomains")},
+			"alicloud_alidns_instances":         {Tok: dataSource(dnsMod, "getAlidnsInstances")},
+			"alicloud_alidns_gtm_instances":     {Tok: dataSource(dnsMod, "getGtmInstances")},
+			"alicloud_alidns_custom_lines":      {Tok: dataSource(dnsMod, "getCustomLines")},
+			"alicloud_alidns_address_pools":     {Tok: dataSource(dnsMod, "getAddressPools")},
+			"alicloud_alidns_access_strategies": {Tok: dataSource(dnsMod, "getAccessStrategies")},
 
 			// Drds
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},
@@ -1396,6 +1415,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_network_interfaces":      {Tok: dataSource(ecsMod, "getEcsNetworkInterfaces")},
 			"alicloud_ecs_deployment_sets":         {Tok: dataSource(ecsMod, "getEcsDeploymentSets")},
 			"alicloud_ecs_dedicated_host_clusters": {Tok: dataSource(ecsMod, "getEcsDedicatedHostClusters")},
+			"alicloud_ecs_prefix_lists":            {Tok: dataSource(ecsMod, "getEcsPrefixLists")},
 
 			// Edas
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
@@ -1494,15 +1514,16 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_instance_types": {Tok: dataSource(hbaseMod, "getInstanceTypes")},
 
 			// hbr
-			"alicloud_hbr_vaults":              {Tok: dataSource(hbrMod, "getVaults")},
-			"alicloud_hbr_oss_backup_plans":    {Tok: dataSource(hbrMod, "getOssBackupPlans")},
-			"alicloud_hbr_ecs_backup_plans":    {Tok: dataSource(hbrMod, "getEcsBackupPlans")},
-			"alicloud_hbr_nas_backup_plans":    {Tok: dataSource(hbrMod, "getNasBackupPlans")},
-			"alicloud_hbr_ecs_backup_clients":  {Tok: dataSource(hbrMod, "getEcsBackupClients")},
-			"alicloud_hbr_snapshots":           {Tok: dataSource(hbrMod, "getSnapshots")},
-			"alicloud_hbr_restore_jobs":        {Tok: dataSource(hbrMod, "getRestoreJobs")},
-			"alicloud_hbr_backup_jobs":         {Tok: dataSource(hbrMod, "getBackupJobs")},
-			"alicloud_hbr_server_backup_plans": {Tok: dataSource(hbrMod, "getServerBackupPlans")},
+			"alicloud_hbr_vaults":                    {Tok: dataSource(hbrMod, "getVaults")},
+			"alicloud_hbr_oss_backup_plans":          {Tok: dataSource(hbrMod, "getOssBackupPlans")},
+			"alicloud_hbr_ecs_backup_plans":          {Tok: dataSource(hbrMod, "getEcsBackupPlans")},
+			"alicloud_hbr_nas_backup_plans":          {Tok: dataSource(hbrMod, "getNasBackupPlans")},
+			"alicloud_hbr_ecs_backup_clients":        {Tok: dataSource(hbrMod, "getEcsBackupClients")},
+			"alicloud_hbr_snapshots":                 {Tok: dataSource(hbrMod, "getSnapshots")},
+			"alicloud_hbr_restore_jobs":              {Tok: dataSource(hbrMod, "getRestoreJobs")},
+			"alicloud_hbr_backup_jobs":               {Tok: dataSource(hbrMod, "getBackupJobs")},
+			"alicloud_hbr_server_backup_plans":       {Tok: dataSource(hbrMod, "getServerBackupPlans")},
+			"alicloud_hbr_replication_vault_regions": {Tok: dataSource(hbrMod, "getReplicationVaultRegions")},
 
 			// iot
 			"alicloud_iot_service":       {Tok: dataSource(iotMod, "getService")},
@@ -1570,13 +1591,18 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mse_clusters": {Tok: dataSource(mseMod, "getClusters")},
 
 			// Nas
-			"alicloud_nas_access_groups": {Tok: dataSource(nasMod, "getAccessGroups")},
-			"alicloud_nas_access_rules":  {Tok: dataSource(nasMod, "getAccessRules")},
-			"alicloud_nas_file_systems":  {Tok: dataSource(nasMod, "getFileSystems")},
-			"alicloud_nas_mount_targets": {Tok: dataSource(nasMod, "getMountTargets")},
-			"alicloud_nas_protocols":     {Tok: dataSource(nasMod, "getProtocols")},
-			"alicloud_nas_service":       {Tok: dataSource(nasMod, "getService")},
-			"alicloud_nas_zones":         {Tok: dataSource(nasMod, "getZones")},
+			"alicloud_nas_access_groups":          {Tok: dataSource(nasMod, "getAccessGroups")},
+			"alicloud_nas_access_rules":           {Tok: dataSource(nasMod, "getAccessRules")},
+			"alicloud_nas_file_systems":           {Tok: dataSource(nasMod, "getFileSystems")},
+			"alicloud_nas_mount_targets":          {Tok: dataSource(nasMod, "getMountTargets")},
+			"alicloud_nas_protocols":              {Tok: dataSource(nasMod, "getProtocols")},
+			"alicloud_nas_service":                {Tok: dataSource(nasMod, "getService")},
+			"alicloud_nas_zones":                  {Tok: dataSource(nasMod, "getZones")},
+			"alicloud_nas_snapshots":              {Tok: dataSource(nasMod, "getSnapshots")},
+			"alicloud_nas_lifecycle_policies":     {Tok: dataSource(nasMod, "getLifecyclePolicies")},
+			"alicloud_nas_filesets":               {Tok: dataSource(nasMod, "getFilesets")},
+			"alicloud_nas_data_flows":             {Tok: dataSource(nasMod, "getDataFlows")},
+			"alicloud_nas_auto_snapshot_policies": {Tok: dataSource(nasMod, "getAutoSnapshotPolicies")},
 
 			// Oos
 			"alicloud_oos_templates":            {Tok: dataSource(oosMod, "getTemplates")},
@@ -1782,6 +1808,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_ipv6_gateways":            {Tok: dataSource(vpcMod, "getIpv6Gateways")},
 			"alicloud_vpc_ipv6_internet_bandwidths": {Tok: dataSource(vpcMod, "getIpv6InternetBandwidths")},
 			"alicloud_vpc_traffic_mirror_sessions":  {Tok: dataSource(vpcMod, "getTrafficMirrorSessions")},
+			"alicloud_vpc_bgp_groups":               {Tok: dataSource(vpcMod, "getBgpGroups")},
+			"alicloud_vpc_bgp_networks":             {Tok: dataSource(vpcMod, "getBgpNetworks")},
+			"alicloud_vpc_bgp_peers":                {Tok: dataSource(vpcMod, "getBgpPeers")},
 
 			// Vod
 			"alicloud_vod_domains": {Tok: dataSource(vodMod, "getDomains")},

@@ -10,9 +10,14 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'GetConsumerGroupsGroupResult',
     'GetHistoryDeliveryJobsJobResult',
     'GetHistoryDeliveryJobsJobJobStatusResult',
     'GetInstancesInstanceResult',
+    'GetInstancesInstanceAllowedListResult',
+    'GetInstancesInstanceAllowedListInternetListResult',
+    'GetInstancesInstanceAllowedListVpcListResult',
+    'GetInstancesInstanceUpgradeServiceDetailInfoResult',
     'GetSaslAclsAclResult',
     'GetSaslUsersUserResult',
     'GetTopicsTopicResult',
@@ -21,6 +26,69 @@ __all__ = [
     'GetTrailsDeprecatedTrailResult',
     'GetTrailsTrailResult',
 ]
+
+@pulumi.output_type
+class GetConsumerGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 consumer_id: str,
+                 id: str,
+                 instance_id: str,
+                 remark: str,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str consumer_id: The name of the consumer group.
+        :param str id: The ID of the consumer group, It is formatted to `<instance_id>:<consumer_id>`.
+        :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.
+        :param str remark: The remark of the consumer group.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the consumer group.
+        """
+        pulumi.set(__self__, "consumer_id", consumer_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "remark", remark)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="consumerId")
+    def consumer_id(self) -> str:
+        """
+        The name of the consumer group.
+        """
+        return pulumi.get(self, "consumer_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the consumer group, It is formatted to `<instance_id>:<consumer_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        ID of the ALIKAFKA Instance that owns the consumer groups.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def remark(self) -> str:
+        """
+        The remark of the consumer group.
+        """
+        return pulumi.get(self, "remark")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A mapping of tags to assign to the consumer group.
+        """
+        return pulumi.get(self, "tags")
+
 
 @pulumi.output_type
 class GetHistoryDeliveryJobsJobResult(dict):
@@ -167,11 +235,13 @@ class GetHistoryDeliveryJobsJobJobStatusResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
+                 allowed_lists: Sequence['outputs.GetInstancesInstanceAllowedListResult'],
                  config: str,
                  create_time: str,
                  deploy_type: int,
                  disk_size: int,
                  disk_type: int,
+                 domain_endpoint: str,
                  eip_max: int,
                  end_point: str,
                  expired_time: int,
@@ -180,21 +250,27 @@ class GetInstancesInstanceResult(dict):
                  msg_retain: int,
                  name: str,
                  paid_type: str,
+                 sasl_domain_endpoint: str,
                  security_group: str,
                  service_status: int,
                  service_version: str,
                  spec_type: str,
+                 ssl_domain_endpoint: str,
                  ssl_end_point: str,
                  topic_quota: int,
+                 upgrade_service_detail_infos: Sequence['outputs.GetInstancesInstanceUpgradeServiceDetailInfoResult'],
                  vpc_id: str,
                  vswitch_id: str,
-                 zone_id: str):
+                 zone_id: str,
+                 tags: Optional[Mapping[str, Any]] = None):
         """
+        :param Sequence['GetInstancesInstanceAllowedListArgs'] allowed_lists: The allowed list of the instance.
         :param str config: The config the instance.
         :param str create_time: The create time of the instance.
-        :param int deploy_type: The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
+        :param int deploy_type: The deployed type of the instance.
         :param int disk_size: The disk size of the instance.
         :param int disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        :param str domain_endpoint: The domain point of the instance.
         :param int eip_max: The peak bandwidth of the instance.
         :param str end_point: The endPoint to access the instance.
         :param int expired_time: The expired time  of the instance.
@@ -203,21 +279,27 @@ class GetInstancesInstanceResult(dict):
         :param int msg_retain: The msg retain of the instance.
         :param str name: Name of the instance.
         :param str paid_type: The paid type of the instance.
+        :param str sasl_domain_endpoint: The SASL domain point of the instance.
         :param str security_group: The security group of the instance.
         :param int service_status: The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
         :param str service_version: The kafka openSource version of the instance.
         :param str spec_type: The spec type of the instance.
+        :param str ssl_domain_endpoint: The SSL domain point of the instance.
         :param str ssl_end_point: The SSL end point of the instance.
         :param int topic_quota: The max num of topic can be create of the instance.
+        :param Sequence['GetInstancesInstanceUpgradeServiceDetailInfoArgs'] upgrade_service_detail_infos: The UpgradeServiceDetailInfo List.
         :param str vpc_id: The ID of attaching VPC to instance.
         :param str vswitch_id: The ID of attaching vswitch to instance.
         :param str zone_id: The ID of attaching zone to instance.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the instance.
         """
+        pulumi.set(__self__, "allowed_lists", allowed_lists)
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "deploy_type", deploy_type)
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "domain_endpoint", domain_endpoint)
         pulumi.set(__self__, "eip_max", eip_max)
         pulumi.set(__self__, "end_point", end_point)
         pulumi.set(__self__, "expired_time", expired_time)
@@ -226,15 +308,28 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "msg_retain", msg_retain)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "paid_type", paid_type)
+        pulumi.set(__self__, "sasl_domain_endpoint", sasl_domain_endpoint)
         pulumi.set(__self__, "security_group", security_group)
         pulumi.set(__self__, "service_status", service_status)
         pulumi.set(__self__, "service_version", service_version)
         pulumi.set(__self__, "spec_type", spec_type)
+        pulumi.set(__self__, "ssl_domain_endpoint", ssl_domain_endpoint)
         pulumi.set(__self__, "ssl_end_point", ssl_end_point)
         pulumi.set(__self__, "topic_quota", topic_quota)
+        pulumi.set(__self__, "upgrade_service_detail_infos", upgrade_service_detail_infos)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="allowedLists")
+    def allowed_lists(self) -> Sequence['outputs.GetInstancesInstanceAllowedListResult']:
+        """
+        The allowed list of the instance.
+        """
+        return pulumi.get(self, "allowed_lists")
 
     @property
     @pulumi.getter
@@ -256,7 +351,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="deployType")
     def deploy_type(self) -> int:
         """
-        The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
+        The deployed type of the instance.
         """
         return pulumi.get(self, "deploy_type")
 
@@ -275,6 +370,14 @@ class GetInstancesInstanceResult(dict):
         The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="domainEndpoint")
+    def domain_endpoint(self) -> str:
+        """
+        The domain point of the instance.
+        """
+        return pulumi.get(self, "domain_endpoint")
 
     @property
     @pulumi.getter(name="eipMax")
@@ -341,6 +444,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "paid_type")
 
     @property
+    @pulumi.getter(name="saslDomainEndpoint")
+    def sasl_domain_endpoint(self) -> str:
+        """
+        The SASL domain point of the instance.
+        """
+        return pulumi.get(self, "sasl_domain_endpoint")
+
+    @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> str:
         """
@@ -373,6 +484,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "spec_type")
 
     @property
+    @pulumi.getter(name="sslDomainEndpoint")
+    def ssl_domain_endpoint(self) -> str:
+        """
+        The SSL domain point of the instance.
+        """
+        return pulumi.get(self, "ssl_domain_endpoint")
+
+    @property
     @pulumi.getter(name="sslEndPoint")
     def ssl_end_point(self) -> str:
         """
@@ -387,6 +506,14 @@ class GetInstancesInstanceResult(dict):
         The max num of topic can be create of the instance.
         """
         return pulumi.get(self, "topic_quota")
+
+    @property
+    @pulumi.getter(name="upgradeServiceDetailInfos")
+    def upgrade_service_detail_infos(self) -> Sequence['outputs.GetInstancesInstanceUpgradeServiceDetailInfoResult']:
+        """
+        The UpgradeServiceDetailInfo List.
+        """
+        return pulumi.get(self, "upgrade_service_detail_infos")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -411,6 +538,130 @@ class GetInstancesInstanceResult(dict):
         The ID of attaching zone to instance.
         """
         return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A mapping of tags to assign to the instance.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetInstancesInstanceAllowedListResult(dict):
+    def __init__(__self__, *,
+                 deploy_type: str,
+                 internet_lists: Sequence['outputs.GetInstancesInstanceAllowedListInternetListResult'],
+                 vpc_lists: Sequence['outputs.GetInstancesInstanceAllowedListVpcListResult']):
+        """
+        :param str deploy_type: The deployed type of the instance.
+        :param Sequence['GetInstancesInstanceAllowedListInternetListArgs'] internet_lists: The internet list of the instance.
+        :param Sequence['GetInstancesInstanceAllowedListVpcListArgs'] vpc_lists: The vpc list of the instance.
+        """
+        pulumi.set(__self__, "deploy_type", deploy_type)
+        pulumi.set(__self__, "internet_lists", internet_lists)
+        pulumi.set(__self__, "vpc_lists", vpc_lists)
+
+    @property
+    @pulumi.getter(name="deployType")
+    def deploy_type(self) -> str:
+        """
+        The deployed type of the instance.
+        """
+        return pulumi.get(self, "deploy_type")
+
+    @property
+    @pulumi.getter(name="internetLists")
+    def internet_lists(self) -> Sequence['outputs.GetInstancesInstanceAllowedListInternetListResult']:
+        """
+        The internet list of the instance.
+        """
+        return pulumi.get(self, "internet_lists")
+
+    @property
+    @pulumi.getter(name="vpcLists")
+    def vpc_lists(self) -> Sequence['outputs.GetInstancesInstanceAllowedListVpcListResult']:
+        """
+        The vpc list of the instance.
+        """
+        return pulumi.get(self, "vpc_lists")
+
+
+@pulumi.output_type
+class GetInstancesInstanceAllowedListInternetListResult(dict):
+    def __init__(__self__, *,
+                 allowed_ip_lists: Sequence[str],
+                 port_range: str):
+        """
+        :param Sequence[str] allowed_ip_lists: The allowed ip list of the internet_list.
+        :param str port_range: The port range of the internet_list.
+        """
+        pulumi.set(__self__, "allowed_ip_lists", allowed_ip_lists)
+        pulumi.set(__self__, "port_range", port_range)
+
+    @property
+    @pulumi.getter(name="allowedIpLists")
+    def allowed_ip_lists(self) -> Sequence[str]:
+        """
+        The allowed ip list of the internet_list.
+        """
+        return pulumi.get(self, "allowed_ip_lists")
+
+    @property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> str:
+        """
+        The port range of the internet_list.
+        """
+        return pulumi.get(self, "port_range")
+
+
+@pulumi.output_type
+class GetInstancesInstanceAllowedListVpcListResult(dict):
+    def __init__(__self__, *,
+                 allowed_ip_lists: Sequence[str],
+                 port_range: str):
+        """
+        :param Sequence[str] allowed_ip_lists: The allowed ip list of the internet_list.
+        :param str port_range: The port range of the internet_list.
+        """
+        pulumi.set(__self__, "allowed_ip_lists", allowed_ip_lists)
+        pulumi.set(__self__, "port_range", port_range)
+
+    @property
+    @pulumi.getter(name="allowedIpLists")
+    def allowed_ip_lists(self) -> Sequence[str]:
+        """
+        The allowed ip list of the internet_list.
+        """
+        return pulumi.get(self, "allowed_ip_lists")
+
+    @property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> str:
+        """
+        The port range of the internet_list.
+        """
+        return pulumi.get(self, "port_range")
+
+
+@pulumi.output_type
+class GetInstancesInstanceUpgradeServiceDetailInfoResult(dict):
+    def __init__(__self__, *,
+                 current2_open_source_version: str):
+        """
+        :param str current2_open_source_version: The Current2OpenSourceVersion of the instance.
+        """
+        pulumi.set(__self__, "current2_open_source_version", current2_open_source_version)
+
+    @property
+    @pulumi.getter(name="current2OpenSourceVersion")
+    def current2_open_source_version(self) -> str:
+        """
+        The Current2OpenSourceVersion of the instance.
+        """
+        return pulumi.get(self, "current2_open_source_version")
 
 
 @pulumi.output_type
@@ -520,27 +771,40 @@ class GetTopicsTopicResult(dict):
     def __init__(__self__, *,
                  compact_topic: bool,
                  create_time: str,
+                 id: str,
+                 instance_id: str,
                  local_topic: bool,
                  partition_num: int,
                  remark: str,
                  status: int,
-                 topic: str):
+                 status_name: str,
+                 topic: str,
+                 tags: Optional[Mapping[str, Any]] = None):
         """
         :param bool compact_topic: whether the current topic is kafka compact topic or not.
         :param str create_time: Time of creation.
+        :param str id: The ID of the topic, It is formatted to `<instance_id>:<topic>`.
+        :param str instance_id: ID of the instance.
         :param bool local_topic: whether the current topic is kafka local topic or not.
         :param int partition_num: Partition number of the topic.
         :param str remark: Remark of the topic.
         :param int status: The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
-        :param str topic: The name of the topic.
+        :param str status_name: The status_name of the topic.
+        :param str topic: A topic to filter results by the topic name.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the topic.
         """
         pulumi.set(__self__, "compact_topic", compact_topic)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "local_topic", local_topic)
         pulumi.set(__self__, "partition_num", partition_num)
         pulumi.set(__self__, "remark", remark)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_name", status_name)
         pulumi.set(__self__, "topic", topic)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="compactTopic")
@@ -557,6 +821,22 @@ class GetTopicsTopicResult(dict):
         Time of creation.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the topic, It is formatted to `<instance_id>:<topic>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="localTopic")
@@ -591,12 +871,28 @@ class GetTopicsTopicResult(dict):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="statusName")
+    def status_name(self) -> str:
+        """
+        The status_name of the topic.
+        """
+        return pulumi.get(self, "status_name")
+
+    @property
     @pulumi.getter
     def topic(self) -> str:
         """
-        The name of the topic.
+        A topic to filter results by the topic name.
         """
         return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A mapping of tags to assign to the topic.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

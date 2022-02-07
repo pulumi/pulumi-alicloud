@@ -77,6 +77,12 @@ namespace Pulumi.AliCloud.Nas
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+        /// </summary>
+        [Input("fileSystemType")]
+        public string? FileSystemType { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -87,6 +93,12 @@ namespace Pulumi.AliCloud.Nas
 
     public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -99,6 +111,7 @@ namespace Pulumi.AliCloud.Nas
     [OutputType]
     public sealed class GetZonesResult
     {
+        public readonly string? FileSystemType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -111,12 +124,15 @@ namespace Pulumi.AliCloud.Nas
 
         [OutputConstructor]
         private GetZonesResult(
+            string? fileSystemType,
+
             string id,
 
             string? outputFile,
 
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
+            FileSystemType = fileSystemType;
             Id = id;
             OutputFile = outputFile;
             Zones = zones;

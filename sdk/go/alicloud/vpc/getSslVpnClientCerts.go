@@ -65,6 +65,7 @@ type GetSslVpnClientCertsArgs struct {
 
 // A collection of values returned by getSslVpnClientCerts.
 type GetSslVpnClientCertsResult struct {
+	// A list of SSL-VPN client certificates. Each element contains the following attributes:
 	Certs []GetSslVpnClientCertsCert `pulumi:"certs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -118,6 +119,7 @@ func (o GetSslVpnClientCertsResultOutput) ToGetSslVpnClientCertsResultOutputWith
 	return o
 }
 
+// A list of SSL-VPN client certificates. Each element contains the following attributes:
 func (o GetSslVpnClientCertsResultOutput) Certs() GetSslVpnClientCertsCertArrayOutput {
 	return o.ApplyT(func(v GetSslVpnClientCertsResult) []GetSslVpnClientCertsCert { return v.Certs }).(GetSslVpnClientCertsCertArrayOutput)
 }

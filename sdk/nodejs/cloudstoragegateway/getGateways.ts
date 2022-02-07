@@ -36,6 +36,8 @@ export function getGateways(args: GetGatewaysArgs, opts?: pulumi.InvokeOptions):
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "status": args.status,
         "storageBundleId": args.storageBundleId,
     }, opts);
@@ -54,6 +56,8 @@ export interface GetGatewaysArgs {
      */
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * gateway status.
      */
@@ -77,8 +81,11 @@ export interface GetGatewaysResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly status?: string;
     readonly storageBundleId: string;
+    readonly totalCount: number;
 }
 
 export function getGatewaysOutput(args: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
@@ -98,6 +105,8 @@ export interface GetGatewaysOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * gateway status.
      */

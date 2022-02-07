@@ -22,11 +22,10 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
-        :param pulumi.Input[str] instance_series: User-defined DRDS instance node spec. Value range:
-               - `drds.sn1.4c8g` for DRDS instance Starter version;
-               - `drds.sn1.8c16g` for DRDS instance Standard edition;
-               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+               - `drds.sn2.4c16g` Starter Edition.
+               - `drds.sn2.8c32g` Standard Edition.
+               - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -64,11 +63,10 @@ class InstanceArgs:
     @pulumi.getter(name="instanceSeries")
     def instance_series(self) -> pulumi.Input[str]:
         """
-        User-defined DRDS instance node spec. Value range:
-        - `drds.sn1.4c8g` for DRDS instance Starter version;
-        - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+        - `drds.sn2.4c16g` Starter Edition.
+        - `drds.sn2.8c32g` Standard Edition.
+        - `drds.sn2.16c64g` Enterprise Edition.
         """
         return pulumi.get(self, "instance_series")
 
@@ -146,11 +144,10 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
-        :param pulumi.Input[str] instance_series: User-defined DRDS instance node spec. Value range:
-               - `drds.sn1.4c8g` for DRDS instance Starter version;
-               - `drds.sn1.8c16g` for DRDS instance Standard edition;
-               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+               - `drds.sn2.4c16g` Starter Edition.
+               - `drds.sn2.8c32g` Standard Edition.
+               - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -204,11 +201,10 @@ class _InstanceState:
     @pulumi.getter(name="instanceSeries")
     def instance_series(self) -> Optional[pulumi.Input[str]]:
         """
-        User-defined DRDS instance node spec. Value range:
-        - `drds.sn1.4c8g` for DRDS instance Starter version;
-        - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+        - `drds.sn2.4c16g` Starter Edition.
+        - `drds.sn2.8c32g` Standard Edition.
+        - `drds.sn2.16c64g` Enterprise Edition.
         """
         return pulumi.get(self, "instance_series")
 
@@ -278,7 +274,7 @@ class Instance(pulumi.CustomResource):
         With its compatibility with MySQL protocols and syntaxes, DRDS enables database/table sharding, smooth scaling, configuration upgrade/downgrade,
         transparent read/write splitting, and distributed transactions, providing O&M capabilities for distributed databases throughout their entire lifecycle.
 
-        For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
+        For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
 
         > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 
@@ -311,11 +307,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
-        :param pulumi.Input[str] instance_series: User-defined DRDS instance node spec. Value range:
-               - `drds.sn1.4c8g` for DRDS instance Starter version;
-               - `drds.sn1.8c16g` for DRDS instance Standard edition;
-               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+               - `drds.sn2.4c16g` Starter Edition.
+               - `drds.sn2.8c32g` Standard Edition.
+               - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -339,7 +334,7 @@ class Instance(pulumi.CustomResource):
         With its compatibility with MySQL protocols and syntaxes, DRDS enables database/table sharding, smooth scaling, configuration upgrade/downgrade,
         transparent read/write splitting, and distributed transactions, providing O&M capabilities for distributed databases throughout their entire lifecycle.
 
-        For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
+        For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
 
         > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 
@@ -442,11 +437,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
-        :param pulumi.Input[str] instance_series: User-defined DRDS instance node spec. Value range:
-               - `drds.sn1.4c8g` for DRDS instance Starter version;
-               - `drds.sn1.8c16g` for DRDS instance Standard edition;
-               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+               - `drds.sn2.4c16g` Starter Edition.
+               - `drds.sn2.8c32g` Standard Edition.
+               - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -491,11 +485,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceSeries")
     def instance_series(self) -> pulumi.Output[str]:
         """
-        User-defined DRDS instance node spec. Value range:
-        - `drds.sn1.4c8g` for DRDS instance Starter version;
-        - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+        - `drds.sn2.4c16g` Starter Edition.
+        - `drds.sn2.8c32g` Standard Edition.
+        - `drds.sn2.16c64g` Enterprise Edition.
         """
         return pulumi.get(self, "instance_series")
 

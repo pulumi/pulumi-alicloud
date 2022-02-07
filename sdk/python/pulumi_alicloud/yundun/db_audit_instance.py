@@ -14,9 +14,9 @@ __all__ = ['DBAuditInstanceArgs', 'DBAuditInstance']
 class DBAuditInstanceArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
+                 period: pulumi.Input[int],
                  plan_code: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
-                 period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -28,10 +28,9 @@ class DBAuditInstanceArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "period", period)
         pulumi.set(__self__, "plan_code", plan_code)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
-        if period is not None:
-            pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
@@ -48,6 +47,15 @@ class DBAuditInstanceArgs:
     @description.setter
     def description(self, value: pulumi.Input[str]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[int]):
+        pulumi.set(self, "period", value)
 
     @property
     @pulumi.getter(name="planCode")
@@ -72,15 +80,6 @@ class DBAuditInstanceArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vswitch_id", value)
-
-    @property
-    @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "period")
-
-    @period.setter
-    def period(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "period", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -220,29 +219,6 @@ class DBAuditInstance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
-
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-
-        > **NOTE:** Available in 1.62.0+ .
-
-        > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.yundun.DBAuditInstance("default",
-            description="Terraform-test",
-            period=1,
-            plan_code="alpha.professional",
-            vswitch_id="v-testVswitch")
-        ```
-
         ## Import
 
         Yundun_dbaudit instance can be imported using the id, e.g.
@@ -266,29 +242,6 @@ class DBAuditInstance(pulumi.CustomResource):
                  args: DBAuditInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
-
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-
-        > **NOTE:** Available in 1.62.0+ .
-
-        > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.yundun.DBAuditInstance("default",
-            description="Terraform-test",
-            period=1,
-            plan_code="alpha.professional",
-            vswitch_id="v-testVswitch")
-        ```
-
         ## Import
 
         Yundun_dbaudit instance can be imported using the id, e.g.
@@ -333,6 +286,8 @@ class DBAuditInstance(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            if period is None and not opts.urn:
+                raise TypeError("Missing required property 'period'")
             __props__.__dict__["period"] = period
             if plan_code is None and not opts.urn:
                 raise TypeError("Missing required property 'plan_code'")
@@ -393,7 +348,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[int]]:
+    def period(self) -> pulumi.Output[int]:
         return pulumi.get(self, "period")
 
     @property

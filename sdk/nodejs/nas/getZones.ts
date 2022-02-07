@@ -29,6 +29,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:nas/getZones:getZones", {
+        "fileSystemType": args.fileSystemType,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -37,6 +38,10 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
+    /**
+     * The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+     */
+    fileSystemType?: string;
     outputFile?: string;
 }
 
@@ -44,6 +49,7 @@ export interface GetZonesArgs {
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
+    readonly fileSystemType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -63,5 +69,9 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesOutputArgs {
+    /**
+     * The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+     */
+    fileSystemType?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
 }

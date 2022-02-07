@@ -81,6 +81,9 @@ export class TransitRouter extends pulumi.CustomResource {
      * The description of the transit router.
      */
     public readonly transitRouterDescription!: pulumi.Output<string | undefined>;
+    /**
+     * The transit router id of the transit router.
+     */
     public /*out*/ readonly transitRouterId!: pulumi.Output<string>;
     /**
      * The name of the transit router.
@@ -149,6 +152,9 @@ export interface TransitRouterState {
      * The description of the transit router.
      */
     transitRouterDescription?: pulumi.Input<string>;
+    /**
+     * The transit router id of the transit router.
+     */
     transitRouterId?: pulumi.Input<string>;
     /**
      * The name of the transit router.

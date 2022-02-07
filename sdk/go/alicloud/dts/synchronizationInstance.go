@@ -68,7 +68,7 @@ type SynchronizationInstance struct {
 	DestinationEndpointRegion pulumi.StringOutput `pulumi:"destinationEndpointRegion"`
 	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
-	// The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration pulumi.IntPtrOutput `pulumi:"paymentDuration"`
 	// The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
 	PaymentDurationUnit pulumi.StringPtrOutput `pulumi:"paymentDurationUnit"`
@@ -140,7 +140,7 @@ type synchronizationInstanceState struct {
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
 	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
 	InstanceClass *string `pulumi:"instanceClass"`
-	// The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration *int `pulumi:"paymentDuration"`
 	// The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
 	PaymentDurationUnit *string `pulumi:"paymentDurationUnit"`
@@ -169,7 +169,7 @@ type SynchronizationInstanceState struct {
 	DestinationEndpointRegion pulumi.StringPtrInput
 	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
 	InstanceClass pulumi.StringPtrInput
-	// The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration pulumi.IntPtrInput
 	// The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
 	PaymentDurationUnit pulumi.StringPtrInput
@@ -202,7 +202,7 @@ type synchronizationInstanceArgs struct {
 	DestinationEndpointRegion string `pulumi:"destinationEndpointRegion"`
 	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
 	InstanceClass *string `pulumi:"instanceClass"`
-	// The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration *int `pulumi:"paymentDuration"`
 	// The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
 	PaymentDurationUnit *string `pulumi:"paymentDurationUnit"`
@@ -230,7 +230,7 @@ type SynchronizationInstanceArgs struct {
 	DestinationEndpointRegion pulumi.StringInput
 	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
 	InstanceClass pulumi.StringPtrInput
-	// The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+	// The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
 	PaymentDuration pulumi.IntPtrInput
 	// The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
 	PaymentDurationUnit pulumi.StringPtrInput

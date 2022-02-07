@@ -520,6 +520,12 @@ namespace Pulumi.AliCloud.Emr
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// The Resource Group ID.
         /// </summary>
@@ -626,6 +632,12 @@ namespace Pulumi.AliCloud.Emr
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// The Resource Group ID.
         /// </summary>
@@ -676,8 +688,11 @@ namespace Pulumi.AliCloud.Emr
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         public readonly string? ResourceGroupId;
         public readonly ImmutableArray<string> StatusLists;
+        public readonly int TotalCount;
         public readonly string? VpcId;
 
         [OutputConstructor]
@@ -710,9 +725,15 @@ namespace Pulumi.AliCloud.Emr
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? resourceGroupId,
 
             ImmutableArray<string> statusLists,
+
+            int totalCount,
 
             string? vpcId)
         {
@@ -730,8 +751,11 @@ namespace Pulumi.AliCloud.Emr
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             ResourceGroupId = resourceGroupId;
             StatusLists = statusLists;
+            TotalCount = totalCount;
             VpcId = vpcId;
         }
     }

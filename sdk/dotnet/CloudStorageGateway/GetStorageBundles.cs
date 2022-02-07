@@ -38,6 +38,12 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         public GetStorageBundlesArgs()
         {
         }
@@ -62,6 +68,12 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         public GetStorageBundlesInvokeArgs()
         {
         }
@@ -81,6 +93,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
+        public readonly int TotalCount;
 
         [OutputConstructor]
         private GetStorageBundlesResult(
@@ -96,7 +111,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
 
             ImmutableArray<string> names,
 
-            string? outputFile)
+            string? outputFile,
+
+            int? pageNumber,
+
+            int? pageSize,
+
+            int totalCount)
         {
             BackendBucketRegionId = backendBucketRegionId;
             Bundles = bundles;
@@ -105,6 +126,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+            TotalCount = totalCount;
         }
     }
 }

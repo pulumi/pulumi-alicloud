@@ -42,6 +42,8 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "status": args.status,
         "tags": args.tags,
         "vpcId": args.vpcId,
@@ -78,6 +80,8 @@ export interface GetInstancesArgs {
      */
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * Status of the instance.
      */
@@ -132,11 +136,14 @@ export interface GetInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     /**
      * Status of the instance.
      */
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * ID of the VPC the instance belongs to.
      */
@@ -180,6 +187,8 @@ export interface GetInstancesOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * Status of the instance.
      */

@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .access_strategy import *
+from .address_pool import *
 from .alidns_domain import *
 from .alidns_domain_attachment import *
 from .alidns_instance import *
@@ -16,6 +18,8 @@ from .dns_domain import *
 from .domain import *
 from .domain_attachment import *
 from .domain_group import *
+from .get_access_strategies import *
+from .get_address_pools import *
 from .get_alidns_domain_groups import *
 from .get_alidns_domains import *
 from .get_alidns_instances import *
@@ -33,6 +37,7 @@ from .get_resolution_lines import *
 from .group import *
 from .gtm_instance import *
 from .instance import *
+from .monitor_config import *
 from .record import *
 from ._inputs import *
 from . import outputs

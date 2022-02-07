@@ -42,6 +42,7 @@ __all__ = [
     'GetTlsCipherPoliciesPolicyResult',
     'GetTlsCipherPoliciesPolicyRelateListenerResult',
     'GetZonesZoneResult',
+    'GetZonesZoneSupportedResourceResult',
 ]
 
 @pulumi.output_type
@@ -2817,13 +2818,16 @@ class GetTlsCipherPoliciesPolicyRelateListenerResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
-                 slb_slave_zone_ids: Sequence[str]):
+                 slb_slave_zone_ids: Sequence[str],
+                 supported_resources: Sequence['outputs.GetZonesZoneSupportedResourceResult']):
         """
         :param str id: ID of the zone.
         :param Sequence[str] slb_slave_zone_ids: A list of slb slave zone ids in which the slb master zone.
+        :param Sequence['GetZonesZoneSupportedResourceArgs'] supported_resources: (Available in 1.154.0+)A list of available resource which the slb master zone supported.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "slb_slave_zone_ids", slb_slave_zone_ids)
+        pulumi.set(__self__, "supported_resources", supported_resources)
 
     @property
     @pulumi.getter
@@ -2840,5 +2844,42 @@ class GetZonesZoneResult(dict):
         A list of slb slave zone ids in which the slb master zone.
         """
         return pulumi.get(self, "slb_slave_zone_ids")
+
+    @property
+    @pulumi.getter(name="supportedResources")
+    def supported_resources(self) -> Sequence['outputs.GetZonesZoneSupportedResourceResult']:
+        """
+        (Available in 1.154.0+)A list of available resource which the slb master zone supported.
+        """
+        return pulumi.get(self, "supported_resources")
+
+
+@pulumi.output_type
+class GetZonesZoneSupportedResourceResult(dict):
+    def __init__(__self__, *,
+                 address_ip_version: str,
+                 address_type: str):
+        """
+        :param str address_ip_version: The type of IP address.
+        :param str address_type: The type of network.
+        """
+        pulumi.set(__self__, "address_ip_version", address_ip_version)
+        pulumi.set(__self__, "address_type", address_type)
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> str:
+        """
+        The type of IP address.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> str:
+        """
+        The type of network.
+        """
+        return pulumi.get(self, "address_type")
 
 

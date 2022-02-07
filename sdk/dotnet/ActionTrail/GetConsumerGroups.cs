@@ -93,6 +93,18 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("consumerIdRegex")]
         public string? ConsumerIdRegex { get; set; }
 
+        [Input("ids")]
+        private List<string>? _ids;
+
+        /// <summary>
+        /// A list of ALIKAFKA Consumer Groups IDs, It is formatted to `&lt;instance_id&gt;:&lt;consumer_id&gt;`.
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the consumer groups.
         /// </summary>
@@ -115,6 +127,18 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("consumerIdRegex")]
         public Input<string>? ConsumerIdRegex { get; set; }
 
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ALIKAFKA Consumer Groups IDs, It is formatted to `&lt;instance_id&gt;:&lt;consumer_id&gt;`.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the consumer groups.
         /// </summary>
@@ -134,15 +158,24 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class GetConsumerGroupsResult
     {
         public readonly string? ConsumerIdRegex;
-        /// <summary>
-        /// A list of consumer group ids.
-        /// </summary>
         public readonly ImmutableArray<string> ConsumerIds;
+        /// <summary>
+        /// A list of consumer group. Each element contains the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConsumerGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The instance_id of the instance.
+        /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// A list of consumer group names.
+        /// </summary>
+        public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 
         [OutputConstructor]
@@ -151,16 +184,25 @@ namespace Pulumi.AliCloud.ActionTrail
 
             ImmutableArray<string> consumerIds,
 
+            ImmutableArray<Outputs.GetConsumerGroupsGroupResult> groups,
+
             string id,
 
+            ImmutableArray<string> ids,
+
             string instanceId,
+
+            ImmutableArray<string> names,
 
             string? outputFile)
         {
             ConsumerIdRegex = consumerIdRegex;
             ConsumerIds = consumerIds;
+            Groups = groups;
             Id = id;
+            Ids = ids;
             InstanceId = instanceId;
+            Names = names;
             OutputFile = outputFile;
         }
     }

@@ -16,6 +16,51 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.142.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             VpcName = "example_value",
+    ///             EnableIpv6 = true,
+    ///         });
+    ///         var exampleIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("exampleIpv6Gateway", new AliCloud.Vpc.Ipv6GatewayArgs
+    ///         {
+    ///             Ipv6GatewayName = "example_value",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+    ///         {
+    ///             NameRegex = "ecs_with_ipv6_address",
+    ///             Status = "Running",
+    ///         }));
+    ///         var defaultIpv6Addresses = defaultInstances.Apply(defaultInstances =&gt; Output.Create(AliCloud.Vpc.GetIpv6Addresses.InvokeAsync(new AliCloud.Vpc.GetIpv6AddressesArgs
+    ///         {
+    ///             AssociatedInstanceId = defaultInstances.Instances?[0]?.Id,
+    ///             Status = "Available",
+    ///         })));
+    ///         var exampleIpv6EgressRule = new AliCloud.Vpc.Ipv6EgressRule("exampleIpv6EgressRule", new AliCloud.Vpc.Ipv6EgressRuleArgs
+    ///         {
+    ///             InstanceId = defaultIpv6Addresses.Apply(defaultIpv6Addresses =&gt; defaultIpv6Addresses.Ids?[0]),
+    ///             Ipv6EgressRuleName = "example_value",
+    ///             Description = "example_value",
+    ///             Ipv6GatewayId = exampleIpv6Gateway.Id,
+    ///             InstanceType = "Ipv6Address",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Ipv6 Egress Rule can be imported using the id, e.g.

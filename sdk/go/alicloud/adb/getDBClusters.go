@@ -60,6 +60,8 @@ type GetDBClustersArgs struct {
 	// A list of DBCluster IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the resource.
@@ -79,9 +81,12 @@ type GetDBClustersResult struct {
 	Id              string                 `pulumi:"id"`
 	Ids             []string               `pulumi:"ids"`
 	OutputFile      *string                `pulumi:"outputFile"`
+	PageNumber      *int                   `pulumi:"pageNumber"`
+	PageSize        *int                   `pulumi:"pageSize"`
 	ResourceGroupId *string                `pulumi:"resourceGroupId"`
 	Status          *string                `pulumi:"status"`
 	Tags            map[string]interface{} `pulumi:"tags"`
+	TotalCount      int                    `pulumi:"totalCount"`
 }
 
 func GetDBClustersOutput(ctx *pulumi.Context, args GetDBClustersOutputArgs, opts ...pulumi.InvokeOption) GetDBClustersResultOutput {
@@ -104,6 +109,8 @@ type GetDBClustersOutputArgs struct {
 	// A list of DBCluster IDs.
 	Ids        pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput      `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput      `pulumi:"pageSize"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the resource.
@@ -164,6 +171,14 @@ func (o GetDBClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDBClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetDBClustersResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDBClustersResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetDBClustersResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDBClustersResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetDBClustersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDBClustersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -174,6 +189,10 @@ func (o GetDBClustersResultOutput) Status() pulumi.StringPtrOutput {
 
 func (o GetDBClustersResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetDBClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetDBClustersResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDBClustersResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 func init() {

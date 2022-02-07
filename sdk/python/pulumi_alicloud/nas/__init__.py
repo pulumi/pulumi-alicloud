@@ -7,13 +7,23 @@ import typing
 # Export this package's modules as members:
 from .access_group import *
 from .access_rule import *
+from .auto_snapshot_policy import *
+from .data_flow import *
 from .file_system import *
+from .fileset import *
 from .get_access_groups import *
 from .get_access_rules import *
+from .get_auto_snapshot_policies import *
+from .get_data_flows import *
 from .get_file_systems import *
+from .get_filesets import *
+from .get_lifecycle_policies import *
 from .get_mount_targets import *
 from .get_protocols import *
 from .get_service import *
+from .get_snapshots import *
 from .get_zones import *
+from .lifecycle_policy import *
 from .mount_target import *
+from .snapshot import *
 from . import outputs

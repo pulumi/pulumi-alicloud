@@ -120,6 +120,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// The RAM role name which the instance attaches.
         /// </summary>
@@ -222,6 +228,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// The RAM role name which the instance attaches.
         /// </summary>
@@ -319,6 +331,8 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         /// <summary>
         /// The Ram role name.
         /// </summary>
@@ -335,6 +349,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A map of tags assigned to the ECS instance.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
         /// <summary>
         /// ID of the VPC the instance belongs to.
         /// </summary>
@@ -362,6 +377,10 @@ namespace Pulumi.AliCloud.Ecs
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? ramRoleName,
 
             string? resourceGroupId,
@@ -369,6 +388,8 @@ namespace Pulumi.AliCloud.Ecs
             string? status,
 
             ImmutableDictionary<string, object>? tags,
+
+            int totalCount,
 
             string? vpcId,
 
@@ -382,10 +403,13 @@ namespace Pulumi.AliCloud.Ecs
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             RamRoleName = ramRoleName;
             ResourceGroupId = resourceGroupId;
             Status = status;
             Tags = tags;
+            TotalCount = totalCount;
             VpcId = vpcId;
             VswitchId = vswitchId;
         }

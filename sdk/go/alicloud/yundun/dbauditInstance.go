@@ -11,42 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
-//
-// > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-//
-// > **NOTE:** Available in 1.62.0+ .
-//
-// > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/yundun"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yundun.NewDBAuditInstance(ctx, "default", &yundun.DBAuditInstanceArgs{
-// 			Description: pulumi.String("Terraform-test"),
-// 			Period:      pulumi.Int(1),
-// 			PlanCode:    pulumi.String("alpha.professional"),
-// 			VswitchId:   pulumi.String("v-testVswitch"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Yundun_dbaudit instance can be imported using the id, e.g.
@@ -59,7 +23,7 @@ type DBAuditInstance struct {
 
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	Period      pulumi.IntOutput    `pulumi:"period"`
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringOutput `pulumi:"planCode"`
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
@@ -79,6 +43,9 @@ func NewDBAuditInstance(ctx *pulumi.Context,
 
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.Period == nil {
+		return nil, errors.New("invalid value for required argument 'Period'")
 	}
 	if args.PlanCode == nil {
 		return nil, errors.New("invalid value for required argument 'PlanCode'")
@@ -142,7 +109,7 @@ func (DBAuditInstanceState) ElementType() reflect.Type {
 type dbauditInstanceArgs struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description string `pulumi:"description"`
-	Period      *int   `pulumi:"period"`
+	Period      int    `pulumi:"period"`
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode string `pulumi:"planCode"`
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
@@ -157,7 +124,7 @@ type dbauditInstanceArgs struct {
 type DBAuditInstanceArgs struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringInput
-	Period      pulumi.IntPtrInput
+	Period      pulumi.IntInput
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringInput
 	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.

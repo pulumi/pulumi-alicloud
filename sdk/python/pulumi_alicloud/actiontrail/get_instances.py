@@ -21,7 +21,10 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,6 +43,11 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -90,6 +98,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
         if False:
             yield self
         return GetInstancesResult(
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             instances=self.instances,
@@ -98,7 +107,8 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             output_file=self.output_file)
 
 
-def get_instances(ids: Optional[Sequence[str]] = None,
+def get_instances(enable_details: Optional[bool] = None,
+                  ids: Optional[Sequence[str]] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
@@ -140,6 +150,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by the instance name.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -150,6 +161,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
         instances=__ret__.instances,
@@ -159,7 +171,8 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
 
 @_utilities.lift_output_func(get_instances)
-def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:

@@ -78,7 +78,10 @@ namespace Pulumi.AliCloud.Slb
         public string? AvailableSlbAddressIpVersion { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+        /// Filter the results by a slb instance network type. Valid values:
+        /// * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
+        /// * classic_internet: a public-facing SLB instance.
+        /// * classic_intranet: an internal SLB instance that is deployed in a classic network.
         /// </summary>
         [Input("availableSlbAddressType")]
         public string? AvailableSlbAddressType { get; set; }
@@ -106,7 +109,10 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AvailableSlbAddressIpVersion { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+        /// Filter the results by a slb instance network type. Valid values:
+        /// * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
+        /// * classic_internet: a public-facing SLB instance.
+        /// * classic_intranet: an internal SLB instance that is deployed in a classic network.
         /// </summary>
         [Input("availableSlbAddressType")]
         public Input<string>? AvailableSlbAddressType { get; set; }

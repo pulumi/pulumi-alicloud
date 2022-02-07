@@ -43,6 +43,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        /// </summary>
         [Output("resourceType")]
         public Output<string?> ResourceType { get; private set; } = null!;
 
@@ -70,6 +73,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("transitRouterAttachmentDescription")]
         public Output<string?> TransitRouterAttachmentDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the transit router vbr attachment.
+        /// </summary>
         [Output("transitRouterAttachmentId")]
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
 
@@ -91,6 +97,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("vbrId")]
         public Output<string> VbrId { get; private set; } = null!;
 
+        /// <summary>
+        /// The owner id of the transit router vbr attachment.
+        /// </summary>
         [Output("vbrOwnerId")]
         public Output<string> VbrOwnerId { get; private set; } = null!;
 
@@ -158,6 +167,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
@@ -197,6 +209,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("vbrId", required: true)]
         public Input<string> VbrId { get; set; } = null!;
 
+        /// <summary>
+        /// The owner id of the transit router vbr attachment.
+        /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }
 
@@ -225,6 +240,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
@@ -252,6 +270,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("transitRouterAttachmentDescription")]
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
+        /// <summary>
+        /// The id of the transit router vbr attachment.
+        /// </summary>
         [Input("transitRouterAttachmentId")]
         public Input<string>? TransitRouterAttachmentId { get; set; }
 
@@ -273,6 +294,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("vbrId")]
         public Input<string>? VbrId { get; set; }
 
+        /// <summary>
+        /// The owner id of the transit router vbr attachment.
+        /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }
 

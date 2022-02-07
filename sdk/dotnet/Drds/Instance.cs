@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Drds
     /// With its compatibility with MySQL protocols and syntaxes, DRDS enables database/table sharding, smooth scaling, configuration upgrade/downgrade,
     /// transparent read/write splitting, and distributed transactions, providing O&amp;M capabilities for distributed databases throughout their entire lifecycle.
     /// 
-    /// For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
+    /// For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
     /// 
     /// &gt; **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
     /// 
@@ -68,11 +68,10 @@ namespace Pulumi.AliCloud.Drds
         public Output<string?> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined DRDS instance node spec. Value range:
-        /// - `drds.sn1.4c8g` for DRDS instance Starter version;
-        /// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        /// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        /// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        /// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+        /// - `drds.sn2.4c16g` Starter Edition.
+        /// - `drds.sn2.8c32g` Standard Edition.
+        /// - `drds.sn2.16c64g` Enterprise Edition.
         /// </summary>
         [Output("instanceSeries")]
         public Output<string> InstanceSeries { get; private set; } = null!;
@@ -162,11 +161,10 @@ namespace Pulumi.AliCloud.Drds
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// User-defined DRDS instance node spec. Value range:
-        /// - `drds.sn1.4c8g` for DRDS instance Starter version;
-        /// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        /// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        /// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        /// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+        /// - `drds.sn2.4c16g` Starter Edition.
+        /// - `drds.sn2.8c32g` Standard Edition.
+        /// - `drds.sn2.16c64g` Enterprise Edition.
         /// </summary>
         [Input("instanceSeries", required: true)]
         public Input<string> InstanceSeries { get; set; } = null!;
@@ -217,11 +215,10 @@ namespace Pulumi.AliCloud.Drds
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// User-defined DRDS instance node spec. Value range:
-        /// - `drds.sn1.4c8g` for DRDS instance Starter version;
-        /// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        /// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        /// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+        /// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+        /// - `drds.sn2.4c16g` Starter Edition.
+        /// - `drds.sn2.8c32g` Standard Edition.
+        /// - `drds.sn2.16c64g` Enterprise Edition.
         /// </summary>
         [Input("instanceSeries")]
         public Input<string>? InstanceSeries { get; set; }

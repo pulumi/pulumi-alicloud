@@ -914,6 +914,594 @@ func (o NetworkAclResourceArrayOutput) Index(i pulumi.IntInput) NetworkAclResour
 	}).(NetworkAclResourceOutput)
 }
 
+type GetBgpGroupsGroup struct {
+	// The key used by the BGP group.
+	AuthKey string `pulumi:"authKey"`
+	// The name of the BGP group.
+	BgpGroupName string `pulumi:"bgpGroupName"`
+	// Description of the BGP group.
+	Description string `pulumi:"description"`
+	// The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
+	Hold string `pulumi:"hold"`
+	// The ID of the Bgp Group.
+	Id string `pulumi:"id"`
+	// IP version.
+	IpVersion string `pulumi:"ipVersion"`
+	// Whether the AS number is false.
+	IsFakeAsn bool `pulumi:"isFakeAsn"`
+	// The keepalive time.
+	Keepalive string `pulumi:"keepalive"`
+	// The local AS number.
+	LocalAsn int `pulumi:"localAsn"`
+	// The autonomous system (AS) number of the BGP peer.
+	PeerAsn int `pulumi:"peerAsn"`
+	// Routing limits.
+	RouteLimit string `pulumi:"routeLimit"`
+	// The ID of the VBR.
+	RouterId string `pulumi:"routerId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetBgpGroupsGroupInput is an input type that accepts GetBgpGroupsGroupArgs and GetBgpGroupsGroupOutput values.
+// You can construct a concrete instance of `GetBgpGroupsGroupInput` via:
+//
+//          GetBgpGroupsGroupArgs{...}
+type GetBgpGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetBgpGroupsGroupOutput() GetBgpGroupsGroupOutput
+	ToGetBgpGroupsGroupOutputWithContext(context.Context) GetBgpGroupsGroupOutput
+}
+
+type GetBgpGroupsGroupArgs struct {
+	// The key used by the BGP group.
+	AuthKey pulumi.StringInput `pulumi:"authKey"`
+	// The name of the BGP group.
+	BgpGroupName pulumi.StringInput `pulumi:"bgpGroupName"`
+	// Description of the BGP group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
+	Hold pulumi.StringInput `pulumi:"hold"`
+	// The ID of the Bgp Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// IP version.
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
+	// Whether the AS number is false.
+	IsFakeAsn pulumi.BoolInput `pulumi:"isFakeAsn"`
+	// The keepalive time.
+	Keepalive pulumi.StringInput `pulumi:"keepalive"`
+	// The local AS number.
+	LocalAsn pulumi.IntInput `pulumi:"localAsn"`
+	// The autonomous system (AS) number of the BGP peer.
+	PeerAsn pulumi.IntInput `pulumi:"peerAsn"`
+	// Routing limits.
+	RouteLimit pulumi.StringInput `pulumi:"routeLimit"`
+	// The ID of the VBR.
+	RouterId pulumi.StringInput `pulumi:"routerId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBgpGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBgpGroupsGroup)(nil)).Elem()
+}
+
+func (i GetBgpGroupsGroupArgs) ToGetBgpGroupsGroupOutput() GetBgpGroupsGroupOutput {
+	return i.ToGetBgpGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetBgpGroupsGroupArgs) ToGetBgpGroupsGroupOutputWithContext(ctx context.Context) GetBgpGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBgpGroupsGroupOutput)
+}
+
+// GetBgpGroupsGroupArrayInput is an input type that accepts GetBgpGroupsGroupArray and GetBgpGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetBgpGroupsGroupArrayInput` via:
+//
+//          GetBgpGroupsGroupArray{ GetBgpGroupsGroupArgs{...} }
+type GetBgpGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetBgpGroupsGroupArrayOutput() GetBgpGroupsGroupArrayOutput
+	ToGetBgpGroupsGroupArrayOutputWithContext(context.Context) GetBgpGroupsGroupArrayOutput
+}
+
+type GetBgpGroupsGroupArray []GetBgpGroupsGroupInput
+
+func (GetBgpGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBgpGroupsGroup)(nil)).Elem()
+}
+
+func (i GetBgpGroupsGroupArray) ToGetBgpGroupsGroupArrayOutput() GetBgpGroupsGroupArrayOutput {
+	return i.ToGetBgpGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetBgpGroupsGroupArray) ToGetBgpGroupsGroupArrayOutputWithContext(ctx context.Context) GetBgpGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBgpGroupsGroupArrayOutput)
+}
+
+type GetBgpGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetBgpGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBgpGroupsGroup)(nil)).Elem()
+}
+
+func (o GetBgpGroupsGroupOutput) ToGetBgpGroupsGroupOutput() GetBgpGroupsGroupOutput {
+	return o
+}
+
+func (o GetBgpGroupsGroupOutput) ToGetBgpGroupsGroupOutputWithContext(ctx context.Context) GetBgpGroupsGroupOutput {
+	return o
+}
+
+// The key used by the BGP group.
+func (o GetBgpGroupsGroupOutput) AuthKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.AuthKey }).(pulumi.StringOutput)
+}
+
+// The name of the BGP group.
+func (o GetBgpGroupsGroupOutput) BgpGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.BgpGroupName }).(pulumi.StringOutput)
+}
+
+// Description of the BGP group.
+func (o GetBgpGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
+func (o GetBgpGroupsGroupOutput) Hold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.Hold }).(pulumi.StringOutput)
+}
+
+// The ID of the Bgp Group.
+func (o GetBgpGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP version.
+func (o GetBgpGroupsGroupOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// Whether the AS number is false.
+func (o GetBgpGroupsGroupOutput) IsFakeAsn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) bool { return v.IsFakeAsn }).(pulumi.BoolOutput)
+}
+
+// The keepalive time.
+func (o GetBgpGroupsGroupOutput) Keepalive() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.Keepalive }).(pulumi.StringOutput)
+}
+
+// The local AS number.
+func (o GetBgpGroupsGroupOutput) LocalAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) int { return v.LocalAsn }).(pulumi.IntOutput)
+}
+
+// The autonomous system (AS) number of the BGP peer.
+func (o GetBgpGroupsGroupOutput) PeerAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) int { return v.PeerAsn }).(pulumi.IntOutput)
+}
+
+// Routing limits.
+func (o GetBgpGroupsGroupOutput) RouteLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.RouteLimit }).(pulumi.StringOutput)
+}
+
+// The ID of the VBR.
+func (o GetBgpGroupsGroupOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetBgpGroupsGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBgpGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBgpGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBgpGroupsGroup)(nil)).Elem()
+}
+
+func (o GetBgpGroupsGroupArrayOutput) ToGetBgpGroupsGroupArrayOutput() GetBgpGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetBgpGroupsGroupArrayOutput) ToGetBgpGroupsGroupArrayOutputWithContext(ctx context.Context) GetBgpGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetBgpGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetBgpGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBgpGroupsGroup {
+		return vs[0].([]GetBgpGroupsGroup)[vs[1].(int)]
+	}).(GetBgpGroupsGroupOutput)
+}
+
+type GetBgpNetworksNetwork struct {
+	// Advertised BGP networks.
+	DstCidrBlock string `pulumi:"dstCidrBlock"`
+	// The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
+	Id string `pulumi:"id"`
+	// The ID of the vRouter.
+	RouterId string `pulumi:"routerId"`
+	// The state of the advertised BGP network.
+	Status string `pulumi:"status"`
+}
+
+// GetBgpNetworksNetworkInput is an input type that accepts GetBgpNetworksNetworkArgs and GetBgpNetworksNetworkOutput values.
+// You can construct a concrete instance of `GetBgpNetworksNetworkInput` via:
+//
+//          GetBgpNetworksNetworkArgs{...}
+type GetBgpNetworksNetworkInput interface {
+	pulumi.Input
+
+	ToGetBgpNetworksNetworkOutput() GetBgpNetworksNetworkOutput
+	ToGetBgpNetworksNetworkOutputWithContext(context.Context) GetBgpNetworksNetworkOutput
+}
+
+type GetBgpNetworksNetworkArgs struct {
+	// Advertised BGP networks.
+	DstCidrBlock pulumi.StringInput `pulumi:"dstCidrBlock"`
+	// The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the vRouter.
+	RouterId pulumi.StringInput `pulumi:"routerId"`
+	// The state of the advertised BGP network.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBgpNetworksNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBgpNetworksNetwork)(nil)).Elem()
+}
+
+func (i GetBgpNetworksNetworkArgs) ToGetBgpNetworksNetworkOutput() GetBgpNetworksNetworkOutput {
+	return i.ToGetBgpNetworksNetworkOutputWithContext(context.Background())
+}
+
+func (i GetBgpNetworksNetworkArgs) ToGetBgpNetworksNetworkOutputWithContext(ctx context.Context) GetBgpNetworksNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBgpNetworksNetworkOutput)
+}
+
+// GetBgpNetworksNetworkArrayInput is an input type that accepts GetBgpNetworksNetworkArray and GetBgpNetworksNetworkArrayOutput values.
+// You can construct a concrete instance of `GetBgpNetworksNetworkArrayInput` via:
+//
+//          GetBgpNetworksNetworkArray{ GetBgpNetworksNetworkArgs{...} }
+type GetBgpNetworksNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetBgpNetworksNetworkArrayOutput() GetBgpNetworksNetworkArrayOutput
+	ToGetBgpNetworksNetworkArrayOutputWithContext(context.Context) GetBgpNetworksNetworkArrayOutput
+}
+
+type GetBgpNetworksNetworkArray []GetBgpNetworksNetworkInput
+
+func (GetBgpNetworksNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBgpNetworksNetwork)(nil)).Elem()
+}
+
+func (i GetBgpNetworksNetworkArray) ToGetBgpNetworksNetworkArrayOutput() GetBgpNetworksNetworkArrayOutput {
+	return i.ToGetBgpNetworksNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetBgpNetworksNetworkArray) ToGetBgpNetworksNetworkArrayOutputWithContext(ctx context.Context) GetBgpNetworksNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBgpNetworksNetworkArrayOutput)
+}
+
+type GetBgpNetworksNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetBgpNetworksNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBgpNetworksNetwork)(nil)).Elem()
+}
+
+func (o GetBgpNetworksNetworkOutput) ToGetBgpNetworksNetworkOutput() GetBgpNetworksNetworkOutput {
+	return o
+}
+
+func (o GetBgpNetworksNetworkOutput) ToGetBgpNetworksNetworkOutputWithContext(ctx context.Context) GetBgpNetworksNetworkOutput {
+	return o
+}
+
+// Advertised BGP networks.
+func (o GetBgpNetworksNetworkOutput) DstCidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpNetworksNetwork) string { return v.DstCidrBlock }).(pulumi.StringOutput)
+}
+
+// The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
+func (o GetBgpNetworksNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpNetworksNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the vRouter.
+func (o GetBgpNetworksNetworkOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpNetworksNetwork) string { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// The state of the advertised BGP network.
+func (o GetBgpNetworksNetworkOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpNetworksNetwork) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBgpNetworksNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBgpNetworksNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBgpNetworksNetwork)(nil)).Elem()
+}
+
+func (o GetBgpNetworksNetworkArrayOutput) ToGetBgpNetworksNetworkArrayOutput() GetBgpNetworksNetworkArrayOutput {
+	return o
+}
+
+func (o GetBgpNetworksNetworkArrayOutput) ToGetBgpNetworksNetworkArrayOutputWithContext(ctx context.Context) GetBgpNetworksNetworkArrayOutput {
+	return o
+}
+
+func (o GetBgpNetworksNetworkArrayOutput) Index(i pulumi.IntInput) GetBgpNetworksNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBgpNetworksNetwork {
+		return vs[0].([]GetBgpNetworksNetwork)[vs[1].(int)]
+	}).(GetBgpNetworksNetworkOutput)
+}
+
+type GetBgpPeersPeer struct {
+	// The authentication key of the BGP group.
+	AuthKey string `pulumi:"authKey"`
+	// The BFD hop count.
+	BfdMultiHop int `pulumi:"bfdMultiHop"`
+	// The ID of the BGP group.
+	BgpGroupId string `pulumi:"bgpGroupId"`
+	// The ID of the BGP neighbor.
+	BgpPeerId string `pulumi:"bgpPeerId"`
+	// The name of the BGP neighbor.
+	BgpPeerName string `pulumi:"bgpPeerName"`
+	// The status of the BGP connection.
+	BgpStatus string `pulumi:"bgpStatus"`
+	// The description of the BGP group.
+	Description string `pulumi:"description"`
+	// Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
+	EnableBfd bool `pulumi:"enableBfd"`
+	// The hold time.
+	Hold string `pulumi:"hold"`
+	// The ID of the Bgp Peer.
+	Id string `pulumi:"id"`
+	// The IP version.
+	IpVersion string `pulumi:"ipVersion"`
+	// Indicates whether a fake AS number is used.
+	IsFake bool `pulumi:"isFake"`
+	// The keepalive time.
+	Keepalive string `pulumi:"keepalive"`
+	// The AS number of the device on the Alibaba Cloud side.
+	LocalAsn string `pulumi:"localAsn"`
+	// The autonomous system (AS) number of the BGP peer.
+	PeerAsn string `pulumi:"peerAsn"`
+	// The IP address of the BGP neighbor.
+	PeerIpAddress string `pulumi:"peerIpAddress"`
+	// The limit on routes.
+	RouteLimit string `pulumi:"routeLimit"`
+	// The ID of the router.
+	RouterId string `pulumi:"routerId"`
+	// The status of the BGP peer.
+	Status string `pulumi:"status"`
+}
+
+// GetBgpPeersPeerInput is an input type that accepts GetBgpPeersPeerArgs and GetBgpPeersPeerOutput values.
+// You can construct a concrete instance of `GetBgpPeersPeerInput` via:
+//
+//          GetBgpPeersPeerArgs{...}
+type GetBgpPeersPeerInput interface {
+	pulumi.Input
+
+	ToGetBgpPeersPeerOutput() GetBgpPeersPeerOutput
+	ToGetBgpPeersPeerOutputWithContext(context.Context) GetBgpPeersPeerOutput
+}
+
+type GetBgpPeersPeerArgs struct {
+	// The authentication key of the BGP group.
+	AuthKey pulumi.StringInput `pulumi:"authKey"`
+	// The BFD hop count.
+	BfdMultiHop pulumi.IntInput `pulumi:"bfdMultiHop"`
+	// The ID of the BGP group.
+	BgpGroupId pulumi.StringInput `pulumi:"bgpGroupId"`
+	// The ID of the BGP neighbor.
+	BgpPeerId pulumi.StringInput `pulumi:"bgpPeerId"`
+	// The name of the BGP neighbor.
+	BgpPeerName pulumi.StringInput `pulumi:"bgpPeerName"`
+	// The status of the BGP connection.
+	BgpStatus pulumi.StringInput `pulumi:"bgpStatus"`
+	// The description of the BGP group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
+	EnableBfd pulumi.BoolInput `pulumi:"enableBfd"`
+	// The hold time.
+	Hold pulumi.StringInput `pulumi:"hold"`
+	// The ID of the Bgp Peer.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP version.
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
+	// Indicates whether a fake AS number is used.
+	IsFake pulumi.BoolInput `pulumi:"isFake"`
+	// The keepalive time.
+	Keepalive pulumi.StringInput `pulumi:"keepalive"`
+	// The AS number of the device on the Alibaba Cloud side.
+	LocalAsn pulumi.StringInput `pulumi:"localAsn"`
+	// The autonomous system (AS) number of the BGP peer.
+	PeerAsn pulumi.StringInput `pulumi:"peerAsn"`
+	// The IP address of the BGP neighbor.
+	PeerIpAddress pulumi.StringInput `pulumi:"peerIpAddress"`
+	// The limit on routes.
+	RouteLimit pulumi.StringInput `pulumi:"routeLimit"`
+	// The ID of the router.
+	RouterId pulumi.StringInput `pulumi:"routerId"`
+	// The status of the BGP peer.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBgpPeersPeerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBgpPeersPeer)(nil)).Elem()
+}
+
+func (i GetBgpPeersPeerArgs) ToGetBgpPeersPeerOutput() GetBgpPeersPeerOutput {
+	return i.ToGetBgpPeersPeerOutputWithContext(context.Background())
+}
+
+func (i GetBgpPeersPeerArgs) ToGetBgpPeersPeerOutputWithContext(ctx context.Context) GetBgpPeersPeerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBgpPeersPeerOutput)
+}
+
+// GetBgpPeersPeerArrayInput is an input type that accepts GetBgpPeersPeerArray and GetBgpPeersPeerArrayOutput values.
+// You can construct a concrete instance of `GetBgpPeersPeerArrayInput` via:
+//
+//          GetBgpPeersPeerArray{ GetBgpPeersPeerArgs{...} }
+type GetBgpPeersPeerArrayInput interface {
+	pulumi.Input
+
+	ToGetBgpPeersPeerArrayOutput() GetBgpPeersPeerArrayOutput
+	ToGetBgpPeersPeerArrayOutputWithContext(context.Context) GetBgpPeersPeerArrayOutput
+}
+
+type GetBgpPeersPeerArray []GetBgpPeersPeerInput
+
+func (GetBgpPeersPeerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBgpPeersPeer)(nil)).Elem()
+}
+
+func (i GetBgpPeersPeerArray) ToGetBgpPeersPeerArrayOutput() GetBgpPeersPeerArrayOutput {
+	return i.ToGetBgpPeersPeerArrayOutputWithContext(context.Background())
+}
+
+func (i GetBgpPeersPeerArray) ToGetBgpPeersPeerArrayOutputWithContext(ctx context.Context) GetBgpPeersPeerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBgpPeersPeerArrayOutput)
+}
+
+type GetBgpPeersPeerOutput struct{ *pulumi.OutputState }
+
+func (GetBgpPeersPeerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBgpPeersPeer)(nil)).Elem()
+}
+
+func (o GetBgpPeersPeerOutput) ToGetBgpPeersPeerOutput() GetBgpPeersPeerOutput {
+	return o
+}
+
+func (o GetBgpPeersPeerOutput) ToGetBgpPeersPeerOutputWithContext(ctx context.Context) GetBgpPeersPeerOutput {
+	return o
+}
+
+// The authentication key of the BGP group.
+func (o GetBgpPeersPeerOutput) AuthKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.AuthKey }).(pulumi.StringOutput)
+}
+
+// The BFD hop count.
+func (o GetBgpPeersPeerOutput) BfdMultiHop() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) int { return v.BfdMultiHop }).(pulumi.IntOutput)
+}
+
+// The ID of the BGP group.
+func (o GetBgpPeersPeerOutput) BgpGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.BgpGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the BGP neighbor.
+func (o GetBgpPeersPeerOutput) BgpPeerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.BgpPeerId }).(pulumi.StringOutput)
+}
+
+// The name of the BGP neighbor.
+func (o GetBgpPeersPeerOutput) BgpPeerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.BgpPeerName }).(pulumi.StringOutput)
+}
+
+// The status of the BGP connection.
+func (o GetBgpPeersPeerOutput) BgpStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.BgpStatus }).(pulumi.StringOutput)
+}
+
+// The description of the BGP group.
+func (o GetBgpPeersPeerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
+func (o GetBgpPeersPeerOutput) EnableBfd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) bool { return v.EnableBfd }).(pulumi.BoolOutput)
+}
+
+// The hold time.
+func (o GetBgpPeersPeerOutput) Hold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.Hold }).(pulumi.StringOutput)
+}
+
+// The ID of the Bgp Peer.
+func (o GetBgpPeersPeerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP version.
+func (o GetBgpPeersPeerOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// Indicates whether a fake AS number is used.
+func (o GetBgpPeersPeerOutput) IsFake() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) bool { return v.IsFake }).(pulumi.BoolOutput)
+}
+
+// The keepalive time.
+func (o GetBgpPeersPeerOutput) Keepalive() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.Keepalive }).(pulumi.StringOutput)
+}
+
+// The AS number of the device on the Alibaba Cloud side.
+func (o GetBgpPeersPeerOutput) LocalAsn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.LocalAsn }).(pulumi.StringOutput)
+}
+
+// The autonomous system (AS) number of the BGP peer.
+func (o GetBgpPeersPeerOutput) PeerAsn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.PeerAsn }).(pulumi.StringOutput)
+}
+
+// The IP address of the BGP neighbor.
+func (o GetBgpPeersPeerOutput) PeerIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.PeerIpAddress }).(pulumi.StringOutput)
+}
+
+// The limit on routes.
+func (o GetBgpPeersPeerOutput) RouteLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.RouteLimit }).(pulumi.StringOutput)
+}
+
+// The ID of the router.
+func (o GetBgpPeersPeerOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// The status of the BGP peer.
+func (o GetBgpPeersPeerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBgpPeersPeerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBgpPeersPeerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBgpPeersPeer)(nil)).Elem()
+}
+
+func (o GetBgpPeersPeerArrayOutput) ToGetBgpPeersPeerArrayOutput() GetBgpPeersPeerArrayOutput {
+	return o
+}
+
+func (o GetBgpPeersPeerArrayOutput) ToGetBgpPeersPeerArrayOutputWithContext(ctx context.Context) GetBgpPeersPeerArrayOutput {
+	return o
+}
+
+func (o GetBgpPeersPeerArrayOutput) Index(i pulumi.IntInput) GetBgpPeersPeerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBgpPeersPeer {
+		return vs[0].([]GetBgpPeersPeer)[vs[1].(int)]
+	}).(GetBgpPeersPeerOutput)
+}
+
 type GetCommonBandwidthPackagesPackage struct {
 	// The peak bandwidth of the Internet Shared Bandwidth instance.
 	Bandwidth string `pulumi:"bandwidth"`
@@ -6451,6 +7039,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclIngressAclEntryArrayInput)(nil)).Elem(), NetworkAclIngressAclEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclResourceInput)(nil)).Elem(), NetworkAclResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclResourceArrayInput)(nil)).Elem(), NetworkAclResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpGroupsGroupInput)(nil)).Elem(), GetBgpGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpGroupsGroupArrayInput)(nil)).Elem(), GetBgpGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpNetworksNetworkInput)(nil)).Elem(), GetBgpNetworksNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpNetworksNetworkArrayInput)(nil)).Elem(), GetBgpNetworksNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpPeersPeerInput)(nil)).Elem(), GetBgpPeersPeerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpPeersPeerArrayInput)(nil)).Elem(), GetBgpPeersPeerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommonBandwidthPackagesPackageInput)(nil)).Elem(), GetCommonBandwidthPackagesPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommonBandwidthPackagesPackageArrayInput)(nil)).Elem(), GetCommonBandwidthPackagesPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommonBandwidthPackagesPackagePublicIpAddressInput)(nil)).Elem(), GetCommonBandwidthPackagesPackagePublicIpAddressArgs{})
@@ -6527,6 +7121,12 @@ func init() {
 	pulumi.RegisterOutputType(NetworkAclIngressAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclResourceOutput{})
 	pulumi.RegisterOutputType(NetworkAclResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetBgpGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetBgpGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetBgpNetworksNetworkOutput{})
+	pulumi.RegisterOutputType(GetBgpNetworksNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetBgpPeersPeerOutput{})
+	pulumi.RegisterOutputType(GetBgpPeersPeerArrayOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackageOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackagePublicIpAddressOutput{})

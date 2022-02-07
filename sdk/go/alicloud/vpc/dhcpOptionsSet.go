@@ -54,7 +54,9 @@ import (
 type DhcpOptionsSet struct {
 	pulumi.CustomResourceState
 
-	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
+	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	//
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs DhcpOptionsSetAssociateVpcArrayOutput `pulumi:"associateVpcs"`
 	// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription pulumi.StringPtrOutput `pulumi:"dhcpOptionsSetDescription"`
@@ -101,7 +103,9 @@ func GetDhcpOptionsSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DhcpOptionsSet resources.
 type dhcpOptionsSetState struct {
-	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
+	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	//
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs []DhcpOptionsSetAssociateVpc `pulumi:"associateVpcs"`
 	// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription *string `pulumi:"dhcpOptionsSetDescription"`
@@ -120,7 +124,9 @@ type dhcpOptionsSetState struct {
 }
 
 type DhcpOptionsSetState struct {
-	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
+	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	//
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs DhcpOptionsSetAssociateVpcArrayInput
 	// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription pulumi.StringPtrInput
@@ -143,7 +149,9 @@ func (DhcpOptionsSetState) ElementType() reflect.Type {
 }
 
 type dhcpOptionsSetArgs struct {
-	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
+	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	//
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs []DhcpOptionsSetAssociateVpc `pulumi:"associateVpcs"`
 	// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription *string `pulumi:"dhcpOptionsSetDescription"`
@@ -159,7 +167,9 @@ type dhcpOptionsSetArgs struct {
 
 // The set of arguments for constructing a DhcpOptionsSet resource.
 type DhcpOptionsSetArgs struct {
-	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10.
+	// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+	//
+	// Deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
 	AssociateVpcs DhcpOptionsSetAssociateVpcArrayInput
 	// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription pulumi.StringPtrInput

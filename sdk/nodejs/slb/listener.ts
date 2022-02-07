@@ -217,7 +217,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly healthCheck!: pulumi.Output<string | undefined>;
     /**
-     * Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+     * The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
      */
     public readonly healthCheckConnectPort!: pulumi.Output<number>;
     /**
@@ -233,7 +233,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly healthCheckInterval!: pulumi.Output<number | undefined>;
     /**
-     * The method of health check. Valid values: ["head", "get"].
+     * HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
      */
     public readonly healthCheckMethod!: pulumi.Output<string>;
     /**
@@ -249,7 +249,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly healthCheckUri!: pulumi.Output<string | undefined>;
     /**
-     * Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+     * The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
      */
     public readonly healthyThreshold!: pulumi.Output<number | undefined>;
     /**
@@ -321,11 +321,11 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly tlsCipherPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+     * The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
      */
     public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
      */
     public readonly xForwardedFor!: pulumi.Output<outputs.slb.ListenerXForwardedFor>;
 
@@ -516,7 +516,7 @@ export interface ListenerState {
      */
     healthCheck?: pulumi.Input<string>;
     /**
-     * Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+     * The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
      */
     healthCheckConnectPort?: pulumi.Input<number>;
     /**
@@ -532,7 +532,7 @@ export interface ListenerState {
      */
     healthCheckInterval?: pulumi.Input<number>;
     /**
-     * The method of health check. Valid values: ["head", "get"].
+     * HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
      */
     healthCheckMethod?: pulumi.Input<string>;
     /**
@@ -548,7 +548,7 @@ export interface ListenerState {
      */
     healthCheckUri?: pulumi.Input<string>;
     /**
-     * Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+     * The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
      */
     healthyThreshold?: pulumi.Input<number>;
     /**
@@ -620,11 +620,11 @@ export interface ListenerState {
      */
     tlsCipherPolicy?: pulumi.Input<string>;
     /**
-     * Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+     * The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
      */
     unhealthyThreshold?: pulumi.Input<number>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
      */
     xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor>;
 }
@@ -698,7 +698,7 @@ export interface ListenerArgs {
      */
     healthCheck?: pulumi.Input<string>;
     /**
-     * Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+     * The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
      */
     healthCheckConnectPort?: pulumi.Input<number>;
     /**
@@ -714,7 +714,7 @@ export interface ListenerArgs {
      */
     healthCheckInterval?: pulumi.Input<number>;
     /**
-     * The method of health check. Valid values: ["head", "get"].
+     * HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
      */
     healthCheckMethod?: pulumi.Input<string>;
     /**
@@ -730,7 +730,7 @@ export interface ListenerArgs {
      */
     healthCheckUri?: pulumi.Input<string>;
     /**
-     * Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+     * The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
      */
     healthyThreshold?: pulumi.Input<number>;
     /**
@@ -802,11 +802,11 @@ export interface ListenerArgs {
      */
     tlsCipherPolicy?: pulumi.Input<string>;
     /**
-     * Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+     * The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
      */
     unhealthyThreshold?: pulumi.Input<number>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+     * Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
      */
     xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor>;
 }

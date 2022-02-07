@@ -5,26 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
- *
- * For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.cen.BandwidthPackage("example", {
- *     bandwidth: 5,
- *     cenBandwidthPackageName: "tf-testAccCenBandwidthPackageConfig",
- *     geographicRegionAId: "China",
- *     geographicRegionBId: "China",
- * });
- * ```
- *
  * ## Import
  *
  * CEN bandwidth package can be imported using the id, e.g.

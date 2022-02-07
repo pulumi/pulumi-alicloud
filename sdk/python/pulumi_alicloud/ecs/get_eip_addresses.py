@@ -40,8 +40,8 @@ class GetEipAddressesResult:
         if eips and not isinstance(eips, list):
             raise TypeError("Expected argument 'eips' to be a list")
         if eips is not None:
-            warnings.warn("""Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.""", DeprecationWarning)
-            pulumi.log.warn("""eips is deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.""")
+            warnings.warn("""Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""", DeprecationWarning)
+            pulumi.log.warn("""eips is deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""")
 
         pulumi.set(__self__, "eips", eips)
         if enable_details and not isinstance(enable_details, bool):
@@ -62,8 +62,8 @@ class GetEipAddressesResult:
         if ip_addresses and not isinstance(ip_addresses, list):
             raise TypeError("Expected argument 'ip_addresses' to be a list")
         if ip_addresses is not None:
-            warnings.warn("""Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_addresses is deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.""")
+            warnings.warn("""Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_addresses is deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""")
 
         pulumi.set(__self__, "ip_addresses", ip_addresses)
         if isp and not isinstance(isp, str):

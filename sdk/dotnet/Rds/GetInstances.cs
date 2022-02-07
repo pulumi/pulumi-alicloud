@@ -138,6 +138,12 @@ namespace Pulumi.AliCloud.Rds
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// Status of the instance.
         /// </summary>
@@ -221,6 +227,12 @@ namespace Pulumi.AliCloud.Rds
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// Status of the instance.
         /// </summary>
@@ -292,11 +304,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         /// <summary>
         /// Status of the instance.
         /// </summary>
         public readonly string? Status;
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
         /// <summary>
         /// ID of the VPC the instance belongs to.
         /// </summary>
@@ -328,9 +343,15 @@ namespace Pulumi.AliCloud.Rds
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? status,
 
             ImmutableDictionary<string, object>? tags,
+
+            int totalCount,
 
             string? vpcId,
 
@@ -346,8 +367,11 @@ namespace Pulumi.AliCloud.Rds
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             Status = status;
             Tags = tags;
+            TotalCount = totalCount;
             VpcId = vpcId;
             VswitchId = vswitchId;
         }

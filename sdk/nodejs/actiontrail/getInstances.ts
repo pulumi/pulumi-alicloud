@@ -54,6 +54,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:actiontrail/getInstances:getInstances", {
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -64,6 +65,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
+    enableDetails?: boolean;
     /**
      * A list of instance IDs to filter results.
      */
@@ -79,6 +81,7 @@ export interface GetInstancesArgs {
  * A collection of values returned by getInstances.
  */
 export interface GetInstancesResult {
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -107,6 +110,7 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
     /**
      * A list of instance IDs to filter results.
      */

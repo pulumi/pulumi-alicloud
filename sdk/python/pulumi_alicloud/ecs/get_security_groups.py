@@ -21,7 +21,10 @@ class GetSecurityGroupsResult:
     """
     A collection of values returned by getSecurityGroups.
     """
-    def __init__(__self__, groups=None, id=None, ids=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None, vpc_id=None):
+    def __init__(__self__, enable_details=None, groups=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, resource_group_id=None, tags=None, total_count=None, vpc_id=None):
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if groups and not isinstance(groups, list):
             raise TypeError("Expected argument 'groups' to be a list")
         pulumi.set(__self__, "groups", groups)
@@ -40,15 +43,29 @@ class GetSecurityGroupsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -93,6 +110,16 @@ class GetSecurityGroupsResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
         """
@@ -109,6 +136,11 @@ class GetSecurityGroupsResult:
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
@@ -123,20 +155,27 @@ class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
         if False:
             yield self
         return GetSecurityGroupsResult(
+            enable_details=self.enable_details,
             groups=self.groups,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             resource_group_id=self.resource_group_id,
             tags=self.tags,
+            total_count=self.total_count,
             vpc_id=self.vpc_id)
 
 
-def get_security_groups(ids: Optional[Sequence[str]] = None,
+def get_security_groups(enable_details: Optional[bool] = None,
+                        ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
+                        page_number: Optional[int] = None,
+                        page_size: Optional[int] = None,
                         resource_group_id: Optional[str] = None,
                         tags: Optional[Mapping[str, Any]] = None,
                         vpc_id: Optional[str] = None,
@@ -175,9 +214,12 @@ def get_security_groups(ids: Optional[Sequence[str]] = None,
     :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
     """
     __args__ = dict()
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['resourceGroupId'] = resource_group_id
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
@@ -188,21 +230,28 @@ def get_security_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getSecurityGroups:getSecurityGroups', __args__, opts=opts, typ=GetSecurityGroupsResult).value
 
     return AwaitableGetSecurityGroupsResult(
+        enable_details=__ret__.enable_details,
         groups=__ret__.groups,
         id=__ret__.id,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         resource_group_id=__ret__.resource_group_id,
         tags=__ret__.tags,
+        total_count=__ret__.total_count,
         vpc_id=__ret__.vpc_id)
 
 
 @_utilities.lift_output_func(get_security_groups)
-def get_security_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                               page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                                vpc_id: Optional[pulumi.Input[Optional[str]]] = None,

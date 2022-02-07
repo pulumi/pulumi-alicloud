@@ -185,7 +185,7 @@ export class K8sApplication extends pulumi.CustomResource {
     /**
      * The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
      */
-    public readonly packageVersion!: pulumi.Output<string | undefined>;
+    public readonly packageVersion!: pulumi.Output<string>;
     /**
      * Execute script after startup
      */

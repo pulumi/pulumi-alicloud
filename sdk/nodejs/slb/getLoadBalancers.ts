@@ -24,6 +24,8 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
         "nameRegex": args.nameRegex,
         "networkType": args.networkType,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "paymentType": args.paymentType,
         "resourceGroupId": args.resourceGroupId,
         "serverId": args.serverId,
@@ -63,6 +65,8 @@ export interface GetLoadBalancersArgs {
      */
     networkType?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     paymentType?: string;
     /**
      * The Id of resource group which SLB belongs.
@@ -133,6 +137,8 @@ export interface GetLoadBalancersResult {
      */
     readonly networkType?: string;
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly paymentType?: string;
     readonly resourceGroupId?: string;
     readonly serverId?: string;
@@ -152,6 +158,7 @@ export interface GetLoadBalancersResult {
      * A map of tags assigned to the SLB instance.
      */
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * ID of the VPC the SLB belongs to.
      */
@@ -193,6 +200,8 @@ export interface GetLoadBalancersOutputArgs {
      */
     networkType?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     paymentType?: pulumi.Input<string>;
     /**
      * The Id of resource group which SLB belongs.

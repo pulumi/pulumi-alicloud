@@ -858,6 +858,130 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type EcsPrefixListEntry struct {
+	// The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+	// * The total number of entries must not exceed the `maxEntries` value.
+	// * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+	// * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+	// * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+	// * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+	// * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
+	Cidr *string `pulumi:"cidr"`
+	// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+	Description *string `pulumi:"description"`
+}
+
+// EcsPrefixListEntryInput is an input type that accepts EcsPrefixListEntryArgs and EcsPrefixListEntryOutput values.
+// You can construct a concrete instance of `EcsPrefixListEntryInput` via:
+//
+//          EcsPrefixListEntryArgs{...}
+type EcsPrefixListEntryInput interface {
+	pulumi.Input
+
+	ToEcsPrefixListEntryOutput() EcsPrefixListEntryOutput
+	ToEcsPrefixListEntryOutputWithContext(context.Context) EcsPrefixListEntryOutput
+}
+
+type EcsPrefixListEntryArgs struct {
+	// The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+	// * The total number of entries must not exceed the `maxEntries` value.
+	// * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+	// * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+	// * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+	// * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+	// * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (EcsPrefixListEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsPrefixListEntry)(nil)).Elem()
+}
+
+func (i EcsPrefixListEntryArgs) ToEcsPrefixListEntryOutput() EcsPrefixListEntryOutput {
+	return i.ToEcsPrefixListEntryOutputWithContext(context.Background())
+}
+
+func (i EcsPrefixListEntryArgs) ToEcsPrefixListEntryOutputWithContext(ctx context.Context) EcsPrefixListEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsPrefixListEntryOutput)
+}
+
+// EcsPrefixListEntryArrayInput is an input type that accepts EcsPrefixListEntryArray and EcsPrefixListEntryArrayOutput values.
+// You can construct a concrete instance of `EcsPrefixListEntryArrayInput` via:
+//
+//          EcsPrefixListEntryArray{ EcsPrefixListEntryArgs{...} }
+type EcsPrefixListEntryArrayInput interface {
+	pulumi.Input
+
+	ToEcsPrefixListEntryArrayOutput() EcsPrefixListEntryArrayOutput
+	ToEcsPrefixListEntryArrayOutputWithContext(context.Context) EcsPrefixListEntryArrayOutput
+}
+
+type EcsPrefixListEntryArray []EcsPrefixListEntryInput
+
+func (EcsPrefixListEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcsPrefixListEntry)(nil)).Elem()
+}
+
+func (i EcsPrefixListEntryArray) ToEcsPrefixListEntryArrayOutput() EcsPrefixListEntryArrayOutput {
+	return i.ToEcsPrefixListEntryArrayOutputWithContext(context.Background())
+}
+
+func (i EcsPrefixListEntryArray) ToEcsPrefixListEntryArrayOutputWithContext(ctx context.Context) EcsPrefixListEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsPrefixListEntryArrayOutput)
+}
+
+type EcsPrefixListEntryOutput struct{ *pulumi.OutputState }
+
+func (EcsPrefixListEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsPrefixListEntry)(nil)).Elem()
+}
+
+func (o EcsPrefixListEntryOutput) ToEcsPrefixListEntryOutput() EcsPrefixListEntryOutput {
+	return o
+}
+
+func (o EcsPrefixListEntryOutput) ToEcsPrefixListEntryOutputWithContext(ctx context.Context) EcsPrefixListEntryOutput {
+	return o
+}
+
+// The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+// * The total number of entries must not exceed the `maxEntries` value.
+// * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+// * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+// * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+// * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+// * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
+func (o EcsPrefixListEntryOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsPrefixListEntry) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+func (o EcsPrefixListEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsPrefixListEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+type EcsPrefixListEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (EcsPrefixListEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcsPrefixListEntry)(nil)).Elem()
+}
+
+func (o EcsPrefixListEntryArrayOutput) ToEcsPrefixListEntryArrayOutput() EcsPrefixListEntryArrayOutput {
+	return o
+}
+
+func (o EcsPrefixListEntryArrayOutput) ToEcsPrefixListEntryArrayOutputWithContext(ctx context.Context) EcsPrefixListEntryArrayOutput {
+	return o
+}
+
+func (o EcsPrefixListEntryArrayOutput) Index(i pulumi.IntInput) EcsPrefixListEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsPrefixListEntry {
+		return vs[0].([]EcsPrefixListEntry)[vs[1].(int)]
+	}).(EcsPrefixListEntryOutput)
+}
+
 type ImageDiskDeviceMapping struct {
 	// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
 	Device *string `pulumi:"device"`
@@ -7179,6 +7303,275 @@ func (o GetEcsNetworkInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetEcsNetworkInterfacesInterfaceOutput)
 }
 
+type GetEcsPrefixListsList struct {
+	// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+	AddressFamily string `pulumi:"addressFamily"`
+	// The amount of associated resources.
+	AssociationCount int `pulumi:"associationCount"`
+	// The time when the prefix list was created.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the prefix list.
+	Description string                       `pulumi:"description"`
+	Entries     []GetEcsPrefixListsListEntry `pulumi:"entries"`
+	// The ID of the prefix list.
+	Id string `pulumi:"id"`
+	// The maximum number of entries that the prefix list supports.
+	MaxEntries int `pulumi:"maxEntries"`
+	// The ID of the prefix list.
+	PrefixListId string `pulumi:"prefixListId"`
+	// The name of the prefix list.
+	PrefixListName string `pulumi:"prefixListName"`
+}
+
+// GetEcsPrefixListsListInput is an input type that accepts GetEcsPrefixListsListArgs and GetEcsPrefixListsListOutput values.
+// You can construct a concrete instance of `GetEcsPrefixListsListInput` via:
+//
+//          GetEcsPrefixListsListArgs{...}
+type GetEcsPrefixListsListInput interface {
+	pulumi.Input
+
+	ToGetEcsPrefixListsListOutput() GetEcsPrefixListsListOutput
+	ToGetEcsPrefixListsListOutputWithContext(context.Context) GetEcsPrefixListsListOutput
+}
+
+type GetEcsPrefixListsListArgs struct {
+	// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+	AddressFamily pulumi.StringInput `pulumi:"addressFamily"`
+	// The amount of associated resources.
+	AssociationCount pulumi.IntInput `pulumi:"associationCount"`
+	// The time when the prefix list was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the prefix list.
+	Description pulumi.StringInput                   `pulumi:"description"`
+	Entries     GetEcsPrefixListsListEntryArrayInput `pulumi:"entries"`
+	// The ID of the prefix list.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The maximum number of entries that the prefix list supports.
+	MaxEntries pulumi.IntInput `pulumi:"maxEntries"`
+	// The ID of the prefix list.
+	PrefixListId pulumi.StringInput `pulumi:"prefixListId"`
+	// The name of the prefix list.
+	PrefixListName pulumi.StringInput `pulumi:"prefixListName"`
+}
+
+func (GetEcsPrefixListsListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsPrefixListsList)(nil)).Elem()
+}
+
+func (i GetEcsPrefixListsListArgs) ToGetEcsPrefixListsListOutput() GetEcsPrefixListsListOutput {
+	return i.ToGetEcsPrefixListsListOutputWithContext(context.Background())
+}
+
+func (i GetEcsPrefixListsListArgs) ToGetEcsPrefixListsListOutputWithContext(ctx context.Context) GetEcsPrefixListsListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsPrefixListsListOutput)
+}
+
+// GetEcsPrefixListsListArrayInput is an input type that accepts GetEcsPrefixListsListArray and GetEcsPrefixListsListArrayOutput values.
+// You can construct a concrete instance of `GetEcsPrefixListsListArrayInput` via:
+//
+//          GetEcsPrefixListsListArray{ GetEcsPrefixListsListArgs{...} }
+type GetEcsPrefixListsListArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsPrefixListsListArrayOutput() GetEcsPrefixListsListArrayOutput
+	ToGetEcsPrefixListsListArrayOutputWithContext(context.Context) GetEcsPrefixListsListArrayOutput
+}
+
+type GetEcsPrefixListsListArray []GetEcsPrefixListsListInput
+
+func (GetEcsPrefixListsListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsPrefixListsList)(nil)).Elem()
+}
+
+func (i GetEcsPrefixListsListArray) ToGetEcsPrefixListsListArrayOutput() GetEcsPrefixListsListArrayOutput {
+	return i.ToGetEcsPrefixListsListArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsPrefixListsListArray) ToGetEcsPrefixListsListArrayOutputWithContext(ctx context.Context) GetEcsPrefixListsListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsPrefixListsListArrayOutput)
+}
+
+type GetEcsPrefixListsListOutput struct{ *pulumi.OutputState }
+
+func (GetEcsPrefixListsListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsPrefixListsList)(nil)).Elem()
+}
+
+func (o GetEcsPrefixListsListOutput) ToGetEcsPrefixListsListOutput() GetEcsPrefixListsListOutput {
+	return o
+}
+
+func (o GetEcsPrefixListsListOutput) ToGetEcsPrefixListsListOutputWithContext(ctx context.Context) GetEcsPrefixListsListOutput {
+	return o
+}
+
+// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+func (o GetEcsPrefixListsListOutput) AddressFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.AddressFamily }).(pulumi.StringOutput)
+}
+
+// The amount of associated resources.
+func (o GetEcsPrefixListsListOutput) AssociationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) int { return v.AssociationCount }).(pulumi.IntOutput)
+}
+
+// The time when the prefix list was created.
+func (o GetEcsPrefixListsListOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the prefix list.
+func (o GetEcsPrefixListsListOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetEcsPrefixListsListOutput) Entries() GetEcsPrefixListsListEntryArrayOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) []GetEcsPrefixListsListEntry { return v.Entries }).(GetEcsPrefixListsListEntryArrayOutput)
+}
+
+// The ID of the prefix list.
+func (o GetEcsPrefixListsListOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The maximum number of entries that the prefix list supports.
+func (o GetEcsPrefixListsListOutput) MaxEntries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) int { return v.MaxEntries }).(pulumi.IntOutput)
+}
+
+// The ID of the prefix list.
+func (o GetEcsPrefixListsListOutput) PrefixListId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.PrefixListId }).(pulumi.StringOutput)
+}
+
+// The name of the prefix list.
+func (o GetEcsPrefixListsListOutput) PrefixListName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.PrefixListName }).(pulumi.StringOutput)
+}
+
+type GetEcsPrefixListsListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsPrefixListsListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsPrefixListsList)(nil)).Elem()
+}
+
+func (o GetEcsPrefixListsListArrayOutput) ToGetEcsPrefixListsListArrayOutput() GetEcsPrefixListsListArrayOutput {
+	return o
+}
+
+func (o GetEcsPrefixListsListArrayOutput) ToGetEcsPrefixListsListArrayOutputWithContext(ctx context.Context) GetEcsPrefixListsListArrayOutput {
+	return o
+}
+
+func (o GetEcsPrefixListsListArrayOutput) Index(i pulumi.IntInput) GetEcsPrefixListsListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsPrefixListsList {
+		return vs[0].([]GetEcsPrefixListsList)[vs[1].(int)]
+	}).(GetEcsPrefixListsListOutput)
+}
+
+type GetEcsPrefixListsListEntry struct {
+	Cidr string `pulumi:"cidr"`
+	// The description of the prefix list.
+	Description string `pulumi:"description"`
+}
+
+// GetEcsPrefixListsListEntryInput is an input type that accepts GetEcsPrefixListsListEntryArgs and GetEcsPrefixListsListEntryOutput values.
+// You can construct a concrete instance of `GetEcsPrefixListsListEntryInput` via:
+//
+//          GetEcsPrefixListsListEntryArgs{...}
+type GetEcsPrefixListsListEntryInput interface {
+	pulumi.Input
+
+	ToGetEcsPrefixListsListEntryOutput() GetEcsPrefixListsListEntryOutput
+	ToGetEcsPrefixListsListEntryOutputWithContext(context.Context) GetEcsPrefixListsListEntryOutput
+}
+
+type GetEcsPrefixListsListEntryArgs struct {
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// The description of the prefix list.
+	Description pulumi.StringInput `pulumi:"description"`
+}
+
+func (GetEcsPrefixListsListEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsPrefixListsListEntry)(nil)).Elem()
+}
+
+func (i GetEcsPrefixListsListEntryArgs) ToGetEcsPrefixListsListEntryOutput() GetEcsPrefixListsListEntryOutput {
+	return i.ToGetEcsPrefixListsListEntryOutputWithContext(context.Background())
+}
+
+func (i GetEcsPrefixListsListEntryArgs) ToGetEcsPrefixListsListEntryOutputWithContext(ctx context.Context) GetEcsPrefixListsListEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsPrefixListsListEntryOutput)
+}
+
+// GetEcsPrefixListsListEntryArrayInput is an input type that accepts GetEcsPrefixListsListEntryArray and GetEcsPrefixListsListEntryArrayOutput values.
+// You can construct a concrete instance of `GetEcsPrefixListsListEntryArrayInput` via:
+//
+//          GetEcsPrefixListsListEntryArray{ GetEcsPrefixListsListEntryArgs{...} }
+type GetEcsPrefixListsListEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsPrefixListsListEntryArrayOutput() GetEcsPrefixListsListEntryArrayOutput
+	ToGetEcsPrefixListsListEntryArrayOutputWithContext(context.Context) GetEcsPrefixListsListEntryArrayOutput
+}
+
+type GetEcsPrefixListsListEntryArray []GetEcsPrefixListsListEntryInput
+
+func (GetEcsPrefixListsListEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsPrefixListsListEntry)(nil)).Elem()
+}
+
+func (i GetEcsPrefixListsListEntryArray) ToGetEcsPrefixListsListEntryArrayOutput() GetEcsPrefixListsListEntryArrayOutput {
+	return i.ToGetEcsPrefixListsListEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsPrefixListsListEntryArray) ToGetEcsPrefixListsListEntryArrayOutputWithContext(ctx context.Context) GetEcsPrefixListsListEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsPrefixListsListEntryArrayOutput)
+}
+
+type GetEcsPrefixListsListEntryOutput struct{ *pulumi.OutputState }
+
+func (GetEcsPrefixListsListEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsPrefixListsListEntry)(nil)).Elem()
+}
+
+func (o GetEcsPrefixListsListEntryOutput) ToGetEcsPrefixListsListEntryOutput() GetEcsPrefixListsListEntryOutput {
+	return o
+}
+
+func (o GetEcsPrefixListsListEntryOutput) ToGetEcsPrefixListsListEntryOutputWithContext(ctx context.Context) GetEcsPrefixListsListEntryOutput {
+	return o
+}
+
+func (o GetEcsPrefixListsListEntryOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsListEntry) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// The description of the prefix list.
+func (o GetEcsPrefixListsListEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsPrefixListsListEntry) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type GetEcsPrefixListsListEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsPrefixListsListEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsPrefixListsListEntry)(nil)).Elem()
+}
+
+func (o GetEcsPrefixListsListEntryArrayOutput) ToGetEcsPrefixListsListEntryArrayOutput() GetEcsPrefixListsListEntryArrayOutput {
+	return o
+}
+
+func (o GetEcsPrefixListsListEntryArrayOutput) ToGetEcsPrefixListsListEntryArrayOutputWithContext(ctx context.Context) GetEcsPrefixListsListEntryArrayOutput {
+	return o
+}
+
+func (o GetEcsPrefixListsListEntryArrayOutput) Index(i pulumi.IntInput) GetEcsPrefixListsListEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsPrefixListsListEntry {
+		return vs[0].([]GetEcsPrefixListsListEntry)[vs[1].(int)]
+	}).(GetEcsPrefixListsListEntryOutput)
+}
+
 type GetEcsSnapshotsSnapshot struct {
 	// The category of the snapshot.
 	Category     string `pulumi:"category"`
@@ -11706,6 +12099,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateNetworkInterfacesPtrInput)(nil)).Elem(), EcsLaunchTemplateNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateSystemDiskInput)(nil)).Elem(), EcsLaunchTemplateSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateSystemDiskPtrInput)(nil)).Elem(), EcsLaunchTemplateSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsPrefixListEntryInput)(nil)).Elem(), EcsPrefixListEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsPrefixListEntryArrayInput)(nil)).Elem(), EcsPrefixListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageDiskDeviceMappingInput)(nil)).Elem(), ImageDiskDeviceMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageDiskDeviceMappingArrayInput)(nil)).Elem(), ImageDiskDeviceMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportDiskDeviceMappingInput)(nil)).Elem(), ImageImportDiskDeviceMappingArgs{})
@@ -11774,6 +12169,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateSystemDiskArrayInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateSystemDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceInput)(nil)).Elem(), GetEcsNetworkInterfacesInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceArrayInput)(nil)).Elem(), GetEcsNetworkInterfacesInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListInput)(nil)).Elem(), GetEcsPrefixListsListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListArrayInput)(nil)).Elem(), GetEcsPrefixListsListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListEntryInput)(nil)).Elem(), GetEcsPrefixListsListEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListEntryArrayInput)(nil)).Elem(), GetEcsPrefixListsListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsSnapshotsSnapshotInput)(nil)).Elem(), GetEcsSnapshotsSnapshotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsSnapshotsSnapshotArrayInput)(nil)).Elem(), GetEcsSnapshotsSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEipAddressesAddressInput)(nil)).Elem(), GetEipAddressesAddressArgs{})
@@ -11827,6 +12226,8 @@ func init() {
 	pulumi.RegisterOutputType(EcsLaunchTemplateNetworkInterfacesPtrOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateSystemDiskOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateSystemDiskPtrOutput{})
+	pulumi.RegisterOutputType(EcsPrefixListEntryOutput{})
+	pulumi.RegisterOutputType(EcsPrefixListEntryArrayOutput{})
 	pulumi.RegisterOutputType(ImageDiskDeviceMappingOutput{})
 	pulumi.RegisterOutputType(ImageDiskDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(ImageImportDiskDeviceMappingOutput{})
@@ -11895,6 +12296,10 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceOutput{})
 	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsPrefixListsListOutput{})
+	pulumi.RegisterOutputType(GetEcsPrefixListsListArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsPrefixListsListEntryOutput{})
+	pulumi.RegisterOutputType(GetEcsPrefixListsListEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotOutput{})
 	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetEipAddressesAddressOutput{})

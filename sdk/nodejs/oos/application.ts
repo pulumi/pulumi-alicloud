@@ -79,7 +79,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */

@@ -1515,7 +1515,7 @@ class K8sApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> pulumi.Output[Optional[str]]:
+    def package_version(self) -> pulumi.Output[str]:
         """
         The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
         """

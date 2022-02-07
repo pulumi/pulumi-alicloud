@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EcsNetworkInterface{}
 	case "alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment":
 		r = &EcsNetworkInterfaceAttachment{}
+	case "alicloud:ecs/ecsPrefixList:EcsPrefixList":
+		r = &EcsPrefixList{}
 	case "alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus":
 		r = &EcsSessionManagerStatus{}
 	case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
@@ -191,6 +193,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/ecsNetworkInterfaceAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ecsPrefixList",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

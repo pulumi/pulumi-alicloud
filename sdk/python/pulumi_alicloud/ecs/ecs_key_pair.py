@@ -23,7 +23,8 @@ class EcsKeyPairArgs:
         """
         The set of arguments for constructing a EcsKeyPair resource.
         :param pulumi.Input[str] key_file: The key file.
-        :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+        :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -62,7 +63,7 @@ class EcsKeyPairArgs:
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The key pair's name. It is the only in one Alicloud account.
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
         """
         return pulumi.get(self, "key_name")
 
@@ -82,6 +83,9 @@ class EcsKeyPairArgs:
     @property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
@@ -139,7 +143,8 @@ class _EcsKeyPairState:
         """
         Input properties used for looking up and filtering EcsKeyPair resources.
         :param pulumi.Input[str] key_file: The key file.
-        :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+        :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -189,7 +194,7 @@ class _EcsKeyPairState:
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The key pair's name. It is the only in one Alicloud account.
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
         """
         return pulumi.get(self, "key_name")
 
@@ -209,6 +214,9 @@ class _EcsKeyPairState:
     @property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
@@ -300,7 +308,8 @@ class EcsKeyPair(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_file: The key file.
-        :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+        :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -414,7 +423,8 @@ class EcsKeyPair(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_file: The key file.
-        :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
+        :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -450,7 +460,7 @@ class EcsKeyPair(pulumi.CustomResource):
     @pulumi.getter(name="keyName")
     def key_name(self) -> pulumi.Output[str]:
         """
-        The key pair's name. It is the only in one Alicloud account.
+        Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
         """
         return pulumi.get(self, "key_name")
 
@@ -462,6 +472,9 @@ class EcsKeyPair(pulumi.CustomResource):
     @property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Output[str]:
+        """
+        The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @property
