@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+// 			Comments:    pulumi.String("yoyoyo"),
+// 			DisplayName: pulumi.String("user_display_name"),
+// 			Email:       pulumi.String("hello.uuu@aaa.com"),
+// 			Force:       pulumi.Bool(true),
+// 			Mobile:      pulumi.String("86-18688888888"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // RAM user can be imported using the id, e.g.

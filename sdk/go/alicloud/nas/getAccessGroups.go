@@ -26,13 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^foo"
-// 		opt1 := "Classic"
-// 		opt2 := "tf-testAccAccessGroupsdatasource"
 // 		example, err := nas.GetAccessGroups(ctx, &nas.GetAccessGroupsArgs{
-// 			NameRegex:       &opt0,
-// 			AccessGroupType: &opt1,
-// 			Description:     &opt2,
+// 			NameRegex:       pulumi.StringRef("^foo"),
+// 			AccessGroupType: pulumi.StringRef("Classic"),
+// 			Description:     pulumi.StringRef("tf-testAccAccessGroupsdatasource"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

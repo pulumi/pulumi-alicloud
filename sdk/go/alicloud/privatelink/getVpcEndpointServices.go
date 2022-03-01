@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "the_resource_name"
 // 		example, err := privatelink.GetVpcEndpointServices(ctx, &privatelink.GetVpcEndpointServicesArgs{
 // 			Ids: []string{
 // 				"example_value",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("the_resource_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

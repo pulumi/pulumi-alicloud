@@ -37,17 +37,15 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcBgpNetworkId1", ids.Networks[0].Id)
-// 		opt0 := "example_value"
 // 		routerId, err := vpc.GetBgpNetworks(ctx, &vpc.GetBgpNetworksArgs{
-// 			RouterId: &opt0,
+// 			RouterId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcBgpNetworkId2", routerId.Networks[0].Id)
-// 		opt1 := "Available"
 // 		status, err := vpc.GetBgpNetworks(ctx, &vpc.GetBgpNetworksArgs{
-// 			Status: &opt1,
+// 			Status: pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

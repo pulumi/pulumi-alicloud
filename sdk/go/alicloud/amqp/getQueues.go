@@ -40,11 +40,10 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("amqpQueueId1", ids.Queues[0].Id)
-// 		opt0 := "^my-Queue"
 // 		nameRegex, err := amqp.GetQueues(ctx, &amqp.GetQueuesArgs{
 // 			InstanceId:      "amqp-abc12345",
 // 			VirtualHostName: "my-VirtualHost",
-// 			NameRegex:       &opt0,
+// 			NameRegex:       pulumi.StringRef("^my-Queue"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

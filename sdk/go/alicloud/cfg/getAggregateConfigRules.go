@@ -28,13 +28,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "the_resource_name"
 // 		example, err := cfg.GetAggregateConfigRules(ctx, &cfg.GetAggregateConfigRulesArgs{
 // 			AggregatorId: "ca-3a9b626622af001d****",
 // 			Ids: []string{
 // 				"cr-5154626622af0034****",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("the_resource_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

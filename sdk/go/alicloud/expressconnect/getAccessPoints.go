@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("expressConnectAccessPointId1", ids.Points[0].Id)
-// 		opt0 := "^杭州-"
 // 		nameRegex, err := expressconnect.GetAccessPoints(ctx, &expressconnect.GetAccessPointsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^杭州-"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

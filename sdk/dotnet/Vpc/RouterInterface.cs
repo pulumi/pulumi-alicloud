@@ -10,6 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Vpc.Network("foo", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var @interface = new AliCloud.Vpc.RouterInterface("interface", new AliCloud.Vpc.RouterInterfaceArgs
+    ///         {
+    ///             OppositeRegion = "cn-beijing",
+    ///             RouterType = "VRouter",
+    ///             RouterId = foo.RouterId,
+    ///             Role = "InitiatingSide",
+    ///             Specification = "Large.2",
+    ///             Description = "test1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The router interface can be imported using the id, e.g.

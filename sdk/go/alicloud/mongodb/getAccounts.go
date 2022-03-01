@@ -28,10 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "root"
 // 		example, err := mongodb.GetAccounts(ctx, &mongodb.GetAccountsArgs{
 // 			InstanceId:  "example_value",
-// 			AccountName: &opt0,
+// 			AccountName: pulumi.StringRef("root"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

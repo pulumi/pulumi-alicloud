@@ -10,6 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "Rds";
+    ///         var name = config.Get("name") ?? "dbaccountmysql";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             VpcName = name,
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///             VswitchName = name,
+    ///         });
+    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
+    ///         {
+    ///             Engine = "MySQL",
+    ///             EngineVersion = "5.6",
+    ///             InstanceType = "rds.mysql.s1.small",
+    ///             InstanceStorage = 10,
+    ///             VswitchId = defaultSwitch.Id,
+    ///             InstanceName = name,
+    ///         });
+    ///         var account = new AliCloud.Rds.Account("account", new AliCloud.Rds.AccountArgs
+    ///         {
+    ///             InstanceId = instance.Id,
+    ///             Password = "Test12345",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RDS account can be imported using the id, e.g.

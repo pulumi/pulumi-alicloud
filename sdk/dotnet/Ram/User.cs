@@ -10,6 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new RAM user.
+    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
+    ///         {
+    ///             Comments = "yoyoyo",
+    ///             DisplayName = "user_display_name",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Force = true,
+    ///             Mobile = "86-18688888888",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RAM user can be imported using the id, e.g.

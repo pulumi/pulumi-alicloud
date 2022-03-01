@@ -40,18 +40,15 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := "Instance"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
+// 			AvailableResourceCreation: pulumi.StringRef("Instance"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := defaultZones.Zones[0].Id
-// 		opt2 := 3
 // 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone: &opt1,
-// 			EniAmount:        &opt2,
+// 			AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// 			EniAmount:        pulumi.IntRef(3),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -79,13 +76,10 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt3 := "^ubuntu_[0-9]+_[0-9]+_x64*"
-// 		opt4 := true
-// 		opt5 := "system"
 // 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex:  &opt3,
-// 			MostRecent: &opt4,
-// 			Owners:     &opt5,
+// 			NameRegex:  pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+// 			MostRecent: pulumi.BoolRef(true),
+// 			Owners:     pulumi.StringRef("system"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -104,9 +98,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt6 := "OK"
 // 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			Status: &opt6,
+// 			Status: pulumi.StringRef("OK"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

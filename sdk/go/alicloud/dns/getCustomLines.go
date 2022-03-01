@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
 // 		ids, err := dns.GetCustomLines(ctx, &dns.GetCustomLinesArgs{
-// 			EnableDetails: &opt0,
+// 			EnableDetails: pulumi.BoolRef(true),
 // 			DomainName:    "your_domain_name",
 // 		}, nil)
 // 		if err != nil {

@@ -37,18 +37,15 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "default-NODELETING"
 // 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("default-NODELETING"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := defaultNetworks.Ids[0]
-// 		opt2 := defaultZones.Zones[0].Id
 // 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  &opt1,
-// 			ZoneId: &opt2,
+// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

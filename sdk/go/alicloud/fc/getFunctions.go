@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample_fc_function"
 // 		functionsDs, err := fc.GetFunctions(ctx, &fc.GetFunctionsArgs{
-// 			NameRegex:   &opt0,
+// 			NameRegex:   pulumi.StringRef("sample_fc_function"),
 // 			ServiceName: "sample_service",
 // 		}, nil)
 // 		if err != nil {

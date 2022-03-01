@@ -26,12 +26,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "INIT_SUCCESS"
 // 		example, err := mse.GetClusters(ctx, &mse.GetClustersArgs{
 // 			Ids: []string{
 // 				"mse-cn-0d9xxxx",
 // 			},
-// 			Status: &opt0,
+// 			Status: pulumi.StringRef("INIT_SUCCESS"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

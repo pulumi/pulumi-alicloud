@@ -26,12 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "username"
-// 		opt1 := "saslUsers.txt"
 // 		saslUsersDs, err := actiontrail.GetSaslUsers(ctx, &actiontrail.GetSaslUsersArgs{
 // 			InstanceId: "xxx",
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("username"),
+// 			OutputFile: pulumi.StringRef("saslUsers.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

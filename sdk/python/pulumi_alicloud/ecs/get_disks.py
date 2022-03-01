@@ -402,7 +402,16 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
               zone_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDisksResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    disks_ds = alicloud.ecs.get_disks(name_regex="sample_disk")
+    pulumi.export("firstDiskId", disks_ds.disks[0].id)
+    ```
+
 
     :param str availability_zone: Availability zone of the disk.
     :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
@@ -529,7 +538,16 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
                      zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDisksResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    disks_ds = alicloud.ecs.get_disks(name_regex="sample_disk")
+    pulumi.export("firstDiskId", disks_ds.disks[0].id)
+    ```
+
 
     :param str availability_zone: Availability zone of the disk.
     :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).

@@ -130,6 +130,17 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        api_group = alicloud.apigateway.Group("apiGroup", description="description of the api group")
+        ```
+
         ## Import
 
         Api gateway group can be imported using the id, e.g.
@@ -150,6 +161,17 @@ class Group(pulumi.CustomResource):
                  args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        api_group = alicloud.apigateway.Group("apiGroup", description="description of the api group")
+        ```
+
         ## Import
 
         Api gateway group can be imported using the id, e.g.

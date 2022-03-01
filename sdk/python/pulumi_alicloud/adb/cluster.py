@@ -743,6 +743,40 @@ class Cluster(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Create a ADB MySQL cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "adbClusterconfig"
+        creation = config.get("creation")
+        if creation is None:
+            creation = "ADB"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_cluster = alicloud.adb.Cluster("defaultCluster",
+            db_cluster_version="3.0",
+            db_cluster_category="Cluster",
+            db_node_class="C8",
+            db_node_count=2,
+            db_node_storage=200,
+            pay_type="PostPaid",
+            description=name,
+            vswitch_id=default_switch.id)
+        ```
+
         ## Import
 
         ADB cluster can be imported using the id, e.g.
@@ -778,6 +812,40 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Create a ADB MySQL cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "adbClusterconfig"
+        creation = config.get("creation")
+        if creation is None:
+            creation = "ADB"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_cluster = alicloud.adb.Cluster("defaultCluster",
+            db_cluster_version="3.0",
+            db_cluster_category="Cluster",
+            db_node_class="C8",
+            db_node_count=2,
+            db_node_storage=200,
+            pay_type="PostPaid",
+            description=name,
+            vswitch_id=default_switch.id)
+        ```
+
         ## Import
 
         ADB cluster can be imported using the id, e.g.

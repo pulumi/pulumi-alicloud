@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "PrePaid"
 // 		_default, err := ecs.GetInstanceTypeFamilies(ctx, &ecs.GetInstanceTypeFamiliesArgs{
-// 			InstanceChargeType: &opt0,
+// 			InstanceChargeType: pulumi.StringRef("PrePaid"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

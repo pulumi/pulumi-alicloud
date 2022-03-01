@@ -26,12 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample-table"
-// 		opt1 := "tables.txt"
 // 		tablesDs, err := ots.GetTables(ctx, &ots.GetTablesArgs{
 // 			InstanceName: "sample-instance",
-// 			NameRegex:    &opt0,
-// 			OutputFile:   &opt1,
+// 			NameRegex:    pulumi.StringRef("sample-table"),
+// 			OutputFile:   pulumi.StringRef("tables.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

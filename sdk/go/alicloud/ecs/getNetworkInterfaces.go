@@ -10,6 +10,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Argument Reference
+//
+// The following arguments are supported:
+//
+// * `ids` - (Optional)  A list of ENI IDs.
+// * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+// * `vpcId` - (Optional) The VPC ID linked to ENIs.
+// * `vswitchId` - (Optional) The VSwitch ID linked to ENIs.
+// * `privateIp` - (Optional) The primary private IP address of the ENI.
+// * `securityGroupId` - (Optional) The security group ID linked to ENIs.
+// * `name` - (Optional) The name of the ENIs.
+// * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
+// * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
+// * `tags` - (Optional) A map of tags assigned to ENIs.
+// * `outputFile` - (Optional) The name of output file that saves the filter results.
+// * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, opts ...pulumi.InvokeOption) (*GetNetworkInterfacesResult, error) {
 	var rv GetNetworkInterfacesResult
 	err := ctx.Invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args, &rv, opts...)

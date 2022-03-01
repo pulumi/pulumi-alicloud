@@ -11,6 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
+// 			Bandwidth:   pulumi.String("2"),
+// 			Description: pulumi.String("test_common_bandwidth_package"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooEipAddress, err := ecs.NewEipAddress(ctx, "fooEipAddress", &ecs.EipAddressArgs{
+// 			Bandwidth:          pulumi.String("2"),
+// 			InternetChargeType: pulumi.String("PayByBandwidth"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "fooCommonBandwithPackageAttachment", &vpc.CommonBandwithPackageAttachmentArgs{
+// 			BandwidthPackageId: fooCommonBandwithPackage.ID(),
+// 			InstanceId:         fooEipAddress.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // The common bandwidth package attachment can be imported using the id, e.g.

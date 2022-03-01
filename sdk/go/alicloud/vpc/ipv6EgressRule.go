@@ -46,20 +46,16 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "ecs_with_ipv6_address"
-// 		opt1 := "Running"
 // 		defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: &opt0,
-// 			Status:    &opt1,
+// 			NameRegex: pulumi.StringRef("ecs_with_ipv6_address"),
+// 			Status:    pulumi.StringRef("Running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := defaultInstances.Instances[0].Id
-// 		opt3 := "Available"
 // 		defaultIpv6Addresses, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-// 			AssociatedInstanceId: &opt2,
-// 			Status:               &opt3,
+// 			AssociatedInstanceId: pulumi.StringRef(defaultInstances.Instances[0].Id),
+// 			Status:               pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

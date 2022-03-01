@@ -27,10 +27,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf_testAccCassandra_dc"
 // 		_, err := cassandra.GetDataCenters(ctx, &cassandra.GetDataCentersArgs{
 // 			ClusterId: "cds-xxxxx",
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tf_testAccCassandra_dc"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

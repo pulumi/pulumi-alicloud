@@ -420,6 +420,37 @@ class Policy(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Policy.
+        policy = alicloud.ram.Policy("policy",
+            description="this is a policy test",
+            force=True,
+            policy_document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": [
+                  "oss:ListObjects",
+                  "oss:GetObject"
+                ],
+                "Effect": "Allow",
+                "Resource": [
+                  "acs:oss:*:*:mybucket",
+                  "acs:oss:*:*:mybucket/*"
+                ]
+              }
+            ],
+              "Version": "1"
+          }
+          
+        \"\"\",
+            policy_name="policyName")
+        ```
+
         ## Import
 
         RAM policy can be imported using the id or name, e.g.
@@ -447,6 +478,37 @@ class Policy(pulumi.CustomResource):
                  args: Optional[PolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Policy.
+        policy = alicloud.ram.Policy("policy",
+            description="this is a policy test",
+            force=True,
+            policy_document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": [
+                  "oss:ListObjects",
+                  "oss:GetObject"
+                ],
+                "Effect": "Allow",
+                "Resource": [
+                  "acs:oss:*:*:mybucket",
+                  "acs:oss:*:*:mybucket/*"
+                ]
+              }
+            ],
+              "Version": "1"
+          }
+          
+        \"\"\",
+            policy_name="policyName")
+        ```
+
         ## Import
 
         RAM policy can be imported using the id or name, e.g.

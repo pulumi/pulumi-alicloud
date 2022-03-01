@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := apigateway.NewAppAttachment(ctx, "foo", &apigateway.AppAttachmentArgs{
+// 			ApiId:     pulumi.String("d29d25b9cfdf4742b1a3f6537299a749"),
+// 			AppId:     pulumi.String("20898181"),
+// 			GroupId:   pulumi.String("aaef8cdbb404420f9398a74ed1db7fff"),
+// 			StageName: pulumi.String("PRE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AppAttachment struct {
 	pulumi.CustomResourceState
 

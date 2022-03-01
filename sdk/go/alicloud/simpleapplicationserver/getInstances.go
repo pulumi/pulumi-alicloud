@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerInstanceId1", ids.Instances[0].Id)
-// 		opt0 := "^my-Instance"
 // 		nameRegex, err := simpleapplicationserver.GetInstances(ctx, &simpleapplicationserver.GetInstancesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Instance"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

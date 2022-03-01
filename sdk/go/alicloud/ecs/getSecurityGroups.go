@@ -25,11 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^web-"
-// 		opt1 := "web_access.json"
 // 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("^web-"),
+// 			OutputFile: pulumi.StringRef("web_access.json"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

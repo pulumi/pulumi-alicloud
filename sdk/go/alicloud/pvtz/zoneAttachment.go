@@ -11,6 +11,165 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Using `vpcIds` to attach being in same region several vpc instances to a private zone
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		zone, err := pvtz.NewZone(ctx, "zone", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		first, err := vpc.NewNetwork(ctx, "first", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		second, err := vpc.NewNetwork(ctx, "second", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pvtz.NewZoneAttachment(ctx, "zone-attachment", &pvtz.ZoneAttachmentArgs{
+// 			ZoneId: zone.ID(),
+// 			VpcIds: pulumi.StringArray{
+// 				first.ID(),
+// 				second.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Using `vpcs` to attach being in same region several vpc instances to a private zone
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		zone, err := pvtz.NewZone(ctx, "zone", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		first, err := vpc.NewNetwork(ctx, "first", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		second, err := vpc.NewNetwork(ctx, "second", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pvtz.NewZoneAttachment(ctx, "zone-attachment", &pvtz.ZoneAttachmentArgs{
+// 			ZoneId: zone.ID(),
+// 			Vpcs: pvtz.ZoneAttachmentVpcArray{
+// 				&pvtz.ZoneAttachmentVpcArgs{
+// 					VpcId: first.ID(),
+// 				},
+// 				&pvtz.ZoneAttachmentVpcArgs{
+// 					VpcId: second.ID(),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Using `vpcs` to attach being in different regions several vpc instances to a private zone
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		zone, err := pvtz.NewZone(ctx, "zone", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		first, err := vpc.NewNetwork(ctx, "first", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		second, err := vpc.NewNetwork(ctx, "second", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = providers.Newalicloud(ctx, "eu", &providers.alicloudArgs{
+// 			Region: "eu-central-1",
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		third, err := vpc.NewNetwork(ctx, "third", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/16"),
+// 		}, pulumi.Provider(alicloud.Eu))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pvtz.NewZoneAttachment(ctx, "zone-attachment", &pvtz.ZoneAttachmentArgs{
+// 			ZoneId: zone.ID(),
+// 			Vpcs: pvtz.ZoneAttachmentVpcArray{
+// 				&pvtz.ZoneAttachmentVpcArgs{
+// 					VpcId: first.ID(),
+// 				},
+// 				&pvtz.ZoneAttachmentVpcArgs{
+// 					VpcId: second.ID(),
+// 				},
+// 				&pvtz.ZoneAttachmentVpcArgs{
+// 					RegionId: pulumi.String("eu-central-1"),
+// 					VpcId:    third.ID(),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Private Zone attachment can be imported using the id(same with `zone_id`), e.g.

@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("alidnsAddressPoolId1", ids.Pools[0].Id)
-// 		opt0 := "^my-AddressPool"
 // 		nameRegex, err := dns.GetAddressPools(ctx, &dns.GetAddressPoolsArgs{
 // 			InstanceId: "example_value",
-// 			NameRegex:  &opt0,
+// 			NameRegex:  pulumi.StringRef("^my-AddressPool"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

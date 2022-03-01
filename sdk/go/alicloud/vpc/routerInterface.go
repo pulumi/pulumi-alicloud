@@ -11,6 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewRouterInterface(ctx, "interface", &vpc.RouterInterfaceArgs{
+// 			OppositeRegion: pulumi.String("cn-beijing"),
+// 			RouterType:     pulumi.String("VRouter"),
+// 			RouterId:       foo.RouterId,
+// 			Role:           pulumi.String("InitiatingSide"),
+// 			Specification:  pulumi.String("Large.2"),
+// 			Description:    pulumi.String("test1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // The router interface can be imported using the id, e.g.

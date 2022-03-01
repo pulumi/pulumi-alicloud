@@ -5,6 +5,84 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Add a CDN Accelerated Domain with configs.
+ * const domain = new alicloud.cdn.Domain("domain", {
+ *     domainName: your_cdn_domain_name,
+ *     cdnType: "web",
+ *     sourceType: "domain",
+ *     sources: [
+ *         your_cdn_domain_source1,
+ *         your_cdn_domain_source2,
+ *     ],
+ *     optimizeEnable: "off",
+ *     pageCompressEnable: "off",
+ *     rangeEnable: "off",
+ *     videoSeekEnable: "off",
+ *     blockIps: [
+ *         "1.2.3.4",
+ *         "111.222.111.111",
+ *     ],
+ *     parameterFilterConfig: {
+ *         enable: "on",
+ *         hashKeyArgs: [
+ *             "hello",
+ *             "youyouyou",
+ *         ],
+ *     },
+ *     page404Config: {
+ *         pageType: "other",
+ *         customPageUrl: `http://${your_cdn_domain_name}/notfound/`,
+ *     },
+ *     referConfig: {
+ *         referType: "block",
+ *         referLists: [
+ *             "www.xxxx.com",
+ *             "www.xxxx.cn",
+ *         ],
+ *         allowEmpty: "off",
+ *     },
+ *     authConfig: {
+ *         authType: "type_a",
+ *         masterKey: "helloworld1",
+ *         slaveKey: "helloworld2",
+ *     },
+ *     httpHeaderConfigs: [
+ *         {
+ *             headerKey: "Content-Type",
+ *             headerValue: "text/plain",
+ *         },
+ *         {
+ *             headerKey: "Access-Control-Allow-Origin",
+ *             headerValue: "*",
+ *         },
+ *     ],
+ *     cacheConfigs: [
+ *         {
+ *             cacheContent: "/hello/world",
+ *             ttl: 1000,
+ *             cacheType: "path",
+ *         },
+ *         {
+ *             cacheContent: "/hello/world/youyou",
+ *             ttl: 1000,
+ *             cacheType: "path",
+ *         },
+ *         {
+ *             cacheContent: "txt,jpg,png",
+ *             ttl: 2000,
+ *             cacheType: "suffix",
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class Domain extends pulumi.CustomResource {
     /**
      * Get an existing Domain resource's state with the given name, ID, and optional extra

@@ -41,34 +41,31 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cloudSsoUserId1", ids.Users[0].Id)
-// 		opt0 := "^my-User"
 // 		nameRegex, err := cloudsso.GetUsers(ctx, &cloudsso.GetUsersArgs{
 // 			DirectoryId: "example_value",
-// 			NameRegex:   &opt0,
+// 			NameRegex:   pulumi.StringRef("^my-User"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("cloudSsoUserId2", nameRegex.Users[0].Id)
-// 		opt1 := "Manual"
 // 		provisionType, err := cloudsso.GetUsers(ctx, &cloudsso.GetUsersArgs{
 // 			DirectoryId: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 			},
-// 			ProvisionType: &opt1,
+// 			ProvisionType: pulumi.StringRef("Manual"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("cloudSsoUserId3", provisionType.Users[0].Id)
-// 		opt2 := "Enabled"
 // 		status, err := cloudsso.GetUsers(ctx, &cloudsso.GetUsersArgs{
 // 			DirectoryId: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 			},
-// 			Status: &opt2,
+// 			Status: pulumi.StringRef("Enabled"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

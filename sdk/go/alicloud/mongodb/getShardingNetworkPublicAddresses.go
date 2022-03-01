@@ -28,12 +28,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example_value"
-// 		opt1 := "Primary"
 // 		example, err := mongodb.GetShardingNetworkPublicAddresses(ctx, &mongodb.GetShardingNetworkPublicAddressesArgs{
 // 			DbInstanceId: "example_value",
-// 			NodeId:       &opt0,
-// 			Role:         &opt1,
+// 			NodeId:       pulumi.StringRef("example_value"),
+// 			Role:         pulumi.StringRef("Primary"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

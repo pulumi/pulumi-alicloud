@@ -35,9 +35,8 @@ import (
 // 		if param := cfg.Get("instanceName"); param != "" {
 // 			instanceName = param
 // 		}
-// 		opt0 := "VSwitch"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -67,11 +66,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "alikafkaInstanceName"
-// 		opt2 := "instances.txt"
 // 		instancesDs, err := actiontrail.GetInstances(ctx, &actiontrail.GetInstancesArgs{
-// 			NameRegex:  &opt1,
-// 			OutputFile: &opt2,
+// 			NameRegex:  pulumi.StringRef("alikafkaInstanceName"),
+// 			OutputFile: pulumi.StringRef("instances.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

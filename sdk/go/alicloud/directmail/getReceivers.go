@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "the_resource_name"
 // 		example, err := directmail.LookupReceivers(ctx, &directmail.LookupReceiversArgs{
 // 			Ids: []string{
 // 				"ca73b1e4fb0df7c935a5097a****",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("the_resource_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -701,7 +701,82 @@ class Domain(pulumi.CustomResource):
                  video_seek_enable: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Domain resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a CDN Accelerated Domain with configs.
+        domain = alicloud.cdn.Domain("domain",
+            domain_name=your_cdn_domain_name,
+            cdn_type="web",
+            source_type="domain",
+            sources=[
+                your_cdn_domain_source1,
+                your_cdn_domain_source2,
+            ],
+            optimize_enable="off",
+            page_compress_enable="off",
+            range_enable="off",
+            video_seek_enable="off",
+            block_ips=[
+                "1.2.3.4",
+                "111.222.111.111",
+            ],
+            parameter_filter_config=alicloud.cdn.DomainParameterFilterConfigArgs(
+                enable="on",
+                hash_key_args=[
+                    "hello",
+                    "youyouyou",
+                ],
+            ),
+            page404_config=alicloud.cdn.DomainPage404ConfigArgs(
+                page_type="other",
+                custom_page_url=f"http://{your_cdn_domain_name}/notfound/",
+            ),
+            refer_config=alicloud.cdn.DomainReferConfigArgs(
+                refer_type="block",
+                refer_lists=[
+                    "www.xxxx.com",
+                    "www.xxxx.cn",
+                ],
+                allow_empty="off",
+            ),
+            auth_config=alicloud.cdn.DomainAuthConfigArgs(
+                auth_type="type_a",
+                master_key="helloworld1",
+                slave_key="helloworld2",
+            ),
+            http_header_configs=[
+                alicloud.cdn.DomainHttpHeaderConfigArgs(
+                    header_key="Content-Type",
+                    header_value="text/plain",
+                ),
+                alicloud.cdn.DomainHttpHeaderConfigArgs(
+                    header_key="Access-Control-Allow-Origin",
+                    header_value="*",
+                ),
+            ],
+            cache_configs=[
+                alicloud.cdn.DomainCacheConfigArgs(
+                    cache_content="/hello/world",
+                    ttl=1000,
+                    cache_type="path",
+                ),
+                alicloud.cdn.DomainCacheConfigArgs(
+                    cache_content="/hello/world/youyou",
+                    ttl=1000,
+                    cache_type="path",
+                ),
+                alicloud.cdn.DomainCacheConfigArgs(
+                    cache_content="txt,jpg,png",
+                    ttl=2000,
+                    cache_type="suffix",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DomainAuthConfigArgs']] auth_config: The auth config of the accelerated domain.
@@ -728,7 +803,82 @@ class Domain(pulumi.CustomResource):
                  args: DomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Domain resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a CDN Accelerated Domain with configs.
+        domain = alicloud.cdn.Domain("domain",
+            domain_name=your_cdn_domain_name,
+            cdn_type="web",
+            source_type="domain",
+            sources=[
+                your_cdn_domain_source1,
+                your_cdn_domain_source2,
+            ],
+            optimize_enable="off",
+            page_compress_enable="off",
+            range_enable="off",
+            video_seek_enable="off",
+            block_ips=[
+                "1.2.3.4",
+                "111.222.111.111",
+            ],
+            parameter_filter_config=alicloud.cdn.DomainParameterFilterConfigArgs(
+                enable="on",
+                hash_key_args=[
+                    "hello",
+                    "youyouyou",
+                ],
+            ),
+            page404_config=alicloud.cdn.DomainPage404ConfigArgs(
+                page_type="other",
+                custom_page_url=f"http://{your_cdn_domain_name}/notfound/",
+            ),
+            refer_config=alicloud.cdn.DomainReferConfigArgs(
+                refer_type="block",
+                refer_lists=[
+                    "www.xxxx.com",
+                    "www.xxxx.cn",
+                ],
+                allow_empty="off",
+            ),
+            auth_config=alicloud.cdn.DomainAuthConfigArgs(
+                auth_type="type_a",
+                master_key="helloworld1",
+                slave_key="helloworld2",
+            ),
+            http_header_configs=[
+                alicloud.cdn.DomainHttpHeaderConfigArgs(
+                    header_key="Content-Type",
+                    header_value="text/plain",
+                ),
+                alicloud.cdn.DomainHttpHeaderConfigArgs(
+                    header_key="Access-Control-Allow-Origin",
+                    header_value="*",
+                ),
+            ],
+            cache_configs=[
+                alicloud.cdn.DomainCacheConfigArgs(
+                    cache_content="/hello/world",
+                    ttl=1000,
+                    cache_type="path",
+                ),
+                alicloud.cdn.DomainCacheConfigArgs(
+                    cache_content="/hello/world/youyou",
+                    ttl=1000,
+                    cache_type="path",
+                ),
+                alicloud.cdn.DomainCacheConfigArgs(
+                    cache_content="txt,jpg,png",
+                    ttl=2000,
+                    cache_type="suffix",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

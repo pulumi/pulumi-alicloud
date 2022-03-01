@@ -10,6 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Vpn.SslVpnClientCert("foo", new AliCloud.Vpn.SslVpnClientCertArgs
+    ///         {
+    ///             SslVpnServerId = "ssl_vpn_server_fake_id",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// SSL-VPN client certificates can be imported using the id, e.g.

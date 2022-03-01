@@ -39,22 +39,20 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcNatIpCidrId1", ids.Cidrs[0].Id)
-// 		opt0 := "^my-NatIpCidr"
 // 		nameRegex, err := vpc.GetNatIpCidrs(ctx, &vpc.GetNatIpCidrsArgs{
 // 			NatGatewayId: "example_value",
-// 			NameRegex:    &opt0,
+// 			NameRegex:    pulumi.StringRef("^my-NatIpCidr"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcNatIpCidrId2", nameRegex.Cidrs[0].Id)
-// 		opt1 := "Available"
 // 		status, err := vpc.GetNatIpCidrs(ctx, &vpc.GetNatIpCidrsArgs{
 // 			NatGatewayId: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 			},
-// 			Status: &opt1,
+// 			Status: pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

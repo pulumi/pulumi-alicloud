@@ -10,6 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Domain record
+    ///         var record = new AliCloud.Dns.Record("record", new AliCloud.Dns.RecordArgs
+    ///         {
+    ///             HostRecord = "@",
+    ///             Type = "A",
+    ///             Value = "192.168.99.99",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RDS record can be imported using the id, e.g.

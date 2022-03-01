@@ -29,31 +29,24 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "VSwitch"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := defaultZones.Zones[0].Id
-// 		opt2 := 1
-// 		opt3 := 2
 // 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone: &opt1,
-// 			CpuCoreCount:     &opt2,
-// 			MemorySize:       &opt3,
+// 			AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// 			CpuCoreCount:     pulumi.IntRef(1),
+// 			MemorySize:       pulumi.Float64Ref(2),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt4 := true
-// 		opt5 := "^ubuntu_18.*64"
-// 		opt6 := "system"
 // 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			MostRecent: &opt4,
-// 			NameRegex:  &opt5,
-// 			Owners:     &opt6,
+// 			MostRecent: pulumi.BoolRef(true),
+// 			NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+// 			Owners:     pulumi.StringRef("system"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

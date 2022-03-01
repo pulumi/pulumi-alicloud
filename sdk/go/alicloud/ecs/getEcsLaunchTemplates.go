@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "your_launch_name"
 // 		example, err := ecs.GetEcsLaunchTemplates(ctx, &ecs.GetEcsLaunchTemplatesArgs{
 // 			Ids: []string{
 // 				"lt-bp1a469uxxxxxx",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("your_launch_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

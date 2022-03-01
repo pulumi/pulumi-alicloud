@@ -31,52 +31,45 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "plan-tf-used-dont-delete"
 // 		defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "plan-tf-used-dont-delete"
 // 		defaultOssBackupPlans, err := hbr.GetOssBackupPlans(ctx, &hbr.GetOssBackupPlansArgs{
-// 			NameRegex: &opt1,
+// 			NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := "plan-tf-used-dont-delete"
 // 		defaultNasBackupPlans, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
-// 			NameRegex: &opt2,
+// 			NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt3 := defaultEcsBackupPlans.Plans[0].InstanceId
 // 		ecsSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
 // 			SourceType: "ECS_FILE",
 // 			VaultId:    defaultEcsBackupPlans.Plans[0].VaultId,
-// 			InstanceId: &opt3,
+// 			InstanceId: pulumi.StringRef(defaultEcsBackupPlans.Plans[0].InstanceId),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt4 := defaultOssBackupPlans.Plans[0].Bucket
 // 		ossSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
 // 			SourceType: "OSS",
 // 			VaultId:    defaultOssBackupPlans.Plans[0].VaultId,
-// 			Bucket:     &opt4,
+// 			Bucket:     pulumi.StringRef(defaultOssBackupPlans.Plans[0].Bucket),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt5 := defaultNasBackupPlans.Plans[0].FileSystemId
-// 		opt6 := defaultNasBackupPlans.Plans[0].CreateTime
 // 		nasSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
 // 			SourceType:   "NAS",
 // 			VaultId:      defaultNasBackupPlans.Plans[0].VaultId,
-// 			FileSystemId: &opt5,
-// 			CreateTime:   &opt6,
+// 			FileSystemId: pulumi.StringRef(defaultNasBackupPlans.Plans[0].FileSystemId),
+// 			CreateTime:   pulumi.StringRef(defaultNasBackupPlans.Plans[0].CreateTime),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -24,10 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample/sample_object.txt"
 // 		bucketObjectsDs, err := oss.GetBucketObjects(ctx, &oss.GetBucketObjectsArgs{
 // 			BucketName: "sample_bucket",
-// 			KeyRegex:   &opt0,
+// 			KeyRegex:   pulumi.StringRef("sample/sample_object.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

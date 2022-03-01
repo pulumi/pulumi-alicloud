@@ -10,6 +10,31 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Mns
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var queue = new AliCloud.Mns.Queue("queue", new AliCloud.Mns.QueueArgs
+    ///         {
+    ///             DelaySeconds = 0,
+    ///             MaximumMessageSize = 65536,
+    ///             MessageRetentionPeriod = 345600,
+    ///             PollingWaitSeconds = 0,
+    ///             VisibilityTimeout = 30,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// MNS QUEUE can be imported using the id or name, e.g.

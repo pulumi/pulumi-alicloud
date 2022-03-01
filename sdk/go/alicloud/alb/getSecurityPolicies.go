@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("albSecurityPolicyId1", ids.Policies[0].Id)
-// 		opt0 := "^my-SecurityPolicy"
 // 		nameRegex, err := alb.GetSecurityPolicies(ctx, &alb.GetSecurityPoliciesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-SecurityPolicy"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

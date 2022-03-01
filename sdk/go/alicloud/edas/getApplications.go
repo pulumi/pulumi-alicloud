@@ -26,12 +26,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "application.txt"
 // 		applications, err := edas.GetApplications(ctx, &edas.GetApplicationsArgs{
 // 			Ids: []string{
 // 				"xxx",
 // 			},
-// 			OutputFile: &opt0,
+// 			OutputFile: pulumi.StringRef("application.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

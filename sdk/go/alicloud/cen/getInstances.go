@@ -24,12 +24,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^foo"
 // 		cenInstancesDs, err := cen.GetInstances(ctx, &cen.GetInstancesArgs{
 // 			Ids: []string{
 // 				"cen-id1",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^foo"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

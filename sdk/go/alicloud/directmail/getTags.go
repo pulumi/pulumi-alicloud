@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("directMailTagId1", ids.Tags[0].Id)
-// 		opt0 := "^my-Tag"
 // 		nameRegex, err := directmail.GetTags(ctx, &directmail.GetTagsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Tag"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

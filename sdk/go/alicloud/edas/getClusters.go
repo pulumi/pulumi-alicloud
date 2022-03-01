@@ -26,13 +26,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "clusters.txt"
 // 		_, err := edas.GetClusters(ctx, &edas.GetClustersArgs{
 // 			LogicalRegionId: "cn-shenzhen:xxx",
 // 			Ids: []string{
 // 				"addfs-dfsasd",
 // 			},
-// 			OutputFile: &opt0,
+// 			OutputFile: pulumi.StringRef("clusters.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

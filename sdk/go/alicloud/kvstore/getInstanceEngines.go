@@ -27,22 +27,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "KVStore"
 // 		resourcesZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
+// 			AvailableResourceCreation: pulumi.StringRef("KVStore"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "Redis"
-// 		opt2 := "5.0"
-// 		opt3 := "PrePaid"
-// 		opt4 := "./engines.txt"
 // 		resourcesInstanceEngines, err := kvstore.GetInstanceEngines(ctx, &kvstore.GetInstanceEnginesArgs{
-// 			Engine:             &opt1,
-// 			EngineVersion:      &opt2,
-// 			InstanceChargeType: &opt3,
-// 			OutputFile:         &opt4,
+// 			Engine:             pulumi.StringRef("Redis"),
+// 			EngineVersion:      pulumi.StringRef("5.0"),
+// 			InstanceChargeType: pulumi.StringRef("PrePaid"),
+// 			OutputFile:         pulumi.StringRef("./engines.txt"),
 // 			ZoneId:             resourcesZones.Zones[0].Id,
 // 		}, nil)
 // 		if err != nil {

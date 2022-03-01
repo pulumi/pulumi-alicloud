@@ -27,9 +27,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf_testAccCassandra"
 // 		_, err := cassandra.GetClusters(ctx, &cassandra.GetClustersArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tf_testAccCassandra"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

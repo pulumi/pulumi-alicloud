@@ -11,6 +11,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/marketplace"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := marketplace.NewOrder(ctx, "order", &marketplace.OrderArgs{
+// 			CouponId:       pulumi.String(""),
+// 			Duration:       pulumi.Int(1),
+// 			PackageVersion: pulumi.String("yuncode2713600001"),
+// 			PayType:        pulumi.String("prepay"),
+// 			PricingCycle:   pulumi.String("Month"),
+// 			ProductCode:    pulumi.String("cmapi033136"),
+// 			Quantity:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Market order can be imported using the id, e.g.

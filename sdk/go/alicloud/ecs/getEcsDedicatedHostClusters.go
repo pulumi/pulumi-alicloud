@@ -37,25 +37,22 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("ecsDedicatedHostClusterId1", ids.Clusters[0].Id)
-// 		opt0 := "^my-DedicatedHostCluster"
 // 		nameRegex, err := ecs.GetEcsDedicatedHostClusters(ctx, &ecs.GetEcsDedicatedHostClustersArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-DedicatedHostCluster"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("ecsDedicatedHostClusterId2", nameRegex.Clusters[0].Id)
-// 		opt1 := "example_value"
 // 		zoneId, err := ecs.GetEcsDedicatedHostClusters(ctx, &ecs.GetEcsDedicatedHostClustersArgs{
-// 			ZoneId: &opt1,
+// 			ZoneId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("ecsDedicatedHostClusterId3", zoneId.Clusters[0].Id)
-// 		opt2 := "example_value"
 // 		clusterName, err := ecs.GetEcsDedicatedHostClusters(ctx, &ecs.GetEcsDedicatedHostClustersArgs{
-// 			DedicatedHostClusterName: &opt2,
+// 			DedicatedHostClusterName: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

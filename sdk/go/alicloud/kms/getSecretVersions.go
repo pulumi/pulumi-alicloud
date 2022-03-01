@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
 // 		kmsSecretVersionsDs, err := kms.GetSecretVersions(ctx, &kms.GetSecretVersionsArgs{
-// 			EnableDetails: &opt0,
+// 			EnableDetails: pulumi.BoolRef(true),
 // 			SecretName:    "secret_name",
 // 		}, nil)
 // 		if err != nil {

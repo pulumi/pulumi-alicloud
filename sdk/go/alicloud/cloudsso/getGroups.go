@@ -41,10 +41,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cloudSsoGroupId1", ids.Groups[0].Id)
-// 		opt0 := "^my-Group"
 // 		nameRegex, err := cloudsso.GetGroups(ctx, &cloudsso.GetGroupsArgs{
 // 			DirectoryId: "example_value",
-// 			NameRegex:   &opt0,
+// 			NameRegex:   pulumi.StringRef("^my-Group"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

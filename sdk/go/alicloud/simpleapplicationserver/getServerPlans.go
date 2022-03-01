@@ -28,17 +28,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 1
-// 		opt1 := 3
-// 		opt2 := 40
-// 		opt3 := 6
-// 		opt4 := 2
 // 		_, err := simpleapplicationserver.GetServerPlans(ctx, &simpleapplicationserver.GetServerPlansArgs{
-// 			Memory:    &opt0,
-// 			Bandwidth: &opt1,
-// 			DiskSize:  &opt2,
-// 			Flow:      &opt3,
-// 			Core:      &opt4,
+// 			Memory:    pulumi.IntRef(1),
+// 			Bandwidth: pulumi.IntRef(3),
+// 			DiskSize:  pulumi.IntRef(40),
+// 			Flow:      pulumi.IntRef(6),
+// 			Core:      pulumi.IntRef(2),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

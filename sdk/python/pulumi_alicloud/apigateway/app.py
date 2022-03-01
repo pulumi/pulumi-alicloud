@@ -132,6 +132,17 @@ class App(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        api_test = alicloud.apigateway.App("apiTest", description="description of the app")
+        ```
+
         ## Import
 
         Api gateway app can be imported using the id, e.g.
@@ -153,6 +164,17 @@ class App(pulumi.CustomResource):
                  args: Optional[AppArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        api_test = alicloud.apigateway.App("apiTest", description="description of the app")
+        ```
+
         ## Import
 
         Api gateway app can be imported using the id, e.g.

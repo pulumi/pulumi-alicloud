@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("albAclId1", ids.Acls[0].Id)
-// 		opt0 := "^my-Acl"
 // 		nameRegex, err := alb.GetAcls(ctx, &alb.GetAclsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Acl"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

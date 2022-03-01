@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const snapshot = new alicloud.ecs.Snapshot("snapshot", {
+ *     diskId: alicloud_disk_attachment["instance-attachment"].disk_id,
+ *     description: "this snapshot is created for testing",
+ *     tags: {
+ *         version: "1.2",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Snapshot can be imported using the id, e.g.

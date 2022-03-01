@@ -11,6 +11,87 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+// 			AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("10.1.0.0/21"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			VpcId:     defaultNetwork.ID(),
+// 			CidrBlock: pulumi.String("10.1.0.0/24"),
+// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
+// 			VpcId:              defaultNetwork.ID(),
+// 			Bandwidth:          pulumi.Int(10),
+// 			InstanceChargeType: pulumi.String("PayByTraffic"),
+// 			EnableSsl:          pulumi.Bool(false),
+// 			VswitchId:          defaultSwitch.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
+// 			IpAddress: pulumi.String("192.168.1.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultConnection, err := vpn.NewConnection(ctx, "defaultConnection", &vpn.ConnectionArgs{
+// 			CustomerGatewayId: defaultCustomerGateway.ID(),
+// 			VpnGatewayId:      defaultGateway.ID(),
+// 			LocalSubnets: pulumi.StringArray{
+// 				pulumi.String("192.168.2.0/24"),
+// 			},
+// 			RemoteSubnets: pulumi.StringArray{
+// 				pulumi.String("192.168.3.0/24"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpn.NewRouteEntry(ctx, "defaultRouteEntry", &vpn.RouteEntryArgs{
+// 			VpnGatewayId: defaultGateway.ID(),
+// 			RouteDest:    pulumi.String("10.0.0.0/24"),
+// 			NextHop:      defaultConnection.ID(),
+// 			Weight:       pulumi.Int(0),
+// 			PublishVpc:   pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.

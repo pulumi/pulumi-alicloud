@@ -188,7 +188,17 @@ def get_clusters(description: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    adb_clusters_ds = alicloud.adb.get_clusters(description_regex="am-\\w+",
+        status="Running")
+    pulumi.export("firstAdbClusterId", adb_clusters_ds.clusters[0].id)
+    ```
+
 
     :param str description: The description of the ADB cluster.
     :param str description_regex: A regex string to filter results by cluster description.
@@ -245,7 +255,17 @@ def get_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = Non
                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    adb_clusters_ds = alicloud.adb.get_clusters(description_regex="am-\\w+",
+        status="Running")
+    pulumi.export("firstAdbClusterId", adb_clusters_ds.clusters[0].id)
+    ```
+
 
     :param str description: The description of the ADB cluster.
     :param str description_regex: A regex string to filter results by cluster description.

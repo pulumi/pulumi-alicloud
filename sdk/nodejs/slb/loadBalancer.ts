@@ -5,6 +5,42 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraformtestslbconfig";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
+ *     specification: "slb.s2.small",
+ *     vswitchId: defaultSwitch.id,
+ *     tags: {
+ *         tag_a: 1,
+ *         tag_b: 2,
+ *         tag_c: 3,
+ *         tag_d: 4,
+ *         tag_e: 5,
+ *         tag_f: 6,
+ *         tag_g: 7,
+ *         tag_h: 8,
+ *         tag_i: 9,
+ *         tag_j: 10,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Load balancer can be imported using the id, e.g.

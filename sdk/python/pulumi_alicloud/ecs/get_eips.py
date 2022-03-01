@@ -281,7 +281,16 @@ def get_eips(address_name: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEipsResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    eips_ds = alicloud.ecs.get_eips()
+    pulumi.export("firstEipId", eips_ds.eips[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of EIP IDs.
     :param str ip_address: Public IP Address of the the EIP.
@@ -362,7 +371,16 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
                     tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEipsResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    eips_ds = alicloud.ecs.get_eips()
+    pulumi.export("firstEipId", eips_ds.eips[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of EIP IDs.
     :param str ip_address: Public IP Address of the the EIP.

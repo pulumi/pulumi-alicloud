@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("armsPrometheusAlertRuleId1", ids.Rules[0].Id)
-// 		opt0 := "^my-PrometheusAlertRule"
 // 		nameRegex, err := arms.GetPrometheusAlertRules(ctx, &arms.GetPrometheusAlertRulesArgs{
 // 			ClusterId: "example_value",
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-PrometheusAlertRule"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

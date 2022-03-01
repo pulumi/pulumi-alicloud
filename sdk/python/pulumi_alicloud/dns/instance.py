@@ -269,6 +269,23 @@ class Instance(pulumi.CustomResource):
                  version_code: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        this = alicloud.dns.Instance("this",
+            dns_security="no",
+            domain_numbers="2",
+            period=1,
+            renew_period=1,
+            renewal_status="ManualRenewal",
+            version_code="version_personal")
+        ```
+
         ## Import
 
         DNS instance be imported using the id, e.g.
@@ -293,6 +310,23 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        this = alicloud.dns.Instance("this",
+            dns_security="no",
+            domain_numbers="2",
+            period=1,
+            renew_period=1,
+            renewal_status="ManualRenewal",
+            version_code="version_personal")
+        ```
+
         ## Import
 
         DNS instance be imported using the id, e.g.

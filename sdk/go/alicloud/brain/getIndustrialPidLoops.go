@@ -28,13 +28,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testACC"
 // 		example, err := brain.GetIndustrialPidLoops(ctx, &brain.GetIndustrialPidLoopsArgs{
 // 			PidProjectId: "856c6b8f-ca63-40a4-xxxx-xxxx",
 // 			Ids: []string{
 // 				"742a3d4e-d8b0-47c8-xxxx-xxxx",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tf-testACC"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

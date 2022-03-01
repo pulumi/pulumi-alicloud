@@ -34,25 +34,21 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
 // 		defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
-// 			Current: &opt0,
+// 			Current: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "default-NODELETING"
 // 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: &opt1,
+// 			NameRegex: pulumi.StringRef("default-NODELETING"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := defaultNetworks.Ids[0]
-// 		opt3 := defaultRegions.Regions[0].ZoneIds[0].ZoneId
 // 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  &opt2,
-// 			ZoneId: &opt3,
+// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+// 			ZoneId: pulumi.StringRef(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

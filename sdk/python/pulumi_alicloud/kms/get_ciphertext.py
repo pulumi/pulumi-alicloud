@@ -87,7 +87,19 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
                    plaintext: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCiphertextResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    key = alicloud.kms.Key("key",
+        description="example key",
+        is_enabled=True)
+    encrypted = alicloud.kms.get_ciphertext_output(key_id=key.id,
+        plaintext="example")
+    ```
+
 
     :param Mapping[str, str] encryption_context: -
            (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
@@ -118,7 +130,19 @@ def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Map
                           plaintext: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCiphertextResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    key = alicloud.kms.Key("key",
+        description="example key",
+        is_enabled=True)
+    encrypted = alicloud.kms.get_ciphertext_output(key_id=key.id,
+        plaintext="example")
+    ```
+
 
     :param Mapping[str, str] encryption_context: -
            (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).

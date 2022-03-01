@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcBgpGroupId1", ids.Groups[0].Id)
-// 		opt0 := "^my-BgpGroup"
 // 		nameRegex, err := vpc.GetBgpGroups(ctx, &vpc.GetBgpGroupsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-BgpGroup"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

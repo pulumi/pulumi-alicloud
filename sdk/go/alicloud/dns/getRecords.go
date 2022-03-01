@@ -24,16 +24,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^@"
-// 		opt1 := false
-// 		opt2 := "records.txt"
-// 		opt3 := "A"
 // 		recordsDs, err := dns.GetRecords(ctx, &dns.GetRecordsArgs{
 // 			DomainName:      "xiaozhu.top",
-// 			HostRecordRegex: &opt0,
-// 			IsLocked:        &opt1,
-// 			OutputFile:      &opt2,
-// 			Type:            &opt3,
+// 			HostRecordRegex: pulumi.StringRef("^@"),
+// 			IsLocked:        pulumi.BoolRef(false),
+// 			OutputFile:      pulumi.StringRef("records.txt"),
+// 			Type:            pulumi.StringRef("A"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

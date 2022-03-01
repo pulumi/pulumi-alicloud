@@ -231,6 +231,21 @@ class User(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM user.
+        user = alicloud.ram.User("user",
+            comments="yoyoyo",
+            display_name="user_display_name",
+            email="hello.uuu@aaa.com",
+            force=True,
+            mobile="86-18688888888")
+        ```
+
         ## Import
 
         RAM user can be imported using the id, e.g.
@@ -255,6 +270,21 @@ class User(pulumi.CustomResource):
                  args: Optional[UserArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM user.
+        user = alicloud.ram.User("user",
+            comments="yoyoyo",
+            display_name="user_display_name",
+            email="hello.uuu@aaa.com",
+            force=True,
+            mobile="86-18688888888")
+        ```
+
         ## Import
 
         RAM user can be imported using the id, e.g.

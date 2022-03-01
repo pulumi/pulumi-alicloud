@@ -9,6 +9,92 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableDiskCategory = "cloud_ssd",
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var type = Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+    ///         {
+    ///             AvaiabilityZone = @default.Apply(@default =&gt; @default.Zones?[0]?.Id),
+    ///             CpuCoreCount = 1,
+    ///             MemorySize = 2,
+    ///         }));
+    ///         var images = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             NameRegex = "^ubuntu_18.*64",
+    ///             MostRecent = true,
+    ///             Owners = "system",
+    ///         }));
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "keyPairAttachmentName";
+    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             VpcName = name,
+    ///             CidrBlock = "10.1.0.0/21",
+    ///         });
+    ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = vpc.Id,
+    ///             CidrBlock = "10.1.1.0/24",
+    ///             ZoneId = @default.Apply(@default =&gt; @default.Zones?[0]?.Id),
+    ///             VswitchName = name,
+    ///         });
+    ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             Description = "New security group",
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var instance = new List&lt;AliCloud.Ecs.Instance&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             instance.Add(new AliCloud.Ecs.Instance($"instance-{range.Value}", new AliCloud.Ecs.InstanceArgs
+    ///             {
+    ///                 InstanceName = $"{name}-{range.Value + 1}",
+    ///                 ImageId = images.Apply(images =&gt; images.Images?[0]?.Id),
+    ///                 InstanceType = type.Apply(type =&gt; type.InstanceTypes?[0]?.Id),
+    ///                 SecurityGroups = 
+    ///                 {
+    ///                     @group.Id,
+    ///                 },
+    ///                 VswitchId = vswitch.Id,
+    ///                 InternetChargeType = "PayByTraffic",
+    ///                 InternetMaxBandwidthOut = 5,
+    ///                 Password = "Test12345",
+    ///                 InstanceChargeType = "PostPaid",
+    ///                 SystemDiskCategory = "cloud_ssd",
+    ///             }));
+    ///         }
+    ///         var pair = new AliCloud.Ecs.KeyPair("pair", new AliCloud.Ecs.KeyPairArgs
+    ///         {
+    ///             KeyName = name,
+    ///         });
+    ///         var attachment = new AliCloud.Ecs.KeyPairAttachment("attachment", new AliCloud.Ecs.KeyPairAttachmentArgs
+    ///         {
+    ///             KeyName = pair.Id,
+    ///             InstanceIds = instance.Select(__item =&gt; __item.Id).ToList(),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:ecs/keyPairAttachment:KeyPairAttachment")]
     public partial class KeyPairAttachment : Pulumi.CustomResource
     {

@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("amqpVirtualHostId1", ids.Hosts[0].Id)
-// 		opt0 := "^my-VirtualHost"
 // 		nameRegex, err := amqp.GetVirtualHosts(ctx, &amqp.GetVirtualHostsArgs{
 // 			InstanceId: "amqp-abc12345",
-// 			NameRegex:  &opt0,
+// 			NameRegex:  pulumi.StringRef("^my-VirtualHost"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

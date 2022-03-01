@@ -417,6 +417,21 @@ class CommonBandwithPackage(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpc.CommonBandwithPackage("foo",
+            bandwidth="1000",
+            bandwidth_package_name="test-common-bandwidth-package",
+            description="test-common-bandwidth-package",
+            internet_charge_type="PayByBandwidth")
+        ```
+
         ## Import
 
         The common bandwidth package can be imported using the id, e.g.
@@ -447,6 +462,21 @@ class CommonBandwithPackage(pulumi.CustomResource):
                  args: CommonBandwithPackageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpc.CommonBandwithPackage("foo",
+            bandwidth="1000",
+            bandwidth_package_name="test-common-bandwidth-package",
+            description="test-common-bandwidth-package",
+            internet_charge_type="PayByBandwidth")
+        ```
+
         ## Import
 
         The common bandwidth package can be imported using the id, e.g.

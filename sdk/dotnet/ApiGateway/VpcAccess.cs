@@ -10,6 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.ApiGateway.VpcAccess("foo", new AliCloud.ApiGateway.VpcAccessArgs
+    ///         {
+    ///             InstanceId = "i-kai2ks92kzkw92ka",
+    ///             Port = 8080,
+    ///             VpcId = "vpc-awkcj192ka9zalz",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Api gateway app can be imported using the id, e.g.

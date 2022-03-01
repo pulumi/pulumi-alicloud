@@ -26,11 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^hegu"
-// 		opt1 := "domains.txt"
 // 		domainsDs, err := dns.GetAlidnsDomains(ctx, &dns.GetAlidnsDomainsArgs{
-// 			DomainNameRegex: &opt0,
-// 			OutputFile:      &opt1,
+// 			DomainNameRegex: pulumi.StringRef("^hegu"),
+// 			OutputFile:      pulumi.StringRef("domains.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

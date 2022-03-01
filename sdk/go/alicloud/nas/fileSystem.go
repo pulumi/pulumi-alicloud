@@ -84,25 +84,21 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "cpfs"
 // 		defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
-// 			FileSystemType: &opt0,
+// 			FileSystemType: pulumi.StringRef("cpfs"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "default-NODELETING"
 // 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			NameRegex: &opt1,
+// 			NameRegex: pulumi.StringRef("default-NODELETING"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := defaultNetworks.Ids[0]
-// 		opt3 := defaultZones.Zones[0].ZoneId
 // 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// 			VpcId:  &opt2,
-// 			ZoneId: &opt3,
+// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+// 			ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneId),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

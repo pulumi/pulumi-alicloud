@@ -333,7 +333,17 @@ def get_load_balancers(address: Optional[str] = None,
                        vswitch_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancersResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.slb.LoadBalancer("default")
+    slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
+    pulumi.export("firstSlbId", slbs_ds.slbs[0].id)
+    ```
+
 
     :param str address: Service address of the SLBs.
     :param Sequence[str] ids: A list of SLBs IDs.
@@ -438,7 +448,17 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
                               vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.slb.LoadBalancer("default")
+    slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
+    pulumi.export("firstSlbId", slbs_ds.slbs[0].id)
+    ```
+
 
     :param str address: Service address of the SLBs.
     :param Sequence[str] ids: A list of SLBs IDs.

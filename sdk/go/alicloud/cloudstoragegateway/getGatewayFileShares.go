@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cloudStorageGatewayGatewayFileShareId1", ids.Shares[0].Id)
-// 		opt0 := "^my-GatewayFileShare"
 // 		nameRegex, err := cloudstoragegateway.GetGatewayFileShares(ctx, &cloudstoragegateway.GetGatewayFileSharesArgs{
 // 			GatewayId: "example_value",
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-GatewayFileShare"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

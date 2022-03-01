@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^my-Vault"
 // 		ids, err := hbr.GetVaults(ctx, &hbr.GetVaultsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Vault"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

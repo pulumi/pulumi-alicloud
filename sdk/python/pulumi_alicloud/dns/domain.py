@@ -169,6 +169,16 @@ class Domain(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Domain.
+        dns = alicloud.dns.Domain("dns", group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
+        ```
+
         ## Import
 
         DNS can be imported using the id or domain name, e.g.
@@ -190,6 +200,16 @@ class Domain(pulumi.CustomResource):
                  args: Optional[DomainArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Domain.
+        dns = alicloud.dns.Domain("dns", group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
+        ```
+
         ## Import
 
         DNS can be imported using the id or domain name, e.g.

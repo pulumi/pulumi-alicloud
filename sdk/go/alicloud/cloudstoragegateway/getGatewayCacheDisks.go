@@ -39,14 +39,13 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cloudStorageGatewayGatewayCacheDiskId1", ids.Disks[0].Id)
-// 		opt0 := 0
 // 		status, err := cloudstoragegateway.GetGatewayCacheDisks(ctx, &cloudstoragegateway.GetGatewayCacheDisksArgs{
 // 			GatewayId: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 				"example_value-2",
 // 			},
-// 			Status: &opt0,
+// 			Status: pulumi.IntRef(0),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

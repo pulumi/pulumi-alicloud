@@ -37,20 +37,18 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("serviceMeshServiceMeshId1", ids.Meshes[0].Id)
-// 		opt0 := "^my-ServiceMesh"
 // 		nameRegex, err := servicemesh.GetServiceMeshes(ctx, &servicemesh.GetServiceMeshesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-ServiceMesh"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("serviceMeshServiceMeshId2", nameRegex.Meshes[0].Id)
-// 		opt1 := "running"
 // 		status, err := servicemesh.GetServiceMeshes(ctx, &servicemesh.GetServiceMeshesArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			Status: &opt1,
+// 			Status: pulumi.StringRef("running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

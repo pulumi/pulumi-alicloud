@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample_slb"
 // 		example, err := slb.GetApplicationLoadBalancers(ctx, &slb.GetApplicationLoadBalancersArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("sample_slb"),
 // 			Tags: map[string]interface{}{
 // 				"tagKey1": "tagValue1",
 // 				"tagKey2": "tagValue2",

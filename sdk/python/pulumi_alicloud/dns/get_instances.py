@@ -111,7 +111,16 @@ def get_instances(domain_type: Optional[str] = None,
                   user_client_ip: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.dns.get_instances(ids=["dns-cn-oew1npk****"])
+    pulumi.export("firstInstanceId", example.instances[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of instance IDs.
     """
@@ -145,7 +154,16 @@ def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = No
                          user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.dns.get_instances(ids=["dns-cn-oew1npk****"])
+    pulumi.export("firstInstanceId", example.instances[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of instance IDs.
     """

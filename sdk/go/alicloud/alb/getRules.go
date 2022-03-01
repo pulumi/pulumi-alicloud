@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("albRuleId1", ids.Rules[0].Id)
-// 		opt0 := "^my-Rule"
 // 		nameRegex, err := alb.GetRules(ctx, &alb.GetRulesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Rule"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

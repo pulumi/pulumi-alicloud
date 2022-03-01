@@ -294,6 +294,24 @@ class Order(pulumi.CustomResource):
                  quantity: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        order = alicloud.marketplace.Order("order",
+            coupon_id="",
+            duration=1,
+            package_version="yuncode2713600001",
+            pay_type="prepay",
+            pricing_cycle="Month",
+            product_code="cmapi033136",
+            quantity=1)
+        ```
+
         ## Import
 
         Market order can be imported using the id, e.g.
@@ -320,6 +338,24 @@ class Order(pulumi.CustomResource):
                  args: OrderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        order = alicloud.marketplace.Order("order",
+            coupon_id="",
+            duration=1,
+            package_version="yuncode2713600001",
+            pay_type="prepay",
+            pricing_cycle="Month",
+            product_code="cmapi033136",
+            quantity=1)
+        ```
+
         ## Import
 
         Market order can be imported using the id, e.g.

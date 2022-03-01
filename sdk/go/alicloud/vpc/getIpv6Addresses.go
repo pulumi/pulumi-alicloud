@@ -28,33 +28,29 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example_value"
 // 		associatedInstanceId, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-// 			AssociatedInstanceId: &opt0,
+// 			AssociatedInstanceId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6AddressId1", associatedInstanceId.Addresses[0].Id)
-// 		opt1 := "example_value"
 // 		vswitchId, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-// 			VswitchId: &opt1,
+// 			VswitchId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6AddressId2", vswitchId.Addresses[0].Id)
-// 		opt2 := "example_value"
 // 		vpcId, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-// 			VpcId: &opt2,
+// 			VpcId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6AddressId3", vpcId.Addresses[0].Id)
-// 		opt3 := "Available"
 // 		status, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-// 			Status: &opt3,
+// 			Status: pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

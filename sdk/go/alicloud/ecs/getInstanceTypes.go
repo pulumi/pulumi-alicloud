@@ -28,11 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 1
-// 		opt1 := 2
 // 		typesDs, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			CpuCoreCount: &opt0,
-// 			MemorySize:   &opt1,
+// 			CpuCoreCount: pulumi.IntRef(1),
+// 			MemorySize:   pulumi.Float64Ref(2),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

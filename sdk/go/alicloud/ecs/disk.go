@@ -10,6 +10,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
+// 			AvailabilityZone: pulumi.String("cn-beijing-b"),
+// 			Category:         pulumi.String("cloud_efficiency"),
+// 			Description:      pulumi.String("Hello ecs disk."),
+// 			Encrypted:        pulumi.Bool(true),
+// 			KmsKeyId:         pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
+// 			Size:             pulumi.Int(30),
+// 			Tags: pulumi.AnyMap{
+// 				"Name": pulumi.Any("TerraformTest"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Cloud disk can be imported using the id, e.g.

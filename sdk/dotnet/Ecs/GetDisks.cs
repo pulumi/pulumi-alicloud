@@ -11,9 +11,63 @@ namespace Pulumi.AliCloud.Ecs
 {
     public static class GetDisks
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
+        ///         {
+        ///             NameRegex = "sample_disk",
+        ///         }));
+        ///         this.FirstDiskId = disksDs.Apply(disksDs =&gt; disksDs.Disks?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstDiskId")]
+        ///     public Output&lt;string&gt; FirstDiskId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetDisksResult> InvokeAsync(GetDisksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
+        ///         {
+        ///             NameRegex = "sample_disk",
+        ///         }));
+        ///         this.FirstDiskId = disksDs.Apply(disksDs =&gt; disksDs.Disks?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstDiskId")]
+        ///     public Output&lt;string&gt; FirstDiskId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetDisksResult> Invoke(GetDisksInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksInvokeArgs(), options.WithDefaults());
     }

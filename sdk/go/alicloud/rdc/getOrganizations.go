@@ -49,9 +49,8 @@ import (
 // 		ctx.Export("rdcOrganizationId1", ids.ApplyT(func(ids rdc.GetOrganizationsResult) (string, error) {
 // 			return ids.Id, nil
 // 		}).(pulumi.StringOutput))
-// 		opt0 := "^my-Organization"
 // 		nameRegex, err := rdc.GetOrganizations(ctx, &rdc.GetOrganizationsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Organization"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

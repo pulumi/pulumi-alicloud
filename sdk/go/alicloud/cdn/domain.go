@@ -11,6 +11,95 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cdn.NewDomain(ctx, "domain", &cdn.DomainArgs{
+// 			DomainName: pulumi.Any(your_cdn_domain_name),
+// 			CdnType:    pulumi.String("web"),
+// 			SourceType: pulumi.String("domain"),
+// 			Sources: pulumi.StringArray{
+// 				pulumi.Any(your_cdn_domain_source1),
+// 				pulumi.Any(your_cdn_domain_source2),
+// 			},
+// 			OptimizeEnable:     pulumi.String("off"),
+// 			PageCompressEnable: pulumi.String("off"),
+// 			RangeEnable:        pulumi.String("off"),
+// 			VideoSeekEnable:    pulumi.String("off"),
+// 			BlockIps: pulumi.StringArray{
+// 				pulumi.String("1.2.3.4"),
+// 				pulumi.String("111.222.111.111"),
+// 			},
+// 			ParameterFilterConfig: &cdn.DomainParameterFilterConfigArgs{
+// 				Enable: pulumi.String("on"),
+// 				HashKeyArgs: pulumi.StringArray{
+// 					pulumi.String("hello"),
+// 					pulumi.String("youyouyou"),
+// 				},
+// 			},
+// 			Page404Config: &cdn.DomainPage404ConfigArgs{
+// 				PageType:      pulumi.String("other"),
+// 				CustomPageUrl: pulumi.String(fmt.Sprintf("%v%v%v", "http://", your_cdn_domain_name, "/notfound/")),
+// 			},
+// 			ReferConfig: &cdn.DomainReferConfigArgs{
+// 				ReferType: pulumi.String("block"),
+// 				ReferLists: pulumi.StringArray{
+// 					pulumi.String("www.xxxx.com"),
+// 					pulumi.String("www.xxxx.cn"),
+// 				},
+// 				AllowEmpty: pulumi.String("off"),
+// 			},
+// 			AuthConfig: &cdn.DomainAuthConfigArgs{
+// 				AuthType:  pulumi.String("type_a"),
+// 				MasterKey: pulumi.String("helloworld1"),
+// 				SlaveKey:  pulumi.String("helloworld2"),
+// 			},
+// 			HttpHeaderConfigs: cdn.DomainHttpHeaderConfigArray{
+// 				&cdn.DomainHttpHeaderConfigArgs{
+// 					HeaderKey:   pulumi.String("Content-Type"),
+// 					HeaderValue: pulumi.String("text/plain"),
+// 				},
+// 				&cdn.DomainHttpHeaderConfigArgs{
+// 					HeaderKey:   pulumi.String("Access-Control-Allow-Origin"),
+// 					HeaderValue: pulumi.String("*"),
+// 				},
+// 			},
+// 			CacheConfigs: cdn.DomainCacheConfigArray{
+// 				&cdn.DomainCacheConfigArgs{
+// 					CacheContent: pulumi.String("/hello/world"),
+// 					Ttl:          pulumi.Int(1000),
+// 					CacheType:    pulumi.String("path"),
+// 				},
+// 				&cdn.DomainCacheConfigArgs{
+// 					CacheContent: pulumi.String("/hello/world/youyou"),
+// 					Ttl:          pulumi.Int(1000),
+// 					CacheType:    pulumi.String("path"),
+// 				},
+// 				&cdn.DomainCacheConfigArgs{
+// 					CacheContent: pulumi.String("txt,jpg,png"),
+// 					Ttl:          pulumi.Int(2000),
+// 					CacheType:    pulumi.String("suffix"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Domain struct {
 	pulumi.CustomResourceState
 

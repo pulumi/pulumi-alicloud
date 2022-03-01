@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^my-Domain"
 // 		nameRegex, err := scdn.GetDomains(ctx, &scdn.GetDomainsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Domain"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

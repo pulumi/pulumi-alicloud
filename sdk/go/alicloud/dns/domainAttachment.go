@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dns.NewDomainAttachment(ctx, "dns", &dns.DomainAttachmentArgs{
+// 			DomainNames: pulumi.StringArray{
+// 				pulumi.String("test111.abc"),
+// 				pulumi.String("test222.abc"),
+// 			},
+// 			InstanceId: pulumi.String("dns-cn-mp91lyq9xxxx"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // DNS domain attachment can be imported using the id, e.g.

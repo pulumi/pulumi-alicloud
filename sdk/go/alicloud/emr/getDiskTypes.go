@@ -27,13 +27,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "cn-huhehaote-a"
 // 		_default, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
 // 			ClusterType:         "HADOOP",
 // 			DestinationResource: "DataDisk",
 // 			InstanceChargeType:  "PostPaid",
 // 			InstanceType:        "ecs.g5.xlarge",
-// 			ZoneId:              &opt0,
+// 			ZoneId:              pulumi.StringRef("cn-huhehaote-a"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

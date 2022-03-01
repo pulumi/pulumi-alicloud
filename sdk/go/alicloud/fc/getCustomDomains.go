@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample_fc_custom_domain"
 // 		_, err := fc.GetCustomDomains(ctx, &fc.GetCustomDomainsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("sample_fc_custom_domain"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

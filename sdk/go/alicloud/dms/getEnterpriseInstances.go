@@ -26,17 +26,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "test"
-// 		opt1 := "mysql"
-// 		opt2 := "tf_testAcc"
-// 		opt3 := "CLASSIC"
-// 		opt4 := "dms_enterprise_instances.json"
 // 		dmsEnterpriseInstancesDs, err := dms.GetEnterpriseInstances(ctx, &dms.GetEnterpriseInstancesArgs{
-// 			EnvType:      &opt0,
-// 			InstanceType: &opt1,
-// 			NameRegex:    &opt2,
-// 			NetType:      &opt3,
-// 			OutputFile:   &opt4,
+// 			EnvType:      pulumi.StringRef("test"),
+// 			InstanceType: pulumi.StringRef("mysql"),
+// 			NameRegex:    pulumi.StringRef("tf_testAcc"),
+// 			NetType:      pulumi.StringRef("CLASSIC"),
+// 			OutputFile:   pulumi.StringRef("dms_enterprise_instances.json"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

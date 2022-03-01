@@ -24,15 +24,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "scaling_rule_name"
-// 		opt1 := "scaling_group_id"
 // 		scalingrulesDs, err := ess.GetScalingRules(ctx, &ess.GetScalingRulesArgs{
 // 			Ids: []string{
 // 				"scaling_rule_id1",
 // 				"scaling_rule_id2",
 // 			},
-// 			NameRegex:      &opt0,
-// 			ScalingGroupId: &opt1,
+// 			NameRegex:      pulumi.StringRef("scaling_rule_name"),
+// 			ScalingGroupId: pulumi.StringRef("scaling_group_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

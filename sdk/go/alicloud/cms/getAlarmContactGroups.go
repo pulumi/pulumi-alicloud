@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testacc"
 // 		_, err := cms.GetAlarmContactGroups(ctx, &cms.GetAlarmContactGroupsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tf-testacc"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

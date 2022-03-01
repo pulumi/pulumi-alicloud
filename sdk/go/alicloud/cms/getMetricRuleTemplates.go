@@ -37,25 +37,22 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cmsMetricRuleTemplateId1", ids.Templates[0].Id)
-// 		opt0 := "^my-MetricRuleTemplate"
 // 		nameRegex, err := cms.GetMetricRuleTemplates(ctx, &cms.GetMetricRuleTemplatesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-MetricRuleTemplate"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("cmsMetricRuleTemplateId2", nameRegex.Templates[0].Id)
-// 		opt1 := "^my-MetricRuleTemplate"
 // 		_, err = cms.GetMetricRuleTemplates(ctx, &cms.GetMetricRuleTemplatesArgs{
-// 			Keyword: &opt1,
+// 			Keyword: pulumi.StringRef("^my-MetricRuleTemplate"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("cmsMetricRuleTemplateId3", nameRegex.Templates[0].Id)
-// 		opt2 := "example_value"
 // 		_, err = cms.GetMetricRuleTemplates(ctx, &cms.GetMetricRuleTemplatesArgs{
-// 			TemplateId: &opt2,
+// 			TemplateId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -97,6 +97,20 @@ class DomainAttachment(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        dns = alicloud.dns.DomainAttachment("dns",
+            domain_names=[
+                "test111.abc",
+                "test222.abc",
+            ],
+            instance_id="dns-cn-mp91lyq9xxxx")
+        ```
+
         ## Import
 
         DNS domain attachment can be imported using the id, e.g.
@@ -117,6 +131,20 @@ class DomainAttachment(pulumi.CustomResource):
                  args: DomainAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        dns = alicloud.dns.DomainAttachment("dns",
+            domain_names=[
+                "test111.abc",
+                "test222.abc",
+            ],
+            instance_id="dns-cn-mp91lyq9xxxx")
+        ```
+
         ## Import
 
         DNS domain attachment can be imported using the id, e.g.

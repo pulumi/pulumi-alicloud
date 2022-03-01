@@ -347,6 +347,35 @@ class Role(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Role.
+        role = alicloud.ram.Role("role",
+            description="this is a role test.",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "apigateway.aliyuncs.com", 
+                    "ecs.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\",
+            force=True)
+        ```
+
         ## Import
 
         RAM role can be imported using the id or name, e.g.
@@ -373,6 +402,35 @@ class Role(pulumi.CustomResource):
                  args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Role.
+        role = alicloud.ram.Role("role",
+            description="this is a role test.",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "apigateway.aliyuncs.com", 
+                    "ecs.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\",
+            force=True)
+        ```
+
         ## Import
 
         RAM role can be imported using the id or name, e.g.

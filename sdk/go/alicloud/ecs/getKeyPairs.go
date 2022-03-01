@@ -10,6 +10,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultKeyPair, err := ecs.NewKeyPair(ctx, "defaultKeyPair", &ecs.KeyPairArgs{
+// 			KeyName: pulumi.String("keyPairDatasource"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_ = ecs.GetKeyPairsOutput(ctx, ecs.GetKeyPairsOutputArgs{
+// 			NameRegex: defaultKeyPair.KeyName,
+// 		}, nil)
+// 		return nil
+// 	})
+// }
+// ```
 func GetKeyPairs(ctx *pulumi.Context, args *GetKeyPairsArgs, opts ...pulumi.InvokeOption) (*GetKeyPairsResult, error) {
 	var rv GetKeyPairsResult
 	err := ctx.Invoke("alicloud:ecs/getKeyPairs:getKeyPairs", args, &rv, opts...)

@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := alicloud_pvtz_zone.Basic.Zone_name
 // 		pvtzZonesDs, err := pvtz.GetZones(ctx, &pvtz.GetZonesArgs{
-// 			Keyword: &opt0,
+// 			Keyword: pulumi.StringRef(alicloud_pvtz_zone.Basic.Zone_name),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

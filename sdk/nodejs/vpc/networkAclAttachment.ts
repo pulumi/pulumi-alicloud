@@ -5,6 +5,43 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "NatGatewayConfigSpec";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("defaultNetworkAcl", {
+ *     vpcId: defaultNetwork.id,
+ *     networkAclName: name,
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment", {
+ *     networkAclId: defaultNetworkAcl.id,
+ *     resources: [{
+ *         resourceId: defaultSwitch.id,
+ *         resourceType: "VSwitch",
+ *     }],
+ * });
+ * ```
+ */
 export class NetworkAclAttachment extends pulumi.CustomResource {
     /**
      * Get an existing NetworkAclAttachment resource's state with the given name, ID, and optional extra

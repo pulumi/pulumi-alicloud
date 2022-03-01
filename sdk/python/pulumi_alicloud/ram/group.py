@@ -132,6 +132,18 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Group.
+        group = alicloud.ram.Group("group",
+            comments="this is a group comments.",
+            force=True)
+        ```
+
         ## Import
 
         RAM group can be imported using the id or name, e.g.
@@ -153,6 +165,18 @@ class Group(pulumi.CustomResource):
                  args: Optional[GroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new RAM Group.
+        group = alicloud.ram.Group("group",
+            comments="this is a group comments.",
+            force=True)
+        ```
+
         ## Import
 
         RAM group can be imported using the id or name, e.g.

@@ -26,12 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tftest"
-// 		opt1 := "Custom"
 // 		example, err := resourcemanager.GetPolicies(ctx, &resourcemanager.GetPoliciesArgs{
 // 			DescriptionRegex: "tftest_policy",
-// 			NameRegex:        &opt0,
-// 			PolicyType:       &opt1,
+// 			NameRegex:        pulumi.StringRef("tftest"),
+// 			PolicyType:       pulumi.StringRef("Custom"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

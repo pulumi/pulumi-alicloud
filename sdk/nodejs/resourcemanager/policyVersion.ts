@@ -5,6 +5,40 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const examplePolicy = new alicloud.resourcemanager.Policy("examplePolicy", {
+ *     policyName: "tftest",
+ *     policyDocument: `		{
+ * 			"Statement": [{
+ * 				"Action": ["oss:*"],
+ * 				"Effect": "Allow",
+ * 				"Resource": ["acs:oss:*:*:*"]
+ * 			}],
+ * 			"Version": "1"
+ * 		}
+ * `,
+ * });
+ * const examplePolicyVersion = new alicloud.resourcemanager.PolicyVersion("examplePolicyVersion", {
+ *     policyName: examplePolicy.policyName,
+ *     policyDocument: `		{
+ * 			"Statement": [{
+ * 				"Action": ["oss:*"],
+ * 				"Effect": "Allow",
+ * 				"Resource": ["acs:oss:*:*:myphotos"]
+ * 			}],
+ * 			"Version": "1"
+ * 		}
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Resource Manager Policy Version can be imported using the id, e.g.

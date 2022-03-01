@@ -248,7 +248,44 @@ def get_snapshots(category: Optional[str] = None,
                   usage: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotsResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    snapshots = alicloud.ecs.get_snapshots(ids=["s-123456890abcdef"],
+        name_regex="tf-testAcc-snapshot")
+    ```
+    ## Argument Reference
+
+    The following arguments are supported:
+
+    * `instance_id` - (Optional) The specified instance ID.
+    * `disk_id` - (Optional) The specified disk ID.
+    * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
+    * `ids` - (Optional)  A list of snapshot IDs.
+    * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+    * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
+      * progressing: The snapshots are being created.
+      * accomplished: The snapshots are ready to use.
+      * failed: The snapshot creation failed.
+      * all: All status.
+    * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
+      * auto: Auto snapshots.
+      * user: Manual snapshots.
+      * all: Auto and manual snapshots.
+    * `source_disk_type` - (Optional) The type of source disk:
+      * System: The snapshots are created for system disks.
+      * Data: The snapshots are created for data disks.
+    * `usage` - (Optional) The usage of the snapshot:
+      * image: The snapshots are used to create custom images.
+      * disk: The snapshots are used to CreateDisk.
+      * mage_disk: The snapshots are used to create custom images and data disks.
+      * none: The snapshots are not used yet.
+    * `tags` - (Optional) A map of tags assigned to snapshots.
+    * `output_file` - (Optional) The name of output file that saves the filter results.
+
 
     :param bool encrypted: Whether the snapshot is encrypted or not.
     :param Sequence[str] ids: A list of snapshot IDs.
@@ -321,7 +358,44 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          usage: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    snapshots = alicloud.ecs.get_snapshots(ids=["s-123456890abcdef"],
+        name_regex="tf-testAcc-snapshot")
+    ```
+    ## Argument Reference
+
+    The following arguments are supported:
+
+    * `instance_id` - (Optional) The specified instance ID.
+    * `disk_id` - (Optional) The specified disk ID.
+    * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
+    * `ids` - (Optional)  A list of snapshot IDs.
+    * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+    * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
+      * progressing: The snapshots are being created.
+      * accomplished: The snapshots are ready to use.
+      * failed: The snapshot creation failed.
+      * all: All status.
+    * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
+      * auto: Auto snapshots.
+      * user: Manual snapshots.
+      * all: Auto and manual snapshots.
+    * `source_disk_type` - (Optional) The type of source disk:
+      * System: The snapshots are created for system disks.
+      * Data: The snapshots are created for data disks.
+    * `usage` - (Optional) The usage of the snapshot:
+      * image: The snapshots are used to create custom images.
+      * disk: The snapshots are used to CreateDisk.
+      * mage_disk: The snapshots are used to create custom images and data disks.
+      * none: The snapshots are not used yet.
+    * `tags` - (Optional) A map of tags assigned to snapshots.
+    * `output_file` - (Optional) The name of output file that saves the filter results.
+
 
     :param bool encrypted: Whether the snapshot is encrypted or not.
     :param Sequence[str] ids: A list of snapshot IDs.

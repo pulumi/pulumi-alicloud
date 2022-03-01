@@ -26,11 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-first-k8s"
-// 		opt1 := "my-first-k8s-json"
 // 		k8sClusters, err := cs.GetManagedKubernetesClusters(ctx, &cs.GetManagedKubernetesClustersArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("my-first-k8s"),
+// 			OutputFile: pulumi.StringRef("my-first-k8s-json"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

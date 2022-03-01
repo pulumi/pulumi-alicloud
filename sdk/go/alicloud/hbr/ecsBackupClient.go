@@ -32,11 +32,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "ecs_instance_name"
-// 		opt1 := "Running"
 // 		_default, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: &opt0,
-// 			Status:    &opt1,
+// 			NameRegex: pulumi.StringRef("ecs_instance_name"),
+// 			Status:    pulumi.StringRef("Running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -97,6 +97,25 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
+            bandwidth="2",
+            description="test_common_bandwidth_package")
+        foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress",
+            bandwidth="2",
+            internet_charge_type="PayByBandwidth")
+        foo_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment",
+            bandwidth_package_id=foo_common_bandwith_package.id,
+            instance_id=foo_eip_address.id)
+        ```
+
         ## Import
 
         The common bandwidth package attachment can be imported using the id, e.g.
@@ -117,6 +136,25 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                  args: CommonBandwithPackageAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
+            bandwidth="2",
+            description="test_common_bandwidth_package")
+        foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress",
+            bandwidth="2",
+            internet_charge_type="PayByBandwidth")
+        foo_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment",
+            bandwidth_package_id=foo_common_bandwith_package.id,
+            instance_id=foo_eip_address.id)
+        ```
+
         ## Import
 
         The common bandwidth package attachment can be imported using the id, e.g.

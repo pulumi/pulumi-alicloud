@@ -26,13 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "ddh.g5"
-// 		opt1 := "tf-testAcc"
-// 		opt2 := "Available"
 // 		dedicatedHostsDs, err := ecs.GetDedicatedHosts(ctx, &ecs.GetDedicatedHostsArgs{
-// 			DedicatedHostType: &opt0,
-// 			NameRegex:         &opt1,
-// 			Status:            &opt2,
+// 			DedicatedHostType: pulumi.StringRef("ddh.g5"),
+// 			NameRegex:         pulumi.StringRef("tf-testAcc"),
+// 			Status:            pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -33,21 +33,17 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cfg := config.New(ctx, "")
 // 		securityGroupId := cfg.RequireObject("securityGroupId")
-// 		opt0 := "api"
 // 		groupsDs, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("api"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "ingress"
-// 		opt2 := "tcp"
-// 		opt3 := "internet"
 // 		ingressRulesDs, err := ecs.GetSecurityGroupRules(ctx, &ecs.GetSecurityGroupRulesArgs{
-// 			Direction:  &opt1,
+// 			Direction:  pulumi.StringRef("ingress"),
 // 			GroupId:    groupsDs.Groups[0].Id,
-// 			IpProtocol: &opt2,
-// 			NicType:    &opt3,
+// 			IpProtocol: pulumi.StringRef("tcp"),
+// 			NicType:    pulumi.StringRef("internet"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

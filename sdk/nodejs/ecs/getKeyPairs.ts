@@ -5,6 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {
+ *     keyName: "keyPairDatasource",
+ * });
+ * const defaultKeyPairs = defaultKeyPair.keyName.apply(keyName => alicloud.ecs.getKeyPairs({
+ *     nameRegex: keyName,
+ * }));
+ * ```
+ */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
     if (!opts) {

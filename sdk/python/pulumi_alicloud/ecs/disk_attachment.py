@@ -209,6 +209,37 @@ class DiskAttachment(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
+        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
+        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+            availability_zone="cn-beijing-a",
+            size=50,
+            tags={
+                "Name": "TerraformTest-disk",
+            })
+        ecs_instance = alicloud.ecs.Instance("ecsInstance",
+            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            instance_type="ecs.n4.small",
+            availability_zone="cn-beijing-a",
+            security_groups=[ecs_sg.id],
+            instance_name="Hello",
+            internet_charge_type="PayByBandwidth",
+            tags={
+                "Name": "TerraformTest-instance",
+            })
+        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
+            disk_id=ecs_disk.id,
+            instance_id=ecs_instance.id)
+        ```
+
         ## Import
 
         The disk attachment can be imported using the id, e.g.
@@ -229,6 +260,37 @@ class DiskAttachment(pulumi.CustomResource):
                  args: DiskAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new ECS disk-attachment and use it attach one disk to a new instance.
+        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
+        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+            availability_zone="cn-beijing-a",
+            size=50,
+            tags={
+                "Name": "TerraformTest-disk",
+            })
+        ecs_instance = alicloud.ecs.Instance("ecsInstance",
+            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            instance_type="ecs.n4.small",
+            availability_zone="cn-beijing-a",
+            security_groups=[ecs_sg.id],
+            instance_name="Hello",
+            internet_charge_type="PayByBandwidth",
+            tags={
+                "Name": "TerraformTest-instance",
+            })
+        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
+            disk_id=ecs_disk.id,
+            instance_id=ecs_instance.id)
+        ```
+
         ## Import
 
         The disk attachment can be imported using the id, e.g.

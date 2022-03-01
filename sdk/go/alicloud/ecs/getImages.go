@@ -25,11 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^centos_6"
-// 		opt1 := "system"
 // 		imagesDs, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex: &opt0,
-// 			Owners:    &opt1,
+// 			NameRegex: pulumi.StringRef("^centos_6"),
+// 			Owners:    pulumi.StringRef("system"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

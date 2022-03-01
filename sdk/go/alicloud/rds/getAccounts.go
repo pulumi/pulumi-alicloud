@@ -28,10 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "the_resource_name"
 // 		example, err := rds.GetAccounts(ctx, &rds.GetAccountsArgs{
 // 			DbInstanceId: "example_value",
-// 			NameRegex:    &opt0,
+// 			NameRegex:    pulumi.StringRef("the_resource_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

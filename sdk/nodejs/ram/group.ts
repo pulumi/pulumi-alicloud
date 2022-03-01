@@ -5,6 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new RAM Group.
+ * const group = new alicloud.ram.Group("group", {
+ *     comments: "this is a group comments.",
+ *     force: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * RAM group can be imported using the id or name, e.g.

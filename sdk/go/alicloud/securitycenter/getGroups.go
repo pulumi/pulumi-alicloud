@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^my-Group"
 // 		nameRegex, err := securitycenter.GetGroups(ctx, &securitycenter.GetGroupsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Group"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

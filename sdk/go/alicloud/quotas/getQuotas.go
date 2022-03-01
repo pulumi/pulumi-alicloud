@@ -28,10 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "专有宿主机总数量上限"
 // 		example, err := quotas.GetQuotas(ctx, &quotas.GetQuotasArgs{
 // 			ProductCode: "ecs",
-// 			NameRegex:   &opt0,
+// 			NameRegex:   pulumi.StringRef("专有宿主机总数量上限"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

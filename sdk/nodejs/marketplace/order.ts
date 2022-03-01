@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const order = new alicloud.marketplace.Order("order", {
+ *     couponId: "",
+ *     duration: 1,
+ *     packageVersion: "yuncode2713600001",
+ *     payType: "prepay",
+ *     pricingCycle: "Month",
+ *     productCode: "cmapi033136",
+ *     quantity: 1,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Market order can be imported using the id, e.g.

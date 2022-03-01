@@ -25,11 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^testenv"
-// 		opt1 := "Active"
 // 		routerInterfacesDs, err := vpc.GetRouterInterfaces(ctx, &vpc.GetRouterInterfacesArgs{
-// 			NameRegex: &opt0,
-// 			Status:    &opt1,
+// 			NameRegex: pulumi.StringRef("^testenv"),
+// 			Status:    pulumi.StringRef("Active"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -27,13 +27,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "cn-beijing-c"
-// 		opt1 := "gp-.+\\d+"
-// 		opt2 := "instances.txt"
 // 		gpdb, err := gpdb.GetInstances(ctx, &gpdb.GetInstancesArgs{
-// 			AvailabilityZone: &opt0,
-// 			NameRegex:        &opt1,
-// 			OutputFile:       &opt2,
+// 			AvailabilityZone: pulumi.StringRef("cn-beijing-c"),
+// 			NameRegex:        pulumi.StringRef("gp-.+\\d+"),
+// 			OutputFile:       pulumi.StringRef("instances.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

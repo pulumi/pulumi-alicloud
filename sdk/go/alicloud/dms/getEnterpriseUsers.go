@@ -26,14 +26,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "USER"
-// 		opt1 := "NORMAL"
 // 		dmsEnterpriseUsersDs, err := dms.GetEnterpriseUsers(ctx, &dms.GetEnterpriseUsersArgs{
 // 			Ids: []string{
 // 				"uid",
 // 			},
-// 			Role:   &opt0,
-// 			Status: &opt1,
+// 			Role:   pulumi.StringRef("USER"),
+// 			Status: pulumi.StringRef("NORMAL"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

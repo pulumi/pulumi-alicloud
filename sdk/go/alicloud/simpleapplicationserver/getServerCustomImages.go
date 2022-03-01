@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerCustomImageId1", ids.Images[0].Id)
-// 		opt0 := "^my-CustomImage"
 // 		nameRegex, err := simpleapplicationserver.GetServerCustomImages(ctx, &simpleapplicationserver.GetServerCustomImagesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-CustomImage"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

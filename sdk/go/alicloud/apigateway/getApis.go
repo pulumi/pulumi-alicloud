@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "output_ApiGatawayApis"
 // 		_, err := apigateway.GetApis(ctx, &apigateway.GetApisArgs{
-// 			OutputFile: &opt0,
+// 			OutputFile: pulumi.StringRef("output_ApiGatawayApis"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

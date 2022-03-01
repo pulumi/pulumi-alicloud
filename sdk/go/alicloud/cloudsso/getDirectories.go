@@ -39,9 +39,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cloudSsoDirectoryId1", ids.Directories[0].Id)
-// 		opt0 := "^my-Directory"
 // 		nameRegex, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Directory"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -10,6 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Mns
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var topic = new AliCloud.Mns.Topic("topic", new AliCloud.Mns.TopicArgs
+    ///         {
+    ///             LoggingEnabled = false,
+    ///             MaximumMessageSize = 65536,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// MNS Topic can be imported using the id or name, e.g.

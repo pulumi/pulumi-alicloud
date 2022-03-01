@@ -37,19 +37,16 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("directMailDomainId1", ids.Domains[0].Id)
-// 		opt0 := "^my-Domain"
 // 		nameRegex, err := directmail.GetDomains(ctx, &directmail.GetDomainsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Domain"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("directMailDomainId2", nameRegex.Domains[0].Id)
-// 		opt1 := "1"
-// 		opt2 := "^my-Domain"
 // 		example, err := directmail.GetDomains(ctx, &directmail.GetDomainsArgs{
-// 			Status:  &opt1,
-// 			KeyWord: &opt2,
+// 			Status:  pulumi.StringRef("1"),
+// 			KeyWord: pulumi.StringRef("^my-Domain"),
 // 			Ids: []string{
 // 				"example_id",
 // 			},

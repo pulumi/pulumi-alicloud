@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("albLoadBalancerId1", ids.Balancers[0].Id)
-// 		opt0 := "^my-LoadBalancer"
 // 		nameRegex, err := alb.GetLoadBalancers(ctx, &alb.GetLoadBalancersArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-LoadBalancer"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

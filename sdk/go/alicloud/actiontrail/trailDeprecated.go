@@ -10,6 +10,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := actiontrail.NewTrailDeprecated(ctx, "foo", &actiontrail.TrailDeprecatedArgs{
+// 			EventRw:       pulumi.String("Write-test"),
+// 			OssBucketName: pulumi.Any(alicloud_oss_bucket.Bucket.Id),
+// 			RoleName:      pulumi.Any(alicloud_ram_role_policy_attachment.Attach.Role_name),
+// 			OssKeyPrefix:  pulumi.String("at-product-account-audit-B"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Action trail can be imported using the id, e.g.

@@ -10,6 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Vpn.CustomerGateway("foo", new AliCloud.Vpn.CustomerGatewayArgs
+    ///         {
+    ///             Description = "vpnCgwDescriptionExample",
+    ///             IpAddress = "43.104.22.228",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPN customer gateway can be imported using the id, e.g.

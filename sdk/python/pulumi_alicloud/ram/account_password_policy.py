@@ -330,6 +330,34 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                  require_uppercase_characters: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Empty resource sets defaults values for every property.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ram.AccountPasswordPolicy("default")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        corporate = alicloud.ram.AccountPasswordPolicy("corporate",
+            hard_expiry=True,
+            max_login_attempts=3,
+            max_password_age=12,
+            minimum_password_length=9,
+            password_reuse_prevention=5,
+            require_lowercase_characters=False,
+            require_numbers=False,
+            require_symbols=False,
+            require_uppercase_characters=False)
+        ```
+        For not specified values sets defaults.
+
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g. bash
@@ -357,6 +385,34 @@ class AccountPasswordPolicy(pulumi.CustomResource):
                  args: Optional[AccountPasswordPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Empty resource sets defaults values for every property.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ram.AccountPasswordPolicy("default")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        corporate = alicloud.ram.AccountPasswordPolicy("corporate",
+            hard_expiry=True,
+            max_login_attempts=3,
+            max_password_age=12,
+            minimum_password_length=9,
+            password_reuse_prevention=5,
+            require_lowercase_characters=False,
+            require_numbers=False,
+            require_symbols=False,
+            require_uppercase_characters=False)
+        ```
+        For not specified values sets defaults.
+
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g. bash

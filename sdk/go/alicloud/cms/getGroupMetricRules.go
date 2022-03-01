@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "the_resource_name"
 // 		example, err := cms.GetGroupMetricRules(ctx, &cms.GetGroupMetricRulesArgs{
 // 			Ids: []string{
 // 				"4a9a8978-a9cc-55ca-aa7c-530ccd91ae57",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("the_resource_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

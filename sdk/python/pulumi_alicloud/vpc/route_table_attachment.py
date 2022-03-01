@@ -97,6 +97,33 @@ class RouteTableAttachment(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "route-table-attachment-example-name"
+        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.zones[0].id)
+        foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
+            vpc_id=foo_network.id,
+            route_table_name=name,
+            description="route_table_attachment")
+        foo_route_table_attachment = alicloud.vpc.RouteTableAttachment("fooRouteTableAttachment",
+            vswitch_id=foo_switch.id,
+            route_table_id=foo_route_table.id)
+        ```
+
         ## Import
 
         The route table attachment can be imported using the id, e.g.
@@ -117,6 +144,33 @@ class RouteTableAttachment(pulumi.CustomResource):
                  args: RouteTableAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "route-table-attachment-example-name"
+        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.zones[0].id)
+        foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
+            vpc_id=foo_network.id,
+            route_table_name=name,
+            description="route_table_attachment")
+        foo_route_table_attachment = alicloud.vpc.RouteTableAttachment("fooRouteTableAttachment",
+            vswitch_id=foo_switch.id,
+            route_table_id=foo_route_table.id)
+        ```
+
         ## Import
 
         The route table attachment can be imported using the id, e.g.

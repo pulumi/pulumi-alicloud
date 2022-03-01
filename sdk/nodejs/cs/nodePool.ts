@@ -6,6 +6,256 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * The managed cluster configuration,
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-test";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ *     kubernetesNodeRole: "Worker",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.1.0.0/21",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.1.1.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ * });
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyPairName: name});
+ * let defaultManagedKubernetes: alicloud.cs.ManagedKubernetes | undefined;
+ * if (1 == true) {
+ *     defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("defaultManagedKubernetes", {
+ *         clusterSpec: "ack.pro.small",
+ *         isEnterpriseSecurityGroup: true,
+ *         workerNumber: 2,
+ *         password: "Hello1234",
+ *         podCidr: "172.20.0.0/16",
+ *         serviceCidr: "172.21.0.0/20",
+ *         workerVswitchIds: [defaultSwitch.id],
+ *         workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id)],
+ *     });
+ * }
+ * ```
+ *
+ * Create a node pool.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: alicloud_key_pair["default"].key_name,
+ *     nodeCount: 1,
+ * });
+ * ```
+ *
+ * Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud.cs.ManagedKubernetes`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: alicloud_key_pair["default"].key_name,
+ *     nodeCount: 1,
+ *     management: {
+ *         autoRepair: true,
+ *         autoUpgrade: true,
+ *         surge: 1,
+ *         maxUnavailable: 1,
+ *     },
+ * });
+ * ```
+ *
+ * Enable automatic scaling for the node pool. `scalingConfig` is required.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: alicloud_key_pair["default"].key_name,
+ *     scalingConfig: {
+ *         minSize: 1,
+ *         maxSize: 10,
+ *     },
+ * });
+ * ```
+ *
+ * Enable automatic scaling for managed node pool.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: alicloud_key_pair["default"].key_name,
+ *     management: {
+ *         autoRepair: true,
+ *         autoUpgrade: true,
+ *         surge: 1,
+ *         maxUnavailable: 1,
+ *     },
+ *     scalingConfig: {
+ *         minSize: 1,
+ *         maxSize: 10,
+ *         type: "cpu",
+ *     },
+ * }, {
+ *     dependsOn: [alicloud_cs_autoscaling_config["default"]],
+ * });
+ * ```
+ *
+ * Create a `PrePaid` node pool.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: alicloud_key_pair["default"].key_name,
+ *     instanceChargeType: "PrePaid",
+ *     period: 1,
+ *     periodUnit: "Month",
+ *     autoRenew: true,
+ *     autoRenewPeriod: 1,
+ *     installCloudMonitor: true,
+ *     scalingConfig: {
+ *         minSize: 1,
+ *         maxSize: 10,
+ *         type: "cpu",
+ *     },
+ * });
+ * ```
+ *
+ * Create a node pool with spot instance.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: alicloud_key_pair["default"].key_name,
+ *     nodeCount: 1,
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     spotPriceLimits: [{
+ *         instanceType: data.alicloud_instance_types["default"].instance_types[0].id,
+ *         priceLimit: "0.70",
+ *     }],
+ * });
+ * ```
+ *
+ * Use Spot instances to create a node pool with auto-scaling enabled
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: alicloud_key_pair["default"].key_name,
+ *     scalingConfig: {
+ *         minSize: 1,
+ *         maxSize: 10,
+ *         type: "spot",
+ *     },
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     spotPriceLimits: [{
+ *         instanceType: data.alicloud_instance_types["default"].instance_types[0].id,
+ *         priceLimit: "0.70",
+ *     }],
+ * });
+ * ```
+ *
+ * Create a node pool with platform as Windows
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     instanceChargeType: "PostPaid",
+ *     nodeCount: 1,
+ *     password: "Hello1234",
+ *     platform: "Windows",
+ *     imageId: window_image_id,
+ * });
+ * ```
+ *
+ * Add an existing node to the node pool
+ *
+ * In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     instanceChargeType: "PostPaid",
+ *     instances: [
+ *         "instance_id_01",
+ *         "instance_id_02",
+ *         "instance_id_03",
+ *     ],
+ *     formatDisk: false,
+ *     keepInstanceName: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.

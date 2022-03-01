@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "10.1.0.0/21"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.1.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ * });
+ * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
+ *     vpcId: defaultNetwork.id,
+ *     bandwidth: 10,
+ *     instanceChargeType: "PayByTraffic",
+ *     enableSsl: false,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {ipAddress: "192.168.1.1"});
+ * const defaultConnection = new alicloud.vpn.Connection("defaultConnection", {
+ *     customerGatewayId: defaultCustomerGateway.id,
+ *     vpnGatewayId: defaultGateway.id,
+ *     localSubnets: ["192.168.2.0/24"],
+ *     remoteSubnets: ["192.168.3.0/24"],
+ * });
+ * const defaultRouteEntry = new alicloud.vpn.RouteEntry("defaultRouteEntry", {
+ *     vpnGatewayId: defaultGateway.id,
+ *     routeDest: "10.0.0.0/24",
+ *     nextHop: defaultConnection.id,
+ *     weight: 0,
+ *     publishVpc: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPN route entry can be imported using the id(VpnGatewayId +":"+ NextHop +":"+ RouteDest), e.g.

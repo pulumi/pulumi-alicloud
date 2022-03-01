@@ -11,9 +11,69 @@ namespace Pulumi.AliCloud.Kms
 {
     public static class GetCiphertext
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
+        ///         {
+        ///             Description = "example key",
+        ///             IsEnabled = true,
+        ///         });
+        ///         var encrypted = AliCloud.Kms.GetCiphertext.Invoke(new AliCloud.Kms.GetCiphertextInvokeArgs
+        ///         {
+        ///             KeyId = key.Id,
+        ///             Plaintext = "example",
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetCiphertextResult> InvokeAsync(GetCiphertextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
+        ///         {
+        ///             Description = "example key",
+        ///             IsEnabled = true,
+        ///         });
+        ///         var encrypted = AliCloud.Kms.GetCiphertext.Invoke(new AliCloud.Kms.GetCiphertextInvokeArgs
+        ///         {
+        ///             KeyId = key.Id,
+        ///             Plaintext = "example",
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetCiphertextResult> Invoke(GetCiphertextInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextInvokeArgs(), options.WithDefaults());
     }

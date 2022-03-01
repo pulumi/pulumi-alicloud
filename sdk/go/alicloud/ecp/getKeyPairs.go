@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("ecpKeyPairId1", ids.Pairs[0].Id)
-// 		opt0 := "^my-KeyPair"
 // 		nameRegex, err := ecp.GetKeyPairs(ctx, &ecp.GetKeyPairsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-KeyPair"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

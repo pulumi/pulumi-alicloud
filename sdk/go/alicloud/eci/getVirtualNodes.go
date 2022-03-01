@@ -38,9 +38,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("eciVirtualNodeId1", ids.Nodes[0].Id)
-// 		opt0 := "^my-VirtualNode"
 // 		nameRegex, err := eci.GetVirtualNodes(ctx, &eci.GetVirtualNodesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-VirtualNode"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -37,33 +37,29 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerDiskId1", ids.Disks[0].Id)
-// 		opt0 := "^my-Disk"
 // 		nameRegex, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Disk"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerDiskId2", nameRegex.Disks[0].Id)
-// 		opt1 := "In_use"
 // 		status, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			Status: &opt1,
+// 			Status: pulumi.StringRef("In_use"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerDiskId3", status.Disks[0].Id)
-// 		opt2 := "example_value"
 // 		instanceId, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			InstanceId: &opt2,
+// 			InstanceId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerDiskId4", instanceId.Disks[0].Id)
-// 		opt3 := "System"
 // 		diskType, err := simpleapplicationserver.GetServerDisks(ctx, &simpleapplicationserver.GetServerDisksArgs{
-// 			DiskType: &opt3,
+// 			DiskType: pulumi.StringRef("System"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

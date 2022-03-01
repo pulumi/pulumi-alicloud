@@ -32,11 +32,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "no-deleteing-hbr-ecs-server-backup-plan"
-// 		opt1 := "Running"
 // 		_default, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: &opt0,
-// 			Status:    &opt1,
+// 			NameRegex: pulumi.StringRef("no-deleteing-hbr-ecs-server-backup-plan"),
+// 			Status:    pulumi.StringRef("Running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

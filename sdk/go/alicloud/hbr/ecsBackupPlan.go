@@ -44,11 +44,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "no-deleteing-hbr-ecs-backup-plan"
-// 		opt1 := "Running"
 // 		defaultInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: &opt0,
-// 			Status:    &opt1,
+// 			NameRegex: pulumi.StringRef("no-deleteing-hbr-ecs-backup-plan"),
+// 			Status:    pulumi.StringRef("Running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

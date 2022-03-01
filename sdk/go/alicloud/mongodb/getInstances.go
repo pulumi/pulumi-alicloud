@@ -25,15 +25,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "eu-central-1a"
-// 		opt1 := "dds.mongo.mid"
-// 		opt2 := "replicate"
-// 		opt3 := "dds-.+\\d+"
 // 		_, err := mongodb.GetInstances(ctx, &mongodb.GetInstancesArgs{
-// 			AvailabilityZone: &opt0,
-// 			InstanceClass:    &opt1,
-// 			InstanceType:     &opt2,
-// 			NameRegex:        &opt3,
+// 			AvailabilityZone: pulumi.StringRef("eu-central-1a"),
+// 			InstanceClass:    pulumi.StringRef("dds.mongo.mid"),
+// 			InstanceType:     pulumi.StringRef("replicate"),
+// 			NameRegex:        pulumi.StringRef("dds-.+\\d+"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

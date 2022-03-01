@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const domainsDs = pulumi.output(alicloud.dns.getDomains({
+ *     domainNameRegex: "^hegu",
+ *     outputFile: "domains.txt",
+ * }));
+ *
+ * export const firstDomainId = domainsDs.domains[0].domainId;
+ * ```
+ */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
     if (!opts) {

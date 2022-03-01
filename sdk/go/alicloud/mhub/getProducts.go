@@ -45,9 +45,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("mhubProductId1", ids.Products[0].Id)
-// 		opt0 := "^my-Product"
 // 		nameRegex, err := mhub.GetProducts(ctx, &mhub.GetProductsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Product"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

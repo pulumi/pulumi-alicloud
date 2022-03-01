@@ -10,6 +10,46 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new RAM Policy.
+    ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
+    ///         {
+    ///             Description = "this is a policy test",
+    ///             Force = true,
+    ///             PolicyDocument = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": [
+    ///           ""oss:ListObjects"",
+    ///           ""oss:GetObject""
+    ///         ],
+    ///         ""Effect"": ""Allow"",
+    ///         ""Resource"": [
+    ///           ""acs:oss:*:*:mybucket"",
+    ///           ""acs:oss:*:*:mybucket/*""
+    ///         ]
+    ///       }
+    ///     ],
+    ///       ""Version"": ""1""
+    ///   }
+    ///   
+    /// ",
+    ///             PolicyName = "policyName",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RAM policy can be imported using the id or name, e.g.

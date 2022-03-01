@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const snapshots = pulumi.output(alicloud.ecs.getSnapshots({
+ *     ids: ["s-123456890abcdef"],
+ *     nameRegex: "tf-testAcc-snapshot",
+ * }));
+ * ```
+ * ## Argument Reference
+ *
+ * The following arguments are supported:
+ *
+ * * `instanceId` - (Optional) The specified instance ID.
+ * * `diskId` - (Optional) The specified disk ID.
+ * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
+ * * `ids` - (Optional)  A list of snapshot IDs.
+ * * `nameRegex` - (Optional) A regex string to filter results by snapshot name.
+ * * `status` - (Optional) The specified snapshot status. Default value: `all`. Optional values:
+ *   * progressing: The snapshots are being created.
+ *   * accomplished: The snapshots are ready to use.
+ *   * failed: The snapshot creation failed.
+ *   * all: All status.
+ * * `type` - (Optional) The snapshot category. Default value: `all`. Optional values:
+ *   * auto: Auto snapshots.
+ *   * user: Manual snapshots.
+ *   * all: Auto and manual snapshots.
+ * * `sourceDiskType` - (Optional) The type of source disk:
+ *   * System: The snapshots are created for system disks.
+ *   * Data: The snapshots are created for data disks.
+ * * `usage` - (Optional) The usage of the snapshot:
+ *   * image: The snapshots are used to create custom images.
+ *   * disk: The snapshots are used to CreateDisk.
+ *   * mage_disk: The snapshots are used to create custom images and data disks.
+ *   * none: The snapshots are not used yet.
+ * * `tags` - (Optional) A map of tags assigned to snapshots.
+ * * `outputFile` - (Optional) The name of output file that saves the filter results.
+ */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
     if (!opts) {

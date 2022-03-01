@@ -11,9 +11,67 @@ namespace Pulumi.AliCloud.Ecs
 {
     public static class GetKeyPairs
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         // Declare the data source
+        ///         var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new AliCloud.Ecs.KeyPairArgs
+        ///         {
+        ///             KeyName = "keyPairDatasource",
+        ///         });
+        ///         var defaultKeyPairs = AliCloud.Ecs.GetKeyPairs.Invoke(new AliCloud.Ecs.GetKeyPairsInvokeArgs
+        ///         {
+        ///             NameRegex = defaultKeyPair.KeyName,
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetKeyPairsResult> InvokeAsync(GetKeyPairsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ecs/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         // Declare the data source
+        ///         var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new AliCloud.Ecs.KeyPairArgs
+        ///         {
+        ///             KeyName = "keyPairDatasource",
+        ///         });
+        ///         var defaultKeyPairs = AliCloud.Ecs.GetKeyPairs.Invoke(new AliCloud.Ecs.GetKeyPairsInvokeArgs
+        ///         {
+        ///             NameRegex = defaultKeyPair.KeyName,
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetKeyPairsResult> Invoke(GetKeyPairsInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetKeyPairsResult>("alicloud:ecs/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsInvokeArgs(), options.WithDefaults());
     }

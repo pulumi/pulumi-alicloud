@@ -11,9 +11,65 @@ namespace Pulumi.AliCloud.Adb
 {
     public static class GetClusters
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var adbClustersDs = Output.Create(AliCloud.Adb.GetClusters.InvokeAsync(new AliCloud.Adb.GetClustersArgs
+        ///         {
+        ///             DescriptionRegex = "am-\\w+",
+        ///             Status = "Running",
+        ///         }));
+        ///         this.FirstAdbClusterId = adbClustersDs.Apply(adbClustersDs =&gt; adbClustersDs.Clusters?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstAdbClusterId")]
+        ///     public Output&lt;string&gt; FirstAdbClusterId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var adbClustersDs = Output.Create(AliCloud.Adb.GetClusters.InvokeAsync(new AliCloud.Adb.GetClustersArgs
+        ///         {
+        ///             DescriptionRegex = "am-\\w+",
+        ///             Status = "Running",
+        ///         }));
+        ///         this.FirstAdbClusterId = adbClustersDs.Apply(adbClustersDs =&gt; adbClustersDs.Clusters?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstAdbClusterId")]
+        ///     public Output&lt;string&gt; FirstAdbClusterId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }

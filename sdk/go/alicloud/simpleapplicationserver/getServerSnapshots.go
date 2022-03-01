@@ -37,31 +37,28 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerSnapshotId1", ids.Snapshots[0].Id)
-// 		opt0 := "^my-Snapshot"
 // 		nameRegex, err := simpleapplicationserver.GetServerSnapshots(ctx, &simpleapplicationserver.GetServerSnapshotsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Snapshot"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerSnapshotId2", nameRegex.Snapshots[0].Id)
-// 		opt1 := "example_value"
 // 		diskIdConf, err := simpleapplicationserver.GetServerSnapshots(ctx, &simpleapplicationserver.GetServerSnapshotsArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			DiskId: &opt1,
+// 			DiskId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("simpleApplicationServerSnapshotId3", diskIdConf.Snapshots[0].Id)
-// 		opt2 := "example_value"
 // 		instanceIdConf, err := simpleapplicationserver.GetServerSnapshots(ctx, &simpleapplicationserver.GetServerSnapshotsArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			InstanceId: &opt2,
+// 			InstanceId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

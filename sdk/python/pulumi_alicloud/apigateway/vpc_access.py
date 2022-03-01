@@ -162,6 +162,20 @@ class VpcAccess(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.apigateway.VpcAccess("foo",
+            instance_id="i-kai2ks92kzkw92ka",
+            port=8080,
+            vpc_id="vpc-awkcj192ka9zalz")
+        ```
+
         ## Import
 
         Api gateway app can be imported using the id, e.g.
@@ -184,6 +198,20 @@ class VpcAccess(pulumi.CustomResource):
                  args: VpcAccessArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.apigateway.VpcAccess("foo",
+            instance_id="i-kai2ks92kzkw92ka",
+            port=8080,
+            vpc_id="vpc-awkcj192ka9zalz")
+        ```
+
         ## Import
 
         Api gateway app can be imported using the id, e.g.

@@ -38,9 +38,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("amqpInstanceId1", ids.Instances[0].Id)
-// 		opt0 := "^my-Instance"
 // 		nameRegex, err := amqp.GetInstances(ctx, &amqp.GetInstancesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Instance"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

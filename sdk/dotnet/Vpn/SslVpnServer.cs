@@ -10,6 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new AliCloud.Vpn.GatewayArgs
+    ///         {
+    ///             VpcId = "vpc-fake-id",
+    ///             Bandwidth = 10,
+    ///             EnableSsl = true,
+    ///             InstanceChargeType = "PostPaid",
+    ///             Description = "test_create_description",
+    ///         });
+    ///         var fooSslVpnServer = new AliCloud.Vpn.SslVpnServer("fooSslVpnServer", new AliCloud.Vpn.SslVpnServerArgs
+    ///         {
+    ///             VpnGatewayId = fooGateway.Id,
+    ///             ClientIpPool = "192.168.0.0/16",
+    ///             LocalSubnet = "172.16.0.0/21",
+    ///             Protocol = "UDP",
+    ///             Cipher = "AES-128-CBC",
+    ///             Port = 1194,
+    ///             Compress = false,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// SSL-VPN server can be imported using the id, e.g.

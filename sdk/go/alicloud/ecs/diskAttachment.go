@@ -11,6 +11,64 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ecsSg, err := ecs.NewSecurityGroup(ctx, "ecsSg", &ecs.SecurityGroupArgs{
+// 			Description: pulumi.String("New security group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ecsDisk, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
+// 			AvailabilityZone: pulumi.String("cn-beijing-a"),
+// 			Size:             pulumi.Int(50),
+// 			Tags: pulumi.AnyMap{
+// 				"Name": pulumi.Any("TerraformTest-disk"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
+// 			ImageId:          pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
+// 			InstanceType:     pulumi.String("ecs.n4.small"),
+// 			AvailabilityZone: pulumi.String("cn-beijing-a"),
+// 			SecurityGroups: pulumi.StringArray{
+// 				ecsSg.ID(),
+// 			},
+// 			InstanceName:       pulumi.String("Hello"),
+// 			InternetChargeType: pulumi.String("PayByBandwidth"),
+// 			Tags: pulumi.StringMap{
+// 				"Name": pulumi.String("TerraformTest-instance"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewDiskAttachment(ctx, "ecsDiskAtt", &ecs.DiskAttachmentArgs{
+// 			DiskId:     ecsDisk.ID(),
+// 			InstanceId: ecsInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // The disk attachment can be imported using the id, e.g.

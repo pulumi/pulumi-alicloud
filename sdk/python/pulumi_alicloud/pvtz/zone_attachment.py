@@ -199,6 +199,75 @@ class ZoneAttachment(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Using `vpc_ids` to attach being in same region several vpc instances to a private zone
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        zone = alicloud.pvtz.Zone("zone")
+        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
+            zone_id=zone.id,
+            vpc_ids=[
+                first.id,
+                second.id,
+            ])
+        ```
+
+        Using `vpcs` to attach being in same region several vpc instances to a private zone
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        zone = alicloud.pvtz.Zone("zone")
+        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
+            zone_id=zone.id,
+            vpcs=[
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    vpc_id=first.id,
+                ),
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    vpc_id=second.id,
+                ),
+            ])
+        ```
+
+        Using `vpcs` to attach being in different regions several vpc instances to a private zone
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_pulumi as pulumi
+
+        zone = alicloud.pvtz.Zone("zone")
+        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        eu = pulumi.providers.Alicloud("eu", region="eu-central-1")
+        third = alicloud.vpc.Network("third", cidr_block="172.16.0.0/16",
+        opts=pulumi.ResourceOptions(provider=alicloud["eu"]))
+        zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
+            zone_id=zone.id,
+            vpcs=[
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    vpc_id=first.id,
+                ),
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    vpc_id=second.id,
+                ),
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    region_id="eu-central-1",
+                    vpc_id=third.id,
+                ),
+            ])
+        ```
+
         ## Import
 
         Private Zone attachment can be imported using the id(same with `zone_id`), e.g.
@@ -222,6 +291,75 @@ class ZoneAttachment(pulumi.CustomResource):
                  args: ZoneAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Using `vpc_ids` to attach being in same region several vpc instances to a private zone
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        zone = alicloud.pvtz.Zone("zone")
+        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
+            zone_id=zone.id,
+            vpc_ids=[
+                first.id,
+                second.id,
+            ])
+        ```
+
+        Using `vpcs` to attach being in same region several vpc instances to a private zone
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        zone = alicloud.pvtz.Zone("zone")
+        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
+            zone_id=zone.id,
+            vpcs=[
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    vpc_id=first.id,
+                ),
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    vpc_id=second.id,
+                ),
+            ])
+        ```
+
+        Using `vpcs` to attach being in different regions several vpc instances to a private zone
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_pulumi as pulumi
+
+        zone = alicloud.pvtz.Zone("zone")
+        first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
+        second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
+        eu = pulumi.providers.Alicloud("eu", region="eu-central-1")
+        third = alicloud.vpc.Network("third", cidr_block="172.16.0.0/16",
+        opts=pulumi.ResourceOptions(provider=alicloud["eu"]))
+        zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
+            zone_id=zone.id,
+            vpcs=[
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    vpc_id=first.id,
+                ),
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    vpc_id=second.id,
+                ),
+                alicloud.pvtz.ZoneAttachmentVpcArgs(
+                    region_id="eu-central-1",
+                    vpc_id=third.id,
+                ),
+            ])
+        ```
+
         ## Import
 
         Private Zone attachment can be imported using the id(same with `zone_id`), e.g.

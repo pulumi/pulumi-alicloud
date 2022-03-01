@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: "vpc-example-name",
+ * });
+ * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
+ *     vpcId: fooNetwork.id,
+ *     routeTableName: "route-table-example-name",
+ *     description: "route-table-example-description",
+ * });
+ * ```
+ *
  * ## Import
  *
  * The route table can be imported using the id, e.g.

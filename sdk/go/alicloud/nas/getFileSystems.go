@@ -26,11 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := alicloud_nas_file_system.Foo.Description
-// 		opt1 := "NFS"
 // 		fs, err := nas.GetFileSystems(ctx, &nas.GetFileSystemsArgs{
-// 			DescriptionRegex: &opt0,
-// 			ProtocolType:     &opt1,
+// 			DescriptionRegex: pulumi.StringRef(alicloud_nas_file_system.Foo.Description),
+// 			ProtocolType:     pulumi.StringRef("NFS"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "REGISTERED"
 // 		_default, err := eds.GetSimpleOfficeSites(ctx, &eds.GetSimpleOfficeSitesArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			Status: &opt0,
+// 			Status: pulumi.StringRef("REGISTERED"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

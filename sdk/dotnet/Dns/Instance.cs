@@ -10,6 +10,32 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @this = new AliCloud.Dns.Instance("this", new AliCloud.Dns.InstanceArgs
+    ///         {
+    ///             DnsSecurity = "no",
+    ///             DomainNumbers = "2",
+    ///             Period = 1,
+    ///             RenewPeriod = 1,
+    ///             RenewalStatus = "ManualRenewal",
+    ///             VersionCode = "version_personal",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS instance be imported using the id, e.g.

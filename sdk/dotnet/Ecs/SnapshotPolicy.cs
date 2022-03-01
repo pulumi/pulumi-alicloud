@@ -10,6 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var sp = new AliCloud.Ecs.SnapshotPolicy("sp", new AliCloud.Ecs.SnapshotPolicyArgs
+    ///         {
+    ///             RepeatWeekdays = 
+    ///             {
+    ///                 "1",
+    ///                 "2",
+    ///                 "3",
+    ///             },
+    ///             RetentionDays = -1,
+    ///             TimePoints = 
+    ///             {
+    ///                 "1",
+    ///                 "22",
+    ///                 "23",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Snapshot can be imported using the id, e.g.

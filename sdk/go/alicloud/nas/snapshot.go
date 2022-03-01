@@ -39,9 +39,8 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := "extreme"
 // 		defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
-// 			FileSystemType: &opt0,
+// 			FileSystemType: pulumi.StringRef("extreme"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

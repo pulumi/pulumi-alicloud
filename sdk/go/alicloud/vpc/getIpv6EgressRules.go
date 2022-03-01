@@ -39,28 +39,25 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6EgressRuleId1", ids.Rules[0].Id)
-// 		opt0 := "^my-Ipv6EgressRule"
 // 		nameRegex, err := vpc.GetIpv6EgressRules(ctx, &vpc.GetIpv6EgressRulesArgs{
 // 			Ipv6GatewayId: "example_value",
-// 			NameRegex:     &opt0,
+// 			NameRegex:     pulumi.StringRef("^my-Ipv6EgressRule"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6EgressRuleId2", nameRegex.Rules[0].Id)
-// 		opt1 := "Available"
 // 		status, err := vpc.GetIpv6EgressRules(ctx, &vpc.GetIpv6EgressRulesArgs{
 // 			Ipv6GatewayId: "example_value",
-// 			Status:        &opt1,
+// 			Status:        pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6EgressRuleId3", status.Rules[0].Id)
-// 		opt2 := "example_value"
 // 		ipv6EgressRuleName, err := vpc.GetIpv6EgressRules(ctx, &vpc.GetIpv6EgressRulesArgs{
 // 			Ipv6GatewayId:      "example_value",
-// 			Ipv6EgressRuleName: &opt2,
+// 			Ipv6EgressRuleName: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

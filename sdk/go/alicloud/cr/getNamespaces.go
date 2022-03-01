@@ -26,11 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-namespace"
-// 		opt1 := "my-namespace-json"
 // 		myNamespaces, err := cr.GetNamespaces(ctx, &cr.GetNamespacesArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("my-namespace"),
+// 			OutputFile: pulumi.StringRef("my-namespace-json"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

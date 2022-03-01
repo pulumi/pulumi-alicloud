@@ -39,9 +39,8 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := "OK"
 // 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			Status: &opt0,
+// 			Status: pulumi.StringRef("OK"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

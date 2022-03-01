@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("expressConnectVirtualBorderRouterId1", ids.Routers[0].Id)
-// 		opt0 := "^my-VirtualBorderRouter"
 // 		nameRegex, err := expressconnect.GetVirtualBorderRouters(ctx, &expressconnect.GetVirtualBorderRoutersArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-VirtualBorderRouter"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -44,13 +43,13 @@ import (
 // 		filter, err := expressconnect.GetVirtualBorderRouters(ctx, &expressconnect.GetVirtualBorderRoutersArgs{
 // 			Filters: []expressconnect.GetVirtualBorderRoutersFilter{
 // 				expressconnect.GetVirtualBorderRoutersFilter{
-// 					Key: "PhysicalConnectionId",
+// 					Key: pulumi.StringRef("PhysicalConnectionId"),
 // 					Values: []string{
 // 						"pc-xxxx1",
 // 					},
 // 				},
 // 				expressconnect.GetVirtualBorderRoutersFilter{
-// 					Key: "VbrId",
+// 					Key: pulumi.StringRef("VbrId"),
 // 					Values: []string{
 // 						"vbr-xxxx1",
 // 						"vbr-xxxx2",

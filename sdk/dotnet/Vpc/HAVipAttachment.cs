@@ -10,6 +10,82 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
+    ///             CpuCoreCount = 1,
+    ///             MemorySize = 2,
+    ///         })));
+    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             NameRegex = "^ubuntu_18.*64",
+    ///             MostRecent = true,
+    ///             Owners = "system",
+    ///         }));
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "test_havip_attachment";
+    ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = fooNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/21",
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///         });
+    ///         var fooHAVip = new AliCloud.Vpc.HAVip("fooHAVip", new AliCloud.Vpc.HAVipArgs
+    ///         {
+    ///             VswitchId = fooSwitch.Id,
+    ///             Description = name,
+    ///         });
+    ///         var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             Description = "foo",
+    ///             VpcId = fooNetwork.Id,
+    ///         });
+    ///         var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new AliCloud.Ecs.InstanceArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///             VswitchId = fooSwitch.Id,
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
+    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
+    ///             SystemDiskCategory = "cloud_efficiency",
+    ///             InternetChargeType = "PayByTraffic",
+    ///             InternetMaxBandwidthOut = 5,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 tfTestFoo.Id,
+    ///             },
+    ///             InstanceName = name,
+    ///             UserData = "echo 'net.ipv4.ip_forward=1'&gt;&gt; /etc/sysctl.conf",
+    ///         });
+    ///         var fooHAVipAttachment = new AliCloud.Vpc.HAVipAttachment("fooHAVipAttachment", new AliCloud.Vpc.HAVipAttachmentArgs
+    ///         {
+    ///             HavipId = fooHAVip.Id,
+    ///             InstanceId = fooInstance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The havip attachment can be imported using the id, e.g.

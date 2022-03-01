@@ -10,6 +10,38 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new AliCloud.Vpc.CommonBandwithPackageArgs
+    ///         {
+    ///             Bandwidth = "2",
+    ///             Description = "test_common_bandwidth_package",
+    ///         });
+    ///         var fooEipAddress = new AliCloud.Ecs.EipAddress("fooEipAddress", new AliCloud.Ecs.EipAddressArgs
+    ///         {
+    ///             Bandwidth = "2",
+    ///             InternetChargeType = "PayByBandwidth",
+    ///         });
+    ///         var fooCommonBandwithPackageAttachment = new AliCloud.Vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment", new AliCloud.Vpc.CommonBandwithPackageAttachmentArgs
+    ///         {
+    ///             BandwidthPackageId = fooCommonBandwithPackage.Id,
+    ///             InstanceId = fooEipAddress.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The common bandwidth package attachment can be imported using the id, e.g.

@@ -5,6 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage", {
+ *     bandwidth: "2",
+ *     description: "test_common_bandwidth_package",
+ * });
+ * const fooEipAddress = new alicloud.ecs.EipAddress("fooEipAddress", {
+ *     bandwidth: "2",
+ *     internetChargeType: "PayByBandwidth",
+ * });
+ * const fooCommonBandwithPackageAttachment = new alicloud.vpc.CommonBandwithPackageAttachment("fooCommonBandwithPackageAttachment", {
+ *     bandwidthPackageId: fooCommonBandwithPackage.id,
+ *     instanceId: fooEipAddress.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * The common bandwidth package attachment can be imported using the id, e.g.

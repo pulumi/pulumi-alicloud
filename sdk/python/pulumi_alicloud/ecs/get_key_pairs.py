@@ -152,7 +152,17 @@ def get_key_pairs(finger_print: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPairsResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_name="keyPairDatasource")
+    default_key_pairs = alicloud.ecs.get_key_pairs_output(name_regex=default_key_pair.key_name)
+    ```
+
 
     :param str finger_print: A finger print used to retrieve specified key pair.
     :param Sequence[str] ids: A list of key pair IDs.
@@ -195,7 +205,17 @@ def get_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]] = N
                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyPairsResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_name="keyPairDatasource")
+    default_key_pairs = alicloud.ecs.get_key_pairs_output(name_regex=default_key_pair.key_name)
+    ```
+
 
     :param str finger_print: A finger print used to retrieve specified key pair.
     :param Sequence[str] ids: A list of key pair IDs.

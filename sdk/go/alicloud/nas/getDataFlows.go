@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("nasDataFlowId1", ids.Flows[0].Id)
-// 		opt0 := "Running"
 // 		status, err := nas.GetDataFlows(ctx, &nas.GetDataFlowsArgs{
 // 			FileSystemId: "example_value",
-// 			Status:       &opt0,
+// 			Status:       pulumi.StringRef("Running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

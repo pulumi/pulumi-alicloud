@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "alias.txt"
 // 		aliasDs, err := ram.GetAccountAliases(ctx, &ram.GetAccountAliasesArgs{
-// 			OutputFile: &opt0,
+// 			OutputFile: pulumi.StringRef("alias.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -28,16 +28,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 1
-// 		opt1 := "rg-acfmwvv********"
-// 		opt2 := "waf-cloud"
 // 		_default, err := waf.GetInstances(ctx, &waf.GetInstancesArgs{
 // 			Ids: []string{
 // 				"waf-cn-09k********",
 // 			},
-// 			Status:          &opt0,
-// 			ResourceGroupId: &opt1,
-// 			InstanceSource:  &opt2,
+// 			Status:          pulumi.IntRef(1),
+// 			ResourceGroupId: pulumi.StringRef("rg-acfmwvv********"),
+// 			InstanceSource:  pulumi.StringRef("waf-cloud"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "On"
 // 		_, err := cs.GetAckService(ctx, &cs.GetAckServiceArgs{
-// 			Enable: &opt0,
+// 			Enable: pulumi.StringRef("On"),
 // 			Type:   "propayasgo",
 // 		}, nil)
 // 		if err != nil {

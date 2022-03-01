@@ -10,6 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new RAM Group.
+    ///         var @group = new AliCloud.Ram.Group("group", new AliCloud.Ram.GroupArgs
+    ///         {
+    ///             Comments = "this is a group comments.",
+    ///             Force = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RAM group can be imported using the id or name, e.g.

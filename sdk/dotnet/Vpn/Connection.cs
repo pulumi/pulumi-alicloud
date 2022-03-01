@@ -10,6 +10,77 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new AliCloud.Vpn.GatewayArgs
+    ///         {
+    ///             VpcId = "vpc-fake-id",
+    ///             Bandwidth = 10,
+    ///             EnableSsl = true,
+    ///             InstanceChargeType = "PostPaid",
+    ///             Description = "test_create_description",
+    ///         });
+    ///         var fooCustomerGateway = new AliCloud.Vpn.CustomerGateway("fooCustomerGateway", new AliCloud.Vpn.CustomerGatewayArgs
+    ///         {
+    ///             IpAddress = "42.104.22.228",
+    ///             Description = "testAccVpnCgwDesc",
+    ///         });
+    ///         var fooConnection = new AliCloud.Vpn.Connection("fooConnection", new AliCloud.Vpn.ConnectionArgs
+    ///         {
+    ///             VpnGatewayId = fooGateway.Id,
+    ///             CustomerGatewayId = fooCustomerGateway.Id,
+    ///             LocalSubnets = 
+    ///             {
+    ///                 "172.16.0.0/24",
+    ///                 "172.16.1.0/24",
+    ///             },
+    ///             RemoteSubnets = 
+    ///             {
+    ///                 "10.0.0.0/24",
+    ///                 "10.0.1.0/24",
+    ///             },
+    ///             EffectImmediately = true,
+    ///             IkeConfigs = 
+    ///             {
+    ///                 new AliCloud.Vpn.Inputs.ConnectionIkeConfigArgs
+    ///                 {
+    ///                     IkeAuthAlg = "md5",
+    ///                     IkeEncAlg = "des",
+    ///                     IkeVersion = "ikev1",
+    ///                     IkeMode = "main",
+    ///                     IkeLifetime = 86400,
+    ///                     Psk = "tf-testvpn2",
+    ///                     IkePfs = "group1",
+    ///                     IkeRemoteId = "testbob2",
+    ///                     IkeLocalId = "testalice2",
+    ///                 },
+    ///             },
+    ///             IpsecConfigs = 
+    ///             {
+    ///                 new AliCloud.Vpn.Inputs.ConnectionIpsecConfigArgs
+    ///                 {
+    ///                     IpsecPfs = "group5",
+    ///                     IpsecEncAlg = "des",
+    ///                     IpsecAuthAlg = "md5",
+    ///                     IpsecLifetime = 8640,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPN connection can be imported using the id, e.g.
