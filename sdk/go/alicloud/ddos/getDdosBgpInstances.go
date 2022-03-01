@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^ddosbgp"
 // 		_, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^ddosbgp"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

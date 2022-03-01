@@ -55,9 +55,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "^my-policy"
 // 		nameRegex, err := eds.GetPolicyGroups(ctx, &eds.GetPolicyGroupsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-policy"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

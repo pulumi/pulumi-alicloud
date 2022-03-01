@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("bastionhostUserId1", ids.Users[0].Id)
-// 		opt0 := "^my-User"
 // 		nameRegex, err := bastionhost.GetUsers(ctx, &bastionhost.GetUsersArgs{
 // 			InstanceId: "example_value",
-// 			NameRegex:  &opt0,
+// 			NameRegex:  pulumi.StringRef("^my-User"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -161,7 +161,21 @@ class AppAttachment(pulumi.CustomResource):
                  stage_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AppAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.apigateway.AppAttachment("foo",
+            api_id="d29d25b9cfdf4742b1a3f6537299a749",
+            app_id="20898181",
+            group_id="aaef8cdbb404420f9398a74ed1db7fff",
+            stage_name="PRE")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: The api_id that app apply to access.
@@ -176,7 +190,21 @@ class AppAttachment(pulumi.CustomResource):
                  args: AppAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AppAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.apigateway.AppAttachment("foo",
+            api_id="d29d25b9cfdf4742b1a3f6537299a749",
+            app_id="20898181",
+            group_id="aaef8cdbb404420f9398a74ed1db7fff",
+            stage_name="PRE")
+        ```
+
         :param str resource_name: The name of the resource.
         :param AppAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -26,19 +26,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "cn-hangzhou"
-// 		opt1 := "datasource_test"
-// 		opt2 := "Active"
-// 		opt3 := "RegionIn"
 // 		this, err := cen.GetRouteMaps(ctx, &cen.GetRouteMapsArgs{
 // 			CenId:            "cen-ihdlgo87ai********",
-// 			CenRegionId:      &opt0,
-// 			DescriptionRegex: &opt1,
+// 			CenRegionId:      pulumi.StringRef("cn-hangzhou"),
+// 			DescriptionRegex: pulumi.StringRef("datasource_test"),
 // 			Ids: []string{
 // 				"cenrmap-bnh97kb3mn********",
 // 			},
-// 			Status:            &opt2,
-// 			TransmitDirection: &opt3,
+// 			Status:            pulumi.StringRef("Active"),
+// 			TransmitDirection: pulumi.StringRef("RegionIn"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

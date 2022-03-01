@@ -10,6 +10,80 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "ask-example";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "10.1.0.0/21",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VswitchName = name,
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "10.1.1.0/24",
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///         });
+    ///         var serverless = new AliCloud.CS.ServerlessKubernetes("serverless", new AliCloud.CS.ServerlessKubernetesArgs
+    ///         {
+    ///             NamePrefix = name,
+    ///             VpcId = defaultNetwork.Id,
+    ///             VswitchIds = 
+    ///             {
+    ///                 defaultSwitch.Id,
+    ///             },
+    ///             NewNatGateway = true,
+    ///             EndpointPublicAccessEnabled = true,
+    ///             DeletionProtection = false,
+    ///             LoadBalancerSpec = "slb.s2.small",
+    ///             TimeZone = "Asia/Shanghai",
+    ///             ServiceCidr = "172.21.0.0/20",
+    ///             ServiceDiscoveryTypes = 
+    ///             {
+    ///                 "PrivateZone",
+    ///             },
+    ///             LoggingType = "SLS",
+    ///             Tags = 
+    ///             {
+    ///                 { "k-aa", "v-aa" },
+    ///                 { "k-bb", "v-aa" },
+    ///             },
+    ///             Addons = 
+    ///             {
+    ///                 new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
+    ///                 {
+    ///                     Name = "alb-ingress-controller",
+    ///                 },
+    ///                 new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
+    ///                 {
+    ///                     Name = "metrics-server",
+    ///                 },
+    ///                 new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
+    ///                 {
+    ///                     Name = "knative",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Serverless Kubernetes cluster can be imported using the id, e.g.

@@ -241,6 +241,25 @@ class TopicSubscription(pulumi.CustomResource):
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        topic = alicloud.mns.Topic("topic",
+            logging_enabled=False,
+            maximum_message_size=65536)
+        subscription = alicloud.mns.TopicSubscription("subscription",
+            endpoint="http://www.xxx.com/xxx",
+            filter_tag="test",
+            notify_content_format="XML",
+            notify_strategy="BACKOFF_RETRY",
+            topic_name="tf-example-mnstopic")
+        ```
+
         ## Import
 
         MNS Topic subscription can be imported using the id, e.g.
@@ -268,6 +287,25 @@ class TopicSubscription(pulumi.CustomResource):
                  args: TopicSubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        topic = alicloud.mns.Topic("topic",
+            logging_enabled=False,
+            maximum_message_size=65536)
+        subscription = alicloud.mns.TopicSubscription("subscription",
+            endpoint="http://www.xxx.com/xxx",
+            filter_tag="test",
+            notify_content_format="XML",
+            notify_strategy="BACKOFF_RETRY",
+            topic_name="tf-example-mnstopic")
+        ```
+
         ## Import
 
         MNS Topic subscription can be imported using the id, e.g.

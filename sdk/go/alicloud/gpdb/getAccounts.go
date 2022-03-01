@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("gpdbAccountId1", ids.Accounts[0].Id)
-// 		opt0 := "^my-Account"
 // 		nameRegex, err := gpdb.GetAccounts(ctx, &gpdb.GetAccountsArgs{
 // 			DbInstanceId: "example_value",
-// 			NameRegex:    &opt0,
+// 			NameRegex:    pulumi.StringRef("^my-Account"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

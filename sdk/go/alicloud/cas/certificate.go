@@ -11,6 +11,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cas.NewCertificate(ctx, "cert", &cas.CertificateArgs{
+// 			Cert: readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/test.crt")),
+// 			Key:  readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/test.key")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // Deprecated: This resource has been deprecated in favour of ServiceCertificate
 type Certificate struct {
 	pulumi.CustomResourceState

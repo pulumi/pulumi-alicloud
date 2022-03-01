@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = new alicloud.apigateway.VpcAccess("foo", {
+ *     instanceId: "i-kai2ks92kzkw92ka",
+ *     port: 8080,
+ *     vpcId: "vpc-awkcj192ka9zalz",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Api gateway app can be imported using the id, e.g.

@@ -10,6 +10,52 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Empty resource sets defaults values for every property.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Ram.AccountPasswordPolicy("default", new AliCloud.Ram.AccountPasswordPolicyArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var corporate = new AliCloud.Ram.AccountPasswordPolicy("corporate", new AliCloud.Ram.AccountPasswordPolicyArgs
+    ///         {
+    ///             HardExpiry = true,
+    ///             MaxLoginAttempts = 3,
+    ///             MaxPasswordAge = 12,
+    ///             MinimumPasswordLength = 9,
+    ///             PasswordReusePrevention = 5,
+    ///             RequireLowercaseCharacters = false,
+    ///             RequireNumbers = false,
+    ///             RequireSymbols = false,
+    ///             RequireUppercaseCharacters = false,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// For not specified values sets defaults.
+    /// 
     /// ## Import
     /// 
     /// RAM account password policy can be imported using the `id`, e.g. bash

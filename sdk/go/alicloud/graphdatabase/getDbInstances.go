@@ -37,23 +37,21 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("graphDatabaseDbInstanceId1", ids.Instances[0].Id)
-// 		opt0 := "Running"
 // 		status, err := graphdatabase.GetDbInstances(ctx, &graphdatabase.GetDbInstancesArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			Status: &opt0,
+// 			Status: pulumi.StringRef("Running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("graphDatabaseDbInstanceId2", status.Instances[0].Id)
-// 		opt1 := "example_value"
 // 		description, err := graphdatabase.GetDbInstances(ctx, &graphdatabase.GetDbInstancesArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			DbInstanceDescription: &opt1,
+// 			DbInstanceDescription: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

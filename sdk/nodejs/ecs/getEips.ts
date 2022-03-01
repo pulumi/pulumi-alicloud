@@ -5,6 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const eipsDs = pulumi.output(alicloud.ecs.getEips());
+ *
+ * export const firstEipId = eipsDs.eips[0].id;
+ * ```
+ */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> {
     pulumi.log.warn("getEips is deprecated: This function has been deprecated in favour of the getEipAddresses function")

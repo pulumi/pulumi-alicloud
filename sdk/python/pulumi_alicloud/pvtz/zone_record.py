@@ -415,6 +415,23 @@ class ZoneRecord(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        zone = alicloud.pvtz.Zone("zone")
+        foo = alicloud.pvtz.ZoneRecord("foo",
+            zone_id=zone.id,
+            rr="www",
+            type="CNAME",
+            value="bbb.test.com",
+            ttl=60)
+        ```
+
         ## Import
 
         Private Zone Record can be imported using the id, e.g.
@@ -445,6 +462,23 @@ class ZoneRecord(pulumi.CustomResource):
                  args: ZoneRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        zone = alicloud.pvtz.Zone("zone")
+        foo = alicloud.pvtz.ZoneRecord("foo",
+            zone_id=zone.id,
+            rr="www",
+            type="CNAME",
+            value="bbb.test.com",
+            ttl=60)
+        ```
+
         ## Import
 
         Private Zone Record can be imported using the id, e.g.

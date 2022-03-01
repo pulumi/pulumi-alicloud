@@ -9,6 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a new Domain group.
+    ///         var @group = new AliCloud.Dns.Group("group", new AliCloud.Dns.GroupArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:dns/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {

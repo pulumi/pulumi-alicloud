@@ -5,6 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = new alicloud.vpc.Network("foo", {cidrBlock: "172.16.0.0/12"});
+ * const _interface = new alicloud.vpc.RouterInterface("interface", {
+ *     oppositeRegion: "cn-beijing",
+ *     routerType: "VRouter",
+ *     routerId: foo.routerId,
+ *     role: "InitiatingSide",
+ *     specification: "Large.2",
+ *     description: "test1",
+ * });
+ * ```
+ *
  * ## Import
  *
  * The router interface can be imported using the id, e.g.

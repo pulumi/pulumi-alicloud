@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "plan-name"
 // 		ids, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("plan-name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

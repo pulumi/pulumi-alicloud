@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("ecsDeploymentSetId1", ids.Sets[0].Id)
-// 		opt0 := "^my-DeploymentSet"
 // 		nameRegex, err := ecs.GetEcsDeploymentSets(ctx, &ecs.GetEcsDeploymentSetsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-DeploymentSet"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -10,6 +10,100 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Bacis Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "networkInterfaceAttachment";
+    ///         var number = config.Get("number") ?? "2";
+    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "192.168.0.0/24",
+    ///         });
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VswitchName = name,
+    ///             CidrBlock = "192.168.0.0/24",
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var instanceType = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
+    ///             EniAmount = 2,
+    ///         })));
+    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             NameRegex = "^ubuntu_18.*64",
+    ///             MostRecent = true,
+    ///             Owners = "system",
+    ///         }));
+    ///         var instance = new List&lt;AliCloud.Ecs.Instance&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; number; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             instance.Add(new AliCloud.Ecs.Instance($"instance-{range.Value}", new AliCloud.Ecs.InstanceArgs
+    ///             {
+    ///                 AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///                 SecurityGroups = 
+    ///                 {
+    ///                     @group.Id,
+    ///                 },
+    ///                 InstanceType = instanceType.Apply(instanceType =&gt; instanceType.InstanceTypes?[0]?.Id),
+    ///                 SystemDiskCategory = "cloud_efficiency",
+    ///                 ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
+    ///                 InstanceName = name,
+    ///                 VswitchId = vswitch.Id,
+    ///                 InternetMaxBandwidthOut = 10,
+    ///             }));
+    ///         }
+    ///         var @interface = new List&lt;AliCloud.Vpc.NetworkInterface&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; number; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             @interface.Add(new AliCloud.Vpc.NetworkInterface($"interface-{range.Value}", new AliCloud.Vpc.NetworkInterfaceArgs
+    ///             {
+    ///                 VswitchId = vswitch.Id,
+    ///                 SecurityGroups = 
+    ///                 {
+    ///                     @group.Id,
+    ///                 },
+    ///             }));
+    ///         }
+    ///         var attachment = new List&lt;AliCloud.Vpc.NetworkInterfaceAttachment&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; number; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             attachment.Add(new AliCloud.Vpc.NetworkInterfaceAttachment($"attachment-{range.Value}", new AliCloud.Vpc.NetworkInterfaceAttachmentArgs
+    ///             {
+    ///                 InstanceId = instance.Select(__item =&gt; __item.Id).ToList()[range.Index],
+    ///                 NetworkInterfaceId = @interface.Select(__item =&gt; __item.Id).ToList()[range.Index],
+    ///             }));
+    ///         }
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Network Interfaces Attachment resource can be imported using the id, e.g.

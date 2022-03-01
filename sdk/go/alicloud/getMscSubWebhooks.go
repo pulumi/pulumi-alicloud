@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("mscSubWebhookId1", ids.Webhooks[0].Id)
-// 		opt0 := "^my-Webhook"
 // 		nameRegex, err := alicloud.GetMscSubWebhooks(ctx, &GetMscSubWebhooksArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Webhook"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

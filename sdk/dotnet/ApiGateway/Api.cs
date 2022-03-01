@@ -10,6 +10,67 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var apiGroup = new AliCloud.ApiGateway.Group("apiGroup", new AliCloud.ApiGateway.GroupArgs
+    ///         {
+    ///             Description = "description of the api group",
+    ///         });
+    ///         var apiGatewayApi = new AliCloud.ApiGateway.Api("apiGatewayApi", new AliCloud.ApiGateway.ApiArgs
+    ///         {
+    ///             GroupId = apiGroup.Id,
+    ///             Description = "your description",
+    ///             AuthType = "APP",
+    ///             ForceNonceCheck = false,
+    ///             RequestConfig = new AliCloud.ApiGateway.Inputs.ApiRequestConfigArgs
+    ///             {
+    ///                 Protocol = "HTTP",
+    ///                 Method = "GET",
+    ///                 Path = "/test/path1",
+    ///                 Mode = "MAPPING",
+    ///             },
+    ///             ServiceType = "HTTP",
+    ///             HttpServiceConfig = new AliCloud.ApiGateway.Inputs.ApiHttpServiceConfigArgs
+    ///             {
+    ///                 Address = "http://apigateway-backend.alicloudapi.com:8080",
+    ///                 Method = "GET",
+    ///                 Path = "/web/cloudapi",
+    ///                 Timeout = 12,
+    ///                 AoneName = "cloudapi-openapi",
+    ///             },
+    ///             RequestParameters = 
+    ///             {
+    ///                 new AliCloud.ApiGateway.Inputs.ApiRequestParameterArgs
+    ///                 {
+    ///                     Name = "aaa",
+    ///                     Type = "STRING",
+    ///                     Required = "OPTIONAL",
+    ///                     In = "QUERY",
+    ///                     InService = "QUERY",
+    ///                     NameService = "testparams",
+    ///                 },
+    ///             },
+    ///             StageNames = 
+    ///             {
+    ///                 "RELEASE",
+    ///                 "TEST",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Api gateway api can be imported using the id.Format to `&lt;API Group Id&gt;:&lt;API Id&gt;` e.g.

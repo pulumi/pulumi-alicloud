@@ -41,9 +41,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
 // 		exampleRegions, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
-// 			Current: &opt0,
+// 			Current: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

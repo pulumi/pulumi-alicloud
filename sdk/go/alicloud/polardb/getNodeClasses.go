@@ -27,21 +27,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "PolarDB"
 // 		resourcesZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
+// 			AvailableResourceCreation: pulumi.StringRef("PolarDB"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := resourcesZones.Zones[0].Id
-// 		opt2 := "MySQL"
-// 		opt3 := "5.6"
 // 		resourcesNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
-// 			ZoneId:    &opt1,
+// 			ZoneId:    pulumi.StringRef(resourcesZones.Zones[0].Id),
 // 			PayType:   "PostPaid",
-// 			DbType:    &opt2,
-// 			DbVersion: &opt3,
+// 			DbType:    pulumi.StringRef("MySQL"),
+// 			DbVersion: pulumi.StringRef("5.6"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

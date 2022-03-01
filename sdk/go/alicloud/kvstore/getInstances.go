@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "testname"
 // 		_default, err := kvstore.GetInstances(ctx, &kvstore.GetInstancesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("testname"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

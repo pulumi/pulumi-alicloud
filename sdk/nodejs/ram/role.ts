@@ -5,6 +5,35 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new RAM Role.
+ * const role = new alicloud.ram.Role("role", {
+ *     description: "this is a role test.",
+ *     document: `  {
+ *     "Statement": [
+ *       {
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "apigateway.aliyuncs.com", 
+ *             "ecs.aliyuncs.com"
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     "Version": "1"
+ *   }
+ *   `,
+ *     force: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * RAM role can be imported using the id or name, e.g.

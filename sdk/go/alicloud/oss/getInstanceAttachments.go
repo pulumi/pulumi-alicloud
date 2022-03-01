@@ -24,12 +24,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "testvpc"
-// 		opt1 := "attachments.txt"
 // 		attachmentsDs, err := ots.GetInstanceAttachments(ctx, &ots.GetInstanceAttachmentsArgs{
 // 			InstanceName: "sample-instance",
-// 			NameRegex:    &opt0,
-// 			OutputFile:   &opt1,
+// 			NameRegex:    pulumi.StringRef("testvpc"),
+// 			OutputFile:   pulumi.StringRef("attachments.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

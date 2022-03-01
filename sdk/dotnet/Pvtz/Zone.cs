@@ -10,6 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Pvtz
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Pvtz.Zone("foo", new AliCloud.Pvtz.ZoneArgs
+    ///         {
+    ///             ZoneName = "foo.test.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Private Zone can be imported using the id, e.g.

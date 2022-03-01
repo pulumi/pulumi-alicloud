@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "NORMAL"
 // 		_default, err := pvtz.GetResolverZones(ctx, &pvtz.GetResolverZonesArgs{
-// 			Status: &opt0,
+// 			Status: pulumi.StringRef("NORMAL"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

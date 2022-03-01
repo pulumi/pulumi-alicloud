@@ -40,9 +40,8 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := true
 // 		exampleNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			IsDefault: &opt0,
+// 			IsDefault: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

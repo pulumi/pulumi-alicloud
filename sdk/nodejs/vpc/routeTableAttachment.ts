@@ -5,6 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "route-table-attachment-example-name";
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vpcId: fooNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: _default.then(_default => _default.zones?[0]?.id),
+ * });
+ * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
+ *     vpcId: fooNetwork.id,
+ *     routeTableName: name,
+ *     description: "route_table_attachment",
+ * });
+ * const fooRouteTableAttachment = new alicloud.vpc.RouteTableAttachment("fooRouteTableAttachment", {
+ *     vswitchId: fooSwitch.id,
+ *     routeTableId: fooRouteTable.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * The route table attachment can be imported using the id, e.g.

@@ -11,9 +11,69 @@ namespace Pulumi.AliCloud.Dns
 {
     public static class GetInstances
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Dns.GetInstances.InvokeAsync(new AliCloud.Dns.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "dns-cn-oew1npk****",
+        ///             },
+        ///         }));
+        ///         this.FirstInstanceId = example.Apply(example =&gt; example.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceId")]
+        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:dns/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Dns.GetInstances.InvokeAsync(new AliCloud.Dns.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "dns-cn-oew1npk****",
+        ///             },
+        ///         }));
+        ///         this.FirstInstanceId = example.Apply(example =&gt; example.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceId")]
+        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:dns/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }

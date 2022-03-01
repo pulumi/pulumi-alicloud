@@ -10,6 +10,52 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "networkInterfaceName";
+    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             VpcName = name,
+    ///             CidrBlock = "192.168.0.0/24",
+    ///         });
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             CidrBlock = "192.168.0.0/24",
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("defaultNetworkInterface", new AliCloud.Vpc.NetworkInterfaceArgs
+    ///         {
+    ///             VswitchId = vswitch.Id,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 @group.Id,
+    ///             },
+    ///             PrivateIp = "192.168.0.2",
+    ///             PrivateIpsCount = 3,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ENI can be imported using the id, e.g.

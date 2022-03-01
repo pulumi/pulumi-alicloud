@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		key, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
+// 			Description: pulumi.String("example key"),
+// 			IsEnabled:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_ = kms.LookupCiphertextOutput(ctx, kms.GetCiphertextOutputArgs{
+// 			KeyId:     key.ID(),
+// 			Plaintext: pulumi.String("example"),
+// 		}, nil)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupCiphertext(ctx *pulumi.Context, args *LookupCiphertextArgs, opts ...pulumi.InvokeOption) (*LookupCiphertextResult, error) {
 	var rv LookupCiphertextResult
 	err := ctx.Invoke("alicloud:kms/getCiphertext:getCiphertext", args, &rv, opts...)

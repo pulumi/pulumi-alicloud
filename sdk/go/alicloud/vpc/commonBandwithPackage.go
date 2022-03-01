@@ -11,6 +11,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vpc.NewCommonBandwithPackage(ctx, "foo", &vpc.CommonBandwithPackageArgs{
+// 			Bandwidth:            pulumi.String("1000"),
+// 			BandwidthPackageName: pulumi.String("test-common-bandwidth-package"),
+// 			Description:          pulumi.String("test-common-bandwidth-package"),
+// 			InternetChargeType:   pulumi.String("PayByBandwidth"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // The common bandwidth package can be imported using the id, e.g.

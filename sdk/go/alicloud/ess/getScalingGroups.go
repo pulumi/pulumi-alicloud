@@ -24,13 +24,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "scaling_group_name"
 // 		scalinggroupsDs, err := ess.GetScalingGroups(ctx, &ess.GetScalingGroupsArgs{
 // 			Ids: []string{
 // 				"scaling_group_id1",
 // 				"scaling_group_id2",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("scaling_group_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

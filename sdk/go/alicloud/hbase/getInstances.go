@@ -27,11 +27,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "cn-shenzhen-b"
-// 		opt1 := "tf_testAccHBase"
 // 		_, err := hbase.GetInstances(ctx, &hbase.GetInstancesArgs{
-// 			AvailabilityZone: &opt0,
-// 			NameRegex:        &opt1,
+// 			AvailabilityZone: pulumi.StringRef("cn-shenzhen-b"),
+// 			NameRegex:        pulumi.StringRef("tf_testAccHBase"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

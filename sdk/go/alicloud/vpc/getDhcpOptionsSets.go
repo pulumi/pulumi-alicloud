@@ -37,39 +37,35 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcDhcpOptionsSetId1", ids.Sets[0].Id)
-// 		opt0 := "^my-DhcpOptionsSet"
 // 		nameRegex, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-DhcpOptionsSet"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcDhcpOptionsSetId2", nameRegex.Sets[0].Id)
-// 		opt1 := "my-DhcpOptionsSet"
 // 		dhcpOptionsSetName, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
-// 			DhcpOptionsSetName: &opt1,
+// 			DhcpOptionsSetName: pulumi.StringRef("my-DhcpOptionsSet"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.Sets[0].Id)
-// 		opt2 := "example.com"
 // 		domainName, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
 // 			Ids: []string{
 // 				"example_value",
 // 			},
-// 			DomainName: &opt2,
+// 			DomainName: pulumi.StringRef("example.com"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcDhcpOptionsSetId4", domainName.Sets[0].Id)
-// 		opt3 := "Available"
 // 		status, err := vpc.GetDhcpOptionsSets(ctx, &vpc.GetDhcpOptionsSetsArgs{
 // 			Ids: []string{
 // 				"example_value",
 // 			},
-// 			Status: &opt3,
+// 			Status: pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

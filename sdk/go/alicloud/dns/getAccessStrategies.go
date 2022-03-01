@@ -28,7 +28,6 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "the_resource_name"
 // 		ids, err := dns.GetAccessStrategies(ctx, &dns.GetAccessStrategiesArgs{
 // 			InstanceId:   "example_value",
 // 			StrategyMode: "example_value",
@@ -36,7 +35,7 @@ import (
 // 				"example_value-1",
 // 				"example_value-2",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("the_resource_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

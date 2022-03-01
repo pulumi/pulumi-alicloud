@@ -27,14 +27,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "ecs.g5.2xlarge"
-// 		opt1 := false
 // 		_default, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
 // 			ClusterType:         "HADOOP",
 // 			DestinationResource: "InstanceType",
 // 			InstanceChargeType:  "PostPaid",
-// 			InstanceType:        &opt0,
-// 			SupportLocalStorage: &opt1,
+// 			InstanceType:        pulumi.StringRef("ecs.g5.2xlarge"),
+// 			SupportLocalStorage: pulumi.BoolRef(false),
 // 			SupportNodeTypes: []string{
 // 				"MASTER",
 // 				"CORE",

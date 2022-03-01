@@ -26,11 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "scheduled_task_name"
-// 		opt1 := "scheduled_task_id"
 // 		ds, err := ess.GetScheduledTasks(ctx, &ess.GetScheduledTasksArgs{
-// 			NameRegex:       &opt0,
-// 			ScheduledTaskId: &opt1,
+// 			NameRegex:       pulumi.StringRef("scheduled_task_name"),
+// 			ScheduledTaskId: pulumi.StringRef("scheduled_task_id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample_oss_bucket"
 // 		ossBucketsDs, err := oss.GetBuckets(ctx, &oss.GetBucketsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("sample_oss_bucket"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

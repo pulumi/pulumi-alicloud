@@ -24,15 +24,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := ".*test.*"
-// 		opt1 := "roles.txt"
-// 		opt2 := "AliyunACSDefaultAccess"
-// 		opt3 := "Custom"
 // 		rolesDs, err := ram.GetRoles(ctx, &ram.GetRolesArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
-// 			PolicyName: &opt2,
-// 			PolicyType: &opt3,
+// 			NameRegex:  pulumi.StringRef(".*test.*"),
+// 			OutputFile: pulumi.StringRef("roles.txt"),
+// 			PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
+// 			PolicyType: pulumi.StringRef("Custom"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const adbClustersDs = alicloud.adb.getClusters({
+ *     descriptionRegex: "am-\\w+",
+ *     status: "Running",
+ * });
+ * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?[0]?.id);
+ * ```
+ */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
     if (!opts) {

@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new Domain record
+ * const record = new alicloud.dns.Record("record", {
+ *     hostRecord: "@",
+ *     type: "A",
+ *     value: "192.168.99.99",
+ * });
+ * ```
+ *
  * ## Import
  *
  * RDS record can be imported using the id, e.g.

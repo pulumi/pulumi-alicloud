@@ -25,11 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "data-\\d+"
-// 		opt1 := "Running"
 // 		dbInstancesDs, err := rds.GetInstances(ctx, &rds.GetInstancesArgs{
-// 			NameRegex: &opt0,
-// 			Status:    &opt1,
+// 			NameRegex: pulumi.StringRef("data-\\d+"),
+// 			Status:    pulumi.StringRef("Running"),
 // 			Tags: map[string]interface{}{
 // 				"size": "tiny",
 // 				"type": "database",

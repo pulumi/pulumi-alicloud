@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testAcc"
 // 		example, err := brain.GetIndustrialPidProjects(ctx, &brain.GetIndustrialPidProjectsArgs{
 // 			Ids: []string{
 // 				"3e74e684-cbb5-xxxx",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tf-testAcc"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

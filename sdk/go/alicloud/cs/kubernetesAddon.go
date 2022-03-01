@@ -38,22 +38,17 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := "VSwitch"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := defaultZones.Zones[0].Id
-// 		opt2 := 2
-// 		opt3 := 4
-// 		opt4 := "Worker"
 // 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone:   &opt1,
-// 			CpuCoreCount:       &opt2,
-// 			MemorySize:         &opt3,
-// 			KubernetesNodeRole: &opt4,
+// 			AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
+// 			CpuCoreCount:       pulumi.IntRef(2),
+// 			MemorySize:         pulumi.Float64Ref(4),
+// 			KubernetesNodeRole: pulumi.StringRef("Worker"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

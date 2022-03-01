@@ -10,6 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Pvtz
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var zone = new AliCloud.Pvtz.Zone("zone", new AliCloud.Pvtz.ZoneArgs
+    ///         {
+    ///         });
+    ///         var foo = new AliCloud.Pvtz.ZoneRecord("foo", new AliCloud.Pvtz.ZoneRecordArgs
+    ///         {
+    ///             ZoneId = zone.Id,
+    ///             Rr = "www",
+    ///             Type = "CNAME",
+    ///             Value = "bbb.test.com",
+    ///             Ttl = 60,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Private Zone Record can be imported using the id, e.g.

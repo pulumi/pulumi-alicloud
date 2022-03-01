@@ -311,6 +311,54 @@ class Connection(pulumi.CustomResource):
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_gateway = alicloud.vpn.Gateway("fooGateway",
+            vpc_id="vpc-fake-id",
+            bandwidth=10,
+            enable_ssl=True,
+            instance_charge_type="PostPaid",
+            description="test_create_description")
+        foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
+            ip_address="42.104.22.228",
+            description="testAccVpnCgwDesc")
+        foo_connection = alicloud.vpn.Connection("fooConnection",
+            vpn_gateway_id=foo_gateway.id,
+            customer_gateway_id=foo_customer_gateway.id,
+            local_subnets=[
+                "172.16.0.0/24",
+                "172.16.1.0/24",
+            ],
+            remote_subnets=[
+                "10.0.0.0/24",
+                "10.0.1.0/24",
+            ],
+            effect_immediately=True,
+            ike_configs=[alicloud.vpn.ConnectionIkeConfigArgs(
+                ike_auth_alg="md5",
+                ike_enc_alg="des",
+                ike_version="ikev1",
+                ike_mode="main",
+                ike_lifetime=86400,
+                psk="tf-testvpn2",
+                ike_pfs="group1",
+                ike_remote_id="testbob2",
+                ike_local_id="testalice2",
+            )],
+            ipsec_configs=[alicloud.vpn.ConnectionIpsecConfigArgs(
+                ipsec_pfs="group5",
+                ipsec_enc_alg="des",
+                ipsec_auth_alg="md5",
+                ipsec_lifetime=8640,
+            )])
+        ```
+
         ## Import
 
         VPN connection can be imported using the id, e.g.
@@ -337,6 +385,54 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_gateway = alicloud.vpn.Gateway("fooGateway",
+            vpc_id="vpc-fake-id",
+            bandwidth=10,
+            enable_ssl=True,
+            instance_charge_type="PostPaid",
+            description="test_create_description")
+        foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
+            ip_address="42.104.22.228",
+            description="testAccVpnCgwDesc")
+        foo_connection = alicloud.vpn.Connection("fooConnection",
+            vpn_gateway_id=foo_gateway.id,
+            customer_gateway_id=foo_customer_gateway.id,
+            local_subnets=[
+                "172.16.0.0/24",
+                "172.16.1.0/24",
+            ],
+            remote_subnets=[
+                "10.0.0.0/24",
+                "10.0.1.0/24",
+            ],
+            effect_immediately=True,
+            ike_configs=[alicloud.vpn.ConnectionIkeConfigArgs(
+                ike_auth_alg="md5",
+                ike_enc_alg="des",
+                ike_version="ikev1",
+                ike_mode="main",
+                ike_lifetime=86400,
+                psk="tf-testvpn2",
+                ike_pfs="group1",
+                ike_remote_id="testbob2",
+                ike_local_id="testalice2",
+            )],
+            ipsec_configs=[alicloud.vpn.ConnectionIpsecConfigArgs(
+                ipsec_pfs="group5",
+                ipsec_enc_alg="des",
+                ipsec_auth_alg="md5",
+                ipsec_lifetime=8640,
+            )])
+        ```
+
         ## Import
 
         VPN connection can be imported using the id, e.g.

@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := slb.NewLoadBalancer(ctx, "default", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		slbsDs, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
+// 			NameRegex: pulumi.StringRef("sample_slb"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstSlbId", slbsDs.Slbs[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancersResult, error) {
 	var rv GetLoadBalancersResult
 	err := ctx.Invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", args, &rv, opts...)

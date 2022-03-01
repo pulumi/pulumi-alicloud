@@ -10,6 +10,64 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "KVStore";
+    ///         var multiAz = config.Get("multiAz") ?? "false";
+    ///         var name = config.Get("name") ?? "kvstorebackuppolicyvpc";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///         });
+    ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
+    ///         {
+    ///             InstanceClass = "Memcache",
+    ///             InstanceName = name,
+    ///             VswitchId = defaultSwitch.Id,
+    ///             PrivateIp = "172.16.0.10",
+    ///             SecurityIps = 
+    ///             {
+    ///                 "10.0.0.1",
+    ///             },
+    ///             InstanceType = "memcache.master.small.default",
+    ///             EngineVersion = "2.8",
+    ///         });
+    ///         var defaultBackupPolicy = new AliCloud.KVStore.BackupPolicy("defaultBackupPolicy", new AliCloud.KVStore.BackupPolicyArgs
+    ///         {
+    ///             InstanceId = defaultInstance.Id,
+    ///             BackupPeriods = 
+    ///             {
+    ///                 "Tuesday",
+    ///                 "Wednesday",
+    ///             },
+    ///             BackupTime = "10:00Z-11:00Z",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// KVStore backup policy can be imported using the id, e.g.

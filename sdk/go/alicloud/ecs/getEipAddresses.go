@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "the_resource_name"
 // 		example, err := ecs.GetEipAddresses(ctx, &ecs.GetEipAddressesArgs{
 // 			Ids: []string{
 // 				"eip-bp1jvx5ki6c********",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("the_resource_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

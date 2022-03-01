@@ -28,16 +28,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
 // 		_, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
-// 			Current: &opt0,
+// 			Current: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "cn-hangzhou"
 // 		_, err = clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
-// 			RegionId: &opt1,
+// 			RegionId: pulumi.StringRef("cn-hangzhou"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

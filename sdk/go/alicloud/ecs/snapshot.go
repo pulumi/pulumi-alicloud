@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewSnapshot(ctx, "snapshot", &ecs.SnapshotArgs{
+// 			DiskId:      pulumi.Any(alicloud_disk_attachment.Instance - attachment.Disk_id),
+// 			Description: pulumi.String("this snapshot is created for testing"),
+// 			Tags: pulumi.AnyMap{
+// 				"version": pulumi.Any("1.2"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Snapshot can be imported using the id, e.g.

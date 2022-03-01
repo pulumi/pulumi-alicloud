@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^y[A-Za-z]+"
-// 		opt1 := "groups.txt"
 // 		groupsDs, err := dns.GetGroups(ctx, &dns.GetGroupsArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("^y[A-Za-z]+"),
+// 			OutputFile: pulumi.StringRef("groups.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

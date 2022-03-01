@@ -12,9 +12,57 @@ namespace Pulumi.AliCloud.Ecs
     [Obsolete(@"This function has been deprecated in favour of the getEipAddresses function")]
     public static class GetEips
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var eipsDs = Output.Create(AliCloud.Ecs.GetEips.InvokeAsync());
+        ///         this.FirstEipId = eipsDs.Apply(eipsDs =&gt; eipsDs.Eips?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEipId")]
+        ///     public Output&lt;string&gt; FirstEipId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetEipsResult> InvokeAsync(GetEipsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? new GetEipsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var eipsDs = Output.Create(AliCloud.Ecs.GetEips.InvokeAsync());
+        ///         this.FirstEipId = eipsDs.Apply(eipsDs =&gt; eipsDs.Eips?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEipId")]
+        ///     public Output&lt;string&gt; FirstEipId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetEipsResult> Invoke(GetEipsInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? new GetEipsInvokeArgs(), options.WithDefaults());
     }

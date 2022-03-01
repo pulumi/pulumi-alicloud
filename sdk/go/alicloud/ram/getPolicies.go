@@ -24,15 +24,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "group1"
-// 		opt1 := "policies.txt"
-// 		opt2 := "System"
-// 		opt3 := "user1"
 // 		policiesDs, err := ram.GetPolicies(ctx, &ram.GetPoliciesArgs{
-// 			GroupName:  &opt0,
-// 			OutputFile: &opt1,
-// 			Type:       &opt2,
-// 			UserName:   &opt3,
+// 			GroupName:  pulumi.StringRef("group1"),
+// 			OutputFile: pulumi.StringRef("policies.txt"),
+// 			Type:       pulumi.StringRef("System"),
+// 			UserName:   pulumi.StringRef("user1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

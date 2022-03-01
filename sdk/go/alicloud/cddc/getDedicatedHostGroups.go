@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "MongoDB"
 // 		_default, err := cddc.GetDedicatedHostGroups(ctx, &cddc.GetDedicatedHostGroupsArgs{
-// 			Engine: &opt0,
+// 			Engine: pulumi.StringRef("MongoDB"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

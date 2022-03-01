@@ -136,6 +136,38 @@ class PolicyVersion(pulumi.CustomResource):
                  policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
+            policy_name="tftest",
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:*"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
+            policy_name=example_policy.policy_name,
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:myphotos"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        ```
+
         ## Import
 
         Resource Manager Policy Version can be imported using the id, e.g.
@@ -157,6 +189,38 @@ class PolicyVersion(pulumi.CustomResource):
                  args: PolicyVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
+            policy_name="tftest",
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:*"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
+            policy_name=example_policy.policy_name,
+            policy_document=\"\"\"		{
+        			"Statement": [{
+        				"Action": ["oss:*"],
+        				"Effect": "Allow",
+        				"Resource": ["acs:oss:*:*:myphotos"]
+        			}],
+        			"Version": "1"
+        		}
+        \"\"\")
+        ```
+
         ## Import
 
         Resource Manager Policy Version can be imported using the id, e.g.

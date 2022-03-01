@@ -30,9 +30,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "On"
 // 		_, err := eventbridge.GetService(ctx, &eventbridge.GetServiceArgs{
-// 			Enable: &opt0,
+// 			Enable: pulumi.StringRef("On"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

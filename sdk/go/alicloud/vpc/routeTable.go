@@ -11,6 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 			VpcName:   pulumi.String("vpc-example-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
+// 			VpcId:          fooNetwork.ID(),
+// 			RouteTableName: pulumi.String("route-table-example-name"),
+// 			Description:    pulumi.String("route-table-example-description"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // The route table can be imported using the id, e.g.

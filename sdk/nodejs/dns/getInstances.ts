@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = pulumi.output(alicloud.dns.getInstances({
+ *     ids: ["dns-cn-oew1npk****"],
+ * }));
+ *
+ * export const firstInstanceId = example.instances[0].id;
+ * ```
+ */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
     if (!opts) {

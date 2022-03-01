@@ -10,6 +10,71 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		name := "terraformtestslbconfig"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			CidrBlock: pulumi.String("172.16.0.0/12"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// 			VpcId:       defaultNetwork.ID(),
+// 			CidrBlock:   pulumi.String("172.16.0.0/21"),
+// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+// 			VswitchName: pulumi.String(name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
+// 			Specification: pulumi.String("slb.s2.small"),
+// 			VswitchId:     defaultSwitch.ID(),
+// 			Tags: pulumi.AnyMap{
+// 				"tag_a": pulumi.Any(1),
+// 				"tag_b": pulumi.Any(2),
+// 				"tag_c": pulumi.Any(3),
+// 				"tag_d": pulumi.Any(4),
+// 				"tag_e": pulumi.Any(5),
+// 				"tag_f": pulumi.Any(6),
+// 				"tag_g": pulumi.Any(7),
+// 				"tag_h": pulumi.Any(8),
+// 				"tag_i": pulumi.Any(9),
+// 				"tag_j": pulumi.Any(10),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Load balancer can be imported using the id, e.g.

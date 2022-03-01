@@ -38,25 +38,22 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcBgpPeerId1", ids.Peers[0].Id)
-// 		opt0 := "example_value"
 // 		bgpGroupId, err := vpc.GetBgpPeers(ctx, &vpc.GetBgpPeersArgs{
-// 			BgpGroupId: &opt0,
+// 			BgpGroupId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcBgpPeerId2", bgpGroupId.Peers[0].Id)
-// 		opt1 := "example_value"
 // 		routerId, err := vpc.GetBgpPeers(ctx, &vpc.GetBgpPeersArgs{
-// 			RouterId: &opt1,
+// 			RouterId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcBgpPeerId3", routerId.Peers[0].Id)
-// 		opt2 := "Available"
 // 		status, err := vpc.GetBgpPeers(ctx, &vpc.GetBgpPeersArgs{
-// 			Status: &opt2,
+// 			Status: pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

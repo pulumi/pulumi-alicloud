@@ -10,6 +10,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		key, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
+// 			Description: pulumi.String("example key"),
+// 			IsEnabled:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		encrypted, err := kms.NewCiphertext(ctx, "encrypted", &kms.CiphertextArgs{
+// 			KeyId:     key.ID(),
+// 			Plaintext: pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		plaintext := kms.GetPlaintextOutput(ctx, kms.GetPlaintextOutputArgs{
+// 			CiphertextBlob: encrypted.CiphertextBlob,
+// 		}, nil)
+// 		ctx.Export("decrypted", plaintext.ApplyT(func(plaintext kms.GetPlaintextResult) (string, error) {
+// 			return plaintext.Plaintext, nil
+// 		}).(pulumi.StringOutput))
+// 		return nil
+// 	})
+// }
+// ```
 func GetPlaintext(ctx *pulumi.Context, args *GetPlaintextArgs, opts ...pulumi.InvokeOption) (*GetPlaintextResult, error) {
 	var rv GetPlaintextResult
 	err := ctx.Invoke("alicloud:kms/getPlaintext:getPlaintext", args, &rv, opts...)

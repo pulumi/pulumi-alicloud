@@ -27,11 +27,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "cloud_ssd"
-// 		opt1 := "ecs.n4.large"
 // 		zonesDs, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableDiskCategory: &opt0,
-// 			AvailableInstanceType: &opt1,
+// 			AvailableDiskCategory: pulumi.StringRef("cloud_ssd"),
+// 			AvailableInstanceType: pulumi.StringRef("ecs.n4.large"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

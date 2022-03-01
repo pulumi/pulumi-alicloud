@@ -10,6 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Vpc.CommonBandwithPackage("foo", new AliCloud.Vpc.CommonBandwithPackageArgs
+    ///         {
+    ///             Bandwidth = "1000",
+    ///             BandwidthPackageName = "test-common-bandwidth-package",
+    ///             Description = "test-common-bandwidth-package",
+    ///             InternetChargeType = "PayByBandwidth",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The common bandwidth package can be imported using the id, e.g.

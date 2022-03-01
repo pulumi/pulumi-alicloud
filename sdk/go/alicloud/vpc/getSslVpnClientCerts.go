@@ -24,16 +24,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^foo"
-// 		opt1 := "/tmp/clientcert"
-// 		opt2 := "fake-server-id"
 // 		_, err := vpc.GetSslVpnClientCerts(ctx, &vpc.GetSslVpnClientCertsArgs{
 // 			Ids: []string{
 // 				"fake-cert-id",
 // 			},
-// 			NameRegex:      &opt0,
-// 			OutputFile:     &opt1,
-// 			SslVpnServerId: &opt2,
+// 			NameRegex:      pulumi.StringRef("^foo"),
+// 			OutputFile:     pulumi.StringRef("/tmp/clientcert"),
+// 			SslVpnServerId: pulumi.StringRef("fake-server-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

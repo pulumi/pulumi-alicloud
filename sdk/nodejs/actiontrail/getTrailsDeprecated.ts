@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const trails = pulumi.output(alicloud.actiontrail.getTrailsDeprecated({
+ *     nameRegex: "tf-testacc-actiontrail",
+ * }));
+ *
+ * export const firstTrailName = trails.actiontrails[0].name;
+ * ```
+ */
 /** @deprecated DataSource has been renamed to `getTrails` */
 export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsDeprecatedResult> {
     pulumi.log.warn("getTrailsDeprecated is deprecated: DataSource has been renamed to `getTrails`")

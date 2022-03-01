@@ -39,11 +39,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "SYSTEM"
-// 		opt1 := "windows"
 // 		defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
-// 			BundleType: &opt0,
-// 			NameRegex:  &opt1,
+// 			BundleType: pulumi.StringRef("SYSTEM"),
+// 			NameRegex:  pulumi.StringRef("windows"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

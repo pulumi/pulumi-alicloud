@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("nasLifecyclePolicyId1", ids.Policies[0].Id)
-// 		opt0 := "^my-LifecyclePolicy"
 // 		nameRegex, err := nas.GetLifecyclePolicies(ctx, &nas.GetLifecyclePoliciesArgs{
 // 			FileSystemId: "example_value",
-// 			NameRegex:    &opt0,
+// 			NameRegex:    pulumi.StringRef("^my-LifecyclePolicy"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -35,11 +35,9 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := "cloud_efficiency"
-// 		opt1 := "VSwitch"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableDiskCategory:     &opt0,
-// 			AvailableResourceCreation: &opt1,
+// 			AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -66,13 +64,10 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := "^ubuntu_18.*64"
-// 		opt3 := true
-// 		opt4 := "system"
 // 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex:  &opt2,
-// 			MostRecent: &opt3,
-// 			Owners:     &opt4,
+// 			NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+// 			MostRecent: pulumi.BoolRef(true),
+// 			Owners:     pulumi.StringRef("system"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

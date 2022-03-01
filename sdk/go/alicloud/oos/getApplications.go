@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("oosApplicationId1", ids.Applications[0].Id)
-// 		opt0 := "^my-Application"
 // 		nameRegex, err := oos.GetApplications(ctx, &oos.GetApplicationsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Application"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

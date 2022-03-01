@@ -6,6 +6,57 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
+ *     vpcId: "vpc-fake-id",
+ *     bandwidth: "10",
+ *     enableSsl: true,
+ *     instanceChargeType: "PostPaid",
+ *     description: "test_create_description",
+ * });
+ * const fooCustomerGateway = new alicloud.vpn.CustomerGateway("fooCustomerGateway", {
+ *     ipAddress: "42.104.22.228",
+ *     description: "testAccVpnCgwDesc",
+ * });
+ * const fooConnection = new alicloud.vpn.Connection("fooConnection", {
+ *     vpnGatewayId: fooGateway.id,
+ *     customerGatewayId: fooCustomerGateway.id,
+ *     localSubnets: [
+ *         "172.16.0.0/24",
+ *         "172.16.1.0/24",
+ *     ],
+ *     remoteSubnets: [
+ *         "10.0.0.0/24",
+ *         "10.0.1.0/24",
+ *     ],
+ *     effectImmediately: true,
+ *     ikeConfigs: [{
+ *         ikeAuthAlg: "md5",
+ *         ikeEncAlg: "des",
+ *         ikeVersion: "ikev1",
+ *         ikeMode: "main",
+ *         ikeLifetime: 86400,
+ *         psk: "tf-testvpn2",
+ *         ikePfs: "group1",
+ *         ikeRemoteId: "testbob2",
+ *         ikeLocalId: "testalice2",
+ *     }],
+ *     ipsecConfigs: [{
+ *         ipsecPfs: "group5",
+ *         ipsecEncAlg: "des",
+ *         ipsecAuthAlg: "md5",
+ *         ipsecLifetime: 8640,
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPN connection can be imported using the id, e.g.

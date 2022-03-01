@@ -24,15 +24,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "testAcc*"
-// 		opt1 := "/tmp/cgws"
 // 		_, err := vpn.GetCustomerGateways(ctx, &vpn.GetCustomerGatewaysArgs{
 // 			Ids: []string{
 // 				"fake-id1",
 // 				"fake-id2",
 // 			},
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("testAcc*"),
+// 			OutputFile: pulumi.StringRef("/tmp/cgws"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

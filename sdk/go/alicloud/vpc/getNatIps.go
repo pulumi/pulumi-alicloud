@@ -39,21 +39,18 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcNatIpId1", ids.Ips[0].Id)
-// 		opt0 := "^my-NatIp"
 // 		nameRegex, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
 // 			NatGatewayId: "example_value",
-// 			NameRegex:    &opt0,
+// 			NameRegex:    pulumi.StringRef("^my-NatIp"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcNatIpId2", nameRegex.Ips[0].Id)
-// 		opt1 := "example_value"
-// 		opt2 := "^my-NatIp"
 // 		natIpCidr, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
 // 			NatGatewayId: "example_value",
-// 			NatIpCidr:    &opt1,
-// 			NameRegex:    &opt2,
+// 			NatIpCidr:    pulumi.StringRef("example_value"),
+// 			NameRegex:    pulumi.StringRef("^my-NatIp"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -85,13 +82,12 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcNatIpId5", natIpIds.Ips[0].Id)
-// 		opt3 := "example_value"
 // 		status, err := vpc.GetNatIps(ctx, &vpc.GetNatIpsArgs{
 // 			NatGatewayId: "example_value",
 // 			Ids: []string{
 // 				"example_value",
 // 			},
-// 			Status: &opt3,
+// 			Status: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

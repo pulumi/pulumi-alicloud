@@ -24,13 +24,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^group[0-9]*"
-// 		opt1 := "groups.txt"
-// 		opt2 := "user1"
 // 		groupsDs, err := ram.GetGroups(ctx, &ram.GetGroupsArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
-// 			UserName:   &opt2,
+// 			NameRegex:  pulumi.StringRef("^group[0-9]*"),
+// 			OutputFile: pulumi.StringRef("groups.txt"),
+// 			UserName:   pulumi.StringRef("user1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

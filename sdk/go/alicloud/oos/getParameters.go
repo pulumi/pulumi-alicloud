@@ -37,20 +37,18 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("oosParameterId1", ids.Parameters[0].Id)
-// 		opt0 := "^my-Parameter"
 // 		nameRegex, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Parameter"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("oosParameterId2", nameRegex.Parameters[0].Id)
-// 		opt1 := "example_value"
 // 		resourceGroupId, err := oos.GetParameters(ctx, &oos.GetParametersArgs{
 // 			Ids: []string{
 // 				"my-Parameter",
 // 			},
-// 			ResourceGroupId: &opt1,
+// 			ResourceGroupId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

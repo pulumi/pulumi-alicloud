@@ -11,6 +11,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dns.NewDnsDomain(ctx, "dns", &dns.DnsDomainArgs{
+// 			DomainName: pulumi.String("starmove.com"),
+// 			GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
+// 			Tags: pulumi.AnyMap{
+// 				"Created":     pulumi.Any("Terraform"),
+// 				"Environment": pulumi.Any("test"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // DNS domain can be imported using the id or domain name, e.g.

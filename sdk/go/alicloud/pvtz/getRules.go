@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("pvtzRuleId1", ids.Rules[0].Id)
-// 		opt0 := "^my-Rule"
 // 		nameRegex, err := pvtz.GetRules(ctx, &pvtz.GetRulesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Rule"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -10,6 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a new Domain.
+    ///         var dns = new AliCloud.Dns.Domain("dns", new AliCloud.Dns.DomainArgs
+    ///         {
+    ///             GroupId = "85ab8713-4a30-4de4-9d20-155ff830f651",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS can be imported using the id or domain name, e.g.

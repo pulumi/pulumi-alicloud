@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("dfsAccessGroupId1", ids.Groups[0].Id)
-// 		opt0 := "^my-AccessGroup"
 // 		nameRegex, err := dfs.GetAccessGroups(ctx, &dfs.GetAccessGroupsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-AccessGroup"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

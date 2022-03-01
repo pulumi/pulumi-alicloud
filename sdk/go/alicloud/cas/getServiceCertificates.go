@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^cas"
 // 		certs, err := cas.GetCertificates(ctx, &cas.GetCertificatesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^cas"),
 // 			Ids: []string{
 // 				"Certificate Id",
 // 			},

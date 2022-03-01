@@ -24,10 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample_fc_trigger"
 // 		fcTriggersDs, err := fc.GetTriggers(ctx, &fc.GetTriggersArgs{
 // 			FunctionName: "sample_function",
-// 			NameRegex:    &opt0,
+// 			NameRegex:    pulumi.StringRef("sample_fc_trigger"),
 // 			ServiceName:  "sample_service",
 // 		}, nil)
 // 		if err != nil {

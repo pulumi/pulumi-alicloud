@@ -33,9 +33,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Standard"
 // 		defaultStocks, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
-// 			GatewayClass: &opt0,
+// 			GatewayClass: pulumi.StringRef("Standard"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

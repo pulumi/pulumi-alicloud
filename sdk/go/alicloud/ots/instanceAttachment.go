@@ -38,9 +38,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "VSwitch"
 // 		fooZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

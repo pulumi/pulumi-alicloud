@@ -24,17 +24,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "group1"
-// 		opt1 := "^user"
-// 		opt2 := "users.txt"
-// 		opt3 := "AliyunACSDefaultAccess"
-// 		opt4 := "Custom"
 // 		usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
-// 			GroupName:  &opt0,
-// 			NameRegex:  &opt1,
-// 			OutputFile: &opt2,
-// 			PolicyName: &opt3,
-// 			PolicyType: &opt4,
+// 			GroupName:  pulumi.StringRef("group1"),
+// 			NameRegex:  pulumi.StringRef("^user"),
+// 			OutputFile: pulumi.StringRef("users.txt"),
+// 			PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
+// 			PolicyType: pulumi.StringRef("Custom"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

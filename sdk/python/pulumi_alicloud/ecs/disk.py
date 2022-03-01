@@ -814,6 +814,25 @@ class Disk(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new ECS disk.
+        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+            availability_zone="cn-beijing-b",
+            category="cloud_efficiency",
+            description="Hello ecs disk.",
+            encrypted=True,
+            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
+            size=30,
+            tags={
+                "Name": "TerraformTest",
+            })
+        ```
+
         ## Import
 
         Cloud disk can be imported using the id, e.g.
@@ -850,6 +869,25 @@ class Disk(pulumi.CustomResource):
                  args: Optional[DiskArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new ECS disk.
+        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+            availability_zone="cn-beijing-b",
+            category="cloud_efficiency",
+            description="Hello ecs disk.",
+            encrypted=True,
+            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
+            size=30,
+            tags={
+                "Name": "TerraformTest",
+            })
+        ```
+
         ## Import
 
         Cloud disk can be imported using the id, e.g.

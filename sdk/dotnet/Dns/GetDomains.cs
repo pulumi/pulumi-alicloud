@@ -11,9 +11,65 @@ namespace Pulumi.AliCloud.Dns
 {
     public static class GetDomains
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var domainsDs = Output.Create(AliCloud.Dns.GetDomains.InvokeAsync(new AliCloud.Dns.GetDomainsArgs
+        ///         {
+        ///             DomainNameRegex = "^hegu",
+        ///             OutputFile = "domains.txt",
+        ///         }));
+        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains?[0]?.DomainId);
+        ///     }
+        /// 
+        ///     [Output("firstDomainId")]
+        ///     public Output&lt;string&gt; FirstDomainId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var domainsDs = Output.Create(AliCloud.Dns.GetDomains.InvokeAsync(new AliCloud.Dns.GetDomainsArgs
+        ///         {
+        ///             DomainNameRegex = "^hegu",
+        ///             OutputFile = "domains.txt",
+        ///         }));
+        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains?[0]?.DomainId);
+        ///     }
+        /// 
+        ///     [Output("firstDomainId")]
+        ///     public Output&lt;string&gt; FirstDomainId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }

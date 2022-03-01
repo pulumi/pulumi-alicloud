@@ -28,11 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "On"
-// 		opt1 := "PayByTraffic"
 // 		_, err := cdn.GetService(ctx, &cdn.GetServiceArgs{
-// 			Enable:             &opt0,
-// 			InternetChargeType: &opt1,
+// 			Enable:             pulumi.StringRef("On"),
+// 			InternetChargeType: pulumi.StringRef("PayByTraffic"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

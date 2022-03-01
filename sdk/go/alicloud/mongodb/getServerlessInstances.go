@@ -28,26 +28,18 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example_value"
-// 		opt1 := "example_value"
-// 		opt2 := "VPC"
-// 		opt3 := "example_value"
-// 		opt4 := "Running"
-// 		opt5 := "example_value"
-// 		opt6 := "example_value"
-// 		opt7 := "example_value"
 // 		example, err := mongodb.GetServerlessInstances(ctx, &mongodb.GetServerlessInstancesArgs{
 // 			Ids: []string{
 // 				"example_value",
 // 			},
-// 			DbInstanceClass:       &opt0,
-// 			DbInstanceDescription: &opt1,
-// 			NetworkType:           &opt2,
-// 			ResourceGroupId:       &opt3,
-// 			Status:                &opt4,
-// 			VpcId:                 &opt5,
-// 			VswitchId:             &opt6,
-// 			ZoneId:                &opt7,
+// 			DbInstanceClass:       pulumi.StringRef("example_value"),
+// 			DbInstanceDescription: pulumi.StringRef("example_value"),
+// 			NetworkType:           pulumi.StringRef("VPC"),
+// 			ResourceGroupId:       pulumi.StringRef("example_value"),
+// 			Status:                pulumi.StringRef("Running"),
+// 			VpcId:                 pulumi.StringRef("example_value"),
+// 			VswitchId:             pulumi.StringRef("example_value"),
+// 			ZoneId:                pulumi.StringRef("example_value"),
 // 			Tags: map[string]interface{}{
 // 				"Created": "MongodbServerlessInstance",
 // 				"For":     "TF",

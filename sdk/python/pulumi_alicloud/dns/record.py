@@ -289,6 +289,19 @@ class Record(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain record
+        record = alicloud.dns.Record("record",
+            host_record="@",
+            type="A",
+            value="192.168.99.99")
+        ```
+
         ## Import
 
         RDS record can be imported using the id, e.g.
@@ -314,6 +327,19 @@ class Record(pulumi.CustomResource):
                  args: RecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain record
+        record = alicloud.dns.Record("record",
+            host_record="@",
+            type="A",
+            value="192.168.99.99")
+        ```
+
         ## Import
 
         RDS record can be imported using the id, e.g.

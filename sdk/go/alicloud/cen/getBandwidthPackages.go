@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "cen-id1"
-// 		opt1 := "^foo"
 // 		example, err := cen.GetBandwidthPackages(ctx, &cen.GetBandwidthPackagesArgs{
-// 			InstanceId: &opt0,
-// 			NameRegex:  &opt1,
+// 			InstanceId: pulumi.StringRef("cen-id1"),
+// 			NameRegex:  pulumi.StringRef("^foo"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("pvtzEndpointId1", ids.Endpoints[0].Id)
-// 		opt0 := "^my-Endpoint"
 // 		nameRegex, err := pvtz.GetEndpoints(ctx, &pvtz.GetEndpointsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Endpoint"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

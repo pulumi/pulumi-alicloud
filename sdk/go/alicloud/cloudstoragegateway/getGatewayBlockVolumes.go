@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cloudStorageGatewayGatewayBlockVolumeId1", ids.Volumes[0].Id)
-// 		opt0 := "^my-GatewayBlockVolume"
 // 		nameRegex, err := cloudstoragegateway.GetGatewayBlockVolumes(ctx, &cloudstoragegateway.GetGatewayBlockVolumesArgs{
 // 			GatewayId: "example_value",
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-GatewayBlockVolume"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

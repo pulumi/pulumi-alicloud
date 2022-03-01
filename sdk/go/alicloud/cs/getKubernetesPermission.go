@@ -27,9 +27,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "your_user_name"
 // 		usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("your_user_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

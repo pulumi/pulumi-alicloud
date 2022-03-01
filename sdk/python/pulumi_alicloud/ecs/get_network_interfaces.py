@@ -259,7 +259,76 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
                            vswitch_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkInterfacesResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "networkInterfacesName"
+    vpc = alicloud.vpc.Network("vpc",
+        cidr_block="192.168.0.0/24",
+        vpc_name=name)
+    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    vswitch = alicloud.vpc.Switch("vswitch",
+        availability_zone=default_zones.zones[0].id,
+        cidr_block="192.168.0.0/24",
+        vpc_id=vpc.id,
+        vswitch_name=name)
+    group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+    interface = alicloud.vpc.NetworkInterface("interface",
+        description="Basic test",
+        private_ip="192.168.0.2",
+        security_groups=[group.id],
+        tags={
+            "TF-VER": "0.11.3",
+        },
+        vswitch_id=vswitch.id)
+    instance = alicloud.ecs.Instance("instance",
+        availability_zone=default_zones.zones[0].id,
+        image_id="centos_7_04_64_20G_alibase_201701015.vhd",
+        instance_name=name,
+        instance_type="ecs.e3.xlarge",
+        internet_max_bandwidth_out=10,
+        security_groups=[group.id],
+        system_disk_category="cloud_efficiency",
+        vswitch_id=vswitch.id)
+    attachment = alicloud.vpc.NetworkInterfaceAttachment("attachment",
+        instance_id=instance.id,
+        network_interface_id=interface.id)
+    default_network_interfaces = alicloud.ecs.get_network_interfaces_output(ids=[attachment.network_interface_id],
+        instance_id=instance.id,
+        name_regex=name,
+        private_ip="192.168.0.2",
+        security_group_id=group.id,
+        tags={
+            "TF-VER": "0.11.3",
+        },
+        type="Secondary",
+        vpc_id=vpc.id,
+        vswitch_id=vswitch.id)
+    pulumi.export("eni0Name", default_network_interfaces.interfaces[0].name)
+    ```
+    ## Argument Reference
+
+    The following arguments are supported:
+
+    * `ids` - (Optional)  A list of ENI IDs.
+    * `name_regex` - (Optional) A regex string to filter results by ENI name.
+    * `vpc_id` - (Optional) The VPC ID linked to ENIs.
+    * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+    * `private_ip` - (Optional) The primary private IP address of the ENI.
+    * `security_group_id` - (Optional) The security group ID linked to ENIs.
+    * `name` - (Optional) The name of the ENIs.
+    * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
+    * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+    * `tags` - (Optional) A map of tags assigned to ENIs.
+    * `output_file` - (Optional) The name of output file that saves the filter results.
+    * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+
 
     :param str instance_id: ID of the instance that the ENI is attached to.
     :param str name: Name of the ENI.
@@ -334,7 +403,76 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkInterfacesResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "networkInterfacesName"
+    vpc = alicloud.vpc.Network("vpc",
+        cidr_block="192.168.0.0/24",
+        vpc_name=name)
+    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    vswitch = alicloud.vpc.Switch("vswitch",
+        availability_zone=default_zones.zones[0].id,
+        cidr_block="192.168.0.0/24",
+        vpc_id=vpc.id,
+        vswitch_name=name)
+    group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+    interface = alicloud.vpc.NetworkInterface("interface",
+        description="Basic test",
+        private_ip="192.168.0.2",
+        security_groups=[group.id],
+        tags={
+            "TF-VER": "0.11.3",
+        },
+        vswitch_id=vswitch.id)
+    instance = alicloud.ecs.Instance("instance",
+        availability_zone=default_zones.zones[0].id,
+        image_id="centos_7_04_64_20G_alibase_201701015.vhd",
+        instance_name=name,
+        instance_type="ecs.e3.xlarge",
+        internet_max_bandwidth_out=10,
+        security_groups=[group.id],
+        system_disk_category="cloud_efficiency",
+        vswitch_id=vswitch.id)
+    attachment = alicloud.vpc.NetworkInterfaceAttachment("attachment",
+        instance_id=instance.id,
+        network_interface_id=interface.id)
+    default_network_interfaces = alicloud.ecs.get_network_interfaces_output(ids=[attachment.network_interface_id],
+        instance_id=instance.id,
+        name_regex=name,
+        private_ip="192.168.0.2",
+        security_group_id=group.id,
+        tags={
+            "TF-VER": "0.11.3",
+        },
+        type="Secondary",
+        vpc_id=vpc.id,
+        vswitch_id=vswitch.id)
+    pulumi.export("eni0Name", default_network_interfaces.interfaces[0].name)
+    ```
+    ## Argument Reference
+
+    The following arguments are supported:
+
+    * `ids` - (Optional)  A list of ENI IDs.
+    * `name_regex` - (Optional) A regex string to filter results by ENI name.
+    * `vpc_id` - (Optional) The VPC ID linked to ENIs.
+    * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
+    * `private_ip` - (Optional) The primary private IP address of the ENI.
+    * `security_group_id` - (Optional) The security group ID linked to ENIs.
+    * `name` - (Optional) The name of the ENIs.
+    * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
+    * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
+    * `tags` - (Optional) A map of tags assigned to ENIs.
+    * `output_file` - (Optional) The name of output file that saves the filter results.
+    * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+
 
     :param str instance_id: ID of the instance that the ENI is attached to.
     :param str name: Name of the ENI.

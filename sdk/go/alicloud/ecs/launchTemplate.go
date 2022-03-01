@@ -10,6 +10,85 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// 			Owners: pulumi.StringRef("system"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instances, err := ecs.GetInstances(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
+// 			Description:                 pulumi.String("test1"),
+// 			ImageId:                     pulumi.String(images.Images[0].Id),
+// 			HostName:                    pulumi.String("tf-test-host"),
+// 			InstanceChargeType:          pulumi.String("PrePaid"),
+// 			InstanceName:                pulumi.String("tf-instance-name"),
+// 			InstanceType:                pulumi.String(instances.Instances[0].InstanceType),
+// 			InternetChargeType:          pulumi.String("PayByBandwidth"),
+// 			InternetMaxBandwidthIn:      pulumi.Int(5),
+// 			InternetMaxBandwidthOut:     pulumi.Int(0),
+// 			IoOptimized:                 pulumi.String("none"),
+// 			KeyPairName:                 pulumi.String("test-key-pair"),
+// 			RamRoleName:                 pulumi.String("xxxxx"),
+// 			NetworkType:                 pulumi.String("vpc"),
+// 			SecurityEnhancementStrategy: pulumi.String("Active"),
+// 			SpotPriceLimit:              pulumi.Float64(5),
+// 			SpotStrategy:                pulumi.String("SpotWithPriceLimit"),
+// 			SecurityGroupId:             pulumi.String("sg-zxcvj0lasdf102350asdf9a"),
+// 			SystemDiskCategory:          pulumi.String("cloud_ssd"),
+// 			SystemDiskDescription:       pulumi.String("test disk"),
+// 			SystemDiskName:              pulumi.String("hello"),
+// 			SystemDiskSize:              pulumi.Int(40),
+// 			ResourceGroupId:             pulumi.String("rg-zkdfjahg9zxncv0"),
+// 			Userdata:                    pulumi.String("xxxxxxxxxxxxxx"),
+// 			VswitchId:                   pulumi.String("sw-ljkngaksdjfj0nnasdf"),
+// 			VpcId:                       pulumi.String("vpc-asdfnbg0as8dfk1nb2"),
+// 			ZoneId:                      pulumi.String("beijing-a"),
+// 			Tags: pulumi.AnyMap{
+// 				"tag1": pulumi.Any("hello"),
+// 				"tag2": pulumi.Any("world"),
+// 			},
+// 			NetworkInterfaces: &ecs.LaunchTemplateNetworkInterfacesArgs{
+// 				Name:            pulumi.String("eth0"),
+// 				Description:     pulumi.String("hello1"),
+// 				PrimaryIp:       pulumi.String("10.0.0.2"),
+// 				SecurityGroupId: pulumi.String("xxxx"),
+// 				VswitchId:       pulumi.String("xxxxxxx"),
+// 			},
+// 			DataDisks: ecs.LaunchTemplateDataDiskArray{
+// 				&ecs.LaunchTemplateDataDiskArgs{
+// 					Name:        pulumi.String("disk1"),
+// 					Description: pulumi.String("test1"),
+// 				},
+// 				&ecs.LaunchTemplateDataDiskArgs{
+// 					Name:        pulumi.String("disk2"),
+// 					Description: pulumi.String("test2"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Launch Template can be imported using the id, e.g.

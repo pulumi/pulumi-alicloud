@@ -28,13 +28,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "your_domain_name"
 // 		_default, err := waf.GetCertificates(ctx, &waf.GetCertificatesArgs{
 // 			Ids: []string{
 // 				"your_certificate_id",
 // 			},
 // 			InstanceId: "your_instance_id",
-// 			Domain:     &opt0,
+// 			Domain:     pulumi.StringRef("your_domain_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

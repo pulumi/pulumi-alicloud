@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("nasSnapshotId1", ids.Snapshots[0].Id)
-// 		opt0 := "^my-Snapshot"
 // 		nameRegex, err := nas.GetSnapshots(ctx, &nas.GetSnapshotsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Snapshot"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

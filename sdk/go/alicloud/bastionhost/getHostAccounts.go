@@ -40,11 +40,10 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("bastionhostHostAccountId1", ids.Accounts[0].Id)
-// 		opt0 := "^my-HostAccount"
 // 		nameRegex, err := bastionhost.GetHostAccounts(ctx, &bastionhost.GetHostAccountsArgs{
 // 			HostId:     "15",
 // 			InstanceId: "example_value",
-// 			NameRegex:  &opt0,
+// 			NameRegex:  pulumi.StringRef("^my-HostAccount"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

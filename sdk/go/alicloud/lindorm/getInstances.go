@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("lindormInstanceId1", ids.Instances[0].Id)
-// 		opt0 := "^my-Instance"
 // 		nameRegex, err := lindorm.GetInstances(ctx, &lindorm.GetInstancesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Instance"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

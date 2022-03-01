@@ -43,9 +43,8 @@ import (
 // 		if param := cfg.Get("region"); param != "" {
 // 			region = param
 // 		}
-// 		opt0 := "Standard"
 // 		defaultStocks, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
-// 			GatewayClass: &opt0,
+// 			GatewayClass: pulumi.StringRef("Standard"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -40,11 +40,10 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("amqpExchangeId1", ids.Exchanges[0].Id)
-// 		opt0 := "^my-Exchange"
 // 		nameRegex, err := amqp.GetExchanges(ctx, &amqp.GetExchangesArgs{
 // 			InstanceId:      "amqp-abc12345",
 // 			VirtualHostName: "my-VirtualHost",
-// 			NameRegex:       &opt0,
+// 			NameRegex:       pulumi.StringRef("^my-Exchange"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

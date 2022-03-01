@@ -39,53 +39,49 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cddcDedicatedHostId1", ids.Hosts[0].Id)
-// 		opt0 := "1"
 // 		status, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
 // 			DedicatedHostGroupId: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 				"example_value-2",
 // 			},
-// 			Status: &opt0,
+// 			Status: pulumi.StringRef("1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("cddcDedicatedHostId2", status.Hosts[0].Id)
-// 		opt1 := "example_value"
 // 		zoneId, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
 // 			DedicatedHostGroupId: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 				"example_value-2",
 // 			},
-// 			ZoneId: &opt1,
+// 			ZoneId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("cddcDedicatedHostId3", zoneId.Hosts[0].Id)
-// 		opt2 := "Allocatable"
 // 		allocationStatus, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
 // 			DedicatedHostGroupId: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 				"example_value-2",
 // 			},
-// 			AllocationStatus: &opt2,
+// 			AllocationStatus: pulumi.StringRef("Allocatable"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("cddcDedicatedHostId4", allocationStatus.Hosts[0].Id)
-// 		opt3 := "dhg_cloud_ssd"
 // 		hostType, err := cddc.GetDedicatedHosts(ctx, &cddc.GetDedicatedHostsArgs{
 // 			DedicatedHostGroupId: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 				"example_value-2",
 // 			},
-// 			HostType: &opt3,
+// 			HostType: pulumi.StringRef("dhg_cloud_ssd"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

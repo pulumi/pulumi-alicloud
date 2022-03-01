@@ -37,17 +37,15 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("rosTemplateScratchId1", ids.Scratches[0].Id)
-// 		opt0 := "GENERATE_COMPLETE"
 // 		status, err := ros.GetTemplateScratches(ctx, &ros.GetTemplateScratchesArgs{
-// 			Status: &opt0,
+// 			Status: pulumi.StringRef("GENERATE_COMPLETE"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("rosTemplateScratchId2", status.Scratches[0].Id)
-// 		opt1 := "ResourceImport"
 // 		templateScratchType, err := ros.GetTemplateScratches(ctx, &ros.GetTemplateScratchesArgs{
-// 			TemplateScratchType: &opt1,
+// 			TemplateScratchType: pulumi.StringRef("ResourceImport"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

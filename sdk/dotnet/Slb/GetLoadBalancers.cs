@@ -11,9 +11,69 @@ namespace Pulumi.AliCloud.Slb
 {
     public static class GetLoadBalancers
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
+        ///         {
+        ///         });
+        ///         var slbsDs = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
+        ///         {
+        ///             NameRegex = "sample_slb",
+        ///         }));
+        ///         this.FirstSlbId = slbsDs.Apply(slbsDs =&gt; slbsDs.Slbs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbId")]
+        ///     public Output&lt;string&gt; FirstSlbId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
+        ///         {
+        ///         });
+        ///         var slbsDs = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
+        ///         {
+        ///             NameRegex = "sample_slb",
+        ///         }));
+        ///         this.FirstSlbId = slbsDs.Apply(slbsDs =&gt; slbsDs.Slbs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbId")]
+        ///     public Output&lt;string&gt; FirstSlbId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
     }

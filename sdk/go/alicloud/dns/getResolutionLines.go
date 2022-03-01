@@ -26,12 +26,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "support_lines.txt"
 // 		resolutionLinesDs, err := dns.GetResolutionLines(ctx, &dns.GetResolutionLinesArgs{
 // 			LineCodes: []string{
 // 				"cn_unicom_shanxi",
 // 			},
-// 			OutputFile: &opt0,
+// 			OutputFile: pulumi.StringRef("support_lines.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

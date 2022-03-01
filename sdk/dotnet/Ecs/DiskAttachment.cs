@@ -10,6 +10,58 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new ECS disk-attachment and use it attach one disk to a new instance.
+    ///         var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             Description = "New security group",
+    ///         });
+    ///         var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new AliCloud.Ecs.DiskArgs
+    ///         {
+    ///             AvailabilityZone = "cn-beijing-a",
+    ///             Size = 50,
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "TerraformTest-disk" },
+    ///             },
+    ///         });
+    ///         var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new AliCloud.Ecs.InstanceArgs
+    ///         {
+    ///             ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+    ///             InstanceType = "ecs.n4.small",
+    ///             AvailabilityZone = "cn-beijing-a",
+    ///             SecurityGroups = 
+    ///             {
+    ///                 ecsSg.Id,
+    ///             },
+    ///             InstanceName = "Hello",
+    ///             InternetChargeType = "PayByBandwidth",
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "TerraformTest-instance" },
+    ///             },
+    ///         });
+    ///         var ecsDiskAtt = new AliCloud.Ecs.DiskAttachment("ecsDiskAtt", new AliCloud.Ecs.DiskAttachmentArgs
+    ///         {
+    ///             DiskId = ecsDisk.Id,
+    ///             InstanceId = ecsInstance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The disk attachment can be imported using the id, e.g.

@@ -238,7 +238,17 @@ def get_domains(ali_domain: Optional[bool] = None,
                 version_code: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    domains_ds = alicloud.dns.get_domains(domain_name_regex="^hegu",
+        output_file="domains.txt")
+    pulumi.export("firstDomainId", domains_ds.domains[0].domain_id)
+    ```
+
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name.
@@ -315,7 +325,17 @@ def get_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]] = None
                        version_code: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    domains_ds = alicloud.dns.get_domains(domain_name_regex="^hegu",
+        output_file="domains.txt")
+    pulumi.export("firstDomainId", domains_ds.domains[0].domain_id)
+    ```
+
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name.

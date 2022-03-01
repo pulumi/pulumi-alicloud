@@ -26,11 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-instances"
-// 		opt1 := "my-instances-json"
 // 		myInstances, err := cs.GetRegistryEnterpriseInstances(ctx, &cs.GetRegistryEnterpriseInstancesArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("my-instances"),
+// 			OutputFile: pulumi.StringRef("my-instances-json"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

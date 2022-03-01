@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("armsAlertContactId1", ids.Contacts[0].Id)
-// 		opt0 := "^my-AlertContact"
 // 		nameRegex, err := arms.GetAlertContacts(ctx, &arms.GetAlertContactsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-AlertContact"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -9,6 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cas
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a new Certificate.
+    ///         var cert = new AliCloud.Cas.Certificate("cert", new AliCloud.Cas.CertificateArgs
+    ///         {
+    ///             Cert = File.ReadAllText($"{path.Module}/test.crt"),
+    ///             Key = File.ReadAllText($"{path.Module}/test.key"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of ServiceCertificate")]
     [AliCloudResourceType("alicloud:cas/certificate:Certificate")]
     public partial class Certificate : Pulumi.CustomResource

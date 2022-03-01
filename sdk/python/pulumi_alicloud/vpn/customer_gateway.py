@@ -131,6 +131,19 @@ class CustomerGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpn.CustomerGateway("foo",
+            description="vpnCgwDescriptionExample",
+            ip_address="43.104.22.228")
+        ```
+
         ## Import
 
         VPN customer gateway can be imported using the id, e.g.
@@ -152,6 +165,19 @@ class CustomerGateway(pulumi.CustomResource):
                  args: CustomerGatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpn.CustomerGateway("foo",
+            description="vpnCgwDescriptionExample",
+            ip_address="43.104.22.228")
+        ```
+
         ## Import
 
         VPN customer gateway can be imported using the id, e.g.

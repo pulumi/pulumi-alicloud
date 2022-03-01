@@ -10,6 +10,35 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new ECS disk.
+    ///         var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new AliCloud.Ecs.DiskArgs
+    ///         {
+    ///             AvailabilityZone = "cn-beijing-b",
+    ///             Category = "cloud_efficiency",
+    ///             Description = "Hello ecs disk.",
+    ///             Encrypted = true,
+    ///             KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
+    ///             Size = 30,
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "TerraformTest" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud disk can be imported using the id, e.g.

@@ -26,13 +26,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "groups.txt"
 // 		groups, err := edas.GetDeployGroups(ctx, &edas.GetDeployGroupsArgs{
 // 			AppId: "xxx",
 // 			Ids: []string{
 // 				"xxx",
 // 			},
-// 			OutputFile: &opt0,
+// 			OutputFile: pulumi.StringRef("groups.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

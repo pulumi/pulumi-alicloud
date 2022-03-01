@@ -522,6 +522,22 @@ class RouterInterface(pulumi.CustomResource):
                  specification: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpc.Network("foo", cidr_block="172.16.0.0/12")
+        interface = alicloud.vpc.RouterInterface("interface",
+            opposite_region="cn-beijing",
+            router_type="VRouter",
+            router_id=foo.router_id,
+            role="InitiatingSide",
+            specification="Large.2",
+            description="test1")
+        ```
+
         ## Import
 
         The router interface can be imported using the id, e.g.
@@ -552,6 +568,22 @@ class RouterInterface(pulumi.CustomResource):
                  args: RouterInterfaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpc.Network("foo", cidr_block="172.16.0.0/12")
+        interface = alicloud.vpc.RouterInterface("interface",
+            opposite_region="cn-beijing",
+            router_type="VRouter",
+            router_id=foo.router_id,
+            role="InitiatingSide",
+            specification="Large.2",
+            description="test1")
+        ```
+
         ## Import
 
         The router interface can be imported using the id, e.g.

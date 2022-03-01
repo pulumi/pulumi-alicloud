@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testacc-actiontrail"
 // 		_default, err := actiontrail.GetTrails(ctx, &actiontrail.GetTrailsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tf-testacc-actiontrail"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

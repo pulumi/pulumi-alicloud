@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("mscSubContactId1", ids.Contacts[0].Id)
-// 		opt0 := "^my-Contact"
 // 		nameRegex, err := alicloud.GetMscSubContacts(ctx, &GetMscSubContactsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Contact"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -97,6 +97,52 @@ class HAVipAttachment(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "test_havip_attachment"
+        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id)
+        foo_ha_vip = alicloud.vpc.HAVip("fooHAVip",
+            vswitch_id=foo_switch.id,
+            description=name)
+        tf_test_foo = alicloud.ecs.SecurityGroup("tfTestFoo",
+            description="foo",
+            vpc_id=foo_network.id)
+        foo_instance = alicloud.ecs.Instance("fooInstance",
+            availability_zone=default_zones.zones[0].id,
+            vswitch_id=foo_switch.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            security_groups=[tf_test_foo.id],
+            instance_name=name,
+            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
+        foo_ha_vip_attachment = alicloud.vpc.HAVipAttachment("fooHAVipAttachment",
+            havip_id=foo_ha_vip.id,
+            instance_id=foo_instance.id)
+        ```
+
         ## Import
 
         The havip attachment can be imported using the id, e.g.
@@ -117,6 +163,52 @@ class HAVipAttachment(pulumi.CustomResource):
                  args: HAVipAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "test_havip_attachment"
+        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id)
+        foo_ha_vip = alicloud.vpc.HAVip("fooHAVip",
+            vswitch_id=foo_switch.id,
+            description=name)
+        tf_test_foo = alicloud.ecs.SecurityGroup("tfTestFoo",
+            description="foo",
+            vpc_id=foo_network.id)
+        foo_instance = alicloud.ecs.Instance("fooInstance",
+            availability_zone=default_zones.zones[0].id,
+            vswitch_id=foo_switch.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            security_groups=[tf_test_foo.id],
+            instance_name=name,
+            user_data="echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
+        foo_ha_vip_attachment = alicloud.vpc.HAVipAttachment("fooHAVipAttachment",
+            havip_id=foo_ha_vip.id,
+            instance_id=foo_instance.id)
+        ```
+
         ## Import
 
         The havip attachment can be imported using the id, e.g.

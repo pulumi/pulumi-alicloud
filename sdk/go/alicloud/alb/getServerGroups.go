@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("albServerGroupId1", ids.Groups[0].Id)
-// 		opt0 := "^my-ServerGroup"
 // 		nameRegex, err := alb.GetServerGroups(ctx, &alb.GetServerGroupsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-ServerGroup"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

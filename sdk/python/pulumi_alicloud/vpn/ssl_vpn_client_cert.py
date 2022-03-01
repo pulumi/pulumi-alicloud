@@ -178,6 +178,17 @@ class SslVpnClientCert(pulumi.CustomResource):
                  ssl_vpn_server_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpn.SslVpnClientCert("foo", ssl_vpn_server_id="ssl_vpn_server_fake_id")
+        ```
+
         ## Import
 
         SSL-VPN client certificates can be imported using the id, e.g.
@@ -198,6 +209,17 @@ class SslVpnClientCert(pulumi.CustomResource):
                  args: SslVpnClientCertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpn.SslVpnClientCert("foo", ssl_vpn_server_id="ssl_vpn_server_fake_id")
+        ```
+
         ## Import
 
         SSL-VPN client certificates can be imported using the id, e.g.

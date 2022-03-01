@@ -10,6 +10,49 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ResourceManager
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var examplePolicy = new AliCloud.ResourceManager.Policy("examplePolicy", new AliCloud.ResourceManager.PolicyArgs
+    ///         {
+    ///             PolicyName = "tftest",
+    ///             PolicyDocument = @"		{
+    /// 			""Statement"": [{
+    /// 				""Action"": [""oss:*""],
+    /// 				""Effect"": ""Allow"",
+    /// 				""Resource"": [""acs:oss:*:*:*""]
+    /// 			}],
+    /// 			""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         });
+    ///         var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion("examplePolicyVersion", new AliCloud.ResourceManager.PolicyVersionArgs
+    ///         {
+    ///             PolicyName = examplePolicy.PolicyName,
+    ///             PolicyDocument = @"		{
+    /// 			""Statement"": [{
+    /// 				""Action"": [""oss:*""],
+    /// 				""Effect"": ""Allow"",
+    /// 				""Resource"": [""acs:oss:*:*:myphotos""]
+    /// 			}],
+    /// 			""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Resource Manager Policy Version can be imported using the id, e.g.

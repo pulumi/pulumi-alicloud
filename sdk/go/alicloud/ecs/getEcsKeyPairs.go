@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "key_pair_name"
 // 		example, err := ecs.GetEcsKeyPairs(ctx, &ecs.GetEcsKeyPairsArgs{
 // 			Ids: []string{
 // 				"key_pair_name",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("key_pair_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

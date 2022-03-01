@@ -180,6 +180,19 @@ class HAVip(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpc.HAVip("foo",
+            description="test_havip",
+            vswitch_id="vsw-fakeid")
+        ```
+
         ## Import
 
         The havip can be imported using the id, e.g.
@@ -202,6 +215,19 @@ class HAVip(pulumi.CustomResource):
                  args: HAVipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.vpc.HAVip("foo",
+            description="test_havip",
+            vswitch_id="vsw-fakeid")
+        ```
+
         ## Import
 
         The havip can be imported using the id, e.g.

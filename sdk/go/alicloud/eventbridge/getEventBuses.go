@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("eventBridgeEventBusId1", ids.Buses[0].Id)
-// 		opt0 := "^my-EventBus"
 // 		nameRegex, err := eventbridge.GetEventBuses(ctx, &eventbridge.GetEventBusesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-EventBus"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

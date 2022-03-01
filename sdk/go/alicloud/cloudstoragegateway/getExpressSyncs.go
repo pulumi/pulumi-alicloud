@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cloudStorageGatewayExpressSyncId1", ids.Syncs[0].Id)
-// 		opt0 := "^my-ExpressSync"
 // 		nameRegex, err := cloudstoragegateway.GetExpressSyncs(ctx, &cloudstoragegateway.GetExpressSyncsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-ExpressSync"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

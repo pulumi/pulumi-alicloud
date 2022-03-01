@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "rs-V2NV******"
 // 		_, err := resourcemanager.GetSharedResources(ctx, &resourcemanager.GetSharedResourcesArgs{
-// 			ResourceShareId: &opt0,
+// 			ResourceShareId: pulumi.StringRef("rs-V2NV******"),
 // 			Ids: []string{
 // 				"vsw-bp1mzouzpmvie********:VSwitch",
 // 			},

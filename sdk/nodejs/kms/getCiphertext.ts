@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "example key",
+ *     isEnabled: true,
+ * });
+ * const encrypted = alicloud.kms.getCiphertextOutput({
+ *     keyId: key.id,
+ *     plaintext: "example",
+ * });
+ * ```
+ */
 export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetCiphertextResult> {
     if (!opts) {
         opts = {}

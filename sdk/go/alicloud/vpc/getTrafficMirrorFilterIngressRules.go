@@ -38,13 +38,12 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcTrafficMirrorFilterIngressRuleId1", ids.Rules[0].Id)
-// 		opt0 := "Created"
 // 		status, err := vpc.GetTrafficMirrorFilterIngressRules(ctx, &vpc.GetTrafficMirrorFilterIngressRulesArgs{
 // 			TrafficMirrorFilterId: "example_traffic_mirror_filter_id",
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			Status: &opt0,
+// 			Status: pulumi.StringRef("Created"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

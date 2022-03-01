@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tftest"
 // 		example, err := cfg.GetDeliveryChannels(ctx, &cfg.GetDeliveryChannelsArgs{
 // 			Ids: []string{
 // 				"cdc-49a2ad756057********",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tftest"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

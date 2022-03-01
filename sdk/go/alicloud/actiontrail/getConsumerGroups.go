@@ -26,12 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "CID-alikafkaGroupDatasourceName"
-// 		opt1 := "consumerGroups.txt"
 // 		consumerGroupsDs, err := actiontrail.GetConsumerGroups(ctx, &actiontrail.GetConsumerGroupsArgs{
-// 			ConsumerIdRegex: &opt0,
+// 			ConsumerIdRegex: pulumi.StringRef("CID-alikafkaGroupDatasourceName"),
 // 			InstanceId:      "xxx",
-// 			OutputFile:      &opt1,
+// 			OutputFile:      pulumi.StringRef("consumerGroups.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

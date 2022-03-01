@@ -26,15 +26,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "records.txt"
-// 		opt1 := "A"
 // 		recordsDs, err := dns.GetAlidnsRecords(ctx, &dns.GetAlidnsRecordsArgs{
 // 			DomainName: "xiaozhu.top",
 // 			Ids: []string{
 // 				"1978593525779****",
 // 			},
-// 			OutputFile: &opt0,
-// 			Type:       &opt1,
+// 			OutputFile: pulumi.StringRef("records.txt"),
+// 			Type:       pulumi.StringRef("A"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

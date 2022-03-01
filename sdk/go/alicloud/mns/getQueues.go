@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-"
 // 		queues, err := mns.GetQueues(ctx, &mns.GetQueuesArgs{
-// 			NamePrefix: &opt0,
+// 			NamePrefix: pulumi.StringRef("tf-"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

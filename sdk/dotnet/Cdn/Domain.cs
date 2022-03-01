@@ -9,6 +9,107 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cdn
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a CDN Accelerated Domain with configs.
+    ///         var domain = new AliCloud.Cdn.Domain("domain", new AliCloud.Cdn.DomainArgs
+    ///         {
+    ///             DomainName = your_cdn_domain_name,
+    ///             CdnType = "web",
+    ///             SourceType = "domain",
+    ///             Sources = 
+    ///             {
+    ///                 your_cdn_domain_source1,
+    ///                 your_cdn_domain_source2,
+    ///             },
+    ///             OptimizeEnable = "off",
+    ///             PageCompressEnable = "off",
+    ///             RangeEnable = "off",
+    ///             VideoSeekEnable = "off",
+    ///             BlockIps = 
+    ///             {
+    ///                 "1.2.3.4",
+    ///                 "111.222.111.111",
+    ///             },
+    ///             ParameterFilterConfig = new AliCloud.Cdn.Inputs.DomainParameterFilterConfigArgs
+    ///             {
+    ///                 Enable = "on",
+    ///                 HashKeyArgs = 
+    ///                 {
+    ///                     "hello",
+    ///                     "youyouyou",
+    ///                 },
+    ///             },
+    ///             Page404Config = new AliCloud.Cdn.Inputs.DomainPage404ConfigArgs
+    ///             {
+    ///                 PageType = "other",
+    ///                 CustomPageUrl = $"http://{your_cdn_domain_name}/notfound/",
+    ///             },
+    ///             ReferConfig = new AliCloud.Cdn.Inputs.DomainReferConfigArgs
+    ///             {
+    ///                 ReferType = "block",
+    ///                 ReferLists = 
+    ///                 {
+    ///                     "www.xxxx.com",
+    ///                     "www.xxxx.cn",
+    ///                 },
+    ///                 AllowEmpty = "off",
+    ///             },
+    ///             AuthConfig = new AliCloud.Cdn.Inputs.DomainAuthConfigArgs
+    ///             {
+    ///                 AuthType = "type_a",
+    ///                 MasterKey = "helloworld1",
+    ///                 SlaveKey = "helloworld2",
+    ///             },
+    ///             HttpHeaderConfigs = 
+    ///             {
+    ///                 new AliCloud.Cdn.Inputs.DomainHttpHeaderConfigArgs
+    ///                 {
+    ///                     HeaderKey = "Content-Type",
+    ///                     HeaderValue = "text/plain",
+    ///                 },
+    ///                 new AliCloud.Cdn.Inputs.DomainHttpHeaderConfigArgs
+    ///                 {
+    ///                     HeaderKey = "Access-Control-Allow-Origin",
+    ///                     HeaderValue = "*",
+    ///                 },
+    ///             },
+    ///             CacheConfigs = 
+    ///             {
+    ///                 new AliCloud.Cdn.Inputs.DomainCacheConfigArgs
+    ///                 {
+    ///                     CacheContent = "/hello/world",
+    ///                     Ttl = 1000,
+    ///                     CacheType = "path",
+    ///                 },
+    ///                 new AliCloud.Cdn.Inputs.DomainCacheConfigArgs
+    ///                 {
+    ///                     CacheContent = "/hello/world/youyou",
+    ///                     Ttl = 1000,
+    ///                     CacheType = "path",
+    ///                 },
+    ///                 new AliCloud.Cdn.Inputs.DomainCacheConfigArgs
+    ///                 {
+    ///                     CacheContent = "txt,jpg,png",
+    ///                     Ttl = 2000,
+    ///                     CacheType = "suffix",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:cdn/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {

@@ -26,12 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-repos"
-// 		opt1 := "my-repo-json"
 // 		myRepos, err := cs.GetRegistryEnterpriseRepos(ctx, &cs.GetRegistryEnterpriseReposArgs{
 // 			InstanceId: "cri-xx",
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("my-repos"),
+// 			OutputFile: pulumi.StringRef("my-repo-json"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

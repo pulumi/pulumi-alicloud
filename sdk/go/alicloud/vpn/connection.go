@@ -11,6 +11,79 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
+// 			VpcId:              pulumi.String("vpc-fake-id"),
+// 			Bandwidth:          pulumi.Int(10),
+// 			EnableSsl:          pulumi.Bool(true),
+// 			InstanceChargeType: pulumi.String("PostPaid"),
+// 			Description:        pulumi.String("test_create_description"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		fooCustomerGateway, err := vpn.NewCustomerGateway(ctx, "fooCustomerGateway", &vpn.CustomerGatewayArgs{
+// 			IpAddress:   pulumi.String("42.104.22.228"),
+// 			Description: pulumi.String("testAccVpnCgwDesc"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpn.NewConnection(ctx, "fooConnection", &vpn.ConnectionArgs{
+// 			VpnGatewayId:      fooGateway.ID(),
+// 			CustomerGatewayId: fooCustomerGateway.ID(),
+// 			LocalSubnets: pulumi.StringArray{
+// 				pulumi.String("172.16.0.0/24"),
+// 				pulumi.String("172.16.1.0/24"),
+// 			},
+// 			RemoteSubnets: pulumi.StringArray{
+// 				pulumi.String("10.0.0.0/24"),
+// 				pulumi.String("10.0.1.0/24"),
+// 			},
+// 			EffectImmediately: pulumi.Bool(true),
+// 			IkeConfigs: vpn.ConnectionIkeConfigArray{
+// 				&vpn.ConnectionIkeConfigArgs{
+// 					IkeAuthAlg:  pulumi.String("md5"),
+// 					IkeEncAlg:   pulumi.String("des"),
+// 					IkeVersion:  pulumi.String("ikev1"),
+// 					IkeMode:     pulumi.String("main"),
+// 					IkeLifetime: pulumi.Int(86400),
+// 					Psk:         pulumi.String("tf-testvpn2"),
+// 					IkePfs:      pulumi.String("group1"),
+// 					IkeRemoteId: pulumi.String("testbob2"),
+// 					IkeLocalId:  pulumi.String("testalice2"),
+// 				},
+// 			},
+// 			IpsecConfigs: vpn.ConnectionIpsecConfigArray{
+// 				&vpn.ConnectionIpsecConfigArgs{
+// 					IpsecPfs:      pulumi.String("group5"),
+// 					IpsecEncAlg:   pulumi.String("des"),
+// 					IpsecAuthAlg:  pulumi.String("md5"),
+// 					IpsecLifetime: pulumi.Int(8640),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // VPN connection can be imported using the id, e.g.

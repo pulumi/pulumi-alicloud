@@ -6,6 +6,37 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new RAM Policy.
+ * const policy = new alicloud.ram.Policy("policy", {
+ *     description: "this is a policy test",
+ *     force: true,
+ *     policyDocument: `  {
+ *     "Statement": [
+ *       {
+ *         "Action": [
+ *           "oss:ListObjects",
+ *           "oss:GetObject"
+ *         ],
+ *         "Effect": "Allow",
+ *         "Resource": [
+ *           "acs:oss:*:*:mybucket",
+ *           "acs:oss:*:*:mybucket/*"
+ *         ]
+ *       }
+ *     ],
+ *       "Version": "1"
+ *   }
+ *   `,
+ *     policyName: "policyName",
+ * });
+ * ```
+ *
  * ## Import
  *
  * RAM policy can be imported using the id or name, e.g.

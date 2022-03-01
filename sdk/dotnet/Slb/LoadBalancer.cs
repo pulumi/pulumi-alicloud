@@ -10,6 +10,56 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "terraformtestslbconfig";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/21",
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///             VswitchName = name,
+    ///         });
+    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+    ///         {
+    ///             Specification = "slb.s2.small",
+    ///             VswitchId = defaultSwitch.Id,
+    ///             Tags = 
+    ///             {
+    ///                 { "tag_a", 1 },
+    ///                 { "tag_b", 2 },
+    ///                 { "tag_c", 3 },
+    ///                 { "tag_d", 4 },
+    ///                 { "tag_e", 5 },
+    ///                 { "tag_f", 6 },
+    ///                 { "tag_g", 7 },
+    ///                 { "tag_h", 8 },
+    ///                 { "tag_i", 9 },
+    ///                 { "tag_j", 10 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Load balancer can be imported using the id, e.g.

@@ -5,6 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const creation = config.get("creation") || "KVStore";
+ * const multiAz = config.get("multiAz") || "false";
+ * const name = config.get("name") || "kvstorebackuppolicyvpc";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ * });
+ * const defaultInstance = new alicloud.kvstore.Instance("defaultInstance", {
+ *     instanceClass: "Memcache",
+ *     instanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     privateIp: "172.16.0.10",
+ *     securityIps: ["10.0.0.1"],
+ *     instanceType: "memcache.master.small.default",
+ *     engineVersion: "2.8",
+ * });
+ * const defaultBackupPolicy = new alicloud.kvstore.BackupPolicy("defaultBackupPolicy", {
+ *     instanceId: defaultInstance.id,
+ *     backupPeriods: [
+ *         "Tuesday",
+ *         "Wednesday",
+ *     ],
+ *     backupTime: "10:00Z-11:00Z",
+ * });
+ * ```
+ *
  * ## Import
  *
  * KVStore backup policy can be imported using the id, e.g.

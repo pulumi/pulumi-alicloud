@@ -10,6 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var snapshot = new AliCloud.Ecs.Snapshot("snapshot", new AliCloud.Ecs.SnapshotArgs
+    ///         {
+    ///             DiskId = alicloud_disk_attachment.Instance_attachment.Disk_id,
+    ///             Description = "this snapshot is created for testing",
+    ///             Tags = 
+    ///             {
+    ///                 { "version", "1.2" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Snapshot can be imported using the id, e.g.

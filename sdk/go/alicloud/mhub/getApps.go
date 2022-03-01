@@ -48,9 +48,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("mhubAppId1", ids.Apps[0].Id)
-// 		opt0 := "^my-App"
 // 		nameRegex, err := mhub.GetApps(ctx, &mhub.GetAppsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-App"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

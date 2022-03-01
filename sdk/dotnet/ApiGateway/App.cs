@@ -10,6 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var apiTest = new AliCloud.ApiGateway.App("apiTest", new AliCloud.ApiGateway.AppArgs
+    ///         {
+    ///             Description = "description of the app",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Api gateway app can be imported using the id, e.g.

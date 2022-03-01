@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("bastionhostUserGroupId1", ids.Groups[0].Id)
-// 		opt0 := "^my-UserGroup"
 // 		nameRegex, err := bastionhost.GetUserGroups(ctx, &bastionhost.GetUserGroupsArgs{
 // 			InstanceId: "bastionhost-cn-xxxx",
-// 			NameRegex:  &opt0,
+// 			NameRegex:  pulumi.StringRef("^my-UserGroup"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

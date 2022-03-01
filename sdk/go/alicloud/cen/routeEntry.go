@@ -45,33 +45,25 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := "cloud_efficiency"
-// 		opt1 := "VSwitch"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableDiskCategory:     &opt0,
-// 			AvailableResourceCreation: &opt1,
+// 			AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := defaultZones.Zones[0].Id
-// 		opt3 := 1
-// 		opt4 := 2
 // 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// 			AvailabilityZone: &opt2,
-// 			CpuCoreCount:     &opt3,
-// 			MemorySize:       &opt4,
+// 			AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// 			CpuCoreCount:     pulumi.IntRef(1),
+// 			MemorySize:       pulumi.Float64Ref(2),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt5 := "^ubuntu_18.*64"
-// 		opt6 := true
-// 		opt7 := "system"
 // 		defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// 			NameRegex:  &opt5,
-// 			MostRecent: &opt6,
-// 			Owners:     &opt7,
+// 			NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+// 			MostRecent: pulumi.BoolRef(true),
+// 			Owners:     pulumi.StringRef("system"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

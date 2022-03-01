@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sample-instance"
-// 		opt1 := "instances.txt"
 // 		instancesDs, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("sample-instance"),
+// 			OutputFile: pulumi.StringRef("instances.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

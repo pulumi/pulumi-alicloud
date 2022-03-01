@@ -10,6 +10,44 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new RAM Role.
+    ///         var role = new AliCloud.Ram.Role("role", new AliCloud.Ram.RoleArgs
+    ///         {
+    ///             Description = "this is a role test.",
+    ///             Document = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": ""sts:AssumeRole"",
+    ///         ""Effect"": ""Allow"",
+    ///         ""Principal"": {
+    ///           ""Service"": [
+    ///             ""apigateway.aliyuncs.com"", 
+    ///             ""ecs.aliyuncs.com""
+    ///           ]
+    ///         }
+    ///       }
+    ///     ],
+    ///     ""Version"": ""1""
+    ///   }
+    ///   
+    /// ",
+    ///             Force = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RAM role can be imported using the id or name, e.g.

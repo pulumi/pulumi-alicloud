@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "outgroups"
 // 		dataApigatway, err := apigateway.GetGroups(ctx, &apigateway.GetGroupsArgs{
-// 			OutputFile: &opt0,
+// 			OutputFile: pulumi.StringRef("outgroups"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

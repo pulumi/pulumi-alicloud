@@ -191,7 +191,18 @@ class Certificate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Certificate resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Certificate.
+        cert = alicloud.cas.Certificate("cert",
+            cert=(lambda path: open(path).read())(f"{path['module']}/test.crt"),
+            key=(lambda path: open(path).read())(f"{path['module']}/test.key"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
@@ -205,7 +216,18 @@ class Certificate(pulumi.CustomResource):
                  args: CertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Certificate resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Certificate.
+        cert = alicloud.cas.Certificate("cert",
+            cert=(lambda path: open(path).read())(f"{path['module']}/test.crt"),
+            key=(lambda path: open(path).read())(f"{path['module']}/test.key"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

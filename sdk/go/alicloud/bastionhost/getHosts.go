@@ -39,10 +39,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("bastionhostHostId1", ids.Hosts[0].Id)
-// 		opt0 := "^my-Host"
 // 		nameRegex, err := bastionhost.GetHosts(ctx, &bastionhost.GetHostsArgs{
 // 			InstanceId: "example_value",
-// 			NameRegex:  &opt0,
+// 			NameRegex:  pulumi.StringRef("^my-Host"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

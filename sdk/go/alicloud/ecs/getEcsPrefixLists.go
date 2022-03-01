@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testAcc"
 // 		example, err := ecs.GetEcsPrefixLists(ctx, &ecs.GetEcsPrefixListsArgs{
 // 			Ids: []string{
 // 				"E2RY53-xxxx",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tf-testAcc"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

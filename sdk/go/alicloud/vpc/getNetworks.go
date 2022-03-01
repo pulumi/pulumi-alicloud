@@ -24,13 +24,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "172.16.0.0/12"
-// 		opt1 := "^foo"
-// 		opt2 := "Available"
 // 		vpcsDs, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// 			CidrBlock: &opt0,
-// 			NameRegex: &opt1,
-// 			Status:    &opt2,
+// 			CidrBlock: pulumi.StringRef("172.16.0.0/12"),
+// 			NameRegex: pulumi.StringRef("^foo"),
+// 			Status:    pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

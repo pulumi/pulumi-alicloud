@@ -10,6 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ActionTrail
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new action trail.
+    ///         var foo = new AliCloud.ActionTrail.TrailDeprecated("foo", new AliCloud.ActionTrail.TrailDeprecatedArgs
+    ///         {
+    ///             EventRw = "Write-test",
+    ///             OssBucketName = alicloud_oss_bucket.Bucket.Id,
+    ///             RoleName = alicloud_ram_role_policy_attachment.Attach.Role_name,
+    ///             OssKeyPrefix = "at-product-account-audit-B",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Action trail can be imported using the id, e.g.

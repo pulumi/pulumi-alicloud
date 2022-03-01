@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^bastionhost"
 // 		_, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{
-// 			DescriptionRegex: &opt0,
+// 			DescriptionRegex: pulumi.StringRef("^bastionhost"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

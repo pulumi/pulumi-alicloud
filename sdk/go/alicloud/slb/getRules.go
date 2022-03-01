@@ -32,11 +32,9 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := "cloud_efficiency"
-// 		opt1 := "VSwitch"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableDiskCategory:     &opt0,
-// 			AvailableResourceCreation: &opt1,
+// 			AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

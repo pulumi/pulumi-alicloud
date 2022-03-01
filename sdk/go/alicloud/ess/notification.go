@@ -38,9 +38,8 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		opt0 := true
 // 		defaultRegions, err := alicloud.GetRegions(ctx, &GetRegionsArgs{
-// 			Current: &opt0,
+// 			Current: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -49,11 +48,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "cloud_efficiency"
-// 		opt2 := "VSwitch"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableDiskCategory:     &opt1,
-// 			AvailableResourceCreation: &opt2,
+// 			AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

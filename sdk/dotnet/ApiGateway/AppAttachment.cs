@@ -9,6 +9,31 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ApiGateway
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.ApiGateway.AppAttachment("foo", new AliCloud.ApiGateway.AppAttachmentArgs
+    ///         {
+    ///             ApiId = "d29d25b9cfdf4742b1a3f6537299a749",
+    ///             AppId = "20898181",
+    ///             GroupId = "aaef8cdbb404420f9398a74ed1db7fff",
+    ///             StageName = "PRE",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:apigateway/appAttachment:AppAttachment")]
     public partial class AppAttachment : Pulumi.CustomResource
     {

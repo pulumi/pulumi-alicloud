@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		certs, err := cas.GetCertificates(ctx, &cas.GetCertificatesArgs{
+// 			NameRegex:  pulumi.StringRef("^cas"),
+// 			OutputFile: pulumi.StringRef(fmt.Sprintf("%v%v", path.Module, "/cas_certificates.json")),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("cert", certs.Certificates[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
+//
 // Deprecated: This resource has been deprecated in favour of getServiceCertificates
 func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCertificatesResult, error) {
 	var rv GetCertificatesResult

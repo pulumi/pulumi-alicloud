@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("albHealthCheckTemplateId1", ids.Templates[0].Id)
-// 		opt0 := "^my-HealthCheckTemplate"
 // 		nameRegex, err := alb.GetHealthCheckTemplates(ctx, &alb.GetHealthCheckTemplatesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-HealthCheckTemplate"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -219,6 +219,23 @@ class RouteTable(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            cidr_block="172.16.0.0/12",
+            vpc_name="vpc-example-name")
+        foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
+            vpc_id=foo_network.id,
+            route_table_name="route-table-example-name",
+            description="route-table-example-description")
+        ```
+
         ## Import
 
         The route table can be imported using the id, e.g.
@@ -242,6 +259,23 @@ class RouteTable(pulumi.CustomResource):
                  args: RouteTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            cidr_block="172.16.0.0/12",
+            vpc_name="vpc-example-name")
+        foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
+            vpc_id=foo_network.id,
+            route_table_name="route-table-example-name",
+            description="route-table-example-description")
+        ```
+
         ## Import
 
         The route table can be imported using the id, e.g.

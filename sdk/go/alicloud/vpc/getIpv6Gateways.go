@@ -37,31 +37,28 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6GatewayId1", ids.Gateways[0].Id)
-// 		opt0 := "^my-Ipv6Gateway"
 // 		nameRegex, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Ipv6Gateway"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6GatewayId2", nameRegex.Gateways[0].Id)
-// 		opt1 := "example_value"
 // 		vpcId, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			VpcId: &opt1,
+// 			VpcId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6GatewayId3", vpcId.Gateways[0].Id)
-// 		opt2 := "Available"
 // 		status, err := vpc.GetIpv6Gateways(ctx, &vpc.GetIpv6GatewaysArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			Status: &opt2,
+// 			Status: pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

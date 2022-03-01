@@ -133,7 +133,53 @@ class NetworkAclEntries(pulumi.CustomResource):
                  network_acl_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NetworkAclEntries resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "NetworkAclEntries"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl", vpc_id=default_network.id)
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id)
+        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
+            network_acl_id=default_network_acl.id,
+            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
+                resource_id=default_switch.id,
+                resource_type="VSwitch",
+            )])
+        default_network_acl_entries = alicloud.vpc.NetworkAclEntries("defaultNetworkAclEntries",
+            network_acl_id=default_network_acl.id,
+            ingresses=[alicloud.vpc.NetworkAclEntriesIngressArgs(
+                protocol="all",
+                port="-1/-1",
+                source_cidr_ip="0.0.0.0/32",
+                name=name,
+                entry_type="custom",
+                policy="accept",
+                description=name,
+            )],
+            egresses=[alicloud.vpc.NetworkAclEntriesEgressArgs(
+                protocol="all",
+                port="-1/-1",
+                destination_cidr_ip="0.0.0.0/32",
+                name=name,
+                entry_type="custom",
+                policy="accept",
+                description=name,
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesEgressArgs']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
@@ -147,7 +193,53 @@ class NetworkAclEntries(pulumi.CustomResource):
                  args: NetworkAclEntriesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NetworkAclEntries resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "NetworkAclEntries"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl", vpc_id=default_network.id)
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_zones.zones[0].id)
+        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
+            network_acl_id=default_network_acl.id,
+            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
+                resource_id=default_switch.id,
+                resource_type="VSwitch",
+            )])
+        default_network_acl_entries = alicloud.vpc.NetworkAclEntries("defaultNetworkAclEntries",
+            network_acl_id=default_network_acl.id,
+            ingresses=[alicloud.vpc.NetworkAclEntriesIngressArgs(
+                protocol="all",
+                port="-1/-1",
+                source_cidr_ip="0.0.0.0/32",
+                name=name,
+                entry_type="custom",
+                policy="accept",
+                description=name,
+            )],
+            egresses=[alicloud.vpc.NetworkAclEntriesEgressArgs(
+                protocol="all",
+                port="-1/-1",
+                destination_cidr_ip="0.0.0.0/32",
+                name=name,
+                entry_type="custom",
+                policy="accept",
+                description=name,
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param NetworkAclEntriesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

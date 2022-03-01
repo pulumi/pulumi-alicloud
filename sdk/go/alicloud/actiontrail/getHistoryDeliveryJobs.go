@@ -37,12 +37,11 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("actiontrailHistoryDeliveryJobId1", ids.Jobs[0].Id)
-// 		opt0 := 2
 // 		status, err := actiontrail.GetHistoryDeliveryJobs(ctx, &actiontrail.GetHistoryDeliveryJobsArgs{
 // 			Ids: []string{
 // 				"example_id",
 // 			},
-// 			Status: &opt0,
+// 			Status: pulumi.IntRef(2),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

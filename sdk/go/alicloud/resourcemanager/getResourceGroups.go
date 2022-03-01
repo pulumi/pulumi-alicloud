@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tftest"
 // 		example, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tftest"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

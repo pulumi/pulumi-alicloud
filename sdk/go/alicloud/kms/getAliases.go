@@ -26,12 +26,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "alias/tf-testKmsAlias_123"
 // 		_, err := kms.GetAliases(ctx, &kms.GetAliasesArgs{
 // 			Ids: []string{
 // 				"d89e8a53-b708-41aa-8c67-6873axxx",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("alias/tf-testKmsAlias_123"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

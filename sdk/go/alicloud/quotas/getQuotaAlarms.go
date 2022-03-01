@@ -28,12 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testAcc"
 // 		example, err := quotas.GetQuotaAlarms(ctx, &quotas.GetQuotaAlarmsArgs{
 // 			Ids: []string{
 // 				"5VR90-421F886-81E9-xxx",
 // 			},
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("tf-testAcc"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

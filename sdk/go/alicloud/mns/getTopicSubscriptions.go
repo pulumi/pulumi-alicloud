@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-"
 // 		subscriptions, err := mns.GetTopicSubscriptions(ctx, &mns.GetTopicSubscriptionsArgs{
-// 			NamePrefix: &opt0,
+// 			NamePrefix: pulumi.StringRef("tf-"),
 // 			TopicName:  "topic_name",
 // 		}, nil)
 // 		if err != nil {

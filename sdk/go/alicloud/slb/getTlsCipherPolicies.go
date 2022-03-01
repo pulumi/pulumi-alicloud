@@ -38,9 +38,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("slbTlsCipherPolicyId1", ids.Policies[0].Id)
-// 		opt0 := "^My-TlsCipherPolicy"
 // 		nameRegex, err := slb.GetTlsCipherPolicies(ctx, &slb.GetTlsCipherPoliciesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^My-TlsCipherPolicy"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

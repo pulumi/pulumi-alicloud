@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^my-Namespace"
 // 		nameRegex, err := sae.GetNamespaces(ctx, &sae.GetNamespacesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Namespace"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

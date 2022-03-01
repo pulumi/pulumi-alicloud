@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("armsDispatchRuleId1", ids.Rules[0].Id)
-// 		opt0 := "^my-DispatchRule"
 // 		nameRegex, err := arms.GetDispatchRules(ctx, &arms.GetDispatchRulesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-DispatchRule"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

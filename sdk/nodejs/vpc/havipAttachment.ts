@@ -5,6 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "test_havip_attachment";
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vpcId: fooNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ * });
+ * const fooHAVip = new alicloud.vpc.HAVip("fooHAVip", {
+ *     vswitchId: fooSwitch.id,
+ *     description: name,
+ * });
+ * const tfTestFoo = new alicloud.ecs.SecurityGroup("tfTestFoo", {
+ *     description: "foo",
+ *     vpcId: fooNetwork.id,
+ * });
+ * const fooInstance = new alicloud.ecs.Instance("fooInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     vswitchId: fooSwitch.id,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
+ *     systemDiskCategory: "cloud_efficiency",
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 5,
+ *     securityGroups: [tfTestFoo.id],
+ *     instanceName: name,
+ *     userData: "echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf",
+ * });
+ * const fooHAVipAttachment = new alicloud.vpc.HAVipAttachment("fooHAVipAttachment", {
+ *     havipId: fooHAVip.id,
+ *     instanceId: fooInstance.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * The havip attachment can be imported using the id, e.g.

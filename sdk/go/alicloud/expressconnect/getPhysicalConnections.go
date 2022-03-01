@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("expressConnectPhysicalConnectionId1", ids.Connections[0].Id)
-// 		opt0 := "^my-PhysicalConnection"
 // 		nameRegex, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-PhysicalConnection"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

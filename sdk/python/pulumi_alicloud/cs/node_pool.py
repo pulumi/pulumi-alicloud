@@ -1495,6 +1495,240 @@ class NodePool(pulumi.CustomResource):
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        The managed cluster configuration,
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-test"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4,
+            kubernetes_node_role="Worker")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_pair_name=name)
+        default_managed_kubernetes = None
+        if 1 == True:
+            default_managed_kubernetes = alicloud.cs.ManagedKubernetes("defaultManagedKubernetes",
+                cluster_spec="ack.pro.small",
+                is_enterprise_security_group=True,
+                worker_number=2,
+                password="Hello1234",
+                pod_cidr="172.20.0.0/16",
+                service_cidr="172.21.0.0/20",
+                worker_vswitch_ids=[default_switch.id],
+                worker_instance_types=[default_instance_types.instance_types[0].id])
+        ```
+
+        Create a node pool.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            node_count=1)
+        ```
+
+        Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `cs.ManagedKubernetes`.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            node_count=1,
+            management=alicloud.cs.NodePoolManagementArgs(
+                auto_repair=True,
+                auto_upgrade=True,
+                surge=1,
+                max_unavailable=1,
+            ))
+        ```
+
+        Enable automatic scaling for the node pool. `scaling_config` is required.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            scaling_config=alicloud.cs.NodePoolScalingConfigArgs(
+                min_size=1,
+                max_size=10,
+            ))
+        ```
+
+        Enable automatic scaling for managed node pool.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            management=alicloud.cs.NodePoolManagementArgs(
+                auto_repair=True,
+                auto_upgrade=True,
+                surge=1,
+                max_unavailable=1,
+            ),
+            scaling_config=alicloud.cs.NodePoolScalingConfigArgs(
+                min_size=1,
+                max_size=10,
+                type="cpu",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[alicloud_cs_autoscaling_config["default"]]))
+        ```
+
+        Create a `PrePaid` node pool.
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            instance_charge_type="PrePaid",
+            period=1,
+            period_unit="Month",
+            auto_renew=True,
+            auto_renew_period=1,
+            install_cloud_monitor=True,
+            scaling_config=alicloud.cs.NodePoolScalingConfigArgs(
+                min_size=1,
+                max_size=10,
+                type="cpu",
+            ))
+        ```
+
+        Create a node pool with spot instance.
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            node_count=1,
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[alicloud.cs.NodePoolSpotPriceLimitArgs(
+                instance_type=data["alicloud_instance_types"]["default"]["instance_types"][0]["id"],
+                price_limit="0.70",
+            )])
+        ```
+
+        Use Spot instances to create a node pool with auto-scaling enabled
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            scaling_config=alicloud.cs.NodePoolScalingConfigArgs(
+                min_size=1,
+                max_size=10,
+                type="spot",
+            ),
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[alicloud.cs.NodePoolSpotPriceLimitArgs(
+                instance_type=data["alicloud_instance_types"]["default"]["instance_types"][0]["id"],
+                price_limit="0.70",
+            )])
+        ```
+
+        Create a node pool with platform as Windows
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            node_count=1,
+            password="Hello1234",
+            platform="Windows",
+            image_id=window_image_id)
+        ```
+
+        Add an existing node to the node pool
+
+        In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            instances=[
+                "instance_id_01",
+                "instance_id_02",
+                "instance_id_03",
+            ],
+            format_disk=False,
+            keep_instance_name=True)
+        ```
+
         ## Import
 
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
@@ -1556,6 +1790,240 @@ class NodePool(pulumi.CustomResource):
                  args: NodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        The managed cluster configuration,
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-test"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4,
+            kubernetes_node_role="Worker")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_pair_name=name)
+        default_managed_kubernetes = None
+        if 1 == True:
+            default_managed_kubernetes = alicloud.cs.ManagedKubernetes("defaultManagedKubernetes",
+                cluster_spec="ack.pro.small",
+                is_enterprise_security_group=True,
+                worker_number=2,
+                password="Hello1234",
+                pod_cidr="172.20.0.0/16",
+                service_cidr="172.21.0.0/20",
+                worker_vswitch_ids=[default_switch.id],
+                worker_instance_types=[default_instance_types.instance_types[0].id])
+        ```
+
+        Create a node pool.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            node_count=1)
+        ```
+
+        Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `cs.ManagedKubernetes`.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            node_count=1,
+            management=alicloud.cs.NodePoolManagementArgs(
+                auto_repair=True,
+                auto_upgrade=True,
+                surge=1,
+                max_unavailable=1,
+            ))
+        ```
+
+        Enable automatic scaling for the node pool. `scaling_config` is required.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            scaling_config=alicloud.cs.NodePoolScalingConfigArgs(
+                min_size=1,
+                max_size=10,
+            ))
+        ```
+
+        Enable automatic scaling for managed node pool.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            management=alicloud.cs.NodePoolManagementArgs(
+                auto_repair=True,
+                auto_upgrade=True,
+                surge=1,
+                max_unavailable=1,
+            ),
+            scaling_config=alicloud.cs.NodePoolScalingConfigArgs(
+                min_size=1,
+                max_size=10,
+                type="cpu",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[alicloud_cs_autoscaling_config["default"]]))
+        ```
+
+        Create a `PrePaid` node pool.
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            instance_charge_type="PrePaid",
+            period=1,
+            period_unit="Month",
+            auto_renew=True,
+            auto_renew_period=1,
+            install_cloud_monitor=True,
+            scaling_config=alicloud.cs.NodePoolScalingConfigArgs(
+                min_size=1,
+                max_size=10,
+                type="cpu",
+            ))
+        ```
+
+        Create a node pool with spot instance.
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            node_count=1,
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[alicloud.cs.NodePoolSpotPriceLimitArgs(
+                instance_type=data["alicloud_instance_types"]["default"]["instance_types"][0]["id"],
+                price_limit="0.70",
+            )])
+        ```
+
+        Use Spot instances to create a node pool with auto-scaling enabled
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=alicloud_key_pair["default"]["key_name"],
+            scaling_config=alicloud.cs.NodePoolScalingConfigArgs(
+                min_size=1,
+                max_size=10,
+                type="spot",
+            ),
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[alicloud.cs.NodePoolSpotPriceLimitArgs(
+                instance_type=data["alicloud_instance_types"]["default"]["instance_types"][0]["id"],
+                price_limit="0.70",
+            )])
+        ```
+
+        Create a node pool with platform as Windows
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            node_count=1,
+            password="Hello1234",
+            platform="Windows",
+            image_id=window_image_id)
+        ```
+
+        Add an existing node to the node pool
+
+        In order to distinguish automatically created nodes, it is recommended that existing nodes be placed separately in a node pool for management.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.NodePool("default",
+            cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
+            vswitch_ids=[alicloud_vswitch["default"]["id"]],
+            instance_types=[data["alicloud_instance_types"]["default"]["instance_types"][0]["id"]],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            instances=[
+                "instance_id_01",
+                "instance_id_02",
+                "instance_id_03",
+            ],
+            format_disk=False,
+            keep_instance_name=True)
+        ```
+
         ## Import
 
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.

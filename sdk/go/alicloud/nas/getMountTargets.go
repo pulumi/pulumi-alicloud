@@ -26,10 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf-testAccNasConfig"
 // 		example, err := nas.GetMountTargets(ctx, &nas.GetMountTargetsArgs{
 // 			FileSystemId:    "1a2sc4d",
-// 			AccessGroupName: &opt0,
+// 			AccessGroupName: pulumi.StringRef("tf-testAccNasConfig"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("dfsFileSystemId1", ids.Systems[0].Id)
-// 		opt0 := "^my-FileSystem"
 // 		nameRegex, err := dfs.GetFileSystems(ctx, &dfs.GetFileSystemsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-FileSystem"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

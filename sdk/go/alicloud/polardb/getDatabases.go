@@ -27,11 +27,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "pc-\\w+"
-// 		opt1 := "Running"
 // 		polardbClustersDs, err := polardb.GetClusters(ctx, &polardb.GetClustersArgs{
-// 			DescriptionRegex: &opt0,
-// 			Status:           &opt1,
+// 			DescriptionRegex: pulumi.StringRef("pc-\\w+"),
+// 			Status:           pulumi.StringRef("Running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

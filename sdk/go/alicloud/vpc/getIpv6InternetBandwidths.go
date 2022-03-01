@@ -37,25 +37,22 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6InternetBandwidthId1", ids.Bandwidths[0].Id)
-// 		opt0 := "example_value"
 // 		ipv6InternetBandwidthId, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
-// 			Ipv6InternetBandwidthId: &opt0,
+// 			Ipv6InternetBandwidthId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.Bandwidths[0].Id)
-// 		opt1 := "example_value"
 // 		ipv6AddressId, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
-// 			Ipv6AddressId: &opt1,
+// 			Ipv6AddressId: pulumi.StringRef("example_value"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcIpv6InternetBandwidthId3", ipv6AddressId.Bandwidths[0].Id)
-// 		opt2 := "Normal"
 // 		status, err := vpc.GetIpv6InternetBandwidths(ctx, &vpc.GetIpv6InternetBandwidthsArgs{
-// 			Status: &opt2,
+// 			Status: pulumi.StringRef("Normal"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

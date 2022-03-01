@@ -37,9 +37,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("databaseGatewayGatewayId1", ids.Gateways[0].Id)
-// 		opt0 := "^my-Gateway"
 // 		nameRegex, err := databasegateway.GetGateways(ctx, &databasegateway.GetGatewaysArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-Gateway"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

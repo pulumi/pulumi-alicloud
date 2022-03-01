@@ -37,25 +37,22 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("vpcTrafficMirrorFilterId1", ids.Filters[0].Id)
-// 		opt0 := "^my-TrafficMirrorFilter"
 // 		nameRegex, err := vpc.GetTrafficMirrorFilters(ctx, &vpc.GetTrafficMirrorFiltersArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-TrafficMirrorFilter"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcTrafficMirrorFilterId2", nameRegex.Filters[0].Id)
-// 		opt1 := "example_traffic_mirror_filter_name"
 // 		filterName, err := vpc.GetTrafficMirrorFilters(ctx, &vpc.GetTrafficMirrorFiltersArgs{
-// 			TrafficMirrorFilterName: &opt1,
+// 			TrafficMirrorFilterName: pulumi.StringRef("example_traffic_mirror_filter_name"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("vpcTrafficMirrorFilterId3", filterName.Filters[0].Id)
-// 		opt2 := "^my-TrafficMirrorFilter"
 // 		status, err := vpc.GetTrafficMirrorFilters(ctx, &vpc.GetTrafficMirrorFiltersArgs{
-// 			Status: &opt2,
+// 			Status: pulumi.StringRef("^my-TrafficMirrorFilter"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

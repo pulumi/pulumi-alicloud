@@ -10,6 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dns = new AliCloud.Dns.DomainAttachment("dns", new AliCloud.Dns.DomainAttachmentArgs
+    ///         {
+    ///             DomainNames = 
+    ///             {
+    ///                 "test111.abc",
+    ///                 "test222.abc",
+    ///             },
+    ///             InstanceId = "dns-cn-mp91lyq9xxxx",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS domain attachment can be imported using the id, e.g.

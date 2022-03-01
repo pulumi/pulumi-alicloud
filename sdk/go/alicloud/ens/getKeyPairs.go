@@ -28,10 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^my-KeyPair"
 // 		nameRegex, err := ens.GetKeyPairs(ctx, &ens.GetKeyPairsArgs{
 // 			Version:   "example_value",
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my-KeyPair"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

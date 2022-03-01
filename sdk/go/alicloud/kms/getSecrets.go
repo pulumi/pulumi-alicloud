@@ -26,11 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
-// 		opt1 := "name_regex"
 // 		kmsSecretsDs, err := kms.GetSecrets(ctx, &kms.GetSecretsArgs{
-// 			FetchTags: &opt0,
-// 			NameRegex: &opt1,
+// 			FetchTags: pulumi.BoolRef(true),
+// 			NameRegex: pulumi.StringRef("name_regex"),
 // 			Tags: map[string]interface{}{
 // 				"k-aa": "v-aa",
 // 				"k-bb": "v-bb",

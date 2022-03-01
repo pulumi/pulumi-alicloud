@@ -26,15 +26,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "MySQL"
-// 		opt1 := "5.6"
-// 		opt2 := "PostPaid"
-// 		opt3 := "./engines.txt"
 // 		resources, err := rds.GetInstanceEngines(ctx, &rds.GetInstanceEnginesArgs{
-// 			Engine:             &opt0,
-// 			EngineVersion:      &opt1,
-// 			InstanceChargeType: &opt2,
-// 			OutputFile:         &opt3,
+// 			Engine:             pulumi.StringRef("MySQL"),
+// 			EngineVersion:      pulumi.StringRef("5.6"),
+// 			InstanceChargeType: pulumi.StringRef("PostPaid"),
+// 			OutputFile:         pulumi.StringRef("./engines.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

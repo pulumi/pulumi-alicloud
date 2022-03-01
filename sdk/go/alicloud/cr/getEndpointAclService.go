@@ -30,12 +30,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Registry"
 // 		_, err := cr.GetEndpointAclService(ctx, &cr.GetEndpointAclServiceArgs{
 // 			Enable:       true,
 // 			EndpointType: "internet",
 // 			InstanceId:   "example_id",
-// 			ModuleName:   &opt0,
+// 			ModuleName:   pulumi.StringRef("Registry"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

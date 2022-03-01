@@ -10,6 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var apiGroup = new AliCloud.ApiGateway.Group("apiGroup", new AliCloud.ApiGateway.GroupArgs
+    ///         {
+    ///             Description = "description of the api group",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Api gateway group can be imported using the id, e.g.

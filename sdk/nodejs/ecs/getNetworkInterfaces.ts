@@ -5,6 +5,88 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "networkInterfacesName";
+ *
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     cidrBlock: "192.168.0.0/24",
+ *     vpcName: name,
+ * });
+ * const defaultZones = pulumi.output(alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * }));
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "192.168.0.0/24",
+ *     vpcId: vpc.id,
+ *     vswitchName: name,
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     vpcId: vpc.id,
+ * });
+ * const interfaceNetworkInterface = new alicloud.vpc.NetworkInterface("interface", {
+ *     description: "Basic test",
+ *     privateIp: "192.168.0.2",
+ *     securityGroups: [group.id],
+ *     tags: {
+ *         "TF-VER": "0.11.3",
+ *     },
+ *     vswitchId: vswitch.id,
+ * });
+ * const instance = new alicloud.ecs.Instance("instance", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     imageId: "centos_7_04_64_20G_alibase_201701015.vhd",
+ *     instanceName: name,
+ *     instanceType: "ecs.e3.xlarge",
+ *     internetMaxBandwidthOut: 10,
+ *     securityGroups: [group.id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: vswitch.id,
+ * });
+ * const attachment = new alicloud.vpc.NetworkInterfaceAttachment("attachment", {
+ *     instanceId: instance.id,
+ *     networkInterfaceId: interfaceNetworkInterface.id,
+ * });
+ * const defaultNetworkInterfaces = pulumi.all([attachment.networkInterfaceId, instance.id, group.id, vpc.id, vswitch.id]).apply(([networkInterfaceId, instanceId, groupId, vpcId, vswitchId]) => alicloud.ecs.getNetworkInterfaces({
+ *     ids: [networkInterfaceId],
+ *     instanceId: instanceId,
+ *     nameRegex: name,
+ *     privateIp: "192.168.0.2",
+ *     securityGroupId: groupId,
+ *     tags: {
+ *         "TF-VER": "0.11.3",
+ *     },
+ *     type: "Secondary",
+ *     vpcId: vpcId,
+ *     vswitchId: vswitchId,
+ * }));
+ *
+ * export const eni0Name = defaultNetworkInterfaces.interfaces[0].name;
+ * ```
+ * ## Argument Reference
+ *
+ * The following arguments are supported:
+ *
+ * * `ids` - (Optional)  A list of ENI IDs.
+ * * `nameRegex` - (Optional) A regex string to filter results by ENI name.
+ * * `vpcId` - (Optional) The VPC ID linked to ENIs.
+ * * `vswitchId` - (Optional) The VSwitch ID linked to ENIs.
+ * * `privateIp` - (Optional) The primary private IP address of the ENI.
+ * * `securityGroupId` - (Optional) The security group ID linked to ENIs.
+ * * `name` - (Optional) The name of the ENIs.
+ * * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
+ * * `instanceId` - (Optional) The ECS instance ID that the ENI is attached to.
+ * * `tags` - (Optional) A map of tags assigned to ENIs.
+ * * `outputFile` - (Optional) The name of output file that saves the filter results.
+ * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+ */
 export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfacesResult> {
     args = args || {};
     if (!opts) {

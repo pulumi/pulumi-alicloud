@@ -33,9 +33,8 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("impAppTemplateId1", ids.Templates[0].Id)
-// 		opt0 := "^my_AppTemplate"
 // 		nameRegex, err := imp.GetAppTemplates(ctx, &imp.GetAppTemplatesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^my_AppTemplate"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

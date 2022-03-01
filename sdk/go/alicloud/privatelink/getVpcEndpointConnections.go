@@ -28,10 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Connected"
 // 		example, err := privatelink.GetVpcEndpointConnections(ctx, &privatelink.GetVpcEndpointConnectionsArgs{
 // 			ServiceId: "example_value",
-// 			Status:    &opt0,
+// 			Status:    pulumi.StringRef("Connected"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

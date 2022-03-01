@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = new alicloud.apigateway.AppAttachment("foo", {
+ *     apiId: "d29d25b9cfdf4742b1a3f6537299a749",
+ *     appId: "20898181",
+ *     groupId: "aaef8cdbb404420f9398a74ed1db7fff",
+ *     stageName: "PRE",
+ * });
+ * ```
+ */
 export class AppAttachment extends pulumi.CustomResource {
     /**
      * Get an existing AppAttachment resource's state with the given name, ID, and optional extra

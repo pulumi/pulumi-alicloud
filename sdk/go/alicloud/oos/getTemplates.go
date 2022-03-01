@@ -26,13 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := false
-// 		opt1 := "test"
-// 		opt2 := "Private"
 // 		example, err := oos.GetTemplates(ctx, &oos.GetTemplatesArgs{
-// 			HasTrigger: &opt0,
-// 			NameRegex:  &opt1,
-// 			ShareType:  &opt2,
+// 			HasTrigger: pulumi.BoolRef(false),
+// 			NameRegex:  pulumi.StringRef("test"),
+// 			ShareType:  pulumi.StringRef("Private"),
 // 			Tags: map[string]interface{}{
 // 				"Created": "TF",
 // 				"For":     "template Test",

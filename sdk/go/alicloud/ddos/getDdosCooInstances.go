@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^ddoscoo"
 // 		_, err := ddos.GetDdosCooInstances(ctx, &ddos.GetDdosCooInstancesArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^ddoscoo"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

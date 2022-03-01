@@ -41,10 +41,9 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("cloudSsoAccessConfigurationId1", ids.Configurations[0].Id)
-// 		opt0 := "^my-AccessConfiguration"
 // 		nameRegex, err := cloudsso.GetAccessConfigurations(ctx, &cloudsso.GetAccessConfigurationsArgs{
 // 			DirectoryId: "example_value",
-// 			NameRegex:   &opt0,
+// 			NameRegex:   pulumi.StringRef("^my-AccessConfiguration"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

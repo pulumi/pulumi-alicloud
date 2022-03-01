@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const certs = pulumi.output(alicloud.cas.getCertificates({
+ *     nameRegex: "^cas",
+ *     outputFile: `./cas_certificates.json`,
+ * }));
+ *
+ * export const cert = certs.certificates[0].id;
+ * ```
+ */
 /** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
     pulumi.log.warn("getCertificates is deprecated: This resource has been deprecated in favour of getServiceCertificates")

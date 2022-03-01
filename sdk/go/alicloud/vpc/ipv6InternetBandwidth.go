@@ -32,20 +32,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "ecs_with_ipv6_address"
-// 		opt1 := "Running"
 // 		exampleInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// 			NameRegex: &opt0,
-// 			Status:    &opt1,
+// 			NameRegex: pulumi.StringRef("ecs_with_ipv6_address"),
+// 			Status:    pulumi.StringRef("Running"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := exampleInstances.Instances[0].Id
-// 		opt3 := "Available"
 // 		exampleIpv6Addresses, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-// 			AssociatedInstanceId: &opt2,
-// 			Status:               &opt3,
+// 			AssociatedInstanceId: pulumi.StringRef(exampleInstances.Instances[0].Id),
+// 			Status:               pulumi.StringRef("Available"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

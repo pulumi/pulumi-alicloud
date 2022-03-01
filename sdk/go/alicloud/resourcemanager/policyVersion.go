@@ -11,6 +11,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		examplePolicy, err := resourcemanager.NewPolicy(ctx, "examplePolicy", &resourcemanager.PolicyArgs{
+// 			PolicyName: pulumi.String("tftest"),
+// 			PolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "		{\n", "			\"Statement\": [{\n", "				\"Action\": [\"oss:*\"],\n", "				\"Effect\": \"Allow\",\n", "				\"Resource\": [\"acs:oss:*:*:*\"]\n", "			}],\n", "			\"Version\": \"1\"\n", "		}\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = resourcemanager.NewPolicyVersion(ctx, "examplePolicyVersion", &resourcemanager.PolicyVersionArgs{
+// 			PolicyName: examplePolicy.PolicyName,
+// 			PolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "		{\n", "			\"Statement\": [{\n", "				\"Action\": [\"oss:*\"],\n", "				\"Effect\": \"Allow\",\n", "				\"Resource\": [\"acs:oss:*:*:myphotos\"]\n", "			}],\n", "			\"Version\": \"1\"\n", "		}\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Resource Manager Policy Version can be imported using the id, e.g.

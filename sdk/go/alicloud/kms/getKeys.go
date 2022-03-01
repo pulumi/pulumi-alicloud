@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Hello KMS"
-// 		opt1 := "kms_keys.json"
 // 		kmsKeysDs, err := kms.GetKeys(ctx, &kms.GetKeysArgs{
-// 			DescriptionRegex: &opt0,
-// 			OutputFile:       &opt1,
+// 			DescriptionRegex: pulumi.StringRef("Hello KMS"),
+// 			OutputFile:       pulumi.StringRef("kms_keys.json"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

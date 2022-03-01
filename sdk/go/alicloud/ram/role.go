@@ -10,6 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+// 			Description: pulumi.String("this is a role test."),
+// 			Document:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": \"sts:AssumeRole\",\n", "        \"Effect\": \"Allow\",\n", "        \"Principal\": {\n", "          \"Service\": [\n", "            \"apigateway.aliyuncs.com\", \n", "            \"ecs.aliyuncs.com\"\n", "          ]\n", "        }\n", "      }\n", "    ],\n", "    \"Version\": \"1\"\n", "  }\n", "  \n")),
+// 			Force:       pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // RAM role can be imported using the id or name, e.g.

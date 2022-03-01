@@ -49,9 +49,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "VSwitch"
 // 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
+// 			AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -71,9 +70,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "OK"
 // 		defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// 			Status: &opt1,
+// 			Status: pulumi.StringRef("OK"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

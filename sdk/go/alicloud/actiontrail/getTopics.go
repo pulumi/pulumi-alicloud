@@ -26,12 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "alikafkaTopicName"
-// 		opt1 := "topics.txt"
 // 		topicsDs, err := actiontrail.GetTopics(ctx, &actiontrail.GetTopicsArgs{
 // 			InstanceId: "xxx",
-// 			NameRegex:  &opt0,
-// 			OutputFile: &opt1,
+// 			NameRegex:  pulumi.StringRef("alikafkaTopicName"),
+// 			OutputFile: pulumi.StringRef("topics.txt"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

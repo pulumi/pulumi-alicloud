@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := apigateway.NewVpcAccess(ctx, "foo", &apigateway.VpcAccessArgs{
+// 			InstanceId: pulumi.String("i-kai2ks92kzkw92ka"),
+// 			Port:       pulumi.Int(8080),
+// 			VpcId:      pulumi.String("vpc-awkcj192ka9zalz"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Api gateway app can be imported using the id, e.g.

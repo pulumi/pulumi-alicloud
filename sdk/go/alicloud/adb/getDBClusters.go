@@ -28,9 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example"
 // 		example, err := adb.GetDBClusters(ctx, &adb.GetDBClustersArgs{
-// 			DescriptionRegex: &opt0,
+// 			DescriptionRegex: pulumi.StringRef("example"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

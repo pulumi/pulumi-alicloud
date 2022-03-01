@@ -28,47 +28,40 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
 // 		ids, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
 // 			StackGroupName: "example_value",
 // 			Ids: []string{
 // 				"example_value-1",
 // 				"example_value-2",
 // 			},
-// 			EnableDetails: &opt0,
+// 			EnableDetails: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("rosStackInstanceId1", ids.Instances[0].Id)
-// 		opt1 := "CURRENT"
-// 		opt2 := true
 // 		status, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
 // 			StackGroupName: "example_value",
-// 			Status:         &opt1,
-// 			EnableDetails:  &opt2,
+// 			Status:         pulumi.StringRef("CURRENT"),
+// 			EnableDetails:  pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("rosStackInstanceId2", status.Instances[0].Id)
-// 		opt3 := "example_value"
-// 		opt4 := true
 // 		regionId, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
 // 			StackGroupName:        "example_value",
-// 			StackInstanceRegionId: &opt3,
-// 			EnableDetails:         &opt4,
+// 			StackInstanceRegionId: pulumi.StringRef("example_value"),
+// 			EnableDetails:         pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		ctx.Export("rosStackInstanceId3", regionId.Instances[0].Id)
-// 		opt5 := "example_value"
-// 		opt6 := true
 // 		accountId, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
 // 			StackGroupName:         "example_value",
-// 			StackInstanceAccountId: &opt5,
-// 			EnableDetails:          &opt6,
+// 			StackInstanceAccountId: pulumi.StringRef("example_value"),
+// 			EnableDetails:          pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -290,6 +290,22 @@ class DnsDomain(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Domain.
+        dns = alicloud.dns.DnsDomain("dns",
+            domain_name="starmove.com",
+            group_id="85ab8713-4a30-4de4-9d20-155ff830****",
+            tags={
+                "Created": "Terraform",
+                "Environment": "test",
+            })
+        ```
+
         ## Import
 
         DNS domain can be imported using the id or domain name, e.g.
@@ -316,6 +332,22 @@ class DnsDomain(pulumi.CustomResource):
                  args: DnsDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Domain.
+        dns = alicloud.dns.DnsDomain("dns",
+            domain_name="starmove.com",
+            group_id="85ab8713-4a30-4de4-9d20-155ff830****",
+            tags={
+                "Created": "Terraform",
+                "Environment": "test",
+            })
+        ```
+
         ## Import
 
         DNS domain can be imported using the id or domain name, e.g.

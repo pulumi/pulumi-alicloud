@@ -24,16 +24,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "fake-cgw-id"
-// 		opt1 := "/tmp/vpnconn"
-// 		opt2 := "fake-vpn-id"
 // 		_, err := vpn.GetConnections(ctx, &vpn.GetConnectionsArgs{
-// 			CustomerGatewayId: &opt0,
+// 			CustomerGatewayId: pulumi.StringRef("fake-cgw-id"),
 // 			Ids: []string{
 // 				"fake-conn-id",
 // 			},
-// 			OutputFile:   &opt1,
-// 			VpnGatewayId: &opt2,
+// 			OutputFile:   pulumi.StringRef("/tmp/vpnconn"),
+// 			VpnGatewayId: pulumi.StringRef("fake-vpn-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

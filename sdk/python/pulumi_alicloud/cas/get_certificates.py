@@ -125,7 +125,17 @@ def get_certificates(enable_details: Optional[bool] = None,
                      output_file: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificatesResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    certs = alicloud.cas.get_certificates(name_regex="^cas",
+        output_file=f"{path['module']}/cas_certificates.json")
+    pulumi.export("cert", certs.certificates[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of cert IDs.
     :param str name_regex: A regex string to filter results by the certificate name.
@@ -162,7 +172,17 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificatesResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    certs = alicloud.cas.get_certificates(name_regex="^cas",
+        output_file=f"{path['module']}/cas_certificates.json")
+    pulumi.export("cert", certs.certificates[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of cert IDs.
     :param str name_regex: A regex string to filter results by the certificate name.
