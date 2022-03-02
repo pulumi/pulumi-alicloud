@@ -1630,6 +1630,10 @@ type GetScalingGroupsGroup struct {
 	CreationTime string `pulumi:"creationTime"`
 	// Db instances id which the ECS instance attached to.
 	DbInstanceIds []string `pulumi:"dbInstanceIds"`
+	// Whether the scaling group deletion protection is enabled.
+	GroupDeletionProtection bool `pulumi:"groupDeletionProtection"`
+	// The health check method of the scaling group.
+	HealthCheckType string `pulumi:"healthCheckType"`
 	// ID of the scaling group.
 	Id string `pulumi:"id"`
 	// Active launch template ID for scaling group.
@@ -1644,6 +1648,8 @@ type GetScalingGroupsGroup struct {
 	MaxSize int `pulumi:"maxSize"`
 	// The minimum number of ECS instances.
 	MinSize int `pulumi:"minSize"`
+	// The modification time.
+	ModificationTime string `pulumi:"modificationTime"`
 	// Name of the scaling group.
 	// * `activeScalingConfiguration` -Active scaling configuration for scaling group.
 	Name string `pulumi:"name"`
@@ -1655,8 +1661,16 @@ type GetScalingGroupsGroup struct {
 	RemovalPolicies []string `pulumi:"removalPolicies"`
 	// Number of removing instances in scaling group.
 	RemovingCapacity int `pulumi:"removingCapacity"`
+	// The Process in suspension.
+	SuspendedProcesses []string `pulumi:"suspendedProcesses"`
 	// Number of instances in scaling group.
 	TotalCapacity int `pulumi:"totalCapacity"`
+	// The number of all ECS instances in the scaling group.
+	TotalInstanceCount int `pulumi:"totalInstanceCount"`
+	// The ID of the VPC to which the scaling group belongs.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the vSwitch to which the scaling group belongs.
+	VswitchId string `pulumi:"vswitchId"`
 	// Vswitches id in which the ECS instance launched.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
@@ -1682,6 +1696,10 @@ type GetScalingGroupsGroupArgs struct {
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Db instances id which the ECS instance attached to.
 	DbInstanceIds pulumi.StringArrayInput `pulumi:"dbInstanceIds"`
+	// Whether the scaling group deletion protection is enabled.
+	GroupDeletionProtection pulumi.BoolInput `pulumi:"groupDeletionProtection"`
+	// The health check method of the scaling group.
+	HealthCheckType pulumi.StringInput `pulumi:"healthCheckType"`
 	// ID of the scaling group.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Active launch template ID for scaling group.
@@ -1696,6 +1714,8 @@ type GetScalingGroupsGroupArgs struct {
 	MaxSize pulumi.IntInput `pulumi:"maxSize"`
 	// The minimum number of ECS instances.
 	MinSize pulumi.IntInput `pulumi:"minSize"`
+	// The modification time.
+	ModificationTime pulumi.StringInput `pulumi:"modificationTime"`
 	// Name of the scaling group.
 	// * `activeScalingConfiguration` -Active scaling configuration for scaling group.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -1707,8 +1727,16 @@ type GetScalingGroupsGroupArgs struct {
 	RemovalPolicies pulumi.StringArrayInput `pulumi:"removalPolicies"`
 	// Number of removing instances in scaling group.
 	RemovingCapacity pulumi.IntInput `pulumi:"removingCapacity"`
+	// The Process in suspension.
+	SuspendedProcesses pulumi.StringArrayInput `pulumi:"suspendedProcesses"`
 	// Number of instances in scaling group.
 	TotalCapacity pulumi.IntInput `pulumi:"totalCapacity"`
+	// The number of all ECS instances in the scaling group.
+	TotalInstanceCount pulumi.IntInput `pulumi:"totalInstanceCount"`
+	// The ID of the VPC to which the scaling group belongs.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the vSwitch to which the scaling group belongs.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// Vswitches id in which the ECS instance launched.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
@@ -1788,6 +1816,16 @@ func (o GetScalingGroupsGroupOutput) DbInstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.DbInstanceIds }).(pulumi.StringArrayOutput)
 }
 
+// Whether the scaling group deletion protection is enabled.
+func (o GetScalingGroupsGroupOutput) GroupDeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) bool { return v.GroupDeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The health check method of the scaling group.
+func (o GetScalingGroupsGroupOutput) HealthCheckType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.HealthCheckType }).(pulumi.StringOutput)
+}
+
 // ID of the scaling group.
 func (o GetScalingGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
@@ -1823,6 +1861,11 @@ func (o GetScalingGroupsGroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.MinSize }).(pulumi.IntOutput)
 }
 
+// The modification time.
+func (o GetScalingGroupsGroupOutput) ModificationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.ModificationTime }).(pulumi.StringOutput)
+}
+
 // Name of the scaling group.
 // * `activeScalingConfiguration` -Active scaling configuration for scaling group.
 func (o GetScalingGroupsGroupOutput) Name() pulumi.StringOutput {
@@ -1849,9 +1892,29 @@ func (o GetScalingGroupsGroupOutput) RemovingCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.RemovingCapacity }).(pulumi.IntOutput)
 }
 
+// The Process in suspension.
+func (o GetScalingGroupsGroupOutput) SuspendedProcesses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.SuspendedProcesses }).(pulumi.StringArrayOutput)
+}
+
 // Number of instances in scaling group.
 func (o GetScalingGroupsGroupOutput) TotalCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.TotalCapacity }).(pulumi.IntOutput)
+}
+
+// The number of all ECS instances in the scaling group.
+func (o GetScalingGroupsGroupOutput) TotalInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.TotalInstanceCount }).(pulumi.IntOutput)
+}
+
+// The ID of the VPC to which the scaling group belongs.
+func (o GetScalingGroupsGroupOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch to which the scaling group belongs.
+func (o GetScalingGroupsGroupOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // Vswitches id in which the ECS instance launched.

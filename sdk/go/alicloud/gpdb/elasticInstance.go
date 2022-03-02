@@ -84,15 +84,23 @@ type ElasticInstance struct {
 
 	// ADB PG instance connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
+	// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+	DbInstanceCategory pulumi.StringOutput `pulumi:"dbInstanceCategory"`
 	// The description of ADB PG instance. It is a string of 2 to 256 characters.
 	DbInstanceDescription pulumi.StringPtrOutput `pulumi:"dbInstanceDescription"`
+	// The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
+	// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
 	// Database engine: `gpdb`.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Valid value is `6.0`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// The network type of ADB PG instance. Only `VPC` supported now.
 	InstanceNetworkType pulumi.StringPtrOutput `pulumi:"instanceNetworkType"`
-	// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// The specification of segment nodes.
+	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec pulumi.StringOutput `pulumi:"instanceSpec"`
 	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
 	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -112,6 +120,8 @@ type ElasticInstance struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize pulumi.IntOutput `pulumi:"storageSize"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -170,15 +180,23 @@ func GetElasticInstance(ctx *pulumi.Context,
 type elasticInstanceState struct {
 	// ADB PG instance connection string.
 	ConnectionString *string `pulumi:"connectionString"`
+	// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`
 	// The description of ADB PG instance. It is a string of 2 to 256 characters.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
+	// The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType *string `pulumi:"encryptionType"`
 	// Database engine: `gpdb`.
 	Engine *string `pulumi:"engine"`
 	// Database version. Valid value is `6.0`.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// The network type of ADB PG instance. Only `VPC` supported now.
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
-	// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// The specification of segment nodes.
+	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec *string `pulumi:"instanceSpec"`
 	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
 	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -198,6 +216,8 @@ type elasticInstanceState struct {
 	Status *string `pulumi:"status"`
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize *int `pulumi:"storageSize"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -207,15 +227,23 @@ type elasticInstanceState struct {
 type ElasticInstanceState struct {
 	// ADB PG instance connection string.
 	ConnectionString pulumi.StringPtrInput
+	// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+	DbInstanceCategory pulumi.StringPtrInput
 	// The description of ADB PG instance. It is a string of 2 to 256 characters.
 	DbInstanceDescription pulumi.StringPtrInput
+	// The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+	EncryptionKey pulumi.StringPtrInput
+	// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType pulumi.StringPtrInput
 	// Database engine: `gpdb`.
 	Engine pulumi.StringPtrInput
 	// Database version. Valid value is `6.0`.
 	EngineVersion pulumi.StringPtrInput
 	// The network type of ADB PG instance. Only `VPC` supported now.
 	InstanceNetworkType pulumi.StringPtrInput
-	// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// The specification of segment nodes.
+	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec pulumi.StringPtrInput
 	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
 	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -235,6 +263,8 @@ type ElasticInstanceState struct {
 	Status pulumi.StringPtrInput
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize pulumi.IntPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -246,15 +276,23 @@ func (ElasticInstanceState) ElementType() reflect.Type {
 }
 
 type elasticInstanceArgs struct {
+	// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`
 	// The description of ADB PG instance. It is a string of 2 to 256 characters.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
+	// The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType *string `pulumi:"encryptionType"`
 	// Database engine: `gpdb`.
 	Engine string `pulumi:"engine"`
 	// Database version. Valid value is `6.0`.
 	EngineVersion string `pulumi:"engineVersion"`
 	// The network type of ADB PG instance. Only `VPC` supported now.
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
-	// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// The specification of segment nodes.
+	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec string `pulumi:"instanceSpec"`
 	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
 	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -272,6 +310,8 @@ type elasticInstanceArgs struct {
 	SegStorageType string `pulumi:"segStorageType"`
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize int `pulumi:"storageSize"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
@@ -280,15 +320,23 @@ type elasticInstanceArgs struct {
 
 // The set of arguments for constructing a ElasticInstance resource.
 type ElasticInstanceArgs struct {
+	// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+	DbInstanceCategory pulumi.StringPtrInput
 	// The description of ADB PG instance. It is a string of 2 to 256 characters.
 	DbInstanceDescription pulumi.StringPtrInput
+	// The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+	EncryptionKey pulumi.StringPtrInput
+	// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+	EncryptionType pulumi.StringPtrInput
 	// Database engine: `gpdb`.
 	Engine pulumi.StringInput
 	// Database version. Valid value is `6.0`.
 	EngineVersion pulumi.StringInput
 	// The network type of ADB PG instance. Only `VPC` supported now.
 	InstanceNetworkType pulumi.StringPtrInput
-	// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// The specification of segment nodes.
+	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	InstanceSpec pulumi.StringInput
 	// The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.\
 	// **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -306,6 +354,8 @@ type ElasticInstanceArgs struct {
 	SegStorageType pulumi.StringInput
 	// The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
 	StorageSize pulumi.IntInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The virtual switch ID to launch ADB PG instances in one VPC.
 	VswitchId pulumi.StringInput
 	// The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.

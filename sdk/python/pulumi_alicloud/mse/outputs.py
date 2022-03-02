@@ -10,9 +10,142 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'GatewaySlbList',
     'GetClustersClusterResult',
     'GetClustersClusterInstanceModelResult',
 ]
+
+@pulumi.output_type
+class GatewaySlbList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "associateId":
+            suggest = "associate_id"
+        elif key == "gatewaySlbMode":
+            suggest = "gateway_slb_mode"
+        elif key == "gatewaySlbStatus":
+            suggest = "gateway_slb_status"
+        elif key == "gmtCreate":
+            suggest = "gmt_create"
+        elif key == "slbId":
+            suggest = "slb_id"
+        elif key == "slbIp":
+            suggest = "slb_ip"
+        elif key == "slbPort":
+            suggest = "slb_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewaySlbList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewaySlbList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewaySlbList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 associate_id: Optional[str] = None,
+                 gateway_slb_mode: Optional[str] = None,
+                 gateway_slb_status: Optional[str] = None,
+                 gmt_create: Optional[str] = None,
+                 slb_id: Optional[str] = None,
+                 slb_ip: Optional[str] = None,
+                 slb_port: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str associate_id: The associate id.
+        :param str gateway_slb_mode: The Mode of the gateway slb.
+        :param str gateway_slb_status: The Status of the gateway slb.
+        :param str gmt_create: The creation time of the gateway slb.
+        :param str slb_id: The ID of the gateway slb.
+        :param str slb_ip: The ip of the gateway slb.
+        :param str slb_port: The port of the gateway slb.
+        :param str type: The type of the gateway slb.
+        """
+        if associate_id is not None:
+            pulumi.set(__self__, "associate_id", associate_id)
+        if gateway_slb_mode is not None:
+            pulumi.set(__self__, "gateway_slb_mode", gateway_slb_mode)
+        if gateway_slb_status is not None:
+            pulumi.set(__self__, "gateway_slb_status", gateway_slb_status)
+        if gmt_create is not None:
+            pulumi.set(__self__, "gmt_create", gmt_create)
+        if slb_id is not None:
+            pulumi.set(__self__, "slb_id", slb_id)
+        if slb_ip is not None:
+            pulumi.set(__self__, "slb_ip", slb_ip)
+        if slb_port is not None:
+            pulumi.set(__self__, "slb_port", slb_port)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="associateId")
+    def associate_id(self) -> Optional[str]:
+        """
+        The associate id.
+        """
+        return pulumi.get(self, "associate_id")
+
+    @property
+    @pulumi.getter(name="gatewaySlbMode")
+    def gateway_slb_mode(self) -> Optional[str]:
+        """
+        The Mode of the gateway slb.
+        """
+        return pulumi.get(self, "gateway_slb_mode")
+
+    @property
+    @pulumi.getter(name="gatewaySlbStatus")
+    def gateway_slb_status(self) -> Optional[str]:
+        """
+        The Status of the gateway slb.
+        """
+        return pulumi.get(self, "gateway_slb_status")
+
+    @property
+    @pulumi.getter(name="gmtCreate")
+    def gmt_create(self) -> Optional[str]:
+        """
+        The creation time of the gateway slb.
+        """
+        return pulumi.get(self, "gmt_create")
+
+    @property
+    @pulumi.getter(name="slbId")
+    def slb_id(self) -> Optional[str]:
+        """
+        The ID of the gateway slb.
+        """
+        return pulumi.get(self, "slb_id")
+
+    @property
+    @pulumi.getter(name="slbIp")
+    def slb_ip(self) -> Optional[str]:
+        """
+        The ip of the gateway slb.
+        """
+        return pulumi.get(self, "slb_ip")
+
+    @property
+    @pulumi.getter(name="slbPort")
+    def slb_port(self) -> Optional[str]:
+        """
+        The port of the gateway slb.
+        """
+        return pulumi.get(self, "slb_port")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the gateway slb.
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class GetClustersClusterResult(dict):

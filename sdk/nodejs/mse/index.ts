@@ -6,10 +6,12 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./cluster";
+export * from "./gateway";
 export * from "./getClusters";
 
 // Import resources to register:
 import { Cluster } from "./cluster";
+import { Gateway } from "./gateway";
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +19,12 @@ const _module = {
         switch (type) {
             case "alicloud:mse/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "alicloud:mse/gateway:Gateway":
+                return new Gateway(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "mse/cluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mse/gateway", _module)

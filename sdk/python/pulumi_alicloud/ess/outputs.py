@@ -995,6 +995,8 @@ class GetScalingGroupsGroupResult(dict):
                  cooldown_time: int,
                  creation_time: str,
                  db_instance_ids: Sequence[str],
+                 group_deletion_protection: bool,
+                 health_check_type: str,
                  id: str,
                  launch_template_id: str,
                  launch_template_version: str,
@@ -1002,18 +1004,25 @@ class GetScalingGroupsGroupResult(dict):
                  load_balancer_ids: Sequence[str],
                  max_size: int,
                  min_size: int,
+                 modification_time: str,
                  name: str,
                  pending_capacity: int,
                  region_id: str,
                  removal_policies: Sequence[str],
                  removing_capacity: int,
+                 suspended_processes: Sequence[str],
                  total_capacity: int,
+                 total_instance_count: int,
+                 vpc_id: str,
+                 vswitch_id: str,
                  vswitch_ids: Sequence[str]):
         """
         :param int active_capacity: Number of active instances in scaling group.
         :param int cooldown_time: Default cooldown time of scaling group.
         :param str creation_time: Creation time of scaling group.
         :param Sequence[str] db_instance_ids: Db instances id which the ECS instance attached to.
+        :param bool group_deletion_protection: Whether the scaling group deletion protection is enabled.
+        :param str health_check_type: The health check method of the scaling group.
         :param str id: ID of the scaling group.
         :param str launch_template_id: Active launch template ID for scaling group.
         :param str launch_template_version: Version of active launch template.
@@ -1021,13 +1030,18 @@ class GetScalingGroupsGroupResult(dict):
         :param Sequence[str] load_balancer_ids: Slb instances id which the ECS instance attached to.
         :param int max_size: The maximum number of ECS instances.
         :param int min_size: The minimum number of ECS instances.
+        :param str modification_time: The modification time.
         :param str name: Name of the scaling group.
                * `active_scaling_configuration` -Active scaling configuration for scaling group.
         :param int pending_capacity: Number of pending instances in scaling group.
         :param str region_id: Region ID the scaling group belongs to.
         :param Sequence[str] removal_policies: Removal policy used to select the ECS instance to remove from the scaling group.
         :param int removing_capacity: Number of removing instances in scaling group.
+        :param Sequence[str] suspended_processes: The Process in suspension.
         :param int total_capacity: Number of instances in scaling group.
+        :param int total_instance_count: The number of all ECS instances in the scaling group.
+        :param str vpc_id: The ID of the VPC to which the scaling group belongs.
+        :param str vswitch_id: The ID of the vSwitch to which the scaling group belongs.
         :param Sequence[str] vswitch_ids: Vswitches id in which the ECS instance launched.
         """
         pulumi.set(__self__, "active_capacity", active_capacity)
@@ -1035,6 +1049,8 @@ class GetScalingGroupsGroupResult(dict):
         pulumi.set(__self__, "cooldown_time", cooldown_time)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "db_instance_ids", db_instance_ids)
+        pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
+        pulumi.set(__self__, "health_check_type", health_check_type)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "launch_template_id", launch_template_id)
         pulumi.set(__self__, "launch_template_version", launch_template_version)
@@ -1042,12 +1058,17 @@ class GetScalingGroupsGroupResult(dict):
         pulumi.set(__self__, "load_balancer_ids", load_balancer_ids)
         pulumi.set(__self__, "max_size", max_size)
         pulumi.set(__self__, "min_size", min_size)
+        pulumi.set(__self__, "modification_time", modification_time)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pending_capacity", pending_capacity)
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "removal_policies", removal_policies)
         pulumi.set(__self__, "removing_capacity", removing_capacity)
+        pulumi.set(__self__, "suspended_processes", suspended_processes)
         pulumi.set(__self__, "total_capacity", total_capacity)
+        pulumi.set(__self__, "total_instance_count", total_instance_count)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
 
     @property
@@ -1086,6 +1107,22 @@ class GetScalingGroupsGroupResult(dict):
         Db instances id which the ECS instance attached to.
         """
         return pulumi.get(self, "db_instance_ids")
+
+    @property
+    @pulumi.getter(name="groupDeletionProtection")
+    def group_deletion_protection(self) -> bool:
+        """
+        Whether the scaling group deletion protection is enabled.
+        """
+        return pulumi.get(self, "group_deletion_protection")
+
+    @property
+    @pulumi.getter(name="healthCheckType")
+    def health_check_type(self) -> str:
+        """
+        The health check method of the scaling group.
+        """
+        return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter
@@ -1144,6 +1181,14 @@ class GetScalingGroupsGroupResult(dict):
         return pulumi.get(self, "min_size")
 
     @property
+    @pulumi.getter(name="modificationTime")
+    def modification_time(self) -> str:
+        """
+        The modification time.
+        """
+        return pulumi.get(self, "modification_time")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -1185,12 +1230,44 @@ class GetScalingGroupsGroupResult(dict):
         return pulumi.get(self, "removing_capacity")
 
     @property
+    @pulumi.getter(name="suspendedProcesses")
+    def suspended_processes(self) -> Sequence[str]:
+        """
+        The Process in suspension.
+        """
+        return pulumi.get(self, "suspended_processes")
+
+    @property
     @pulumi.getter(name="totalCapacity")
     def total_capacity(self) -> int:
         """
         Number of instances in scaling group.
         """
         return pulumi.get(self, "total_capacity")
+
+    @property
+    @pulumi.getter(name="totalInstanceCount")
+    def total_instance_count(self) -> int:
+        """
+        The number of all ECS instances in the scaling group.
+        """
+        return pulumi.get(self, "total_instance_count")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC to which the scaling group belongs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vSwitch to which the scaling group belongs.
+        """
+        return pulumi.get(self, "vswitch_id")
 
     @property
     @pulumi.getter(name="vswitchIds")

@@ -9,10 +9,12 @@ export * from "./domain";
 export * from "./domainConfig";
 export * from "./getDomains";
 export * from "./getService";
+export * from "./ipaDomain";
 
 // Import resources to register:
 import { Domain } from "./domain";
 import { DomainConfig } from "./domainConfig";
+import { IpaDomain } from "./ipaDomain";
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,6 +24,8 @@ const _module = {
                 return new Domain(name, <any>undefined, { urn })
             case "alicloud:dcdn/domainConfig:DomainConfig":
                 return new DomainConfig(name, <any>undefined, { urn })
+            case "alicloud:dcdn/ipaDomain:IpaDomain":
+                return new IpaDomain(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -29,3 +33,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/domainConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dcdn/ipaDomain", _module)

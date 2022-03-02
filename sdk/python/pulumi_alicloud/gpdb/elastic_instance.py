@@ -20,23 +20,32 @@ class ElasticInstanceArgs:
                  seg_storage_type: pulumi.Input[str],
                  storage_size: pulumi.Input[int],
                  vswitch_id: pulumi.Input[str],
+                 db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
                  payment_duration: Optional[pulumi.Input[int]] = None,
                  payment_duration_unit: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ElasticInstance resource.
         :param pulumi.Input[str] engine: Database engine: `gpdb`.
         :param pulumi.Input[str] engine_version: Database version. Valid value is `6.0`.
-        :param pulumi.Input[str] instance_spec: The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes. 
+               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
         :param pulumi.Input[int] storage_size: The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch ADB PG instances in one VPC.
+        :param pulumi.Input[str] db_instance_category: The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
         :param pulumi.Input[str] db_instance_description: The description of ADB PG instance. It is a string of 2 to 256 characters.
+        :param pulumi.Input[str] encryption_key: The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        :param pulumi.Input[str] encryption_type: The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
         :param pulumi.Input[int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
                **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -44,6 +53,7 @@ class ElasticInstanceArgs:
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
         pulumi.set(__self__, "engine", engine)
@@ -53,8 +63,14 @@ class ElasticInstanceArgs:
         pulumi.set(__self__, "seg_storage_type", seg_storage_type)
         pulumi.set(__self__, "storage_size", storage_size)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if db_instance_category is not None:
+            pulumi.set(__self__, "db_instance_category", db_instance_category)
         if db_instance_description is not None:
             pulumi.set(__self__, "db_instance_description", db_instance_description)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
         if instance_network_type is not None:
             pulumi.set(__self__, "instance_network_type", instance_network_type)
         if payment_duration is not None:
@@ -65,6 +81,8 @@ class ElasticInstanceArgs:
             pulumi.set(__self__, "payment_type", payment_type)
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -96,7 +114,9 @@ class ElasticInstanceArgs:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Input[str]:
         """
-        The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        The specification of segment nodes. 
+        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -153,6 +173,18 @@ class ElasticInstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="dbInstanceCategory")
+    def db_instance_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+        """
+        return pulumi.get(self, "db_instance_category")
+
+    @db_instance_category.setter
+    def db_instance_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_category", value)
+
+    @property
     @pulumi.getter(name="dbInstanceDescription")
     def db_instance_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -163,6 +195,30 @@ class ElasticInstanceArgs:
     @db_instance_description.setter
     def db_instance_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_instance_description", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_type", value)
 
     @property
     @pulumi.getter(name="instanceNetworkType")
@@ -227,6 +283,18 @@ class ElasticInstanceArgs:
         pulumi.set(self, "security_ip_lists", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -243,7 +311,10 @@ class ElasticInstanceArgs:
 class _ElasticInstanceState:
     def __init__(__self__, *,
                  connection_string: Optional[pulumi.Input[str]] = None,
+                 db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
@@ -256,16 +327,22 @@ class _ElasticInstanceState:
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ElasticInstance resources.
         :param pulumi.Input[str] connection_string: ADB PG instance connection string.
+        :param pulumi.Input[str] db_instance_category: The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
         :param pulumi.Input[str] db_instance_description: The description of ADB PG instance. It is a string of 2 to 256 characters.
+        :param pulumi.Input[str] encryption_key: The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        :param pulumi.Input[str] encryption_type: The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[str] engine: Database engine: `gpdb`.
         :param pulumi.Input[str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[str] instance_spec: The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes. 
+               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
                **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
@@ -276,13 +353,20 @@ class _ElasticInstanceState:
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
         :param pulumi.Input[str] status: Instance status.
         :param pulumi.Input[int] storage_size: The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch ADB PG instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
+        if db_instance_category is not None:
+            pulumi.set(__self__, "db_instance_category", db_instance_category)
         if db_instance_description is not None:
             pulumi.set(__self__, "db_instance_description", db_instance_description)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
         if engine is not None:
             pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
@@ -307,6 +391,8 @@ class _ElasticInstanceState:
             pulumi.set(__self__, "status", status)
         if storage_size is not None:
             pulumi.set(__self__, "storage_size", storage_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -325,6 +411,18 @@ class _ElasticInstanceState:
         pulumi.set(self, "connection_string", value)
 
     @property
+    @pulumi.getter(name="dbInstanceCategory")
+    def db_instance_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+        """
+        return pulumi.get(self, "db_instance_category")
+
+    @db_instance_category.setter
+    def db_instance_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_category", value)
+
+    @property
     @pulumi.getter(name="dbInstanceDescription")
     def db_instance_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -335,6 +433,30 @@ class _ElasticInstanceState:
     @db_instance_description.setter
     def db_instance_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_instance_description", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_type", value)
 
     @property
     @pulumi.getter
@@ -376,7 +498,9 @@ class _ElasticInstanceState:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        The specification of segment nodes. 
+        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -483,6 +607,18 @@ class _ElasticInstanceState:
         pulumi.set(self, "storage_size", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -512,7 +648,10 @@ class ElasticInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
@@ -524,6 +663,7 @@ class ElasticInstance(pulumi.CustomResource):
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -570,11 +710,16 @@ class ElasticInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] db_instance_category: The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
         :param pulumi.Input[str] db_instance_description: The description of ADB PG instance. It is a string of 2 to 256 characters.
+        :param pulumi.Input[str] encryption_key: The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        :param pulumi.Input[str] encryption_type: The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[str] engine: Database engine: `gpdb`.
         :param pulumi.Input[str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[str] instance_spec: The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes. 
+               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
                **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
@@ -584,6 +729,7 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
         :param pulumi.Input[int] storage_size: The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch ADB PG instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
@@ -649,7 +795,10 @@ class ElasticInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
@@ -661,6 +810,7 @@ class ElasticInstance(pulumi.CustomResource):
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -675,7 +825,10 @@ class ElasticInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ElasticInstanceArgs.__new__(ElasticInstanceArgs)
 
+            __props__.__dict__["db_instance_category"] = db_instance_category
             __props__.__dict__["db_instance_description"] = db_instance_description
+            __props__.__dict__["encryption_key"] = encryption_key
+            __props__.__dict__["encryption_type"] = encryption_type
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
             __props__.__dict__["engine"] = engine
@@ -699,6 +852,7 @@ class ElasticInstance(pulumi.CustomResource):
             if storage_size is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_size'")
             __props__.__dict__["storage_size"] = storage_size
+            __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
@@ -716,7 +870,10 @@ class ElasticInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
+            db_instance_category: Optional[pulumi.Input[str]] = None,
             db_instance_description: Optional[pulumi.Input[str]] = None,
+            encryption_key: Optional[pulumi.Input[str]] = None,
+            encryption_type: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             instance_network_type: Optional[pulumi.Input[str]] = None,
@@ -729,6 +886,7 @@ class ElasticInstance(pulumi.CustomResource):
             seg_storage_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_size: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ElasticInstance':
         """
@@ -739,11 +897,16 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_string: ADB PG instance connection string.
+        :param pulumi.Input[str] db_instance_category: The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
         :param pulumi.Input[str] db_instance_description: The description of ADB PG instance. It is a string of 2 to 256 characters.
+        :param pulumi.Input[str] encryption_key: The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        :param pulumi.Input[str] encryption_type: The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[str] engine: Database engine: `gpdb`.
         :param pulumi.Input[str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[str] instance_spec: The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes. 
+               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
                **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
@@ -754,6 +917,7 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
         :param pulumi.Input[str] status: Instance status.
         :param pulumi.Input[int] storage_size: The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch ADB PG instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
@@ -762,7 +926,10 @@ class ElasticInstance(pulumi.CustomResource):
         __props__ = _ElasticInstanceState.__new__(_ElasticInstanceState)
 
         __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["db_instance_category"] = db_instance_category
         __props__.__dict__["db_instance_description"] = db_instance_description
+        __props__.__dict__["encryption_key"] = encryption_key
+        __props__.__dict__["encryption_type"] = encryption_type
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["instance_network_type"] = instance_network_type
@@ -775,6 +942,7 @@ class ElasticInstance(pulumi.CustomResource):
         __props__.__dict__["seg_storage_type"] = seg_storage_type
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_size"] = storage_size
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return ElasticInstance(resource_name, opts=opts, __props__=__props__)
@@ -788,12 +956,36 @@ class ElasticInstance(pulumi.CustomResource):
         return pulumi.get(self, "connection_string")
 
     @property
+    @pulumi.getter(name="dbInstanceCategory")
+    def db_instance_category(self) -> pulumi.Output[str]:
+        """
+        The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+        """
+        return pulumi.get(self, "db_instance_category")
+
+    @property
     @pulumi.getter(name="dbInstanceDescription")
     def db_instance_description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of ADB PG instance. It is a string of 2 to 256 characters.
         """
         return pulumi.get(self, "db_instance_description")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+        """
+        return pulumi.get(self, "encryption_type")
 
     @property
     @pulumi.getter
@@ -823,7 +1015,9 @@ class ElasticInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Output[str]:
         """
-        The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        The specification of segment nodes. 
+        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -892,6 +1086,14 @@ class ElasticInstance(pulumi.CustomResource):
         The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
         """
         return pulumi.get(self, "storage_size")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vswitchId")

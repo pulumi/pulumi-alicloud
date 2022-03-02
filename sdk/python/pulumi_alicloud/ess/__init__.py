@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .alarm import *
+from .alb_server_group_attachment import *
 from .attachment import *
 from .get_alarms import *
 from .get_lifecycle_hooks import *

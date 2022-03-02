@@ -4974,9 +4974,16 @@ func (o GetTlsCipherPoliciesPolicyRelateListenerArrayOutput) Index(i pulumi.IntI
 }
 
 type GetZonesZone struct {
-	// ID of the zone.
+	// ID of the zone. It is same as `masterZoneId`.
 	Id string `pulumi:"id"`
-	// A list of slb slave zone ids in which the slb master zone.
+	// The primary zone.
+	MasterZoneId string `pulumi:"masterZoneId"`
+	// The secondary zone.
+	SlaveZoneId string `pulumi:"slaveZoneId"`
+	// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
+	// It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
+	//
+	// Deprecated: the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
 	SlbSlaveZoneIds []string `pulumi:"slbSlaveZoneIds"`
 	// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
 	SupportedResources []GetZonesZoneSupportedResource `pulumi:"supportedResources"`
@@ -4994,9 +5001,16 @@ type GetZonesZoneInput interface {
 }
 
 type GetZonesZoneArgs struct {
-	// ID of the zone.
+	// ID of the zone. It is same as `masterZoneId`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A list of slb slave zone ids in which the slb master zone.
+	// The primary zone.
+	MasterZoneId pulumi.StringInput `pulumi:"masterZoneId"`
+	// The secondary zone.
+	SlaveZoneId pulumi.StringInput `pulumi:"slaveZoneId"`
+	// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
+	// It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
+	//
+	// Deprecated: the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
 	SlbSlaveZoneIds pulumi.StringArrayInput `pulumi:"slbSlaveZoneIds"`
 	// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
 	SupportedResources GetZonesZoneSupportedResourceArrayInput `pulumi:"supportedResources"`
@@ -5053,12 +5067,25 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 	return o
 }
 
-// ID of the zone.
+// ID of the zone. It is same as `masterZoneId`.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of slb slave zone ids in which the slb master zone.
+// The primary zone.
+func (o GetZonesZoneOutput) MasterZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.MasterZoneId }).(pulumi.StringOutput)
+}
+
+// The secondary zone.
+func (o GetZonesZoneOutput) SlaveZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.SlaveZoneId }).(pulumi.StringOutput)
+}
+
+// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
+// It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
+//
+// Deprecated: the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
 func (o GetZonesZoneOutput) SlbSlaveZoneIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesZone) []string { return v.SlbSlaveZoneIds }).(pulumi.StringArrayOutput)
 }

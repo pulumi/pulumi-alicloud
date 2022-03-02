@@ -1211,7 +1211,7 @@ export namespace cfg {
 export namespace clickhouse {
     export interface DbClusterDbClusterAccessWhiteList {
         /**
-         * Whitelist grouping attribute.
+         * Field `dbClusterIpArrayAttribute` has been removed from provider.
          */
         dbClusterIpArrayAttribute?: pulumi.Input<string>;
         /**
@@ -2203,6 +2203,28 @@ export namespace dcdn {
         weight?: pulumi.Input<string>;
     }
 
+    export interface IpaDomainSource {
+        /**
+         * The address of the origin server. You can specify an IP address or a domain name.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * The custom port number. Valid values: `0` to `65535`.
+         */
+        port: pulumi.Input<number>;
+        /**
+         * The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
+         */
+        priority: pulumi.Input<string>;
+        /**
+         * The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
+         */
+        weight: pulumi.Input<number>;
+    }
 }
 
 export namespace ddos {
@@ -4072,6 +4094,49 @@ export namespace mongodb {
         readonlyReplicas?: pulumi.Input<number>;
     }
 
+    export interface ShardingNetworkPrivateAddressNetworkAddress {
+        /**
+         * The remaining duration of the classic network address. Unit: `seconds`.
+         */
+        expiredTime?: pulumi.Input<string>;
+        /**
+         * The IP address of the instance.
+         */
+        ipAddress?: pulumi.Input<string>;
+        /**
+         * The endpoint of the instance.
+         */
+        networkAddress?: pulumi.Input<string>;
+        /**
+         * The network type.
+         */
+        networkType?: pulumi.Input<string>;
+        /**
+         * The ID of the Shard node or the ConfigServer node.
+         */
+        nodeId?: pulumi.Input<string>;
+        /**
+         * The type of the node.
+         */
+        nodeType?: pulumi.Input<string>;
+        /**
+         * The port number.
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * The role of the node.
+         */
+        role?: pulumi.Input<string>;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * The vSwitch ID of the VPC.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
     export interface ShardingNetworkPublicAddressNetworkAddress {
         /**
          * The remaining duration of the classic network address. Unit: `seconds`.
@@ -4114,10 +4179,44 @@ export namespace mongodb {
          */
         vswitchId?: pulumi.Input<string>;
     }
-
 }
 
 export namespace mse {
+    export interface GatewaySlbList {
+        /**
+         * The associate id.
+         */
+        associateId?: pulumi.Input<string>;
+        /**
+         * The Mode of the gateway slb.
+         */
+        gatewaySlbMode?: pulumi.Input<string>;
+        /**
+         * The Status of the gateway slb.
+         */
+        gatewaySlbStatus?: pulumi.Input<string>;
+        /**
+         * The creation time of the gateway slb.
+         */
+        gmtCreate?: pulumi.Input<string>;
+        /**
+         * The ID of the gateway slb.
+         */
+        slbId?: pulumi.Input<string>;
+        /**
+         * The ip of the gateway slb.
+         */
+        slbIp?: pulumi.Input<string>;
+        /**
+         * The port of the gateway slb.
+         */
+        slbPort?: pulumi.Input<string>;
+        /**
+         * The type of the gateway slb.
+         */
+        type?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace nas {
@@ -4592,9 +4691,85 @@ export namespace rds {
         value: pulumi.Input<string>;
     }
 
+    export interface InstancePgHbaConf {
+        /**
+         * The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+         */
+        address: pulumi.Input<string>;
+        /**
+         * The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+         */
+        database: pulumi.Input<string>;
+        /**
+         * The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+         */
+        mask?: pulumi.Input<string>;
+        /**
+         * The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+         */
+        method: pulumi.Input<string>;
+        /**
+         * Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+         */
+        option?: pulumi.Input<string>;
+        /**
+         * The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+         */
+        priorityId: pulumi.Input<number>;
+        /**
+         * The type of connection to the instance. Valid values:
+         * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+         * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+         * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+         */
+        user: pulumi.Input<string>;
+    }
+
     export interface RdsCloneDbInstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
+    }
+
+    export interface RdsCloneDbInstancePgHbaConf {
+        /**
+         * The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+         */
+        address: pulumi.Input<string>;
+        /**
+         * The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+         */
+        database: pulumi.Input<string>;
+        /**
+         * The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+         */
+        mask?: pulumi.Input<string>;
+        /**
+         * The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+         */
+        method: pulumi.Input<string>;
+        /**
+         * Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+         */
+        option?: pulumi.Input<string>;
+        /**
+         * The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+         */
+        priorityId: pulumi.Input<number>;
+        /**
+         * The type of connection to the instance. Valid values:
+         * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+         * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+         * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+         */
+        user: pulumi.Input<string>;
     }
 
     export interface RdsParameterGroupParamDetail {
@@ -4613,11 +4788,48 @@ export namespace rds {
         value: pulumi.Input<string>;
     }
 
+    export interface RdsUpgradeDbInstancePgHbaConf {
+        /**
+         * The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+         */
+        address: pulumi.Input<string>;
+        /**
+         * The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+         */
+        database: pulumi.Input<string>;
+        /**
+         * The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+         */
+        mask?: pulumi.Input<string>;
+        /**
+         * The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+         */
+        method: pulumi.Input<string>;
+        /**
+         * Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+         */
+        option?: pulumi.Input<string>;
+        /**
+         * The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+         */
+        priorityId: pulumi.Input<number>;
+        /**
+         * The type of connection to the instance. Valid values:
+         * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+         * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+         * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+         */
+        user: pulumi.Input<string>;
+    }
+
     export interface ReadOnlyInstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }
-
 }
 
 export namespace resourcemanager {

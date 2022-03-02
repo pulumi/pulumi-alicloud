@@ -98,6 +98,10 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
      */
     public readonly notifyType!: pulumi.Output<string | undefined>;
     /**
+     * The first ID of the resource.
+     */
+    public /*out*/ readonly prometheusAlertRuleId!: pulumi.Output<number>;
+    /**
      * The name of the resource.
      */
     public readonly prometheusAlertRuleName!: pulumi.Output<string>;
@@ -131,6 +135,7 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["message"] = state ? state.message : undefined;
             resourceInputs["notifyType"] = state ? state.notifyType : undefined;
+            resourceInputs["prometheusAlertRuleId"] = state ? state.prometheusAlertRuleId : undefined;
             resourceInputs["prometheusAlertRuleName"] = state ? state.prometheusAlertRuleName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -161,6 +166,7 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
             resourceInputs["notifyType"] = args ? args.notifyType : undefined;
             resourceInputs["prometheusAlertRuleName"] = args ? args.prometheusAlertRuleName : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["prometheusAlertRuleId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -204,6 +210,10 @@ export interface PrometheusAlertRuleState {
      * The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
      */
     notifyType?: pulumi.Input<string>;
+    /**
+     * The first ID of the resource.
+     */
+    prometheusAlertRuleId?: pulumi.Input<number>;
     /**
      * The name of the resource.
      */

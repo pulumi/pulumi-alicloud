@@ -95,6 +95,8 @@ type ConsumerGroup struct {
 
 	// ID of the consumer group. The length cannot exceed 64 characters.
 	ConsumerId pulumi.StringOutput `pulumi:"consumerId"`
+	// The description of the resource.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// A mapping of tags to assign to the resource.
@@ -138,6 +140,8 @@ func GetConsumerGroup(ctx *pulumi.Context,
 type consumerGroupState struct {
 	// ID of the consumer group. The length cannot exceed 64 characters.
 	ConsumerId *string `pulumi:"consumerId"`
+	// The description of the resource.
+	Description *string `pulumi:"description"`
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId *string `pulumi:"instanceId"`
 	// A mapping of tags to assign to the resource.
@@ -147,6 +151,8 @@ type consumerGroupState struct {
 type ConsumerGroupState struct {
 	// ID of the consumer group. The length cannot exceed 64 characters.
 	ConsumerId pulumi.StringPtrInput
+	// The description of the resource.
+	Description pulumi.StringPtrInput
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -160,6 +166,8 @@ func (ConsumerGroupState) ElementType() reflect.Type {
 type consumerGroupArgs struct {
 	// ID of the consumer group. The length cannot exceed 64 characters.
 	ConsumerId string `pulumi:"consumerId"`
+	// The description of the resource.
+	Description *string `pulumi:"description"`
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId string `pulumi:"instanceId"`
 	// A mapping of tags to assign to the resource.
@@ -170,6 +178,8 @@ type consumerGroupArgs struct {
 type ConsumerGroupArgs struct {
 	// ID of the consumer group. The length cannot exceed 64 characters.
 	ConsumerId pulumi.StringInput
+	// The description of the resource.
+	Description pulumi.StringPtrInput
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId pulumi.StringInput
 	// A mapping of tags to assign to the resource.

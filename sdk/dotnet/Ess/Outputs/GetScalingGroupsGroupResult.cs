@@ -31,6 +31,14 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DbInstanceIds;
         /// <summary>
+        /// Whether the scaling group deletion protection is enabled.
+        /// </summary>
+        public readonly bool GroupDeletionProtection;
+        /// <summary>
+        /// The health check method of the scaling group.
+        /// </summary>
+        public readonly string HealthCheckType;
+        /// <summary>
         /// ID of the scaling group.
         /// </summary>
         public readonly string Id;
@@ -59,6 +67,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int MinSize;
         /// <summary>
+        /// The modification time.
+        /// </summary>
+        public readonly string ModificationTime;
+        /// <summary>
         /// Name of the scaling group.
         /// * `active_scaling_configuration` -Active scaling configuration for scaling group.
         /// </summary>
@@ -80,9 +92,25 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int RemovingCapacity;
         /// <summary>
+        /// The Process in suspension.
+        /// </summary>
+        public readonly ImmutableArray<string> SuspendedProcesses;
+        /// <summary>
         /// Number of instances in scaling group.
         /// </summary>
         public readonly int TotalCapacity;
+        /// <summary>
+        /// The number of all ECS instances in the scaling group.
+        /// </summary>
+        public readonly int TotalInstanceCount;
+        /// <summary>
+        /// The ID of the VPC to which the scaling group belongs.
+        /// </summary>
+        public readonly string VpcId;
+        /// <summary>
+        /// The ID of the vSwitch to which the scaling group belongs.
+        /// </summary>
+        public readonly string VswitchId;
         /// <summary>
         /// Vswitches id in which the ECS instance launched.
         /// </summary>
@@ -100,6 +128,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             ImmutableArray<string> dbInstanceIds,
 
+            bool groupDeletionProtection,
+
+            string healthCheckType,
+
             string id,
 
             string launchTemplateId,
@@ -114,6 +146,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             int minSize,
 
+            string modificationTime,
+
             string name,
 
             int pendingCapacity,
@@ -124,7 +158,15 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             int removingCapacity,
 
+            ImmutableArray<string> suspendedProcesses,
+
             int totalCapacity,
+
+            int totalInstanceCount,
+
+            string vpcId,
+
+            string vswitchId,
 
             ImmutableArray<string> vswitchIds)
         {
@@ -133,6 +175,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
             CooldownTime = cooldownTime;
             CreationTime = creationTime;
             DbInstanceIds = dbInstanceIds;
+            GroupDeletionProtection = groupDeletionProtection;
+            HealthCheckType = healthCheckType;
             Id = id;
             LaunchTemplateId = launchTemplateId;
             LaunchTemplateVersion = launchTemplateVersion;
@@ -140,12 +184,17 @@ namespace Pulumi.AliCloud.Ess.Outputs
             LoadBalancerIds = loadBalancerIds;
             MaxSize = maxSize;
             MinSize = minSize;
+            ModificationTime = modificationTime;
             Name = name;
             PendingCapacity = pendingCapacity;
             RegionId = regionId;
             RemovalPolicies = removalPolicies;
             RemovingCapacity = removingCapacity;
+            SuspendedProcesses = suspendedProcesses;
             TotalCapacity = totalCapacity;
+            TotalInstanceCount = totalInstanceCount;
+            VpcId = vpcId;
+            VswitchId = vswitchId;
             VswitchIds = vswitchIds;
         }
     }

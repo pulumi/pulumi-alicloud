@@ -119,6 +119,8 @@ type TransitRouterPeerAttachment struct {
 	AutoPublishRouteEnabled pulumi.BoolPtrOutput `pulumi:"autoPublishRouteEnabled"`
 	// The bandwidth of the bandwidth package.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
+	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	BandwidthType pulumi.StringPtrOutput `pulumi:"bandwidthType"`
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId pulumi.StringPtrOutput `pulumi:"cenBandwidthPackageId"`
 	// The ID of the CEN.
@@ -189,6 +191,8 @@ type transitRouterPeerAttachmentState struct {
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
 	// The bandwidth of the bandwidth package.
 	Bandwidth *int `pulumi:"bandwidth"`
+	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	BandwidthType *string `pulumi:"bandwidthType"`
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId *string `pulumi:"cenBandwidthPackageId"`
 	// The ID of the CEN.
@@ -222,6 +226,8 @@ type TransitRouterPeerAttachmentState struct {
 	AutoPublishRouteEnabled pulumi.BoolPtrInput
 	// The bandwidth of the bandwidth package.
 	Bandwidth pulumi.IntPtrInput
+	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	BandwidthType pulumi.StringPtrInput
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId pulumi.StringPtrInput
 	// The ID of the CEN.
@@ -259,6 +265,8 @@ type transitRouterPeerAttachmentArgs struct {
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
 	// The bandwidth of the bandwidth package.
 	Bandwidth *int `pulumi:"bandwidth"`
+	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	BandwidthType *string `pulumi:"bandwidthType"`
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId *string `pulumi:"cenBandwidthPackageId"`
 	// The ID of the CEN.
@@ -289,6 +297,8 @@ type TransitRouterPeerAttachmentArgs struct {
 	AutoPublishRouteEnabled pulumi.BoolPtrInput
 	// The bandwidth of the bandwidth package.
 	Bandwidth pulumi.IntPtrInput
+	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	BandwidthType pulumi.StringPtrInput
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId pulumi.StringPtrInput
 	// The ID of the CEN.

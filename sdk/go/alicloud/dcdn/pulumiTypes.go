@@ -258,6 +258,139 @@ func (o DomainSourceArrayOutput) Index(i pulumi.IntInput) DomainSourceOutput {
 	}).(DomainSourceOutput)
 }
 
+type IpaDomainSource struct {
+	// The address of the origin server. You can specify an IP address or a domain name.
+	Content string `pulumi:"content"`
+	// The custom port number. Valid values: `0` to `65535`.
+	Port int `pulumi:"port"`
+	// The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
+	Priority string `pulumi:"priority"`
+	// The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+	Type string `pulumi:"type"`
+	// The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
+	Weight int `pulumi:"weight"`
+}
+
+// IpaDomainSourceInput is an input type that accepts IpaDomainSourceArgs and IpaDomainSourceOutput values.
+// You can construct a concrete instance of `IpaDomainSourceInput` via:
+//
+//          IpaDomainSourceArgs{...}
+type IpaDomainSourceInput interface {
+	pulumi.Input
+
+	ToIpaDomainSourceOutput() IpaDomainSourceOutput
+	ToIpaDomainSourceOutputWithContext(context.Context) IpaDomainSourceOutput
+}
+
+type IpaDomainSourceArgs struct {
+	// The address of the origin server. You can specify an IP address or a domain name.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The custom port number. Valid values: `0` to `65535`.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (IpaDomainSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpaDomainSource)(nil)).Elem()
+}
+
+func (i IpaDomainSourceArgs) ToIpaDomainSourceOutput() IpaDomainSourceOutput {
+	return i.ToIpaDomainSourceOutputWithContext(context.Background())
+}
+
+func (i IpaDomainSourceArgs) ToIpaDomainSourceOutputWithContext(ctx context.Context) IpaDomainSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpaDomainSourceOutput)
+}
+
+// IpaDomainSourceArrayInput is an input type that accepts IpaDomainSourceArray and IpaDomainSourceArrayOutput values.
+// You can construct a concrete instance of `IpaDomainSourceArrayInput` via:
+//
+//          IpaDomainSourceArray{ IpaDomainSourceArgs{...} }
+type IpaDomainSourceArrayInput interface {
+	pulumi.Input
+
+	ToIpaDomainSourceArrayOutput() IpaDomainSourceArrayOutput
+	ToIpaDomainSourceArrayOutputWithContext(context.Context) IpaDomainSourceArrayOutput
+}
+
+type IpaDomainSourceArray []IpaDomainSourceInput
+
+func (IpaDomainSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpaDomainSource)(nil)).Elem()
+}
+
+func (i IpaDomainSourceArray) ToIpaDomainSourceArrayOutput() IpaDomainSourceArrayOutput {
+	return i.ToIpaDomainSourceArrayOutputWithContext(context.Background())
+}
+
+func (i IpaDomainSourceArray) ToIpaDomainSourceArrayOutputWithContext(ctx context.Context) IpaDomainSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpaDomainSourceArrayOutput)
+}
+
+type IpaDomainSourceOutput struct{ *pulumi.OutputState }
+
+func (IpaDomainSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpaDomainSource)(nil)).Elem()
+}
+
+func (o IpaDomainSourceOutput) ToIpaDomainSourceOutput() IpaDomainSourceOutput {
+	return o
+}
+
+func (o IpaDomainSourceOutput) ToIpaDomainSourceOutputWithContext(ctx context.Context) IpaDomainSourceOutput {
+	return o
+}
+
+// The address of the origin server. You can specify an IP address or a domain name.
+func (o IpaDomainSourceOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v IpaDomainSource) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The custom port number. Valid values: `0` to `65535`.
+func (o IpaDomainSourceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v IpaDomainSource) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
+func (o IpaDomainSourceOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v IpaDomainSource) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+// The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+func (o IpaDomainSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IpaDomainSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
+func (o IpaDomainSourceOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v IpaDomainSource) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type IpaDomainSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (IpaDomainSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpaDomainSource)(nil)).Elem()
+}
+
+func (o IpaDomainSourceArrayOutput) ToIpaDomainSourceArrayOutput() IpaDomainSourceArrayOutput {
+	return o
+}
+
+func (o IpaDomainSourceArrayOutput) ToIpaDomainSourceArrayOutputWithContext(ctx context.Context) IpaDomainSourceArrayOutput {
+	return o
+}
+
+func (o IpaDomainSourceArrayOutput) Index(i pulumi.IntInput) IpaDomainSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpaDomainSource {
+		return vs[0].([]IpaDomainSource)[vs[1].(int)]
+	}).(IpaDomainSourceOutput)
+}
+
 type GetDomainsDomain struct {
 	// Indicates the name of the certificate.
 	CertName string `pulumi:"certName"`
@@ -601,6 +734,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgArrayInput)(nil)).Elem(), DomainConfigFunctionArgArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainSourceInput)(nil)).Elem(), DomainSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainSourceArrayInput)(nil)).Elem(), DomainSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpaDomainSourceInput)(nil)).Elem(), IpaDomainSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpaDomainSourceArrayInput)(nil)).Elem(), IpaDomainSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainSourceInput)(nil)).Elem(), GetDomainsDomainSourceArgs{})
@@ -609,6 +744,8 @@ func init() {
 	pulumi.RegisterOutputType(DomainConfigFunctionArgArrayOutput{})
 	pulumi.RegisterOutputType(DomainSourceOutput{})
 	pulumi.RegisterOutputType(DomainSourceArrayOutput{})
+	pulumi.RegisterOutputType(IpaDomainSourceOutput{})
+	pulumi.RegisterOutputType(IpaDomainSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainSourceOutput{})

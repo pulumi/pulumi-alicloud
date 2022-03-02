@@ -2818,14 +2818,21 @@ class GetTlsCipherPoliciesPolicyRelateListenerResult(dict):
 class GetZonesZoneResult(dict):
     def __init__(__self__, *,
                  id: str,
+                 master_zone_id: str,
+                 slave_zone_id: str,
                  slb_slave_zone_ids: Sequence[str],
                  supported_resources: Sequence['outputs.GetZonesZoneSupportedResourceResult']):
         """
-        :param str id: ID of the zone.
-        :param Sequence[str] slb_slave_zone_ids: A list of slb slave zone ids in which the slb master zone.
+        :param str id: ID of the zone. It is same as `master_zone_id`.
+        :param str master_zone_id: The primary zone.
+        :param str slave_zone_id: The secondary zone.
+        :param Sequence[str] slb_slave_zone_ids: (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
+               It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
         :param Sequence['GetZonesZoneSupportedResourceArgs'] supported_resources: (Available in 1.154.0+)A list of available resource which the slb master zone supported.
         """
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "master_zone_id", master_zone_id)
+        pulumi.set(__self__, "slave_zone_id", slave_zone_id)
         pulumi.set(__self__, "slb_slave_zone_ids", slb_slave_zone_ids)
         pulumi.set(__self__, "supported_resources", supported_resources)
 
@@ -2833,15 +2840,32 @@ class GetZonesZoneResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the zone.
+        ID of the zone. It is same as `master_zone_id`.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="masterZoneId")
+    def master_zone_id(self) -> str:
+        """
+        The primary zone.
+        """
+        return pulumi.get(self, "master_zone_id")
+
+    @property
+    @pulumi.getter(name="slaveZoneId")
+    def slave_zone_id(self) -> str:
+        """
+        The secondary zone.
+        """
+        return pulumi.get(self, "slave_zone_id")
 
     @property
     @pulumi.getter(name="slbSlaveZoneIds")
     def slb_slave_zone_ids(self) -> Sequence[str]:
         """
-        A list of slb slave zone ids in which the slb master zone.
+        (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
+        It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
         """
         return pulumi.get(self, "slb_slave_zone_ids")
 

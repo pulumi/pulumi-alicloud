@@ -19,6 +19,7 @@ __all__ = [
     'GetEndpointsEndpointIpConfigResult',
     'GetResolverZonesZoneResult',
     'GetRulesRuleResult',
+    'GetRulesRuleBindVpcResult',
     'GetRulesRuleForwardIpResult',
     'GetZoneRecordsRecordResult',
     'GetZonesZoneResult',
@@ -459,6 +460,7 @@ class GetResolverZonesZoneResult(dict):
 @pulumi.output_type
 class GetRulesRuleResult(dict):
     def __init__(__self__, *,
+                 bind_vpcs: Sequence['outputs.GetRulesRuleBindVpcResult'],
                  create_time: str,
                  endpoint_id: str,
                  endpoint_name: str,
@@ -469,6 +471,7 @@ class GetRulesRuleResult(dict):
                  type: str,
                  zone_name: str):
         """
+        :param Sequence['GetRulesRuleBindVpcArgs'] bind_vpcs: The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
         :param str create_time: The creation time of the resource.
         :param str endpoint_id: The ID of the Endpoint.
         :param str endpoint_name: The Name of the Endpoint.
@@ -478,6 +481,7 @@ class GetRulesRuleResult(dict):
         :param str type: The type of the rule.
         :param str zone_name: The name of the forwarding zone.
         """
+        pulumi.set(__self__, "bind_vpcs", bind_vpcs)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "endpoint_name", endpoint_name)
@@ -487,6 +491,14 @@ class GetRulesRuleResult(dict):
         pulumi.set(__self__, "rule_name", rule_name)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "zone_name", zone_name)
+
+    @property
+    @pulumi.getter(name="bindVpcs")
+    def bind_vpcs(self) -> Sequence['outputs.GetRulesRuleBindVpcResult']:
+        """
+        The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
+        """
+        return pulumi.get(self, "bind_vpcs")
 
     @property
     @pulumi.getter(name="createTime")
@@ -556,6 +568,57 @@ class GetRulesRuleResult(dict):
         The name of the forwarding zone.
         """
         return pulumi.get(self, "zone_name")
+
+
+@pulumi.output_type
+class GetRulesRuleBindVpcResult(dict):
+    def __init__(__self__, *,
+                 region_id: str,
+                 region_name: str,
+                 vpc_id: str,
+                 vpc_name: str):
+        """
+        :param str region_id: The region ID of the vpc.
+        :param str region_name: The Region Name of the vpc.
+        :param str vpc_id: The ID of the VPC.
+        :param str vpc_name: The Name of the VPC.
+        """
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "region_name", region_name)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_name", vpc_name)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the vpc.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="regionName")
+    def region_name(self) -> str:
+        """
+        The Region Name of the vpc.
+        """
+        return pulumi.get(self, "region_name")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vpcName")
+    def vpc_name(self) -> str:
+        """
+        The Name of the VPC.
+        """
+        return pulumi.get(self, "vpc_name")
 
 
 @pulumi.output_type

@@ -4380,6 +4380,8 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
                  name: str,
                  network_interface_id: str,
                  network_interface_name: str,
+                 network_interface_traffic_mode: str,
+                 owner_id: str,
                  primary_ip_address: str,
                  private_ip: str,
                  private_ip_addresses: Sequence[str],
@@ -4405,6 +4407,8 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         :param str name: The network interface name.
         :param str network_interface_id: The network interface id.
         :param str network_interface_name: The network interface name.
+        :param str network_interface_traffic_mode: The communication mode of the elastic network card.
+        :param str owner_id: The ID of the account to which the ENIC belongs.
         :param str primary_ip_address: The primary private IP address of the ENI.
         :param str private_ip: The primary private IP address of the ENI.
         :param Sequence[str] private_ips: A list of secondary private IP address that is assigned to the ENI.
@@ -4429,6 +4433,8 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
         pulumi.set(__self__, "network_interface_name", network_interface_name)
+        pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        pulumi.set(__self__, "owner_id", owner_id)
         pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         pulumi.set(__self__, "private_ip", private_ip)
         pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
@@ -4509,6 +4515,22 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         The network interface name.
         """
         return pulumi.get(self, "network_interface_name")
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> str:
+        """
+        The communication mode of the elastic network card.
+        """
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> str:
+        """
+        The ID of the account to which the ENIC belongs.
+        """
+        return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter(name="primaryIpAddress")
@@ -7220,6 +7242,8 @@ class GetNetworkInterfacesInterfaceResult(dict):
                  name: str,
                  network_interface_id: str,
                  network_interface_name: str,
+                 network_interface_traffic_mode: str,
+                 owner_id: str,
                  primary_ip_address: str,
                  private_ip: str,
                  private_ip_addresses: Sequence[str],
@@ -7261,6 +7285,8 @@ class GetNetworkInterfacesInterfaceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
         pulumi.set(__self__, "network_interface_name", network_interface_name)
+        pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        pulumi.set(__self__, "owner_id", owner_id)
         pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         pulumi.set(__self__, "private_ip", private_ip)
         pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
@@ -7335,6 +7361,16 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="networkInterfaceName")
     def network_interface_name(self) -> str:
         return pulumi.get(self, "network_interface_name")
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> str:
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> str:
+        return pulumi.get(self, "owner_id")
 
     @property
     @pulumi.getter(name="primaryIpAddress")

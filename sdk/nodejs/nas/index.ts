@@ -25,6 +25,7 @@ export * from "./getSnapshots";
 export * from "./getZones";
 export * from "./lifecyclePolicy";
 export * from "./mountTarget";
+export * from "./recycleBin";
 export * from "./snapshot";
 
 // Import resources to register:
@@ -36,6 +37,7 @@ import { FileSystem } from "./fileSystem";
 import { Fileset } from "./fileset";
 import { LifecyclePolicy } from "./lifecyclePolicy";
 import { MountTarget } from "./mountTarget";
+import { RecycleBin } from "./recycleBin";
 import { Snapshot } from "./snapshot";
 
 const _module = {
@@ -58,6 +60,8 @@ const _module = {
                 return new LifecyclePolicy(name, <any>undefined, { urn })
             case "alicloud:nas/mountTarget:MountTarget":
                 return new MountTarget(name, <any>undefined, { urn })
+            case "alicloud:nas/recycleBin:RecycleBin":
+                return new RecycleBin(name, <any>undefined, { urn })
             case "alicloud:nas/snapshot:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
             default:
@@ -73,4 +77,5 @@ pulumi.runtime.registerResourceModule("alicloud", "nas/fileSystem", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/fileset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/lifecyclePolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/mountTarget", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/recycleBin", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/snapshot", _module)

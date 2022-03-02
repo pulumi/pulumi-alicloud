@@ -243,6 +243,10 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    public readonly pgHbaConfs!: pulumi.Output<outputs.rds.RdsCloneDbInstancePgHbaConf[]>;
+    /**
      * The port.
      */
     public readonly port!: pulumi.Output<string>;
@@ -391,6 +395,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["pgHbaConfs"] = state ? state.pgHbaConfs : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["privateKey"] = state ? state.privateKey : undefined;
@@ -457,6 +462,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["pgHbaConfs"] = args ? args.pgHbaConfs : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             resourceInputs["privateKey"] = args ? args.privateKey : undefined;
@@ -647,6 +653,10 @@ export interface RdsCloneDbInstanceState {
      * The period. Valid values: `Month`, `Year`.
      */
     period?: pulumi.Input<string>;
+    /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstancePgHbaConf>[]>;
     /**
      * The port.
      */
@@ -907,6 +917,10 @@ export interface RdsCloneDbInstanceArgs {
      * The period. Valid values: `Month`, `Year`.
      */
     period?: pulumi.Input<string>;
+    /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstancePgHbaConf>[]>;
     /**
      * The port.
      */

@@ -190,6 +190,8 @@ type RdsCloneDbInstance struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The period. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayOutput `pulumi:"pgHbaConfs"`
 	// The port.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -376,6 +378,8 @@ type rdsCloneDbInstanceState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The period. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs []RdsCloneDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The port.
 	Port *string `pulumi:"port"`
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -525,6 +529,8 @@ type RdsCloneDbInstanceState struct {
 	PaymentType pulumi.StringPtrInput
 	// The period. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayInput
 	// The port.
 	Port pulumi.StringPtrInput
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -676,6 +682,8 @@ type rdsCloneDbInstanceArgs struct {
 	PaymentType string `pulumi:"paymentType"`
 	// The period. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs []RdsCloneDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The port.
 	Port *string `pulumi:"port"`
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -824,6 +832,8 @@ type RdsCloneDbInstanceArgs struct {
 	PaymentType pulumi.StringInput
 	// The period. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayInput
 	// The port.
 	Port pulumi.StringPtrInput
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.

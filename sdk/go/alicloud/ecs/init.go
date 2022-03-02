@@ -97,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Snapshot{}
 	case "alicloud:ecs/snapshotPolicy:SnapshotPolicy":
 		r = &SnapshotPolicy{}
+	case "alicloud:ecs/storageCapacityUnit:StorageCapacityUnit":
+		r = &StorageCapacityUnit{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -298,6 +300,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/snapshotPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/storageCapacityUnit",
 		&module{version},
 	)
 }

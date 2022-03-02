@@ -186,6 +186,7 @@ class _PrometheusAlertRuleState:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  notify_type: Optional[pulumi.Input[str]] = None,
+                 prometheus_alert_rule_id: Optional[pulumi.Input[int]] = None,
                  prometheus_alert_rule_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -199,6 +200,7 @@ class _PrometheusAlertRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]] labels: The labels of the resource. See the following `Block labels`.
         :param pulumi.Input[str] message: The message of the alert notification.
         :param pulumi.Input[str] notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
+        :param pulumi.Input[int] prometheus_alert_rule_id: The first ID of the resource.
         :param pulumi.Input[str] prometheus_alert_rule_name: The name of the resource.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
         :param pulumi.Input[str] type: The type of the alert rule.
@@ -219,6 +221,8 @@ class _PrometheusAlertRuleState:
             pulumi.set(__self__, "message", message)
         if notify_type is not None:
             pulumi.set(__self__, "notify_type", notify_type)
+        if prometheus_alert_rule_id is not None:
+            pulumi.set(__self__, "prometheus_alert_rule_id", prometheus_alert_rule_id)
         if prometheus_alert_rule_name is not None:
             pulumi.set(__self__, "prometheus_alert_rule_name", prometheus_alert_rule_name)
         if status is not None:
@@ -321,6 +325,18 @@ class _PrometheusAlertRuleState:
     @notify_type.setter
     def notify_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "notify_type", value)
+
+    @property
+    @pulumi.getter(name="prometheusAlertRuleId")
+    def prometheus_alert_rule_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "prometheus_alert_rule_id")
+
+    @prometheus_alert_rule_id.setter
+    def prometheus_alert_rule_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "prometheus_alert_rule_id", value)
 
     @property
     @pulumi.getter(name="prometheusAlertRuleName")
@@ -513,6 +529,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'prometheus_alert_rule_name'")
             __props__.__dict__["prometheus_alert_rule_name"] = prometheus_alert_rule_name
             __props__.__dict__["type"] = type
+            __props__.__dict__["prometheus_alert_rule_id"] = None
             __props__.__dict__["status"] = None
         super(PrometheusAlertRule, __self__).__init__(
             'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
@@ -532,6 +549,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleLabelArgs']]]]] = None,
             message: Optional[pulumi.Input[str]] = None,
             notify_type: Optional[pulumi.Input[str]] = None,
+            prometheus_alert_rule_id: Optional[pulumi.Input[int]] = None,
             prometheus_alert_rule_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'PrometheusAlertRule':
@@ -550,6 +568,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrometheusAlertRuleLabelArgs']]]] labels: The labels of the resource. See the following `Block labels`.
         :param pulumi.Input[str] message: The message of the alert notification.
         :param pulumi.Input[str] notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
+        :param pulumi.Input[int] prometheus_alert_rule_id: The first ID of the resource.
         :param pulumi.Input[str] prometheus_alert_rule_name: The name of the resource.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
         :param pulumi.Input[str] type: The type of the alert rule.
@@ -566,6 +585,7 @@ class PrometheusAlertRule(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["message"] = message
         __props__.__dict__["notify_type"] = notify_type
+        __props__.__dict__["prometheus_alert_rule_id"] = prometheus_alert_rule_id
         __props__.__dict__["prometheus_alert_rule_name"] = prometheus_alert_rule_name
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
@@ -634,6 +654,14 @@ class PrometheusAlertRule(pulumi.CustomResource):
         The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         """
         return pulumi.get(self, "notify_type")
+
+    @property
+    @pulumi.getter(name="prometheusAlertRuleId")
+    def prometheus_alert_rule_id(self) -> pulumi.Output[int]:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "prometheus_alert_rule_id")
 
     @property
     @pulumi.getter(name="prometheusAlertRuleName")

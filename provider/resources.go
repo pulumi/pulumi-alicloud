@@ -453,9 +453,13 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Dataworks
 			"alicloud_data_works_folder": {Tok: resource(dataWorksMod, "Folder")},
+			"alicloud_dataworks_service": {Tok: resource(dataWorksMod, "Service")},
 
 			// Database Filesystem
-			"alicloud_dbfs_instance": {Tok: resource(databaseFilesystemMod, "Instance")},
+			"alicloud_dbfs_instance":            {Tok: resource(databaseFilesystemMod, "Instance")},
+			"alicloud_dbfs_instance_attachment": {Tok: resource(databaseFilesystemMod, "InstanceAttachment")},
+			"alicloud_dbfs_service_linked_role": {Tok: resource(databaseFilesystemMod, "ServiceLinkedRole")},
+			"alicloud_dbfs_snapshot":            {Tok: resource(databaseFilesystemMod, "Snapshot")},
 
 			// Database Gateway
 			"alicloud_database_gateway_gateway": {Tok: resource(databaseGatewayMod, "Gateway")},
@@ -478,6 +482,7 @@ func Provider() tfbridge.ProviderInfo {
 			// DCDN
 			"alicloud_dcdn_domain":        {Tok: resource(dcdnMod, "Domain")},
 			"alicloud_dcdn_domain_config": {Tok: resource(dcdnMod, "DomainConfig")},
+			"alicloud_dcdn_ipa_domain":    {Tok: resource(dcdnMod, "IpaDomain")},
 
 			// DDOS
 			"alicloud_ddoscoo_scheduler_rule":  {Tok: resource(ddosMod, "SchedulerRule")},
@@ -526,6 +531,8 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Dts
 			"alicloud_dts_job_monitor_rule":         {Tok: resource(dtsMod, "JobMonitorRule")},
+			"alicloud_dts_migration_instance":       {Tok: resource(dtsMod, "MigrationInstance")},
+			"alicloud_dts_migration_job":            {Tok: resource(dtsMod, "MigrationJob")},
 			"alicloud_dts_subscription_job":         {Tok: resource(dtsMod, "SubscriptionJob")},
 			"alicloud_dts_synchronization_instance": {Tok: resource(dtsMod, "SynchronizationInstance")},
 			"alicloud_dts_synchronization_job":      {Tok: resource(dtsMod, "SynchronizationJob")},
@@ -541,6 +548,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_eci_virtual_node":        {Tok: resource(eciMod, "VirtualNode")},
 
 			// Ecp
+			"alicloud_ecp_instance": {Tok: resource(ecpMod, "Instance")},
 			"alicloud_ecp_key_pair": {Tok: resource(ecpMod, "KeyPair")},
 
 			// ECS
@@ -581,6 +589,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_command":                         {Tok: resource(ecsMod, "Command")},
 			"alicloud_ecs_auto_snapshot_policy":            {Tok: resource(ecsMod, "AutoSnapshotPolicy")},
 			"alicloud_ecs_snapshot":                        {Tok: resource(ecsMod, "EcsSnapshot")},
+			"alicloud_ecs_storage_capacity_unit":           {Tok: resource(ecsMod, "StorageCapacityUnit")},
 			"alicloud_ecs_launch_template":                 {Tok: resource(ecsMod, "EcsLaunchTemplate")},
 			"alicloud_ecs_key_pair":                        {Tok: resource(ecsMod, "EcsKeyPair")},
 			"alicloud_ecs_key_pair_attachment":             {Tok: resource(ecsMod, "EcsKeyPairAttachment")},
@@ -641,6 +650,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ess_notification":                {Tok: resource(essMod, "Notification")},
 			"alicloud_ess_scalinggroup_vserver_groups": {Tok: resource(essMod, "ScalingGroupVServerGroups")},
 			"alicloud_ess_scheduled_task":              {Tok: resource(essMod, "ScheduledTask")},
+			"alicloud_ess_alb_server_group_attachment": {Tok: resource(essMod, "AlbServerGroupAttachment")},
 
 			// ElasticSearch
 			"alicloud_elasticsearch_instance": {
@@ -775,12 +785,13 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mhub_app":     {Tok: resource(mhubMod, "App")},
 
 			// MongoDb
-			"alicloud_mongodb_instance":                        {Tok: resource(mongoDbMod, "Instance")},
-			"alicloud_mongodb_sharding_instance":               {Tok: resource(mongoDbMod, "ShardingInstance")},
-			"alicloud_mongodb_audit_policy":                    {Tok: resource(mongoDbMod, "AuditPolicy")},
-			"alicloud_mongodb_account":                         {Tok: resource(mongoDbMod, "Account")},
-			"alicloud_mongodb_serverless_instance":             {Tok: resource(mongoDbMod, "ServerlessInstance")},
-			"alicloud_mongodb_sharding_network_public_address": {Tok: resource(mongoDbMod, "ShardingNetworkPublicAddress")},
+			"alicloud_mongodb_instance":                         {Tok: resource(mongoDbMod, "Instance")},
+			"alicloud_mongodb_sharding_instance":                {Tok: resource(mongoDbMod, "ShardingInstance")},
+			"alicloud_mongodb_audit_policy":                     {Tok: resource(mongoDbMod, "AuditPolicy")},
+			"alicloud_mongodb_account":                          {Tok: resource(mongoDbMod, "Account")},
+			"alicloud_mongodb_serverless_instance":              {Tok: resource(mongoDbMod, "ServerlessInstance")},
+			"alicloud_mongodb_sharding_network_public_address":  {Tok: resource(mongoDbMod, "ShardingNetworkPublicAddress")},
+			"alicloud_mongodb_sharding_network_private_address": {Tok: resource(mongoDbMod, "ShardingNetworkPrivateAddress")},
 
 			// Mns
 			"alicloud_mns_queue":              {Tok: resource(mnsMod, "Queue")},
@@ -789,6 +800,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Mse
 			"alicloud_mse_cluster": {Tok: resource(mseMod, "Cluster")},
+			"alicloud_mse_gateway": {Tok: resource(mseMod, "Gateway")},
 
 			// Nas
 			"alicloud_nas_access_group":         {Tok: resource(nasMod, "AccessGroup")},
@@ -800,6 +812,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_nas_fileset":              {Tok: resource(nasMod, "Fileset")},
 			"alicloud_nas_data_flow":            {Tok: resource(nasMod, "DataFlow")},
 			"alicloud_nas_auto_snapshot_policy": {Tok: resource(nasMod, "AutoSnapshotPolicy")},
+			"alicloud_nas_recycle_bin":          {Tok: resource(nasMod, "RecycleBin")},
 
 			// Oos
 			"alicloud_oos_template":            {Tok: resource(oosMod, "Template")},
@@ -921,6 +934,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_resource_manager_control_policy_attachment": {
 				Tok: resource(resourceManagerMod, "ControlPolicyAttachment"),
 			},
+			"alicloud_resource_manager_service_linked_role": {Tok: resource(resourceManagerMod, "ServiceLinkedRole")},
 
 			// RocketMQ
 			"alicloud_ons_group":    {Tok: resource(rocketMqMod, "Group")},

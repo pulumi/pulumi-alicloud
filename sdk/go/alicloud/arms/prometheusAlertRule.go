@@ -72,6 +72,8 @@ type PrometheusAlertRule struct {
 	Message pulumi.StringOutput `pulumi:"message"`
 	// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
 	NotifyType pulumi.StringPtrOutput `pulumi:"notifyType"`
+	// The first ID of the resource.
+	PrometheusAlertRuleId pulumi.IntOutput `pulumi:"prometheusAlertRuleId"`
 	// The name of the resource.
 	PrometheusAlertRuleName pulumi.StringOutput `pulumi:"prometheusAlertRuleName"`
 	// The status of the resource. Valid values: `0`, `1`.
@@ -140,6 +142,8 @@ type prometheusAlertRuleState struct {
 	Message *string `pulumi:"message"`
 	// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
 	NotifyType *string `pulumi:"notifyType"`
+	// The first ID of the resource.
+	PrometheusAlertRuleId *int `pulumi:"prometheusAlertRuleId"`
 	// The name of the resource.
 	PrometheusAlertRuleName *string `pulumi:"prometheusAlertRuleName"`
 	// The status of the resource. Valid values: `0`, `1`.
@@ -165,6 +169,8 @@ type PrometheusAlertRuleState struct {
 	Message pulumi.StringPtrInput
 	// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
 	NotifyType pulumi.StringPtrInput
+	// The first ID of the resource.
+	PrometheusAlertRuleId pulumi.IntPtrInput
 	// The name of the resource.
 	PrometheusAlertRuleName pulumi.StringPtrInput
 	// The status of the resource. Valid values: `0`, `1`.

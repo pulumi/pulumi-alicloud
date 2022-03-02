@@ -279,6 +279,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// </summary>
+        [Output("pgHbaConfs")]
+        public Output<ImmutableArray<Outputs.RdsUpgradeDbInstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
+
+        /// <summary>
         /// The port.
         /// </summary>
         [Output("port")]
@@ -670,6 +676,18 @@ namespace Pulumi.AliCloud.Rds
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
+        [Input("pgHbaConfs")]
+        private InputList<Inputs.RdsUpgradeDbInstancePgHbaConfArgs>? _pgHbaConfs;
+
+        /// <summary>
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// </summary>
+        public InputList<Inputs.RdsUpgradeDbInstancePgHbaConfArgs> PgHbaConfs
+        {
+            get => _pgHbaConfs ?? (_pgHbaConfs = new InputList<Inputs.RdsUpgradeDbInstancePgHbaConfArgs>());
+            set => _pgHbaConfs = value;
+        }
+
         /// <summary>
         /// The port.
         /// </summary>
@@ -1034,6 +1052,18 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
+
+        [Input("pgHbaConfs")]
+        private InputList<Inputs.RdsUpgradeDbInstancePgHbaConfGetArgs>? _pgHbaConfs;
+
+        /// <summary>
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// </summary>
+        public InputList<Inputs.RdsUpgradeDbInstancePgHbaConfGetArgs> PgHbaConfs
+        {
+            get => _pgHbaConfs ?? (_pgHbaConfs = new InputList<Inputs.RdsUpgradeDbInstancePgHbaConfGetArgs>());
+            set => _pgHbaConfs = value;
+        }
 
         /// <summary>
         /// The port.

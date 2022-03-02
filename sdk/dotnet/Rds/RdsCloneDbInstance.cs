@@ -302,6 +302,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// </summary>
+        [Output("pgHbaConfs")]
+        public Output<ImmutableArray<Outputs.RdsCloneDbInstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
+
+        /// <summary>
         /// The port.
         /// </summary>
         [Output("port")]
@@ -717,6 +723,18 @@ namespace Pulumi.AliCloud.Rds
         [Input("period")]
         public Input<string>? Period { get; set; }
 
+        [Input("pgHbaConfs")]
+        private InputList<Inputs.RdsCloneDbInstancePgHbaConfArgs>? _pgHbaConfs;
+
+        /// <summary>
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// </summary>
+        public InputList<Inputs.RdsCloneDbInstancePgHbaConfArgs> PgHbaConfs
+        {
+            get => _pgHbaConfs ?? (_pgHbaConfs = new InputList<Inputs.RdsCloneDbInstancePgHbaConfArgs>());
+            set => _pgHbaConfs = value;
+        }
+
         /// <summary>
         /// The port.
         /// </summary>
@@ -1105,6 +1123,18 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
+
+        [Input("pgHbaConfs")]
+        private InputList<Inputs.RdsCloneDbInstancePgHbaConfGetArgs>? _pgHbaConfs;
+
+        /// <summary>
+        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// </summary>
+        public InputList<Inputs.RdsCloneDbInstancePgHbaConfGetArgs> PgHbaConfs
+        {
+            get => _pgHbaConfs ?? (_pgHbaConfs = new InputList<Inputs.RdsCloneDbInstancePgHbaConfGetArgs>());
+            set => _pgHbaConfs = value;
+        }
 
         /// <summary>
         /// The port.

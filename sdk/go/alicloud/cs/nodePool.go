@@ -120,7 +120,40 @@ import (
 // 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // 			SystemDiskSize:     pulumi.Int(40),
 // 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			NodeCount:          pulumi.Int(1),
+// 			DesiredSize:        pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The parameter `nodeCount` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desiredSize` instead, you can update it as follows. for more information of `desiredSize`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+// 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+// 			VswitchIds: pulumi.StringArray{
+// 				pulumi.Any(alicloud_vswitch.Default.Id),
+// 			},
+// 			InstanceTypes: pulumi.StringArray{
+// 				pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+// 			},
+// 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// 			SystemDiskSize:     pulumi.Int(40),
+// 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
+// 			DesiredSize:        pulumi.Int(1),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -153,7 +186,7 @@ import (
 // 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // 			SystemDiskSize:     pulumi.Int(40),
 // 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			NodeCount:          pulumi.Int(1),
+// 			DesiredSize:        pulumi.Int(1),
 // 			Management: &cs.NodePoolManagementArgs{
 // 				AutoRepair:     pulumi.Bool(true),
 // 				AutoUpgrade:    pulumi.Bool(true),
@@ -314,7 +347,7 @@ import (
 // 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // 			SystemDiskSize:     pulumi.Int(40),
 // 			KeyName:            pulumi.Any(alicloud_key_pair.Default.Key_name),
-// 			NodeCount:          pulumi.Int(1),
+// 			DesiredSize:        pulumi.Int(1),
 // 			SpotStrategy:       pulumi.String("SpotWithPriceLimit"),
 // 			SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
 // 				&cs.NodePoolSpotPriceLimitArgs{
@@ -396,7 +429,7 @@ import (
 // 			SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // 			SystemDiskSize:     pulumi.Int(40),
 // 			InstanceChargeType: pulumi.String("PostPaid"),
-// 			NodeCount:          pulumi.Int(1),
+// 			DesiredSize:        pulumi.Int(1),
 // 			Password:           pulumi.String("Hello1234"),
 // 			Platform:           pulumi.String("Windows"),
 // 			ImageId:            pulumi.Any(window_image_id),
@@ -470,6 +503,8 @@ type NodePool struct {
 	DataDisks NodePoolDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringOutput `pulumi:"deploymentSetId"`
+	// The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+	DesiredSize pulumi.IntOutput `pulumi:"desiredSize"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolOutput `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -501,6 +536,8 @@ type NodePool struct {
 	// The name of node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+	//
+	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode pulumi.StringOutput `pulumi:"nodeNameMode"`
@@ -604,6 +641,8 @@ type nodePoolState struct {
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
+	// The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+	DesiredSize *int `pulumi:"desiredSize"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk *bool `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -635,6 +674,8 @@ type nodePoolState struct {
 	// The name of node pool.
 	Name *string `pulumi:"name"`
 	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+	//
+	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount *int `pulumi:"nodeCount"`
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
@@ -701,6 +742,8 @@ type NodePoolState struct {
 	DataDisks NodePoolDataDiskArrayInput
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringPtrInput
+	// The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+	DesiredSize pulumi.IntPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -732,6 +775,8 @@ type NodePoolState struct {
 	// The name of node pool.
 	Name pulumi.StringPtrInput
 	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+	//
+	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntPtrInput
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode pulumi.StringPtrInput
@@ -802,6 +847,8 @@ type nodePoolArgs struct {
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
+	// The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+	DesiredSize *int `pulumi:"desiredSize"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk *bool `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -833,6 +880,8 @@ type nodePoolArgs struct {
 	// The name of node pool.
 	Name *string `pulumi:"name"`
 	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+	//
+	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount *int `pulumi:"nodeCount"`
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
@@ -896,6 +945,8 @@ type NodePoolArgs struct {
 	DataDisks NodePoolDataDiskArrayInput
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringPtrInput
+	// The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+	DesiredSize pulumi.IntPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -927,6 +978,8 @@ type NodePoolArgs struct {
 	// The name of node pool.
 	Name pulumi.StringPtrInput
 	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+	//
+	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntPtrInput
 	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
 	NodeNameMode pulumi.StringPtrInput

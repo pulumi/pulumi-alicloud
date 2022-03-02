@@ -46,6 +46,14 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string NetworkInterfaceName;
         /// <summary>
+        /// The communication mode of the elastic network card.
+        /// </summary>
+        public readonly string NetworkInterfaceTrafficMode;
+        /// <summary>
+        /// The ID of the account to which the ENIC belongs.
+        /// </summary>
+        public readonly string OwnerId;
+        /// <summary>
         /// The primary private IP address of the ENI.
         /// </summary>
         public readonly string PrimaryIpAddress;
@@ -125,6 +133,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string networkInterfaceName,
 
+            string networkInterfaceTrafficMode,
+
+            string ownerId,
+
             string primaryIpAddress,
 
             string privateIp,
@@ -165,6 +177,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Name = name;
             NetworkInterfaceId = networkInterfaceId;
             NetworkInterfaceName = networkInterfaceName;
+            NetworkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            OwnerId = ownerId;
             PrimaryIpAddress = primaryIpAddress;
             PrivateIp = privateIp;
             PrivateIpAddresses = privateIpAddresses;

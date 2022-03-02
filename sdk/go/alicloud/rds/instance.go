@@ -117,6 +117,8 @@ type Instance struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	Period     pulumi.IntPtrOutput          `pulumi:"period"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs InstancePgHbaConfArrayOutput `pulumi:"pgHbaConfs"`
 	Port       pulumi.StringOutput          `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
@@ -349,6 +351,8 @@ type instanceState struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	Period     *int                `pulumi:"period"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs []InstancePgHbaConf `pulumi:"pgHbaConfs"`
 	Port       *string             `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
@@ -541,6 +545,8 @@ type InstanceState struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayInput
 	Period     pulumi.IntPtrInput
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs InstancePgHbaConfArrayInput
 	Port       pulumi.StringPtrInput
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringPtrInput
@@ -735,6 +741,8 @@ type instanceArgs struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	Period     *int                `pulumi:"period"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs []InstancePgHbaConf `pulumi:"pgHbaConfs"`
 	Port       *string             `pulumi:"port"`
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
@@ -924,6 +932,8 @@ type InstanceArgs struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayInput
 	Period     pulumi.IntPtrInput
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs InstancePgHbaConfArrayInput
 	Port       pulumi.StringPtrInput
 	// The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
 	PrivateIpAddress pulumi.StringPtrInput

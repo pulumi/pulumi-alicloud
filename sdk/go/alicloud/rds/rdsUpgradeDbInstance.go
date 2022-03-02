@@ -183,6 +183,8 @@ type RdsUpgradeDbInstance struct {
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs RdsUpgradeDbInstancePgHbaConfArrayOutput `pulumi:"pgHbaConfs"`
 	// The port.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -379,6 +381,8 @@ type rdsUpgradeDbInstanceState struct {
 	Password *string `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs []RdsUpgradeDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The port.
 	Port *string `pulumi:"port"`
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -520,6 +524,8 @@ type RdsUpgradeDbInstanceState struct {
 	Password pulumi.StringPtrInput
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringPtrInput
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs RdsUpgradeDbInstancePgHbaConfArrayInput
 	// The port.
 	Port pulumi.StringPtrInput
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -663,6 +669,8 @@ type rdsUpgradeDbInstanceArgs struct {
 	Password *string `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs []RdsUpgradeDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The port.
 	Port *string `pulumi:"port"`
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -803,6 +811,8 @@ type RdsUpgradeDbInstanceArgs struct {
 	Password pulumi.StringPtrInput
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringInput
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	PgHbaConfs RdsUpgradeDbInstancePgHbaConfArrayInput
 	// The port.
 	Port pulumi.StringPtrInput
 	// The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.

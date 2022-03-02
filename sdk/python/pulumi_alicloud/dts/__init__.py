@@ -10,6 +10,8 @@ from .get_consumer_channels import *
 from .get_subscription_jobs import *
 from .get_synchronization_jobs import *
 from .job_monitor_rule import *
+from .migration_instance import *
+from .migration_job import *
 from .subscription_job import *
 from .synchronization_instance import *
 from .synchronization_job import *

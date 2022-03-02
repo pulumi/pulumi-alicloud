@@ -86,6 +86,10 @@ export class ConsumerGroup extends pulumi.CustomResource {
      */
     public readonly consumerId!: pulumi.Output<string>;
     /**
+     * The description of the resource.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
     public readonly instanceId!: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class ConsumerGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConsumerGroupState | undefined;
             resourceInputs["consumerId"] = state ? state.consumerId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -119,6 +124,7 @@ export class ConsumerGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instanceId'");
             }
             resourceInputs["consumerId"] = args ? args.consumerId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
@@ -135,6 +141,10 @@ export interface ConsumerGroupState {
      * ID of the consumer group. The length cannot exceed 64 characters.
      */
     consumerId?: pulumi.Input<string>;
+    /**
+     * The description of the resource.
+     */
+    description?: pulumi.Input<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
@@ -153,6 +163,10 @@ export interface ConsumerGroupArgs {
      * ID of the consumer group. The length cannot exceed 64 characters.
      */
     consumerId: pulumi.Input<string>;
+    /**
+     * The description of the resource.
+     */
+    description?: pulumi.Input<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */

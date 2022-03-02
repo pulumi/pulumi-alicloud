@@ -28,9 +28,35 @@ namespace Pulumi.AliCloud.ClickHouse
     /// {
     ///     public MyStack()
     ///     {
-    ///         var @default = new AliCloud.ClickHouse.DbCluster("default", new AliCloud.ClickHouse.DbClusterArgs
+    ///         var defaultRegions = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
     ///         {
+    ///             Current = true,
+    ///         }));
+    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
+    ///         {
+    ///             NameRegex = "default-NODELETING",
+    ///         }));
+    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultRegions).Apply(values =&gt;
+    ///         {
+    ///             var defaultNetworks = values.Item1;
+    ///             var defaultRegions = values.Item2;
+    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
+    ///             {
+    ///                 VpcId = defaultNetworks.Ids?[0],
+    ///                 ZoneId = defaultRegions.Regions?[0]?.ZoneIds?[0]?.ZoneId,
+    ///             }));
+    ///         });
+    ///         var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new AliCloud.ClickHouse.DbClusterArgs
+    ///         {
+    ///             DbClusterVersion = "20.3.10.75",
     ///             Category = "Basic",
+    ///             DbClusterClass = "S8",
+    ///             DbClusterNetworkType = "vpc",
+    ///             DbNodeGroupCount = 1,
+    ///             PaymentType = "PayAsYouGo",
+    ///             DbNodeStorage = "500",
+    ///             StorageType = "cloud_essd",
+    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
     ///             DbClusterAccessWhiteLists = 
     ///             {
     ///                 new AliCloud.ClickHouse.Inputs.DbClusterDbClusterAccessWhiteListArgs
@@ -40,14 +66,6 @@ namespace Pulumi.AliCloud.ClickHouse
     ///                     SecurityIpList = "192.168.0.1",
     ///                 },
     ///             },
-    ///             DbClusterClass = "S8",
-    ///             DbClusterNetworkType = "vpc",
-    ///             DbClusterVersion = "20.3.10.75",
-    ///             DbNodeGroupCount = 1,
-    ///             DbNodeStorage = "500",
-    ///             PaymentType = "PayAsYouGo",
-    ///             StorageType = "cloud_essd",
-    ///             VswitchId = "your_vswitch_id",
     ///         });
     ///     }
     /// 

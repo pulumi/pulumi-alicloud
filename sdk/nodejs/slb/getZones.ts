@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const zonesIds = pulumi.output(alicloud.slb.getZones());
+ * const zonesIds = pulumi.output(alicloud.slb.getZones({
+ *     availableSlbAddressIpVersion: "ipv4",
+ *     availableSlbAddressType: "vpc",
+ * }));
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -31,7 +33,9 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         "availableSlbAddressIpVersion": args.availableSlbAddressIpVersion,
         "availableSlbAddressType": args.availableSlbAddressType,
         "enableDetails": args.enableDetails,
+        "masterZoneId": args.masterZoneId,
         "outputFile": args.outputFile,
+        "slaveZoneId": args.slaveZoneId,
     }, opts);
 }
 
@@ -56,7 +60,15 @@ export interface GetZonesArgs {
      * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */
     enableDetails?: boolean;
+    /**
+     * The primary zone.
+     */
+    masterZoneId?: string;
     outputFile?: string;
+    /**
+     * The secondary zone.
+     */
+    slaveZoneId?: string;
 }
 
 /**
@@ -74,10 +86,18 @@ export interface GetZonesResult {
      */
     readonly id: string;
     /**
-     * A list of zone IDs.
+     * A list of primary zone IDs.
      */
     readonly ids: string[];
+    /**
+     * (Available in 1.157.0+) The primary zone.
+     */
+    readonly masterZoneId?: string;
     readonly outputFile?: string;
+    /**
+     * (Available in 1.157.0+) The secondary zone.
+     */
+    readonly slaveZoneId?: string;
     /**
      * A list of availability zones. Each element contains the following attributes:
      */
@@ -109,5 +129,13 @@ export interface GetZonesOutputArgs {
      * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */
     enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The primary zone.
+     */
+    masterZoneId?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    /**
+     * The secondary zone.
+     */
+    slaveZoneId?: pulumi.Input<string>;
 }

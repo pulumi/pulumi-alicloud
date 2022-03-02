@@ -18,6 +18,7 @@ class TransitRouterPeerAttachmentArgs:
                  peer_transit_router_region_id: pulumi.Input[str],
                  auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 bandwidth_type: Optional[pulumi.Input[str]] = None,
                  cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class TransitRouterPeerAttachmentArgs:
         :param pulumi.Input[str] peer_transit_router_region_id: The region ID of peer transit router.
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled. The system default value is `false`.
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
+        :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
         :param pulumi.Input[str] resource_type: The resource type to attachment. Only support `VR` and default value is `VR`.
@@ -49,6 +51,8 @@ class TransitRouterPeerAttachmentArgs:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if bandwidth_type is not None:
+            pulumi.set(__self__, "bandwidth_type", bandwidth_type)
         if cen_bandwidth_package_id is not None:
             pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
         if dry_run is not None:
@@ -125,6 +129,18 @@ class TransitRouterPeerAttachmentArgs:
     @bandwidth.setter
     def bandwidth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="bandwidthType")
+    def bandwidth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        """
+        return pulumi.get(self, "bandwidth_type")
+
+    @bandwidth_type.setter
+    def bandwidth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_type", value)
 
     @property
     @pulumi.getter(name="cenBandwidthPackageId")
@@ -228,6 +244,7 @@ class _TransitRouterPeerAttachmentState:
     def __init__(__self__, *,
                  auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 bandwidth_type: Optional[pulumi.Input[str]] = None,
                  cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -245,6 +262,7 @@ class _TransitRouterPeerAttachmentState:
         Input properties used for looking up and filtering TransitRouterPeerAttachment resources.
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled. The system default value is `false`.
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
+        :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
@@ -263,6 +281,8 @@ class _TransitRouterPeerAttachmentState:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if bandwidth_type is not None:
+            pulumi.set(__self__, "bandwidth_type", bandwidth_type)
         if cen_bandwidth_package_id is not None:
             pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
         if cen_id is not None:
@@ -313,6 +333,18 @@ class _TransitRouterPeerAttachmentState:
     @bandwidth.setter
     def bandwidth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="bandwidthType")
+    def bandwidth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        """
+        return pulumi.get(self, "bandwidth_type")
+
+    @bandwidth_type.setter
+    def bandwidth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_type", value)
 
     @property
     @pulumi.getter(name="cenBandwidthPackageId")
@@ -478,6 +510,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 bandwidth_type: Optional[pulumi.Input[str]] = None,
                  cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -553,6 +586,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled. The system default value is `false`.
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
+        :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
@@ -647,6 +681,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 bandwidth_type: Optional[pulumi.Input[str]] = None,
                  cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -672,6 +707,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
 
             __props__.__dict__["auto_publish_route_enabled"] = auto_publish_route_enabled
             __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["bandwidth_type"] = bandwidth_type
             __props__.__dict__["cen_bandwidth_package_id"] = cen_bandwidth_package_id
             if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
@@ -703,6 +739,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
+            bandwidth_type: Optional[pulumi.Input[str]] = None,
             cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
             cen_id: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
@@ -725,6 +762,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled. The system default value is `false`.
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
+        :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
@@ -745,6 +783,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
 
         __props__.__dict__["auto_publish_route_enabled"] = auto_publish_route_enabled
         __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["bandwidth_type"] = bandwidth_type
         __props__.__dict__["cen_bandwidth_package_id"] = cen_bandwidth_package_id
         __props__.__dict__["cen_id"] = cen_id
         __props__.__dict__["dry_run"] = dry_run
@@ -775,6 +814,14 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         The bandwidth of the bandwidth package.
         """
         return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="bandwidthType")
+    def bandwidth_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        """
+        return pulumi.get(self, "bandwidth_type")
 
     @property
     @pulumi.getter(name="cenBandwidthPackageId")

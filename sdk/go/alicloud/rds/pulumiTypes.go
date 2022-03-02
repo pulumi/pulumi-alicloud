@@ -110,6 +110,175 @@ func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameter
 	}).(InstanceParameterOutput)
 }
 
+type InstancePgHbaConf struct {
+	// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+	Address string `pulumi:"address"`
+	// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+	Database string `pulumi:"database"`
+	// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+	Mask *string `pulumi:"mask"`
+	// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+	Method string `pulumi:"method"`
+	// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+	Option *string `pulumi:"option"`
+	// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+	PriorityId int `pulumi:"priorityId"`
+	// The type of connection to the instance. Valid values:
+	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	Type string `pulumi:"type"`
+	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+	User string `pulumi:"user"`
+}
+
+// InstancePgHbaConfInput is an input type that accepts InstancePgHbaConfArgs and InstancePgHbaConfOutput values.
+// You can construct a concrete instance of `InstancePgHbaConfInput` via:
+//
+//          InstancePgHbaConfArgs{...}
+type InstancePgHbaConfInput interface {
+	pulumi.Input
+
+	ToInstancePgHbaConfOutput() InstancePgHbaConfOutput
+	ToInstancePgHbaConfOutputWithContext(context.Context) InstancePgHbaConfOutput
+}
+
+type InstancePgHbaConfArgs struct {
+	// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+	Database pulumi.StringInput `pulumi:"database"`
+	// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+	Mask pulumi.StringPtrInput `pulumi:"mask"`
+	// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+	Option pulumi.StringPtrInput `pulumi:"option"`
+	// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+	PriorityId pulumi.IntInput `pulumi:"priorityId"`
+	// The type of connection to the instance. Valid values:
+	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (InstancePgHbaConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePgHbaConf)(nil)).Elem()
+}
+
+func (i InstancePgHbaConfArgs) ToInstancePgHbaConfOutput() InstancePgHbaConfOutput {
+	return i.ToInstancePgHbaConfOutputWithContext(context.Background())
+}
+
+func (i InstancePgHbaConfArgs) ToInstancePgHbaConfOutputWithContext(ctx context.Context) InstancePgHbaConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePgHbaConfOutput)
+}
+
+// InstancePgHbaConfArrayInput is an input type that accepts InstancePgHbaConfArray and InstancePgHbaConfArrayOutput values.
+// You can construct a concrete instance of `InstancePgHbaConfArrayInput` via:
+//
+//          InstancePgHbaConfArray{ InstancePgHbaConfArgs{...} }
+type InstancePgHbaConfArrayInput interface {
+	pulumi.Input
+
+	ToInstancePgHbaConfArrayOutput() InstancePgHbaConfArrayOutput
+	ToInstancePgHbaConfArrayOutputWithContext(context.Context) InstancePgHbaConfArrayOutput
+}
+
+type InstancePgHbaConfArray []InstancePgHbaConfInput
+
+func (InstancePgHbaConfArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstancePgHbaConf)(nil)).Elem()
+}
+
+func (i InstancePgHbaConfArray) ToInstancePgHbaConfArrayOutput() InstancePgHbaConfArrayOutput {
+	return i.ToInstancePgHbaConfArrayOutputWithContext(context.Background())
+}
+
+func (i InstancePgHbaConfArray) ToInstancePgHbaConfArrayOutputWithContext(ctx context.Context) InstancePgHbaConfArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePgHbaConfArrayOutput)
+}
+
+type InstancePgHbaConfOutput struct{ *pulumi.OutputState }
+
+func (InstancePgHbaConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePgHbaConf)(nil)).Elem()
+}
+
+func (o InstancePgHbaConfOutput) ToInstancePgHbaConfOutput() InstancePgHbaConfOutput {
+	return o
+}
+
+func (o InstancePgHbaConfOutput) ToInstancePgHbaConfOutputWithContext(ctx context.Context) InstancePgHbaConfOutput {
+	return o
+}
+
+// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+func (o InstancePgHbaConfOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePgHbaConf) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+func (o InstancePgHbaConfOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePgHbaConf) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+func (o InstancePgHbaConfOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePgHbaConf) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+func (o InstancePgHbaConfOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePgHbaConf) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+func (o InstancePgHbaConfOutput) Option() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePgHbaConf) *string { return v.Option }).(pulumi.StringPtrOutput)
+}
+
+// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+func (o InstancePgHbaConfOutput) PriorityId() pulumi.IntOutput {
+	return o.ApplyT(func(v InstancePgHbaConf) int { return v.PriorityId }).(pulumi.IntOutput)
+}
+
+// The type of connection to the instance. Valid values:
+// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+func (o InstancePgHbaConfOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePgHbaConf) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+func (o InstancePgHbaConfOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePgHbaConf) string { return v.User }).(pulumi.StringOutput)
+}
+
+type InstancePgHbaConfArrayOutput struct{ *pulumi.OutputState }
+
+func (InstancePgHbaConfArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstancePgHbaConf)(nil)).Elem()
+}
+
+func (o InstancePgHbaConfArrayOutput) ToInstancePgHbaConfArrayOutput() InstancePgHbaConfArrayOutput {
+	return o
+}
+
+func (o InstancePgHbaConfArrayOutput) ToInstancePgHbaConfArrayOutputWithContext(ctx context.Context) InstancePgHbaConfArrayOutput {
+	return o
+}
+
+func (o InstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) InstancePgHbaConfOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstancePgHbaConf {
+		return vs[0].([]InstancePgHbaConf)[vs[1].(int)]
+	}).(InstancePgHbaConfOutput)
+}
+
 type RdsCloneDbInstanceParameter struct {
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
@@ -208,6 +377,175 @@ func (o RdsCloneDbInstanceParameterArrayOutput) Index(i pulumi.IntInput) RdsClon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsCloneDbInstanceParameter {
 		return vs[0].([]RdsCloneDbInstanceParameter)[vs[1].(int)]
 	}).(RdsCloneDbInstanceParameterOutput)
+}
+
+type RdsCloneDbInstancePgHbaConf struct {
+	// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+	Address string `pulumi:"address"`
+	// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+	Database string `pulumi:"database"`
+	// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+	Mask *string `pulumi:"mask"`
+	// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+	Method string `pulumi:"method"`
+	// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+	Option *string `pulumi:"option"`
+	// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+	PriorityId int `pulumi:"priorityId"`
+	// The type of connection to the instance. Valid values:
+	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	Type string `pulumi:"type"`
+	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+	User string `pulumi:"user"`
+}
+
+// RdsCloneDbInstancePgHbaConfInput is an input type that accepts RdsCloneDbInstancePgHbaConfArgs and RdsCloneDbInstancePgHbaConfOutput values.
+// You can construct a concrete instance of `RdsCloneDbInstancePgHbaConfInput` via:
+//
+//          RdsCloneDbInstancePgHbaConfArgs{...}
+type RdsCloneDbInstancePgHbaConfInput interface {
+	pulumi.Input
+
+	ToRdsCloneDbInstancePgHbaConfOutput() RdsCloneDbInstancePgHbaConfOutput
+	ToRdsCloneDbInstancePgHbaConfOutputWithContext(context.Context) RdsCloneDbInstancePgHbaConfOutput
+}
+
+type RdsCloneDbInstancePgHbaConfArgs struct {
+	// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+	Database pulumi.StringInput `pulumi:"database"`
+	// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+	Mask pulumi.StringPtrInput `pulumi:"mask"`
+	// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+	Option pulumi.StringPtrInput `pulumi:"option"`
+	// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+	PriorityId pulumi.IntInput `pulumi:"priorityId"`
+	// The type of connection to the instance. Valid values:
+	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (RdsCloneDbInstancePgHbaConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsCloneDbInstancePgHbaConf)(nil)).Elem()
+}
+
+func (i RdsCloneDbInstancePgHbaConfArgs) ToRdsCloneDbInstancePgHbaConfOutput() RdsCloneDbInstancePgHbaConfOutput {
+	return i.ToRdsCloneDbInstancePgHbaConfOutputWithContext(context.Background())
+}
+
+func (i RdsCloneDbInstancePgHbaConfArgs) ToRdsCloneDbInstancePgHbaConfOutputWithContext(ctx context.Context) RdsCloneDbInstancePgHbaConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstancePgHbaConfOutput)
+}
+
+// RdsCloneDbInstancePgHbaConfArrayInput is an input type that accepts RdsCloneDbInstancePgHbaConfArray and RdsCloneDbInstancePgHbaConfArrayOutput values.
+// You can construct a concrete instance of `RdsCloneDbInstancePgHbaConfArrayInput` via:
+//
+//          RdsCloneDbInstancePgHbaConfArray{ RdsCloneDbInstancePgHbaConfArgs{...} }
+type RdsCloneDbInstancePgHbaConfArrayInput interface {
+	pulumi.Input
+
+	ToRdsCloneDbInstancePgHbaConfArrayOutput() RdsCloneDbInstancePgHbaConfArrayOutput
+	ToRdsCloneDbInstancePgHbaConfArrayOutputWithContext(context.Context) RdsCloneDbInstancePgHbaConfArrayOutput
+}
+
+type RdsCloneDbInstancePgHbaConfArray []RdsCloneDbInstancePgHbaConfInput
+
+func (RdsCloneDbInstancePgHbaConfArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsCloneDbInstancePgHbaConf)(nil)).Elem()
+}
+
+func (i RdsCloneDbInstancePgHbaConfArray) ToRdsCloneDbInstancePgHbaConfArrayOutput() RdsCloneDbInstancePgHbaConfArrayOutput {
+	return i.ToRdsCloneDbInstancePgHbaConfArrayOutputWithContext(context.Background())
+}
+
+func (i RdsCloneDbInstancePgHbaConfArray) ToRdsCloneDbInstancePgHbaConfArrayOutputWithContext(ctx context.Context) RdsCloneDbInstancePgHbaConfArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstancePgHbaConfArrayOutput)
+}
+
+type RdsCloneDbInstancePgHbaConfOutput struct{ *pulumi.OutputState }
+
+func (RdsCloneDbInstancePgHbaConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsCloneDbInstancePgHbaConf)(nil)).Elem()
+}
+
+func (o RdsCloneDbInstancePgHbaConfOutput) ToRdsCloneDbInstancePgHbaConfOutput() RdsCloneDbInstancePgHbaConfOutput {
+	return o
+}
+
+func (o RdsCloneDbInstancePgHbaConfOutput) ToRdsCloneDbInstancePgHbaConfOutputWithContext(ctx context.Context) RdsCloneDbInstancePgHbaConfOutput {
+	return o
+}
+
+// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+func (o RdsCloneDbInstancePgHbaConfOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+func (o RdsCloneDbInstancePgHbaConfOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+func (o RdsCloneDbInstancePgHbaConfOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+func (o RdsCloneDbInstancePgHbaConfOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+func (o RdsCloneDbInstancePgHbaConfOutput) Option() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) *string { return v.Option }).(pulumi.StringPtrOutput)
+}
+
+// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+func (o RdsCloneDbInstancePgHbaConfOutput) PriorityId() pulumi.IntOutput {
+	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) int { return v.PriorityId }).(pulumi.IntOutput)
+}
+
+// The type of connection to the instance. Valid values:
+// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+func (o RdsCloneDbInstancePgHbaConfOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+func (o RdsCloneDbInstancePgHbaConfOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) string { return v.User }).(pulumi.StringOutput)
+}
+
+type RdsCloneDbInstancePgHbaConfArrayOutput struct{ *pulumi.OutputState }
+
+func (RdsCloneDbInstancePgHbaConfArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsCloneDbInstancePgHbaConf)(nil)).Elem()
+}
+
+func (o RdsCloneDbInstancePgHbaConfArrayOutput) ToRdsCloneDbInstancePgHbaConfArrayOutput() RdsCloneDbInstancePgHbaConfArrayOutput {
+	return o
+}
+
+func (o RdsCloneDbInstancePgHbaConfArrayOutput) ToRdsCloneDbInstancePgHbaConfArrayOutputWithContext(ctx context.Context) RdsCloneDbInstancePgHbaConfArrayOutput {
+	return o
+}
+
+func (o RdsCloneDbInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) RdsCloneDbInstancePgHbaConfOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsCloneDbInstancePgHbaConf {
+		return vs[0].([]RdsCloneDbInstancePgHbaConf)[vs[1].(int)]
+	}).(RdsCloneDbInstancePgHbaConfOutput)
 }
 
 type RdsParameterGroupParamDetail struct {
@@ -414,6 +752,175 @@ func (o RdsUpgradeDbInstanceParameterArrayOutput) Index(i pulumi.IntInput) RdsUp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsUpgradeDbInstanceParameter {
 		return vs[0].([]RdsUpgradeDbInstanceParameter)[vs[1].(int)]
 	}).(RdsUpgradeDbInstanceParameterOutput)
+}
+
+type RdsUpgradeDbInstancePgHbaConf struct {
+	// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+	Address string `pulumi:"address"`
+	// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+	Database string `pulumi:"database"`
+	// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+	Mask *string `pulumi:"mask"`
+	// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+	Method string `pulumi:"method"`
+	// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+	Option *string `pulumi:"option"`
+	// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+	PriorityId int `pulumi:"priorityId"`
+	// The type of connection to the instance. Valid values:
+	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	Type string `pulumi:"type"`
+	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+	User string `pulumi:"user"`
+}
+
+// RdsUpgradeDbInstancePgHbaConfInput is an input type that accepts RdsUpgradeDbInstancePgHbaConfArgs and RdsUpgradeDbInstancePgHbaConfOutput values.
+// You can construct a concrete instance of `RdsUpgradeDbInstancePgHbaConfInput` via:
+//
+//          RdsUpgradeDbInstancePgHbaConfArgs{...}
+type RdsUpgradeDbInstancePgHbaConfInput interface {
+	pulumi.Input
+
+	ToRdsUpgradeDbInstancePgHbaConfOutput() RdsUpgradeDbInstancePgHbaConfOutput
+	ToRdsUpgradeDbInstancePgHbaConfOutputWithContext(context.Context) RdsUpgradeDbInstancePgHbaConfOutput
+}
+
+type RdsUpgradeDbInstancePgHbaConfArgs struct {
+	// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+	Database pulumi.StringInput `pulumi:"database"`
+	// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+	Mask pulumi.StringPtrInput `pulumi:"mask"`
+	// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+	Option pulumi.StringPtrInput `pulumi:"option"`
+	// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+	PriorityId pulumi.IntInput `pulumi:"priorityId"`
+	// The type of connection to the instance. Valid values:
+	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (RdsUpgradeDbInstancePgHbaConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsUpgradeDbInstancePgHbaConf)(nil)).Elem()
+}
+
+func (i RdsUpgradeDbInstancePgHbaConfArgs) ToRdsUpgradeDbInstancePgHbaConfOutput() RdsUpgradeDbInstancePgHbaConfOutput {
+	return i.ToRdsUpgradeDbInstancePgHbaConfOutputWithContext(context.Background())
+}
+
+func (i RdsUpgradeDbInstancePgHbaConfArgs) ToRdsUpgradeDbInstancePgHbaConfOutputWithContext(ctx context.Context) RdsUpgradeDbInstancePgHbaConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstancePgHbaConfOutput)
+}
+
+// RdsUpgradeDbInstancePgHbaConfArrayInput is an input type that accepts RdsUpgradeDbInstancePgHbaConfArray and RdsUpgradeDbInstancePgHbaConfArrayOutput values.
+// You can construct a concrete instance of `RdsUpgradeDbInstancePgHbaConfArrayInput` via:
+//
+//          RdsUpgradeDbInstancePgHbaConfArray{ RdsUpgradeDbInstancePgHbaConfArgs{...} }
+type RdsUpgradeDbInstancePgHbaConfArrayInput interface {
+	pulumi.Input
+
+	ToRdsUpgradeDbInstancePgHbaConfArrayOutput() RdsUpgradeDbInstancePgHbaConfArrayOutput
+	ToRdsUpgradeDbInstancePgHbaConfArrayOutputWithContext(context.Context) RdsUpgradeDbInstancePgHbaConfArrayOutput
+}
+
+type RdsUpgradeDbInstancePgHbaConfArray []RdsUpgradeDbInstancePgHbaConfInput
+
+func (RdsUpgradeDbInstancePgHbaConfArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsUpgradeDbInstancePgHbaConf)(nil)).Elem()
+}
+
+func (i RdsUpgradeDbInstancePgHbaConfArray) ToRdsUpgradeDbInstancePgHbaConfArrayOutput() RdsUpgradeDbInstancePgHbaConfArrayOutput {
+	return i.ToRdsUpgradeDbInstancePgHbaConfArrayOutputWithContext(context.Background())
+}
+
+func (i RdsUpgradeDbInstancePgHbaConfArray) ToRdsUpgradeDbInstancePgHbaConfArrayOutputWithContext(ctx context.Context) RdsUpgradeDbInstancePgHbaConfArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstancePgHbaConfArrayOutput)
+}
+
+type RdsUpgradeDbInstancePgHbaConfOutput struct{ *pulumi.OutputState }
+
+func (RdsUpgradeDbInstancePgHbaConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsUpgradeDbInstancePgHbaConf)(nil)).Elem()
+}
+
+func (o RdsUpgradeDbInstancePgHbaConfOutput) ToRdsUpgradeDbInstancePgHbaConfOutput() RdsUpgradeDbInstancePgHbaConfOutput {
+	return o
+}
+
+func (o RdsUpgradeDbInstancePgHbaConfOutput) ToRdsUpgradeDbInstancePgHbaConfOutputWithContext(ctx context.Context) RdsUpgradeDbInstancePgHbaConfOutput {
+	return o
+}
+
+// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+func (o RdsUpgradeDbInstancePgHbaConfOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+func (o RdsUpgradeDbInstancePgHbaConfOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+func (o RdsUpgradeDbInstancePgHbaConfOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+func (o RdsUpgradeDbInstancePgHbaConfOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+func (o RdsUpgradeDbInstancePgHbaConfOutput) Option() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) *string { return v.Option }).(pulumi.StringPtrOutput)
+}
+
+// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+func (o RdsUpgradeDbInstancePgHbaConfOutput) PriorityId() pulumi.IntOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) int { return v.PriorityId }).(pulumi.IntOutput)
+}
+
+// The type of connection to the instance. Valid values:
+// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+func (o RdsUpgradeDbInstancePgHbaConfOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+func (o RdsUpgradeDbInstancePgHbaConfOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) string { return v.User }).(pulumi.StringOutput)
+}
+
+type RdsUpgradeDbInstancePgHbaConfArrayOutput struct{ *pulumi.OutputState }
+
+func (RdsUpgradeDbInstancePgHbaConfArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsUpgradeDbInstancePgHbaConf)(nil)).Elem()
+}
+
+func (o RdsUpgradeDbInstancePgHbaConfArrayOutput) ToRdsUpgradeDbInstancePgHbaConfArrayOutput() RdsUpgradeDbInstancePgHbaConfArrayOutput {
+	return o
+}
+
+func (o RdsUpgradeDbInstancePgHbaConfArrayOutput) ToRdsUpgradeDbInstancePgHbaConfArrayOutputWithContext(ctx context.Context) RdsUpgradeDbInstancePgHbaConfArrayOutput {
+	return o
+}
+
+func (o RdsUpgradeDbInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) RdsUpgradeDbInstancePgHbaConfOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsUpgradeDbInstancePgHbaConf {
+		return vs[0].([]RdsUpgradeDbInstancePgHbaConf)[vs[1].(int)]
+	}).(RdsUpgradeDbInstancePgHbaConfOutput)
 }
 
 type ReadOnlyInstanceParameter struct {
@@ -2772,12 +3279,18 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterInput)(nil)).Elem(), InstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePgHbaConfInput)(nil)).Elem(), InstancePgHbaConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePgHbaConfArrayInput)(nil)).Elem(), InstancePgHbaConfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceParameterInput)(nil)).Elem(), RdsCloneDbInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceParameterArrayInput)(nil)).Elem(), RdsCloneDbInstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstancePgHbaConfInput)(nil)).Elem(), RdsCloneDbInstancePgHbaConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstancePgHbaConfArrayInput)(nil)).Elem(), RdsCloneDbInstancePgHbaConfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupParamDetailInput)(nil)).Elem(), RdsParameterGroupParamDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupParamDetailArrayInput)(nil)).Elem(), RdsParameterGroupParamDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsUpgradeDbInstanceParameterInput)(nil)).Elem(), RdsUpgradeDbInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsUpgradeDbInstanceParameterArrayInput)(nil)).Elem(), RdsUpgradeDbInstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsUpgradeDbInstancePgHbaConfInput)(nil)).Elem(), RdsUpgradeDbInstancePgHbaConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsUpgradeDbInstancePgHbaConfArrayInput)(nil)).Elem(), RdsUpgradeDbInstancePgHbaConfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstanceParameterInput)(nil)).Elem(), ReadOnlyInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstanceParameterArrayInput)(nil)).Elem(), ReadOnlyInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
@@ -2807,12 +3320,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(InstanceParameterOutput{})
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(InstancePgHbaConfOutput{})
+	pulumi.RegisterOutputType(InstancePgHbaConfArrayOutput{})
 	pulumi.RegisterOutputType(RdsCloneDbInstanceParameterOutput{})
 	pulumi.RegisterOutputType(RdsCloneDbInstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(RdsCloneDbInstancePgHbaConfOutput{})
+	pulumi.RegisterOutputType(RdsCloneDbInstancePgHbaConfArrayOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailArrayOutput{})
 	pulumi.RegisterOutputType(RdsUpgradeDbInstanceParameterOutput{})
 	pulumi.RegisterOutputType(RdsUpgradeDbInstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(RdsUpgradeDbInstancePgHbaConfOutput{})
+	pulumi.RegisterOutputType(RdsUpgradeDbInstancePgHbaConfArrayOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})

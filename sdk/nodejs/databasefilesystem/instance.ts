@@ -64,8 +64,6 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
-    public readonly attachMode!: pulumi.Output<string | undefined>;
-    public readonly attachPoint!: pulumi.Output<string | undefined>;
     /**
      * The type of the Database file system. Valid values: `standard`.
      */
@@ -75,7 +73,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly deleteSnapshot!: pulumi.Output<boolean | undefined>;
     /**
-     * The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
+     * The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+     *
+     * @deprecated Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
      */
     public readonly ecsLists!: pulumi.Output<outputs.databasefilesystem.InstanceEcsList[] | undefined>;
     /**
@@ -111,8 +111,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
-    public readonly usedScene!: pulumi.Output<string | undefined>;
     /**
      * The Zone ID of the Database file system.
      */
@@ -131,8 +133,6 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["attachMode"] = state ? state.attachMode : undefined;
-            resourceInputs["attachPoint"] = state ? state.attachPoint : undefined;
             resourceInputs["category"] = state ? state.category : undefined;
             resourceInputs["deleteSnapshot"] = state ? state.deleteSnapshot : undefined;
             resourceInputs["ecsLists"] = state ? state.ecsLists : undefined;
@@ -146,7 +146,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["usedScene"] = state ? state.usedScene : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -159,8 +158,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["attachMode"] = args ? args.attachMode : undefined;
-            resourceInputs["attachPoint"] = args ? args.attachPoint : undefined;
             resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["deleteSnapshot"] = args ? args.deleteSnapshot : undefined;
             resourceInputs["ecsLists"] = args ? args.ecsLists : undefined;
@@ -173,7 +170,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["usedScene"] = args ? args.usedScene : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -186,8 +182,6 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
-    attachMode?: pulumi.Input<string>;
-    attachPoint?: pulumi.Input<string>;
     /**
      * The type of the Database file system. Valid values: `standard`.
      */
@@ -197,7 +191,9 @@ export interface InstanceState {
      */
     deleteSnapshot?: pulumi.Input<boolean>;
     /**
-     * The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
+     * The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+     *
+     * @deprecated Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
      */
     ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[]>;
     /**
@@ -233,8 +229,10 @@ export interface InstanceState {
      */
     snapshotId?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
-    usedScene?: pulumi.Input<string>;
     /**
      * The Zone ID of the Database file system.
      */
@@ -245,8 +243,6 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    attachMode?: pulumi.Input<string>;
-    attachPoint?: pulumi.Input<string>;
     /**
      * The type of the Database file system. Valid values: `standard`.
      */
@@ -256,7 +252,9 @@ export interface InstanceArgs {
      */
     deleteSnapshot?: pulumi.Input<boolean>;
     /**
-     * The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
+     * The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+     *
+     * @deprecated Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
      */
     ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[]>;
     /**
@@ -291,8 +289,10 @@ export interface InstanceArgs {
      * The snapshot id of the Database file system.
      */
     snapshotId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
-    usedScene?: pulumi.Input<string>;
     /**
      * The Zone ID of the Database file system.
      */

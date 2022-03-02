@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:databasefilesystem/instance:Instance":
 		r = &Instance{}
+	case "alicloud:databasefilesystem/instanceAttachment:InstanceAttachment":
+		r = &InstanceAttachment{}
+	case "alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole":
+		r = &ServiceLinkedRole{}
+	case "alicloud:databasefilesystem/snapshot:Snapshot":
+		r = &Snapshot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +45,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"databasefilesystem/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"databasefilesystem/instanceAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"databasefilesystem/serviceLinkedRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"databasefilesystem/snapshot",
 		&module{version},
 	)
 }

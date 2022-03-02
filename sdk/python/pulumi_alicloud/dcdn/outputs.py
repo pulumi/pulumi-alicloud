@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'DomainConfigFunctionArg',
     'DomainSource',
+    'IpaDomainSource',
     'GetDomainsDomainResult',
     'GetDomainsDomainSourceResult',
 ]
@@ -131,6 +132,68 @@ class DomainSource(dict):
     def weight(self) -> Optional[str]:
         """
         The weight of the origin if multiple origins are specified. Default to `10`.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class IpaDomainSource(dict):
+    def __init__(__self__, *,
+                 content: str,
+                 port: int,
+                 priority: str,
+                 type: str,
+                 weight: int):
+        """
+        :param str content: The address of the origin server. You can specify an IP address or a domain name.
+        :param int port: The custom port number. Valid values: `0` to `65535`.
+        :param str priority: The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
+        :param str type: The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+        :param int weight: The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        The address of the origin server. You can specify an IP address or a domain name.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The custom port number. Valid values: `0` to `65535`.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> str:
+        """
+        The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
         """
         return pulumi.get(self, "weight")
 
