@@ -7019,6 +7019,10 @@ type GetEcsNetworkInterfacesInterface struct {
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
 	// The network interface name.
 	NetworkInterfaceName string `pulumi:"networkInterfaceName"`
+	// The communication mode of the elastic network card.
+	NetworkInterfaceTrafficMode string `pulumi:"networkInterfaceTrafficMode"`
+	// The ID of the account to which the ENIC belongs.
+	OwnerId string `pulumi:"ownerId"`
 	// The primary private IP address of the ENI.
 	PrimaryIpAddress string `pulumi:"primaryIpAddress"`
 	// The primary private IP address of the ENI.
@@ -7080,6 +7084,10 @@ type GetEcsNetworkInterfacesInterfaceArgs struct {
 	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
 	// The network interface name.
 	NetworkInterfaceName pulumi.StringInput `pulumi:"networkInterfaceName"`
+	// The communication mode of the elastic network card.
+	NetworkInterfaceTrafficMode pulumi.StringInput `pulumi:"networkInterfaceTrafficMode"`
+	// The ID of the account to which the ENIC belongs.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
 	// The primary private IP address of the ENI.
 	PrimaryIpAddress pulumi.StringInput `pulumi:"primaryIpAddress"`
 	// The primary private IP address of the ENI.
@@ -7202,6 +7210,16 @@ func (o GetEcsNetworkInterfacesInterfaceOutput) NetworkInterfaceId() pulumi.Stri
 // The network interface name.
 func (o GetEcsNetworkInterfacesInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+// The communication mode of the elastic network card.
+func (o GetEcsNetworkInterfacesInterfaceOutput) NetworkInterfaceTrafficMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.NetworkInterfaceTrafficMode }).(pulumi.StringOutput)
+}
+
+// The ID of the account to which the ENIC belongs.
+func (o GetEcsNetworkInterfacesInterfaceOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.OwnerId }).(pulumi.StringOutput)
 }
 
 // The primary private IP address of the ENI.
@@ -11091,10 +11109,12 @@ type GetNetworkInterfacesInterface struct {
 	// MAC address of the ENI.
 	Mac string `pulumi:"mac"`
 	// Name of the ENI.
-	Name                 string `pulumi:"name"`
-	NetworkInterfaceId   string `pulumi:"networkInterfaceId"`
-	NetworkInterfaceName string `pulumi:"networkInterfaceName"`
-	PrimaryIpAddress     string `pulumi:"primaryIpAddress"`
+	Name                        string `pulumi:"name"`
+	NetworkInterfaceId          string `pulumi:"networkInterfaceId"`
+	NetworkInterfaceName        string `pulumi:"networkInterfaceName"`
+	NetworkInterfaceTrafficMode string `pulumi:"networkInterfaceTrafficMode"`
+	OwnerId                     string `pulumi:"ownerId"`
+	PrimaryIpAddress            string `pulumi:"primaryIpAddress"`
 	// Primary private IP of the ENI.
 	PrivateIp          string   `pulumi:"privateIp"`
 	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
@@ -11144,10 +11164,12 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	// MAC address of the ENI.
 	Mac pulumi.StringInput `pulumi:"mac"`
 	// Name of the ENI.
-	Name                 pulumi.StringInput `pulumi:"name"`
-	NetworkInterfaceId   pulumi.StringInput `pulumi:"networkInterfaceId"`
-	NetworkInterfaceName pulumi.StringInput `pulumi:"networkInterfaceName"`
-	PrimaryIpAddress     pulumi.StringInput `pulumi:"primaryIpAddress"`
+	Name                        pulumi.StringInput `pulumi:"name"`
+	NetworkInterfaceId          pulumi.StringInput `pulumi:"networkInterfaceId"`
+	NetworkInterfaceName        pulumi.StringInput `pulumi:"networkInterfaceName"`
+	NetworkInterfaceTrafficMode pulumi.StringInput `pulumi:"networkInterfaceTrafficMode"`
+	OwnerId                     pulumi.StringInput `pulumi:"ownerId"`
+	PrimaryIpAddress            pulumi.StringInput `pulumi:"primaryIpAddress"`
 	// Primary private IP of the ENI.
 	PrivateIp          pulumi.StringInput      `pulumi:"privateIp"`
 	PrivateIpAddresses pulumi.StringArrayInput `pulumi:"privateIpAddresses"`
@@ -11261,6 +11283,14 @@ func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceId() pulumi.StringO
 
 func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceTrafficMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceTrafficMode }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.OwnerId }).(pulumi.StringOutput)
 }
 
 func (o GetNetworkInterfacesInterfaceOutput) PrimaryIpAddress() pulumi.StringOutput {

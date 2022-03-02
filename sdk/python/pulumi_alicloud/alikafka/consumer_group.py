@@ -15,15 +15,19 @@ class ConsumerGroupArgs:
     def __init__(__self__, *,
                  consumer_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a ConsumerGroup resource.
         :param pulumi.Input[str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[str] description: The description of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "consumer_id", consumer_id)
         pulumi.set(__self__, "instance_id", instance_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -53,6 +57,18 @@ class ConsumerGroupArgs:
 
     @property
     @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
@@ -68,16 +84,20 @@ class ConsumerGroupArgs:
 class _ConsumerGroupState:
     def __init__(__self__, *,
                  consumer_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering ConsumerGroup resources.
         :param pulumi.Input[str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] description: The description of the resource.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if consumer_id is not None:
             pulumi.set(__self__, "consumer_id", consumer_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if tags is not None:
@@ -94,6 +114,18 @@ class _ConsumerGroupState:
     @consumer_id.setter
     def consumer_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "consumer_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -126,6 +158,7 @@ class ConsumerGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  consumer_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -178,6 +211,7 @@ class ConsumerGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] description: The description of the resource.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -249,6 +283,7 @@ class ConsumerGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  consumer_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -266,6 +301,7 @@ class ConsumerGroup(pulumi.CustomResource):
             if consumer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consumer_id'")
             __props__.__dict__["consumer_id"] = consumer_id
+            __props__.__dict__["description"] = description
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -281,6 +317,7 @@ class ConsumerGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             consumer_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ConsumerGroup':
         """
@@ -291,6 +328,7 @@ class ConsumerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
+        :param pulumi.Input[str] description: The description of the resource.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -299,6 +337,7 @@ class ConsumerGroup(pulumi.CustomResource):
         __props__ = _ConsumerGroupState.__new__(_ConsumerGroupState)
 
         __props__.__dict__["consumer_id"] = consumer_id
+        __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["tags"] = tags
         return ConsumerGroup(resource_name, opts=opts, __props__=__props__)
@@ -310,6 +349,14 @@ class ConsumerGroup(pulumi.CustomResource):
         ID of the consumer group. The length cannot exceed 64 characters.
         """
         return pulumi.get(self, "consumer_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the resource.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="instanceId")

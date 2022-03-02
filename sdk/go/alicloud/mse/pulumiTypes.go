@@ -10,6 +10,166 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GatewaySlbList struct {
+	// The associate id.
+	AssociateId *string `pulumi:"associateId"`
+	// The Mode of the gateway slb.
+	GatewaySlbMode *string `pulumi:"gatewaySlbMode"`
+	// The Status of the gateway slb.
+	GatewaySlbStatus *string `pulumi:"gatewaySlbStatus"`
+	// The creation time of the gateway slb.
+	GmtCreate *string `pulumi:"gmtCreate"`
+	// The ID of the gateway slb.
+	SlbId *string `pulumi:"slbId"`
+	// The ip of the gateway slb.
+	SlbIp *string `pulumi:"slbIp"`
+	// The port of the gateway slb.
+	SlbPort *string `pulumi:"slbPort"`
+	// The type of the gateway slb.
+	Type *string `pulumi:"type"`
+}
+
+// GatewaySlbListInput is an input type that accepts GatewaySlbListArgs and GatewaySlbListOutput values.
+// You can construct a concrete instance of `GatewaySlbListInput` via:
+//
+//          GatewaySlbListArgs{...}
+type GatewaySlbListInput interface {
+	pulumi.Input
+
+	ToGatewaySlbListOutput() GatewaySlbListOutput
+	ToGatewaySlbListOutputWithContext(context.Context) GatewaySlbListOutput
+}
+
+type GatewaySlbListArgs struct {
+	// The associate id.
+	AssociateId pulumi.StringPtrInput `pulumi:"associateId"`
+	// The Mode of the gateway slb.
+	GatewaySlbMode pulumi.StringPtrInput `pulumi:"gatewaySlbMode"`
+	// The Status of the gateway slb.
+	GatewaySlbStatus pulumi.StringPtrInput `pulumi:"gatewaySlbStatus"`
+	// The creation time of the gateway slb.
+	GmtCreate pulumi.StringPtrInput `pulumi:"gmtCreate"`
+	// The ID of the gateway slb.
+	SlbId pulumi.StringPtrInput `pulumi:"slbId"`
+	// The ip of the gateway slb.
+	SlbIp pulumi.StringPtrInput `pulumi:"slbIp"`
+	// The port of the gateway slb.
+	SlbPort pulumi.StringPtrInput `pulumi:"slbPort"`
+	// The type of the gateway slb.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GatewaySlbListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaySlbList)(nil)).Elem()
+}
+
+func (i GatewaySlbListArgs) ToGatewaySlbListOutput() GatewaySlbListOutput {
+	return i.ToGatewaySlbListOutputWithContext(context.Background())
+}
+
+func (i GatewaySlbListArgs) ToGatewaySlbListOutputWithContext(ctx context.Context) GatewaySlbListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySlbListOutput)
+}
+
+// GatewaySlbListArrayInput is an input type that accepts GatewaySlbListArray and GatewaySlbListArrayOutput values.
+// You can construct a concrete instance of `GatewaySlbListArrayInput` via:
+//
+//          GatewaySlbListArray{ GatewaySlbListArgs{...} }
+type GatewaySlbListArrayInput interface {
+	pulumi.Input
+
+	ToGatewaySlbListArrayOutput() GatewaySlbListArrayOutput
+	ToGatewaySlbListArrayOutputWithContext(context.Context) GatewaySlbListArrayOutput
+}
+
+type GatewaySlbListArray []GatewaySlbListInput
+
+func (GatewaySlbListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewaySlbList)(nil)).Elem()
+}
+
+func (i GatewaySlbListArray) ToGatewaySlbListArrayOutput() GatewaySlbListArrayOutput {
+	return i.ToGatewaySlbListArrayOutputWithContext(context.Background())
+}
+
+func (i GatewaySlbListArray) ToGatewaySlbListArrayOutputWithContext(ctx context.Context) GatewaySlbListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySlbListArrayOutput)
+}
+
+type GatewaySlbListOutput struct{ *pulumi.OutputState }
+
+func (GatewaySlbListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaySlbList)(nil)).Elem()
+}
+
+func (o GatewaySlbListOutput) ToGatewaySlbListOutput() GatewaySlbListOutput {
+	return o
+}
+
+func (o GatewaySlbListOutput) ToGatewaySlbListOutputWithContext(ctx context.Context) GatewaySlbListOutput {
+	return o
+}
+
+// The associate id.
+func (o GatewaySlbListOutput) AssociateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySlbList) *string { return v.AssociateId }).(pulumi.StringPtrOutput)
+}
+
+// The Mode of the gateway slb.
+func (o GatewaySlbListOutput) GatewaySlbMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySlbList) *string { return v.GatewaySlbMode }).(pulumi.StringPtrOutput)
+}
+
+// The Status of the gateway slb.
+func (o GatewaySlbListOutput) GatewaySlbStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySlbList) *string { return v.GatewaySlbStatus }).(pulumi.StringPtrOutput)
+}
+
+// The creation time of the gateway slb.
+func (o GatewaySlbListOutput) GmtCreate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySlbList) *string { return v.GmtCreate }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the gateway slb.
+func (o GatewaySlbListOutput) SlbId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySlbList) *string { return v.SlbId }).(pulumi.StringPtrOutput)
+}
+
+// The ip of the gateway slb.
+func (o GatewaySlbListOutput) SlbIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySlbList) *string { return v.SlbIp }).(pulumi.StringPtrOutput)
+}
+
+// The port of the gateway slb.
+func (o GatewaySlbListOutput) SlbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySlbList) *string { return v.SlbPort }).(pulumi.StringPtrOutput)
+}
+
+// The type of the gateway slb.
+func (o GatewaySlbListOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySlbList) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GatewaySlbListArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewaySlbListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewaySlbList)(nil)).Elem()
+}
+
+func (o GatewaySlbListArrayOutput) ToGatewaySlbListArrayOutput() GatewaySlbListArrayOutput {
+	return o
+}
+
+func (o GatewaySlbListArrayOutput) ToGatewaySlbListArrayOutputWithContext(ctx context.Context) GatewaySlbListArrayOutput {
+	return o
+}
+
+func (o GatewaySlbListArrayOutput) Index(i pulumi.IntInput) GatewaySlbListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewaySlbList {
+		return vs[0].([]GatewaySlbList)[vs[1].(int)]
+	}).(GatewaySlbListOutput)
+}
+
 type GetClustersCluster struct {
 	// The id of acl.
 	AclId string `pulumi:"aclId"`
@@ -436,10 +596,14 @@ func (o GetClustersClusterInstanceModelArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySlbListInput)(nil)).Elem(), GatewaySlbListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySlbListArrayInput)(nil)).Elem(), GatewaySlbListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInstanceModelInput)(nil)).Elem(), GetClustersClusterInstanceModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInstanceModelArrayInput)(nil)).Elem(), GetClustersClusterInstanceModelArray{})
+	pulumi.RegisterOutputType(GatewaySlbListOutput{})
+	pulumi.RegisterOutputType(GatewaySlbListArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterInstanceModelOutput{})

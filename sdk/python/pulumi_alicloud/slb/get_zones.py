@@ -21,7 +21,7 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, available_slb_address_ip_version=None, available_slb_address_type=None, enable_details=None, id=None, ids=None, output_file=None, zones=None):
+    def __init__(__self__, available_slb_address_ip_version=None, available_slb_address_type=None, enable_details=None, id=None, ids=None, master_zone_id=None, output_file=None, slave_zone_id=None, zones=None):
         if available_slb_address_ip_version and not isinstance(available_slb_address_ip_version, str):
             raise TypeError("Expected argument 'available_slb_address_ip_version' to be a str")
         pulumi.set(__self__, "available_slb_address_ip_version", available_slb_address_ip_version)
@@ -41,9 +41,15 @@ class GetZonesResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if master_zone_id and not isinstance(master_zone_id, str):
+            raise TypeError("Expected argument 'master_zone_id' to be a str")
+        pulumi.set(__self__, "master_zone_id", master_zone_id)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if slave_zone_id and not isinstance(slave_zone_id, str):
+            raise TypeError("Expected argument 'slave_zone_id' to be a str")
+        pulumi.set(__self__, "slave_zone_id", slave_zone_id)
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         pulumi.set(__self__, "zones", zones)
@@ -75,14 +81,30 @@ class GetZonesResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         """
-        A list of zone IDs.
+        A list of primary zone IDs.
         """
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="masterZoneId")
+    def master_zone_id(self) -> Optional[str]:
+        """
+        (Available in 1.157.0+) The primary zone.
+        """
+        return pulumi.get(self, "master_zone_id")
 
     @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
+
+    @property
+    @pulumi.getter(name="slaveZoneId")
+    def slave_zone_id(self) -> Optional[str]:
+        """
+        (Available in 1.157.0+) The secondary zone.
+        """
+        return pulumi.get(self, "slave_zone_id")
 
     @property
     @pulumi.getter
@@ -104,14 +126,18 @@ class AwaitableGetZonesResult(GetZonesResult):
             enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
+            master_zone_id=self.master_zone_id,
             output_file=self.output_file,
+            slave_zone_id=self.slave_zone_id,
             zones=self.zones)
 
 
 def get_zones(available_slb_address_ip_version: Optional[str] = None,
               available_slb_address_type: Optional[str] = None,
               enable_details: Optional[bool] = None,
+              master_zone_id: Optional[str] = None,
               output_file: Optional[str] = None,
+              slave_zone_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
     This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -124,7 +150,8 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    zones_ids = alicloud.slb.get_zones()
+    zones_ids = alicloud.slb.get_zones(available_slb_address_ip_version="ipv4",
+        available_slb_address_type="vpc")
     ```
 
 
@@ -134,12 +161,16 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
            * classic_internet: a public-facing SLB instance.
            * classic_intranet: an internal SLB instance that is deployed in a classic network.
     :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+    :param str master_zone_id: The primary zone.
+    :param str slave_zone_id: The secondary zone.
     """
     __args__ = dict()
     __args__['availableSlbAddressIpVersion'] = available_slb_address_ip_version
     __args__['availableSlbAddressType'] = available_slb_address_type
     __args__['enableDetails'] = enable_details
+    __args__['masterZoneId'] = master_zone_id
     __args__['outputFile'] = output_file
+    __args__['slaveZoneId'] = slave_zone_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -152,7 +183,9 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
         enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
+        master_zone_id=__ret__.master_zone_id,
         output_file=__ret__.output_file,
+        slave_zone_id=__ret__.slave_zone_id,
         zones=__ret__.zones)
 
 
@@ -160,7 +193,9 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
 def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Optional[str]]] = None,
                      available_slb_address_type: Optional[pulumi.Input[Optional[str]]] = None,
                      enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     master_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     slave_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -173,7 +208,8 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_alicloud as alicloud
 
-    zones_ids = alicloud.slb.get_zones()
+    zones_ids = alicloud.slb.get_zones(available_slb_address_ip_version="ipv4",
+        available_slb_address_type="vpc")
     ```
 
 
@@ -183,5 +219,7 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
            * classic_internet: a public-facing SLB instance.
            * classic_intranet: an internal SLB instance that is deployed in a classic network.
     :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+    :param str master_zone_id: The primary zone.
+    :param str slave_zone_id: The secondary zone.
     """
     ...

@@ -18,8 +18,6 @@ class InstanceArgs:
                  instance_name: pulumi.Input[str],
                  size: pulumi.Input[int],
                  zone_id: pulumi.Input[str],
-                 attach_mode: Optional[pulumi.Input[str]] = None,
-                 attach_point: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
                  ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
@@ -29,8 +27,7 @@ class InstanceArgs:
                  performance_level: Optional[pulumi.Input[str]] = None,
                  raid_stripe_unit_number: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 used_scene: Optional[pulumi.Input[str]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] instance_name: The name of the Database file system.
@@ -38,25 +35,25 @@ class InstanceArgs:
         :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
         :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
         :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
         :param pulumi.Input[str] kms_key_id: The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
         :param pulumi.Input[str] performance_level: The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
         :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "zone_id", zone_id)
-        if attach_mode is not None:
-            pulumi.set(__self__, "attach_mode", attach_mode)
-        if attach_point is not None:
-            pulumi.set(__self__, "attach_point", attach_point)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if delete_snapshot is not None:
             pulumi.set(__self__, "delete_snapshot", delete_snapshot)
+        if ecs_lists is not None:
+            warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
+            pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
         if ecs_lists is not None:
             pulumi.set(__self__, "ecs_lists", ecs_lists)
         if enable_raid is not None:
@@ -73,8 +70,6 @@ class InstanceArgs:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if used_scene is not None:
-            pulumi.set(__self__, "used_scene", used_scene)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -113,24 +108,6 @@ class InstanceArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
-    @pulumi.getter(name="attachMode")
-    def attach_mode(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "attach_mode")
-
-    @attach_mode.setter
-    def attach_mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "attach_mode", value)
-
-    @property
-    @pulumi.getter(name="attachPoint")
-    def attach_point(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "attach_point")
-
-    @attach_point.setter
-    def attach_point(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "attach_point", value)
-
-    @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
@@ -158,7 +135,7 @@ class InstanceArgs:
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
-        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
         return pulumi.get(self, "ecs_lists")
 
@@ -241,27 +218,19 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
 
-    @property
-    @pulumi.getter(name="usedScene")
-    def used_scene(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "used_scene")
-
-    @used_scene.setter
-    def used_scene(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "used_scene", value)
-
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 attach_mode: Optional[pulumi.Input[str]] = None,
-                 attach_point: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
                  ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
@@ -275,13 +244,12 @@ class _InstanceState:
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
         :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
         :param pulumi.Input[str] instance_name: The name of the Database file system.
@@ -290,16 +258,16 @@ class _InstanceState:
         :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
         :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
         :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
         """
-        if attach_mode is not None:
-            pulumi.set(__self__, "attach_mode", attach_mode)
-        if attach_point is not None:
-            pulumi.set(__self__, "attach_point", attach_point)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if delete_snapshot is not None:
             pulumi.set(__self__, "delete_snapshot", delete_snapshot)
+        if ecs_lists is not None:
+            warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
+            pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
         if ecs_lists is not None:
             pulumi.set(__self__, "ecs_lists", ecs_lists)
         if enable_raid is not None:
@@ -322,28 +290,8 @@ class _InstanceState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if used_scene is not None:
-            pulumi.set(__self__, "used_scene", used_scene)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter(name="attachMode")
-    def attach_mode(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "attach_mode")
-
-    @attach_mode.setter
-    def attach_mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "attach_mode", value)
-
-    @property
-    @pulumi.getter(name="attachPoint")
-    def attach_point(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "attach_point")
-
-    @attach_point.setter
-    def attach_point(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "attach_point", value)
 
     @property
     @pulumi.getter
@@ -373,7 +321,7 @@ class _InstanceState:
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
-        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
         return pulumi.get(self, "ecs_lists")
 
@@ -489,20 +437,14 @@ class _InstanceState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
-
-    @property
-    @pulumi.getter(name="usedScene")
-    def used_scene(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "used_scene")
-
-    @used_scene.setter
-    def used_scene(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "used_scene", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -522,8 +464,6 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_mode: Optional[pulumi.Input[str]] = None,
-                 attach_point: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
                  ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
@@ -536,7 +476,6 @@ class Instance(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -573,7 +512,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
         :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
         :param pulumi.Input[str] instance_name: The name of the Database file system.
@@ -582,6 +521,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
         :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
         :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
         """
         ...
@@ -635,8 +575,6 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_mode: Optional[pulumi.Input[str]] = None,
-                 attach_point: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
                  ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
@@ -649,7 +587,6 @@ class Instance(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 used_scene: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -663,10 +600,11 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__.__dict__["attach_mode"] = attach_mode
-            __props__.__dict__["attach_point"] = attach_point
             __props__.__dict__["category"] = category
             __props__.__dict__["delete_snapshot"] = delete_snapshot
+            if ecs_lists is not None and not opts.urn:
+                warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
+                pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
             __props__.__dict__["ecs_lists"] = ecs_lists
             __props__.__dict__["enable_raid"] = enable_raid
             __props__.__dict__["encryption"] = encryption
@@ -681,7 +619,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot_id"] = snapshot_id
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["used_scene"] = used_scene
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -696,8 +633,6 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attach_mode: Optional[pulumi.Input[str]] = None,
-            attach_point: Optional[pulumi.Input[str]] = None,
             category: Optional[pulumi.Input[str]] = None,
             delete_snapshot: Optional[pulumi.Input[bool]] = None,
             ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
@@ -711,7 +646,6 @@ class Instance(pulumi.CustomResource):
             snapshot_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            used_scene: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -722,7 +656,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The type of the Database file system. Valid values: `standard`.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         :param pulumi.Input[bool] enable_raid: Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
         :param pulumi.Input[bool] encryption: Whether to encrypt the database file system. Valid values: `true` and `false`.
         :param pulumi.Input[str] instance_name: The name of the Database file system.
@@ -731,14 +665,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
         :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
         :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
-        __props__.__dict__["attach_mode"] = attach_mode
-        __props__.__dict__["attach_point"] = attach_point
         __props__.__dict__["category"] = category
         __props__.__dict__["delete_snapshot"] = delete_snapshot
         __props__.__dict__["ecs_lists"] = ecs_lists
@@ -752,19 +685,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["snapshot_id"] = snapshot_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
-        __props__.__dict__["used_scene"] = used_scene
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="attachMode")
-    def attach_mode(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "attach_mode")
-
-    @property
-    @pulumi.getter(name="attachPoint")
-    def attach_point(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "attach_point")
 
     @property
     @pulumi.getter
@@ -786,7 +708,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="ecsLists")
     def ecs_lists(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceEcsList']]]:
         """
-        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
         return pulumi.get(self, "ecs_lists")
 
@@ -862,12 +784,10 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
-
-    @property
-    @pulumi.getter(name="usedScene")
-    def used_scene(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "used_scene")
 
     @property
     @pulumi.getter(name="zoneId")

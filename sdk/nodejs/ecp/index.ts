@@ -6,15 +6,19 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getKeyPairs";
+export * from "./instance";
 export * from "./keyPair";
 
 // Import resources to register:
+import { Instance } from "./instance";
 import { KeyPair } from "./keyPair";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:ecp/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "alicloud:ecp/keyPair:KeyPair":
                 return new KeyPair(name, <any>undefined, { urn })
             default:
@@ -22,4 +26,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "ecp/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecp/keyPair", _module)

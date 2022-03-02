@@ -55,13 +55,13 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	AttachMode  pulumi.StringPtrOutput `pulumi:"attachMode"`
-	AttachPoint pulumi.StringPtrOutput `pulumi:"attachPoint"`
 	// The type of the Database file system. Valid values: `standard`.
 	Category pulumi.StringOutput `pulumi:"category"`
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot pulumi.BoolPtrOutput `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
+	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	//
+	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayOutput `pulumi:"ecsLists"`
 	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
 	EnableRaid pulumi.BoolPtrOutput `pulumi:"enableRaid"`
@@ -80,8 +80,8 @@ type Instance struct {
 	// The snapshot id of the Database file system.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
 	Status     pulumi.StringOutput    `pulumi:"status"`
-	Tags       pulumi.MapOutput       `pulumi:"tags"`
-	UsedScene  pulumi.StringPtrOutput `pulumi:"usedScene"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The Zone ID of the Database file system.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -124,13 +124,13 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	AttachMode  *string `pulumi:"attachMode"`
-	AttachPoint *string `pulumi:"attachPoint"`
 	// The type of the Database file system. Valid values: `standard`.
 	Category *string `pulumi:"category"`
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot *bool `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
+	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	//
+	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists []InstanceEcsList `pulumi:"ecsLists"`
 	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
 	EnableRaid *bool `pulumi:"enableRaid"`
@@ -147,22 +147,22 @@ type instanceState struct {
 	// The size Of the Database file system. Unit: GiB.
 	Size *int `pulumi:"size"`
 	// The snapshot id of the Database file system.
-	SnapshotId *string                `pulumi:"snapshotId"`
-	Status     *string                `pulumi:"status"`
-	Tags       map[string]interface{} `pulumi:"tags"`
-	UsedScene  *string                `pulumi:"usedScene"`
+	SnapshotId *string `pulumi:"snapshotId"`
+	Status     *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The Zone ID of the Database file system.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type InstanceState struct {
-	AttachMode  pulumi.StringPtrInput
-	AttachPoint pulumi.StringPtrInput
 	// The type of the Database file system. Valid values: `standard`.
 	Category pulumi.StringPtrInput
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot pulumi.BoolPtrInput
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
+	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	//
+	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayInput
 	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
 	EnableRaid pulumi.BoolPtrInput
@@ -181,8 +181,8 @@ type InstanceState struct {
 	// The snapshot id of the Database file system.
 	SnapshotId pulumi.StringPtrInput
 	Status     pulumi.StringPtrInput
-	Tags       pulumi.MapInput
-	UsedScene  pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The Zone ID of the Database file system.
 	ZoneId pulumi.StringPtrInput
 }
@@ -192,13 +192,13 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	AttachMode  *string `pulumi:"attachMode"`
-	AttachPoint *string `pulumi:"attachPoint"`
 	// The type of the Database file system. Valid values: `standard`.
 	Category *string `pulumi:"category"`
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot *bool `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
+	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	//
+	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists []InstanceEcsList `pulumi:"ecsLists"`
 	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
 	EnableRaid *bool `pulumi:"enableRaid"`
@@ -215,22 +215,22 @@ type instanceArgs struct {
 	// The size Of the Database file system. Unit: GiB.
 	Size int `pulumi:"size"`
 	// The snapshot id of the Database file system.
-	SnapshotId *string                `pulumi:"snapshotId"`
-	Tags       map[string]interface{} `pulumi:"tags"`
-	UsedScene  *string                `pulumi:"usedScene"`
+	SnapshotId *string `pulumi:"snapshotId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The Zone ID of the Database file system.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	AttachMode  pulumi.StringPtrInput
-	AttachPoint pulumi.StringPtrInput
 	// The type of the Database file system. Valid values: `standard`.
 	Category pulumi.StringPtrInput
 	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
 	DeleteSnapshot pulumi.BoolPtrInput
-	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
+	// The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	//
+	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayInput
 	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
 	EnableRaid pulumi.BoolPtrInput
@@ -248,8 +248,8 @@ type InstanceArgs struct {
 	Size pulumi.IntInput
 	// The snapshot id of the Database file system.
 	SnapshotId pulumi.StringPtrInput
-	Tags       pulumi.MapInput
-	UsedScene  pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The Zone ID of the Database file system.
 	ZoneId pulumi.StringInput
 }

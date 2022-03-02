@@ -103,7 +103,38 @@ namespace Pulumi.AliCloud.CS
     ///             SystemDiskCategory = "cloud_efficiency",
     ///             SystemDiskSize = 40,
     ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             NodeCount = 1,
+    ///             DesiredSize = 1,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// The parameter `node_count` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desired_size` instead, you can update it as follows. for more information of `desired_size`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.CS.NodePool("default", new AliCloud.CS.NodePoolArgs
+    ///         {
+    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///             VswitchIds = 
+    ///             {
+    ///                 alicloud_vswitch.Default.Id,
+    ///             },
+    ///             InstanceTypes = 
+    ///             {
+    ///                 data.Alicloud_instance_types.Default.Instance_types[0].Id,
+    ///             },
+    ///             SystemDiskCategory = "cloud_efficiency",
+    ///             SystemDiskSize = 40,
+    ///             KeyName = alicloud_key_pair.Default.Key_name,
+    ///             DesiredSize = 1,
     ///         });
     ///     }
     /// 
@@ -134,7 +165,7 @@ namespace Pulumi.AliCloud.CS
     ///             SystemDiskCategory = "cloud_efficiency",
     ///             SystemDiskSize = 40,
     ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             NodeCount = 1,
+    ///             DesiredSize = 1,
     ///             Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
     ///             {
     ///                 AutoRepair = true,
@@ -296,7 +327,7 @@ namespace Pulumi.AliCloud.CS
     ///             SystemDiskCategory = "cloud_efficiency",
     ///             SystemDiskSize = 40,
     ///             KeyName = alicloud_key_pair.Default.Key_name,
-    ///             NodeCount = 1,
+    ///             DesiredSize = 1,
     ///             SpotStrategy = "SpotWithPriceLimit",
     ///             SpotPriceLimits = 
     ///             {
@@ -379,7 +410,7 @@ namespace Pulumi.AliCloud.CS
     ///             SystemDiskCategory = "cloud_efficiency",
     ///             SystemDiskSize = 40,
     ///             InstanceChargeType = "PostPaid",
-    ///             NodeCount = 1,
+    ///             DesiredSize = 1,
     ///             Password = "Hello1234",
     ///             Platform = "Windows",
     ///             ImageId = window_image_id,
@@ -469,6 +500,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("deploymentSetId")]
         public Output<string> DeploymentSetId { get; private set; } = null!;
+
+        /// <summary>
+        /// The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
+        /// </summary>
+        [Output("desiredSize")]
+        public Output<int> DesiredSize { get; private set; } = null!;
 
         /// <summary>
         /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -793,6 +830,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
+        /// The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
+        /// </summary>
+        [Input("desiredSize")]
+        public Input<int>? DesiredSize { get; set; }
+
+        /// <summary>
         /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         /// </summary>
         [Input("formatDisk")]
@@ -1110,6 +1153,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }
+
+        /// <summary>
+        /// The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
+        /// </summary>
+        [Input("desiredSize")]
+        public Input<int>? DesiredSize { get; set; }
 
         /// <summary>
         /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.

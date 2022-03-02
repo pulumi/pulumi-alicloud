@@ -7,9 +7,15 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./getInstances";
 export * from "./instance";
+export * from "./instanceAttachment";
+export * from "./serviceLinkedRole";
+export * from "./snapshot";
 
 // Import resources to register:
 import { Instance } from "./instance";
+import { InstanceAttachment } from "./instanceAttachment";
+import { ServiceLinkedRole } from "./serviceLinkedRole";
+import { Snapshot } from "./snapshot";
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +23,18 @@ const _module = {
         switch (type) {
             case "alicloud:databasefilesystem/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:databasefilesystem/instanceAttachment:InstanceAttachment":
+                return new InstanceAttachment(name, <any>undefined, { urn })
+            case "alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole":
+                return new ServiceLinkedRole(name, <any>undefined, { urn })
+            case "alicloud:databasefilesystem/snapshot:Snapshot":
+                return new Snapshot(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "databasefilesystem/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "databasefilesystem/instanceAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "databasefilesystem/serviceLinkedRole", _module)
+pulumi.runtime.registerResourceModule("alicloud", "databasefilesystem/snapshot", _module)

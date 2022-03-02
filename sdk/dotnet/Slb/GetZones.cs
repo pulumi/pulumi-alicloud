@@ -28,7 +28,11 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     public MyStack()
         ///     {
-        ///         var zonesIds = Output.Create(AliCloud.Slb.GetZones.InvokeAsync());
+        ///         var zonesIds = Output.Create(AliCloud.Slb.GetZones.InvokeAsync(new AliCloud.Slb.GetZonesArgs
+        ///         {
+        ///             AvailableSlbAddressIpVersion = "ipv4",
+        ///             AvailableSlbAddressType = "vpc",
+        ///         }));
         ///     }
         /// 
         /// }
@@ -56,7 +60,11 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     public MyStack()
         ///     {
-        ///         var zonesIds = Output.Create(AliCloud.Slb.GetZones.InvokeAsync());
+        ///         var zonesIds = Output.Create(AliCloud.Slb.GetZones.InvokeAsync(new AliCloud.Slb.GetZonesArgs
+        ///         {
+        ///             AvailableSlbAddressIpVersion = "ipv4",
+        ///             AvailableSlbAddressType = "vpc",
+        ///         }));
         ///     }
         /// 
         /// }
@@ -92,8 +100,20 @@ namespace Pulumi.AliCloud.Slb
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
+        /// <summary>
+        /// The primary zone.
+        /// </summary>
+        [Input("masterZoneId")]
+        public string? MasterZoneId { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// The secondary zone.
+        /// </summary>
+        [Input("slaveZoneId")]
+        public string? SlaveZoneId { get; set; }
 
         public GetZonesArgs()
         {
@@ -123,8 +143,20 @@ namespace Pulumi.AliCloud.Slb
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
+        /// <summary>
+        /// The primary zone.
+        /// </summary>
+        [Input("masterZoneId")]
+        public Input<string>? MasterZoneId { get; set; }
+
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The secondary zone.
+        /// </summary>
+        [Input("slaveZoneId")]
+        public Input<string>? SlaveZoneId { get; set; }
 
         public GetZonesInvokeArgs()
         {
@@ -143,10 +175,18 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of zone IDs.
+        /// A list of primary zone IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// (Available in 1.157.0+) The primary zone.
+        /// </summary>
+        public readonly string? MasterZoneId;
         public readonly string? OutputFile;
+        /// <summary>
+        /// (Available in 1.157.0+) The secondary zone.
+        /// </summary>
+        public readonly string? SlaveZoneId;
         /// <summary>
         /// A list of availability zones. Each element contains the following attributes:
         /// </summary>
@@ -164,7 +204,11 @@ namespace Pulumi.AliCloud.Slb
 
             ImmutableArray<string> ids,
 
+            string? masterZoneId,
+
             string? outputFile,
+
+            string? slaveZoneId,
 
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
@@ -173,7 +217,9 @@ namespace Pulumi.AliCloud.Slb
             EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
+            MasterZoneId = masterZoneId;
             OutputFile = outputFile;
+            SlaveZoneId = slaveZoneId;
             Zones = zones;
         }
     }

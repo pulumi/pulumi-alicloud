@@ -67,5 +67,6 @@ from .security_group import *
 from .security_group_rule import *
 from .snapshot import *
 from .snapshot_policy import *
+from .storage_capacity_unit import *
 from ._inputs import *
 from . import outputs

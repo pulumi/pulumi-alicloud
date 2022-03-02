@@ -31,6 +31,7 @@ export * from "./resourceDirectory";
 export * from "./resourceGroup";
 export * from "./resourceShare";
 export * from "./role";
+export * from "./serviceLinkedRole";
 export * from "./sharedResource";
 export * from "./sharedTarget";
 
@@ -47,6 +48,7 @@ import { ResourceDirectory } from "./resourceDirectory";
 import { ResourceGroup } from "./resourceGroup";
 import { ResourceShare } from "./resourceShare";
 import { Role } from "./role";
+import { ServiceLinkedRole } from "./serviceLinkedRole";
 import { SharedResource } from "./sharedResource";
 import { SharedTarget } from "./sharedTarget";
 
@@ -78,6 +80,8 @@ const _module = {
                 return new ResourceShare(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole":
+                return new ServiceLinkedRole(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/sharedResource:SharedResource":
                 return new SharedResource(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/sharedTarget:SharedTarget":
@@ -99,5 +103,6 @@ pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceDirec
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceShare", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/role", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/serviceLinkedRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/sharedResource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/sharedTarget", _module)

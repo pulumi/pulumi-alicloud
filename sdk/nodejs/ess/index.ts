@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./alarm";
+export * from "./albServerGroupAttachment";
 export * from "./attachment";
 export * from "./getAlarms";
 export * from "./getLifecycleHooks";
@@ -25,6 +26,7 @@ export * from "./scheduledTask";
 
 // Import resources to register:
 import { Alarm } from "./alarm";
+import { AlbServerGroupAttachment } from "./albServerGroupAttachment";
 import { Attachment } from "./attachment";
 import { LifecycleHook } from "./lifecycleHook";
 import { Notification } from "./notification";
@@ -41,6 +43,8 @@ const _module = {
         switch (type) {
             case "alicloud:ess/alarm:Alarm":
                 return new Alarm(name, <any>undefined, { urn })
+            case "alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment":
+                return new AlbServerGroupAttachment(name, <any>undefined, { urn })
             case "alicloud:ess/attachment:Attachment":
                 return new Attachment(name, <any>undefined, { urn })
             case "alicloud:ess/lifecycleHook:LifecycleHook":
@@ -65,6 +69,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ess/alarm", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ess/albServerGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/attachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/lifecycleHook", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/notification", _module)

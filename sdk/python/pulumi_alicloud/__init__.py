@@ -1506,6 +1506,30 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "databasefilesystem/instanceAttachment",
+  "fqn": "pulumi_alicloud.databasefilesystem",
+  "classes": {
+   "alicloud:databasefilesystem/instanceAttachment:InstanceAttachment": "InstanceAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "databasefilesystem/serviceLinkedRole",
+  "fqn": "pulumi_alicloud.databasefilesystem",
+  "classes": {
+   "alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole": "ServiceLinkedRole"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "databasefilesystem/snapshot",
+  "fqn": "pulumi_alicloud.databasefilesystem",
+  "classes": {
+   "alicloud:databasefilesystem/snapshot:Snapshot": "Snapshot"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "databasegateway/gateway",
   "fqn": "pulumi_alicloud.databasegateway",
   "classes": {
@@ -1558,6 +1582,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dcdn",
   "classes": {
    "alicloud:dcdn/domainConfig:DomainConfig": "DomainConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dcdn/ipaDomain",
+  "fqn": "pulumi_alicloud.dcdn",
+  "classes": {
+   "alicloud:dcdn/ipaDomain:IpaDomain": "IpaDomain"
   }
  },
  {
@@ -1850,6 +1882,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dts/migrationInstance",
+  "fqn": "pulumi_alicloud.dts",
+  "classes": {
+   "alicloud:dts/migrationInstance:MigrationInstance": "MigrationInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dts/migrationJob",
+  "fqn": "pulumi_alicloud.dts",
+  "classes": {
+   "alicloud:dts/migrationJob:MigrationJob": "MigrationJob"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dts/subscriptionJob",
   "fqn": "pulumi_alicloud.dts",
   "classes": {
@@ -1910,6 +1958,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eci",
   "classes": {
    "alicloud:eci/virtualNode:VirtualNode": "VirtualNode"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ecp/instance",
+  "fqn": "pulumi_alicloud.ecp",
+  "classes": {
+   "alicloud:ecp/instance:Instance": "Instance"
   }
  },
  {
@@ -2226,6 +2282,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ecs/storageCapacityUnit",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/storageCapacityUnit:StorageCapacityUnit": "StorageCapacityUnit"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "edas/application",
   "fqn": "pulumi_alicloud.edas",
   "classes": {
@@ -2414,6 +2478,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ess",
   "classes": {
    "alicloud:ess/alarm:Alarm": "Alarm"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ess/albServerGroupAttachment",
+  "fqn": "pulumi_alicloud.ess",
+  "classes": {
+   "alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment": "AlbServerGroupAttachment"
   }
  },
  {
@@ -3130,6 +3202,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "mongodb/shardingNetworkPrivateAddress",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress": "ShardingNetworkPrivateAddress"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "mongodb/shardingNetworkPublicAddress",
   "fqn": "pulumi_alicloud.mongodb",
   "classes": {
@@ -3142,6 +3222,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.mse",
   "classes": {
    "alicloud:mse/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "mse/gateway",
+  "fqn": "pulumi_alicloud.mse",
+  "classes": {
+   "alicloud:mse/gateway:Gateway": "Gateway"
   }
  },
  {
@@ -3206,6 +3294,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.nas",
   "classes": {
    "alicloud:nas/mountTarget:MountTarget": "MountTarget"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "nas/recycleBin",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/recycleBin:RecycleBin": "RecycleBin"
   }
  },
  {
@@ -3862,6 +3958,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
    "alicloud:resourcemanager/role:Role": "Role"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "resourcemanager/serviceLinkedRole",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole": "ServiceLinkedRole"
   }
  },
  {

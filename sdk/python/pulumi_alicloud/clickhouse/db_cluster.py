@@ -610,21 +610,25 @@ class DbCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.clickhouse.DbCluster("default",
+        default_regions = alicloud.clickhouse.get_regions(current=True)
+        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
+        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+            db_cluster_version="20.3.10.75",
             category="Basic",
+            db_cluster_class="S8",
+            db_cluster_network_type="vpc",
+            db_node_group_count=1,
+            payment_type="PayAsYouGo",
+            db_node_storage="500",
+            storage_type="cloud_essd",
+            vswitch_id=default_switches.ids[0],
             db_cluster_access_white_lists=[alicloud.clickhouse.DbClusterDbClusterAccessWhiteListArgs(
                 db_cluster_ip_array_attribute="test",
                 db_cluster_ip_array_name="test",
                 security_ip_list="192.168.0.1",
-            )],
-            db_cluster_class="S8",
-            db_cluster_network_type="vpc",
-            db_cluster_version="20.3.10.75",
-            db_node_group_count=1,
-            db_node_storage="500",
-            payment_type="PayAsYouGo",
-            storage_type="cloud_essd",
-            vswitch_id="your_vswitch_id")
+            )])
         ```
 
         ## Import
@@ -678,21 +682,25 @@ class DbCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.clickhouse.DbCluster("default",
+        default_regions = alicloud.clickhouse.get_regions(current=True)
+        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
+        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+            db_cluster_version="20.3.10.75",
             category="Basic",
+            db_cluster_class="S8",
+            db_cluster_network_type="vpc",
+            db_node_group_count=1,
+            payment_type="PayAsYouGo",
+            db_node_storage="500",
+            storage_type="cloud_essd",
+            vswitch_id=default_switches.ids[0],
             db_cluster_access_white_lists=[alicloud.clickhouse.DbClusterDbClusterAccessWhiteListArgs(
                 db_cluster_ip_array_attribute="test",
                 db_cluster_ip_array_name="test",
                 security_ip_list="192.168.0.1",
-            )],
-            db_cluster_class="S8",
-            db_cluster_network_type="vpc",
-            db_cluster_version="20.3.10.75",
-            db_node_group_count=1,
-            db_node_storage="500",
-            payment_type="PayAsYouGo",
-            storage_type="cloud_essd",
-            vswitch_id="your_vswitch_id")
+            )])
         ```
 
         ## Import

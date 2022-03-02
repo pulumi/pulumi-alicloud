@@ -955,6 +955,8 @@ func (o GetResolverZonesZoneArrayOutput) Index(i pulumi.IntInput) GetResolverZon
 }
 
 type GetRulesRule struct {
+	// The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+	BindVpcs []GetRulesRuleBindVpc `pulumi:"bindVpcs"`
 	// The creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
 	// The ID of the Endpoint.
@@ -986,6 +988,8 @@ type GetRulesRuleInput interface {
 }
 
 type GetRulesRuleArgs struct {
+	// The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+	BindVpcs GetRulesRuleBindVpcArrayInput `pulumi:"bindVpcs"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The ID of the Endpoint.
@@ -1056,6 +1060,11 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+func (o GetRulesRuleOutput) BindVpcs() GetRulesRuleBindVpcArrayOutput {
+	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleBindVpc { return v.BindVpcs }).(GetRulesRuleBindVpcArrayOutput)
+}
+
 // The creation time of the resource.
 func (o GetRulesRuleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -1118,6 +1127,130 @@ func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
 		return vs[0].([]GetRulesRule)[vs[1].(int)]
 	}).(GetRulesRuleOutput)
+}
+
+type GetRulesRuleBindVpc struct {
+	// The region ID of the vpc.
+	RegionId string `pulumi:"regionId"`
+	// The Region Name of the vpc.
+	RegionName string `pulumi:"regionName"`
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The Name of the VPC.
+	VpcName string `pulumi:"vpcName"`
+}
+
+// GetRulesRuleBindVpcInput is an input type that accepts GetRulesRuleBindVpcArgs and GetRulesRuleBindVpcOutput values.
+// You can construct a concrete instance of `GetRulesRuleBindVpcInput` via:
+//
+//          GetRulesRuleBindVpcArgs{...}
+type GetRulesRuleBindVpcInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleBindVpcOutput() GetRulesRuleBindVpcOutput
+	ToGetRulesRuleBindVpcOutputWithContext(context.Context) GetRulesRuleBindVpcOutput
+}
+
+type GetRulesRuleBindVpcArgs struct {
+	// The region ID of the vpc.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The Region Name of the vpc.
+	RegionName pulumi.StringInput `pulumi:"regionName"`
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The Name of the VPC.
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
+}
+
+func (GetRulesRuleBindVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleBindVpc)(nil)).Elem()
+}
+
+func (i GetRulesRuleBindVpcArgs) ToGetRulesRuleBindVpcOutput() GetRulesRuleBindVpcOutput {
+	return i.ToGetRulesRuleBindVpcOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleBindVpcArgs) ToGetRulesRuleBindVpcOutputWithContext(ctx context.Context) GetRulesRuleBindVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleBindVpcOutput)
+}
+
+// GetRulesRuleBindVpcArrayInput is an input type that accepts GetRulesRuleBindVpcArray and GetRulesRuleBindVpcArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleBindVpcArrayInput` via:
+//
+//          GetRulesRuleBindVpcArray{ GetRulesRuleBindVpcArgs{...} }
+type GetRulesRuleBindVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleBindVpcArrayOutput() GetRulesRuleBindVpcArrayOutput
+	ToGetRulesRuleBindVpcArrayOutputWithContext(context.Context) GetRulesRuleBindVpcArrayOutput
+}
+
+type GetRulesRuleBindVpcArray []GetRulesRuleBindVpcInput
+
+func (GetRulesRuleBindVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleBindVpc)(nil)).Elem()
+}
+
+func (i GetRulesRuleBindVpcArray) ToGetRulesRuleBindVpcArrayOutput() GetRulesRuleBindVpcArrayOutput {
+	return i.ToGetRulesRuleBindVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleBindVpcArray) ToGetRulesRuleBindVpcArrayOutputWithContext(ctx context.Context) GetRulesRuleBindVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleBindVpcArrayOutput)
+}
+
+type GetRulesRuleBindVpcOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleBindVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleBindVpc)(nil)).Elem()
+}
+
+func (o GetRulesRuleBindVpcOutput) ToGetRulesRuleBindVpcOutput() GetRulesRuleBindVpcOutput {
+	return o
+}
+
+func (o GetRulesRuleBindVpcOutput) ToGetRulesRuleBindVpcOutputWithContext(ctx context.Context) GetRulesRuleBindVpcOutput {
+	return o
+}
+
+// The region ID of the vpc.
+func (o GetRulesRuleBindVpcOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleBindVpc) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The Region Name of the vpc.
+func (o GetRulesRuleBindVpcOutput) RegionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleBindVpc) string { return v.RegionName }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC.
+func (o GetRulesRuleBindVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleBindVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The Name of the VPC.
+func (o GetRulesRuleBindVpcOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleBindVpc) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleBindVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleBindVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleBindVpc)(nil)).Elem()
+}
+
+func (o GetRulesRuleBindVpcArrayOutput) ToGetRulesRuleBindVpcArrayOutput() GetRulesRuleBindVpcArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleBindVpcArrayOutput) ToGetRulesRuleBindVpcArrayOutputWithContext(ctx context.Context) GetRulesRuleBindVpcArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleBindVpcArrayOutput) Index(i pulumi.IntInput) GetRulesRuleBindVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleBindVpc {
+		return vs[0].([]GetRulesRuleBindVpc)[vs[1].(int)]
+	}).(GetRulesRuleBindVpcOutput)
 }
 
 type GetRulesRuleForwardIp struct {
@@ -1761,6 +1894,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResolverZonesZoneArrayInput)(nil)).Elem(), GetResolverZonesZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleInput)(nil)).Elem(), GetRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleArrayInput)(nil)).Elem(), GetRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleBindVpcInput)(nil)).Elem(), GetRulesRuleBindVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleBindVpcArrayInput)(nil)).Elem(), GetRulesRuleBindVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleForwardIpInput)(nil)).Elem(), GetRulesRuleForwardIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleForwardIpArrayInput)(nil)).Elem(), GetRulesRuleForwardIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZoneRecordsRecordInput)(nil)).Elem(), GetZoneRecordsRecordArgs{})
@@ -1787,6 +1922,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResolverZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleBindVpcOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleBindVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleForwardIpOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleForwardIpArrayOutput{})
 	pulumi.RegisterOutputType(GetZoneRecordsRecordOutput{})

@@ -5667,7 +5667,7 @@ export namespace cfg {
 export namespace clickhouse {
     export interface DbClusterDbClusterAccessWhiteList {
         /**
-         * Whitelist grouping attribute.
+         * Field `dbClusterIpArrayAttribute` has been removed from provider.
          */
         dbClusterIpArrayAttribute?: string;
         /**
@@ -5892,7 +5892,7 @@ export namespace clickhouse {
 
     export interface GetDbClustersClusterDbClusterAccessWhiteList {
         /**
-         * Whitelist grouping attribute.
+         * Field `dbClusterIpArrayAttribute` has been removed from provider.
          */
         dbClusterIpArrayAttribute: string;
         /**
@@ -9510,6 +9510,29 @@ export namespace dcdn {
          * The weight of the origin if multiple origins are specified.
          */
         weight: string;
+    }
+
+    export interface IpaDomainSource {
+        /**
+         * The address of the origin server. You can specify an IP address or a domain name.
+         */
+        content: string;
+        /**
+         * The custom port number. Valid values: `0` to `65535`.
+         */
+        port: number;
+        /**
+         * The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
+         */
+        priority: string;
+        /**
+         * The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+         */
+        type: string;
+        /**
+         * The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
+         */
+        weight: number;
     }
 
 }
@@ -13812,6 +13835,14 @@ export namespace ecs {
          */
         networkInterfaceName: string;
         /**
+         * The communication mode of the elastic network card.
+         */
+        networkInterfaceTrafficMode: string;
+        /**
+         * The ID of the account to which the ENIC belongs.
+         */
+        ownerId: string;
+        /**
          * The primary private IP address of the ENI.
          */
         primaryIpAddress: string;
@@ -14781,6 +14812,8 @@ export namespace ecs {
         name: string;
         networkInterfaceId: string;
         networkInterfaceName: string;
+        networkInterfaceTrafficMode: string;
+        ownerId: string;
         primaryIpAddress: string;
         /**
          * Primary private IP of the ENI.
@@ -17026,6 +17059,14 @@ export namespace ess {
          */
         dbInstanceIds: string[];
         /**
+         * Whether the scaling group deletion protection is enabled.
+         */
+        groupDeletionProtection: boolean;
+        /**
+         * The health check method of the scaling group.
+         */
+        healthCheckType: string;
+        /**
          * ID of the scaling group.
          */
         id: string;
@@ -17054,6 +17095,10 @@ export namespace ess {
          */
         minSize: number;
         /**
+         * The modification time.
+         */
+        modificationTime: string;
+        /**
          * Name of the scaling group.
          * * `activeScalingConfiguration` -Active scaling configuration for scaling group.
          */
@@ -17075,9 +17120,25 @@ export namespace ess {
          */
         removingCapacity: number;
         /**
+         * The Process in suspension.
+         */
+        suspendedProcesses: string[];
+        /**
          * Number of instances in scaling group.
          */
         totalCapacity: number;
+        /**
+         * The number of all ECS instances in the scaling group.
+         */
+        totalInstanceCount: number;
+        /**
+         * The ID of the VPC to which the scaling group belongs.
+         */
+        vpcId: string;
+        /**
+         * The ID of the vSwitch to which the scaling group belongs.
+         */
+        vswitchId: string;
         /**
          * Vswitches id in which the ECS instance launched.
          */
@@ -21861,6 +21922,49 @@ export namespace mongodb {
         readonlyReplicas: number;
     }
 
+    export interface ShardingNetworkPrivateAddressNetworkAddress {
+        /**
+         * The remaining duration of the classic network address. Unit: `seconds`.
+         */
+        expiredTime: string;
+        /**
+         * The IP address of the instance.
+         */
+        ipAddress: string;
+        /**
+         * The endpoint of the instance.
+         */
+        networkAddress: string;
+        /**
+         * The network type.
+         */
+        networkType: string;
+        /**
+         * The ID of the Shard node or the ConfigServer node.
+         */
+        nodeId: string;
+        /**
+         * The type of the node.
+         */
+        nodeType: string;
+        /**
+         * The port number.
+         */
+        port: string;
+        /**
+         * The role of the node.
+         */
+        role: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The vSwitch ID of the VPC.
+         */
+        vswitchId: string;
+    }
+
     export interface ShardingNetworkPublicAddressNetworkAddress {
         /**
          * The remaining duration of the classic network address. Unit: `seconds`.
@@ -21903,9 +22007,45 @@ export namespace mongodb {
          */
         vswitchId: string;
     }
+
 }
 
 export namespace mse {
+    export interface GatewaySlbList {
+        /**
+         * The associate id.
+         */
+        associateId: string;
+        /**
+         * The Mode of the gateway slb.
+         */
+        gatewaySlbMode: string;
+        /**
+         * The Status of the gateway slb.
+         */
+        gatewaySlbStatus: string;
+        /**
+         * The creation time of the gateway slb.
+         */
+        gmtCreate: string;
+        /**
+         * The ID of the gateway slb.
+         */
+        slbId: string;
+        /**
+         * The ip of the gateway slb.
+         */
+        slbIp: string;
+        /**
+         * The port of the gateway slb.
+         */
+        slbPort: string;
+        /**
+         * The type of the gateway slb.
+         */
+        type: string;
+    }
+
     export interface GetClustersCluster {
         /**
          * The id of acl.
@@ -24311,6 +24451,10 @@ export namespace pvtz {
 
     export interface GetRulesRule {
         /**
+         * The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+         */
+        bindVpcs: outputs.pvtz.GetRulesRuleBindVpc[];
+        /**
          * The creation time of the resource.
          */
         createTime: string;
@@ -24343,6 +24487,25 @@ export namespace pvtz {
          * The name of the forwarding zone.
          */
         zoneName: string;
+    }
+
+    export interface GetRulesRuleBindVpc {
+        /**
+         * The region ID of the vpc.
+         */
+        regionId: string;
+        /**
+         * The Region Name of the vpc.
+         */
+        regionName: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The Name of the VPC.
+         */
+        vpcName: string;
     }
 
     export interface GetRulesRuleForwardIp {
@@ -25534,9 +25697,85 @@ export namespace rds {
         value: string;
     }
 
+    export interface InstancePgHbaConf {
+        /**
+         * The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+         */
+        address: string;
+        /**
+         * The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+         */
+        database: string;
+        /**
+         * The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+         */
+        mask?: string;
+        /**
+         * The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+         */
+        method: string;
+        /**
+         * Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+         */
+        option?: string;
+        /**
+         * The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+         */
+        priorityId: number;
+        /**
+         * The type of connection to the instance. Valid values:
+         * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+         * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+         * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         */
+        type: string;
+        /**
+         * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+         */
+        user: string;
+    }
+
     export interface RdsCloneDbInstanceParameter {
         name: string;
         value: string;
+    }
+
+    export interface RdsCloneDbInstancePgHbaConf {
+        /**
+         * The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+         */
+        address: string;
+        /**
+         * The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+         */
+        database: string;
+        /**
+         * The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+         */
+        mask?: string;
+        /**
+         * The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+         */
+        method: string;
+        /**
+         * Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+         */
+        option?: string;
+        /**
+         * The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+         */
+        priorityId: number;
+        /**
+         * The type of connection to the instance. Valid values:
+         * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+         * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+         * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         */
+        type: string;
+        /**
+         * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+         */
+        user: string;
     }
 
     export interface RdsParameterGroupParamDetail {
@@ -25553,6 +25792,44 @@ export namespace rds {
     export interface RdsUpgradeDbInstanceParameter {
         name: string;
         value: string;
+    }
+
+    export interface RdsUpgradeDbInstancePgHbaConf {
+        /**
+         * The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+         */
+        address: string;
+        /**
+         * The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+         */
+        database: string;
+        /**
+         * The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+         */
+        mask?: string;
+        /**
+         * The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+         */
+        method: string;
+        /**
+         * Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+         */
+        option?: string;
+        /**
+         * The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+         */
+        priorityId: number;
+        /**
+         * The type of connection to the instance. Valid values:
+         * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+         * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+         * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         */
+        type: string;
+        /**
+         * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+         */
+        user: string;
     }
 
     export interface ReadOnlyInstanceParameter {
@@ -29009,11 +29286,22 @@ export namespace slb {
 
     export interface GetZonesZone {
         /**
-         * ID of the zone.
+         * ID of the zone. It is same as `masterZoneId`.
          */
         id: string;
         /**
-         * A list of slb slave zone ids in which the slb master zone.
+         * The primary zone.
+         */
+        masterZoneId: string;
+        /**
+         * The secondary zone.
+         */
+        slaveZoneId: string;
+        /**
+         * (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
+         * It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
+         *
+         * @deprecated the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
          */
         slbSlaveZoneIds: string[];
         /**

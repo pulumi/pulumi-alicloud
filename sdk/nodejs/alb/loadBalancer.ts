@@ -67,6 +67,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly deletionProtectionEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+     */
+    public /*out*/ readonly dnsName!: pulumi.Output<string>;
+    /**
      * Specifies whether to precheck the API request. Valid values: `true` and `false`.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
@@ -94,6 +98,9 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
@@ -121,6 +128,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["addressAllocatedMode"] = state ? state.addressAllocatedMode : undefined;
             resourceInputs["addressType"] = state ? state.addressType : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
+            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["loadBalancerBillingConfig"] = state ? state.loadBalancerBillingConfig : undefined;
             resourceInputs["loadBalancerEdition"] = state ? state.loadBalancerEdition : undefined;
@@ -164,6 +172,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["zoneMappings"] = args ? args.zoneMappings : undefined;
+            resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -194,6 +203,10 @@ export interface LoadBalancerState {
      */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
+     * The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+     */
+    dnsName?: pulumi.Input<string>;
+    /**
      * Specifies whether to precheck the API request. Valid values: `true` and `false`.
      */
     dryRun?: pulumi.Input<boolean>;
@@ -221,6 +234,9 @@ export interface LoadBalancerState {
      * Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
@@ -278,6 +294,9 @@ export interface LoadBalancerArgs {
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.

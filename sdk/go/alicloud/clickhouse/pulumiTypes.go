@@ -11,7 +11,7 @@ import (
 )
 
 type DbClusterDbClusterAccessWhiteList struct {
-	// Whitelist grouping attribute.
+	// Field `dbClusterIpArrayAttribute` has been removed from provider.
 	DbClusterIpArrayAttribute *string `pulumi:"dbClusterIpArrayAttribute"`
 	// Whitelist group name.
 	DbClusterIpArrayName *string `pulumi:"dbClusterIpArrayName"`
@@ -31,7 +31,7 @@ type DbClusterDbClusterAccessWhiteListInput interface {
 }
 
 type DbClusterDbClusterAccessWhiteListArgs struct {
-	// Whitelist grouping attribute.
+	// Field `dbClusterIpArrayAttribute` has been removed from provider.
 	DbClusterIpArrayAttribute pulumi.StringPtrInput `pulumi:"dbClusterIpArrayAttribute"`
 	// Whitelist group name.
 	DbClusterIpArrayName pulumi.StringPtrInput `pulumi:"dbClusterIpArrayName"`
@@ -90,7 +90,7 @@ func (o DbClusterDbClusterAccessWhiteListOutput) ToDbClusterDbClusterAccessWhite
 	return o
 }
 
-// Whitelist grouping attribute.
+// Field `dbClusterIpArrayAttribute` has been removed from provider.
 func (o DbClusterDbClusterAccessWhiteListOutput) DbClusterIpArrayAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbClusterDbClusterAccessWhiteList) *string { return v.DbClusterIpArrayAttribute }).(pulumi.StringPtrOutput)
 }
@@ -848,7 +848,7 @@ func (o GetDbClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDbClustersC
 }
 
 type GetDbClustersClusterDbClusterAccessWhiteList struct {
-	// Whitelist grouping attribute.
+	// Field `dbClusterIpArrayAttribute` has been removed from provider.
 	DbClusterIpArrayAttribute string `pulumi:"dbClusterIpArrayAttribute"`
 	// Whitelist group name.
 	DbClusterIpArrayName string `pulumi:"dbClusterIpArrayName"`
@@ -868,7 +868,7 @@ type GetDbClustersClusterDbClusterAccessWhiteListInput interface {
 }
 
 type GetDbClustersClusterDbClusterAccessWhiteListArgs struct {
-	// Whitelist grouping attribute.
+	// Field `dbClusterIpArrayAttribute` has been removed from provider.
 	DbClusterIpArrayAttribute pulumi.StringInput `pulumi:"dbClusterIpArrayAttribute"`
 	// Whitelist group name.
 	DbClusterIpArrayName pulumi.StringInput `pulumi:"dbClusterIpArrayName"`
@@ -927,7 +927,7 @@ func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) ToGetDbClustersClust
 	return o
 }
 
-// Whitelist grouping attribute.
+// Field `dbClusterIpArrayAttribute` has been removed from provider.
 func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) DbClusterIpArrayAttribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersClusterDbClusterAccessWhiteList) string { return v.DbClusterIpArrayAttribute }).(pulumi.StringOutput)
 }

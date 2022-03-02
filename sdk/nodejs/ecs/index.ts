@@ -67,6 +67,7 @@ export * from "./securityGroup";
 export * from "./securityGroupRule";
 export * from "./snapshot";
 export * from "./snapshotPolicy";
+export * from "./storageCapacityUnit";
 
 // Import resources to register:
 import { AutoProvisioningGroup } from "./autoProvisioningGroup";
@@ -107,6 +108,7 @@ import { SecurityGroup } from "./securityGroup";
 import { SecurityGroupRule } from "./securityGroupRule";
 import { Snapshot } from "./snapshot";
 import { SnapshotPolicy } from "./snapshotPolicy";
+import { StorageCapacityUnit } from "./storageCapacityUnit";
 
 const _module = {
     version: utilities.getVersion(),
@@ -188,6 +190,8 @@ const _module = {
                 return new Snapshot(name, <any>undefined, { urn })
             case "alicloud:ecs/snapshotPolicy:SnapshotPolicy":
                 return new SnapshotPolicy(name, <any>undefined, { urn })
+            case "alicloud:ecs/storageCapacityUnit:StorageCapacityUnit":
+                return new StorageCapacityUnit(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -231,3 +235,4 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/securityGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/securityGroupRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/snapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/snapshotPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/storageCapacityUnit", _module)

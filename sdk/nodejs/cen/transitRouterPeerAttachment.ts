@@ -106,6 +106,10 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
      */
     public readonly bandwidth!: pulumi.Output<number | undefined>;
     /**
+     * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     */
+    public readonly bandwidthType!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
      */
     public readonly cenBandwidthPackageId!: pulumi.Output<string | undefined>;
@@ -173,6 +177,7 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
             const state = argsOrState as TransitRouterPeerAttachmentState | undefined;
             resourceInputs["autoPublishRouteEnabled"] = state ? state.autoPublishRouteEnabled : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["bandwidthType"] = state ? state.bandwidthType : undefined;
             resourceInputs["cenBandwidthPackageId"] = state ? state.cenBandwidthPackageId : undefined;
             resourceInputs["cenId"] = state ? state.cenId : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
@@ -199,6 +204,7 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
             }
             resourceInputs["autoPublishRouteEnabled"] = args ? args.autoPublishRouteEnabled : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["bandwidthType"] = args ? args.bandwidthType : undefined;
             resourceInputs["cenBandwidthPackageId"] = args ? args.cenBandwidthPackageId : undefined;
             resourceInputs["cenId"] = args ? args.cenId : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
@@ -230,6 +236,10 @@ export interface TransitRouterPeerAttachmentState {
      * The bandwidth of the bandwidth package.
      */
     bandwidth?: pulumi.Input<number>;
+    /**
+     * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     */
+    bandwidthType?: pulumi.Input<string>;
     /**
      * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
      */
@@ -296,6 +306,10 @@ export interface TransitRouterPeerAttachmentArgs {
      * The bandwidth of the bandwidth package.
      */
     bandwidth?: pulumi.Input<number>;
+    /**
+     * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     */
+    bandwidthType?: pulumi.Input<string>;
     /**
      * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
      */

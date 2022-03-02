@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ClickHouse.Inputs
     public sealed class DbClusterDbClusterAccessWhiteListArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whitelist grouping attribute.
+        /// Field `db_cluster_ip_array_attribute` has been removed from provider.
         /// </summary>
         [Input("dbClusterIpArrayAttribute")]
         public Input<string>? DbClusterIpArrayAttribute { get; set; }

@@ -77,10 +77,28 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
+        /// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+        /// </summary>
+        [Output("dbInstanceCategory")]
+        public Output<string> DbInstanceCategory { get; private set; } = null!;
+
+        /// <summary>
         /// The description of ADB PG instance. It is a string of 2 to 256 characters.
         /// </summary>
         [Output("dbInstanceDescription")]
         public Output<string?> DbInstanceDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        /// </summary>
+        [Output("encryptionKey")]
+        public Output<string?> EncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+        /// </summary>
+        [Output("encryptionType")]
+        public Output<string?> EncryptionType { get; private set; } = null!;
 
         /// <summary>
         /// Database engine: `gpdb`.
@@ -101,7 +119,9 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> InstanceNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// The specification of segment nodes. 
+        /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
         [Output("instanceSpec")]
         public Output<string> InstanceSpec { get; private set; } = null!;
@@ -155,6 +175,12 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Output("storageSize")]
         public Output<int> StorageSize { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The virtual switch ID to launch ADB PG instances in one VPC.
@@ -215,10 +241,28 @@ namespace Pulumi.AliCloud.Gpdb
     public sealed class ElasticInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+        /// </summary>
+        [Input("dbInstanceCategory")]
+        public Input<string>? DbInstanceCategory { get; set; }
+
+        /// <summary>
         /// The description of ADB PG instance. It is a string of 2 to 256 characters.
         /// </summary>
         [Input("dbInstanceDescription")]
         public Input<string>? DbInstanceDescription { get; set; }
+
+        /// <summary>
+        /// The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+        /// </summary>
+        [Input("encryptionType")]
+        public Input<string>? EncryptionType { get; set; }
 
         /// <summary>
         /// Database engine: `gpdb`.
@@ -239,7 +283,9 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// The specification of segment nodes. 
+        /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
         [Input("instanceSpec", required: true)]
         public Input<string> InstanceSpec { get; set; } = null!;
@@ -294,6 +340,18 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("storageSize", required: true)]
         public Input<int> StorageSize { get; set; } = null!;
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The virtual switch ID to launch ADB PG instances in one VPC.
         /// </summary>
@@ -320,10 +378,28 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
+        /// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
+        /// </summary>
+        [Input("dbInstanceCategory")]
+        public Input<string>? DbInstanceCategory { get; set; }
+
+        /// <summary>
         /// The description of ADB PG instance. It is a string of 2 to 256 characters.
         /// </summary>
         [Input("dbInstanceDescription")]
         public Input<string>? DbInstanceDescription { get; set; }
+
+        /// <summary>
+        /// The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
+        /// </summary>
+        [Input("encryptionType")]
+        public Input<string>? EncryptionType { get; set; }
 
         /// <summary>
         /// Database engine: `gpdb`.
@@ -344,7 +420,9 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// The specification of segment nodes. 
+        /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
         [Input("instanceSpec")]
         public Input<string>? InstanceSpec { get; set; }
@@ -404,6 +482,18 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Input("storageSize")]
         public Input<int>? StorageSize { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The virtual switch ID to launch ADB PG instances in one VPC.

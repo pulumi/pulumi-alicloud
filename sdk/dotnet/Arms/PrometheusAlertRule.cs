@@ -101,6 +101,12 @@ namespace Pulumi.AliCloud.Arms
         public Output<string?> NotifyType { get; private set; } = null!;
 
         /// <summary>
+        /// The first ID of the resource.
+        /// </summary>
+        [Output("prometheusAlertRuleId")]
+        public Output<int> PrometheusAlertRuleId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the resource.
         /// </summary>
         [Output("prometheusAlertRuleName")]
@@ -302,6 +308,12 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         [Input("notifyType")]
         public Input<string>? NotifyType { get; set; }
+
+        /// <summary>
+        /// The first ID of the resource.
+        /// </summary>
+        [Input("prometheusAlertRuleId")]
+        public Input<int>? PrometheusAlertRuleId { get; set; }
 
         /// <summary>
         /// The name of the resource.

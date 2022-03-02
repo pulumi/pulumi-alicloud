@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetRulesRuleResult
     {
         /// <summary>
+        /// The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesRuleBindVpcResult> BindVpcs;
+        /// <summary>
         /// The creation time of the resource.
         /// </summary>
         public readonly string CreateTime;
@@ -49,6 +53,8 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
 
         [OutputConstructor]
         private GetRulesRuleResult(
+            ImmutableArray<Outputs.GetRulesRuleBindVpcResult> bindVpcs,
+
             string createTime,
 
             string endpointId,
@@ -67,6 +73,7 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
 
             string zoneName)
         {
+            BindVpcs = bindVpcs;
             CreateTime = createTime;
             EndpointId = endpointId;
             EndpointName = endpointName;

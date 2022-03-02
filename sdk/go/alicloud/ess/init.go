@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ess/alarm:Alarm":
 		r = &Alarm{}
+	case "alicloud:ess/albServerGroupAttachment:AlbServerGroupAttachment":
+		r = &AlbServerGroupAttachment{}
 	case "alicloud:ess/attachment:Attachment":
 		r = &Attachment{}
 	case "alicloud:ess/lifecycleHook:LifecycleHook":
@@ -57,6 +59,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ess/alarm",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ess/albServerGroupAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

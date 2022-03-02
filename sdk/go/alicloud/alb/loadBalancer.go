@@ -37,6 +37,8 @@ type LoadBalancer struct {
 	AddressType pulumi.StringOutput `pulumi:"addressType"`
 	// The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
 	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
+	// The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// Specifies whether to precheck the API request. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The configuration of the billing method.
@@ -51,7 +53,8 @@ type LoadBalancer struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	Tags   pulumi.MapOutput    `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The zones and vSwitches. You must specify at least two zones.
@@ -115,6 +118,8 @@ type loadBalancerState struct {
 	AddressType *string `pulumi:"addressType"`
 	// The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
+	// The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+	DnsName *string `pulumi:"dnsName"`
 	// Specifies whether to precheck the API request. Valid values: `true` and `false`.
 	DryRun *bool `pulumi:"dryRun"`
 	// The configuration of the billing method.
@@ -128,8 +133,9 @@ type loadBalancerState struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId *string `pulumi:"vpcId"`
 	// The zones and vSwitches. You must specify at least two zones.
@@ -147,6 +153,8 @@ type LoadBalancerState struct {
 	AddressType pulumi.StringPtrInput
 	// The deletion protection enabled. Valid values: `true` and `false`. Default value: `false`.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
+	// The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+	DnsName pulumi.StringPtrInput
 	// Specifies whether to precheck the API request. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrInput
 	// The configuration of the billing method.
@@ -161,7 +169,8 @@ type LoadBalancerState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
 	Status pulumi.StringPtrInput
-	Tags   pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringPtrInput
 	// The zones and vSwitches. You must specify at least two zones.
@@ -194,8 +203,9 @@ type loadBalancerArgs struct {
 	// Modify the Protection Configuration.
 	ModificationProtectionConfig *LoadBalancerModificationProtectionConfig `pulumi:"modificationProtectionConfig"`
 	// The ID of the resource group.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
 	// The zones and vSwitches. You must specify at least two zones.
@@ -226,7 +236,8 @@ type LoadBalancerArgs struct {
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags            pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringInput
 	// The zones and vSwitches. You must specify at least two zones.

@@ -196,6 +196,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.rds.InstanceParameter[]>;
     public readonly period!: pulumi.Output<number | undefined>;
+    /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    public readonly pgHbaConfs!: pulumi.Output<outputs.rds.InstancePgHbaConf[]>;
     public readonly port!: pulumi.Output<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
@@ -392,6 +396,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["monitoringPeriod"] = state ? state.monitoringPeriod : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["pgHbaConfs"] = state ? state.pgHbaConfs : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["releasedKeepPolicy"] = state ? state.releasedKeepPolicy : undefined;
@@ -466,6 +471,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["monitoringPeriod"] = args ? args.monitoringPeriod : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["pgHbaConfs"] = args ? args.pgHbaConfs : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             resourceInputs["releasedKeepPolicy"] = args ? args.releasedKeepPolicy : undefined;
@@ -661,6 +667,10 @@ export interface InstanceState {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     period?: pulumi.Input<number>;
+    /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.InstancePgHbaConf>[]>;
     port?: pulumi.Input<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
@@ -968,6 +978,10 @@ export interface InstanceArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     period?: pulumi.Input<number>;
+    /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.InstancePgHbaConf>[]>;
     port?: pulumi.Input<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.

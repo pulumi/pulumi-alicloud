@@ -26,7 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.GetZones(ctx, nil, nil)
+// 		_, err := slb.GetZones(ctx, &slb.GetZonesArgs{
+// 			AvailableSlbAddressIpVersion: pulumi.StringRef("ipv4"),
+// 			AvailableSlbAddressType:      pulumi.StringRef("vpc"),
+// 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -55,8 +58,12 @@ type GetZonesArgs struct {
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
 	//
 	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
-	EnableDetails *bool   `pulumi:"enableDetails"`
-	OutputFile    *string `pulumi:"outputFile"`
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// The primary zone.
+	MasterZoneId *string `pulumi:"masterZoneId"`
+	OutputFile   *string `pulumi:"outputFile"`
+	// The secondary zone.
+	SlaveZoneId *string `pulumi:"slaveZoneId"`
 }
 
 // A collection of values returned by getZones.
@@ -67,9 +74,13 @@ type GetZonesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of zone IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	// A list of primary zone IDs.
+	Ids []string `pulumi:"ids"`
+	// (Available in 1.157.0+) The primary zone.
+	MasterZoneId *string `pulumi:"masterZoneId"`
+	OutputFile   *string `pulumi:"outputFile"`
+	// (Available in 1.157.0+) The secondary zone.
+	SlaveZoneId *string `pulumi:"slaveZoneId"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
 }
@@ -95,8 +106,12 @@ type GetZonesOutputArgs struct {
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
 	//
 	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
-	EnableDetails pulumi.BoolPtrInput   `pulumi:"enableDetails"`
-	OutputFile    pulumi.StringPtrInput `pulumi:"outputFile"`
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// The primary zone.
+	MasterZoneId pulumi.StringPtrInput `pulumi:"masterZoneId"`
+	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The secondary zone.
+	SlaveZoneId pulumi.StringPtrInput `pulumi:"slaveZoneId"`
 }
 
 func (GetZonesOutputArgs) ElementType() reflect.Type {
@@ -136,13 +151,23 @@ func (o GetZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of zone IDs.
+// A list of primary zone IDs.
 func (o GetZonesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// (Available in 1.157.0+) The primary zone.
+func (o GetZonesResultOutput) MasterZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.MasterZoneId }).(pulumi.StringPtrOutput)
+}
+
 func (o GetZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.157.0+) The secondary zone.
+func (o GetZonesResultOutput) SlaveZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.SlaveZoneId }).(pulumi.StringPtrOutput)
 }
 
 // A list of availability zones. Each element contains the following attributes:

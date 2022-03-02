@@ -124,6 +124,12 @@ namespace Pulumi.AliCloud.Cen
         public Output<int?> Bandwidth { get; private set; } = null!;
 
         /// <summary>
+        /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        /// </summary>
+        [Output("bandwidthType")]
+        public Output<string?> BandwidthType { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         /// </summary>
         [Output("cenBandwidthPackageId")]
@@ -260,6 +266,12 @@ namespace Pulumi.AliCloud.Cen
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
+        /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        /// </summary>
+        [Input("bandwidthType")]
+        public Input<string>? BandwidthType { get; set; }
+
+        /// <summary>
         /// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         /// </summary>
         [Input("cenBandwidthPackageId")]
@@ -343,6 +355,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        /// </summary>
+        [Input("bandwidthType")]
+        public Input<string>? BandwidthType { get; set; }
 
         /// <summary>
         /// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity

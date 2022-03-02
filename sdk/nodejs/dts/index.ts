@@ -10,6 +10,8 @@ export * from "./getConsumerChannels";
 export * from "./getSubscriptionJobs";
 export * from "./getSynchronizationJobs";
 export * from "./jobMonitorRule";
+export * from "./migrationInstance";
+export * from "./migrationJob";
 export * from "./subscriptionJob";
 export * from "./synchronizationInstance";
 export * from "./synchronizationJob";
@@ -17,6 +19,8 @@ export * from "./synchronizationJob";
 // Import resources to register:
 import { ConsumerChannel } from "./consumerChannel";
 import { JobMonitorRule } from "./jobMonitorRule";
+import { MigrationInstance } from "./migrationInstance";
+import { MigrationJob } from "./migrationJob";
 import { SubscriptionJob } from "./subscriptionJob";
 import { SynchronizationInstance } from "./synchronizationInstance";
 import { SynchronizationJob } from "./synchronizationJob";
@@ -29,6 +33,10 @@ const _module = {
                 return new ConsumerChannel(name, <any>undefined, { urn })
             case "alicloud:dts/jobMonitorRule:JobMonitorRule":
                 return new JobMonitorRule(name, <any>undefined, { urn })
+            case "alicloud:dts/migrationInstance:MigrationInstance":
+                return new MigrationInstance(name, <any>undefined, { urn })
+            case "alicloud:dts/migrationJob:MigrationJob":
+                return new MigrationJob(name, <any>undefined, { urn })
             case "alicloud:dts/subscriptionJob:SubscriptionJob":
                 return new SubscriptionJob(name, <any>undefined, { urn })
             case "alicloud:dts/synchronizationInstance:SynchronizationInstance":
@@ -42,6 +50,8 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "dts/consumerChannel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/jobMonitorRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dts/migrationInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dts/migrationJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/subscriptionJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/synchronizationInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/synchronizationJob", _module)

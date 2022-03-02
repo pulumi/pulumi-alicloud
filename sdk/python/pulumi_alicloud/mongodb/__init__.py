@@ -16,6 +16,7 @@ from .get_zones import *
 from .instance import *
 from .serverless_instance import *
 from .sharding_instance import *
+from .sharding_network_private_address import *
 from .sharding_network_public_address import *
 from ._inputs import *
 from . import outputs

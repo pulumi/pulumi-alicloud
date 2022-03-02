@@ -46,6 +46,7 @@ class RdsUpgradeDbInstanceArgs:
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -126,6 +127,7 @@ class RdsUpgradeDbInstanceArgs:
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] password: The password of the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -207,6 +209,8 @@ class RdsUpgradeDbInstanceArgs:
             pulumi.set(__self__, "parameters", parameters)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if pg_hba_confs is not None:
+            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
@@ -648,6 +652,18 @@ class RdsUpgradeDbInstanceArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
+
+    @pg_hba_confs.setter
+    def pg_hba_confs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]]):
+        pulumi.set(self, "pg_hba_confs", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
@@ -927,6 +943,7 @@ class _RdsUpgradeDbInstanceState:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -1001,6 +1018,7 @@ class _RdsUpgradeDbInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] password: The password of the certificate.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -1097,6 +1115,8 @@ class _RdsUpgradeDbInstanceState:
             pulumi.set(__self__, "password", password)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if pg_hba_confs is not None:
+            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
@@ -1513,6 +1533,18 @@ class _RdsUpgradeDbInstanceState:
         pulumi.set(self, "payment_type", value)
 
     @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
+
+    @pg_hba_confs.setter
+    def pg_hba_confs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsUpgradeDbInstancePgHbaConfArgs']]]]):
+        pulumi.set(self, "pg_hba_confs", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1836,6 +1868,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -1967,6 +2000,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] password: The password of the certificate.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2111,6 +2145,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -2186,6 +2221,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["pg_hba_confs"] = pg_hba_confs
             __props__.__dict__["port"] = port
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["private_key"] = private_key
@@ -2255,6 +2291,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]]] = None,
             password: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
+            pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]]] = None,
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             private_key: Optional[pulumi.Input[str]] = None,
@@ -2334,6 +2371,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] password: The password of the certificate.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsUpgradeDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2405,6 +2443,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["password"] = password
         __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["pg_hba_confs"] = pg_hba_confs
         __props__.__dict__["port"] = port
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["private_key"] = private_key
@@ -2681,6 +2720,14 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
         """
         return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> pulumi.Output[Sequence['outputs.RdsUpgradeDbInstancePgHbaConf']]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
 
     @property
     @pulumi.getter

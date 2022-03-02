@@ -19,7 +19,7 @@ class DbClusterDbClusterAccessWhiteListArgs:
                  db_cluster_ip_array_name: Optional[pulumi.Input[str]] = None,
                  security_ip_list: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] db_cluster_ip_array_attribute: Whitelist grouping attribute.
+        :param pulumi.Input[str] db_cluster_ip_array_attribute: Field `db_cluster_ip_array_attribute` has been removed from provider.
         :param pulumi.Input[str] db_cluster_ip_array_name: Whitelist group name.
         :param pulumi.Input[str] security_ip_list: The IP address list under the whitelist group.
         """
@@ -34,7 +34,7 @@ class DbClusterDbClusterAccessWhiteListArgs:
     @pulumi.getter(name="dbClusterIpArrayAttribute")
     def db_cluster_ip_array_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        Whitelist grouping attribute.
+        Field `db_cluster_ip_array_attribute` has been removed from provider.
         """
         return pulumi.get(self, "db_cluster_ip_array_attribute")
 

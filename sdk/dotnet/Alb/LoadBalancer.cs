@@ -54,6 +54,12 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool?> DeletionProtectionEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+        /// </summary>
+        [Output("dnsName")]
+        public Output<string> DnsName { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to precheck the API request. Valid values: `true` and `false`.
         /// </summary>
         [Output("dryRun")]
@@ -95,6 +101,9 @@ namespace Pulumi.AliCloud.Alb
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
@@ -220,6 +229,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -278,6 +291,12 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         /// <summary>
+        /// The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+        /// </summary>
+        [Input("dnsName")]
+        public Input<string>? DnsName { get; set; }
+
+        /// <summary>
         /// Specifies whether to precheck the API request. Valid values: `true` and `false`.
         /// </summary>
         [Input("dryRun")]
@@ -321,6 +340,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

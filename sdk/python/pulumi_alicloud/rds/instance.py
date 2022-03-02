@@ -45,6 +45,7 @@ class InstanceArgs:
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
@@ -140,6 +141,7 @@ class InstanceArgs:
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
                - None: No archived backup files are retained.
@@ -257,6 +259,8 @@ class InstanceArgs:
             pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if pg_hba_confs is not None:
+            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
@@ -710,6 +714,18 @@ class InstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
+
+    @pg_hba_confs.setter
+    def pg_hba_confs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]]):
+        pulumi.set(self, "pg_hba_confs", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "port")
@@ -1121,6 +1137,7 @@ class _InstanceState:
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
@@ -1218,6 +1235,7 @@ class _InstanceState:
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
                - None: No archived backup files are retained.
@@ -1342,6 +1360,8 @@ class _InstanceState:
             pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if pg_hba_confs is not None:
+            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
@@ -1809,6 +1829,18 @@ class _InstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
+
+    @pg_hba_confs.setter
+    def pg_hba_confs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]]):
+        pulumi.set(self, "pg_hba_confs", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "port")
@@ -2233,6 +2265,7 @@ class Instance(pulumi.CustomResource):
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
@@ -2338,6 +2371,7 @@ class Instance(pulumi.CustomResource):
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
                - None: No archived backup files are retained.
@@ -2459,6 +2493,7 @@ class Instance(pulumi.CustomResource):
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
@@ -2538,6 +2573,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["monitoring_period"] = monitoring_period
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["period"] = period
+            __props__.__dict__["pg_hba_confs"] = pg_hba_confs
             __props__.__dict__["port"] = port
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["released_keep_policy"] = released_keep_policy
@@ -2613,6 +2649,7 @@ class Instance(pulumi.CustomResource):
             monitoring_period: Optional[pulumi.Input[int]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             released_keep_policy: Optional[pulumi.Input[str]] = None,
@@ -2715,6 +2752,7 @@ class Instance(pulumi.CustomResource):
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
                - None: No archived backup files are retained.
@@ -2812,6 +2850,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["monitoring_period"] = monitoring_period
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["period"] = period
+        __props__.__dict__["pg_hba_confs"] = pg_hba_confs
         __props__.__dict__["port"] = port
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["released_keep_policy"] = released_keep_policy
@@ -3121,6 +3160,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> pulumi.Output[Sequence['outputs.InstancePgHbaConf']]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
 
     @property
     @pulumi.getter

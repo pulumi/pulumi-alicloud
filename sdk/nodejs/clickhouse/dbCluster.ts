@@ -20,21 +20,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
+ * const defaultRegions = alicloud.clickhouse.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultRegions]).then(([defaultNetworks, defaultRegions]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?[0],
+ *     zoneId: defaultRegions.regions?[0]?.zoneIds?[0]?.zoneId,
+ * }));
+ * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
+ *     dbClusterVersion: "20.3.10.75",
  *     category: "Basic",
+ *     dbClusterClass: "S8",
+ *     dbClusterNetworkType: "vpc",
+ *     dbNodeGroupCount: "1",
+ *     paymentType: "PayAsYouGo",
+ *     dbNodeStorage: "500",
+ *     storageType: "cloud_essd",
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
  *     dbClusterAccessWhiteLists: [{
  *         dbClusterIpArrayAttribute: "test",
  *         dbClusterIpArrayName: "test",
  *         securityIpList: "192.168.0.1",
  *     }],
- *     dbClusterClass: "S8",
- *     dbClusterNetworkType: "vpc",
- *     dbClusterVersion: "20.3.10.75",
- *     dbNodeGroupCount: 1,
- *     dbNodeStorage: "500",
- *     paymentType: "PayAsYouGo",
- *     storageType: "cloud_essd",
- *     vswitchId: "your_vswitch_id",
  * });
  * ```
  *

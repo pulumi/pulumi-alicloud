@@ -228,6 +228,10 @@ export class RdsUpgradeDbInstance extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    public readonly pgHbaConfs!: pulumi.Output<outputs.rds.RdsUpgradeDbInstancePgHbaConf[]>;
+    /**
      * The port.
      */
     public readonly port!: pulumi.Output<string>;
@@ -376,6 +380,7 @@ export class RdsUpgradeDbInstance extends pulumi.CustomResource {
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["pgHbaConfs"] = state ? state.pgHbaConfs : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["privateKey"] = state ? state.privateKey : undefined;
@@ -456,6 +461,7 @@ export class RdsUpgradeDbInstance extends pulumi.CustomResource {
             resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["pgHbaConfs"] = args ? args.pgHbaConfs : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             resourceInputs["privateKey"] = args ? args.privateKey : undefined;
@@ -626,6 +632,10 @@ export interface RdsUpgradeDbInstanceState {
      * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstancePgHbaConf>[]>;
     /**
      * The port.
      */
@@ -870,6 +880,10 @@ export interface RdsUpgradeDbInstanceArgs {
      * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     */
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstancePgHbaConf>[]>;
     /**
      * The port.
      */

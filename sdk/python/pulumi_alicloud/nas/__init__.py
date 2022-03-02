@@ -25,5 +25,6 @@ from .get_snapshots import *
 from .get_zones import *
 from .lifecycle_policy import *
 from .mount_target import *
+from .recycle_bin import *
 from .snapshot import *
 from . import outputs

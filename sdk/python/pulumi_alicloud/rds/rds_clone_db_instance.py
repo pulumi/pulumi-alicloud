@@ -48,6 +48,7 @@ class RdsCloneDbInstanceArgs:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -129,6 +130,7 @@ class RdsCloneDbInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] password: The password of the certificate.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -225,6 +227,8 @@ class RdsCloneDbInstanceArgs:
             pulumi.set(__self__, "password", password)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if pg_hba_confs is not None:
+            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
@@ -691,6 +695,18 @@ class RdsCloneDbInstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]]]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
+
+    @pg_hba_confs.setter
+    def pg_hba_confs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]]]):
+        pulumi.set(self, "pg_hba_confs", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1001,6 +1017,7 @@ class _RdsCloneDbInstanceState:
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -1083,6 +1100,7 @@ class _RdsCloneDbInstanceState:
         :param pulumi.Input[str] password: The password of the certificate.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -1183,6 +1201,8 @@ class _RdsCloneDbInstanceState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if pg_hba_confs is not None:
+            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if private_ip_address is not None:
@@ -1651,6 +1671,18 @@ class _RdsCloneDbInstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]]]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
+
+    @pg_hba_confs.setter
+    def pg_hba_confs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]]]):
+        pulumi.set(self, "pg_hba_confs", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1974,6 +2006,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -2108,6 +2141,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of the certificate.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2247,6 +2281,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -2318,6 +2353,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["pg_hba_confs"] = pg_hba_confs
             __props__.__dict__["port"] = port
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["private_key"] = private_key
@@ -2387,6 +2423,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             password: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
+            pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]]] = None,
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             private_key: Optional[pulumi.Input[str]] = None,
@@ -2474,6 +2511,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of the certificate.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2545,6 +2583,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["pg_hba_confs"] = pg_hba_confs
         __props__.__dict__["port"] = port
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["private_key"] = private_key
@@ -2857,6 +2896,14 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         The period. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="pgHbaConfs")
+    def pg_hba_confs(self) -> pulumi.Output[Sequence['outputs.RdsCloneDbInstancePgHbaConf']]:
+        """
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        """
+        return pulumi.get(self, "pg_hba_confs")
 
     @property
     @pulumi.getter

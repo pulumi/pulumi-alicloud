@@ -51,12 +51,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     [AliCloudResourceType("alicloud:databasefilesystem/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
-        [Output("attachMode")]
-        public Output<string?> AttachMode { get; private set; } = null!;
-
-        [Output("attachPoint")]
-        public Output<string?> AttachPoint { get; private set; } = null!;
-
         /// <summary>
         /// The type of the Database file system. Valid values: `standard`.
         /// </summary>
@@ -70,7 +64,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Output<bool?> DeleteSnapshot { get; private set; } = null!;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         /// </summary>
         [Output("ecsLists")]
         public Output<ImmutableArray<Outputs.InstanceEcsList>> EcsLists { get; private set; } = null!;
@@ -126,11 +120,11 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
-
-        [Output("usedScene")]
-        public Output<string?> UsedScene { get; private set; } = null!;
 
         /// <summary>
         /// The Zone ID of the Database file system.
@@ -184,12 +178,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
-        [Input("attachMode")]
-        public Input<string>? AttachMode { get; set; }
-
-        [Input("attachPoint")]
-        public Input<string>? AttachPoint { get; set; }
-
         /// <summary>
         /// The type of the Database file system. Valid values: `standard`.
         /// </summary>
@@ -206,8 +194,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         private InputList<Inputs.InstanceEcsListArgs>? _ecsLists;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         /// </summary>
+        [Obsolete(@"Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.")]
         public InputList<Inputs.InstanceEcsListArgs> EcsLists
         {
             get => _ecsLists ?? (_ecsLists = new InputList<Inputs.InstanceEcsListArgs>());
@@ -264,14 +253,15 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
-
-        [Input("usedScene")]
-        public Input<string>? UsedScene { get; set; }
 
         /// <summary>
         /// The Zone ID of the Database file system.
@@ -286,12 +276,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
-        [Input("attachMode")]
-        public Input<string>? AttachMode { get; set; }
-
-        [Input("attachPoint")]
-        public Input<string>? AttachPoint { get; set; }
-
         /// <summary>
         /// The type of the Database file system. Valid values: `standard`.
         /// </summary>
@@ -308,8 +292,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         private InputList<Inputs.InstanceEcsListGetArgs>? _ecsLists;
 
         /// <summary>
-        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`.
+        /// The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         /// </summary>
+        [Obsolete(@"Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.")]
         public InputList<Inputs.InstanceEcsListGetArgs> EcsLists
         {
             get => _ecsLists ?? (_ecsLists = new InputList<Inputs.InstanceEcsListGetArgs>());
@@ -369,14 +354,15 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
-
-        [Input("usedScene")]
-        public Input<string>? UsedScene { get; set; }
 
         /// <summary>
         /// The Zone ID of the Database file system.

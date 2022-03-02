@@ -82,6 +82,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> ConsumerId { get; private set; } = null!;
 
         /// <summary>
+        /// The description of the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the ALIKAFKA Instance that owns the groups.
         /// </summary>
         [Output("instanceId")]
@@ -146,6 +152,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> ConsumerId { get; set; } = null!;
 
         /// <summary>
+        /// The description of the resource.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// ID of the ALIKAFKA Instance that owns the groups.
         /// </summary>
         [Input("instanceId", required: true)]
@@ -175,6 +187,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("consumerId")]
         public Input<string>? ConsumerId { get; set; }
+
+        /// <summary>
+        /// The description of the resource.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the groups.

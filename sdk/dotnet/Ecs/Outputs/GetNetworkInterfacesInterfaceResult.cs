@@ -39,6 +39,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string Name;
         public readonly string NetworkInterfaceId;
         public readonly string NetworkInterfaceName;
+        public readonly string NetworkInterfaceTrafficMode;
+        public readonly string OwnerId;
         public readonly string PrimaryIpAddress;
         /// <summary>
         /// Primary private IP of the ENI.
@@ -101,6 +103,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string networkInterfaceName,
 
+            string networkInterfaceTrafficMode,
+
+            string ownerId,
+
             string primaryIpAddress,
 
             string privateIp,
@@ -141,6 +147,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Name = name;
             NetworkInterfaceId = networkInterfaceId;
             NetworkInterfaceName = networkInterfaceName;
+            NetworkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            OwnerId = ownerId;
             PrimaryIpAddress = primaryIpAddress;
             PrivateIp = privateIp;
             PrivateIpAddresses = privateIpAddresses;

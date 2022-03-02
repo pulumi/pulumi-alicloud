@@ -64,7 +64,24 @@ import * as utilities from "../utilities";
  *     systemDiskCategory: "cloud_efficiency",
  *     systemDiskSize: 40,
  *     keyName: alicloud_key_pair["default"].key_name,
- *     nodeCount: 1,
+ *     desiredSize: 1,
+ * });
+ * ```
+ *
+ * The parameter `nodeCount` are deprecated from version 1.158.0，but it can still works. If you want to use the new parameter `desiredSize` instead, you can update it as follows. for more information of `desiredSize`, visit [Modify the expected number of nodes in a node pool](https://www.alibabacloud.com/help/en/doc-detail/160490.html#title-mpp-3jj-oo3).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.cs.NodePool("default", {
+ *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
+ *     vswitchIds: [alicloud_vswitch["default"].id],
+ *     instanceTypes: [data.alicloud_instance_types["default"].instance_types[0].id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: alicloud_key_pair["default"].key_name,
+ *     desiredSize: 1,
  * });
  * ```
  *
@@ -81,7 +98,7 @@ import * as utilities from "../utilities";
  *     systemDiskCategory: "cloud_efficiency",
  *     systemDiskSize: 40,
  *     keyName: alicloud_key_pair["default"].key_name,
- *     nodeCount: 1,
+ *     desiredSize: 1,
  *     management: {
  *         autoRepair: true,
  *         autoUpgrade: true,
@@ -178,7 +195,7 @@ import * as utilities from "../utilities";
  *     systemDiskCategory: "cloud_efficiency",
  *     systemDiskSize: 40,
  *     keyName: alicloud_key_pair["default"].key_name,
- *     nodeCount: 1,
+ *     desiredSize: 1,
  *     spotStrategy: "SpotWithPriceLimit",
  *     spotPriceLimits: [{
  *         instanceType: data.alicloud_instance_types["default"].instance_types[0].id,
@@ -224,7 +241,7 @@ import * as utilities from "../utilities";
  *     systemDiskCategory: "cloud_efficiency",
  *     systemDiskSize: 40,
  *     instanceChargeType: "PostPaid",
- *     nodeCount: 1,
+ *     desiredSize: 1,
  *     password: "Hello1234",
  *     platform: "Windows",
  *     imageId: window_image_id,
@@ -313,6 +330,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly deploymentSetId!: pulumi.Output<string>;
     /**
+     * The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+     */
+    public readonly desiredSize!: pulumi.Output<number>;
+    /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
     public readonly formatDisk!: pulumi.Output<boolean>;
@@ -374,6 +395,8 @@ export class NodePool extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+     *
+     * @deprecated Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
@@ -495,6 +518,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
+            resourceInputs["desiredSize"] = state ? state.desiredSize : undefined;
             resourceInputs["formatDisk"] = state ? state.formatDisk : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["imageType"] = state ? state.imageType : undefined;
@@ -551,6 +575,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
+            resourceInputs["desiredSize"] = args ? args.desiredSize : undefined;
             resourceInputs["formatDisk"] = args ? args.formatDisk : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["imageType"] = args ? args.imageType : undefined;
@@ -622,6 +647,10 @@ export interface NodePoolState {
      */
     deploymentSetId?: pulumi.Input<string>;
     /**
+     * The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+     */
+    desiredSize?: pulumi.Input<number>;
+    /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
     formatDisk?: pulumi.Input<boolean>;
@@ -683,6 +712,8 @@ export interface NodePoolState {
     name?: pulumi.Input<string>;
     /**
      * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+     *
+     * @deprecated Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
      */
     nodeCount?: pulumi.Input<number>;
     /**
@@ -812,6 +843,10 @@ export interface NodePoolArgs {
      */
     deploymentSetId?: pulumi.Input<string>;
     /**
+     * The desired size of nodes of the node pool. From version 1.158.0, `desiredSize` is not required.
+     */
+    desiredSize?: pulumi.Input<number>;
+    /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
     formatDisk?: pulumi.Input<boolean>;
@@ -873,6 +908,8 @@ export interface NodePoolArgs {
     name?: pulumi.Input<string>;
     /**
      * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
+     *
+     * @deprecated Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
      */
     nodeCount?: pulumi.Input<number>;
     /**

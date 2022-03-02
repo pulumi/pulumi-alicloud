@@ -9,5 +9,6 @@ from .domain import *
 from .domain_config import *
 from .get_domains import *
 from .get_service import *
+from .ipa_domain import *
 from ._inputs import *
 from . import outputs
