@@ -5,12 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ALIKAFKA sasl user resource.
+ * Provides an Alikafka sasl user resource.
  *
  * > **NOTE:** Available in 1.66.0+
  *
  * > **NOTE:**  Only the following regions support create alikafka sasl user.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
+ *
+ * For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user a](https://www.alibabacloud.com/help/en/doc-detail/162221.html)
  *
  * ## Example Usage
  *
@@ -49,10 +51,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ALIKAFKA GROUP can be imported using the id, e.g.
+ * Alikafka Sasl User can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:alikafka/saslUser:SaslUser user alikafka_post-cn-123455abc:username
+ *  $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
  * ```
  */
 export class SaslUser extends pulumi.CustomResource {
@@ -100,6 +102,10 @@ export class SaslUser extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
+     * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
+    /**
      * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
      */
     public readonly username!: pulumi.Output<string>;
@@ -121,6 +127,7 @@ export class SaslUser extends pulumi.CustomResource {
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as SaslUserArgs | undefined;
@@ -134,6 +141,7 @@ export class SaslUser extends pulumi.CustomResource {
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -162,6 +170,10 @@ export interface SaslUserState {
      */
     password?: pulumi.Input<string>;
     /**
+     * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
      */
     username?: pulumi.Input<string>;
@@ -187,6 +199,10 @@ export interface SaslUserArgs {
      * Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     password?: pulumi.Input<string>;
+    /**
+     * The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+     */
+    type?: pulumi.Input<string>;
     /**
      * Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
      */

@@ -110,7 +110,7 @@ export class Trail extends pulumi.CustomResource {
     /**
      * The unique ARN of the Log Service role.
      */
-    public readonly slsWriteRoleArn!: pulumi.Output<string | undefined>;
+    public readonly slsWriteRoleArn!: pulumi.Output<string>;
     /**
      * The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
      */

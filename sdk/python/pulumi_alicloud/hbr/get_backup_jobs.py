@@ -175,7 +175,7 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
 
 
     :param Sequence[str] ids: A list of Backup Job IDs.
-    :param str sort_direction: The sort direction. Valid values: `ASCEND`, `DESCEND`.
+    :param str sort_direction: The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
     :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
     :param str status: The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
     """
@@ -271,7 +271,7 @@ def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
 
 
     :param Sequence[str] ids: A list of Backup Job IDs.
-    :param str sort_direction: The sort direction. Valid values: `ASCEND`, `DESCEND`.
+    :param str sort_direction: The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
     :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
     :param str status: The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
     """

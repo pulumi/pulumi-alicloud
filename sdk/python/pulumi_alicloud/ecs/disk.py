@@ -1111,7 +1111,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> pulumi.Output[Optional[bool]]:
+    def delete_with_instance(self) -> pulumi.Output[bool]:
         """
         Indicates whether the disk is released together with the instance: Default value: false.
         """

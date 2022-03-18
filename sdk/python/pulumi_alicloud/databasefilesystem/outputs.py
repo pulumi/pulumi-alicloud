@@ -13,6 +13,7 @@ __all__ = [
     'InstanceEcsList',
     'GetInstancesInstanceResult',
     'GetInstancesInstanceEcsListResult',
+    'GetSnapshotsSnapshotResult',
 ]
 
 @pulumi.output_type
@@ -261,5 +262,166 @@ class GetInstancesInstanceEcsListResult(dict):
         The ID of the ECS instance.
         """
         return pulumi.get(self, "ecs_id")
+
+
+@pulumi.output_type
+class GetSnapshotsSnapshotResult(dict):
+    def __init__(__self__, *,
+                 category: str,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 instance_id: str,
+                 last_modified_time: str,
+                 progress: str,
+                 remain_time: int,
+                 retention_days: int,
+                 snapshot_id: str,
+                 snapshot_name: str,
+                 snapshot_type: str,
+                 source_fs_size: int,
+                 status: str):
+        """
+        :param str category: The type of the Snapshot.
+        :param str create_time: The creation time of the snapshot.
+        :param str description: The description of the snapshot.
+        :param str id: The ID of the Snapshot.
+        :param str instance_id: The ID of the database file system.
+        :param str last_modified_time: The last modification time of the snapshot.
+        :param str progress: The progress of the snapshot.
+        :param int remain_time: The remaining completion time of the snapshot being created, in seconds.
+        :param int retention_days: The retention days of the snapshot.
+        :param str snapshot_id: The ID of the snapshot.
+        :param str snapshot_name: The name of the snapshot.
+        :param str snapshot_type: The creation of the snapshot.
+        :param int source_fs_size: Source database file system capacity.
+        :param str status: The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "last_modified_time", last_modified_time)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "remain_time", remain_time)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
+        pulumi.set(__self__, "source_fs_size", source_fs_size)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        The type of the Snapshot.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the snapshot.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the snapshot.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Snapshot.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the database file system.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> str:
+        """
+        The last modification time of the snapshot.
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter
+    def progress(self) -> str:
+        """
+        The progress of the snapshot.
+        """
+        return pulumi.get(self, "progress")
+
+    @property
+    @pulumi.getter(name="remainTime")
+    def remain_time(self) -> int:
+        """
+        The remaining completion time of the snapshot being created, in seconds.
+        """
+        return pulumi.get(self, "remain_time")
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> int:
+        """
+        The retention days of the snapshot.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        The ID of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        The name of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> str:
+        """
+        The creation of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_type")
+
+    @property
+    @pulumi.getter(name="sourceFsSize")
+    def source_fs_size(self) -> int:
+        """
+        Source database file system capacity.
+        """
+        return pulumi.get(self, "source_fs_size")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+        """
+        return pulumi.get(self, "status")
 
 

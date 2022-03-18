@@ -58,6 +58,10 @@ import (
 type SynchronizationInstance struct {
 	pulumi.CustomResourceState
 
+	// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+	AutoPay pulumi.StringPtrOutput `pulumi:"autoPay"`
+	// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+	AutoStart pulumi.StringPtrOutput `pulumi:"autoStart"`
 	// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
 	ComputeUnit pulumi.IntPtrOutput `pulumi:"computeUnit"`
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
@@ -130,6 +134,10 @@ func GetSynchronizationInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SynchronizationInstance resources.
 type synchronizationInstanceState struct {
+	// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+	AutoPay *string `pulumi:"autoPay"`
+	// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+	AutoStart *string `pulumi:"autoStart"`
 	// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
 	ComputeUnit *int `pulumi:"computeUnit"`
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
@@ -159,6 +167,10 @@ type synchronizationInstanceState struct {
 }
 
 type SynchronizationInstanceState struct {
+	// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+	AutoPay pulumi.StringPtrInput
+	// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+	AutoStart pulumi.StringPtrInput
 	// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
 	ComputeUnit pulumi.IntPtrInput
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
@@ -192,6 +204,10 @@ func (SynchronizationInstanceState) ElementType() reflect.Type {
 }
 
 type synchronizationInstanceArgs struct {
+	// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+	AutoPay *string `pulumi:"autoPay"`
+	// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+	AutoStart *string `pulumi:"autoStart"`
 	// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
 	ComputeUnit *int `pulumi:"computeUnit"`
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
@@ -220,6 +236,10 @@ type synchronizationInstanceArgs struct {
 
 // The set of arguments for constructing a SynchronizationInstance resource.
 type SynchronizationInstanceArgs struct {
+	// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+	AutoPay pulumi.StringPtrInput
+	// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+	AutoStart pulumi.StringPtrInput
 	// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
 	ComputeUnit pulumi.IntPtrInput
 	// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.

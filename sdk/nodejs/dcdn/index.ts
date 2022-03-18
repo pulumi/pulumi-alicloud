@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./domain";
 export * from "./domainConfig";
 export * from "./getDomains";
+export * from "./getIpaDomains";
 export * from "./getService";
 export * from "./ipaDomain";
 

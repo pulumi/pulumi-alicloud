@@ -729,6 +729,335 @@ func (o GetDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetDomainsDo
 	}).(GetDomainsDomainSourceOutput)
 }
 
+type GetIpaDomainsDomain struct {
+	// CertName.
+	CertName string `pulumi:"certName"`
+	// The CNAME assigned to the domain name.
+	Cname string `pulumi:"cname"`
+	// The time when the accelerated domain name was created.
+	CreateTime string `pulumi:"createTime"`
+	// The description.
+	Description string `pulumi:"description"`
+	// The accelerated domain names.
+	DomainName string `pulumi:"domainName"`
+	// The ID of the Ipa Domain.
+	Id string `pulumi:"id"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The accelerated region.
+	Scope string `pulumi:"scope"`
+	// The information about the origin server.
+	Sources []GetIpaDomainsDomainSource `pulumi:"sources"`
+	// Indicates whether the Security Socket Layer (SSL) certificate is enabled.
+	SslProtocol string `pulumi:"sslProtocol"`
+	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+	SslPub string `pulumi:"sslPub"`
+	// The status of the accelerated domain name.
+	Status string `pulumi:"status"`
+}
+
+// GetIpaDomainsDomainInput is an input type that accepts GetIpaDomainsDomainArgs and GetIpaDomainsDomainOutput values.
+// You can construct a concrete instance of `GetIpaDomainsDomainInput` via:
+//
+//          GetIpaDomainsDomainArgs{...}
+type GetIpaDomainsDomainInput interface {
+	pulumi.Input
+
+	ToGetIpaDomainsDomainOutput() GetIpaDomainsDomainOutput
+	ToGetIpaDomainsDomainOutputWithContext(context.Context) GetIpaDomainsDomainOutput
+}
+
+type GetIpaDomainsDomainArgs struct {
+	// CertName.
+	CertName pulumi.StringInput `pulumi:"certName"`
+	// The CNAME assigned to the domain name.
+	Cname pulumi.StringInput `pulumi:"cname"`
+	// The time when the accelerated domain name was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The accelerated domain names.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The ID of the Ipa Domain.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The accelerated region.
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// The information about the origin server.
+	Sources GetIpaDomainsDomainSourceArrayInput `pulumi:"sources"`
+	// Indicates whether the Security Socket Layer (SSL) certificate is enabled.
+	SslProtocol pulumi.StringInput `pulumi:"sslProtocol"`
+	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+	SslPub pulumi.StringInput `pulumi:"sslPub"`
+	// The status of the accelerated domain name.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetIpaDomainsDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpaDomainsDomain)(nil)).Elem()
+}
+
+func (i GetIpaDomainsDomainArgs) ToGetIpaDomainsDomainOutput() GetIpaDomainsDomainOutput {
+	return i.ToGetIpaDomainsDomainOutputWithContext(context.Background())
+}
+
+func (i GetIpaDomainsDomainArgs) ToGetIpaDomainsDomainOutputWithContext(ctx context.Context) GetIpaDomainsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpaDomainsDomainOutput)
+}
+
+// GetIpaDomainsDomainArrayInput is an input type that accepts GetIpaDomainsDomainArray and GetIpaDomainsDomainArrayOutput values.
+// You can construct a concrete instance of `GetIpaDomainsDomainArrayInput` via:
+//
+//          GetIpaDomainsDomainArray{ GetIpaDomainsDomainArgs{...} }
+type GetIpaDomainsDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetIpaDomainsDomainArrayOutput() GetIpaDomainsDomainArrayOutput
+	ToGetIpaDomainsDomainArrayOutputWithContext(context.Context) GetIpaDomainsDomainArrayOutput
+}
+
+type GetIpaDomainsDomainArray []GetIpaDomainsDomainInput
+
+func (GetIpaDomainsDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpaDomainsDomain)(nil)).Elem()
+}
+
+func (i GetIpaDomainsDomainArray) ToGetIpaDomainsDomainArrayOutput() GetIpaDomainsDomainArrayOutput {
+	return i.ToGetIpaDomainsDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpaDomainsDomainArray) ToGetIpaDomainsDomainArrayOutputWithContext(ctx context.Context) GetIpaDomainsDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpaDomainsDomainArrayOutput)
+}
+
+type GetIpaDomainsDomainOutput struct{ *pulumi.OutputState }
+
+func (GetIpaDomainsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpaDomainsDomain)(nil)).Elem()
+}
+
+func (o GetIpaDomainsDomainOutput) ToGetIpaDomainsDomainOutput() GetIpaDomainsDomainOutput {
+	return o
+}
+
+func (o GetIpaDomainsDomainOutput) ToGetIpaDomainsDomainOutputWithContext(ctx context.Context) GetIpaDomainsDomainOutput {
+	return o
+}
+
+// CertName.
+func (o GetIpaDomainsDomainOutput) CertName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.CertName }).(pulumi.StringOutput)
+}
+
+// The CNAME assigned to the domain name.
+func (o GetIpaDomainsDomainOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.Cname }).(pulumi.StringOutput)
+}
+
+// The time when the accelerated domain name was created.
+func (o GetIpaDomainsDomainOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description.
+func (o GetIpaDomainsDomainOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The accelerated domain names.
+func (o GetIpaDomainsDomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The ID of the Ipa Domain.
+func (o GetIpaDomainsDomainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetIpaDomainsDomainOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The accelerated region.
+func (o GetIpaDomainsDomainOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// The information about the origin server.
+func (o GetIpaDomainsDomainOutput) Sources() GetIpaDomainsDomainSourceArrayOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) []GetIpaDomainsDomainSource { return v.Sources }).(GetIpaDomainsDomainSourceArrayOutput)
+}
+
+// Indicates whether the Security Socket Layer (SSL) certificate is enabled.
+func (o GetIpaDomainsDomainOutput) SslProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.SslProtocol }).(pulumi.StringOutput)
+}
+
+// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+func (o GetIpaDomainsDomainOutput) SslPub() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.SslPub }).(pulumi.StringOutput)
+}
+
+// The status of the accelerated domain name.
+func (o GetIpaDomainsDomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomain) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetIpaDomainsDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpaDomainsDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpaDomainsDomain)(nil)).Elem()
+}
+
+func (o GetIpaDomainsDomainArrayOutput) ToGetIpaDomainsDomainArrayOutput() GetIpaDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetIpaDomainsDomainArrayOutput) ToGetIpaDomainsDomainArrayOutputWithContext(ctx context.Context) GetIpaDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetIpaDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetIpaDomainsDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpaDomainsDomain {
+		return vs[0].([]GetIpaDomainsDomain)[vs[1].(int)]
+	}).(GetIpaDomainsDomainOutput)
+}
+
+type GetIpaDomainsDomainSource struct {
+	// The address of the origin server.
+	Content string `pulumi:"content"`
+	// The custom port.
+	Port int `pulumi:"port"`
+	// The priority of the origin server if multiple origin servers are specified.
+	Priority string `pulumi:"priority"`
+	// The type of the origin server.
+	Type string `pulumi:"type"`
+	// The weight of the origin server if multiple origin servers are specified.
+	Weight int `pulumi:"weight"`
+}
+
+// GetIpaDomainsDomainSourceInput is an input type that accepts GetIpaDomainsDomainSourceArgs and GetIpaDomainsDomainSourceOutput values.
+// You can construct a concrete instance of `GetIpaDomainsDomainSourceInput` via:
+//
+//          GetIpaDomainsDomainSourceArgs{...}
+type GetIpaDomainsDomainSourceInput interface {
+	pulumi.Input
+
+	ToGetIpaDomainsDomainSourceOutput() GetIpaDomainsDomainSourceOutput
+	ToGetIpaDomainsDomainSourceOutputWithContext(context.Context) GetIpaDomainsDomainSourceOutput
+}
+
+type GetIpaDomainsDomainSourceArgs struct {
+	// The address of the origin server.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The custom port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The priority of the origin server if multiple origin servers are specified.
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// The type of the origin server.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The weight of the origin server if multiple origin servers are specified.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetIpaDomainsDomainSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpaDomainsDomainSource)(nil)).Elem()
+}
+
+func (i GetIpaDomainsDomainSourceArgs) ToGetIpaDomainsDomainSourceOutput() GetIpaDomainsDomainSourceOutput {
+	return i.ToGetIpaDomainsDomainSourceOutputWithContext(context.Background())
+}
+
+func (i GetIpaDomainsDomainSourceArgs) ToGetIpaDomainsDomainSourceOutputWithContext(ctx context.Context) GetIpaDomainsDomainSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpaDomainsDomainSourceOutput)
+}
+
+// GetIpaDomainsDomainSourceArrayInput is an input type that accepts GetIpaDomainsDomainSourceArray and GetIpaDomainsDomainSourceArrayOutput values.
+// You can construct a concrete instance of `GetIpaDomainsDomainSourceArrayInput` via:
+//
+//          GetIpaDomainsDomainSourceArray{ GetIpaDomainsDomainSourceArgs{...} }
+type GetIpaDomainsDomainSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetIpaDomainsDomainSourceArrayOutput() GetIpaDomainsDomainSourceArrayOutput
+	ToGetIpaDomainsDomainSourceArrayOutputWithContext(context.Context) GetIpaDomainsDomainSourceArrayOutput
+}
+
+type GetIpaDomainsDomainSourceArray []GetIpaDomainsDomainSourceInput
+
+func (GetIpaDomainsDomainSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpaDomainsDomainSource)(nil)).Elem()
+}
+
+func (i GetIpaDomainsDomainSourceArray) ToGetIpaDomainsDomainSourceArrayOutput() GetIpaDomainsDomainSourceArrayOutput {
+	return i.ToGetIpaDomainsDomainSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpaDomainsDomainSourceArray) ToGetIpaDomainsDomainSourceArrayOutputWithContext(ctx context.Context) GetIpaDomainsDomainSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpaDomainsDomainSourceArrayOutput)
+}
+
+type GetIpaDomainsDomainSourceOutput struct{ *pulumi.OutputState }
+
+func (GetIpaDomainsDomainSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpaDomainsDomainSource)(nil)).Elem()
+}
+
+func (o GetIpaDomainsDomainSourceOutput) ToGetIpaDomainsDomainSourceOutput() GetIpaDomainsDomainSourceOutput {
+	return o
+}
+
+func (o GetIpaDomainsDomainSourceOutput) ToGetIpaDomainsDomainSourceOutputWithContext(ctx context.Context) GetIpaDomainsDomainSourceOutput {
+	return o
+}
+
+// The address of the origin server.
+func (o GetIpaDomainsDomainSourceOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomainSource) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The custom port.
+func (o GetIpaDomainsDomainSourceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomainSource) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The priority of the origin server if multiple origin servers are specified.
+func (o GetIpaDomainsDomainSourceOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomainSource) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+// The type of the origin server.
+func (o GetIpaDomainsDomainSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomainSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The weight of the origin server if multiple origin servers are specified.
+func (o GetIpaDomainsDomainSourceOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpaDomainsDomainSource) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetIpaDomainsDomainSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpaDomainsDomainSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpaDomainsDomainSource)(nil)).Elem()
+}
+
+func (o GetIpaDomainsDomainSourceArrayOutput) ToGetIpaDomainsDomainSourceArrayOutput() GetIpaDomainsDomainSourceArrayOutput {
+	return o
+}
+
+func (o GetIpaDomainsDomainSourceArrayOutput) ToGetIpaDomainsDomainSourceArrayOutputWithContext(ctx context.Context) GetIpaDomainsDomainSourceArrayOutput {
+	return o
+}
+
+func (o GetIpaDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetIpaDomainsDomainSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpaDomainsDomainSource {
+		return vs[0].([]GetIpaDomainsDomainSource)[vs[1].(int)]
+	}).(GetIpaDomainsDomainSourceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgInput)(nil)).Elem(), DomainConfigFunctionArgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgArrayInput)(nil)).Elem(), DomainConfigFunctionArgArray{})
@@ -740,6 +1069,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainSourceInput)(nil)).Elem(), GetDomainsDomainSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainSourceArrayInput)(nil)).Elem(), GetDomainsDomainSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpaDomainsDomainInput)(nil)).Elem(), GetIpaDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpaDomainsDomainArrayInput)(nil)).Elem(), GetIpaDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpaDomainsDomainSourceInput)(nil)).Elem(), GetIpaDomainsDomainSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpaDomainsDomainSourceArrayInput)(nil)).Elem(), GetIpaDomainsDomainSourceArray{})
 	pulumi.RegisterOutputType(DomainConfigFunctionArgOutput{})
 	pulumi.RegisterOutputType(DomainConfigFunctionArgArrayOutput{})
 	pulumi.RegisterOutputType(DomainSourceOutput{})
@@ -750,4 +1083,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainSourceOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetIpaDomainsDomainOutput{})
+	pulumi.RegisterOutputType(GetIpaDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetIpaDomainsDomainSourceOutput{})
+	pulumi.RegisterOutputType(GetIpaDomainsDomainSourceArrayOutput{})
 }

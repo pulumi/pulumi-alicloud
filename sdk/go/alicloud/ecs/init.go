@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EcsDisk{}
 	case "alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment":
 		r = &EcsDiskAttachment{}
+	case "alicloud:ecs/ecsImageComponent:EcsImageComponent":
+		r = &EcsImageComponent{}
 	case "alicloud:ecs/ecsKeyPair:EcsKeyPair":
 		r = &EcsKeyPair{}
 	case "alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment":
@@ -61,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EcsSessionManagerStatus{}
 	case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
 		r = &EcsSnapshot{}
+	case "alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup":
+		r = &EcsSnapshotGroup{}
 	case "alicloud:ecs/eip:Eip":
 		r = &Eip{}
 	case "alicloud:ecs/eipAddress:EipAddress":
@@ -174,6 +178,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ecs/ecsImageComponent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ecs/ecsKeyPair",
 		&module{version},
 	)
@@ -210,6 +219,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/ecsSnapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ecsSnapshotGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

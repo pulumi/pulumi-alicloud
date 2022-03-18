@@ -258,6 +258,1391 @@ func (o ApplicationIntranetArrayOutput) Index(i pulumi.IntInput) ApplicationIntr
 	}).(ApplicationIntranetOutput)
 }
 
+type ApplicationScalingRuleScalingRuleMetric struct {
+	// Maximum number of instances applied.
+	MaxReplicas *int `pulumi:"maxReplicas"`
+	// Indicator rule configuration. See the following `Block metrics`.
+	Metrics []ApplicationScalingRuleScalingRuleMetricMetric `pulumi:"metrics"`
+	// Minimum number of instances applied.
+	MinReplicas *int `pulumi:"minReplicas"`
+	// Apply shrink rules. See the following `Block scaleDownRules`.
+	ScaleDownRules *ApplicationScalingRuleScalingRuleMetricScaleDownRules `pulumi:"scaleDownRules"`
+	// Apply expansion rules. See the following `Block scaleUpRules`.
+	ScaleUpRules *ApplicationScalingRuleScalingRuleMetricScaleUpRules `pulumi:"scaleUpRules"`
+}
+
+// ApplicationScalingRuleScalingRuleMetricInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricArgs and ApplicationScalingRuleScalingRuleMetricOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricInput` via:
+//
+//          ApplicationScalingRuleScalingRuleMetricArgs{...}
+type ApplicationScalingRuleScalingRuleMetricInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleMetricOutput() ApplicationScalingRuleScalingRuleMetricOutput
+	ToApplicationScalingRuleScalingRuleMetricOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricOutput
+}
+
+type ApplicationScalingRuleScalingRuleMetricArgs struct {
+	// Maximum number of instances applied.
+	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
+	// Indicator rule configuration. See the following `Block metrics`.
+	Metrics ApplicationScalingRuleScalingRuleMetricMetricArrayInput `pulumi:"metrics"`
+	// Minimum number of instances applied.
+	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
+	// Apply shrink rules. See the following `Block scaleDownRules`.
+	ScaleDownRules ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput `pulumi:"scaleDownRules"`
+	// Apply expansion rules. See the following `Block scaleUpRules`.
+	ScaleUpRules ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput `pulumi:"scaleUpRules"`
+}
+
+func (ApplicationScalingRuleScalingRuleMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetric)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleScalingRuleMetricOutput() ApplicationScalingRuleScalingRuleMetricOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleScalingRuleMetricOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricOutput)
+}
+
+// ApplicationScalingRuleScalingRuleMetricArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricArray and ApplicationScalingRuleScalingRuleMetricArrayOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricArrayInput` via:
+//
+//          ApplicationScalingRuleScalingRuleMetricArray{ ApplicationScalingRuleScalingRuleMetricArgs{...} }
+type ApplicationScalingRuleScalingRuleMetricArrayInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricArrayOutput
+	ToApplicationScalingRuleScalingRuleMetricArrayOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricArrayOutput
+}
+
+type ApplicationScalingRuleScalingRuleMetricArray []ApplicationScalingRuleScalingRuleMetricInput
+
+func (ApplicationScalingRuleScalingRuleMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleMetric)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricArray) ToApplicationScalingRuleScalingRuleMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricArrayOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricArray) ToApplicationScalingRuleScalingRuleMetricArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricArrayOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetric)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleScalingRuleMetricOutput() ApplicationScalingRuleScalingRuleMetricOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleScalingRuleMetricOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricOutput {
+	return o
+}
+
+// Maximum number of instances applied.
+func (o ApplicationScalingRuleScalingRuleMetricOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Indicator rule configuration. See the following `Block metrics`.
+func (o ApplicationScalingRuleScalingRuleMetricOutput) Metrics() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) []ApplicationScalingRuleScalingRuleMetricMetric {
+		return v.Metrics
+	}).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
+}
+
+// Minimum number of instances applied.
+func (o ApplicationScalingRuleScalingRuleMetricOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Apply shrink rules. See the following `Block scaleDownRules`.
+func (o ApplicationScalingRuleScalingRuleMetricOutput) ScaleDownRules() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleDownRules {
+		return v.ScaleDownRules
+	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
+}
+
+// Apply expansion rules. See the following `Block scaleUpRules`.
+func (o ApplicationScalingRuleScalingRuleMetricOutput) ScaleUpRules() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleUpRules {
+		return v.ScaleUpRules
+	}).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleMetric)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricArrayOutput) ToApplicationScalingRuleScalingRuleMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricArrayOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricArrayOutput) ToApplicationScalingRuleScalingRuleMetricArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricArrayOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleScalingRuleMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScalingRuleScalingRuleMetric {
+		return vs[0].([]ApplicationScalingRuleScalingRuleMetric)[vs[1].(int)]
+	}).(ApplicationScalingRuleScalingRuleMetricOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricMetric struct {
+	// According to different `metricType`, set the target value of the corresponding monitoring index.
+	MetricTargetAverageUtilization *int `pulumi:"metricTargetAverageUtilization"`
+	// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+	// - CPU: CPU usage.
+	// - MEMORY: MEMORY usage.
+	// - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
+	// - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
+	// - SLB_RT: the average response time of public network SLB within 15 seconds.
+	MetricType *string `pulumi:"metricType"`
+}
+
+// ApplicationScalingRuleScalingRuleMetricMetricInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricMetricArgs and ApplicationScalingRuleScalingRuleMetricMetricOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricMetricInput` via:
+//
+//          ApplicationScalingRuleScalingRuleMetricMetricArgs{...}
+type ApplicationScalingRuleScalingRuleMetricMetricInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleMetricMetricOutput() ApplicationScalingRuleScalingRuleMetricMetricOutput
+	ToApplicationScalingRuleScalingRuleMetricMetricOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricMetricOutput
+}
+
+type ApplicationScalingRuleScalingRuleMetricMetricArgs struct {
+	// According to different `metricType`, set the target value of the corresponding monitoring index.
+	MetricTargetAverageUtilization pulumi.IntPtrInput `pulumi:"metricTargetAverageUtilization"`
+	// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+	// - CPU: CPU usage.
+	// - MEMORY: MEMORY usage.
+	// - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
+	// - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
+	// - SLB_RT: the average response time of public network SLB within 15 seconds.
+	MetricType pulumi.StringPtrInput `pulumi:"metricType"`
+}
+
+func (ApplicationScalingRuleScalingRuleMetricMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricMetric)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricMetricArgs) ToApplicationScalingRuleScalingRuleMetricMetricOutput() ApplicationScalingRuleScalingRuleMetricMetricOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricMetricOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricMetricArgs) ToApplicationScalingRuleScalingRuleMetricMetricOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricMetricOutput)
+}
+
+// ApplicationScalingRuleScalingRuleMetricMetricArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricMetricArray and ApplicationScalingRuleScalingRuleMetricMetricArrayOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricMetricArrayInput` via:
+//
+//          ApplicationScalingRuleScalingRuleMetricMetricArray{ ApplicationScalingRuleScalingRuleMetricMetricArgs{...} }
+type ApplicationScalingRuleScalingRuleMetricMetricArrayInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleMetricMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput
+	ToApplicationScalingRuleScalingRuleMetricMetricArrayOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricMetricArrayOutput
+}
+
+type ApplicationScalingRuleScalingRuleMetricMetricArray []ApplicationScalingRuleScalingRuleMetricMetricInput
+
+func (ApplicationScalingRuleScalingRuleMetricMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleMetricMetric)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricMetricArray) ToApplicationScalingRuleScalingRuleMetricMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricMetricArray) ToApplicationScalingRuleScalingRuleMetricMetricArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricMetricOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleMetricMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricMetric)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) ToApplicationScalingRuleScalingRuleMetricMetricOutput() ApplicationScalingRuleScalingRuleMetricMetricOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) ToApplicationScalingRuleScalingRuleMetricMetricOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricMetricOutput {
+	return o
+}
+
+// According to different `metricType`, set the target value of the corresponding monitoring index.
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) MetricTargetAverageUtilization() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *int { return v.MetricTargetAverageUtilization }).(pulumi.IntPtrOutput)
+}
+
+// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+// - CPU: CPU usage.
+// - MEMORY: MEMORY usage.
+// - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
+// - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
+// - SLB_RT: the average response time of public network SLB within 15 seconds.
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) MetricType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.MetricType }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleMetricMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleMetricMetric)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricMetricArrayOutput) ToApplicationScalingRuleScalingRuleMetricMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricMetricArrayOutput) ToApplicationScalingRuleScalingRuleMetricMetricArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricMetricArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleScalingRuleMetricMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScalingRuleScalingRuleMetricMetric {
+		return vs[0].([]ApplicationScalingRuleScalingRuleMetricMetric)[vs[1].(int)]
+	}).(ApplicationScalingRuleScalingRuleMetricMetricOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricScaleDownRules struct {
+	// Whether shrinkage is prohibited.
+	Disabled *bool `pulumi:"disabled"`
+	// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+	StabilizationWindowSeconds *int `pulumi:"stabilizationWindowSeconds"`
+	// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+	Step *int `pulumi:"step"`
+}
+
+// ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs and ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput` via:
+//
+//          ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{...}
+type ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput
+	ToApplicationScalingRuleScalingRuleMetricScaleDownRulesOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput
+}
+
+type ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs struct {
+	// Whether shrinkage is prohibited.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+	StabilizationWindowSeconds pulumi.IntPtrInput `pulumi:"stabilizationWindowSeconds"`
+	// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+	Step pulumi.IntPtrInput `pulumi:"step"`
+}
+
+func (ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleDownRules)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricScaleDownRulesOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput)
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput).ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(ctx)
+}
+
+// ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs, ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtr and ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput` via:
+//
+//          ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{...}
+//
+//  or:
+//
+//          nil
+type ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput
+	ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput
+}
+
+type applicationScalingRuleScalingRuleMetricScaleDownRulesPtrType ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs
+
+func ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtr(v *ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput {
+	return (*applicationScalingRuleScalingRuleMetricScaleDownRulesPtrType)(v)
+}
+
+func (*applicationScalingRuleScalingRuleMetricScaleDownRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScalingRuleScalingRuleMetricScaleDownRules)(nil)).Elem()
+}
+
+func (i *applicationScalingRuleScalingRuleMetricScaleDownRulesPtrType) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationScalingRuleScalingRuleMetricScaleDownRulesPtrType) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleDownRules)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return o.ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationScalingRuleScalingRuleMetricScaleDownRules) *ApplicationScalingRuleScalingRuleMetricScaleDownRules {
+		return &v
+	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
+}
+
+// Whether shrinkage is prohibited.
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleDownRules) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) StabilizationWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleDownRules) *int {
+		return v.StabilizationWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleDownRules) *int { return v.Step }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScalingRuleScalingRuleMetricScaleDownRules)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) ToApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Elem() ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleDownRules) ApplicationScalingRuleScalingRuleMetricScaleDownRules {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationScalingRuleScalingRuleMetricScaleDownRules
+		return ret
+	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput)
+}
+
+// Whether shrinkage is prohibited.
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleDownRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) StabilizationWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleDownRules) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StabilizationWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleDownRules) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Step
+	}).(pulumi.IntPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricScaleUpRules struct {
+	// Whether shrinkage is prohibited.
+	Disabled *bool `pulumi:"disabled"`
+	// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+	StabilizationWindowSeconds *int `pulumi:"stabilizationWindowSeconds"`
+	// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+	Step *int `pulumi:"step"`
+}
+
+// ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs and ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput` via:
+//
+//          ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{...}
+type ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput
+	ToApplicationScalingRuleScalingRuleMetricScaleUpRulesOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput
+}
+
+type ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs struct {
+	// Whether shrinkage is prohibited.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+	StabilizationWindowSeconds pulumi.IntPtrInput `pulumi:"stabilizationWindowSeconds"`
+	// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+	Step pulumi.IntPtrInput `pulumi:"step"`
+}
+
+func (ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleUpRules)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricScaleUpRulesOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput)
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput).ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(ctx)
+}
+
+// ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs, ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtr and ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput` via:
+//
+//          ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{...}
+//
+//  or:
+//
+//          nil
+type ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput
+	ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput
+}
+
+type applicationScalingRuleScalingRuleMetricScaleUpRulesPtrType ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs
+
+func ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtr(v *ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput {
+	return (*applicationScalingRuleScalingRuleMetricScaleUpRulesPtrType)(v)
+}
+
+func (*applicationScalingRuleScalingRuleMetricScaleUpRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScalingRuleScalingRuleMetricScaleUpRules)(nil)).Elem()
+}
+
+func (i *applicationScalingRuleScalingRuleMetricScaleUpRulesPtrType) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationScalingRuleScalingRuleMetricScaleUpRulesPtrType) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleUpRules)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return o.ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationScalingRuleScalingRuleMetricScaleUpRules) *ApplicationScalingRuleScalingRuleMetricScaleUpRules {
+		return &v
+	}).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput)
+}
+
+// Whether shrinkage is prohibited.
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleUpRules) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) StabilizationWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleUpRules) *int { return v.StabilizationWindowSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleUpRules) *int { return v.Step }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScalingRuleScalingRuleMetricScaleUpRules)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) ToApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Elem() ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleUpRules) ApplicationScalingRuleScalingRuleMetricScaleUpRules {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationScalingRuleScalingRuleMetricScaleUpRules
+		return ret
+	}).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput)
+}
+
+// Whether shrinkage is prohibited.
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleUpRules) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) StabilizationWindowSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleUpRules) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StabilizationWindowSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleUpRules) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Step
+	}).(pulumi.IntPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleTimer struct {
+	// The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+	BeginDate *string `pulumi:"beginDate"`
+	// The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+	EndDate *string `pulumi:"endDate"`
+	// The period in which a timed elastic scaling strategy is executed.
+	Period *string `pulumi:"period"`
+	// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+	Schedules []ApplicationScalingRuleScalingRuleTimerSchedule `pulumi:"schedules"`
+}
+
+// ApplicationScalingRuleScalingRuleTimerInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerArgs and ApplicationScalingRuleScalingRuleTimerOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerInput` via:
+//
+//          ApplicationScalingRuleScalingRuleTimerArgs{...}
+type ApplicationScalingRuleScalingRuleTimerInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleTimerOutput() ApplicationScalingRuleScalingRuleTimerOutput
+	ToApplicationScalingRuleScalingRuleTimerOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleTimerOutput
+}
+
+type ApplicationScalingRuleScalingRuleTimerArgs struct {
+	// The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+	BeginDate pulumi.StringPtrInput `pulumi:"beginDate"`
+	// The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
+	// The period in which a timed elastic scaling strategy is executed.
+	Period pulumi.StringPtrInput `pulumi:"period"`
+	// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+	Schedules ApplicationScalingRuleScalingRuleTimerScheduleArrayInput `pulumi:"schedules"`
+}
+
+func (ApplicationScalingRuleScalingRuleTimerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimer)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScalingRuleTimerOutput() ApplicationScalingRuleScalingRuleTimerOutput {
+	return i.ToApplicationScalingRuleScalingRuleTimerOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScalingRuleTimerOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerOutput)
+}
+
+// ApplicationScalingRuleScalingRuleTimerArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerArray and ApplicationScalingRuleScalingRuleTimerArrayOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerArrayInput` via:
+//
+//          ApplicationScalingRuleScalingRuleTimerArray{ ApplicationScalingRuleScalingRuleTimerArgs{...} }
+type ApplicationScalingRuleScalingRuleTimerArrayInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleTimerArrayOutput() ApplicationScalingRuleScalingRuleTimerArrayOutput
+	ToApplicationScalingRuleScalingRuleTimerArrayOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleTimerArrayOutput
+}
+
+type ApplicationScalingRuleScalingRuleTimerArray []ApplicationScalingRuleScalingRuleTimerInput
+
+func (ApplicationScalingRuleScalingRuleTimerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleTimer)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerArray) ToApplicationScalingRuleScalingRuleTimerArrayOutput() ApplicationScalingRuleScalingRuleTimerArrayOutput {
+	return i.ToApplicationScalingRuleScalingRuleTimerArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerArray) ToApplicationScalingRuleScalingRuleTimerArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerArrayOutput)
+}
+
+type ApplicationScalingRuleScalingRuleTimerOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleTimerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimer)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerOutput) ToApplicationScalingRuleScalingRuleTimerOutput() ApplicationScalingRuleScalingRuleTimerOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerOutput) ToApplicationScalingRuleScalingRuleTimerOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerOutput {
+	return o
+}
+
+// The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+func (o ApplicationScalingRuleScalingRuleTimerOutput) BeginDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) *string { return v.BeginDate }).(pulumi.StringPtrOutput)
+}
+
+// The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+func (o ApplicationScalingRuleScalingRuleTimerOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// The period in which a timed elastic scaling strategy is executed.
+func (o ApplicationScalingRuleScalingRuleTimerOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) *string { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+func (o ApplicationScalingRuleScalingRuleTimerOutput) Schedules() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimer) []ApplicationScalingRuleScalingRuleTimerSchedule {
+		return v.Schedules
+	}).(ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput)
+}
+
+type ApplicationScalingRuleScalingRuleTimerArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleTimerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleTimer)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerArrayOutput) ToApplicationScalingRuleScalingRuleTimerArrayOutput() ApplicationScalingRuleScalingRuleTimerArrayOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerArrayOutput) ToApplicationScalingRuleScalingRuleTimerArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerArrayOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleScalingRuleTimerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScalingRuleScalingRuleTimer {
+		return vs[0].([]ApplicationScalingRuleScalingRuleTimer)[vs[1].(int)]
+	}).(ApplicationScalingRuleScalingRuleTimerOutput)
+}
+
+type ApplicationScalingRuleScalingRuleTimerSchedule struct {
+	// Trigger point in time. When supporting format: minutes, for example: `08:00`.
+	AtTime *string `pulumi:"atTime"`
+	// Maximum number of instances applied.
+	MaxReplicas *int `pulumi:"maxReplicas"`
+	// Minimum number of instances applied.
+	MinReplicas *int `pulumi:"minReplicas"`
+	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+	TargetReplicas *int `pulumi:"targetReplicas"`
+}
+
+// ApplicationScalingRuleScalingRuleTimerScheduleInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerScheduleArgs and ApplicationScalingRuleScalingRuleTimerScheduleOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerScheduleInput` via:
+//
+//          ApplicationScalingRuleScalingRuleTimerScheduleArgs{...}
+type ApplicationScalingRuleScalingRuleTimerScheduleInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleTimerScheduleOutput() ApplicationScalingRuleScalingRuleTimerScheduleOutput
+	ToApplicationScalingRuleScalingRuleTimerScheduleOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleTimerScheduleOutput
+}
+
+type ApplicationScalingRuleScalingRuleTimerScheduleArgs struct {
+	// Trigger point in time. When supporting format: minutes, for example: `08:00`.
+	AtTime pulumi.StringPtrInput `pulumi:"atTime"`
+	// Maximum number of instances applied.
+	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
+	// Minimum number of instances applied.
+	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
+	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+	TargetReplicas pulumi.IntPtrInput `pulumi:"targetReplicas"`
+}
+
+func (ApplicationScalingRuleScalingRuleTimerScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerSchedule)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerScheduleArgs) ToApplicationScalingRuleScalingRuleTimerScheduleOutput() ApplicationScalingRuleScalingRuleTimerScheduleOutput {
+	return i.ToApplicationScalingRuleScalingRuleTimerScheduleOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerScheduleArgs) ToApplicationScalingRuleScalingRuleTimerScheduleOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerScheduleOutput)
+}
+
+// ApplicationScalingRuleScalingRuleTimerScheduleArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerScheduleArray and ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerScheduleArrayInput` via:
+//
+//          ApplicationScalingRuleScalingRuleTimerScheduleArray{ ApplicationScalingRuleScalingRuleTimerScheduleArgs{...} }
+type ApplicationScalingRuleScalingRuleTimerScheduleArrayInput interface {
+	pulumi.Input
+
+	ToApplicationScalingRuleScalingRuleTimerScheduleArrayOutput() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput
+	ToApplicationScalingRuleScalingRuleTimerScheduleArrayOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput
+}
+
+type ApplicationScalingRuleScalingRuleTimerScheduleArray []ApplicationScalingRuleScalingRuleTimerScheduleInput
+
+func (ApplicationScalingRuleScalingRuleTimerScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleTimerSchedule)(nil)).Elem()
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerScheduleArray) ToApplicationScalingRuleScalingRuleTimerScheduleArrayOutput() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
+	return i.ToApplicationScalingRuleScalingRuleTimerScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerScheduleArray) ToApplicationScalingRuleScalingRuleTimerScheduleArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput)
+}
+
+type ApplicationScalingRuleScalingRuleTimerScheduleOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleTimerScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerSchedule)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) ToApplicationScalingRuleScalingRuleTimerScheduleOutput() ApplicationScalingRuleScalingRuleTimerScheduleOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) ToApplicationScalingRuleScalingRuleTimerScheduleOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerScheduleOutput {
+	return o
+}
+
+// Trigger point in time. When supporting format: minutes, for example: `08:00`.
+func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) AtTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *string { return v.AtTime }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of instances applied.
+func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of instances applied.
+func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
+}
+
+// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) TargetReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.TargetReplicas }).(pulumi.IntPtrOutput)
+}
+
+type ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleTimerSchedule)(nil)).Elem()
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput) ToApplicationScalingRuleScalingRuleTimerScheduleArrayOutput() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput) ToApplicationScalingRuleScalingRuleTimerScheduleArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
+	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleScalingRuleTimerScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScalingRuleScalingRuleTimerSchedule {
+		return vs[0].([]ApplicationScalingRuleScalingRuleTimerSchedule)[vs[1].(int)]
+	}).(ApplicationScalingRuleScalingRuleTimerScheduleOutput)
+}
+
+type GreyTagRouteDubboRule struct {
+	// The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+	Condition *string `pulumi:"condition"`
+	// The service group.
+	Group *string `pulumi:"group"`
+	// A list of conditions items. The details see Block `dubboRulesItems`.
+	Items []GreyTagRouteDubboRuleItem `pulumi:"items"`
+	// The method name
+	MethodName *string `pulumi:"methodName"`
+	// The service name.
+	ServiceName *string `pulumi:"serviceName"`
+	// The service version.
+	Version *string `pulumi:"version"`
+}
+
+// GreyTagRouteDubboRuleInput is an input type that accepts GreyTagRouteDubboRuleArgs and GreyTagRouteDubboRuleOutput values.
+// You can construct a concrete instance of `GreyTagRouteDubboRuleInput` via:
+//
+//          GreyTagRouteDubboRuleArgs{...}
+type GreyTagRouteDubboRuleInput interface {
+	pulumi.Input
+
+	ToGreyTagRouteDubboRuleOutput() GreyTagRouteDubboRuleOutput
+	ToGreyTagRouteDubboRuleOutputWithContext(context.Context) GreyTagRouteDubboRuleOutput
+}
+
+type GreyTagRouteDubboRuleArgs struct {
+	// The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// The service group.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// A list of conditions items. The details see Block `dubboRulesItems`.
+	Items GreyTagRouteDubboRuleItemArrayInput `pulumi:"items"`
+	// The method name
+	MethodName pulumi.StringPtrInput `pulumi:"methodName"`
+	// The service name.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// The service version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GreyTagRouteDubboRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreyTagRouteDubboRule)(nil)).Elem()
+}
+
+func (i GreyTagRouteDubboRuleArgs) ToGreyTagRouteDubboRuleOutput() GreyTagRouteDubboRuleOutput {
+	return i.ToGreyTagRouteDubboRuleOutputWithContext(context.Background())
+}
+
+func (i GreyTagRouteDubboRuleArgs) ToGreyTagRouteDubboRuleOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteDubboRuleOutput)
+}
+
+// GreyTagRouteDubboRuleArrayInput is an input type that accepts GreyTagRouteDubboRuleArray and GreyTagRouteDubboRuleArrayOutput values.
+// You can construct a concrete instance of `GreyTagRouteDubboRuleArrayInput` via:
+//
+//          GreyTagRouteDubboRuleArray{ GreyTagRouteDubboRuleArgs{...} }
+type GreyTagRouteDubboRuleArrayInput interface {
+	pulumi.Input
+
+	ToGreyTagRouteDubboRuleArrayOutput() GreyTagRouteDubboRuleArrayOutput
+	ToGreyTagRouteDubboRuleArrayOutputWithContext(context.Context) GreyTagRouteDubboRuleArrayOutput
+}
+
+type GreyTagRouteDubboRuleArray []GreyTagRouteDubboRuleInput
+
+func (GreyTagRouteDubboRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GreyTagRouteDubboRule)(nil)).Elem()
+}
+
+func (i GreyTagRouteDubboRuleArray) ToGreyTagRouteDubboRuleArrayOutput() GreyTagRouteDubboRuleArrayOutput {
+	return i.ToGreyTagRouteDubboRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GreyTagRouteDubboRuleArray) ToGreyTagRouteDubboRuleArrayOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteDubboRuleArrayOutput)
+}
+
+type GreyTagRouteDubboRuleOutput struct{ *pulumi.OutputState }
+
+func (GreyTagRouteDubboRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreyTagRouteDubboRule)(nil)).Elem()
+}
+
+func (o GreyTagRouteDubboRuleOutput) ToGreyTagRouteDubboRuleOutput() GreyTagRouteDubboRuleOutput {
+	return o
+}
+
+func (o GreyTagRouteDubboRuleOutput) ToGreyTagRouteDubboRuleOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleOutput {
+	return o
+}
+
+// The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+func (o GreyTagRouteDubboRuleOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// The service group.
+func (o GreyTagRouteDubboRuleOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRule) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// A list of conditions items. The details see Block `dubboRulesItems`.
+func (o GreyTagRouteDubboRuleOutput) Items() GreyTagRouteDubboRuleItemArrayOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRule) []GreyTagRouteDubboRuleItem { return v.Items }).(GreyTagRouteDubboRuleItemArrayOutput)
+}
+
+// The method name
+func (o GreyTagRouteDubboRuleOutput) MethodName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRule) *string { return v.MethodName }).(pulumi.StringPtrOutput)
+}
+
+// The service name.
+func (o GreyTagRouteDubboRuleOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRule) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// The service version.
+func (o GreyTagRouteDubboRuleOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRule) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GreyTagRouteDubboRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GreyTagRouteDubboRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GreyTagRouteDubboRule)(nil)).Elem()
+}
+
+func (o GreyTagRouteDubboRuleArrayOutput) ToGreyTagRouteDubboRuleArrayOutput() GreyTagRouteDubboRuleArrayOutput {
+	return o
+}
+
+func (o GreyTagRouteDubboRuleArrayOutput) ToGreyTagRouteDubboRuleArrayOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleArrayOutput {
+	return o
+}
+
+func (o GreyTagRouteDubboRuleArrayOutput) Index(i pulumi.IntInput) GreyTagRouteDubboRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GreyTagRouteDubboRule {
+		return vs[0].([]GreyTagRouteDubboRule)[vs[1].(int)]
+	}).(GreyTagRouteDubboRuleOutput)
+}
+
+type GreyTagRouteDubboRuleItem struct {
+	// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+	Cond *string `pulumi:"cond"`
+	// The parameter value gets the expression.
+	Expr *string `pulumi:"expr"`
+	// The parameter number.
+	Index *int `pulumi:"index"`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	Operator *string `pulumi:"operator"`
+	// The value of the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// GreyTagRouteDubboRuleItemInput is an input type that accepts GreyTagRouteDubboRuleItemArgs and GreyTagRouteDubboRuleItemOutput values.
+// You can construct a concrete instance of `GreyTagRouteDubboRuleItemInput` via:
+//
+//          GreyTagRouteDubboRuleItemArgs{...}
+type GreyTagRouteDubboRuleItemInput interface {
+	pulumi.Input
+
+	ToGreyTagRouteDubboRuleItemOutput() GreyTagRouteDubboRuleItemOutput
+	ToGreyTagRouteDubboRuleItemOutputWithContext(context.Context) GreyTagRouteDubboRuleItemOutput
+}
+
+type GreyTagRouteDubboRuleItemArgs struct {
+	// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+	Cond pulumi.StringPtrInput `pulumi:"cond"`
+	// The parameter value gets the expression.
+	Expr pulumi.StringPtrInput `pulumi:"expr"`
+	// The parameter number.
+	Index pulumi.IntPtrInput `pulumi:"index"`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The value of the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GreyTagRouteDubboRuleItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreyTagRouteDubboRuleItem)(nil)).Elem()
+}
+
+func (i GreyTagRouteDubboRuleItemArgs) ToGreyTagRouteDubboRuleItemOutput() GreyTagRouteDubboRuleItemOutput {
+	return i.ToGreyTagRouteDubboRuleItemOutputWithContext(context.Background())
+}
+
+func (i GreyTagRouteDubboRuleItemArgs) ToGreyTagRouteDubboRuleItemOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteDubboRuleItemOutput)
+}
+
+// GreyTagRouteDubboRuleItemArrayInput is an input type that accepts GreyTagRouteDubboRuleItemArray and GreyTagRouteDubboRuleItemArrayOutput values.
+// You can construct a concrete instance of `GreyTagRouteDubboRuleItemArrayInput` via:
+//
+//          GreyTagRouteDubboRuleItemArray{ GreyTagRouteDubboRuleItemArgs{...} }
+type GreyTagRouteDubboRuleItemArrayInput interface {
+	pulumi.Input
+
+	ToGreyTagRouteDubboRuleItemArrayOutput() GreyTagRouteDubboRuleItemArrayOutput
+	ToGreyTagRouteDubboRuleItemArrayOutputWithContext(context.Context) GreyTagRouteDubboRuleItemArrayOutput
+}
+
+type GreyTagRouteDubboRuleItemArray []GreyTagRouteDubboRuleItemInput
+
+func (GreyTagRouteDubboRuleItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GreyTagRouteDubboRuleItem)(nil)).Elem()
+}
+
+func (i GreyTagRouteDubboRuleItemArray) ToGreyTagRouteDubboRuleItemArrayOutput() GreyTagRouteDubboRuleItemArrayOutput {
+	return i.ToGreyTagRouteDubboRuleItemArrayOutputWithContext(context.Background())
+}
+
+func (i GreyTagRouteDubboRuleItemArray) ToGreyTagRouteDubboRuleItemArrayOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteDubboRuleItemArrayOutput)
+}
+
+type GreyTagRouteDubboRuleItemOutput struct{ *pulumi.OutputState }
+
+func (GreyTagRouteDubboRuleItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreyTagRouteDubboRuleItem)(nil)).Elem()
+}
+
+func (o GreyTagRouteDubboRuleItemOutput) ToGreyTagRouteDubboRuleItemOutput() GreyTagRouteDubboRuleItemOutput {
+	return o
+}
+
+func (o GreyTagRouteDubboRuleItemOutput) ToGreyTagRouteDubboRuleItemOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleItemOutput {
+	return o
+}
+
+// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+func (o GreyTagRouteDubboRuleItemOutput) Cond() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Cond }).(pulumi.StringPtrOutput)
+}
+
+// The parameter value gets the expression.
+func (o GreyTagRouteDubboRuleItemOutput) Expr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Expr }).(pulumi.StringPtrOutput)
+}
+
+// The parameter number.
+func (o GreyTagRouteDubboRuleItemOutput) Index() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *int { return v.Index }).(pulumi.IntPtrOutput)
+}
+
+// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+func (o GreyTagRouteDubboRuleItemOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+func (o GreyTagRouteDubboRuleItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GreyTagRouteDubboRuleItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GreyTagRouteDubboRuleItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GreyTagRouteDubboRuleItem)(nil)).Elem()
+}
+
+func (o GreyTagRouteDubboRuleItemArrayOutput) ToGreyTagRouteDubboRuleItemArrayOutput() GreyTagRouteDubboRuleItemArrayOutput {
+	return o
+}
+
+func (o GreyTagRouteDubboRuleItemArrayOutput) ToGreyTagRouteDubboRuleItemArrayOutputWithContext(ctx context.Context) GreyTagRouteDubboRuleItemArrayOutput {
+	return o
+}
+
+func (o GreyTagRouteDubboRuleItemArrayOutput) Index(i pulumi.IntInput) GreyTagRouteDubboRuleItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GreyTagRouteDubboRuleItem {
+		return vs[0].([]GreyTagRouteDubboRuleItem)[vs[1].(int)]
+	}).(GreyTagRouteDubboRuleItemOutput)
+}
+
+type GreyTagRouteScRule struct {
+	// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+	Condition *string `pulumi:"condition"`
+	// A list of conditions items. The details see Block `scRulesItems`.
+	Items []GreyTagRouteScRuleItem `pulumi:"items"`
+	// The path corresponding to the grayscale rule.
+	Path *string `pulumi:"path"`
+}
+
+// GreyTagRouteScRuleInput is an input type that accepts GreyTagRouteScRuleArgs and GreyTagRouteScRuleOutput values.
+// You can construct a concrete instance of `GreyTagRouteScRuleInput` via:
+//
+//          GreyTagRouteScRuleArgs{...}
+type GreyTagRouteScRuleInput interface {
+	pulumi.Input
+
+	ToGreyTagRouteScRuleOutput() GreyTagRouteScRuleOutput
+	ToGreyTagRouteScRuleOutputWithContext(context.Context) GreyTagRouteScRuleOutput
+}
+
+type GreyTagRouteScRuleArgs struct {
+	// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// A list of conditions items. The details see Block `scRulesItems`.
+	Items GreyTagRouteScRuleItemArrayInput `pulumi:"items"`
+	// The path corresponding to the grayscale rule.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (GreyTagRouteScRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreyTagRouteScRule)(nil)).Elem()
+}
+
+func (i GreyTagRouteScRuleArgs) ToGreyTagRouteScRuleOutput() GreyTagRouteScRuleOutput {
+	return i.ToGreyTagRouteScRuleOutputWithContext(context.Background())
+}
+
+func (i GreyTagRouteScRuleArgs) ToGreyTagRouteScRuleOutputWithContext(ctx context.Context) GreyTagRouteScRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteScRuleOutput)
+}
+
+// GreyTagRouteScRuleArrayInput is an input type that accepts GreyTagRouteScRuleArray and GreyTagRouteScRuleArrayOutput values.
+// You can construct a concrete instance of `GreyTagRouteScRuleArrayInput` via:
+//
+//          GreyTagRouteScRuleArray{ GreyTagRouteScRuleArgs{...} }
+type GreyTagRouteScRuleArrayInput interface {
+	pulumi.Input
+
+	ToGreyTagRouteScRuleArrayOutput() GreyTagRouteScRuleArrayOutput
+	ToGreyTagRouteScRuleArrayOutputWithContext(context.Context) GreyTagRouteScRuleArrayOutput
+}
+
+type GreyTagRouteScRuleArray []GreyTagRouteScRuleInput
+
+func (GreyTagRouteScRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GreyTagRouteScRule)(nil)).Elem()
+}
+
+func (i GreyTagRouteScRuleArray) ToGreyTagRouteScRuleArrayOutput() GreyTagRouteScRuleArrayOutput {
+	return i.ToGreyTagRouteScRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GreyTagRouteScRuleArray) ToGreyTagRouteScRuleArrayOutputWithContext(ctx context.Context) GreyTagRouteScRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteScRuleArrayOutput)
+}
+
+type GreyTagRouteScRuleOutput struct{ *pulumi.OutputState }
+
+func (GreyTagRouteScRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreyTagRouteScRule)(nil)).Elem()
+}
+
+func (o GreyTagRouteScRuleOutput) ToGreyTagRouteScRuleOutput() GreyTagRouteScRuleOutput {
+	return o
+}
+
+func (o GreyTagRouteScRuleOutput) ToGreyTagRouteScRuleOutputWithContext(ctx context.Context) GreyTagRouteScRuleOutput {
+	return o
+}
+
+// The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+func (o GreyTagRouteScRuleOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteScRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// A list of conditions items. The details see Block `scRulesItems`.
+func (o GreyTagRouteScRuleOutput) Items() GreyTagRouteScRuleItemArrayOutput {
+	return o.ApplyT(func(v GreyTagRouteScRule) []GreyTagRouteScRuleItem { return v.Items }).(GreyTagRouteScRuleItemArrayOutput)
+}
+
+// The path corresponding to the grayscale rule.
+func (o GreyTagRouteScRuleOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteScRule) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type GreyTagRouteScRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GreyTagRouteScRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GreyTagRouteScRule)(nil)).Elem()
+}
+
+func (o GreyTagRouteScRuleArrayOutput) ToGreyTagRouteScRuleArrayOutput() GreyTagRouteScRuleArrayOutput {
+	return o
+}
+
+func (o GreyTagRouteScRuleArrayOutput) ToGreyTagRouteScRuleArrayOutputWithContext(ctx context.Context) GreyTagRouteScRuleArrayOutput {
+	return o
+}
+
+func (o GreyTagRouteScRuleArrayOutput) Index(i pulumi.IntInput) GreyTagRouteScRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GreyTagRouteScRule {
+		return vs[0].([]GreyTagRouteScRule)[vs[1].(int)]
+	}).(GreyTagRouteScRuleOutput)
+}
+
+type GreyTagRouteScRuleItem struct {
+	// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+	Cond *string `pulumi:"cond"`
+	// The name of the parameter.
+	Name *string `pulumi:"name"`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	Operator *string `pulumi:"operator"`
+	// The compare types. Valid values: `param`, `cookie`, `header`.
+	Type *string `pulumi:"type"`
+	// The value of the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// GreyTagRouteScRuleItemInput is an input type that accepts GreyTagRouteScRuleItemArgs and GreyTagRouteScRuleItemOutput values.
+// You can construct a concrete instance of `GreyTagRouteScRuleItemInput` via:
+//
+//          GreyTagRouteScRuleItemArgs{...}
+type GreyTagRouteScRuleItemInput interface {
+	pulumi.Input
+
+	ToGreyTagRouteScRuleItemOutput() GreyTagRouteScRuleItemOutput
+	ToGreyTagRouteScRuleItemOutputWithContext(context.Context) GreyTagRouteScRuleItemOutput
+}
+
+type GreyTagRouteScRuleItemArgs struct {
+	// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+	Cond pulumi.StringPtrInput `pulumi:"cond"`
+	// The name of the parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The compare types. Valid values: `param`, `cookie`, `header`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The value of the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GreyTagRouteScRuleItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreyTagRouteScRuleItem)(nil)).Elem()
+}
+
+func (i GreyTagRouteScRuleItemArgs) ToGreyTagRouteScRuleItemOutput() GreyTagRouteScRuleItemOutput {
+	return i.ToGreyTagRouteScRuleItemOutputWithContext(context.Background())
+}
+
+func (i GreyTagRouteScRuleItemArgs) ToGreyTagRouteScRuleItemOutputWithContext(ctx context.Context) GreyTagRouteScRuleItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteScRuleItemOutput)
+}
+
+// GreyTagRouteScRuleItemArrayInput is an input type that accepts GreyTagRouteScRuleItemArray and GreyTagRouteScRuleItemArrayOutput values.
+// You can construct a concrete instance of `GreyTagRouteScRuleItemArrayInput` via:
+//
+//          GreyTagRouteScRuleItemArray{ GreyTagRouteScRuleItemArgs{...} }
+type GreyTagRouteScRuleItemArrayInput interface {
+	pulumi.Input
+
+	ToGreyTagRouteScRuleItemArrayOutput() GreyTagRouteScRuleItemArrayOutput
+	ToGreyTagRouteScRuleItemArrayOutputWithContext(context.Context) GreyTagRouteScRuleItemArrayOutput
+}
+
+type GreyTagRouteScRuleItemArray []GreyTagRouteScRuleItemInput
+
+func (GreyTagRouteScRuleItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GreyTagRouteScRuleItem)(nil)).Elem()
+}
+
+func (i GreyTagRouteScRuleItemArray) ToGreyTagRouteScRuleItemArrayOutput() GreyTagRouteScRuleItemArrayOutput {
+	return i.ToGreyTagRouteScRuleItemArrayOutputWithContext(context.Background())
+}
+
+func (i GreyTagRouteScRuleItemArray) ToGreyTagRouteScRuleItemArrayOutputWithContext(ctx context.Context) GreyTagRouteScRuleItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreyTagRouteScRuleItemArrayOutput)
+}
+
+type GreyTagRouteScRuleItemOutput struct{ *pulumi.OutputState }
+
+func (GreyTagRouteScRuleItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreyTagRouteScRuleItem)(nil)).Elem()
+}
+
+func (o GreyTagRouteScRuleItemOutput) ToGreyTagRouteScRuleItemOutput() GreyTagRouteScRuleItemOutput {
+	return o
+}
+
+func (o GreyTagRouteScRuleItemOutput) ToGreyTagRouteScRuleItemOutputWithContext(ctx context.Context) GreyTagRouteScRuleItemOutput {
+	return o
+}
+
+// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+func (o GreyTagRouteScRuleItemOutput) Cond() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Cond }).(pulumi.StringPtrOutput)
+}
+
+// The name of the parameter.
+func (o GreyTagRouteScRuleItemOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+func (o GreyTagRouteScRuleItemOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The compare types. Valid values: `param`, `cookie`, `header`.
+func (o GreyTagRouteScRuleItemOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+func (o GreyTagRouteScRuleItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GreyTagRouteScRuleItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GreyTagRouteScRuleItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GreyTagRouteScRuleItem)(nil)).Elem()
+}
+
+func (o GreyTagRouteScRuleItemArrayOutput) ToGreyTagRouteScRuleItemArrayOutput() GreyTagRouteScRuleItemArrayOutput {
+	return o
+}
+
+func (o GreyTagRouteScRuleItemArrayOutput) ToGreyTagRouteScRuleItemArrayOutputWithContext(ctx context.Context) GreyTagRouteScRuleItemArrayOutput {
+	return o
+}
+
+func (o GreyTagRouteScRuleItemArrayOutput) Index(i pulumi.IntInput) GreyTagRouteScRuleItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GreyTagRouteScRuleItem {
+		return vs[0].([]GreyTagRouteScRuleItem)[vs[1].(int)]
+	}).(GreyTagRouteScRuleItemOutput)
+}
+
 type IngressDefaultRule struct {
 	// Target application ID.
 	AppId *string `pulumi:"appId"`
@@ -564,6 +1949,1318 @@ func (o IngressRuleArrayOutput) Index(i pulumi.IntInput) IngressRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IngressRule {
 		return vs[0].([]IngressRule)[vs[1].(int)]
 	}).(IngressRuleOutput)
+}
+
+type GetApplicationScalingRulesRule struct {
+	// The ID of the Application.
+	AppId string `pulumi:"appId"`
+	// The CreateTime of the Application Scaling Rule.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Application Scaling Rule.
+	Id string `pulumi:"id"`
+	// Whether to enable the auto scaling policy.
+	ScalingRuleEnable bool `pulumi:"scalingRuleEnable"`
+	// Monitoring indicators for elastic scaling.
+	ScalingRuleMetrics []GetApplicationScalingRulesRuleScalingRuleMetric `pulumi:"scalingRuleMetrics"`
+	// The name of the scaling rule.
+	ScalingRuleName string `pulumi:"scalingRuleName"`
+	// Timing elastic expansion.
+	ScalingRuleTimers []GetApplicationScalingRulesRuleScalingRuleTimer `pulumi:"scalingRuleTimers"`
+	// Flexible strategy type.
+	ScalingRuleType string `pulumi:"scalingRuleType"`
+}
+
+// GetApplicationScalingRulesRuleInput is an input type that accepts GetApplicationScalingRulesRuleArgs and GetApplicationScalingRulesRuleOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleInput` via:
+//
+//          GetApplicationScalingRulesRuleArgs{...}
+type GetApplicationScalingRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleOutput() GetApplicationScalingRulesRuleOutput
+	ToGetApplicationScalingRulesRuleOutputWithContext(context.Context) GetApplicationScalingRulesRuleOutput
+}
+
+type GetApplicationScalingRulesRuleArgs struct {
+	// The ID of the Application.
+	AppId pulumi.StringInput `pulumi:"appId"`
+	// The CreateTime of the Application Scaling Rule.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Application Scaling Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether to enable the auto scaling policy.
+	ScalingRuleEnable pulumi.BoolInput `pulumi:"scalingRuleEnable"`
+	// Monitoring indicators for elastic scaling.
+	ScalingRuleMetrics GetApplicationScalingRulesRuleScalingRuleMetricArrayInput `pulumi:"scalingRuleMetrics"`
+	// The name of the scaling rule.
+	ScalingRuleName pulumi.StringInput `pulumi:"scalingRuleName"`
+	// Timing elastic expansion.
+	ScalingRuleTimers GetApplicationScalingRulesRuleScalingRuleTimerArrayInput `pulumi:"scalingRuleTimers"`
+	// Flexible strategy type.
+	ScalingRuleType pulumi.StringInput `pulumi:"scalingRuleType"`
+}
+
+func (GetApplicationScalingRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRule)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleArgs) ToGetApplicationScalingRulesRuleOutput() GetApplicationScalingRulesRuleOutput {
+	return i.ToGetApplicationScalingRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleArgs) ToGetApplicationScalingRulesRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleOutput)
+}
+
+// GetApplicationScalingRulesRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleArray and GetApplicationScalingRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleArray{ GetApplicationScalingRulesRuleArgs{...} }
+type GetApplicationScalingRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleArrayOutput() GetApplicationScalingRulesRuleArrayOutput
+	ToGetApplicationScalingRulesRuleArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleArrayOutput
+}
+
+type GetApplicationScalingRulesRuleArray []GetApplicationScalingRulesRuleInput
+
+func (GetApplicationScalingRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRule)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleArray) ToGetApplicationScalingRulesRuleArrayOutput() GetApplicationScalingRulesRuleArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleArray) ToGetApplicationScalingRulesRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRule)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleOutput) ToGetApplicationScalingRulesRuleOutput() GetApplicationScalingRulesRuleOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleOutput) ToGetApplicationScalingRulesRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleOutput {
+	return o
+}
+
+// The ID of the Application.
+func (o GetApplicationScalingRulesRuleOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRule) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The CreateTime of the Application Scaling Rule.
+func (o GetApplicationScalingRulesRuleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRule) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Application Scaling Rule.
+func (o GetApplicationScalingRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether to enable the auto scaling policy.
+func (o GetApplicationScalingRulesRuleOutput) ScalingRuleEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRule) bool { return v.ScalingRuleEnable }).(pulumi.BoolOutput)
+}
+
+// Monitoring indicators for elastic scaling.
+func (o GetApplicationScalingRulesRuleOutput) ScalingRuleMetrics() GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRule) []GetApplicationScalingRulesRuleScalingRuleMetric {
+		return v.ScalingRuleMetrics
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput)
+}
+
+// The name of the scaling rule.
+func (o GetApplicationScalingRulesRuleOutput) ScalingRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRule) string { return v.ScalingRuleName }).(pulumi.StringOutput)
+}
+
+// Timing elastic expansion.
+func (o GetApplicationScalingRulesRuleOutput) ScalingRuleTimers() GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRule) []GetApplicationScalingRulesRuleScalingRuleTimer {
+		return v.ScalingRuleTimers
+	}).(GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput)
+}
+
+// Flexible strategy type.
+func (o GetApplicationScalingRulesRuleOutput) ScalingRuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRule) string { return v.ScalingRuleType }).(pulumi.StringOutput)
+}
+
+type GetApplicationScalingRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRule)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleArrayOutput) ToGetApplicationScalingRulesRuleArrayOutput() GetApplicationScalingRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleArrayOutput) ToGetApplicationScalingRulesRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRule {
+		return vs[0].([]GetApplicationScalingRulesRule)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetric struct {
+	// The maximum number of instances.
+	MaxReplicas int `pulumi:"maxReplicas"`
+	// The auto scaling list of monitoring indicators.
+	Metrics []GetApplicationScalingRulesRuleScalingRuleMetricMetric `pulumi:"metrics"`
+	// Monitor indicator elasticity status.
+	MetricsStatuses []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus `pulumi:"metricsStatuses"`
+	// The minimum number of instances.
+	MinReplicas int `pulumi:"minReplicas"`
+	// The shrink rule.
+	ScaleDownRules []GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule `pulumi:"scaleDownRules"`
+	// The expansion rules.
+	ScaleUpRules []GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule `pulumi:"scaleUpRules"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleMetricInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricArgs struct {
+	// The maximum number of instances.
+	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
+	// The auto scaling list of monitoring indicators.
+	Metrics GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput `pulumi:"metrics"`
+	// Monitor indicator elasticity status.
+	MetricsStatuses GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput `pulumi:"metricsStatuses"`
+	// The minimum number of instances.
+	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
+	// The shrink rule.
+	ScaleDownRules GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput `pulumi:"scaleDownRules"`
+	// The expansion rules.
+	ScaleUpRules GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput `pulumi:"scaleUpRules"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetric)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricArray []GetApplicationScalingRulesRuleScalingRuleMetricInput
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetric)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricArray) ToGetApplicationScalingRulesRuleScalingRuleMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricArray) ToGetApplicationScalingRulesRuleScalingRuleMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetric)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricOutput {
+	return o
+}
+
+// The maximum number of instances.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) MaxReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) int { return v.MaxReplicas }).(pulumi.IntOutput)
+}
+
+// The auto scaling list of monitoring indicators.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) Metrics() GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) []GetApplicationScalingRulesRuleScalingRuleMetricMetric {
+		return v.Metrics
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput)
+}
+
+// Monitor indicator elasticity status.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) MetricsStatuses() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
+		return v.MetricsStatuses
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput)
+}
+
+// The minimum number of instances.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) MinReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) int { return v.MinReplicas }).(pulumi.IntOutput)
+}
+
+// The shrink rule.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ScaleDownRules() GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) []GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
+		return v.ScaleDownRules
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput)
+}
+
+// The expansion rules.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ScaleUpRules() GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) []GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
+		return v.ScaleUpRules
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetric)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetric {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetric)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetric struct {
+	// The target value of the monitoring indicator.
+	MetricTargetAverageUtilization int `pulumi:"metricTargetAverageUtilization"`
+	// The metric type of the Application Scaling Rule.
+	MetricType string `pulumi:"metricType"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs struct {
+	// The target value of the monitoring indicator.
+	MetricTargetAverageUtilization pulumi.IntInput `pulumi:"metricTargetAverageUtilization"`
+	// The metric type of the Application Scaling Rule.
+	MetricType pulumi.StringInput `pulumi:"metricType"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetric)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricArray []GetApplicationScalingRulesRuleScalingRuleMetricMetricInput
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricMetric)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArray) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricArray) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetric)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput {
+	return o
+}
+
+// The target value of the monitoring indicator.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) MetricTargetAverageUtilization() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetric) int {
+		return v.MetricTargetAverageUtilization
+	}).(pulumi.IntOutput)
+}
+
+// The metric type of the Application Scaling Rule.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) MetricType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetric) string { return v.MetricType }).(pulumi.StringOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricMetric)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetricMetric {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetricMetric)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus struct {
+	// The current monitoring indicator elasticity list.
+	CurrentMetrics []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric `pulumi:"currentMetrics"`
+	// The number of current instances.
+	CurrentReplicas int `pulumi:"currentReplicas"`
+	// The number of target instances.
+	DesiredReplicas int `pulumi:"desiredReplicas"`
+	// The time of the last elastic expansion.
+	LastScaleTime string `pulumi:"lastScaleTime"`
+	// The maximum number of instances.
+	MaxReplicas int `pulumi:"maxReplicas"`
+	// The minimum number of instances.
+	MinReplicas int `pulumi:"minReplicas"`
+	// Next monitoring indicator elasticity list
+	NextScaleMetrics []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric `pulumi:"nextScaleMetrics"`
+	// The next cycle of monitoring indicator elasticity.
+	NextScaleTimePeriod int `pulumi:"nextScaleTimePeriod"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs struct {
+	// The current monitoring indicator elasticity list.
+	CurrentMetrics GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput `pulumi:"currentMetrics"`
+	// The number of current instances.
+	CurrentReplicas pulumi.IntInput `pulumi:"currentReplicas"`
+	// The number of target instances.
+	DesiredReplicas pulumi.IntInput `pulumi:"desiredReplicas"`
+	// The time of the last elastic expansion.
+	LastScaleTime pulumi.StringInput `pulumi:"lastScaleTime"`
+	// The maximum number of instances.
+	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
+	// The minimum number of instances.
+	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
+	// Next monitoring indicator elasticity list
+	NextScaleMetrics GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput `pulumi:"nextScaleMetrics"`
+	// The next cycle of monitoring indicator elasticity.
+	NextScaleTimePeriod pulumi.IntInput `pulumi:"nextScaleTimePeriod"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput {
+	return o
+}
+
+// The current monitoring indicator elasticity list.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) CurrentMetrics() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric {
+		return v.CurrentMetrics
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput)
+}
+
+// The number of current instances.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) CurrentReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.CurrentReplicas }).(pulumi.IntOutput)
+}
+
+// The number of target instances.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) DesiredReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.DesiredReplicas }).(pulumi.IntOutput)
+}
+
+// The time of the last elastic expansion.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) LastScaleTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) string { return v.LastScaleTime }).(pulumi.StringOutput)
+}
+
+// The maximum number of instances.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) MaxReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.MaxReplicas }).(pulumi.IntOutput)
+}
+
+// The minimum number of instances.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) MinReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.MinReplicas }).(pulumi.IntOutput)
+}
+
+// Next monitoring indicator elasticity list
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) NextScaleMetrics() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric {
+		return v.NextScaleMetrics
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput)
+}
+
+// The next cycle of monitoring indicator elasticity.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) NextScaleTimePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.NextScaleTimePeriod }).(pulumi.IntOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric struct {
+	// The current value.
+	CurrentValue int `pulumi:"currentValue"`
+	// The name of the trigger condition.
+	Name string `pulumi:"name"`
+	// The metric type. Associated with monitoring indicators.
+	Type string `pulumi:"type"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs struct {
+	// The current value.
+	CurrentValue pulumi.IntInput `pulumi:"currentValue"`
+	// The name of the trigger condition.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The metric type. Associated with monitoring indicators.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput {
+	return o
+}
+
+// The current value.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) CurrentValue() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric) int {
+		return v.CurrentValue
+	}).(pulumi.IntOutput)
+}
+
+// The name of the trigger condition.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// The metric type. Associated with monitoring indicators.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric struct {
+	// The name of the trigger condition.
+	Name string `pulumi:"name"`
+	// The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
+	NextScaleInAverageUtilization int `pulumi:"nextScaleInAverageUtilization"`
+	// The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
+	NextScaleOutAverageUtilization int `pulumi:"nextScaleOutAverageUtilization"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs struct {
+	// The name of the trigger condition.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
+	NextScaleInAverageUtilization pulumi.IntInput `pulumi:"nextScaleInAverageUtilization"`
+	// The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
+	NextScaleOutAverageUtilization pulumi.IntInput `pulumi:"nextScaleOutAverageUtilization"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray{ GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput {
+	return o
+}
+
+// The name of the trigger condition.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) NextScaleInAverageUtilization() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric) int {
+		return v.NextScaleInAverageUtilization
+	}).(pulumi.IntOutput)
+}
+
+// The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) NextScaleOutAverageUtilization() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric) int {
+		return v.NextScaleOutAverageUtilization
+	}).(pulumi.IntOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule struct {
+	// Whether shrinkage is prohibited. The values are described as follows:
+	Disabled bool `pulumi:"disabled"`
+	// Expansion cooling time.
+	StabilizationWindowSeconds int `pulumi:"stabilizationWindowSeconds"`
+	// Flexible expansion step. The maximum number of instances per unit time.
+	Step int `pulumi:"step"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs and GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs struct {
+	// Whether shrinkage is prohibited. The values are described as follows:
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// Expansion cooling time.
+	StabilizationWindowSeconds pulumi.IntInput `pulumi:"stabilizationWindowSeconds"`
+	// Flexible expansion step. The maximum number of instances per unit time.
+	Step pulumi.IntInput `pulumi:"step"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray and GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray{ GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray []GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput {
+	return o
+}
+
+// Whether shrinkage is prohibited. The values are described as follows:
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// Expansion cooling time.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) StabilizationWindowSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) int {
+		return v.StabilizationWindowSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Flexible expansion step. The maximum number of instances per unit time.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) Step() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) int { return v.Step }).(pulumi.IntOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule struct {
+	// Whether shrinkage is prohibited. The values are described as follows:
+	Disabled bool `pulumi:"disabled"`
+	// Expansion cooling time.
+	StabilizationWindowSeconds int `pulumi:"stabilizationWindowSeconds"`
+	// Flexible expansion step. The maximum number of instances per unit time.
+	Step int `pulumi:"step"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs and GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs struct {
+	// Whether shrinkage is prohibited. The values are described as follows:
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// Expansion cooling time.
+	StabilizationWindowSeconds pulumi.IntInput `pulumi:"stabilizationWindowSeconds"`
+	// Flexible expansion step. The maximum number of instances per unit time.
+	Step pulumi.IntInput `pulumi:"step"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray and GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray{ GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray []GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput {
+	return o
+}
+
+// Whether shrinkage is prohibited. The values are described as follows:
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// Expansion cooling time.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) StabilizationWindowSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule) int {
+		return v.StabilizationWindowSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Flexible expansion step. The maximum number of instances per unit time.
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) Step() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule) int { return v.Step }).(pulumi.IntOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput() GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimer struct {
+	// The short-term start date of the timed elastic scaling strategy.
+	BeginDate string `pulumi:"beginDate"`
+	// The short-term end date of the timed elastic scaling strategy.
+	EndDate string `pulumi:"endDate"`
+	// The period in which a timed elastic scaling strategy is executed.
+	Period string `pulumi:"period"`
+	// Trigger point in time within a single day.
+	Schedules []GetApplicationScalingRulesRuleScalingRuleTimerSchedule `pulumi:"schedules"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleTimerInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerArgs and GetApplicationScalingRulesRuleScalingRuleTimerOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleTimerArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleTimerInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleTimerOutput() GetApplicationScalingRulesRuleScalingRuleTimerOutput
+	ToGetApplicationScalingRulesRuleScalingRuleTimerOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleTimerOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerArgs struct {
+	// The short-term start date of the timed elastic scaling strategy.
+	BeginDate pulumi.StringInput `pulumi:"beginDate"`
+	// The short-term end date of the timed elastic scaling strategy.
+	EndDate pulumi.StringInput `pulumi:"endDate"`
+	// The period in which a timed elastic scaling strategy is executed.
+	Period pulumi.StringInput `pulumi:"period"`
+	// Trigger point in time within a single day.
+	Schedules GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput `pulumi:"schedules"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleTimerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimer)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleTimerArgs) ToGetApplicationScalingRulesRuleScalingRuleTimerOutput() GetApplicationScalingRulesRuleScalingRuleTimerOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleTimerOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleTimerArgs) ToGetApplicationScalingRulesRuleScalingRuleTimerOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleTimerOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleTimerArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerArray and GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleTimerArray{ GetApplicationScalingRulesRuleScalingRuleTimerArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleTimerArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutput() GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerArray []GetApplicationScalingRulesRuleScalingRuleTimerInput
+
+func (GetApplicationScalingRulesRuleScalingRuleTimerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleTimer)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleTimerArray) ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutput() GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleTimerArray) ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleTimerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimer)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerOutput() GetApplicationScalingRulesRuleScalingRuleTimerOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerOutput {
+	return o
+}
+
+// The short-term start date of the timed elastic scaling strategy.
+func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) BeginDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimer) string { return v.BeginDate }).(pulumi.StringOutput)
+}
+
+// The short-term end date of the timed elastic scaling strategy.
+func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) EndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimer) string { return v.EndDate }).(pulumi.StringOutput)
+}
+
+// The period in which a timed elastic scaling strategy is executed.
+func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) Period() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimer) string { return v.Period }).(pulumi.StringOutput)
+}
+
+// Trigger point in time within a single day.
+func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) Schedules() GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimer) []GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
+		return v.Schedules
+	}).(GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleTimer)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutput() GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleTimerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleTimer {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleTimer)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleTimerOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerSchedule struct {
+	// Time point. Format: `hours:minutes`.
+	AtTime string `pulumi:"atTime"`
+	// The maximum number of instances.
+	MaxReplicas int `pulumi:"maxReplicas"`
+	// The minimum number of instances.
+	MinReplicas int `pulumi:"minReplicas"`
+	// The number of target instances.
+	TargetReplicas int `pulumi:"targetReplicas"`
+}
+
+// GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs and GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs{...}
+type GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput() GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput
+	ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs struct {
+	// Time point. Format: `hours:minutes`.
+	AtTime pulumi.StringInput `pulumi:"atTime"`
+	// The maximum number of instances.
+	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
+	// The minimum number of instances.
+	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
+	// The number of target instances.
+	TargetReplicas pulumi.IntInput `pulumi:"targetReplicas"`
+}
+
+func (GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimerSchedule)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput() GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput)
+}
+
+// GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray and GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput` via:
+//
+//          GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray{ GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs{...} }
+type GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput() GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput
+	ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutputWithContext(context.Context) GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray []GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput
+
+func (GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleTimerSchedule)(nil)).Elem()
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput() GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput {
+	return i.ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimerSchedule)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput() GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput {
+	return o
+}
+
+// Time point. Format: `hours:minutes`.
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) AtTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimerSchedule) string { return v.AtTime }).(pulumi.StringOutput)
+}
+
+// The maximum number of instances.
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) MaxReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimerSchedule) int { return v.MaxReplicas }).(pulumi.IntOutput)
+}
+
+// The minimum number of instances.
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) MinReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimerSchedule) int { return v.MinReplicas }).(pulumi.IntOutput)
+}
+
+// The number of target instances.
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) TargetReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimerSchedule) int { return v.TargetReplicas }).(pulumi.IntOutput)
+}
+
+type GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScalingRulesRuleScalingRuleTimerSchedule)(nil)).Elem()
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput() GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) ToGetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutputWithContext(ctx context.Context) GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput {
+	return o
+}
+
+func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput) Index(i pulumi.IntInput) GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
+		return vs[0].([]GetApplicationScalingRulesRuleScalingRuleTimerSchedule)[vs[1].(int)]
+	}).(GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput)
 }
 
 type GetApplicationsApplication struct {
@@ -1252,6 +3949,662 @@ func (o GetConfigMapsMapArrayOutput) Index(i pulumi.IntInput) GetConfigMapsMapOu
 	}).(GetConfigMapsMapOutput)
 }
 
+type GetGreyTagRoutesRoute struct {
+	// The description of GreyTagRoute.
+	Description string `pulumi:"description"`
+	// The grayscale rule created for Dubbo Application.
+	DubboRules []GetGreyTagRoutesRouteDubboRule `pulumi:"dubboRules"`
+	// The name of GreyTagRoute.
+	GreyTagRouteName string `pulumi:"greyTagRouteName"`
+	// The ID of the GreyTagRoute.
+	Id string `pulumi:"id"`
+	// The grayscale rule created for SpringCloud Application.
+	ScRules []GetGreyTagRoutesRouteScRule `pulumi:"scRules"`
+}
+
+// GetGreyTagRoutesRouteInput is an input type that accepts GetGreyTagRoutesRouteArgs and GetGreyTagRoutesRouteOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteInput` via:
+//
+//          GetGreyTagRoutesRouteArgs{...}
+type GetGreyTagRoutesRouteInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteOutput() GetGreyTagRoutesRouteOutput
+	ToGetGreyTagRoutesRouteOutputWithContext(context.Context) GetGreyTagRoutesRouteOutput
+}
+
+type GetGreyTagRoutesRouteArgs struct {
+	// The description of GreyTagRoute.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The grayscale rule created for Dubbo Application.
+	DubboRules GetGreyTagRoutesRouteDubboRuleArrayInput `pulumi:"dubboRules"`
+	// The name of GreyTagRoute.
+	GreyTagRouteName pulumi.StringInput `pulumi:"greyTagRouteName"`
+	// The ID of the GreyTagRoute.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The grayscale rule created for SpringCloud Application.
+	ScRules GetGreyTagRoutesRouteScRuleArrayInput `pulumi:"scRules"`
+}
+
+func (GetGreyTagRoutesRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRoute)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteArgs) ToGetGreyTagRoutesRouteOutput() GetGreyTagRoutesRouteOutput {
+	return i.ToGetGreyTagRoutesRouteOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteArgs) ToGetGreyTagRoutesRouteOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteOutput)
+}
+
+// GetGreyTagRoutesRouteArrayInput is an input type that accepts GetGreyTagRoutesRouteArray and GetGreyTagRoutesRouteArrayOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteArrayInput` via:
+//
+//          GetGreyTagRoutesRouteArray{ GetGreyTagRoutesRouteArgs{...} }
+type GetGreyTagRoutesRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteArrayOutput() GetGreyTagRoutesRouteArrayOutput
+	ToGetGreyTagRoutesRouteArrayOutputWithContext(context.Context) GetGreyTagRoutesRouteArrayOutput
+}
+
+type GetGreyTagRoutesRouteArray []GetGreyTagRoutesRouteInput
+
+func (GetGreyTagRoutesRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRoute)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteArray) ToGetGreyTagRoutesRouteArrayOutput() GetGreyTagRoutesRouteArrayOutput {
+	return i.ToGetGreyTagRoutesRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteArray) ToGetGreyTagRoutesRouteArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteArrayOutput)
+}
+
+type GetGreyTagRoutesRouteOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRoute)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteOutput) ToGetGreyTagRoutesRouteOutput() GetGreyTagRoutesRouteOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteOutput) ToGetGreyTagRoutesRouteOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteOutput {
+	return o
+}
+
+// The description of GreyTagRoute.
+func (o GetGreyTagRoutesRouteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRoute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The grayscale rule created for Dubbo Application.
+func (o GetGreyTagRoutesRouteOutput) DubboRules() GetGreyTagRoutesRouteDubboRuleArrayOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRoute) []GetGreyTagRoutesRouteDubboRule { return v.DubboRules }).(GetGreyTagRoutesRouteDubboRuleArrayOutput)
+}
+
+// The name of GreyTagRoute.
+func (o GetGreyTagRoutesRouteOutput) GreyTagRouteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRoute) string { return v.GreyTagRouteName }).(pulumi.StringOutput)
+}
+
+// The ID of the GreyTagRoute.
+func (o GetGreyTagRoutesRouteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRoute) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The grayscale rule created for SpringCloud Application.
+func (o GetGreyTagRoutesRouteOutput) ScRules() GetGreyTagRoutesRouteScRuleArrayOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRoute) []GetGreyTagRoutesRouteScRule { return v.ScRules }).(GetGreyTagRoutesRouteScRuleArrayOutput)
+}
+
+type GetGreyTagRoutesRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRoute)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteArrayOutput) ToGetGreyTagRoutesRouteArrayOutput() GetGreyTagRoutesRouteArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteArrayOutput) ToGetGreyTagRoutesRouteArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGreyTagRoutesRoute {
+		return vs[0].([]GetGreyTagRoutesRoute)[vs[1].(int)]
+	}).(GetGreyTagRoutesRouteOutput)
+}
+
+type GetGreyTagRoutesRouteDubboRule struct {
+	// The Conditional Patterns for Grayscale Rules.
+	Condition string `pulumi:"condition"`
+	// The service group.
+	Group string `pulumi:"group"`
+	// A list of conditions items.
+	Items []GetGreyTagRoutesRouteDubboRuleItem `pulumi:"items"`
+	// The method name
+	MethodName string `pulumi:"methodName"`
+	// The service name.
+	ServiceName string `pulumi:"serviceName"`
+	// The service version.
+	Version string `pulumi:"version"`
+}
+
+// GetGreyTagRoutesRouteDubboRuleInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleArgs and GetGreyTagRoutesRouteDubboRuleOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleInput` via:
+//
+//          GetGreyTagRoutesRouteDubboRuleArgs{...}
+type GetGreyTagRoutesRouteDubboRuleInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteDubboRuleOutput() GetGreyTagRoutesRouteDubboRuleOutput
+	ToGetGreyTagRoutesRouteDubboRuleOutputWithContext(context.Context) GetGreyTagRoutesRouteDubboRuleOutput
+}
+
+type GetGreyTagRoutesRouteDubboRuleArgs struct {
+	// The Conditional Patterns for Grayscale Rules.
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// The service group.
+	Group pulumi.StringInput `pulumi:"group"`
+	// A list of conditions items.
+	Items GetGreyTagRoutesRouteDubboRuleItemArrayInput `pulumi:"items"`
+	// The method name
+	MethodName pulumi.StringInput `pulumi:"methodName"`
+	// The service name.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The service version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetGreyTagRoutesRouteDubboRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRouteDubboRule)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteDubboRuleArgs) ToGetGreyTagRoutesRouteDubboRuleOutput() GetGreyTagRoutesRouteDubboRuleOutput {
+	return i.ToGetGreyTagRoutesRouteDubboRuleOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteDubboRuleArgs) ToGetGreyTagRoutesRouteDubboRuleOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteDubboRuleOutput)
+}
+
+// GetGreyTagRoutesRouteDubboRuleArrayInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleArray and GetGreyTagRoutesRouteDubboRuleArrayOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleArrayInput` via:
+//
+//          GetGreyTagRoutesRouteDubboRuleArray{ GetGreyTagRoutesRouteDubboRuleArgs{...} }
+type GetGreyTagRoutesRouteDubboRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteDubboRuleArrayOutput() GetGreyTagRoutesRouteDubboRuleArrayOutput
+	ToGetGreyTagRoutesRouteDubboRuleArrayOutputWithContext(context.Context) GetGreyTagRoutesRouteDubboRuleArrayOutput
+}
+
+type GetGreyTagRoutesRouteDubboRuleArray []GetGreyTagRoutesRouteDubboRuleInput
+
+func (GetGreyTagRoutesRouteDubboRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRouteDubboRule)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteDubboRuleArray) ToGetGreyTagRoutesRouteDubboRuleArrayOutput() GetGreyTagRoutesRouteDubboRuleArrayOutput {
+	return i.ToGetGreyTagRoutesRouteDubboRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteDubboRuleArray) ToGetGreyTagRoutesRouteDubboRuleArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteDubboRuleArrayOutput)
+}
+
+type GetGreyTagRoutesRouteDubboRuleOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteDubboRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRouteDubboRule)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleOutput) ToGetGreyTagRoutesRouteDubboRuleOutput() GetGreyTagRoutesRouteDubboRuleOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleOutput) ToGetGreyTagRoutesRouteDubboRuleOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleOutput {
+	return o
+}
+
+// The Conditional Patterns for Grayscale Rules.
+func (o GetGreyTagRoutesRouteDubboRuleOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+// The service group.
+func (o GetGreyTagRoutesRouteDubboRuleOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// A list of conditions items.
+func (o GetGreyTagRoutesRouteDubboRuleOutput) Items() GetGreyTagRoutesRouteDubboRuleItemArrayOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) []GetGreyTagRoutesRouteDubboRuleItem { return v.Items }).(GetGreyTagRoutesRouteDubboRuleItemArrayOutput)
+}
+
+// The method name
+func (o GetGreyTagRoutesRouteDubboRuleOutput) MethodName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.MethodName }).(pulumi.StringOutput)
+}
+
+// The service name.
+func (o GetGreyTagRoutesRouteDubboRuleOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The service version.
+func (o GetGreyTagRoutesRouteDubboRuleOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetGreyTagRoutesRouteDubboRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteDubboRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRouteDubboRule)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleArrayOutput) ToGetGreyTagRoutesRouteDubboRuleArrayOutput() GetGreyTagRoutesRouteDubboRuleArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleArrayOutput) ToGetGreyTagRoutesRouteDubboRuleArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteDubboRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGreyTagRoutesRouteDubboRule {
+		return vs[0].([]GetGreyTagRoutesRouteDubboRule)[vs[1].(int)]
+	}).(GetGreyTagRoutesRouteDubboRuleOutput)
+}
+
+type GetGreyTagRoutesRouteDubboRuleItem struct {
+	// The comparison operator.
+	Cond string `pulumi:"cond"`
+	// The parameter value gets the expression.
+	Expr string `pulumi:"expr"`
+	// The parameter number.
+	Index int `pulumi:"index"`
+	// The operator.
+	Operator string `pulumi:"operator"`
+	// The value of the parameter.
+	Value string `pulumi:"value"`
+}
+
+// GetGreyTagRoutesRouteDubboRuleItemInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleItemArgs and GetGreyTagRoutesRouteDubboRuleItemOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleItemInput` via:
+//
+//          GetGreyTagRoutesRouteDubboRuleItemArgs{...}
+type GetGreyTagRoutesRouteDubboRuleItemInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteDubboRuleItemOutput() GetGreyTagRoutesRouteDubboRuleItemOutput
+	ToGetGreyTagRoutesRouteDubboRuleItemOutputWithContext(context.Context) GetGreyTagRoutesRouteDubboRuleItemOutput
+}
+
+type GetGreyTagRoutesRouteDubboRuleItemArgs struct {
+	// The comparison operator.
+	Cond pulumi.StringInput `pulumi:"cond"`
+	// The parameter value gets the expression.
+	Expr pulumi.StringInput `pulumi:"expr"`
+	// The parameter number.
+	Index pulumi.IntInput `pulumi:"index"`
+	// The operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The value of the parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetGreyTagRoutesRouteDubboRuleItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRouteDubboRuleItem)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteDubboRuleItemArgs) ToGetGreyTagRoutesRouteDubboRuleItemOutput() GetGreyTagRoutesRouteDubboRuleItemOutput {
+	return i.ToGetGreyTagRoutesRouteDubboRuleItemOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteDubboRuleItemArgs) ToGetGreyTagRoutesRouteDubboRuleItemOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteDubboRuleItemOutput)
+}
+
+// GetGreyTagRoutesRouteDubboRuleItemArrayInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleItemArray and GetGreyTagRoutesRouteDubboRuleItemArrayOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteDubboRuleItemArrayInput` via:
+//
+//          GetGreyTagRoutesRouteDubboRuleItemArray{ GetGreyTagRoutesRouteDubboRuleItemArgs{...} }
+type GetGreyTagRoutesRouteDubboRuleItemArrayInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteDubboRuleItemArrayOutput() GetGreyTagRoutesRouteDubboRuleItemArrayOutput
+	ToGetGreyTagRoutesRouteDubboRuleItemArrayOutputWithContext(context.Context) GetGreyTagRoutesRouteDubboRuleItemArrayOutput
+}
+
+type GetGreyTagRoutesRouteDubboRuleItemArray []GetGreyTagRoutesRouteDubboRuleItemInput
+
+func (GetGreyTagRoutesRouteDubboRuleItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRouteDubboRuleItem)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteDubboRuleItemArray) ToGetGreyTagRoutesRouteDubboRuleItemArrayOutput() GetGreyTagRoutesRouteDubboRuleItemArrayOutput {
+	return i.ToGetGreyTagRoutesRouteDubboRuleItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteDubboRuleItemArray) ToGetGreyTagRoutesRouteDubboRuleItemArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteDubboRuleItemArrayOutput)
+}
+
+type GetGreyTagRoutesRouteDubboRuleItemOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteDubboRuleItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRouteDubboRuleItem)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleItemOutput) ToGetGreyTagRoutesRouteDubboRuleItemOutput() GetGreyTagRoutesRouteDubboRuleItemOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleItemOutput) ToGetGreyTagRoutesRouteDubboRuleItemOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleItemOutput {
+	return o
+}
+
+// The comparison operator.
+func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Cond() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) string { return v.Cond }).(pulumi.StringOutput)
+}
+
+// The parameter value gets the expression.
+func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Expr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) string { return v.Expr }).(pulumi.StringOutput)
+}
+
+// The parameter number.
+func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Index() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) int { return v.Index }).(pulumi.IntOutput)
+}
+
+// The operator.
+func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The value of the parameter.
+func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetGreyTagRoutesRouteDubboRuleItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteDubboRuleItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRouteDubboRuleItem)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleItemArrayOutput) ToGetGreyTagRoutesRouteDubboRuleItemArrayOutput() GetGreyTagRoutesRouteDubboRuleItemArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleItemArrayOutput) ToGetGreyTagRoutesRouteDubboRuleItemArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteDubboRuleItemArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteDubboRuleItemArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteDubboRuleItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGreyTagRoutesRouteDubboRuleItem {
+		return vs[0].([]GetGreyTagRoutesRouteDubboRuleItem)[vs[1].(int)]
+	}).(GetGreyTagRoutesRouteDubboRuleItemOutput)
+}
+
+type GetGreyTagRoutesRouteScRule struct {
+	// The Conditional Patterns for Grayscale Rules.
+	Condition string `pulumi:"condition"`
+	// A list of conditions items.
+	Items []GetGreyTagRoutesRouteScRuleItem `pulumi:"items"`
+	// The path corresponding to the grayscale rule.
+	Path string `pulumi:"path"`
+}
+
+// GetGreyTagRoutesRouteScRuleInput is an input type that accepts GetGreyTagRoutesRouteScRuleArgs and GetGreyTagRoutesRouteScRuleOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleInput` via:
+//
+//          GetGreyTagRoutesRouteScRuleArgs{...}
+type GetGreyTagRoutesRouteScRuleInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteScRuleOutput() GetGreyTagRoutesRouteScRuleOutput
+	ToGetGreyTagRoutesRouteScRuleOutputWithContext(context.Context) GetGreyTagRoutesRouteScRuleOutput
+}
+
+type GetGreyTagRoutesRouteScRuleArgs struct {
+	// The Conditional Patterns for Grayscale Rules.
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// A list of conditions items.
+	Items GetGreyTagRoutesRouteScRuleItemArrayInput `pulumi:"items"`
+	// The path corresponding to the grayscale rule.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetGreyTagRoutesRouteScRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRouteScRule)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteScRuleArgs) ToGetGreyTagRoutesRouteScRuleOutput() GetGreyTagRoutesRouteScRuleOutput {
+	return i.ToGetGreyTagRoutesRouteScRuleOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteScRuleArgs) ToGetGreyTagRoutesRouteScRuleOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteScRuleOutput)
+}
+
+// GetGreyTagRoutesRouteScRuleArrayInput is an input type that accepts GetGreyTagRoutesRouteScRuleArray and GetGreyTagRoutesRouteScRuleArrayOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleArrayInput` via:
+//
+//          GetGreyTagRoutesRouteScRuleArray{ GetGreyTagRoutesRouteScRuleArgs{...} }
+type GetGreyTagRoutesRouteScRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteScRuleArrayOutput() GetGreyTagRoutesRouteScRuleArrayOutput
+	ToGetGreyTagRoutesRouteScRuleArrayOutputWithContext(context.Context) GetGreyTagRoutesRouteScRuleArrayOutput
+}
+
+type GetGreyTagRoutesRouteScRuleArray []GetGreyTagRoutesRouteScRuleInput
+
+func (GetGreyTagRoutesRouteScRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRouteScRule)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteScRuleArray) ToGetGreyTagRoutesRouteScRuleArrayOutput() GetGreyTagRoutesRouteScRuleArrayOutput {
+	return i.ToGetGreyTagRoutesRouteScRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteScRuleArray) ToGetGreyTagRoutesRouteScRuleArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteScRuleArrayOutput)
+}
+
+type GetGreyTagRoutesRouteScRuleOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteScRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRouteScRule)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteScRuleOutput) ToGetGreyTagRoutesRouteScRuleOutput() GetGreyTagRoutesRouteScRuleOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleOutput) ToGetGreyTagRoutesRouteScRuleOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleOutput {
+	return o
+}
+
+// The Conditional Patterns for Grayscale Rules.
+func (o GetGreyTagRoutesRouteScRuleOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteScRule) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+// A list of conditions items.
+func (o GetGreyTagRoutesRouteScRuleOutput) Items() GetGreyTagRoutesRouteScRuleItemArrayOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteScRule) []GetGreyTagRoutesRouteScRuleItem { return v.Items }).(GetGreyTagRoutesRouteScRuleItemArrayOutput)
+}
+
+// The path corresponding to the grayscale rule.
+func (o GetGreyTagRoutesRouteScRuleOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteScRule) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetGreyTagRoutesRouteScRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteScRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRouteScRule)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteScRuleArrayOutput) ToGetGreyTagRoutesRouteScRuleArrayOutput() GetGreyTagRoutesRouteScRuleArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleArrayOutput) ToGetGreyTagRoutesRouteScRuleArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteScRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGreyTagRoutesRouteScRule {
+		return vs[0].([]GetGreyTagRoutesRouteScRule)[vs[1].(int)]
+	}).(GetGreyTagRoutesRouteScRuleOutput)
+}
+
+type GetGreyTagRoutesRouteScRuleItem struct {
+	// The comparison operator.
+	Cond string `pulumi:"cond"`
+	// The name of the parameter.
+	Name string `pulumi:"name"`
+	// The operator.
+	Operator string `pulumi:"operator"`
+	// The Compare types.
+	Type string `pulumi:"type"`
+	// The value of the parameter.
+	Value string `pulumi:"value"`
+}
+
+// GetGreyTagRoutesRouteScRuleItemInput is an input type that accepts GetGreyTagRoutesRouteScRuleItemArgs and GetGreyTagRoutesRouteScRuleItemOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleItemInput` via:
+//
+//          GetGreyTagRoutesRouteScRuleItemArgs{...}
+type GetGreyTagRoutesRouteScRuleItemInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteScRuleItemOutput() GetGreyTagRoutesRouteScRuleItemOutput
+	ToGetGreyTagRoutesRouteScRuleItemOutputWithContext(context.Context) GetGreyTagRoutesRouteScRuleItemOutput
+}
+
+type GetGreyTagRoutesRouteScRuleItemArgs struct {
+	// The comparison operator.
+	Cond pulumi.StringInput `pulumi:"cond"`
+	// The name of the parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The Compare types.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value of the parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetGreyTagRoutesRouteScRuleItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRouteScRuleItem)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteScRuleItemArgs) ToGetGreyTagRoutesRouteScRuleItemOutput() GetGreyTagRoutesRouteScRuleItemOutput {
+	return i.ToGetGreyTagRoutesRouteScRuleItemOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteScRuleItemArgs) ToGetGreyTagRoutesRouteScRuleItemOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteScRuleItemOutput)
+}
+
+// GetGreyTagRoutesRouteScRuleItemArrayInput is an input type that accepts GetGreyTagRoutesRouteScRuleItemArray and GetGreyTagRoutesRouteScRuleItemArrayOutput values.
+// You can construct a concrete instance of `GetGreyTagRoutesRouteScRuleItemArrayInput` via:
+//
+//          GetGreyTagRoutesRouteScRuleItemArray{ GetGreyTagRoutesRouteScRuleItemArgs{...} }
+type GetGreyTagRoutesRouteScRuleItemArrayInput interface {
+	pulumi.Input
+
+	ToGetGreyTagRoutesRouteScRuleItemArrayOutput() GetGreyTagRoutesRouteScRuleItemArrayOutput
+	ToGetGreyTagRoutesRouteScRuleItemArrayOutputWithContext(context.Context) GetGreyTagRoutesRouteScRuleItemArrayOutput
+}
+
+type GetGreyTagRoutesRouteScRuleItemArray []GetGreyTagRoutesRouteScRuleItemInput
+
+func (GetGreyTagRoutesRouteScRuleItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRouteScRuleItem)(nil)).Elem()
+}
+
+func (i GetGreyTagRoutesRouteScRuleItemArray) ToGetGreyTagRoutesRouteScRuleItemArrayOutput() GetGreyTagRoutesRouteScRuleItemArrayOutput {
+	return i.ToGetGreyTagRoutesRouteScRuleItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetGreyTagRoutesRouteScRuleItemArray) ToGetGreyTagRoutesRouteScRuleItemArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGreyTagRoutesRouteScRuleItemArrayOutput)
+}
+
+type GetGreyTagRoutesRouteScRuleItemOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteScRuleItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGreyTagRoutesRouteScRuleItem)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteScRuleItemOutput) ToGetGreyTagRoutesRouteScRuleItemOutput() GetGreyTagRoutesRouteScRuleItemOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleItemOutput) ToGetGreyTagRoutesRouteScRuleItemOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleItemOutput {
+	return o
+}
+
+// The comparison operator.
+func (o GetGreyTagRoutesRouteScRuleItemOutput) Cond() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Cond }).(pulumi.StringOutput)
+}
+
+// The name of the parameter.
+func (o GetGreyTagRoutesRouteScRuleItemOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operator.
+func (o GetGreyTagRoutesRouteScRuleItemOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The Compare types.
+func (o GetGreyTagRoutesRouteScRuleItemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the parameter.
+func (o GetGreyTagRoutesRouteScRuleItemOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetGreyTagRoutesRouteScRuleItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGreyTagRoutesRouteScRuleItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGreyTagRoutesRouteScRuleItem)(nil)).Elem()
+}
+
+func (o GetGreyTagRoutesRouteScRuleItemArrayOutput) ToGetGreyTagRoutesRouteScRuleItemArrayOutput() GetGreyTagRoutesRouteScRuleItemArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleItemArrayOutput) ToGetGreyTagRoutesRouteScRuleItemArrayOutputWithContext(ctx context.Context) GetGreyTagRoutesRouteScRuleItemArrayOutput {
+	return o
+}
+
+func (o GetGreyTagRoutesRouteScRuleItemArrayOutput) Index(i pulumi.IntInput) GetGreyTagRoutesRouteScRuleItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGreyTagRoutesRouteScRuleItem {
+		return vs[0].([]GetGreyTagRoutesRouteScRuleItem)[vs[1].(int)]
+	}).(GetGreyTagRoutesRouteScRuleItemOutput)
+}
+
 type GetIngressesIngress struct {
 	// Cert Id.
 	CertId string `pulumi:"certId"`
@@ -1692,14 +5045,64 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInternetArrayInput)(nil)).Elem(), ApplicationInternetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIntranetInput)(nil)).Elem(), ApplicationIntranetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIntranetArrayInput)(nil)).Elem(), ApplicationIntranetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricMetricInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricMetricArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerScheduleInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerScheduleArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteDubboRuleInput)(nil)).Elem(), GreyTagRouteDubboRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteDubboRuleArrayInput)(nil)).Elem(), GreyTagRouteDubboRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteDubboRuleItemInput)(nil)).Elem(), GreyTagRouteDubboRuleItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteDubboRuleItemArrayInput)(nil)).Elem(), GreyTagRouteDubboRuleItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteScRuleInput)(nil)).Elem(), GreyTagRouteScRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteScRuleArrayInput)(nil)).Elem(), GreyTagRouteScRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteScRuleItemInput)(nil)).Elem(), GreyTagRouteScRuleItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteScRuleItemArrayInput)(nil)).Elem(), GreyTagRouteScRuleItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressDefaultRuleInput)(nil)).Elem(), IngressDefaultRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressDefaultRulePtrInput)(nil)).Elem(), IngressDefaultRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleInput)(nil)).Elem(), IngressRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleArrayInput)(nil)).Elem(), IngressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleInput)(nil)).Elem(), GetApplicationScalingRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimerInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimerArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleTimerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationInput)(nil)).Elem(), GetApplicationsApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationArrayInput)(nil)).Elem(), GetApplicationsApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigMapsMapInput)(nil)).Elem(), GetConfigMapsMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigMapsMapArrayInput)(nil)).Elem(), GetConfigMapsMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteInput)(nil)).Elem(), GetGreyTagRoutesRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteArrayInput)(nil)).Elem(), GetGreyTagRoutesRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteDubboRuleInput)(nil)).Elem(), GetGreyTagRoutesRouteDubboRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteDubboRuleArrayInput)(nil)).Elem(), GetGreyTagRoutesRouteDubboRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteDubboRuleItemInput)(nil)).Elem(), GetGreyTagRoutesRouteDubboRuleItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteDubboRuleItemArrayInput)(nil)).Elem(), GetGreyTagRoutesRouteDubboRuleItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteScRuleInput)(nil)).Elem(), GetGreyTagRoutesRouteScRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteScRuleArrayInput)(nil)).Elem(), GetGreyTagRoutesRouteScRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteScRuleItemInput)(nil)).Elem(), GetGreyTagRoutesRouteScRuleItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteScRuleItemArrayInput)(nil)).Elem(), GetGreyTagRoutesRouteScRuleItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIngressesIngressInput)(nil)).Elem(), GetIngressesIngressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIngressesIngressArrayInput)(nil)).Elem(), GetIngressesIngressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSpecificationsSpecificationInput)(nil)).Elem(), GetInstanceSpecificationsSpecificationArgs{})
@@ -1710,14 +5113,64 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationInternetArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationIntranetOutput{})
 	pulumi.RegisterOutputType(ApplicationIntranetArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricMetricOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerScheduleOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GreyTagRouteDubboRuleOutput{})
+	pulumi.RegisterOutputType(GreyTagRouteDubboRuleArrayOutput{})
+	pulumi.RegisterOutputType(GreyTagRouteDubboRuleItemOutput{})
+	pulumi.RegisterOutputType(GreyTagRouteDubboRuleItemArrayOutput{})
+	pulumi.RegisterOutputType(GreyTagRouteScRuleOutput{})
+	pulumi.RegisterOutputType(GreyTagRouteScRuleArrayOutput{})
+	pulumi.RegisterOutputType(GreyTagRouteScRuleItemOutput{})
+	pulumi.RegisterOutputType(GreyTagRouteScRuleItemArrayOutput{})
 	pulumi.RegisterOutputType(IngressDefaultRuleOutput{})
 	pulumi.RegisterOutputType(IngressDefaultRulePtrOutput{})
 	pulumi.RegisterOutputType(IngressRuleOutput{})
 	pulumi.RegisterOutputType(IngressRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleTimerOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput{})
+	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapArrayOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteDubboRuleOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteDubboRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteDubboRuleItemOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteDubboRuleItemArrayOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteScRuleOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteScRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteScRuleItemOutput{})
+	pulumi.RegisterOutputType(GetGreyTagRoutesRouteScRuleItemArrayOutput{})
 	pulumi.RegisterOutputType(GetIngressesIngressOutput{})
 	pulumi.RegisterOutputType(GetIngressesIngressArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceSpecificationsSpecificationOutput{})

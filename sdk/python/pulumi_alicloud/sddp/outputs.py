@@ -10,6 +10,7 @@ from .. import _utilities
 
 __all__ = [
     'GetConfigsConfigResult',
+    'GetDataLimitsLimitResult',
     'GetInstancesInstanceResult',
     'GetRulesRuleResult',
 ]
@@ -91,6 +92,134 @@ class GetConfigsConfigResult(dict):
         * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDataLimitsLimitResult(dict):
+    def __init__(__self__, *,
+                 audit_status: int,
+                 check_status: int,
+                 data_limit_id: str,
+                 engine_type: str,
+                 id: str,
+                 local_name: str,
+                 log_store_day: int,
+                 parent_id: str,
+                 port: int,
+                 resource_type: str,
+                 user_name: str):
+        """
+        :param int audit_status: Whether to enable the log auditing feature.
+        :param int check_status: The status of the connectivity test between the data asset and SDDP.
+        :param str data_limit_id: The first ID of the resource.
+        :param str engine_type: -The type of the database.
+        :param str id: The ID of the Data Limit.
+        :param str local_name: The name of the service to which the data asset belongs.
+        :param int log_store_day: The retention period of raw logs after you enable the log auditing feature.
+        :param str parent_id: The ID of the data asset.
+        :param int port: The port that is used to connect to the database.
+        :param str resource_type: The type of the service to which the data asset belongs.
+        :param str user_name: The name of the user who owns the data asset.
+        """
+        pulumi.set(__self__, "audit_status", audit_status)
+        pulumi.set(__self__, "check_status", check_status)
+        pulumi.set(__self__, "data_limit_id", data_limit_id)
+        pulumi.set(__self__, "engine_type", engine_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_name", local_name)
+        pulumi.set(__self__, "log_store_day", log_store_day)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="auditStatus")
+    def audit_status(self) -> int:
+        """
+        Whether to enable the log auditing feature.
+        """
+        return pulumi.get(self, "audit_status")
+
+    @property
+    @pulumi.getter(name="checkStatus")
+    def check_status(self) -> int:
+        """
+        The status of the connectivity test between the data asset and SDDP.
+        """
+        return pulumi.get(self, "check_status")
+
+    @property
+    @pulumi.getter(name="dataLimitId")
+    def data_limit_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "data_limit_id")
+
+    @property
+    @pulumi.getter(name="engineType")
+    def engine_type(self) -> str:
+        """
+        -The type of the database.
+        """
+        return pulumi.get(self, "engine_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Data Limit.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> str:
+        """
+        The name of the service to which the data asset belongs.
+        """
+        return pulumi.get(self, "local_name")
+
+    @property
+    @pulumi.getter(name="logStoreDay")
+    def log_store_day(self) -> int:
+        """
+        The retention period of raw logs after you enable the log auditing feature.
+        """
+        return pulumi.get(self, "log_store_day")
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> str:
+        """
+        The ID of the data asset.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port that is used to connect to the database.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of the service to which the data asset belongs.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        The name of the user who owns the data asset.
+        """
+        return pulumi.get(self, "user_name")
 
 
 @pulumi.output_type

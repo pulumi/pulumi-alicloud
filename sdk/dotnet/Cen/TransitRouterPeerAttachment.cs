@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Cen
         /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         /// </summary>
         [Output("bandwidthType")]
-        public Output<string?> BandwidthType { get; private set; } = null!;
+        public Output<string> BandwidthType { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity

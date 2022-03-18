@@ -81,7 +81,8 @@ type Domain struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The acceleration region.
-	Scope         pulumi.StringPtrOutput `pulumi:"scope"`
+	Scope pulumi.StringPtrOutput `pulumi:"scope"`
+	// The top-level domain name.
 	SecurityToken pulumi.StringPtrOutput `pulumi:"securityToken"`
 	// The origin information.
 	Sources DomainSourceArrayOutput `pulumi:"sources"`
@@ -148,7 +149,8 @@ type domainState struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The acceleration region.
-	Scope         *string `pulumi:"scope"`
+	Scope *string `pulumi:"scope"`
+	// The top-level domain name.
 	SecurityToken *string `pulumi:"securityToken"`
 	// The origin information.
 	Sources []DomainSource `pulumi:"sources"`
@@ -181,7 +183,8 @@ type DomainState struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The acceleration region.
-	Scope         pulumi.StringPtrInput
+	Scope pulumi.StringPtrInput
+	// The top-level domain name.
 	SecurityToken pulumi.StringPtrInput
 	// The origin information.
 	Sources DomainSourceArrayInput
@@ -218,7 +221,8 @@ type domainArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The acceleration region.
-	Scope         *string `pulumi:"scope"`
+	Scope *string `pulumi:"scope"`
+	// The top-level domain name.
 	SecurityToken *string `pulumi:"securityToken"`
 	// The origin information.
 	Sources []DomainSource `pulumi:"sources"`
@@ -252,7 +256,8 @@ type DomainArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The acceleration region.
-	Scope         pulumi.StringPtrInput
+	Scope pulumi.StringPtrInput
+	// The top-level domain name.
 	SecurityToken pulumi.StringPtrInput
 	// The origin information.
 	Sources DomainSourceArrayInput

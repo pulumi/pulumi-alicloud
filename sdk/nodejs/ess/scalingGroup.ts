@@ -60,9 +60,13 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly groupDeletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+     * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      */
     public readonly launchTemplateId!: pulumi.Output<string | undefined>;
+    /**
+     * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+     */
+    public readonly launchTemplateVersion!: pulumi.Output<string | undefined>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -113,6 +117,12 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly spotInstanceRemedy!: pulumi.Output<boolean>;
     /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -141,6 +151,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             resourceInputs["groupDeletionProtection"] = state ? state.groupDeletionProtection : undefined;
             resourceInputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
+            resourceInputs["launchTemplateVersion"] = state ? state.launchTemplateVersion : undefined;
             resourceInputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
             resourceInputs["maxSize"] = state ? state.maxSize : undefined;
             resourceInputs["minSize"] = state ? state.minSize : undefined;
@@ -151,6 +162,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
             resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
@@ -166,6 +178,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             resourceInputs["groupDeletionProtection"] = args ? args.groupDeletionProtection : undefined;
             resourceInputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
+            resourceInputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
             resourceInputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
             resourceInputs["maxSize"] = args ? args.maxSize : undefined;
             resourceInputs["minSize"] = args ? args.minSize : undefined;
@@ -176,6 +189,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
             resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
         }
@@ -207,9 +221,13 @@ export interface ScalingGroupState {
      */
     groupDeletionProtection?: pulumi.Input<boolean>;
     /**
-     * Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+     * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      */
     launchTemplateId?: pulumi.Input<string>;
+    /**
+     * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+     */
+    launchTemplateVersion?: pulumi.Input<string>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -260,6 +278,12 @@ export interface ScalingGroupState {
      */
     spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -294,9 +318,13 @@ export interface ScalingGroupArgs {
      */
     groupDeletionProtection?: pulumi.Input<boolean>;
     /**
-     * Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+     * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      */
     launchTemplateId?: pulumi.Input<string>;
+    /**
+     * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+     */
+    launchTemplateVersion?: pulumi.Input<string>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -346,6 +374,12 @@ export interface ScalingGroupArgs {
      * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
     spotInstanceRemedy?: pulumi.Input<boolean>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *

@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The creation time of the backup plan. UNIX time in seconds.
+        /// </summary>
         public readonly string CreatedTime;
         /// <summary>
         /// Whether to be suspended. Valid values: `true`, `false`.
@@ -43,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string NasBackupPlanName;
         /// <summary>
-        /// Options of nas.
+        /// Options field of Nas backup plan.
         /// </summary>
         public readonly string Options;
         /// <summary>
@@ -58,6 +61,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         public readonly string Schedule;
+        /// <summary>
+        /// The update time of the backup plan. UNIX time in seconds.
+        /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
         /// The ID of backup vault.

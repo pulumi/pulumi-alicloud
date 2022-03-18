@@ -53,7 +53,7 @@ export function getRestoreJobs(args: GetRestoreJobsArgs, opts?: pulumi.InvokeOpt
 export interface GetRestoreJobsArgs {
     outputFile?: string;
     /**
-     * The ID of restore job.
+     * The list of restore job IDs.
      */
     restoreIds?: string[];
     /**
@@ -61,7 +61,7 @@ export interface GetRestoreJobsArgs {
      */
     restoreType: string;
     /**
-     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+     * The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
     sourceTypes?: string[];
     /**
@@ -117,7 +117,7 @@ export function getRestoreJobsOutput(args: GetRestoreJobsOutputArgs, opts?: pulu
 export interface GetRestoreJobsOutputArgs {
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of restore job.
+     * The list of restore job IDs.
      */
     restoreIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -125,7 +125,7 @@ export interface GetRestoreJobsOutputArgs {
      */
     restoreType: pulumi.Input<string>;
     /**
-     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+     * The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
     sourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

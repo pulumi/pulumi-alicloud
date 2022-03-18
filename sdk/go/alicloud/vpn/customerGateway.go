@@ -47,6 +47,8 @@ import (
 type CustomerGateway struct {
 	pulumi.CustomResourceState
 
+	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	Asn pulumi.StringPtrOutput `pulumi:"asn"`
 	// The description of the VPN customer gateway instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The IP address of the customer gateway.
@@ -87,6 +89,8 @@ func GetCustomerGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomerGateway resources.
 type customerGatewayState struct {
+	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	Asn *string `pulumi:"asn"`
 	// The description of the VPN customer gateway instance.
 	Description *string `pulumi:"description"`
 	// The IP address of the customer gateway.
@@ -96,6 +100,8 @@ type customerGatewayState struct {
 }
 
 type CustomerGatewayState struct {
+	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	Asn pulumi.StringPtrInput
 	// The description of the VPN customer gateway instance.
 	Description pulumi.StringPtrInput
 	// The IP address of the customer gateway.
@@ -109,6 +115,8 @@ func (CustomerGatewayState) ElementType() reflect.Type {
 }
 
 type customerGatewayArgs struct {
+	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	Asn *string `pulumi:"asn"`
 	// The description of the VPN customer gateway instance.
 	Description *string `pulumi:"description"`
 	// The IP address of the customer gateway.
@@ -119,6 +127,8 @@ type customerGatewayArgs struct {
 
 // The set of arguments for constructing a CustomerGateway resource.
 type CustomerGatewayArgs struct {
+	// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+	Asn pulumi.StringPtrInput
 	// The description of the VPN customer gateway instance.
 	Description pulumi.StringPtrInput
 	// The IP address of the customer gateway.

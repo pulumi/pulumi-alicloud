@@ -11,6 +11,7 @@ export * from "./getAccounts";
 export * from "./getAuditPolicies";
 export * from "./getInstances";
 export * from "./getServerlessInstances";
+export * from "./getShardingNetworkPrivateAddresses";
 export * from "./getShardingNetworkPublicAddresses";
 export * from "./getZones";
 export * from "./instance";

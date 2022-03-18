@@ -71,7 +71,7 @@ type EcsDisk struct {
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
 	// Indicates whether the disk is released together with the instance. Default value: `false`.
-	DeleteWithInstance pulumi.BoolPtrOutput `pulumi:"deleteWithInstance"`
+	DeleteWithInstance pulumi.BoolOutput `pulumi:"deleteWithInstance"`
 	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
@@ -114,7 +114,8 @@ type EcsDisk struct {
 	StorageSetId pulumi.StringPtrOutput `pulumi:"storageSetId"`
 	// The number of partitions in the storage set.
 	StorageSetPartitionNumber pulumi.IntPtrOutput `pulumi:"storageSetPartitionNumber"`
-	Tags                      pulumi.MapOutput    `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
@@ -205,8 +206,9 @@ type ecsDiskState struct {
 	// The ID of the storage set.
 	StorageSetId *string `pulumi:"storageSetId"`
 	// The number of partitions in the storage set.
-	StorageSetPartitionNumber *int                   `pulumi:"storageSetPartitionNumber"`
-	Tags                      map[string]interface{} `pulumi:"tags"`
+	StorageSetPartitionNumber *int `pulumi:"storageSetPartitionNumber"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
@@ -270,7 +272,8 @@ type EcsDiskState struct {
 	StorageSetId pulumi.StringPtrInput
 	// The number of partitions in the storage set.
 	StorageSetPartitionNumber pulumi.IntPtrInput
-	Tags                      pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
@@ -335,8 +338,9 @@ type ecsDiskArgs struct {
 	// The ID of the storage set.
 	StorageSetId *string `pulumi:"storageSetId"`
 	// The number of partitions in the storage set.
-	StorageSetPartitionNumber *int                   `pulumi:"storageSetPartitionNumber"`
-	Tags                      map[string]interface{} `pulumi:"tags"`
+	StorageSetPartitionNumber *int `pulumi:"storageSetPartitionNumber"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
@@ -399,7 +403,8 @@ type EcsDiskArgs struct {
 	StorageSetId pulumi.StringPtrInput
 	// The number of partitions in the storage set.
 	StorageSetPartitionNumber pulumi.IntPtrInput
-	Tags                      pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
 	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
 	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.

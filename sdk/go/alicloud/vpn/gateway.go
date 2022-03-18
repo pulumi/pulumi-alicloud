@@ -21,7 +21,11 @@ import (
 type Gateway struct {
 	pulumi.CustomResourceState
 
-	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
+	// Whether to pay automatically. Default value: `true`. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
+	AutoPay   pulumi.BoolPtrOutput `pulumi:"autoPay"`
+	Bandwidth pulumi.IntOutput     `pulumi:"bandwidth"`
 	// The business status of the VPN gateway.
 	BusinessStatus pulumi.StringOutput `pulumi:"businessStatus"`
 	// The description of the VPN instance.
@@ -44,6 +48,8 @@ type Gateway struct {
 	SslConnections pulumi.IntPtrOutput `pulumi:"sslConnections"`
 	// The status of the VPN gateway.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tags of VPN gateway.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The VPN belongs the vpc_id, the field can't be changed.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The VPN belongs the vswitch_id, the field can't be changed.
@@ -85,7 +91,11 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
-	Bandwidth *int `pulumi:"bandwidth"`
+	// Whether to pay automatically. Default value: `true`. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
+	AutoPay   *bool `pulumi:"autoPay"`
+	Bandwidth *int  `pulumi:"bandwidth"`
 	// The business status of the VPN gateway.
 	BusinessStatus *string `pulumi:"businessStatus"`
 	// The description of the VPN instance.
@@ -108,6 +118,8 @@ type gatewayState struct {
 	SslConnections *int `pulumi:"sslConnections"`
 	// The status of the VPN gateway.
 	Status *string `pulumi:"status"`
+	// The tags of VPN gateway.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPN belongs the vpc_id, the field can't be changed.
 	VpcId *string `pulumi:"vpcId"`
 	// The VPN belongs the vswitch_id, the field can't be changed.
@@ -115,6 +127,10 @@ type gatewayState struct {
 }
 
 type GatewayState struct {
+	// Whether to pay automatically. Default value: `true`. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
+	AutoPay   pulumi.BoolPtrInput
 	Bandwidth pulumi.IntPtrInput
 	// The business status of the VPN gateway.
 	BusinessStatus pulumi.StringPtrInput
@@ -138,6 +154,8 @@ type GatewayState struct {
 	SslConnections pulumi.IntPtrInput
 	// The status of the VPN gateway.
 	Status pulumi.StringPtrInput
+	// The tags of VPN gateway.
+	Tags pulumi.MapInput
 	// The VPN belongs the vpc_id, the field can't be changed.
 	VpcId pulumi.StringPtrInput
 	// The VPN belongs the vswitch_id, the field can't be changed.
@@ -149,7 +167,11 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	Bandwidth int `pulumi:"bandwidth"`
+	// Whether to pay automatically. Default value: `true`. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
+	AutoPay   *bool `pulumi:"autoPay"`
+	Bandwidth int   `pulumi:"bandwidth"`
 	// The description of the VPN instance.
 	Description *string `pulumi:"description"`
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -166,6 +188,8 @@ type gatewayArgs struct {
 	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
 	// This field is ignored when enableSsl is false.
 	SslConnections *int `pulumi:"sslConnections"`
+	// The tags of VPN gateway.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPN belongs the vpc_id, the field can't be changed.
 	VpcId string `pulumi:"vpcId"`
 	// The VPN belongs the vswitch_id, the field can't be changed.
@@ -174,6 +198,10 @@ type gatewayArgs struct {
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
+	// Whether to pay automatically. Default value: `true`. Valid values:
+	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+	// `true`: Enable automatic payment, automatic payment order.
+	AutoPay   pulumi.BoolPtrInput
 	Bandwidth pulumi.IntInput
 	// The description of the VPN instance.
 	Description pulumi.StringPtrInput
@@ -191,6 +219,8 @@ type GatewayArgs struct {
 	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
 	// This field is ignored when enableSsl is false.
 	SslConnections pulumi.IntPtrInput
+	// The tags of VPN gateway.
+	Tags pulumi.MapInput
 	// The VPN belongs the vpc_id, the field can't be changed.
 	VpcId pulumi.StringInput
 	// The VPN belongs the vswitch_id, the field can't be changed.

@@ -99,8 +99,6 @@ type GetSnapshotsArgs struct {
 	CompleteTimeChecker *string `pulumi:"completeTimeChecker"`
 	// File System Creation Time of Nas. Unix Time Seconds.
 	CreateTime *string `pulumi:"createTime"`
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
-	EnableDetails *bool `pulumi:"enableDetails"`
 	// The ID of NAS File system.
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// A list of Snapshot IDs.
@@ -124,7 +122,6 @@ type GetSnapshotsResult struct {
 	CompleteTime        *string `pulumi:"completeTime"`
 	CompleteTimeChecker *string `pulumi:"completeTimeChecker"`
 	CreateTime          *string `pulumi:"createTime"`
-	EnableDetails       *bool   `pulumi:"enableDetails"`
 	FileSystemId        *string `pulumi:"fileSystemId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string                 `pulumi:"id"`
@@ -158,8 +155,6 @@ type GetSnapshotsOutputArgs struct {
 	CompleteTimeChecker pulumi.StringPtrInput `pulumi:"completeTimeChecker"`
 	// File System Creation Time of Nas. Unix Time Seconds.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
-	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// The ID of NAS File system.
 	FileSystemId pulumi.StringPtrInput `pulumi:"fileSystemId"`
 	// A list of Snapshot IDs.
@@ -210,10 +205,6 @@ func (o GetSnapshotsResultOutput) CompleteTimeChecker() pulumi.StringPtrOutput {
 
 func (o GetSnapshotsResultOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
-}
-
-func (o GetSnapshotsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSnapshotsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetSnapshotsResultOutput) FileSystemId() pulumi.StringPtrOutput {

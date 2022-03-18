@@ -15,6 +15,8 @@ __all__ = [
     'IpaDomainSource',
     'GetDomainsDomainResult',
     'GetDomainsDomainSourceResult',
+    'GetIpaDomainsDomainResult',
+    'GetIpaDomainsDomainSourceResult',
 ]
 
 @pulumi.output_type
@@ -406,6 +408,207 @@ class GetDomainsDomainSourceResult(dict):
     def weight(self) -> str:
         """
         The weight of the origin if multiple origins are specified.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetIpaDomainsDomainResult(dict):
+    def __init__(__self__, *,
+                 cert_name: str,
+                 cname: str,
+                 create_time: str,
+                 description: str,
+                 domain_name: str,
+                 id: str,
+                 resource_group_id: str,
+                 scope: str,
+                 sources: Sequence['outputs.GetIpaDomainsDomainSourceResult'],
+                 ssl_protocol: str,
+                 ssl_pub: str,
+                 status: str):
+        """
+        :param str cert_name: CertName.
+        :param str cname: The CNAME assigned to the domain name.
+        :param str create_time: The time when the accelerated domain name was created.
+        :param str description: The description.
+        :param str domain_name: The accelerated domain names.
+        :param str id: The ID of the Ipa Domain.
+        :param str resource_group_id: The ID of the resource group.
+        :param str scope: The accelerated region.
+        :param Sequence['GetIpaDomainsDomainSourceArgs'] sources: The information about the origin server.
+        :param str ssl_protocol: Indicates whether the Security Socket Layer (SSL) certificate is enabled.
+        :param str ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
+        :param str status: The status of the accelerated domain name.
+        """
+        pulumi.set(__self__, "cert_name", cert_name)
+        pulumi.set(__self__, "cname", cname)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "sources", sources)
+        pulumi.set(__self__, "ssl_protocol", ssl_protocol)
+        pulumi.set(__self__, "ssl_pub", ssl_pub)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="certName")
+    def cert_name(self) -> str:
+        """
+        CertName.
+        """
+        return pulumi.get(self, "cert_name")
+
+    @property
+    @pulumi.getter
+    def cname(self) -> str:
+        """
+        The CNAME assigned to the domain name.
+        """
+        return pulumi.get(self, "cname")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the accelerated domain name was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The accelerated domain names.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ipa Domain.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        The accelerated region.
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Sequence['outputs.GetIpaDomainsDomainSourceResult']:
+        """
+        The information about the origin server.
+        """
+        return pulumi.get(self, "sources")
+
+    @property
+    @pulumi.getter(name="sslProtocol")
+    def ssl_protocol(self) -> str:
+        """
+        Indicates whether the Security Socket Layer (SSL) certificate is enabled.
+        """
+        return pulumi.get(self, "ssl_protocol")
+
+    @property
+    @pulumi.getter(name="sslPub")
+    def ssl_pub(self) -> str:
+        """
+        Indicates the public key of the certificate if the HTTPS protocol is enabled.
+        """
+        return pulumi.get(self, "ssl_pub")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the accelerated domain name.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetIpaDomainsDomainSourceResult(dict):
+    def __init__(__self__, *,
+                 content: str,
+                 port: int,
+                 priority: str,
+                 type: str,
+                 weight: int):
+        """
+        :param str content: The address of the origin server.
+        :param int port: The custom port.
+        :param str priority: The priority of the origin server if multiple origin servers are specified.
+        :param str type: The type of the origin server.
+        :param int weight: The weight of the origin server if multiple origin servers are specified.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        The address of the origin server.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The custom port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> str:
+        """
+        The priority of the origin server if multiple origin servers are specified.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the origin server.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        The weight of the origin server if multiple origin servers are specified.
         """
         return pulumi.get(self, "weight")
 

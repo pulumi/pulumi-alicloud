@@ -31,8 +31,8 @@ class InstanceArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+            warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protection_level is not None:
@@ -124,8 +124,8 @@ class _InstanceState:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+            warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protection_level is not None:
@@ -320,8 +320,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["cen_instance_name"] = cen_instance_name
             __props__.__dict__["description"] = description
             if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+                warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["protection_level"] = protection_level
             __props__.__dict__["tags"] = tags

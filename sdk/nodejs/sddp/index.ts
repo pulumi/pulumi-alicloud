@@ -6,7 +6,9 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./config";
+export * from "./dataLimit";
 export * from "./getConfigs";
+export * from "./getDataLimits";
 export * from "./getInstances";
 export * from "./getRules";
 export * from "./instance";
@@ -14,6 +16,7 @@ export * from "./rule";
 
 // Import resources to register:
 import { Config } from "./config";
+import { DataLimit } from "./dataLimit";
 import { Instance } from "./instance";
 import { Rule } from "./rule";
 
@@ -23,6 +26,8 @@ const _module = {
         switch (type) {
             case "alicloud:sddp/config:Config":
                 return new Config(name, <any>undefined, { urn })
+            case "alicloud:sddp/dataLimit:DataLimit":
+                return new DataLimit(name, <any>undefined, { urn })
             case "alicloud:sddp/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:sddp/rule:Rule":
@@ -33,5 +38,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "sddp/config", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sddp/dataLimit", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sddp/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sddp/rule", _module)

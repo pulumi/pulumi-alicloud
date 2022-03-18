@@ -14,15 +14,19 @@ __all__ = ['CustomerGatewayArgs', 'CustomerGateway']
 class CustomerGatewayArgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[str],
+                 asn: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CustomerGateway resource.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
+        :param pulumi.Input[str] asn: The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
         :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
         :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
         """
         pulumi.set(__self__, "ip_address", ip_address)
+        if asn is not None:
+            pulumi.set(__self__, "asn", asn)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -39,6 +43,18 @@ class CustomerGatewayArgs:
     @ip_address.setter
     def ip_address(self, value: pulumi.Input[str]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def asn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        """
+        return pulumi.get(self, "asn")
+
+    @asn.setter
+    def asn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "asn", value)
 
     @property
     @pulumi.getter
@@ -68,21 +84,37 @@ class CustomerGatewayArgs:
 @pulumi.input_type
 class _CustomerGatewayState:
     def __init__(__self__, *,
+                 asn: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CustomerGateway resources.
+        :param pulumi.Input[str] asn: The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
         :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
         :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
         """
+        if asn is not None:
+            pulumi.set(__self__, "asn", asn)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def asn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        """
+        return pulumi.get(self, "asn")
+
+    @asn.setter
+    def asn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "asn", value)
 
     @property
     @pulumi.getter
@@ -126,6 +158,7 @@ class CustomerGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 asn: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -154,6 +187,7 @@ class CustomerGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] asn: The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
         :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
         :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
@@ -201,6 +235,7 @@ class CustomerGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 asn: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -216,6 +251,7 @@ class CustomerGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomerGatewayArgs.__new__(CustomerGatewayArgs)
 
+            __props__.__dict__["asn"] = asn
             __props__.__dict__["description"] = description
             if ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_address'")
@@ -231,6 +267,7 @@ class CustomerGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            asn: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'CustomerGateway':
@@ -241,6 +278,7 @@ class CustomerGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] asn: The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
         :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
         :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
@@ -249,10 +287,19 @@ class CustomerGateway(pulumi.CustomResource):
 
         __props__ = _CustomerGatewayState.__new__(_CustomerGatewayState)
 
+        __props__.__dict__["asn"] = asn
         __props__.__dict__["description"] = description
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["name"] = name
         return CustomerGateway(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def asn(self) -> pulumi.Output[Optional[str]]:
+        """
+        The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        """
+        return pulumi.get(self, "asn")
 
     @property
     @pulumi.getter

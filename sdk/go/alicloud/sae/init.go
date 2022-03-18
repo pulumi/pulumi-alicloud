@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:sae/application:Application":
 		r = &Application{}
+	case "alicloud:sae/applicationScalingRule:ApplicationScalingRule":
+		r = &ApplicationScalingRule{}
 	case "alicloud:sae/configMap:ConfigMap":
 		r = &ConfigMap{}
+	case "alicloud:sae/greyTagRoute:GreyTagRoute":
+		r = &GreyTagRoute{}
 	case "alicloud:sae/ingress:Ingress":
 		r = &Ingress{}
 	case "alicloud:sae/namespace:Namespace":
@@ -49,7 +53,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"sae/applicationScalingRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"sae/configMap",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sae/greyTagRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

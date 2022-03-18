@@ -108,7 +108,7 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
     /**
      * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
      */
-    public readonly bandwidthType!: pulumi.Output<string | undefined>;
+    public readonly bandwidthType!: pulumi.Output<string>;
     /**
      * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
      */

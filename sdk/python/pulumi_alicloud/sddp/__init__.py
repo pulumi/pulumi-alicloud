@@ -6,7 +6,9 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .config import *
+from .data_limit import *
 from .get_configs import *
+from .get_data_limits import *
 from .get_instances import *
 from .get_rules import *
 from .instance import *

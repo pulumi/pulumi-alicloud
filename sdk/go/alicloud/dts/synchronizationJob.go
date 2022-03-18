@@ -140,7 +140,7 @@ type SynchronizationJob struct {
 	// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
-	Reserve pulumi.StringPtrOutput `pulumi:"reserve"`
+	Reserve pulumi.StringOutput `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"sourceEndpointDatabaseName"`
 	// The type of source database. The default value is `MYSQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MYSQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
@@ -200,6 +200,9 @@ func NewSynchronizationJob(ctx *pulumi.Context,
 	}
 	if args.DtsInstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'DtsInstanceId'")
+	}
+	if args.DtsJobName == nil {
+		return nil, errors.New("invalid value for required argument 'DtsJobName'")
 	}
 	if args.SourceEndpointEngineName == nil {
 		return nil, errors.New("invalid value for required argument 'SourceEndpointEngineName'")
@@ -446,7 +449,7 @@ type synchronizationJobArgs struct {
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId string `pulumi:"dtsInstanceId"`
 	// The name of synchronization job.
-	DtsJobName *string `pulumi:"dtsJobName"`
+	DtsJobName string `pulumi:"dtsJobName"`
 	// The error notice. Valid values: `true`, `false`.
 	ErrorNotice *bool `pulumi:"errorNotice"`
 	// The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
@@ -532,7 +535,7 @@ type SynchronizationJobArgs struct {
 	// The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
 	DtsInstanceId pulumi.StringInput
 	// The name of synchronization job.
-	DtsJobName pulumi.StringPtrInput
+	DtsJobName pulumi.StringInput
 	// The error notice. Valid values: `true`, `false`.
 	ErrorNotice pulumi.BoolPtrInput
 	// The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.

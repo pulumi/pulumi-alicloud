@@ -5423,6 +5423,193 @@ func (o GetEcsDisksOperationLockArrayOutput) Index(i pulumi.IntInput) GetEcsDisk
 	}).(GetEcsDisksOperationLockOutput)
 }
 
+type GetEcsImageComponentsComponent struct {
+	// The type of the image component.
+	ComponentType string `pulumi:"componentType"`
+	// The content of the image component.
+	Content string `pulumi:"content"`
+	// The time when the image component was created.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the image component.
+	Description string `pulumi:"description"`
+	// The ID of the Image Component.
+	Id string `pulumi:"id"`
+	// The ID of the image component.
+	ImageComponentId string `pulumi:"imageComponentId"`
+	// The name of the image component.
+	ImageComponentName string `pulumi:"imageComponentName"`
+	// The type of the image component.
+	Owner string `pulumi:"owner"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The operating system type supported by the image component.
+	SystemType string `pulumi:"systemType"`
+	// List of label key-value pairs.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetEcsImageComponentsComponentInput is an input type that accepts GetEcsImageComponentsComponentArgs and GetEcsImageComponentsComponentOutput values.
+// You can construct a concrete instance of `GetEcsImageComponentsComponentInput` via:
+//
+//          GetEcsImageComponentsComponentArgs{...}
+type GetEcsImageComponentsComponentInput interface {
+	pulumi.Input
+
+	ToGetEcsImageComponentsComponentOutput() GetEcsImageComponentsComponentOutput
+	ToGetEcsImageComponentsComponentOutputWithContext(context.Context) GetEcsImageComponentsComponentOutput
+}
+
+type GetEcsImageComponentsComponentArgs struct {
+	// The type of the image component.
+	ComponentType pulumi.StringInput `pulumi:"componentType"`
+	// The content of the image component.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The time when the image component was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the image component.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Image Component.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the image component.
+	ImageComponentId pulumi.StringInput `pulumi:"imageComponentId"`
+	// The name of the image component.
+	ImageComponentName pulumi.StringInput `pulumi:"imageComponentName"`
+	// The type of the image component.
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The operating system type supported by the image component.
+	SystemType pulumi.StringInput `pulumi:"systemType"`
+	// List of label key-value pairs.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetEcsImageComponentsComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsImageComponentsComponent)(nil)).Elem()
+}
+
+func (i GetEcsImageComponentsComponentArgs) ToGetEcsImageComponentsComponentOutput() GetEcsImageComponentsComponentOutput {
+	return i.ToGetEcsImageComponentsComponentOutputWithContext(context.Background())
+}
+
+func (i GetEcsImageComponentsComponentArgs) ToGetEcsImageComponentsComponentOutputWithContext(ctx context.Context) GetEcsImageComponentsComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsImageComponentsComponentOutput)
+}
+
+// GetEcsImageComponentsComponentArrayInput is an input type that accepts GetEcsImageComponentsComponentArray and GetEcsImageComponentsComponentArrayOutput values.
+// You can construct a concrete instance of `GetEcsImageComponentsComponentArrayInput` via:
+//
+//          GetEcsImageComponentsComponentArray{ GetEcsImageComponentsComponentArgs{...} }
+type GetEcsImageComponentsComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsImageComponentsComponentArrayOutput() GetEcsImageComponentsComponentArrayOutput
+	ToGetEcsImageComponentsComponentArrayOutputWithContext(context.Context) GetEcsImageComponentsComponentArrayOutput
+}
+
+type GetEcsImageComponentsComponentArray []GetEcsImageComponentsComponentInput
+
+func (GetEcsImageComponentsComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsImageComponentsComponent)(nil)).Elem()
+}
+
+func (i GetEcsImageComponentsComponentArray) ToGetEcsImageComponentsComponentArrayOutput() GetEcsImageComponentsComponentArrayOutput {
+	return i.ToGetEcsImageComponentsComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsImageComponentsComponentArray) ToGetEcsImageComponentsComponentArrayOutputWithContext(ctx context.Context) GetEcsImageComponentsComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsImageComponentsComponentArrayOutput)
+}
+
+type GetEcsImageComponentsComponentOutput struct{ *pulumi.OutputState }
+
+func (GetEcsImageComponentsComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsImageComponentsComponent)(nil)).Elem()
+}
+
+func (o GetEcsImageComponentsComponentOutput) ToGetEcsImageComponentsComponentOutput() GetEcsImageComponentsComponentOutput {
+	return o
+}
+
+func (o GetEcsImageComponentsComponentOutput) ToGetEcsImageComponentsComponentOutputWithContext(ctx context.Context) GetEcsImageComponentsComponentOutput {
+	return o
+}
+
+// The type of the image component.
+func (o GetEcsImageComponentsComponentOutput) ComponentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.ComponentType }).(pulumi.StringOutput)
+}
+
+// The content of the image component.
+func (o GetEcsImageComponentsComponentOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The time when the image component was created.
+func (o GetEcsImageComponentsComponentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the image component.
+func (o GetEcsImageComponentsComponentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Image Component.
+func (o GetEcsImageComponentsComponentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the image component.
+func (o GetEcsImageComponentsComponentOutput) ImageComponentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.ImageComponentId }).(pulumi.StringOutput)
+}
+
+// The name of the image component.
+func (o GetEcsImageComponentsComponentOutput) ImageComponentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.ImageComponentName }).(pulumi.StringOutput)
+}
+
+// The type of the image component.
+func (o GetEcsImageComponentsComponentOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetEcsImageComponentsComponentOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The operating system type supported by the image component.
+func (o GetEcsImageComponentsComponentOutput) SystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.SystemType }).(pulumi.StringOutput)
+}
+
+// List of label key-value pairs.
+func (o GetEcsImageComponentsComponentOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsImageComponentsComponent) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetEcsImageComponentsComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsImageComponentsComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsImageComponentsComponent)(nil)).Elem()
+}
+
+func (o GetEcsImageComponentsComponentArrayOutput) ToGetEcsImageComponentsComponentArrayOutput() GetEcsImageComponentsComponentArrayOutput {
+	return o
+}
+
+func (o GetEcsImageComponentsComponentArrayOutput) ToGetEcsImageComponentsComponentArrayOutputWithContext(ctx context.Context) GetEcsImageComponentsComponentArrayOutput {
+	return o
+}
+
+func (o GetEcsImageComponentsComponentArrayOutput) Index(i pulumi.IntInput) GetEcsImageComponentsComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsImageComponentsComponent {
+		return vs[0].([]GetEcsImageComponentsComponent)[vs[1].(int)]
+	}).(GetEcsImageComponentsComponentOutput)
+}
+
 type GetEcsKeyPairsKeyPair struct {
 	// The finger print of the key pair.
 	FingerPrint string `pulumi:"fingerPrint"`
@@ -7590,6 +7777,166 @@ func (o GetEcsPrefixListsListEntryArrayOutput) Index(i pulumi.IntInput) GetEcsPr
 	}).(GetEcsPrefixListsListEntryOutput)
 }
 
+type GetEcsSnapshotGroupsGroup struct {
+	// The description of the snapshot-consistent group.
+	Description string `pulumi:"description"`
+	// The ID of the Snapshot Group.
+	Id string `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The ID of the resource group to which the snapshot consistency group belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The first ID of the resource.
+	SnapshotGroupId string `pulumi:"snapshotGroupId"`
+	// The name of the snapshot-consistent group.
+	SnapshotGroupName string `pulumi:"snapshotGroupName"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// List of label key-value pairs.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetEcsSnapshotGroupsGroupInput is an input type that accepts GetEcsSnapshotGroupsGroupArgs and GetEcsSnapshotGroupsGroupOutput values.
+// You can construct a concrete instance of `GetEcsSnapshotGroupsGroupInput` via:
+//
+//          GetEcsSnapshotGroupsGroupArgs{...}
+type GetEcsSnapshotGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetEcsSnapshotGroupsGroupOutput() GetEcsSnapshotGroupsGroupOutput
+	ToGetEcsSnapshotGroupsGroupOutputWithContext(context.Context) GetEcsSnapshotGroupsGroupOutput
+}
+
+type GetEcsSnapshotGroupsGroupArgs struct {
+	// The description of the snapshot-consistent group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Snapshot Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the resource group to which the snapshot consistency group belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The first ID of the resource.
+	SnapshotGroupId pulumi.StringInput `pulumi:"snapshotGroupId"`
+	// The name of the snapshot-consistent group.
+	SnapshotGroupName pulumi.StringInput `pulumi:"snapshotGroupName"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// List of label key-value pairs.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetEcsSnapshotGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsSnapshotGroupsGroup)(nil)).Elem()
+}
+
+func (i GetEcsSnapshotGroupsGroupArgs) ToGetEcsSnapshotGroupsGroupOutput() GetEcsSnapshotGroupsGroupOutput {
+	return i.ToGetEcsSnapshotGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetEcsSnapshotGroupsGroupArgs) ToGetEcsSnapshotGroupsGroupOutputWithContext(ctx context.Context) GetEcsSnapshotGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsSnapshotGroupsGroupOutput)
+}
+
+// GetEcsSnapshotGroupsGroupArrayInput is an input type that accepts GetEcsSnapshotGroupsGroupArray and GetEcsSnapshotGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetEcsSnapshotGroupsGroupArrayInput` via:
+//
+//          GetEcsSnapshotGroupsGroupArray{ GetEcsSnapshotGroupsGroupArgs{...} }
+type GetEcsSnapshotGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsSnapshotGroupsGroupArrayOutput() GetEcsSnapshotGroupsGroupArrayOutput
+	ToGetEcsSnapshotGroupsGroupArrayOutputWithContext(context.Context) GetEcsSnapshotGroupsGroupArrayOutput
+}
+
+type GetEcsSnapshotGroupsGroupArray []GetEcsSnapshotGroupsGroupInput
+
+func (GetEcsSnapshotGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsSnapshotGroupsGroup)(nil)).Elem()
+}
+
+func (i GetEcsSnapshotGroupsGroupArray) ToGetEcsSnapshotGroupsGroupArrayOutput() GetEcsSnapshotGroupsGroupArrayOutput {
+	return i.ToGetEcsSnapshotGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsSnapshotGroupsGroupArray) ToGetEcsSnapshotGroupsGroupArrayOutputWithContext(ctx context.Context) GetEcsSnapshotGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsSnapshotGroupsGroupArrayOutput)
+}
+
+type GetEcsSnapshotGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetEcsSnapshotGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsSnapshotGroupsGroup)(nil)).Elem()
+}
+
+func (o GetEcsSnapshotGroupsGroupOutput) ToGetEcsSnapshotGroupsGroupOutput() GetEcsSnapshotGroupsGroupOutput {
+	return o
+}
+
+func (o GetEcsSnapshotGroupsGroupOutput) ToGetEcsSnapshotGroupsGroupOutputWithContext(ctx context.Context) GetEcsSnapshotGroupsGroupOutput {
+	return o
+}
+
+// The description of the snapshot-consistent group.
+func (o GetEcsSnapshotGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Snapshot Group.
+func (o GetEcsSnapshotGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetEcsSnapshotGroupsGroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group to which the snapshot consistency group belongs.
+func (o GetEcsSnapshotGroupsGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetEcsSnapshotGroupsGroupOutput) SnapshotGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.SnapshotGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot-consistent group.
+func (o GetEcsSnapshotGroupsGroupOutput) SnapshotGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.SnapshotGroupName }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetEcsSnapshotGroupsGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of label key-value pairs.
+func (o GetEcsSnapshotGroupsGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetEcsSnapshotGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsSnapshotGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsSnapshotGroupsGroup)(nil)).Elem()
+}
+
+func (o GetEcsSnapshotGroupsGroupArrayOutput) ToGetEcsSnapshotGroupsGroupArrayOutput() GetEcsSnapshotGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetEcsSnapshotGroupsGroupArrayOutput) ToGetEcsSnapshotGroupsGroupArrayOutputWithContext(ctx context.Context) GetEcsSnapshotGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetEcsSnapshotGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetEcsSnapshotGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsSnapshotGroupsGroup {
+		return vs[0].([]GetEcsSnapshotGroupsGroup)[vs[1].(int)]
+	}).(GetEcsSnapshotGroupsGroupOutput)
+}
+
 type GetEcsSnapshotsSnapshot struct {
 	// The category of the snapshot.
 	Category     string `pulumi:"category"`
@@ -7898,6 +8245,184 @@ func (o GetEcsSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetEcsSnaps
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsSnapshotsSnapshot {
 		return vs[0].([]GetEcsSnapshotsSnapshot)[vs[1].(int)]
 	}).(GetEcsSnapshotsSnapshotOutput)
+}
+
+type GetEcsStorageCapacityUnitsUnit struct {
+	// When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `allocated`, `Ignored`.
+	AllocationStatus string `pulumi:"allocationStatus"`
+	// The capacity of the Storage Capacity Unit.
+	Capacity int `pulumi:"capacity"`
+	// The time when the Storage Capacity Unit was created.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the Storage Capacity Unit.
+	Description string `pulumi:"description"`
+	// The time when the Storage Capacity Unit expires.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The ID of the Storage Capacity Unit.
+	Id string `pulumi:"id"`
+	// The effective time of the Storage Capacity Unit.
+	StartTime string `pulumi:"startTime"`
+	// The status of Storage Capacity Unit.
+	Status string `pulumi:"status"`
+	// The ID of Storage Capacity Unit.
+	StorageCapacityUnitId string `pulumi:"storageCapacityUnitId"`
+	// The name of the Storage Capacity Unit.
+	StorageCapacityUnitName string `pulumi:"storageCapacityUnitName"`
+}
+
+// GetEcsStorageCapacityUnitsUnitInput is an input type that accepts GetEcsStorageCapacityUnitsUnitArgs and GetEcsStorageCapacityUnitsUnitOutput values.
+// You can construct a concrete instance of `GetEcsStorageCapacityUnitsUnitInput` via:
+//
+//          GetEcsStorageCapacityUnitsUnitArgs{...}
+type GetEcsStorageCapacityUnitsUnitInput interface {
+	pulumi.Input
+
+	ToGetEcsStorageCapacityUnitsUnitOutput() GetEcsStorageCapacityUnitsUnitOutput
+	ToGetEcsStorageCapacityUnitsUnitOutputWithContext(context.Context) GetEcsStorageCapacityUnitsUnitOutput
+}
+
+type GetEcsStorageCapacityUnitsUnitArgs struct {
+	// When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `allocated`, `Ignored`.
+	AllocationStatus pulumi.StringInput `pulumi:"allocationStatus"`
+	// The capacity of the Storage Capacity Unit.
+	Capacity pulumi.IntInput `pulumi:"capacity"`
+	// The time when the Storage Capacity Unit was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the Storage Capacity Unit.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The time when the Storage Capacity Unit expires.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The ID of the Storage Capacity Unit.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The effective time of the Storage Capacity Unit.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The status of Storage Capacity Unit.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of Storage Capacity Unit.
+	StorageCapacityUnitId pulumi.StringInput `pulumi:"storageCapacityUnitId"`
+	// The name of the Storage Capacity Unit.
+	StorageCapacityUnitName pulumi.StringInput `pulumi:"storageCapacityUnitName"`
+}
+
+func (GetEcsStorageCapacityUnitsUnitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsStorageCapacityUnitsUnit)(nil)).Elem()
+}
+
+func (i GetEcsStorageCapacityUnitsUnitArgs) ToGetEcsStorageCapacityUnitsUnitOutput() GetEcsStorageCapacityUnitsUnitOutput {
+	return i.ToGetEcsStorageCapacityUnitsUnitOutputWithContext(context.Background())
+}
+
+func (i GetEcsStorageCapacityUnitsUnitArgs) ToGetEcsStorageCapacityUnitsUnitOutputWithContext(ctx context.Context) GetEcsStorageCapacityUnitsUnitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsStorageCapacityUnitsUnitOutput)
+}
+
+// GetEcsStorageCapacityUnitsUnitArrayInput is an input type that accepts GetEcsStorageCapacityUnitsUnitArray and GetEcsStorageCapacityUnitsUnitArrayOutput values.
+// You can construct a concrete instance of `GetEcsStorageCapacityUnitsUnitArrayInput` via:
+//
+//          GetEcsStorageCapacityUnitsUnitArray{ GetEcsStorageCapacityUnitsUnitArgs{...} }
+type GetEcsStorageCapacityUnitsUnitArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsStorageCapacityUnitsUnitArrayOutput() GetEcsStorageCapacityUnitsUnitArrayOutput
+	ToGetEcsStorageCapacityUnitsUnitArrayOutputWithContext(context.Context) GetEcsStorageCapacityUnitsUnitArrayOutput
+}
+
+type GetEcsStorageCapacityUnitsUnitArray []GetEcsStorageCapacityUnitsUnitInput
+
+func (GetEcsStorageCapacityUnitsUnitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsStorageCapacityUnitsUnit)(nil)).Elem()
+}
+
+func (i GetEcsStorageCapacityUnitsUnitArray) ToGetEcsStorageCapacityUnitsUnitArrayOutput() GetEcsStorageCapacityUnitsUnitArrayOutput {
+	return i.ToGetEcsStorageCapacityUnitsUnitArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsStorageCapacityUnitsUnitArray) ToGetEcsStorageCapacityUnitsUnitArrayOutputWithContext(ctx context.Context) GetEcsStorageCapacityUnitsUnitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsStorageCapacityUnitsUnitArrayOutput)
+}
+
+type GetEcsStorageCapacityUnitsUnitOutput struct{ *pulumi.OutputState }
+
+func (GetEcsStorageCapacityUnitsUnitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsStorageCapacityUnitsUnit)(nil)).Elem()
+}
+
+func (o GetEcsStorageCapacityUnitsUnitOutput) ToGetEcsStorageCapacityUnitsUnitOutput() GetEcsStorageCapacityUnitsUnitOutput {
+	return o
+}
+
+func (o GetEcsStorageCapacityUnitsUnitOutput) ToGetEcsStorageCapacityUnitsUnitOutputWithContext(ctx context.Context) GetEcsStorageCapacityUnitsUnitOutput {
+	return o
+}
+
+// When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `allocated`, `Ignored`.
+func (o GetEcsStorageCapacityUnitsUnitOutput) AllocationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.AllocationStatus }).(pulumi.StringOutput)
+}
+
+// The capacity of the Storage Capacity Unit.
+func (o GetEcsStorageCapacityUnitsUnitOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) int { return v.Capacity }).(pulumi.IntOutput)
+}
+
+// The time when the Storage Capacity Unit was created.
+func (o GetEcsStorageCapacityUnitsUnitOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the Storage Capacity Unit.
+func (o GetEcsStorageCapacityUnitsUnitOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time when the Storage Capacity Unit expires.
+func (o GetEcsStorageCapacityUnitsUnitOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Storage Capacity Unit.
+func (o GetEcsStorageCapacityUnitsUnitOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The effective time of the Storage Capacity Unit.
+func (o GetEcsStorageCapacityUnitsUnitOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of Storage Capacity Unit.
+func (o GetEcsStorageCapacityUnitsUnitOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of Storage Capacity Unit.
+func (o GetEcsStorageCapacityUnitsUnitOutput) StorageCapacityUnitId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.StorageCapacityUnitId }).(pulumi.StringOutput)
+}
+
+// The name of the Storage Capacity Unit.
+func (o GetEcsStorageCapacityUnitsUnitOutput) StorageCapacityUnitName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.StorageCapacityUnitName }).(pulumi.StringOutput)
+}
+
+type GetEcsStorageCapacityUnitsUnitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsStorageCapacityUnitsUnitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsStorageCapacityUnitsUnit)(nil)).Elem()
+}
+
+func (o GetEcsStorageCapacityUnitsUnitArrayOutput) ToGetEcsStorageCapacityUnitsUnitArrayOutput() GetEcsStorageCapacityUnitsUnitArrayOutput {
+	return o
+}
+
+func (o GetEcsStorageCapacityUnitsUnitArrayOutput) ToGetEcsStorageCapacityUnitsUnitArrayOutputWithContext(ctx context.Context) GetEcsStorageCapacityUnitsUnitArrayOutput {
+	return o
+}
+
+func (o GetEcsStorageCapacityUnitsUnitArrayOutput) Index(i pulumi.IntInput) GetEcsStorageCapacityUnitsUnitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsStorageCapacityUnitsUnit {
+		return vs[0].([]GetEcsStorageCapacityUnitsUnit)[vs[1].(int)]
+	}).(GetEcsStorageCapacityUnitsUnitOutput)
 }
 
 type GetEipAddressesAddress struct {
@@ -12181,6 +12706,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksDiskOperationLockArrayInput)(nil)).Elem(), GetEcsDisksDiskOperationLockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksOperationLockInput)(nil)).Elem(), GetEcsDisksOperationLockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksOperationLockArrayInput)(nil)).Elem(), GetEcsDisksOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsImageComponentsComponentInput)(nil)).Elem(), GetEcsImageComponentsComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsImageComponentsComponentArrayInput)(nil)).Elem(), GetEcsImageComponentsComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairInput)(nil)).Elem(), GetEcsKeyPairsKeyPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairArrayInput)(nil)).Elem(), GetEcsKeyPairsKeyPairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairInstanceInput)(nil)).Elem(), GetEcsKeyPairsKeyPairInstanceArgs{})
@@ -12203,8 +12730,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListArrayInput)(nil)).Elem(), GetEcsPrefixListsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListEntryInput)(nil)).Elem(), GetEcsPrefixListsListEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListEntryArrayInput)(nil)).Elem(), GetEcsPrefixListsListEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsSnapshotGroupsGroupInput)(nil)).Elem(), GetEcsSnapshotGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsSnapshotGroupsGroupArrayInput)(nil)).Elem(), GetEcsSnapshotGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsSnapshotsSnapshotInput)(nil)).Elem(), GetEcsSnapshotsSnapshotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsSnapshotsSnapshotArrayInput)(nil)).Elem(), GetEcsSnapshotsSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsStorageCapacityUnitsUnitInput)(nil)).Elem(), GetEcsStorageCapacityUnitsUnitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsStorageCapacityUnitsUnitArrayInput)(nil)).Elem(), GetEcsStorageCapacityUnitsUnitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEipAddressesAddressInput)(nil)).Elem(), GetEipAddressesAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEipAddressesAddressArrayInput)(nil)).Elem(), GetEipAddressesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEipAddressesEipInput)(nil)).Elem(), GetEipAddressesEipArgs{})
@@ -12308,6 +12839,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsDisksDiskOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsDisksOperationLockOutput{})
 	pulumi.RegisterOutputType(GetEcsDisksOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsImageComponentsComponentOutput{})
+	pulumi.RegisterOutputType(GetEcsImageComponentsComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairInstanceOutput{})
@@ -12330,8 +12863,12 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsPrefixListsListArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsPrefixListsListEntryOutput{})
 	pulumi.RegisterOutputType(GetEcsPrefixListsListEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsSnapshotGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetEcsSnapshotGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotOutput{})
 	pulumi.RegisterOutputType(GetEcsSnapshotsSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsStorageCapacityUnitsUnitOutput{})
+	pulumi.RegisterOutputType(GetEcsStorageCapacityUnitsUnitArrayOutput{})
 	pulumi.RegisterOutputType(GetEipAddressesAddressOutput{})
 	pulumi.RegisterOutputType(GetEipAddressesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetEipAddressesEipOutput{})

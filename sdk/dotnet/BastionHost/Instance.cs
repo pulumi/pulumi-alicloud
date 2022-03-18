@@ -48,9 +48,6 @@ namespace Pulumi.AliCloud.BastionHost
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// security group IDs configured to Bastionhost.
-        /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
@@ -141,10 +138,6 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("securityGroupIds", required: true)]
         private InputList<string>? _securityGroupIds;
-
-        /// <summary>
-        /// security group IDs configured to Bastionhost.
-        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -205,10 +198,6 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
-
-        /// <summary>
-        /// security group IDs configured to Bastionhost.
-        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());

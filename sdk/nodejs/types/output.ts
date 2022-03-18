@@ -9282,6 +9282,65 @@ export namespace databasefilesystem {
         ecsId: string;
     }
 
+    export interface GetSnapshotsSnapshot {
+        /**
+         * The type of the Snapshot.
+         */
+        category: string;
+        /**
+         * The creation time of the snapshot.
+         */
+        createTime: string;
+        /**
+         * The description of the snapshot.
+         */
+        description: string;
+        /**
+         * The ID of the Snapshot.
+         */
+        id: string;
+        /**
+         * The ID of the database file system.
+         */
+        instanceId: string;
+        /**
+         * The last modification time of the snapshot.
+         */
+        lastModifiedTime: string;
+        /**
+         * The progress of the snapshot.
+         */
+        progress: string;
+        /**
+         * The remaining completion time of the snapshot being created, in seconds.
+         */
+        remainTime: number;
+        /**
+         * The retention days of the snapshot.
+         */
+        retentionDays: number;
+        /**
+         * The ID of the snapshot.
+         */
+        snapshotId: string;
+        /**
+         * The name of the snapshot.
+         */
+        snapshotName: string;
+        /**
+         * The creation of the snapshot.
+         */
+        snapshotType: string;
+        /**
+         * Source database file system capacity.
+         */
+        sourceFsSize: number;
+        /**
+         * The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+         */
+        status: string;
+    }
+
     export interface InstanceEcsList {
         /**
          * The ID of the ECS instance.
@@ -9512,6 +9571,80 @@ export namespace dcdn {
         weight: string;
     }
 
+    export interface GetIpaDomainsDomain {
+        /**
+         * CertName.
+         */
+        certName: string;
+        /**
+         * The CNAME assigned to the domain name.
+         */
+        cname: string;
+        /**
+         * The time when the accelerated domain name was created.
+         */
+        createTime: string;
+        /**
+         * The description.
+         */
+        description: string;
+        /**
+         * The accelerated domain names.
+         */
+        domainName: string;
+        /**
+         * The ID of the Ipa Domain.
+         */
+        id: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The accelerated region.
+         */
+        scope: string;
+        /**
+         * The information about the origin server.
+         */
+        sources: outputs.dcdn.GetIpaDomainsDomainSource[];
+        /**
+         * Indicates whether the Security Socket Layer (SSL) certificate is enabled.
+         */
+        sslProtocol: string;
+        /**
+         * Indicates the public key of the certificate if the HTTPS protocol is enabled.
+         */
+        sslPub: string;
+        /**
+         * The status of the accelerated domain name.
+         */
+        status: string;
+    }
+
+    export interface GetIpaDomainsDomainSource {
+        /**
+         * The address of the origin server.
+         */
+        content: string;
+        /**
+         * The custom port.
+         */
+        port: number;
+        /**
+         * The priority of the origin server if multiple origin servers are specified.
+         */
+        priority: string;
+        /**
+         * The type of the origin server.
+         */
+        type: string;
+        /**
+         * The weight of the origin server if multiple origin servers are specified.
+         */
+        weight: number;
+    }
+
     export interface IpaDomainSource {
         /**
          * The address of the origin server. You can specify an IP address or a domain name.
@@ -9534,7 +9667,6 @@ export namespace dcdn {
          */
         weight: number;
     }
-
 }
 
 export namespace ddos {
@@ -11295,6 +11427,129 @@ export namespace dts {
         unconsumedData: number;
     }
 
+    export interface GetMigrationJobsJob {
+        /**
+         * Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
+         */
+        dataInitialization: boolean;
+        /**
+         * Whether to perform incremental data migration for migration types or synchronization values include:
+         */
+        dataSynchronization: boolean;
+        /**
+         * The Migration object, in the format of JSON strings.
+         */
+        dbList: string;
+        /**
+         * The name of migrate the database.
+         */
+        destinationEndpointDataBaseName: string;
+        /**
+         * The type of destination database.
+         */
+        destinationEndpointEngineName: string;
+        /**
+         * The ID of destination instance.
+         */
+        destinationEndpointInstanceId: string;
+        /**
+         * The type of destination instance.
+         */
+        destinationEndpointInstanceType: string;
+        /**
+         * The ip of source endpoint.
+         */
+        destinationEndpointIp: string;
+        /**
+         * The SID of Oracle database.
+         */
+        destinationEndpointOracleSid: string;
+        /**
+         * The port of source endpoint.
+         */
+        destinationEndpointPort: string;
+        /**
+         * The region of destination instance.
+         */
+        destinationEndpointRegion: string;
+        /**
+         * The username of database account.
+         */
+        destinationEndpointUserName: string;
+        /**
+         * The Migration instance ID. The ID of `alicloud.dts.MigrationInstance`.
+         */
+        dtsInstanceId: string;
+        /**
+         * The ID of the Migration Job.
+         */
+        dtsJobId: string;
+        /**
+         * The name of synchronization job.
+         */
+        dtsJobName: string;
+        /**
+         * The ID of the Migration Job. Its value is same as `dtsJobId`.
+         */
+        id: string;
+        /**
+         * The payment type of the Migration Instance.
+         */
+        paymentType: string;
+        /**
+         * The name of migrate the database.
+         */
+        sourceEndpointDatabaseName: string;
+        /**
+         * The type of source database.
+         */
+        sourceEndpointEngineName: string;
+        /**
+         * The ID of source instance.
+         */
+        sourceEndpointInstanceId: string;
+        /**
+         * The type of source instance.
+         */
+        sourceEndpointInstanceType: string;
+        /**
+         * The ip of source endpoint.
+         */
+        sourceEndpointIp: string;
+        /**
+         * The SID of Oracle database.
+         */
+        sourceEndpointOracleSid: string;
+        /**
+         * The Alibaba Cloud account ID to which the source instance belongs.
+         */
+        sourceEndpointOwnerId: string;
+        /**
+         * The port of source endpoint.
+         */
+        sourceEndpointPort: string;
+        /**
+         * The region of source instance.
+         */
+        sourceEndpointRegion: string;
+        /**
+         * The name of the role configured for the cloud account to which the source instance belongs.
+         */
+        sourceEndpointRole: string;
+        /**
+         * The username of database account.
+         */
+        sourceEndpointUserName: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * Whether to perform a database table structure to migrate or initialization.
+         */
+        structureInitialization: boolean;
+    }
+
     export interface GetSubscriptionJobsJob {
         /**
          * Subscription start time in Unix timestamp format.
@@ -12574,6 +12829,86 @@ export namespace eci {
 }
 
 export namespace ecp {
+    export interface GetInstanceTypesInstanceType {
+        /**
+         * The cpu core count of the current instance type.
+         */
+        cpuCoreCount: number;
+        /**
+         * The default resolution of the current instance type.
+         */
+        defaultResolution: string;
+        /**
+         * The list of available instance type.
+         */
+        instanceType: string;
+        instanceTypeFamily: string;
+        /**
+         * The name of the current instance type.
+         */
+        name: string;
+        /**
+         * The English name of the current instance type.
+         */
+        nameEn: string;
+    }
+
+    export interface GetInstancesInstance {
+        /**
+         * Instance Description.
+         */
+        description: string;
+        /**
+         * The ID of the Instance.
+         */
+        id: string;
+        /**
+         * The ID Of The Image.
+         */
+        imageId: string;
+        /**
+         * InstanceId.
+         */
+        instanceId: string;
+        /**
+         * Instance Name.
+         */
+        instanceName: string;
+        /**
+         * Instance Type.
+         */
+        instanceType: string;
+        /**
+         * The Key Name.
+         */
+        keyPairName: string;
+        /**
+         * The payment type.Valid values: `PayAsYouGo`,`Subscription`
+         */
+        paymentType: string;
+        /**
+         * Resolution.
+         */
+        resolution: string;
+        /**
+         * Security Group ID.
+         */
+        securityGroupId: string;
+        /**
+         * Instance Status.
+         */
+        status: string;
+        /**
+         * VNC login address.
+         */
+        vncUrl: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        zoneId: string;
+    }
+
     export interface GetKeyPairsPair {
         /**
          * The ID of the Key Pair. Its value is same as Queue Name.
@@ -12587,6 +12922,13 @@ export namespace ecp {
          * The Key Name.
          */
         keyPairName: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * String to filter results by zone id.
+         */
+        zoneId: string;
     }
 
 }
@@ -13409,6 +13751,53 @@ export namespace ecs {
         lockReason?: string;
     }
 
+    export interface GetEcsImageComponentsComponent {
+        /**
+         * The type of the image component.
+         */
+        componentType: string;
+        /**
+         * The content of the image component.
+         */
+        content: string;
+        /**
+         * The time when the image component was created.
+         */
+        createTime: string;
+        /**
+         * The description of the image component.
+         */
+        description: string;
+        /**
+         * The ID of the Image Component.
+         */
+        id: string;
+        /**
+         * The ID of the image component.
+         */
+        imageComponentId: string;
+        /**
+         * The name of the image component.
+         */
+        imageComponentName: string;
+        /**
+         * The type of the image component.
+         */
+        owner: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The operating system type supported by the image component.
+         */
+        systemType: string;
+        /**
+         * List of label key-value pairs.
+         */
+        tags: {[key: string]: any};
+    }
+
     export interface GetEcsKeyPairsKeyPair {
         /**
          * The finger print of the key pair.
@@ -13949,6 +14338,41 @@ export namespace ecs {
         description: string;
     }
 
+    export interface GetEcsSnapshotGroupsGroup {
+        /**
+         * The description of the snapshot-consistent group.
+         */
+        description: string;
+        /**
+         * The ID of the Snapshot Group.
+         */
+        id: string;
+        /**
+         * The ID of the instance.
+         */
+        instanceId: string;
+        /**
+         * The ID of the resource group to which the snapshot consistency group belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * The first ID of the resource.
+         */
+        snapshotGroupId: string;
+        /**
+         * The name of the snapshot-consistent group.
+         */
+        snapshotGroupName: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * List of label key-value pairs.
+         */
+        tags?: {[key: string]: any};
+    }
+
     export interface GetEcsSnapshotsSnapshot {
         /**
          * The category of the snapshot.
@@ -14042,6 +14466,49 @@ export namespace ecs {
          * A resource type that has a reference relationship.
          */
         usage: string;
+    }
+
+    export interface GetEcsStorageCapacityUnitsUnit {
+        /**
+         * When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `allocated`, `Ignored`.
+         */
+        allocationStatus: string;
+        /**
+         * The capacity of the Storage Capacity Unit.
+         */
+        capacity: number;
+        /**
+         * The time when the Storage Capacity Unit was created.
+         */
+        createTime: string;
+        /**
+         * The description of the Storage Capacity Unit.
+         */
+        description: string;
+        /**
+         * The time when the Storage Capacity Unit expires.
+         */
+        expiredTime: string;
+        /**
+         * The ID of the Storage Capacity Unit.
+         */
+        id: string;
+        /**
+         * The effective time of the Storage Capacity Unit.
+         */
+        startTime: string;
+        /**
+         * The status of Storage Capacity Unit.
+         */
+        status: string;
+        /**
+         * The ID of Storage Capacity Unit.
+         */
+        storageCapacityUnitId: string;
+        /**
+         * The name of the Storage Capacity Unit.
+         */
+        storageCapacityUnitName: string;
     }
 
     export interface GetEipAddressesAddress {
@@ -15238,7 +15705,6 @@ export namespace ecs {
          */
         size: number;
     }
-
 }
 
 export namespace edas {
@@ -17123,6 +17589,10 @@ export namespace ess {
          * The Process in suspension.
          */
         suspendedProcesses: string[];
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags?: {[key: string]: any};
         /**
          * Number of instances in scaling group.
          */
@@ -19596,6 +20066,9 @@ export namespace hbr {
          * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
          */
         createTime: string;
+        /**
+         * The creation time of the backup plan. UNIX time in seconds.
+         */
         createdTime: string;
         /**
          * Whether to be suspended. Valid values: `true`, `false`.
@@ -19618,7 +20091,7 @@ export namespace hbr {
          */
         nasBackupPlanName: string;
         /**
-         * Options of nas.
+         * Options field of Nas backup plan.
          */
         options: string;
         /**
@@ -19633,6 +20106,9 @@ export namespace hbr {
          * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
          */
         schedule: string;
+        /**
+         * The update time of the backup plan. UNIX time in seconds.
+         */
         updatedTime: string;
         /**
          * The ID of backup vault.
@@ -19770,7 +20246,7 @@ export namespace hbr {
          */
         snapshotId: string;
         /**
-         * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+         * The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
          */
         sourceType: string;
         /**
@@ -21743,6 +22219,53 @@ export namespace mongodb {
         securityIpList: string;
     }
 
+    export interface GetShardingNetworkPrivateAddressesAddress {
+        /**
+         * The db instance id.
+         */
+        dbInstanceId: string;
+        /**
+         * The remaining duration of the classic network address. Unit: `seconds`.
+         */
+        expiredTime: string;
+        /**
+         * The IP address of the instance.
+         */
+        ipAddress: string;
+        /**
+         * The endpoint of the instance.
+         */
+        networkAddress: string;
+        /**
+         * The type of the network.
+         */
+        networkType: string;
+        /**
+         * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+         */
+        nodeId: string;
+        /**
+         * The type of the node.
+         */
+        nodeType: string;
+        /**
+         * The port number.
+         */
+        port: string;
+        /**
+         * The role of the node.
+         */
+        role: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The vSwitch ID of the VPC.
+         */
+        vswitchId: string;
+    }
+
     export interface GetShardingNetworkPublicAddressesAddress {
         /**
          * The db instance id.
@@ -22149,6 +22672,88 @@ export namespace mse {
         role: string;
         singleTunnelVip: string;
         vip: string;
+    }
+
+    export interface GetGatewaysGateway {
+        /**
+         * The backup vswitch id.
+         */
+        backupVswitchId: string;
+        /**
+         * The name of the Gateway.
+         */
+        gatewayName: string;
+        /**
+         * Gateway unique identification.
+         */
+        gatewayUniqueId: string;
+        /**
+         * The ID of the Gateway.
+         */
+        id: string;
+        /**
+         * The payment type of the resource.
+         */
+        paymentType: string;
+        /**
+         * Number of Gateway Nodes.
+         */
+        replica: string;
+        /**
+         * A list of gateway Slb.
+         */
+        slbLists: outputs.mse.GetGatewaysGatewaySlbList[];
+        /**
+         * Gateway Node Specifications.
+         */
+        spec: string;
+        /**
+         * The status of the gateway.
+         */
+        status: string;
+        /**
+         * The ID of the vpc.
+         */
+        vpcId: string;
+        /**
+         * The ID of the vswitch.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetGatewaysGatewaySlbList {
+        /**
+         * The associate id.
+         */
+        associateId: string;
+        /**
+         * The Mode of the gateway slb.
+         */
+        gatewaySlbMode: string;
+        /**
+         * The Status of the gateway slb.
+         */
+        gatewaySlbStatus: string;
+        /**
+         * The creation time of the gateway slb.
+         */
+        gmtCreate: string;
+        /**
+         * The ID of the gateway slb.
+         */
+        slbId: string;
+        /**
+         * The ip of the gateway slb.
+         */
+        slbIp: string;
+        /**
+         * The port of the gateway slb.
+         */
+        slbPort: string;
+        /**
+         * The type of the gateway slb.
+         */
+        type: string;
     }
 
 }
@@ -26960,6 +27565,319 @@ export namespace sae {
         targetPort?: number;
     }
 
+    export interface ApplicationScalingRuleScalingRuleMetric {
+        /**
+         * Maximum number of instances applied.
+         */
+        maxReplicas?: number;
+        /**
+         * Indicator rule configuration. See the following `Block metrics`.
+         */
+        metrics?: outputs.sae.ApplicationScalingRuleScalingRuleMetricMetric[];
+        /**
+         * Minimum number of instances applied.
+         */
+        minReplicas?: number;
+        /**
+         * Apply shrink rules. See the following `Block scaleDownRules`.
+         */
+        scaleDownRules?: outputs.sae.ApplicationScalingRuleScalingRuleMetricScaleDownRules;
+        /**
+         * Apply expansion rules. See the following `Block scaleUpRules`.
+         */
+        scaleUpRules?: outputs.sae.ApplicationScalingRuleScalingRuleMetricScaleUpRules;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleMetricMetric {
+        /**
+         * According to different `metricType`, set the target value of the corresponding monitoring index.
+         */
+        metricTargetAverageUtilization?: number;
+        /**
+         * Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+         * - CPU: CPU usage.
+         * - MEMORY: MEMORY usage.
+         * - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
+         * - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
+         * - SLB_RT: the average response time of public network SLB within 15 seconds.
+         */
+        metricType?: string;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleMetricScaleDownRules {
+        /**
+         * Whether shrinkage is prohibited.
+         */
+        disabled?: boolean;
+        /**
+         * Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+         */
+        stabilizationWindowSeconds?: number;
+        /**
+         * Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+         */
+        step?: number;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleMetricScaleUpRules {
+        /**
+         * Whether shrinkage is prohibited.
+         */
+        disabled?: boolean;
+        /**
+         * Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+         */
+        stabilizationWindowSeconds?: number;
+        /**
+         * Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+         */
+        step?: number;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleTimer {
+        /**
+         * The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+         */
+        beginDate?: string;
+        /**
+         * The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+         */
+        endDate?: string;
+        /**
+         * The period in which a timed elastic scaling strategy is executed.
+         */
+        period?: string;
+        /**
+         * Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+         */
+        schedules?: outputs.sae.ApplicationScalingRuleScalingRuleTimerSchedule[];
+    }
+
+    export interface ApplicationScalingRuleScalingRuleTimerSchedule {
+        /**
+         * Trigger point in time. When supporting format: minutes, for example: `08:00`.
+         */
+        atTime?: string;
+        /**
+         * Maximum number of instances applied.
+         */
+        maxReplicas?: number;
+        /**
+         * Minimum number of instances applied.
+         */
+        minReplicas?: number;
+        /**
+         * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+         */
+        targetReplicas?: number;
+    }
+
+    export interface GetApplicationScalingRulesRule {
+        /**
+         * The ID of the Application.
+         */
+        appId: string;
+        /**
+         * The CreateTime of the Application Scaling Rule.
+         */
+        createTime: string;
+        /**
+         * The ID of the Application Scaling Rule.
+         */
+        id: string;
+        /**
+         * Whether to enable the auto scaling policy.
+         */
+        scalingRuleEnable: boolean;
+        /**
+         * Monitoring indicators for elastic scaling.
+         */
+        scalingRuleMetrics: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetric[];
+        /**
+         * The name of the scaling rule.
+         */
+        scalingRuleName: string;
+        /**
+         * Timing elastic expansion.
+         */
+        scalingRuleTimers: outputs.sae.GetApplicationScalingRulesRuleScalingRuleTimer[];
+        /**
+         * Flexible strategy type.
+         */
+        scalingRuleType: string;
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleMetric {
+        /**
+         * The maximum number of instances.
+         */
+        maxReplicas: number;
+        /**
+         * The auto scaling list of monitoring indicators.
+         */
+        metrics: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricMetric[];
+        /**
+         * Monitor indicator elasticity status.
+         */
+        metricsStatuses: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus[];
+        /**
+         * The minimum number of instances.
+         */
+        minReplicas: number;
+        /**
+         * The shrink rule.
+         */
+        scaleDownRules: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule[];
+        /**
+         * The expansion rules.
+         */
+        scaleUpRules: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule[];
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleMetricMetric {
+        /**
+         * The target value of the monitoring indicator.
+         */
+        metricTargetAverageUtilization: number;
+        /**
+         * The metric type of the Application Scaling Rule.
+         */
+        metricType: string;
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
+        /**
+         * The current monitoring indicator elasticity list.
+         */
+        currentMetrics: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric[];
+        /**
+         * The number of current instances.
+         */
+        currentReplicas: number;
+        /**
+         * The number of target instances.
+         */
+        desiredReplicas: number;
+        /**
+         * The time of the last elastic expansion.
+         */
+        lastScaleTime: string;
+        /**
+         * The maximum number of instances.
+         */
+        maxReplicas: number;
+        /**
+         * The minimum number of instances.
+         */
+        minReplicas: number;
+        /**
+         * Next monitoring indicator elasticity list
+         */
+        nextScaleMetrics: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric[];
+        /**
+         * The next cycle of monitoring indicator elasticity.
+         */
+        nextScaleTimePeriod: number;
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric {
+        /**
+         * The current value.
+         */
+        currentValue: number;
+        /**
+         * The name of the trigger condition.
+         */
+        name: string;
+        /**
+         * The metric type. Associated with monitoring indicators.
+         */
+        type: string;
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric {
+        /**
+         * The name of the trigger condition.
+         */
+        name: string;
+        /**
+         * The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
+         */
+        nextScaleInAverageUtilization: number;
+        /**
+         * The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
+         */
+        nextScaleOutAverageUtilization: number;
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
+        /**
+         * Whether shrinkage is prohibited. The values are described as follows:
+         */
+        disabled: boolean;
+        /**
+         * Expansion cooling time.
+         */
+        stabilizationWindowSeconds: number;
+        /**
+         * Flexible expansion step. The maximum number of instances per unit time.
+         */
+        step: number;
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
+        /**
+         * Whether shrinkage is prohibited. The values are described as follows:
+         */
+        disabled: boolean;
+        /**
+         * Expansion cooling time.
+         */
+        stabilizationWindowSeconds: number;
+        /**
+         * Flexible expansion step. The maximum number of instances per unit time.
+         */
+        step: number;
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleTimer {
+        /**
+         * The short-term start date of the timed elastic scaling strategy.
+         */
+        beginDate: string;
+        /**
+         * The short-term end date of the timed elastic scaling strategy.
+         */
+        endDate: string;
+        /**
+         * The period in which a timed elastic scaling strategy is executed.
+         */
+        period: string;
+        /**
+         * Trigger point in time within a single day.
+         */
+        schedules: outputs.sae.GetApplicationScalingRulesRuleScalingRuleTimerSchedule[];
+    }
+
+    export interface GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
+        /**
+         * Time point. Format: `hours:minutes`.
+         */
+        atTime: string;
+        /**
+         * The maximum number of instances.
+         */
+        maxReplicas: number;
+        /**
+         * The minimum number of instances.
+         */
+        minReplicas: number;
+        /**
+         * The number of target instances.
+         */
+        targetReplicas: number;
+    }
+
     export interface GetApplicationsApplication {
         /**
          * The ARN of the RAM role required when pulling images across accounts.
@@ -27186,6 +28104,117 @@ export namespace sae {
         namespaceId: string;
     }
 
+    export interface GetGreyTagRoutesRoute {
+        /**
+         * The description of GreyTagRoute.
+         */
+        description: string;
+        /**
+         * The grayscale rule created for Dubbo Application.
+         */
+        dubboRules: outputs.sae.GetGreyTagRoutesRouteDubboRule[];
+        /**
+         * The name of GreyTagRoute.
+         */
+        greyTagRouteName: string;
+        /**
+         * The ID of the GreyTagRoute.
+         */
+        id: string;
+        /**
+         * The grayscale rule created for SpringCloud Application.
+         */
+        scRules: outputs.sae.GetGreyTagRoutesRouteScRule[];
+    }
+
+    export interface GetGreyTagRoutesRouteDubboRule {
+        /**
+         * The Conditional Patterns for Grayscale Rules.
+         */
+        condition: string;
+        /**
+         * The service group.
+         */
+        group: string;
+        /**
+         * A list of conditions items.
+         */
+        items: outputs.sae.GetGreyTagRoutesRouteDubboRuleItem[];
+        /**
+         * The method name
+         */
+        methodName: string;
+        /**
+         * The service name.
+         */
+        serviceName: string;
+        /**
+         * The service version.
+         */
+        version: string;
+    }
+
+    export interface GetGreyTagRoutesRouteDubboRuleItem {
+        /**
+         * The comparison operator.
+         */
+        cond: string;
+        /**
+         * The parameter value gets the expression.
+         */
+        expr: string;
+        /**
+         * The parameter number.
+         */
+        index: number;
+        /**
+         * The operator.
+         */
+        operator: string;
+        /**
+         * The value of the parameter.
+         */
+        value: string;
+    }
+
+    export interface GetGreyTagRoutesRouteScRule {
+        /**
+         * The Conditional Patterns for Grayscale Rules.
+         */
+        condition: string;
+        /**
+         * A list of conditions items.
+         */
+        items: outputs.sae.GetGreyTagRoutesRouteScRuleItem[];
+        /**
+         * The path corresponding to the grayscale rule.
+         */
+        path: string;
+    }
+
+    export interface GetGreyTagRoutesRouteScRuleItem {
+        /**
+         * The comparison operator.
+         */
+        cond: string;
+        /**
+         * The name of the parameter.
+         */
+        name: string;
+        /**
+         * The operator.
+         */
+        operator: string;
+        /**
+         * The Compare types.
+         */
+        type: string;
+        /**
+         * The value of the parameter.
+         */
+        value: string;
+    }
+
     export interface GetIngressesIngress {
         /**
          * Cert Id.
@@ -27269,6 +28298,94 @@ export namespace sae {
          * The Name of Namespace.
          */
         namespaceName: string;
+    }
+
+    export interface GreyTagRouteDubboRule {
+        /**
+         * The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+         */
+        condition?: string;
+        /**
+         * The service group.
+         */
+        group?: string;
+        /**
+         * A list of conditions items. The details see Block `dubboRulesItems`.
+         */
+        items?: outputs.sae.GreyTagRouteDubboRuleItem[];
+        /**
+         * The method name
+         */
+        methodName?: string;
+        /**
+         * The service name.
+         */
+        serviceName?: string;
+        /**
+         * The service version.
+         */
+        version?: string;
+    }
+
+    export interface GreyTagRouteDubboRuleItem {
+        /**
+         * The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+         */
+        cond?: string;
+        /**
+         * The parameter value gets the expression.
+         */
+        expr?: string;
+        /**
+         * The parameter number.
+         */
+        index?: number;
+        /**
+         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+         */
+        operator?: string;
+        /**
+         * The value of the parameter.
+         */
+        value?: string;
+    }
+
+    export interface GreyTagRouteScRule {
+        /**
+         * The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+         */
+        condition?: string;
+        /**
+         * A list of conditions items. The details see Block `scRulesItems`.
+         */
+        items?: outputs.sae.GreyTagRouteScRuleItem[];
+        /**
+         * The path corresponding to the grayscale rule.
+         */
+        path?: string;
+    }
+
+    export interface GreyTagRouteScRuleItem {
+        /**
+         * The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+         */
+        cond?: string;
+        /**
+         * The name of the parameter.
+         */
+        name?: string;
+        /**
+         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+         */
+        operator?: string;
+        /**
+         * The compare types. Valid values: `param`, `cookie`, `header`.
+         */
+        type?: string;
+        /**
+         * The value of the parameter.
+         */
+        value?: string;
     }
 
     export interface IngressDefaultRule {
@@ -27505,6 +28622,53 @@ export namespace sddp {
          * * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
          */
         value: string;
+    }
+
+    export interface GetDataLimitsLimit {
+        /**
+         * Whether to enable the log auditing feature.
+         */
+        auditStatus: number;
+        /**
+         * The status of the connectivity test between the data asset and SDDP.
+         */
+        checkStatus: number;
+        /**
+         * The first ID of the resource.
+         */
+        dataLimitId: string;
+        /**
+         * -The type of the database.
+         */
+        engineType: string;
+        /**
+         * The ID of the Data Limit.
+         */
+        id: string;
+        /**
+         * The name of the service to which the data asset belongs.
+         */
+        localName: string;
+        /**
+         * The retention period of raw logs after you enable the log auditing feature.
+         */
+        logStoreDay: number;
+        /**
+         * The ID of the data asset.
+         */
+        parentId: string;
+        /**
+         * The port that is used to connect to the database.
+         */
+        port: number;
+        /**
+         * The type of the service to which the data asset belongs.
+         */
+        resourceType: string;
+        /**
+         * The name of the user who owns the data asset.
+         */
+        userName: string;
     }
 
     export interface GetInstancesInstance {

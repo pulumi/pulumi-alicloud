@@ -108,6 +108,9 @@ namespace Pulumi.AliCloud.Dcdn
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
 
+        /// <summary>
+        /// The top-level domain name.
+        /// </summary>
         [Output("securityToken")]
         public Output<string?> SecurityToken { get; private set; } = null!;
 
@@ -238,6 +241,9 @@ namespace Pulumi.AliCloud.Dcdn
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
+        /// <summary>
+        /// The top-level domain name.
+        /// </summary>
         [Input("securityToken")]
         public Input<string>? SecurityToken { get; set; }
 
@@ -335,6 +341,9 @@ namespace Pulumi.AliCloud.Dcdn
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
+        /// <summary>
+        /// The top-level domain name.
+        /// </summary>
         [Input("securityToken")]
         public Input<string>? SecurityToken { get; set; }
 

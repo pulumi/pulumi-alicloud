@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./consumerChannel";
 export * from "./getConsumerChannels";
+export * from "./getMigrationJobs";
 export * from "./getSubscriptionJobs";
 export * from "./getSynchronizationJobs";
 export * from "./jobMonitorRule";

@@ -105,6 +105,9 @@ export class Instance extends pulumi.CustomResource {
      * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     public readonly coreInstanceQuantity!: pulumi.Output<number | undefined>;
+    /**
+     * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+     */
     public readonly coreInstanceType!: pulumi.Output<string>;
     /**
      * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
@@ -120,7 +123,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly engine!: pulumi.Output<string | undefined>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-     * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -143,6 +145,9 @@ export class Instance extends pulumi.CustomResource {
      * Count nodes of the master node.
      */
     public /*out*/ readonly masterInstanceQuantity!: pulumi.Output<number>;
+    /**
+     * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+     */
     public readonly masterInstanceType!: pulumi.Output<string>;
     /**
      * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
@@ -300,6 +305,9 @@ export interface InstanceState {
      * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     coreInstanceQuantity?: pulumi.Input<number>;
+    /**
+     * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+     */
     coreInstanceType?: pulumi.Input<string>;
     /**
      * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
@@ -315,7 +323,6 @@ export interface InstanceState {
     engine?: pulumi.Input<string>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-     * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -338,6 +345,9 @@ export interface InstanceState {
      * Count nodes of the master node.
      */
     masterInstanceQuantity?: pulumi.Input<number>;
+    /**
+     * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+     */
     masterInstanceType?: pulumi.Input<string>;
     /**
      * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
@@ -412,6 +422,9 @@ export interface InstanceArgs {
      * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
     coreInstanceQuantity?: pulumi.Input<number>;
+    /**
+     * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+     */
     coreInstanceType: pulumi.Input<string>;
     /**
      * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
@@ -427,7 +440,6 @@ export interface InstanceArgs {
     engine?: pulumi.Input<string>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-     * * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
     engineVersion: pulumi.Input<string>;
     /**
@@ -446,6 +458,9 @@ export interface InstanceArgs {
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
      */
     maintainStartTime?: pulumi.Input<string>;
+    /**
+     * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+     */
     masterInstanceType: pulumi.Input<string>;
     /**
      * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.

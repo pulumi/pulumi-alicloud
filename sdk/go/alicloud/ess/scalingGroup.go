@@ -31,8 +31,10 @@ type ScalingGroup struct {
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrOutput `pulumi:"groupDeletionProtection"`
-	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrOutput `pulumi:"launchTemplateId"`
+	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+	LaunchTemplateVersion pulumi.StringPtrOutput `pulumi:"launchTemplateVersion"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -62,6 +64,10 @@ type ScalingGroup struct {
 	SpotInstancePools pulumi.IntOutput `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolOutput `pulumi:"spotInstanceRemedy"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -115,8 +121,10 @@ type scalingGroupState struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
-	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
+	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -146,6 +154,10 @@ type scalingGroupState struct {
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -165,8 +177,10 @@ type ScalingGroupState struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrInput
-	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
+	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+	LaunchTemplateVersion pulumi.StringPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -196,6 +210,10 @@ type ScalingGroupState struct {
 	SpotInstancePools pulumi.IntPtrInput
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -219,8 +237,10 @@ type scalingGroupArgs struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
-	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
+	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -250,6 +270,10 @@ type scalingGroupArgs struct {
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
@@ -270,8 +294,10 @@ type ScalingGroupArgs struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrInput
-	// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
+	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+	LaunchTemplateVersion pulumi.StringPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -301,6 +327,10 @@ type ScalingGroupArgs struct {
 	SpotInstancePools pulumi.IntPtrInput
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.

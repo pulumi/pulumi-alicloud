@@ -8,6 +8,7 @@ import typing
 from .get_account import *
 from .get_caller_identity import *
 from .get_file_crc64_checksum import *
+from .get_msc_sub_contact_verification_message import *
 from .get_msc_sub_contacts import *
 from .get_msc_sub_subscriptions import *
 from .get_msc_sub_webhooks import *
@@ -2074,6 +2075,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ecs/ecsImageComponent",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/ecsImageComponent:EcsImageComponent": "EcsImageComponent"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ecs/ecsKeyPair",
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
@@ -2134,6 +2143,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
    "alicloud:ecs/ecsSnapshot:EcsSnapshot": "EcsSnapshot"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ecs/ecsSnapshotGroup",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup": "EcsSnapshotGroup"
   }
  },
  {
@@ -4130,10 +4147,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "sae/applicationScalingRule",
+  "fqn": "pulumi_alicloud.sae",
+  "classes": {
+   "alicloud:sae/applicationScalingRule:ApplicationScalingRule": "ApplicationScalingRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "sae/configMap",
   "fqn": "pulumi_alicloud.sae",
   "classes": {
    "alicloud:sae/configMap:ConfigMap": "ConfigMap"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sae/greyTagRoute",
+  "fqn": "pulumi_alicloud.sae",
+  "classes": {
+   "alicloud:sae/greyTagRoute:GreyTagRoute": "GreyTagRoute"
   }
  },
  {
@@ -4174,6 +4207,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sddp",
   "classes": {
    "alicloud:sddp/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sddp/dataLimit",
+  "fqn": "pulumi_alicloud.sddp",
+  "classes": {
+   "alicloud:sddp/dataLimit:DataLimit": "DataLimit"
   }
  },
  {

@@ -34,7 +34,6 @@ class NasBackupPlanArgs:
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
-        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "file_system_id", file_system_id)
@@ -164,9 +163,6 @@ class NasBackupPlanArgs:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
-        """
-        Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -194,7 +190,6 @@ class _NasBackupPlanState:
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] file_system_id: The File System ID of Nas.
         :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
@@ -287,9 +282,6 @@ class _NasBackupPlanState:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
-        """
-        Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -415,7 +407,6 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] file_system_id: The File System ID of Nas.
         :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
@@ -570,7 +561,6 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] file_system_id: The File System ID of Nas.
         :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-        :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
@@ -635,9 +625,6 @@ class NasBackupPlan(pulumi.CustomResource):
     @property
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional[str]]:
-        """
-        Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        """
         return pulumi.get(self, "options")
 
     @property

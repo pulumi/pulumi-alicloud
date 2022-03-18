@@ -13,6 +13,8 @@ __all__ = [
     'GatewaySlbList',
     'GetClustersClusterResult',
     'GetClustersClusterInstanceModelResult',
+    'GetGatewaysGatewayResult',
+    'GetGatewaysGatewaySlbListResult',
 ]
 
 @pulumi.output_type
@@ -461,5 +463,228 @@ class GetClustersClusterInstanceModelResult(dict):
     @pulumi.getter
     def vip(self) -> str:
         return pulumi.get(self, "vip")
+
+
+@pulumi.output_type
+class GetGatewaysGatewayResult(dict):
+    def __init__(__self__, *,
+                 backup_vswitch_id: str,
+                 gateway_name: str,
+                 gateway_unique_id: str,
+                 id: str,
+                 payment_type: str,
+                 replica: str,
+                 slb_lists: Sequence['outputs.GetGatewaysGatewaySlbListResult'],
+                 spec: str,
+                 status: str,
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str backup_vswitch_id: The backup vswitch id.
+        :param str gateway_name: The name of the Gateway.
+        :param str gateway_unique_id: Gateway unique identification.
+        :param str id: The ID of the Gateway.
+        :param str payment_type: The payment type of the resource.
+        :param str replica: Number of Gateway Nodes.
+        :param Sequence['GetGatewaysGatewaySlbListArgs'] slb_lists: A list of gateway Slb.
+        :param str spec: Gateway Node Specifications.
+        :param str status: The status of the gateway.
+        :param str vpc_id: The ID of the vpc.
+        :param str vswitch_id: The ID of the vswitch.
+        """
+        pulumi.set(__self__, "backup_vswitch_id", backup_vswitch_id)
+        pulumi.set(__self__, "gateway_name", gateway_name)
+        pulumi.set(__self__, "gateway_unique_id", gateway_unique_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "replica", replica)
+        pulumi.set(__self__, "slb_lists", slb_lists)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="backupVswitchId")
+    def backup_vswitch_id(self) -> str:
+        """
+        The backup vswitch id.
+        """
+        return pulumi.get(self, "backup_vswitch_id")
+
+    @property
+    @pulumi.getter(name="gatewayName")
+    def gateway_name(self) -> str:
+        """
+        The name of the Gateway.
+        """
+        return pulumi.get(self, "gateway_name")
+
+    @property
+    @pulumi.getter(name="gatewayUniqueId")
+    def gateway_unique_id(self) -> str:
+        """
+        Gateway unique identification.
+        """
+        return pulumi.get(self, "gateway_unique_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Gateway.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def replica(self) -> str:
+        """
+        Number of Gateway Nodes.
+        """
+        return pulumi.get(self, "replica")
+
+    @property
+    @pulumi.getter(name="slbLists")
+    def slb_lists(self) -> Sequence['outputs.GetGatewaysGatewaySlbListResult']:
+        """
+        A list of gateway Slb.
+        """
+        return pulumi.get(self, "slb_lists")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> str:
+        """
+        Gateway Node Specifications.
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the gateway.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the vpc.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vswitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetGatewaysGatewaySlbListResult(dict):
+    def __init__(__self__, *,
+                 associate_id: str,
+                 gateway_slb_mode: str,
+                 gateway_slb_status: str,
+                 gmt_create: str,
+                 slb_id: str,
+                 slb_ip: str,
+                 slb_port: str,
+                 type: str):
+        """
+        :param str associate_id: The associate id.
+        :param str gateway_slb_mode: The Mode of the gateway slb.
+        :param str gateway_slb_status: The Status of the gateway slb.
+        :param str gmt_create: The creation time of the gateway slb.
+        :param str slb_id: The ID of the gateway slb.
+        :param str slb_ip: The ip of the gateway slb.
+        :param str slb_port: The port of the gateway slb.
+        :param str type: The type of the gateway slb.
+        """
+        pulumi.set(__self__, "associate_id", associate_id)
+        pulumi.set(__self__, "gateway_slb_mode", gateway_slb_mode)
+        pulumi.set(__self__, "gateway_slb_status", gateway_slb_status)
+        pulumi.set(__self__, "gmt_create", gmt_create)
+        pulumi.set(__self__, "slb_id", slb_id)
+        pulumi.set(__self__, "slb_ip", slb_ip)
+        pulumi.set(__self__, "slb_port", slb_port)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="associateId")
+    def associate_id(self) -> str:
+        """
+        The associate id.
+        """
+        return pulumi.get(self, "associate_id")
+
+    @property
+    @pulumi.getter(name="gatewaySlbMode")
+    def gateway_slb_mode(self) -> str:
+        """
+        The Mode of the gateway slb.
+        """
+        return pulumi.get(self, "gateway_slb_mode")
+
+    @property
+    @pulumi.getter(name="gatewaySlbStatus")
+    def gateway_slb_status(self) -> str:
+        """
+        The Status of the gateway slb.
+        """
+        return pulumi.get(self, "gateway_slb_status")
+
+    @property
+    @pulumi.getter(name="gmtCreate")
+    def gmt_create(self) -> str:
+        """
+        The creation time of the gateway slb.
+        """
+        return pulumi.get(self, "gmt_create")
+
+    @property
+    @pulumi.getter(name="slbId")
+    def slb_id(self) -> str:
+        """
+        The ID of the gateway slb.
+        """
+        return pulumi.get(self, "slb_id")
+
+    @property
+    @pulumi.getter(name="slbIp")
+    def slb_ip(self) -> str:
+        """
+        The ip of the gateway slb.
+        """
+        return pulumi.get(self, "slb_ip")
+
+    @property
+    @pulumi.getter(name="slbPort")
+    def slb_port(self) -> str:
+        """
+        The port of the gateway slb.
+        """
+        return pulumi.get(self, "slb_port")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the gateway slb.
+        """
+        return pulumi.get(self, "type")
 
 

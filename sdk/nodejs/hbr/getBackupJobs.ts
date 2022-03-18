@@ -96,7 +96,7 @@ export interface GetBackupJobsArgs {
     ids?: string[];
     outputFile?: string;
     /**
-     * The sort direction. Valid values: `ASCEND`, `DESCEND`.
+     * The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
      */
     sortDirection?: string;
     /**
@@ -141,7 +141,7 @@ export interface GetBackupJobsOutputArgs {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The sort direction. Valid values: `ASCEND`, `DESCEND`.
+     * The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
      */
     sortDirection?: pulumi.Input<string>;
     /**

@@ -41,6 +41,12 @@ export class Gateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === Gateway.__pulumiType;
     }
 
+    /**
+     * Whether to pay automatically. Default value: `true`. Valid values:
+     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * `true`: Enable automatic payment, automatic payment order.
+     */
+    public readonly autoPay!: pulumi.Output<boolean | undefined>;
     public readonly bandwidth!: pulumi.Output<number>;
     /**
      * The business status of the VPN gateway.
@@ -85,6 +91,10 @@ export class Gateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * The tags of VPN gateway.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The VPN belongs the vpc_id, the field can't be changed.
      */
     public readonly vpcId!: pulumi.Output<string>;
@@ -106,6 +116,7 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -117,6 +128,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["sslConnections"] = state ? state.sslConnections : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
@@ -127,6 +139,7 @@ export class Gateway extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableIpsec"] = args ? args.enableIpsec : undefined;
@@ -135,6 +148,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["sslConnections"] = args ? args.sslConnections : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["businessStatus"] = undefined /*out*/;
@@ -150,6 +164,12 @@ export class Gateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Gateway resources.
  */
 export interface GatewayState {
+    /**
+     * Whether to pay automatically. Default value: `true`. Valid values:
+     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * `true`: Enable automatic payment, automatic payment order.
+     */
+    autoPay?: pulumi.Input<boolean>;
     bandwidth?: pulumi.Input<number>;
     /**
      * The business status of the VPN gateway.
@@ -194,6 +214,10 @@ export interface GatewayState {
      */
     status?: pulumi.Input<string>;
     /**
+     * The tags of VPN gateway.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The VPN belongs the vpc_id, the field can't be changed.
      */
     vpcId?: pulumi.Input<string>;
@@ -207,6 +231,12 @@ export interface GatewayState {
  * The set of arguments for constructing a Gateway resource.
  */
 export interface GatewayArgs {
+    /**
+     * Whether to pay automatically. Default value: `true`. Valid values:
+     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+     * `true`: Enable automatic payment, automatic payment order.
+     */
+    autoPay?: pulumi.Input<boolean>;
     bandwidth: pulumi.Input<number>;
     /**
      * The description of the VPN instance.
@@ -238,6 +268,10 @@ export interface GatewayArgs {
      * This field is ignored when enableSsl is false.
      */
     sslConnections?: pulumi.Input<number>;
+    /**
+     * The tags of VPN gateway.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The VPN belongs the vpc_id, the field can't be changed.
      */

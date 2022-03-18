@@ -1663,6 +1663,8 @@ type GetScalingGroupsGroup struct {
 	RemovingCapacity int `pulumi:"removingCapacity"`
 	// The Process in suspension.
 	SuspendedProcesses []string `pulumi:"suspendedProcesses"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Number of instances in scaling group.
 	TotalCapacity int `pulumi:"totalCapacity"`
 	// The number of all ECS instances in the scaling group.
@@ -1729,6 +1731,8 @@ type GetScalingGroupsGroupArgs struct {
 	RemovingCapacity pulumi.IntInput `pulumi:"removingCapacity"`
 	// The Process in suspension.
 	SuspendedProcesses pulumi.StringArrayInput `pulumi:"suspendedProcesses"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// Number of instances in scaling group.
 	TotalCapacity pulumi.IntInput `pulumi:"totalCapacity"`
 	// The number of all ECS instances in the scaling group.
@@ -1895,6 +1899,11 @@ func (o GetScalingGroupsGroupOutput) RemovingCapacity() pulumi.IntOutput {
 // The Process in suspension.
 func (o GetScalingGroupsGroupOutput) SuspendedProcesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.SuspendedProcesses }).(pulumi.StringArrayOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetScalingGroupsGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetScalingGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // Number of instances in scaling group.

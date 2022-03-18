@@ -148,6 +148,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
+            if ((!args || args.engine === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'engine'");
+            }
+            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'engineVersion'");
+            }
             if ((!args || args.instanceClass === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceClass'");
             }
@@ -225,11 +231,11 @@ export interface InstanceArgs {
     /**
      * Database engine: gpdb. System Default value: gpdb.
      */
-    engine?: pulumi.Input<string>;
+    engine: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      */

@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+        /// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
         /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+        /// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+        /// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }

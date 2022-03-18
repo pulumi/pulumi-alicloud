@@ -11,6 +11,7 @@ from . import outputs
 
 __all__ = [
     'GetConsumerChannelsChannelResult',
+    'GetMigrationJobsJobResult',
     'GetSubscriptionJobsJobResult',
     'GetSubscriptionJobsJobSubscriptionHostResult',
     'GetSynchronizationJobsJobResult',
@@ -98,6 +99,343 @@ class GetConsumerChannelsChannelResult(dict):
         The total number of unconsumed messages.
         """
         return pulumi.get(self, "unconsumed_data")
+
+
+@pulumi.output_type
+class GetMigrationJobsJobResult(dict):
+    def __init__(__self__, *,
+                 data_initialization: bool,
+                 data_synchronization: bool,
+                 db_list: str,
+                 destination_endpoint_data_base_name: str,
+                 destination_endpoint_engine_name: str,
+                 destination_endpoint_instance_id: str,
+                 destination_endpoint_instance_type: str,
+                 destination_endpoint_ip: str,
+                 destination_endpoint_oracle_sid: str,
+                 destination_endpoint_port: str,
+                 destination_endpoint_region: str,
+                 destination_endpoint_user_name: str,
+                 dts_instance_id: str,
+                 dts_job_id: str,
+                 dts_job_name: str,
+                 id: str,
+                 payment_type: str,
+                 source_endpoint_database_name: str,
+                 source_endpoint_engine_name: str,
+                 source_endpoint_instance_id: str,
+                 source_endpoint_instance_type: str,
+                 source_endpoint_ip: str,
+                 source_endpoint_oracle_sid: str,
+                 source_endpoint_owner_id: str,
+                 source_endpoint_port: str,
+                 source_endpoint_region: str,
+                 source_endpoint_role: str,
+                 source_endpoint_user_name: str,
+                 status: str,
+                 structure_initialization: bool):
+        """
+        :param bool data_initialization: Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
+        :param bool data_synchronization: Whether to perform incremental data migration for migration types or synchronization values include:
+        :param str db_list: The Migration object, in the format of JSON strings.
+        :param str destination_endpoint_data_base_name: The name of migrate the database.
+        :param str destination_endpoint_engine_name: The type of destination database.
+        :param str destination_endpoint_instance_id: The ID of destination instance.
+        :param str destination_endpoint_instance_type: The type of destination instance.
+        :param str destination_endpoint_ip: The ip of source endpoint.
+        :param str destination_endpoint_oracle_sid: The SID of Oracle database.
+        :param str destination_endpoint_port: The port of source endpoint.
+        :param str destination_endpoint_region: The region of destination instance.
+        :param str destination_endpoint_user_name: The username of database account.
+        :param str dts_instance_id: The Migration instance ID. The ID of `dts.MigrationInstance`.
+        :param str dts_job_id: The ID of the Migration Job.
+        :param str dts_job_name: The name of synchronization job.
+        :param str id: The ID of the Migration Job. Its value is same as `dts_job_id`.
+        :param str payment_type: The payment type of the Migration Instance.
+        :param str source_endpoint_database_name: The name of migrate the database.
+        :param str source_endpoint_engine_name: The type of source database.
+        :param str source_endpoint_instance_id: The ID of source instance.
+        :param str source_endpoint_instance_type: The type of source instance.
+        :param str source_endpoint_ip: The ip of source endpoint.
+        :param str source_endpoint_oracle_sid: The SID of Oracle database.
+        :param str source_endpoint_owner_id: The Alibaba Cloud account ID to which the source instance belongs.
+        :param str source_endpoint_port: The port of source endpoint.
+        :param str source_endpoint_region: The region of source instance.
+        :param str source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param str source_endpoint_user_name: The username of database account.
+        :param str status: The status of the resource.
+        :param bool structure_initialization: Whether to perform a database table structure to migrate or initialization.
+        """
+        pulumi.set(__self__, "data_initialization", data_initialization)
+        pulumi.set(__self__, "data_synchronization", data_synchronization)
+        pulumi.set(__self__, "db_list", db_list)
+        pulumi.set(__self__, "destination_endpoint_data_base_name", destination_endpoint_data_base_name)
+        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
+        pulumi.set(__self__, "destination_endpoint_instance_id", destination_endpoint_instance_id)
+        pulumi.set(__self__, "destination_endpoint_instance_type", destination_endpoint_instance_type)
+        pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
+        pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+        pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
+        pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+        pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
+        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+        pulumi.set(__self__, "dts_job_id", dts_job_id)
+        pulumi.set(__self__, "dts_job_name", dts_job_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
+        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
+        pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
+        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
+        pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
+        pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+        pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
+        pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
+        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+        pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+        pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "structure_initialization", structure_initialization)
+
+    @property
+    @pulumi.getter(name="dataInitialization")
+    def data_initialization(self) -> bool:
+        """
+        Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
+        """
+        return pulumi.get(self, "data_initialization")
+
+    @property
+    @pulumi.getter(name="dataSynchronization")
+    def data_synchronization(self) -> bool:
+        """
+        Whether to perform incremental data migration for migration types or synchronization values include:
+        """
+        return pulumi.get(self, "data_synchronization")
+
+    @property
+    @pulumi.getter(name="dbList")
+    def db_list(self) -> str:
+        """
+        The Migration object, in the format of JSON strings.
+        """
+        return pulumi.get(self, "db_list")
+
+    @property
+    @pulumi.getter(name="destinationEndpointDataBaseName")
+    def destination_endpoint_data_base_name(self) -> str:
+        """
+        The name of migrate the database.
+        """
+        return pulumi.get(self, "destination_endpoint_data_base_name")
+
+    @property
+    @pulumi.getter(name="destinationEndpointEngineName")
+    def destination_endpoint_engine_name(self) -> str:
+        """
+        The type of destination database.
+        """
+        return pulumi.get(self, "destination_endpoint_engine_name")
+
+    @property
+    @pulumi.getter(name="destinationEndpointInstanceId")
+    def destination_endpoint_instance_id(self) -> str:
+        """
+        The ID of destination instance.
+        """
+        return pulumi.get(self, "destination_endpoint_instance_id")
+
+    @property
+    @pulumi.getter(name="destinationEndpointInstanceType")
+    def destination_endpoint_instance_type(self) -> str:
+        """
+        The type of destination instance.
+        """
+        return pulumi.get(self, "destination_endpoint_instance_type")
+
+    @property
+    @pulumi.getter(name="destinationEndpointIp")
+    def destination_endpoint_ip(self) -> str:
+        """
+        The ip of source endpoint.
+        """
+        return pulumi.get(self, "destination_endpoint_ip")
+
+    @property
+    @pulumi.getter(name="destinationEndpointOracleSid")
+    def destination_endpoint_oracle_sid(self) -> str:
+        """
+        The SID of Oracle database.
+        """
+        return pulumi.get(self, "destination_endpoint_oracle_sid")
+
+    @property
+    @pulumi.getter(name="destinationEndpointPort")
+    def destination_endpoint_port(self) -> str:
+        """
+        The port of source endpoint.
+        """
+        return pulumi.get(self, "destination_endpoint_port")
+
+    @property
+    @pulumi.getter(name="destinationEndpointRegion")
+    def destination_endpoint_region(self) -> str:
+        """
+        The region of destination instance.
+        """
+        return pulumi.get(self, "destination_endpoint_region")
+
+    @property
+    @pulumi.getter(name="destinationEndpointUserName")
+    def destination_endpoint_user_name(self) -> str:
+        """
+        The username of database account.
+        """
+        return pulumi.get(self, "destination_endpoint_user_name")
+
+    @property
+    @pulumi.getter(name="dtsInstanceId")
+    def dts_instance_id(self) -> str:
+        """
+        The Migration instance ID. The ID of `dts.MigrationInstance`.
+        """
+        return pulumi.get(self, "dts_instance_id")
+
+    @property
+    @pulumi.getter(name="dtsJobId")
+    def dts_job_id(self) -> str:
+        """
+        The ID of the Migration Job.
+        """
+        return pulumi.get(self, "dts_job_id")
+
+    @property
+    @pulumi.getter(name="dtsJobName")
+    def dts_job_name(self) -> str:
+        """
+        The name of synchronization job.
+        """
+        return pulumi.get(self, "dts_job_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Migration Job. Its value is same as `dts_job_id`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the Migration Instance.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="sourceEndpointDatabaseName")
+    def source_endpoint_database_name(self) -> str:
+        """
+        The name of migrate the database.
+        """
+        return pulumi.get(self, "source_endpoint_database_name")
+
+    @property
+    @pulumi.getter(name="sourceEndpointEngineName")
+    def source_endpoint_engine_name(self) -> str:
+        """
+        The type of source database.
+        """
+        return pulumi.get(self, "source_endpoint_engine_name")
+
+    @property
+    @pulumi.getter(name="sourceEndpointInstanceId")
+    def source_endpoint_instance_id(self) -> str:
+        """
+        The ID of source instance.
+        """
+        return pulumi.get(self, "source_endpoint_instance_id")
+
+    @property
+    @pulumi.getter(name="sourceEndpointInstanceType")
+    def source_endpoint_instance_type(self) -> str:
+        """
+        The type of source instance.
+        """
+        return pulumi.get(self, "source_endpoint_instance_type")
+
+    @property
+    @pulumi.getter(name="sourceEndpointIp")
+    def source_endpoint_ip(self) -> str:
+        """
+        The ip of source endpoint.
+        """
+        return pulumi.get(self, "source_endpoint_ip")
+
+    @property
+    @pulumi.getter(name="sourceEndpointOracleSid")
+    def source_endpoint_oracle_sid(self) -> str:
+        """
+        The SID of Oracle database.
+        """
+        return pulumi.get(self, "source_endpoint_oracle_sid")
+
+    @property
+    @pulumi.getter(name="sourceEndpointOwnerId")
+    def source_endpoint_owner_id(self) -> str:
+        """
+        The Alibaba Cloud account ID to which the source instance belongs.
+        """
+        return pulumi.get(self, "source_endpoint_owner_id")
+
+    @property
+    @pulumi.getter(name="sourceEndpointPort")
+    def source_endpoint_port(self) -> str:
+        """
+        The port of source endpoint.
+        """
+        return pulumi.get(self, "source_endpoint_port")
+
+    @property
+    @pulumi.getter(name="sourceEndpointRegion")
+    def source_endpoint_region(self) -> str:
+        """
+        The region of source instance.
+        """
+        return pulumi.get(self, "source_endpoint_region")
+
+    @property
+    @pulumi.getter(name="sourceEndpointRole")
+    def source_endpoint_role(self) -> str:
+        """
+        The name of the role configured for the cloud account to which the source instance belongs.
+        """
+        return pulumi.get(self, "source_endpoint_role")
+
+    @property
+    @pulumi.getter(name="sourceEndpointUserName")
+    def source_endpoint_user_name(self) -> str:
+        """
+        The username of database account.
+        """
+        return pulumi.get(self, "source_endpoint_user_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="structureInitialization")
+    def structure_initialization(self) -> bool:
+        """
+        Whether to perform a database table structure to migrate or initialization.
+        """
+        return pulumi.get(self, "structure_initialization")
 
 
 @pulumi.output_type

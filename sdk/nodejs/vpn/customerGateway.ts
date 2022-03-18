@@ -56,6 +56,10 @@ export class CustomerGateway extends pulumi.CustomResource {
     }
 
     /**
+     * The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+     */
+    public readonly asn!: pulumi.Output<string | undefined>;
+    /**
      * The description of the VPN customer gateway instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -81,6 +85,7 @@ export class CustomerGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomerGatewayState | undefined;
+            resourceInputs["asn"] = state ? state.asn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -89,6 +94,7 @@ export class CustomerGateway extends pulumi.CustomResource {
             if ((!args || args.ipAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipAddress'");
             }
+            resourceInputs["asn"] = args ? args.asn : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -102,6 +108,10 @@ export class CustomerGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CustomerGateway resources.
  */
 export interface CustomerGatewayState {
+    /**
+     * The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+     */
+    asn?: pulumi.Input<string>;
     /**
      * The description of the VPN customer gateway instance.
      */
@@ -120,6 +130,10 @@ export interface CustomerGatewayState {
  * The set of arguments for constructing a CustomerGateway resource.
  */
 export interface CustomerGatewayArgs {
+    /**
+     * The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+     */
+    asn?: pulumi.Input<string>;
     /**
      * The description of the VPN customer gateway instance.
      */

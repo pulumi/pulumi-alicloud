@@ -5,7 +5,10 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_instance_types import *
+from .get_instances import *
 from .get_key_pairs import *
+from .get_zones import *
 from .instance import *
 from .key_pair import *
 from . import outputs

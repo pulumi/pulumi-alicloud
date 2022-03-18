@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// The unique ARN of the Log Service role.
         /// </summary>
         [Output("slsWriteRoleArn")]
-        public Output<string?> SlsWriteRoleArn { get; private set; } = null!;
+        public Output<string> SlsWriteRoleArn { get; private set; } = null!;
 
         /// <summary>
         /// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.

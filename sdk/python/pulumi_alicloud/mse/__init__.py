@@ -8,5 +8,6 @@ import typing
 from .cluster import *
 from .gateway import *
 from .get_clusters import *
+from .get_gateways import *
 from ._inputs import *
 from . import outputs

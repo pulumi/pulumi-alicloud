@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getInstances";
+export * from "./getSnapshots";
 export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./serviceLinkedRole";

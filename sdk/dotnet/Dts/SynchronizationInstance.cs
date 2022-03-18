@@ -55,6 +55,18 @@ namespace Pulumi.AliCloud.Dts
     public partial class SynchronizationInstance : Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("autoPay")]
+        public Output<string?> AutoPay { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("autoStart")]
+        public Output<string?> AutoStart { get; private set; } = null!;
+
+        /// <summary>
         /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         /// </summary>
         [Output("computeUnit")]
@@ -179,6 +191,18 @@ namespace Pulumi.AliCloud.Dts
     public sealed class SynchronizationInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<string>? AutoPay { get; set; }
+
+        /// <summary>
+        /// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("autoStart")]
+        public Input<string>? AutoStart { get; set; }
+
+        /// <summary>
         /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         /// </summary>
         [Input("computeUnit")]
@@ -257,6 +281,18 @@ namespace Pulumi.AliCloud.Dts
 
     public sealed class SynchronizationInstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<string>? AutoPay { get; set; }
+
+        /// <summary>
+        /// Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("autoStart")]
+        public Input<string>? AutoStart { get; set; }
+
         /// <summary>
         /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         /// </summary>

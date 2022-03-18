@@ -29,8 +29,7 @@ type Instance struct {
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// security group IDs configured to Bastionhost.
+	ResourceGroupId  pulumi.StringPtrOutput   `pulumi:"resourceGroupId"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -87,8 +86,7 @@ type instanceState struct {
 	LicenseCode *string `pulumi:"licenseCode"`
 	Period      *int    `pulumi:"period"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// security group IDs configured to Bastionhost.
+	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -105,8 +103,7 @@ type InstanceState struct {
 	LicenseCode pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId pulumi.StringPtrInput
-	// security group IDs configured to Bastionhost.
+	ResourceGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -127,8 +124,7 @@ type instanceArgs struct {
 	LicenseCode string `pulumi:"licenseCode"`
 	Period      *int   `pulumi:"period"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// security group IDs configured to Bastionhost.
+	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -146,8 +142,7 @@ type InstanceArgs struct {
 	LicenseCode pulumi.StringInput
 	Period      pulumi.IntPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId pulumi.StringPtrInput
-	// security group IDs configured to Bastionhost.
+	ResourceGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

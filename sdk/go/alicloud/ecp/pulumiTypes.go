@@ -10,6 +10,356 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetInstanceTypesInstanceType struct {
+	// The cpu core count of the current instance type.
+	CpuCoreCount int `pulumi:"cpuCoreCount"`
+	// The default resolution of the current instance type.
+	DefaultResolution string `pulumi:"defaultResolution"`
+	// The list of available instance type.
+	InstanceType       string `pulumi:"instanceType"`
+	InstanceTypeFamily string `pulumi:"instanceTypeFamily"`
+	// The name of the current instance type.
+	Name string `pulumi:"name"`
+	// The English name of the current instance type.
+	NameEn string `pulumi:"nameEn"`
+}
+
+// GetInstanceTypesInstanceTypeInput is an input type that accepts GetInstanceTypesInstanceTypeArgs and GetInstanceTypesInstanceTypeOutput values.
+// You can construct a concrete instance of `GetInstanceTypesInstanceTypeInput` via:
+//
+//          GetInstanceTypesInstanceTypeArgs{...}
+type GetInstanceTypesInstanceTypeInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesInstanceTypeOutput() GetInstanceTypesInstanceTypeOutput
+	ToGetInstanceTypesInstanceTypeOutputWithContext(context.Context) GetInstanceTypesInstanceTypeOutput
+}
+
+type GetInstanceTypesInstanceTypeArgs struct {
+	// The cpu core count of the current instance type.
+	CpuCoreCount pulumi.IntInput `pulumi:"cpuCoreCount"`
+	// The default resolution of the current instance type.
+	DefaultResolution pulumi.StringInput `pulumi:"defaultResolution"`
+	// The list of available instance type.
+	InstanceType       pulumi.StringInput `pulumi:"instanceType"`
+	InstanceTypeFamily pulumi.StringInput `pulumi:"instanceTypeFamily"`
+	// The name of the current instance type.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The English name of the current instance type.
+	NameEn pulumi.StringInput `pulumi:"nameEn"`
+}
+
+func (GetInstanceTypesInstanceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesInstanceType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesInstanceTypeArgs) ToGetInstanceTypesInstanceTypeOutput() GetInstanceTypesInstanceTypeOutput {
+	return i.ToGetInstanceTypesInstanceTypeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesInstanceTypeArgs) ToGetInstanceTypesInstanceTypeOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeOutput)
+}
+
+// GetInstanceTypesInstanceTypeArrayInput is an input type that accepts GetInstanceTypesInstanceTypeArray and GetInstanceTypesInstanceTypeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypesInstanceTypeArrayInput` via:
+//
+//          GetInstanceTypesInstanceTypeArray{ GetInstanceTypesInstanceTypeArgs{...} }
+type GetInstanceTypesInstanceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypesInstanceTypeArrayOutput() GetInstanceTypesInstanceTypeArrayOutput
+	ToGetInstanceTypesInstanceTypeArrayOutputWithContext(context.Context) GetInstanceTypesInstanceTypeArrayOutput
+}
+
+type GetInstanceTypesInstanceTypeArray []GetInstanceTypesInstanceTypeInput
+
+func (GetInstanceTypesInstanceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesInstanceType)(nil)).Elem()
+}
+
+func (i GetInstanceTypesInstanceTypeArray) ToGetInstanceTypesInstanceTypeArrayOutput() GetInstanceTypesInstanceTypeArrayOutput {
+	return i.ToGetInstanceTypesInstanceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypesInstanceTypeArray) ToGetInstanceTypesInstanceTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeArrayOutput)
+}
+
+type GetInstanceTypesInstanceTypeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesInstanceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesInstanceType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesInstanceTypeOutput) ToGetInstanceTypesInstanceTypeOutput() GetInstanceTypesInstanceTypeOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeOutput) ToGetInstanceTypesInstanceTypeOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeOutput {
+	return o
+}
+
+// The cpu core count of the current instance type.
+func (o GetInstanceTypesInstanceTypeOutput) CpuCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.CpuCoreCount }).(pulumi.IntOutput)
+}
+
+// The default resolution of the current instance type.
+func (o GetInstanceTypesInstanceTypeOutput) DefaultResolution() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.DefaultResolution }).(pulumi.StringOutput)
+}
+
+// The list of available instance type.
+func (o GetInstanceTypesInstanceTypeOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypesInstanceTypeOutput) InstanceTypeFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.InstanceTypeFamily }).(pulumi.StringOutput)
+}
+
+// The name of the current instance type.
+func (o GetInstanceTypesInstanceTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The English name of the current instance type.
+func (o GetInstanceTypesInstanceTypeOutput) NameEn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.NameEn }).(pulumi.StringOutput)
+}
+
+type GetInstanceTypesInstanceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesInstanceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypesInstanceType)(nil)).Elem()
+}
+
+func (o GetInstanceTypesInstanceTypeArrayOutput) ToGetInstanceTypesInstanceTypeArrayOutput() GetInstanceTypesInstanceTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeArrayOutput) ToGetInstanceTypesInstanceTypeArrayOutputWithContext(ctx context.Context) GetInstanceTypesInstanceTypeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypesInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesInstanceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesInstanceType {
+		return vs[0].([]GetInstanceTypesInstanceType)[vs[1].(int)]
+	}).(GetInstanceTypesInstanceTypeOutput)
+}
+
+type GetInstancesInstance struct {
+	// Instance Description.
+	Description string `pulumi:"description"`
+	// The ID of the Instance.
+	Id string `pulumi:"id"`
+	// The ID Of The Image.
+	ImageId string `pulumi:"imageId"`
+	// InstanceId.
+	InstanceId string `pulumi:"instanceId"`
+	// Instance Name.
+	InstanceName string `pulumi:"instanceName"`
+	// Instance Type.
+	InstanceType string `pulumi:"instanceType"`
+	// The Key Name.
+	KeyPairName string `pulumi:"keyPairName"`
+	// The payment type.Valid values: `PayAsYouGo`,`Subscription`
+	PaymentType string `pulumi:"paymentType"`
+	// Resolution.
+	Resolution string `pulumi:"resolution"`
+	// Security Group ID.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// Instance Status.
+	Status string `pulumi:"status"`
+	// VNC login address.
+	VncUrl string `pulumi:"vncUrl"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	ZoneId    string `pulumi:"zoneId"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//          GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// Instance Description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID Of The Image.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// InstanceId.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Instance Name.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// Instance Type.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The Key Name.
+	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
+	// The payment type.Valid values: `PayAsYouGo`,`Subscription`
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// Resolution.
+	Resolution pulumi.StringInput `pulumi:"resolution"`
+	// Security Group ID.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// Instance Status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// VNC login address.
+	VncUrl pulumi.StringInput `pulumi:"vncUrl"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	ZoneId    pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//          GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// Instance Description.
+func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Instance.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID Of The Image.
+func (o GetInstancesInstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// InstanceId.
+func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Instance Name.
+func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// Instance Type.
+func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The Key Name.
+func (o GetInstancesInstanceOutput) KeyPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.KeyPairName }).(pulumi.StringOutput)
+}
+
+// The payment type.Valid values: `PayAsYouGo`,`Subscription`
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Resolution.
+func (o GetInstancesInstanceOutput) Resolution() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Resolution }).(pulumi.StringOutput)
+}
+
+// Security Group ID.
+func (o GetInstancesInstanceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Instance Status.
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// VNC login address.
+func (o GetInstancesInstanceOutput) VncUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VncUrl }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 type GetKeyPairsPair struct {
 	// The ID of the Key Pair. Its value is same as Queue Name.
 	Id string `pulumi:"id"`
@@ -125,9 +475,118 @@ func (o GetKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairOutp
 	}).(GetKeyPairsPairOutput)
 }
 
+type GetZonesZone struct {
+	// String to filter results by zone id.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
+// You can construct a concrete instance of `GetZonesZoneInput` via:
+//
+//          GetZonesZoneArgs{...}
+type GetZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOutput() GetZonesZoneOutput
+	ToGetZonesZoneOutputWithContext(context.Context) GetZonesZoneOutput
+}
+
+type GetZonesZoneArgs struct {
+	// String to filter results by zone id.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return i.ToGetZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
+}
+
+// GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneArrayInput` via:
+//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+type GetZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput
+	ToGetZonesZoneArrayOutputWithContext(context.Context) GetZonesZoneArrayOutput
+}
+
+type GetZonesZoneArray []GetZonesZoneInput
+
+func (GetZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return i.ToGetZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
+}
+
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return o
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return o
+}
+
+// String to filter results by zone id.
+func (o GetZonesZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
+		return vs[0].([]GetZonesZone)[vs[1].(int)]
+	}).(GetZonesZoneOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeInput)(nil)).Elem(), GetInstanceTypesInstanceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesInstanceTypeArrayInput)(nil)).Elem(), GetInstanceTypesInstanceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInput)(nil)).Elem(), GetKeyPairsPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairArrayInput)(nil)).Elem(), GetKeyPairsPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypesInstanceTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairOutput{})
 	pulumi.RegisterOutputType(GetKeyPairsPairArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

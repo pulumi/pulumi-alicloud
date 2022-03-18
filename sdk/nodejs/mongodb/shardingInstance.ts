@@ -122,7 +122,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The TDE(Transparent Data Encryption) status.
+     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
@@ -293,7 +293,7 @@ export interface ShardingInstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The TDE(Transparent Data Encryption) status.
+     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
      */
     tdeStatus?: pulumi.Input<string>;
     /**
@@ -383,7 +383,7 @@ export interface ShardingInstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The TDE(Transparent Data Encryption) status.
+     * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
      */
     tdeStatus?: pulumi.Input<string>;
     /**

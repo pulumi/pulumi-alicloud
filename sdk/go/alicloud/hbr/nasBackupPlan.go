@@ -98,9 +98,8 @@ type NasBackupPlan struct {
 	// The File System ID of Nas.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-	NasBackupPlanName pulumi.StringOutput `pulumi:"nasBackupPlanName"`
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-	Options pulumi.StringPtrOutput `pulumi:"options"`
+	NasBackupPlanName pulumi.StringOutput    `pulumi:"nasBackupPlanName"`
+	Options           pulumi.StringPtrOutput `pulumi:"options"`
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths pulumi.StringArrayOutput `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
@@ -173,8 +172,7 @@ type nasBackupPlanState struct {
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName *string `pulumi:"nasBackupPlanName"`
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-	Options *string `pulumi:"options"`
+	Options           *string `pulumi:"options"`
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths []string `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
@@ -198,8 +196,7 @@ type NasBackupPlanState struct {
 	FileSystemId pulumi.StringPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName pulumi.StringPtrInput
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-	Options pulumi.StringPtrInput
+	Options           pulumi.StringPtrInput
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths pulumi.StringArrayInput
 	// Backup retention days, the minimum is 1.
@@ -226,9 +223,8 @@ type nasBackupPlanArgs struct {
 	// The File System ID of Nas.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-	NasBackupPlanName string `pulumi:"nasBackupPlanName"`
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-	Options *string `pulumi:"options"`
+	NasBackupPlanName string  `pulumi:"nasBackupPlanName"`
+	Options           *string `pulumi:"options"`
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths []string `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
@@ -253,8 +249,7 @@ type NasBackupPlanArgs struct {
 	FileSystemId pulumi.StringInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName pulumi.StringInput
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-	Options pulumi.StringPtrInput
+	Options           pulumi.StringPtrInput
 	// List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
 	Paths pulumi.StringArrayInput
 	// Backup retention days, the minimum is 1.
