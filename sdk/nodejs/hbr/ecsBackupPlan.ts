@@ -122,7 +122,7 @@ export class EcsBackupPlan extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+     * Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
      */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
@@ -247,7 +247,7 @@ export interface EcsBackupPlanState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+     * Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
      */
     options?: pulumi.Input<string>;
     /**
@@ -306,7 +306,7 @@ export interface EcsBackupPlanArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+     * Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
      */
     options?: pulumi.Input<string>;
     /**

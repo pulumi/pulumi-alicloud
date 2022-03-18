@@ -817,7 +817,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthType")
-    def bandwidth_type(self) -> pulumi.Output[Optional[str]]:
+    def bandwidth_type(self) -> pulumi.Output[str]:
         """
         The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         """

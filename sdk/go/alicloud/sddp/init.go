@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:sddp/config:Config":
 		r = &Config{}
+	case "alicloud:sddp/dataLimit:DataLimit":
+		r = &DataLimit{}
 	case "alicloud:sddp/instance:Instance":
 		r = &Instance{}
 	case "alicloud:sddp/rule:Rule":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"sddp/config",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sddp/dataLimit",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

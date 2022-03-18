@@ -40,8 +40,9 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] core_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-               * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        :param pulumi.Input[str] master_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] account: The account of the cluster web ui. Size [0-128].
         :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
         :param pulumi.Input[int] cold_storage_size: 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
@@ -113,6 +114,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="coreInstanceType")
     def core_instance_type(self) -> pulumi.Input[str]:
+        """
+        Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        """
         return pulumi.get(self, "core_instance_type")
 
     @core_instance_type.setter
@@ -124,7 +128,6 @@ class InstanceArgs:
     def engine_version(self) -> pulumi.Input[str]:
         """
         HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-        * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         """
         return pulumi.get(self, "engine_version")
 
@@ -135,6 +138,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="masterInstanceType")
     def master_instance_type(self) -> pulumi.Input[str]:
+        """
+        Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        """
         return pulumi.get(self, "master_instance_type")
 
     @master_instance_type.setter
@@ -426,16 +432,17 @@ class _InstanceState:
                - Single [20-500GB], step:1-GB increments.
         :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         :param pulumi.Input[int] core_instance_quantity: Default=2, [1-200]. If core_instance_quantity > 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        :param pulumi.Input[str] core_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-               * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[bool] immediate_delete_flag: The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
         :param pulumi.Input[str] ip_white: The white ip list of the cluster.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_instance_quantity: Count nodes of the master node.
+        :param pulumi.Input[str] master_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] name: HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         :param pulumi.Input[str] password: The password of the cluster web ui account. Size [0-128].
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
@@ -580,6 +587,9 @@ class _InstanceState:
     @property
     @pulumi.getter(name="coreInstanceType")
     def core_instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        """
         return pulumi.get(self, "core_instance_type")
 
     @core_instance_type.setter
@@ -627,7 +637,6 @@ class _InstanceState:
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
         HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-        * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         """
         return pulumi.get(self, "engine_version")
 
@@ -698,6 +707,9 @@ class _InstanceState:
     @property
     @pulumi.getter(name="masterInstanceType")
     def master_instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        """
         return pulumi.get(self, "master_instance_type")
 
     @master_instance_type.setter
@@ -909,15 +921,16 @@ class Instance(pulumi.CustomResource):
                - Single [20-500GB], step:1-GB increments.
         :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         :param pulumi.Input[int] core_instance_quantity: Default=2, [1-200]. If core_instance_quantity > 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        :param pulumi.Input[str] core_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-               * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[bool] immediate_delete_flag: The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
         :param pulumi.Input[str] ip_white: The white ip list of the cluster.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
+        :param pulumi.Input[str] master_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] name: HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         :param pulumi.Input[str] password: The password of the cluster web ui account. Size [0-128].
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
@@ -1112,16 +1125,17 @@ class Instance(pulumi.CustomResource):
                - Single [20-500GB], step:1-GB increments.
         :param pulumi.Input[str] core_disk_type: Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
         :param pulumi.Input[int] core_instance_quantity: Default=2, [1-200]. If core_instance_quantity > 1, this is cluster's instance. If core_instance_quantity = 1, this is a single instance.
+        :param pulumi.Input[str] core_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
         :param pulumi.Input[int] duration: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
         :param pulumi.Input[str] engine: Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
         :param pulumi.Input[str] engine_version: HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-               * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[bool] immediate_delete_flag: The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
         :param pulumi.Input[str] ip_white: The white ip list of the cluster.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_instance_quantity: Count nodes of the master node.
+        :param pulumi.Input[str] master_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] name: HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
         :param pulumi.Input[str] password: The password of the cluster web ui account. Size [0-128].
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
@@ -1220,6 +1234,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="coreInstanceType")
     def core_instance_type(self) -> pulumi.Output[str]:
+        """
+        Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        """
         return pulumi.get(self, "core_instance_type")
 
     @property
@@ -1251,7 +1268,6 @@ class Instance(pulumi.CustomResource):
     def engine_version(self) -> pulumi.Output[str]:
         """
         HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-        * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         """
         return pulumi.get(self, "engine_version")
 
@@ -1298,6 +1314,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="masterInstanceType")
     def master_instance_type(self) -> pulumi.Output[str]:
+        """
+        Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        """
         return pulumi.get(self, "master_instance_type")
 
     @property

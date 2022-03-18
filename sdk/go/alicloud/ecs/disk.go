@@ -62,7 +62,7 @@ type Disk struct {
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
 	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
 	// Indicates whether the disk is released together with the instance: Default value: false.
-	DeleteWithInstance pulumi.BoolPtrOutput `pulumi:"deleteWithInstance"`
+	DeleteWithInstance pulumi.BoolOutput `pulumi:"deleteWithInstance"`
 	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	DiskName    pulumi.StringOutput    `pulumi:"diskName"`

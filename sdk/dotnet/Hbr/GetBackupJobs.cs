@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The sort direction. Valid values: `ASCEND`, `DESCEND`.
+        /// The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
         /// </summary>
         [Input("sortDirection")]
         public string? SortDirection { get; set; }
@@ -325,7 +325,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The sort direction. Valid values: `ASCEND`, `DESCEND`.
+        /// The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
         /// </summary>
         [Input("sortDirection")]
         public Input<string>? SortDirection { get; set; }

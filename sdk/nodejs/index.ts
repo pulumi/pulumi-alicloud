@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 export * from "./getAccount";
 export * from "./getCallerIdentity";
 export * from "./getFileCrc64Checksum";
+export * from "./getMscSubContactVerificationMessage";
 export * from "./getMscSubContacts";
 export * from "./getMscSubSubscriptions";
 export * from "./getMscSubWebhooks";

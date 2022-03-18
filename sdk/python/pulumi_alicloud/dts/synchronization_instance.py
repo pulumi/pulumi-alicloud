@@ -18,6 +18,8 @@ class SynchronizationInstanceArgs:
                  payment_type: pulumi.Input[str],
                  source_endpoint_engine_name: pulumi.Input[str],
                  source_endpoint_region: pulumi.Input[str],
+                 auto_pay: Optional[pulumi.Input[str]] = None,
+                 auto_start: Optional[pulumi.Input[str]] = None,
                  compute_unit: Optional[pulumi.Input[int]] = None,
                  database_count: Optional[pulumi.Input[int]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -32,6 +34,8 @@ class SynchronizationInstanceArgs:
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] source_endpoint_engine_name: The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         :param pulumi.Input[str] source_endpoint_region: The region of source instance.
+        :param pulumi.Input[str] auto_pay: Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        :param pulumi.Input[str] auto_start: Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
         :param pulumi.Input[int] compute_unit: [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         :param pulumi.Input[int] database_count: The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         :param pulumi.Input[str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
@@ -45,6 +49,10 @@ class SynchronizationInstanceArgs:
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
         pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
+        if auto_start is not None:
+            pulumi.set(__self__, "auto_start", auto_start)
         if compute_unit is not None:
             pulumi.set(__self__, "compute_unit", compute_unit)
         if database_count is not None:
@@ -119,6 +127,30 @@ class SynchronizationInstanceArgs:
     @source_endpoint_region.setter
     def source_endpoint_region(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_endpoint_region", value)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_pay", value)
+
+    @property
+    @pulumi.getter(name="autoStart")
+    def auto_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_start")
+
+    @auto_start.setter
+    def auto_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_start", value)
 
     @property
     @pulumi.getter(name="computeUnit")
@@ -208,6 +240,8 @@ class SynchronizationInstanceArgs:
 @pulumi.input_type
 class _SynchronizationInstanceState:
     def __init__(__self__, *,
+                 auto_pay: Optional[pulumi.Input[str]] = None,
+                 auto_start: Optional[pulumi.Input[str]] = None,
                  compute_unit: Optional[pulumi.Input[int]] = None,
                  database_count: Optional[pulumi.Input[int]] = None,
                  destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
@@ -223,6 +257,8 @@ class _SynchronizationInstanceState:
                  sync_architecture: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationInstance resources.
+        :param pulumi.Input[str] auto_pay: Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        :param pulumi.Input[str] auto_start: Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
         :param pulumi.Input[int] compute_unit: [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         :param pulumi.Input[int] database_count: The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         :param pulumi.Input[str] destination_endpoint_engine_name: The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
@@ -237,6 +273,10 @@ class _SynchronizationInstanceState:
         :param pulumi.Input[str] status: The status.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`, `bidirectional`.
         """
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
+        if auto_start is not None:
+            pulumi.set(__self__, "auto_start", auto_start)
         if compute_unit is not None:
             pulumi.set(__self__, "compute_unit", compute_unit)
         if database_count is not None:
@@ -263,6 +303,30 @@ class _SynchronizationInstanceState:
             pulumi.set(__self__, "status", status)
         if sync_architecture is not None:
             pulumi.set(__self__, "sync_architecture", sync_architecture)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_pay", value)
+
+    @property
+    @pulumi.getter(name="autoStart")
+    def auto_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_start")
+
+    @auto_start.setter
+    def auto_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_start", value)
 
     @property
     @pulumi.getter(name="computeUnit")
@@ -426,6 +490,8 @@ class SynchronizationInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_pay: Optional[pulumi.Input[str]] = None,
+                 auto_start: Optional[pulumi.Input[str]] = None,
                  compute_unit: Optional[pulumi.Input[int]] = None,
                  database_count: Optional[pulumi.Input[int]] = None,
                  destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
@@ -474,6 +540,8 @@ class SynchronizationInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auto_pay: Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        :param pulumi.Input[str] auto_start: Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
         :param pulumi.Input[int] compute_unit: [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         :param pulumi.Input[int] database_count: The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         :param pulumi.Input[str] destination_endpoint_engine_name: The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
@@ -541,6 +609,8 @@ class SynchronizationInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_pay: Optional[pulumi.Input[str]] = None,
+                 auto_start: Optional[pulumi.Input[str]] = None,
                  compute_unit: Optional[pulumi.Input[int]] = None,
                  database_count: Optional[pulumi.Input[int]] = None,
                  destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
@@ -565,6 +635,8 @@ class SynchronizationInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SynchronizationInstanceArgs.__new__(SynchronizationInstanceArgs)
 
+            __props__.__dict__["auto_pay"] = auto_pay
+            __props__.__dict__["auto_start"] = auto_start
             __props__.__dict__["compute_unit"] = compute_unit
             __props__.__dict__["database_count"] = database_count
             if destination_endpoint_engine_name is None and not opts.urn:
@@ -598,6 +670,8 @@ class SynchronizationInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: Optional[pulumi.Input[str]] = None,
+            auto_start: Optional[pulumi.Input[str]] = None,
             compute_unit: Optional[pulumi.Input[int]] = None,
             database_count: Optional[pulumi.Input[int]] = None,
             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
@@ -618,6 +692,8 @@ class SynchronizationInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auto_pay: Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        :param pulumi.Input[str] auto_start: Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
         :param pulumi.Input[int] compute_unit: [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         :param pulumi.Input[int] database_count: The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         :param pulumi.Input[str] destination_endpoint_engine_name: The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
@@ -636,6 +712,8 @@ class SynchronizationInstance(pulumi.CustomResource):
 
         __props__ = _SynchronizationInstanceState.__new__(_SynchronizationInstanceState)
 
+        __props__.__dict__["auto_pay"] = auto_pay
+        __props__.__dict__["auto_start"] = auto_start
         __props__.__dict__["compute_unit"] = compute_unit
         __props__.__dict__["database_count"] = database_count
         __props__.__dict__["destination_endpoint_engine_name"] = destination_endpoint_engine_name
@@ -650,6 +728,22 @@ class SynchronizationInstance(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["sync_architecture"] = sync_architecture
         return SynchronizationInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether to automatically renew when it expires. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @property
+    @pulumi.getter(name="autoStart")
+    def auto_start(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_start")
 
     @property
     @pulumi.getter(name="computeUnit")

@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Indicates whether the disk is released together with the instance: Default value: false.
         /// </summary>
         [Output("deleteWithInstance")]
-        public Output<bool?> DeleteWithInstance { get; private set; } = null!;
+        public Output<bool> DeleteWithInstance { get; private set; } = null!;
 
         /// <summary>
         /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.

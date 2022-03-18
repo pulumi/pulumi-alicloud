@@ -96,7 +96,7 @@ export class TrailDeprecated extends pulumi.CustomResource {
     /**
      * The unique ARN of the Log Service role.
      */
-    public readonly slsWriteRoleArn!: pulumi.Output<string | undefined>;
+    public readonly slsWriteRoleArn!: pulumi.Output<string>;
     public readonly status!: pulumi.Output<string | undefined>;
     public readonly trailName!: pulumi.Output<string>;
     public readonly trailRegion!: pulumi.Output<string | undefined>;

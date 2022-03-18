@@ -17,7 +17,8 @@ class SaslUserArgs:
                  username: pulumi.Input[str],
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 password: Optional[pulumi.Input[str]] = None):
+                 password: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SaslUser resource.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
@@ -25,6 +26,7 @@ class SaslUserArgs:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] type: The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "username", username)
@@ -34,6 +36,8 @@ class SaslUserArgs:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -95,6 +99,18 @@ class SaslUserArgs:
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _SaslUserState:
@@ -103,6 +119,7 @@ class _SaslUserState:
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SaslUser resources.
@@ -110,6 +127,7 @@ class _SaslUserState:
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] type: The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
         """
         if instance_id is not None:
@@ -120,6 +138,8 @@ class _SaslUserState:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -173,6 +193,18 @@ class _SaslUserState:
 
     @property
     @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
         Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
@@ -193,15 +225,18 @@ class SaslUser(pulumi.CustomResource):
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA sasl user resource.
+        Provides an Alikafka sasl user resource.
 
         > **NOTE:** Available in 1.66.0+
 
         > **NOTE:**  Only the following regions support create alikafka sasl user.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
+
+        For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user a](https://www.alibabacloud.com/help/en/doc-detail/162221.html)
 
         ## Example Usage
 
@@ -239,10 +274,10 @@ class SaslUser(pulumi.CustomResource):
 
         ## Import
 
-        ALIKAFKA GROUP can be imported using the id, e.g.
+        Alikafka Sasl User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/saslUser:SaslUser user alikafka_post-cn-123455abc:username
+         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
         ```
 
         :param str resource_name: The name of the resource.
@@ -251,6 +286,7 @@ class SaslUser(pulumi.CustomResource):
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] type: The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
         """
         ...
@@ -260,12 +296,14 @@ class SaslUser(pulumi.CustomResource):
                  args: SaslUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA sasl user resource.
+        Provides an Alikafka sasl user resource.
 
         > **NOTE:** Available in 1.66.0+
 
         > **NOTE:**  Only the following regions support create alikafka sasl user.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
+
+        For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user a](https://www.alibabacloud.com/help/en/doc-detail/162221.html)
 
         ## Example Usage
 
@@ -303,10 +341,10 @@ class SaslUser(pulumi.CustomResource):
 
         ## Import
 
-        ALIKAFKA GROUP can be imported using the id, e.g.
+        Alikafka Sasl User can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:alikafka/saslUser:SaslUser user alikafka_post-cn-123455abc:username
+         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
         ```
 
         :param str resource_name: The name of the resource.
@@ -328,6 +366,7 @@ class SaslUser(pulumi.CustomResource):
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -347,6 +386,7 @@ class SaslUser(pulumi.CustomResource):
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["password"] = password
+            __props__.__dict__["type"] = type
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
@@ -364,6 +404,7 @@ class SaslUser(pulumi.CustomResource):
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'SaslUser':
         """
         Get an existing SaslUser resource's state with the given name, id, and optional extra
@@ -376,6 +417,7 @@ class SaslUser(pulumi.CustomResource):
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] type: The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -386,6 +428,7 @@ class SaslUser(pulumi.CustomResource):
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         __props__.__dict__["password"] = password
+        __props__.__dict__["type"] = type
         __props__.__dict__["username"] = username
         return SaslUser(resource_name, opts=opts, __props__=__props__)
 
@@ -420,6 +463,14 @@ class SaslUser(pulumi.CustomResource):
         Operation password. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter

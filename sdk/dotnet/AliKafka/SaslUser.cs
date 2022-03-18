@@ -10,12 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.AliKafka
 {
     /// <summary>
-    /// Provides an ALIKAFKA sasl user resource.
+    /// Provides an Alikafka sasl user resource.
     /// 
     /// &gt; **NOTE:** Available in 1.66.0+
     /// 
     /// &gt; **NOTE:**  Only the following regions support create alikafka sasl user.
     /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
+    /// 
+    /// For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user a](https://www.alibabacloud.com/help/en/doc-detail/162221.html)
     /// 
     /// ## Example Usage
     /// 
@@ -68,10 +70,10 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// ## Import
     /// 
-    /// ALIKAFKA GROUP can be imported using the id, e.g.
+    /// Alikafka Sasl User can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:alikafka/saslUser:SaslUser user alikafka_post-cn-123455abc:username
+    ///  $ pulumi import alicloud:alikafka/saslUser:SaslUser example &lt;instance_id&gt;:&lt;username&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/saslUser:SaslUser")]
@@ -100,6 +102,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
@@ -184,6 +192,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Password { get; set; }
 
         /// <summary>
+        /// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
         /// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.
         /// </summary>
         [Input("username", required: true)]
@@ -225,6 +239,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// The authentication mechanism. Valid values: `plain`, `scram`. Default value: `plain`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Username for the sasl user. The length should between 1 to 64 characters. The characters can only contain 'a'-'z', 'A'-'Z', '0'-'9', '_' and '-'.

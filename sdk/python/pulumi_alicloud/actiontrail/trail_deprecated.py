@@ -683,7 +683,7 @@ class TrailDeprecated(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slsWriteRoleArn")
-    def sls_write_role_arn(self) -> pulumi.Output[Optional[str]]:
+    def sls_write_role_arn(self) -> pulumi.Output[str]:
         """
         The unique ARN of the Log Service role.
         """

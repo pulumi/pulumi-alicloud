@@ -6,19 +6,25 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./application";
+export * from "./applicationScalingRule";
 export * from "./configMap";
+export * from "./getApplicationScalingRules";
 export * from "./getApplications";
 export * from "./getConfigMaps";
+export * from "./getGreyTagRoutes";
 export * from "./getIngresses";
 export * from "./getInstanceSpecifications";
 export * from "./getNamespaces";
 export * from "./getService";
+export * from "./greyTagRoute";
 export * from "./ingress";
 export * from "./namespace";
 
 // Import resources to register:
 import { Application } from "./application";
+import { ApplicationScalingRule } from "./applicationScalingRule";
 import { ConfigMap } from "./configMap";
+import { GreyTagRoute } from "./greyTagRoute";
 import { Ingress } from "./ingress";
 import { Namespace } from "./namespace";
 
@@ -28,8 +34,12 @@ const _module = {
         switch (type) {
             case "alicloud:sae/application:Application":
                 return new Application(name, <any>undefined, { urn })
+            case "alicloud:sae/applicationScalingRule:ApplicationScalingRule":
+                return new ApplicationScalingRule(name, <any>undefined, { urn })
             case "alicloud:sae/configMap:ConfigMap":
                 return new ConfigMap(name, <any>undefined, { urn })
+            case "alicloud:sae/greyTagRoute:GreyTagRoute":
+                return new GreyTagRoute(name, <any>undefined, { urn })
             case "alicloud:sae/ingress:Ingress":
                 return new Ingress(name, <any>undefined, { urn })
             case "alicloud:sae/namespace:Namespace":
@@ -40,6 +50,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "sae/application", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sae/applicationScalingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sae/configMap", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sae/greyTagRoute", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sae/ingress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sae/namespace", _module)

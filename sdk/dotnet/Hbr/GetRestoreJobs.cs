@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _restoreIds;
 
         /// <summary>
-        /// The ID of restore job.
+        /// The list of restore job IDs.
         /// </summary>
         public List<string> RestoreIds
         {
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _sourceTypes;
 
         /// <summary>
-        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         /// </summary>
         public List<string> SourceTypes
         {
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _restoreIds;
 
         /// <summary>
-        /// The ID of restore job.
+        /// The list of restore job IDs.
         /// </summary>
         public InputList<string> RestoreIds
         {
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _sourceTypes;
 
         /// <summary>
-        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         /// </summary>
         public InputList<string> SourceTypes
         {

@@ -21,6 +21,14 @@ namespace Pulumi.AliCloud.Vpn
     [AliCloudResourceType("alicloud:vpn/gateway:Gateway")]
     public partial class Gateway : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether to pay automatically. Default value: `true`. Valid values:
+        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// `true`: Enable automatic payment, automatic payment order.
+        /// </summary>
+        [Output("autoPay")]
+        public Output<bool?> AutoPay { get; private set; } = null!;
+
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
 
@@ -87,6 +95,12 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// The tags of VPN gateway.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The VPN belongs the vpc_id, the field can't be changed.
         /// </summary>
         [Output("vpcId")]
@@ -144,6 +158,14 @@ namespace Pulumi.AliCloud.Vpn
 
     public sealed class GatewayArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to pay automatically. Default value: `true`. Valid values:
+        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// `true`: Enable automatic payment, automatic payment order.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
+
         [Input("bandwidth", required: true)]
         public Input<int> Bandwidth { get; set; } = null!;
 
@@ -191,6 +213,18 @@ namespace Pulumi.AliCloud.Vpn
         [Input("sslConnections")]
         public Input<int>? SslConnections { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of VPN gateway.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The VPN belongs the vpc_id, the field can't be changed.
         /// </summary>
@@ -210,6 +244,14 @@ namespace Pulumi.AliCloud.Vpn
 
     public sealed class GatewayState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to pay automatically. Default value: `true`. Valid values:
+        /// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        /// `true`: Enable automatic payment, automatic payment order.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
+
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
@@ -274,6 +316,18 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of VPN gateway.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The VPN belongs the vpc_id, the field can't be changed.

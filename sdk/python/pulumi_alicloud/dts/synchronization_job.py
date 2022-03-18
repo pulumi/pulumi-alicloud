@@ -19,6 +19,7 @@ class SynchronizationJobArgs:
                  destination_endpoint_engine_name: pulumi.Input[str],
                  destination_endpoint_instance_type: pulumi.Input[str],
                  dts_instance_id: pulumi.Input[str],
+                 dts_job_name: pulumi.Input[str],
                  source_endpoint_engine_name: pulumi.Input[str],
                  source_endpoint_instance_type: pulumi.Input[str],
                  structure_initialization: pulumi.Input[bool],
@@ -34,7 +35,6 @@ class SynchronizationJobArgs:
                  destination_endpoint_port: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_region: Optional[pulumi.Input[str]] = None,
                  destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
-                 dts_job_name: Optional[pulumi.Input[str]] = None,
                  error_notice: Optional[pulumi.Input[bool]] = None,
                  error_phone: Optional[pulumi.Input[str]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
@@ -59,6 +59,7 @@ class SynchronizationJobArgs:
         :param pulumi.Input[str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[str] destination_endpoint_instance_type: The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
+        :param pulumi.Input[str] dts_job_name: The name of synchronization job.
         :param pulumi.Input[str] source_endpoint_engine_name: The type of source database. The default value is `MYSQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MYSQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         :param pulumi.Input[str] source_endpoint_instance_type: The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
@@ -77,7 +78,6 @@ class SynchronizationJobArgs:
         :param pulumi.Input[str] destination_endpoint_port: The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
         :param pulumi.Input[str] destination_endpoint_region: The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
         :param pulumi.Input[str] destination_endpoint_user_name: The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
-        :param pulumi.Input[str] dts_job_name: The name of synchronization job.
         :param pulumi.Input[bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
@@ -104,6 +104,7 @@ class SynchronizationJobArgs:
         pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
         pulumi.set(__self__, "destination_endpoint_instance_type", destination_endpoint_instance_type)
         pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+        pulumi.set(__self__, "dts_job_name", dts_job_name)
         pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
         pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
         pulumi.set(__self__, "structure_initialization", structure_initialization)
@@ -131,8 +132,6 @@ class SynchronizationJobArgs:
             pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
         if destination_endpoint_user_name is not None:
             pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
-        if dts_job_name is not None:
-            pulumi.set(__self__, "dts_job_name", dts_job_name)
         if error_notice is not None:
             pulumi.set(__self__, "error_notice", error_notice)
         if error_phone is not None:
@@ -237,6 +236,18 @@ class SynchronizationJobArgs:
     @dts_instance_id.setter
     def dts_instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dts_instance_id", value)
+
+    @property
+    @pulumi.getter(name="dtsJobName")
+    def dts_job_name(self) -> pulumi.Input[str]:
+        """
+        The name of synchronization job.
+        """
+        return pulumi.get(self, "dts_job_name")
+
+    @dts_job_name.setter
+    def dts_job_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dts_job_name", value)
 
     @property
     @pulumi.getter(name="sourceEndpointEngineName")
@@ -420,18 +431,6 @@ class SynchronizationJobArgs:
     @destination_endpoint_user_name.setter
     def destination_endpoint_user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "destination_endpoint_user_name", value)
-
-    @property
-    @pulumi.getter(name="dtsJobName")
-    def dts_job_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of synchronization job.
-        """
-        return pulumi.get(self, "dts_job_name")
-
-    @dts_job_name.setter
-    def dts_job_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "dts_job_name", value)
 
     @property
     @pulumi.getter(name="errorNotice")
@@ -1575,6 +1574,8 @@ class SynchronizationJob(pulumi.CustomResource):
             if dts_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dts_instance_id'")
             __props__.__dict__["dts_instance_id"] = dts_instance_id
+            if dts_job_name is None and not opts.urn:
+                raise TypeError("Missing required property 'dts_job_name'")
             __props__.__dict__["dts_job_name"] = dts_job_name
             __props__.__dict__["error_notice"] = error_notice
             __props__.__dict__["error_phone"] = error_phone
@@ -1926,7 +1927,7 @@ class SynchronizationJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def reserve(self) -> pulumi.Output[Optional[str]]:
+    def reserve(self) -> pulumi.Output[str]:
         """
         DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         """

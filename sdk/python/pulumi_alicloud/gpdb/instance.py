@@ -13,38 +13,36 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 engine: pulumi.Input[str],
+                 engine_version: pulumi.Input[str],
                  instance_class: pulumi.Input[str],
                  instance_group_count: pulumi.Input[str],
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 engine: Optional[pulumi.Input[str]] = None,
-                 engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] engine: Database engine: gpdb. System Default value: gpdb.
+        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         :param pulumi.Input[str] instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
         :param pulumi.Input[str] instance_group_count: The number of groups. Valid values: [2,4,8,16,32]
         :param pulumi.Input[str] description: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] engine: Database engine: gpdb. System Default value: gpdb.
-        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         """
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
         pulumi.set(__self__, "instance_class", instance_class)
         pulumi.set(__self__, "instance_group_count", instance_group_count)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if engine is not None:
-            pulumi.set(__self__, "engine", engine)
-        if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if security_ip_lists is not None:
@@ -53,6 +51,30 @@ class InstanceArgs:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> pulumi.Input[str]:
+        """
+        Database engine: gpdb. System Default value: gpdb.
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> pulumi.Input[str]:
+        """
+        Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine_version", value)
 
     @property
     @pulumi.getter(name="instanceClass")
@@ -98,30 +120,6 @@ class InstanceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[str]]:
-        """
-        Database engine: gpdb. System Default value: gpdb.
-        """
-        return pulumi.get(self, "engine")
-
-    @engine.setter
-    def engine(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "engine", value)
-
-    @property
-    @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
-        """
-        return pulumi.get(self, "engine_version")
-
-    @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "engine_version", value)
 
     @property
     @pulumi.getter(name="instanceChargeType")
@@ -507,7 +505,11 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["description"] = description
+            if engine is None and not opts.urn:
+                raise TypeError("Missing required property 'engine'")
             __props__.__dict__["engine"] = engine
+            if engine_version is None and not opts.urn:
+                raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             if instance_class is None and not opts.urn:

@@ -84,7 +84,8 @@ type Instance struct {
 	CoreDiskType pulumi.StringPtrOutput `pulumi:"coreDiskType"`
 	// Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrOutput `pulumi:"coreInstanceQuantity"`
-	CoreInstanceType     pulumi.StringOutput `pulumi:"coreInstanceType"`
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	CoreInstanceType pulumi.StringOutput `pulumi:"coreInstanceType"`
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
@@ -92,7 +93,6 @@ type Instance struct {
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine pulumi.StringPtrOutput `pulumi:"engine"`
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag pulumi.BoolPtrOutput `pulumi:"immediateDeleteFlag"`
@@ -103,8 +103,9 @@ type Instance struct {
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
 	// Count nodes of the master node.
-	MasterInstanceQuantity pulumi.IntOutput    `pulumi:"masterInstanceQuantity"`
-	MasterInstanceType     pulumi.StringOutput `pulumi:"masterInstanceType"`
+	MasterInstanceQuantity pulumi.IntOutput `pulumi:"masterInstanceQuantity"`
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	MasterInstanceType pulumi.StringOutput `pulumi:"masterInstanceType"`
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The password of the cluster web ui account. Size [0-128].
@@ -179,8 +180,9 @@ type instanceState struct {
 	// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
 	CoreDiskType *string `pulumi:"coreDiskType"`
 	// Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
-	CoreInstanceQuantity *int    `pulumi:"coreInstanceQuantity"`
-	CoreInstanceType     *string `pulumi:"coreInstanceType"`
+	CoreInstanceQuantity *int `pulumi:"coreInstanceQuantity"`
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	CoreInstanceType *string `pulumi:"coreInstanceType"`
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
@@ -188,7 +190,6 @@ type instanceState struct {
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine *string `pulumi:"engine"`
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag *bool `pulumi:"immediateDeleteFlag"`
@@ -199,8 +200,9 @@ type instanceState struct {
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// Count nodes of the master node.
-	MasterInstanceQuantity *int    `pulumi:"masterInstanceQuantity"`
-	MasterInstanceType     *string `pulumi:"masterInstanceType"`
+	MasterInstanceQuantity *int `pulumi:"masterInstanceQuantity"`
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	MasterInstanceType *string `pulumi:"masterInstanceType"`
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name *string `pulumi:"name"`
 	// The password of the cluster web ui account. Size [0-128].
@@ -239,7 +241,8 @@ type InstanceState struct {
 	CoreDiskType pulumi.StringPtrInput
 	// Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrInput
-	CoreInstanceType     pulumi.StringPtrInput
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	CoreInstanceType pulumi.StringPtrInput
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrInput
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
@@ -247,7 +250,6 @@ type InstanceState struct {
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine pulumi.StringPtrInput
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion pulumi.StringPtrInput
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag pulumi.BoolPtrInput
@@ -259,7 +261,8 @@ type InstanceState struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// Count nodes of the master node.
 	MasterInstanceQuantity pulumi.IntPtrInput
-	MasterInstanceType     pulumi.StringPtrInput
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	MasterInstanceType pulumi.StringPtrInput
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name pulumi.StringPtrInput
 	// The password of the cluster web ui account. Size [0-128].
@@ -301,8 +304,9 @@ type instanceArgs struct {
 	// Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
 	CoreDiskType *string `pulumi:"coreDiskType"`
 	// Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
-	CoreInstanceQuantity *int   `pulumi:"coreInstanceQuantity"`
-	CoreInstanceType     string `pulumi:"coreInstanceType"`
+	CoreInstanceQuantity *int `pulumi:"coreInstanceQuantity"`
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	CoreInstanceType string `pulumi:"coreInstanceType"`
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
@@ -310,7 +314,6 @@ type instanceArgs struct {
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine *string `pulumi:"engine"`
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion string `pulumi:"engineVersion"`
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag *bool `pulumi:"immediateDeleteFlag"`
@@ -319,8 +322,9 @@ type instanceArgs struct {
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
-	MaintainStartTime  *string `pulumi:"maintainStartTime"`
-	MasterInstanceType string  `pulumi:"masterInstanceType"`
+	MaintainStartTime *string `pulumi:"maintainStartTime"`
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	MasterInstanceType string `pulumi:"masterInstanceType"`
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name *string `pulumi:"name"`
 	// The password of the cluster web ui account. Size [0-128].
@@ -354,7 +358,8 @@ type InstanceArgs struct {
 	CoreDiskType pulumi.StringPtrInput
 	// Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
 	CoreInstanceQuantity pulumi.IntPtrInput
-	CoreInstanceType     pulumi.StringInput
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+	CoreInstanceType pulumi.StringInput
 	// The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
 	DeletionProtection pulumi.BoolPtrInput
 	// 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
@@ -362,7 +367,6 @@ type InstanceArgs struct {
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine pulumi.StringPtrInput
 	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-	// * `masterInstanceType`, `coreInstanceType` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	EngineVersion pulumi.StringInput
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag pulumi.BoolPtrInput
@@ -371,7 +375,8 @@ type InstanceArgs struct {
 	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
 	MaintainEndTime pulumi.StringPtrInput
 	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
-	MaintainStartTime  pulumi.StringPtrInput
+	MaintainStartTime pulumi.StringPtrInput
+	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
 	MasterInstanceType pulumi.StringInput
 	// HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	Name pulumi.StringPtrInput

@@ -118,6 +118,12 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Engine == nil {
+		return nil, errors.New("invalid value for required argument 'Engine'")
+	}
+	if args.EngineVersion == nil {
+		return nil, errors.New("invalid value for required argument 'EngineVersion'")
+	}
 	if args.InstanceClass == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceClass'")
 	}
@@ -198,9 +204,9 @@ type instanceArgs struct {
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Description *string `pulumi:"description"`
 	// Database engine: gpdb. System Default value: gpdb.
-	Engine *string `pulumi:"engine"`
+	Engine string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
-	EngineVersion *string `pulumi:"engineVersion"`
+	EngineVersion string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
@@ -221,9 +227,9 @@ type InstanceArgs struct {
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Description pulumi.StringPtrInput
 	// Database engine: gpdb. System Default value: gpdb.
-	Engine pulumi.StringPtrInput
+	Engine pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
-	EngineVersion pulumi.StringPtrInput
+	EngineVersion pulumi.StringInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).

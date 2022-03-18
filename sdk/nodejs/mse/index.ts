@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./cluster";
 export * from "./gateway";
 export * from "./getClusters";
+export * from "./getGateways";
 
 // Import resources to register:
 import { Cluster } from "./cluster";

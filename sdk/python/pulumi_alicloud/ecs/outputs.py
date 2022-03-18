@@ -41,6 +41,7 @@ __all__ = [
     'GetEcsDisksDiskMountInstanceResult',
     'GetEcsDisksDiskOperationLockResult',
     'GetEcsDisksOperationLockResult',
+    'GetEcsImageComponentsComponentResult',
     'GetEcsKeyPairsKeyPairResult',
     'GetEcsKeyPairsKeyPairInstanceResult',
     'GetEcsKeyPairsPairResult',
@@ -52,7 +53,9 @@ __all__ = [
     'GetEcsNetworkInterfacesInterfaceResult',
     'GetEcsPrefixListsListResult',
     'GetEcsPrefixListsListEntryResult',
+    'GetEcsSnapshotGroupsGroupResult',
     'GetEcsSnapshotsSnapshotResult',
+    'GetEcsStorageCapacityUnitsUnitResult',
     'GetEipAddressesAddressResult',
     'GetEipAddressesEipResult',
     'GetEipsAddressResult',
@@ -3251,6 +3254,134 @@ class GetEcsDisksOperationLockResult(dict):
 
 
 @pulumi.output_type
+class GetEcsImageComponentsComponentResult(dict):
+    def __init__(__self__, *,
+                 component_type: str,
+                 content: str,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 image_component_id: str,
+                 image_component_name: str,
+                 owner: str,
+                 resource_group_id: str,
+                 system_type: str,
+                 tags: Mapping[str, Any]):
+        """
+        :param str component_type: The type of the image component.
+        :param str content: The content of the image component.
+        :param str create_time: The time when the image component was created.
+        :param str description: The description of the image component.
+        :param str id: The ID of the Image Component.
+        :param str image_component_id: The ID of the image component.
+        :param str image_component_name: The name of the image component.
+        :param str owner: The type of the image component.
+        :param str resource_group_id: The ID of the resource group.
+        :param str system_type: The operating system type supported by the image component.
+        :param Mapping[str, Any] tags: List of label key-value pairs.
+        """
+        pulumi.set(__self__, "component_type", component_type)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_component_id", image_component_id)
+        pulumi.set(__self__, "image_component_name", image_component_name)
+        pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "system_type", system_type)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="componentType")
+    def component_type(self) -> str:
+        """
+        The type of the image component.
+        """
+        return pulumi.get(self, "component_type")
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        The content of the image component.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the image component was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the image component.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Image Component.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageComponentId")
+    def image_component_id(self) -> str:
+        """
+        The ID of the image component.
+        """
+        return pulumi.get(self, "image_component_id")
+
+    @property
+    @pulumi.getter(name="imageComponentName")
+    def image_component_name(self) -> str:
+        """
+        The name of the image component.
+        """
+        return pulumi.get(self, "image_component_name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> str:
+        """
+        The type of the image component.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="systemType")
+    def system_type(self) -> str:
+        """
+        The operating system type supported by the image component.
+        """
+        return pulumi.get(self, "system_type")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        List of label key-value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class GetEcsKeyPairsKeyPairResult(dict):
     def __init__(__self__, *,
                  finger_print: str,
@@ -4786,6 +4917,102 @@ class GetEcsPrefixListsListEntryResult(dict):
 
 
 @pulumi.output_type
+class GetEcsSnapshotGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 id: str,
+                 instance_id: str,
+                 resource_group_id: str,
+                 snapshot_group_id: str,
+                 snapshot_group_name: str,
+                 status: str,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str description: The description of the snapshot-consistent group.
+        :param str id: The ID of the Snapshot Group.
+        :param str instance_id: The ID of the instance.
+        :param str resource_group_id: The ID of the resource group to which the snapshot consistency group belongs.
+        :param str snapshot_group_id: The first ID of the resource.
+        :param str snapshot_group_name: The name of the snapshot-consistent group.
+        :param str status: The status of the resource.
+        :param Mapping[str, Any] tags: List of label key-value pairs.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "snapshot_group_id", snapshot_group_id)
+        pulumi.set(__self__, "snapshot_group_name", snapshot_group_name)
+        pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the snapshot-consistent group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Snapshot Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group to which the snapshot consistency group belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="snapshotGroupId")
+    def snapshot_group_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "snapshot_group_id")
+
+    @property
+    @pulumi.getter(name="snapshotGroupName")
+    def snapshot_group_name(self) -> str:
+        """
+        The name of the snapshot-consistent group.
+        """
+        return pulumi.get(self, "snapshot_group_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        List of label key-value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class GetEcsSnapshotsSnapshotResult(dict):
     def __init__(__self__, *,
                  category: str,
@@ -5060,6 +5287,123 @@ class GetEcsSnapshotsSnapshotResult(dict):
         A resource type that has a reference relationship.
         """
         return pulumi.get(self, "usage")
+
+
+@pulumi.output_type
+class GetEcsStorageCapacityUnitsUnitResult(dict):
+    def __init__(__self__, *,
+                 allocation_status: str,
+                 capacity: int,
+                 create_time: str,
+                 description: str,
+                 expired_time: str,
+                 id: str,
+                 start_time: str,
+                 status: str,
+                 storage_capacity_unit_id: str,
+                 storage_capacity_unit_name: str):
+        """
+        :param str allocation_status: When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `allocated`, `Ignored`.
+        :param int capacity: The capacity of the Storage Capacity Unit.
+        :param str create_time: The time when the Storage Capacity Unit was created.
+        :param str description: The description of the Storage Capacity Unit.
+        :param str expired_time: The time when the Storage Capacity Unit expires.
+        :param str id: The ID of the Storage Capacity Unit.
+        :param str start_time: The effective time of the Storage Capacity Unit.
+        :param str status: The status of Storage Capacity Unit.
+        :param str storage_capacity_unit_id: The ID of Storage Capacity Unit.
+        :param str storage_capacity_unit_name: The name of the Storage Capacity Unit.
+        """
+        pulumi.set(__self__, "allocation_status", allocation_status)
+        pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_capacity_unit_id", storage_capacity_unit_id)
+        pulumi.set(__self__, "storage_capacity_unit_name", storage_capacity_unit_name)
+
+    @property
+    @pulumi.getter(name="allocationStatus")
+    def allocation_status(self) -> str:
+        """
+        When the AllocationType value is Shared, this parameter indicates the allocation status of Storage Capacity Unit. Valid values: `allocated`, `Ignored`.
+        """
+        return pulumi.get(self, "allocation_status")
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> int:
+        """
+        The capacity of the Storage Capacity Unit.
+        """
+        return pulumi.get(self, "capacity")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the Storage Capacity Unit was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Storage Capacity Unit.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        The time when the Storage Capacity Unit expires.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Storage Capacity Unit.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The effective time of the Storage Capacity Unit.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of Storage Capacity Unit.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageCapacityUnitId")
+    def storage_capacity_unit_id(self) -> str:
+        """
+        The ID of Storage Capacity Unit.
+        """
+        return pulumi.get(self, "storage_capacity_unit_id")
+
+    @property
+    @pulumi.getter(name="storageCapacityUnitName")
+    def storage_capacity_unit_name(self) -> str:
+        """
+        The name of the Storage Capacity Unit.
+        """
+        return pulumi.get(self, "storage_capacity_unit_name")
 
 
 @pulumi.output_type

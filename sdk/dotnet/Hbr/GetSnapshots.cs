@@ -206,12 +206,6 @@ namespace Pulumi.AliCloud.Hbr
         public string? CreateTime { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
-        /// </summary>
-        [Input("enableDetails")]
-        public bool? EnableDetails { get; set; }
-
-        /// <summary>
         /// The ID of NAS File system.
         /// </summary>
         [Input("fileSystemId")]
@@ -294,12 +288,6 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
-        /// </summary>
-        [Input("enableDetails")]
-        public Input<bool>? EnableDetails { get; set; }
-
-        /// <summary>
         /// The ID of NAS File system.
         /// </summary>
         [Input("fileSystemId")]
@@ -363,7 +351,6 @@ namespace Pulumi.AliCloud.Hbr
         public readonly string? CompleteTime;
         public readonly string? CompleteTimeChecker;
         public readonly string? CreateTime;
-        public readonly bool? EnableDetails;
         public readonly string? FileSystemId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -388,8 +375,6 @@ namespace Pulumi.AliCloud.Hbr
             string? completeTimeChecker,
 
             string? createTime,
-
-            bool? enableDetails,
 
             string? fileSystemId,
 
@@ -417,7 +402,6 @@ namespace Pulumi.AliCloud.Hbr
             CompleteTime = completeTime;
             CompleteTimeChecker = completeTimeChecker;
             CreateTime = createTime;
-            EnableDetails = enableDetails;
             FileSystemId = fileSystemId;
             Id = id;
             Ids = ids;

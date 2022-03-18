@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Indicates whether the disk is released together with the instance. Default value: `false`.
         /// </summary>
         [Output("deleteWithInstance")]
-        public Output<bool?> DeleteWithInstance { get; private set; } = null!;
+        public Output<bool> DeleteWithInstance { get; private set; } = null!;
 
         /// <summary>
         /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -194,6 +194,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("storageSetPartitionNumber")]
         public Output<int?> StorageSetPartitionNumber { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
@@ -389,6 +392,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -554,6 +561,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

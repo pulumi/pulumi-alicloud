@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.Dts
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         /// </summary>
         [Output("reserve")]
-        public Output<string?> Reserve { get; private set; } = null!;
+        public Output<string> Reserve { get; private set; } = null!;
 
         /// <summary>
         /// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
@@ -480,8 +480,8 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// The name of synchronization job.
         /// </summary>
-        [Input("dtsJobName")]
-        public Input<string>? DtsJobName { get; set; }
+        [Input("dtsJobName", required: true)]
+        public Input<string> DtsJobName { get; set; } = null!;
 
         /// <summary>
         /// The error notice. Valid values: `true`, `false`.

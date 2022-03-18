@@ -2225,6 +2225,7 @@ export namespace dcdn {
          */
         weight: pulumi.Input<number>;
     }
+
 }
 
 export namespace ddos {
@@ -2861,20 +2862,20 @@ export namespace ecs {
         lockReason?: string;
     }
 
-    export interface GetDisksOperationLock {
-        lockReason?: string;
-    }
-
     export interface GetDisksOperationLockArgs {
         lockReason?: pulumi.Input<string>;
     }
 
-    export interface GetEcsDisksOperationLockArgs {
-        lockReason?: pulumi.Input<string>;
+    export interface GetDisksOperationLock {
+        lockReason?: string;
     }
 
     export interface GetEcsDisksOperationLock {
         lockReason?: string;
+    }
+
+    export interface GetEcsDisksOperationLockArgs {
+        lockReason?: pulumi.Input<string>;
     }
 
     export interface ImageDiskDeviceMapping {
@@ -4976,6 +4977,201 @@ export namespace sae {
          * Container port.
          */
         targetPort?: pulumi.Input<number>;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleMetric {
+        /**
+         * Maximum number of instances applied.
+         */
+        maxReplicas?: pulumi.Input<number>;
+        /**
+         * Indicator rule configuration. See the following `Block metrics`.
+         */
+        metrics?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetricMetric>[]>;
+        /**
+         * Minimum number of instances applied.
+         */
+        minReplicas?: pulumi.Input<number>;
+        /**
+         * Apply shrink rules. See the following `Block scaleDownRules`.
+         */
+        scaleDownRules?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetricScaleDownRules>;
+        /**
+         * Apply expansion rules. See the following `Block scaleUpRules`.
+         */
+        scaleUpRules?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetricScaleUpRules>;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleMetricMetric {
+        /**
+         * According to different `metricType`, set the target value of the corresponding monitoring index.
+         */
+        metricTargetAverageUtilization?: pulumi.Input<number>;
+        /**
+         * Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+         * - CPU: CPU usage.
+         * - MEMORY: MEMORY usage.
+         * - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
+         * - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
+         * - SLB_RT: the average response time of public network SLB within 15 seconds.
+         */
+        metricType?: pulumi.Input<string>;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleMetricScaleDownRules {
+        /**
+         * Whether shrinkage is prohibited.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+         */
+        stabilizationWindowSeconds?: pulumi.Input<number>;
+        /**
+         * Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+         */
+        step?: pulumi.Input<number>;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleMetricScaleUpRules {
+        /**
+         * Whether shrinkage is prohibited.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+         */
+        stabilizationWindowSeconds?: pulumi.Input<number>;
+        /**
+         * Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+         */
+        step?: pulumi.Input<number>;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleTimer {
+        /**
+         * The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+         */
+        beginDate?: pulumi.Input<string>;
+        /**
+         * The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+         */
+        endDate?: pulumi.Input<string>;
+        /**
+         * The period in which a timed elastic scaling strategy is executed.
+         */
+        period?: pulumi.Input<string>;
+        /**
+         * Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+         */
+        schedules?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleTimerSchedule>[]>;
+    }
+
+    export interface ApplicationScalingRuleScalingRuleTimerSchedule {
+        /**
+         * Trigger point in time. When supporting format: minutes, for example: `08:00`.
+         */
+        atTime?: pulumi.Input<string>;
+        /**
+         * Maximum number of instances applied.
+         */
+        maxReplicas?: pulumi.Input<number>;
+        /**
+         * Minimum number of instances applied.
+         */
+        minReplicas?: pulumi.Input<number>;
+        /**
+         * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+         */
+        targetReplicas?: pulumi.Input<number>;
+    }
+
+    export interface GreyTagRouteDubboRule {
+        /**
+         * The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+         */
+        condition?: pulumi.Input<string>;
+        /**
+         * The service group.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * A list of conditions items. The details see Block `dubboRulesItems`.
+         */
+        items?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteDubboRuleItem>[]>;
+        /**
+         * The method name
+         */
+        methodName?: pulumi.Input<string>;
+        /**
+         * The service name.
+         */
+        serviceName?: pulumi.Input<string>;
+        /**
+         * The service version.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface GreyTagRouteDubboRuleItem {
+        /**
+         * The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+         */
+        cond?: pulumi.Input<string>;
+        /**
+         * The parameter value gets the expression.
+         */
+        expr?: pulumi.Input<string>;
+        /**
+         * The parameter number.
+         */
+        index?: pulumi.Input<number>;
+        /**
+         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * The value of the parameter.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GreyTagRouteScRule {
+        /**
+         * The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+         */
+        condition?: pulumi.Input<string>;
+        /**
+         * A list of conditions items. The details see Block `scRulesItems`.
+         */
+        items?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteScRuleItem>[]>;
+        /**
+         * The path corresponding to the grayscale rule.
+         */
+        path?: pulumi.Input<string>;
+    }
+
+    export interface GreyTagRouteScRuleItem {
+        /**
+         * The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+         */
+        cond?: pulumi.Input<string>;
+        /**
+         * The name of the parameter.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * The compare types. Valid values: `param`, `cookie`, `header`.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * The value of the parameter.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface IngressDefaultRule {

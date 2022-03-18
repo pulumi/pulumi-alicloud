@@ -58,9 +58,6 @@ export class Instance extends pulumi.CustomResource {
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
-    /**
-     * security group IDs configured to Bastionhost.
-     */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * A mapping of tags to assign to the resource.
@@ -141,9 +138,6 @@ export interface InstanceState {
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
-    /**
-     * security group IDs configured to Bastionhost.
-     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
@@ -176,9 +170,6 @@ export interface InstanceArgs {
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
-    /**
-     * security group IDs configured to Bastionhost.
-     */
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.

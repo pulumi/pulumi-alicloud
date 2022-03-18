@@ -161,6 +161,193 @@ func (o GetConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetConfigsConfigOu
 	}).(GetConfigsConfigOutput)
 }
 
+type GetDataLimitsLimit struct {
+	// Whether to enable the log auditing feature.
+	AuditStatus int `pulumi:"auditStatus"`
+	// The status of the connectivity test between the data asset and SDDP.
+	CheckStatus int `pulumi:"checkStatus"`
+	// The first ID of the resource.
+	DataLimitId string `pulumi:"dataLimitId"`
+	// -The type of the database.
+	EngineType string `pulumi:"engineType"`
+	// The ID of the Data Limit.
+	Id string `pulumi:"id"`
+	// The name of the service to which the data asset belongs.
+	LocalName string `pulumi:"localName"`
+	// The retention period of raw logs after you enable the log auditing feature.
+	LogStoreDay int `pulumi:"logStoreDay"`
+	// The ID of the data asset.
+	ParentId string `pulumi:"parentId"`
+	// The port that is used to connect to the database.
+	Port int `pulumi:"port"`
+	// The type of the service to which the data asset belongs.
+	ResourceType string `pulumi:"resourceType"`
+	// The name of the user who owns the data asset.
+	UserName string `pulumi:"userName"`
+}
+
+// GetDataLimitsLimitInput is an input type that accepts GetDataLimitsLimitArgs and GetDataLimitsLimitOutput values.
+// You can construct a concrete instance of `GetDataLimitsLimitInput` via:
+//
+//          GetDataLimitsLimitArgs{...}
+type GetDataLimitsLimitInput interface {
+	pulumi.Input
+
+	ToGetDataLimitsLimitOutput() GetDataLimitsLimitOutput
+	ToGetDataLimitsLimitOutputWithContext(context.Context) GetDataLimitsLimitOutput
+}
+
+type GetDataLimitsLimitArgs struct {
+	// Whether to enable the log auditing feature.
+	AuditStatus pulumi.IntInput `pulumi:"auditStatus"`
+	// The status of the connectivity test between the data asset and SDDP.
+	CheckStatus pulumi.IntInput `pulumi:"checkStatus"`
+	// The first ID of the resource.
+	DataLimitId pulumi.StringInput `pulumi:"dataLimitId"`
+	// -The type of the database.
+	EngineType pulumi.StringInput `pulumi:"engineType"`
+	// The ID of the Data Limit.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the service to which the data asset belongs.
+	LocalName pulumi.StringInput `pulumi:"localName"`
+	// The retention period of raw logs after you enable the log auditing feature.
+	LogStoreDay pulumi.IntInput `pulumi:"logStoreDay"`
+	// The ID of the data asset.
+	ParentId pulumi.StringInput `pulumi:"parentId"`
+	// The port that is used to connect to the database.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The type of the service to which the data asset belongs.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The name of the user who owns the data asset.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (GetDataLimitsLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataLimitsLimit)(nil)).Elem()
+}
+
+func (i GetDataLimitsLimitArgs) ToGetDataLimitsLimitOutput() GetDataLimitsLimitOutput {
+	return i.ToGetDataLimitsLimitOutputWithContext(context.Background())
+}
+
+func (i GetDataLimitsLimitArgs) ToGetDataLimitsLimitOutputWithContext(ctx context.Context) GetDataLimitsLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataLimitsLimitOutput)
+}
+
+// GetDataLimitsLimitArrayInput is an input type that accepts GetDataLimitsLimitArray and GetDataLimitsLimitArrayOutput values.
+// You can construct a concrete instance of `GetDataLimitsLimitArrayInput` via:
+//
+//          GetDataLimitsLimitArray{ GetDataLimitsLimitArgs{...} }
+type GetDataLimitsLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetDataLimitsLimitArrayOutput() GetDataLimitsLimitArrayOutput
+	ToGetDataLimitsLimitArrayOutputWithContext(context.Context) GetDataLimitsLimitArrayOutput
+}
+
+type GetDataLimitsLimitArray []GetDataLimitsLimitInput
+
+func (GetDataLimitsLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataLimitsLimit)(nil)).Elem()
+}
+
+func (i GetDataLimitsLimitArray) ToGetDataLimitsLimitArrayOutput() GetDataLimitsLimitArrayOutput {
+	return i.ToGetDataLimitsLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataLimitsLimitArray) ToGetDataLimitsLimitArrayOutputWithContext(ctx context.Context) GetDataLimitsLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataLimitsLimitArrayOutput)
+}
+
+type GetDataLimitsLimitOutput struct{ *pulumi.OutputState }
+
+func (GetDataLimitsLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataLimitsLimit)(nil)).Elem()
+}
+
+func (o GetDataLimitsLimitOutput) ToGetDataLimitsLimitOutput() GetDataLimitsLimitOutput {
+	return o
+}
+
+func (o GetDataLimitsLimitOutput) ToGetDataLimitsLimitOutputWithContext(ctx context.Context) GetDataLimitsLimitOutput {
+	return o
+}
+
+// Whether to enable the log auditing feature.
+func (o GetDataLimitsLimitOutput) AuditStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) int { return v.AuditStatus }).(pulumi.IntOutput)
+}
+
+// The status of the connectivity test between the data asset and SDDP.
+func (o GetDataLimitsLimitOutput) CheckStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) int { return v.CheckStatus }).(pulumi.IntOutput)
+}
+
+// The first ID of the resource.
+func (o GetDataLimitsLimitOutput) DataLimitId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.DataLimitId }).(pulumi.StringOutput)
+}
+
+// -The type of the database.
+func (o GetDataLimitsLimitOutput) EngineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.EngineType }).(pulumi.StringOutput)
+}
+
+// The ID of the Data Limit.
+func (o GetDataLimitsLimitOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the service to which the data asset belongs.
+func (o GetDataLimitsLimitOutput) LocalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.LocalName }).(pulumi.StringOutput)
+}
+
+// The retention period of raw logs after you enable the log auditing feature.
+func (o GetDataLimitsLimitOutput) LogStoreDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) int { return v.LogStoreDay }).(pulumi.IntOutput)
+}
+
+// The ID of the data asset.
+func (o GetDataLimitsLimitOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.ParentId }).(pulumi.StringOutput)
+}
+
+// The port that is used to connect to the database.
+func (o GetDataLimitsLimitOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The type of the service to which the data asset belongs.
+func (o GetDataLimitsLimitOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The name of the user who owns the data asset.
+func (o GetDataLimitsLimitOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type GetDataLimitsLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataLimitsLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataLimitsLimit)(nil)).Elem()
+}
+
+func (o GetDataLimitsLimitArrayOutput) ToGetDataLimitsLimitArrayOutput() GetDataLimitsLimitArrayOutput {
+	return o
+}
+
+func (o GetDataLimitsLimitArrayOutput) ToGetDataLimitsLimitArrayOutputWithContext(ctx context.Context) GetDataLimitsLimitArrayOutput {
+	return o
+}
+
+func (o GetDataLimitsLimitArrayOutput) Index(i pulumi.IntInput) GetDataLimitsLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataLimitsLimit {
+		return vs[0].([]GetDataLimitsLimit)[vs[1].(int)]
+	}).(GetDataLimitsLimitOutput)
+}
+
 type GetInstancesInstance struct {
 	// Whether the required RAM authorization is configured.
 	Authed bool   `pulumi:"authed"`
@@ -634,12 +821,16 @@ func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigsConfigInput)(nil)).Elem(), GetConfigsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigsConfigArrayInput)(nil)).Elem(), GetConfigsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataLimitsLimitInput)(nil)).Elem(), GetDataLimitsLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataLimitsLimitArrayInput)(nil)).Elem(), GetDataLimitsLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleInput)(nil)).Elem(), GetRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleArrayInput)(nil)).Elem(), GetRulesRuleArray{})
 	pulumi.RegisterOutputType(GetConfigsConfigOutput{})
 	pulumi.RegisterOutputType(GetConfigsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDataLimitsLimitOutput{})
+	pulumi.RegisterOutputType(GetDataLimitsLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleOutput{})

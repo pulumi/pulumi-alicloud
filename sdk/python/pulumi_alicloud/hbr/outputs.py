@@ -1065,15 +1065,17 @@ class GetNasBackupPlansPlanResult(dict):
         """
         :param str backup_type: Backup type. Valid values: `COMPLETE`.
         :param str create_time: File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
+        :param str created_time: The creation time of the backup plan. UNIX time in seconds.
         :param bool disabled: Whether to be suspended. Valid values: `true`, `false`.
         :param str file_system_id: The File System ID of Nas.
         :param str id: The ID of Nas backup plan.
         :param str nas_backup_plan_id: The ID of Nas backup plan.
         :param str nas_backup_plan_name: The name of the resource.
-        :param str options: Options of nas.
+        :param str options: Options field of Nas backup plan.
         :param Sequence[str] paths: List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
         pulumi.set(__self__, "backup_type", backup_type)
@@ -1110,6 +1112,9 @@ class GetNasBackupPlansPlanResult(dict):
     @property
     @pulumi.getter(name="createdTime")
     def created_time(self) -> str:
+        """
+        The creation time of the backup plan. UNIX time in seconds.
+        """
         return pulumi.get(self, "created_time")
 
     @property
@@ -1156,7 +1161,7 @@ class GetNasBackupPlansPlanResult(dict):
     @pulumi.getter
     def options(self) -> str:
         """
-        Options of nas.
+        Options field of Nas backup plan.
         """
         return pulumi.get(self, "options")
 
@@ -1187,6 +1192,9 @@ class GetNasBackupPlansPlanResult(dict):
     @property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> str:
+        """
+        The update time of the backup plan. UNIX time in seconds.
+        """
         return pulumi.get(self, "updated_time")
 
     @property
@@ -1408,7 +1416,7 @@ class GetRestoreJobsJobResult(dict):
         :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
         :param str snapshot_hash: The hashcode of Snapshot.
         :param str snapshot_id: The ID of Snapshot.
-        :param str source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param str source_type: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         :param str start_time: The start time of restore job. Unix Time in Seconds.
         :param str status: The status of restore job.
         :param str target_bucket: The name of target ofo OSS bucket.
@@ -1603,7 +1611,7 @@ class GetRestoreJobsJobResult(dict):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> str:
         """
-        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         """
         return pulumi.get(self, "source_type")
 

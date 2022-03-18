@@ -6,13 +6,17 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .application import *
+from .application_scaling_rule import *
 from .config_map import *
+from .get_application_scaling_rules import *
 from .get_applications import *
 from .get_config_maps import *
+from .get_grey_tag_routes import *
 from .get_ingresses import *
 from .get_instance_specifications import *
 from .get_namespaces import *
 from .get_service import *
+from .grey_tag_route import *
 from .ingress import *
 from .namespace import *
 from ._inputs import *

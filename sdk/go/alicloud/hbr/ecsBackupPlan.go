@@ -114,7 +114,7 @@ type EcsBackupPlan struct {
 	Include pulumi.StringPtrOutput `pulumi:"include"`
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+	// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
 	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths pulumi.StringArrayOutput `pulumi:"paths"`
@@ -190,7 +190,7 @@ type ecsBackupPlanState struct {
 	Include *string `pulumi:"include"`
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId *string `pulumi:"instanceId"`
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+	// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
 	Options *string `pulumi:"options"`
 	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths []string `pulumi:"paths"`
@@ -220,7 +220,7 @@ type EcsBackupPlanState struct {
 	Include pulumi.StringPtrInput
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringPtrInput
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+	// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
 	Options pulumi.StringPtrInput
 	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths pulumi.StringArrayInput
@@ -254,7 +254,7 @@ type ecsBackupPlanArgs struct {
 	Include *string `pulumi:"include"`
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId string `pulumi:"instanceId"`
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+	// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
 	Options *string `pulumi:"options"`
 	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths []string `pulumi:"paths"`
@@ -285,7 +285,7 @@ type EcsBackupPlanArgs struct {
 	Include pulumi.StringPtrInput
 	// The ID of ECS instance. The ecs backup client must have been installed on the host.
 	InstanceId pulumi.StringInput
-	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
+	// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
 	Options pulumi.StringPtrInput
 	// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
 	Paths pulumi.StringArrayInput

@@ -80,7 +80,7 @@ type Trail struct {
 	// The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
 	SlsProjectArn pulumi.StringPtrOutput `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
-	SlsWriteRoleArn pulumi.StringPtrOutput `pulumi:"slsWriteRoleArn"`
+	SlsWriteRoleArn pulumi.StringOutput `pulumi:"slsWriteRoleArn"`
 	// The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// The name of the trail to be created, which must be unique for an account.

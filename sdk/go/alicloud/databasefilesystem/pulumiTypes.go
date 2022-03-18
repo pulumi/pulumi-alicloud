@@ -445,6 +445,220 @@ func (o GetInstancesInstanceEcsListArrayOutput) Index(i pulumi.IntInput) GetInst
 	}).(GetInstancesInstanceEcsListOutput)
 }
 
+type GetSnapshotsSnapshot struct {
+	// The type of the Snapshot.
+	Category string `pulumi:"category"`
+	// The creation time of the snapshot.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the snapshot.
+	Description string `pulumi:"description"`
+	// The ID of the Snapshot.
+	Id string `pulumi:"id"`
+	// The ID of the database file system.
+	InstanceId string `pulumi:"instanceId"`
+	// The last modification time of the snapshot.
+	LastModifiedTime string `pulumi:"lastModifiedTime"`
+	// The progress of the snapshot.
+	Progress string `pulumi:"progress"`
+	// The remaining completion time of the snapshot being created, in seconds.
+	RemainTime int `pulumi:"remainTime"`
+	// The retention days of the snapshot.
+	RetentionDays int `pulumi:"retentionDays"`
+	// The ID of the snapshot.
+	SnapshotId string `pulumi:"snapshotId"`
+	// The name of the snapshot.
+	SnapshotName string `pulumi:"snapshotName"`
+	// The creation of the snapshot.
+	SnapshotType string `pulumi:"snapshotType"`
+	// Source database file system capacity.
+	SourceFsSize int `pulumi:"sourceFsSize"`
+	// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+	Status string `pulumi:"status"`
+}
+
+// GetSnapshotsSnapshotInput is an input type that accepts GetSnapshotsSnapshotArgs and GetSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetSnapshotsSnapshotInput` via:
+//
+//          GetSnapshotsSnapshotArgs{...}
+type GetSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput
+	ToGetSnapshotsSnapshotOutputWithContext(context.Context) GetSnapshotsSnapshotOutput
+}
+
+type GetSnapshotsSnapshotArgs struct {
+	// The type of the Snapshot.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The creation time of the snapshot.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the snapshot.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Snapshot.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the database file system.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The last modification time of the snapshot.
+	LastModifiedTime pulumi.StringInput `pulumi:"lastModifiedTime"`
+	// The progress of the snapshot.
+	Progress pulumi.StringInput `pulumi:"progress"`
+	// The remaining completion time of the snapshot being created, in seconds.
+	RemainTime pulumi.IntInput `pulumi:"remainTime"`
+	// The retention days of the snapshot.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// The ID of the snapshot.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// The name of the snapshot.
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+	// The creation of the snapshot.
+	SnapshotType pulumi.StringInput `pulumi:"snapshotType"`
+	// Source database file system capacity.
+	SourceFsSize pulumi.IntInput `pulumi:"sourceFsSize"`
+	// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput {
+	return i.ToGetSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotOutput)
+}
+
+// GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
+//
+//          GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
+type GetSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput
+	ToGetSnapshotsSnapshotArrayOutputWithContext(context.Context) GetSnapshotsSnapshotArrayOutput
+}
+
+type GetSnapshotsSnapshotArray []GetSnapshotsSnapshotInput
+
+func (GetSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput {
+	return i.ToGetSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotArrayOutput)
+}
+
+type GetSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
+	return o
+}
+
+// The type of the Snapshot.
+func (o GetSnapshotsSnapshotOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The creation time of the snapshot.
+func (o GetSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the snapshot.
+func (o GetSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Snapshot.
+func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the database file system.
+func (o GetSnapshotsSnapshotOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The last modification time of the snapshot.
+func (o GetSnapshotsSnapshotOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The progress of the snapshot.
+func (o GetSnapshotsSnapshotOutput) Progress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Progress }).(pulumi.StringOutput)
+}
+
+// The remaining completion time of the snapshot being created, in seconds.
+func (o GetSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
+}
+
+// The retention days of the snapshot.
+func (o GetSnapshotsSnapshotOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// The ID of the snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// The creation of the snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotType }).(pulumi.StringOutput)
+}
+
+// Source database file system capacity.
+func (o GetSnapshotsSnapshotOutput) SourceFsSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.SourceFsSize }).(pulumi.IntOutput)
+}
+
+// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotsSnapshot {
+		return vs[0].([]GetSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetSnapshotsSnapshotOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEcsListInput)(nil)).Elem(), InstanceEcsListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEcsListArrayInput)(nil)).Elem(), InstanceEcsListArray{})
@@ -452,10 +666,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceEcsListInput)(nil)).Elem(), GetInstancesInstanceEcsListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceEcsListArrayInput)(nil)).Elem(), GetInstancesInstanceEcsListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotInput)(nil)).Elem(), GetSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotArrayInput)(nil)).Elem(), GetSnapshotsSnapshotArray{})
 	pulumi.RegisterOutputType(InstanceEcsListOutput{})
 	pulumi.RegisterOutputType(InstanceEcsListArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceEcsListOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceEcsListArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetSnapshotsSnapshotArrayOutput{})
 }

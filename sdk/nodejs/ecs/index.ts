@@ -17,6 +17,7 @@ export * from "./ecsDedicatedHostCluster";
 export * from "./ecsDeploymentSet";
 export * from "./ecsDisk";
 export * from "./ecsDiskAttachment";
+export * from "./ecsImageComponent";
 export * from "./ecsKeyPair";
 export * from "./ecsKeyPairAttachment";
 export * from "./ecsLaunchTemplate";
@@ -25,6 +26,7 @@ export * from "./ecsNetworkInterfaceAttachment";
 export * from "./ecsPrefixList";
 export * from "./ecsSessionManagerStatus";
 export * from "./ecsSnapshot";
+export * from "./ecsSnapshotGroup";
 export * from "./eip";
 export * from "./eipAddress";
 export * from "./eipAssociation";
@@ -35,11 +37,14 @@ export * from "./getDisks";
 export * from "./getEcsDedicatedHostClusters";
 export * from "./getEcsDeploymentSets";
 export * from "./getEcsDisks";
+export * from "./getEcsImageComponents";
 export * from "./getEcsKeyPairs";
 export * from "./getEcsLaunchTemplates";
 export * from "./getEcsNetworkInterfaces";
 export * from "./getEcsPrefixLists";
+export * from "./getEcsSnapshotGroups";
 export * from "./getEcsSnapshots";
+export * from "./getEcsStorageCapacityUnits";
 export * from "./getEipAddresses";
 export * from "./getEips";
 export * from "./getHpcClusters";
@@ -82,6 +87,7 @@ import { EcsDedicatedHostCluster } from "./ecsDedicatedHostCluster";
 import { EcsDeploymentSet } from "./ecsDeploymentSet";
 import { EcsDisk } from "./ecsDisk";
 import { EcsDiskAttachment } from "./ecsDiskAttachment";
+import { EcsImageComponent } from "./ecsImageComponent";
 import { EcsKeyPair } from "./ecsKeyPair";
 import { EcsKeyPairAttachment } from "./ecsKeyPairAttachment";
 import { EcsLaunchTemplate } from "./ecsLaunchTemplate";
@@ -90,6 +96,7 @@ import { EcsNetworkInterfaceAttachment } from "./ecsNetworkInterfaceAttachment";
 import { EcsPrefixList } from "./ecsPrefixList";
 import { EcsSessionManagerStatus } from "./ecsSessionManagerStatus";
 import { EcsSnapshot } from "./ecsSnapshot";
+import { EcsSnapshotGroup } from "./ecsSnapshotGroup";
 import { Eip } from "./eip";
 import { EipAddress } from "./eipAddress";
 import { EipAssociation } from "./eipAssociation";
@@ -138,6 +145,8 @@ const _module = {
                 return new EcsDisk(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment":
                 return new EcsDiskAttachment(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsImageComponent:EcsImageComponent":
+                return new EcsImageComponent(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsKeyPair:EcsKeyPair":
                 return new EcsKeyPair(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment":
@@ -154,6 +163,8 @@ const _module = {
                 return new EcsSessionManagerStatus(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
                 return new EcsSnapshot(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup":
+                return new EcsSnapshotGroup(name, <any>undefined, { urn })
             case "alicloud:ecs/eip:Eip":
                 return new Eip(name, <any>undefined, { urn })
             case "alicloud:ecs/eipAddress:EipAddress":
@@ -209,6 +220,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDedicatedHostCluster",
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDeploymentSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDisk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDiskAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsImageComponent", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPair", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPairAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsLaunchTemplate", _module)
@@ -217,6 +229,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterfaceAttach
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsPrefixList", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSessionManagerStatus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshot", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshotGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAssociation", _module)

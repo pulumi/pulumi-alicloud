@@ -20,6 +20,7 @@ class ScalingGroupArgs:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
+                 launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
                  on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
@@ -28,6 +29,7 @@ class ScalingGroupArgs:
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -40,7 +42,8 @@ class ScalingGroupArgs:
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
-        :param pulumi.Input[str] launch_template_id: Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+        :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -58,6 +61,9 @@ class ScalingGroupArgs:
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
@@ -73,6 +79,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
         if launch_template_id is not None:
             pulumi.set(__self__, "launch_template_id", launch_template_id)
+        if launch_template_version is not None:
+            pulumi.set(__self__, "launch_template_version", launch_template_version)
         if loadbalancer_ids is not None:
             pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
         if multi_az_policy is not None:
@@ -89,6 +97,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
         if spot_instance_remedy is not None:
             pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
             pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
@@ -175,13 +185,25 @@ class ScalingGroupArgs:
     @pulumi.getter(name="launchTemplateId")
     def launch_template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         """
         return pulumi.get(self, "launch_template_id")
 
     @launch_template_id.setter
     def launch_template_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "launch_template_id", value)
+
+    @property
+    @pulumi.getter(name="launchTemplateVersion")
+    def launch_template_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+        """
+        return pulumi.get(self, "launch_template_version")
+
+    @launch_template_version.setter
+    def launch_template_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "launch_template_version", value)
 
     @property
     @pulumi.getter(name="loadbalancerIds")
@@ -289,6 +311,20 @@ class ScalingGroupArgs:
         pulumi.set(self, "spot_instance_remedy", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -321,6 +357,7 @@ class _ScalingGroupState:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
+                 launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -331,6 +368,7 @@ class _ScalingGroupState:
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -341,7 +379,8 @@ class _ScalingGroupState:
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
-        :param pulumi.Input[str] launch_template_id: Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+        :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -361,6 +400,9 @@ class _ScalingGroupState:
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
@@ -374,6 +416,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
         if launch_template_id is not None:
             pulumi.set(__self__, "launch_template_id", launch_template_id)
+        if launch_template_version is not None:
+            pulumi.set(__self__, "launch_template_version", launch_template_version)
         if loadbalancer_ids is not None:
             pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
         if max_size is not None:
@@ -394,6 +438,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
         if spot_instance_remedy is not None:
             pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
             pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
@@ -456,13 +502,25 @@ class _ScalingGroupState:
     @pulumi.getter(name="launchTemplateId")
     def launch_template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         """
         return pulumi.get(self, "launch_template_id")
 
     @launch_template_id.setter
     def launch_template_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "launch_template_id", value)
+
+    @property
+    @pulumi.getter(name="launchTemplateVersion")
+    def launch_template_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+        """
+        return pulumi.get(self, "launch_template_version")
+
+    @launch_template_version.setter
+    def launch_template_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "launch_template_version", value)
 
     @property
     @pulumi.getter(name="loadbalancerIds")
@@ -594,6 +652,20 @@ class _ScalingGroupState:
         pulumi.set(self, "spot_instance_remedy", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -628,6 +700,7 @@ class ScalingGroup(pulumi.CustomResource):
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
+                 launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -638,6 +711,7 @@ class ScalingGroup(pulumi.CustomResource):
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -658,7 +732,8 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
-        :param pulumi.Input[str] launch_template_id: Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+        :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -678,6 +753,9 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
@@ -716,6 +794,7 @@ class ScalingGroup(pulumi.CustomResource):
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  group_deletion_protection: Optional[pulumi.Input[bool]] = None,
                  launch_template_id: Optional[pulumi.Input[str]] = None,
+                 launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -726,6 +805,7 @@ class ScalingGroup(pulumi.CustomResource):
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -745,6 +825,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["group_deletion_protection"] = group_deletion_protection
             __props__.__dict__["launch_template_id"] = launch_template_id
+            __props__.__dict__["launch_template_version"] = launch_template_version
             __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
             if max_size is None and not opts.urn:
                 raise TypeError("Missing required property 'max_size'")
@@ -759,6 +840,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["scaling_group_name"] = scaling_group_name
             __props__.__dict__["spot_instance_pools"] = spot_instance_pools
             __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
+            __props__.__dict__["tags"] = tags
             if vswitch_id is not None and not opts.urn:
                 warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
                 pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
@@ -779,6 +861,7 @@ class ScalingGroup(pulumi.CustomResource):
             desired_capacity: Optional[pulumi.Input[int]] = None,
             group_deletion_protection: Optional[pulumi.Input[bool]] = None,
             launch_template_id: Optional[pulumi.Input[str]] = None,
+            launch_template_version: Optional[pulumi.Input[str]] = None,
             loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
@@ -789,6 +872,7 @@ class ScalingGroup(pulumi.CustomResource):
             scaling_group_name: Optional[pulumi.Input[str]] = None,
             spot_instance_pools: Optional[pulumi.Input[int]] = None,
             spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ScalingGroup':
         """
@@ -804,7 +888,8 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[int] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         :param pulumi.Input[int] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
-        :param pulumi.Input[str] launch_template_id: Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
+        :param pulumi.Input[str] launch_template_version: The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -824,6 +909,9 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
@@ -836,6 +924,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["desired_capacity"] = desired_capacity
         __props__.__dict__["group_deletion_protection"] = group_deletion_protection
         __props__.__dict__["launch_template_id"] = launch_template_id
+        __props__.__dict__["launch_template_version"] = launch_template_version
         __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
@@ -846,6 +935,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["scaling_group_name"] = scaling_group_name
         __props__.__dict__["spot_instance_pools"] = spot_instance_pools
         __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return ScalingGroup(resource_name, opts=opts, __props__=__props__)
@@ -888,9 +978,17 @@ class ScalingGroup(pulumi.CustomResource):
     @pulumi.getter(name="launchTemplateId")
     def launch_template_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         """
         return pulumi.get(self, "launch_template_id")
+
+    @property
+    @pulumi.getter(name="launchTemplateVersion")
+    def launch_template_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+        """
+        return pulumi.get(self, "launch_template_version")
 
     @property
     @pulumi.getter(name="loadbalancerIds")
@@ -980,6 +1078,16 @@ class ScalingGroup(pulumi.CustomResource):
         Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         """
         return pulumi.get(self, "spot_instance_remedy")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vswitchId")

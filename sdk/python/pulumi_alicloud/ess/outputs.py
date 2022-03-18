@@ -1015,7 +1015,8 @@ class GetScalingGroupsGroupResult(dict):
                  total_instance_count: int,
                  vpc_id: str,
                  vswitch_id: str,
-                 vswitch_ids: Sequence[str]):
+                 vswitch_ids: Sequence[str],
+                 tags: Optional[Mapping[str, Any]] = None):
         """
         :param int active_capacity: Number of active instances in scaling group.
         :param int cooldown_time: Default cooldown time of scaling group.
@@ -1043,6 +1044,7 @@ class GetScalingGroupsGroupResult(dict):
         :param str vpc_id: The ID of the VPC to which the scaling group belongs.
         :param str vswitch_id: The ID of the vSwitch to which the scaling group belongs.
         :param Sequence[str] vswitch_ids: Vswitches id in which the ECS instance launched.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "active_capacity", active_capacity)
         pulumi.set(__self__, "active_scaling_configuration", active_scaling_configuration)
@@ -1070,6 +1072,8 @@ class GetScalingGroupsGroupResult(dict):
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="activeCapacity")
@@ -1276,6 +1280,14 @@ class GetScalingGroupsGroupResult(dict):
         Vswitches id in which the ECS instance launched.
         """
         return pulumi.get(self, "vswitch_ids")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

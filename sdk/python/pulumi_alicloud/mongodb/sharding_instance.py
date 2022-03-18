@@ -57,7 +57,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -311,7 +311,7 @@ class ShardingInstanceArgs:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The TDE(Transparent Data Encryption) status.
+        The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         """
         return pulumi.get(self, "tde_status")
 
@@ -394,7 +394,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: the shard-node count can be purchased is in range of [2, 32].
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -679,7 +679,7 @@ class _ShardingInstanceState:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The TDE(Transparent Data Encryption) status.
+        The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         """
         return pulumi.get(self, "tde_status")
 
@@ -770,7 +770,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]] shard_lists: the shard-node count can be purchased is in range of [2, 32].
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -926,7 +926,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]] shard_lists: the shard-node count can be purchased is in range of [2, 32].
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -1118,7 +1118,7 @@ class ShardingInstance(pulumi.CustomResource):
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Output[Optional[str]]:
         """
-        The TDE(Transparent Data Encryption) status.
+        The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         """
         return pulumi.get(self, "tde_status")
 

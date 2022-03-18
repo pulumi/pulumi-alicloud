@@ -96,6 +96,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SuspendedProcesses;
         /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
         /// Number of instances in scaling group.
         /// </summary>
         public readonly int TotalCapacity;
@@ -160,6 +164,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             ImmutableArray<string> suspendedProcesses,
 
+            ImmutableDictionary<string, object>? tags,
+
             int totalCapacity,
 
             int totalInstanceCount,
@@ -191,6 +197,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
             RemovalPolicies = removalPolicies;
             RemovingCapacity = removingCapacity;
             SuspendedProcesses = suspendedProcesses;
+            Tags = tags;
             TotalCapacity = totalCapacity;
             TotalInstanceCount = totalInstanceCount;
             VpcId = vpcId;

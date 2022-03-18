@@ -44,6 +44,12 @@ namespace Pulumi.AliCloud.Vpn
     public partial class CustomerGateway : Pulumi.CustomResource
     {
         /// <summary>
+        /// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        /// </summary>
+        [Output("asn")]
+        public Output<string?> Asn { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the VPN customer gateway instance.
         /// </summary>
         [Output("description")]
@@ -108,6 +114,12 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class CustomerGatewayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        /// </summary>
+        [Input("asn")]
+        public Input<string>? Asn { get; set; }
+
+        /// <summary>
         /// The description of the VPN customer gateway instance.
         /// </summary>
         [Input("description")]
@@ -132,6 +144,12 @@ namespace Pulumi.AliCloud.Vpn
 
     public sealed class CustomerGatewayState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
+        /// </summary>
+        [Input("asn")]
+        public Input<string>? Asn { get; set; }
+
         /// <summary>
         /// The description of the VPN customer gateway instance.
         /// </summary>

@@ -42,6 +42,7 @@ class DomainArgs:
         :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
+        :param pulumi.Input[str] security_token: The top-level domain name.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
@@ -177,6 +178,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="securityToken")
     def security_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The top-level domain name.
+        """
         return pulumi.get(self, "security_token")
 
     @security_token.setter
@@ -273,6 +277,7 @@ class _DomainState:
         :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
+        :param pulumi.Input[str] security_token: The top-level domain name.
         :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The origin information.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
@@ -399,6 +404,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="securityToken")
     def security_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The top-level domain name.
+        """
         return pulumi.get(self, "security_token")
 
     @security_token.setter
@@ -548,6 +556,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
+        :param pulumi.Input[str] security_token: The top-level domain name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
@@ -699,6 +708,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scope: The acceleration region.
+        :param pulumi.Input[str] security_token: The top-level domain name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information.
         :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
@@ -788,6 +798,9 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securityToken")
     def security_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The top-level domain name.
+        """
         return pulumi.get(self, "security_token")
 
     @property

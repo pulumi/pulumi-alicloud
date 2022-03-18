@@ -104,6 +104,9 @@ namespace Pulumi.AliCloud.Hbase
         [Output("coreInstanceQuantity")]
         public Output<int?> CoreInstanceQuantity { get; private set; } = null!;
 
+        /// <summary>
+        /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        /// </summary>
         [Output("coreInstanceType")]
         public Output<string> CoreInstanceType { get; private set; } = null!;
 
@@ -127,7 +130,6 @@ namespace Pulumi.AliCloud.Hbase
 
         /// <summary>
         /// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-        /// * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -162,6 +164,9 @@ namespace Pulumi.AliCloud.Hbase
         [Output("masterInstanceQuantity")]
         public Output<int> MasterInstanceQuantity { get; private set; } = null!;
 
+        /// <summary>
+        /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        /// </summary>
         [Output("masterInstanceType")]
         public Output<string> MasterInstanceType { get; private set; } = null!;
 
@@ -310,6 +315,9 @@ namespace Pulumi.AliCloud.Hbase
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
 
+        /// <summary>
+        /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        /// </summary>
         [Input("coreInstanceType", required: true)]
         public Input<string> CoreInstanceType { get; set; } = null!;
 
@@ -333,7 +341,6 @@ namespace Pulumi.AliCloud.Hbase
 
         /// <summary>
         /// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-        /// * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -362,6 +369,9 @@ namespace Pulumi.AliCloud.Hbase
         [Input("maintainStartTime")]
         public Input<string>? MaintainStartTime { get; set; }
 
+        /// <summary>
+        /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        /// </summary>
         [Input("masterInstanceType", required: true)]
         public Input<string> MasterInstanceType { get; set; } = null!;
 
@@ -465,6 +475,9 @@ namespace Pulumi.AliCloud.Hbase
         [Input("coreInstanceQuantity")]
         public Input<int>? CoreInstanceQuantity { get; set; }
 
+        /// <summary>
+        /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        /// </summary>
         [Input("coreInstanceType")]
         public Input<string>? CoreInstanceType { get; set; }
 
@@ -488,7 +501,6 @@ namespace Pulumi.AliCloud.Hbase
 
         /// <summary>
         /// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
-        /// * `master_instance_type`, `core_instance_type` - (Required, ForceNew) Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -523,6 +535,9 @@ namespace Pulumi.AliCloud.Hbase
         [Input("masterInstanceQuantity")]
         public Input<int>? MasterInstanceQuantity { get; set; }
 
+        /// <summary>
+        /// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
+        /// </summary>
         [Input("masterInstanceType")]
         public Input<string>? MasterInstanceType { get; set; }
 

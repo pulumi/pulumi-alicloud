@@ -7,14 +7,40 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'ApplicationInternet',
     'ApplicationIntranet',
+    'ApplicationScalingRuleScalingRuleMetric',
+    'ApplicationScalingRuleScalingRuleMetricMetric',
+    'ApplicationScalingRuleScalingRuleMetricScaleDownRules',
+    'ApplicationScalingRuleScalingRuleMetricScaleUpRules',
+    'ApplicationScalingRuleScalingRuleTimer',
+    'ApplicationScalingRuleScalingRuleTimerSchedule',
+    'GreyTagRouteDubboRule',
+    'GreyTagRouteDubboRuleItem',
+    'GreyTagRouteScRule',
+    'GreyTagRouteScRuleItem',
     'IngressDefaultRule',
     'IngressRule',
+    'GetApplicationScalingRulesRuleResult',
+    'GetApplicationScalingRulesRuleScalingRuleMetricResult',
+    'GetApplicationScalingRulesRuleScalingRuleMetricMetricResult',
+    'GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult',
+    'GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult',
+    'GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult',
+    'GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult',
+    'GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult',
+    'GetApplicationScalingRulesRuleScalingRuleTimerResult',
+    'GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult',
     'GetApplicationsApplicationResult',
     'GetConfigMapsMapResult',
+    'GetGreyTagRoutesRouteResult',
+    'GetGreyTagRoutesRouteDubboRuleResult',
+    'GetGreyTagRoutesRouteDubboRuleItemResult',
+    'GetGreyTagRoutesRouteScRuleResult',
+    'GetGreyTagRoutesRouteScRuleItemResult',
     'GetIngressesIngressResult',
     'GetInstanceSpecificationsSpecificationResult',
     'GetNamespacesNamespaceResult',
@@ -169,6 +195,703 @@ class ApplicationIntranet(dict):
 
 
 @pulumi.output_type
+class ApplicationScalingRuleScalingRuleMetric(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxReplicas":
+            suggest = "max_replicas"
+        elif key == "minReplicas":
+            suggest = "min_replicas"
+        elif key == "scaleDownRules":
+            suggest = "scale_down_rules"
+        elif key == "scaleUpRules":
+            suggest = "scale_up_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationScalingRuleScalingRuleMetric. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationScalingRuleScalingRuleMetric.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationScalingRuleScalingRuleMetric.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_replicas: Optional[int] = None,
+                 metrics: Optional[Sequence['outputs.ApplicationScalingRuleScalingRuleMetricMetric']] = None,
+                 min_replicas: Optional[int] = None,
+                 scale_down_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleDownRules'] = None,
+                 scale_up_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleUpRules'] = None):
+        """
+        :param int max_replicas: Maximum number of instances applied.
+        :param Sequence['ApplicationScalingRuleScalingRuleMetricMetricArgs'] metrics: Indicator rule configuration. See the following `Block metrics`.
+        :param int min_replicas: Minimum number of instances applied.
+        :param 'ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs' scale_down_rules: Apply shrink rules. See the following `Block scale_down_rules`.
+        :param 'ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs' scale_up_rules: Apply expansion rules. See the following `Block scale_up_rules`.
+        """
+        if max_replicas is not None:
+            pulumi.set(__self__, "max_replicas", max_replicas)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+        if min_replicas is not None:
+            pulumi.set(__self__, "min_replicas", min_replicas)
+        if scale_down_rules is not None:
+            pulumi.set(__self__, "scale_down_rules", scale_down_rules)
+        if scale_up_rules is not None:
+            pulumi.set(__self__, "scale_up_rules", scale_up_rules)
+
+    @property
+    @pulumi.getter(name="maxReplicas")
+    def max_replicas(self) -> Optional[int]:
+        """
+        Maximum number of instances applied.
+        """
+        return pulumi.get(self, "max_replicas")
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Optional[Sequence['outputs.ApplicationScalingRuleScalingRuleMetricMetric']]:
+        """
+        Indicator rule configuration. See the following `Block metrics`.
+        """
+        return pulumi.get(self, "metrics")
+
+    @property
+    @pulumi.getter(name="minReplicas")
+    def min_replicas(self) -> Optional[int]:
+        """
+        Minimum number of instances applied.
+        """
+        return pulumi.get(self, "min_replicas")
+
+    @property
+    @pulumi.getter(name="scaleDownRules")
+    def scale_down_rules(self) -> Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleDownRules']:
+        """
+        Apply shrink rules. See the following `Block scale_down_rules`.
+        """
+        return pulumi.get(self, "scale_down_rules")
+
+    @property
+    @pulumi.getter(name="scaleUpRules")
+    def scale_up_rules(self) -> Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleUpRules']:
+        """
+        Apply expansion rules. See the following `Block scale_up_rules`.
+        """
+        return pulumi.get(self, "scale_up_rules")
+
+
+@pulumi.output_type
+class ApplicationScalingRuleScalingRuleMetricMetric(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricTargetAverageUtilization":
+            suggest = "metric_target_average_utilization"
+        elif key == "metricType":
+            suggest = "metric_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationScalingRuleScalingRuleMetricMetric. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationScalingRuleScalingRuleMetricMetric.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationScalingRuleScalingRuleMetricMetric.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metric_target_average_utilization: Optional[int] = None,
+                 metric_type: Optional[str] = None):
+        """
+        :param int metric_target_average_utilization: According to different `metric_type`, set the target value of the corresponding monitoring index.
+        :param str metric_type: Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+               - CPU: CPU usage.
+               - MEMORY: MEMORY usage.
+               - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
+               - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
+               - SLB_RT: the average response time of public network SLB within 15 seconds.
+        """
+        if metric_target_average_utilization is not None:
+            pulumi.set(__self__, "metric_target_average_utilization", metric_target_average_utilization)
+        if metric_type is not None:
+            pulumi.set(__self__, "metric_type", metric_type)
+
+    @property
+    @pulumi.getter(name="metricTargetAverageUtilization")
+    def metric_target_average_utilization(self) -> Optional[int]:
+        """
+        According to different `metric_type`, set the target value of the corresponding monitoring index.
+        """
+        return pulumi.get(self, "metric_target_average_utilization")
+
+    @property
+    @pulumi.getter(name="metricType")
+    def metric_type(self) -> Optional[str]:
+        """
+        Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+        - CPU: CPU usage.
+        - MEMORY: MEMORY usage.
+        - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
+        - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
+        - SLB_RT: the average response time of public network SLB within 15 seconds.
+        """
+        return pulumi.get(self, "metric_type")
+
+
+@pulumi.output_type
+class ApplicationScalingRuleScalingRuleMetricScaleDownRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stabilizationWindowSeconds":
+            suggest = "stabilization_window_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationScalingRuleScalingRuleMetricScaleDownRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationScalingRuleScalingRuleMetricScaleDownRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationScalingRuleScalingRuleMetricScaleDownRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disabled: Optional[bool] = None,
+                 stabilization_window_seconds: Optional[int] = None,
+                 step: Optional[int] = None):
+        """
+        :param bool disabled: Whether shrinkage is prohibited.
+        :param int stabilization_window_seconds: Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        :param int step: Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if stabilization_window_seconds is not None:
+            pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
+        if step is not None:
+            pulumi.set(__self__, "step", step)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Whether shrinkage is prohibited.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="stabilizationWindowSeconds")
+    def stabilization_window_seconds(self) -> Optional[int]:
+        """
+        Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        """
+        return pulumi.get(self, "stabilization_window_seconds")
+
+    @property
+    @pulumi.getter
+    def step(self) -> Optional[int]:
+        """
+        Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        """
+        return pulumi.get(self, "step")
+
+
+@pulumi.output_type
+class ApplicationScalingRuleScalingRuleMetricScaleUpRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stabilizationWindowSeconds":
+            suggest = "stabilization_window_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationScalingRuleScalingRuleMetricScaleUpRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationScalingRuleScalingRuleMetricScaleUpRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationScalingRuleScalingRuleMetricScaleUpRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disabled: Optional[bool] = None,
+                 stabilization_window_seconds: Optional[int] = None,
+                 step: Optional[int] = None):
+        """
+        :param bool disabled: Whether shrinkage is prohibited.
+        :param int stabilization_window_seconds: Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        :param int step: Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if stabilization_window_seconds is not None:
+            pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
+        if step is not None:
+            pulumi.set(__self__, "step", step)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Whether shrinkage is prohibited.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="stabilizationWindowSeconds")
+    def stabilization_window_seconds(self) -> Optional[int]:
+        """
+        Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        """
+        return pulumi.get(self, "stabilization_window_seconds")
+
+    @property
+    @pulumi.getter
+    def step(self) -> Optional[int]:
+        """
+        Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        """
+        return pulumi.get(self, "step")
+
+
+@pulumi.output_type
+class ApplicationScalingRuleScalingRuleTimer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "beginDate":
+            suggest = "begin_date"
+        elif key == "endDate":
+            suggest = "end_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationScalingRuleScalingRuleTimer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationScalingRuleScalingRuleTimer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationScalingRuleScalingRuleTimer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 begin_date: Optional[str] = None,
+                 end_date: Optional[str] = None,
+                 period: Optional[str] = None,
+                 schedules: Optional[Sequence['outputs.ApplicationScalingRuleScalingRuleTimerSchedule']] = None):
+        """
+        :param str begin_date: The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+        :param str end_date: The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+        :param str period: The period in which a timed elastic scaling strategy is executed.
+        :param Sequence['ApplicationScalingRuleScalingRuleTimerScheduleArgs'] schedules: Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+        """
+        if begin_date is not None:
+            pulumi.set(__self__, "begin_date", begin_date)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if schedules is not None:
+            pulumi.set(__self__, "schedules", schedules)
+
+    @property
+    @pulumi.getter(name="beginDate")
+    def begin_date(self) -> Optional[str]:
+        """
+        The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+        """
+        return pulumi.get(self, "begin_date")
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[str]:
+        """
+        The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[str]:
+        """
+        The period in which a timed elastic scaling strategy is executed.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter
+    def schedules(self) -> Optional[Sequence['outputs.ApplicationScalingRuleScalingRuleTimerSchedule']]:
+        """
+        Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+        """
+        return pulumi.get(self, "schedules")
+
+
+@pulumi.output_type
+class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "atTime":
+            suggest = "at_time"
+        elif key == "maxReplicas":
+            suggest = "max_replicas"
+        elif key == "minReplicas":
+            suggest = "min_replicas"
+        elif key == "targetReplicas":
+            suggest = "target_replicas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationScalingRuleScalingRuleTimerSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationScalingRuleScalingRuleTimerSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationScalingRuleScalingRuleTimerSchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 at_time: Optional[str] = None,
+                 max_replicas: Optional[int] = None,
+                 min_replicas: Optional[int] = None,
+                 target_replicas: Optional[int] = None):
+        """
+        :param str at_time: Trigger point in time. When supporting format: minutes, for example: `08:00`.
+        :param int max_replicas: Maximum number of instances applied.
+        :param int min_replicas: Minimum number of instances applied.
+        :param int target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+        """
+        if at_time is not None:
+            pulumi.set(__self__, "at_time", at_time)
+        if max_replicas is not None:
+            pulumi.set(__self__, "max_replicas", max_replicas)
+        if min_replicas is not None:
+            pulumi.set(__self__, "min_replicas", min_replicas)
+        if target_replicas is not None:
+            pulumi.set(__self__, "target_replicas", target_replicas)
+
+    @property
+    @pulumi.getter(name="atTime")
+    def at_time(self) -> Optional[str]:
+        """
+        Trigger point in time. When supporting format: minutes, for example: `08:00`.
+        """
+        return pulumi.get(self, "at_time")
+
+    @property
+    @pulumi.getter(name="maxReplicas")
+    def max_replicas(self) -> Optional[int]:
+        """
+        Maximum number of instances applied.
+        """
+        return pulumi.get(self, "max_replicas")
+
+    @property
+    @pulumi.getter(name="minReplicas")
+    def min_replicas(self) -> Optional[int]:
+        """
+        Minimum number of instances applied.
+        """
+        return pulumi.get(self, "min_replicas")
+
+    @property
+    @pulumi.getter(name="targetReplicas")
+    def target_replicas(self) -> Optional[int]:
+        """
+        This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+        """
+        return pulumi.get(self, "target_replicas")
+
+
+@pulumi.output_type
+class GreyTagRouteDubboRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodName":
+            suggest = "method_name"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GreyTagRouteDubboRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GreyTagRouteDubboRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GreyTagRouteDubboRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: Optional[str] = None,
+                 group: Optional[str] = None,
+                 items: Optional[Sequence['outputs.GreyTagRouteDubboRuleItem']] = None,
+                 method_name: Optional[str] = None,
+                 service_name: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str condition: The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+        :param str group: The service group.
+        :param Sequence['GreyTagRouteDubboRuleItemArgs'] items: A list of conditions items. The details see Block `dubbo_rules_items`.
+        :param str method_name: The method name
+        :param str service_name: The service name.
+        :param str version: The service version.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if method_name is not None:
+            pulumi.set(__self__, "method_name", method_name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[str]:
+        """
+        The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        The service group.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[Sequence['outputs.GreyTagRouteDubboRuleItem']]:
+        """
+        A list of conditions items. The details see Block `dubbo_rules_items`.
+        """
+        return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter(name="methodName")
+    def method_name(self) -> Optional[str]:
+        """
+        The method name
+        """
+        return pulumi.get(self, "method_name")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        The service name.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        The service version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GreyTagRouteDubboRuleItem(dict):
+    def __init__(__self__, *,
+                 cond: Optional[str] = None,
+                 expr: Optional[str] = None,
+                 index: Optional[int] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str cond: The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+        :param str expr: The parameter value gets the expression.
+        :param int index: The parameter number.
+        :param str operator: The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        :param str value: The value of the parameter.
+        """
+        if cond is not None:
+            pulumi.set(__self__, "cond", cond)
+        if expr is not None:
+            pulumi.set(__self__, "expr", expr)
+        if index is not None:
+            pulumi.set(__self__, "index", index)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def cond(self) -> Optional[str]:
+        """
+        The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+        """
+        return pulumi.get(self, "cond")
+
+    @property
+    @pulumi.getter
+    def expr(self) -> Optional[str]:
+        """
+        The parameter value gets the expression.
+        """
+        return pulumi.get(self, "expr")
+
+    @property
+    @pulumi.getter
+    def index(self) -> Optional[int]:
+        """
+        The parameter number.
+        """
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GreyTagRouteScRule(dict):
+    def __init__(__self__, *,
+                 condition: Optional[str] = None,
+                 items: Optional[Sequence['outputs.GreyTagRouteScRuleItem']] = None,
+                 path: Optional[str] = None):
+        """
+        :param str condition: The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+        :param Sequence['GreyTagRouteScRuleItemArgs'] items: A list of conditions items. The details see Block `sc_rules_items`.
+        :param str path: The path corresponding to the grayscale rule.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[str]:
+        """
+        The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[Sequence['outputs.GreyTagRouteScRuleItem']]:
+        """
+        A list of conditions items. The details see Block `sc_rules_items`.
+        """
+        return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The path corresponding to the grayscale rule.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GreyTagRouteScRuleItem(dict):
+    def __init__(__self__, *,
+                 cond: Optional[str] = None,
+                 name: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 type: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str cond: The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+        :param str name: The name of the parameter.
+        :param str operator: The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        :param str type: The compare types. Valid values: `param`, `cookie`, `header`.
+        :param str value: The value of the parameter.
+        """
+        if cond is not None:
+            pulumi.set(__self__, "cond", cond)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def cond(self) -> Optional[str]:
+        """
+        The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
+        """
+        return pulumi.get(self, "cond")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The compare types. Valid values: `param`, `cookie`, `header`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class IngressDefaultRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -313,6 +1036,560 @@ class IngressRule(dict):
         URL path.
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 app_id: str,
+                 create_time: str,
+                 id: str,
+                 scaling_rule_enable: bool,
+                 scaling_rule_metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricResult'],
+                 scaling_rule_name: str,
+                 scaling_rule_timers: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerResult'],
+                 scaling_rule_type: str):
+        """
+        :param str app_id: The ID of the Application.
+        :param str create_time: The CreateTime of the Application Scaling Rule.
+        :param str id: The ID of the Application Scaling Rule.
+        :param bool scaling_rule_enable: Whether to enable the auto scaling policy.
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricArgs'] scaling_rule_metrics: Monitoring indicators for elastic scaling.
+        :param str scaling_rule_name: The name of the scaling rule.
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleTimerArgs'] scaling_rule_timers: Timing elastic expansion.
+        :param str scaling_rule_type: Flexible strategy type.
+        """
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "scaling_rule_enable", scaling_rule_enable)
+        pulumi.set(__self__, "scaling_rule_metrics", scaling_rule_metrics)
+        pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
+        pulumi.set(__self__, "scaling_rule_timers", scaling_rule_timers)
+        pulumi.set(__self__, "scaling_rule_type", scaling_rule_type)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> str:
+        """
+        The ID of the Application.
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The CreateTime of the Application Scaling Rule.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Application Scaling Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="scalingRuleEnable")
+    def scaling_rule_enable(self) -> bool:
+        """
+        Whether to enable the auto scaling policy.
+        """
+        return pulumi.get(self, "scaling_rule_enable")
+
+    @property
+    @pulumi.getter(name="scalingRuleMetrics")
+    def scaling_rule_metrics(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricResult']:
+        """
+        Monitoring indicators for elastic scaling.
+        """
+        return pulumi.get(self, "scaling_rule_metrics")
+
+    @property
+    @pulumi.getter(name="scalingRuleName")
+    def scaling_rule_name(self) -> str:
+        """
+        The name of the scaling rule.
+        """
+        return pulumi.get(self, "scaling_rule_name")
+
+    @property
+    @pulumi.getter(name="scalingRuleTimers")
+    def scaling_rule_timers(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerResult']:
+        """
+        Timing elastic expansion.
+        """
+        return pulumi.get(self, "scaling_rule_timers")
+
+    @property
+    @pulumi.getter(name="scalingRuleType")
+    def scaling_rule_type(self) -> str:
+        """
+        Flexible strategy type.
+        """
+        return pulumi.get(self, "scaling_rule_type")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleMetricResult(dict):
+    def __init__(__self__, *,
+                 max_replicas: int,
+                 metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricResult'],
+                 metrics_statuses: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult'],
+                 min_replicas: int,
+                 scale_down_rules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult'],
+                 scale_up_rules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult']):
+        """
+        :param int max_replicas: The maximum number of instances.
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs'] metrics: The auto scaling list of monitoring indicators.
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs'] metrics_statuses: Monitor indicator elasticity status.
+        :param int min_replicas: The minimum number of instances.
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs'] scale_down_rules: The shrink rule.
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs'] scale_up_rules: The expansion rules.
+        """
+        pulumi.set(__self__, "max_replicas", max_replicas)
+        pulumi.set(__self__, "metrics", metrics)
+        pulumi.set(__self__, "metrics_statuses", metrics_statuses)
+        pulumi.set(__self__, "min_replicas", min_replicas)
+        pulumi.set(__self__, "scale_down_rules", scale_down_rules)
+        pulumi.set(__self__, "scale_up_rules", scale_up_rules)
+
+    @property
+    @pulumi.getter(name="maxReplicas")
+    def max_replicas(self) -> int:
+        """
+        The maximum number of instances.
+        """
+        return pulumi.get(self, "max_replicas")
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricResult']:
+        """
+        The auto scaling list of monitoring indicators.
+        """
+        return pulumi.get(self, "metrics")
+
+    @property
+    @pulumi.getter(name="metricsStatuses")
+    def metrics_statuses(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult']:
+        """
+        Monitor indicator elasticity status.
+        """
+        return pulumi.get(self, "metrics_statuses")
+
+    @property
+    @pulumi.getter(name="minReplicas")
+    def min_replicas(self) -> int:
+        """
+        The minimum number of instances.
+        """
+        return pulumi.get(self, "min_replicas")
+
+    @property
+    @pulumi.getter(name="scaleDownRules")
+    def scale_down_rules(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult']:
+        """
+        The shrink rule.
+        """
+        return pulumi.get(self, "scale_down_rules")
+
+    @property
+    @pulumi.getter(name="scaleUpRules")
+    def scale_up_rules(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult']:
+        """
+        The expansion rules.
+        """
+        return pulumi.get(self, "scale_up_rules")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleMetricMetricResult(dict):
+    def __init__(__self__, *,
+                 metric_target_average_utilization: int,
+                 metric_type: str):
+        """
+        :param int metric_target_average_utilization: The target value of the monitoring indicator.
+        :param str metric_type: The metric type of the Application Scaling Rule.
+        """
+        pulumi.set(__self__, "metric_target_average_utilization", metric_target_average_utilization)
+        pulumi.set(__self__, "metric_type", metric_type)
+
+    @property
+    @pulumi.getter(name="metricTargetAverageUtilization")
+    def metric_target_average_utilization(self) -> int:
+        """
+        The target value of the monitoring indicator.
+        """
+        return pulumi.get(self, "metric_target_average_utilization")
+
+    @property
+    @pulumi.getter(name="metricType")
+    def metric_type(self) -> str:
+        """
+        The metric type of the Application Scaling Rule.
+        """
+        return pulumi.get(self, "metric_type")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult(dict):
+    def __init__(__self__, *,
+                 current_metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult'],
+                 current_replicas: int,
+                 desired_replicas: int,
+                 last_scale_time: str,
+                 max_replicas: int,
+                 min_replicas: int,
+                 next_scale_metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult'],
+                 next_scale_time_period: int):
+        """
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs'] current_metrics: The current monitoring indicator elasticity list.
+        :param int current_replicas: The number of current instances.
+        :param int desired_replicas: The number of target instances.
+        :param str last_scale_time: The time of the last elastic expansion.
+        :param int max_replicas: The maximum number of instances.
+        :param int min_replicas: The minimum number of instances.
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs'] next_scale_metrics: Next monitoring indicator elasticity list
+        :param int next_scale_time_period: The next cycle of monitoring indicator elasticity.
+        """
+        pulumi.set(__self__, "current_metrics", current_metrics)
+        pulumi.set(__self__, "current_replicas", current_replicas)
+        pulumi.set(__self__, "desired_replicas", desired_replicas)
+        pulumi.set(__self__, "last_scale_time", last_scale_time)
+        pulumi.set(__self__, "max_replicas", max_replicas)
+        pulumi.set(__self__, "min_replicas", min_replicas)
+        pulumi.set(__self__, "next_scale_metrics", next_scale_metrics)
+        pulumi.set(__self__, "next_scale_time_period", next_scale_time_period)
+
+    @property
+    @pulumi.getter(name="currentMetrics")
+    def current_metrics(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult']:
+        """
+        The current monitoring indicator elasticity list.
+        """
+        return pulumi.get(self, "current_metrics")
+
+    @property
+    @pulumi.getter(name="currentReplicas")
+    def current_replicas(self) -> int:
+        """
+        The number of current instances.
+        """
+        return pulumi.get(self, "current_replicas")
+
+    @property
+    @pulumi.getter(name="desiredReplicas")
+    def desired_replicas(self) -> int:
+        """
+        The number of target instances.
+        """
+        return pulumi.get(self, "desired_replicas")
+
+    @property
+    @pulumi.getter(name="lastScaleTime")
+    def last_scale_time(self) -> str:
+        """
+        The time of the last elastic expansion.
+        """
+        return pulumi.get(self, "last_scale_time")
+
+    @property
+    @pulumi.getter(name="maxReplicas")
+    def max_replicas(self) -> int:
+        """
+        The maximum number of instances.
+        """
+        return pulumi.get(self, "max_replicas")
+
+    @property
+    @pulumi.getter(name="minReplicas")
+    def min_replicas(self) -> int:
+        """
+        The minimum number of instances.
+        """
+        return pulumi.get(self, "min_replicas")
+
+    @property
+    @pulumi.getter(name="nextScaleMetrics")
+    def next_scale_metrics(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult']:
+        """
+        Next monitoring indicator elasticity list
+        """
+        return pulumi.get(self, "next_scale_metrics")
+
+    @property
+    @pulumi.getter(name="nextScaleTimePeriod")
+    def next_scale_time_period(self) -> int:
+        """
+        The next cycle of monitoring indicator elasticity.
+        """
+        return pulumi.get(self, "next_scale_time_period")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult(dict):
+    def __init__(__self__, *,
+                 current_value: int,
+                 name: str,
+                 type: str):
+        """
+        :param int current_value: The current value.
+        :param str name: The name of the trigger condition.
+        :param str type: The metric type. Associated with monitoring indicators.
+        """
+        pulumi.set(__self__, "current_value", current_value)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="currentValue")
+    def current_value(self) -> int:
+        """
+        The current value.
+        """
+        return pulumi.get(self, "current_value")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the trigger condition.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The metric type. Associated with monitoring indicators.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 next_scale_in_average_utilization: int,
+                 next_scale_out_average_utilization: int):
+        """
+        :param str name: The name of the trigger condition.
+        :param int next_scale_in_average_utilization: The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
+        :param int next_scale_out_average_utilization: The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "next_scale_in_average_utilization", next_scale_in_average_utilization)
+        pulumi.set(__self__, "next_scale_out_average_utilization", next_scale_out_average_utilization)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the trigger condition.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nextScaleInAverageUtilization")
+    def next_scale_in_average_utilization(self) -> int:
+        """
+        The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
+        """
+        return pulumi.get(self, "next_scale_in_average_utilization")
+
+    @property
+    @pulumi.getter(name="nextScaleOutAverageUtilization")
+    def next_scale_out_average_utilization(self) -> int:
+        """
+        The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
+        """
+        return pulumi.get(self, "next_scale_out_average_utilization")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult(dict):
+    def __init__(__self__, *,
+                 disabled: bool,
+                 stabilization_window_seconds: int,
+                 step: int):
+        """
+        :param bool disabled: Whether shrinkage is prohibited. The values are described as follows:
+        :param int stabilization_window_seconds: Expansion cooling time.
+        :param int step: Flexible expansion step. The maximum number of instances per unit time.
+        """
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
+        pulumi.set(__self__, "step", step)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Whether shrinkage is prohibited. The values are described as follows:
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="stabilizationWindowSeconds")
+    def stabilization_window_seconds(self) -> int:
+        """
+        Expansion cooling time.
+        """
+        return pulumi.get(self, "stabilization_window_seconds")
+
+    @property
+    @pulumi.getter
+    def step(self) -> int:
+        """
+        Flexible expansion step. The maximum number of instances per unit time.
+        """
+        return pulumi.get(self, "step")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult(dict):
+    def __init__(__self__, *,
+                 disabled: bool,
+                 stabilization_window_seconds: int,
+                 step: int):
+        """
+        :param bool disabled: Whether shrinkage is prohibited. The values are described as follows:
+        :param int stabilization_window_seconds: Expansion cooling time.
+        :param int step: Flexible expansion step. The maximum number of instances per unit time.
+        """
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
+        pulumi.set(__self__, "step", step)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Whether shrinkage is prohibited. The values are described as follows:
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="stabilizationWindowSeconds")
+    def stabilization_window_seconds(self) -> int:
+        """
+        Expansion cooling time.
+        """
+        return pulumi.get(self, "stabilization_window_seconds")
+
+    @property
+    @pulumi.getter
+    def step(self) -> int:
+        """
+        Flexible expansion step. The maximum number of instances per unit time.
+        """
+        return pulumi.get(self, "step")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleTimerResult(dict):
+    def __init__(__self__, *,
+                 begin_date: str,
+                 end_date: str,
+                 period: str,
+                 schedules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult']):
+        """
+        :param str begin_date: The short-term start date of the timed elastic scaling strategy.
+        :param str end_date: The short-term end date of the timed elastic scaling strategy.
+        :param str period: The period in which a timed elastic scaling strategy is executed.
+        :param Sequence['GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs'] schedules: Trigger point in time within a single day.
+        """
+        pulumi.set(__self__, "begin_date", begin_date)
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "schedules", schedules)
+
+    @property
+    @pulumi.getter(name="beginDate")
+    def begin_date(self) -> str:
+        """
+        The short-term start date of the timed elastic scaling strategy.
+        """
+        return pulumi.get(self, "begin_date")
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> str:
+        """
+        The short-term end date of the timed elastic scaling strategy.
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter
+    def period(self) -> str:
+        """
+        The period in which a timed elastic scaling strategy is executed.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter
+    def schedules(self) -> Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult']:
+        """
+        Trigger point in time within a single day.
+        """
+        return pulumi.get(self, "schedules")
+
+
+@pulumi.output_type
+class GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult(dict):
+    def __init__(__self__, *,
+                 at_time: str,
+                 max_replicas: int,
+                 min_replicas: int,
+                 target_replicas: int):
+        """
+        :param str at_time: Time point. Format: `hours:minutes`.
+        :param int max_replicas: The maximum number of instances.
+        :param int min_replicas: The minimum number of instances.
+        :param int target_replicas: The number of target instances.
+        """
+        pulumi.set(__self__, "at_time", at_time)
+        pulumi.set(__self__, "max_replicas", max_replicas)
+        pulumi.set(__self__, "min_replicas", min_replicas)
+        pulumi.set(__self__, "target_replicas", target_replicas)
+
+    @property
+    @pulumi.getter(name="atTime")
+    def at_time(self) -> str:
+        """
+        Time point. Format: `hours:minutes`.
+        """
+        return pulumi.get(self, "at_time")
+
+    @property
+    @pulumi.getter(name="maxReplicas")
+    def max_replicas(self) -> int:
+        """
+        The maximum number of instances.
+        """
+        return pulumi.get(self, "max_replicas")
+
+    @property
+    @pulumi.getter(name="minReplicas")
+    def min_replicas(self) -> int:
+        """
+        The minimum number of instances.
+        """
+        return pulumi.get(self, "min_replicas")
+
+    @property
+    @pulumi.getter(name="targetReplicas")
+    def target_replicas(self) -> int:
+        """
+        The number of target instances.
+        """
+        return pulumi.get(self, "target_replicas")
 
 
 @pulumi.output_type
@@ -949,6 +2226,305 @@ class GetConfigMapsMapResult(dict):
         The NamespaceId of Config Maps.
         """
         return pulumi.get(self, "namespace_id")
+
+
+@pulumi.output_type
+class GetGreyTagRoutesRouteResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 dubbo_rules: Sequence['outputs.GetGreyTagRoutesRouteDubboRuleResult'],
+                 grey_tag_route_name: str,
+                 id: str,
+                 sc_rules: Sequence['outputs.GetGreyTagRoutesRouteScRuleResult']):
+        """
+        :param str description: The description of GreyTagRoute.
+        :param Sequence['GetGreyTagRoutesRouteDubboRuleArgs'] dubbo_rules: The grayscale rule created for Dubbo Application.
+        :param str grey_tag_route_name: The name of GreyTagRoute.
+        :param str id: The ID of the GreyTagRoute.
+        :param Sequence['GetGreyTagRoutesRouteScRuleArgs'] sc_rules: The grayscale rule created for SpringCloud Application.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dubbo_rules", dubbo_rules)
+        pulumi.set(__self__, "grey_tag_route_name", grey_tag_route_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sc_rules", sc_rules)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of GreyTagRoute.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dubboRules")
+    def dubbo_rules(self) -> Sequence['outputs.GetGreyTagRoutesRouteDubboRuleResult']:
+        """
+        The grayscale rule created for Dubbo Application.
+        """
+        return pulumi.get(self, "dubbo_rules")
+
+    @property
+    @pulumi.getter(name="greyTagRouteName")
+    def grey_tag_route_name(self) -> str:
+        """
+        The name of GreyTagRoute.
+        """
+        return pulumi.get(self, "grey_tag_route_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the GreyTagRoute.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="scRules")
+    def sc_rules(self) -> Sequence['outputs.GetGreyTagRoutesRouteScRuleResult']:
+        """
+        The grayscale rule created for SpringCloud Application.
+        """
+        return pulumi.get(self, "sc_rules")
+
+
+@pulumi.output_type
+class GetGreyTagRoutesRouteDubboRuleResult(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 group: str,
+                 items: Sequence['outputs.GetGreyTagRoutesRouteDubboRuleItemResult'],
+                 method_name: str,
+                 service_name: str,
+                 version: str):
+        """
+        :param str condition: The Conditional Patterns for Grayscale Rules.
+        :param str group: The service group.
+        :param Sequence['GetGreyTagRoutesRouteDubboRuleItemArgs'] items: A list of conditions items.
+        :param str method_name: The method name
+        :param str service_name: The service name.
+        :param str version: The service version.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "items", items)
+        pulumi.set(__self__, "method_name", method_name)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        The Conditional Patterns for Grayscale Rules.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        """
+        The service group.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Sequence['outputs.GetGreyTagRoutesRouteDubboRuleItemResult']:
+        """
+        A list of conditions items.
+        """
+        return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter(name="methodName")
+    def method_name(self) -> str:
+        """
+        The method name
+        """
+        return pulumi.get(self, "method_name")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        The service name.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The service version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetGreyTagRoutesRouteDubboRuleItemResult(dict):
+    def __init__(__self__, *,
+                 cond: str,
+                 expr: str,
+                 index: int,
+                 operator: str,
+                 value: str):
+        """
+        :param str cond: The comparison operator.
+        :param str expr: The parameter value gets the expression.
+        :param int index: The parameter number.
+        :param str operator: The operator.
+        :param str value: The value of the parameter.
+        """
+        pulumi.set(__self__, "cond", cond)
+        pulumi.set(__self__, "expr", expr)
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def cond(self) -> str:
+        """
+        The comparison operator.
+        """
+        return pulumi.get(self, "cond")
+
+    @property
+    @pulumi.getter
+    def expr(self) -> str:
+        """
+        The parameter value gets the expression.
+        """
+        return pulumi.get(self, "expr")
+
+    @property
+    @pulumi.getter
+    def index(self) -> int:
+        """
+        The parameter number.
+        """
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetGreyTagRoutesRouteScRuleResult(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 items: Sequence['outputs.GetGreyTagRoutesRouteScRuleItemResult'],
+                 path: str):
+        """
+        :param str condition: The Conditional Patterns for Grayscale Rules.
+        :param Sequence['GetGreyTagRoutesRouteScRuleItemArgs'] items: A list of conditions items.
+        :param str path: The path corresponding to the grayscale rule.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "items", items)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        The Conditional Patterns for Grayscale Rules.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Sequence['outputs.GetGreyTagRoutesRouteScRuleItemResult']:
+        """
+        A list of conditions items.
+        """
+        return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path corresponding to the grayscale rule.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetGreyTagRoutesRouteScRuleItemResult(dict):
+    def __init__(__self__, *,
+                 cond: str,
+                 name: str,
+                 operator: str,
+                 type: str,
+                 value: str):
+        """
+        :param str cond: The comparison operator.
+        :param str name: The name of the parameter.
+        :param str operator: The operator.
+        :param str type: The Compare types.
+        :param str value: The value of the parameter.
+        """
+        pulumi.set(__self__, "cond", cond)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def cond(self) -> str:
+        """
+        The comparison operator.
+        """
+        return pulumi.get(self, "cond")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The Compare types.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

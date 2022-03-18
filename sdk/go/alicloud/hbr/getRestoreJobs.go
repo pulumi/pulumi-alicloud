@@ -25,11 +25,11 @@ func GetRestoreJobs(ctx *pulumi.Context, args *GetRestoreJobsArgs, opts ...pulum
 // A collection of arguments for invoking getRestoreJobs.
 type GetRestoreJobsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of restore job.
+	// The list of restore job IDs.
 	RestoreIds []string `pulumi:"restoreIds"`
 	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	RestoreType string `pulumi:"restoreType"`
-	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceTypes []string `pulumi:"sourceTypes"`
 	// The status of restore job.
 	Status *string `pulumi:"status"`
@@ -72,11 +72,11 @@ func GetRestoreJobsOutput(ctx *pulumi.Context, args GetRestoreJobsOutputArgs, op
 // A collection of arguments for invoking getRestoreJobs.
 type GetRestoreJobsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of restore job.
+	// The list of restore job IDs.
 	RestoreIds pulumi.StringArrayInput `pulumi:"restoreIds"`
 	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	RestoreType pulumi.StringInput `pulumi:"restoreType"`
-	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceTypes pulumi.StringArrayInput `pulumi:"sourceTypes"`
 	// The status of restore job.
 	Status pulumi.StringPtrInput `pulumi:"status"`

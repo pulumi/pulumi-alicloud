@@ -595,6 +595,353 @@ func (o GetClustersClusterInstanceModelArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetClustersClusterInstanceModelOutput)
 }
 
+type GetGatewaysGateway struct {
+	// The backup vswitch id.
+	BackupVswitchId string `pulumi:"backupVswitchId"`
+	// The name of the Gateway.
+	GatewayName string `pulumi:"gatewayName"`
+	// Gateway unique identification.
+	GatewayUniqueId string `pulumi:"gatewayUniqueId"`
+	// The ID of the Gateway.
+	Id string `pulumi:"id"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// Number of Gateway Nodes.
+	Replica string `pulumi:"replica"`
+	// A list of gateway Slb.
+	SlbLists []GetGatewaysGatewaySlbList `pulumi:"slbLists"`
+	// Gateway Node Specifications.
+	Spec string `pulumi:"spec"`
+	// The status of the gateway.
+	Status string `pulumi:"status"`
+	// The ID of the vpc.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the vswitch.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetGatewaysGatewayInput is an input type that accepts GetGatewaysGatewayArgs and GetGatewaysGatewayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayInput` via:
+//
+//          GetGatewaysGatewayArgs{...}
+type GetGatewaysGatewayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput
+	ToGetGatewaysGatewayOutputWithContext(context.Context) GetGatewaysGatewayOutput
+}
+
+type GetGatewaysGatewayArgs struct {
+	// The backup vswitch id.
+	BackupVswitchId pulumi.StringInput `pulumi:"backupVswitchId"`
+	// The name of the Gateway.
+	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
+	// Gateway unique identification.
+	GatewayUniqueId pulumi.StringInput `pulumi:"gatewayUniqueId"`
+	// The ID of the Gateway.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// Number of Gateway Nodes.
+	Replica pulumi.StringInput `pulumi:"replica"`
+	// A list of gateway Slb.
+	SlbLists GetGatewaysGatewaySlbListArrayInput `pulumi:"slbLists"`
+	// Gateway Node Specifications.
+	Spec pulumi.StringInput `pulumi:"spec"`
+	// The status of the gateway.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the vpc.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the vswitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetGatewaysGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput {
+	return i.ToGetGatewaysGatewayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayArgs) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayOutput)
+}
+
+// GetGatewaysGatewayArrayInput is an input type that accepts GetGatewaysGatewayArray and GetGatewaysGatewayArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewayArrayInput` via:
+//
+//          GetGatewaysGatewayArray{ GetGatewaysGatewayArgs{...} }
+type GetGatewaysGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput
+	ToGetGatewaysGatewayArrayOutputWithContext(context.Context) GetGatewaysGatewayArrayOutput
+}
+
+type GetGatewaysGatewayArray []GetGatewaysGatewayInput
+
+func (GetGatewaysGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput {
+	return i.ToGetGatewaysGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayArrayOutput)
+}
+
+type GetGatewaysGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutput() GetGatewaysGatewayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewaysGatewayOutput {
+	return o
+}
+
+// The backup vswitch id.
+func (o GetGatewaysGatewayOutput) BackupVswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.BackupVswitchId }).(pulumi.StringOutput)
+}
+
+// The name of the Gateway.
+func (o GetGatewaysGatewayOutput) GatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayName }).(pulumi.StringOutput)
+}
+
+// Gateway unique identification.
+func (o GetGatewaysGatewayOutput) GatewayUniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayUniqueId }).(pulumi.StringOutput)
+}
+
+// The ID of the Gateway.
+func (o GetGatewaysGatewayOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetGatewaysGatewayOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Number of Gateway Nodes.
+func (o GetGatewaysGatewayOutput) Replica() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Replica }).(pulumi.StringOutput)
+}
+
+// A list of gateway Slb.
+func (o GetGatewaysGatewayOutput) SlbLists() GetGatewaysGatewaySlbListArrayOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewaySlbList { return v.SlbLists }).(GetGatewaysGatewaySlbListArrayOutput)
+}
+
+// Gateway Node Specifications.
+func (o GetGatewaysGatewayOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The status of the gateway.
+func (o GetGatewaysGatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the vpc.
+func (o GetGatewaysGatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vswitch.
+func (o GetGatewaysGatewayOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutput() GetGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGateway {
+		return vs[0].([]GetGatewaysGateway)[vs[1].(int)]
+	}).(GetGatewaysGatewayOutput)
+}
+
+type GetGatewaysGatewaySlbList struct {
+	// The associate id.
+	AssociateId string `pulumi:"associateId"`
+	// The Mode of the gateway slb.
+	GatewaySlbMode string `pulumi:"gatewaySlbMode"`
+	// The Status of the gateway slb.
+	GatewaySlbStatus string `pulumi:"gatewaySlbStatus"`
+	// The creation time of the gateway slb.
+	GmtCreate string `pulumi:"gmtCreate"`
+	// The ID of the gateway slb.
+	SlbId string `pulumi:"slbId"`
+	// The ip of the gateway slb.
+	SlbIp string `pulumi:"slbIp"`
+	// The port of the gateway slb.
+	SlbPort string `pulumi:"slbPort"`
+	// The type of the gateway slb.
+	Type string `pulumi:"type"`
+}
+
+// GetGatewaysGatewaySlbListInput is an input type that accepts GetGatewaysGatewaySlbListArgs and GetGatewaysGatewaySlbListOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewaySlbListInput` via:
+//
+//          GetGatewaysGatewaySlbListArgs{...}
+type GetGatewaysGatewaySlbListInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewaySlbListOutput() GetGatewaysGatewaySlbListOutput
+	ToGetGatewaysGatewaySlbListOutputWithContext(context.Context) GetGatewaysGatewaySlbListOutput
+}
+
+type GetGatewaysGatewaySlbListArgs struct {
+	// The associate id.
+	AssociateId pulumi.StringInput `pulumi:"associateId"`
+	// The Mode of the gateway slb.
+	GatewaySlbMode pulumi.StringInput `pulumi:"gatewaySlbMode"`
+	// The Status of the gateway slb.
+	GatewaySlbStatus pulumi.StringInput `pulumi:"gatewaySlbStatus"`
+	// The creation time of the gateway slb.
+	GmtCreate pulumi.StringInput `pulumi:"gmtCreate"`
+	// The ID of the gateway slb.
+	SlbId pulumi.StringInput `pulumi:"slbId"`
+	// The ip of the gateway slb.
+	SlbIp pulumi.StringInput `pulumi:"slbIp"`
+	// The port of the gateway slb.
+	SlbPort pulumi.StringInput `pulumi:"slbPort"`
+	// The type of the gateway slb.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetGatewaysGatewaySlbListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewaySlbList)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewaySlbListArgs) ToGetGatewaysGatewaySlbListOutput() GetGatewaysGatewaySlbListOutput {
+	return i.ToGetGatewaysGatewaySlbListOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewaySlbListArgs) ToGetGatewaysGatewaySlbListOutputWithContext(ctx context.Context) GetGatewaysGatewaySlbListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewaySlbListOutput)
+}
+
+// GetGatewaysGatewaySlbListArrayInput is an input type that accepts GetGatewaysGatewaySlbListArray and GetGatewaysGatewaySlbListArrayOutput values.
+// You can construct a concrete instance of `GetGatewaysGatewaySlbListArrayInput` via:
+//
+//          GetGatewaysGatewaySlbListArray{ GetGatewaysGatewaySlbListArgs{...} }
+type GetGatewaysGatewaySlbListArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaysGatewaySlbListArrayOutput() GetGatewaysGatewaySlbListArrayOutput
+	ToGetGatewaysGatewaySlbListArrayOutputWithContext(context.Context) GetGatewaysGatewaySlbListArrayOutput
+}
+
+type GetGatewaysGatewaySlbListArray []GetGatewaysGatewaySlbListInput
+
+func (GetGatewaysGatewaySlbListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewaySlbList)(nil)).Elem()
+}
+
+func (i GetGatewaysGatewaySlbListArray) ToGetGatewaysGatewaySlbListArrayOutput() GetGatewaysGatewaySlbListArrayOutput {
+	return i.ToGetGatewaysGatewaySlbListArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaysGatewaySlbListArray) ToGetGatewaysGatewaySlbListArrayOutputWithContext(ctx context.Context) GetGatewaysGatewaySlbListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewaySlbListArrayOutput)
+}
+
+type GetGatewaysGatewaySlbListOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewaySlbListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysGatewaySlbList)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewaySlbListOutput) ToGetGatewaysGatewaySlbListOutput() GetGatewaysGatewaySlbListOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySlbListOutput) ToGetGatewaysGatewaySlbListOutputWithContext(ctx context.Context) GetGatewaysGatewaySlbListOutput {
+	return o
+}
+
+// The associate id.
+func (o GetGatewaysGatewaySlbListOutput) AssociateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.AssociateId }).(pulumi.StringOutput)
+}
+
+// The Mode of the gateway slb.
+func (o GetGatewaysGatewaySlbListOutput) GatewaySlbMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.GatewaySlbMode }).(pulumi.StringOutput)
+}
+
+// The Status of the gateway slb.
+func (o GetGatewaysGatewaySlbListOutput) GatewaySlbStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.GatewaySlbStatus }).(pulumi.StringOutput)
+}
+
+// The creation time of the gateway slb.
+func (o GetGatewaysGatewaySlbListOutput) GmtCreate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.GmtCreate }).(pulumi.StringOutput)
+}
+
+// The ID of the gateway slb.
+func (o GetGatewaysGatewaySlbListOutput) SlbId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.SlbId }).(pulumi.StringOutput)
+}
+
+// The ip of the gateway slb.
+func (o GetGatewaysGatewaySlbListOutput) SlbIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.SlbIp }).(pulumi.StringOutput)
+}
+
+// The port of the gateway slb.
+func (o GetGatewaysGatewaySlbListOutput) SlbPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.SlbPort }).(pulumi.StringOutput)
+}
+
+// The type of the gateway slb.
+func (o GetGatewaysGatewaySlbListOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetGatewaysGatewaySlbListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysGatewaySlbListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaysGatewaySlbList)(nil)).Elem()
+}
+
+func (o GetGatewaysGatewaySlbListArrayOutput) ToGetGatewaysGatewaySlbListArrayOutput() GetGatewaysGatewaySlbListArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySlbListArrayOutput) ToGetGatewaysGatewaySlbListArrayOutputWithContext(ctx context.Context) GetGatewaysGatewaySlbListArrayOutput {
+	return o
+}
+
+func (o GetGatewaysGatewaySlbListArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewaySlbListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGatewaySlbList {
+		return vs[0].([]GetGatewaysGatewaySlbList)[vs[1].(int)]
+	}).(GetGatewaysGatewaySlbListOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySlbListInput)(nil)).Elem(), GatewaySlbListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySlbListArrayInput)(nil)).Elem(), GatewaySlbListArray{})
@@ -602,10 +949,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInstanceModelInput)(nil)).Elem(), GetClustersClusterInstanceModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInstanceModelArrayInput)(nil)).Elem(), GetClustersClusterInstanceModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySlbListInput)(nil)).Elem(), GetGatewaysGatewaySlbListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySlbListArrayInput)(nil)).Elem(), GetGatewaysGatewaySlbListArray{})
 	pulumi.RegisterOutputType(GatewaySlbListOutput{})
 	pulumi.RegisterOutputType(GatewaySlbListArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterInstanceModelOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterInstanceModelArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewaySlbListOutput{})
+	pulumi.RegisterOutputType(GetGatewaysGatewaySlbListArrayOutput{})
 }

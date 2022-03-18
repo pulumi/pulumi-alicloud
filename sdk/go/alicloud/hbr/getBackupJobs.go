@@ -28,7 +28,7 @@ type GetBackupJobsArgs struct {
 	// A list of Backup Job IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The sort direction. Valid values: `ASCEND`, `DESCEND`.
+	// The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
 	SortDirection *string `pulumi:"sortDirection"`
 	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
 	SourceType string `pulumi:"sourceType"`
@@ -64,7 +64,7 @@ type GetBackupJobsOutputArgs struct {
 	// A list of Backup Job IDs.
 	Ids        pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	// The sort direction. Valid values: `ASCEND`, `DESCEND`.
+	// The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
 	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
 	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`

@@ -112,9 +112,6 @@ namespace Pulumi.AliCloud.Hbr
         [Output("nasBackupPlanName")]
         public Output<string> NasBackupPlanName { get; private set; } = null!;
 
-        /// <summary>
-        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
 
@@ -218,9 +215,6 @@ namespace Pulumi.AliCloud.Hbr
         [Input("nasBackupPlanName", required: true)]
         public Input<string> NasBackupPlanName { get; set; } = null!;
 
-        /// <summary>
-        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
 
@@ -291,9 +285,6 @@ namespace Pulumi.AliCloud.Hbr
         [Input("nasBackupPlanName")]
         public Input<string>? NasBackupPlanName { get; set; }
 
-        /// <summary>
-        /// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-        /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
 

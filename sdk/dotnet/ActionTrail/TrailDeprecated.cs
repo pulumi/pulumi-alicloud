@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// The unique ARN of the Log Service role.
         /// </summary>
         [Output("slsWriteRoleArn")]
-        public Output<string?> SlsWriteRoleArn { get; private set; } = null!;
+        public Output<string> SlsWriteRoleArn { get; private set; } = null!;
 
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;

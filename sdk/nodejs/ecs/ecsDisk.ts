@@ -88,7 +88,7 @@ export class EcsDisk extends pulumi.CustomResource {
     /**
      * Indicates whether the disk is released together with the instance. Default value: `false`.
      */
-    public readonly deleteWithInstance!: pulumi.Output<boolean | undefined>;
+    public readonly deleteWithInstance!: pulumi.Output<boolean>;
     /**
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -163,6 +163,9 @@ export class EcsDisk extends pulumi.CustomResource {
      * The number of partitions in the storage set.
      */
     public readonly storageSetPartitionNumber!: pulumi.Output<number | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
@@ -346,6 +349,9 @@ export interface EcsDiskState {
      * The number of partitions in the storage set.
      */
     storageSetPartitionNumber?: pulumi.Input<number>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
@@ -453,6 +459,9 @@ export interface EcsDiskArgs {
      * The number of partitions in the storage set.
      */
     storageSetPartitionNumber?: pulumi.Input<number>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.

@@ -61,7 +61,6 @@ export function getSnapshots(args: GetSnapshotsArgs, opts?: pulumi.InvokeOptions
         "completeTime": args.completeTime,
         "completeTimeChecker": args.completeTimeChecker,
         "createTime": args.createTime,
-        "enableDetails": args.enableDetails,
         "fileSystemId": args.fileSystemId,
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -94,10 +93,6 @@ export interface GetSnapshotsArgs {
      * File System Creation Time of Nas. Unix Time Seconds.
      */
     createTime?: string;
-    /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
-     */
-    enableDetails?: boolean;
     /**
      * The ID of NAS File system.
      */
@@ -135,7 +130,6 @@ export interface GetSnapshotsResult {
     readonly completeTime?: string;
     readonly completeTimeChecker?: string;
     readonly createTime?: string;
-    readonly enableDetails?: boolean;
     readonly fileSystemId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -176,10 +170,6 @@ export interface GetSnapshotsOutputArgs {
      * File System Creation Time of Nas. Unix Time Seconds.
      */
     createTime?: pulumi.Input<string>;
-    /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
-     */
-    enableDetails?: pulumi.Input<boolean>;
     /**
      * The ID of NAS File system.
      */

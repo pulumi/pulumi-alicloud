@@ -103,6 +103,9 @@ export class Domain extends pulumi.CustomResource {
      * The acceleration region.
      */
     public readonly scope!: pulumi.Output<string | undefined>;
+    /**
+     * The top-level domain name.
+     */
     public readonly securityToken!: pulumi.Output<string | undefined>;
     /**
      * The origin information.
@@ -219,6 +222,9 @@ export interface DomainState {
      * The acceleration region.
      */
     scope?: pulumi.Input<string>;
+    /**
+     * The top-level domain name.
+     */
     securityToken?: pulumi.Input<string>;
     /**
      * The origin information.
@@ -281,6 +287,9 @@ export interface DomainArgs {
      * The acceleration region.
      */
     scope?: pulumi.Input<string>;
+    /**
+     * The top-level domain name.
+     */
     securityToken?: pulumi.Input<string>;
     /**
      * The origin information.

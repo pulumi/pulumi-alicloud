@@ -67,6 +67,14 @@ export class SynchronizationInstance extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to automatically renew when it expires. Valid values: `true`, `false`.
+     */
+    public readonly autoPay!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+     */
+    public readonly autoStart!: pulumi.Output<string | undefined>;
+    /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
     public readonly computeUnit!: pulumi.Output<number | undefined>;
@@ -132,6 +140,8 @@ export class SynchronizationInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SynchronizationInstanceState | undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoStart"] = state ? state.autoStart : undefined;
             resourceInputs["computeUnit"] = state ? state.computeUnit : undefined;
             resourceInputs["databaseCount"] = state ? state.databaseCount : undefined;
             resourceInputs["destinationEndpointEngineName"] = state ? state.destinationEndpointEngineName : undefined;
@@ -162,6 +172,8 @@ export class SynchronizationInstance extends pulumi.CustomResource {
             if ((!args || args.sourceEndpointRegion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointRegion'");
             }
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoStart"] = args ? args.autoStart : undefined;
             resourceInputs["computeUnit"] = args ? args.computeUnit : undefined;
             resourceInputs["databaseCount"] = args ? args.databaseCount : undefined;
             resourceInputs["destinationEndpointEngineName"] = args ? args.destinationEndpointEngineName : undefined;
@@ -185,6 +197,14 @@ export class SynchronizationInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SynchronizationInstance resources.
  */
 export interface SynchronizationInstanceState {
+    /**
+     * Whether to automatically renew when it expires. Valid values: `true`, `false`.
+     */
+    autoPay?: pulumi.Input<string>;
+    /**
+     * Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+     */
+    autoStart?: pulumi.Input<string>;
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
@@ -243,6 +263,14 @@ export interface SynchronizationInstanceState {
  * The set of arguments for constructing a SynchronizationInstance resource.
  */
 export interface SynchronizationInstanceArgs {
+    /**
+     * Whether to automatically renew when it expires. Valid values: `true`, `false`.
+     */
+    autoPay?: pulumi.Input<string>;
+    /**
+     * Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
+     */
+    autoStart?: pulumi.Input<string>;
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */

@@ -15,6 +15,7 @@ class GatewayArgs:
     def __init__(__self__, *,
                  bandwidth: pulumi.Input[int],
                  vpc_id: pulumi.Input[str],
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipsec: Optional[pulumi.Input[bool]] = None,
                  enable_ssl: Optional[pulumi.Input[bool]] = None,
@@ -22,10 +23,14 @@ class GatewayArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
+               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+               `true`: Enable automatic payment, automatic payment order.
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
@@ -35,10 +40,13 @@ class GatewayArgs:
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VPN gateway.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_ipsec is not None:
@@ -53,6 +61,8 @@ class GatewayArgs:
             pulumi.set(__self__, "period", period)
         if ssl_connections is not None:
             pulumi.set(__self__, "ssl_connections", ssl_connections)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
@@ -76,6 +86,20 @@ class GatewayArgs:
     @vpc_id.setter
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pay automatically. Default value: `true`. Valid values:
+        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        `true`: Enable automatic payment, automatic payment order.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pay", value)
 
     @property
     @pulumi.getter
@@ -164,6 +188,18 @@ class GatewayArgs:
         pulumi.set(self, "ssl_connections", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tags of VPN gateway.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -179,6 +215,7 @@ class GatewayArgs:
 @pulumi.input_type
 class _GatewayState:
     def __init__(__self__, *,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  business_status: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -190,10 +227,14 @@ class _GatewayState:
                  period: Optional[pulumi.Input[int]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
+               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+               `true`: Enable automatic payment, automatic payment order.
         :param pulumi.Input[str] business_status: The business status of the VPN gateway.
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -206,9 +247,12 @@ class _GatewayState:
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
         :param pulumi.Input[str] status: The status of the VPN gateway.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VPN gateway.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
         """
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if business_status is not None:
@@ -231,10 +275,26 @@ class _GatewayState:
             pulumi.set(__self__, "ssl_connections", ssl_connections)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pay automatically. Default value: `true`. Valid values:
+        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        `true`: Enable automatic payment, automatic payment order.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pay", value)
 
     @property
     @pulumi.getter
@@ -368,6 +428,18 @@ class _GatewayState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tags of VPN gateway.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -397,6 +469,7 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipsec: Optional[pulumi.Input[bool]] = None,
@@ -405,6 +478,7 @@ class Gateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -419,6 +493,9 @@ class Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
+               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+               `true`: Enable automatic payment, automatic payment order.
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
@@ -428,6 +505,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VPN gateway.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
         """
@@ -461,6 +539,7 @@ class Gateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipsec: Optional[pulumi.Input[bool]] = None,
@@ -469,6 +548,7 @@ class Gateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  ssl_connections: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -483,6 +563,7 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GatewayArgs.__new__(GatewayArgs)
 
+            __props__.__dict__["auto_pay"] = auto_pay
             if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
@@ -493,6 +574,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["period"] = period
             __props__.__dict__["ssl_connections"] = ssl_connections
+            __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
@@ -510,6 +592,7 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pay: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
             business_status: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -521,6 +604,7 @@ class Gateway(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             ssl_connections: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Gateway':
         """
@@ -530,6 +614,9 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Default value: `true`. Valid values:
+               `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+               `true`: Enable automatic payment, automatic payment order.
         :param pulumi.Input[str] business_status: The business status of the VPN gateway.
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -542,6 +629,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
         :param pulumi.Input[str] status: The status of the VPN gateway.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VPN gateway.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
         """
@@ -549,6 +637,7 @@ class Gateway(pulumi.CustomResource):
 
         __props__ = _GatewayState.__new__(_GatewayState)
 
+        __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["business_status"] = business_status
         __props__.__dict__["description"] = description
@@ -560,9 +649,20 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["period"] = period
         __props__.__dict__["ssl_connections"] = ssl_connections
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Gateway(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to pay automatically. Default value: `true`. Valid values:
+        `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
+        `true`: Enable automatic payment, automatic payment order.
+        """
+        return pulumi.get(self, "auto_pay")
 
     @property
     @pulumi.getter
@@ -650,6 +750,14 @@ class Gateway(pulumi.CustomResource):
         The status of the VPN gateway.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The tags of VPN gateway.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")

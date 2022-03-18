@@ -66,6 +66,7 @@ class EcsDiskArgs:
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
                * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
                * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
@@ -393,6 +394,9 @@ class EcsDiskArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -484,6 +488,7 @@ class _EcsDiskState:
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
                * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
                * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
@@ -825,6 +830,9 @@ class _EcsDiskState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -953,6 +961,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
                * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
                * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
@@ -1154,6 +1163,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
                * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
                * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
@@ -1227,7 +1237,7 @@ class EcsDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> pulumi.Output[Optional[bool]]:
+    def delete_with_instance(self) -> pulumi.Output[bool]:
         """
         Indicates whether the disk is released together with the instance. Default value: `false`.
         """
@@ -1376,6 +1386,9 @@ class EcsDisk(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property

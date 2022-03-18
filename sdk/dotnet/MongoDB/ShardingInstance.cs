@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -530,7 +530,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }

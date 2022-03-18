@@ -5,7 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./getInstanceTypes";
+export * from "./getInstances";
 export * from "./getKeyPairs";
+export * from "./getZones";
 export * from "./instance";
 export * from "./keyPair";
 

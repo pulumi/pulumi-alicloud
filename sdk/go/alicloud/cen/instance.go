@@ -56,7 +56,7 @@ type Instance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
@@ -101,7 +101,7 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name *string `pulumi:"name"`
 	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
@@ -118,7 +118,7 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name pulumi.StringPtrInput
 	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel pulumi.StringPtrInput
@@ -139,7 +139,7 @@ type instanceArgs struct {
 	Description *string `pulumi:"description"`
 	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name *string `pulumi:"name"`
 	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
@@ -155,7 +155,7 @@ type InstanceArgs struct {
 	Description pulumi.StringPtrInput
 	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
 	Name pulumi.StringPtrInput
 	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
 	ProtectionLevel pulumi.StringPtrInput

@@ -69,7 +69,7 @@ type TrailDeprecated struct {
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrOutput `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
-	SlsWriteRoleArn pulumi.StringPtrOutput `pulumi:"slsWriteRoleArn"`
+	SlsWriteRoleArn pulumi.StringOutput    `pulumi:"slsWriteRoleArn"`
 	Status          pulumi.StringPtrOutput `pulumi:"status"`
 	TrailName       pulumi.StringOutput    `pulumi:"trailName"`
 	TrailRegion     pulumi.StringPtrOutput `pulumi:"trailRegion"`

@@ -48,10 +48,16 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> GroupDeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         /// </summary>
         [Output("launchTemplateId")]
         public Output<string?> LaunchTemplateId { get; private set; } = null!;
+
+        /// <summary>
+        /// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+        /// </summary>
+        [Output("launchTemplateVersion")]
+        public Output<string?> LaunchTemplateVersion { get; private set; } = null!;
 
         /// <summary>
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -121,6 +127,14 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("spotInstanceRemedy")]
         public Output<bool> SpotInstanceRemedy { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
@@ -213,10 +227,16 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? GroupDeletionProtection { get; set; }
 
         /// <summary>
-        /// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         /// </summary>
         [Input("launchTemplateId")]
         public Input<string>? LaunchTemplateId { get; set; }
+
+        /// <summary>
+        /// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+        /// </summary>
+        [Input("launchTemplateVersion")]
+        public Input<string>? LaunchTemplateVersion { get; set; }
 
         [Input("loadbalancerIds")]
         private InputList<string>? _loadbalancerIds;
@@ -299,6 +319,20 @@ namespace Pulumi.AliCloud.Ess
         [Input("spotInstanceRemedy")]
         public Input<bool>? SpotInstanceRemedy { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         /// </summary>
@@ -357,10 +391,16 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? GroupDeletionProtection { get; set; }
 
         /// <summary>
-        /// Instance launch template ID, used to specify the scaling group to obtain launch configuration information from the instance launch template.
+        /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         /// </summary>
         [Input("launchTemplateId")]
         public Input<string>? LaunchTemplateId { get; set; }
+
+        /// <summary>
+        /// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
+        /// </summary>
+        [Input("launchTemplateVersion")]
+        public Input<string>? LaunchTemplateVersion { get; set; }
 
         [Input("loadbalancerIds")]
         private InputList<string>? _loadbalancerIds;
@@ -442,6 +482,20 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("spotInstanceRemedy")]
         public Input<bool>? SpotInstanceRemedy { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.

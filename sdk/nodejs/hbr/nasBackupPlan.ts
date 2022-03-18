@@ -104,9 +104,6 @@ export class NasBackupPlan extends pulumi.CustomResource {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     public readonly nasBackupPlanName!: pulumi.Output<string>;
-    /**
-     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-     */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
      * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
@@ -213,9 +210,6 @@ export interface NasBackupPlanState {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     nasBackupPlanName?: pulumi.Input<string>;
-    /**
-     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-     */
     options?: pulumi.Input<string>;
     /**
      * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
@@ -261,9 +255,6 @@ export interface NasBackupPlanArgs {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
     nasBackupPlanName: pulumi.Input<string>;
-    /**
-     * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
-     */
     options?: pulumi.Input<string>;
     /**
      * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.

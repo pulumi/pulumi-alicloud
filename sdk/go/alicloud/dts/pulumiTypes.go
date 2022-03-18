@@ -161,6 +161,364 @@ func (o GetConsumerChannelsChannelArrayOutput) Index(i pulumi.IntInput) GetConsu
 	}).(GetConsumerChannelsChannelOutput)
 }
 
+type GetMigrationJobsJob struct {
+	// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
+	DataInitialization bool `pulumi:"dataInitialization"`
+	// Whether to perform incremental data migration for migration types or synchronization values include:
+	DataSynchronization bool `pulumi:"dataSynchronization"`
+	// The Migration object, in the format of JSON strings.
+	DbList string `pulumi:"dbList"`
+	// The name of migrate the database.
+	DestinationEndpointDataBaseName string `pulumi:"destinationEndpointDataBaseName"`
+	// The type of destination database.
+	DestinationEndpointEngineName string `pulumi:"destinationEndpointEngineName"`
+	// The ID of destination instance.
+	DestinationEndpointInstanceId string `pulumi:"destinationEndpointInstanceId"`
+	// The type of destination instance.
+	DestinationEndpointInstanceType string `pulumi:"destinationEndpointInstanceType"`
+	// The ip of source endpoint.
+	DestinationEndpointIp string `pulumi:"destinationEndpointIp"`
+	// The SID of Oracle database.
+	DestinationEndpointOracleSid string `pulumi:"destinationEndpointOracleSid"`
+	// The port of source endpoint.
+	DestinationEndpointPort string `pulumi:"destinationEndpointPort"`
+	// The region of destination instance.
+	DestinationEndpointRegion string `pulumi:"destinationEndpointRegion"`
+	// The username of database account.
+	DestinationEndpointUserName string `pulumi:"destinationEndpointUserName"`
+	// The Migration instance ID. The ID of `dts.MigrationInstance`.
+	DtsInstanceId string `pulumi:"dtsInstanceId"`
+	// The ID of the Migration Job.
+	DtsJobId string `pulumi:"dtsJobId"`
+	// The name of synchronization job.
+	DtsJobName string `pulumi:"dtsJobName"`
+	// The ID of the Migration Job. Its value is same as `dtsJobId`.
+	Id string `pulumi:"id"`
+	// The payment type of the Migration Instance.
+	PaymentType string `pulumi:"paymentType"`
+	// The name of migrate the database.
+	SourceEndpointDatabaseName string `pulumi:"sourceEndpointDatabaseName"`
+	// The type of source database.
+	SourceEndpointEngineName string `pulumi:"sourceEndpointEngineName"`
+	// The ID of source instance.
+	SourceEndpointInstanceId string `pulumi:"sourceEndpointInstanceId"`
+	// The type of source instance.
+	SourceEndpointInstanceType string `pulumi:"sourceEndpointInstanceType"`
+	// The ip of source endpoint.
+	SourceEndpointIp string `pulumi:"sourceEndpointIp"`
+	// The SID of Oracle database.
+	SourceEndpointOracleSid string `pulumi:"sourceEndpointOracleSid"`
+	// The Alibaba Cloud account ID to which the source instance belongs.
+	SourceEndpointOwnerId string `pulumi:"sourceEndpointOwnerId"`
+	// The port of source endpoint.
+	SourceEndpointPort string `pulumi:"sourceEndpointPort"`
+	// The region of source instance.
+	SourceEndpointRegion string `pulumi:"sourceEndpointRegion"`
+	// The name of the role configured for the cloud account to which the source instance belongs.
+	SourceEndpointRole string `pulumi:"sourceEndpointRole"`
+	// The username of database account.
+	SourceEndpointUserName string `pulumi:"sourceEndpointUserName"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// Whether to perform a database table structure to migrate or initialization.
+	StructureInitialization bool `pulumi:"structureInitialization"`
+}
+
+// GetMigrationJobsJobInput is an input type that accepts GetMigrationJobsJobArgs and GetMigrationJobsJobOutput values.
+// You can construct a concrete instance of `GetMigrationJobsJobInput` via:
+//
+//          GetMigrationJobsJobArgs{...}
+type GetMigrationJobsJobInput interface {
+	pulumi.Input
+
+	ToGetMigrationJobsJobOutput() GetMigrationJobsJobOutput
+	ToGetMigrationJobsJobOutputWithContext(context.Context) GetMigrationJobsJobOutput
+}
+
+type GetMigrationJobsJobArgs struct {
+	// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
+	DataInitialization pulumi.BoolInput `pulumi:"dataInitialization"`
+	// Whether to perform incremental data migration for migration types or synchronization values include:
+	DataSynchronization pulumi.BoolInput `pulumi:"dataSynchronization"`
+	// The Migration object, in the format of JSON strings.
+	DbList pulumi.StringInput `pulumi:"dbList"`
+	// The name of migrate the database.
+	DestinationEndpointDataBaseName pulumi.StringInput `pulumi:"destinationEndpointDataBaseName"`
+	// The type of destination database.
+	DestinationEndpointEngineName pulumi.StringInput `pulumi:"destinationEndpointEngineName"`
+	// The ID of destination instance.
+	DestinationEndpointInstanceId pulumi.StringInput `pulumi:"destinationEndpointInstanceId"`
+	// The type of destination instance.
+	DestinationEndpointInstanceType pulumi.StringInput `pulumi:"destinationEndpointInstanceType"`
+	// The ip of source endpoint.
+	DestinationEndpointIp pulumi.StringInput `pulumi:"destinationEndpointIp"`
+	// The SID of Oracle database.
+	DestinationEndpointOracleSid pulumi.StringInput `pulumi:"destinationEndpointOracleSid"`
+	// The port of source endpoint.
+	DestinationEndpointPort pulumi.StringInput `pulumi:"destinationEndpointPort"`
+	// The region of destination instance.
+	DestinationEndpointRegion pulumi.StringInput `pulumi:"destinationEndpointRegion"`
+	// The username of database account.
+	DestinationEndpointUserName pulumi.StringInput `pulumi:"destinationEndpointUserName"`
+	// The Migration instance ID. The ID of `dts.MigrationInstance`.
+	DtsInstanceId pulumi.StringInput `pulumi:"dtsInstanceId"`
+	// The ID of the Migration Job.
+	DtsJobId pulumi.StringInput `pulumi:"dtsJobId"`
+	// The name of synchronization job.
+	DtsJobName pulumi.StringInput `pulumi:"dtsJobName"`
+	// The ID of the Migration Job. Its value is same as `dtsJobId`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The payment type of the Migration Instance.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The name of migrate the database.
+	SourceEndpointDatabaseName pulumi.StringInput `pulumi:"sourceEndpointDatabaseName"`
+	// The type of source database.
+	SourceEndpointEngineName pulumi.StringInput `pulumi:"sourceEndpointEngineName"`
+	// The ID of source instance.
+	SourceEndpointInstanceId pulumi.StringInput `pulumi:"sourceEndpointInstanceId"`
+	// The type of source instance.
+	SourceEndpointInstanceType pulumi.StringInput `pulumi:"sourceEndpointInstanceType"`
+	// The ip of source endpoint.
+	SourceEndpointIp pulumi.StringInput `pulumi:"sourceEndpointIp"`
+	// The SID of Oracle database.
+	SourceEndpointOracleSid pulumi.StringInput `pulumi:"sourceEndpointOracleSid"`
+	// The Alibaba Cloud account ID to which the source instance belongs.
+	SourceEndpointOwnerId pulumi.StringInput `pulumi:"sourceEndpointOwnerId"`
+	// The port of source endpoint.
+	SourceEndpointPort pulumi.StringInput `pulumi:"sourceEndpointPort"`
+	// The region of source instance.
+	SourceEndpointRegion pulumi.StringInput `pulumi:"sourceEndpointRegion"`
+	// The name of the role configured for the cloud account to which the source instance belongs.
+	SourceEndpointRole pulumi.StringInput `pulumi:"sourceEndpointRole"`
+	// The username of database account.
+	SourceEndpointUserName pulumi.StringInput `pulumi:"sourceEndpointUserName"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Whether to perform a database table structure to migrate or initialization.
+	StructureInitialization pulumi.BoolInput `pulumi:"structureInitialization"`
+}
+
+func (GetMigrationJobsJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMigrationJobsJob)(nil)).Elem()
+}
+
+func (i GetMigrationJobsJobArgs) ToGetMigrationJobsJobOutput() GetMigrationJobsJobOutput {
+	return i.ToGetMigrationJobsJobOutputWithContext(context.Background())
+}
+
+func (i GetMigrationJobsJobArgs) ToGetMigrationJobsJobOutputWithContext(ctx context.Context) GetMigrationJobsJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMigrationJobsJobOutput)
+}
+
+// GetMigrationJobsJobArrayInput is an input type that accepts GetMigrationJobsJobArray and GetMigrationJobsJobArrayOutput values.
+// You can construct a concrete instance of `GetMigrationJobsJobArrayInput` via:
+//
+//          GetMigrationJobsJobArray{ GetMigrationJobsJobArgs{...} }
+type GetMigrationJobsJobArrayInput interface {
+	pulumi.Input
+
+	ToGetMigrationJobsJobArrayOutput() GetMigrationJobsJobArrayOutput
+	ToGetMigrationJobsJobArrayOutputWithContext(context.Context) GetMigrationJobsJobArrayOutput
+}
+
+type GetMigrationJobsJobArray []GetMigrationJobsJobInput
+
+func (GetMigrationJobsJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMigrationJobsJob)(nil)).Elem()
+}
+
+func (i GetMigrationJobsJobArray) ToGetMigrationJobsJobArrayOutput() GetMigrationJobsJobArrayOutput {
+	return i.ToGetMigrationJobsJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetMigrationJobsJobArray) ToGetMigrationJobsJobArrayOutputWithContext(ctx context.Context) GetMigrationJobsJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMigrationJobsJobArrayOutput)
+}
+
+type GetMigrationJobsJobOutput struct{ *pulumi.OutputState }
+
+func (GetMigrationJobsJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMigrationJobsJob)(nil)).Elem()
+}
+
+func (o GetMigrationJobsJobOutput) ToGetMigrationJobsJobOutput() GetMigrationJobsJobOutput {
+	return o
+}
+
+func (o GetMigrationJobsJobOutput) ToGetMigrationJobsJobOutputWithContext(ctx context.Context) GetMigrationJobsJobOutput {
+	return o
+}
+
+// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
+func (o GetMigrationJobsJobOutput) DataInitialization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) bool { return v.DataInitialization }).(pulumi.BoolOutput)
+}
+
+// Whether to perform incremental data migration for migration types or synchronization values include:
+func (o GetMigrationJobsJobOutput) DataSynchronization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) bool { return v.DataSynchronization }).(pulumi.BoolOutput)
+}
+
+// The Migration object, in the format of JSON strings.
+func (o GetMigrationJobsJobOutput) DbList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DbList }).(pulumi.StringOutput)
+}
+
+// The name of migrate the database.
+func (o GetMigrationJobsJobOutput) DestinationEndpointDataBaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointDataBaseName }).(pulumi.StringOutput)
+}
+
+// The type of destination database.
+func (o GetMigrationJobsJobOutput) DestinationEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The ID of destination instance.
+func (o GetMigrationJobsJobOutput) DestinationEndpointInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointInstanceId }).(pulumi.StringOutput)
+}
+
+// The type of destination instance.
+func (o GetMigrationJobsJobOutput) DestinationEndpointInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointInstanceType }).(pulumi.StringOutput)
+}
+
+// The ip of source endpoint.
+func (o GetMigrationJobsJobOutput) DestinationEndpointIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointIp }).(pulumi.StringOutput)
+}
+
+// The SID of Oracle database.
+func (o GetMigrationJobsJobOutput) DestinationEndpointOracleSid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointOracleSid }).(pulumi.StringOutput)
+}
+
+// The port of source endpoint.
+func (o GetMigrationJobsJobOutput) DestinationEndpointPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointPort }).(pulumi.StringOutput)
+}
+
+// The region of destination instance.
+func (o GetMigrationJobsJobOutput) DestinationEndpointRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointRegion }).(pulumi.StringOutput)
+}
+
+// The username of database account.
+func (o GetMigrationJobsJobOutput) DestinationEndpointUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DestinationEndpointUserName }).(pulumi.StringOutput)
+}
+
+// The Migration instance ID. The ID of `dts.MigrationInstance`.
+func (o GetMigrationJobsJobOutput) DtsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DtsInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the Migration Job.
+func (o GetMigrationJobsJobOutput) DtsJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DtsJobId }).(pulumi.StringOutput)
+}
+
+// The name of synchronization job.
+func (o GetMigrationJobsJobOutput) DtsJobName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.DtsJobName }).(pulumi.StringOutput)
+}
+
+// The ID of the Migration Job. Its value is same as `dtsJobId`.
+func (o GetMigrationJobsJobOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The payment type of the Migration Instance.
+func (o GetMigrationJobsJobOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The name of migrate the database.
+func (o GetMigrationJobsJobOutput) SourceEndpointDatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointDatabaseName }).(pulumi.StringOutput)
+}
+
+// The type of source database.
+func (o GetMigrationJobsJobOutput) SourceEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The ID of source instance.
+func (o GetMigrationJobsJobOutput) SourceEndpointInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointInstanceId }).(pulumi.StringOutput)
+}
+
+// The type of source instance.
+func (o GetMigrationJobsJobOutput) SourceEndpointInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointInstanceType }).(pulumi.StringOutput)
+}
+
+// The ip of source endpoint.
+func (o GetMigrationJobsJobOutput) SourceEndpointIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointIp }).(pulumi.StringOutput)
+}
+
+// The SID of Oracle database.
+func (o GetMigrationJobsJobOutput) SourceEndpointOracleSid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointOracleSid }).(pulumi.StringOutput)
+}
+
+// The Alibaba Cloud account ID to which the source instance belongs.
+func (o GetMigrationJobsJobOutput) SourceEndpointOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointOwnerId }).(pulumi.StringOutput)
+}
+
+// The port of source endpoint.
+func (o GetMigrationJobsJobOutput) SourceEndpointPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointPort }).(pulumi.StringOutput)
+}
+
+// The region of source instance.
+func (o GetMigrationJobsJobOutput) SourceEndpointRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointRegion }).(pulumi.StringOutput)
+}
+
+// The name of the role configured for the cloud account to which the source instance belongs.
+func (o GetMigrationJobsJobOutput) SourceEndpointRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointRole }).(pulumi.StringOutput)
+}
+
+// The username of database account.
+func (o GetMigrationJobsJobOutput) SourceEndpointUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.SourceEndpointUserName }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetMigrationJobsJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether to perform a database table structure to migrate or initialization.
+func (o GetMigrationJobsJobOutput) StructureInitialization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMigrationJobsJob) bool { return v.StructureInitialization }).(pulumi.BoolOutput)
+}
+
+type GetMigrationJobsJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMigrationJobsJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMigrationJobsJob)(nil)).Elem()
+}
+
+func (o GetMigrationJobsJobArrayOutput) ToGetMigrationJobsJobArrayOutput() GetMigrationJobsJobArrayOutput {
+	return o
+}
+
+func (o GetMigrationJobsJobArrayOutput) ToGetMigrationJobsJobArrayOutputWithContext(ctx context.Context) GetMigrationJobsJobArrayOutput {
+	return o
+}
+
+func (o GetMigrationJobsJobArrayOutput) Index(i pulumi.IntInput) GetMigrationJobsJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMigrationJobsJob {
+		return vs[0].([]GetMigrationJobsJob)[vs[1].(int)]
+	}).(GetMigrationJobsJobOutput)
+}
+
 type GetSubscriptionJobsJob struct {
 	// Subscription start time in Unix timestamp format.
 	Checkpoint string `pulumi:"checkpoint"`
@@ -992,6 +1350,8 @@ func (o GetSynchronizationJobsJobArrayOutput) Index(i pulumi.IntInput) GetSynchr
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerChannelsChannelInput)(nil)).Elem(), GetConsumerChannelsChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerChannelsChannelArrayInput)(nil)).Elem(), GetConsumerChannelsChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMigrationJobsJobInput)(nil)).Elem(), GetMigrationJobsJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMigrationJobsJobArrayInput)(nil)).Elem(), GetMigrationJobsJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobInput)(nil)).Elem(), GetSubscriptionJobsJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobArrayInput)(nil)).Elem(), GetSubscriptionJobsJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobSubscriptionHostInput)(nil)).Elem(), GetSubscriptionJobsJobSubscriptionHostArgs{})
@@ -1000,6 +1360,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSynchronizationJobsJobArrayInput)(nil)).Elem(), GetSynchronizationJobsJobArray{})
 	pulumi.RegisterOutputType(GetConsumerChannelsChannelOutput{})
 	pulumi.RegisterOutputType(GetConsumerChannelsChannelArrayOutput{})
+	pulumi.RegisterOutputType(GetMigrationJobsJobOutput{})
+	pulumi.RegisterOutputType(GetMigrationJobsJobArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobSubscriptionHostOutput{})

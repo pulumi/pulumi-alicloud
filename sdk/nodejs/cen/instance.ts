@@ -70,7 +70,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+     * @deprecated attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -134,7 +134,7 @@ export interface InstanceState {
     /**
      * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+     * @deprecated attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface InstanceArgs {
     /**
      * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+     * @deprecated attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
      */
     name?: pulumi.Input<string>;
     /**

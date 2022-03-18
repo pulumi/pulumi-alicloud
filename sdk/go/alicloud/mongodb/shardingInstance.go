@@ -62,7 +62,7 @@ type ShardingInstance struct {
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The TDE(Transparent Data Encryption) status.
+	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
@@ -150,7 +150,7 @@ type shardingInstanceState struct {
 	StorageEngine *string `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The TDE(Transparent Data Encryption) status.
+	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -201,7 +201,7 @@ type ShardingInstanceState struct {
 	StorageEngine pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The TDE(Transparent Data Encryption) status.
+	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
@@ -252,7 +252,7 @@ type shardingInstanceArgs struct {
 	StorageEngine *string `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The TDE(Transparent Data Encryption) status.
+	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -300,7 +300,7 @@ type ShardingInstanceArgs struct {
 	StorageEngine pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The TDE(Transparent Data Encryption) status.
+	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput

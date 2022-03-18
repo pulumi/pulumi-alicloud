@@ -21,7 +21,7 @@ class GetSnapshotsResult:
     """
     A collection of values returned by getSnapshots.
     """
-    def __init__(__self__, bucket=None, complete_time=None, complete_time_checker=None, create_time=None, enable_details=None, file_system_id=None, id=None, ids=None, instance_id=None, limit=None, output_file=None, query=None, snapshots=None, source_type=None, status=None, vault_id=None):
+    def __init__(__self__, bucket=None, complete_time=None, complete_time_checker=None, create_time=None, file_system_id=None, id=None, ids=None, instance_id=None, limit=None, output_file=None, query=None, snapshots=None, source_type=None, status=None, vault_id=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -34,9 +34,6 @@ class GetSnapshotsResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
-        if enable_details and not isinstance(enable_details, bool):
-            raise TypeError("Expected argument 'enable_details' to be a bool")
-        pulumi.set(__self__, "enable_details", enable_details)
         if file_system_id and not isinstance(file_system_id, str):
             raise TypeError("Expected argument 'file_system_id' to be a str")
         pulumi.set(__self__, "file_system_id", file_system_id)
@@ -90,11 +87,6 @@ class GetSnapshotsResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[str]:
         return pulumi.get(self, "create_time")
-
-    @property
-    @pulumi.getter(name="enableDetails")
-    def enable_details(self) -> Optional[bool]:
-        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -165,7 +157,6 @@ class AwaitableGetSnapshotsResult(GetSnapshotsResult):
             complete_time=self.complete_time,
             complete_time_checker=self.complete_time_checker,
             create_time=self.create_time,
-            enable_details=self.enable_details,
             file_system_id=self.file_system_id,
             id=self.id,
             ids=self.ids,
@@ -183,7 +174,6 @@ def get_snapshots(bucket: Optional[str] = None,
                   complete_time: Optional[str] = None,
                   complete_time_checker: Optional[str] = None,
                   create_time: Optional[str] = None,
-                  enable_details: Optional[bool] = None,
                   file_system_id: Optional[str] = None,
                   ids: Optional[Sequence[str]] = None,
                   instance_id: Optional[str] = None,
@@ -232,7 +222,6 @@ def get_snapshots(bucket: Optional[str] = None,
     :param str complete_time: The time when the snapshot completed. UNIX time in seconds.
     :param str complete_time_checker: Complete time filter operator. Optional values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
     :param str create_time: File System Creation Time of Nas. Unix Time Seconds.
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str file_system_id: The ID of NAS File system.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str instance_id: The ID of ECS instance.
@@ -245,7 +234,6 @@ def get_snapshots(bucket: Optional[str] = None,
     __args__['completeTime'] = complete_time
     __args__['completeTimeChecker'] = complete_time_checker
     __args__['createTime'] = create_time
-    __args__['enableDetails'] = enable_details
     __args__['fileSystemId'] = file_system_id
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
@@ -266,7 +254,6 @@ def get_snapshots(bucket: Optional[str] = None,
         complete_time=__ret__.complete_time,
         complete_time_checker=__ret__.complete_time_checker,
         create_time=__ret__.create_time,
-        enable_details=__ret__.enable_details,
         file_system_id=__ret__.file_system_id,
         id=__ret__.id,
         ids=__ret__.ids,
@@ -285,7 +272,6 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
                          complete_time: Optional[pulumi.Input[Optional[str]]] = None,
                          complete_time_checker: Optional[pulumi.Input[Optional[str]]] = None,
                          create_time: Optional[pulumi.Input[Optional[str]]] = None,
-                         enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                          file_system_id: Optional[pulumi.Input[Optional[str]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          instance_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -334,7 +320,6 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
     :param str complete_time: The time when the snapshot completed. UNIX time in seconds.
     :param str complete_time_checker: Complete time filter operator. Optional values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
     :param str create_time: File System Creation Time of Nas. Unix Time Seconds.
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str file_system_id: The ID of NAS File system.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str instance_id: The ID of ECS instance.

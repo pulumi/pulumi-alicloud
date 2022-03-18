@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available in v1.139.0+.
     /// 
-    /// &gt; **NOTE:** The Cloud Firewall Instance is not support to be purchase automatically in the international site.
-    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

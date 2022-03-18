@@ -25,7 +25,6 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
@@ -71,9 +70,6 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        security group IDs configured to Bastionhost.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -155,7 +151,6 @@ class _InstanceState:
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -236,9 +231,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        security group IDs configured to Bastionhost.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -299,7 +291,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -398,7 +389,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -456,9 +446,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
-        """
-        security group IDs configured to Bastionhost.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @property

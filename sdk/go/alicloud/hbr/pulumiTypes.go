@@ -1222,7 +1222,8 @@ type GetNasBackupPlansPlan struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
-	CreateTime  string `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
+	// The creation time of the backup plan. UNIX time in seconds.
 	CreatedTime string `pulumi:"createdTime"`
 	// Whether to be suspended. Valid values: `true`, `false`.
 	Disabled bool `pulumi:"disabled"`
@@ -1234,14 +1235,15 @@ type GetNasBackupPlansPlan struct {
 	NasBackupPlanId string `pulumi:"nasBackupPlanId"`
 	// The name of the resource.
 	NasBackupPlanName string `pulumi:"nasBackupPlanName"`
-	// Options of nas.
+	// Options field of Nas backup plan.
 	Options string `pulumi:"options"`
 	// List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
 	Paths []string `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-	Schedule    string `pulumi:"schedule"`
+	Schedule string `pulumi:"schedule"`
+	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime string `pulumi:"updatedTime"`
 	// The ID of backup vault.
 	VaultId string `pulumi:"vaultId"`
@@ -1262,7 +1264,8 @@ type GetNasBackupPlansPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringInput `pulumi:"backupType"`
 	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
-	CreateTime  pulumi.StringInput `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The creation time of the backup plan. UNIX time in seconds.
 	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
 	// Whether to be suspended. Valid values: `true`, `false`.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
@@ -1274,14 +1277,15 @@ type GetNasBackupPlansPlanArgs struct {
 	NasBackupPlanId pulumi.StringInput `pulumi:"nasBackupPlanId"`
 	// The name of the resource.
 	NasBackupPlanName pulumi.StringInput `pulumi:"nasBackupPlanName"`
-	// Options of nas.
+	// Options field of Nas backup plan.
 	Options pulumi.StringInput `pulumi:"options"`
 	// List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-	Schedule    pulumi.StringInput `pulumi:"schedule"`
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
 	// The ID of backup vault.
 	VaultId pulumi.StringInput `pulumi:"vaultId"`
@@ -1348,6 +1352,7 @@ func (o GetNasBackupPlansPlanOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The creation time of the backup plan. UNIX time in seconds.
 func (o GetNasBackupPlansPlanOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
@@ -1377,7 +1382,7 @@ func (o GetNasBackupPlansPlanOutput) NasBackupPlanName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.NasBackupPlanName }).(pulumi.StringOutput)
 }
 
-// Options of nas.
+// Options field of Nas backup plan.
 func (o GetNasBackupPlansPlanOutput) Options() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.Options }).(pulumi.StringOutput)
 }
@@ -1397,6 +1402,7 @@ func (o GetNasBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
 
+// The update time of the backup plan. UNIX time in seconds.
 func (o GetNasBackupPlansPlanOutput) UpdatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.UpdatedTime }).(pulumi.StringOutput)
 }
@@ -1756,7 +1762,7 @@ type GetRestoreJobsJob struct {
 	SnapshotHash string `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType string `pulumi:"sourceType"`
 	// The start time of restore job. Unix Time in Seconds.
 	StartTime string `pulumi:"startTime"`
@@ -1830,7 +1836,7 @@ type GetRestoreJobsJobArgs struct {
 	SnapshotHash pulumi.StringInput `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
 	// The start time of restore job. Unix Time in Seconds.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
@@ -2000,7 +2006,7 @@ func (o GetRestoreJobsJobOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
 func (o GetRestoreJobsJobOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SourceType }).(pulumi.StringOutput)
 }

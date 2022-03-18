@@ -194,14 +194,14 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// Database engine: gpdb. System Default value: gpdb.
         /// </summary>
-        [Input("engine")]
-        public Input<string>? Engine { get; set; }
+        [Input("engine", required: true)]
+        public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         /// </summary>
-        [Input("engineVersion")]
-        public Input<string>? EngineVersion { get; set; }
+        [Input("engineVersion", required: true)]
+        public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
