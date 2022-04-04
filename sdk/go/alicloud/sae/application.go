@@ -15,7 +15,7 @@ import (
 //
 // For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available in v1.161.0+.
 //
 // ## Example Usage
 //
@@ -129,22 +129,10 @@ type Application struct {
 	EnableAhas pulumi.StringOutput `pulumi:"enableAhas"`
 	// The enable grey tag route.
 	EnableGreyTagRoute pulumi.BoolOutput `pulumi:"enableGreyTagRoute"`
-	// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+	// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
 	Envs pulumi.StringOutput `pulumi:"envs"`
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl pulumi.StringPtrOutput `pulumi:"imageUrl"`
-	// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
-	// public network SLB ID.
-	InternetSlbId pulumi.StringPtrOutput `pulumi:"internetSlbId"`
-	// Bound private network SLB. The details see Block internet.
-	Internets ApplicationInternetArrayOutput `pulumi:"internets"`
-	// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-	IntranetIp pulumi.StringOutput `pulumi:"intranetIp"`
-	// private network SLB ID.
-	IntranetSlbId pulumi.StringPtrOutput `pulumi:"intranetSlbId"`
-	// Bound public network SLB. The details see Block intranet.
-	Intranets ApplicationIntranetArrayOutput `pulumi:"intranets"`
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs pulumi.StringPtrOutput `pulumi:"jarStartArgs"`
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -155,6 +143,10 @@ type Application struct {
 	Liveness pulumi.StringPtrOutput `pulumi:"liveness"`
 	// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
 	Memory pulumi.IntPtrOutput `pulumi:"memory"`
+	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+	// * `-1`: Initialization value, indicating that percentages are not used.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	MinReadyInstanceRatio pulumi.IntOutput `pulumi:"minReadyInstanceRatio"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances pulumi.IntOutput `pulumi:"minReadyInstances"`
 	// Mount description.
@@ -189,7 +181,7 @@ type Application struct {
 	PreStop pulumi.StringPtrOutput `pulumi:"preStop"`
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness pulumi.StringPtrOutput `pulumi:"readiness"`
-	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+	// Initial number of instances.
 	Replicas pulumi.IntOutput `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
@@ -285,22 +277,10 @@ type applicationState struct {
 	EnableAhas *string `pulumi:"enableAhas"`
 	// The enable grey tag route.
 	EnableGreyTagRoute *bool `pulumi:"enableGreyTagRoute"`
-	// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+	// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
 	Envs *string `pulumi:"envs"`
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl *string `pulumi:"imageUrl"`
-	// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-	InternetIp *string `pulumi:"internetIp"`
-	// public network SLB ID.
-	InternetSlbId *string `pulumi:"internetSlbId"`
-	// Bound private network SLB. The details see Block internet.
-	Internets []ApplicationInternet `pulumi:"internets"`
-	// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-	IntranetIp *string `pulumi:"intranetIp"`
-	// private network SLB ID.
-	IntranetSlbId *string `pulumi:"intranetSlbId"`
-	// Bound public network SLB. The details see Block intranet.
-	Intranets []ApplicationIntranet `pulumi:"intranets"`
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs *string `pulumi:"jarStartArgs"`
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -311,6 +291,10 @@ type applicationState struct {
 	Liveness *string `pulumi:"liveness"`
 	// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
 	Memory *int `pulumi:"memory"`
+	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+	// * `-1`: Initialization value, indicating that percentages are not used.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	MinReadyInstanceRatio *int `pulumi:"minReadyInstanceRatio"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances *int `pulumi:"minReadyInstances"`
 	// Mount description.
@@ -345,7 +329,7 @@ type applicationState struct {
 	PreStop *string `pulumi:"preStop"`
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness *string `pulumi:"readiness"`
-	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+	// Initial number of instances.
 	Replicas *int `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -404,22 +388,10 @@ type ApplicationState struct {
 	EnableAhas pulumi.StringPtrInput
 	// The enable grey tag route.
 	EnableGreyTagRoute pulumi.BoolPtrInput
-	// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+	// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
 	Envs pulumi.StringPtrInput
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl pulumi.StringPtrInput
-	// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-	InternetIp pulumi.StringPtrInput
-	// public network SLB ID.
-	InternetSlbId pulumi.StringPtrInput
-	// Bound private network SLB. The details see Block internet.
-	Internets ApplicationInternetArrayInput
-	// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-	IntranetIp pulumi.StringPtrInput
-	// private network SLB ID.
-	IntranetSlbId pulumi.StringPtrInput
-	// Bound public network SLB. The details see Block intranet.
-	Intranets ApplicationIntranetArrayInput
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs pulumi.StringPtrInput
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -430,6 +402,10 @@ type ApplicationState struct {
 	Liveness pulumi.StringPtrInput
 	// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
 	Memory pulumi.IntPtrInput
+	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+	// * `-1`: Initialization value, indicating that percentages are not used.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	MinReadyInstanceRatio pulumi.IntPtrInput
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances pulumi.IntPtrInput
 	// Mount description.
@@ -464,7 +440,7 @@ type ApplicationState struct {
 	PreStop pulumi.StringPtrInput
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness pulumi.StringPtrInput
-	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+	// Initial number of instances.
 	Replicas pulumi.IntPtrInput
 	// Security group ID.
 	SecurityGroupId pulumi.StringPtrInput
@@ -527,18 +503,10 @@ type applicationArgs struct {
 	EnableAhas *string `pulumi:"enableAhas"`
 	// The enable grey tag route.
 	EnableGreyTagRoute *bool `pulumi:"enableGreyTagRoute"`
-	// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+	// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
 	Envs *string `pulumi:"envs"`
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl *string `pulumi:"imageUrl"`
-	// public network SLB ID.
-	InternetSlbId *string `pulumi:"internetSlbId"`
-	// Bound private network SLB. The details see Block internet.
-	Internets []ApplicationInternet `pulumi:"internets"`
-	// private network SLB ID.
-	IntranetSlbId *string `pulumi:"intranetSlbId"`
-	// Bound public network SLB. The details see Block intranet.
-	Intranets []ApplicationIntranet `pulumi:"intranets"`
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs *string `pulumi:"jarStartArgs"`
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -549,6 +517,10 @@ type applicationArgs struct {
 	Liveness *string `pulumi:"liveness"`
 	// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
 	Memory *int `pulumi:"memory"`
+	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+	// * `-1`: Initialization value, indicating that percentages are not used.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	MinReadyInstanceRatio *int `pulumi:"minReadyInstanceRatio"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances *int `pulumi:"minReadyInstances"`
 	// Mount description.
@@ -583,7 +555,7 @@ type applicationArgs struct {
 	PreStop *string `pulumi:"preStop"`
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness *string `pulumi:"readiness"`
-	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+	// Initial number of instances.
 	Replicas int `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -643,18 +615,10 @@ type ApplicationArgs struct {
 	EnableAhas pulumi.StringPtrInput
 	// The enable grey tag route.
 	EnableGreyTagRoute pulumi.BoolPtrInput
-	// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+	// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
 	Envs pulumi.StringPtrInput
 	// Mirror address. Only Image type applications can configure the mirror address.
 	ImageUrl pulumi.StringPtrInput
-	// public network SLB ID.
-	InternetSlbId pulumi.StringPtrInput
-	// Bound private network SLB. The details see Block internet.
-	Internets ApplicationInternetArrayInput
-	// private network SLB ID.
-	IntranetSlbId pulumi.StringPtrInput
-	// Bound public network SLB. The details see Block intranet.
-	Intranets ApplicationIntranetArrayInput
 	// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
 	JarStartArgs pulumi.StringPtrInput
 	// The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -665,6 +629,10 @@ type ApplicationArgs struct {
 	Liveness pulumi.StringPtrInput
 	// The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
 	Memory pulumi.IntPtrInput
+	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
+	// * `-1`: Initialization value, indicating that percentages are not used.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	MinReadyInstanceRatio pulumi.IntPtrInput
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances pulumi.IntPtrInput
 	// Mount description.
@@ -699,7 +667,7 @@ type ApplicationArgs struct {
 	PreStop pulumi.StringPtrInput
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness pulumi.StringPtrInput
-	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+	// Initial number of instances.
 	Replicas pulumi.IntInput
 	// Security group ID.
 	SecurityGroupId pulumi.StringPtrInput

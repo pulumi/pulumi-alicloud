@@ -10,12 +10,230 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BucketReplicationDestination',
+    'BucketReplicationEncryptionConfiguration',
+    'BucketReplicationPrefixSet',
+    'BucketReplicationProgress',
+    'BucketReplicationSourceSelectionCriteria',
+    'BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects',
     'TablePrimaryKey',
     'GetInstanceAttachmentsAttachmentResult',
     'GetInstancesInstanceResult',
     'GetTablesTableResult',
     'GetTablesTablePrimaryKeyResult',
 ]
+
+@pulumi.output_type
+class BucketReplicationDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "transferType":
+            suggest = "transfer_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketReplicationDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketReplicationDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketReplicationDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: str,
+                 location: str,
+                 transfer_type: Optional[str] = None):
+        """
+        :param str bucket: The destination bucket to which the data is replicated.
+        :param str transfer_type: The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "location", location)
+        if transfer_type is not None:
+            pulumi.set(__self__, "transfer_type", transfer_type)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The destination bucket to which the data is replicated.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="transferType")
+    def transfer_type(self) -> Optional[str]:
+        """
+        The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+        """
+        return pulumi.get(self, "transfer_type")
+
+
+@pulumi.output_type
+class BucketReplicationEncryptionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replicaKmsKeyId":
+            suggest = "replica_kms_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketReplicationEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketReplicationEncryptionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketReplicationEncryptionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 replica_kms_key_id: str):
+        """
+        :param str replica_kms_key_id: The CMK ID used in SSE-KMS.
+        """
+        pulumi.set(__self__, "replica_kms_key_id", replica_kms_key_id)
+
+    @property
+    @pulumi.getter(name="replicaKmsKeyId")
+    def replica_kms_key_id(self) -> str:
+        """
+        The CMK ID used in SSE-KMS.
+        """
+        return pulumi.get(self, "replica_kms_key_id")
+
+
+@pulumi.output_type
+class BucketReplicationPrefixSet(dict):
+    def __init__(__self__, *,
+                 prefixes: Sequence[str]):
+        """
+        :param Sequence[str] prefixes: The list of object key name prefix identifying one or more objects to which the rule applies.
+        """
+        pulumi.set(__self__, "prefixes", prefixes)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Sequence[str]:
+        """
+        The list of object key name prefix identifying one or more objects to which the rule applies.
+        """
+        return pulumi.get(self, "prefixes")
+
+
+@pulumi.output_type
+class BucketReplicationProgress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "historicalObject":
+            suggest = "historical_object"
+        elif key == "newObject":
+            suggest = "new_object"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketReplicationProgress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketReplicationProgress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketReplicationProgress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 historical_object: Optional[str] = None,
+                 new_object: Optional[str] = None):
+        """
+        :param str historical_object: The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+        :param str new_object: The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+        """
+        if historical_object is not None:
+            pulumi.set(__self__, "historical_object", historical_object)
+        if new_object is not None:
+            pulumi.set(__self__, "new_object", new_object)
+
+    @property
+    @pulumi.getter(name="historicalObject")
+    def historical_object(self) -> Optional[str]:
+        """
+        The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+        """
+        return pulumi.get(self, "historical_object")
+
+    @property
+    @pulumi.getter(name="newObject")
+    def new_object(self) -> Optional[str]:
+        """
+        The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+        """
+        return pulumi.get(self, "new_object")
+
+
+@pulumi.output_type
+class BucketReplicationSourceSelectionCriteria(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sseKmsEncryptedObjects":
+            suggest = "sse_kms_encrypted_objects"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketReplicationSourceSelectionCriteria. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketReplicationSourceSelectionCriteria.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketReplicationSourceSelectionCriteria.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sse_kms_encrypted_objects: Optional['outputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects'] = None):
+        """
+        :param 'BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs' sse_kms_encrypted_objects: Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+        """
+        if sse_kms_encrypted_objects is not None:
+            pulumi.set(__self__, "sse_kms_encrypted_objects", sse_kms_encrypted_objects)
+
+    @property
+    @pulumi.getter(name="sseKmsEncryptedObjects")
+    def sse_kms_encrypted_objects(self) -> Optional['outputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects']:
+        """
+        Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+        """
+        return pulumi.get(self, "sse_kms_encrypted_objects")
+
+
+@pulumi.output_type
+class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects(dict):
+    def __init__(__self__, *,
+                 status: Optional[str] = None):
+        """
+        :param str status: Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        """
+        return pulumi.get(self, "status")
+
 
 @pulumi.output_type
 class TablePrimaryKey(dict):

@@ -71,7 +71,7 @@ class AlarmEscalationsCritical(dict):
                  times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
-        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
@@ -96,7 +96,7 @@ class AlarmEscalationsCritical(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         """
         return pulumi.get(self, "statistics")
 
@@ -143,7 +143,7 @@ class AlarmEscalationsInfo(dict):
                  times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
-        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
@@ -168,7 +168,7 @@ class AlarmEscalationsInfo(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         """
         return pulumi.get(self, "statistics")
 
@@ -215,7 +215,7 @@ class AlarmEscalationsWarn(dict):
                  times: Optional[int] = None):
         """
         :param str comparison_operator: Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
-        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
@@ -240,7 +240,7 @@ class AlarmEscalationsWarn(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
         """
         return pulumi.get(self, "statistics")
 
@@ -2098,11 +2098,17 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult(dict):
 class GetMonitorGroupInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  instances: Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']):
+        """
+        :param Sequence['GetMonitorGroupInstancesInstanceInstanceArgs'] instances: Instance information added to the Cms Group.
+        """
         pulumi.set(__self__, "instances", instances)
 
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']:
+        """
+        Instance information added to the Cms Group.
+        """
         return pulumi.get(self, "instances")
 
 
@@ -2113,6 +2119,12 @@ class GetMonitorGroupInstancesInstanceInstanceResult(dict):
                  instance_id: str,
                  instance_name: str,
                  region_id: str):
+        """
+        :param str category: The category of instance.
+        :param str instance_id: The id of instance.
+        :param str instance_name: The name of instance.
+        :param str region_id: The region id of instance.
+        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instance_name", instance_name)
@@ -2121,21 +2133,33 @@ class GetMonitorGroupInstancesInstanceInstanceResult(dict):
     @property
     @pulumi.getter
     def category(self) -> str:
+        """
+        The category of instance.
+        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
+        """
+        The id of instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> str:
+        """
+        The name of instance.
+        """
         return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
+        """
+        The region id of instance.
+        """
         return pulumi.get(self, "region_id")
 
 

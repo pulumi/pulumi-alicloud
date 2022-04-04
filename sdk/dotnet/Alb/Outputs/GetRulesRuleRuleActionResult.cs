@@ -38,6 +38,14 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleRuleActionRewriteConfigResult> RewriteConfigs;
         /// <summary>
+        /// The Flow speed limit.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesRuleRuleActionTrafficLimitConfigResult> TrafficLimitConfigs;
+        /// <summary>
+        /// The Traffic mirroring.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesRuleRuleActionTrafficMirrorConfigResult> TrafficMirrorConfigs;
+        /// <summary>
         /// The type of the forwarding rule.
         /// </summary>
         public readonly string Type;
@@ -56,6 +64,10 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             ImmutableArray<Outputs.GetRulesRuleRuleActionRewriteConfigResult> rewriteConfigs,
 
+            ImmutableArray<Outputs.GetRulesRuleRuleActionTrafficLimitConfigResult> trafficLimitConfigs,
+
+            ImmutableArray<Outputs.GetRulesRuleRuleActionTrafficMirrorConfigResult> trafficMirrorConfigs,
+
             string type)
         {
             FixedResponseConfigs = fixedResponseConfigs;
@@ -64,6 +76,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
             Order = order;
             RedirectConfigs = redirectConfigs;
             RewriteConfigs = rewriteConfigs;
+            TrafficLimitConfigs = trafficLimitConfigs;
+            TrafficMirrorConfigs = trafficMirrorConfigs;
             Type = type;
         }
     }

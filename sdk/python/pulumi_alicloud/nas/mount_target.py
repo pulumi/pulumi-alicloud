@@ -102,6 +102,7 @@ class _MountTargetState:
     def __init__(__self__, *,
                  access_group_name: Optional[pulumi.Input[str]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
+                 mount_target_domain: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
@@ -109,6 +110,7 @@ class _MountTargetState:
         Input properties used for looking up and filtering MountTarget resources.
         :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
+        :param pulumi.Input[str] mount_target_domain: The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
         :param pulumi.Input[str] security_group_id: The ID of security group.
         :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
@@ -117,6 +119,8 @@ class _MountTargetState:
             pulumi.set(__self__, "access_group_name", access_group_name)
         if file_system_id is not None:
             pulumi.set(__self__, "file_system_id", file_system_id)
+        if mount_target_domain is not None:
+            pulumi.set(__self__, "mount_target_domain", mount_target_domain)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
@@ -147,6 +151,18 @@ class _MountTargetState:
     @file_system_id.setter
     def file_system_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_system_id", value)
+
+    @property
+    @pulumi.getter(name="mountTargetDomain")
+    def mount_target_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        """
+        return pulumi.get(self, "mount_target_domain")
+
+    @mount_target_domain.setter
+    def mount_target_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mount_target_domain", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -335,6 +351,7 @@ class MountTarget(pulumi.CustomResource):
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["status"] = status
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["mount_target_domain"] = None
         super(MountTarget, __self__).__init__(
             'alicloud:nas/mountTarget:MountTarget',
             resource_name,
@@ -347,6 +364,7 @@ class MountTarget(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_group_name: Optional[pulumi.Input[str]] = None,
             file_system_id: Optional[pulumi.Input[str]] = None,
+            mount_target_domain: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'MountTarget':
@@ -359,6 +377,7 @@ class MountTarget(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
+        :param pulumi.Input[str] mount_target_domain: The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
         :param pulumi.Input[str] security_group_id: The ID of security group.
         :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
@@ -369,6 +388,7 @@ class MountTarget(pulumi.CustomResource):
 
         __props__.__dict__["access_group_name"] = access_group_name
         __props__.__dict__["file_system_id"] = file_system_id
+        __props__.__dict__["mount_target_domain"] = mount_target_domain
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -389,6 +409,14 @@ class MountTarget(pulumi.CustomResource):
         The ID of the file system.
         """
         return pulumi.get(self, "file_system_id")
+
+    @property
+    @pulumi.getter(name="mountTargetDomain")
+    def mount_target_domain(self) -> pulumi.Output[str]:
+        """
+        The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        """
+        return pulumi.get(self, "mount_target_domain")
 
     @property
     @pulumi.getter(name="securityGroupId")

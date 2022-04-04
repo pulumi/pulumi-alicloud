@@ -73,6 +73,8 @@ type AppGroup struct {
 	CurrentVersion pulumi.StringPtrOutput `pulumi:"currentVersion"`
 	// The description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The instance id.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
 	OrderType pulumi.StringOutput `pulumi:"orderType"`
 	// Order cycle information. The details see Block order.
@@ -136,6 +138,8 @@ type appGroupState struct {
 	CurrentVersion *string `pulumi:"currentVersion"`
 	// The description of the resource.
 	Description *string `pulumi:"description"`
+	// The instance id.
+	InstanceId *string `pulumi:"instanceId"`
 	// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
 	OrderType *string `pulumi:"orderType"`
 	// Order cycle information. The details see Block order.
@@ -159,6 +163,8 @@ type AppGroupState struct {
 	CurrentVersion pulumi.StringPtrInput
 	// The description of the resource.
 	Description pulumi.StringPtrInput
+	// The instance id.
+	InstanceId pulumi.StringPtrInput
 	// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
 	OrderType pulumi.StringPtrInput
 	// Order cycle information. The details see Block order.

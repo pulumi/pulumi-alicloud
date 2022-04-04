@@ -21,10 +21,13 @@ class GetGatewaysResult:
     """
     A collection of values returned by getGateways.
     """
-    def __init__(__self__, business_status=None, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, vpc_id=None):
+    def __init__(__self__, business_status=None, enable_ipsec=None, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, vpc_id=None):
         if business_status and not isinstance(business_status, str):
             raise TypeError("Expected argument 'business_status' to be a str")
         pulumi.set(__self__, "business_status", business_status)
+        if enable_ipsec and not isinstance(enable_ipsec, bool):
+            raise TypeError("Expected argument 'enable_ipsec' to be a bool")
+        pulumi.set(__self__, "enable_ipsec", enable_ipsec)
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
         pulumi.set(__self__, "gateways", gateways)
@@ -57,6 +60,14 @@ class GetGatewaysResult:
         The business status of the VPN gateway.
         """
         return pulumi.get(self, "business_status")
+
+    @property
+    @pulumi.getter(name="enableIpsec")
+    def enable_ipsec(self) -> Optional[bool]:
+        """
+        Whether the ipsec function is enabled.
+        """
+        return pulumi.get(self, "enable_ipsec")
 
     @property
     @pulumi.getter
@@ -124,6 +135,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
             yield self
         return GetGatewaysResult(
             business_status=self.business_status,
+            enable_ipsec=self.enable_ipsec,
             gateways=self.gateways,
             id=self.id,
             ids=self.ids,
@@ -135,6 +147,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
 
 
 def get_gateways(business_status: Optional[str] = None,
+                 enable_ipsec: Optional[bool] = None,
                  ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
@@ -151,6 +164,7 @@ def get_gateways(business_status: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
+        enable_ipsec=True,
         ids=[
             "fake-vpn-id1",
             "fake-vpn-id2",
@@ -163,6 +177,7 @@ def get_gateways(business_status: Optional[str] = None,
 
 
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
+    :param bool enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
     :param Sequence[str] ids: IDs of the VPN.
     :param str name_regex: A regex string of VPN name.
     :param str output_file: Save the result to the file.
@@ -171,6 +186,7 @@ def get_gateways(business_status: Optional[str] = None,
     """
     __args__ = dict()
     __args__['businessStatus'] = business_status
+    __args__['enableIpsec'] = enable_ipsec
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -184,6 +200,7 @@ def get_gateways(business_status: Optional[str] = None,
 
     return AwaitableGetGatewaysResult(
         business_status=__ret__.business_status,
+        enable_ipsec=__ret__.enable_ipsec,
         gateways=__ret__.gateways,
         id=__ret__.id,
         ids=__ret__.ids,
@@ -196,6 +213,7 @@ def get_gateways(business_status: Optional[str] = None,
 
 @_utilities.lift_output_func(get_gateways)
 def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] = None,
+                        enable_ipsec: Optional[pulumi.Input[Optional[bool]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -212,6 +230,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
     import pulumi_alicloud as alicloud
 
     vpn_gateways = alicloud.vpn.get_gateways(business_status="Normal",
+        enable_ipsec=True,
         ids=[
             "fake-vpn-id1",
             "fake-vpn-id2",
@@ -224,6 +243,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
 
 
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
+    :param bool enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
     :param Sequence[str] ids: IDs of the VPN.
     :param str name_regex: A regex string of VPN name.
     :param str output_file: Save the result to the file.

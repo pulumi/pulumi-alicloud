@@ -84,7 +84,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
      */
     public readonly dedicatedHostGroupDesc!: pulumi.Output<string | undefined>;
     /**
-     * The Disk Allocation Ratio of the Dedicated Host Group.
+     * The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
      */
     public readonly diskAllocationRatio!: pulumi.Output<number>;
     /**
@@ -101,6 +101,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
     public readonly memAllocationRatio!: pulumi.Output<number>;
     /**
      * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+     * **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
      */
     public readonly openPermission!: pulumi.Output<boolean>;
     /**
@@ -170,7 +171,7 @@ export interface DedicatedHostGroupState {
      */
     dedicatedHostGroupDesc?: pulumi.Input<string>;
     /**
-     * The Disk Allocation Ratio of the Dedicated Host Group.
+     * The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
      */
     diskAllocationRatio?: pulumi.Input<number>;
     /**
@@ -187,6 +188,7 @@ export interface DedicatedHostGroupState {
     memAllocationRatio?: pulumi.Input<number>;
     /**
      * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+     * **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
      */
     openPermission?: pulumi.Input<boolean>;
     /**
@@ -212,7 +214,7 @@ export interface DedicatedHostGroupArgs {
      */
     dedicatedHostGroupDesc?: pulumi.Input<string>;
     /**
-     * The Disk Allocation Ratio of the Dedicated Host Group.
+     * The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
      */
     diskAllocationRatio?: pulumi.Input<number>;
     /**
@@ -229,6 +231,7 @@ export interface DedicatedHostGroupArgs {
     memAllocationRatio?: pulumi.Input<number>;
     /**
      * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+     * **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
      */
     openPermission?: pulumi.Input<boolean>;
     /**

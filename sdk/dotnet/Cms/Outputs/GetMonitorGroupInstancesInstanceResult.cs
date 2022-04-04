@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetMonitorGroupInstancesInstanceResult
     {
+        /// <summary>
+        /// Instance information added to the Cms Group.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMonitorGroupInstancesInstanceInstanceResult> Instances;
 
         [OutputConstructor]

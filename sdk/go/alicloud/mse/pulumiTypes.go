@@ -942,6 +942,148 @@ func (o GetGatewaysGatewaySlbListArrayOutput) Index(i pulumi.IntInput) GetGatewa
 	}).(GetGatewaysGatewaySlbListOutput)
 }
 
+type GetZnodesZnode struct {
+	// The ID of the Cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The Node data.
+	Data string `pulumi:"data"`
+	// Node list information, the value is as follows:
+	Dir bool `pulumi:"dir"`
+	// The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+	Id string `pulumi:"id"`
+	// The Node path.
+	Path string `pulumi:"path"`
+	// The Node name.
+	ZnodeName string `pulumi:"znodeName"`
+}
+
+// GetZnodesZnodeInput is an input type that accepts GetZnodesZnodeArgs and GetZnodesZnodeOutput values.
+// You can construct a concrete instance of `GetZnodesZnodeInput` via:
+//
+//          GetZnodesZnodeArgs{...}
+type GetZnodesZnodeInput interface {
+	pulumi.Input
+
+	ToGetZnodesZnodeOutput() GetZnodesZnodeOutput
+	ToGetZnodesZnodeOutputWithContext(context.Context) GetZnodesZnodeOutput
+}
+
+type GetZnodesZnodeArgs struct {
+	// The ID of the Cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The Node data.
+	Data pulumi.StringInput `pulumi:"data"`
+	// Node list information, the value is as follows:
+	Dir pulumi.BoolInput `pulumi:"dir"`
+	// The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Node path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The Node name.
+	ZnodeName pulumi.StringInput `pulumi:"znodeName"`
+}
+
+func (GetZnodesZnodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZnodesZnode)(nil)).Elem()
+}
+
+func (i GetZnodesZnodeArgs) ToGetZnodesZnodeOutput() GetZnodesZnodeOutput {
+	return i.ToGetZnodesZnodeOutputWithContext(context.Background())
+}
+
+func (i GetZnodesZnodeArgs) ToGetZnodesZnodeOutputWithContext(ctx context.Context) GetZnodesZnodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZnodesZnodeOutput)
+}
+
+// GetZnodesZnodeArrayInput is an input type that accepts GetZnodesZnodeArray and GetZnodesZnodeArrayOutput values.
+// You can construct a concrete instance of `GetZnodesZnodeArrayInput` via:
+//
+//          GetZnodesZnodeArray{ GetZnodesZnodeArgs{...} }
+type GetZnodesZnodeArrayInput interface {
+	pulumi.Input
+
+	ToGetZnodesZnodeArrayOutput() GetZnodesZnodeArrayOutput
+	ToGetZnodesZnodeArrayOutputWithContext(context.Context) GetZnodesZnodeArrayOutput
+}
+
+type GetZnodesZnodeArray []GetZnodesZnodeInput
+
+func (GetZnodesZnodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZnodesZnode)(nil)).Elem()
+}
+
+func (i GetZnodesZnodeArray) ToGetZnodesZnodeArrayOutput() GetZnodesZnodeArrayOutput {
+	return i.ToGetZnodesZnodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetZnodesZnodeArray) ToGetZnodesZnodeArrayOutputWithContext(ctx context.Context) GetZnodesZnodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZnodesZnodeArrayOutput)
+}
+
+type GetZnodesZnodeOutput struct{ *pulumi.OutputState }
+
+func (GetZnodesZnodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZnodesZnode)(nil)).Elem()
+}
+
+func (o GetZnodesZnodeOutput) ToGetZnodesZnodeOutput() GetZnodesZnodeOutput {
+	return o
+}
+
+func (o GetZnodesZnodeOutput) ToGetZnodesZnodeOutputWithContext(ctx context.Context) GetZnodesZnodeOutput {
+	return o
+}
+
+// The ID of the Cluster.
+func (o GetZnodesZnodeOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The Node data.
+func (o GetZnodesZnodeOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// Node list information, the value is as follows:
+func (o GetZnodesZnodeOutput) Dir() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZnodesZnode) bool { return v.Dir }).(pulumi.BoolOutput)
+}
+
+// The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+func (o GetZnodesZnodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Node path.
+func (o GetZnodesZnodeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The Node name.
+func (o GetZnodesZnodeOutput) ZnodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.ZnodeName }).(pulumi.StringOutput)
+}
+
+type GetZnodesZnodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZnodesZnodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZnodesZnode)(nil)).Elem()
+}
+
+func (o GetZnodesZnodeArrayOutput) ToGetZnodesZnodeArrayOutput() GetZnodesZnodeArrayOutput {
+	return o
+}
+
+func (o GetZnodesZnodeArrayOutput) ToGetZnodesZnodeArrayOutputWithContext(ctx context.Context) GetZnodesZnodeArrayOutput {
+	return o
+}
+
+func (o GetZnodesZnodeArrayOutput) Index(i pulumi.IntInput) GetZnodesZnodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZnodesZnode {
+		return vs[0].([]GetZnodesZnode)[vs[1].(int)]
+	}).(GetZnodesZnodeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySlbListInput)(nil)).Elem(), GatewaySlbListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySlbListArrayInput)(nil)).Elem(), GatewaySlbListArray{})
@@ -953,6 +1095,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySlbListInput)(nil)).Elem(), GetGatewaysGatewaySlbListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySlbListArrayInput)(nil)).Elem(), GetGatewaysGatewaySlbListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZnodesZnodeInput)(nil)).Elem(), GetZnodesZnodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZnodesZnodeArrayInput)(nil)).Elem(), GetZnodesZnodeArray{})
 	pulumi.RegisterOutputType(GatewaySlbListOutput{})
 	pulumi.RegisterOutputType(GatewaySlbListArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
@@ -963,4 +1107,6 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewaySlbListOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewaySlbListArrayOutput{})
+	pulumi.RegisterOutputType(GetZnodesZnodeOutput{})
+	pulumi.RegisterOutputType(GetZnodesZnodeArrayOutput{})
 }

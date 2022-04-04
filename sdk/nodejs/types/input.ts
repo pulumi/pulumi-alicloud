@@ -181,7 +181,7 @@ export namespace alb {
         status?: pulumi.Input<string>;
     }
 
-    export interface ListenerCertificate {
+    export interface ListenerCertificates {
         /**
          * The ID of the Certificate.
          */
@@ -224,59 +224,59 @@ export namespace alb {
         quicUpgradeEnabled?: pulumi.Input<boolean>;
     }
 
-    export interface ListenerXforwardedForConfig {
+    export interface ListenerXForwardedForConfig {
         /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+         * The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
          */
-        xforwardedforclientcertIssuerdnalias?: pulumi.Input<string>;
-        /**
-         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-         */
-        xforwardedforclientcertIssuerdnenabled?: pulumi.Input<boolean>;
-        /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-         */
-        xforwardedforclientcertclientverifyalias?: pulumi.Input<string>;
+        xForwardedForClientCertClientVerifyAlias?: pulumi.Input<string>;
         /**
          * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
          */
-        xforwardedforclientcertclientverifyenabled?: pulumi.Input<boolean>;
+        xForwardedForClientCertClientVerifyEnabled?: pulumi.Input<boolean>;
         /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
          */
-        xforwardedforclientcertfingerprintalias?: pulumi.Input<string>;
+        xForwardedForClientCertFingerPrintAlias?: pulumi.Input<string>;
         /**
-         * Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         * Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
          */
-        xforwardedforclientcertfingerprintenabled?: pulumi.Input<boolean>;
+        xForwardedForClientCertFingerPrintEnabled?: pulumi.Input<boolean>;
         /**
-         * The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
          */
-        xforwardedforclientcertsubjectdnalias?: pulumi.Input<string>;
+        xForwardedForClientCertIssuerDnAlias?: pulumi.Input<string>;
         /**
-         * Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
          */
-        xforwardedforclientcertsubjectdnenabled?: pulumi.Input<boolean>;
+        xForwardedForClientCertIssuerDnEnabled?: pulumi.Input<boolean>;
+        /**
+         * The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xForwardedForClientCertSubjectDnAlias?: pulumi.Input<string>;
+        /**
+         * Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         */
+        xForwardedForClientCertSubjectDnEnabled?: pulumi.Input<boolean>;
         /**
          * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
          */
-        xforwardedforclientsrcportenabled?: pulumi.Input<boolean>;
+        xForwardedForClientSrcPortEnabled?: pulumi.Input<boolean>;
         /**
          * Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
          */
-        xforwardedforenabled?: pulumi.Input<boolean>;
+        xForwardedForEnabled?: pulumi.Input<boolean>;
         /**
          * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
          */
-        xforwardedforprotoenabled?: pulumi.Input<boolean>;
+        xForwardedForProtoEnabled?: pulumi.Input<boolean>;
         /**
          * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
          */
-        xforwardedforslbidenabled?: pulumi.Input<boolean>;
+        xForwardedForSlbIdEnabled?: pulumi.Input<boolean>;
         /**
          * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
          */
-        xforwardedforslbportenabled?: pulumi.Input<boolean>;
+        xForwardedForSlbPortEnabled?: pulumi.Input<boolean>;
     }
 
     export interface LoadBalancerAccessLogConfig {
@@ -345,7 +345,15 @@ export namespace alb {
          */
         rewriteConfig?: pulumi.Input<inputs.alb.RuleRuleActionRewriteConfig>;
         /**
-         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * The Flow speed limit. See the following `Block trafficLimitConfig`.
+         */
+        trafficLimitConfig?: pulumi.Input<inputs.alb.RuleRuleActionTrafficLimitConfig>;
+        /**
+         * The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+         */
+        trafficMirrorConfig?: pulumi.Input<inputs.alb.RuleRuleActionTrafficMirrorConfig>;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          */
         type: pulumi.Input<string>;
     }
@@ -377,6 +385,10 @@ export namespace alb {
          * The ID of the destination server group to which requests are forwarded.
          */
         serverGroupId?: pulumi.Input<string>;
+        /**
+         * The Weight of server group.
+         */
+        weight?: pulumi.Input<number>;
     }
 
     export interface RuleRuleActionInsertHeaderConfig {
@@ -436,6 +448,38 @@ export namespace alb {
         query?: pulumi.Input<string>;
     }
 
+    export interface RuleRuleActionTrafficLimitConfig {
+        /**
+         * The Number of requests per second. Value range: 1~100000.
+         */
+        qps?: pulumi.Input<number>;
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfig {
+        /**
+         * The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+         */
+        mirrorGroupConfig?: pulumi.Input<inputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig>;
+        /**
+         * The Mirror target type.
+         */
+        targetType?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple>[]>;
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId?: pulumi.Input<string>;
+    }
+
     export interface RuleRuleCondition {
         /**
          * The configuration of the cookie. See the following `Block cookieConfig`.
@@ -462,7 +506,11 @@ export namespace alb {
          */
         queryStringConfig?: pulumi.Input<inputs.alb.RuleRuleConditionQueryStringConfig>;
         /**
-         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+         */
+        sourceIpConfig?: pulumi.Input<inputs.alb.RuleRuleConditionSourceIpConfig>;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          */
         type: pulumi.Input<string>;
     }
@@ -533,6 +581,13 @@ export namespace alb {
          * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleConditionSourceIpConfig {
+        /**
+         * The query string.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServerGroupHealthCheckConfig {
@@ -1274,7 +1329,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -1293,7 +1348,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -1312,7 +1367,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -1536,6 +1591,83 @@ export namespace config {
 }
 
 export namespace cr {
+    export interface ChainChainConfig {
+        /**
+         * Each node in the delivery chain.
+         */
+        nodes?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNode>[]>;
+        /**
+         * Execution sequence relationship between delivery chain nodes.
+         */
+        routers?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouter>[]>;
+    }
+
+    export interface ChainChainConfigNode {
+        /**
+         * Whether to enable the delivery chain node. Valid values: `true`, `false`.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * The configuration of delivery chain node.
+         */
+        nodeConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNodeNodeConfig>[]>;
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: pulumi.Input<string>;
+    }
+
+    export interface ChainChainConfigNodeNodeConfig {
+        /**
+         * Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+         */
+        denyPolicies?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNodeNodeConfigDenyPolicy>[]>;
+    }
+
+    export interface ChainChainConfigNodeNodeConfigDenyPolicy {
+        /**
+         * The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * The count of scanning vulnerabilities that triggers blocking.
+         */
+        issueCount?: pulumi.Input<string>;
+        /**
+         * The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+         */
+        issueLevel?: pulumi.Input<string>;
+        /**
+         * The logic of trigger blocking. Valid values: `AND`, `OR`.
+         */
+        logic?: pulumi.Input<string>;
+    }
+
+    export interface ChainChainConfigRouter {
+        /**
+         * Source node.
+         */
+        froms?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouterFrom>[]>;
+        /**
+         * Destination node.
+         */
+        tos?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouterTo>[]>;
+    }
+
+    export interface ChainChainConfigRouterFrom {
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: pulumi.Input<string>;
+    }
+
+    export interface ChainChainConfigRouterTo {
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: pulumi.Input<string>;
+    }
+
     export interface RepoDomainList {
         /**
          * Domain of internal endpoint, only in some regions.
@@ -1550,7 +1682,6 @@ export namespace cr {
          */
         vpc?: pulumi.Input<string>;
     }
-
 }
 
 export namespace cs {
@@ -3756,6 +3887,47 @@ export namespace lindorm {
 }
 
 export namespace log {
+    export interface AlertAnnotation {
+        /**
+         * Annotations's key for new alert.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Annotations's value for new alert.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface AlertGroupConfiguration {
+        fields?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AlertJoinConfiguration {
+        /**
+         * Join condition.
+         */
+        condition: pulumi.Input<string>;
+        /**
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AlertLabel {
+        /**
+         * Annotations's key for new alert.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Annotations's value for new alert.
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface AlertNotificationList {
         /**
          * Notice content of alarm.
@@ -3774,36 +3946,88 @@ export namespace log {
          */
         serviceUri?: pulumi.Input<string>;
         /**
-         * Notification type. support Email, SMS, DingTalk, MessageCenter.
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
          */
         type: pulumi.Input<string>;
     }
 
+    export interface AlertPolicyConfiguration {
+        /**
+         * Action Policy Id.
+         */
+        actionPolicyId?: pulumi.Input<string>;
+        /**
+         * Alert Policy Id.
+         */
+        alertPolicyId: pulumi.Input<string>;
+        /**
+         * Repeat interval used by alert policy, 1h, 1m.e.g.
+         */
+        repeatInterval: pulumi.Input<string>;
+    }
+
     export interface AlertQueryList {
         /**
-         * chart title
+         * Chart title, optional from 1.161.0+.
          */
-        chartTitle: pulumi.Input<string>;
+        chartTitle?: pulumi.Input<string>;
         /**
-         * end time. example: 20s.
+         * Query dashboard id.
+         */
+        dashboardId?: pulumi.Input<string>;
+        /**
+         * End time. example: 20s.
          */
         end: pulumi.Input<string>;
         /**
-         * Query logstore
+         * Query logstore, use store for new alert, Deprecated from 1.161.0+.
+         *
+         * @deprecated Deprecated from 1.161.0+, use store
          */
-        logstore: pulumi.Input<string>;
+        logstore?: pulumi.Input<string>;
         /**
-         * query corresponding to chart. example: * AND aliyun.
+         * Query project.
+         */
+        project?: pulumi.Input<string>;
+        /**
+         * Query corresponding to chart. example: * AND aliyun.
          */
         query: pulumi.Input<string>;
         /**
-         * begin time. example: -60s.
+         * Query project region.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * Query project store's ARN.
+         */
+        roleArn?: pulumi.Input<string>;
+        /**
+         * Begin time. example: -60s.
          */
         start: pulumi.Input<string>;
+        /**
+         * Query store for new alert.
+         */
+        store?: pulumi.Input<string>;
+        /**
+         * Query store type for new alert, including log,metric,meta.
+         */
+        storeType?: pulumi.Input<string>;
         /**
          * default Custom. No need to configure this parameter.
          */
         timeSpanType?: pulumi.Input<string>;
+    }
+
+    export interface AlertSeverityConfiguration {
+        /**
+         * Severity when this condition is met.
+         */
+        evalCondition: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+         */
+        severity: pulumi.Input<number>;
     }
 
     export interface EtlEtlSink {
@@ -3954,12 +4178,21 @@ export namespace log {
     }
 
     export interface StoreShard {
+        /**
+         * The begin value of the shard range(MD5), included in the shard range.
+         */
         beginKey?: pulumi.Input<string>;
+        /**
+         * The end value of the shard range(MD5), not included in shard range.
+         */
         endKey?: pulumi.Input<string>;
         /**
-         * The ID of the log project. It formats of `<project>:<name>`.
+         * The ID of the shard.
          */
         id?: pulumi.Input<number>;
+        /**
+         * Shard status, only two status of `readwrite` and `readonly`.
+         */
         status?: pulumi.Input<string>;
     }
 }
@@ -3984,7 +4217,7 @@ export namespace mongodb {
          */
         connectionPort?: pulumi.Input<string>;
         /**
-         * The network type of the node. Valid values: `Classic`,`VPC`.
+         * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
          */
         networkType?: pulumi.Input<string>;
         /**
@@ -3996,7 +4229,7 @@ export namespace mongodb {
          */
         vpcCloudInstanceId?: pulumi.Input<string>;
         /**
-         * The private network ID of the node.
+         * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
          */
         vpcId?: pulumi.Input<string>;
         /**
@@ -4453,6 +4686,57 @@ export namespace oss {
 }
 
 export namespace ots {
+    export interface BucketReplicationDestination {
+        /**
+         * The destination bucket to which the data is replicated.
+         */
+        bucket: pulumi.Input<string>;
+        location: pulumi.Input<string>;
+        /**
+         * The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+         */
+        transferType?: pulumi.Input<string>;
+    }
+
+    export interface BucketReplicationEncryptionConfiguration {
+        /**
+         * The CMK ID used in SSE-KMS.
+         */
+        replicaKmsKeyId: pulumi.Input<string>;
+    }
+
+    export interface BucketReplicationPrefixSet {
+        /**
+         * The list of object key name prefix identifying one or more objects to which the rule applies.
+         */
+        prefixes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BucketReplicationProgress {
+        /**
+         * The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
+         */
+        historicalObject?: pulumi.Input<string>;
+        /**
+         * The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+         */
+        newObject?: pulumi.Input<string>;
+    }
+
+    export interface BucketReplicationSourceSelectionCriteria {
+        /**
+         * Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+         */
+        sseKmsEncryptedObjects?: pulumi.Input<inputs.ots.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects>;
+    }
+
+    export interface BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
+        /**
+         * Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+         */
+        status?: pulumi.Input<string>;
+    }
+
     export interface TablePrimaryKey {
         /**
          * Name for primary key.
@@ -4941,44 +5225,6 @@ export namespace ros {
 }
 
 export namespace sae {
-    export interface ApplicationInternet {
-        /**
-         * SSL certificate. `httpsCertId` is required when HTTPS is selected
-         */
-        httpsCertId?: pulumi.Input<string>;
-        /**
-         * SLB Port.
-         */
-        port?: pulumi.Input<number>;
-        /**
-         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-         */
-        protocol?: pulumi.Input<string>;
-        /**
-         * Container port.
-         */
-        targetPort?: pulumi.Input<number>;
-    }
-
-    export interface ApplicationIntranet {
-        /**
-         * SSL certificate. `httpsCertId` is required when HTTPS is selected
-         */
-        httpsCertId?: pulumi.Input<string>;
-        /**
-         * SLB Port.
-         */
-        port?: pulumi.Input<number>;
-        /**
-         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-         */
-        protocol?: pulumi.Input<string>;
-        /**
-         * Container port.
-         */
-        targetPort?: pulumi.Input<number>;
-    }
-
     export interface ApplicationScalingRuleScalingRuleMetric {
         /**
          * Maximum number of instances applied.
@@ -5211,6 +5457,7 @@ export namespace sae {
          */
         path: pulumi.Input<string>;
     }
+
 }
 
 export namespace sag {
@@ -5472,6 +5719,7 @@ export namespace servicemesh {
          */
         vswitcheList: pulumi.Input<string>;
     }
+
 }
 
 export namespace simpleapplicationserver {
@@ -5480,7 +5728,7 @@ export namespace simpleapplicationserver {
 export namespace slb {
     export interface AclEntryList {
         comment?: pulumi.Input<string>;
-        entry: pulumi.Input<string>;
+        entry?: pulumi.Input<string>;
     }
 
     export interface BackendServerBackendServer {
@@ -5705,6 +5953,48 @@ export namespace vpc {
 }
 
 export namespace vpn {
+    export interface ConnectionBgpConfig {
+        /**
+         * Whether to enable BGP.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * The ASN on the Alibaba Cloud side.
+         */
+        localAsn?: pulumi.Input<string>;
+        /**
+         * The BGP IP address on the Alibaba Cloud side.
+         */
+        localBgpIp?: pulumi.Input<string>;
+        /**
+         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         */
+        tunnelCidr?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionHealthCheckConfig {
+        /**
+         * The destination IP address.
+         */
+        dip?: pulumi.Input<string>;
+        /**
+         * Whether to enable BGP.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * The interval between two consecutive health checks. Unit: seconds.
+         */
+        interval?: pulumi.Input<number>;
+        /**
+         * The maximum number of health check retries.
+         */
+        retry?: pulumi.Input<number>;
+        /**
+         * The source IP address.
+         */
+        sip?: pulumi.Input<string>;
+    }
+
     export interface ConnectionIkeConfig {
         /**
          * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
@@ -5763,6 +6053,59 @@ export namespace vpn {
         ipsecPfs?: pulumi.Input<string>;
     }
 
+    export interface IpsecServerIkeConfig {
+        /**
+         * The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+         */
+        ikeAuthAlg?: pulumi.Input<string>;
+        /**
+         * The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+         */
+        ikeEncAlg?: pulumi.Input<string>;
+        /**
+         * IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+         */
+        ikeLifetime?: pulumi.Input<number>;
+        /**
+         * The IKE negotiation mode. Default value: `main`.
+         */
+        ikeMode?: pulumi.Input<string>;
+        /**
+         * The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+         */
+        ikePfs?: pulumi.Input<string>;
+        /**
+         * The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+         */
+        ikeVersion?: pulumi.Input<string>;
+        /**
+         * The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+         */
+        localId?: pulumi.Input<string>;
+        /**
+         * The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+         */
+        remoteId?: pulumi.Input<string>;
+    }
+
+    export interface IpsecServerIpsecConfig {
+        /**
+         * The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
+         */
+        ipsecAuthAlg?: pulumi.Input<string>;
+        /**
+         * The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
+         */
+        ipsecEncAlg?: pulumi.Input<string>;
+        /**
+         * The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+         */
+        ipsecLifetime?: pulumi.Input<number>;
+        /**
+         * Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
+         */
+        ipsecPfs?: pulumi.Input<string>;
+    }
 }
 
 export namespace waf {

@@ -19,9 +19,13 @@ class ConnectionArgs:
                  local_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
                  remote_subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
                  vpn_gateway_id: pulumi.Input[str],
+                 bgp_config: Optional[pulumi.Input['ConnectionBgpConfigArgs']] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]] = None,
+                 enable_dpd: Optional[pulumi.Input[bool]] = None,
+                 enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
+                 health_check_config: Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']] = None,
+                 ike_config: Optional[pulumi.Input['ConnectionIkeConfigArgs']] = None,
+                 ipsec_config: Optional[pulumi.Input['ConnectionIpsecConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
@@ -29,21 +33,33 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
+        :param pulumi.Input['ConnectionBgpConfigArgs'] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]] ike_configs: The configurations of phase-one negotiation.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]] ipsec_configs: The configurations of phase-two negotiation.
+        :param pulumi.Input[bool] enable_dpd: Whether to enable NAT traversal.
+        :param pulumi.Input[bool] enable_nat_traversal: Whether to enable NAT traversal.
+        :param pulumi.Input['ConnectionHealthCheckConfigArgs'] health_check_config: The health check configurations. See the following `Block health_check_config`.
+        :param pulumi.Input['ConnectionIkeConfigArgs'] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
+        :param pulumi.Input['ConnectionIpsecConfigArgs'] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
         :param pulumi.Input[str] name: The name of the IPsec connection.
         """
         pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
         pulumi.set(__self__, "local_subnets", local_subnets)
         pulumi.set(__self__, "remote_subnets", remote_subnets)
         pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        if bgp_config is not None:
+            pulumi.set(__self__, "bgp_config", bgp_config)
         if effect_immediately is not None:
             pulumi.set(__self__, "effect_immediately", effect_immediately)
-        if ike_configs is not None:
-            pulumi.set(__self__, "ike_configs", ike_configs)
-        if ipsec_configs is not None:
-            pulumi.set(__self__, "ipsec_configs", ipsec_configs)
+        if enable_dpd is not None:
+            pulumi.set(__self__, "enable_dpd", enable_dpd)
+        if enable_nat_traversal is not None:
+            pulumi.set(__self__, "enable_nat_traversal", enable_nat_traversal)
+        if health_check_config is not None:
+            pulumi.set(__self__, "health_check_config", health_check_config)
+        if ike_config is not None:
+            pulumi.set(__self__, "ike_config", ike_config)
+        if ipsec_config is not None:
+            pulumi.set(__self__, "ipsec_config", ipsec_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -96,6 +112,18 @@ class ConnectionArgs:
         pulumi.set(self, "vpn_gateway_id", value)
 
     @property
+    @pulumi.getter(name="bgpConfig")
+    def bgp_config(self) -> Optional[pulumi.Input['ConnectionBgpConfigArgs']]:
+        """
+        The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        """
+        return pulumi.get(self, "bgp_config")
+
+    @bgp_config.setter
+    def bgp_config(self, value: Optional[pulumi.Input['ConnectionBgpConfigArgs']]):
+        pulumi.set(self, "bgp_config", value)
+
+    @property
     @pulumi.getter(name="effectImmediately")
     def effect_immediately(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -108,28 +136,64 @@ class ConnectionArgs:
         pulumi.set(self, "effect_immediately", value)
 
     @property
-    @pulumi.getter(name="ikeConfigs")
-    def ike_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]]:
+    @pulumi.getter(name="enableDpd")
+    def enable_dpd(self) -> Optional[pulumi.Input[bool]]:
         """
-        The configurations of phase-one negotiation.
+        Whether to enable NAT traversal.
         """
-        return pulumi.get(self, "ike_configs")
+        return pulumi.get(self, "enable_dpd")
 
-    @ike_configs.setter
-    def ike_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]]):
-        pulumi.set(self, "ike_configs", value)
+    @enable_dpd.setter
+    def enable_dpd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_dpd", value)
 
     @property
-    @pulumi.getter(name="ipsecConfigs")
-    def ipsec_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]]:
+    @pulumi.getter(name="enableNatTraversal")
+    def enable_nat_traversal(self) -> Optional[pulumi.Input[bool]]:
         """
-        The configurations of phase-two negotiation.
+        Whether to enable NAT traversal.
         """
-        return pulumi.get(self, "ipsec_configs")
+        return pulumi.get(self, "enable_nat_traversal")
 
-    @ipsec_configs.setter
-    def ipsec_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]]):
-        pulumi.set(self, "ipsec_configs", value)
+    @enable_nat_traversal.setter
+    def enable_nat_traversal(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nat_traversal", value)
+
+    @property
+    @pulumi.getter(name="healthCheckConfig")
+    def health_check_config(self) -> Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]:
+        """
+        The health check configurations. See the following `Block health_check_config`.
+        """
+        return pulumi.get(self, "health_check_config")
+
+    @health_check_config.setter
+    def health_check_config(self, value: Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]):
+        pulumi.set(self, "health_check_config", value)
+
+    @property
+    @pulumi.getter(name="ikeConfig")
+    def ike_config(self) -> Optional[pulumi.Input['ConnectionIkeConfigArgs']]:
+        """
+        The configurations of phase-one negotiation. See the following `Block ike_config`.
+        """
+        return pulumi.get(self, "ike_config")
+
+    @ike_config.setter
+    def ike_config(self, value: Optional[pulumi.Input['ConnectionIkeConfigArgs']]):
+        pulumi.set(self, "ike_config", value)
+
+    @property
+    @pulumi.getter(name="ipsecConfig")
+    def ipsec_config(self) -> Optional[pulumi.Input['ConnectionIpsecConfigArgs']]:
+        """
+        The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        """
+        return pulumi.get(self, "ipsec_config")
+
+    @ipsec_config.setter
+    def ipsec_config(self, value: Optional[pulumi.Input['ConnectionIpsecConfigArgs']]):
+        pulumi.set(self, "ipsec_config", value)
 
     @property
     @pulumi.getter
@@ -147,10 +211,14 @@ class ConnectionArgs:
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
+                 bgp_config: Optional[pulumi.Input['ConnectionBgpConfigArgs']] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]] = None,
+                 enable_dpd: Optional[pulumi.Input[bool]] = None,
+                 enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
+                 health_check_config: Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']] = None,
+                 ike_config: Optional[pulumi.Input['ConnectionIkeConfigArgs']] = None,
+                 ipsec_config: Optional[pulumi.Input['ConnectionIpsecConfigArgs']] = None,
                  local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -158,24 +226,36 @@ class _ConnectionState:
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input['ConnectionBgpConfigArgs'] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]] ike_configs: The configurations of phase-one negotiation.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]] ipsec_configs: The configurations of phase-two negotiation.
+        :param pulumi.Input[bool] enable_dpd: Whether to enable NAT traversal.
+        :param pulumi.Input[bool] enable_nat_traversal: Whether to enable NAT traversal.
+        :param pulumi.Input['ConnectionHealthCheckConfigArgs'] health_check_config: The health check configurations. See the following `Block health_check_config`.
+        :param pulumi.Input['ConnectionIkeConfigArgs'] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
+        :param pulumi.Input['ConnectionIpsecConfigArgs'] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: The name of the IPsec connection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] status: The status of VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         """
+        if bgp_config is not None:
+            pulumi.set(__self__, "bgp_config", bgp_config)
         if customer_gateway_id is not None:
             pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
         if effect_immediately is not None:
             pulumi.set(__self__, "effect_immediately", effect_immediately)
-        if ike_configs is not None:
-            pulumi.set(__self__, "ike_configs", ike_configs)
-        if ipsec_configs is not None:
-            pulumi.set(__self__, "ipsec_configs", ipsec_configs)
+        if enable_dpd is not None:
+            pulumi.set(__self__, "enable_dpd", enable_dpd)
+        if enable_nat_traversal is not None:
+            pulumi.set(__self__, "enable_nat_traversal", enable_nat_traversal)
+        if health_check_config is not None:
+            pulumi.set(__self__, "health_check_config", health_check_config)
+        if ike_config is not None:
+            pulumi.set(__self__, "ike_config", ike_config)
+        if ipsec_config is not None:
+            pulumi.set(__self__, "ipsec_config", ipsec_config)
         if local_subnets is not None:
             pulumi.set(__self__, "local_subnets", local_subnets)
         if name is not None:
@@ -186,6 +266,18 @@ class _ConnectionState:
             pulumi.set(__self__, "status", status)
         if vpn_gateway_id is not None:
             pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+
+    @property
+    @pulumi.getter(name="bgpConfig")
+    def bgp_config(self) -> Optional[pulumi.Input['ConnectionBgpConfigArgs']]:
+        """
+        The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        """
+        return pulumi.get(self, "bgp_config")
+
+    @bgp_config.setter
+    def bgp_config(self, value: Optional[pulumi.Input['ConnectionBgpConfigArgs']]):
+        pulumi.set(self, "bgp_config", value)
 
     @property
     @pulumi.getter(name="customerGatewayId")
@@ -212,28 +304,64 @@ class _ConnectionState:
         pulumi.set(self, "effect_immediately", value)
 
     @property
-    @pulumi.getter(name="ikeConfigs")
-    def ike_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]]:
+    @pulumi.getter(name="enableDpd")
+    def enable_dpd(self) -> Optional[pulumi.Input[bool]]:
         """
-        The configurations of phase-one negotiation.
+        Whether to enable NAT traversal.
         """
-        return pulumi.get(self, "ike_configs")
+        return pulumi.get(self, "enable_dpd")
 
-    @ike_configs.setter
-    def ike_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIkeConfigArgs']]]]):
-        pulumi.set(self, "ike_configs", value)
+    @enable_dpd.setter
+    def enable_dpd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_dpd", value)
 
     @property
-    @pulumi.getter(name="ipsecConfigs")
-    def ipsec_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]]:
+    @pulumi.getter(name="enableNatTraversal")
+    def enable_nat_traversal(self) -> Optional[pulumi.Input[bool]]:
         """
-        The configurations of phase-two negotiation.
+        Whether to enable NAT traversal.
         """
-        return pulumi.get(self, "ipsec_configs")
+        return pulumi.get(self, "enable_nat_traversal")
 
-    @ipsec_configs.setter
-    def ipsec_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionIpsecConfigArgs']]]]):
-        pulumi.set(self, "ipsec_configs", value)
+    @enable_nat_traversal.setter
+    def enable_nat_traversal(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_nat_traversal", value)
+
+    @property
+    @pulumi.getter(name="healthCheckConfig")
+    def health_check_config(self) -> Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]:
+        """
+        The health check configurations. See the following `Block health_check_config`.
+        """
+        return pulumi.get(self, "health_check_config")
+
+    @health_check_config.setter
+    def health_check_config(self, value: Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]):
+        pulumi.set(self, "health_check_config", value)
+
+    @property
+    @pulumi.getter(name="ikeConfig")
+    def ike_config(self) -> Optional[pulumi.Input['ConnectionIkeConfigArgs']]:
+        """
+        The configurations of phase-one negotiation. See the following `Block ike_config`.
+        """
+        return pulumi.get(self, "ike_config")
+
+    @ike_config.setter
+    def ike_config(self, value: Optional[pulumi.Input['ConnectionIkeConfigArgs']]):
+        pulumi.set(self, "ike_config", value)
+
+    @property
+    @pulumi.getter(name="ipsecConfig")
+    def ipsec_config(self) -> Optional[pulumi.Input['ConnectionIpsecConfigArgs']]:
+        """
+        The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        """
+        return pulumi.get(self, "ipsec_config")
+
+    @ipsec_config.setter
+    def ipsec_config(self, value: Optional[pulumi.Input['ConnectionIpsecConfigArgs']]):
+        pulumi.set(self, "ipsec_config", value)
 
     @property
     @pulumi.getter(name="localSubnets")
@@ -301,10 +429,14 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bgp_config: Optional[pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']]] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]]] = None,
+                 enable_dpd: Optional[pulumi.Input[bool]] = None,
+                 enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
+                 health_check_config: Optional[pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']]] = None,
+                 ike_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]] = None,
+                 ipsec_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]] = None,
                  local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -340,7 +472,7 @@ class Connection(pulumi.CustomResource):
                 "10.0.1.0/24",
             ],
             effect_immediately=True,
-            ike_configs=[alicloud.vpn.ConnectionIkeConfigArgs(
+            ike_config=alicloud.vpn.ConnectionIkeConfigArgs(
                 ike_auth_alg="md5",
                 ike_enc_alg="des",
                 ike_version="ikev1",
@@ -350,13 +482,13 @@ class Connection(pulumi.CustomResource):
                 ike_pfs="group1",
                 ike_remote_id="testbob2",
                 ike_local_id="testalice2",
-            )],
-            ipsec_configs=[alicloud.vpn.ConnectionIpsecConfigArgs(
+            ),
+            ipsec_config=alicloud.vpn.ConnectionIpsecConfigArgs(
                 ipsec_pfs="group5",
                 ipsec_enc_alg="des",
                 ipsec_auth_alg="md5",
                 ipsec_lifetime=8640,
-            )])
+            ))
         ```
 
         ## Import
@@ -369,10 +501,14 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]] ike_configs: The configurations of phase-one negotiation.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]] ipsec_configs: The configurations of phase-two negotiation.
+        :param pulumi.Input[bool] enable_dpd: Whether to enable NAT traversal.
+        :param pulumi.Input[bool] enable_nat_traversal: Whether to enable NAT traversal.
+        :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: The health check configurations. See the following `Block health_check_config`.
+        :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
+        :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: The name of the IPsec connection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
@@ -414,7 +550,7 @@ class Connection(pulumi.CustomResource):
                 "10.0.1.0/24",
             ],
             effect_immediately=True,
-            ike_configs=[alicloud.vpn.ConnectionIkeConfigArgs(
+            ike_config=alicloud.vpn.ConnectionIkeConfigArgs(
                 ike_auth_alg="md5",
                 ike_enc_alg="des",
                 ike_version="ikev1",
@@ -424,13 +560,13 @@ class Connection(pulumi.CustomResource):
                 ike_pfs="group1",
                 ike_remote_id="testbob2",
                 ike_local_id="testalice2",
-            )],
-            ipsec_configs=[alicloud.vpn.ConnectionIpsecConfigArgs(
+            ),
+            ipsec_config=alicloud.vpn.ConnectionIpsecConfigArgs(
                 ipsec_pfs="group5",
                 ipsec_enc_alg="des",
                 ipsec_auth_alg="md5",
                 ipsec_lifetime=8640,
-            )])
+            ))
         ```
 
         ## Import
@@ -456,10 +592,14 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bgp_config: Optional[pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']]] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]]] = None,
+                 enable_dpd: Optional[pulumi.Input[bool]] = None,
+                 enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
+                 health_check_config: Optional[pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']]] = None,
+                 ike_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]] = None,
+                 ipsec_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]] = None,
                  local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -476,12 +616,16 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            __props__.__dict__["bgp_config"] = bgp_config
             if customer_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'customer_gateway_id'")
             __props__.__dict__["customer_gateway_id"] = customer_gateway_id
             __props__.__dict__["effect_immediately"] = effect_immediately
-            __props__.__dict__["ike_configs"] = ike_configs
-            __props__.__dict__["ipsec_configs"] = ipsec_configs
+            __props__.__dict__["enable_dpd"] = enable_dpd
+            __props__.__dict__["enable_nat_traversal"] = enable_nat_traversal
+            __props__.__dict__["health_check_config"] = health_check_config
+            __props__.__dict__["ike_config"] = ike_config
+            __props__.__dict__["ipsec_config"] = ipsec_config
             if local_subnets is None and not opts.urn:
                 raise TypeError("Missing required property 'local_subnets'")
             __props__.__dict__["local_subnets"] = local_subnets
@@ -503,10 +647,14 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bgp_config: Optional[pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']]] = None,
             customer_gateway_id: Optional[pulumi.Input[str]] = None,
             effect_immediately: Optional[pulumi.Input[bool]] = None,
-            ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]]] = None,
-            ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]]] = None,
+            enable_dpd: Optional[pulumi.Input[bool]] = None,
+            enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
+            health_check_config: Optional[pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']]] = None,
+            ike_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]] = None,
+            ipsec_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]] = None,
             local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -519,10 +667,14 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]]] ike_configs: The configurations of phase-one negotiation.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]]] ipsec_configs: The configurations of phase-two negotiation.
+        :param pulumi.Input[bool] enable_dpd: Whether to enable NAT traversal.
+        :param pulumi.Input[bool] enable_nat_traversal: Whether to enable NAT traversal.
+        :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: The health check configurations. See the following `Block health_check_config`.
+        :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
+        :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: The name of the IPsec connection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
@@ -533,16 +685,28 @@ class Connection(pulumi.CustomResource):
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
+        __props__.__dict__["bgp_config"] = bgp_config
         __props__.__dict__["customer_gateway_id"] = customer_gateway_id
         __props__.__dict__["effect_immediately"] = effect_immediately
-        __props__.__dict__["ike_configs"] = ike_configs
-        __props__.__dict__["ipsec_configs"] = ipsec_configs
+        __props__.__dict__["enable_dpd"] = enable_dpd
+        __props__.__dict__["enable_nat_traversal"] = enable_nat_traversal
+        __props__.__dict__["health_check_config"] = health_check_config
+        __props__.__dict__["ike_config"] = ike_config
+        __props__.__dict__["ipsec_config"] = ipsec_config
         __props__.__dict__["local_subnets"] = local_subnets
         __props__.__dict__["name"] = name
         __props__.__dict__["remote_subnets"] = remote_subnets
         __props__.__dict__["status"] = status
         __props__.__dict__["vpn_gateway_id"] = vpn_gateway_id
         return Connection(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bgpConfig")
+    def bgp_config(self) -> pulumi.Output['outputs.ConnectionBgpConfig']:
+        """
+        The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        """
+        return pulumi.get(self, "bgp_config")
 
     @property
     @pulumi.getter(name="customerGatewayId")
@@ -561,20 +725,44 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "effect_immediately")
 
     @property
-    @pulumi.getter(name="ikeConfigs")
-    def ike_configs(self) -> pulumi.Output[Sequence['outputs.ConnectionIkeConfig']]:
+    @pulumi.getter(name="enableDpd")
+    def enable_dpd(self) -> pulumi.Output[bool]:
         """
-        The configurations of phase-one negotiation.
+        Whether to enable NAT traversal.
         """
-        return pulumi.get(self, "ike_configs")
+        return pulumi.get(self, "enable_dpd")
 
     @property
-    @pulumi.getter(name="ipsecConfigs")
-    def ipsec_configs(self) -> pulumi.Output[Sequence['outputs.ConnectionIpsecConfig']]:
+    @pulumi.getter(name="enableNatTraversal")
+    def enable_nat_traversal(self) -> pulumi.Output[bool]:
         """
-        The configurations of phase-two negotiation.
+        Whether to enable NAT traversal.
         """
-        return pulumi.get(self, "ipsec_configs")
+        return pulumi.get(self, "enable_nat_traversal")
+
+    @property
+    @pulumi.getter(name="healthCheckConfig")
+    def health_check_config(self) -> pulumi.Output['outputs.ConnectionHealthCheckConfig']:
+        """
+        The health check configurations. See the following `Block health_check_config`.
+        """
+        return pulumi.get(self, "health_check_config")
+
+    @property
+    @pulumi.getter(name="ikeConfig")
+    def ike_config(self) -> pulumi.Output['outputs.ConnectionIkeConfig']:
+        """
+        The configurations of phase-one negotiation. See the following `Block ike_config`.
+        """
+        return pulumi.get(self, "ike_config")
+
+    @property
+    @pulumi.getter(name="ipsecConfig")
+    def ipsec_config(self) -> pulumi.Output['outputs.ConnectionIpsecConfig']:
+        """
+        The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        """
+        return pulumi.get(self, "ipsec_config")
 
     @property
     @pulumi.getter(name="localSubnets")

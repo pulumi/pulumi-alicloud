@@ -17,51 +17,117 @@ class AlertArgs:
     def __init__(__self__, *,
                  alert_displayname: pulumi.Input[str],
                  alert_name: pulumi.Input[str],
-                 condition: pulumi.Input[str],
-                 dashboard: pulumi.Input[str],
-                 notification_lists: pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]],
                  project_name: pulumi.Input[str],
                  query_lists: pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]],
                  alert_description: Optional[pulumi.Input[str]] = None,
+                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]] = None,
+                 condition: Optional[pulumi.Input[str]] = None,
+                 dashboard: Optional[pulumi.Input[str]] = None,
+                 group_configuration: Optional[pulumi.Input['AlertGroupConfigurationArgs']] = None,
+                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]]] = None,
                  mute_until: Optional[pulumi.Input[int]] = None,
+                 no_data_fire: Optional[pulumi.Input[bool]] = None,
+                 no_data_severity: Optional[pulumi.Input[int]] = None,
+                 notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]] = None,
                  notify_threshold: Optional[pulumi.Input[int]] = None,
+                 policy_configuration: Optional[pulumi.Input['AlertPolicyConfigurationArgs']] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
-                 throttling: Optional[pulumi.Input[str]] = None):
+                 send_resolved: Optional[pulumi.Input[bool]] = None,
+                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]] = None,
+                 threshold: Optional[pulumi.Input[int]] = None,
+                 throttling: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Alert resource.
         :param pulumi.Input[str] alert_displayname: Alert displayname.
         :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[str] condition: Conditional expression, such as: count> 100.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list.
         :param pulumi.Input[str] project_name: The project name.
         :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query.
         :param pulumi.Input[str] alert_description: Alert description.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]] annotations: Annotations for new alert.
+        :param pulumi.Input[str] condition: Join condition.
+        :param pulumi.Input['AlertGroupConfigurationArgs'] group_configuration: Group configuration for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]] join_configurations: Join configuration for different queries.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]] labels: Labels for new alert.
         :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
-        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
+        :param pulumi.Input[int] no_data_severity: when no data happens, the severity of new alert.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
+        :param pulumi.Input['AlertPolicyConfigurationArgs'] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
-        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]] severity_configurations: Severity configuration for new alert.
+        :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
+        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
         pulumi.set(__self__, "alert_displayname", alert_displayname)
         pulumi.set(__self__, "alert_name", alert_name)
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "dashboard", dashboard)
-        pulumi.set(__self__, "notification_lists", notification_lists)
         pulumi.set(__self__, "project_name", project_name)
         pulumi.set(__self__, "query_lists", query_lists)
         if alert_description is not None:
             pulumi.set(__self__, "alert_description", alert_description)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if condition is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
+            pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if dashboard is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
+            pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
+        if dashboard is not None:
+            pulumi.set(__self__, "dashboard", dashboard)
+        if group_configuration is not None:
+            pulumi.set(__self__, "group_configuration", group_configuration)
+        if join_configurations is not None:
+            pulumi.set(__self__, "join_configurations", join_configurations)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if mute_until is not None:
             pulumi.set(__self__, "mute_until", mute_until)
+        if no_data_fire is not None:
+            pulumi.set(__self__, "no_data_fire", no_data_fire)
+        if no_data_severity is not None:
+            pulumi.set(__self__, "no_data_severity", no_data_severity)
+        if notification_lists is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
+            pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
+        if notification_lists is not None:
+            pulumi.set(__self__, "notification_lists", notification_lists)
+        if notify_threshold is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
+            pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
         if notify_threshold is not None:
             pulumi.set(__self__, "notify_threshold", notify_threshold)
+        if policy_configuration is not None:
+            pulumi.set(__self__, "policy_configuration", policy_configuration)
         if schedule_interval is not None:
             pulumi.set(__self__, "schedule_interval", schedule_interval)
         if schedule_type is not None:
             pulumi.set(__self__, "schedule_type", schedule_type)
+        if send_resolved is not None:
+            pulumi.set(__self__, "send_resolved", send_resolved)
+        if severity_configurations is not None:
+            pulumi.set(__self__, "severity_configurations", severity_configurations)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if throttling is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
+            pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
         if throttling is not None:
             pulumi.set(__self__, "throttling", throttling)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="alertDisplayname")
@@ -86,39 +152,6 @@ class AlertArgs:
     @alert_name.setter
     def alert_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "alert_name", value)
-
-    @property
-    @pulumi.getter
-    def condition(self) -> pulumi.Input[str]:
-        """
-        Conditional expression, such as: count> 100.
-        """
-        return pulumi.get(self, "condition")
-
-    @condition.setter
-    def condition(self, value: pulumi.Input[str]):
-        pulumi.set(self, "condition", value)
-
-    @property
-    @pulumi.getter
-    def dashboard(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "dashboard")
-
-    @dashboard.setter
-    def dashboard(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dashboard", value)
-
-    @property
-    @pulumi.getter(name="notificationLists")
-    def notification_lists(self) -> pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]:
-        """
-        Alarm information notification list.
-        """
-        return pulumi.get(self, "notification_lists")
-
-    @notification_lists.setter
-    def notification_lists(self, value: pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]):
-        pulumi.set(self, "notification_lists", value)
 
     @property
     @pulumi.getter(name="projectName")
@@ -157,6 +190,75 @@ class AlertArgs:
         pulumi.set(self, "alert_description", value)
 
     @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]]:
+        """
+        Annotations for new alert.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Join condition.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def dashboard(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dashboard")
+
+    @dashboard.setter
+    def dashboard(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dashboard", value)
+
+    @property
+    @pulumi.getter(name="groupConfiguration")
+    def group_configuration(self) -> Optional[pulumi.Input['AlertGroupConfigurationArgs']]:
+        """
+        Group configuration for new alert.
+        """
+        return pulumi.get(self, "group_configuration")
+
+    @group_configuration.setter
+    def group_configuration(self, value: Optional[pulumi.Input['AlertGroupConfigurationArgs']]):
+        pulumi.set(self, "group_configuration", value)
+
+    @property
+    @pulumi.getter(name="joinConfigurations")
+    def join_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]]:
+        """
+        Join configuration for different queries.
+        """
+        return pulumi.get(self, "join_configurations")
+
+    @join_configurations.setter
+    def join_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]]):
+        pulumi.set(self, "join_configurations", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]]]:
+        """
+        Labels for new alert.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
     @pulumi.getter(name="muteUntil")
     def mute_until(self) -> Optional[pulumi.Input[int]]:
         """
@@ -169,16 +271,64 @@ class AlertArgs:
         pulumi.set(self, "mute_until", value)
 
     @property
+    @pulumi.getter(name="noDataFire")
+    def no_data_fire(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Switch for whether new alert fires when no data happens, default is false.
+        """
+        return pulumi.get(self, "no_data_fire")
+
+    @no_data_fire.setter
+    def no_data_fire(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_data_fire", value)
+
+    @property
+    @pulumi.getter(name="noDataSeverity")
+    def no_data_severity(self) -> Optional[pulumi.Input[int]]:
+        """
+        when no data happens, the severity of new alert.
+        """
+        return pulumi.get(self, "no_data_severity")
+
+    @no_data_severity.setter
+    def no_data_severity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "no_data_severity", value)
+
+    @property
+    @pulumi.getter(name="notificationLists")
+    def notification_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]]:
+        """
+        Alarm information notification list, Deprecated from 1.161.0+.
+        """
+        return pulumi.get(self, "notification_lists")
+
+    @notification_lists.setter
+    def notification_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]]):
+        pulumi.set(self, "notification_lists", value)
+
+    @property
     @pulumi.getter(name="notifyThreshold")
     def notify_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "notify_threshold")
 
     @notify_threshold.setter
     def notify_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "notify_threshold", value)
+
+    @property
+    @pulumi.getter(name="policyConfiguration")
+    def policy_configuration(self) -> Optional[pulumi.Input['AlertPolicyConfigurationArgs']]:
+        """
+        Policy configuration for new alert.
+        """
+        return pulumi.get(self, "policy_configuration")
+
+    @policy_configuration.setter
+    def policy_configuration(self, value: Optional[pulumi.Input['AlertPolicyConfigurationArgs']]):
+        pulumi.set(self, "policy_configuration", value)
 
     @property
     @pulumi.getter(name="scheduleInterval")
@@ -205,16 +355,76 @@ class AlertArgs:
         pulumi.set(self, "schedule_type", value)
 
     @property
+    @pulumi.getter(name="sendResolved")
+    def send_resolved(self) -> Optional[pulumi.Input[bool]]:
+        """
+        when new alert is resolved, whether to notify, default is false.
+        """
+        return pulumi.get(self, "send_resolved")
+
+    @send_resolved.setter
+    def send_resolved(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_resolved", value)
+
+    @property
+    @pulumi.getter(name="severityConfigurations")
+    def severity_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]]:
+        """
+        Severity configuration for new alert.
+        """
+        return pulumi.get(self, "severity_configurations")
+
+    @severity_configurations.setter
+    def severity_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]]):
+        pulumi.set(self, "severity_configurations", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
     @pulumi.getter
     def throttling(self) -> Optional[pulumi.Input[str]]:
         """
-        Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "throttling")
 
     @throttling.setter
     def throttling(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "throttling", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of alert, new alert is 2.0.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -223,30 +433,54 @@ class _AlertState:
                  alert_description: Optional[pulumi.Input[str]] = None,
                  alert_displayname: Optional[pulumi.Input[str]] = None,
                  alert_name: Optional[pulumi.Input[str]] = None,
+                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]] = None,
                  condition: Optional[pulumi.Input[str]] = None,
                  dashboard: Optional[pulumi.Input[str]] = None,
+                 group_configuration: Optional[pulumi.Input['AlertGroupConfigurationArgs']] = None,
+                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]]] = None,
                  mute_until: Optional[pulumi.Input[int]] = None,
+                 no_data_fire: Optional[pulumi.Input[bool]] = None,
+                 no_data_severity: Optional[pulumi.Input[int]] = None,
                  notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]] = None,
                  notify_threshold: Optional[pulumi.Input[int]] = None,
+                 policy_configuration: Optional[pulumi.Input['AlertPolicyConfigurationArgs']] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  query_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
-                 throttling: Optional[pulumi.Input[str]] = None):
+                 send_resolved: Optional[pulumi.Input[bool]] = None,
+                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]] = None,
+                 threshold: Optional[pulumi.Input[int]] = None,
+                 throttling: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Alert resources.
         :param pulumi.Input[str] alert_description: Alert description.
         :param pulumi.Input[str] alert_displayname: Alert displayname.
         :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[str] condition: Conditional expression, such as: count> 100.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]] annotations: Annotations for new alert.
+        :param pulumi.Input[str] condition: Join condition.
+        :param pulumi.Input['AlertGroupConfigurationArgs'] group_configuration: Group configuration for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]] join_configurations: Join configuration for different queries.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]] labels: Labels for new alert.
         :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list.
-        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
+        :param pulumi.Input[int] no_data_severity: when no data happens, the severity of new alert.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
+        :param pulumi.Input['AlertPolicyConfigurationArgs'] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] project_name: The project name.
         :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query.
         :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
-        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]] severity_configurations: Severity configuration for new alert.
+        :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
+        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
         if alert_description is not None:
             pulumi.set(__self__, "alert_description", alert_description)
@@ -254,16 +488,42 @@ class _AlertState:
             pulumi.set(__self__, "alert_displayname", alert_displayname)
         if alert_name is not None:
             pulumi.set(__self__, "alert_name", alert_name)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if condition is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
+            pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if dashboard is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
+            pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
+        if dashboard is not None:
             pulumi.set(__self__, "dashboard", dashboard)
+        if group_configuration is not None:
+            pulumi.set(__self__, "group_configuration", group_configuration)
+        if join_configurations is not None:
+            pulumi.set(__self__, "join_configurations", join_configurations)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if mute_until is not None:
             pulumi.set(__self__, "mute_until", mute_until)
+        if no_data_fire is not None:
+            pulumi.set(__self__, "no_data_fire", no_data_fire)
+        if no_data_severity is not None:
+            pulumi.set(__self__, "no_data_severity", no_data_severity)
+        if notification_lists is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
+            pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
         if notification_lists is not None:
             pulumi.set(__self__, "notification_lists", notification_lists)
         if notify_threshold is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
+            pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
+        if notify_threshold is not None:
             pulumi.set(__self__, "notify_threshold", notify_threshold)
+        if policy_configuration is not None:
+            pulumi.set(__self__, "policy_configuration", policy_configuration)
         if project_name is not None:
             pulumi.set(__self__, "project_name", project_name)
         if query_lists is not None:
@@ -272,8 +532,21 @@ class _AlertState:
             pulumi.set(__self__, "schedule_interval", schedule_interval)
         if schedule_type is not None:
             pulumi.set(__self__, "schedule_type", schedule_type)
+        if send_resolved is not None:
+            pulumi.set(__self__, "send_resolved", send_resolved)
+        if severity_configurations is not None:
+            pulumi.set(__self__, "severity_configurations", severity_configurations)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if throttling is not None:
+            warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
+            pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
         if throttling is not None:
             pulumi.set(__self__, "throttling", throttling)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="alertDescription")
@@ -313,9 +586,21 @@ class _AlertState:
 
     @property
     @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]]:
+        """
+        Annotations for new alert.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[str]]:
         """
-        Conditional expression, such as: count> 100.
+        Join condition.
         """
         return pulumi.get(self, "condition")
 
@@ -333,6 +618,42 @@ class _AlertState:
         pulumi.set(self, "dashboard", value)
 
     @property
+    @pulumi.getter(name="groupConfiguration")
+    def group_configuration(self) -> Optional[pulumi.Input['AlertGroupConfigurationArgs']]:
+        """
+        Group configuration for new alert.
+        """
+        return pulumi.get(self, "group_configuration")
+
+    @group_configuration.setter
+    def group_configuration(self, value: Optional[pulumi.Input['AlertGroupConfigurationArgs']]):
+        pulumi.set(self, "group_configuration", value)
+
+    @property
+    @pulumi.getter(name="joinConfigurations")
+    def join_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]]:
+        """
+        Join configuration for different queries.
+        """
+        return pulumi.get(self, "join_configurations")
+
+    @join_configurations.setter
+    def join_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]]):
+        pulumi.set(self, "join_configurations", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]]]:
+        """
+        Labels for new alert.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
     @pulumi.getter(name="muteUntil")
     def mute_until(self) -> Optional[pulumi.Input[int]]:
         """
@@ -345,10 +666,34 @@ class _AlertState:
         pulumi.set(self, "mute_until", value)
 
     @property
+    @pulumi.getter(name="noDataFire")
+    def no_data_fire(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Switch for whether new alert fires when no data happens, default is false.
+        """
+        return pulumi.get(self, "no_data_fire")
+
+    @no_data_fire.setter
+    def no_data_fire(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_data_fire", value)
+
+    @property
+    @pulumi.getter(name="noDataSeverity")
+    def no_data_severity(self) -> Optional[pulumi.Input[int]]:
+        """
+        when no data happens, the severity of new alert.
+        """
+        return pulumi.get(self, "no_data_severity")
+
+    @no_data_severity.setter
+    def no_data_severity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "no_data_severity", value)
+
+    @property
     @pulumi.getter(name="notificationLists")
     def notification_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]]:
         """
-        Alarm information notification list.
+        Alarm information notification list, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "notification_lists")
 
@@ -360,13 +705,25 @@ class _AlertState:
     @pulumi.getter(name="notifyThreshold")
     def notify_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "notify_threshold")
 
     @notify_threshold.setter
     def notify_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "notify_threshold", value)
+
+    @property
+    @pulumi.getter(name="policyConfiguration")
+    def policy_configuration(self) -> Optional[pulumi.Input['AlertPolicyConfigurationArgs']]:
+        """
+        Policy configuration for new alert.
+        """
+        return pulumi.get(self, "policy_configuration")
+
+    @policy_configuration.setter
+    def policy_configuration(self, value: Optional[pulumi.Input['AlertPolicyConfigurationArgs']]):
+        pulumi.set(self, "policy_configuration", value)
 
     @property
     @pulumi.getter(name="projectName")
@@ -417,16 +774,76 @@ class _AlertState:
         pulumi.set(self, "schedule_type", value)
 
     @property
+    @pulumi.getter(name="sendResolved")
+    def send_resolved(self) -> Optional[pulumi.Input[bool]]:
+        """
+        when new alert is resolved, whether to notify, default is false.
+        """
+        return pulumi.get(self, "send_resolved")
+
+    @send_resolved.setter
+    def send_resolved(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_resolved", value)
+
+    @property
+    @pulumi.getter(name="severityConfigurations")
+    def severity_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]]:
+        """
+        Severity configuration for new alert.
+        """
+        return pulumi.get(self, "severity_configurations")
+
+    @severity_configurations.setter
+    def severity_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]]):
+        pulumi.set(self, "severity_configurations", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
     @pulumi.getter
     def throttling(self) -> Optional[pulumi.Input[str]]:
         """
-        Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "throttling")
 
     @throttling.setter
     def throttling(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "throttling", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of alert, new alert is 2.0.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 class Alert(pulumi.CustomResource):
@@ -437,20 +854,34 @@ class Alert(pulumi.CustomResource):
                  alert_description: Optional[pulumi.Input[str]] = None,
                  alert_displayname: Optional[pulumi.Input[str]] = None,
                  alert_name: Optional[pulumi.Input[str]] = None,
+                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]]] = None,
                  condition: Optional[pulumi.Input[str]] = None,
                  dashboard: Optional[pulumi.Input[str]] = None,
+                 group_configuration: Optional[pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']]] = None,
+                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]]] = None,
                  mute_until: Optional[pulumi.Input[int]] = None,
+                 no_data_fire: Optional[pulumi.Input[bool]] = None,
+                 no_data_severity: Optional[pulumi.Input[int]] = None,
                  notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
                  notify_threshold: Optional[pulumi.Input[int]] = None,
+                 policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
+                 send_resolved: Optional[pulumi.Input[bool]] = None,
+                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]]] = None,
+                 threshold: Optional[pulumi.Input[int]] = None,
                  throttling: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
         Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
+
+        For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 
         > **NOTE:** Available in 1.78.0
 
@@ -506,6 +937,110 @@ class Alert(pulumi.CustomResource):
                     content="alert content",
                 ),
             ])
+        ```
+
+        Basic Usage for new alert
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_2 = alicloud.log.Alert("example-2",
+            version="2.0",
+            type="default",
+            project_name=example_project.name,
+            alert_name="tf-test-alert-2",
+            alert_displayname="tf-test-alert-displayname-2",
+            dashboard="tf-test-dashboard",
+            mute_until=1632486684,
+            no_data_fire=False,
+            no_data_severity=8,
+            send_resolved=True,
+            schedule_interval="5m",
+            schedule_type="FixedRate",
+            query_lists=[
+                alicloud.log.AlertQueryListArgs(
+                    store="tf-test-logstore",
+                    store_type="log",
+                    project=example_project.name,
+                    region="cn-heyuan",
+                    chart_title="chart_title",
+                    start="-60s",
+                    end="20s",
+                    query="* AND aliyun | select count(1) as cnt",
+                ),
+                alicloud.log.AlertQueryListArgs(
+                    store="tf-test-logstore",
+                    store_type="log",
+                    project=example_project.name,
+                    region="cn-heyuan",
+                    chart_title="chart_title",
+                    start="-60s",
+                    end="20s",
+                    query="error | select count(1) as error_cnt",
+                ),
+            ],
+            labels=[alicloud.log.AlertLabelArgs(
+                key="env",
+                value="test",
+            )],
+            annotations=[
+                alicloud.log.AlertAnnotationArgs(
+                    key="title",
+                    value="alert title",
+                ),
+                alicloud.log.AlertAnnotationArgs(
+                    key="desc",
+                    value="alert desc",
+                ),
+                alicloud.log.AlertAnnotationArgs(
+                    key="test_key",
+                    value="test value",
+                ),
+            ],
+            group_configuration=alicloud.log.AlertGroupConfigurationArgs(
+                type="custom",
+                fields=["cnt"],
+            ),
+            policy_configuration=alicloud.log.AlertPolicyConfigurationArgs(
+                alert_policy_id="sls.bultin",
+                action_policy_id="sls_test_action",
+                repeat_interval="4h",
+            ),
+            severity_configurations=[
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=8,
+                    eval_condition={
+                        "condition": "cnt > 3",
+                        "count_condition": "__count__ > 3",
+                    },
+                ),
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=6,
+                    eval_condition={
+                        "condition": "",
+                        "count_condition": "__count__ > 0",
+                    },
+                ),
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=2,
+                    eval_condition={
+                        "condition": "",
+                        "count_condition": "",
+                    },
+                ),
+            ],
+            join_configurations=[alicloud.log.AlertJoinConfigurationArgs(
+                type="cross_join",
+                condition="",
+            )])
         ```
 
         ## Import
@@ -521,15 +1056,27 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] alert_description: Alert description.
         :param pulumi.Input[str] alert_displayname: Alert displayname.
         :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[str] condition: Conditional expression, such as: count> 100.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]] annotations: Annotations for new alert.
+        :param pulumi.Input[str] condition: Join condition.
+        :param pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']] group_configuration: Group configuration for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]] join_configurations: Join configuration for different queries.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]] labels: Labels for new alert.
         :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list.
-        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
+        :param pulumi.Input[int] no_data_severity: when no data happens, the severity of new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
+        :param pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] project_name: The project name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
         :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
-        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]] severity_configurations: Severity configuration for new alert.
+        :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
+        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
         ...
     @overload
@@ -540,6 +1087,8 @@ class Alert(pulumi.CustomResource):
         """
         Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
         Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
+
+        For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 
         > **NOTE:** Available in 1.78.0
 
@@ -595,6 +1144,110 @@ class Alert(pulumi.CustomResource):
                     content="alert content",
                 ),
             ])
+        ```
+
+        Basic Usage for new alert
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_2 = alicloud.log.Alert("example-2",
+            version="2.0",
+            type="default",
+            project_name=example_project.name,
+            alert_name="tf-test-alert-2",
+            alert_displayname="tf-test-alert-displayname-2",
+            dashboard="tf-test-dashboard",
+            mute_until=1632486684,
+            no_data_fire=False,
+            no_data_severity=8,
+            send_resolved=True,
+            schedule_interval="5m",
+            schedule_type="FixedRate",
+            query_lists=[
+                alicloud.log.AlertQueryListArgs(
+                    store="tf-test-logstore",
+                    store_type="log",
+                    project=example_project.name,
+                    region="cn-heyuan",
+                    chart_title="chart_title",
+                    start="-60s",
+                    end="20s",
+                    query="* AND aliyun | select count(1) as cnt",
+                ),
+                alicloud.log.AlertQueryListArgs(
+                    store="tf-test-logstore",
+                    store_type="log",
+                    project=example_project.name,
+                    region="cn-heyuan",
+                    chart_title="chart_title",
+                    start="-60s",
+                    end="20s",
+                    query="error | select count(1) as error_cnt",
+                ),
+            ],
+            labels=[alicloud.log.AlertLabelArgs(
+                key="env",
+                value="test",
+            )],
+            annotations=[
+                alicloud.log.AlertAnnotationArgs(
+                    key="title",
+                    value="alert title",
+                ),
+                alicloud.log.AlertAnnotationArgs(
+                    key="desc",
+                    value="alert desc",
+                ),
+                alicloud.log.AlertAnnotationArgs(
+                    key="test_key",
+                    value="test value",
+                ),
+            ],
+            group_configuration=alicloud.log.AlertGroupConfigurationArgs(
+                type="custom",
+                fields=["cnt"],
+            ),
+            policy_configuration=alicloud.log.AlertPolicyConfigurationArgs(
+                alert_policy_id="sls.bultin",
+                action_policy_id="sls_test_action",
+                repeat_interval="4h",
+            ),
+            severity_configurations=[
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=8,
+                    eval_condition={
+                        "condition": "cnt > 3",
+                        "count_condition": "__count__ > 3",
+                    },
+                ),
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=6,
+                    eval_condition={
+                        "condition": "",
+                        "count_condition": "__count__ > 0",
+                    },
+                ),
+                alicloud.log.AlertSeverityConfigurationArgs(
+                    severity=2,
+                    eval_condition={
+                        "condition": "",
+                        "count_condition": "",
+                    },
+                ),
+            ],
+            join_configurations=[alicloud.log.AlertJoinConfigurationArgs(
+                type="cross_join",
+                condition="",
+            )])
         ```
 
         ## Import
@@ -623,16 +1276,28 @@ class Alert(pulumi.CustomResource):
                  alert_description: Optional[pulumi.Input[str]] = None,
                  alert_displayname: Optional[pulumi.Input[str]] = None,
                  alert_name: Optional[pulumi.Input[str]] = None,
+                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]]] = None,
                  condition: Optional[pulumi.Input[str]] = None,
                  dashboard: Optional[pulumi.Input[str]] = None,
+                 group_configuration: Optional[pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']]] = None,
+                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]]] = None,
                  mute_until: Optional[pulumi.Input[int]] = None,
+                 no_data_fire: Optional[pulumi.Input[bool]] = None,
+                 no_data_severity: Optional[pulumi.Input[int]] = None,
                  notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
                  notify_threshold: Optional[pulumi.Input[int]] = None,
+                 policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
+                 send_resolved: Optional[pulumi.Input[bool]] = None,
+                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]]] = None,
+                 threshold: Optional[pulumi.Input[int]] = None,
                  throttling: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -652,17 +1317,30 @@ class Alert(pulumi.CustomResource):
             if alert_name is None and not opts.urn:
                 raise TypeError("Missing required property 'alert_name'")
             __props__.__dict__["alert_name"] = alert_name
-            if condition is None and not opts.urn:
-                raise TypeError("Missing required property 'condition'")
+            __props__.__dict__["annotations"] = annotations
+            if condition is not None and not opts.urn:
+                warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
+                pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
             __props__.__dict__["condition"] = condition
-            if dashboard is None and not opts.urn:
-                raise TypeError("Missing required property 'dashboard'")
+            if dashboard is not None and not opts.urn:
+                warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
+                pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
             __props__.__dict__["dashboard"] = dashboard
+            __props__.__dict__["group_configuration"] = group_configuration
+            __props__.__dict__["join_configurations"] = join_configurations
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["mute_until"] = mute_until
-            if notification_lists is None and not opts.urn:
-                raise TypeError("Missing required property 'notification_lists'")
+            __props__.__dict__["no_data_fire"] = no_data_fire
+            __props__.__dict__["no_data_severity"] = no_data_severity
+            if notification_lists is not None and not opts.urn:
+                warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
+                pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
             __props__.__dict__["notification_lists"] = notification_lists
+            if notify_threshold is not None and not opts.urn:
+                warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
+                pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
             __props__.__dict__["notify_threshold"] = notify_threshold
+            __props__.__dict__["policy_configuration"] = policy_configuration
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__.__dict__["project_name"] = project_name
@@ -671,7 +1349,15 @@ class Alert(pulumi.CustomResource):
             __props__.__dict__["query_lists"] = query_lists
             __props__.__dict__["schedule_interval"] = schedule_interval
             __props__.__dict__["schedule_type"] = schedule_type
+            __props__.__dict__["send_resolved"] = send_resolved
+            __props__.__dict__["severity_configurations"] = severity_configurations
+            __props__.__dict__["threshold"] = threshold
+            if throttling is not None and not opts.urn:
+                warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
+                pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
             __props__.__dict__["throttling"] = throttling
+            __props__.__dict__["type"] = type
+            __props__.__dict__["version"] = version
         super(Alert, __self__).__init__(
             'alicloud:log/alert:Alert',
             resource_name,
@@ -685,16 +1371,28 @@ class Alert(pulumi.CustomResource):
             alert_description: Optional[pulumi.Input[str]] = None,
             alert_displayname: Optional[pulumi.Input[str]] = None,
             alert_name: Optional[pulumi.Input[str]] = None,
+            annotations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]]] = None,
             condition: Optional[pulumi.Input[str]] = None,
             dashboard: Optional[pulumi.Input[str]] = None,
+            group_configuration: Optional[pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']]] = None,
+            join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]]] = None,
             mute_until: Optional[pulumi.Input[int]] = None,
+            no_data_fire: Optional[pulumi.Input[bool]] = None,
+            no_data_severity: Optional[pulumi.Input[int]] = None,
             notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]]] = None,
             notify_threshold: Optional[pulumi.Input[int]] = None,
+            policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
             query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
             schedule_interval: Optional[pulumi.Input[str]] = None,
             schedule_type: Optional[pulumi.Input[str]] = None,
-            throttling: Optional[pulumi.Input[str]] = None) -> 'Alert':
+            send_resolved: Optional[pulumi.Input[bool]] = None,
+            severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]]] = None,
+            threshold: Optional[pulumi.Input[int]] = None,
+            throttling: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            version: Optional[pulumi.Input[str]] = None) -> 'Alert':
         """
         Get an existing Alert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -705,15 +1403,27 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] alert_description: Alert description.
         :param pulumi.Input[str] alert_displayname: Alert displayname.
         :param pulumi.Input[str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[str] condition: Conditional expression, such as: count> 100.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertAnnotationArgs']]]] annotations: Annotations for new alert.
+        :param pulumi.Input[str] condition: Join condition.
+        :param pulumi.Input[pulumi.InputType['AlertGroupConfigurationArgs']] group_configuration: Group configuration for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertJoinConfigurationArgs']]]] join_configurations: Join configuration for different queries.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertLabelArgs']]]] labels: Labels for new alert.
         :param pulumi.Input[int] mute_until: Timestamp, notifications before closing again.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list.
-        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
+        :param pulumi.Input[int] no_data_severity: when no data happens, the severity of new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertNotificationListArgs']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
+        :param pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] project_name: The project name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
         :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
         :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
-        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]] severity_configurations: Severity configuration for new alert.
+        :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
+        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -722,16 +1432,28 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["alert_description"] = alert_description
         __props__.__dict__["alert_displayname"] = alert_displayname
         __props__.__dict__["alert_name"] = alert_name
+        __props__.__dict__["annotations"] = annotations
         __props__.__dict__["condition"] = condition
         __props__.__dict__["dashboard"] = dashboard
+        __props__.__dict__["group_configuration"] = group_configuration
+        __props__.__dict__["join_configurations"] = join_configurations
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["mute_until"] = mute_until
+        __props__.__dict__["no_data_fire"] = no_data_fire
+        __props__.__dict__["no_data_severity"] = no_data_severity
         __props__.__dict__["notification_lists"] = notification_lists
         __props__.__dict__["notify_threshold"] = notify_threshold
+        __props__.__dict__["policy_configuration"] = policy_configuration
         __props__.__dict__["project_name"] = project_name
         __props__.__dict__["query_lists"] = query_lists
         __props__.__dict__["schedule_interval"] = schedule_interval
         __props__.__dict__["schedule_type"] = schedule_type
+        __props__.__dict__["send_resolved"] = send_resolved
+        __props__.__dict__["severity_configurations"] = severity_configurations
+        __props__.__dict__["threshold"] = threshold
         __props__.__dict__["throttling"] = throttling
+        __props__.__dict__["type"] = type
+        __props__.__dict__["version"] = version
         return Alert(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -760,16 +1482,48 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output[str]:
+    def annotations(self) -> pulumi.Output[Optional[Sequence['outputs.AlertAnnotation']]]:
         """
-        Conditional expression, such as: count> 100.
+        Annotations for new alert.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> pulumi.Output[Optional[str]]:
+        """
+        Join condition.
         """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
-    def dashboard(self) -> pulumi.Output[str]:
+    def dashboard(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dashboard")
+
+    @property
+    @pulumi.getter(name="groupConfiguration")
+    def group_configuration(self) -> pulumi.Output[Optional['outputs.AlertGroupConfiguration']]:
+        """
+        Group configuration for new alert.
+        """
+        return pulumi.get(self, "group_configuration")
+
+    @property
+    @pulumi.getter(name="joinConfigurations")
+    def join_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.AlertJoinConfiguration']]]:
+        """
+        Join configuration for different queries.
+        """
+        return pulumi.get(self, "join_configurations")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Sequence['outputs.AlertLabel']]]:
+        """
+        Labels for new alert.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="muteUntil")
@@ -780,10 +1534,26 @@ class Alert(pulumi.CustomResource):
         return pulumi.get(self, "mute_until")
 
     @property
-    @pulumi.getter(name="notificationLists")
-    def notification_lists(self) -> pulumi.Output[Sequence['outputs.AlertNotificationList']]:
+    @pulumi.getter(name="noDataFire")
+    def no_data_fire(self) -> pulumi.Output[Optional[bool]]:
         """
-        Alarm information notification list.
+        Switch for whether new alert fires when no data happens, default is false.
+        """
+        return pulumi.get(self, "no_data_fire")
+
+    @property
+    @pulumi.getter(name="noDataSeverity")
+    def no_data_severity(self) -> pulumi.Output[Optional[int]]:
+        """
+        when no data happens, the severity of new alert.
+        """
+        return pulumi.get(self, "no_data_severity")
+
+    @property
+    @pulumi.getter(name="notificationLists")
+    def notification_lists(self) -> pulumi.Output[Optional[Sequence['outputs.AlertNotificationList']]]:
+        """
+        Alarm information notification list, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "notification_lists")
 
@@ -791,9 +1561,17 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter(name="notifyThreshold")
     def notify_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "notify_threshold")
+
+    @property
+    @pulumi.getter(name="policyConfiguration")
+    def policy_configuration(self) -> pulumi.Output[Optional['outputs.AlertPolicyConfiguration']]:
+        """
+        Policy configuration for new alert.
+        """
+        return pulumi.get(self, "policy_configuration")
 
     @property
     @pulumi.getter(name="projectName")
@@ -828,10 +1606,50 @@ class Alert(pulumi.CustomResource):
         return pulumi.get(self, "schedule_type")
 
     @property
+    @pulumi.getter(name="sendResolved")
+    def send_resolved(self) -> pulumi.Output[Optional[bool]]:
+        """
+        when new alert is resolved, whether to notify, default is false.
+        """
+        return pulumi.get(self, "send_resolved")
+
+    @property
+    @pulumi.getter(name="severityConfigurations")
+    def severity_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.AlertSeverityConfiguration']]]:
+        """
+        Severity configuration for new alert.
+        """
+        return pulumi.get(self, "severity_configurations")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Output[int]:
+        """
+        Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        """
+        return pulumi.get(self, "threshold")
+
+    @property
     @pulumi.getter
     def throttling(self) -> pulumi.Output[Optional[str]]:
         """
-        Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "throttling")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The version of alert, new alert is 2.0.
+        """
+        return pulumi.get(self, "version")
 

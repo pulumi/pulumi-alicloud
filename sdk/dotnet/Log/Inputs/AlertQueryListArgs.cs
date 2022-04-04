@@ -13,34 +13,70 @@ namespace Pulumi.AliCloud.Log.Inputs
     public sealed class AlertQueryListArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// chart title
+        /// Chart title, optional from 1.161.0+.
         /// </summary>
-        [Input("chartTitle", required: true)]
-        public Input<string> ChartTitle { get; set; } = null!;
+        [Input("chartTitle")]
+        public Input<string>? ChartTitle { get; set; }
 
         /// <summary>
-        /// end time. example: 20s.
+        /// Query dashboard id.
+        /// </summary>
+        [Input("dashboardId")]
+        public Input<string>? DashboardId { get; set; }
+
+        /// <summary>
+        /// End time. example: 20s.
         /// </summary>
         [Input("end", required: true)]
         public Input<string> End { get; set; } = null!;
 
         /// <summary>
-        /// Query logstore
+        /// Query logstore, use store for new alert, Deprecated from 1.161.0+.
         /// </summary>
-        [Input("logstore", required: true)]
-        public Input<string> Logstore { get; set; } = null!;
+        [Input("logstore")]
+        public Input<string>? Logstore { get; set; }
 
         /// <summary>
-        /// query corresponding to chart. example: * AND aliyun.
+        /// Query project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Query corresponding to chart. example: * AND aliyun.
         /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
         /// <summary>
-        /// begin time. example: -60s.
+        /// Query project region.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Query project store's ARN.
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
+
+        /// <summary>
+        /// Begin time. example: -60s.
         /// </summary>
         [Input("start", required: true)]
         public Input<string> Start { get; set; } = null!;
+
+        /// <summary>
+        /// Query store for new alert.
+        /// </summary>
+        [Input("store")]
+        public Input<string>? Store { get; set; }
+
+        /// <summary>
+        /// Query store type for new alert, including log,metric,meta.
+        /// </summary>
+        [Input("storeType")]
+        public Input<string>? StoreType { get; set; }
 
         /// <summary>
         /// default Custom. No need to configure this parameter.

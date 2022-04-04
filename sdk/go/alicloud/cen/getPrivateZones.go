@@ -13,6 +13,34 @@ import (
 // This data source provides CEN Private Zones available to the user.
 //
 // > **NOTE:** Available in v1.88.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		this, err := cen.GetPrivateZones(ctx, &cen.GetPrivateZonesArgs{
+// 			CenId: "cen-o40h17ll9w********",
+// 			Ids: []string{
+// 				"cn-hangzhou",
+// 			},
+// 			Status: pulumi.StringRef("Active"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstCenPrivateZonesId", this.Zones[0].Id)
+// 		return nil
+// 	})
+// }
+// ```
 func GetPrivateZones(ctx *pulumi.Context, args *GetPrivateZonesArgs, opts ...pulumi.InvokeOption) (*GetPrivateZonesResult, error) {
 	var rv GetPrivateZonesResult
 	err := ctx.Invoke("alicloud:cen/getPrivateZones:getPrivateZones", args, &rv, opts...)
@@ -28,7 +56,8 @@ type GetPrivateZonesArgs struct {
 	CenId string `pulumi:"cenId"`
 	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
 	HostRegionId *string `pulumi:"hostRegionId"`
-	// A list of CEN private zone IDs.
+	// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
+	// **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
 	// * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -44,7 +73,8 @@ type GetPrivateZonesResult struct {
 	HostRegionId *string `pulumi:"hostRegionId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of CEN private zone IDs.
+	// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
+	// **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the PrivateZone service.
@@ -72,7 +102,8 @@ type GetPrivateZonesOutputArgs struct {
 	CenId pulumi.StringInput `pulumi:"cenId"`
 	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
 	HostRegionId pulumi.StringPtrInput `pulumi:"hostRegionId"`
-	// A list of CEN private zone IDs.
+	// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
+	// **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
 	// * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
 	Ids        pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
@@ -114,7 +145,8 @@ func (o GetPrivateZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of CEN private zone IDs.
+// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
+// **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
 func (o GetPrivateZonesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPrivateZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

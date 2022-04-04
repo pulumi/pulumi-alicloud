@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_service_meshes import *
+from .get_versions import *
 from .service_mesh import *
 from ._inputs import *
 from . import outputs

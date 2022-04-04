@@ -80,9 +80,6 @@ export class DomainResource extends pulumi.CustomResource {
      * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
      */
     public readonly httpsExt!: pulumi.Output<string>;
-    /**
-     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-     */
     public readonly instanceIds!: pulumi.Output<string[]>;
     /**
      * Protocol type and port number information.
@@ -160,9 +157,6 @@ export interface DomainResourceState {
      * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
      */
     httpsExt?: pulumi.Input<string>;
-    /**
-     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-     */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Protocol type and port number information.
@@ -193,9 +187,6 @@ export interface DomainResourceArgs {
      * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
      */
     httpsExt?: pulumi.Input<string>;
-    /**
-     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-     */
     instanceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Protocol type and port number information.

@@ -266,10 +266,11 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+        /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         /// </summary>
         [Output("engineVersion")]
-        public Output<string?> EngineVersion { get; private set; } = null!;
+        public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to forcibly change the type. Default to: `true`.
@@ -661,7 +662,8 @@ namespace Pulumi.AliCloud.KVStore
         public Input<bool>? EnablePublic { get; set; }
 
         /// <summary>
-        /// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+        /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -1047,7 +1049,8 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        /// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+        /// **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }

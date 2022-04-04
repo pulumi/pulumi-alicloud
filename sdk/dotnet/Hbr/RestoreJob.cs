@@ -129,19 +129,19 @@ namespace Pulumi.AliCloud.Hbr
     public partial class RestoreJob : Pulumi.CustomResource
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("exclude")]
         public Output<string?> Exclude { get; private set; } = null!;
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("include")]
         public Output<string?> Include { get; private set; } = null!;
 
         /// <summary>
-        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
@@ -283,19 +283,19 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class RestoreJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -392,19 +392,19 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class RestoreJobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }

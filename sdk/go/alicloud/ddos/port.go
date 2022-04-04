@@ -68,9 +68,9 @@ import (
 type Port struct {
 	pulumi.CustomResourceState
 
-	// The port of the origin server.
+	// The port of the origin server. Valid values: [1~65535].
 	BackendPort pulumi.StringPtrOutput `pulumi:"backendPort"`
-	// The forwarding port.
+	// The forwarding port. Valid values: [1~65535].
 	FrontendPort pulumi.StringOutput `pulumi:"frontendPort"`
 	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol pulumi.StringOutput `pulumi:"frontendProtocol"`
@@ -121,9 +121,9 @@ func GetPort(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Port resources.
 type portState struct {
-	// The port of the origin server.
+	// The port of the origin server. Valid values: [1~65535].
 	BackendPort *string `pulumi:"backendPort"`
-	// The forwarding port.
+	// The forwarding port. Valid values: [1~65535].
 	FrontendPort *string `pulumi:"frontendPort"`
 	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol *string `pulumi:"frontendProtocol"`
@@ -134,9 +134,9 @@ type portState struct {
 }
 
 type PortState struct {
-	// The port of the origin server.
+	// The port of the origin server. Valid values: [1~65535].
 	BackendPort pulumi.StringPtrInput
-	// The forwarding port.
+	// The forwarding port. Valid values: [1~65535].
 	FrontendPort pulumi.StringPtrInput
 	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol pulumi.StringPtrInput
@@ -151,9 +151,9 @@ func (PortState) ElementType() reflect.Type {
 }
 
 type portArgs struct {
-	// The port of the origin server.
+	// The port of the origin server. Valid values: [1~65535].
 	BackendPort *string `pulumi:"backendPort"`
-	// The forwarding port.
+	// The forwarding port. Valid values: [1~65535].
 	FrontendPort string `pulumi:"frontendPort"`
 	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol string `pulumi:"frontendProtocol"`
@@ -165,9 +165,9 @@ type portArgs struct {
 
 // The set of arguments for constructing a Port resource.
 type PortArgs struct {
-	// The port of the origin server.
+	// The port of the origin server. Valid values: [1~65535].
 	BackendPort pulumi.StringPtrInput
-	// The forwarding port.
+	// The forwarding port. Valid values: [1~65535].
 	FrontendPort pulumi.StringInput
 	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol pulumi.StringInput

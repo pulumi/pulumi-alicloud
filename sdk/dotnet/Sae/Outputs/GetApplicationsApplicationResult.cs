@@ -94,9 +94,9 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly int MinReadyInstances;
         /// <summary>
-        /// Mount description.
+        /// Mount description information. The details see Block mount_desc.
         /// </summary>
-        public readonly string MountDesc;
+        public readonly ImmutableArray<Outputs.GetApplicationsApplicationMountDescResult> MountDescs;
         /// <summary>
         /// Mount point of NAS in application VPC.
         /// </summary>
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
 
             int minReadyInstances,
 
-            string mountDesc,
+            ImmutableArray<Outputs.GetApplicationsApplicationMountDescResult> mountDescs,
 
             string mountHost,
 
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
             Liveness = liveness;
             Memory = memory;
             MinReadyInstances = minReadyInstances;
-            MountDesc = mountDesc;
+            MountDescs = mountDescs;
             MountHost = mountHost;
             NamespaceId = namespaceId;
             NasId = nasId;

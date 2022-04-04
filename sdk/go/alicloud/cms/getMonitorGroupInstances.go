@@ -10,6 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides the Cms Monitor Group Instances of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available in v1.115.0+.
 func LookupMonitorGroupInstances(ctx *pulumi.Context, args *LookupMonitorGroupInstancesArgs, opts ...pulumi.InvokeOption) (*LookupMonitorGroupInstancesResult, error) {
 	var rv LookupMonitorGroupInstancesResult
 	err := ctx.Invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args, &rv, opts...)
@@ -21,7 +24,9 @@ func LookupMonitorGroupInstances(ctx *pulumi.Context, args *LookupMonitorGroupIn
 
 // A collection of arguments for invoking getMonitorGroupInstances.
 type LookupMonitorGroupInstancesArgs struct {
-	Ids        string  `pulumi:"ids"`
+	// A list of Monitor Group Instances IDs.
+	Ids string `pulumi:"ids"`
+	// The keyword.
 	Keyword    *string `pulumi:"keyword"`
 	OutputFile *string `pulumi:"outputFile"`
 }
@@ -51,7 +56,9 @@ func LookupMonitorGroupInstancesOutput(ctx *pulumi.Context, args LookupMonitorGr
 
 // A collection of arguments for invoking getMonitorGroupInstances.
 type LookupMonitorGroupInstancesOutputArgs struct {
-	Ids        pulumi.StringInput    `pulumi:"ids"`
+	// A list of Monitor Group Instances IDs.
+	Ids pulumi.StringInput `pulumi:"ids"`
+	// The keyword.
 	Keyword    pulumi.StringPtrInput `pulumi:"keyword"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }

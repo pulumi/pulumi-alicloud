@@ -34,6 +34,7 @@ __all__ = [
     'GetServiceMeshesMeshMeshConfigSidecarInjectorResult',
     'GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationResult',
     'GetServiceMeshesMeshNetworkResult',
+    'GetVersionsVersionResult',
 ]
 
 @pulumi.output_type
@@ -1581,5 +1582,45 @@ class GetServiceMeshesMeshNetworkResult(dict):
         The list of Virtual Switch.
         """
         return pulumi.get(self, "vswitche_lists")
+
+
+@pulumi.output_type
+class GetVersionsVersionResult(dict):
+    def __init__(__self__, *,
+                 edition: str,
+                 id: str,
+                 version: str):
+        """
+        :param str edition: The edition of the ASM instance.
+        :param str id: The ASM version id. It formats as `<edition>:<version>`.
+        :param str version: The AMS version.
+        """
+        pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        The edition of the ASM instance.
+        """
+        return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ASM version id. It formats as `<edition>:<version>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The AMS version.
+        """
+        return pulumi.get(self, "version")
 
 

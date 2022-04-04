@@ -9,8 +9,192 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'BucketReplicationDestinationArgs',
+    'BucketReplicationEncryptionConfigurationArgs',
+    'BucketReplicationPrefixSetArgs',
+    'BucketReplicationProgressArgs',
+    'BucketReplicationSourceSelectionCriteriaArgs',
+    'BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs',
     'TablePrimaryKeyArgs',
 ]
+
+@pulumi.input_type
+class BucketReplicationDestinationArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 transfer_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket: The destination bucket to which the data is replicated.
+        :param pulumi.Input[str] transfer_type: The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "location", location)
+        if transfer_type is not None:
+            pulumi.set(__self__, "transfer_type", transfer_type)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The destination bucket to which the data is replicated.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="transferType")
+    def transfer_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+        """
+        return pulumi.get(self, "transfer_type")
+
+    @transfer_type.setter
+    def transfer_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transfer_type", value)
+
+
+@pulumi.input_type
+class BucketReplicationEncryptionConfigurationArgs:
+    def __init__(__self__, *,
+                 replica_kms_key_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] replica_kms_key_id: The CMK ID used in SSE-KMS.
+        """
+        pulumi.set(__self__, "replica_kms_key_id", replica_kms_key_id)
+
+    @property
+    @pulumi.getter(name="replicaKmsKeyId")
+    def replica_kms_key_id(self) -> pulumi.Input[str]:
+        """
+        The CMK ID used in SSE-KMS.
+        """
+        return pulumi.get(self, "replica_kms_key_id")
+
+    @replica_kms_key_id.setter
+    def replica_kms_key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "replica_kms_key_id", value)
+
+
+@pulumi.input_type
+class BucketReplicationPrefixSetArgs:
+    def __init__(__self__, *,
+                 prefixes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: The list of object key name prefix identifying one or more objects to which the rule applies.
+        """
+        pulumi.set(__self__, "prefixes", prefixes)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of object key name prefix identifying one or more objects to which the rule applies.
+        """
+        return pulumi.get(self, "prefixes")
+
+    @prefixes.setter
+    def prefixes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "prefixes", value)
+
+
+@pulumi.input_type
+class BucketReplicationProgressArgs:
+    def __init__(__self__, *,
+                 historical_object: Optional[pulumi.Input[str]] = None,
+                 new_object: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] historical_object: The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+        :param pulumi.Input[str] new_object: The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+        """
+        if historical_object is not None:
+            pulumi.set(__self__, "historical_object", historical_object)
+        if new_object is not None:
+            pulumi.set(__self__, "new_object", new_object)
+
+    @property
+    @pulumi.getter(name="historicalObject")
+    def historical_object(self) -> Optional[pulumi.Input[str]]:
+        """
+        The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+        """
+        return pulumi.get(self, "historical_object")
+
+    @historical_object.setter
+    def historical_object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "historical_object", value)
+
+    @property
+    @pulumi.getter(name="newObject")
+    def new_object(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+        """
+        return pulumi.get(self, "new_object")
+
+    @new_object.setter
+    def new_object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "new_object", value)
+
+
+@pulumi.input_type
+class BucketReplicationSourceSelectionCriteriaArgs:
+    def __init__(__self__, *,
+                 sse_kms_encrypted_objects: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs']] = None):
+        """
+        :param pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs'] sse_kms_encrypted_objects: Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+        """
+        if sse_kms_encrypted_objects is not None:
+            pulumi.set(__self__, "sse_kms_encrypted_objects", sse_kms_encrypted_objects)
+
+    @property
+    @pulumi.getter(name="sseKmsEncryptedObjects")
+    def sse_kms_encrypted_objects(self) -> Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs']]:
+        """
+        Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+        """
+        return pulumi.get(self, "sse_kms_encrypted_objects")
+
+    @sse_kms_encrypted_objects.setter
+    def sse_kms_encrypted_objects(self, value: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs']]):
+        pulumi.set(self, "sse_kms_encrypted_objects", value)
+
+
+@pulumi.input_type
+class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
+    def __init__(__self__, *,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] status: Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
 
 @pulumi.input_type
 class TablePrimaryKeyArgs:

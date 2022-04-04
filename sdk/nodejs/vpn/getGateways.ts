@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  *
  * const vpnGateways = pulumi.output(alicloud.vpn.getGateways({
  *     businessStatus: "Normal",
+ *     enableIpsec: true,
  *     ids: [
  *         "fake-vpn-id1",
  *         "fake-vpn-id2",
@@ -36,6 +37,7 @@ export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpn/getGateways:getGateways", {
         "businessStatus": args.businessStatus,
+        "enableIpsec": args.enableIpsec,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -52,6 +54,10 @@ export interface GetGatewaysArgs {
      * Limit search to specific business status - valid value is "Normal", "FinancialLocked".
      */
     businessStatus?: string;
+    /**
+     * Indicates whether the IPsec-VPN feature is enabled.
+     */
+    enableIpsec?: boolean;
     /**
      * IDs of the VPN.
      */
@@ -82,6 +88,10 @@ export interface GetGatewaysResult {
      * The business status of the VPN gateway.
      */
     readonly businessStatus?: string;
+    /**
+     * Whether the ipsec function is enabled.
+     */
+    readonly enableIpsec?: boolean;
     /**
      * A list of VPN gateways. Each element contains the following attributes:
      */
@@ -122,6 +132,10 @@ export interface GetGatewaysOutputArgs {
      * Limit search to specific business status - valid value is "Normal", "FinancialLocked".
      */
     businessStatus?: pulumi.Input<string>;
+    /**
+     * Indicates whether the IPsec-VPN feature is enabled.
+     */
+    enableIpsec?: pulumi.Input<boolean>;
     /**
      * IDs of the VPN.
      */

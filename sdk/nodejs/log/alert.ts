@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  * Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
  * Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
  *
+ * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
+ *
  * > **NOTE:** Available in 1.78.0
  *
  * ## Example Usage
@@ -67,6 +69,112 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Basic Usage for new alert
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "create by terraform"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     retentionPeriod: 3650,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const example_2 = new alicloud.log.Alert("example-2", {
+ *     version: "2.0",
+ *     type: "default",
+ *     projectName: exampleProject.name,
+ *     alertName: "tf-test-alert-2",
+ *     alertDisplayname: "tf-test-alert-displayname-2",
+ *     dashboard: "tf-test-dashboard",
+ *     muteUntil: 1632486684,
+ *     noDataFire: false,
+ *     noDataSeverity: 8,
+ *     sendResolved: true,
+ *     scheduleInterval: "5m",
+ *     scheduleType: "FixedRate",
+ *     queryLists: [
+ *         {
+ *             store: "tf-test-logstore",
+ *             storeType: "log",
+ *             project: exampleProject.name,
+ *             region: "cn-heyuan",
+ *             chartTitle: "chart_title",
+ *             start: "-60s",
+ *             end: "20s",
+ *             query: "* AND aliyun | select count(1) as cnt",
+ *         },
+ *         {
+ *             store: "tf-test-logstore",
+ *             storeType: "log",
+ *             project: exampleProject.name,
+ *             region: "cn-heyuan",
+ *             chartTitle: "chart_title",
+ *             start: "-60s",
+ *             end: "20s",
+ *             query: "error | select count(1) as error_cnt",
+ *         },
+ *     ],
+ *     labels: [{
+ *         key: "env",
+ *         value: "test",
+ *     }],
+ *     annotations: [
+ *         {
+ *             key: "title",
+ *             value: "alert title",
+ *         },
+ *         {
+ *             key: "desc",
+ *             value: "alert desc",
+ *         },
+ *         {
+ *             key: "test_key",
+ *             value: "test value",
+ *         },
+ *     ],
+ *     groupConfiguration: {
+ *         type: "custom",
+ *         fields: ["cnt"],
+ *     },
+ *     policyConfiguration: {
+ *         alertPolicyId: "sls.bultin",
+ *         actionPolicyId: "sls_test_action",
+ *         repeatInterval: "4h",
+ *     },
+ *     severityConfigurations: [
+ *         {
+ *             severity: 8,
+ *             evalCondition: {
+ *                 condition: "cnt > 3",
+ *                 count_condition: "__count__ > 3",
+ *             },
+ *         },
+ *         {
+ *             severity: 6,
+ *             evalCondition: {
+ *                 condition: "",
+ *                 count_condition: "__count__ > 0",
+ *             },
+ *         },
+ *         {
+ *             severity: 2,
+ *             evalCondition: {
+ *                 condition: "",
+ *                 count_condition: "",
+ *             },
+ *         },
+ *     ],
+ *     joinConfigurations: [{
+ *         type: "cross_join",
+ *         condition: "",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Log alert can be imported using the id, e.g.
@@ -116,22 +224,59 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly alertName!: pulumi.Output<string>;
     /**
-     * Conditional expression, such as: count> 100.
+     * Annotations for new alert.
      */
-    public readonly condition!: pulumi.Output<string>;
-    public readonly dashboard!: pulumi.Output<string>;
+    public readonly annotations!: pulumi.Output<outputs.log.AlertAnnotation[] | undefined>;
+    /**
+     * Join condition.
+     *
+     * @deprecated Deprecated from 1.161.0+, use eval_condition in severity_configurations
+     */
+    public readonly condition!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
+     */
+    public readonly dashboard!: pulumi.Output<string | undefined>;
+    /**
+     * Group configuration for new alert.
+     */
+    public readonly groupConfiguration!: pulumi.Output<outputs.log.AlertGroupConfiguration | undefined>;
+    /**
+     * Join configuration for different queries.
+     */
+    public readonly joinConfigurations!: pulumi.Output<outputs.log.AlertJoinConfiguration[] | undefined>;
+    /**
+     * Labels for new alert.
+     */
+    public readonly labels!: pulumi.Output<outputs.log.AlertLabel[] | undefined>;
     /**
      * Timestamp, notifications before closing again.
      */
     public readonly muteUntil!: pulumi.Output<number | undefined>;
     /**
-     * Alarm information notification list.
+     * Switch for whether new alert fires when no data happens, default is false.
      */
-    public readonly notificationLists!: pulumi.Output<outputs.log.AlertNotificationList[]>;
+    public readonly noDataFire!: pulumi.Output<boolean | undefined>;
     /**
-     * Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+     * when no data happens, the severity of new alert.
+     */
+    public readonly noDataSeverity!: pulumi.Output<number | undefined>;
+    /**
+     * Alarm information notification list, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use policy_configuration for notification
+     */
+    public readonly notificationLists!: pulumi.Output<outputs.log.AlertNotificationList[] | undefined>;
+    /**
+     * Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use threshold
      */
     public readonly notifyThreshold!: pulumi.Output<number | undefined>;
+    /**
+     * Policy configuration for new alert.
+     */
+    public readonly policyConfiguration!: pulumi.Output<outputs.log.AlertPolicyConfiguration | undefined>;
     /**
      * The project name.
      */
@@ -149,9 +294,31 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly scheduleType!: pulumi.Output<string | undefined>;
     /**
-     * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+     * when new alert is resolved, whether to notify, default is false.
+     */
+    public readonly sendResolved!: pulumi.Output<boolean | undefined>;
+    /**
+     * Severity configuration for new alert.
+     */
+    public readonly severityConfigurations!: pulumi.Output<outputs.log.AlertSeverityConfiguration[] | undefined>;
+    /**
+     * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+     */
+    public readonly threshold!: pulumi.Output<number>;
+    /**
+     * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use repeat_interval in policy_configuration
      */
     public readonly throttling!: pulumi.Output<string | undefined>;
+    /**
+     * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
+    /**
+     * The version of alert, new alert is 2.0.
+     */
+    public readonly version!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Alert resource with the given unique name, arguments, and options.
@@ -169,16 +336,28 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["alertDescription"] = state ? state.alertDescription : undefined;
             resourceInputs["alertDisplayname"] = state ? state.alertDisplayname : undefined;
             resourceInputs["alertName"] = state ? state.alertName : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["dashboard"] = state ? state.dashboard : undefined;
+            resourceInputs["groupConfiguration"] = state ? state.groupConfiguration : undefined;
+            resourceInputs["joinConfigurations"] = state ? state.joinConfigurations : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["muteUntil"] = state ? state.muteUntil : undefined;
+            resourceInputs["noDataFire"] = state ? state.noDataFire : undefined;
+            resourceInputs["noDataSeverity"] = state ? state.noDataSeverity : undefined;
             resourceInputs["notificationLists"] = state ? state.notificationLists : undefined;
             resourceInputs["notifyThreshold"] = state ? state.notifyThreshold : undefined;
+            resourceInputs["policyConfiguration"] = state ? state.policyConfiguration : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
             resourceInputs["queryLists"] = state ? state.queryLists : undefined;
             resourceInputs["scheduleInterval"] = state ? state.scheduleInterval : undefined;
             resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
+            resourceInputs["sendResolved"] = state ? state.sendResolved : undefined;
+            resourceInputs["severityConfigurations"] = state ? state.severityConfigurations : undefined;
+            resourceInputs["threshold"] = state ? state.threshold : undefined;
             resourceInputs["throttling"] = state ? state.throttling : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as AlertArgs | undefined;
             if ((!args || args.alertDisplayname === undefined) && !opts.urn) {
@@ -186,15 +365,6 @@ export class Alert extends pulumi.CustomResource {
             }
             if ((!args || args.alertName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alertName'");
-            }
-            if ((!args || args.condition === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'condition'");
-            }
-            if ((!args || args.dashboard === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dashboard'");
-            }
-            if ((!args || args.notificationLists === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'notificationLists'");
             }
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
@@ -205,16 +375,28 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["alertDescription"] = args ? args.alertDescription : undefined;
             resourceInputs["alertDisplayname"] = args ? args.alertDisplayname : undefined;
             resourceInputs["alertName"] = args ? args.alertName : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["condition"] = args ? args.condition : undefined;
             resourceInputs["dashboard"] = args ? args.dashboard : undefined;
+            resourceInputs["groupConfiguration"] = args ? args.groupConfiguration : undefined;
+            resourceInputs["joinConfigurations"] = args ? args.joinConfigurations : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["muteUntil"] = args ? args.muteUntil : undefined;
+            resourceInputs["noDataFire"] = args ? args.noDataFire : undefined;
+            resourceInputs["noDataSeverity"] = args ? args.noDataSeverity : undefined;
             resourceInputs["notificationLists"] = args ? args.notificationLists : undefined;
             resourceInputs["notifyThreshold"] = args ? args.notifyThreshold : undefined;
+            resourceInputs["policyConfiguration"] = args ? args.policyConfiguration : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
             resourceInputs["queryLists"] = args ? args.queryLists : undefined;
             resourceInputs["scheduleInterval"] = args ? args.scheduleInterval : undefined;
             resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
+            resourceInputs["sendResolved"] = args ? args.sendResolved : undefined;
+            resourceInputs["severityConfigurations"] = args ? args.severityConfigurations : undefined;
+            resourceInputs["threshold"] = args ? args.threshold : undefined;
             resourceInputs["throttling"] = args ? args.throttling : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Alert.__pulumiType, name, resourceInputs, opts);
@@ -238,22 +420,59 @@ export interface AlertState {
      */
     alertName?: pulumi.Input<string>;
     /**
-     * Conditional expression, such as: count> 100.
+     * Annotations for new alert.
+     */
+    annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[]>;
+    /**
+     * Join condition.
+     *
+     * @deprecated Deprecated from 1.161.0+, use eval_condition in severity_configurations
      */
     condition?: pulumi.Input<string>;
+    /**
+     * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
+     */
     dashboard?: pulumi.Input<string>;
+    /**
+     * Group configuration for new alert.
+     */
+    groupConfiguration?: pulumi.Input<inputs.log.AlertGroupConfiguration>;
+    /**
+     * Join configuration for different queries.
+     */
+    joinConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertJoinConfiguration>[]>;
+    /**
+     * Labels for new alert.
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.log.AlertLabel>[]>;
     /**
      * Timestamp, notifications before closing again.
      */
     muteUntil?: pulumi.Input<number>;
     /**
-     * Alarm information notification list.
+     * Switch for whether new alert fires when no data happens, default is false.
+     */
+    noDataFire?: pulumi.Input<boolean>;
+    /**
+     * when no data happens, the severity of new alert.
+     */
+    noDataSeverity?: pulumi.Input<number>;
+    /**
+     * Alarm information notification list, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use policy_configuration for notification
      */
     notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
     /**
-     * Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+     * Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use threshold
      */
     notifyThreshold?: pulumi.Input<number>;
+    /**
+     * Policy configuration for new alert.
+     */
+    policyConfiguration?: pulumi.Input<inputs.log.AlertPolicyConfiguration>;
     /**
      * The project name.
      */
@@ -271,9 +490,31 @@ export interface AlertState {
      */
     scheduleType?: pulumi.Input<string>;
     /**
-     * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+     * when new alert is resolved, whether to notify, default is false.
+     */
+    sendResolved?: pulumi.Input<boolean>;
+    /**
+     * Severity configuration for new alert.
+     */
+    severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[]>;
+    /**
+     * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+     */
+    threshold?: pulumi.Input<number>;
+    /**
+     * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use repeat_interval in policy_configuration
      */
     throttling?: pulumi.Input<string>;
+    /**
+     * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The version of alert, new alert is 2.0.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -293,22 +534,59 @@ export interface AlertArgs {
      */
     alertName: pulumi.Input<string>;
     /**
-     * Conditional expression, such as: count> 100.
+     * Annotations for new alert.
      */
-    condition: pulumi.Input<string>;
-    dashboard: pulumi.Input<string>;
+    annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[]>;
+    /**
+     * Join condition.
+     *
+     * @deprecated Deprecated from 1.161.0+, use eval_condition in severity_configurations
+     */
+    condition?: pulumi.Input<string>;
+    /**
+     * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
+     */
+    dashboard?: pulumi.Input<string>;
+    /**
+     * Group configuration for new alert.
+     */
+    groupConfiguration?: pulumi.Input<inputs.log.AlertGroupConfiguration>;
+    /**
+     * Join configuration for different queries.
+     */
+    joinConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertJoinConfiguration>[]>;
+    /**
+     * Labels for new alert.
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.log.AlertLabel>[]>;
     /**
      * Timestamp, notifications before closing again.
      */
     muteUntil?: pulumi.Input<number>;
     /**
-     * Alarm information notification list.
+     * Switch for whether new alert fires when no data happens, default is false.
      */
-    notificationLists: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
+    noDataFire?: pulumi.Input<boolean>;
     /**
-     * Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+     * when no data happens, the severity of new alert.
+     */
+    noDataSeverity?: pulumi.Input<number>;
+    /**
+     * Alarm information notification list, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use policy_configuration for notification
+     */
+    notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
+    /**
+     * Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use threshold
      */
     notifyThreshold?: pulumi.Input<number>;
+    /**
+     * Policy configuration for new alert.
+     */
+    policyConfiguration?: pulumi.Input<inputs.log.AlertPolicyConfiguration>;
     /**
      * The project name.
      */
@@ -326,7 +604,29 @@ export interface AlertArgs {
      */
     scheduleType?: pulumi.Input<string>;
     /**
-     * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+     * when new alert is resolved, whether to notify, default is false.
+     */
+    sendResolved?: pulumi.Input<boolean>;
+    /**
+     * Severity configuration for new alert.
+     */
+    severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[]>;
+    /**
+     * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+     */
+    threshold?: pulumi.Input<number>;
+    /**
+     * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
+     *
+     * @deprecated Deprecated from 1.161.0+, use repeat_interval in policy_configuration
      */
     throttling?: pulumi.Input<string>;
+    /**
+     * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The version of alert, new alert is 2.0.
+     */
+    version?: pulumi.Input<string>;
 }

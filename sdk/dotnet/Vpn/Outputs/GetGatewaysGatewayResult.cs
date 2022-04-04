@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Whether the ipsec function is enabled.
+        /// Indicates whether the IPsec-VPN feature is enabled.
         /// </summary>
         public readonly string EnableIpsec;
         /// <summary>

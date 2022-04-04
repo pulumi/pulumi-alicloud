@@ -248,10 +248,10 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> EtlType { get; private set; } = null!;
 
         /// <summary>
-        /// The start time of the processing job, the default starts from the current time.
+        /// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         /// </summary>
         [Output("fromTime")]
-        public Output<int> FromTime { get; private set; } = null!;
+        public Output<int?> FromTime { get; private set; } = null!;
 
         /// <summary>
         /// An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Deadline of processing job, the default value is None.
+        /// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         /// </summary>
         [Output("toTime")]
         public Output<int?> ToTime { get; private set; } = null!;
@@ -438,7 +438,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? EtlType { get; set; }
 
         /// <summary>
-        /// The start time of the processing job, the default starts from the current time.
+        /// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         /// </summary>
         [Input("fromTime")]
         public Input<int>? FromTime { get; set; }
@@ -534,7 +534,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Deadline of processing job, the default value is None.
+        /// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         /// </summary>
         [Input("toTime")]
         public Input<int>? ToTime { get; set; }
@@ -607,7 +607,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? EtlType { get; set; }
 
         /// <summary>
-        /// The start time of the processing job, the default starts from the current time.
+        /// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         /// </summary>
         [Input("fromTime")]
         public Input<int>? FromTime { get; set; }
@@ -703,7 +703,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Deadline of processing job, the default value is None.
+        /// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         /// </summary>
         [Input("toTime")]
         public Input<int>? ToTime { get; set; }

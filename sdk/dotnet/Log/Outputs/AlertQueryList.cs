@@ -14,25 +14,49 @@ namespace Pulumi.AliCloud.Log.Outputs
     public sealed class AlertQueryList
     {
         /// <summary>
-        /// chart title
+        /// Chart title, optional from 1.161.0+.
         /// </summary>
-        public readonly string ChartTitle;
+        public readonly string? ChartTitle;
         /// <summary>
-        /// end time. example: 20s.
+        /// Query dashboard id.
+        /// </summary>
+        public readonly string? DashboardId;
+        /// <summary>
+        /// End time. example: 20s.
         /// </summary>
         public readonly string End;
         /// <summary>
-        /// Query logstore
+        /// Query logstore, use store for new alert, Deprecated from 1.161.0+.
         /// </summary>
-        public readonly string Logstore;
+        public readonly string? Logstore;
         /// <summary>
-        /// query corresponding to chart. example: * AND aliyun.
+        /// Query project.
+        /// </summary>
+        public readonly string? Project;
+        /// <summary>
+        /// Query corresponding to chart. example: * AND aliyun.
         /// </summary>
         public readonly string Query;
         /// <summary>
-        /// begin time. example: -60s.
+        /// Query project region.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
+        /// Query project store's ARN.
+        /// </summary>
+        public readonly string? RoleArn;
+        /// <summary>
+        /// Begin time. example: -60s.
         /// </summary>
         public readonly string Start;
+        /// <summary>
+        /// Query store for new alert.
+        /// </summary>
+        public readonly string? Store;
+        /// <summary>
+        /// Query store type for new alert, including log,metric,meta.
+        /// </summary>
+        public readonly string? StoreType;
         /// <summary>
         /// default Custom. No need to configure this parameter.
         /// </summary>
@@ -40,23 +64,41 @@ namespace Pulumi.AliCloud.Log.Outputs
 
         [OutputConstructor]
         private AlertQueryList(
-            string chartTitle,
+            string? chartTitle,
+
+            string? dashboardId,
 
             string end,
 
-            string logstore,
+            string? logstore,
+
+            string? project,
 
             string query,
 
+            string? region,
+
+            string? roleArn,
+
             string start,
+
+            string? store,
+
+            string? storeType,
 
             string? timeSpanType)
         {
             ChartTitle = chartTitle;
+            DashboardId = dashboardId;
             End = end;
             Logstore = logstore;
+            Project = project;
             Query = query;
+            Region = region;
+            RoleArn = roleArn;
             Start = start;
+            Store = store;
+            StoreType = storeType;
             TimeSpanType = timeSpanType;
         }
     }

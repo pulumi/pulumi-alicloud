@@ -130,11 +130,11 @@ import (
 type RestoreJob struct {
 	pulumi.CustomResourceState
 
-	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrOutput `pulumi:"exclude"`
-	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrOutput `pulumi:"include"`
-	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringOutput `pulumi:"restoreJobId"`
@@ -212,11 +212,11 @@ func GetRestoreJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RestoreJob resources.
 type restoreJobState struct {
-	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude *string `pulumi:"exclude"`
-	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include *string `pulumi:"include"`
-	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options *string `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
@@ -251,11 +251,11 @@ type restoreJobState struct {
 }
 
 type RestoreJobState struct {
-	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrInput
-	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrInput
-	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrInput
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput
@@ -294,11 +294,11 @@ func (RestoreJobState) ElementType() reflect.Type {
 }
 
 type restoreJobArgs struct {
-	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude *string `pulumi:"exclude"`
-	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include *string `pulumi:"include"`
-	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options *string `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
@@ -332,11 +332,11 @@ type restoreJobArgs struct {
 
 // The set of arguments for constructing a RestoreJob resource.
 type RestoreJobArgs struct {
-	// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrInput
-	// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrInput
-	// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
 	Options pulumi.StringPtrInput
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput

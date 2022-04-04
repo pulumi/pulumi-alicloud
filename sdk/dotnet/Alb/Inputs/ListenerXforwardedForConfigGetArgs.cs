@@ -10,87 +10,87 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerXforwardedForConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ListenerXForwardedForConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+        /// The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         /// </summary>
-        [Input("xforwardedforclientcertIssuerdnalias")]
-        public Input<string>? XforwardedforclientcertIssuerdnalias { get; set; }
-
-        /// <summary>
-        /// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-        /// </summary>
-        [Input("xforwardedforclientcertIssuerdnenabled")]
-        public Input<bool>? XforwardedforclientcertIssuerdnenabled { get; set; }
-
-        /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        /// </summary>
-        [Input("xforwardedforclientcertclientverifyalias")]
-        public Input<string>? Xforwardedforclientcertclientverifyalias { get; set; }
+        [Input("xForwardedForClientCertClientVerifyAlias")]
+        public Input<string>? XForwardedForClientCertClientVerifyAlias { get; set; }
 
         /// <summary>
         /// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
         /// </summary>
-        [Input("xforwardedforclientcertclientverifyenabled")]
-        public Input<bool>? Xforwardedforclientcertclientverifyenabled { get; set; }
+        [Input("xForwardedForClientCertClientVerifyEnabled")]
+        public Input<bool>? XForwardedForClientCertClientVerifyEnabled { get; set; }
 
         /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         /// </summary>
-        [Input("xforwardedforclientcertfingerprintalias")]
-        public Input<string>? Xforwardedforclientcertfingerprintalias { get; set; }
+        [Input("xForwardedForClientCertFingerPrintAlias")]
+        public Input<string>? XForwardedForClientCertFingerPrintAlias { get; set; }
 
         /// <summary>
-        /// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        /// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
         /// </summary>
-        [Input("xforwardedforclientcertfingerprintenabled")]
-        public Input<bool>? Xforwardedforclientcertfingerprintenabled { get; set; }
+        [Input("xForwardedForClientCertFingerPrintEnabled")]
+        public Input<bool>? XForwardedForClientCertFingerPrintEnabled { get; set; }
 
         /// <summary>
-        /// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
         /// </summary>
-        [Input("xforwardedforclientcertsubjectdnalias")]
-        public Input<string>? Xforwardedforclientcertsubjectdnalias { get; set; }
+        [Input("xForwardedForClientCertIssuerDnAlias")]
+        public Input<string>? XForwardedForClientCertIssuerDnAlias { get; set; }
 
         /// <summary>
-        /// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        /// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
         /// </summary>
-        [Input("xforwardedforclientcertsubjectdnenabled")]
-        public Input<bool>? Xforwardedforclientcertsubjectdnenabled { get; set; }
+        [Input("xForwardedForClientCertIssuerDnEnabled")]
+        public Input<bool>? XForwardedForClientCertIssuerDnEnabled { get; set; }
+
+        /// <summary>
+        /// The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// </summary>
+        [Input("xForwardedForClientCertSubjectDnAlias")]
+        public Input<string>? XForwardedForClientCertSubjectDnAlias { get; set; }
+
+        /// <summary>
+        /// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        /// </summary>
+        [Input("xForwardedForClientCertSubjectDnEnabled")]
+        public Input<bool>? XForwardedForClientCertSubjectDnEnabled { get; set; }
 
         /// <summary>
         /// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         /// </summary>
-        [Input("xforwardedforclientsrcportenabled")]
-        public Input<bool>? Xforwardedforclientsrcportenabled { get; set; }
+        [Input("xForwardedForClientSrcPortEnabled")]
+        public Input<bool>? XForwardedForClientSrcPortEnabled { get; set; }
 
         /// <summary>
         /// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
         /// </summary>
-        [Input("xforwardedforenabled")]
-        public Input<bool>? Xforwardedforenabled { get; set; }
+        [Input("xForwardedForEnabled")]
+        public Input<bool>? XForwardedForEnabled { get; set; }
 
         /// <summary>
         /// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
         /// </summary>
-        [Input("xforwardedforprotoenabled")]
-        public Input<bool>? Xforwardedforprotoenabled { get; set; }
+        [Input("xForwardedForProtoEnabled")]
+        public Input<bool>? XForwardedForProtoEnabled { get; set; }
 
         /// <summary>
         /// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
         /// </summary>
-        [Input("xforwardedforslbidenabled")]
-        public Input<bool>? Xforwardedforslbidenabled { get; set; }
+        [Input("xForwardedForSlbIdEnabled")]
+        public Input<bool>? XForwardedForSlbIdEnabled { get; set; }
 
         /// <summary>
         /// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
         /// </summary>
-        [Input("xforwardedforslbportenabled")]
-        public Input<bool>? Xforwardedforslbportenabled { get; set; }
+        [Input("xForwardedForSlbPortEnabled")]
+        public Input<bool>? XForwardedForSlbPortEnabled { get; set; }
 
-        public ListenerXforwardedForConfigGetArgs()
+        public ListenerXForwardedForConfigGetArgs()
         {
         }
     }

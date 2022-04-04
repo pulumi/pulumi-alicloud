@@ -11,9 +11,19 @@ namespace Pulumi.AliCloud.Cms
 {
     public static class GetMonitorGroupInstances
     {
+        /// <summary>
+        /// This data source provides the Cms Monitor Group Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.115.0+.
+        /// </summary>
         public static Task<GetMonitorGroupInstancesResult> InvokeAsync(GetMonitorGroupInstancesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the Cms Monitor Group Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.115.0+.
+        /// </summary>
         public static Output<GetMonitorGroupInstancesResult> Invoke(GetMonitorGroupInstancesInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesInvokeArgs(), options.WithDefaults());
     }
@@ -21,9 +31,15 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class GetMonitorGroupInstancesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A list of Monitor Group Instances IDs.
+        /// </summary>
         [Input("ids", required: true)]
         public string Ids { get; set; } = null!;
 
+        /// <summary>
+        /// The keyword.
+        /// </summary>
         [Input("keyword")]
         public string? Keyword { get; set; }
 
@@ -37,9 +53,15 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class GetMonitorGroupInstancesInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A list of Monitor Group Instances IDs.
+        /// </summary>
         [Input("ids", required: true)]
         public Input<string> Ids { get; set; } = null!;
 
+        /// <summary>
+        /// The keyword.
+        /// </summary>
         [Input("keyword")]
         public Input<string>? Keyword { get; set; }
 

@@ -10,254 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type ApplicationInternet struct {
-	// SSL certificate. `httpsCertId` is required when HTTPS is selected
-	HttpsCertId *string `pulumi:"httpsCertId"`
-	// SLB Port.
-	Port *int `pulumi:"port"`
-	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-	Protocol *string `pulumi:"protocol"`
-	// Container port.
-	TargetPort *int `pulumi:"targetPort"`
-}
-
-// ApplicationInternetInput is an input type that accepts ApplicationInternetArgs and ApplicationInternetOutput values.
-// You can construct a concrete instance of `ApplicationInternetInput` via:
-//
-//          ApplicationInternetArgs{...}
-type ApplicationInternetInput interface {
-	pulumi.Input
-
-	ToApplicationInternetOutput() ApplicationInternetOutput
-	ToApplicationInternetOutputWithContext(context.Context) ApplicationInternetOutput
-}
-
-type ApplicationInternetArgs struct {
-	// SSL certificate. `httpsCertId` is required when HTTPS is selected
-	HttpsCertId pulumi.StringPtrInput `pulumi:"httpsCertId"`
-	// SLB Port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Container port.
-	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
-}
-
-func (ApplicationInternetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationInternet)(nil)).Elem()
-}
-
-func (i ApplicationInternetArgs) ToApplicationInternetOutput() ApplicationInternetOutput {
-	return i.ToApplicationInternetOutputWithContext(context.Background())
-}
-
-func (i ApplicationInternetArgs) ToApplicationInternetOutputWithContext(ctx context.Context) ApplicationInternetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInternetOutput)
-}
-
-// ApplicationInternetArrayInput is an input type that accepts ApplicationInternetArray and ApplicationInternetArrayOutput values.
-// You can construct a concrete instance of `ApplicationInternetArrayInput` via:
-//
-//          ApplicationInternetArray{ ApplicationInternetArgs{...} }
-type ApplicationInternetArrayInput interface {
-	pulumi.Input
-
-	ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput
-	ToApplicationInternetArrayOutputWithContext(context.Context) ApplicationInternetArrayOutput
-}
-
-type ApplicationInternetArray []ApplicationInternetInput
-
-func (ApplicationInternetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationInternet)(nil)).Elem()
-}
-
-func (i ApplicationInternetArray) ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput {
-	return i.ToApplicationInternetArrayOutputWithContext(context.Background())
-}
-
-func (i ApplicationInternetArray) ToApplicationInternetArrayOutputWithContext(ctx context.Context) ApplicationInternetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInternetArrayOutput)
-}
-
-type ApplicationInternetOutput struct{ *pulumi.OutputState }
-
-func (ApplicationInternetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationInternet)(nil)).Elem()
-}
-
-func (o ApplicationInternetOutput) ToApplicationInternetOutput() ApplicationInternetOutput {
-	return o
-}
-
-func (o ApplicationInternetOutput) ToApplicationInternetOutputWithContext(ctx context.Context) ApplicationInternetOutput {
-	return o
-}
-
-// SSL certificate. `httpsCertId` is required when HTTPS is selected
-func (o ApplicationInternetOutput) HttpsCertId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationInternet) *string { return v.HttpsCertId }).(pulumi.StringPtrOutput)
-}
-
-// SLB Port.
-func (o ApplicationInternetOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApplicationInternet) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-func (o ApplicationInternetOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationInternet) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// Container port.
-func (o ApplicationInternetOutput) TargetPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApplicationInternet) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
-}
-
-type ApplicationInternetArrayOutput struct{ *pulumi.OutputState }
-
-func (ApplicationInternetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationInternet)(nil)).Elem()
-}
-
-func (o ApplicationInternetArrayOutput) ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput {
-	return o
-}
-
-func (o ApplicationInternetArrayOutput) ToApplicationInternetArrayOutputWithContext(ctx context.Context) ApplicationInternetArrayOutput {
-	return o
-}
-
-func (o ApplicationInternetArrayOutput) Index(i pulumi.IntInput) ApplicationInternetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationInternet {
-		return vs[0].([]ApplicationInternet)[vs[1].(int)]
-	}).(ApplicationInternetOutput)
-}
-
-type ApplicationIntranet struct {
-	// SSL certificate. `httpsCertId` is required when HTTPS is selected
-	HttpsCertId *string `pulumi:"httpsCertId"`
-	// SLB Port.
-	Port *int `pulumi:"port"`
-	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-	Protocol *string `pulumi:"protocol"`
-	// Container port.
-	TargetPort *int `pulumi:"targetPort"`
-}
-
-// ApplicationIntranetInput is an input type that accepts ApplicationIntranetArgs and ApplicationIntranetOutput values.
-// You can construct a concrete instance of `ApplicationIntranetInput` via:
-//
-//          ApplicationIntranetArgs{...}
-type ApplicationIntranetInput interface {
-	pulumi.Input
-
-	ToApplicationIntranetOutput() ApplicationIntranetOutput
-	ToApplicationIntranetOutputWithContext(context.Context) ApplicationIntranetOutput
-}
-
-type ApplicationIntranetArgs struct {
-	// SSL certificate. `httpsCertId` is required when HTTPS is selected
-	HttpsCertId pulumi.StringPtrInput `pulumi:"httpsCertId"`
-	// SLB Port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Container port.
-	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
-}
-
-func (ApplicationIntranetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationIntranet)(nil)).Elem()
-}
-
-func (i ApplicationIntranetArgs) ToApplicationIntranetOutput() ApplicationIntranetOutput {
-	return i.ToApplicationIntranetOutputWithContext(context.Background())
-}
-
-func (i ApplicationIntranetArgs) ToApplicationIntranetOutputWithContext(ctx context.Context) ApplicationIntranetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIntranetOutput)
-}
-
-// ApplicationIntranetArrayInput is an input type that accepts ApplicationIntranetArray and ApplicationIntranetArrayOutput values.
-// You can construct a concrete instance of `ApplicationIntranetArrayInput` via:
-//
-//          ApplicationIntranetArray{ ApplicationIntranetArgs{...} }
-type ApplicationIntranetArrayInput interface {
-	pulumi.Input
-
-	ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput
-	ToApplicationIntranetArrayOutputWithContext(context.Context) ApplicationIntranetArrayOutput
-}
-
-type ApplicationIntranetArray []ApplicationIntranetInput
-
-func (ApplicationIntranetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationIntranet)(nil)).Elem()
-}
-
-func (i ApplicationIntranetArray) ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput {
-	return i.ToApplicationIntranetArrayOutputWithContext(context.Background())
-}
-
-func (i ApplicationIntranetArray) ToApplicationIntranetArrayOutputWithContext(ctx context.Context) ApplicationIntranetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIntranetArrayOutput)
-}
-
-type ApplicationIntranetOutput struct{ *pulumi.OutputState }
-
-func (ApplicationIntranetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationIntranet)(nil)).Elem()
-}
-
-func (o ApplicationIntranetOutput) ToApplicationIntranetOutput() ApplicationIntranetOutput {
-	return o
-}
-
-func (o ApplicationIntranetOutput) ToApplicationIntranetOutputWithContext(ctx context.Context) ApplicationIntranetOutput {
-	return o
-}
-
-// SSL certificate. `httpsCertId` is required when HTTPS is selected
-func (o ApplicationIntranetOutput) HttpsCertId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationIntranet) *string { return v.HttpsCertId }).(pulumi.StringPtrOutput)
-}
-
-// SLB Port.
-func (o ApplicationIntranetOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApplicationIntranet) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-func (o ApplicationIntranetOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationIntranet) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// Container port.
-func (o ApplicationIntranetOutput) TargetPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApplicationIntranet) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
-}
-
-type ApplicationIntranetArrayOutput struct{ *pulumi.OutputState }
-
-func (ApplicationIntranetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationIntranet)(nil)).Elem()
-}
-
-func (o ApplicationIntranetArrayOutput) ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput {
-	return o
-}
-
-func (o ApplicationIntranetArrayOutput) ToApplicationIntranetArrayOutputWithContext(ctx context.Context) ApplicationIntranetArrayOutput {
-	return o
-}
-
-func (o ApplicationIntranetArrayOutput) Index(i pulumi.IntInput) ApplicationIntranetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationIntranet {
-		return vs[0].([]ApplicationIntranet)[vs[1].(int)]
-	}).(ApplicationIntranetOutput)
-}
-
 type ApplicationScalingRuleScalingRuleMetric struct {
 	// Maximum number of instances applied.
 	MaxReplicas *int `pulumi:"maxReplicas"`
@@ -3304,8 +3056,8 @@ type GetApplicationsApplication struct {
 	Memory int `pulumi:"memory"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances int `pulumi:"minReadyInstances"`
-	// Mount description.
-	MountDesc string `pulumi:"mountDesc"`
+	// Mount description information. The details see Block mount_desc.
+	MountDescs []GetApplicationsApplicationMountDesc `pulumi:"mountDescs"`
 	// Mount point of NAS in application VPC.
 	MountHost string `pulumi:"mountHost"`
 	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
@@ -3416,8 +3168,8 @@ type GetApplicationsApplicationArgs struct {
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances pulumi.IntInput `pulumi:"minReadyInstances"`
-	// Mount description.
-	MountDesc pulumi.StringInput `pulumi:"mountDesc"`
+	// Mount description information. The details see Block mount_desc.
+	MountDescs GetApplicationsApplicationMountDescArrayInput `pulumi:"mountDescs"`
 	// Mount point of NAS in application VPC.
 	MountHost pulumi.StringInput `pulumi:"mountHost"`
 	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
@@ -3627,9 +3379,9 @@ func (o GetApplicationsApplicationOutput) MinReadyInstances() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) int { return v.MinReadyInstances }).(pulumi.IntOutput)
 }
 
-// Mount description.
-func (o GetApplicationsApplicationOutput) MountDesc() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) string { return v.MountDesc }).(pulumi.StringOutput)
+// Mount description information. The details see Block mount_desc.
+func (o GetApplicationsApplicationOutput) MountDescs() GetApplicationsApplicationMountDescArrayOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) []GetApplicationsApplicationMountDesc { return v.MountDescs }).(GetApplicationsApplicationMountDescArrayOutput)
 }
 
 // Mount point of NAS in application VPC.
@@ -3796,6 +3548,112 @@ func (o GetApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetAppli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationsApplication {
 		return vs[0].([]GetApplicationsApplication)[vs[1].(int)]
 	}).(GetApplicationsApplicationOutput)
+}
+
+type GetApplicationsApplicationMountDesc struct {
+	// Container mount path.
+	MountPath string `pulumi:"mountPath"`
+	// NAS relative file directory.
+	NasPath string `pulumi:"nasPath"`
+}
+
+// GetApplicationsApplicationMountDescInput is an input type that accepts GetApplicationsApplicationMountDescArgs and GetApplicationsApplicationMountDescOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationMountDescInput` via:
+//
+//          GetApplicationsApplicationMountDescArgs{...}
+type GetApplicationsApplicationMountDescInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationMountDescOutput() GetApplicationsApplicationMountDescOutput
+	ToGetApplicationsApplicationMountDescOutputWithContext(context.Context) GetApplicationsApplicationMountDescOutput
+}
+
+type GetApplicationsApplicationMountDescArgs struct {
+	// Container mount path.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// NAS relative file directory.
+	NasPath pulumi.StringInput `pulumi:"nasPath"`
+}
+
+func (GetApplicationsApplicationMountDescArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplicationMountDesc)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationMountDescArgs) ToGetApplicationsApplicationMountDescOutput() GetApplicationsApplicationMountDescOutput {
+	return i.ToGetApplicationsApplicationMountDescOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationMountDescArgs) ToGetApplicationsApplicationMountDescOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationMountDescOutput)
+}
+
+// GetApplicationsApplicationMountDescArrayInput is an input type that accepts GetApplicationsApplicationMountDescArray and GetApplicationsApplicationMountDescArrayOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationMountDescArrayInput` via:
+//
+//          GetApplicationsApplicationMountDescArray{ GetApplicationsApplicationMountDescArgs{...} }
+type GetApplicationsApplicationMountDescArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationMountDescArrayOutput() GetApplicationsApplicationMountDescArrayOutput
+	ToGetApplicationsApplicationMountDescArrayOutputWithContext(context.Context) GetApplicationsApplicationMountDescArrayOutput
+}
+
+type GetApplicationsApplicationMountDescArray []GetApplicationsApplicationMountDescInput
+
+func (GetApplicationsApplicationMountDescArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplicationMountDesc)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationMountDescArray) ToGetApplicationsApplicationMountDescArrayOutput() GetApplicationsApplicationMountDescArrayOutput {
+	return i.ToGetApplicationsApplicationMountDescArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationMountDescArray) ToGetApplicationsApplicationMountDescArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationMountDescArrayOutput)
+}
+
+type GetApplicationsApplicationMountDescOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationMountDescOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplicationMountDesc)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationMountDescOutput) ToGetApplicationsApplicationMountDescOutput() GetApplicationsApplicationMountDescOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationMountDescOutput) ToGetApplicationsApplicationMountDescOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescOutput {
+	return o
+}
+
+// Container mount path.
+func (o GetApplicationsApplicationMountDescOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplicationMountDesc) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// NAS relative file directory.
+func (o GetApplicationsApplicationMountDescOutput) NasPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplicationMountDesc) string { return v.NasPath }).(pulumi.StringOutput)
+}
+
+type GetApplicationsApplicationMountDescArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationMountDescArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplicationMountDesc)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationMountDescArrayOutput) ToGetApplicationsApplicationMountDescArrayOutput() GetApplicationsApplicationMountDescArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationMountDescArrayOutput) ToGetApplicationsApplicationMountDescArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationMountDescArrayOutput) Index(i pulumi.IntInput) GetApplicationsApplicationMountDescOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationsApplicationMountDesc {
+		return vs[0].([]GetApplicationsApplicationMountDesc)[vs[1].(int)]
+	}).(GetApplicationsApplicationMountDescOutput)
 }
 
 type GetConfigMapsMap struct {
@@ -5041,10 +4899,6 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInternetInput)(nil)).Elem(), ApplicationInternetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInternetArrayInput)(nil)).Elem(), ApplicationInternetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIntranetInput)(nil)).Elem(), ApplicationIntranetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIntranetArrayInput)(nil)).Elem(), ApplicationIntranetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricMetricInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricMetricArgs{})
@@ -5091,6 +4945,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationInput)(nil)).Elem(), GetApplicationsApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationArrayInput)(nil)).Elem(), GetApplicationsApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationMountDescInput)(nil)).Elem(), GetApplicationsApplicationMountDescArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationMountDescArrayInput)(nil)).Elem(), GetApplicationsApplicationMountDescArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigMapsMapInput)(nil)).Elem(), GetConfigMapsMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigMapsMapArrayInput)(nil)).Elem(), GetConfigMapsMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteInput)(nil)).Elem(), GetGreyTagRoutesRouteArgs{})
@@ -5109,10 +4965,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSpecificationsSpecificationArrayInput)(nil)).Elem(), GetInstanceSpecificationsSpecificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
-	pulumi.RegisterOutputType(ApplicationInternetOutput{})
-	pulumi.RegisterOutputType(ApplicationInternetArrayOutput{})
-	pulumi.RegisterOutputType(ApplicationIntranetOutput{})
-	pulumi.RegisterOutputType(ApplicationIntranetArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricMetricOutput{})
@@ -5159,6 +5011,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationMountDescOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationMountDescArrayOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetGreyTagRoutesRouteOutput{})

@@ -16,16 +16,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const thisRouteMaps = pulumi.output(alicloud.cen.getRouteMaps({
+ * const this = alicloud.cen.getRouteMaps({
  *     cenId: "cen-ihdlgo87ai********",
- *     cenRegionId: "cn-hangzhou",
+ *     ids: ["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
  *     descriptionRegex: "datasource_test",
- *     ids: ["cenrmap-bnh97kb3mn********"],
- *     status: "Active",
+ *     cenRegionId: "cn-hangzhou",
  *     transmitDirection: "RegionIn",
- * }));
- *
- * export const firstCenRouteMapId = thisRouteMaps.maps[0].id;
+ *     status: "Active",
+ * });
+ * export const firstCenRouteMapId = _this.then(_this => _this.maps?[0]?.routeMapId);
  * ```
  */
 export function getRouteMaps(args: GetRouteMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteMapsResult> {
@@ -62,7 +61,7 @@ export interface GetRouteMapsArgs {
      */
     descriptionRegex?: string;
     /**
-     * A list of CEN route map IDs.
+     * A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
      */
     ids?: string[];
     outputFile?: string;
@@ -94,7 +93,7 @@ export interface GetRouteMapsResult {
      */
     readonly id: string;
     /**
-     * A list of CEN route map IDs.
+     * A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`. Before 1.161.0, its element is `routeMapId`.
      */
     readonly ids: string[];
     /**
@@ -133,7 +132,7 @@ export interface GetRouteMapsOutputArgs {
      */
     descriptionRegex?: pulumi.Input<string>;
     /**
-     * A list of CEN route map IDs.
+     * A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     outputFile?: pulumi.Input<string>;

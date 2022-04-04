@@ -51,7 +51,7 @@ class EtlArgs:
         :param pulumi.Input[int] create_time: The etl job create time.
         :param pulumi.Input[str] description: Description of the log etl job.
         :param pulumi.Input[str] etl_type: Log service etl type, the default value is `ETL`.
-        :param pulumi.Input[int] from_time: The start time of the processing job, the default starts from the current time.
+        :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -61,7 +61,7 @@ class EtlArgs:
         :param pulumi.Input[str] role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         :param pulumi.Input[str] schedule: Job scheduling type, the default value is Resident.
         :param pulumi.Input[str] status: Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
-        :param pulumi.Input[int] to_time: Deadline of processing job, the default value is None.
+        :param pulumi.Input[int] to_time: Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -241,7 +241,7 @@ class EtlArgs:
     @pulumi.getter(name="fromTime")
     def from_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The start time of the processing job, the default starts from the current time.
+        The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         """
         return pulumi.get(self, "from_time")
 
@@ -361,7 +361,7 @@ class EtlArgs:
     @pulumi.getter(name="toTime")
     def to_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Deadline of processing job, the default value is None.
+        Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         """
         return pulumi.get(self, "to_time")
 
@@ -418,7 +418,7 @@ class _EtlState:
         :param pulumi.Input[str] etl_name: The name of the log etl job.
         :param pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]] etl_sinks: Target logstore configuration for delivery after data processing.
         :param pulumi.Input[str] etl_type: Log service etl type, the default value is `ETL`.
-        :param pulumi.Input[int] from_time: The start time of the processing job, the default starts from the current time.
+        :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -431,7 +431,7 @@ class _EtlState:
         :param pulumi.Input[str] schedule: Job scheduling type, the default value is Resident.
         :param pulumi.Input[str] script: Processing operation grammar.
         :param pulumi.Input[str] status: Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
-        :param pulumi.Input[int] to_time: Deadline of processing job, the default value is None.
+        :param pulumi.Input[int] to_time: Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
         if access_key_id is not None:
@@ -581,7 +581,7 @@ class _EtlState:
     @pulumi.getter(name="fromTime")
     def from_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The start time of the processing job, the default starts from the current time.
+        The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         """
         return pulumi.get(self, "from_time")
 
@@ -737,7 +737,7 @@ class _EtlState:
     @pulumi.getter(name="toTime")
     def to_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Deadline of processing job, the default value is None.
+        Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         """
         return pulumi.get(self, "to_time")
 
@@ -939,7 +939,7 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[str] etl_name: The name of the log etl job.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EtlEtlSinkArgs']]]] etl_sinks: Target logstore configuration for delivery after data processing.
         :param pulumi.Input[str] etl_type: Log service etl type, the default value is `ETL`.
-        :param pulumi.Input[int] from_time: The start time of the processing job, the default starts from the current time.
+        :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -952,7 +952,7 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[str] schedule: Job scheduling type, the default value is Resident.
         :param pulumi.Input[str] script: Processing operation grammar.
         :param pulumi.Input[str] status: Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
-        :param pulumi.Input[int] to_time: Deadline of processing job, the default value is None.
+        :param pulumi.Input[int] to_time: Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
         ...
@@ -1236,7 +1236,7 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[str] etl_name: The name of the log etl job.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EtlEtlSinkArgs']]]] etl_sinks: Target logstore configuration for delivery after data processing.
         :param pulumi.Input[str] etl_type: Log service etl type, the default value is `ETL`.
-        :param pulumi.Input[int] from_time: The start time of the processing job, the default starts from the current time.
+        :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -1249,7 +1249,7 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[str] schedule: Job scheduling type, the default value is Resident.
         :param pulumi.Input[str] script: Processing operation grammar.
         :param pulumi.Input[str] status: Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
-        :param pulumi.Input[int] to_time: Deadline of processing job, the default value is None.
+        :param pulumi.Input[int] to_time: Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         :param pulumi.Input[int] version: Log etl job version. the default value is `2`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1347,9 +1347,9 @@ class Etl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fromTime")
-    def from_time(self) -> pulumi.Output[int]:
+    def from_time(self) -> pulumi.Output[Optional[int]]:
         """
-        The start time of the processing job, the default starts from the current time.
+        The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         """
         return pulumi.get(self, "from_time")
 
@@ -1453,7 +1453,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter(name="toTime")
     def to_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Deadline of processing job, the default value is None.
+        Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         """
         return pulumi.get(self, "to_time")
 

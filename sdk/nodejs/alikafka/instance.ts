@@ -88,11 +88,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<string>;
     /**
-     * The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+     * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+     * - 4: eip/vpc instance
+     * - 5: vpc instance.
      */
     public readonly deployType!: pulumi.Output<number>;
     /**
-     * The disk size of the instance. When modify this value, it only support adjust to a greater value.
+     * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
@@ -100,7 +102,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly diskType!: pulumi.Output<number>;
     /**
-     * The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+     * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     public readonly eipMax!: pulumi.Output<number>;
     /**
@@ -136,7 +138,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+     * The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
      */
     public readonly topicQuota!: pulumi.Output<number>;
     /**
@@ -234,11 +236,13 @@ export interface InstanceState {
      */
     config?: pulumi.Input<string>;
     /**
-     * The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+     * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+     * - 4: eip/vpc instance
+     * - 5: vpc instance.
      */
     deployType?: pulumi.Input<number>;
     /**
-     * The disk size of the instance. When modify this value, it only support adjust to a greater value.
+     * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
      */
     diskSize?: pulumi.Input<number>;
     /**
@@ -246,7 +250,7 @@ export interface InstanceState {
      */
     diskType?: pulumi.Input<number>;
     /**
-     * The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+     * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     eipMax?: pulumi.Input<number>;
     /**
@@ -282,7 +286,7 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+     * The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
      */
     topicQuota?: pulumi.Input<number>;
     /**
@@ -308,11 +312,13 @@ export interface InstanceArgs {
      */
     config?: pulumi.Input<string>;
     /**
-     * The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+     * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+     * - 4: eip/vpc instance
+     * - 5: vpc instance.
      */
     deployType: pulumi.Input<number>;
     /**
-     * The disk size of the instance. When modify this value, it only support adjust to a greater value.
+     * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
      */
     diskSize: pulumi.Input<number>;
     /**
@@ -320,7 +326,7 @@ export interface InstanceArgs {
      */
     diskType: pulumi.Input<number>;
     /**
-     * The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+     * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     eipMax?: pulumi.Input<number>;
     /**
@@ -352,7 +358,7 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+     * The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
      */
     topicQuota: pulumi.Input<number>;
     /**

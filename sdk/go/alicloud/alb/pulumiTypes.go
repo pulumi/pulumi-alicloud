@@ -562,101 +562,141 @@ func (o ListenerAclConfigAclRelationArrayOutput) Index(i pulumi.IntInput) Listen
 	}).(ListenerAclConfigAclRelationOutput)
 }
 
-type ListenerCertificate struct {
+type ListenerCertificates struct {
 	// The ID of the Certificate.
 	CertificateId *string `pulumi:"certificateId"`
 }
 
-// ListenerCertificateInput is an input type that accepts ListenerCertificateArgs and ListenerCertificateOutput values.
-// You can construct a concrete instance of `ListenerCertificateInput` via:
+// ListenerCertificatesInput is an input type that accepts ListenerCertificatesArgs and ListenerCertificatesOutput values.
+// You can construct a concrete instance of `ListenerCertificatesInput` via:
 //
-//          ListenerCertificateArgs{...}
-type ListenerCertificateInput interface {
+//          ListenerCertificatesArgs{...}
+type ListenerCertificatesInput interface {
 	pulumi.Input
 
-	ToListenerCertificateOutput() ListenerCertificateOutput
-	ToListenerCertificateOutputWithContext(context.Context) ListenerCertificateOutput
+	ToListenerCertificatesOutput() ListenerCertificatesOutput
+	ToListenerCertificatesOutputWithContext(context.Context) ListenerCertificatesOutput
 }
 
-type ListenerCertificateArgs struct {
+type ListenerCertificatesArgs struct {
 	// The ID of the Certificate.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 }
 
-func (ListenerCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListenerCertificate)(nil)).Elem()
+func (ListenerCertificatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerCertificates)(nil)).Elem()
 }
 
-func (i ListenerCertificateArgs) ToListenerCertificateOutput() ListenerCertificateOutput {
-	return i.ToListenerCertificateOutputWithContext(context.Background())
+func (i ListenerCertificatesArgs) ToListenerCertificatesOutput() ListenerCertificatesOutput {
+	return i.ToListenerCertificatesOutputWithContext(context.Background())
 }
 
-func (i ListenerCertificateArgs) ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificateOutput)
+func (i ListenerCertificatesArgs) ToListenerCertificatesOutputWithContext(ctx context.Context) ListenerCertificatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificatesOutput)
 }
 
-// ListenerCertificateArrayInput is an input type that accepts ListenerCertificateArray and ListenerCertificateArrayOutput values.
-// You can construct a concrete instance of `ListenerCertificateArrayInput` via:
+func (i ListenerCertificatesArgs) ToListenerCertificatesPtrOutput() ListenerCertificatesPtrOutput {
+	return i.ToListenerCertificatesPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerCertificatesArgs) ToListenerCertificatesPtrOutputWithContext(ctx context.Context) ListenerCertificatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificatesOutput).ToListenerCertificatesPtrOutputWithContext(ctx)
+}
+
+// ListenerCertificatesPtrInput is an input type that accepts ListenerCertificatesArgs, ListenerCertificatesPtr and ListenerCertificatesPtrOutput values.
+// You can construct a concrete instance of `ListenerCertificatesPtrInput` via:
 //
-//          ListenerCertificateArray{ ListenerCertificateArgs{...} }
-type ListenerCertificateArrayInput interface {
+//          ListenerCertificatesArgs{...}
+//
+//  or:
+//
+//          nil
+type ListenerCertificatesPtrInput interface {
 	pulumi.Input
 
-	ToListenerCertificateArrayOutput() ListenerCertificateArrayOutput
-	ToListenerCertificateArrayOutputWithContext(context.Context) ListenerCertificateArrayOutput
+	ToListenerCertificatesPtrOutput() ListenerCertificatesPtrOutput
+	ToListenerCertificatesPtrOutputWithContext(context.Context) ListenerCertificatesPtrOutput
 }
 
-type ListenerCertificateArray []ListenerCertificateInput
+type listenerCertificatesPtrType ListenerCertificatesArgs
 
-func (ListenerCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ListenerCertificate)(nil)).Elem()
+func ListenerCertificatesPtr(v *ListenerCertificatesArgs) ListenerCertificatesPtrInput {
+	return (*listenerCertificatesPtrType)(v)
 }
 
-func (i ListenerCertificateArray) ToListenerCertificateArrayOutput() ListenerCertificateArrayOutput {
-	return i.ToListenerCertificateArrayOutputWithContext(context.Background())
+func (*listenerCertificatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerCertificates)(nil)).Elem()
 }
 
-func (i ListenerCertificateArray) ToListenerCertificateArrayOutputWithContext(ctx context.Context) ListenerCertificateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificateArrayOutput)
+func (i *listenerCertificatesPtrType) ToListenerCertificatesPtrOutput() ListenerCertificatesPtrOutput {
+	return i.ToListenerCertificatesPtrOutputWithContext(context.Background())
 }
 
-type ListenerCertificateOutput struct{ *pulumi.OutputState }
-
-func (ListenerCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListenerCertificate)(nil)).Elem()
+func (i *listenerCertificatesPtrType) ToListenerCertificatesPtrOutputWithContext(ctx context.Context) ListenerCertificatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificatesPtrOutput)
 }
 
-func (o ListenerCertificateOutput) ToListenerCertificateOutput() ListenerCertificateOutput {
+type ListenerCertificatesOutput struct{ *pulumi.OutputState }
+
+func (ListenerCertificatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerCertificates)(nil)).Elem()
+}
+
+func (o ListenerCertificatesOutput) ToListenerCertificatesOutput() ListenerCertificatesOutput {
 	return o
 }
 
-func (o ListenerCertificateOutput) ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput {
+func (o ListenerCertificatesOutput) ToListenerCertificatesOutputWithContext(ctx context.Context) ListenerCertificatesOutput {
 	return o
+}
+
+func (o ListenerCertificatesOutput) ToListenerCertificatesPtrOutput() ListenerCertificatesPtrOutput {
+	return o.ToListenerCertificatesPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerCertificatesOutput) ToListenerCertificatesPtrOutputWithContext(ctx context.Context) ListenerCertificatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerCertificates) *ListenerCertificates {
+		return &v
+	}).(ListenerCertificatesPtrOutput)
 }
 
 // The ID of the Certificate.
-func (o ListenerCertificateOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListenerCertificate) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+func (o ListenerCertificatesOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerCertificates) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
-type ListenerCertificateArrayOutput struct{ *pulumi.OutputState }
+type ListenerCertificatesPtrOutput struct{ *pulumi.OutputState }
 
-func (ListenerCertificateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ListenerCertificate)(nil)).Elem()
+func (ListenerCertificatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerCertificates)(nil)).Elem()
 }
 
-func (o ListenerCertificateArrayOutput) ToListenerCertificateArrayOutput() ListenerCertificateArrayOutput {
+func (o ListenerCertificatesPtrOutput) ToListenerCertificatesPtrOutput() ListenerCertificatesPtrOutput {
 	return o
 }
 
-func (o ListenerCertificateArrayOutput) ToListenerCertificateArrayOutputWithContext(ctx context.Context) ListenerCertificateArrayOutput {
+func (o ListenerCertificatesPtrOutput) ToListenerCertificatesPtrOutputWithContext(ctx context.Context) ListenerCertificatesPtrOutput {
 	return o
 }
 
-func (o ListenerCertificateArrayOutput) Index(i pulumi.IntInput) ListenerCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerCertificate {
-		return vs[0].([]ListenerCertificate)[vs[1].(int)]
-	}).(ListenerCertificateOutput)
+func (o ListenerCertificatesPtrOutput) Elem() ListenerCertificatesOutput {
+	return o.ApplyT(func(v *ListenerCertificates) ListenerCertificates {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerCertificates
+		return ret
+	}).(ListenerCertificatesOutput)
+}
+
+// The ID of the Certificate.
+func (o ListenerCertificatesPtrOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerCertificates) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ListenerDefaultAction struct {
@@ -1072,6 +1112,371 @@ func (o ListenerQuicConfigPtrOutput) QuicUpgradeEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ListenerXForwardedForConfig struct {
+	// The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	XForwardedForClientCertClientVerifyAlias *string `pulumi:"xForwardedForClientCertClientVerifyAlias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	XForwardedForClientCertClientVerifyEnabled *bool `pulumi:"xForwardedForClientCertClientVerifyEnabled"`
+	// The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	XForwardedForClientCertFingerPrintAlias *string `pulumi:"xForwardedForClientCertFingerPrintAlias"`
+	// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	XForwardedForClientCertFingerPrintEnabled *bool `pulumi:"xForwardedForClientCertFingerPrintEnabled"`
+	// The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+	XForwardedForClientCertIssuerDnAlias *string `pulumi:"xForwardedForClientCertIssuerDnAlias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	XForwardedForClientCertIssuerDnEnabled *bool `pulumi:"xForwardedForClientCertIssuerDnEnabled"`
+	// The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	XForwardedForClientCertSubjectDnAlias *string `pulumi:"xForwardedForClientCertSubjectDnAlias"`
+	// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	XForwardedForClientCertSubjectDnEnabled *bool `pulumi:"xForwardedForClientCertSubjectDnEnabled"`
+	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+	XForwardedForClientSrcPortEnabled *bool `pulumi:"xForwardedForClientSrcPortEnabled"`
+	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+	XForwardedForEnabled *bool `pulumi:"xForwardedForEnabled"`
+	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+	XForwardedForProtoEnabled *bool `pulumi:"xForwardedForProtoEnabled"`
+	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+	XForwardedForSlbIdEnabled *bool `pulumi:"xForwardedForSlbIdEnabled"`
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	XForwardedForSlbPortEnabled *bool `pulumi:"xForwardedForSlbPortEnabled"`
+}
+
+// ListenerXForwardedForConfigInput is an input type that accepts ListenerXForwardedForConfigArgs and ListenerXForwardedForConfigOutput values.
+// You can construct a concrete instance of `ListenerXForwardedForConfigInput` via:
+//
+//          ListenerXForwardedForConfigArgs{...}
+type ListenerXForwardedForConfigInput interface {
+	pulumi.Input
+
+	ToListenerXForwardedForConfigOutput() ListenerXForwardedForConfigOutput
+	ToListenerXForwardedForConfigOutputWithContext(context.Context) ListenerXForwardedForConfigOutput
+}
+
+type ListenerXForwardedForConfigArgs struct {
+	// The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	XForwardedForClientCertClientVerifyAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertClientVerifyAlias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	XForwardedForClientCertClientVerifyEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertClientVerifyEnabled"`
+	// The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	XForwardedForClientCertFingerPrintAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertFingerPrintAlias"`
+	// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	XForwardedForClientCertFingerPrintEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertFingerPrintEnabled"`
+	// The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+	XForwardedForClientCertIssuerDnAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertIssuerDnAlias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	XForwardedForClientCertIssuerDnEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertIssuerDnEnabled"`
+	// The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	XForwardedForClientCertSubjectDnAlias pulumi.StringPtrInput `pulumi:"xForwardedForClientCertSubjectDnAlias"`
+	// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	XForwardedForClientCertSubjectDnEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientCertSubjectDnEnabled"`
+	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+	XForwardedForClientSrcPortEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForClientSrcPortEnabled"`
+	// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+	XForwardedForEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForEnabled"`
+	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+	XForwardedForProtoEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForProtoEnabled"`
+	// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+	XForwardedForSlbIdEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForSlbIdEnabled"`
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	XForwardedForSlbPortEnabled pulumi.BoolPtrInput `pulumi:"xForwardedForSlbPortEnabled"`
+}
+
+func (ListenerXForwardedForConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerXForwardedForConfig)(nil)).Elem()
+}
+
+func (i ListenerXForwardedForConfigArgs) ToListenerXForwardedForConfigOutput() ListenerXForwardedForConfigOutput {
+	return i.ToListenerXForwardedForConfigOutputWithContext(context.Background())
+}
+
+func (i ListenerXForwardedForConfigArgs) ToListenerXForwardedForConfigOutputWithContext(ctx context.Context) ListenerXForwardedForConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerXForwardedForConfigOutput)
+}
+
+func (i ListenerXForwardedForConfigArgs) ToListenerXForwardedForConfigPtrOutput() ListenerXForwardedForConfigPtrOutput {
+	return i.ToListenerXForwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerXForwardedForConfigArgs) ToListenerXForwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXForwardedForConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerXForwardedForConfigOutput).ToListenerXForwardedForConfigPtrOutputWithContext(ctx)
+}
+
+// ListenerXForwardedForConfigPtrInput is an input type that accepts ListenerXForwardedForConfigArgs, ListenerXForwardedForConfigPtr and ListenerXForwardedForConfigPtrOutput values.
+// You can construct a concrete instance of `ListenerXForwardedForConfigPtrInput` via:
+//
+//          ListenerXForwardedForConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ListenerXForwardedForConfigPtrInput interface {
+	pulumi.Input
+
+	ToListenerXForwardedForConfigPtrOutput() ListenerXForwardedForConfigPtrOutput
+	ToListenerXForwardedForConfigPtrOutputWithContext(context.Context) ListenerXForwardedForConfigPtrOutput
+}
+
+type listenerXForwardedForConfigPtrType ListenerXForwardedForConfigArgs
+
+func ListenerXForwardedForConfigPtr(v *ListenerXForwardedForConfigArgs) ListenerXForwardedForConfigPtrInput {
+	return (*listenerXForwardedForConfigPtrType)(v)
+}
+
+func (*listenerXForwardedForConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerXForwardedForConfig)(nil)).Elem()
+}
+
+func (i *listenerXForwardedForConfigPtrType) ToListenerXForwardedForConfigPtrOutput() ListenerXForwardedForConfigPtrOutput {
+	return i.ToListenerXForwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listenerXForwardedForConfigPtrType) ToListenerXForwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXForwardedForConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerXForwardedForConfigPtrOutput)
+}
+
+type ListenerXForwardedForConfigOutput struct{ *pulumi.OutputState }
+
+func (ListenerXForwardedForConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerXForwardedForConfig)(nil)).Elem()
+}
+
+func (o ListenerXForwardedForConfigOutput) ToListenerXForwardedForConfigOutput() ListenerXForwardedForConfigOutput {
+	return o
+}
+
+func (o ListenerXForwardedForConfigOutput) ToListenerXForwardedForConfigOutputWithContext(ctx context.Context) ListenerXForwardedForConfigOutput {
+	return o
+}
+
+func (o ListenerXForwardedForConfigOutput) ToListenerXForwardedForConfigPtrOutput() ListenerXForwardedForConfigPtrOutput {
+	return o.ToListenerXForwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerXForwardedForConfigOutput) ToListenerXForwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXForwardedForConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerXForwardedForConfig) *ListenerXForwardedForConfig {
+		return &v
+	}).(ListenerXForwardedForConfigPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertClientVerifyAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientCertClientVerifyAlias }).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertClientVerifyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertClientVerifyEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertFingerPrintAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientCertFingerPrintAlias }).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertFingerPrintEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertFingerPrintEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertIssuerDnAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientCertIssuerDnAlias }).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertIssuerDnEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertIssuerDnEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertSubjectDnAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *string { return v.XForwardedForClientCertSubjectDnAlias }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientCertSubjectDnEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientCertSubjectDnEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+func (o ListenerXForwardedForConfigOutput) XForwardedForClientSrcPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForClientSrcPortEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+func (o ListenerXForwardedForConfigOutput) XForwardedForEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+func (o ListenerXForwardedForConfigOutput) XForwardedForProtoEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForProtoEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+func (o ListenerXForwardedForConfigOutput) XForwardedForSlbIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForSlbIdEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+func (o ListenerXForwardedForConfigOutput) XForwardedForSlbPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerXForwardedForConfig) *bool { return v.XForwardedForSlbPortEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ListenerXForwardedForConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListenerXForwardedForConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerXForwardedForConfig)(nil)).Elem()
+}
+
+func (o ListenerXForwardedForConfigPtrOutput) ToListenerXForwardedForConfigPtrOutput() ListenerXForwardedForConfigPtrOutput {
+	return o
+}
+
+func (o ListenerXForwardedForConfigPtrOutput) ToListenerXForwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXForwardedForConfigPtrOutput {
+	return o
+}
+
+func (o ListenerXForwardedForConfigPtrOutput) Elem() ListenerXForwardedForConfigOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) ListenerXForwardedForConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerXForwardedForConfig
+		return ret
+	}).(ListenerXForwardedForConfigOutput)
+}
+
+// The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertClientVerifyAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientCertClientVerifyAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertClientVerifyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientCertClientVerifyEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertFingerPrintAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientCertFingerPrintAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertFingerPrintEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientCertFingerPrintEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertIssuerDnAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientCertIssuerDnAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertIssuerDnEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientCertIssuerDnEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertSubjectDnAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientCertSubjectDnAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientCertSubjectDnEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientCertSubjectDnEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForClientSrcPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForClientSrcPortEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForProtoEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForProtoEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForSlbIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForSlbIdEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+func (o ListenerXForwardedForConfigPtrOutput) XForwardedForSlbPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerXForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedForSlbPortEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ListenerXforwardedForConfig struct {
 	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
 	XforwardedforclientcertIssuerdnalias *string `pulumi:"xforwardedforclientcertIssuerdnalias"`
@@ -1153,47 +1558,6 @@ func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerXforwardedForConfigOutput)
 }
 
-func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput {
-	return i.ToListenerXforwardedForConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ListenerXforwardedForConfigArgs) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerXforwardedForConfigOutput).ToListenerXforwardedForConfigPtrOutputWithContext(ctx)
-}
-
-// ListenerXforwardedForConfigPtrInput is an input type that accepts ListenerXforwardedForConfigArgs, ListenerXforwardedForConfigPtr and ListenerXforwardedForConfigPtrOutput values.
-// You can construct a concrete instance of `ListenerXforwardedForConfigPtrInput` via:
-//
-//          ListenerXforwardedForConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type ListenerXforwardedForConfigPtrInput interface {
-	pulumi.Input
-
-	ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput
-	ToListenerXforwardedForConfigPtrOutputWithContext(context.Context) ListenerXforwardedForConfigPtrOutput
-}
-
-type listenerXforwardedForConfigPtrType ListenerXforwardedForConfigArgs
-
-func ListenerXforwardedForConfigPtr(v *ListenerXforwardedForConfigArgs) ListenerXforwardedForConfigPtrInput {
-	return (*listenerXforwardedForConfigPtrType)(v)
-}
-
-func (*listenerXforwardedForConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ListenerXforwardedForConfig)(nil)).Elem()
-}
-
-func (i *listenerXforwardedForConfigPtrType) ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput {
-	return i.ToListenerXforwardedForConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *listenerXforwardedForConfigPtrType) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerXforwardedForConfigPtrOutput)
-}
-
 type ListenerXforwardedForConfigOutput struct{ *pulumi.OutputState }
 
 func (ListenerXforwardedForConfigOutput) ElementType() reflect.Type {
@@ -1206,16 +1570,6 @@ func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigOutput()
 
 func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigOutputWithContext(ctx context.Context) ListenerXforwardedForConfigOutput {
 	return o
-}
-
-func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput {
-	return o.ToListenerXforwardedForConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ListenerXforwardedForConfigOutput) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerXforwardedForConfig) *ListenerXforwardedForConfig {
-		return &v
-	}).(ListenerXforwardedForConfigPtrOutput)
 }
 
 // The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
@@ -1281,160 +1635,6 @@ func (o ListenerXforwardedForConfigOutput) Xforwardedforslbidenabled() pulumi.Bo
 // Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
 func (o ListenerXforwardedForConfigOutput) Xforwardedforslbportenabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXforwardedForConfig) *bool { return v.Xforwardedforslbportenabled }).(pulumi.BoolPtrOutput)
-}
-
-type ListenerXforwardedForConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ListenerXforwardedForConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ListenerXforwardedForConfig)(nil)).Elem()
-}
-
-func (o ListenerXforwardedForConfigPtrOutput) ToListenerXforwardedForConfigPtrOutput() ListenerXforwardedForConfigPtrOutput {
-	return o
-}
-
-func (o ListenerXforwardedForConfigPtrOutput) ToListenerXforwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerXforwardedForConfigPtrOutput {
-	return o
-}
-
-func (o ListenerXforwardedForConfigPtrOutput) Elem() ListenerXforwardedForConfigOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) ListenerXforwardedForConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ListenerXforwardedForConfig
-		return ret
-	}).(ListenerXforwardedForConfigOutput)
-}
-
-// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-func (o ListenerXforwardedForConfigPtrOutput) XforwardedforclientcertIssuerdnalias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.XforwardedforclientcertIssuerdnalias
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-func (o ListenerXforwardedForConfigPtrOutput) XforwardedforclientcertIssuerdnenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.XforwardedforclientcertIssuerdnenabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertclientverifyalias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforclientcertclientverifyalias
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertclientverifyenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforclientcertclientverifyenabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertfingerprintalias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforclientcertfingerprintalias
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertfingerprintenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforclientcertfingerprintenabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertsubjectdnalias() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforclientcertsubjectdnalias
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientcertsubjectdnenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforclientcertsubjectdnenabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforclientsrcportenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforclientsrcportenabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforenabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforprotoenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforprotoenabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforslbidenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforslbidenabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
-func (o ListenerXforwardedForConfigPtrOutput) Xforwardedforslbportenabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ListenerXforwardedForConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Xforwardedforslbportenabled
-	}).(pulumi.BoolPtrOutput)
 }
 
 type LoadBalancerAccessLogConfig struct {
@@ -2005,7 +2205,11 @@ type RuleRuleAction struct {
 	RedirectConfig *RuleRuleActionRedirectConfig `pulumi:"redirectConfig"`
 	// The redirect action within ALB. See the following `Block rewriteConfig`.
 	RewriteConfig *RuleRuleActionRewriteConfig `pulumi:"rewriteConfig"`
-	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	// The Flow speed limit. See the following `Block trafficLimitConfig`.
+	TrafficLimitConfig *RuleRuleActionTrafficLimitConfig `pulumi:"trafficLimitConfig"`
+	// The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+	TrafficMirrorConfig *RuleRuleActionTrafficMirrorConfig `pulumi:"trafficMirrorConfig"`
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 	Type string `pulumi:"type"`
 }
 
@@ -2033,7 +2237,11 @@ type RuleRuleActionArgs struct {
 	RedirectConfig RuleRuleActionRedirectConfigPtrInput `pulumi:"redirectConfig"`
 	// The redirect action within ALB. See the following `Block rewriteConfig`.
 	RewriteConfig RuleRuleActionRewriteConfigPtrInput `pulumi:"rewriteConfig"`
-	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	// The Flow speed limit. See the following `Block trafficLimitConfig`.
+	TrafficLimitConfig RuleRuleActionTrafficLimitConfigPtrInput `pulumi:"trafficLimitConfig"`
+	// The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+	TrafficMirrorConfig RuleRuleActionTrafficMirrorConfigPtrInput `pulumi:"trafficMirrorConfig"`
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2118,7 +2326,17 @@ func (o RuleRuleActionOutput) RewriteConfig() RuleRuleActionRewriteConfigPtrOutp
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRewriteConfig { return v.RewriteConfig }).(RuleRuleActionRewriteConfigPtrOutput)
 }
 
-// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+// The Flow speed limit. See the following `Block trafficLimitConfig`.
+func (o RuleRuleActionOutput) TrafficLimitConfig() RuleRuleActionTrafficLimitConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionTrafficLimitConfig { return v.TrafficLimitConfig }).(RuleRuleActionTrafficLimitConfigPtrOutput)
+}
+
+// The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+func (o RuleRuleActionOutput) TrafficMirrorConfig() RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionTrafficMirrorConfig { return v.TrafficMirrorConfig }).(RuleRuleActionTrafficMirrorConfigPtrOutput)
+}
+
+// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 func (o RuleRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2460,6 +2678,8 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleA
 type RuleRuleActionForwardGroupConfigServerGroupTuple struct {
 	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId *string `pulumi:"serverGroupId"`
+	// The Weight of server group.
+	Weight *int `pulumi:"weight"`
 }
 
 // RuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupTupleArgs and RuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
@@ -2476,6 +2696,8 @@ type RuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
 type RuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
 	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
+	// The Weight of server group.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
 func (RuleRuleActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
@@ -2532,6 +2754,11 @@ func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToRuleRuleAction
 // The ID of the destination server group to which requests are forwarded.
 func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupTuple) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The Weight of server group.
+func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupTuple) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
@@ -3136,6 +3363,539 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RuleRuleActionTrafficLimitConfig struct {
+	// The Number of requests per second. Value range: 1~100000.
+	Qps *int `pulumi:"qps"`
+}
+
+// RuleRuleActionTrafficLimitConfigInput is an input type that accepts RuleRuleActionTrafficLimitConfigArgs and RuleRuleActionTrafficLimitConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionTrafficLimitConfigInput` via:
+//
+//          RuleRuleActionTrafficLimitConfigArgs{...}
+type RuleRuleActionTrafficLimitConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionTrafficLimitConfigOutput() RuleRuleActionTrafficLimitConfigOutput
+	ToRuleRuleActionTrafficLimitConfigOutputWithContext(context.Context) RuleRuleActionTrafficLimitConfigOutput
+}
+
+type RuleRuleActionTrafficLimitConfigArgs struct {
+	// The Number of requests per second. Value range: 1~100000.
+	Qps pulumi.IntPtrInput `pulumi:"qps"`
+}
+
+func (RuleRuleActionTrafficLimitConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionTrafficLimitConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionTrafficLimitConfigArgs) ToRuleRuleActionTrafficLimitConfigOutput() RuleRuleActionTrafficLimitConfigOutput {
+	return i.ToRuleRuleActionTrafficLimitConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionTrafficLimitConfigArgs) ToRuleRuleActionTrafficLimitConfigOutputWithContext(ctx context.Context) RuleRuleActionTrafficLimitConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficLimitConfigOutput)
+}
+
+func (i RuleRuleActionTrafficLimitConfigArgs) ToRuleRuleActionTrafficLimitConfigPtrOutput() RuleRuleActionTrafficLimitConfigPtrOutput {
+	return i.ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionTrafficLimitConfigArgs) ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficLimitConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficLimitConfigOutput).ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionTrafficLimitConfigPtrInput is an input type that accepts RuleRuleActionTrafficLimitConfigArgs, RuleRuleActionTrafficLimitConfigPtr and RuleRuleActionTrafficLimitConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionTrafficLimitConfigPtrInput` via:
+//
+//          RuleRuleActionTrafficLimitConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionTrafficLimitConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionTrafficLimitConfigPtrOutput() RuleRuleActionTrafficLimitConfigPtrOutput
+	ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(context.Context) RuleRuleActionTrafficLimitConfigPtrOutput
+}
+
+type ruleRuleActionTrafficLimitConfigPtrType RuleRuleActionTrafficLimitConfigArgs
+
+func RuleRuleActionTrafficLimitConfigPtr(v *RuleRuleActionTrafficLimitConfigArgs) RuleRuleActionTrafficLimitConfigPtrInput {
+	return (*ruleRuleActionTrafficLimitConfigPtrType)(v)
+}
+
+func (*ruleRuleActionTrafficLimitConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionTrafficLimitConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionTrafficLimitConfigPtrType) ToRuleRuleActionTrafficLimitConfigPtrOutput() RuleRuleActionTrafficLimitConfigPtrOutput {
+	return i.ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionTrafficLimitConfigPtrType) ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficLimitConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficLimitConfigPtrOutput)
+}
+
+type RuleRuleActionTrafficLimitConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionTrafficLimitConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionTrafficLimitConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionTrafficLimitConfigOutput) ToRuleRuleActionTrafficLimitConfigOutput() RuleRuleActionTrafficLimitConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficLimitConfigOutput) ToRuleRuleActionTrafficLimitConfigOutputWithContext(ctx context.Context) RuleRuleActionTrafficLimitConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficLimitConfigOutput) ToRuleRuleActionTrafficLimitConfigPtrOutput() RuleRuleActionTrafficLimitConfigPtrOutput {
+	return o.ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionTrafficLimitConfigOutput) ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficLimitConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionTrafficLimitConfig) *RuleRuleActionTrafficLimitConfig {
+		return &v
+	}).(RuleRuleActionTrafficLimitConfigPtrOutput)
+}
+
+// The Number of requests per second. Value range: 1~100000.
+func (o RuleRuleActionTrafficLimitConfigOutput) Qps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionTrafficLimitConfig) *int { return v.Qps }).(pulumi.IntPtrOutput)
+}
+
+type RuleRuleActionTrafficLimitConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionTrafficLimitConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionTrafficLimitConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionTrafficLimitConfigPtrOutput) ToRuleRuleActionTrafficLimitConfigPtrOutput() RuleRuleActionTrafficLimitConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficLimitConfigPtrOutput) ToRuleRuleActionTrafficLimitConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficLimitConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficLimitConfigPtrOutput) Elem() RuleRuleActionTrafficLimitConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionTrafficLimitConfig) RuleRuleActionTrafficLimitConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionTrafficLimitConfig
+		return ret
+	}).(RuleRuleActionTrafficLimitConfigOutput)
+}
+
+// The Number of requests per second. Value range: 1~100000.
+func (o RuleRuleActionTrafficLimitConfigPtrOutput) Qps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionTrafficLimitConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Qps
+	}).(pulumi.IntPtrOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfig struct {
+	// The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+	MirrorGroupConfig *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig `pulumi:"mirrorGroupConfig"`
+	// The Mirror target type.
+	TargetType *string `pulumi:"targetType"`
+}
+
+// RuleRuleActionTrafficMirrorConfigInput is an input type that accepts RuleRuleActionTrafficMirrorConfigArgs and RuleRuleActionTrafficMirrorConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionTrafficMirrorConfigInput` via:
+//
+//          RuleRuleActionTrafficMirrorConfigArgs{...}
+type RuleRuleActionTrafficMirrorConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionTrafficMirrorConfigOutput() RuleRuleActionTrafficMirrorConfigOutput
+	ToRuleRuleActionTrafficMirrorConfigOutputWithContext(context.Context) RuleRuleActionTrafficMirrorConfigOutput
+}
+
+type RuleRuleActionTrafficMirrorConfigArgs struct {
+	// The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+	MirrorGroupConfig RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput `pulumi:"mirrorGroupConfig"`
+	// The Mirror target type.
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+}
+
+func (RuleRuleActionTrafficMirrorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionTrafficMirrorConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionTrafficMirrorConfigArgs) ToRuleRuleActionTrafficMirrorConfigOutput() RuleRuleActionTrafficMirrorConfigOutput {
+	return i.ToRuleRuleActionTrafficMirrorConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionTrafficMirrorConfigArgs) ToRuleRuleActionTrafficMirrorConfigOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficMirrorConfigOutput)
+}
+
+func (i RuleRuleActionTrafficMirrorConfigArgs) ToRuleRuleActionTrafficMirrorConfigPtrOutput() RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return i.ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionTrafficMirrorConfigArgs) ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficMirrorConfigOutput).ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionTrafficMirrorConfigPtrInput is an input type that accepts RuleRuleActionTrafficMirrorConfigArgs, RuleRuleActionTrafficMirrorConfigPtr and RuleRuleActionTrafficMirrorConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionTrafficMirrorConfigPtrInput` via:
+//
+//          RuleRuleActionTrafficMirrorConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionTrafficMirrorConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionTrafficMirrorConfigPtrOutput() RuleRuleActionTrafficMirrorConfigPtrOutput
+	ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(context.Context) RuleRuleActionTrafficMirrorConfigPtrOutput
+}
+
+type ruleRuleActionTrafficMirrorConfigPtrType RuleRuleActionTrafficMirrorConfigArgs
+
+func RuleRuleActionTrafficMirrorConfigPtr(v *RuleRuleActionTrafficMirrorConfigArgs) RuleRuleActionTrafficMirrorConfigPtrInput {
+	return (*ruleRuleActionTrafficMirrorConfigPtrType)(v)
+}
+
+func (*ruleRuleActionTrafficMirrorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionTrafficMirrorConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionTrafficMirrorConfigPtrType) ToRuleRuleActionTrafficMirrorConfigPtrOutput() RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return i.ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionTrafficMirrorConfigPtrType) ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficMirrorConfigPtrOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionTrafficMirrorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionTrafficMirrorConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionTrafficMirrorConfigOutput) ToRuleRuleActionTrafficMirrorConfigOutput() RuleRuleActionTrafficMirrorConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigOutput) ToRuleRuleActionTrafficMirrorConfigOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigOutput) ToRuleRuleActionTrafficMirrorConfigPtrOutput() RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return o.ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionTrafficMirrorConfigOutput) ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfig {
+		return &v
+	}).(RuleRuleActionTrafficMirrorConfigPtrOutput)
+}
+
+// The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+func (o RuleRuleActionTrafficMirrorConfigOutput) MirrorGroupConfig() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+		return v.MirrorGroupConfig
+	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
+}
+
+// The Mirror target type.
+func (o RuleRuleActionTrafficMirrorConfigOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfig) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionTrafficMirrorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionTrafficMirrorConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionTrafficMirrorConfigPtrOutput) ToRuleRuleActionTrafficMirrorConfigPtrOutput() RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigPtrOutput) ToRuleRuleActionTrafficMirrorConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigPtrOutput) Elem() RuleRuleActionTrafficMirrorConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfig) RuleRuleActionTrafficMirrorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionTrafficMirrorConfig
+		return ret
+	}).(RuleRuleActionTrafficMirrorConfigOutput)
+}
+
+// The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+func (o RuleRuleActionTrafficMirrorConfigPtrOutput) MirrorGroupConfig() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorGroupConfig
+	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
+}
+
+// The Mirror target type.
+func (o RuleRuleActionTrafficMirrorConfigPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfig struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+}
+
+// RuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput is an input type that accepts RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs and RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput` via:
+//
+//          RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs{...}
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput
+	ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutputWithContext(context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+}
+
+func (RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigMirrorGroupConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return i.ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput)
+}
+
+func (i RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return i.ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput).ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput is an input type that accepts RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs, RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtr and RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput` via:
+//
+//          RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput
+	ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput
+}
+
+type ruleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrType RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs
+
+func RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtr(v *RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput {
+	return (*ruleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrType)(v)
+}
+
+func (*ruleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionTrafficMirrorConfigMirrorGroupConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrType) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return i.ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrType) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigMirrorGroupConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return o.ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+		return &v
+	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
+}
+
+// The destination server group to which requests are forwarded.
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ServerGroupTuples() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+		return v.ServerGroupTuples
+	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionTrafficMirrorConfigMirrorGroupConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) Elem() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionTrafficMirrorConfigMirrorGroupConfig
+		return ret
+	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput)
+}
+
+// The destination server group to which requests are forwarded.
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupTuples
+	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId *string `pulumi:"serverGroupId"`
+}
+
+// RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput is an input type that accepts RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs and RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput values.
+// You can construct a concrete instance of `RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput` via:
+//
+//          RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs{...}
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput
+	ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutputWithContext(context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
+}
+
+func (RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return i.ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput)
+}
+
+// RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput is an input type that accepts RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray and RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput values.
+// You can construct a concrete instance of `RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput` via:
+//
+//          RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray{ RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs{...} }
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput
+	ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutputWithContext(context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput
+
+func (RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return i.ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+// The ID of the destination server group to which requests are forwarded.
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple) *string {
+		return v.ServerGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput) ToRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput) Index(i pulumi.IntInput) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+		return vs[0].([]RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)[vs[1].(int)]
+	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput)
+}
+
 type RuleRuleCondition struct {
 	// The configuration of the cookie. See the following `Block cookieConfig`.
 	CookieConfig *RuleRuleConditionCookieConfig `pulumi:"cookieConfig"`
@@ -3149,7 +3909,9 @@ type RuleRuleCondition struct {
 	PathConfig *RuleRuleConditionPathConfig `pulumi:"pathConfig"`
 	// The configuration of the query string. See the following `Block queryStringConfig`.
 	QueryStringConfig *RuleRuleConditionQueryStringConfig `pulumi:"queryStringConfig"`
-	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+	SourceIpConfig *RuleRuleConditionSourceIpConfig `pulumi:"sourceIpConfig"`
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 	Type string `pulumi:"type"`
 }
 
@@ -3177,7 +3939,9 @@ type RuleRuleConditionArgs struct {
 	PathConfig RuleRuleConditionPathConfigPtrInput `pulumi:"pathConfig"`
 	// The configuration of the query string. See the following `Block queryStringConfig`.
 	QueryStringConfig RuleRuleConditionQueryStringConfigPtrInput `pulumi:"queryStringConfig"`
-	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+	SourceIpConfig RuleRuleConditionSourceIpConfigPtrInput `pulumi:"sourceIpConfig"`
+	// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3262,7 +4026,12 @@ func (o RuleRuleConditionOutput) QueryStringConfig() RuleRuleConditionQueryStrin
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionQueryStringConfig { return v.QueryStringConfig }).(RuleRuleConditionQueryStringConfigPtrOutput)
 }
 
-// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+func (o RuleRuleConditionOutput) SourceIpConfig() RuleRuleConditionSourceIpConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionSourceIpConfig { return v.SourceIpConfig }).(RuleRuleConditionSourceIpConfigPtrOutput)
+}
+
+// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
 func (o RuleRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4338,6 +5107,143 @@ func (o RuleRuleConditionQueryStringConfigValueArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleConditionQueryStringConfigValue {
 		return vs[0].([]RuleRuleConditionQueryStringConfigValue)[vs[1].(int)]
 	}).(RuleRuleConditionQueryStringConfigValueOutput)
+}
+
+type RuleRuleConditionSourceIpConfig struct {
+	// The query string.
+	Values []string `pulumi:"values"`
+}
+
+// RuleRuleConditionSourceIpConfigInput is an input type that accepts RuleRuleConditionSourceIpConfigArgs and RuleRuleConditionSourceIpConfigOutput values.
+// You can construct a concrete instance of `RuleRuleConditionSourceIpConfigInput` via:
+//
+//          RuleRuleConditionSourceIpConfigArgs{...}
+type RuleRuleConditionSourceIpConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionSourceIpConfigOutput() RuleRuleConditionSourceIpConfigOutput
+	ToRuleRuleConditionSourceIpConfigOutputWithContext(context.Context) RuleRuleConditionSourceIpConfigOutput
+}
+
+type RuleRuleConditionSourceIpConfigArgs struct {
+	// The query string.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RuleRuleConditionSourceIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionSourceIpConfig)(nil)).Elem()
+}
+
+func (i RuleRuleConditionSourceIpConfigArgs) ToRuleRuleConditionSourceIpConfigOutput() RuleRuleConditionSourceIpConfigOutput {
+	return i.ToRuleRuleConditionSourceIpConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionSourceIpConfigArgs) ToRuleRuleConditionSourceIpConfigOutputWithContext(ctx context.Context) RuleRuleConditionSourceIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionSourceIpConfigOutput)
+}
+
+func (i RuleRuleConditionSourceIpConfigArgs) ToRuleRuleConditionSourceIpConfigPtrOutput() RuleRuleConditionSourceIpConfigPtrOutput {
+	return i.ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleConditionSourceIpConfigArgs) ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionSourceIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionSourceIpConfigOutput).ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleConditionSourceIpConfigPtrInput is an input type that accepts RuleRuleConditionSourceIpConfigArgs, RuleRuleConditionSourceIpConfigPtr and RuleRuleConditionSourceIpConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleConditionSourceIpConfigPtrInput` via:
+//
+//          RuleRuleConditionSourceIpConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type RuleRuleConditionSourceIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleConditionSourceIpConfigPtrOutput() RuleRuleConditionSourceIpConfigPtrOutput
+	ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(context.Context) RuleRuleConditionSourceIpConfigPtrOutput
+}
+
+type ruleRuleConditionSourceIpConfigPtrType RuleRuleConditionSourceIpConfigArgs
+
+func RuleRuleConditionSourceIpConfigPtr(v *RuleRuleConditionSourceIpConfigArgs) RuleRuleConditionSourceIpConfigPtrInput {
+	return (*ruleRuleConditionSourceIpConfigPtrType)(v)
+}
+
+func (*ruleRuleConditionSourceIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionSourceIpConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleConditionSourceIpConfigPtrType) ToRuleRuleConditionSourceIpConfigPtrOutput() RuleRuleConditionSourceIpConfigPtrOutput {
+	return i.ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleConditionSourceIpConfigPtrType) ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionSourceIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleConditionSourceIpConfigPtrOutput)
+}
+
+type RuleRuleConditionSourceIpConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionSourceIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleConditionSourceIpConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionSourceIpConfigOutput) ToRuleRuleConditionSourceIpConfigOutput() RuleRuleConditionSourceIpConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionSourceIpConfigOutput) ToRuleRuleConditionSourceIpConfigOutputWithContext(ctx context.Context) RuleRuleConditionSourceIpConfigOutput {
+	return o
+}
+
+func (o RuleRuleConditionSourceIpConfigOutput) ToRuleRuleConditionSourceIpConfigPtrOutput() RuleRuleConditionSourceIpConfigPtrOutput {
+	return o.ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleConditionSourceIpConfigOutput) ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionSourceIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleConditionSourceIpConfig) *RuleRuleConditionSourceIpConfig {
+		return &v
+	}).(RuleRuleConditionSourceIpConfigPtrOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionSourceIpConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleConditionSourceIpConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RuleRuleConditionSourceIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleConditionSourceIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleConditionSourceIpConfig)(nil)).Elem()
+}
+
+func (o RuleRuleConditionSourceIpConfigPtrOutput) ToRuleRuleConditionSourceIpConfigPtrOutput() RuleRuleConditionSourceIpConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionSourceIpConfigPtrOutput) ToRuleRuleConditionSourceIpConfigPtrOutputWithContext(ctx context.Context) RuleRuleConditionSourceIpConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleConditionSourceIpConfigPtrOutput) Elem() RuleRuleConditionSourceIpConfigOutput {
+	return o.ApplyT(func(v *RuleRuleConditionSourceIpConfig) RuleRuleConditionSourceIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleConditionSourceIpConfig
+		return ret
+	}).(RuleRuleConditionSourceIpConfigOutput)
+}
+
+// The query string.
+func (o RuleRuleConditionSourceIpConfigPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleConditionSourceIpConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServerGroupHealthCheckConfig struct {
@@ -8128,6 +9034,10 @@ type GetRulesRuleRuleAction struct {
 	RedirectConfigs []GetRulesRuleRuleActionRedirectConfig `pulumi:"redirectConfigs"`
 	// The redirect action within ALB.
 	RewriteConfigs []GetRulesRuleRuleActionRewriteConfig `pulumi:"rewriteConfigs"`
+	// The Flow speed limit.
+	TrafficLimitConfigs []GetRulesRuleRuleActionTrafficLimitConfig `pulumi:"trafficLimitConfigs"`
+	// The Traffic mirroring.
+	TrafficMirrorConfigs []GetRulesRuleRuleActionTrafficMirrorConfig `pulumi:"trafficMirrorConfigs"`
 	// The type of the forwarding rule.
 	Type string `pulumi:"type"`
 }
@@ -8156,6 +9066,10 @@ type GetRulesRuleRuleActionArgs struct {
 	RedirectConfigs GetRulesRuleRuleActionRedirectConfigArrayInput `pulumi:"redirectConfigs"`
 	// The redirect action within ALB.
 	RewriteConfigs GetRulesRuleRuleActionRewriteConfigArrayInput `pulumi:"rewriteConfigs"`
+	// The Flow speed limit.
+	TrafficLimitConfigs GetRulesRuleRuleActionTrafficLimitConfigArrayInput `pulumi:"trafficLimitConfigs"`
+	// The Traffic mirroring.
+	TrafficMirrorConfigs GetRulesRuleRuleActionTrafficMirrorConfigArrayInput `pulumi:"trafficMirrorConfigs"`
 	// The type of the forwarding rule.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -8245,6 +9159,20 @@ func (o GetRulesRuleRuleActionOutput) RedirectConfigs() GetRulesRuleRuleActionRe
 // The redirect action within ALB.
 func (o GetRulesRuleRuleActionOutput) RewriteConfigs() GetRulesRuleRuleActionRewriteConfigArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleAction) []GetRulesRuleRuleActionRewriteConfig { return v.RewriteConfigs }).(GetRulesRuleRuleActionRewriteConfigArrayOutput)
+}
+
+// The Flow speed limit.
+func (o GetRulesRuleRuleActionOutput) TrafficLimitConfigs() GetRulesRuleRuleActionTrafficLimitConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) []GetRulesRuleRuleActionTrafficLimitConfig {
+		return v.TrafficLimitConfigs
+	}).(GetRulesRuleRuleActionTrafficLimitConfigArrayOutput)
+}
+
+// The Traffic mirroring.
+func (o GetRulesRuleRuleActionOutput) TrafficMirrorConfigs() GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleAction) []GetRulesRuleRuleActionTrafficMirrorConfig {
+		return v.TrafficMirrorConfigs
+	}).(GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput)
 }
 
 // The type of the forwarding rule.
@@ -8489,6 +9417,8 @@ func (o GetRulesRuleRuleActionForwardGroupConfigArrayOutput) Index(i pulumi.IntI
 type GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple struct {
 	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId string `pulumi:"serverGroupId"`
+	// The Weight of server group.
+	Weight int `pulumi:"weight"`
 }
 
 // GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs and GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
@@ -8505,6 +9435,8 @@ type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
 type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
 	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
+	// The Weight of server group.
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
@@ -8561,6 +9493,11 @@ func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToGetRul
 // The ID of the destination server group to which requests are forwarded.
 func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple) string { return v.ServerGroupId }).(pulumi.StringOutput)
+}
+
+// The Weight of server group.
+func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple) int { return v.Weight }).(pulumi.IntOutput)
 }
 
 type GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
@@ -8955,6 +9892,409 @@ func (o GetRulesRuleRuleActionRewriteConfigArrayOutput) Index(i pulumi.IntInput)
 	}).(GetRulesRuleRuleActionRewriteConfigOutput)
 }
 
+type GetRulesRuleRuleActionTrafficLimitConfig struct {
+	// The Number of requests per second.
+	Qps int `pulumi:"qps"`
+}
+
+// GetRulesRuleRuleActionTrafficLimitConfigInput is an input type that accepts GetRulesRuleRuleActionTrafficLimitConfigArgs and GetRulesRuleRuleActionTrafficLimitConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionTrafficLimitConfigInput` via:
+//
+//          GetRulesRuleRuleActionTrafficLimitConfigArgs{...}
+type GetRulesRuleRuleActionTrafficLimitConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionTrafficLimitConfigOutput() GetRulesRuleRuleActionTrafficLimitConfigOutput
+	ToGetRulesRuleRuleActionTrafficLimitConfigOutputWithContext(context.Context) GetRulesRuleRuleActionTrafficLimitConfigOutput
+}
+
+type GetRulesRuleRuleActionTrafficLimitConfigArgs struct {
+	// The Number of requests per second.
+	Qps pulumi.IntInput `pulumi:"qps"`
+}
+
+func (GetRulesRuleRuleActionTrafficLimitConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionTrafficLimitConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionTrafficLimitConfigArgs) ToGetRulesRuleRuleActionTrafficLimitConfigOutput() GetRulesRuleRuleActionTrafficLimitConfigOutput {
+	return i.ToGetRulesRuleRuleActionTrafficLimitConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionTrafficLimitConfigArgs) ToGetRulesRuleRuleActionTrafficLimitConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficLimitConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionTrafficLimitConfigOutput)
+}
+
+// GetRulesRuleRuleActionTrafficLimitConfigArrayInput is an input type that accepts GetRulesRuleRuleActionTrafficLimitConfigArray and GetRulesRuleRuleActionTrafficLimitConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionTrafficLimitConfigArrayInput` via:
+//
+//          GetRulesRuleRuleActionTrafficLimitConfigArray{ GetRulesRuleRuleActionTrafficLimitConfigArgs{...} }
+type GetRulesRuleRuleActionTrafficLimitConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionTrafficLimitConfigArrayOutput() GetRulesRuleRuleActionTrafficLimitConfigArrayOutput
+	ToGetRulesRuleRuleActionTrafficLimitConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleActionTrafficLimitConfigArrayOutput
+}
+
+type GetRulesRuleRuleActionTrafficLimitConfigArray []GetRulesRuleRuleActionTrafficLimitConfigInput
+
+func (GetRulesRuleRuleActionTrafficLimitConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionTrafficLimitConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionTrafficLimitConfigArray) ToGetRulesRuleRuleActionTrafficLimitConfigArrayOutput() GetRulesRuleRuleActionTrafficLimitConfigArrayOutput {
+	return i.ToGetRulesRuleRuleActionTrafficLimitConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionTrafficLimitConfigArray) ToGetRulesRuleRuleActionTrafficLimitConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficLimitConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionTrafficLimitConfigArrayOutput)
+}
+
+type GetRulesRuleRuleActionTrafficLimitConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionTrafficLimitConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionTrafficLimitConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionTrafficLimitConfigOutput) ToGetRulesRuleRuleActionTrafficLimitConfigOutput() GetRulesRuleRuleActionTrafficLimitConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficLimitConfigOutput) ToGetRulesRuleRuleActionTrafficLimitConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficLimitConfigOutput {
+	return o
+}
+
+// The Number of requests per second.
+func (o GetRulesRuleRuleActionTrafficLimitConfigOutput) Qps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionTrafficLimitConfig) int { return v.Qps }).(pulumi.IntOutput)
+}
+
+type GetRulesRuleRuleActionTrafficLimitConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionTrafficLimitConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionTrafficLimitConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionTrafficLimitConfigArrayOutput) ToGetRulesRuleRuleActionTrafficLimitConfigArrayOutput() GetRulesRuleRuleActionTrafficLimitConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficLimitConfigArrayOutput) ToGetRulesRuleRuleActionTrafficLimitConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficLimitConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficLimitConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionTrafficLimitConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionTrafficLimitConfig {
+		return vs[0].([]GetRulesRuleRuleActionTrafficLimitConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionTrafficLimitConfigOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfig struct {
+	// The Traffic is mirrored to the server group.
+	MirrorGroupConfigs []GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig `pulumi:"mirrorGroupConfigs"`
+	// The Mirror target type.
+	TargetType string `pulumi:"targetType"`
+}
+
+// GetRulesRuleRuleActionTrafficMirrorConfigInput is an input type that accepts GetRulesRuleRuleActionTrafficMirrorConfigArgs and GetRulesRuleRuleActionTrafficMirrorConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionTrafficMirrorConfigInput` via:
+//
+//          GetRulesRuleRuleActionTrafficMirrorConfigArgs{...}
+type GetRulesRuleRuleActionTrafficMirrorConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionTrafficMirrorConfigOutput() GetRulesRuleRuleActionTrafficMirrorConfigOutput
+	ToGetRulesRuleRuleActionTrafficMirrorConfigOutputWithContext(context.Context) GetRulesRuleRuleActionTrafficMirrorConfigOutput
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigArgs struct {
+	// The Traffic is mirrored to the server group.
+	MirrorGroupConfigs GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayInput `pulumi:"mirrorGroupConfigs"`
+	// The Mirror target type.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+}
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigArgs) ToGetRulesRuleRuleActionTrafficMirrorConfigOutput() GetRulesRuleRuleActionTrafficMirrorConfigOutput {
+	return i.ToGetRulesRuleRuleActionTrafficMirrorConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigArgs) ToGetRulesRuleRuleActionTrafficMirrorConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionTrafficMirrorConfigOutput)
+}
+
+// GetRulesRuleRuleActionTrafficMirrorConfigArrayInput is an input type that accepts GetRulesRuleRuleActionTrafficMirrorConfigArray and GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionTrafficMirrorConfigArrayInput` via:
+//
+//          GetRulesRuleRuleActionTrafficMirrorConfigArray{ GetRulesRuleRuleActionTrafficMirrorConfigArgs{...} }
+type GetRulesRuleRuleActionTrafficMirrorConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionTrafficMirrorConfigArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput
+	ToGetRulesRuleRuleActionTrafficMirrorConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigArray []GetRulesRuleRuleActionTrafficMirrorConfigInput
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionTrafficMirrorConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigArray) ToGetRulesRuleRuleActionTrafficMirrorConfigArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput {
+	return i.ToGetRulesRuleRuleActionTrafficMirrorConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigArray) ToGetRulesRuleRuleActionTrafficMirrorConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigOutput() GetRulesRuleRuleActionTrafficMirrorConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigOutput {
+	return o
+}
+
+// The Traffic is mirrored to the server group.
+func (o GetRulesRuleRuleActionTrafficMirrorConfigOutput) MirrorGroupConfigs() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionTrafficMirrorConfig) []GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+		return v.MirrorGroupConfigs
+	}).(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput)
+}
+
+// The Mirror target type.
+func (o GetRulesRuleRuleActionTrafficMirrorConfigOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionTrafficMirrorConfig) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionTrafficMirrorConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionTrafficMirrorConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionTrafficMirrorConfig {
+		return vs[0].([]GetRulesRuleRuleActionTrafficMirrorConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionTrafficMirrorConfigOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples []GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+}
+
+// GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput is an input type that accepts GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs and GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput` via:
+//
+//          GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs{...}
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput
+	ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutputWithContext(context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded.
+	ServerGroupTuples GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+}
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return i.ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput)
+}
+
+// GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayInput is an input type that accepts GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArray and GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayInput` via:
+//
+//          GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArray{ GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs{...} }
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput
+	ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArray []GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArray) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput {
+	return i.ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArray) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return o
+}
+
+// The destination server group to which requests are forwarded.
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ServerGroupTuples() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+		return v.ServerGroupTuples
+	}).(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+		return vs[0].([]GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId string `pulumi:"serverGroupId"`
+}
+
+// GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput is an input type that accepts GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs and GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput` via:
+//
+//          GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs{...}
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput
+	ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutputWithContext(context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
+	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
+}
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return i.ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput)
+}
+
+// GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput is an input type that accepts GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray and GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput` via:
+//
+//          GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray{ GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs{...} }
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput
+	ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutputWithContext(context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray []GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return i.ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return o
+}
+
+// The ID of the destination server group to which requests are forwarded.
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple) string {
+		return v.ServerGroupId
+	}).(pulumi.StringOutput)
+}
+
+type GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput() GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput) ToGetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+		return vs[0].([]GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple)[vs[1].(int)]
+	}).(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput)
+}
+
 type GetRulesRuleRuleCondition struct {
 	// The configuration of the cookie.
 	CookieConfigs []GetRulesRuleRuleConditionCookieConfig `pulumi:"cookieConfigs"`
@@ -8968,6 +10308,8 @@ type GetRulesRuleRuleCondition struct {
 	PathConfigs []GetRulesRuleRuleConditionPathConfig `pulumi:"pathConfigs"`
 	// The configuration of the query string.
 	QueryStringConfigs []GetRulesRuleRuleConditionQueryStringConfig `pulumi:"queryStringConfigs"`
+	// The Based on source IP traffic matching.
+	SourceIpConfigs []GetRulesRuleRuleConditionSourceIpConfig `pulumi:"sourceIpConfigs"`
 	// The type of the forwarding rule.
 	Type string `pulumi:"type"`
 }
@@ -8996,6 +10338,8 @@ type GetRulesRuleRuleConditionArgs struct {
 	PathConfigs GetRulesRuleRuleConditionPathConfigArrayInput `pulumi:"pathConfigs"`
 	// The configuration of the query string.
 	QueryStringConfigs GetRulesRuleRuleConditionQueryStringConfigArrayInput `pulumi:"queryStringConfigs"`
+	// The Based on source IP traffic matching.
+	SourceIpConfigs GetRulesRuleRuleConditionSourceIpConfigArrayInput `pulumi:"sourceIpConfigs"`
 	// The type of the forwarding rule.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -9083,6 +10427,11 @@ func (o GetRulesRuleRuleConditionOutput) QueryStringConfigs() GetRulesRuleRuleCo
 	}).(GetRulesRuleRuleConditionQueryStringConfigArrayOutput)
 }
 
+// The Based on source IP traffic matching.
+func (o GetRulesRuleRuleConditionOutput) SourceIpConfigs() GetRulesRuleRuleConditionSourceIpConfigArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleCondition) []GetRulesRuleRuleConditionSourceIpConfig { return v.SourceIpConfigs }).(GetRulesRuleRuleConditionSourceIpConfigArrayOutput)
+}
+
 // The type of the forwarding rule.
 func (o GetRulesRuleRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
@@ -9109,7 +10458,7 @@ func (o GetRulesRuleRuleConditionArrayOutput) Index(i pulumi.IntInput) GetRulesR
 }
 
 type GetRulesRuleRuleConditionCookieConfig struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values []GetRulesRuleRuleConditionCookieConfigValue `pulumi:"values"`
 }
 
@@ -9125,7 +10474,7 @@ type GetRulesRuleRuleConditionCookieConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionCookieConfigArgs struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values GetRulesRuleRuleConditionCookieConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -9180,7 +10529,7 @@ func (o GetRulesRuleRuleConditionCookieConfigOutput) ToGetRulesRuleRuleCondition
 	return o
 }
 
-// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+// Add one or more IP addresses or IP address segments.
 func (o GetRulesRuleRuleConditionCookieConfigOutput) Values() GetRulesRuleRuleConditionCookieConfigValueArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionCookieConfig) []GetRulesRuleRuleConditionCookieConfigValue {
 		return v.Values
@@ -9316,7 +10665,7 @@ func (o GetRulesRuleRuleConditionCookieConfigValueArrayOutput) Index(i pulumi.In
 type GetRulesRuleRuleConditionHeaderConfig struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key string `pulumi:"key"`
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values []string `pulumi:"values"`
 }
 
@@ -9334,7 +10683,7 @@ type GetRulesRuleRuleConditionHeaderConfigInput interface {
 type GetRulesRuleRuleConditionHeaderConfigArgs struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -9394,7 +10743,7 @@ func (o GetRulesRuleRuleConditionHeaderConfigOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionHeaderConfig) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+// Add one or more IP addresses or IP address segments.
 func (o GetRulesRuleRuleConditionHeaderConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -9420,7 +10769,7 @@ func (o GetRulesRuleRuleConditionHeaderConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetRulesRuleRuleConditionHostConfig struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values []string `pulumi:"values"`
 }
 
@@ -9436,7 +10785,7 @@ type GetRulesRuleRuleConditionHostConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionHostConfigArgs struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -9491,7 +10840,7 @@ func (o GetRulesRuleRuleConditionHostConfigOutput) ToGetRulesRuleRuleConditionHo
 	return o
 }
 
-// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+// Add one or more IP addresses or IP address segments.
 func (o GetRulesRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -9517,7 +10866,7 @@ func (o GetRulesRuleRuleConditionHostConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRulesRuleRuleConditionMethodConfig struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values []string `pulumi:"values"`
 }
 
@@ -9533,7 +10882,7 @@ type GetRulesRuleRuleConditionMethodConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionMethodConfigArgs struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -9588,7 +10937,7 @@ func (o GetRulesRuleRuleConditionMethodConfigOutput) ToGetRulesRuleRuleCondition
 	return o
 }
 
-// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+// Add one or more IP addresses or IP address segments.
 func (o GetRulesRuleRuleConditionMethodConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionMethodConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -9614,7 +10963,7 @@ func (o GetRulesRuleRuleConditionMethodConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetRulesRuleRuleConditionPathConfig struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values []string `pulumi:"values"`
 }
 
@@ -9630,7 +10979,7 @@ type GetRulesRuleRuleConditionPathConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionPathConfigArgs struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -9685,7 +11034,7 @@ func (o GetRulesRuleRuleConditionPathConfigOutput) ToGetRulesRuleRuleConditionPa
 	return o
 }
 
-// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+// Add one or more IP addresses or IP address segments.
 func (o GetRulesRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -9711,7 +11060,7 @@ func (o GetRulesRuleRuleConditionPathConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRulesRuleRuleConditionQueryStringConfig struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values []GetRulesRuleRuleConditionQueryStringConfigValue `pulumi:"values"`
 }
 
@@ -9727,7 +11076,7 @@ type GetRulesRuleRuleConditionQueryStringConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionQueryStringConfigArgs struct {
-	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+	// Add one or more IP addresses or IP address segments.
 	Values GetRulesRuleRuleConditionQueryStringConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -9782,7 +11131,7 @@ func (o GetRulesRuleRuleConditionQueryStringConfigOutput) ToGetRulesRuleRuleCond
 	return o
 }
 
-// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+// Add one or more IP addresses or IP address segments.
 func (o GetRulesRuleRuleConditionQueryStringConfigOutput) Values() GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionQueryStringConfig) []GetRulesRuleRuleConditionQueryStringConfigValue {
 		return v.Values
@@ -9913,6 +11262,103 @@ func (o GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionQueryStringConfigValue {
 		return vs[0].([]GetRulesRuleRuleConditionQueryStringConfigValue)[vs[1].(int)]
 	}).(GetRulesRuleRuleConditionQueryStringConfigValueOutput)
+}
+
+type GetRulesRuleRuleConditionSourceIpConfig struct {
+	// Add one or more IP addresses or IP address segments.
+	Values []string `pulumi:"values"`
+}
+
+// GetRulesRuleRuleConditionSourceIpConfigInput is an input type that accepts GetRulesRuleRuleConditionSourceIpConfigArgs and GetRulesRuleRuleConditionSourceIpConfigOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionSourceIpConfigInput` via:
+//
+//          GetRulesRuleRuleConditionSourceIpConfigArgs{...}
+type GetRulesRuleRuleConditionSourceIpConfigInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionSourceIpConfigOutput() GetRulesRuleRuleConditionSourceIpConfigOutput
+	ToGetRulesRuleRuleConditionSourceIpConfigOutputWithContext(context.Context) GetRulesRuleRuleConditionSourceIpConfigOutput
+}
+
+type GetRulesRuleRuleConditionSourceIpConfigArgs struct {
+	// Add one or more IP addresses or IP address segments.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRulesRuleRuleConditionSourceIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionSourceIpConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionSourceIpConfigArgs) ToGetRulesRuleRuleConditionSourceIpConfigOutput() GetRulesRuleRuleConditionSourceIpConfigOutput {
+	return i.ToGetRulesRuleRuleConditionSourceIpConfigOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionSourceIpConfigArgs) ToGetRulesRuleRuleConditionSourceIpConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionSourceIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionSourceIpConfigOutput)
+}
+
+// GetRulesRuleRuleConditionSourceIpConfigArrayInput is an input type that accepts GetRulesRuleRuleConditionSourceIpConfigArray and GetRulesRuleRuleConditionSourceIpConfigArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleRuleConditionSourceIpConfigArrayInput` via:
+//
+//          GetRulesRuleRuleConditionSourceIpConfigArray{ GetRulesRuleRuleConditionSourceIpConfigArgs{...} }
+type GetRulesRuleRuleConditionSourceIpConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleRuleConditionSourceIpConfigArrayOutput() GetRulesRuleRuleConditionSourceIpConfigArrayOutput
+	ToGetRulesRuleRuleConditionSourceIpConfigArrayOutputWithContext(context.Context) GetRulesRuleRuleConditionSourceIpConfigArrayOutput
+}
+
+type GetRulesRuleRuleConditionSourceIpConfigArray []GetRulesRuleRuleConditionSourceIpConfigInput
+
+func (GetRulesRuleRuleConditionSourceIpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionSourceIpConfig)(nil)).Elem()
+}
+
+func (i GetRulesRuleRuleConditionSourceIpConfigArray) ToGetRulesRuleRuleConditionSourceIpConfigArrayOutput() GetRulesRuleRuleConditionSourceIpConfigArrayOutput {
+	return i.ToGetRulesRuleRuleConditionSourceIpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleRuleConditionSourceIpConfigArray) ToGetRulesRuleRuleConditionSourceIpConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionSourceIpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleRuleConditionSourceIpConfigArrayOutput)
+}
+
+type GetRulesRuleRuleConditionSourceIpConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionSourceIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleRuleConditionSourceIpConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionSourceIpConfigOutput) ToGetRulesRuleRuleConditionSourceIpConfigOutput() GetRulesRuleRuleConditionSourceIpConfigOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionSourceIpConfigOutput) ToGetRulesRuleRuleConditionSourceIpConfigOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionSourceIpConfigOutput {
+	return o
+}
+
+// Add one or more IP addresses or IP address segments.
+func (o GetRulesRuleRuleConditionSourceIpConfigOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesRuleRuleConditionSourceIpConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRulesRuleRuleConditionSourceIpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleRuleConditionSourceIpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleRuleConditionSourceIpConfig)(nil)).Elem()
+}
+
+func (o GetRulesRuleRuleConditionSourceIpConfigArrayOutput) ToGetRulesRuleRuleConditionSourceIpConfigArrayOutput() GetRulesRuleRuleConditionSourceIpConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionSourceIpConfigArrayOutput) ToGetRulesRuleRuleConditionSourceIpConfigArrayOutputWithContext(ctx context.Context) GetRulesRuleRuleConditionSourceIpConfigArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleRuleConditionSourceIpConfigArrayOutput) Index(i pulumi.IntInput) GetRulesRuleRuleConditionSourceIpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleRuleConditionSourceIpConfig {
+		return vs[0].([]GetRulesRuleRuleConditionSourceIpConfig)[vs[1].(int)]
+	}).(GetRulesRuleRuleConditionSourceIpConfigOutput)
 }
 
 type GetSecurityPoliciesPolicy struct {
@@ -10845,8 +12291,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigPtrInput)(nil)).Elem(), ListenerAclConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigAclRelationInput)(nil)).Elem(), ListenerAclConfigAclRelationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerAclConfigAclRelationArrayInput)(nil)).Elem(), ListenerAclConfigAclRelationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateInput)(nil)).Elem(), ListenerCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateArrayInput)(nil)).Elem(), ListenerCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificatesInput)(nil)).Elem(), ListenerCertificatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificatesPtrInput)(nil)).Elem(), ListenerCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionInput)(nil)).Elem(), ListenerDefaultActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionArrayInput)(nil)).Elem(), ListenerDefaultActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigArgs{})
@@ -10854,8 +12300,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerQuicConfigInput)(nil)).Elem(), ListenerQuicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerQuicConfigPtrInput)(nil)).Elem(), ListenerQuicConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXForwardedForConfigInput)(nil)).Elem(), ListenerXForwardedForConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXForwardedForConfigPtrInput)(nil)).Elem(), ListenerXForwardedForConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXforwardedForConfigInput)(nil)).Elem(), ListenerXforwardedForConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXforwardedForConfigPtrInput)(nil)).Elem(), ListenerXforwardedForConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAccessLogConfigInput)(nil)).Elem(), LoadBalancerAccessLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAccessLogConfigPtrInput)(nil)).Elem(), LoadBalancerAccessLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerLoadBalancerBillingConfigInput)(nil)).Elem(), LoadBalancerLoadBalancerBillingConfigArgs{})
@@ -10878,6 +12325,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRedirectConfigPtrInput)(nil)).Elem(), RuleRuleActionRedirectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRewriteConfigInput)(nil)).Elem(), RuleRuleActionRewriteConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionRewriteConfigPtrInput)(nil)).Elem(), RuleRuleActionRewriteConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficLimitConfigInput)(nil)).Elem(), RuleRuleActionTrafficLimitConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficLimitConfigPtrInput)(nil)).Elem(), RuleRuleActionTrafficLimitConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigInput)(nil)).Elem(), RuleRuleActionTrafficMirrorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigPtrInput)(nil)).Elem(), RuleRuleActionTrafficMirrorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput)(nil)).Elem(), RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput)(nil)).Elem(), RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput)(nil)).Elem(), RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionInput)(nil)).Elem(), RuleRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionArrayInput)(nil)).Elem(), RuleRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionCookieConfigInput)(nil)).Elem(), RuleRuleConditionCookieConfigArgs{})
@@ -10896,6 +12351,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigPtrInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigValueInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionQueryStringConfigValueArrayInput)(nil)).Elem(), RuleRuleConditionQueryStringConfigValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionSourceIpConfigInput)(nil)).Elem(), RuleRuleConditionSourceIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleConditionSourceIpConfigPtrInput)(nil)).Elem(), RuleRuleConditionSourceIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigPtrInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerInput)(nil)).Elem(), ServerGroupServerArgs{})
@@ -10960,6 +12417,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionRedirectConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionRedirectConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionRewriteConfigInput)(nil)).Elem(), GetRulesRuleRuleActionRewriteConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionRewriteConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionRewriteConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionTrafficLimitConfigInput)(nil)).Elem(), GetRulesRuleRuleActionTrafficLimitConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionTrafficLimitConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionTrafficLimitConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigInput)(nil)).Elem(), GetRulesRuleRuleActionTrafficMirrorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionTrafficMirrorConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput)(nil)).Elem(), GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput)(nil)).Elem(), GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionInput)(nil)).Elem(), GetRulesRuleRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionCookieConfigInput)(nil)).Elem(), GetRulesRuleRuleConditionCookieConfigArgs{})
@@ -10978,6 +12443,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionQueryStringConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigValueInput)(nil)).Elem(), GetRulesRuleRuleConditionQueryStringConfigValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionQueryStringConfigValueArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionQueryStringConfigValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionSourceIpConfigInput)(nil)).Elem(), GetRulesRuleRuleConditionSourceIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleRuleConditionSourceIpConfigArrayInput)(nil)).Elem(), GetRulesRuleRuleConditionSourceIpConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPoliciesPolicyInput)(nil)).Elem(), GetSecurityPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPoliciesPolicyArrayInput)(nil)).Elem(), GetSecurityPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsGroupInput)(nil)).Elem(), GetServerGroupsGroupArgs{})
@@ -10998,8 +12465,8 @@ func init() {
 	pulumi.RegisterOutputType(ListenerAclConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerAclConfigAclRelationOutput{})
 	pulumi.RegisterOutputType(ListenerAclConfigAclRelationArrayOutput{})
-	pulumi.RegisterOutputType(ListenerCertificateOutput{})
-	pulumi.RegisterOutputType(ListenerCertificateArrayOutput{})
+	pulumi.RegisterOutputType(ListenerCertificatesOutput{})
+	pulumi.RegisterOutputType(ListenerCertificatesPtrOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionArrayOutput{})
 	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigOutput{})
@@ -11007,8 +12474,9 @@ func init() {
 	pulumi.RegisterOutputType(ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput{})
 	pulumi.RegisterOutputType(ListenerQuicConfigOutput{})
 	pulumi.RegisterOutputType(ListenerQuicConfigPtrOutput{})
+	pulumi.RegisterOutputType(ListenerXForwardedForConfigOutput{})
+	pulumi.RegisterOutputType(ListenerXForwardedForConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerXforwardedForConfigOutput{})
-	pulumi.RegisterOutputType(ListenerXforwardedForConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAccessLogConfigOutput{})
 	pulumi.RegisterOutputType(LoadBalancerAccessLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerLoadBalancerBillingConfigOutput{})
@@ -11031,6 +12499,14 @@ func init() {
 	pulumi.RegisterOutputType(RuleRuleActionRedirectConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionRewriteConfigOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionRewriteConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionTrafficLimitConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionTrafficLimitConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionTrafficMirrorConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionTrafficMirrorConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionCookieConfigOutput{})
@@ -11049,6 +12525,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigValueOutput{})
 	pulumi.RegisterOutputType(RuleRuleConditionQueryStringConfigValueArrayOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionSourceIpConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleConditionSourceIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigOutput{})
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerOutput{})
@@ -11113,6 +12591,14 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesRuleRuleActionRedirectConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleRuleActionRewriteConfigOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleRuleActionRewriteConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionTrafficLimitConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionTrafficLimitConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionTrafficMirrorConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionTrafficMirrorConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleRuleConditionOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleRuleConditionCookieConfigOutput{})
@@ -11131,6 +12617,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesRuleRuleConditionQueryStringConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleRuleConditionQueryStringConfigValueOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionSourceIpConfigOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleRuleConditionSourceIpConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetSecurityPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetServerGroupsGroupOutput{})

@@ -54,7 +54,7 @@ export interface GetVaultsArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     * The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
      */
     status?: string;
     /**
@@ -98,7 +98,7 @@ export interface GetVaultsOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+     * The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
      */
     status?: pulumi.Input<string>;
     /**

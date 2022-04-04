@@ -214,9 +214,9 @@ export class Etl extends pulumi.CustomResource {
      */
     public readonly etlType!: pulumi.Output<string | undefined>;
     /**
-     * The start time of the processing job, the default starts from the current time.
+     * The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
      */
-    public readonly fromTime!: pulumi.Output<number>;
+    public readonly fromTime!: pulumi.Output<number | undefined>;
     /**
      * An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      */
@@ -266,7 +266,7 @@ export class Etl extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * Deadline of processing job, the default value is None.
+     * Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
      */
     public readonly toTime!: pulumi.Output<number | undefined>;
     /**
@@ -396,7 +396,7 @@ export interface EtlState {
      */
     etlType?: pulumi.Input<string>;
     /**
-     * The start time of the processing job, the default starts from the current time.
+     * The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
      */
     fromTime?: pulumi.Input<number>;
     /**
@@ -448,7 +448,7 @@ export interface EtlState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Deadline of processing job, the default value is None.
+     * Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
      */
     toTime?: pulumi.Input<number>;
     /**
@@ -494,7 +494,7 @@ export interface EtlArgs {
      */
     etlType?: pulumi.Input<string>;
     /**
-     * The start time of the processing job, the default starts from the current time.
+     * The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
      */
     fromTime?: pulumi.Input<number>;
     /**
@@ -546,7 +546,7 @@ export interface EtlArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * Deadline of processing job, the default value is None.
+     * Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
      */
     toTime?: pulumi.Input<number>;
     /**

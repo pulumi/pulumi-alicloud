@@ -499,6 +499,7 @@ class _RouteMapState:
         :param pulumi.Input[int] preference: An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
         :param pulumi.Input[int] priority: The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
+        :param pulumi.Input[str] route_map_id: ID of the RouteMap. It is available in 1.161.0+.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] route_types: A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_child_instance_types: A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_instance_ids: A match statement that indicates the list of IDs of the source instances.
@@ -810,6 +811,9 @@ class _RouteMapState:
     @property
     @pulumi.getter(name="routeMapId")
     def route_map_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the RouteMap. It is available in 1.161.0+.
+        """
         return pulumi.get(self, "route_map_id")
 
     @route_map_id.setter
@@ -1021,7 +1025,7 @@ class RouteMap(pulumi.CustomResource):
         CEN RouteMap can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+         $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
         ```
 
         :param str resource_name: The name of the resource.
@@ -1135,7 +1139,7 @@ class RouteMap(pulumi.CustomResource):
         CEN RouteMap can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+         $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
         ```
 
         :param str resource_name: The name of the resource.
@@ -1297,6 +1301,7 @@ class RouteMap(pulumi.CustomResource):
         :param pulumi.Input[int] preference: An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
         :param pulumi.Input[int] priority: The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
+        :param pulumi.Input[str] route_map_id: ID of the RouteMap. It is available in 1.161.0+.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] route_types: A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_child_instance_types: A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_instance_ids: A match statement that indicates the list of IDs of the source instances.
@@ -1504,6 +1509,9 @@ class RouteMap(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routeMapId")
     def route_map_id(self) -> pulumi.Output[str]:
+        """
+        ID of the RouteMap. It is available in 1.161.0+.
+        """
         return pulumi.get(self, "route_map_id")
 
     @property

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:ots/bucketReplication:BucketReplication":
+		r = &BucketReplication{}
 	case "alicloud:ots/instance:Instance":
 		r = &Instance{}
 	case "alicloud:ots/instanceAttachment:InstanceAttachment":
@@ -40,6 +42,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ots/bucketReplication",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ots/instance",

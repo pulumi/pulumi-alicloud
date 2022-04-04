@@ -27,19 +27,19 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		this, err := cen.GetRouteMaps(ctx, &cen.GetRouteMapsArgs{
-// 			CenId:            "cen-ihdlgo87ai********",
-// 			CenRegionId:      pulumi.StringRef("cn-hangzhou"),
-// 			DescriptionRegex: pulumi.StringRef("datasource_test"),
+// 			CenId: "cen-ihdlgo87ai********",
 // 			Ids: []string{
-// 				"cenrmap-bnh97kb3mn********",
+// 				"cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
 // 			},
-// 			Status:            pulumi.StringRef("Active"),
+// 			DescriptionRegex:  pulumi.StringRef("datasource_test"),
+// 			CenRegionId:       pulumi.StringRef("cn-hangzhou"),
 // 			TransmitDirection: pulumi.StringRef("RegionIn"),
+// 			Status:            pulumi.StringRef("Active"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("firstCenRouteMapId", this.Maps[0].Id)
+// 		ctx.Export("firstCenRouteMapId", this.Maps[0].RouteMapId)
 // 		return nil
 // 	})
 // }
@@ -61,7 +61,7 @@ type GetRouteMapsArgs struct {
 	CenRegionId *string `pulumi:"cenRegionId"`
 	// A regex string to filter CEN route map by description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	// A list of CEN route map IDs.
+	// A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the route map, including `Creating`, `Active` and `Deleting`.
@@ -79,7 +79,7 @@ type GetRouteMapsResult struct {
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of CEN route map IDs.
+	// A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`. Before 1.161.0, its element is `routeMapId`.
 	Ids []string `pulumi:"ids"`
 	// A list of CEN instances. Each element contains the following attributes:
 	Maps       []GetRouteMapsMap `pulumi:"maps"`
@@ -111,7 +111,7 @@ type GetRouteMapsOutputArgs struct {
 	CenRegionId pulumi.StringPtrInput `pulumi:"cenRegionId"`
 	// A regex string to filter CEN route map by description.
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
-	// A list of CEN route map IDs.
+	// A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
 	Ids        pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
 	// The status of the route map, including `Creating`, `Active` and `Deleting`.
@@ -158,7 +158,7 @@ func (o GetRouteMapsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteMapsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of CEN route map IDs.
+// A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`. Before 1.161.0, its element is `routeMapId`.
 func (o GetRouteMapsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouteMapsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

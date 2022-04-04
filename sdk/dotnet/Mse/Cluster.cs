@@ -68,6 +68,12 @@ namespace Pulumi.AliCloud.Mse
         public Output<string?> ClusterAliasName { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in v1.162.0+)  The id of Cluster.
+        /// </summary>
+        [Output("clusterId")]
+        public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
         /// The engine specification of MSE Cluster. Valid values:
         /// `MSE_SC_1_2_200_c`：1C2G
         /// `MSE_SC_2_4_200_c`：2C4G
@@ -289,6 +295,12 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Input("clusterAliasName")]
         public Input<string>? ClusterAliasName { get; set; }
+
+        /// <summary>
+        /// (Available in v1.162.0+)  The id of Cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
 
         /// <summary>
         /// The engine specification of MSE Cluster. Valid values:

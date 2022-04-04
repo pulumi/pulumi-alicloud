@@ -40,11 +40,14 @@ type Network struct {
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
+	// (Deprecated) It has been deprecated and replaced with `routeTableId`.
+	//
 	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId pulumi.StringOutput `pulumi:"routerTableId"`
 	// The secondary CIDR blocks for the VPC.
 	SecondaryCidrBlocks pulumi.StringArrayOutput `pulumi:"secondaryCidrBlocks"`
-	Status              pulumi.StringOutput      `pulumi:"status"`
+	// The status of the VPC.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The user cidrs of the VPC.
@@ -102,11 +105,14 @@ type networkState struct {
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
 	RouterId *string `pulumi:"routerId"`
+	// (Deprecated) It has been deprecated and replaced with `routeTableId`.
+	//
 	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId *string `pulumi:"routerTableId"`
 	// The secondary CIDR blocks for the VPC.
 	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
-	Status              *string  `pulumi:"status"`
+	// The status of the VPC.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The user cidrs of the VPC.
@@ -136,11 +142,14 @@ type NetworkState struct {
 	RouteTableId pulumi.StringPtrInput
 	// The ID of the router created by default on VPC creation.
 	RouterId pulumi.StringPtrInput
+	// (Deprecated) It has been deprecated and replaced with `routeTableId`.
+	//
 	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId pulumi.StringPtrInput
 	// The secondary CIDR blocks for the VPC.
 	SecondaryCidrBlocks pulumi.StringArrayInput
-	Status              pulumi.StringPtrInput
+	// The status of the VPC.
+	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The user cidrs of the VPC.

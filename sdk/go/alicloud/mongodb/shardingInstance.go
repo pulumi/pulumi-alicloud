@@ -31,7 +31,7 @@ type ShardingInstance struct {
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
 	ConfigServerLists ShardingInstanceConfigServerListArrayOutput `pulumi:"configServerLists"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
@@ -43,6 +43,8 @@ type ShardingInstance struct {
 	MongoLists ShardingInstanceMongoListArrayOutput `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -50,6 +52,10 @@ type ShardingInstance struct {
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntOutput `pulumi:"period"`
+	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
+	// The ID of the Resource Group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
 	// The Security Group ID of ECS.
@@ -64,6 +70,8 @@ type ShardingInstance struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -119,7 +127,7 @@ type shardingInstanceState struct {
 	BackupTime *string `pulumi:"backupTime"`
 	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
 	ConfigServerLists []ShardingInstanceConfigServerList `pulumi:"configServerLists"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -131,6 +139,8 @@ type shardingInstanceState struct {
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -138,6 +148,10 @@ type shardingInstanceState struct {
 	OrderType *string `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
+	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+	ProtocolType *string `pulumi:"protocolType"`
+	// The ID of the Resource Group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The Security Group ID of ECS.
@@ -152,6 +166,8 @@ type shardingInstanceState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -170,7 +186,7 @@ type ShardingInstanceState struct {
 	BackupTime pulumi.StringPtrInput
 	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
 	ConfigServerLists ShardingInstanceConfigServerListArrayInput
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType pulumi.StringPtrInput
@@ -182,6 +198,8 @@ type ShardingInstanceState struct {
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -189,6 +207,10 @@ type ShardingInstanceState struct {
 	OrderType pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
+	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+	ProtocolType pulumi.StringPtrInput
+	// The ID of the Resource Group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
 	RetentionPeriod pulumi.IntPtrInput
 	// The Security Group ID of ECS.
@@ -203,6 +225,8 @@ type ShardingInstanceState struct {
 	Tags pulumi.MapInput
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus pulumi.StringPtrInput
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -223,7 +247,7 @@ type shardingInstanceArgs struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -235,6 +259,8 @@ type shardingInstanceArgs struct {
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -242,6 +268,10 @@ type shardingInstanceArgs struct {
 	OrderType *string `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
+	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+	ProtocolType *string `pulumi:"protocolType"`
+	// The ID of the Resource Group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -254,6 +284,8 @@ type shardingInstanceArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -271,7 +303,7 @@ type ShardingInstanceArgs struct {
 	BackupPeriods pulumi.StringArrayInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
 	InstanceChargeType pulumi.StringPtrInput
@@ -283,6 +315,8 @@ type ShardingInstanceArgs struct {
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -290,6 +324,10 @@ type ShardingInstanceArgs struct {
 	OrderType pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
+	// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+	ProtocolType pulumi.StringPtrInput
+	// The ID of the Resource Group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -302,6 +340,8 @@ type ShardingInstanceArgs struct {
 	Tags pulumi.MapInput
 	// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
 	TdeStatus pulumi.StringPtrInput
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.

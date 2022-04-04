@@ -13,7 +13,7 @@ import (
 type AlarmEscalationsCritical struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
@@ -35,7 +35,7 @@ type AlarmEscalationsCriticalInput interface {
 type AlarmEscalationsCriticalArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
@@ -125,7 +125,7 @@ func (o AlarmEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOut
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsCriticalOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
@@ -174,7 +174,7 @@ func (o AlarmEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsCriticalPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
 		if v == nil {
@@ -207,7 +207,7 @@ func (o AlarmEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
 type AlarmEscalationsInfo struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
@@ -229,7 +229,7 @@ type AlarmEscalationsInfoInput interface {
 type AlarmEscalationsInfoArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
@@ -319,7 +319,7 @@ func (o AlarmEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsInfoOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
@@ -368,7 +368,7 @@ func (o AlarmEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
 		if v == nil {
@@ -401,7 +401,7 @@ func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
 type AlarmEscalationsWarn struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
@@ -423,7 +423,7 @@ type AlarmEscalationsWarnInput interface {
 type AlarmEscalationsWarnArgs struct {
 	// Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
 	// Critical level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
@@ -513,7 +513,7 @@ func (o AlarmEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsWarnOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
@@ -562,7 +562,7 @@ func (o AlarmEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 func (o AlarmEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
 		if v == nil {
@@ -4725,6 +4725,7 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) In
 }
 
 type GetMonitorGroupInstancesInstance struct {
+	// Instance information added to the Cms Group.
 	Instances []GetMonitorGroupInstancesInstanceInstance `pulumi:"instances"`
 }
 
@@ -4740,6 +4741,7 @@ type GetMonitorGroupInstancesInstanceInput interface {
 }
 
 type GetMonitorGroupInstancesInstanceArgs struct {
+	// Instance information added to the Cms Group.
 	Instances GetMonitorGroupInstancesInstanceInstanceArrayInput `pulumi:"instances"`
 }
 
@@ -4794,6 +4796,7 @@ func (o GetMonitorGroupInstancesInstanceOutput) ToGetMonitorGroupInstancesInstan
 	return o
 }
 
+// Instance information added to the Cms Group.
 func (o GetMonitorGroupInstancesInstanceOutput) Instances() GetMonitorGroupInstancesInstanceInstanceArrayOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstance) []GetMonitorGroupInstancesInstanceInstance {
 		return v.Instances
@@ -4821,10 +4824,14 @@ func (o GetMonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetMonitorGroupInstancesInstanceInstance struct {
-	Category     string `pulumi:"category"`
-	InstanceId   string `pulumi:"instanceId"`
+	// The category of instance.
+	Category string `pulumi:"category"`
+	// The id of instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of instance.
 	InstanceName string `pulumi:"instanceName"`
-	RegionId     string `pulumi:"regionId"`
+	// The region id of instance.
+	RegionId string `pulumi:"regionId"`
 }
 
 // GetMonitorGroupInstancesInstanceInstanceInput is an input type that accepts GetMonitorGroupInstancesInstanceInstanceArgs and GetMonitorGroupInstancesInstanceInstanceOutput values.
@@ -4839,10 +4846,14 @@ type GetMonitorGroupInstancesInstanceInstanceInput interface {
 }
 
 type GetMonitorGroupInstancesInstanceInstanceArgs struct {
-	Category     pulumi.StringInput `pulumi:"category"`
-	InstanceId   pulumi.StringInput `pulumi:"instanceId"`
+	// The category of instance.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The id of instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	RegionId     pulumi.StringInput `pulumi:"regionId"`
+	// The region id of instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
 }
 
 func (GetMonitorGroupInstancesInstanceInstanceArgs) ElementType() reflect.Type {
@@ -4896,18 +4907,22 @@ func (o GetMonitorGroupInstancesInstanceInstanceOutput) ToGetMonitorGroupInstanc
 	return o
 }
 
+// The category of instance.
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// The id of instance.
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The name of instance.
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
+// The region id of instance.
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }

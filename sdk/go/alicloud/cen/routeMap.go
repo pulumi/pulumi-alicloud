@@ -152,7 +152,7 @@ import (
 // CEN RouteMap can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+//  $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
 // ```
 type RouteMap struct {
 	pulumi.CustomResourceState
@@ -196,7 +196,8 @@ type RouteMap struct {
 	// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
 	PrependAsPaths pulumi.StringArrayOutput `pulumi:"prependAsPaths"`
 	// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
-	Priority   pulumi.IntOutput    `pulumi:"priority"`
+	Priority pulumi.IntOutput `pulumi:"priority"`
+	// ID of the RouteMap. It is available in 1.161.0+.
 	RouteMapId pulumi.StringOutput `pulumi:"routeMapId"`
 	// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
 	RouteTypes pulumi.StringArrayOutput `pulumi:"routeTypes"`
@@ -299,7 +300,8 @@ type routeMapState struct {
 	// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
 	PrependAsPaths []string `pulumi:"prependAsPaths"`
 	// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
-	Priority   *int    `pulumi:"priority"`
+	Priority *int `pulumi:"priority"`
+	// ID of the RouteMap. It is available in 1.161.0+.
 	RouteMapId *string `pulumi:"routeMapId"`
 	// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
 	RouteTypes []string `pulumi:"routeTypes"`
@@ -359,7 +361,8 @@ type RouteMapState struct {
 	// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
 	PrependAsPaths pulumi.StringArrayInput
 	// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
-	Priority   pulumi.IntPtrInput
+	Priority pulumi.IntPtrInput
+	// ID of the RouteMap. It is available in 1.161.0+.
 	RouteMapId pulumi.StringPtrInput
 	// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
 	RouteTypes pulumi.StringArrayInput

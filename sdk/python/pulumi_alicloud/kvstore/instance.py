@@ -90,7 +90,8 @@ class InstanceArgs:
                * false: checks the request. After the request passes the check, an instance is created.
         :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
-        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+               **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcibly change the type. Default to: `true`.
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default to: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
@@ -468,7 +469,8 @@ class InstanceArgs:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+        **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         """
         return pulumi.get(self, "engine_version")
 
@@ -993,7 +995,8 @@ class _InstanceState:
         :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] end_time: The expiration time of the prepaid instance.
-        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+               **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcibly change the type. Default to: `true`.
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default to: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
@@ -1431,7 +1434,8 @@ class _InstanceState:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+        **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         """
         return pulumi.get(self, "engine_version")
 
@@ -2065,7 +2069,8 @@ class Instance(pulumi.CustomResource):
                * false: checks the request. After the request passes the check, an instance is created.
         :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
-        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+               **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcibly change the type. Default to: `true`.
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default to: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
@@ -2458,7 +2463,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] enable_backup_log: Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
         :param pulumi.Input[bool] enable_public: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] end_time: The expiration time of the prepaid instance.
-        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        :param pulumi.Input[str] engine_version: The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+               **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcibly change the type. Default to: `true`.
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default to: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
@@ -2731,9 +2737,10 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> pulumi.Output[Optional[str]]:
+    def engine_version(self) -> pulumi.Output[str]:
         """
-        The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+        The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+        **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports "4.0".
         """
         return pulumi.get(self, "engine_version")
 

@@ -20,11 +20,11 @@ class PortArgs:
                  backend_port: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Port resource.
-        :param pulumi.Input[str] frontend_port: The forwarding port.
+        :param pulumi.Input[str] frontend_port: The forwarding port. Valid values: [1~65535].
         :param pulumi.Input[str] frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
         :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
-        :param pulumi.Input[str] backend_port: The port of the origin server.
+        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
         """
         pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "frontend_protocol", frontend_protocol)
@@ -37,7 +37,7 @@ class PortArgs:
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> pulumi.Input[str]:
         """
-        The forwarding port.
+        The forwarding port. Valid values: [1~65535].
         """
         return pulumi.get(self, "frontend_port")
 
@@ -85,7 +85,7 @@ class PortArgs:
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> Optional[pulumi.Input[str]]:
         """
-        The port of the origin server.
+        The port of the origin server. Valid values: [1~65535].
         """
         return pulumi.get(self, "backend_port")
 
@@ -104,8 +104,8 @@ class _PortState:
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Port resources.
-        :param pulumi.Input[str] backend_port: The port of the origin server.
-        :param pulumi.Input[str] frontend_port: The forwarding port.
+        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
+        :param pulumi.Input[str] frontend_port: The forwarding port. Valid values: [1~65535].
         :param pulumi.Input[str] frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
         :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
@@ -125,7 +125,7 @@ class _PortState:
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> Optional[pulumi.Input[str]]:
         """
-        The port of the origin server.
+        The port of the origin server. Valid values: [1~65535].
         """
         return pulumi.get(self, "backend_port")
 
@@ -137,7 +137,7 @@ class _PortState:
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> Optional[pulumi.Input[str]]:
         """
-        The forwarding port.
+        The forwarding port. Valid values: [1~65535].
         """
         return pulumi.get(self, "frontend_port")
 
@@ -234,8 +234,8 @@ class Port(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backend_port: The port of the origin server.
-        :param pulumi.Input[str] frontend_port: The forwarding port.
+        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
+        :param pulumi.Input[str] frontend_port: The forwarding port. Valid values: [1~65535].
         :param pulumi.Input[str] frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
         :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
@@ -352,8 +352,8 @@ class Port(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backend_port: The port of the origin server.
-        :param pulumi.Input[str] frontend_port: The forwarding port.
+        :param pulumi.Input[str] backend_port: The port of the origin server. Valid values: [1~65535].
+        :param pulumi.Input[str] frontend_port: The forwarding port. Valid values: [1~65535].
         :param pulumi.Input[str] frontend_protocol: The forwarding protocol. Valid values `tcp` and `udp`.
         :param pulumi.Input[str] instance_id: The ID of Ddoscoo instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: List of source IP addresses.
@@ -373,7 +373,7 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> pulumi.Output[Optional[str]]:
         """
-        The port of the origin server.
+        The port of the origin server. Valid values: [1~65535].
         """
         return pulumi.get(self, "backend_port")
 
@@ -381,7 +381,7 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> pulumi.Output[str]:
         """
-        The forwarding port.
+        The forwarding port. Valid values: [1~65535].
         """
         return pulumi.get(self, "frontend_port")
 

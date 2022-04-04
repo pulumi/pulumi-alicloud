@@ -16,6 +16,7 @@ export * from "./getServerGroups";
 export * from "./getZones";
 export * from "./healthCheckTemplate";
 export * from "./listener";
+export * from "./listenerAdditionalCertificateAttachment";
 export * from "./loadBalancer";
 export * from "./rule";
 export * from "./securityPolicy";
@@ -25,6 +26,7 @@ export * from "./serverGroup";
 import { Acl } from "./acl";
 import { HealthCheckTemplate } from "./healthCheckTemplate";
 import { Listener } from "./listener";
+import { ListenerAdditionalCertificateAttachment } from "./listenerAdditionalCertificateAttachment";
 import { LoadBalancer } from "./loadBalancer";
 import { Rule } from "./rule";
 import { SecurityPolicy } from "./securityPolicy";
@@ -40,6 +42,8 @@ const _module = {
                 return new HealthCheckTemplate(name, <any>undefined, { urn })
             case "alicloud:alb/listener:Listener":
                 return new Listener(name, <any>undefined, { urn })
+            case "alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment":
+                return new ListenerAdditionalCertificateAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "alicloud:alb/rule:Rule":
@@ -56,6 +60,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "alb/acl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/healthCheckTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/listener", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alb/listenerAdditionalCertificateAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/rule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/securityPolicy", _module)

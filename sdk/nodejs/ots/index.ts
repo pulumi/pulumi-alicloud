@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./bucketReplication";
 export * from "./getInstanceAttachments";
 export * from "./getInstances";
 export * from "./getService";
@@ -14,6 +15,7 @@ export * from "./instanceAttachment";
 export * from "./table";
 
 // Import resources to register:
+import { BucketReplication } from "./bucketReplication";
 import { Instance } from "./instance";
 import { InstanceAttachment } from "./instanceAttachment";
 import { Table } from "./table";
@@ -22,6 +24,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:ots/bucketReplication:BucketReplication":
+                return new BucketReplication(name, <any>undefined, { urn })
             case "alicloud:ots/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:ots/instanceAttachment:InstanceAttachment":
@@ -33,6 +37,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "ots/bucketReplication", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ots/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ots/instanceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ots/table", _module)

@@ -29,10 +29,11 @@ class DedicatedHostGroupArgs:
         :param pulumi.Input[str] allocation_policy: AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
         :param pulumi.Input[int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param pulumi.Input[str] dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
-        :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group.
+        :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
         :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+               **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -115,7 +116,7 @@ class DedicatedHostGroupArgs:
     @pulumi.getter(name="diskAllocationRatio")
     def disk_allocation_ratio(self) -> Optional[pulumi.Input[int]]:
         """
-        The Disk Allocation Ratio of the Dedicated Host Group.
+        The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         """
         return pulumi.get(self, "disk_allocation_ratio")
 
@@ -152,6 +153,7 @@ class DedicatedHostGroupArgs:
     def open_permission(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         """
         return pulumi.get(self, "open_permission")
 
@@ -177,11 +179,12 @@ class _DedicatedHostGroupState:
         :param pulumi.Input[str] allocation_policy: AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
         :param pulumi.Input[int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param pulumi.Input[str] dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
-        :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group.
+        :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
         :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+               **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         """
         if allocation_policy is not None:
@@ -243,7 +246,7 @@ class _DedicatedHostGroupState:
     @pulumi.getter(name="diskAllocationRatio")
     def disk_allocation_ratio(self) -> Optional[pulumi.Input[int]]:
         """
-        The Disk Allocation Ratio of the Dedicated Host Group.
+        The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         """
         return pulumi.get(self, "disk_allocation_ratio")
 
@@ -292,6 +295,7 @@ class _DedicatedHostGroupState:
     def open_permission(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         """
         return pulumi.get(self, "open_permission")
 
@@ -369,11 +373,12 @@ class DedicatedHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] allocation_policy: AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
         :param pulumi.Input[int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param pulumi.Input[str] dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
-        :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group.
+        :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
         :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+               **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         """
         ...
@@ -497,11 +502,12 @@ class DedicatedHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] allocation_policy: AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
         :param pulumi.Input[int] cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param pulumi.Input[str] dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
-        :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group.
+        :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
         :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+               **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -547,7 +553,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
     @pulumi.getter(name="diskAllocationRatio")
     def disk_allocation_ratio(self) -> pulumi.Output[int]:
         """
-        The Disk Allocation Ratio of the Dedicated Host Group.
+        The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         """
         return pulumi.get(self, "disk_allocation_ratio")
 
@@ -580,6 +586,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
     def open_permission(self) -> pulumi.Output[bool]:
         """
         Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         """
         return pulumi.get(self, "open_permission")
 

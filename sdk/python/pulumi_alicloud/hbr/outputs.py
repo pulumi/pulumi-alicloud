@@ -2305,7 +2305,7 @@ class GetVaultsVaultResult(dict):
         :param str replication_source_vault_id: The source vault ID of the remote backup Vault.
         :param str retention: Warehouse-level data retention days, only valid for archive libraries.
         :param bool search_enabled: Whether to enable the backup search function.
-        :param str status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         :param str storage_size: Backup vault storage usage. The unit is Byte.
         :param str updated_time: The update time of the Vault. UNIX time in seconds.
         :param str vault_id: The ID of vault, same as `id`.
@@ -2477,7 +2477,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         """
         return pulumi.get(self, "status")
 

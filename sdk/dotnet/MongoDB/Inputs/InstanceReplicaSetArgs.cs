@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? ConnectionPort { get; set; }
 
         /// <summary>
-        /// The network type of the node. Valid values: `Classic`,`VPC`.
+        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? VpcCloudInstanceId { get; set; }
 
         /// <summary>
-        /// The private network ID of the node.
+        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

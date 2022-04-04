@@ -16,6 +16,7 @@ from .get_server_groups import *
 from .get_zones import *
 from .health_check_template import *
 from .listener import *
+from .listener_additional_certificate_attachment import *
 from .load_balancer import *
 from .rule import *
 from .security_policy import *

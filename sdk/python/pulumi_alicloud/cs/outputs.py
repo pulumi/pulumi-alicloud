@@ -3492,19 +3492,25 @@ class GetRegistryEnterpriseNamespacesNamespaceResult(dict):
                  default_visibility: str,
                  id: str,
                  instance_id: str,
-                 name: str):
+                 name: str,
+                 namespace_id: str,
+                 namespace_name: str):
         """
         :param bool auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
         :param str default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-        :param str id: ID of Container Registry Enterprise Edition namespace.
+        :param str id: ID of Container Registry Enterprise Edition namespace. It formats as `<instance_id>:<namespace_name>`. Before 1.161.0, it is a namespace uuid.
         :param str instance_id: ID of Container Registry Enterprise Edition instance.
         :param str name: Name of Container Registry Enterprise Edition namespace.
+        :param str namespace_id: Container Registry Enterprise Edition namespace id. It is a uuid.
+        :param str namespace_name: Name of Container Registry Enterprise Edition namespace.
         """
         pulumi.set(__self__, "auto_create", auto_create)
         pulumi.set(__self__, "default_visibility", default_visibility)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "namespace_name", namespace_name)
 
     @property
     @pulumi.getter(name="autoCreate")
@@ -3526,7 +3532,7 @@ class GetRegistryEnterpriseNamespacesNamespaceResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of Container Registry Enterprise Edition namespace.
+        ID of Container Registry Enterprise Edition namespace. It formats as `<instance_id>:<namespace_name>`. Before 1.161.0, it is a namespace uuid.
         """
         return pulumi.get(self, "id")
 
@@ -3545,6 +3551,22 @@ class GetRegistryEnterpriseNamespacesNamespaceResult(dict):
         Name of Container Registry Enterprise Edition namespace.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        Container Registry Enterprise Edition namespace id. It is a uuid.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> str:
+        """
+        Name of Container Registry Enterprise Edition namespace.
+        """
+        return pulumi.get(self, "namespace_name")
 
 
 @pulumi.output_type

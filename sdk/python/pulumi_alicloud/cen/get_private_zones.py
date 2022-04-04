@@ -72,7 +72,8 @@ class GetPrivateZonesResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         """
-        A list of CEN private zone IDs.
+        A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
+        **NOTE:** Before 1.162.0, each element same as `access_region_id`.
         """
         return pulumi.get(self, "ids")
 
@@ -124,10 +125,23 @@ def get_private_zones(cen_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.88.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.cen.get_private_zones(cen_id="cen-o40h17ll9w********",
+        ids=["cn-hangzhou"],
+        status="Active")
+    pulumi.export("firstCenPrivateZonesId", this.zones[0].id)
+    ```
+
 
     :param str cen_id: The ID of the CEN instance.
     :param str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
-    :param Sequence[str] ids: A list of CEN private zone IDs.
+    :param Sequence[str] ids: A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`. 
+           **NOTE:** Before 1.162.0, each element same as `access_region_id`.
            * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
     :param str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
     """
@@ -165,10 +179,23 @@ def get_private_zones_output(cen_id: Optional[pulumi.Input[str]] = None,
 
     > **NOTE:** Available in v1.88.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.cen.get_private_zones(cen_id="cen-o40h17ll9w********",
+        ids=["cn-hangzhou"],
+        status="Active")
+    pulumi.export("firstCenPrivateZonesId", this.zones[0].id)
+    ```
+
 
     :param str cen_id: The ID of the CEN instance.
     :param str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
-    :param Sequence[str] ids: A list of CEN private zone IDs.
+    :param Sequence[str] ids: A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`. 
+           **NOTE:** Before 1.162.0, each element same as `access_region_id`.
            * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
     :param str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
     """

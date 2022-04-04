@@ -1039,6 +1039,8 @@ type GetPrivateZonesZone struct {
 	HostRegionId string `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
 	HostVpcId string `pulumi:"hostVpcId"`
+	// The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
+	Id string `pulumi:"id"`
 	// The DNS IP addresses of the PrivateZone service.
 	PrivateZoneDnsServers string `pulumi:"privateZoneDnsServers"`
 	// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
@@ -1065,6 +1067,8 @@ type GetPrivateZonesZoneArgs struct {
 	HostRegionId pulumi.StringInput `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
 	HostVpcId pulumi.StringInput `pulumi:"hostVpcId"`
+	// The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The DNS IP addresses of the PrivateZone service.
 	PrivateZoneDnsServers pulumi.StringInput `pulumi:"privateZoneDnsServers"`
 	// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
@@ -1140,6 +1144,11 @@ func (o GetPrivateZonesZoneOutput) HostRegionId() pulumi.StringOutput {
 // The VPC that belongs to the service region.
 func (o GetPrivateZonesZoneOutput) HostVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.HostVpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
+func (o GetPrivateZonesZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The DNS IP addresses of the PrivateZone service.
@@ -1623,7 +1632,7 @@ type GetRouteMapsMap struct {
 	DestinationInstanceIdsReverseMatch bool `pulumi:"destinationInstanceIdsReverseMatch"`
 	// A match statement that indicates the list of IDs of the destination route tables.
 	DestinationRouteTableIds []string `pulumi:"destinationRouteTableIds"`
-	// The ID of the route map.
+	// The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `routeMapId`.
 	Id string `pulumi:"id"`
 	// The action that is performed to a route if the route meets all the match conditions.
 	MapResult string `pulumi:"mapResult"`
@@ -1697,7 +1706,7 @@ type GetRouteMapsMapArgs struct {
 	DestinationInstanceIdsReverseMatch pulumi.BoolInput `pulumi:"destinationInstanceIdsReverseMatch"`
 	// A match statement that indicates the list of IDs of the destination route tables.
 	DestinationRouteTableIds pulumi.StringArrayInput `pulumi:"destinationRouteTableIds"`
-	// The ID of the route map.
+	// The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `routeMapId`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The action that is performed to a route if the route meets all the match conditions.
 	MapResult pulumi.StringInput `pulumi:"mapResult"`
@@ -1846,7 +1855,7 @@ func (o GetRouteMapsMapOutput) DestinationRouteTableIds() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.DestinationRouteTableIds }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the route map.
+// The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `routeMapId`.
 func (o GetRouteMapsMapOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteMapsMap) string { return v.Id }).(pulumi.StringOutput)
 }

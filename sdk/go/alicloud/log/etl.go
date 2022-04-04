@@ -226,8 +226,8 @@ type Etl struct {
 	EtlSinks EtlEtlSinkArrayOutput `pulumi:"etlSinks"`
 	// Log service etl type, the default value is `ETL`.
 	EtlType pulumi.StringPtrOutput `pulumi:"etlType"`
-	// The start time of the processing job, the default starts from the current time.
-	FromTime pulumi.IntOutput `pulumi:"fromTime"`
+	// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
+	FromTime pulumi.IntPtrOutput `pulumi:"fromTime"`
 	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeyId pulumi.StringPtrOutput `pulumi:"kmsEncryptedAccessKeyId"`
 	// An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
@@ -252,7 +252,7 @@ type Etl struct {
 	Script pulumi.StringOutput `pulumi:"script"`
 	// Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Deadline of processing job, the default value is None.
+	// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
 	ToTime pulumi.IntPtrOutput `pulumi:"toTime"`
 	// Log etl job version. the default value is `2`.
 	Version pulumi.IntPtrOutput `pulumi:"version"`
@@ -321,7 +321,7 @@ type etlState struct {
 	EtlSinks []EtlEtlSink `pulumi:"etlSinks"`
 	// Log service etl type, the default value is `ETL`.
 	EtlType *string `pulumi:"etlType"`
-	// The start time of the processing job, the default starts from the current time.
+	// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
 	FromTime *int `pulumi:"fromTime"`
 	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeyId *string `pulumi:"kmsEncryptedAccessKeyId"`
@@ -347,7 +347,7 @@ type etlState struct {
 	Script *string `pulumi:"script"`
 	// Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
 	Status *string `pulumi:"status"`
-	// Deadline of processing job, the default value is None.
+	// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
 	ToTime *int `pulumi:"toTime"`
 	// Log etl job version. the default value is `2`.
 	Version *int `pulumi:"version"`
@@ -370,7 +370,7 @@ type EtlState struct {
 	EtlSinks EtlEtlSinkArrayInput
 	// Log service etl type, the default value is `ETL`.
 	EtlType pulumi.StringPtrInput
-	// The start time of the processing job, the default starts from the current time.
+	// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
 	FromTime pulumi.IntPtrInput
 	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeyId pulumi.StringPtrInput
@@ -396,7 +396,7 @@ type EtlState struct {
 	Script pulumi.StringPtrInput
 	// Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
 	Status pulumi.StringPtrInput
-	// Deadline of processing job, the default value is None.
+	// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
 	ToTime pulumi.IntPtrInput
 	// Log etl job version. the default value is `2`.
 	Version pulumi.IntPtrInput
@@ -423,7 +423,7 @@ type etlArgs struct {
 	EtlSinks []EtlEtlSink `pulumi:"etlSinks"`
 	// Log service etl type, the default value is `ETL`.
 	EtlType *string `pulumi:"etlType"`
-	// The start time of the processing job, the default starts from the current time.
+	// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
 	FromTime *int `pulumi:"fromTime"`
 	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeyId *string `pulumi:"kmsEncryptedAccessKeyId"`
@@ -449,7 +449,7 @@ type etlArgs struct {
 	Script string `pulumi:"script"`
 	// Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
 	Status *string `pulumi:"status"`
-	// Deadline of processing job, the default value is None.
+	// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
 	ToTime *int `pulumi:"toTime"`
 	// Log etl job version. the default value is `2`.
 	Version *int `pulumi:"version"`
@@ -473,7 +473,7 @@ type EtlArgs struct {
 	EtlSinks EtlEtlSinkArrayInput
 	// Log service etl type, the default value is `ETL`.
 	EtlType pulumi.StringPtrInput
-	// The start time of the processing job, the default starts from the current time.
+	// The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
 	FromTime pulumi.IntPtrInput
 	// An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
 	KmsEncryptedAccessKeyId pulumi.StringPtrInput
@@ -499,7 +499,7 @@ type EtlArgs struct {
 	Script pulumi.StringInput
 	// Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
 	Status pulumi.StringPtrInput
-	// Deadline of processing job, the default value is None.
+	// Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
 	ToTime pulumi.IntPtrInput
 	// Log etl job version. the default value is `2`.
 	Version pulumi.IntPtrInput

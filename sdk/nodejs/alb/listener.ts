@@ -61,9 +61,9 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly aclConfig!: pulumi.Output<outputs.alb.ListenerAclConfig | undefined>;
     /**
-     * The Certificate List. See the following `Block certificates`.
+     * The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
      */
-    public readonly certificates!: pulumi.Output<outputs.alb.ListenerCertificate[] | undefined>;
+    public readonly certificates!: pulumi.Output<outputs.alb.ListenerCertificates | undefined>;
     /**
      * The Default Rule Action List. See the following `Block defaultActions`.
      */
@@ -117,9 +117,9 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
+     * The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
-    public readonly xforwardedForConfig!: pulumi.Output<outputs.alb.ListenerXforwardedForConfig>;
+    public readonly xForwardedForConfig!: pulumi.Output<outputs.alb.ListenerXForwardedForConfig>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -151,7 +151,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["requestTimeout"] = state ? state.requestTimeout : undefined;
             resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["xforwardedForConfig"] = state ? state.xforwardedForConfig : undefined;
+            resourceInputs["xForwardedForConfig"] = state ? state.xForwardedForConfig : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
             if ((!args || args.listenerPort === undefined) && !opts.urn) {
@@ -180,7 +180,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["xforwardedForConfig"] = args ? args.xforwardedForConfig : undefined;
+            resourceInputs["xForwardedForConfig"] = args ? args.xForwardedForConfig : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Listener.__pulumiType, name, resourceInputs, opts);
@@ -204,9 +204,9 @@ export interface ListenerState {
      */
     aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
     /**
-     * The Certificate List. See the following `Block certificates`.
+     * The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
      */
-    certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
+    certificates?: pulumi.Input<inputs.alb.ListenerCertificates>;
     /**
      * The Default Rule Action List. See the following `Block defaultActions`.
      */
@@ -260,9 +260,9 @@ export interface ListenerState {
      */
     status?: pulumi.Input<string>;
     /**
-     * xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
+     * The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
-    xforwardedForConfig?: pulumi.Input<inputs.alb.ListenerXforwardedForConfig>;
+    xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig>;
 }
 
 /**
@@ -282,9 +282,9 @@ export interface ListenerArgs {
      */
     aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
     /**
-     * The Certificate List. See the following `Block certificates`.
+     * The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
      */
-    certificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCertificate>[]>;
+    certificates?: pulumi.Input<inputs.alb.ListenerCertificates>;
     /**
      * The Default Rule Action List. See the following `Block defaultActions`.
      */
@@ -338,7 +338,7 @@ export interface ListenerArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
+     * The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
-    xforwardedForConfig?: pulumi.Input<inputs.alb.ListenerXforwardedForConfig>;
+    xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig>;
 }

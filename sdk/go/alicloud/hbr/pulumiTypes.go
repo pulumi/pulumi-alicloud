@@ -2904,7 +2904,7 @@ type GetVaultsVault struct {
 	// Whether to enable the backup search function.
 	SearchEnabled bool     `pulumi:"searchEnabled"`
 	SourceTypes   []string `pulumi:"sourceTypes"`
-	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status string `pulumi:"status"`
 	// Backup vault storage usage. The unit is Byte.
 	StorageSize string `pulumi:"storageSize"`
@@ -2967,7 +2967,7 @@ type GetVaultsVaultArgs struct {
 	// Whether to enable the backup search function.
 	SearchEnabled pulumi.BoolInput        `pulumi:"searchEnabled"`
 	SourceTypes   pulumi.StringArrayInput `pulumi:"sourceTypes"`
-	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Backup vault storage usage. The unit is Byte.
 	StorageSize pulumi.StringInput `pulumi:"storageSize"`
@@ -3120,7 +3120,7 @@ func (o GetVaultsVaultOutput) SourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVaultsVault) []string { return v.SourceTypes }).(pulumi.StringArrayOutput)
 }
 
-// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 func (o GetVaultsVaultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.Status }).(pulumi.StringOutput)
 }

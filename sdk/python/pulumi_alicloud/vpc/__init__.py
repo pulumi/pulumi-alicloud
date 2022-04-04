@@ -22,6 +22,7 @@ from .get_dhcp_options_sets import *
 from .get_enhanced_nat_available_zones import *
 from .get_forward_entries import *
 from .get_havips import *
+from .get_ipsec_servers import *
 from .get_ipv6_addresses import *
 from .get_ipv6_egress_rules import *
 from .get_ipv6_gateways import *
@@ -31,6 +32,7 @@ from .get_nat_ip_cidrs import *
 from .get_nat_ips import *
 from .get_network_acls import *
 from .get_networks import *
+from .get_pbr_route_entries import *
 from .get_route_entries import *
 from .get_route_tables import *
 from .get_router_interfaces import *

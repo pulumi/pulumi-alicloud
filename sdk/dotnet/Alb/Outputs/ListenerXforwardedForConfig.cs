@@ -11,102 +11,102 @@ namespace Pulumi.AliCloud.Alb.Outputs
 {
 
     [OutputType]
-    public sealed class ListenerXforwardedForConfig
+    public sealed class ListenerXForwardedForConfig
     {
         /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+        /// The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         /// </summary>
-        public readonly string? XforwardedforclientcertIssuerdnalias;
-        /// <summary>
-        /// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-        /// </summary>
-        public readonly bool? XforwardedforclientcertIssuerdnenabled;
-        /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        /// </summary>
-        public readonly string? Xforwardedforclientcertclientverifyalias;
+        public readonly string? XForwardedForClientCertClientVerifyAlias;
         /// <summary>
         /// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
         /// </summary>
-        public readonly bool? Xforwardedforclientcertclientverifyenabled;
+        public readonly bool? XForwardedForClientCertClientVerifyEnabled;
         /// <summary>
-        /// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         /// </summary>
-        public readonly string? Xforwardedforclientcertfingerprintalias;
+        public readonly string? XForwardedForClientCertFingerPrintAlias;
         /// <summary>
-        /// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        /// Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
         /// </summary>
-        public readonly bool? Xforwardedforclientcertfingerprintenabled;
+        public readonly bool? XForwardedForClientCertFingerPrintEnabled;
         /// <summary>
-        /// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
         /// </summary>
-        public readonly string? Xforwardedforclientcertsubjectdnalias;
+        public readonly string? XForwardedForClientCertIssuerDnAlias;
         /// <summary>
-        /// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        /// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
         /// </summary>
-        public readonly bool? Xforwardedforclientcertsubjectdnenabled;
+        public readonly bool? XForwardedForClientCertIssuerDnEnabled;
+        /// <summary>
+        /// The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        /// </summary>
+        public readonly string? XForwardedForClientCertSubjectDnAlias;
+        /// <summary>
+        /// Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        /// </summary>
+        public readonly bool? XForwardedForClientCertSubjectDnEnabled;
         /// <summary>
         /// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         /// </summary>
-        public readonly bool? Xforwardedforclientsrcportenabled;
+        public readonly bool? XForwardedForClientSrcPortEnabled;
         /// <summary>
         /// Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
         /// </summary>
-        public readonly bool? Xforwardedforenabled;
+        public readonly bool? XForwardedForEnabled;
         /// <summary>
         /// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
         /// </summary>
-        public readonly bool? Xforwardedforprotoenabled;
+        public readonly bool? XForwardedForProtoEnabled;
         /// <summary>
         /// Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
         /// </summary>
-        public readonly bool? Xforwardedforslbidenabled;
+        public readonly bool? XForwardedForSlbIdEnabled;
         /// <summary>
         /// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
         /// </summary>
-        public readonly bool? Xforwardedforslbportenabled;
+        public readonly bool? XForwardedForSlbPortEnabled;
 
         [OutputConstructor]
-        private ListenerXforwardedForConfig(
-            string? xforwardedforclientcertIssuerdnalias,
+        private ListenerXForwardedForConfig(
+            string? xForwardedForClientCertClientVerifyAlias,
 
-            bool? xforwardedforclientcertIssuerdnenabled,
+            bool? xForwardedForClientCertClientVerifyEnabled,
 
-            string? xforwardedforclientcertclientverifyalias,
+            string? xForwardedForClientCertFingerPrintAlias,
 
-            bool? xforwardedforclientcertclientverifyenabled,
+            bool? xForwardedForClientCertFingerPrintEnabled,
 
-            string? xforwardedforclientcertfingerprintalias,
+            string? xForwardedForClientCertIssuerDnAlias,
 
-            bool? xforwardedforclientcertfingerprintenabled,
+            bool? xForwardedForClientCertIssuerDnEnabled,
 
-            string? xforwardedforclientcertsubjectdnalias,
+            string? xForwardedForClientCertSubjectDnAlias,
 
-            bool? xforwardedforclientcertsubjectdnenabled,
+            bool? xForwardedForClientCertSubjectDnEnabled,
 
-            bool? xforwardedforclientsrcportenabled,
+            bool? xForwardedForClientSrcPortEnabled,
 
-            bool? xforwardedforenabled,
+            bool? xForwardedForEnabled,
 
-            bool? xforwardedforprotoenabled,
+            bool? xForwardedForProtoEnabled,
 
-            bool? xforwardedforslbidenabled,
+            bool? xForwardedForSlbIdEnabled,
 
-            bool? xforwardedforslbportenabled)
+            bool? xForwardedForSlbPortEnabled)
         {
-            XforwardedforclientcertIssuerdnalias = xforwardedforclientcertIssuerdnalias;
-            XforwardedforclientcertIssuerdnenabled = xforwardedforclientcertIssuerdnenabled;
-            Xforwardedforclientcertclientverifyalias = xforwardedforclientcertclientverifyalias;
-            Xforwardedforclientcertclientverifyenabled = xforwardedforclientcertclientverifyenabled;
-            Xforwardedforclientcertfingerprintalias = xforwardedforclientcertfingerprintalias;
-            Xforwardedforclientcertfingerprintenabled = xforwardedforclientcertfingerprintenabled;
-            Xforwardedforclientcertsubjectdnalias = xforwardedforclientcertsubjectdnalias;
-            Xforwardedforclientcertsubjectdnenabled = xforwardedforclientcertsubjectdnenabled;
-            Xforwardedforclientsrcportenabled = xforwardedforclientsrcportenabled;
-            Xforwardedforenabled = xforwardedforenabled;
-            Xforwardedforprotoenabled = xforwardedforprotoenabled;
-            Xforwardedforslbidenabled = xforwardedforslbidenabled;
-            Xforwardedforslbportenabled = xforwardedforslbportenabled;
+            XForwardedForClientCertClientVerifyAlias = xForwardedForClientCertClientVerifyAlias;
+            XForwardedForClientCertClientVerifyEnabled = xForwardedForClientCertClientVerifyEnabled;
+            XForwardedForClientCertFingerPrintAlias = xForwardedForClientCertFingerPrintAlias;
+            XForwardedForClientCertFingerPrintEnabled = xForwardedForClientCertFingerPrintEnabled;
+            XForwardedForClientCertIssuerDnAlias = xForwardedForClientCertIssuerDnAlias;
+            XForwardedForClientCertIssuerDnEnabled = xForwardedForClientCertIssuerDnEnabled;
+            XForwardedForClientCertSubjectDnAlias = xForwardedForClientCertSubjectDnAlias;
+            XForwardedForClientCertSubjectDnEnabled = xForwardedForClientCertSubjectDnEnabled;
+            XForwardedForClientSrcPortEnabled = xForwardedForClientSrcPortEnabled;
+            XForwardedForEnabled = xForwardedForEnabled;
+            XForwardedForProtoEnabled = xForwardedForProtoEnabled;
+            XForwardedForSlbIdEnabled = xForwardedForSlbIdEnabled;
+            XForwardedForSlbPortEnabled = xForwardedForSlbPortEnabled;
         }
     }
 }

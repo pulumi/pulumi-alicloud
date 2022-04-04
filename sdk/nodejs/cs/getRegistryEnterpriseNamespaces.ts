@@ -45,7 +45,7 @@ export function getRegistryEnterpriseNamespaces(args: GetRegistryEnterpriseNames
  */
 export interface GetRegistryEnterpriseNamespacesArgs {
     /**
-     * A list of ids to filter results by namespace id.
+     * A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
      */
     ids?: string[];
     /**
@@ -68,7 +68,7 @@ export interface GetRegistryEnterpriseNamespacesResult {
      */
     readonly id: string;
     /**
-     * A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.
+     * A list of matched Container Registry Enterprise Edition namespaces. Each item formats as `<instance_id>:<namespace_name>`. Before 1.161.0, its element is a namespace uuid.
      */
     readonly ids: string[];
     /**
@@ -96,7 +96,7 @@ export function getRegistryEnterpriseNamespacesOutput(args: GetRegistryEnterpris
  */
 export interface GetRegistryEnterpriseNamespacesOutputArgs {
     /**
-     * A list of ids to filter results by namespace id.
+     * A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**

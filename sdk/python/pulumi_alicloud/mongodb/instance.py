@@ -28,15 +28,18 @@ class InstanceArgs:
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -57,18 +60,21 @@ class InstanceArgs:
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -97,12 +103,16 @@ class InstanceArgs:
             pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if replication_factor is not None:
             pulumi.set(__self__, "replication_factor", replication_factor)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_lists is not None:
@@ -115,6 +125,8 @@ class InstanceArgs:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -280,6 +292,18 @@ class InstanceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
     @pulumi.getter(name="orderType")
     def order_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -317,6 +341,18 @@ class InstanceArgs:
     @replication_factor.setter
     def replication_factor(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "replication_factor", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Resource Group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -391,6 +427,18 @@ class InstanceArgs:
         pulumi.set(self, "tde_status", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -433,11 +481,13 @@ class _InstanceState:
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replica_set_name: Optional[pulumi.Input[str]] = None,
                  replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -446,6 +496,7 @@ class _InstanceState:
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -466,6 +517,7 @@ class _InstanceState:
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
@@ -474,6 +526,7 @@ class _InstanceState:
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
         :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -482,6 +535,7 @@ class _InstanceState:
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -513,6 +567,8 @@ class _InstanceState:
             pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
         if period is not None:
@@ -523,6 +579,8 @@ class _InstanceState:
             pulumi.set(__self__, "replica_sets", replica_sets)
         if replication_factor is not None:
             pulumi.set(__self__, "replication_factor", replication_factor)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_period is not None:
             pulumi.set(__self__, "retention_period", retention_period)
         if security_group_id is not None:
@@ -539,6 +597,8 @@ class _InstanceState:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -704,6 +764,18 @@ class _InstanceState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
     @pulumi.getter(name="orderType")
     def order_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -765,6 +837,18 @@ class _InstanceState:
     @replication_factor.setter
     def replication_factor(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "replication_factor", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Resource Group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter(name="retentionPeriod")
@@ -863,6 +947,18 @@ class _InstanceState:
         pulumi.set(self, "tde_status", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -907,15 +1003,18 @@ class Instance(pulumi.CustomResource):
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -946,18 +1045,21 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -1006,15 +1108,18 @@ class Instance(pulumi.CustomResource):
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1048,15 +1153,18 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintain_end_time"] = maintain_end_time
             __props__.__dict__["maintain_start_time"] = maintain_start_time
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_type"] = network_type
             __props__.__dict__["order_type"] = order_type
             __props__.__dict__["period"] = period
             __props__.__dict__["replication_factor"] = replication_factor
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_ip_lists"] = security_ip_lists
             __props__.__dict__["ssl_action"] = ssl_action
             __props__.__dict__["storage_engine"] = storage_engine
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tde_status"] = tde_status
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["replica_set_name"] = None
@@ -1086,11 +1194,13 @@ class Instance(pulumi.CustomResource):
             maintain_end_time: Optional[pulumi.Input[str]] = None,
             maintain_start_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network_type: Optional[pulumi.Input[str]] = None,
             order_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             replica_set_name: Optional[pulumi.Input[str]] = None,
             replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]]] = None,
             replication_factor: Optional[pulumi.Input[int]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1099,6 +1209,7 @@ class Instance(pulumi.CustomResource):
             storage_engine: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -1124,6 +1235,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
@@ -1132,6 +1244,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
+        :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1140,6 +1253,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -1162,11 +1276,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintain_end_time"] = maintain_end_time
         __props__.__dict__["maintain_start_time"] = maintain_start_time
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_type"] = network_type
         __props__.__dict__["order_type"] = order_type
         __props__.__dict__["period"] = period
         __props__.__dict__["replica_set_name"] = replica_set_name
         __props__.__dict__["replica_sets"] = replica_sets
         __props__.__dict__["replication_factor"] = replication_factor
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retention_period"] = retention_period
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_ip_lists"] = security_ip_lists
@@ -1175,6 +1291,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["storage_engine"] = storage_engine
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tde_status"] = tde_status
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -1287,6 +1404,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> pulumi.Output[str]:
+        """
+        The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
     @pulumi.getter(name="orderType")
     def order_type(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1328,6 +1453,14 @@ class Instance(pulumi.CustomResource):
         Number of replica set nodes. Valid values: [1, 3, 5, 7]
         """
         return pulumi.get(self, "replication_factor")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Resource Group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="retentionPeriod")
@@ -1392,6 +1525,14 @@ class Instance(pulumi.CustomResource):
         The TDE(Transparent Data Encryption) status.
         """
         return pulumi.get(self, "tde_status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

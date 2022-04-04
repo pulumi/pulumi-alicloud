@@ -39,9 +39,9 @@ class RestoreJobArgs:
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
         :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
-        :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] include: The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] target_bucket: The target name of OSS bucket.
         :param pulumi.Input[str] target_create_time: The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
@@ -148,7 +148,7 @@ class RestoreJobArgs:
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[str]]:
         """
-        The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "exclude")
 
@@ -160,7 +160,7 @@ class RestoreJobArgs:
     @pulumi.getter
     def include(self) -> Optional[pulumi.Input[str]]:
         """
-        The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "include")
 
@@ -172,7 +172,7 @@ class RestoreJobArgs:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
         """
-        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         """
         return pulumi.get(self, "options")
 
@@ -326,9 +326,9 @@ class _RestoreJobState:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RestoreJob resources.
-        :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] include: The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -388,7 +388,7 @@ class _RestoreJobState:
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[str]]:
         """
-        The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "exclude")
 
@@ -400,7 +400,7 @@ class _RestoreJobState:
     @pulumi.getter
     def include(self) -> Optional[pulumi.Input[str]]:
         """
-        The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "include")
 
@@ -412,7 +412,7 @@ class _RestoreJobState:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
         """
-        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         """
         return pulumi.get(self, "options")
 
@@ -707,9 +707,9 @@ class RestoreJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] include: The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -909,9 +909,9 @@ class RestoreJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] include: The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -956,7 +956,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter
     def exclude(self) -> pulumi.Output[Optional[str]]:
         """
-        The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "exclude")
 
@@ -964,7 +964,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter
     def include(self) -> pulumi.Output[Optional[str]]:
         """
-        The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "include")
 
@@ -972,7 +972,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional[str]]:
         """
-        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
         """
         return pulumi.get(self, "options")
 

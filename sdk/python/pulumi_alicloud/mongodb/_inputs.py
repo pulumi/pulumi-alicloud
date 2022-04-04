@@ -31,10 +31,10 @@ class InstanceReplicaSetArgs:
         """
         :param pulumi.Input[str] connection_domain: The connection address of the node.
         :param pulumi.Input[str] connection_port: The connection port of the node.
-        :param pulumi.Input[str] network_type: The network type of the node. Valid values: `Classic`,`VPC`.
+        :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] replica_set_role: The role of the node. Valid values: `Primary`,`Secondary`.
         :param pulumi.Input[str] vpc_cloud_instance_id: VPC instance ID.
-        :param pulumi.Input[str] vpc_id: The private network ID of the node.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         """
         if connection_domain is not None:
@@ -80,7 +80,7 @@ class InstanceReplicaSetArgs:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The network type of the node. Valid values: `Classic`,`VPC`.
+        The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         """
         return pulumi.get(self, "network_type")
 
@@ -116,7 +116,7 @@ class InstanceReplicaSetArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The private network ID of the node.
+        The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         """
         return pulumi.get(self, "vpc_id")
 

@@ -5,9 +5,11 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .chain import *
 from .chart_namespace import *
 from .chart_repository import *
 from .endpoint_acl_policy import *
+from .get_chains import *
 from .get_chart_namespaces import *
 from .get_chart_repositories import *
 from .get_endpoint_acl_policies import *

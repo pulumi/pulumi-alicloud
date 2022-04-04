@@ -31,16 +31,16 @@ namespace Pulumi.AliCloud.Cen
         ///         var @this = Output.Create(AliCloud.Cen.GetRouteMaps.InvokeAsync(new AliCloud.Cen.GetRouteMapsArgs
         ///         {
         ///             CenId = "cen-ihdlgo87ai********",
-        ///             CenRegionId = "cn-hangzhou",
-        ///             DescriptionRegex = "datasource_test",
         ///             Ids = 
         ///             {
-        ///                 "cenrmap-bnh97kb3mn********",
+        ///                 "cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
         ///             },
-        ///             Status = "Active",
+        ///             DescriptionRegex = "datasource_test",
+        ///             CenRegionId = "cn-hangzhou",
         ///             TransmitDirection = "RegionIn",
+        ///             Status = "Active",
         ///         }));
-        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps?[0]?.Id);
+        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps?[0]?.RouteMapId);
         ///     }
         /// 
         ///     [Output("firstCenRouteMapId")]
@@ -73,16 +73,16 @@ namespace Pulumi.AliCloud.Cen
         ///         var @this = Output.Create(AliCloud.Cen.GetRouteMaps.InvokeAsync(new AliCloud.Cen.GetRouteMapsArgs
         ///         {
         ///             CenId = "cen-ihdlgo87ai********",
-        ///             CenRegionId = "cn-hangzhou",
-        ///             DescriptionRegex = "datasource_test",
         ///             Ids = 
         ///             {
-        ///                 "cenrmap-bnh97kb3mn********",
+        ///                 "cen-ihdlgo87ai:cenrmap-bnh97kb3mn********",
         ///             },
-        ///             Status = "Active",
+        ///             DescriptionRegex = "datasource_test",
+        ///             CenRegionId = "cn-hangzhou",
         ///             TransmitDirection = "RegionIn",
+        ///             Status = "Active",
         ///         }));
-        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps?[0]?.Id);
+        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps?[0]?.RouteMapId);
         ///     }
         /// 
         ///     [Output("firstCenRouteMapId")]
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Cen
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of CEN route map IDs.
+        /// A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`.
         /// </summary>
         public List<string> Ids
         {
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of CEN route map IDs.
+        /// A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`.
         /// </summary>
         public InputList<string> Ids
         {
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of CEN route map IDs.
+        /// A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, its element is `route_map_id`.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>

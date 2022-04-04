@@ -7067,12 +7067,16 @@ type GetRegistryEnterpriseNamespacesNamespace struct {
 	AutoCreate bool `pulumi:"autoCreate"`
 	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
 	DefaultVisibility string `pulumi:"defaultVisibility"`
-	// ID of Container Registry Enterprise Edition namespace.
+	// ID of Container Registry Enterprise Edition namespace. It formats as `<instance_id>:<namespace_name>`. Before 1.161.0, it is a namespace uuid.
 	Id string `pulumi:"id"`
 	// ID of Container Registry Enterprise Edition instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Name of Container Registry Enterprise Edition namespace.
 	Name string `pulumi:"name"`
+	// Container Registry Enterprise Edition namespace id. It is a uuid.
+	NamespaceId string `pulumi:"namespaceId"`
+	// Name of Container Registry Enterprise Edition namespace.
+	NamespaceName string `pulumi:"namespaceName"`
 }
 
 // GetRegistryEnterpriseNamespacesNamespaceInput is an input type that accepts GetRegistryEnterpriseNamespacesNamespaceArgs and GetRegistryEnterpriseNamespacesNamespaceOutput values.
@@ -7091,12 +7095,16 @@ type GetRegistryEnterpriseNamespacesNamespaceArgs struct {
 	AutoCreate pulumi.BoolInput `pulumi:"autoCreate"`
 	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
 	DefaultVisibility pulumi.StringInput `pulumi:"defaultVisibility"`
-	// ID of Container Registry Enterprise Edition namespace.
+	// ID of Container Registry Enterprise Edition namespace. It formats as `<instance_id>:<namespace_name>`. Before 1.161.0, it is a namespace uuid.
 	Id pulumi.StringInput `pulumi:"id"`
 	// ID of Container Registry Enterprise Edition instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Name of Container Registry Enterprise Edition namespace.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Container Registry Enterprise Edition namespace id. It is a uuid.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// Name of Container Registry Enterprise Edition namespace.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 }
 
 func (GetRegistryEnterpriseNamespacesNamespaceArgs) ElementType() reflect.Type {
@@ -7160,7 +7168,7 @@ func (o GetRegistryEnterpriseNamespacesNamespaceOutput) DefaultVisibility() pulu
 	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.DefaultVisibility }).(pulumi.StringOutput)
 }
 
-// ID of Container Registry Enterprise Edition namespace.
+// ID of Container Registry Enterprise Edition namespace. It formats as `<instance_id>:<namespace_name>`. Before 1.161.0, it is a namespace uuid.
 func (o GetRegistryEnterpriseNamespacesNamespaceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -7173,6 +7181,16 @@ func (o GetRegistryEnterpriseNamespacesNamespaceOutput) InstanceId() pulumi.Stri
 // Name of Container Registry Enterprise Edition namespace.
 func (o GetRegistryEnterpriseNamespacesNamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Container Registry Enterprise Edition namespace id. It is a uuid.
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition namespace.
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.NamespaceName }).(pulumi.StringOutput)
 }
 
 type GetRegistryEnterpriseNamespacesNamespaceArrayOutput struct{ *pulumi.OutputState }

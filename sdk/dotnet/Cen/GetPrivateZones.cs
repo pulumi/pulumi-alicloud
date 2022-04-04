@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Private Zones available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.88.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(AliCloud.Cen.GetPrivateZones.InvokeAsync(new AliCloud.Cen.GetPrivateZonesArgs
+        ///         {
+        ///             CenId = "cen-o40h17ll9w********",
+        ///             Ids = 
+        ///             {
+        ///                 "cn-hangzhou",
+        ///             },
+        ///             Status = "Active",
+        ///         }));
+        ///         this.FirstCenPrivateZonesId = @this.Apply(@this =&gt; @this.Zones?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenPrivateZonesId")]
+        ///     public Output&lt;string&gt; FirstCenPrivateZonesId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrivateZonesResult> InvokeAsync(GetPrivateZonesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesArgs(), options.WithDefaults());
@@ -23,6 +54,37 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Private Zones available to the user.
         /// 
         /// &gt; **NOTE:** Available in v1.88.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(AliCloud.Cen.GetPrivateZones.InvokeAsync(new AliCloud.Cen.GetPrivateZonesArgs
+        ///         {
+        ///             CenId = "cen-o40h17ll9w********",
+        ///             Ids = 
+        ///             {
+        ///                 "cn-hangzhou",
+        ///             },
+        ///             Status = "Active",
+        ///         }));
+        ///         this.FirstCenPrivateZonesId = @this.Apply(@this =&gt; @this.Zones?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenPrivateZonesId")]
+        ///     public Output&lt;string&gt; FirstCenPrivateZonesId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrivateZonesResult> Invoke(GetPrivateZonesInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesInvokeArgs(), options.WithDefaults());
@@ -47,7 +109,8 @@ namespace Pulumi.AliCloud.Cen
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of CEN private zone IDs.
+        /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`. 
+        /// **NOTE:** Before 1.162.0, each element same as `access_region_id`.
         /// * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>
         public List<string> Ids
@@ -88,7 +151,8 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of CEN private zone IDs.
+        /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`. 
+        /// **NOTE:** Before 1.162.0, each element same as `access_region_id`.
         /// * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>
         public InputList<string> Ids
@@ -128,7 +192,8 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of CEN private zone IDs.
+        /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
+        /// **NOTE:** Before 1.162.0, each element same as `access_region_id`.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;

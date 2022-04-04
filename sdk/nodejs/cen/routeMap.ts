@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  * CEN RouteMap can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+ *  $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
  * ```
  */
 export class RouteMap extends pulumi.CustomResource {
@@ -195,6 +195,9 @@ export class RouteMap extends pulumi.CustomResource {
      * The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
      */
     public readonly priority!: pulumi.Output<number>;
+    /**
+     * ID of the RouteMap. It is available in 1.161.0+.
+     */
     public /*out*/ readonly routeMapId!: pulumi.Output<string>;
     /**
      * A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
@@ -407,6 +410,9 @@ export interface RouteMapState {
      * The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
      */
     priority?: pulumi.Input<number>;
+    /**
+     * ID of the RouteMap. It is available in 1.161.0+.
+     */
     routeMapId?: pulumi.Input<string>;
     /**
      * A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].

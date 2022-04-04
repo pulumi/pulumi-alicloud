@@ -9,6 +9,7 @@ export * from "./enterpriseInstance";
 export * from "./enterpriseUser";
 export * from "./getEnterpriseInstances";
 export * from "./getEnterpriseUsers";
+export * from "./getUserTenants";
 
 // Import resources to register:
 import { EnterpriseInstance } from "./enterpriseInstance";

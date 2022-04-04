@@ -1477,6 +1477,14 @@ export namespace alb {
          */
         rewriteConfigs: outputs.alb.GetRulesRuleRuleActionRewriteConfig[];
         /**
+         * The Flow speed limit.
+         */
+        trafficLimitConfigs: outputs.alb.GetRulesRuleRuleActionTrafficLimitConfig[];
+        /**
+         * The Traffic mirroring.
+         */
+        trafficMirrorConfigs: outputs.alb.GetRulesRuleRuleActionTrafficMirrorConfig[];
+        /**
          * The type of the forwarding rule.
          */
         type: string;
@@ -1509,6 +1517,10 @@ export namespace alb {
          * The ID of the destination server group to which requests are forwarded.
          */
         serverGroupId: string;
+        /**
+         * The Weight of server group.
+         */
+        weight: number;
     }
 
     export interface GetRulesRuleRuleActionInsertHeaderConfig {
@@ -1568,6 +1580,38 @@ export namespace alb {
         query: string;
     }
 
+    export interface GetRulesRuleRuleActionTrafficLimitConfig {
+        /**
+         * The Number of requests per second.
+         */
+        qps: number;
+    }
+
+    export interface GetRulesRuleRuleActionTrafficMirrorConfig {
+        /**
+         * The Traffic is mirrored to the server group.
+         */
+        mirrorGroupConfigs: outputs.alb.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig[];
+        /**
+         * The Mirror target type.
+         */
+        targetType: string;
+    }
+
+    export interface GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples: outputs.alb.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple[];
+    }
+
+    export interface GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId: string;
+    }
+
     export interface GetRulesRuleRuleCondition {
         /**
          * The configuration of the cookie.
@@ -1594,6 +1638,10 @@ export namespace alb {
          */
         queryStringConfigs: outputs.alb.GetRulesRuleRuleConditionQueryStringConfig[];
         /**
+         * The Based on source IP traffic matching.
+         */
+        sourceIpConfigs: outputs.alb.GetRulesRuleRuleConditionSourceIpConfig[];
+        /**
          * The type of the forwarding rule.
          */
         type: string;
@@ -1601,7 +1649,7 @@ export namespace alb {
 
     export interface GetRulesRuleRuleConditionCookieConfig {
         /**
-         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         * Add one or more IP addresses or IP address segments.
          */
         values: outputs.alb.GetRulesRuleRuleConditionCookieConfigValue[];
     }
@@ -1623,35 +1671,35 @@ export namespace alb {
          */
         key: string;
         /**
-         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         * Add one or more IP addresses or IP address segments.
          */
         values: string[];
     }
 
     export interface GetRulesRuleRuleConditionHostConfig {
         /**
-         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         * Add one or more IP addresses or IP address segments.
          */
         values: string[];
     }
 
     export interface GetRulesRuleRuleConditionMethodConfig {
         /**
-         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         * Add one or more IP addresses or IP address segments.
          */
         values: string[];
     }
 
     export interface GetRulesRuleRuleConditionPathConfig {
         /**
-         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         * Add one or more IP addresses or IP address segments.
          */
         values: string[];
     }
 
     export interface GetRulesRuleRuleConditionQueryStringConfig {
         /**
-         * The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+         * Add one or more IP addresses or IP address segments.
          */
         values: outputs.alb.GetRulesRuleRuleConditionQueryStringConfigValue[];
     }
@@ -1665,6 +1713,13 @@ export namespace alb {
          * The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
          */
         value: string;
+    }
+
+    export interface GetRulesRuleRuleConditionSourceIpConfig {
+        /**
+         * Add one or more IP addresses or IP address segments.
+         */
+        values: string[];
     }
 
     export interface GetSecurityPoliciesPolicy {
@@ -1895,7 +1950,7 @@ export namespace alb {
         status: string;
     }
 
-    export interface ListenerCertificate {
+    export interface ListenerCertificates {
         /**
          * The ID of the Certificate.
          */
@@ -1938,59 +1993,59 @@ export namespace alb {
         quicUpgradeEnabled: boolean;
     }
 
-    export interface ListenerXforwardedForConfig {
+    export interface ListenerXForwardedForConfig {
         /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+         * The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
          */
-        xforwardedforclientcertIssuerdnalias?: string;
-        /**
-         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-         */
-        xforwardedforclientcertIssuerdnenabled: boolean;
-        /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-         */
-        xforwardedforclientcertclientverifyalias?: string;
+        xForwardedForClientCertClientVerifyAlias?: string;
         /**
          * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
          */
-        xforwardedforclientcertclientverifyenabled: boolean;
+        xForwardedForClientCertClientVerifyEnabled: boolean;
         /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
          */
-        xforwardedforclientcertfingerprintalias?: string;
+        xForwardedForClientCertFingerPrintAlias?: string;
         /**
-         * Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         * Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
          */
-        xforwardedforclientcertfingerprintenabled: boolean;
+        xForwardedForClientCertFingerPrintEnabled: boolean;
         /**
-         * The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
          */
-        xforwardedforclientcertsubjectdnalias?: string;
+        xForwardedForClientCertIssuerDnAlias?: string;
         /**
-         * Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
          */
-        xforwardedforclientcertsubjectdnenabled: boolean;
+        xForwardedForClientCertIssuerDnEnabled: boolean;
+        /**
+         * The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xForwardedForClientCertSubjectDnAlias?: string;
+        /**
+         * Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         */
+        xForwardedForClientCertSubjectDnEnabled: boolean;
         /**
          * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
          */
-        xforwardedforclientsrcportenabled: boolean;
+        xForwardedForClientSrcPortEnabled: boolean;
         /**
          * Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
          */
-        xforwardedforenabled: boolean;
+        xForwardedForEnabled: boolean;
         /**
          * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
          */
-        xforwardedforprotoenabled: boolean;
+        xForwardedForProtoEnabled: boolean;
         /**
          * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
          */
-        xforwardedforslbidenabled: boolean;
+        xForwardedForSlbIdEnabled: boolean;
         /**
          * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
          */
-        xforwardedforslbportenabled: boolean;
+        xForwardedForSlbPortEnabled: boolean;
     }
 
     export interface LoadBalancerAccessLogConfig {
@@ -2059,7 +2114,15 @@ export namespace alb {
          */
         rewriteConfig?: outputs.alb.RuleRuleActionRewriteConfig;
         /**
-         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * The Flow speed limit. See the following `Block trafficLimitConfig`.
+         */
+        trafficLimitConfig?: outputs.alb.RuleRuleActionTrafficLimitConfig;
+        /**
+         * The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+         */
+        trafficMirrorConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfig;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          */
         type: string;
     }
@@ -2091,6 +2154,10 @@ export namespace alb {
          * The ID of the destination server group to which requests are forwarded.
          */
         serverGroupId: string;
+        /**
+         * The Weight of server group.
+         */
+        weight: number;
     }
 
     export interface RuleRuleActionInsertHeaderConfig {
@@ -2150,6 +2217,38 @@ export namespace alb {
         query?: string;
     }
 
+    export interface RuleRuleActionTrafficLimitConfig {
+        /**
+         * The Number of requests per second. Value range: 1~100000.
+         */
+        qps?: number;
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfig {
+        /**
+         * The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+         */
+        mirrorGroupConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig;
+        /**
+         * The Mirror target type.
+         */
+        targetType?: string;
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples?: outputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple[];
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId?: string;
+    }
+
     export interface RuleRuleCondition {
         /**
          * The configuration of the cookie. See the following `Block cookieConfig`.
@@ -2176,7 +2275,11 @@ export namespace alb {
          */
         queryStringConfig?: outputs.alb.RuleRuleConditionQueryStringConfig;
         /**
-         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+         */
+        sourceIpConfig?: outputs.alb.RuleRuleConditionSourceIpConfig;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          */
         type: string;
     }
@@ -2247,6 +2350,13 @@ export namespace alb {
          * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
          */
         value?: string;
+    }
+
+    export interface RuleRuleConditionSourceIpConfig {
+        /**
+         * The query string.
+         */
+        values?: string[];
     }
 
     export interface ServerGroupHealthCheckConfig {
@@ -4559,6 +4669,10 @@ export namespace cen {
          */
         hostVpcId: string;
         /**
+         * The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
+         */
+        id: string;
+        /**
          * The DNS IP addresses of the PrivateZone service.
          */
         privateZoneDnsServers: string;
@@ -4699,7 +4813,7 @@ export namespace cen {
          */
         destinationRouteTableIds: string[];
         /**
-         * The ID of the route map.
+         * The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `routeMapId`.
          */
         id: string;
         /**
@@ -7028,7 +7142,7 @@ export namespace cms {
          */
         comparisonOperator?: string;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: string;
         /**
@@ -7047,7 +7161,7 @@ export namespace cms {
          */
         comparisonOperator?: string;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: string;
         /**
@@ -7066,7 +7180,7 @@ export namespace cms {
          */
         comparisonOperator?: string;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: string;
         /**
@@ -7489,13 +7603,28 @@ export namespace cms {
     }
 
     export interface GetMonitorGroupInstancesInstance {
+        /**
+         * Instance information added to the Cms Group.
+         */
         instances: outputs.cms.GetMonitorGroupInstancesInstanceInstance[];
     }
 
     export interface GetMonitorGroupInstancesInstanceInstance {
+        /**
+         * The category of instance.
+         */
         category: string;
+        /**
+         * The id of instance.
+         */
         instanceId: string;
+        /**
+         * The name of instance.
+         */
         instanceName: string;
+        /**
+         * The region id of instance.
+         */
         regionId: string;
     }
 
@@ -7869,6 +7998,203 @@ export namespace config {
 }
 
 export namespace cr {
+    export interface ChainChainConfig {
+        /**
+         * Each node in the delivery chain.
+         */
+        nodes?: outputs.cr.ChainChainConfigNode[];
+        /**
+         * Execution sequence relationship between delivery chain nodes.
+         */
+        routers?: outputs.cr.ChainChainConfigRouter[];
+    }
+
+    export interface ChainChainConfigNode {
+        /**
+         * Whether to enable the delivery chain node. Valid values: `true`, `false`.
+         */
+        enable?: boolean;
+        /**
+         * The configuration of delivery chain node.
+         */
+        nodeConfigs?: outputs.cr.ChainChainConfigNodeNodeConfig[];
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: string;
+    }
+
+    export interface ChainChainConfigNodeNodeConfig {
+        /**
+         * Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+         */
+        denyPolicies?: outputs.cr.ChainChainConfigNodeNodeConfigDenyPolicy[];
+    }
+
+    export interface ChainChainConfigNodeNodeConfigDenyPolicy {
+        /**
+         * The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+         */
+        action?: string;
+        /**
+         * The count of scanning vulnerabilities that triggers blocking.
+         */
+        issueCount?: string;
+        /**
+         * The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+         */
+        issueLevel?: string;
+        /**
+         * The logic of trigger blocking. Valid values: `AND`, `OR`.
+         */
+        logic?: string;
+    }
+
+    export interface ChainChainConfigRouter {
+        /**
+         * Source node.
+         */
+        froms?: outputs.cr.ChainChainConfigRouterFrom[];
+        /**
+         * Destination node.
+         */
+        tos?: outputs.cr.ChainChainConfigRouterTo[];
+    }
+
+    export interface ChainChainConfigRouterFrom {
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: string;
+    }
+
+    export interface ChainChainConfigRouterTo {
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: string;
+    }
+
+    export interface GetChainsChain {
+        /**
+         * The configuration of delivery chain.
+         */
+        chainConfigs: outputs.cr.GetChainsChainChainConfig[];
+        /**
+         * The ID of delivery chain.
+         */
+        chainId: string;
+        /**
+         * The name of delivery chain.
+         */
+        chainName: string;
+        /**
+         * The creation time of delivery chain.
+         */
+        createTime: string;
+        /**
+         * The description of delivery chain.
+         */
+        description: string;
+        /**
+         * The resource ID of the delivery chain. The value formats as `<instance_id>:<chain_id>`.
+         */
+        id: string;
+        /**
+         * The ID of CR Enterprise Edition instance.
+         */
+        instanceId: string;
+        /**
+         * The modification time of delivery chain description.
+         */
+        modifiedTime: string;
+        /**
+         * Delivery chain scope ID.
+         */
+        scopeId: string;
+        /**
+         * Delivery chain scope type.
+         */
+        scopeType: string;
+    }
+
+    export interface GetChainsChainChainConfig {
+        /**
+         * Each node in the delivery chain.
+         */
+        nodes: outputs.cr.GetChainsChainChainConfigNode[];
+        /**
+         * Execution sequence relationship between delivery chain nodes.
+         */
+        routers: outputs.cr.GetChainsChainChainConfigRouter[];
+    }
+
+    export interface GetChainsChainChainConfigNode {
+        /**
+         * Whether to enable the delivery chain node. Valid values: `true`, `false`.
+         */
+        enable: boolean;
+        /**
+         * The configuration of delivery chain node.
+         */
+        nodeConfigs: outputs.cr.GetChainsChainChainConfigNodeNodeConfig[];
+        /**
+         * The name of delivery chain node.
+         */
+        nodeName: string;
+    }
+
+    export interface GetChainsChainChainConfigNodeNodeConfig {
+        /**
+         * Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+         */
+        denyPolicies: outputs.cr.GetChainsChainChainConfigNodeNodeConfigDenyPolicy[];
+    }
+
+    export interface GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
+        /**
+         * The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+         */
+        action?: string;
+        /**
+         * The count of scanning vulnerabilities that triggers blocking.
+         */
+        issueCount: string;
+        /**
+         * The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+         */
+        issueLevel: string;
+        /**
+         * The logic of trigger blocking. Valid values: `AND`, `OR`.
+         */
+        logic: string;
+    }
+
+    export interface GetChainsChainChainConfigRouter {
+        /**
+         * Source node.
+         */
+        froms: outputs.cr.GetChainsChainChainConfigRouterFrom[];
+        /**
+         * Destination node.
+         */
+        tos: outputs.cr.GetChainsChainChainConfigRouterTo[];
+    }
+
+    export interface GetChainsChainChainConfigRouterFrom {
+        /**
+         * The name of delivery chain node.
+         */
+        nodeName: string;
+    }
+
+    export interface GetChainsChainChainConfigRouterTo {
+        /**
+         * The name of delivery chain node.
+         */
+        nodeName: string;
+    }
+
     export interface GetChartNamespacesNamespace {
         /**
          * Indicates whether a repository is automatically created when an image is pushed to the namespace.
@@ -8056,6 +8382,7 @@ export namespace cr {
          */
         vpc: string;
     }
+
 }
 
 export namespace cs {
@@ -8604,7 +8931,7 @@ export namespace cs {
          */
         defaultVisibility: string;
         /**
-         * ID of Container Registry Enterprise Edition namespace.
+         * ID of Container Registry Enterprise Edition namespace. It formats as `<instance_id>:<namespace_name>`. Before 1.161.0, it is a namespace uuid.
          */
         id: string;
         /**
@@ -8615,6 +8942,14 @@ export namespace cs {
          * Name of Container Registry Enterprise Edition namespace.
          */
         name: string;
+        /**
+         * Container Registry Enterprise Edition namespace id. It is a uuid.
+         */
+        namespaceId: string;
+        /**
+         * Name of Container Registry Enterprise Edition namespace.
+         */
+        namespaceName: string;
     }
 
     export interface GetRegistryEnterpriseReposRepo {
@@ -10472,6 +10807,25 @@ export namespace dms {
          * The nickname of the user.
          */
         userName: string;
+    }
+
+    export interface GetUserTenantsTenant {
+        /**
+         * The user tenant id.
+         */
+        id: string;
+        /**
+         * The status of the user tenant.
+         */
+        status: string;
+        /**
+         * The name of the user tenant.
+         */
+        tenantName: string;
+        /**
+         * The user tenant id. Same as id.
+         */
+        tid: string;
     }
 
 }
@@ -20561,7 +20915,7 @@ export namespace hbr {
         searchEnabled: boolean;
         sourceTypes: string[];
         /**
-         * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+         * The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
          */
         status: string;
         /**
@@ -21408,6 +21762,47 @@ export namespace lindorm {
 }
 
 export namespace log {
+    export interface AlertAnnotation {
+        /**
+         * Annotations's key for new alert.
+         */
+        key: string;
+        /**
+         * Annotations's value for new alert.
+         */
+        value: string;
+    }
+
+    export interface AlertGroupConfiguration {
+        fields?: string[];
+        /**
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         */
+        type: string;
+    }
+
+    export interface AlertJoinConfiguration {
+        /**
+         * Join condition.
+         */
+        condition: string;
+        /**
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         */
+        type: string;
+    }
+
+    export interface AlertLabel {
+        /**
+         * Annotations's key for new alert.
+         */
+        key: string;
+        /**
+         * Annotations's value for new alert.
+         */
+        value: string;
+    }
+
     export interface AlertNotificationList {
         /**
          * Notice content of alarm.
@@ -21426,36 +21821,88 @@ export namespace log {
          */
         serviceUri?: string;
         /**
-         * Notification type. support Email, SMS, DingTalk, MessageCenter.
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
          */
         type: string;
     }
 
+    export interface AlertPolicyConfiguration {
+        /**
+         * Action Policy Id.
+         */
+        actionPolicyId?: string;
+        /**
+         * Alert Policy Id.
+         */
+        alertPolicyId: string;
+        /**
+         * Repeat interval used by alert policy, 1h, 1m.e.g.
+         */
+        repeatInterval: string;
+    }
+
     export interface AlertQueryList {
         /**
-         * chart title
+         * Chart title, optional from 1.161.0+.
          */
-        chartTitle: string;
+        chartTitle?: string;
         /**
-         * end time. example: 20s.
+         * Query dashboard id.
+         */
+        dashboardId?: string;
+        /**
+         * End time. example: 20s.
          */
         end: string;
         /**
-         * Query logstore
+         * Query logstore, use store for new alert, Deprecated from 1.161.0+.
+         *
+         * @deprecated Deprecated from 1.161.0+, use store
          */
-        logstore: string;
+        logstore?: string;
         /**
-         * query corresponding to chart. example: * AND aliyun.
+         * Query project.
+         */
+        project?: string;
+        /**
+         * Query corresponding to chart. example: * AND aliyun.
          */
         query: string;
         /**
-         * begin time. example: -60s.
+         * Query project region.
+         */
+        region?: string;
+        /**
+         * Query project store's ARN.
+         */
+        roleArn?: string;
+        /**
+         * Begin time. example: -60s.
          */
         start: string;
+        /**
+         * Query store for new alert.
+         */
+        store?: string;
+        /**
+         * Query store type for new alert, including log,metric,meta.
+         */
+        storeType?: string;
         /**
          * default Custom. No need to configure this parameter.
          */
         timeSpanType?: string;
+    }
+
+    export interface AlertSeverityConfiguration {
+        /**
+         * Severity when this condition is met.
+         */
+        evalCondition: {[key: string]: string};
+        /**
+         * Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+         */
+        severity: number;
     }
 
     export interface EtlEtlSink {
@@ -21648,12 +22095,21 @@ export namespace log {
     }
 
     export interface StoreShard {
+        /**
+         * The begin value of the shard range(MD5), included in the shard range.
+         */
         beginKey: string;
+        /**
+         * The end value of the shard range(MD5), not included in shard range.
+         */
         endKey: string;
         /**
-         * The ID of the log project. It formats of `<project>:<name>`.
+         * The ID of the shard.
          */
         id: number;
+        /**
+         * Shard status, only two status of `readwrite` and `readonly`.
+         */
         status: string;
     }
 
@@ -22334,7 +22790,7 @@ export namespace mongodb {
          */
         connectionPort: string;
         /**
-         * The network type of the node. Valid values: `Classic`,`VPC`.
+         * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
          */
         networkType: string;
         /**
@@ -22346,7 +22802,7 @@ export namespace mongodb {
          */
         vpcCloudInstanceId: string;
         /**
-         * The private network ID of the node.
+         * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
          */
         vpcId: string;
         /**
@@ -22754,6 +23210,33 @@ export namespace mse {
          * The type of the gateway slb.
          */
         type: string;
+    }
+
+    export interface GetZnodesZnode {
+        /**
+         * The ID of the Cluster.
+         */
+        clusterId: string;
+        /**
+         * The Node data.
+         */
+        data: string;
+        /**
+         * Node list information, the value is as follows:
+         */
+        dir: boolean;
+        /**
+         * The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+         */
+        id: string;
+        /**
+         * The Node path.
+         */
+        path: string;
+        /**
+         * The Node name.
+         */
+        znodeName: string;
     }
 
 }
@@ -24333,6 +24816,57 @@ export namespace oss {
 }
 
 export namespace ots {
+    export interface BucketReplicationDestination {
+        /**
+         * The destination bucket to which the data is replicated.
+         */
+        bucket: string;
+        location: string;
+        /**
+         * The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+         */
+        transferType?: string;
+    }
+
+    export interface BucketReplicationEncryptionConfiguration {
+        /**
+         * The CMK ID used in SSE-KMS.
+         */
+        replicaKmsKeyId: string;
+    }
+
+    export interface BucketReplicationPrefixSet {
+        /**
+         * The list of object key name prefix identifying one or more objects to which the rule applies.
+         */
+        prefixes: string[];
+    }
+
+    export interface BucketReplicationProgress {
+        /**
+         * The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
+         */
+        historicalObject: string;
+        /**
+         * The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+         */
+        newObject: string;
+    }
+
+    export interface BucketReplicationSourceSelectionCriteria {
+        /**
+         * Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+         */
+        sseKmsEncryptedObjects?: outputs.ots.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects;
+    }
+
+    export interface BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
+        /**
+         * Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+         */
+        status?: string;
+    }
+
     export interface GetInstanceAttachmentsAttachment {
         /**
          * The domain of the instance attachment.
@@ -27527,44 +28061,6 @@ export namespace ros {
 }
 
 export namespace sae {
-    export interface ApplicationInternet {
-        /**
-         * SSL certificate. `httpsCertId` is required when HTTPS is selected
-         */
-        httpsCertId?: string;
-        /**
-         * SLB Port.
-         */
-        port?: number;
-        /**
-         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-         */
-        protocol?: string;
-        /**
-         * Container port.
-         */
-        targetPort?: number;
-    }
-
-    export interface ApplicationIntranet {
-        /**
-         * SSL certificate. `httpsCertId` is required when HTTPS is selected
-         */
-        httpsCertId?: string;
-        /**
-         * SLB Port.
-         */
-        port?: number;
-        /**
-         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-         */
-        protocol?: string;
-        /**
-         * Container port.
-         */
-        targetPort?: number;
-    }
-
     export interface ApplicationScalingRuleScalingRuleMetric {
         /**
          * Maximum number of instances applied.
@@ -27960,9 +28456,9 @@ export namespace sae {
          */
         minReadyInstances: number;
         /**
-         * Mount description.
+         * Mount description information. The details see Block mount_desc.
          */
-        mountDesc: string;
+        mountDescs: outputs.sae.GetApplicationsApplicationMountDesc[];
         /**
          * Mount point of NAS in application VPC.
          */
@@ -28071,6 +28567,17 @@ export namespace sae {
          * The version of tomcat that the deployment package depends on. Image type applications are not supported.
          */
         webContainer: string;
+    }
+
+    export interface GetApplicationsApplicationMountDesc {
+        /**
+         * Container mount path.
+         */
+        mountPath: string;
+        /**
+         * NAS relative file directory.
+         */
+        nasPath: string;
     }
 
     export interface GetConfigMapsMap {
@@ -28425,7 +28932,6 @@ export namespace sae {
          */
         path: string;
     }
-
 }
 
 export namespace sag {
@@ -29145,6 +29651,21 @@ export namespace servicemesh {
         vswitcheLists: string[];
     }
 
+    export interface GetVersionsVersion {
+        /**
+         * The edition of the ASM instance.
+         */
+        edition: string;
+        /**
+         * The ASM version id. It formats as `<edition>:<version>`.
+         */
+        id: string;
+        /**
+         * The AMS version.
+         */
+        version: string;
+    }
+
     export interface ServiceMeshLoadBalancer {
         apiServerLoadbalancerId: string;
         /**
@@ -29328,7 +29849,6 @@ export namespace servicemesh {
          */
         vswitcheList: string;
     }
-
 }
 
 export namespace simpleapplicationserver {
@@ -29356,6 +29876,10 @@ export namespace simpleapplicationserver {
          * * `custom`: custom image.
          */
         imageType: string;
+        /**
+         * The platform of Plan supported.
+         */
+        platform: string;
     }
 
     export interface GetInstancesInstance {
@@ -29539,6 +30063,10 @@ export namespace simpleapplicationserver {
          * The ID of the Instance Plan.
          */
         planId: string;
+        /**
+         * The platform of Plan supported.
+         */
+        supportPlatform: string;
     }
 
     export interface GetServerSnapshotsSnapshot {
@@ -29584,7 +30112,7 @@ export namespace simpleapplicationserver {
 
 export namespace slb {
     export interface AclEntryList {
-        comment?: string;
+        comment: string;
         entry: string;
     }
 
@@ -31175,6 +31703,131 @@ export namespace vpc {
         vswitchId: string;
     }
 
+    export interface GetIpsecServersServer {
+        /**
+         * The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
+         */
+        clientIpPool: string;
+        /**
+         * The creation time of the IPsec server. T represents the delimiter, and Z represents UTC, which is World Standard Time.
+         */
+        createTime: string;
+        /**
+         * Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
+         */
+        effectImmediately: boolean;
+        /**
+         * The ID of the Ipsec Server.
+         */
+        id: string;
+        /**
+         * The ID of the Identity as a Service (IDaaS) instance.
+         */
+        idaasInstanceId: string;
+        /**
+         * The configurations of Phase 1 negotiations.
+         */
+        ikeConfigs: outputs.vpc.GetIpsecServersServerIkeConfig[];
+        /**
+         * The public IP address of the VPN gateway.
+         */
+        internetIp: string;
+        /**
+         * The configuration of Phase 2 negotiations.
+         */
+        ipsecConfigs: outputs.vpc.GetIpsecServersServerIpsecConfig[];
+        /**
+         * The ID of the IPsec server.
+         */
+        ipsecServerId: string;
+        /**
+         * The name of the IPsec server.
+         */
+        ipsecServerName: string;
+        /**
+         * Local network segment: the network segment on The VPC side that needs to be interconnected with the client network segment.
+         */
+        localSubnet: string;
+        /**
+         * The number of SSL connections of the VPN gateway. SSL-VPN the number of SSL connections shared with the IPsec server. For example, if the number of SSL connections is 5 and you have three SSL clients connected to the SSL-VPN, you can also use two clients to connect to the IPsec server.
+         */
+        maxConnections: number;
+        /**
+         * Whether the two-factor authentication function has been turned on.
+         */
+        multiFactorAuthEnabled: boolean;
+        /**
+         * The number of clients that have connected to the IPsec server.
+         */
+        onlineClientCount: number;
+        /**
+         * The pre-shared key.
+         */
+        psk: string;
+        /**
+         * Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+         */
+        pskEnabled: boolean;
+        /**
+         * The ID of the VPN gateway.
+         */
+        vpnGatewayId: string;
+    }
+
+    export interface GetIpsecServersServerIkeConfig {
+        /**
+         * The IKE authentication algorithm.
+         */
+        ikeAuthAlg: string;
+        /**
+         * The IKE encryption algorithm.
+         */
+        ikeEncAlg: string;
+        /**
+         * The IKE lifetime. Unit: seconds.
+         */
+        ikeLifetime: number;
+        /**
+         * The IKE negotiation mode.
+         */
+        ikeMode: string;
+        /**
+         * Diffie-Hellman key exchange algorithm.
+         */
+        ikePfs: string;
+        /**
+         * The IKE version.
+         */
+        ikeVersion: string;
+        /**
+         * IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
+         */
+        localId: string;
+        /**
+         * The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
+         */
+        remoteId: string;
+    }
+
+    export interface GetIpsecServersServerIpsecConfig {
+        /**
+         * IPsec authentication algorithm.
+         */
+        ipsecAuthAlg: string;
+        /**
+         * IPsec encryption algorithm.
+         */
+        ipsecEncAlg: string;
+        /**
+         * IPsec survival time. Unit: seconds.
+         */
+        ipsecLifetime: number;
+        /**
+         * Diffie-Hellman key exchange algorithm.
+         */
+        ipsecPfs: string;
+    }
+
     export interface GetIpv6AddressesAddress {
         /**
          * The ID of the instance that is assigned the IPv6 address.
@@ -31697,6 +32350,41 @@ export namespace vpc {
          * List of VSwitch IDs in the specified VPC
          */
         vswitchIds: string[];
+    }
+
+    export interface GetPbrRouteEntriesEntry {
+        /**
+         * The creation time of the VPN Pbr Route Entry.
+         */
+        createTime: string;
+        /**
+         * The id of the vpn pbr route entry. The value formats as `<vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>`.
+         */
+        id: string;
+        /**
+         * The next hop of the policy-based route.
+         */
+        nextHop: string;
+        /**
+         * The destination CIDR block of the policy-based route.
+         */
+        routeDest: string;
+        /**
+         * The source CIDR block of the policy-based route.
+         */
+        routeSource: string;
+        /**
+         * The status of the VPN Pbr Route Entry.
+         */
+        status: string;
+        /**
+         * The ID of the VPN gateway.
+         */
+        vpnGatewayId: string;
+        /**
+         * The weight of the policy-based route. Valid values: 0 and 100.
+         */
+        weight: number;
     }
 
     export interface GetRouteEntriesEntry {
@@ -32393,6 +33081,48 @@ export namespace vpc {
 }
 
 export namespace vpn {
+    export interface ConnectionBgpConfig {
+        /**
+         * Whether to enable BGP.
+         */
+        enable: boolean;
+        /**
+         * The ASN on the Alibaba Cloud side.
+         */
+        localAsn: string;
+        /**
+         * The BGP IP address on the Alibaba Cloud side.
+         */
+        localBgpIp: string;
+        /**
+         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         */
+        tunnelCidr: string;
+    }
+
+    export interface ConnectionHealthCheckConfig {
+        /**
+         * The destination IP address.
+         */
+        dip: string;
+        /**
+         * Whether to enable BGP.
+         */
+        enable: boolean;
+        /**
+         * The interval between two consecutive health checks. Unit: seconds.
+         */
+        interval: number;
+        /**
+         * The maximum number of health check retries.
+         */
+        retry: number;
+        /**
+         * The source IP address.
+         */
+        sip: string;
+    }
+
     export interface ConnectionIkeConfig {
         /**
          * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
@@ -32587,7 +33317,7 @@ export namespace vpn {
          */
         description: string;
         /**
-         * Whether the ipsec function is enabled.
+         * Indicates whether the IPsec-VPN feature is enabled.
          */
         enableIpsec: string;
         /**
@@ -32630,6 +33360,60 @@ export namespace vpn {
          * Use the VPC ID as the search key.
          */
         vpcId: string;
+    }
+
+    export interface IpsecServerIkeConfig {
+        /**
+         * The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+         */
+        ikeAuthAlg?: string;
+        /**
+         * The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+         */
+        ikeEncAlg?: string;
+        /**
+         * IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+         */
+        ikeLifetime?: number;
+        /**
+         * The IKE negotiation mode. Default value: `main`.
+         */
+        ikeMode?: string;
+        /**
+         * The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+         */
+        ikePfs?: string;
+        /**
+         * The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+         */
+        ikeVersion?: string;
+        /**
+         * The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+         */
+        localId?: string;
+        /**
+         * The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+         */
+        remoteId?: string;
+    }
+
+    export interface IpsecServerIpsecConfig {
+        /**
+         * The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
+         */
+        ipsecAuthAlg?: string;
+        /**
+         * The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
+         */
+        ipsecEncAlg?: string;
+        /**
+         * The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+         */
+        ipsecLifetime?: number;
+        /**
+         * Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
+         */
+        ipsecPfs?: string;
     }
 
 }

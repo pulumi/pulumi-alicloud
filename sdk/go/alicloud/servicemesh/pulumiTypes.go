@@ -3794,6 +3794,121 @@ func (o GetServiceMeshesMeshNetworkArrayOutput) Index(i pulumi.IntInput) GetServ
 	}).(GetServiceMeshesMeshNetworkOutput)
 }
 
+type GetVersionsVersion struct {
+	// The edition of the ASM instance.
+	Edition string `pulumi:"edition"`
+	// The ASM version id. It formats as `<edition>:<version>`.
+	Id string `pulumi:"id"`
+	// The AMS version.
+	Version string `pulumi:"version"`
+}
+
+// GetVersionsVersionInput is an input type that accepts GetVersionsVersionArgs and GetVersionsVersionOutput values.
+// You can construct a concrete instance of `GetVersionsVersionInput` via:
+//
+//          GetVersionsVersionArgs{...}
+type GetVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetVersionsVersionOutput() GetVersionsVersionOutput
+	ToGetVersionsVersionOutputWithContext(context.Context) GetVersionsVersionOutput
+}
+
+type GetVersionsVersionArgs struct {
+	// The edition of the ASM instance.
+	Edition pulumi.StringInput `pulumi:"edition"`
+	// The ASM version id. It formats as `<edition>:<version>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The AMS version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionsVersion)(nil)).Elem()
+}
+
+func (i GetVersionsVersionArgs) ToGetVersionsVersionOutput() GetVersionsVersionOutput {
+	return i.ToGetVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetVersionsVersionArgs) ToGetVersionsVersionOutputWithContext(ctx context.Context) GetVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsVersionOutput)
+}
+
+// GetVersionsVersionArrayInput is an input type that accepts GetVersionsVersionArray and GetVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetVersionsVersionArrayInput` via:
+//
+//          GetVersionsVersionArray{ GetVersionsVersionArgs{...} }
+type GetVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetVersionsVersionArrayOutput() GetVersionsVersionArrayOutput
+	ToGetVersionsVersionArrayOutputWithContext(context.Context) GetVersionsVersionArrayOutput
+}
+
+type GetVersionsVersionArray []GetVersionsVersionInput
+
+func (GetVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionsVersion)(nil)).Elem()
+}
+
+func (i GetVersionsVersionArray) ToGetVersionsVersionArrayOutput() GetVersionsVersionArrayOutput {
+	return i.ToGetVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetVersionsVersionArray) ToGetVersionsVersionArrayOutputWithContext(ctx context.Context) GetVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsVersionArrayOutput)
+}
+
+type GetVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionsVersion)(nil)).Elem()
+}
+
+func (o GetVersionsVersionOutput) ToGetVersionsVersionOutput() GetVersionsVersionOutput {
+	return o
+}
+
+func (o GetVersionsVersionOutput) ToGetVersionsVersionOutputWithContext(ctx context.Context) GetVersionsVersionOutput {
+	return o
+}
+
+// The edition of the ASM instance.
+func (o GetVersionsVersionOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersion) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// The ASM version id. It formats as `<edition>:<version>`.
+func (o GetVersionsVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The AMS version.
+func (o GetVersionsVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionsVersion)(nil)).Elem()
+}
+
+func (o GetVersionsVersionArrayOutput) ToGetVersionsVersionArrayOutput() GetVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetVersionsVersionArrayOutput) ToGetVersionsVersionArrayOutputWithContext(ctx context.Context) GetVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVersionsVersion {
+		return vs[0].([]GetVersionsVersion)[vs[1].(int)]
+	}).(GetVersionsVersionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshLoadBalancerInput)(nil)).Elem(), ServiceMeshLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshLoadBalancerPtrInput)(nil)).Elem(), ServiceMeshLoadBalancerArgs{})
@@ -3843,6 +3958,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshNetworkInput)(nil)).Elem(), GetServiceMeshesMeshNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshNetworkArrayInput)(nil)).Elem(), GetServiceMeshesMeshNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionInput)(nil)).Elem(), GetVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionArrayInput)(nil)).Elem(), GetVersionsVersionArray{})
 	pulumi.RegisterOutputType(ServiceMeshLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ServiceMeshLoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigOutput{})
@@ -3891,4 +4008,6 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshNetworkOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetVersionsVersionArrayOutput{})
 }

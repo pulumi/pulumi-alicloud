@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .acl import *
+from .acl_entry_attachment import *
 from .application_load_balancer import *
 from .attachment import *
 from .backend_server import *

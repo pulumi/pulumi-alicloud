@@ -85,7 +85,13 @@ def get_monitor_group_instances(ids: Optional[str] = None,
                                 output_file: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMonitorGroupInstancesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Cms Monitor Group Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.115.0+.
+
+
+    :param str ids: A list of Monitor Group Instances IDs.
+    :param str keyword: The keyword.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -111,6 +117,12 @@ def get_monitor_group_instances_output(ids: Optional[pulumi.Input[str]] = None,
                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMonitorGroupInstancesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Cms Monitor Group Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.115.0+.
+
+
+    :param str ids: A list of Monitor Group Instances IDs.
+    :param str keyword: The keyword.
     """
     ...

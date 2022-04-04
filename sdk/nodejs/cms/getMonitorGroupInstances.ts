@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides the Cms Monitor Group Instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.115.0+.
+ */
 export function getMonitorGroupInstances(args: GetMonitorGroupInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorGroupInstancesResult> {
     if (!opts) {
         opts = {}
@@ -22,7 +27,13 @@ export function getMonitorGroupInstances(args: GetMonitorGroupInstancesArgs, opt
  * A collection of arguments for invoking getMonitorGroupInstances.
  */
 export interface GetMonitorGroupInstancesArgs {
+    /**
+     * A list of Monitor Group Instances IDs.
+     */
     ids: string;
+    /**
+     * The keyword.
+     */
     keyword?: string;
     outputFile?: string;
 }
@@ -49,7 +60,13 @@ export function getMonitorGroupInstancesOutput(args: GetMonitorGroupInstancesOut
  * A collection of arguments for invoking getMonitorGroupInstances.
  */
 export interface GetMonitorGroupInstancesOutputArgs {
+    /**
+     * A list of Monitor Group Instances IDs.
+     */
     ids: pulumi.Input<string>;
+    /**
+     * The keyword.
+     */
     keyword?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
 }

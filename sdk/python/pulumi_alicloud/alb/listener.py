@@ -21,7 +21,7 @@ class ListenerArgs:
                  access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
                  access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
                  acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
+                 certificates: Optional[pulumi.Input['ListenerCertificatesArgs']] = None,
                  default_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  gzip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -32,7 +32,7 @@ class ListenerArgs:
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 xforwarded_for_config: Optional[pulumi.Input['ListenerXforwardedForConfigArgs']] = None):
+                 x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
         """
         The set of arguments for constructing a Listener resource.
         :param pulumi.Input[int] listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
@@ -41,7 +41,7 @@ class ListenerArgs:
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
-        :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The Certificate List. See the following `Block certificates`.
+        :param pulumi.Input['ListenerCertificatesArgs'] certificates: The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
@@ -52,7 +52,7 @@ class ListenerArgs:
         :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
-        :param pulumi.Input['ListenerXforwardedForConfigArgs'] xforwarded_for_config: xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        :param pulumi.Input['ListenerXForwardedForConfigArgs'] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         pulumi.set(__self__, "listener_port", listener_port)
         pulumi.set(__self__, "listener_protocol", listener_protocol)
@@ -85,8 +85,8 @@ class ListenerArgs:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
-        if xforwarded_for_config is not None:
-            pulumi.set(__self__, "xforwarded_for_config", xforwarded_for_config)
+        if x_forwarded_for_config is not None:
+            pulumi.set(__self__, "x_forwarded_for_config", x_forwarded_for_config)
 
     @property
     @pulumi.getter(name="listenerPort")
@@ -162,14 +162,14 @@ class ListenerArgs:
 
     @property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
+    def certificates(self) -> Optional[pulumi.Input['ListenerCertificatesArgs']]:
         """
-        The Certificate List. See the following `Block certificates`.
+        The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]):
+    def certificates(self, value: Optional[pulumi.Input['ListenerCertificatesArgs']]):
         pulumi.set(self, "certificates", value)
 
     @property
@@ -293,16 +293,16 @@ class ListenerArgs:
         pulumi.set(self, "status", value)
 
     @property
-    @pulumi.getter(name="xforwardedForConfig")
-    def xforwarded_for_config(self) -> Optional[pulumi.Input['ListenerXforwardedForConfigArgs']]:
+    @pulumi.getter(name="xForwardedForConfig")
+    def x_forwarded_for_config(self) -> Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]:
         """
-        xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
-        return pulumi.get(self, "xforwarded_for_config")
+        return pulumi.get(self, "x_forwarded_for_config")
 
-    @xforwarded_for_config.setter
-    def xforwarded_for_config(self, value: Optional[pulumi.Input['ListenerXforwardedForConfigArgs']]):
-        pulumi.set(self, "xforwarded_for_config", value)
+    @x_forwarded_for_config.setter
+    def x_forwarded_for_config(self, value: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]):
+        pulumi.set(self, "x_forwarded_for_config", value)
 
 
 @pulumi.input_type
@@ -311,7 +311,7 @@ class _ListenerState:
                  access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
                  access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
                  acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
+                 certificates: Optional[pulumi.Input['ListenerCertificatesArgs']] = None,
                  default_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  gzip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -325,13 +325,13 @@ class _ListenerState:
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 xforwarded_for_config: Optional[pulumi.Input['ListenerXforwardedForConfigArgs']] = None):
+                 x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Listener resources.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
-        :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The Certificate List. See the following `Block certificates`.
+        :param pulumi.Input['ListenerCertificatesArgs'] certificates: The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
@@ -345,7 +345,7 @@ class _ListenerState:
         :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
-        :param pulumi.Input['ListenerXforwardedForConfigArgs'] xforwarded_for_config: xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        :param pulumi.Input['ListenerXForwardedForConfigArgs'] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         if access_log_record_customized_headers_enabled is not None:
             pulumi.set(__self__, "access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
@@ -381,8 +381,8 @@ class _ListenerState:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
-        if xforwarded_for_config is not None:
-            pulumi.set(__self__, "xforwarded_for_config", xforwarded_for_config)
+        if x_forwarded_for_config is not None:
+            pulumi.set(__self__, "x_forwarded_for_config", x_forwarded_for_config)
 
     @property
     @pulumi.getter(name="accessLogRecordCustomizedHeadersEnabled")
@@ -422,14 +422,14 @@ class _ListenerState:
 
     @property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
+    def certificates(self) -> Optional[pulumi.Input['ListenerCertificatesArgs']]:
         """
-        The Certificate List. See the following `Block certificates`.
+        The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]):
+    def certificates(self, value: Optional[pulumi.Input['ListenerCertificatesArgs']]):
         pulumi.set(self, "certificates", value)
 
     @property
@@ -589,16 +589,16 @@ class _ListenerState:
         pulumi.set(self, "status", value)
 
     @property
-    @pulumi.getter(name="xforwardedForConfig")
-    def xforwarded_for_config(self) -> Optional[pulumi.Input['ListenerXforwardedForConfigArgs']]:
+    @pulumi.getter(name="xForwardedForConfig")
+    def x_forwarded_for_config(self) -> Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]:
         """
-        xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
-        return pulumi.get(self, "xforwarded_for_config")
+        return pulumi.get(self, "x_forwarded_for_config")
 
-    @xforwarded_for_config.setter
-    def xforwarded_for_config(self, value: Optional[pulumi.Input['ListenerXforwardedForConfigArgs']]):
-        pulumi.set(self, "xforwarded_for_config", value)
+    @x_forwarded_for_config.setter
+    def x_forwarded_for_config(self, value: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]):
+        pulumi.set(self, "x_forwarded_for_config", value)
 
 
 class Listener(pulumi.CustomResource):
@@ -609,7 +609,7 @@ class Listener(pulumi.CustomResource):
                  access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
                  access_log_tracing_config: Optional[pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']]] = None,
                  acl_config: Optional[pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']]] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
+                 certificates: Optional[pulumi.Input[pulumi.InputType['ListenerCertificatesArgs']]] = None,
                  default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  gzip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -623,7 +623,7 @@ class Listener(pulumi.CustomResource):
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 xforwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXforwardedForConfigArgs']]] = None,
+                 x_forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) Listener resource.
@@ -645,7 +645,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The Certificate List. See the following `Block certificates`.
+        :param pulumi.Input[pulumi.InputType['ListenerCertificatesArgs']] certificates: The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
@@ -659,7 +659,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
-        :param pulumi.Input[pulumi.InputType['ListenerXforwardedForConfigArgs']] xforwarded_for_config: xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         ...
     @overload
@@ -700,7 +700,7 @@ class Listener(pulumi.CustomResource):
                  access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
                  access_log_tracing_config: Optional[pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']]] = None,
                  acl_config: Optional[pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']]] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
+                 certificates: Optional[pulumi.Input[pulumi.InputType['ListenerCertificatesArgs']]] = None,
                  default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  gzip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -714,7 +714,7 @@ class Listener(pulumi.CustomResource):
                  request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 xforwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXforwardedForConfigArgs']]] = None,
+                 x_forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -750,7 +750,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["request_timeout"] = request_timeout
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["status"] = status
-            __props__.__dict__["xforwarded_for_config"] = xforwarded_for_config
+            __props__.__dict__["x_forwarded_for_config"] = x_forwarded_for_config
         super(Listener, __self__).__init__(
             'alicloud:alb/listener:Listener',
             resource_name,
@@ -764,7 +764,7 @@ class Listener(pulumi.CustomResource):
             access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
             access_log_tracing_config: Optional[pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']]] = None,
             acl_config: Optional[pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']]] = None,
-            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
+            certificates: Optional[pulumi.Input[pulumi.InputType['ListenerCertificatesArgs']]] = None,
             default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             gzip_enabled: Optional[pulumi.Input[bool]] = None,
@@ -778,7 +778,7 @@ class Listener(pulumi.CustomResource):
             request_timeout: Optional[pulumi.Input[int]] = None,
             security_policy_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            xforwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXforwardedForConfigArgs']]] = None) -> 'Listener':
+            x_forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -789,7 +789,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
         :param pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The Certificate List. See the following `Block certificates`.
+        :param pulumi.Input[pulumi.InputType['ListenerCertificatesArgs']] certificates: The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerDefaultActionArgs']]]] default_actions: The Default Rule Action List. See the following `Block default_actions`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
@@ -803,7 +803,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
-        :param pulumi.Input[pulumi.InputType['ListenerXforwardedForConfigArgs']] xforwarded_for_config: xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -826,7 +826,7 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["request_timeout"] = request_timeout
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["status"] = status
-        __props__.__dict__["xforwarded_for_config"] = xforwarded_for_config
+        __props__.__dict__["x_forwarded_for_config"] = x_forwarded_for_config
         return Listener(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -855,9 +855,9 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def certificates(self) -> pulumi.Output[Optional[Sequence['outputs.ListenerCertificate']]]:
+    def certificates(self) -> pulumi.Output[Optional['outputs.ListenerCertificates']]:
         """
-        The Certificate List. See the following `Block certificates`.
+        The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         """
         return pulumi.get(self, "certificates")
 
@@ -966,10 +966,10 @@ class Listener(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
-    @pulumi.getter(name="xforwardedForConfig")
-    def xforwarded_for_config(self) -> pulumi.Output['outputs.ListenerXforwardedForConfig']:
+    @pulumi.getter(name="xForwardedForConfig")
+    def x_forwarded_for_config(self) -> pulumi.Output['outputs.ListenerXForwardedForConfig']:
         """
-        xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
-        return pulumi.get(self, "xforwarded_for_config")
+        return pulumi.get(self, "x_forwarded_for_config")
 

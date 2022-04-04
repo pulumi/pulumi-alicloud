@@ -104,7 +104,7 @@ type Alarm struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringOutput `pulumi:"statistics"`
@@ -199,7 +199,7 @@ type alarmState struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
@@ -254,7 +254,7 @@ type AlarmState struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
@@ -313,7 +313,7 @@ type alarmArgs struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
@@ -367,7 +367,7 @@ type AlarmArgs struct {
 	//
 	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+	// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
 	//
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput

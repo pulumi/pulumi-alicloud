@@ -115,15 +115,15 @@ export class RestoreJob extends pulumi.CustomResource {
     }
 
     /**
-     * The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     public readonly exclude!: pulumi.Output<string | undefined>;
     /**
-     * The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     public readonly include!: pulumi.Output<string | undefined>;
     /**
-     * Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+     * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
      */
     public readonly options!: pulumi.Output<string | undefined>;
     /**
@@ -264,15 +264,15 @@ export class RestoreJob extends pulumi.CustomResource {
  */
 export interface RestoreJobState {
     /**
-     * The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     exclude?: pulumi.Input<string>;
     /**
-     * The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     include?: pulumi.Input<string>;
     /**
-     * Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+     * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
      */
     options?: pulumi.Input<string>;
     /**
@@ -338,15 +338,15 @@ export interface RestoreJobState {
  */
 export interface RestoreJobArgs {
     /**
-     * The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     exclude?: pulumi.Input<string>;
     /**
-     * The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+     * The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
     include?: pulumi.Input<string>;
     /**
-     * Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+     * Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
      */
     options?: pulumi.Input<string>;
     /**

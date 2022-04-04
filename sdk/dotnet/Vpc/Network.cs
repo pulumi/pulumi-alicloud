@@ -75,6 +75,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
 
+        /// <summary>
+        /// (Deprecated) It has been deprecated and replaced with `route_table_id`.
+        /// </summary>
         [Output("routerTableId")]
         public Output<string> RouterTableId { get; private set; } = null!;
 
@@ -84,6 +87,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("secondaryCidrBlocks")]
         public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the VPC.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -290,6 +296,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
+        /// <summary>
+        /// (Deprecated) It has been deprecated and replaced with `route_table_id`.
+        /// </summary>
         [Input("routerTableId")]
         public Input<string>? RouterTableId { get; set; }
 
@@ -305,6 +314,9 @@ namespace Pulumi.AliCloud.Vpc
             set => _secondaryCidrBlocks = value;
         }
 
+        /// <summary>
+        /// The status of the VPC.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

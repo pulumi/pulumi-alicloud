@@ -427,6 +427,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "alb/listenerAdditionalCertificateAttachment",
+  "fqn": "pulumi_alicloud.alb",
+  "classes": {
+   "alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment": "ListenerAdditionalCertificateAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "alb/loadBalancer",
   "fqn": "pulumi_alicloud.alb",
   "classes": {
@@ -1327,6 +1335,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cms",
   "classes": {
    "alicloud:cms/siteMonitor:SiteMonitor": "SiteMonitor"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cr/chain",
+  "fqn": "pulumi_alicloud.cr",
+  "classes": {
+   "alicloud:cr/chain:Chain": "Chain"
   }
  },
  {
@@ -3067,6 +3083,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "log/ingestion",
+  "fqn": "pulumi_alicloud.log",
+  "classes": {
+   "alicloud:log/ingestion:Ingestion": "Ingestion"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "log/logTailAttachment",
   "fqn": "pulumi_alicloud.log",
   "classes": {
@@ -3103,6 +3127,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.log",
   "classes": {
    "alicloud:log/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "log/resource",
+  "fqn": "pulumi_alicloud.log",
+  "classes": {
+   "alicloud:log/resource:Resource": "Resource"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "log/resourceRecord",
+  "fqn": "pulumi_alicloud.log",
+  "classes": {
+   "alicloud:log/resourceRecord:ResourceRecord": "ResourceRecord"
   }
  },
  {
@@ -3247,6 +3287,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.mse",
   "classes": {
    "alicloud:mse/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "mse/znode",
+  "fqn": "pulumi_alicloud.mse",
+  "classes": {
+   "alicloud:mse/znode:Znode": "Znode"
   }
  },
  {
@@ -3423,6 +3471,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketObject:BucketObject": "BucketObject"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ots/bucketReplication",
+  "fqn": "pulumi_alicloud.ots",
+  "classes": {
+   "alicloud:ots/bucketReplication:BucketReplication": "BucketReplication"
   }
  },
  {
@@ -4299,6 +4355,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "slb/aclEntryAttachment",
+  "fqn": "pulumi_alicloud.slb",
+  "classes": {
+   "alicloud:slb/aclEntryAttachment:AclEntryAttachment": "AclEntryAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "slb/applicationLoadBalancer",
   "fqn": "pulumi_alicloud.slb",
   "classes": {
@@ -4727,6 +4791,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpn",
   "classes": {
    "alicloud:vpn/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpn/ipsecServer",
+  "fqn": "pulumi_alicloud.vpn",
+  "classes": {
+   "alicloud:vpn/ipsecServer:IpsecServer": "IpsecServer"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpn/pbrRouteEntry",
+  "fqn": "pulumi_alicloud.vpn",
+  "classes": {
+   "alicloud:vpn/pbrRouteEntry:PbrRouteEntry": "PbrRouteEntry"
   }
  },
  {

@@ -78,6 +78,9 @@ export class Store extends pulumi.CustomResource {
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
      */
     public readonly shardCount!: pulumi.Output<number | undefined>;
+    /**
+     * The shard attribute.
+     */
     public /*out*/ readonly shards!: pulumi.Output<outputs.log.StoreShard[]>;
 
     /**
@@ -164,6 +167,9 @@ export interface StoreState {
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
      */
     shardCount?: pulumi.Input<number>;
+    /**
+     * The shard attribute.
+     */
     shards?: pulumi.Input<pulumi.Input<inputs.log.StoreShard>[]>;
 }
 

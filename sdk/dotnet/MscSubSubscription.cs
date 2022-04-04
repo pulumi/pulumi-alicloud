@@ -57,9 +57,6 @@ namespace Pulumi.AliCloud
         [Output("channel")]
         public Output<string> Channel { get; private set; } = null!;
 
-        /// <summary>
-        /// The ids of subscribed contacts.
-        /// </summary>
         [Output("contactIds")]
         public Output<ImmutableArray<string>> ContactIds { get; private set; } = null!;
 
@@ -159,10 +156,6 @@ namespace Pulumi.AliCloud
     {
         [Input("contactIds")]
         private InputList<string>? _contactIds;
-
-        /// <summary>
-        /// The ids of subscribed contacts.
-        /// </summary>
         public InputList<string> ContactIds
         {
             get => _contactIds ?? (_contactIds = new InputList<string>());
@@ -232,10 +225,6 @@ namespace Pulumi.AliCloud
 
         [Input("contactIds")]
         private InputList<string>? _contactIds;
-
-        /// <summary>
-        /// The ids of subscribed contacts.
-        /// </summary>
         public InputList<string> ContactIds
         {
             get => _contactIds ?? (_contactIds = new InputList<string>());

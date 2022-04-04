@@ -9,14 +9,18 @@ export * from "./alert";
 export * from "./audit";
 export * from "./dashboard";
 export * from "./etl";
+export * from "./getAlertResource";
 export * from "./getProjects";
 export * from "./getService";
 export * from "./getStores";
+export * from "./ingestion";
 export * from "./logTailAttachment";
 export * from "./logTailConfig";
 export * from "./machineGroup";
 export * from "./ossShipper";
 export * from "./project";
+export * from "./resource";
+export * from "./resourceRecord";
 export * from "./store";
 export * from "./storeIndex";
 
@@ -25,11 +29,14 @@ import { Alert } from "./alert";
 import { Audit } from "./audit";
 import { Dashboard } from "./dashboard";
 import { Etl } from "./etl";
+import { Ingestion } from "./ingestion";
 import { LogTailAttachment } from "./logTailAttachment";
 import { LogTailConfig } from "./logTailConfig";
 import { MachineGroup } from "./machineGroup";
 import { OssShipper } from "./ossShipper";
 import { Project } from "./project";
+import { Resource } from "./resource";
+import { ResourceRecord } from "./resourceRecord";
 import { Store } from "./store";
 import { StoreIndex } from "./storeIndex";
 
@@ -45,6 +52,8 @@ const _module = {
                 return new Dashboard(name, <any>undefined, { urn })
             case "alicloud:log/etl:Etl":
                 return new Etl(name, <any>undefined, { urn })
+            case "alicloud:log/ingestion:Ingestion":
+                return new Ingestion(name, <any>undefined, { urn })
             case "alicloud:log/logTailAttachment:LogTailAttachment":
                 return new LogTailAttachment(name, <any>undefined, { urn })
             case "alicloud:log/logTailConfig:LogTailConfig":
@@ -55,6 +64,10 @@ const _module = {
                 return new OssShipper(name, <any>undefined, { urn })
             case "alicloud:log/project:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "alicloud:log/resource:Resource":
+                return new Resource(name, <any>undefined, { urn })
+            case "alicloud:log/resourceRecord:ResourceRecord":
+                return new ResourceRecord(name, <any>undefined, { urn })
             case "alicloud:log/store:Store":
                 return new Store(name, <any>undefined, { urn })
             case "alicloud:log/storeIndex:StoreIndex":
@@ -68,10 +81,13 @@ pulumi.runtime.registerResourceModule("alicloud", "log/alert", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/audit", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/dashboard", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/etl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "log/ingestion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/logTailAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/logTailConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/machineGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/ossShipper", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/project", _module)
+pulumi.runtime.registerResourceModule("alicloud", "log/resource", _module)
+pulumi.runtime.registerResourceModule("alicloud", "log/resourceRecord", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/store", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/storeIndex", _module)

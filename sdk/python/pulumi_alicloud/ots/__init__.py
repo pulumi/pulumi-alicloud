@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .bucket_replication import *
 from .get_instance_attachments import *
 from .get_instances import *
 from .get_service import *

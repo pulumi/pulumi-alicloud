@@ -56,8 +56,7 @@ type MscSubSubscription struct {
 	pulumi.CustomResourceState
 
 	// The channel the Subscription.
-	Channel pulumi.StringOutput `pulumi:"channel"`
-	// The ids of subscribed contacts.
+	Channel    pulumi.StringOutput      `pulumi:"channel"`
 	ContactIds pulumi.StringArrayOutput `pulumi:"contactIds"`
 	// The description of the Subscription.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -110,8 +109,7 @@ func GetMscSubSubscription(ctx *pulumi.Context,
 // Input properties used for looking up and filtering MscSubSubscription resources.
 type mscSubSubscriptionState struct {
 	// The channel the Subscription.
-	Channel *string `pulumi:"channel"`
-	// The ids of subscribed contacts.
+	Channel    *string  `pulumi:"channel"`
 	ContactIds []string `pulumi:"contactIds"`
 	// The description of the Subscription.
 	Description *string `pulumi:"description"`
@@ -133,8 +131,7 @@ type mscSubSubscriptionState struct {
 
 type MscSubSubscriptionState struct {
 	// The channel the Subscription.
-	Channel pulumi.StringPtrInput
-	// The ids of subscribed contacts.
+	Channel    pulumi.StringPtrInput
 	ContactIds pulumi.StringArrayInput
 	// The description of the Subscription.
 	Description pulumi.StringPtrInput
@@ -159,7 +156,6 @@ func (MscSubSubscriptionState) ElementType() reflect.Type {
 }
 
 type mscSubSubscriptionArgs struct {
-	// The ids of subscribed contacts.
 	ContactIds []string `pulumi:"contactIds"`
 	// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
 	EmailStatus *int `pulumi:"emailStatus"`
@@ -179,7 +175,6 @@ type mscSubSubscriptionArgs struct {
 
 // The set of arguments for constructing a MscSubSubscription resource.
 type MscSubSubscriptionArgs struct {
-	// The ids of subscribed contacts.
 	ContactIds pulumi.StringArrayInput
 	// The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
 	EmailStatus pulumi.IntPtrInput

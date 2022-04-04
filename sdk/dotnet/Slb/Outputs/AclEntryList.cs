@@ -14,13 +14,13 @@ namespace Pulumi.AliCloud.Slb.Outputs
     public sealed class AclEntryList
     {
         public readonly string? Comment;
-        public readonly string Entry;
+        public readonly string? Entry;
 
         [OutputConstructor]
         private AclEntryList(
             string? comment,
 
-            string entry)
+            string? entry)
         {
             Comment = comment;
             Entry = entry;

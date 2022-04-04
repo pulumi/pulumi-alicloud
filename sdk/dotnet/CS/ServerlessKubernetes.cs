@@ -120,6 +120,17 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ClusterCaCert { get; private set; } = null!;
 
         /// <summary>
+        /// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+        /// - ack.standard: Standard serverless clusters.
+        /// - ack.pro.small: Professional serverless clusters.
+        /// </summary>
+        [Output("clusterSpec")]
+        public Output<string> ClusterSpec { get; private set; } = null!;
+
+        [Output("createV2Cluster")]
+        public Output<bool> CreateV2Cluster { get; private set; } = null!;
+
+        /// <summary>
         /// Whether enable the deletion protection or not.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
@@ -146,10 +157,10 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> KubeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         /// </summary>
         [Output("loadBalancerSpec")]
-        public Output<string?> LoadBalancerSpec { get; private set; } = null!;
+        public Output<string> LoadBalancerSpec { get; private set; } = null!;
 
         /// <summary>
         /// Enable log service, Valid value `SLS`.
@@ -239,7 +250,7 @@ namespace Pulumi.AliCloud.CS
         /// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
+        public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The vswitches where new kubernetes cluster will be located.
@@ -330,6 +341,17 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
+        /// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+        /// - ack.standard: Standard serverless clusters.
+        /// - ack.pro.small: Professional serverless clusters.
+        /// </summary>
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
+        [Input("createV2Cluster")]
+        public Input<bool>? CreateV2Cluster { get; set; }
+
+        /// <summary>
         /// Whether enable the deletion protection or not.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
@@ -356,7 +378,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? KubeConfig { get; set; }
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -524,6 +546,17 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
+        /// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+        /// - ack.standard: Standard serverless clusters.
+        /// - ack.pro.small: Professional serverless clusters.
+        /// </summary>
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
+        [Input("createV2Cluster")]
+        public Input<bool>? CreateV2Cluster { get; set; }
+
+        /// <summary>
         /// Whether enable the deletion protection or not.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
@@ -550,7 +583,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? KubeConfig { get; set; }
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }

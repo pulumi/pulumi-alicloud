@@ -705,6 +705,7 @@ class GetPrivateZonesZoneResult(dict):
                  cen_id: str,
                  host_region_id: str,
                  host_vpc_id: str,
+                 id: str,
                  private_zone_dns_servers: str,
                  status: str):
         """
@@ -712,6 +713,7 @@ class GetPrivateZonesZoneResult(dict):
         :param str cen_id: The ID of the CEN instance.
         :param str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
         :param str host_vpc_id: The VPC that belongs to the service region.
+        :param str id: The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
         :param str private_zone_dns_servers: The DNS IP addresses of the PrivateZone service.
         :param str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
         """
@@ -719,6 +721,7 @@ class GetPrivateZonesZoneResult(dict):
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "host_region_id", host_region_id)
         pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "private_zone_dns_servers", private_zone_dns_servers)
         pulumi.set(__self__, "status", status)
 
@@ -753,6 +756,14 @@ class GetPrivateZonesZoneResult(dict):
         The VPC that belongs to the service region.
         """
         return pulumi.get(self, "host_vpc_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="privateZoneDnsServers")
@@ -1036,7 +1047,7 @@ class GetRouteMapsMapResult(dict):
         :param Sequence[str] destination_instance_ids: A match statement that indicates the list of IDs of the destination instances.
         :param bool destination_instance_ids_reverse_match: Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
         :param Sequence[str] destination_route_table_ids: A match statement that indicates the list of IDs of the destination route tables.
-        :param str id: The ID of the route map.
+        :param str id: The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `route_map_id`.
         :param str map_result: The action that is performed to a route if the route meets all the match conditions.
         :param Sequence[str] match_asns: A match statement that indicates the As path list.
         :param Sequence[str] match_community_sets: A match statement that indicates the community set.
@@ -1186,7 +1197,7 @@ class GetRouteMapsMapResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the route map.
+        The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `route_map_id`.
         """
         return pulumi.get(self, "id")
 
