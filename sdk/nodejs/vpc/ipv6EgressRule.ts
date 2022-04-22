@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
  *     vpcName: "example_value",
- *     enableIpv6: "true",
+ *     enableIpv6: true,
  * });
  * const exampleIpv6Gateway = new alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway", {
  *     ipv6GatewayName: "example_value",

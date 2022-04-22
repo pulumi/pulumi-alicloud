@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     spec: "1",
  * });
  * const deBandwidthPackage = new alicloud.ga.BandwidthPackage("deBandwidthPackage", {
- *     bandwidth: "100",
+ *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
  *     paymentType: "PayAsYouGo",

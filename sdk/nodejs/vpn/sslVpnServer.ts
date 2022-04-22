@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
  *     vpcId: "vpc-fake-id",
- *     bandwidth: "10",
+ *     bandwidth: 10,
  *     enableSsl: true,
  *     instanceChargeType: "PostPaid",
  *     description: "test_create_description",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     protocol: "UDP",
  *     cipher: "AES-128-CBC",
  *     port: 1194,
- *     compress: "false",
+ *     compress: false,
  * });
  * ```
  *

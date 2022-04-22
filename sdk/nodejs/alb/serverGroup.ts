@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *     instanceName: name,
  *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
  *     internetChargeType: "PayByTraffic",
- *     internetMaxBandwidthOut: "10",
+ *     internetMaxBandwidthOut: 10,
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     instanceChargeType: "PostPaid",
  *     systemDiskCategory: "cloud_efficiency",
@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *     serverGroupName: name,
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
  *     healthCheckConfig: {
- *         healthCheckConnectPort: "46325",
+ *         healthCheckConnectPort: 46325,
  *         healthCheckEnabled: true,
  *         healthCheckHost: "tf-testAcc.com",
  *         healthCheckCodes: [
@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  *             "http_4xx",
  *         ],
  *         healthCheckHttpVersion: "HTTP1.1",
- *         healthCheckInterval: "2",
+ *         healthCheckInterval: 2,
  *         healthCheckMethod: "HEAD",
  *         healthCheckPath: "/tf-testAcc",
  *         healthCheckProtocol: "HTTP",

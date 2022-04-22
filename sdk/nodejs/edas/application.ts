@@ -9,30 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.82.0+
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.edas.Application("default", {
- *     applicationName: "xxx",
- *     clusterId: "xxx",
- *     packageType: "JAR",
- *     buildPackId: xxx,
- *     descriotion: "xxx",
- *     healthCheckUrl: "xxx",
- *     logicalRegionId: "cn-xxxx:xxx",
- *     componentIds: xxx,
- *     ecuInfos: ["xxx"],
- *     groupId: "xxx",
- *     packageVersion: "xxx",
- *     warUrl: "http://xxx",
- * });
- * ```
- *
  * ## Import
  *
  * EDAS application can be imported using the id, e.g.

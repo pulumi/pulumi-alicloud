@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     bandwidth: 20,
  *     type: "Basic",
  *     bandwidthType: "Basic",
- *     duration: 1,
+ *     duration: "1",
  *     autoPay: true,
  *     ratio: 30,
  * });
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleIpSet = new alicloud.ga.IpSet("exampleIpSet", {
  *     accelerateRegionId: "cn-hangzhou",
- *     bandwidth: "5",
+ *     bandwidth: 5,
  *     acceleratorId: exampleAccelerator.id,
  * }, {
  *     dependsOn: [exampleBandwidthPackageAttachment],

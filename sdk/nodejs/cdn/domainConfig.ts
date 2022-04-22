@@ -28,9 +28,9 @@ import * as utilities from "../utilities";
  *     sources: [{
  *         content: "1.1.1.1",
  *         type: "ipaddr",
- *         priority: "20",
+ *         priority: 20,
  *         port: 80,
- *         weight: "15",
+ *         weight: 15,
  *     }],
  * });
  * const config = new alicloud.cdn.DomainConfig("config", {

@@ -17,66 +17,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Resource `alicloud.ess.AlbServerGroupAttachment` is available in 1.158.0+.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "testAccEssAlbServerGroupsAttachment";
- * const defaultZones = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
- * });
- * const defaultServerGroup = new alicloud.alb.ServerGroup("defaultServerGroup", {
- *     loadBalancerId: alicloud_slb_load_balancer["default"].id,
- *     name: "test",
- * });
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
- *     minSize: "2",
- *     maxSize: "2",
- *     scalingGroupName: name,
- *     vswitchIds: [defaultSwitch.id],
- * });
- * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
- *     scalingGroupId: defaultScalingGroup.id,
- *     imageId: data.alicloud_images["default"].images[0].id,
- *     instanceType: data.alicloud_instance_types["default"].instance_types[0].id,
- *     securityGroupId: alicloud_security_group["default"].id,
- *     forceDelete: true,
- *     active: true,
- *     enable: true,
- * });
- * const defaultAlb_serverGroupServerGroup = new alicloud.alb.ServerGroup("defaultAlb/serverGroupServerGroup", {
- *     serverGroupName: name,
- *     vpcId: defaultNetwork.id,
- *     healthCheckConfig: {
- *         healthCheckEnabled: "false",
- *     },
- *     stickySessionConfig: {
- *         stickySessionEnabled: true,
- *         cookie: "tf-testAcc",
- *         stickySessionType: "Server",
- *     },
- * });
- * const defaultAlbServerGroupAttachment = new alicloud.ess.AlbServerGroupAttachment("defaultAlbServerGroupAttachment", {
- *     scalingGroupId: defaultScalingGroup.id,
- *     albServerGroupId: defaultServerGroup.id,
- *     port: 9000,
- *     weight: 50,
- *     forceAttach: true,
- * }, {
- *     dependsOn: ["alicloud_ess_scaling_configuration.default"],
- * });
- * ```
- *
  * ## Import
  *
  * ESS alb server groups can be imported using the id, e.g.

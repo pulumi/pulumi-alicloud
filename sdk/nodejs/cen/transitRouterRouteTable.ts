@@ -9,24 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.126.0+
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccCenTransitRouter";
- * const cen = new alicloud.cen.Instance("cen", {description: "terraform01"});
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {
- *     name: name,
- *     cenId: cen.id,
- * });
- * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", {transitRouterId: defaultTransitRouter.transitRouterId});
- * ```
- *
  * ## Import
  *
  * CEN transit router route table

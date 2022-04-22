@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *         diskName: _var.name,
  *         zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.availabilityZones?[0]),
  *         category: "cloud_essd",
- *         size: "20",
+ *         size: 20,
  *     }));
  * }
  * const defaultImages = alicloud.ecs.getImages({

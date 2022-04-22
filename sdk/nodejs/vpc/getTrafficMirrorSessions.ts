@@ -28,12 +28,12 @@ import * as utilities from "../utilities";
  * export const vpcTrafficMirrorSessionId2 = nameRegex.then(nameRegex => nameRegex.sessions?[0]?.id);
  * const enabled = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
- *     enabled: "false",
+ *     enabled: false,
  * });
  * export const vpcTrafficMirrorSessionId3 = enabled.then(enabled => enabled.sessions?[0]?.id);
  * const priority = alicloud.vpc.getTrafficMirrorSessions({
  *     ids: ["example_id"],
- *     priority: "1",
+ *     priority: 1,
  * });
  * export const vpcTrafficMirrorSessionId4 = priority.then(priority => priority.sessions?[0]?.id);
  * const filterId = alicloud.vpc.getTrafficMirrorSessions({

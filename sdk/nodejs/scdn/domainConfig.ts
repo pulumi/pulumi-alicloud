@@ -12,36 +12,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.131.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a new Domain config.
- * const domain = new alicloud.scdn.Domain("domain", {
- *     domainName: "mydomain.xiaozhu.com",
- *     cdnType: "web",
- *     scope: "overseas",
- *     sources: [{
- *         content: "1.1.1.1",
- *         type: "ipaddr",
- *         priority: "20",
- *         port: 80,
- *     }],
- * });
- * const config = new alicloud.scdn.DomainConfig("config", {
- *     domainName: domain.domainName,
- *     functionName: "ip_allow_list_set",
- *     functionArgs: [{
- *         argName: "ip_list",
- *         argValue: "110.110.110.110",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * SCDN domain config can be imported using the id, e.g.

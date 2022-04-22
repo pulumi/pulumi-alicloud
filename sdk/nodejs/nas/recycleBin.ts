@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     protocolType: "NFS",
  *     storageType: "Performance",
  *     description: _var.name,
- *     encryptType: "1",
+ *     encryptType: 1,
  * });
  * const exampleRecycleBin = new alicloud.nas.RecycleBin("exampleRecycleBin", {
  *     fileSystemId: exampleFileSystem.id,

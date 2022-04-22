@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     protocolType: "NFS",
  *     storageType: "Performance",
  *     description: name,
- *     encryptType: "1",
+ *     encryptType: 1,
  * });
  * const defaultFileSystems = defaultFileSystem.description.apply(description => alicloud.nas.getFileSystemsOutput({
  *     protocolType: "NFS",

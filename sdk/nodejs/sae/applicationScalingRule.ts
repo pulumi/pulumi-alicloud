@@ -41,9 +41,9 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
  *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
  *     timezone: "Asia/Shanghai",
- *     replicas: "5",
- *     cpu: "500",
- *     memory: "2048",
+ *     replicas: 5,
+ *     cpu: 500,
+ *     memory: 2048,
  * });
  * const example = new alicloud.sae.ApplicationScalingRule("example", {
  *     appId: defaultApplication.id,

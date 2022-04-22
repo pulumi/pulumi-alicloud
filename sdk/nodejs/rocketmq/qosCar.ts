@@ -26,12 +26,12 @@ import * as utilities from "../utilities";
  * const defaultQosCar = new alicloud.rocketmq.QosCar("defaultQosCar", {
  *     qosId: defaultQos.id,
  *     description: "tf-testSagQosCarDescription",
- *     priority: "1",
+ *     priority: 1,
  *     limitType: "Absolute",
- *     minBandwidthAbs: "10",
- *     maxBandwidthAbs: "20",
- *     minBandwidthPercent: "10",
- *     maxBandwidthPercent: "20",
+ *     minBandwidthAbs: 10,
+ *     maxBandwidthAbs: 20,
+ *     minBandwidthPercent: 10,
+ *     maxBandwidthPercent: 20,
  *     percentSourceType: "InternetUpBandwidth",
  * });
  * ```

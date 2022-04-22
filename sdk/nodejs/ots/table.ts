@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     ],
  *     timeToLive: -1,
  *     maxVersion: 1,
- *     deviationCellVersionInSec: 1,
+ *     deviationCellVersionInSec: "1",
  * });
  * ```
  *

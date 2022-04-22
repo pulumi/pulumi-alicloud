@@ -30,11 +30,11 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
- *     topicQuota: "50",
- *     diskType: "1",
- *     diskSize: "500",
- *     deployType: "5",
- *     ioMax: "20",
+ *     topicQuota: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 5,
+ *     ioMax: 20,
  *     vswitchId: defaultSwitch.id,
  * });
  * const config = new pulumi.Config();
@@ -42,9 +42,9 @@ import * as utilities from "../utilities";
  * const defaultTopic = new alicloud.alikafka.Topic("defaultTopic", {
  *     instanceId: defaultInstance.id,
  *     topic: topic,
- *     localTopic: "false",
- *     compactTopic: "false",
- *     partitionNum: "12",
+ *     localTopic: false,
+ *     compactTopic: false,
+ *     partitionNum: 12,
  *     remark: "dafault_kafka_topic_remark",
  * });
  * ```

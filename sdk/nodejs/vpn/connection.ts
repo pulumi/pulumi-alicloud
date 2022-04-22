@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
  *     vpcId: "vpc-fake-id",
- *     bandwidth: "10",
+ *     bandwidth: 10,
  *     enableSsl: true,
  *     instanceChargeType: "PostPaid",
  *     description: "test_create_description",

@@ -53,16 +53,16 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultListener.push(new alicloud.slb.Listener(`defaultListener-${range.value}`, {
  *         loadBalancerId: [defaultApplicationLoadBalancer].map(__item => __item.id)[range.value],
- *         backendPort: "22",
- *         frontendPort: "22",
+ *         backendPort: 22,
+ *         frontendPort: 22,
  *         protocol: "tcp",
- *         bandwidth: "10",
+ *         bandwidth: 10,
  *         healthCheckType: "tcp",
  *     }));
  * }
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
- *     minSize: "2",
- *     maxSize: "2",
+ *     minSize: 2,
+ *     maxSize: 2,
  *     scalingGroupName: name,
  *     vswitchIds: [defaultSwitch.id],
  * });
@@ -72,8 +72,8 @@ import * as utilities from "../utilities";
  *         loadbalancerId: defaultApplicationLoadBalancer.id,
  *         vserverAttributes: [{
  *             vserverGroupId: defaultServerGroup.id,
- *             port: "100",
- *             weight: "60",
+ *             port: 100,
+ *             weight: 60,
  *         }],
  *     }],
  * });

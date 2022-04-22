@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const exampleSchedule = new alicloud.fnf.Schedule("exampleSchedule", {
  *     cronExpression: "30 9 * * * *",
  *     description: "tf-testaccFnFSchedule983041",
- *     enable: "true",
+ *     enable: true,
  *     flowName: exampleFlow.name,
  *     payload: "{\"tf-test\": \"test success\"}",
  *     scheduleName: "tf-testaccFnFSchedule983041",

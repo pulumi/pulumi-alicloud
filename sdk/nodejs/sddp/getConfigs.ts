@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const defaultConfig = new alicloud.sddp.Config("defaultConfig", {
  *     code: "access_failed_cnt",
- *     value: 10,
+ *     value: "10",
  * });
  * const defaultConfigs = alicloud.sddp.getConfigsOutput({
  *     ids: [defaultConfig.id],

@@ -46,9 +46,9 @@ import * as utilities from "../utilities";
  *     packageType: "Image",
  *     vswitchId: vsw.id,
  *     timezone: "Asia/Beijing",
- *     replicas: "5",
- *     cpu: "500",
- *     memory: "2048",
+ *     replicas: 5,
+ *     cpu: 500,
+ *     memory: 2048,
  * });
  * const defaultApplications = alicloud.sae.getApplicationsOutput({
  *     ids: [defaultApplication.id],

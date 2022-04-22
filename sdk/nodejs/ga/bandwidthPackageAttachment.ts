@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     bandwidth: 20,
  *     type: "Basic",
  *     bandwidthType: "Basic",
- *     duration: 1,
+ *     duration: "1",
  *     autoPay: true,
  *     ratio: 30,
  * });
