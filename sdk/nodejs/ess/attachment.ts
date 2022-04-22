@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
  *         securityGroups: [defaultSecurityGroup.id],
  *         internetChargeType: "PayByTraffic",
- *         internetMaxBandwidthOut: "10",
+ *         internetMaxBandwidthOut: 10,
  *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_efficiency",
  *         vswitchId: defaultSwitch.id,

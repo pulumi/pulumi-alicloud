@@ -28,13 +28,13 @@ import * as utilities from "../utilities";
  * const defaultCluster = new alicloud.cassandra.Cluster("defaultCluster", {
  *     clusterName: "cassandra-cluster-name-tf",
  *     dataCenterName: "dc-1",
- *     autoRenew: "false",
+ *     autoRenew: false,
  *     instanceType: "cassandra.c.large",
  *     majorVersion: "3.11",
- *     nodeCount: "2",
+ *     nodeCount: 2,
  *     payType: "PayAsYouGo",
  *     vswitchId: "vsw-xxxx1",
- *     diskSize: "160",
+ *     diskSize: 160,
  *     diskType: "cloud_ssd",
  *     maintainStartTime: "18:00Z",
  *     maintainEndTime: "20:00Z",
@@ -43,12 +43,12 @@ import * as utilities from "../utilities";
  * const defaultDataCenter = new alicloud.cassandra.DataCenter("defaultDataCenter", {
  *     clusterId: defaultCluster.id,
  *     dataCenterName: "dc-2",
- *     autoRenew: "false",
+ *     autoRenew: false,
  *     instanceType: "cassandra.c.large",
- *     nodeCount: "2",
+ *     nodeCount: 2,
  *     payType: "PayAsYouGo",
  *     vswitchId: "vsw-xxxx2",
- *     diskSize: "160",
+ *     diskSize: 160,
  *     diskType: "cloud_ssd",
  * });
  * ```

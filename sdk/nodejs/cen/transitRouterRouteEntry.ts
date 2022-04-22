@@ -9,35 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.126.0+
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccCenTransitRouter";
- * const transitRouterRouteEntryDestinationCidrBlockAttachment = config.get("transitRouterRouteEntryDestinationCidrBlockAttachment") || "192.168.0.0/24";
- * const transitRouterRouteEntryName = config.get("transitRouterRouteEntryName") || "sdk_rebot_cen_tr_yaochi";
- * const transitRouterRouteEntryDescription = config.get("transitRouterRouteEntryDescription") || "sdk_rebot_cen_tr_yaochi";
- * const cen = new alicloud.cen.Instance("cen", {description: "terraform01"});
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {
- *     name: name,
- *     cenId: cen.id,
- * });
- * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("defaultTransitRouterRouteTable", {transitRouterId: defaultTransitRouter.transitRouterId});
- * const defaultTransitRouterRouteEntry = new alicloud.cen.TransitRouterRouteEntry("defaultTransitRouterRouteEntry", {
- *     transitRouterRouteTableId: defaultTransitRouterRouteTable.transitRouterRouteTableId,
- *     transitRouterRouteEntryDestinationCidrBlock: transitRouterRouteEntryDestinationCidrBlockAttachment,
- *     transitRouterRouteEntryNextHopType: "Attachment",
- *     transitRouterRouteEntryName: transitRouterRouteEntryName,
- *     transitRouterRouteEntryDescription: transitRouterRouteEntryDescription,
- *     transitRouterRouteEntryNextHopId: alicloud_cen_transit_router_vpc_attachment["default"].transit_router_attachment_id,
- * });
- * ```
- *
  * ## Import
  *
  * CEN instance can be imported using the id, e.g.

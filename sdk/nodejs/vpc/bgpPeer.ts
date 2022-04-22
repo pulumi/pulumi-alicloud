@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     routerId: defaultVirtualBorderRouter.id,
  * });
  * const defaultBgpPeer = new alicloud.vpc.BgpPeer("defaultBgpPeer", {
- *     bfdMultiHop: "10",
+ *     bfdMultiHop: 10,
  *     bgpGroupId: defaultBgpGroup.id,
  *     enableBfd: true,
  *     ipVersion: "IPV4",

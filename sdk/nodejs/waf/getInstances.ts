@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const default = alicloud.waf.getInstances({
  *     ids: ["waf-cn-09k********"],
- *     status: "1",
+ *     status: 1,
  *     resourceGroupId: "rg-acfmwvv********",
  *     instanceSource: "waf-cloud",
  * });

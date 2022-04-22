@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     accessGroupId: defaultAccessGroup.id,
  *     description: name,
  *     rwAccessType: "RDWR",
- *     priority: "10",
+ *     priority: 10,
  * });
  * ```
  *

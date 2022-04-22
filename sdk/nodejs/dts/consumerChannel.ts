@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.s1.small",
- *     instanceStorage: "10",
+ *     instanceStorage: 10,
  *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
  *     instanceName: name,
  * });

@@ -32,11 +32,11 @@ import * as utilities from "../utilities";
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
- *     topicQuota: "50",
- *     diskType: "1",
- *     diskSize: "500",
- *     deployType: "5",
- *     ioMax: "20",
+ *     topicQuota: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 5,
+ *     ioMax: 20,
  *     vswitchId: defaultSwitch.id,
  * });
  * const defaultConsumerGroup = new alicloud.alikafka.ConsumerGroup("defaultConsumerGroup", {

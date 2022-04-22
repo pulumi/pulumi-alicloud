@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.t1.small",
- *     instanceStorage: "20",
+ *     instanceStorage: 20,
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: defaultSwitch.id,
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     zoneId: defaultInstance.zoneId,
  *     engineVersion: defaultInstance.engineVersion,
  *     instanceType: defaultInstance.instanceType,
- *     instanceStorage: "30",
+ *     instanceStorage: 30,
  *     instanceName: `${name}ro`,
  *     vswitchId: defaultSwitch.id,
  * });

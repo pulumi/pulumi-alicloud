@@ -9,51 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.105.0+
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.edas.K8sApplication("default", {
- *     packageType: "Image",
- *     applicationName: "DemoApplication",
- *     applicationDescriotion: "This is description of application",
- *     clusterId: _var.cluster_id,
- *     replicas: 2,
- *     imageUrl: "registry-vpc.cn-beijing.aliyuncs.com/edas-demo-image/consumer:1.0",
- *     packageUrl: _var.package_url,
- *     packageVersion: _var.package_version,
- *     jdk: _var.jdk,
- *     webContainer: _var.web_container,
- *     edasContainerVersion: _var.edas_container_version,
- *     internetTargetPort: _var.internet_target_port,
- *     internetSlbPort: _var.internet_slb_port,
- *     internetSlbProtocol: _var.internet_slb_protocol,
- *     internetSlbId: _var.internet_slb_id,
- *     limitCpu: 4,
- *     limitMem: 2048,
- *     requestsCpu: 0,
- *     requestsMem: 0,
- *     requestsMCpu: 0,
- *     limitMCpu: 4000,
- *     command: _var.command,
- *     commandArgs: _var.command_args,
- *     envs: _var.envs,
- *     preStop: "{\"exec\":{\"command\":[\"ls\",\"/\"]}}",
- *     postStart: "{\"exec\":{\"command\":[\"ls\",\"/\"]}}",
- *     liveness: _var.liveness,
- *     readiness: _var.readiness,
- *     nasId: _var.nas_id,
- *     mountDescs: _var.mount_descs,
- *     localVolume: _var.local_volume,
- *     namespace: "default",
- *     logicalRegionId: cn_beijing,
- * });
- * ```
- *
  * ## Import
  *
  * EDAS k8s application can be imported as below, e.g.

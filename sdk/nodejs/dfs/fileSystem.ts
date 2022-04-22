@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     description: name,
  *     fileSystemName: name,
  *     throughputMode: "Standard",
- *     spaceCapacity: "1024",
+ *     spaceCapacity: 1024,
  * });
  * ```
  *

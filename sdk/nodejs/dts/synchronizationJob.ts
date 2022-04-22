@@ -46,9 +46,9 @@ import * as utilities from "../utilities";
  *     destinationEndpointUserName: "root",
  *     destinationEndpointPassword: "password",
  *     dbList: "{\"tf-testacc\":{\"name\":\"tf-test\",\"all\":true,\"state\":\"normal\"}}",
- *     structureInitialization: "true",
- *     dataInitialization: "true",
- *     dataSynchronization: "true",
+ *     structureInitialization: true,
+ *     dataInitialization: true,
+ *     dataSynchronization: true,
  *     status: "Synchronizing",
  * });
  * ```

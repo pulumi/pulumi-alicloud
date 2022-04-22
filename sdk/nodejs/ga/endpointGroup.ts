@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     spec: "1",
  * });
  * const deBandwidthPackage = new alicloud.ga.BandwidthPackage("deBandwidthPackage", {
- *     bandwidth: "100",
+ *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
  *     paymentType: "PayAsYouGo",
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *     endpointConfigurations: [{
  *         endpoint: exampleEipAddress.ipAddress,
  *         type: "PublicIp",
- *         weight: "20",
+ *         weight: 20,
  *     }],
  *     endpointGroupRegion: "cn-hangzhou",
  *     listenerId: exampleListener.id,

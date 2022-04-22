@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     category: "ecs",
  *     namespace: "acs_ecs_dashboard",
  *     metricName: "cpu_total",
- *     period: "60",
+ *     period: 60,
  *     groupMetricRuleName: "tf-testacc-rule-name",
  *     emailSubject: "tf-testacc-rule-name-warning",
  *     interval: "3600",

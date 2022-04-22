@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.slb.ApplicationLoadBalancer("default", {loadBalancerName: "tf-testAccSlbListenertcp"});
  * const tcp = new alicloud.slb.Listener("tcp", {
  *     loadBalancerId: _default.id,
- *     backendPort: "22",
- *     frontendPort: "22",
+ *     backendPort: 22,
+ *     frontendPort: 22,
  *     protocol: "tcp",
- *     bandwidth: "10",
+ *     bandwidth: 10,
  *     healthCheckType: "tcp",
  *     persistenceTimeout: 3600,
  *     healthyThreshold: 8,

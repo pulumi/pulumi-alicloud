@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     category: "Basic",
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
- *     dbNodeGroupCount: "1",
+ *     dbNodeGroupCount: 1,
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",

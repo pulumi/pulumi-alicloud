@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.t1.small",
- *     instanceStorage: "30",
+ *     instanceStorage: 30,
  *     instanceChargeType: "Postpaid",
  *     dbInstanceStorageType: "local_ssd",
  * });

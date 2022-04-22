@@ -17,13 +17,13 @@ import * as utilities from "../utilities";
  *
  * const _default = new alicloud.ecs.ReservedInstance("default", {
  *     instanceType: "ecs.g6.large",
- *     instanceAmount: "1",
+ *     instanceAmount: 1,
  *     periodUnit: "Year",
  *     offeringType: "All Upfront",
  *     description: "ReservedInstance",
  *     zoneId: "cn-hangzhou-h",
  *     scope: "Zone",
- *     period: "1",
+ *     period: 1,
  * });
  * ```
  *

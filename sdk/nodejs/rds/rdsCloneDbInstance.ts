@@ -35,18 +35,18 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.s2.large",
- *     instanceStorage: "30",
+ *     instanceStorage: 30,
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: exampleSwitch.id,
- *     monitoringPeriod: "60",
+ *     monitoringPeriod: 60,
  * });
  * const exampleRdsCloneDbInstance = new alicloud.rds.RdsCloneDbInstance("exampleRdsCloneDbInstance", {
  *     sourceDbInstanceId: exampleInstance.id,
  *     dbInstanceStorageType: "local_ssd",
  *     paymentType: "PayAsYouGo",
  *     restoreTime: "2021-11-24T11:25:00Z",
- *     dbInstanceStorage: "30",
+ *     dbInstanceStorage: 30,
  * });
  * ```
  *

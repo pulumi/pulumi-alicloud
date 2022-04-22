@@ -37,11 +37,11 @@ import * as utilities from "../utilities";
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
- *     topicQuota: "50",
- *     diskType: "1",
- *     diskSize: "500",
- *     deployType: "4",
- *     ioMax: "20",
+ *     topicQuota: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 4,
+ *     ioMax: 20,
  *     vswitchId: defaultSwitch.id,
  *     securityGroup: defaultSecurityGroup.id,
  * });

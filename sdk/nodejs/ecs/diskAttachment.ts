@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const ecsSg = new alicloud.ecs.SecurityGroup("ecsSg", {description: "New security group"});
  * const ecsDisk = new alicloud.ecs.Disk("ecsDisk", {
  *     availabilityZone: "cn-beijing-a",
- *     size: "50",
+ *     size: 50,
  *     tags: {
  *         Name: "TerraformTest-disk",
  *     },

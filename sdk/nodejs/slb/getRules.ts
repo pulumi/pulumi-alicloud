@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     frontendPort: 22,
  *     protocol: "http",
  *     bandwidth: 5,
- *     healthCheckConnectPort: "20",
+ *     healthCheckConnectPort: 20,
  * });
  * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
  * const defaultRule = new alicloud.slb.Rule("defaultRule", {

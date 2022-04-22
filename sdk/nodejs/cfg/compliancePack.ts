@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * const defaultCompliancePack = new alicloud.cfg.CompliancePack("defaultCompliancePack", {
  *     compliancePackName: "tf-testaccConfig1234",
  *     description: "tf-testaccConfig1234",
- *     riskLevel: "1",
+ *     riskLevel: 1,
  *     configRuleIds: [{
  *         configRuleId: defaultRule.id,
  *     }],

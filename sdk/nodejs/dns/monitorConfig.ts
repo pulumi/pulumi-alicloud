@@ -61,9 +61,9 @@ import * as utilities from "../utilities";
  * });
  * const defaultMonitorConfig = new alicloud.dns.MonitorConfig("defaultMonitorConfig", {
  *     addrPoolId: defaultAddressPool.id,
- *     evaluationCount: "1",
- *     interval: "60",
- *     timeout: "5000",
+ *     evaluationCount: 1,
+ *     interval: 60,
+ *     timeout: 5000,
  *     protocolType: "TCP",
  *     monitorExtendInfo: "{\"failureRate\"=50,\"port\"=80}",
  *     ispCityNodes: {

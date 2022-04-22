@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const defaultRule = new alicloud.sddp.Rule("defaultRule", {
- *     category: "0",
+ *     category: 0,
  *     content: "content",
  *     ruleName: "rule_name",
  *     riskLevelId: "4",

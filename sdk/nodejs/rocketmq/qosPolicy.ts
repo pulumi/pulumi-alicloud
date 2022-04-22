@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultQosPolicy = new alicloud.rocketmq.QosPolicy("defaultQosPolicy", {
  *     qosId: defaultQos.id,
  *     description: "tf-testSagQosPolicyDescription",
- *     priority: "1",
+ *     priority: 1,
  *     ipProtocol: "ALL",
  *     sourceCidr: "192.168.0.0/24",
  *     sourcePortRange: "-1/-1",

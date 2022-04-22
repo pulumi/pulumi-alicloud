@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const exampleTrafficMirrorFilter = new alicloud.vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", {trafficMirrorFilterName: "example_value"});
  * const exampleTrafficMirrorFilterEgressRule = new alicloud.vpc.TrafficMirrorFilterEgressRule("exampleTrafficMirrorFilterEgressRule", {
  *     trafficMirrorFilterId: exampleTrafficMirrorFilter.id,
- *     priority: "1",
+ *     priority: 1,
  *     ruleAction: "accept",
  *     protocol: "UDP",
  *     destinationCidrBlock: "10.0.0.0/24",

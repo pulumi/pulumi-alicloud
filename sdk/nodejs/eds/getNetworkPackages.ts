@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     officeSiteName: "example_value",
  * });
  * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
- *     bandwidth: "10",
+ *     bandwidth: 10,
  *     officeSiteId: defaultSimpleOfficeSite.id,
  * });
  * const defaultNetworkPackages = alicloud.eds.getNetworkPackagesOutput({

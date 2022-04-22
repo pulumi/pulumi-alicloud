@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *         "example_value-1",
  *         "example_value-2",
  *     ],
- *     status: "0",
+ *     status: 0,
  * });
  * export const cloudStorageGatewayGatewayCacheDiskId2 = status.then(status => status.disks?[0]?.id);
  * ```

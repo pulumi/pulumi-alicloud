@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
  *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
  *     internetChargeType: "PayByTraffic",
- *     internetMaxBandwidthOut: "5",
+ *     internetMaxBandwidthOut: 5,
  *     systemDiskCategory: "cloud_efficiency",
  *     securityGroups: [defaultSecurityGroup.id],
  *     instanceName: name,

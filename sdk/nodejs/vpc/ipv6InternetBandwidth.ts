@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     ipv6AddressId: exampleIpv6Addresses.then(exampleIpv6Addresses => exampleIpv6Addresses.addresses?[0]?.id),
  *     ipv6GatewayId: exampleIpv6Addresses.then(exampleIpv6Addresses => exampleIpv6Addresses.addresses?[0]?.ipv6GatewayId),
  *     internetChargeType: "PayByBandwidth",
- *     bandwidth: "20",
+ *     bandwidth: 20,
  * });
  * ```
  *

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * export const actiontrailHistoryDeliveryJobId1 = ids.then(ids => ids.jobs?[0]?.id);
  * const status = alicloud.actiontrail.getHistoryDeliveryJobs({
  *     ids: ["example_id"],
- *     status: "2",
+ *     status: 2,
  * });
  * export const actiontrailHistoryDeliveryJobId2 = status.then(status => status.jobs?[0]?.id);
  * ```

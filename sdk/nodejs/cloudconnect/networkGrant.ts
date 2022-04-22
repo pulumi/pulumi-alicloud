@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * const cen = new alicloud.cen.Instance("cen", {}, {
  *     provider: alicloud.cen_account,
  * });
- * const ccn = new alicloud.cloudconnect.Network("ccn", {isDefault: "true"}, {
+ * const ccn = new alicloud.cloudconnect.Network("ccn", {isDefault: true}, {
  *     provider: alicloud.ccn_account,
  * });
  * const _default = new alicloud.cloudconnect.NetworkGrant("default", {

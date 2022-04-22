@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *         instanceName: name,
  *         securityGroups: [groupSecurityGroup.id],
  *         internetChargeType: "PayByTraffic",
- *         internetMaxBandwidthOut: "10",
+ *         internetMaxBandwidthOut: 10,
  *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_efficiency",
