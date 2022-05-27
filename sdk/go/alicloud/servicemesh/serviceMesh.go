@@ -27,6 +27,10 @@ import (
 type ServiceMesh struct {
 	pulumi.CustomResourceState
 
+	// The array of the cluster ids.
+	ClusterIds pulumi.StringArrayOutput `pulumi:"clusterIds"`
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec pulumi.StringPtrOutput `pulumi:"clusterSpec"`
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition pulumi.StringOutput `pulumi:"edition"`
 	// This parameter is used for resource destroy. Default value is `false`.
@@ -77,6 +81,10 @@ func GetServiceMesh(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceMesh resources.
 type serviceMeshState struct {
+	// The array of the cluster ids.
+	ClusterIds []string `pulumi:"clusterIds"`
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec *string `pulumi:"clusterSpec"`
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition *string `pulumi:"edition"`
 	// This parameter is used for resource destroy. Default value is `false`.
@@ -96,6 +104,10 @@ type serviceMeshState struct {
 }
 
 type ServiceMeshState struct {
+	// The array of the cluster ids.
+	ClusterIds pulumi.StringArrayInput
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec pulumi.StringPtrInput
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition pulumi.StringPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
@@ -119,6 +131,10 @@ func (ServiceMeshState) ElementType() reflect.Type {
 }
 
 type serviceMeshArgs struct {
+	// The array of the cluster ids.
+	ClusterIds []string `pulumi:"clusterIds"`
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec *string `pulumi:"clusterSpec"`
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition *string `pulumi:"edition"`
 	// This parameter is used for resource destroy. Default value is `false`.
@@ -137,6 +153,10 @@ type serviceMeshArgs struct {
 
 // The set of arguments for constructing a ServiceMesh resource.
 type ServiceMeshArgs struct {
+	// The array of the cluster ids.
+	ClusterIds pulumi.StringArrayInput
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec pulumi.StringPtrInput
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition pulumi.StringPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.

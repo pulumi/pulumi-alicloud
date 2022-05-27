@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetRulesRuleRuleConditionMethodConfigResult
     {
         /// <summary>
-        /// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / &amp; ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        /// Add one or more IP addresses or IP address segments.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

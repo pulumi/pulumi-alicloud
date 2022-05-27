@@ -31,6 +31,8 @@ type ScalingGroup struct {
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrOutput `pulumi:"groupDeletionProtection"`
+	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+	GroupType pulumi.StringOutput `pulumi:"groupType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrOutput `pulumi:"launchTemplateId"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
@@ -121,6 +123,8 @@ type scalingGroupState struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
+	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+	GroupType *string `pulumi:"groupType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
@@ -177,6 +181,8 @@ type ScalingGroupState struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrInput
+	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+	GroupType pulumi.StringPtrInput
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
@@ -237,6 +243,8 @@ type scalingGroupArgs struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
+	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+	GroupType *string `pulumi:"groupType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
@@ -294,6 +302,8 @@ type ScalingGroupArgs struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
 	GroupDeletionProtection pulumi.BoolPtrInput
+	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+	GroupType pulumi.StringPtrInput
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.

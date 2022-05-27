@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
  *
+ * For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
+ *
  * ## Block servers
  *
  * The servers mapping supports the following:
@@ -77,7 +79,9 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+     *
+     * @deprecated Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
      */
     public readonly servers!: pulumi.Output<outputs.slb.ServerGroupServer[]>;
 
@@ -130,7 +134,9 @@ export interface ServerGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+     *
+     * @deprecated Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
 }
@@ -152,7 +158,9 @@ export interface ServerGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+     * A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
+     *
+     * @deprecated Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
 }

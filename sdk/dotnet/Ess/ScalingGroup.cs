@@ -48,6 +48,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> GroupDeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+        /// </summary>
+        [Output("groupType")]
+        public Output<string> GroupType { get; private set; } = null!;
+
+        /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         /// </summary>
         [Output("launchTemplateId")]
@@ -227,6 +233,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? GroupDeletionProtection { get; set; }
 
         /// <summary>
+        /// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+        /// </summary>
+        [Input("groupType")]
+        public Input<string>? GroupType { get; set; }
+
+        /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         /// </summary>
         [Input("launchTemplateId")]
@@ -389,6 +401,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("groupDeletionProtection")]
         public Input<bool>? GroupDeletionProtection { get; set; }
+
+        /// <summary>
+        /// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+        /// </summary>
+        [Input("groupType")]
+        public Input<string>? GroupType { get; set; }
 
         /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.

@@ -151,6 +151,12 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> PhysicalConnectionId { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+        /// </summary>
+        [Output("routeTableId")]
+        public Output<string> RouteTableId { get; private set; } = null!;
+
+        /// <summary>
         /// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
         /// </summary>
         [Output("status")]
@@ -430,6 +436,12 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         [Input("physicalConnectionId")]
         public Input<string>? PhysicalConnectionId { get; set; }
+
+        /// <summary>
+        /// (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+        /// </summary>
+        [Input("routeTableId")]
+        public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
         /// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.

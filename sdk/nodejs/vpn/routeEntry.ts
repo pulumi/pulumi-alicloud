@@ -95,6 +95,14 @@ export class RouteEntry extends pulumi.CustomResource {
      */
     public readonly routeDest!: pulumi.Output<string>;
     /**
+     * (Available in 1.161.0+) The type of the vpn route entry.
+     */
+    public /*out*/ readonly routeEntryType!: pulumi.Output<string>;
+    /**
+     * (Available in 1.161.0+) The status of the vpn route entry.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
      * The id of the vpn gateway.
      */
     public readonly vpnGatewayId!: pulumi.Output<string>;
@@ -119,6 +127,8 @@ export class RouteEntry extends pulumi.CustomResource {
             resourceInputs["nextHop"] = state ? state.nextHop : undefined;
             resourceInputs["publishVpc"] = state ? state.publishVpc : undefined;
             resourceInputs["routeDest"] = state ? state.routeDest : undefined;
+            resourceInputs["routeEntryType"] = state ? state.routeEntryType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
             resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
@@ -143,6 +153,8 @@ export class RouteEntry extends pulumi.CustomResource {
             resourceInputs["routeDest"] = args ? args.routeDest : undefined;
             resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
             resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["routeEntryType"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouteEntry.__pulumiType, name, resourceInputs, opts);
@@ -165,6 +177,14 @@ export interface RouteEntryState {
      * The destination network segment of the destination route.
      */
     routeDest?: pulumi.Input<string>;
+    /**
+     * (Available in 1.161.0+) The type of the vpn route entry.
+     */
+    routeEntryType?: pulumi.Input<string>;
+    /**
+     * (Available in 1.161.0+) The status of the vpn route entry.
+     */
+    status?: pulumi.Input<string>;
     /**
      * The id of the vpn gateway.
      */

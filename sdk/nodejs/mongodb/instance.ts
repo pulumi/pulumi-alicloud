@@ -65,7 +65,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly dbInstanceClass!: pulumi.Output<string>;
     /**
      * User-defined DB instance storage space.Unit: GB. Value range:
-     * - Custom storage space; value range: [10,2000]
+     * - Custom storage space.
      * - 10-GB increments.
      */
     public readonly dbInstanceStorage!: pulumi.Output<number>;
@@ -98,6 +98,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     */
+    public readonly networkType!: pulumi.Output<string>;
+    /**
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
@@ -120,6 +124,10 @@ export class Instance extends pulumi.CustomResource {
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
     public readonly replicationFactor!: pulumi.Output<number>;
+    /**
+     * The ID of the Resource Group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * Instance log backup retention days. Available in 1.42.0+.
      */
@@ -152,6 +160,10 @@ export class Instance extends pulumi.CustomResource {
      * The TDE(Transparent Data Encryption) status.
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -189,11 +201,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
             resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["orderType"] = state ? state.orderType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["replicaSetName"] = state ? state.replicaSetName : undefined;
             resourceInputs["replicaSets"] = state ? state.replicaSets : undefined;
             resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
@@ -202,6 +216,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -228,15 +243,18 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
             resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["orderType"] = args ? args.orderType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
             resourceInputs["sslAction"] = args ? args.sslAction : undefined;
             resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["replicaSetName"] = undefined /*out*/;
@@ -276,7 +294,7 @@ export interface InstanceState {
     dbInstanceClass?: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space.Unit: GB. Value range:
-     * - Custom storage space; value range: [10,2000]
+     * - Custom storage space.
      * - 10-GB increments.
      */
     dbInstanceStorage?: pulumi.Input<number>;
@@ -309,6 +327,10 @@ export interface InstanceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     */
+    networkType?: pulumi.Input<string>;
+    /**
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
@@ -331,6 +353,10 @@ export interface InstanceState {
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
     replicationFactor?: pulumi.Input<number>;
+    /**
+     * The ID of the Resource Group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Instance log backup retention days. Available in 1.42.0+.
      */
@@ -363,6 +389,10 @@ export interface InstanceState {
      * The TDE(Transparent Data Encryption) status.
      */
     tdeStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -402,7 +432,7 @@ export interface InstanceArgs {
     dbInstanceClass: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space.Unit: GB. Value range:
-     * - Custom storage space; value range: [10,2000]
+     * - Custom storage space.
      * - 10-GB increments.
      */
     dbInstanceStorage: pulumi.Input<number>;
@@ -435,6 +465,10 @@ export interface InstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     */
+    networkType?: pulumi.Input<string>;
+    /**
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
@@ -449,6 +483,10 @@ export interface InstanceArgs {
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      */
     replicationFactor?: pulumi.Input<number>;
+    /**
+     * The ID of the Resource Group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The Security Group ID of ECS.
      */
@@ -473,6 +511,10 @@ export interface InstanceArgs {
      * The TDE(Transparent Data Encryption) status.
      */
     tdeStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */

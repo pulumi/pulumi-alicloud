@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Imp.Outputs
     public sealed class AppTemplateConfigList
     {
         /// <summary>
-        /// Configuration item key. Valid values:
+        /// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
         /// </summary>
         public readonly string? Key;
         /// <summary>

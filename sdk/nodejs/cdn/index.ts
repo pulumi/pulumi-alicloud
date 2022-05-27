@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./domain";
 export * from "./domainConfig";
 export * from "./domainNew";
+export * from "./fcTrigger";
 export * from "./getIpInfo";
 export * from "./getRealTimeLogDeliveries";
 export * from "./getService";
@@ -17,6 +18,7 @@ export * from "./realTimeLogDelivery";
 import { Domain } from "./domain";
 import { DomainConfig } from "./domainConfig";
 import { DomainNew } from "./domainNew";
+import { FcTrigger } from "./fcTrigger";
 import { RealTimeLogDelivery } from "./realTimeLogDelivery";
 
 const _module = {
@@ -29,6 +31,8 @@ const _module = {
                 return new DomainConfig(name, <any>undefined, { urn })
             case "alicloud:cdn/domainNew:DomainNew":
                 return new DomainNew(name, <any>undefined, { urn })
+            case "alicloud:cdn/fcTrigger:FcTrigger":
+                return new FcTrigger(name, <any>undefined, { urn })
             case "alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery":
                 return new RealTimeLogDelivery(name, <any>undefined, { urn })
             default:
@@ -39,4 +43,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "cdn/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cdn/domainConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cdn/domainNew", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cdn/fcTrigger", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cdn/realTimeLogDelivery", _module)

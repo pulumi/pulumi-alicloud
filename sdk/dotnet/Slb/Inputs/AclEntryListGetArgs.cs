@@ -15,8 +15,8 @@ namespace Pulumi.AliCloud.Slb.Inputs
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        [Input("entry", required: true)]
-        public Input<string> Entry { get; set; } = null!;
+        [Input("entry")]
+        public Input<string>? Entry { get; set; }
 
         public AclEntryListGetArgs()
         {

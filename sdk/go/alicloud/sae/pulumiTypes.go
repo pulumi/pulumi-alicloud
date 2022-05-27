@@ -10,254 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type ApplicationInternet struct {
-	// SSL certificate. `httpsCertId` is required when HTTPS is selected
-	HttpsCertId *string `pulumi:"httpsCertId"`
-	// SLB Port.
-	Port *int `pulumi:"port"`
-	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-	Protocol *string `pulumi:"protocol"`
-	// Container port.
-	TargetPort *int `pulumi:"targetPort"`
-}
-
-// ApplicationInternetInput is an input type that accepts ApplicationInternetArgs and ApplicationInternetOutput values.
-// You can construct a concrete instance of `ApplicationInternetInput` via:
-//
-//          ApplicationInternetArgs{...}
-type ApplicationInternetInput interface {
-	pulumi.Input
-
-	ToApplicationInternetOutput() ApplicationInternetOutput
-	ToApplicationInternetOutputWithContext(context.Context) ApplicationInternetOutput
-}
-
-type ApplicationInternetArgs struct {
-	// SSL certificate. `httpsCertId` is required when HTTPS is selected
-	HttpsCertId pulumi.StringPtrInput `pulumi:"httpsCertId"`
-	// SLB Port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Container port.
-	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
-}
-
-func (ApplicationInternetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationInternet)(nil)).Elem()
-}
-
-func (i ApplicationInternetArgs) ToApplicationInternetOutput() ApplicationInternetOutput {
-	return i.ToApplicationInternetOutputWithContext(context.Background())
-}
-
-func (i ApplicationInternetArgs) ToApplicationInternetOutputWithContext(ctx context.Context) ApplicationInternetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInternetOutput)
-}
-
-// ApplicationInternetArrayInput is an input type that accepts ApplicationInternetArray and ApplicationInternetArrayOutput values.
-// You can construct a concrete instance of `ApplicationInternetArrayInput` via:
-//
-//          ApplicationInternetArray{ ApplicationInternetArgs{...} }
-type ApplicationInternetArrayInput interface {
-	pulumi.Input
-
-	ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput
-	ToApplicationInternetArrayOutputWithContext(context.Context) ApplicationInternetArrayOutput
-}
-
-type ApplicationInternetArray []ApplicationInternetInput
-
-func (ApplicationInternetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationInternet)(nil)).Elem()
-}
-
-func (i ApplicationInternetArray) ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput {
-	return i.ToApplicationInternetArrayOutputWithContext(context.Background())
-}
-
-func (i ApplicationInternetArray) ToApplicationInternetArrayOutputWithContext(ctx context.Context) ApplicationInternetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInternetArrayOutput)
-}
-
-type ApplicationInternetOutput struct{ *pulumi.OutputState }
-
-func (ApplicationInternetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationInternet)(nil)).Elem()
-}
-
-func (o ApplicationInternetOutput) ToApplicationInternetOutput() ApplicationInternetOutput {
-	return o
-}
-
-func (o ApplicationInternetOutput) ToApplicationInternetOutputWithContext(ctx context.Context) ApplicationInternetOutput {
-	return o
-}
-
-// SSL certificate. `httpsCertId` is required when HTTPS is selected
-func (o ApplicationInternetOutput) HttpsCertId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationInternet) *string { return v.HttpsCertId }).(pulumi.StringPtrOutput)
-}
-
-// SLB Port.
-func (o ApplicationInternetOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApplicationInternet) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-func (o ApplicationInternetOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationInternet) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// Container port.
-func (o ApplicationInternetOutput) TargetPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApplicationInternet) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
-}
-
-type ApplicationInternetArrayOutput struct{ *pulumi.OutputState }
-
-func (ApplicationInternetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationInternet)(nil)).Elem()
-}
-
-func (o ApplicationInternetArrayOutput) ToApplicationInternetArrayOutput() ApplicationInternetArrayOutput {
-	return o
-}
-
-func (o ApplicationInternetArrayOutput) ToApplicationInternetArrayOutputWithContext(ctx context.Context) ApplicationInternetArrayOutput {
-	return o
-}
-
-func (o ApplicationInternetArrayOutput) Index(i pulumi.IntInput) ApplicationInternetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationInternet {
-		return vs[0].([]ApplicationInternet)[vs[1].(int)]
-	}).(ApplicationInternetOutput)
-}
-
-type ApplicationIntranet struct {
-	// SSL certificate. `httpsCertId` is required when HTTPS is selected
-	HttpsCertId *string `pulumi:"httpsCertId"`
-	// SLB Port.
-	Port *int `pulumi:"port"`
-	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-	Protocol *string `pulumi:"protocol"`
-	// Container port.
-	TargetPort *int `pulumi:"targetPort"`
-}
-
-// ApplicationIntranetInput is an input type that accepts ApplicationIntranetArgs and ApplicationIntranetOutput values.
-// You can construct a concrete instance of `ApplicationIntranetInput` via:
-//
-//          ApplicationIntranetArgs{...}
-type ApplicationIntranetInput interface {
-	pulumi.Input
-
-	ToApplicationIntranetOutput() ApplicationIntranetOutput
-	ToApplicationIntranetOutputWithContext(context.Context) ApplicationIntranetOutput
-}
-
-type ApplicationIntranetArgs struct {
-	// SSL certificate. `httpsCertId` is required when HTTPS is selected
-	HttpsCertId pulumi.StringPtrInput `pulumi:"httpsCertId"`
-	// SLB Port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Container port.
-	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
-}
-
-func (ApplicationIntranetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationIntranet)(nil)).Elem()
-}
-
-func (i ApplicationIntranetArgs) ToApplicationIntranetOutput() ApplicationIntranetOutput {
-	return i.ToApplicationIntranetOutputWithContext(context.Background())
-}
-
-func (i ApplicationIntranetArgs) ToApplicationIntranetOutputWithContext(ctx context.Context) ApplicationIntranetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIntranetOutput)
-}
-
-// ApplicationIntranetArrayInput is an input type that accepts ApplicationIntranetArray and ApplicationIntranetArrayOutput values.
-// You can construct a concrete instance of `ApplicationIntranetArrayInput` via:
-//
-//          ApplicationIntranetArray{ ApplicationIntranetArgs{...} }
-type ApplicationIntranetArrayInput interface {
-	pulumi.Input
-
-	ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput
-	ToApplicationIntranetArrayOutputWithContext(context.Context) ApplicationIntranetArrayOutput
-}
-
-type ApplicationIntranetArray []ApplicationIntranetInput
-
-func (ApplicationIntranetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationIntranet)(nil)).Elem()
-}
-
-func (i ApplicationIntranetArray) ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput {
-	return i.ToApplicationIntranetArrayOutputWithContext(context.Background())
-}
-
-func (i ApplicationIntranetArray) ToApplicationIntranetArrayOutputWithContext(ctx context.Context) ApplicationIntranetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIntranetArrayOutput)
-}
-
-type ApplicationIntranetOutput struct{ *pulumi.OutputState }
-
-func (ApplicationIntranetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationIntranet)(nil)).Elem()
-}
-
-func (o ApplicationIntranetOutput) ToApplicationIntranetOutput() ApplicationIntranetOutput {
-	return o
-}
-
-func (o ApplicationIntranetOutput) ToApplicationIntranetOutputWithContext(ctx context.Context) ApplicationIntranetOutput {
-	return o
-}
-
-// SSL certificate. `httpsCertId` is required when HTTPS is selected
-func (o ApplicationIntranetOutput) HttpsCertId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationIntranet) *string { return v.HttpsCertId }).(pulumi.StringPtrOutput)
-}
-
-// SLB Port.
-func (o ApplicationIntranetOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApplicationIntranet) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-// Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-func (o ApplicationIntranetOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationIntranet) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// Container port.
-func (o ApplicationIntranetOutput) TargetPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ApplicationIntranet) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
-}
-
-type ApplicationIntranetArrayOutput struct{ *pulumi.OutputState }
-
-func (ApplicationIntranetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationIntranet)(nil)).Elem()
-}
-
-func (o ApplicationIntranetArrayOutput) ToApplicationIntranetArrayOutput() ApplicationIntranetArrayOutput {
-	return o
-}
-
-func (o ApplicationIntranetArrayOutput) ToApplicationIntranetArrayOutputWithContext(ctx context.Context) ApplicationIntranetArrayOutput {
-	return o
-}
-
-func (o ApplicationIntranetArrayOutput) Index(i pulumi.IntInput) ApplicationIntranetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationIntranet {
-		return vs[0].([]ApplicationIntranet)[vs[1].(int)]
-	}).(ApplicationIntranetOutput)
-}
-
 type ApplicationScalingRuleScalingRuleMetric struct {
 	// Maximum number of instances applied.
 	MaxReplicas *int `pulumi:"maxReplicas"`
@@ -307,29 +59,45 @@ func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleSca
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricOutput)
 }
 
-// ApplicationScalingRuleScalingRuleMetricArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricArray and ApplicationScalingRuleScalingRuleMetricArrayOutput values.
-// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricArrayInput` via:
+func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleScalingRuleMetricPtrOutput() ApplicationScalingRuleScalingRuleMetricPtrOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleMetricArgs) ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricOutput).ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(ctx)
+}
+
+// ApplicationScalingRuleScalingRuleMetricPtrInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricArgs, ApplicationScalingRuleScalingRuleMetricPtr and ApplicationScalingRuleScalingRuleMetricPtrOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleMetricPtrInput` via:
 //
-//          ApplicationScalingRuleScalingRuleMetricArray{ ApplicationScalingRuleScalingRuleMetricArgs{...} }
-type ApplicationScalingRuleScalingRuleMetricArrayInput interface {
+//          ApplicationScalingRuleScalingRuleMetricArgs{...}
+//
+//  or:
+//
+//          nil
+type ApplicationScalingRuleScalingRuleMetricPtrInput interface {
 	pulumi.Input
 
-	ToApplicationScalingRuleScalingRuleMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricArrayOutput
-	ToApplicationScalingRuleScalingRuleMetricArrayOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricArrayOutput
+	ToApplicationScalingRuleScalingRuleMetricPtrOutput() ApplicationScalingRuleScalingRuleMetricPtrOutput
+	ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleMetricPtrOutput
 }
 
-type ApplicationScalingRuleScalingRuleMetricArray []ApplicationScalingRuleScalingRuleMetricInput
+type applicationScalingRuleScalingRuleMetricPtrType ApplicationScalingRuleScalingRuleMetricArgs
 
-func (ApplicationScalingRuleScalingRuleMetricArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleMetric)(nil)).Elem()
+func ApplicationScalingRuleScalingRuleMetricPtr(v *ApplicationScalingRuleScalingRuleMetricArgs) ApplicationScalingRuleScalingRuleMetricPtrInput {
+	return (*applicationScalingRuleScalingRuleMetricPtrType)(v)
 }
 
-func (i ApplicationScalingRuleScalingRuleMetricArray) ToApplicationScalingRuleScalingRuleMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricArrayOutput {
-	return i.ToApplicationScalingRuleScalingRuleMetricArrayOutputWithContext(context.Background())
+func (*applicationScalingRuleScalingRuleMetricPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScalingRuleScalingRuleMetric)(nil)).Elem()
 }
 
-func (i ApplicationScalingRuleScalingRuleMetricArray) ToApplicationScalingRuleScalingRuleMetricArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricArrayOutput)
+func (i *applicationScalingRuleScalingRuleMetricPtrType) ToApplicationScalingRuleScalingRuleMetricPtrOutput() ApplicationScalingRuleScalingRuleMetricPtrOutput {
+	return i.ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationScalingRuleScalingRuleMetricPtrType) ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleMetricPtrOutput)
 }
 
 type ApplicationScalingRuleScalingRuleMetricOutput struct{ *pulumi.OutputState }
@@ -344,6 +112,16 @@ func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleS
 
 func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleScalingRuleMetricOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricOutput {
 	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleScalingRuleMetricPtrOutput() ApplicationScalingRuleScalingRuleMetricPtrOutput {
+	return o.ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationScalingRuleScalingRuleMetricOutput) ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetric {
+		return &v
+	}).(ApplicationScalingRuleScalingRuleMetricPtrOutput)
 }
 
 // Maximum number of instances applied.
@@ -377,24 +155,78 @@ func (o ApplicationScalingRuleScalingRuleMetricOutput) ScaleUpRules() Applicatio
 	}).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput)
 }
 
-type ApplicationScalingRuleScalingRuleMetricArrayOutput struct{ *pulumi.OutputState }
+type ApplicationScalingRuleScalingRuleMetricPtrOutput struct{ *pulumi.OutputState }
 
-func (ApplicationScalingRuleScalingRuleMetricArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleMetric)(nil)).Elem()
+func (ApplicationScalingRuleScalingRuleMetricPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScalingRuleScalingRuleMetric)(nil)).Elem()
 }
 
-func (o ApplicationScalingRuleScalingRuleMetricArrayOutput) ToApplicationScalingRuleScalingRuleMetricArrayOutput() ApplicationScalingRuleScalingRuleMetricArrayOutput {
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ToApplicationScalingRuleScalingRuleMetricPtrOutput() ApplicationScalingRuleScalingRuleMetricPtrOutput {
 	return o
 }
 
-func (o ApplicationScalingRuleScalingRuleMetricArrayOutput) ToApplicationScalingRuleScalingRuleMetricArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricArrayOutput {
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ToApplicationScalingRuleScalingRuleMetricPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleMetricPtrOutput {
 	return o
 }
 
-func (o ApplicationScalingRuleScalingRuleMetricArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleScalingRuleMetricOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScalingRuleScalingRuleMetric {
-		return vs[0].([]ApplicationScalingRuleScalingRuleMetric)[vs[1].(int)]
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Elem() ApplicationScalingRuleScalingRuleMetricOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) ApplicationScalingRuleScalingRuleMetric {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationScalingRuleScalingRuleMetric
+		return ret
 	}).(ApplicationScalingRuleScalingRuleMetricOutput)
+}
+
+// Maximum number of instances applied.
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MaxReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicator rule configuration. See the following `Block metrics`.
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) Metrics() ApplicationScalingRuleScalingRuleMetricMetricArrayOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) []ApplicationScalingRuleScalingRuleMetricMetric {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput)
+}
+
+// Minimum number of instances applied.
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) MinReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicas
+	}).(pulumi.IntPtrOutput)
+}
+
+// Apply shrink rules. See the following `Block scaleDownRules`.
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleDownRules() ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleDownRules {
+		if v == nil {
+			return nil
+		}
+		return v.ScaleDownRules
+	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
+}
+
+// Apply expansion rules. See the following `Block scaleUpRules`.
+func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleUpRules() ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetric) *ApplicationScalingRuleScalingRuleMetricScaleUpRules {
+		if v == nil {
+			return nil
+		}
+		return v.ScaleUpRules
+	}).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput)
 }
 
 type ApplicationScalingRuleScalingRuleMetricMetric struct {
@@ -915,29 +747,45 @@ func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScal
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerOutput)
 }
 
-// ApplicationScalingRuleScalingRuleTimerArrayInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerArray and ApplicationScalingRuleScalingRuleTimerArrayOutput values.
-// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerArrayInput` via:
+func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScalingRuleTimerPtrOutput() ApplicationScalingRuleScalingRuleTimerPtrOutput {
+	return i.ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationScalingRuleScalingRuleTimerArgs) ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerOutput).ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(ctx)
+}
+
+// ApplicationScalingRuleScalingRuleTimerPtrInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerArgs, ApplicationScalingRuleScalingRuleTimerPtr and ApplicationScalingRuleScalingRuleTimerPtrOutput values.
+// You can construct a concrete instance of `ApplicationScalingRuleScalingRuleTimerPtrInput` via:
 //
-//          ApplicationScalingRuleScalingRuleTimerArray{ ApplicationScalingRuleScalingRuleTimerArgs{...} }
-type ApplicationScalingRuleScalingRuleTimerArrayInput interface {
+//          ApplicationScalingRuleScalingRuleTimerArgs{...}
+//
+//  or:
+//
+//          nil
+type ApplicationScalingRuleScalingRuleTimerPtrInput interface {
 	pulumi.Input
 
-	ToApplicationScalingRuleScalingRuleTimerArrayOutput() ApplicationScalingRuleScalingRuleTimerArrayOutput
-	ToApplicationScalingRuleScalingRuleTimerArrayOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleTimerArrayOutput
+	ToApplicationScalingRuleScalingRuleTimerPtrOutput() ApplicationScalingRuleScalingRuleTimerPtrOutput
+	ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(context.Context) ApplicationScalingRuleScalingRuleTimerPtrOutput
 }
 
-type ApplicationScalingRuleScalingRuleTimerArray []ApplicationScalingRuleScalingRuleTimerInput
+type applicationScalingRuleScalingRuleTimerPtrType ApplicationScalingRuleScalingRuleTimerArgs
 
-func (ApplicationScalingRuleScalingRuleTimerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleTimer)(nil)).Elem()
+func ApplicationScalingRuleScalingRuleTimerPtr(v *ApplicationScalingRuleScalingRuleTimerArgs) ApplicationScalingRuleScalingRuleTimerPtrInput {
+	return (*applicationScalingRuleScalingRuleTimerPtrType)(v)
 }
 
-func (i ApplicationScalingRuleScalingRuleTimerArray) ToApplicationScalingRuleScalingRuleTimerArrayOutput() ApplicationScalingRuleScalingRuleTimerArrayOutput {
-	return i.ToApplicationScalingRuleScalingRuleTimerArrayOutputWithContext(context.Background())
+func (*applicationScalingRuleScalingRuleTimerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScalingRuleScalingRuleTimer)(nil)).Elem()
 }
 
-func (i ApplicationScalingRuleScalingRuleTimerArray) ToApplicationScalingRuleScalingRuleTimerArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerArrayOutput)
+func (i *applicationScalingRuleScalingRuleTimerPtrType) ToApplicationScalingRuleScalingRuleTimerPtrOutput() ApplicationScalingRuleScalingRuleTimerPtrOutput {
+	return i.ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationScalingRuleScalingRuleTimerPtrType) ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScalingRuleScalingRuleTimerPtrOutput)
 }
 
 type ApplicationScalingRuleScalingRuleTimerOutput struct{ *pulumi.OutputState }
@@ -952,6 +800,16 @@ func (o ApplicationScalingRuleScalingRuleTimerOutput) ToApplicationScalingRuleSc
 
 func (o ApplicationScalingRuleScalingRuleTimerOutput) ToApplicationScalingRuleScalingRuleTimerOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerOutput {
 	return o
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerOutput) ToApplicationScalingRuleScalingRuleTimerPtrOutput() ApplicationScalingRuleScalingRuleTimerPtrOutput {
+	return o.ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationScalingRuleScalingRuleTimerOutput) ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationScalingRuleScalingRuleTimer) *ApplicationScalingRuleScalingRuleTimer {
+		return &v
+	}).(ApplicationScalingRuleScalingRuleTimerPtrOutput)
 }
 
 // The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
@@ -976,24 +834,68 @@ func (o ApplicationScalingRuleScalingRuleTimerOutput) Schedules() ApplicationSca
 	}).(ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput)
 }
 
-type ApplicationScalingRuleScalingRuleTimerArrayOutput struct{ *pulumi.OutputState }
+type ApplicationScalingRuleScalingRuleTimerPtrOutput struct{ *pulumi.OutputState }
 
-func (ApplicationScalingRuleScalingRuleTimerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationScalingRuleScalingRuleTimer)(nil)).Elem()
+func (ApplicationScalingRuleScalingRuleTimerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationScalingRuleScalingRuleTimer)(nil)).Elem()
 }
 
-func (o ApplicationScalingRuleScalingRuleTimerArrayOutput) ToApplicationScalingRuleScalingRuleTimerArrayOutput() ApplicationScalingRuleScalingRuleTimerArrayOutput {
+func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) ToApplicationScalingRuleScalingRuleTimerPtrOutput() ApplicationScalingRuleScalingRuleTimerPtrOutput {
 	return o
 }
 
-func (o ApplicationScalingRuleScalingRuleTimerArrayOutput) ToApplicationScalingRuleScalingRuleTimerArrayOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerArrayOutput {
+func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) ToApplicationScalingRuleScalingRuleTimerPtrOutputWithContext(ctx context.Context) ApplicationScalingRuleScalingRuleTimerPtrOutput {
 	return o
 }
 
-func (o ApplicationScalingRuleScalingRuleTimerArrayOutput) Index(i pulumi.IntInput) ApplicationScalingRuleScalingRuleTimerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationScalingRuleScalingRuleTimer {
-		return vs[0].([]ApplicationScalingRuleScalingRuleTimer)[vs[1].(int)]
+func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Elem() ApplicationScalingRuleScalingRuleTimerOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleTimer) ApplicationScalingRuleScalingRuleTimer {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationScalingRuleScalingRuleTimer
+		return ret
 	}).(ApplicationScalingRuleScalingRuleTimerOutput)
+}
+
+// The Start date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) BeginDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleTimer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BeginDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The End Date. When the `beginDate` and `endDate` values are empty. it indicates long-term execution and is the default value.
+func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleTimer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The period in which a timed elastic scaling strategy is executed.
+func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleTimer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resilient Scaling Strategy Trigger Timing. See the following `Block schedules`.
+func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Schedules() ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput {
+	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleTimer) []ApplicationScalingRuleScalingRuleTimerSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.Schedules
+	}).(ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput)
 }
 
 type ApplicationScalingRuleScalingRuleTimerSchedule struct {
@@ -1003,7 +905,7 @@ type ApplicationScalingRuleScalingRuleTimerSchedule struct {
 	MaxReplicas *int `pulumi:"maxReplicas"`
 	// Minimum number of instances applied.
 	MinReplicas *int `pulumi:"minReplicas"`
-	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
 	TargetReplicas *int `pulumi:"targetReplicas"`
 }
 
@@ -1025,7 +927,7 @@ type ApplicationScalingRuleScalingRuleTimerScheduleArgs struct {
 	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
 	// Minimum number of instances applied.
 	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
-	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
 	TargetReplicas pulumi.IntPtrInput `pulumi:"targetReplicas"`
 }
 
@@ -1095,7 +997,7 @@ func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MinReplicas() pulu
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
 }
 
-// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) TargetReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.TargetReplicas }).(pulumi.IntPtrOutput)
 }
@@ -1949,6 +1851,254 @@ func (o IngressRuleArrayOutput) Index(i pulumi.IntInput) IngressRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IngressRule {
 		return vs[0].([]IngressRule)[vs[1].(int)]
 	}).(IngressRuleOutput)
+}
+
+type LoadBalancerInternetInternet struct {
+	// The SSL certificate. `httpsCertId` is required when HTTPS is selected
+	HttpsCertId *string `pulumi:"httpsCertId"`
+	// The SLB Port.
+	Port *int `pulumi:"port"`
+	// The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+	Protocol *string `pulumi:"protocol"`
+	// The Container port.
+	TargetPort *int `pulumi:"targetPort"`
+}
+
+// LoadBalancerInternetInternetInput is an input type that accepts LoadBalancerInternetInternetArgs and LoadBalancerInternetInternetOutput values.
+// You can construct a concrete instance of `LoadBalancerInternetInternetInput` via:
+//
+//          LoadBalancerInternetInternetArgs{...}
+type LoadBalancerInternetInternetInput interface {
+	pulumi.Input
+
+	ToLoadBalancerInternetInternetOutput() LoadBalancerInternetInternetOutput
+	ToLoadBalancerInternetInternetOutputWithContext(context.Context) LoadBalancerInternetInternetOutput
+}
+
+type LoadBalancerInternetInternetArgs struct {
+	// The SSL certificate. `httpsCertId` is required when HTTPS is selected
+	HttpsCertId pulumi.StringPtrInput `pulumi:"httpsCertId"`
+	// The SLB Port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The Container port.
+	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
+}
+
+func (LoadBalancerInternetInternetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerInternetInternet)(nil)).Elem()
+}
+
+func (i LoadBalancerInternetInternetArgs) ToLoadBalancerInternetInternetOutput() LoadBalancerInternetInternetOutput {
+	return i.ToLoadBalancerInternetInternetOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerInternetInternetArgs) ToLoadBalancerInternetInternetOutputWithContext(ctx context.Context) LoadBalancerInternetInternetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetInternetOutput)
+}
+
+// LoadBalancerInternetInternetArrayInput is an input type that accepts LoadBalancerInternetInternetArray and LoadBalancerInternetInternetArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerInternetInternetArrayInput` via:
+//
+//          LoadBalancerInternetInternetArray{ LoadBalancerInternetInternetArgs{...} }
+type LoadBalancerInternetInternetArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerInternetInternetArrayOutput() LoadBalancerInternetInternetArrayOutput
+	ToLoadBalancerInternetInternetArrayOutputWithContext(context.Context) LoadBalancerInternetInternetArrayOutput
+}
+
+type LoadBalancerInternetInternetArray []LoadBalancerInternetInternetInput
+
+func (LoadBalancerInternetInternetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerInternetInternet)(nil)).Elem()
+}
+
+func (i LoadBalancerInternetInternetArray) ToLoadBalancerInternetInternetArrayOutput() LoadBalancerInternetInternetArrayOutput {
+	return i.ToLoadBalancerInternetInternetArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerInternetInternetArray) ToLoadBalancerInternetInternetArrayOutputWithContext(ctx context.Context) LoadBalancerInternetInternetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerInternetInternetArrayOutput)
+}
+
+type LoadBalancerInternetInternetOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerInternetInternetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerInternetInternet)(nil)).Elem()
+}
+
+func (o LoadBalancerInternetInternetOutput) ToLoadBalancerInternetInternetOutput() LoadBalancerInternetInternetOutput {
+	return o
+}
+
+func (o LoadBalancerInternetInternetOutput) ToLoadBalancerInternetInternetOutputWithContext(ctx context.Context) LoadBalancerInternetInternetOutput {
+	return o
+}
+
+// The SSL certificate. `httpsCertId` is required when HTTPS is selected
+func (o LoadBalancerInternetInternetOutput) HttpsCertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerInternetInternet) *string { return v.HttpsCertId }).(pulumi.StringPtrOutput)
+}
+
+// The SLB Port.
+func (o LoadBalancerInternetInternetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerInternetInternet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+func (o LoadBalancerInternetInternetOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerInternetInternet) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The Container port.
+func (o LoadBalancerInternetInternetOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerInternetInternet) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
+}
+
+type LoadBalancerInternetInternetArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerInternetInternetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerInternetInternet)(nil)).Elem()
+}
+
+func (o LoadBalancerInternetInternetArrayOutput) ToLoadBalancerInternetInternetArrayOutput() LoadBalancerInternetInternetArrayOutput {
+	return o
+}
+
+func (o LoadBalancerInternetInternetArrayOutput) ToLoadBalancerInternetInternetArrayOutputWithContext(ctx context.Context) LoadBalancerInternetInternetArrayOutput {
+	return o
+}
+
+func (o LoadBalancerInternetInternetArrayOutput) Index(i pulumi.IntInput) LoadBalancerInternetInternetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerInternetInternet {
+		return vs[0].([]LoadBalancerInternetInternet)[vs[1].(int)]
+	}).(LoadBalancerInternetInternetOutput)
+}
+
+type LoadBalancerIntranetIntranet struct {
+	// The SSL certificate. `httpsCertId` is required when HTTPS is selected
+	HttpsCertId *string `pulumi:"httpsCertId"`
+	// The SLB Port.
+	Port *int `pulumi:"port"`
+	// The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+	Protocol *string `pulumi:"protocol"`
+	// The Container port.
+	TargetPort *int `pulumi:"targetPort"`
+}
+
+// LoadBalancerIntranetIntranetInput is an input type that accepts LoadBalancerIntranetIntranetArgs and LoadBalancerIntranetIntranetOutput values.
+// You can construct a concrete instance of `LoadBalancerIntranetIntranetInput` via:
+//
+//          LoadBalancerIntranetIntranetArgs{...}
+type LoadBalancerIntranetIntranetInput interface {
+	pulumi.Input
+
+	ToLoadBalancerIntranetIntranetOutput() LoadBalancerIntranetIntranetOutput
+	ToLoadBalancerIntranetIntranetOutputWithContext(context.Context) LoadBalancerIntranetIntranetOutput
+}
+
+type LoadBalancerIntranetIntranetArgs struct {
+	// The SSL certificate. `httpsCertId` is required when HTTPS is selected
+	HttpsCertId pulumi.StringPtrInput `pulumi:"httpsCertId"`
+	// The SLB Port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The Container port.
+	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
+}
+
+func (LoadBalancerIntranetIntranetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerIntranetIntranet)(nil)).Elem()
+}
+
+func (i LoadBalancerIntranetIntranetArgs) ToLoadBalancerIntranetIntranetOutput() LoadBalancerIntranetIntranetOutput {
+	return i.ToLoadBalancerIntranetIntranetOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerIntranetIntranetArgs) ToLoadBalancerIntranetIntranetOutputWithContext(ctx context.Context) LoadBalancerIntranetIntranetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerIntranetIntranetOutput)
+}
+
+// LoadBalancerIntranetIntranetArrayInput is an input type that accepts LoadBalancerIntranetIntranetArray and LoadBalancerIntranetIntranetArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerIntranetIntranetArrayInput` via:
+//
+//          LoadBalancerIntranetIntranetArray{ LoadBalancerIntranetIntranetArgs{...} }
+type LoadBalancerIntranetIntranetArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerIntranetIntranetArrayOutput() LoadBalancerIntranetIntranetArrayOutput
+	ToLoadBalancerIntranetIntranetArrayOutputWithContext(context.Context) LoadBalancerIntranetIntranetArrayOutput
+}
+
+type LoadBalancerIntranetIntranetArray []LoadBalancerIntranetIntranetInput
+
+func (LoadBalancerIntranetIntranetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerIntranetIntranet)(nil)).Elem()
+}
+
+func (i LoadBalancerIntranetIntranetArray) ToLoadBalancerIntranetIntranetArrayOutput() LoadBalancerIntranetIntranetArrayOutput {
+	return i.ToLoadBalancerIntranetIntranetArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerIntranetIntranetArray) ToLoadBalancerIntranetIntranetArrayOutputWithContext(ctx context.Context) LoadBalancerIntranetIntranetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerIntranetIntranetArrayOutput)
+}
+
+type LoadBalancerIntranetIntranetOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerIntranetIntranetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerIntranetIntranet)(nil)).Elem()
+}
+
+func (o LoadBalancerIntranetIntranetOutput) ToLoadBalancerIntranetIntranetOutput() LoadBalancerIntranetIntranetOutput {
+	return o
+}
+
+func (o LoadBalancerIntranetIntranetOutput) ToLoadBalancerIntranetIntranetOutputWithContext(ctx context.Context) LoadBalancerIntranetIntranetOutput {
+	return o
+}
+
+// The SSL certificate. `httpsCertId` is required when HTTPS is selected
+func (o LoadBalancerIntranetIntranetOutput) HttpsCertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerIntranetIntranet) *string { return v.HttpsCertId }).(pulumi.StringPtrOutput)
+}
+
+// The SLB Port.
+func (o LoadBalancerIntranetIntranetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerIntranetIntranet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+func (o LoadBalancerIntranetIntranetOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerIntranetIntranet) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The Container port.
+func (o LoadBalancerIntranetIntranetOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerIntranetIntranet) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
+}
+
+type LoadBalancerIntranetIntranetArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerIntranetIntranetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerIntranetIntranet)(nil)).Elem()
+}
+
+func (o LoadBalancerIntranetIntranetArrayOutput) ToLoadBalancerIntranetIntranetArrayOutput() LoadBalancerIntranetIntranetArrayOutput {
+	return o
+}
+
+func (o LoadBalancerIntranetIntranetArrayOutput) ToLoadBalancerIntranetIntranetArrayOutputWithContext(ctx context.Context) LoadBalancerIntranetIntranetArrayOutput {
+	return o
+}
+
+func (o LoadBalancerIntranetIntranetArrayOutput) Index(i pulumi.IntInput) LoadBalancerIntranetIntranetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerIntranetIntranet {
+		return vs[0].([]LoadBalancerIntranetIntranet)[vs[1].(int)]
+	}).(LoadBalancerIntranetIntranetOutput)
 }
 
 type GetApplicationScalingRulesRule struct {
@@ -3304,8 +3454,8 @@ type GetApplicationsApplication struct {
 	Memory int `pulumi:"memory"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances int `pulumi:"minReadyInstances"`
-	// Mount description.
-	MountDesc string `pulumi:"mountDesc"`
+	// Mount description information.
+	MountDescs []GetApplicationsApplicationMountDesc `pulumi:"mountDescs"`
 	// Mount point of NAS in application VPC.
 	MountHost string `pulumi:"mountHost"`
 	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
@@ -3318,6 +3468,8 @@ type GetApplicationsApplication struct {
 	OssAkSecret string `pulumi:"ossAkSecret"`
 	// OSS mount description information.
 	OssMountDescs string `pulumi:"ossMountDescs"`
+	// The OSS mount detail.
+	OssMountDetails []GetApplicationsApplicationOssMountDetail `pulumi:"ossMountDetails"`
 	// Application package type. Support FatJar, War and Image.
 	PackageType string `pulumi:"packageType"`
 	// Deployment package address. Only FatJar or War type applications can configure the deployment package address.
@@ -3348,6 +3500,8 @@ type GetApplicationsApplication struct {
 	SlsConfigs string `pulumi:"slsConfigs"`
 	// The status of the resource.
 	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
 	TerminationGracePeriodSeconds int `pulumi:"terminationGracePeriodSeconds"`
 	// Time zone, the default value is Asia/Shanghai.
@@ -3416,8 +3570,8 @@ type GetApplicationsApplicationArgs struct {
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances pulumi.IntInput `pulumi:"minReadyInstances"`
-	// Mount description.
-	MountDesc pulumi.StringInput `pulumi:"mountDesc"`
+	// Mount description information.
+	MountDescs GetApplicationsApplicationMountDescArrayInput `pulumi:"mountDescs"`
 	// Mount point of NAS in application VPC.
 	MountHost pulumi.StringInput `pulumi:"mountHost"`
 	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
@@ -3430,6 +3584,8 @@ type GetApplicationsApplicationArgs struct {
 	OssAkSecret pulumi.StringInput `pulumi:"ossAkSecret"`
 	// OSS mount description information.
 	OssMountDescs pulumi.StringInput `pulumi:"ossMountDescs"`
+	// The OSS mount detail.
+	OssMountDetails GetApplicationsApplicationOssMountDetailArrayInput `pulumi:"ossMountDetails"`
 	// Application package type. Support FatJar, War and Image.
 	PackageType pulumi.StringInput `pulumi:"packageType"`
 	// Deployment package address. Only FatJar or War type applications can configure the deployment package address.
@@ -3460,6 +3616,8 @@ type GetApplicationsApplicationArgs struct {
 	SlsConfigs pulumi.StringInput `pulumi:"slsConfigs"`
 	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
 	TerminationGracePeriodSeconds pulumi.IntInput `pulumi:"terminationGracePeriodSeconds"`
 	// Time zone, the default value is Asia/Shanghai.
@@ -3627,9 +3785,9 @@ func (o GetApplicationsApplicationOutput) MinReadyInstances() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) int { return v.MinReadyInstances }).(pulumi.IntOutput)
 }
 
-// Mount description.
-func (o GetApplicationsApplicationOutput) MountDesc() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationsApplication) string { return v.MountDesc }).(pulumi.StringOutput)
+// Mount description information.
+func (o GetApplicationsApplicationOutput) MountDescs() GetApplicationsApplicationMountDescArrayOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) []GetApplicationsApplicationMountDesc { return v.MountDescs }).(GetApplicationsApplicationMountDescArrayOutput)
 }
 
 // Mount point of NAS in application VPC.
@@ -3660,6 +3818,13 @@ func (o GetApplicationsApplicationOutput) OssAkSecret() pulumi.StringOutput {
 // OSS mount description information.
 func (o GetApplicationsApplicationOutput) OssMountDescs() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) string { return v.OssMountDescs }).(pulumi.StringOutput)
+}
+
+// The OSS mount detail.
+func (o GetApplicationsApplicationOutput) OssMountDetails() GetApplicationsApplicationOssMountDetailArrayOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) []GetApplicationsApplicationOssMountDetail {
+		return v.OssMountDetails
+	}).(GetApplicationsApplicationOssMountDetailArrayOutput)
 }
 
 // Application package type. Support FatJar, War and Image.
@@ -3743,6 +3908,11 @@ func (o GetApplicationsApplicationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// A mapping of tags to assign to the resource.
+func (o GetApplicationsApplicationOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
 // Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
 func (o GetApplicationsApplicationOutput) TerminationGracePeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) int { return v.TerminationGracePeriodSeconds }).(pulumi.IntOutput)
@@ -3796,6 +3966,236 @@ func (o GetApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetAppli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationsApplication {
 		return vs[0].([]GetApplicationsApplication)[vs[1].(int)]
 	}).(GetApplicationsApplicationOutput)
+}
+
+type GetApplicationsApplicationMountDesc struct {
+	// The Container mount path.
+	MountPath string `pulumi:"mountPath"`
+	// NAS relative file directory.
+	NasPath string `pulumi:"nasPath"`
+}
+
+// GetApplicationsApplicationMountDescInput is an input type that accepts GetApplicationsApplicationMountDescArgs and GetApplicationsApplicationMountDescOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationMountDescInput` via:
+//
+//          GetApplicationsApplicationMountDescArgs{...}
+type GetApplicationsApplicationMountDescInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationMountDescOutput() GetApplicationsApplicationMountDescOutput
+	ToGetApplicationsApplicationMountDescOutputWithContext(context.Context) GetApplicationsApplicationMountDescOutput
+}
+
+type GetApplicationsApplicationMountDescArgs struct {
+	// The Container mount path.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// NAS relative file directory.
+	NasPath pulumi.StringInput `pulumi:"nasPath"`
+}
+
+func (GetApplicationsApplicationMountDescArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplicationMountDesc)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationMountDescArgs) ToGetApplicationsApplicationMountDescOutput() GetApplicationsApplicationMountDescOutput {
+	return i.ToGetApplicationsApplicationMountDescOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationMountDescArgs) ToGetApplicationsApplicationMountDescOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationMountDescOutput)
+}
+
+// GetApplicationsApplicationMountDescArrayInput is an input type that accepts GetApplicationsApplicationMountDescArray and GetApplicationsApplicationMountDescArrayOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationMountDescArrayInput` via:
+//
+//          GetApplicationsApplicationMountDescArray{ GetApplicationsApplicationMountDescArgs{...} }
+type GetApplicationsApplicationMountDescArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationMountDescArrayOutput() GetApplicationsApplicationMountDescArrayOutput
+	ToGetApplicationsApplicationMountDescArrayOutputWithContext(context.Context) GetApplicationsApplicationMountDescArrayOutput
+}
+
+type GetApplicationsApplicationMountDescArray []GetApplicationsApplicationMountDescInput
+
+func (GetApplicationsApplicationMountDescArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplicationMountDesc)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationMountDescArray) ToGetApplicationsApplicationMountDescArrayOutput() GetApplicationsApplicationMountDescArrayOutput {
+	return i.ToGetApplicationsApplicationMountDescArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationMountDescArray) ToGetApplicationsApplicationMountDescArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationMountDescArrayOutput)
+}
+
+type GetApplicationsApplicationMountDescOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationMountDescOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplicationMountDesc)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationMountDescOutput) ToGetApplicationsApplicationMountDescOutput() GetApplicationsApplicationMountDescOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationMountDescOutput) ToGetApplicationsApplicationMountDescOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescOutput {
+	return o
+}
+
+// The Container mount path.
+func (o GetApplicationsApplicationMountDescOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplicationMountDesc) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// NAS relative file directory.
+func (o GetApplicationsApplicationMountDescOutput) NasPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplicationMountDesc) string { return v.NasPath }).(pulumi.StringOutput)
+}
+
+type GetApplicationsApplicationMountDescArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationMountDescArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplicationMountDesc)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationMountDescArrayOutput) ToGetApplicationsApplicationMountDescArrayOutput() GetApplicationsApplicationMountDescArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationMountDescArrayOutput) ToGetApplicationsApplicationMountDescArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationMountDescArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationMountDescArrayOutput) Index(i pulumi.IntInput) GetApplicationsApplicationMountDescOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationsApplicationMountDesc {
+		return vs[0].([]GetApplicationsApplicationMountDesc)[vs[1].(int)]
+	}).(GetApplicationsApplicationMountDescOutput)
+}
+
+type GetApplicationsApplicationOssMountDetail struct {
+	// The name of the bucket.
+	BucketName string `pulumi:"bucketName"`
+	// The path of the bucket.
+	BucketPath string `pulumi:"bucketPath"`
+	// The Container mount path.
+	MountPath string `pulumi:"mountPath"`
+	// Whether the container path has readable permission to mount directory resources.
+	ReadOnly bool `pulumi:"readOnly"`
+}
+
+// GetApplicationsApplicationOssMountDetailInput is an input type that accepts GetApplicationsApplicationOssMountDetailArgs and GetApplicationsApplicationOssMountDetailOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationOssMountDetailInput` via:
+//
+//          GetApplicationsApplicationOssMountDetailArgs{...}
+type GetApplicationsApplicationOssMountDetailInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationOssMountDetailOutput() GetApplicationsApplicationOssMountDetailOutput
+	ToGetApplicationsApplicationOssMountDetailOutputWithContext(context.Context) GetApplicationsApplicationOssMountDetailOutput
+}
+
+type GetApplicationsApplicationOssMountDetailArgs struct {
+	// The name of the bucket.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The path of the bucket.
+	BucketPath pulumi.StringInput `pulumi:"bucketPath"`
+	// The Container mount path.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// Whether the container path has readable permission to mount directory resources.
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+}
+
+func (GetApplicationsApplicationOssMountDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplicationOssMountDetail)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationOssMountDetailArgs) ToGetApplicationsApplicationOssMountDetailOutput() GetApplicationsApplicationOssMountDetailOutput {
+	return i.ToGetApplicationsApplicationOssMountDetailOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationOssMountDetailArgs) ToGetApplicationsApplicationOssMountDetailOutputWithContext(ctx context.Context) GetApplicationsApplicationOssMountDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationOssMountDetailOutput)
+}
+
+// GetApplicationsApplicationOssMountDetailArrayInput is an input type that accepts GetApplicationsApplicationOssMountDetailArray and GetApplicationsApplicationOssMountDetailArrayOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationOssMountDetailArrayInput` via:
+//
+//          GetApplicationsApplicationOssMountDetailArray{ GetApplicationsApplicationOssMountDetailArgs{...} }
+type GetApplicationsApplicationOssMountDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationOssMountDetailArrayOutput() GetApplicationsApplicationOssMountDetailArrayOutput
+	ToGetApplicationsApplicationOssMountDetailArrayOutputWithContext(context.Context) GetApplicationsApplicationOssMountDetailArrayOutput
+}
+
+type GetApplicationsApplicationOssMountDetailArray []GetApplicationsApplicationOssMountDetailInput
+
+func (GetApplicationsApplicationOssMountDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplicationOssMountDetail)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationOssMountDetailArray) ToGetApplicationsApplicationOssMountDetailArrayOutput() GetApplicationsApplicationOssMountDetailArrayOutput {
+	return i.ToGetApplicationsApplicationOssMountDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationOssMountDetailArray) ToGetApplicationsApplicationOssMountDetailArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationOssMountDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationOssMountDetailArrayOutput)
+}
+
+type GetApplicationsApplicationOssMountDetailOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationOssMountDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplicationOssMountDetail)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationOssMountDetailOutput) ToGetApplicationsApplicationOssMountDetailOutput() GetApplicationsApplicationOssMountDetailOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationOssMountDetailOutput) ToGetApplicationsApplicationOssMountDetailOutputWithContext(ctx context.Context) GetApplicationsApplicationOssMountDetailOutput {
+	return o
+}
+
+// The name of the bucket.
+func (o GetApplicationsApplicationOssMountDetailOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplicationOssMountDetail) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The path of the bucket.
+func (o GetApplicationsApplicationOssMountDetailOutput) BucketPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplicationOssMountDetail) string { return v.BucketPath }).(pulumi.StringOutput)
+}
+
+// The Container mount path.
+func (o GetApplicationsApplicationOssMountDetailOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplicationOssMountDetail) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// Whether the container path has readable permission to mount directory resources.
+func (o GetApplicationsApplicationOssMountDetailOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationsApplicationOssMountDetail) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+type GetApplicationsApplicationOssMountDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationOssMountDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplicationOssMountDetail)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationOssMountDetailArrayOutput) ToGetApplicationsApplicationOssMountDetailArrayOutput() GetApplicationsApplicationOssMountDetailArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationOssMountDetailArrayOutput) ToGetApplicationsApplicationOssMountDetailArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationOssMountDetailArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationOssMountDetailArrayOutput) Index(i pulumi.IntInput) GetApplicationsApplicationOssMountDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationsApplicationOssMountDetail {
+		return vs[0].([]GetApplicationsApplicationOssMountDetail)[vs[1].(int)]
+	}).(GetApplicationsApplicationOssMountDetailOutput)
 }
 
 type GetConfigMapsMap struct {
@@ -5041,12 +5441,8 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInternetInput)(nil)).Elem(), ApplicationInternetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationInternetArrayInput)(nil)).Elem(), ApplicationInternetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIntranetInput)(nil)).Elem(), ApplicationIntranetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIntranetArrayInput)(nil)).Elem(), ApplicationIntranetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricPtrInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricMetricInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricMetricArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricMetricArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{})
@@ -5054,7 +5450,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerPtrInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerScheduleInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScalingRuleScalingRuleTimerScheduleArrayInput)(nil)).Elem(), ApplicationScalingRuleScalingRuleTimerScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GreyTagRouteDubboRuleInput)(nil)).Elem(), GreyTagRouteDubboRuleArgs{})
@@ -5069,6 +5465,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressDefaultRulePtrInput)(nil)).Elem(), IngressDefaultRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleInput)(nil)).Elem(), IngressRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IngressRuleArrayInput)(nil)).Elem(), IngressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerInternetInternetInput)(nil)).Elem(), LoadBalancerInternetInternetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerInternetInternetArrayInput)(nil)).Elem(), LoadBalancerInternetInternetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerIntranetIntranetInput)(nil)).Elem(), LoadBalancerIntranetIntranetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerIntranetIntranetArrayInput)(nil)).Elem(), LoadBalancerIntranetIntranetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleInput)(nil)).Elem(), GetApplicationScalingRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleMetricInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleMetricArgs{})
@@ -5091,6 +5491,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput)(nil)).Elem(), GetApplicationScalingRulesRuleScalingRuleTimerScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationInput)(nil)).Elem(), GetApplicationsApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationArrayInput)(nil)).Elem(), GetApplicationsApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationMountDescInput)(nil)).Elem(), GetApplicationsApplicationMountDescArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationMountDescArrayInput)(nil)).Elem(), GetApplicationsApplicationMountDescArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationOssMountDetailInput)(nil)).Elem(), GetApplicationsApplicationOssMountDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationOssMountDetailArrayInput)(nil)).Elem(), GetApplicationsApplicationOssMountDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigMapsMapInput)(nil)).Elem(), GetConfigMapsMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigMapsMapArrayInput)(nil)).Elem(), GetConfigMapsMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGreyTagRoutesRouteInput)(nil)).Elem(), GetGreyTagRoutesRouteArgs{})
@@ -5109,12 +5513,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceSpecificationsSpecificationArrayInput)(nil)).Elem(), GetInstanceSpecificationsSpecificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
-	pulumi.RegisterOutputType(ApplicationInternetOutput{})
-	pulumi.RegisterOutputType(ApplicationInternetArrayOutput{})
-	pulumi.RegisterOutputType(ApplicationIntranetOutput{})
-	pulumi.RegisterOutputType(ApplicationIntranetArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricOutput{})
-	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricMetricOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricMetricArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput{})
@@ -5122,7 +5522,7 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerOutput{})
-	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerScheduleOutput{})
 	pulumi.RegisterOutputType(ApplicationScalingRuleScalingRuleTimerScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GreyTagRouteDubboRuleOutput{})
@@ -5137,6 +5537,10 @@ func init() {
 	pulumi.RegisterOutputType(IngressDefaultRulePtrOutput{})
 	pulumi.RegisterOutputType(IngressRuleOutput{})
 	pulumi.RegisterOutputType(IngressRuleArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerInternetInternetOutput{})
+	pulumi.RegisterOutputType(LoadBalancerInternetInternetArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerIntranetIntranetOutput{})
+	pulumi.RegisterOutputType(LoadBalancerIntranetIntranetArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleMetricOutput{})
@@ -5159,6 +5563,10 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationMountDescOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationMountDescArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationOssMountDetailOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationOssMountDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapOutput{})
 	pulumi.RegisterOutputType(GetConfigMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetGreyTagRoutesRouteOutput{})

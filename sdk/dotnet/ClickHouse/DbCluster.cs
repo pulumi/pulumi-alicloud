@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> DbClusterNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         /// </summary>
         [Output("dbClusterVersion")]
         public Output<string> DbClusterVersion { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> DbClusterNetworkType { get; set; } = null!;
 
         /// <summary>
-        /// The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         /// </summary>
         [Input("dbClusterVersion", required: true)]
         public Input<string> DbClusterVersion { get; set; } = null!;
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -389,7 +389,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? DbClusterNetworkType { get; set; }
 
         /// <summary>
-        /// The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }
@@ -437,7 +437,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

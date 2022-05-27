@@ -135,7 +135,8 @@ type Listener struct {
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringOutput `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId           pulumi.StringOutput    `pulumi:"loadBalancerId"`
+	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
+	// The ID of the master slave server group.
 	MasterSlaveServerGroupId pulumi.StringPtrOutput `pulumi:"masterSlaveServerGroupId"`
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout pulumi.IntPtrOutput `pulumi:"persistenceTimeout"`
@@ -265,7 +266,8 @@ type listenerState struct {
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward *string `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId           *string `pulumi:"loadBalancerId"`
+	LoadBalancerId *string `pulumi:"loadBalancerId"`
+	// The ID of the master slave server group.
 	MasterSlaveServerGroupId *string `pulumi:"masterSlaveServerGroupId"`
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
@@ -358,7 +360,8 @@ type ListenerState struct {
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringPtrInput
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId           pulumi.StringPtrInput
+	LoadBalancerId pulumi.StringPtrInput
+	// The ID of the master slave server group.
 	MasterSlaveServerGroupId pulumi.StringPtrInput
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout pulumi.IntPtrInput
@@ -455,7 +458,8 @@ type listenerArgs struct {
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward *string `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId           string  `pulumi:"loadBalancerId"`
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// The ID of the master slave server group.
 	MasterSlaveServerGroupId *string `pulumi:"masterSlaveServerGroupId"`
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
@@ -549,7 +553,8 @@ type ListenerArgs struct {
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringPtrInput
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId           pulumi.StringInput
+	LoadBalancerId pulumi.StringInput
+	// The ID of the master slave server group.
 	MasterSlaveServerGroupId pulumi.StringPtrInput
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout pulumi.IntPtrInput

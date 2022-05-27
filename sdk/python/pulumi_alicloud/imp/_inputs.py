@@ -18,7 +18,7 @@ class AppTemplateConfigListArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key: Configuration item key. Valid values:
+        :param pulumi.Input[str] key: Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
         :param pulumi.Input[str] value: Configuration item content.
         """
         if key is not None:
@@ -30,7 +30,7 @@ class AppTemplateConfigListArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        Configuration item key. Valid values:
+        Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
         """
         return pulumi.get(self, "key")
 

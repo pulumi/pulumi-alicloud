@@ -38,8 +38,9 @@ type Store struct {
 	// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
 	RetentionPeriod pulumi.IntPtrOutput `pulumi:"retentionPeriod"`
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
-	ShardCount pulumi.IntPtrOutput   `pulumi:"shardCount"`
-	Shards     StoreShardArrayOutput `pulumi:"shards"`
+	ShardCount pulumi.IntPtrOutput `pulumi:"shardCount"`
+	// The shard attribute.
+	Shards StoreShardArrayOutput `pulumi:"shards"`
 }
 
 // NewStore registers a new resource with the given unique name, arguments, and options.
@@ -91,8 +92,9 @@ type storeState struct {
 	// The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
-	ShardCount *int         `pulumi:"shardCount"`
-	Shards     []StoreShard `pulumi:"shards"`
+	ShardCount *int `pulumi:"shardCount"`
+	// The shard attribute.
+	Shards []StoreShard `pulumi:"shards"`
 }
 
 type StoreState struct {
@@ -114,7 +116,8 @@ type StoreState struct {
 	RetentionPeriod pulumi.IntPtrInput
 	// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
 	ShardCount pulumi.IntPtrInput
-	Shards     StoreShardArrayInput
+	// The shard attribute.
+	Shards StoreShardArrayInput
 }
 
 func (StoreState) ElementType() reflect.Type {

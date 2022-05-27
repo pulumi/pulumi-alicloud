@@ -44,6 +44,12 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The platform of Plan supported.
+        /// </summary>
+        [Input("platform")]
+        public string? Platform { get; set; }
+
         public GetImagesArgs()
         {
         }
@@ -74,6 +80,12 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The platform of Plan supported.
+        /// </summary>
+        [Input("platform")]
+        public Input<string>? Platform { get; set; }
+
         public GetImagesInvokeArgs()
         {
         }
@@ -93,6 +105,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly string? Platform;
 
         [OutputConstructor]
         private GetImagesResult(
@@ -108,7 +121,9 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
 
             ImmutableArray<string> names,
 
-            string? outputFile)
+            string? outputFile,
+
+            string? platform)
         {
             Id = id;
             Ids = ids;
@@ -117,6 +132,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Platform = platform;
         }
     }
 }

@@ -15,7 +15,9 @@ class AutoscalingConfigArgs:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cool_down_duration: Optional[pulumi.Input[str]] = None,
+                 expander: Optional[pulumi.Input[str]] = None,
                  gpu_utilization_threshold: Optional[pulumi.Input[str]] = None,
+                 scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[str]] = None,
                  unneeded_duration: Optional[pulumi.Input[str]] = None,
                  utilization_threshold: Optional[pulumi.Input[str]] = None):
@@ -23,8 +25,10 @@ class AutoscalingConfigArgs:
         The set of arguments for constructing a AutoscalingConfig resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        :param pulumi.Input[str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         :param pulumi.Input[str] gpu_utilization_threshold: The scale-in threshold for GPU instance. Default is `0.5`.
-        :param pulumi.Input[str] scan_interval: The scan interval. Default is `30s`
+        :param pulumi.Input[bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
+        :param pulumi.Input[str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[str] unneeded_duration: The unneeded duration. Default is `10m`.
         :param pulumi.Input[str] utilization_threshold: The scale-in threshold. Default is `0.5`.
         """
@@ -32,8 +36,12 @@ class AutoscalingConfigArgs:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cool_down_duration is not None:
             pulumi.set(__self__, "cool_down_duration", cool_down_duration)
+        if expander is not None:
+            pulumi.set(__self__, "expander", expander)
         if gpu_utilization_threshold is not None:
             pulumi.set(__self__, "gpu_utilization_threshold", gpu_utilization_threshold)
+        if scale_down_enabled is not None:
+            pulumi.set(__self__, "scale_down_enabled", scale_down_enabled)
         if scan_interval is not None:
             pulumi.set(__self__, "scan_interval", scan_interval)
         if unneeded_duration is not None:
@@ -66,6 +74,18 @@ class AutoscalingConfigArgs:
         pulumi.set(self, "cool_down_duration", value)
 
     @property
+    @pulumi.getter
+    def expander(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        """
+        return pulumi.get(self, "expander")
+
+    @expander.setter
+    def expander(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expander", value)
+
+    @property
     @pulumi.getter(name="gpuUtilizationThreshold")
     def gpu_utilization_threshold(self) -> Optional[pulumi.Input[str]]:
         """
@@ -78,10 +98,22 @@ class AutoscalingConfigArgs:
         pulumi.set(self, "gpu_utilization_threshold", value)
 
     @property
+    @pulumi.getter(name="scaleDownEnabled")
+    def scale_down_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether to allow the scale-in of nodes. Default is `true`.
+        """
+        return pulumi.get(self, "scale_down_enabled")
+
+    @scale_down_enabled.setter
+    def scale_down_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "scale_down_enabled", value)
+
+    @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        The scan interval. Default is `30s`
+        The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         """
         return pulumi.get(self, "scan_interval")
 
@@ -119,7 +151,9 @@ class _AutoscalingConfigState:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cool_down_duration: Optional[pulumi.Input[str]] = None,
+                 expander: Optional[pulumi.Input[str]] = None,
                  gpu_utilization_threshold: Optional[pulumi.Input[str]] = None,
+                 scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[str]] = None,
                  unneeded_duration: Optional[pulumi.Input[str]] = None,
                  utilization_threshold: Optional[pulumi.Input[str]] = None):
@@ -127,8 +161,10 @@ class _AutoscalingConfigState:
         Input properties used for looking up and filtering AutoscalingConfig resources.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        :param pulumi.Input[str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         :param pulumi.Input[str] gpu_utilization_threshold: The scale-in threshold for GPU instance. Default is `0.5`.
-        :param pulumi.Input[str] scan_interval: The scan interval. Default is `30s`
+        :param pulumi.Input[bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
+        :param pulumi.Input[str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[str] unneeded_duration: The unneeded duration. Default is `10m`.
         :param pulumi.Input[str] utilization_threshold: The scale-in threshold. Default is `0.5`.
         """
@@ -136,8 +172,12 @@ class _AutoscalingConfigState:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cool_down_duration is not None:
             pulumi.set(__self__, "cool_down_duration", cool_down_duration)
+        if expander is not None:
+            pulumi.set(__self__, "expander", expander)
         if gpu_utilization_threshold is not None:
             pulumi.set(__self__, "gpu_utilization_threshold", gpu_utilization_threshold)
+        if scale_down_enabled is not None:
+            pulumi.set(__self__, "scale_down_enabled", scale_down_enabled)
         if scan_interval is not None:
             pulumi.set(__self__, "scan_interval", scan_interval)
         if unneeded_duration is not None:
@@ -170,6 +210,18 @@ class _AutoscalingConfigState:
         pulumi.set(self, "cool_down_duration", value)
 
     @property
+    @pulumi.getter
+    def expander(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        """
+        return pulumi.get(self, "expander")
+
+    @expander.setter
+    def expander(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expander", value)
+
+    @property
     @pulumi.getter(name="gpuUtilizationThreshold")
     def gpu_utilization_threshold(self) -> Optional[pulumi.Input[str]]:
         """
@@ -182,10 +234,22 @@ class _AutoscalingConfigState:
         pulumi.set(self, "gpu_utilization_threshold", value)
 
     @property
+    @pulumi.getter(name="scaleDownEnabled")
+    def scale_down_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether to allow the scale-in of nodes. Default is `true`.
+        """
+        return pulumi.get(self, "scale_down_enabled")
+
+    @scale_down_enabled.setter
+    def scale_down_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "scale_down_enabled", value)
+
+    @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        The scan interval. Default is `30s`
+        The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         """
         return pulumi.get(self, "scan_interval")
 
@@ -225,7 +289,9 @@ class AutoscalingConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cool_down_duration: Optional[pulumi.Input[str]] = None,
+                 expander: Optional[pulumi.Input[str]] = None,
                  gpu_utilization_threshold: Optional[pulumi.Input[str]] = None,
+                 scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[str]] = None,
                  unneeded_duration: Optional[pulumi.Input[str]] = None,
                  utilization_threshold: Optional[pulumi.Input[str]] = None,
@@ -236,8 +302,10 @@ class AutoscalingConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        :param pulumi.Input[str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         :param pulumi.Input[str] gpu_utilization_threshold: The scale-in threshold for GPU instance. Default is `0.5`.
-        :param pulumi.Input[str] scan_interval: The scan interval. Default is `30s`
+        :param pulumi.Input[bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
+        :param pulumi.Input[str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[str] unneeded_duration: The unneeded duration. Default is `10m`.
         :param pulumi.Input[str] utilization_threshold: The scale-in threshold. Default is `0.5`.
         """
@@ -266,7 +334,9 @@ class AutoscalingConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cool_down_duration: Optional[pulumi.Input[str]] = None,
+                 expander: Optional[pulumi.Input[str]] = None,
                  gpu_utilization_threshold: Optional[pulumi.Input[str]] = None,
+                 scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[str]] = None,
                  unneeded_duration: Optional[pulumi.Input[str]] = None,
                  utilization_threshold: Optional[pulumi.Input[str]] = None,
@@ -284,7 +354,9 @@ class AutoscalingConfig(pulumi.CustomResource):
 
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cool_down_duration"] = cool_down_duration
+            __props__.__dict__["expander"] = expander
             __props__.__dict__["gpu_utilization_threshold"] = gpu_utilization_threshold
+            __props__.__dict__["scale_down_enabled"] = scale_down_enabled
             __props__.__dict__["scan_interval"] = scan_interval
             __props__.__dict__["unneeded_duration"] = unneeded_duration
             __props__.__dict__["utilization_threshold"] = utilization_threshold
@@ -300,7 +372,9 @@ class AutoscalingConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cool_down_duration: Optional[pulumi.Input[str]] = None,
+            expander: Optional[pulumi.Input[str]] = None,
             gpu_utilization_threshold: Optional[pulumi.Input[str]] = None,
+            scale_down_enabled: Optional[pulumi.Input[bool]] = None,
             scan_interval: Optional[pulumi.Input[str]] = None,
             unneeded_duration: Optional[pulumi.Input[str]] = None,
             utilization_threshold: Optional[pulumi.Input[str]] = None) -> 'AutoscalingConfig':
@@ -313,8 +387,10 @@ class AutoscalingConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        :param pulumi.Input[str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         :param pulumi.Input[str] gpu_utilization_threshold: The scale-in threshold for GPU instance. Default is `0.5`.
-        :param pulumi.Input[str] scan_interval: The scan interval. Default is `30s`
+        :param pulumi.Input[bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
+        :param pulumi.Input[str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[str] unneeded_duration: The unneeded duration. Default is `10m`.
         :param pulumi.Input[str] utilization_threshold: The scale-in threshold. Default is `0.5`.
         """
@@ -324,7 +400,9 @@ class AutoscalingConfig(pulumi.CustomResource):
 
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cool_down_duration"] = cool_down_duration
+        __props__.__dict__["expander"] = expander
         __props__.__dict__["gpu_utilization_threshold"] = gpu_utilization_threshold
+        __props__.__dict__["scale_down_enabled"] = scale_down_enabled
         __props__.__dict__["scan_interval"] = scan_interval
         __props__.__dict__["unneeded_duration"] = unneeded_duration
         __props__.__dict__["utilization_threshold"] = utilization_threshold
@@ -347,6 +425,14 @@ class AutoscalingConfig(pulumi.CustomResource):
         return pulumi.get(self, "cool_down_duration")
 
     @property
+    @pulumi.getter
+    def expander(self) -> pulumi.Output[Optional[str]]:
+        """
+        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        """
+        return pulumi.get(self, "expander")
+
+    @property
     @pulumi.getter(name="gpuUtilizationThreshold")
     def gpu_utilization_threshold(self) -> pulumi.Output[Optional[str]]:
         """
@@ -355,10 +441,18 @@ class AutoscalingConfig(pulumi.CustomResource):
         return pulumi.get(self, "gpu_utilization_threshold")
 
     @property
+    @pulumi.getter(name="scaleDownEnabled")
+    def scale_down_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specify whether to allow the scale-in of nodes. Default is `true`.
+        """
+        return pulumi.get(self, "scale_down_enabled")
+
+    @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Output[Optional[str]]:
         """
-        The scan interval. Default is `30s`
+        The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         """
         return pulumi.get(self, "scan_interval")
 

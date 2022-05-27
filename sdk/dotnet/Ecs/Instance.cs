@@ -191,6 +191,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
+        /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+        /// </summary>
+        [Output("operatorType")]
+        public Output<string?> OperatorType { get; private set; } = null!;
+
+        /// <summary>
         /// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("password")]
@@ -283,7 +289,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -572,6 +578,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+        /// </summary>
+        [Input("operatorType")]
+        public Input<string>? OperatorType { get; set; }
 
         /// <summary>
         /// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -940,6 +952,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
+        /// </summary>
+        [Input("operatorType")]
+        public Input<string>? OperatorType { get; set; }
 
         /// <summary>
         /// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.

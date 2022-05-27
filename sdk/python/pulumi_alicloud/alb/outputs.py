@@ -14,12 +14,12 @@ __all__ = [
     'ListenerAccessLogTracingConfig',
     'ListenerAclConfig',
     'ListenerAclConfigAclRelation',
-    'ListenerCertificate',
+    'ListenerCertificates',
     'ListenerDefaultAction',
     'ListenerDefaultActionForwardGroupConfig',
     'ListenerDefaultActionForwardGroupConfigServerGroupTuple',
     'ListenerQuicConfig',
-    'ListenerXforwardedForConfig',
+    'ListenerXForwardedForConfig',
     'LoadBalancerAccessLogConfig',
     'LoadBalancerLoadBalancerBillingConfig',
     'LoadBalancerModificationProtectionConfig',
@@ -31,6 +31,10 @@ __all__ = [
     'RuleRuleActionInsertHeaderConfig',
     'RuleRuleActionRedirectConfig',
     'RuleRuleActionRewriteConfig',
+    'RuleRuleActionTrafficLimitConfig',
+    'RuleRuleActionTrafficMirrorConfig',
+    'RuleRuleActionTrafficMirrorConfigMirrorGroupConfig',
+    'RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple',
     'RuleRuleCondition',
     'RuleRuleConditionCookieConfig',
     'RuleRuleConditionCookieConfigValue',
@@ -40,6 +44,7 @@ __all__ = [
     'RuleRuleConditionPathConfig',
     'RuleRuleConditionQueryStringConfig',
     'RuleRuleConditionQueryStringConfigValue',
+    'RuleRuleConditionSourceIpConfig',
     'ServerGroupHealthCheckConfig',
     'ServerGroupServer',
     'ServerGroupStickySessionConfig',
@@ -72,6 +77,10 @@ __all__ = [
     'GetRulesRuleRuleActionInsertHeaderConfigResult',
     'GetRulesRuleRuleActionRedirectConfigResult',
     'GetRulesRuleRuleActionRewriteConfigResult',
+    'GetRulesRuleRuleActionTrafficLimitConfigResult',
+    'GetRulesRuleRuleActionTrafficMirrorConfigResult',
+    'GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult',
+    'GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleResult',
     'GetRulesRuleRuleConditionResult',
     'GetRulesRuleRuleConditionCookieConfigResult',
     'GetRulesRuleRuleConditionCookieConfigValueResult',
@@ -81,6 +90,7 @@ __all__ = [
     'GetRulesRuleRuleConditionPathConfigResult',
     'GetRulesRuleRuleConditionQueryStringConfigResult',
     'GetRulesRuleRuleConditionQueryStringConfigValueResult',
+    'GetRulesRuleRuleConditionSourceIpConfigResult',
     'GetSecurityPoliciesPolicyResult',
     'GetServerGroupsGroupResult',
     'GetServerGroupsGroupHealthCheckConfigResult',
@@ -295,7 +305,7 @@ class ListenerAclConfigAclRelation(dict):
 
 
 @pulumi.output_type
-class ListenerCertificate(dict):
+class ListenerCertificates(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -303,14 +313,14 @@ class ListenerCertificate(dict):
             suggest = "certificate_id"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ListenerCertificate. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ListenerCertificates. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ListenerCertificate.__key_warning(key)
+        ListenerCertificates.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ListenerCertificate.__key_warning(key)
+        ListenerCertificates.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -497,185 +507,207 @@ class ListenerQuicConfig(dict):
 
 
 @pulumi.output_type
-class ListenerXforwardedForConfig(dict):
+class ListenerXForwardedForConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "xforwardedforclientcertIssuerdnalias":
-            suggest = "xforwardedforclientcert_issuerdnalias"
-        elif key == "xforwardedforclientcertIssuerdnenabled":
-            suggest = "xforwardedforclientcert_issuerdnenabled"
+        if key == "xForwardedForClientCertClientVerifyAlias":
+            suggest = "x_forwarded_for_client_cert_client_verify_alias"
+        elif key == "xForwardedForClientCertClientVerifyEnabled":
+            suggest = "x_forwarded_for_client_cert_client_verify_enabled"
+        elif key == "xForwardedForClientCertFingerPrintAlias":
+            suggest = "x_forwarded_for_client_cert_finger_print_alias"
+        elif key == "xForwardedForClientCertFingerPrintEnabled":
+            suggest = "x_forwarded_for_client_cert_finger_print_enabled"
+        elif key == "xForwardedForClientCertIssuerDnAlias":
+            suggest = "x_forwarded_for_client_cert_issuer_dn_alias"
+        elif key == "xForwardedForClientCertIssuerDnEnabled":
+            suggest = "x_forwarded_for_client_cert_issuer_dn_enabled"
+        elif key == "xForwardedForClientCertSubjectDnAlias":
+            suggest = "x_forwarded_for_client_cert_subject_dn_alias"
+        elif key == "xForwardedForClientCertSubjectDnEnabled":
+            suggest = "x_forwarded_for_client_cert_subject_dn_enabled"
+        elif key == "xForwardedForClientSrcPortEnabled":
+            suggest = "x_forwarded_for_client_src_port_enabled"
+        elif key == "xForwardedForEnabled":
+            suggest = "x_forwarded_for_enabled"
+        elif key == "xForwardedForProtoEnabled":
+            suggest = "x_forwarded_for_proto_enabled"
+        elif key == "xForwardedForSlbIdEnabled":
+            suggest = "x_forwarded_for_slb_id_enabled"
+        elif key == "xForwardedForSlbPortEnabled":
+            suggest = "x_forwarded_for_slb_port_enabled"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ListenerXforwardedForConfig. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ListenerXForwardedForConfig. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ListenerXforwardedForConfig.__key_warning(key)
+        ListenerXForwardedForConfig.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ListenerXforwardedForConfig.__key_warning(key)
+        ListenerXForwardedForConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 xforwardedforclientcert_issuerdnalias: Optional[str] = None,
-                 xforwardedforclientcert_issuerdnenabled: Optional[bool] = None,
-                 xforwardedforclientcertclientverifyalias: Optional[str] = None,
-                 xforwardedforclientcertclientverifyenabled: Optional[bool] = None,
-                 xforwardedforclientcertfingerprintalias: Optional[str] = None,
-                 xforwardedforclientcertfingerprintenabled: Optional[bool] = None,
-                 xforwardedforclientcertsubjectdnalias: Optional[str] = None,
-                 xforwardedforclientcertsubjectdnenabled: Optional[bool] = None,
-                 xforwardedforclientsrcportenabled: Optional[bool] = None,
-                 xforwardedforenabled: Optional[bool] = None,
-                 xforwardedforprotoenabled: Optional[bool] = None,
-                 xforwardedforslbidenabled: Optional[bool] = None,
-                 xforwardedforslbportenabled: Optional[bool] = None):
+                 x_forwarded_for_client_cert_client_verify_alias: Optional[str] = None,
+                 x_forwarded_for_client_cert_client_verify_enabled: Optional[bool] = None,
+                 x_forwarded_for_client_cert_finger_print_alias: Optional[str] = None,
+                 x_forwarded_for_client_cert_finger_print_enabled: Optional[bool] = None,
+                 x_forwarded_for_client_cert_issuer_dn_alias: Optional[str] = None,
+                 x_forwarded_for_client_cert_issuer_dn_enabled: Optional[bool] = None,
+                 x_forwarded_for_client_cert_subject_dn_alias: Optional[str] = None,
+                 x_forwarded_for_client_cert_subject_dn_enabled: Optional[bool] = None,
+                 x_forwarded_for_client_src_port_enabled: Optional[bool] = None,
+                 x_forwarded_for_enabled: Optional[bool] = None,
+                 x_forwarded_for_proto_enabled: Optional[bool] = None,
+                 x_forwarded_for_slb_id_enabled: Optional[bool] = None,
+                 x_forwarded_for_slb_port_enabled: Optional[bool] = None):
         """
-        :param str xforwardedforclientcert_issuerdnalias: The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-        :param bool xforwardedforclientcert_issuerdnenabled: Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-        :param str xforwardedforclientcertclientverifyalias: The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param bool xforwardedforclientcertclientverifyenabled: Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-        :param str xforwardedforclientcertfingerprintalias: The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param bool xforwardedforclientcertfingerprintenabled: Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-        :param str xforwardedforclientcertsubjectdnalias: The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param bool xforwardedforclientcertsubjectdnenabled: Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-        :param bool xforwardedforclientsrcportenabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-        :param bool xforwardedforenabled: Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
-        :param bool xforwardedforprotoenabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-        :param bool xforwardedforslbidenabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
-        :param bool xforwardedforslbportenabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+        :param str x_forwarded_for_client_cert_client_verify_alias: The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param bool x_forwarded_for_client_cert_client_verify_enabled: Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+        :param str x_forwarded_for_client_cert_finger_print_alias: The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param bool x_forwarded_for_client_cert_finger_print_enabled: Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        :param str x_forwarded_for_client_cert_issuer_dn_alias: The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+        :param bool x_forwarded_for_client_cert_issuer_dn_enabled: Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+        :param str x_forwarded_for_client_cert_subject_dn_alias: The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param bool x_forwarded_for_client_cert_subject_dn_enabled: Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        :param bool x_forwarded_for_client_src_port_enabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+        :param bool x_forwarded_for_enabled: Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+        :param bool x_forwarded_for_proto_enabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+        :param bool x_forwarded_for_slb_id_enabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+        :param bool x_forwarded_for_slb_port_enabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
         """
-        if xforwardedforclientcert_issuerdnalias is not None:
-            pulumi.set(__self__, "xforwardedforclientcert_issuerdnalias", xforwardedforclientcert_issuerdnalias)
-        if xforwardedforclientcert_issuerdnenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientcert_issuerdnenabled", xforwardedforclientcert_issuerdnenabled)
-        if xforwardedforclientcertclientverifyalias is not None:
-            pulumi.set(__self__, "xforwardedforclientcertclientverifyalias", xforwardedforclientcertclientverifyalias)
-        if xforwardedforclientcertclientverifyenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientcertclientverifyenabled", xforwardedforclientcertclientverifyenabled)
-        if xforwardedforclientcertfingerprintalias is not None:
-            pulumi.set(__self__, "xforwardedforclientcertfingerprintalias", xforwardedforclientcertfingerprintalias)
-        if xforwardedforclientcertfingerprintenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientcertfingerprintenabled", xforwardedforclientcertfingerprintenabled)
-        if xforwardedforclientcertsubjectdnalias is not None:
-            pulumi.set(__self__, "xforwardedforclientcertsubjectdnalias", xforwardedforclientcertsubjectdnalias)
-        if xforwardedforclientcertsubjectdnenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientcertsubjectdnenabled", xforwardedforclientcertsubjectdnenabled)
-        if xforwardedforclientsrcportenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientsrcportenabled", xforwardedforclientsrcportenabled)
-        if xforwardedforenabled is not None:
-            pulumi.set(__self__, "xforwardedforenabled", xforwardedforenabled)
-        if xforwardedforprotoenabled is not None:
-            pulumi.set(__self__, "xforwardedforprotoenabled", xforwardedforprotoenabled)
-        if xforwardedforslbidenabled is not None:
-            pulumi.set(__self__, "xforwardedforslbidenabled", xforwardedforslbidenabled)
-        if xforwardedforslbportenabled is not None:
-            pulumi.set(__self__, "xforwardedforslbportenabled", xforwardedforslbportenabled)
+        if x_forwarded_for_client_cert_client_verify_alias is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_client_verify_alias", x_forwarded_for_client_cert_client_verify_alias)
+        if x_forwarded_for_client_cert_client_verify_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_client_verify_enabled", x_forwarded_for_client_cert_client_verify_enabled)
+        if x_forwarded_for_client_cert_finger_print_alias is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_finger_print_alias", x_forwarded_for_client_cert_finger_print_alias)
+        if x_forwarded_for_client_cert_finger_print_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_finger_print_enabled", x_forwarded_for_client_cert_finger_print_enabled)
+        if x_forwarded_for_client_cert_issuer_dn_alias is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_issuer_dn_alias", x_forwarded_for_client_cert_issuer_dn_alias)
+        if x_forwarded_for_client_cert_issuer_dn_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_issuer_dn_enabled", x_forwarded_for_client_cert_issuer_dn_enabled)
+        if x_forwarded_for_client_cert_subject_dn_alias is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_subject_dn_alias", x_forwarded_for_client_cert_subject_dn_alias)
+        if x_forwarded_for_client_cert_subject_dn_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_subject_dn_enabled", x_forwarded_for_client_cert_subject_dn_enabled)
+        if x_forwarded_for_client_src_port_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_src_port_enabled", x_forwarded_for_client_src_port_enabled)
+        if x_forwarded_for_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_enabled", x_forwarded_for_enabled)
+        if x_forwarded_for_proto_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_proto_enabled", x_forwarded_for_proto_enabled)
+        if x_forwarded_for_slb_id_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_slb_id_enabled", x_forwarded_for_slb_id_enabled)
+        if x_forwarded_for_slb_port_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_slb_port_enabled", x_forwarded_for_slb_port_enabled)
 
     @property
-    @pulumi.getter(name="xforwardedforclientcertIssuerdnalias")
-    def xforwardedforclientcert_issuerdnalias(self) -> Optional[str]:
+    @pulumi.getter(name="xForwardedForClientCertClientVerifyAlias")
+    def x_forwarded_for_client_cert_client_verify_alias(self) -> Optional[str]:
         """
-        The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+        The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         """
-        return pulumi.get(self, "xforwardedforclientcert_issuerdnalias")
+        return pulumi.get(self, "x_forwarded_for_client_cert_client_verify_alias")
 
     @property
-    @pulumi.getter(name="xforwardedforclientcertIssuerdnenabled")
-    def xforwardedforclientcert_issuerdnenabled(self) -> Optional[bool]:
-        """
-        Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-        """
-        return pulumi.get(self, "xforwardedforclientcert_issuerdnenabled")
-
-    @property
-    @pulumi.getter
-    def xforwardedforclientcertclientverifyalias(self) -> Optional[str]:
-        """
-        The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        """
-        return pulumi.get(self, "xforwardedforclientcertclientverifyalias")
-
-    @property
-    @pulumi.getter
-    def xforwardedforclientcertclientverifyenabled(self) -> Optional[bool]:
+    @pulumi.getter(name="xForwardedForClientCertClientVerifyEnabled")
+    def x_forwarded_for_client_cert_client_verify_enabled(self) -> Optional[bool]:
         """
         Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
         """
-        return pulumi.get(self, "xforwardedforclientcertclientverifyenabled")
+        return pulumi.get(self, "x_forwarded_for_client_cert_client_verify_enabled")
 
     @property
-    @pulumi.getter
-    def xforwardedforclientcertfingerprintalias(self) -> Optional[str]:
+    @pulumi.getter(name="xForwardedForClientCertFingerPrintAlias")
+    def x_forwarded_for_client_cert_finger_print_alias(self) -> Optional[str]:
         """
-        The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         """
-        return pulumi.get(self, "xforwardedforclientcertfingerprintalias")
+        return pulumi.get(self, "x_forwarded_for_client_cert_finger_print_alias")
 
     @property
-    @pulumi.getter
-    def xforwardedforclientcertfingerprintenabled(self) -> Optional[bool]:
+    @pulumi.getter(name="xForwardedForClientCertFingerPrintEnabled")
+    def x_forwarded_for_client_cert_finger_print_enabled(self) -> Optional[bool]:
         """
-        Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
         """
-        return pulumi.get(self, "xforwardedforclientcertfingerprintenabled")
+        return pulumi.get(self, "x_forwarded_for_client_cert_finger_print_enabled")
 
     @property
-    @pulumi.getter
-    def xforwardedforclientcertsubjectdnalias(self) -> Optional[str]:
+    @pulumi.getter(name="xForwardedForClientCertIssuerDnAlias")
+    def x_forwarded_for_client_cert_issuer_dn_alias(self) -> Optional[str]:
         """
-        The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
         """
-        return pulumi.get(self, "xforwardedforclientcertsubjectdnalias")
+        return pulumi.get(self, "x_forwarded_for_client_cert_issuer_dn_alias")
 
     @property
-    @pulumi.getter
-    def xforwardedforclientcertsubjectdnenabled(self) -> Optional[bool]:
+    @pulumi.getter(name="xForwardedForClientCertIssuerDnEnabled")
+    def x_forwarded_for_client_cert_issuer_dn_enabled(self) -> Optional[bool]:
         """
-        Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
         """
-        return pulumi.get(self, "xforwardedforclientcertsubjectdnenabled")
+        return pulumi.get(self, "x_forwarded_for_client_cert_issuer_dn_enabled")
 
     @property
-    @pulumi.getter
-    def xforwardedforclientsrcportenabled(self) -> Optional[bool]:
+    @pulumi.getter(name="xForwardedForClientCertSubjectDnAlias")
+    def x_forwarded_for_client_cert_subject_dn_alias(self) -> Optional[str]:
+        """
+        The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        """
+        return pulumi.get(self, "x_forwarded_for_client_cert_subject_dn_alias")
+
+    @property
+    @pulumi.getter(name="xForwardedForClientCertSubjectDnEnabled")
+    def x_forwarded_for_client_cert_subject_dn_enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        """
+        return pulumi.get(self, "x_forwarded_for_client_cert_subject_dn_enabled")
+
+    @property
+    @pulumi.getter(name="xForwardedForClientSrcPortEnabled")
+    def x_forwarded_for_client_src_port_enabled(self) -> Optional[bool]:
         """
         Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         """
-        return pulumi.get(self, "xforwardedforclientsrcportenabled")
+        return pulumi.get(self, "x_forwarded_for_client_src_port_enabled")
 
     @property
-    @pulumi.getter
-    def xforwardedforenabled(self) -> Optional[bool]:
+    @pulumi.getter(name="xForwardedForEnabled")
+    def x_forwarded_for_enabled(self) -> Optional[bool]:
         """
         Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
         """
-        return pulumi.get(self, "xforwardedforenabled")
+        return pulumi.get(self, "x_forwarded_for_enabled")
 
     @property
-    @pulumi.getter
-    def xforwardedforprotoenabled(self) -> Optional[bool]:
+    @pulumi.getter(name="xForwardedForProtoEnabled")
+    def x_forwarded_for_proto_enabled(self) -> Optional[bool]:
         """
         Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
         """
-        return pulumi.get(self, "xforwardedforprotoenabled")
+        return pulumi.get(self, "x_forwarded_for_proto_enabled")
 
     @property
-    @pulumi.getter
-    def xforwardedforslbidenabled(self) -> Optional[bool]:
+    @pulumi.getter(name="xForwardedForSlbIdEnabled")
+    def x_forwarded_for_slb_id_enabled(self) -> Optional[bool]:
         """
         Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
         """
-        return pulumi.get(self, "xforwardedforslbidenabled")
+        return pulumi.get(self, "x_forwarded_for_slb_id_enabled")
 
     @property
-    @pulumi.getter
-    def xforwardedforslbportenabled(self) -> Optional[bool]:
+    @pulumi.getter(name="xForwardedForSlbPortEnabled")
+    def x_forwarded_for_slb_port_enabled(self) -> Optional[bool]:
         """
         Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
         """
-        return pulumi.get(self, "xforwardedforslbportenabled")
+        return pulumi.get(self, "x_forwarded_for_slb_port_enabled")
 
 
 @pulumi.output_type
@@ -857,6 +889,10 @@ class RuleRuleAction(dict):
             suggest = "redirect_config"
         elif key == "rewriteConfig":
             suggest = "rewrite_config"
+        elif key == "trafficLimitConfig":
+            suggest = "traffic_limit_config"
+        elif key == "trafficMirrorConfig":
+            suggest = "traffic_mirror_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RuleRuleAction. Access the value via the '{suggest}' property getter instead.")
@@ -876,15 +912,19 @@ class RuleRuleAction(dict):
                  forward_group_config: Optional['outputs.RuleRuleActionForwardGroupConfig'] = None,
                  insert_header_config: Optional['outputs.RuleRuleActionInsertHeaderConfig'] = None,
                  redirect_config: Optional['outputs.RuleRuleActionRedirectConfig'] = None,
-                 rewrite_config: Optional['outputs.RuleRuleActionRewriteConfig'] = None):
+                 rewrite_config: Optional['outputs.RuleRuleActionRewriteConfig'] = None,
+                 traffic_limit_config: Optional['outputs.RuleRuleActionTrafficLimitConfig'] = None,
+                 traffic_mirror_config: Optional['outputs.RuleRuleActionTrafficMirrorConfig'] = None):
         """
         :param int order: The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
-        :param str type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        :param str type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         :param 'RuleRuleActionFixedResponseConfigArgs' fixed_response_config: The configuration of the fixed response. See the following `Block fixed_response_config`.
         :param 'RuleRuleActionForwardGroupConfigArgs' forward_group_config: The forward response action within ALB. See the following `Block forward_group_config`.
         :param 'RuleRuleActionInsertHeaderConfigArgs' insert_header_config: The configuration of the inserted header field. See the following `Block insert_header_config`.
         :param 'RuleRuleActionRedirectConfigArgs' redirect_config: The configuration of the external redirect action. See the following `Block redirect_config`.
         :param 'RuleRuleActionRewriteConfigArgs' rewrite_config: The redirect action within ALB. See the following `Block rewrite_config`.
+        :param 'RuleRuleActionTrafficLimitConfigArgs' traffic_limit_config: The Flow speed limit. See the following `Block traffic_limit_config`.
+        :param 'RuleRuleActionTrafficMirrorConfigArgs' traffic_mirror_config: The Traffic mirroring. See the following `Block traffic_mirror_config`.
         """
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "type", type)
@@ -898,6 +938,10 @@ class RuleRuleAction(dict):
             pulumi.set(__self__, "redirect_config", redirect_config)
         if rewrite_config is not None:
             pulumi.set(__self__, "rewrite_config", rewrite_config)
+        if traffic_limit_config is not None:
+            pulumi.set(__self__, "traffic_limit_config", traffic_limit_config)
+        if traffic_mirror_config is not None:
+            pulumi.set(__self__, "traffic_mirror_config", traffic_mirror_config)
 
     @property
     @pulumi.getter
@@ -911,7 +955,7 @@ class RuleRuleAction(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         """
         return pulumi.get(self, "type")
 
@@ -954,6 +998,22 @@ class RuleRuleAction(dict):
         The redirect action within ALB. See the following `Block rewrite_config`.
         """
         return pulumi.get(self, "rewrite_config")
+
+    @property
+    @pulumi.getter(name="trafficLimitConfig")
+    def traffic_limit_config(self) -> Optional['outputs.RuleRuleActionTrafficLimitConfig']:
+        """
+        The Flow speed limit. See the following `Block traffic_limit_config`.
+        """
+        return pulumi.get(self, "traffic_limit_config")
+
+    @property
+    @pulumi.getter(name="trafficMirrorConfig")
+    def traffic_mirror_config(self) -> Optional['outputs.RuleRuleActionTrafficMirrorConfig']:
+        """
+        The Traffic mirroring. See the following `Block traffic_mirror_config`.
+        """
+        return pulumi.get(self, "traffic_mirror_config")
 
 
 @pulumi.output_type
@@ -1073,12 +1133,16 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 server_group_id: Optional[str] = None):
+                 server_group_id: Optional[str] = None,
+                 weight: Optional[int] = None):
         """
         :param str server_group_id: The ID of the destination server group to which requests are forwarded.
+        :param int weight: The Weight of server group.
         """
         if server_group_id is not None:
             pulumi.set(__self__, "server_group_id", server_group_id)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="serverGroupId")
@@ -1087,6 +1151,14 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple(dict):
         The ID of the destination server group to which requests are forwarded.
         """
         return pulumi.get(self, "server_group_id")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        The Weight of server group.
+        """
+        return pulumi.get(self, "weight")
 
 
 @pulumi.output_type
@@ -1289,6 +1361,147 @@ class RuleRuleActionRewriteConfig(dict):
 
 
 @pulumi.output_type
+class RuleRuleActionTrafficLimitConfig(dict):
+    def __init__(__self__, *,
+                 qps: Optional[int] = None):
+        """
+        :param int qps: The Number of requests per second. Value range: 1~100000.
+        """
+        if qps is not None:
+            pulumi.set(__self__, "qps", qps)
+
+    @property
+    @pulumi.getter
+    def qps(self) -> Optional[int]:
+        """
+        The Number of requests per second. Value range: 1~100000.
+        """
+        return pulumi.get(self, "qps")
+
+
+@pulumi.output_type
+class RuleRuleActionTrafficMirrorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mirrorGroupConfig":
+            suggest = "mirror_group_config"
+        elif key == "targetType":
+            suggest = "target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleRuleActionTrafficMirrorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleRuleActionTrafficMirrorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleRuleActionTrafficMirrorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mirror_group_config: Optional['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig'] = None,
+                 target_type: Optional[str] = None):
+        """
+        :param 'RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs' mirror_group_config: The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+        :param str target_type: The Mirror target type.
+        """
+        if mirror_group_config is not None:
+            pulumi.set(__self__, "mirror_group_config", mirror_group_config)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="mirrorGroupConfig")
+    def mirror_group_config(self) -> Optional['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig']:
+        """
+        The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+        """
+        return pulumi.get(self, "mirror_group_config")
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[str]:
+        """
+        The Mirror target type.
+        """
+        return pulumi.get(self, "target_type")
+
+
+@pulumi.output_type
+class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverGroupTuples":
+            suggest = "server_group_tuples"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleRuleActionTrafficMirrorConfigMirrorGroupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleRuleActionTrafficMirrorConfigMirrorGroupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleRuleActionTrafficMirrorConfigMirrorGroupConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_group_tuples: Optional[Sequence['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple']] = None):
+        """
+        :param Sequence['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs'] server_group_tuples: The destination server group to which requests are forwarded.
+        """
+        if server_group_tuples is not None:
+            pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+
+    @property
+    @pulumi.getter(name="serverGroupTuples")
+    def server_group_tuples(self) -> Optional[Sequence['outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple']]:
+        """
+        The destination server group to which requests are forwarded.
+        """
+        return pulumi.get(self, "server_group_tuples")
+
+
+@pulumi.output_type
+class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverGroupId":
+            suggest = "server_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_group_id: Optional[str] = None):
+        """
+        :param str server_group_id: The ID of the destination server group to which requests are forwarded.
+        """
+        if server_group_id is not None:
+            pulumi.set(__self__, "server_group_id", server_group_id)
+
+    @property
+    @pulumi.getter(name="serverGroupId")
+    def server_group_id(self) -> Optional[str]:
+        """
+        The ID of the destination server group to which requests are forwarded.
+        """
+        return pulumi.get(self, "server_group_id")
+
+
+@pulumi.output_type
 class RuleRuleCondition(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1305,6 +1518,8 @@ class RuleRuleCondition(dict):
             suggest = "path_config"
         elif key == "queryStringConfig":
             suggest = "query_string_config"
+        elif key == "sourceIpConfig":
+            suggest = "source_ip_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RuleRuleCondition. Access the value via the '{suggest}' property getter instead.")
@@ -1324,15 +1539,17 @@ class RuleRuleCondition(dict):
                  host_config: Optional['outputs.RuleRuleConditionHostConfig'] = None,
                  method_config: Optional['outputs.RuleRuleConditionMethodConfig'] = None,
                  path_config: Optional['outputs.RuleRuleConditionPathConfig'] = None,
-                 query_string_config: Optional['outputs.RuleRuleConditionQueryStringConfig'] = None):
+                 query_string_config: Optional['outputs.RuleRuleConditionQueryStringConfig'] = None,
+                 source_ip_config: Optional['outputs.RuleRuleConditionSourceIpConfig'] = None):
         """
-        :param str type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        :param str type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         :param 'RuleRuleConditionCookieConfigArgs' cookie_config: The configuration of the cookie. See the following `Block cookie_config`.
         :param 'RuleRuleConditionHeaderConfigArgs' header_config: The configuration of the header field. See the following `Block header_config`.
         :param 'RuleRuleConditionHostConfigArgs' host_config: The configuration of the host field. See the following `Block host_config`.
         :param 'RuleRuleConditionMethodConfigArgs' method_config: The configuration of the request method. See the following `Block method_config`.
         :param 'RuleRuleConditionPathConfigArgs' path_config: The configuration of the path for the request to be forwarded. See the following `Block path_config`.
         :param 'RuleRuleConditionQueryStringConfigArgs' query_string_config: The configuration of the query string. See the following `Block query_string_config`.
+        :param 'RuleRuleConditionSourceIpConfigArgs' source_ip_config: The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
         """
         pulumi.set(__self__, "type", type)
         if cookie_config is not None:
@@ -1347,12 +1564,14 @@ class RuleRuleCondition(dict):
             pulumi.set(__self__, "path_config", path_config)
         if query_string_config is not None:
             pulumi.set(__self__, "query_string_config", query_string_config)
+        if source_ip_config is not None:
+            pulumi.set(__self__, "source_ip_config", source_ip_config)
 
     @property
     @pulumi.getter
     def type(self) -> str:
         """
-        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         """
         return pulumi.get(self, "type")
 
@@ -1403,6 +1622,14 @@ class RuleRuleCondition(dict):
         The configuration of the query string. See the following `Block query_string_config`.
         """
         return pulumi.get(self, "query_string_config")
+
+    @property
+    @pulumi.getter(name="sourceIpConfig")
+    def source_ip_config(self) -> Optional['outputs.RuleRuleConditionSourceIpConfig']:
+        """
+        The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+        """
+        return pulumi.get(self, "source_ip_config")
 
 
 @pulumi.output_type
@@ -1591,6 +1818,25 @@ class RuleRuleConditionQueryStringConfigValue(dict):
         The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RuleRuleConditionSourceIpConfig(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] values: The query string.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        The query string.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -3431,6 +3677,8 @@ class GetRulesRuleRuleActionResult(dict):
                  order: int,
                  redirect_configs: Sequence['outputs.GetRulesRuleRuleActionRedirectConfigResult'],
                  rewrite_configs: Sequence['outputs.GetRulesRuleRuleActionRewriteConfigResult'],
+                 traffic_limit_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficLimitConfigResult'],
+                 traffic_mirror_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigResult'],
                  type: str):
         """
         :param Sequence['GetRulesRuleRuleActionFixedResponseConfigArgs'] fixed_response_configs: The configuration of the fixed response.
@@ -3439,6 +3687,8 @@ class GetRulesRuleRuleActionResult(dict):
         :param int order: The order of the forwarding rule actions. Valid values:1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
         :param Sequence['GetRulesRuleRuleActionRedirectConfigArgs'] redirect_configs: The configuration of the external redirect action.
         :param Sequence['GetRulesRuleRuleActionRewriteConfigArgs'] rewrite_configs: The redirect action within ALB.
+        :param Sequence['GetRulesRuleRuleActionTrafficLimitConfigArgs'] traffic_limit_configs: The Flow speed limit.
+        :param Sequence['GetRulesRuleRuleActionTrafficMirrorConfigArgs'] traffic_mirror_configs: The Traffic mirroring.
         :param str type: The type of the forwarding rule.
         """
         pulumi.set(__self__, "fixed_response_configs", fixed_response_configs)
@@ -3447,6 +3697,8 @@ class GetRulesRuleRuleActionResult(dict):
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "redirect_configs", redirect_configs)
         pulumi.set(__self__, "rewrite_configs", rewrite_configs)
+        pulumi.set(__self__, "traffic_limit_configs", traffic_limit_configs)
+        pulumi.set(__self__, "traffic_mirror_configs", traffic_mirror_configs)
         pulumi.set(__self__, "type", type)
 
     @property
@@ -3496,6 +3748,22 @@ class GetRulesRuleRuleActionResult(dict):
         The redirect action within ALB.
         """
         return pulumi.get(self, "rewrite_configs")
+
+    @property
+    @pulumi.getter(name="trafficLimitConfigs")
+    def traffic_limit_configs(self) -> Sequence['outputs.GetRulesRuleRuleActionTrafficLimitConfigResult']:
+        """
+        The Flow speed limit.
+        """
+        return pulumi.get(self, "traffic_limit_configs")
+
+    @property
+    @pulumi.getter(name="trafficMirrorConfigs")
+    def traffic_mirror_configs(self) -> Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigResult']:
+        """
+        The Traffic mirroring.
+        """
+        return pulumi.get(self, "traffic_mirror_configs")
 
     @property
     @pulumi.getter
@@ -3567,11 +3835,14 @@ class GetRulesRuleRuleActionForwardGroupConfigResult(dict):
 @pulumi.output_type
 class GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleResult(dict):
     def __init__(__self__, *,
-                 server_group_id: str):
+                 server_group_id: str,
+                 weight: int):
         """
         :param str server_group_id: The ID of the destination server group to which requests are forwarded.
+        :param int weight: The Weight of server group.
         """
         pulumi.set(__self__, "server_group_id", server_group_id)
+        pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="serverGroupId")
@@ -3580,6 +3851,14 @@ class GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleResult(dict):
         The ID of the destination server group to which requests are forwarded.
         """
         return pulumi.get(self, "server_group_id")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        The Weight of server group.
+        """
+        return pulumi.get(self, "weight")
 
 
 @pulumi.output_type
@@ -3736,6 +4015,89 @@ class GetRulesRuleRuleActionRewriteConfigResult(dict):
 
 
 @pulumi.output_type
+class GetRulesRuleRuleActionTrafficLimitConfigResult(dict):
+    def __init__(__self__, *,
+                 qps: int):
+        """
+        :param int qps: The Number of requests per second.
+        """
+        pulumi.set(__self__, "qps", qps)
+
+    @property
+    @pulumi.getter
+    def qps(self) -> int:
+        """
+        The Number of requests per second.
+        """
+        return pulumi.get(self, "qps")
+
+
+@pulumi.output_type
+class GetRulesRuleRuleActionTrafficMirrorConfigResult(dict):
+    def __init__(__self__, *,
+                 mirror_group_configs: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult'],
+                 target_type: str):
+        """
+        :param Sequence['GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs'] mirror_group_configs: The Traffic is mirrored to the server group.
+        :param str target_type: The Mirror target type.
+        """
+        pulumi.set(__self__, "mirror_group_configs", mirror_group_configs)
+        pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="mirrorGroupConfigs")
+    def mirror_group_configs(self) -> Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult']:
+        """
+        The Traffic is mirrored to the server group.
+        """
+        return pulumi.get(self, "mirror_group_configs")
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> str:
+        """
+        The Mirror target type.
+        """
+        return pulumi.get(self, "target_type")
+
+
+@pulumi.output_type
+class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigResult(dict):
+    def __init__(__self__, *,
+                 server_group_tuples: Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleResult']):
+        """
+        :param Sequence['GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs'] server_group_tuples: The destination server group to which requests are forwarded.
+        """
+        pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+
+    @property
+    @pulumi.getter(name="serverGroupTuples")
+    def server_group_tuples(self) -> Sequence['outputs.GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleResult']:
+        """
+        The destination server group to which requests are forwarded.
+        """
+        return pulumi.get(self, "server_group_tuples")
+
+
+@pulumi.output_type
+class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleResult(dict):
+    def __init__(__self__, *,
+                 server_group_id: str):
+        """
+        :param str server_group_id: The ID of the destination server group to which requests are forwarded.
+        """
+        pulumi.set(__self__, "server_group_id", server_group_id)
+
+    @property
+    @pulumi.getter(name="serverGroupId")
+    def server_group_id(self) -> str:
+        """
+        The ID of the destination server group to which requests are forwarded.
+        """
+        return pulumi.get(self, "server_group_id")
+
+
+@pulumi.output_type
 class GetRulesRuleRuleConditionResult(dict):
     def __init__(__self__, *,
                  cookie_configs: Sequence['outputs.GetRulesRuleRuleConditionCookieConfigResult'],
@@ -3744,6 +4106,7 @@ class GetRulesRuleRuleConditionResult(dict):
                  method_configs: Sequence['outputs.GetRulesRuleRuleConditionMethodConfigResult'],
                  path_configs: Sequence['outputs.GetRulesRuleRuleConditionPathConfigResult'],
                  query_string_configs: Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigResult'],
+                 source_ip_configs: Sequence['outputs.GetRulesRuleRuleConditionSourceIpConfigResult'],
                  type: str):
         """
         :param Sequence['GetRulesRuleRuleConditionCookieConfigArgs'] cookie_configs: The configuration of the cookie.
@@ -3752,6 +4115,7 @@ class GetRulesRuleRuleConditionResult(dict):
         :param Sequence['GetRulesRuleRuleConditionMethodConfigArgs'] method_configs: The configuration of the request method.
         :param Sequence['GetRulesRuleRuleConditionPathConfigArgs'] path_configs: The configuration of the path for the request to be forwarded.
         :param Sequence['GetRulesRuleRuleConditionQueryStringConfigArgs'] query_string_configs: The configuration of the query string.
+        :param Sequence['GetRulesRuleRuleConditionSourceIpConfigArgs'] source_ip_configs: The Based on source IP traffic matching.
         :param str type: The type of the forwarding rule.
         """
         pulumi.set(__self__, "cookie_configs", cookie_configs)
@@ -3760,6 +4124,7 @@ class GetRulesRuleRuleConditionResult(dict):
         pulumi.set(__self__, "method_configs", method_configs)
         pulumi.set(__self__, "path_configs", path_configs)
         pulumi.set(__self__, "query_string_configs", query_string_configs)
+        pulumi.set(__self__, "source_ip_configs", source_ip_configs)
         pulumi.set(__self__, "type", type)
 
     @property
@@ -3811,6 +4176,14 @@ class GetRulesRuleRuleConditionResult(dict):
         return pulumi.get(self, "query_string_configs")
 
     @property
+    @pulumi.getter(name="sourceIpConfigs")
+    def source_ip_configs(self) -> Sequence['outputs.GetRulesRuleRuleConditionSourceIpConfigResult']:
+        """
+        The Based on source IP traffic matching.
+        """
+        return pulumi.get(self, "source_ip_configs")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -3824,7 +4197,7 @@ class GetRulesRuleRuleConditionCookieConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence['outputs.GetRulesRuleRuleConditionCookieConfigValueResult']):
         """
-        :param Sequence['GetRulesRuleRuleConditionCookieConfigValueArgs'] values: The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        :param Sequence['GetRulesRuleRuleConditionCookieConfigValueArgs'] values: Add one or more IP addresses or IP address segments.
         """
         pulumi.set(__self__, "values", values)
 
@@ -3832,7 +4205,7 @@ class GetRulesRuleRuleConditionCookieConfigResult(dict):
     @pulumi.getter
     def values(self) -> Sequence['outputs.GetRulesRuleRuleConditionCookieConfigValueResult']:
         """
-        The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        Add one or more IP addresses or IP address segments.
         """
         return pulumi.get(self, "values")
 
@@ -3873,7 +4246,7 @@ class GetRulesRuleRuleConditionHeaderConfigResult(dict):
                  values: Sequence[str]):
         """
         :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
-        :param Sequence[str] values: The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        :param Sequence[str] values: Add one or more IP addresses or IP address segments.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
@@ -3890,7 +4263,7 @@ class GetRulesRuleRuleConditionHeaderConfigResult(dict):
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        Add one or more IP addresses or IP address segments.
         """
         return pulumi.get(self, "values")
 
@@ -3900,7 +4273,7 @@ class GetRulesRuleRuleConditionHostConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
         """
-        :param Sequence[str] values: The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        :param Sequence[str] values: Add one or more IP addresses or IP address segments.
         """
         pulumi.set(__self__, "values", values)
 
@@ -3908,7 +4281,7 @@ class GetRulesRuleRuleConditionHostConfigResult(dict):
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        Add one or more IP addresses or IP address segments.
         """
         return pulumi.get(self, "values")
 
@@ -3918,7 +4291,7 @@ class GetRulesRuleRuleConditionMethodConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
         """
-        :param Sequence[str] values: The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        :param Sequence[str] values: Add one or more IP addresses or IP address segments.
         """
         pulumi.set(__self__, "values", values)
 
@@ -3926,7 +4299,7 @@ class GetRulesRuleRuleConditionMethodConfigResult(dict):
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        Add one or more IP addresses or IP address segments.
         """
         return pulumi.get(self, "values")
 
@@ -3936,7 +4309,7 @@ class GetRulesRuleRuleConditionPathConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
         """
-        :param Sequence[str] values: The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        :param Sequence[str] values: Add one or more IP addresses or IP address segments.
         """
         pulumi.set(__self__, "values", values)
 
@@ -3944,7 +4317,7 @@ class GetRulesRuleRuleConditionPathConfigResult(dict):
     @pulumi.getter
     def values(self) -> Sequence[str]:
         """
-        The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        Add one or more IP addresses or IP address segments.
         """
         return pulumi.get(self, "values")
 
@@ -3954,7 +4327,7 @@ class GetRulesRuleRuleConditionQueryStringConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigValueResult']):
         """
-        :param Sequence['GetRulesRuleRuleConditionQueryStringConfigValueArgs'] values: The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        :param Sequence['GetRulesRuleRuleConditionQueryStringConfigValueArgs'] values: Add one or more IP addresses or IP address segments.
         """
         pulumi.set(__self__, "values", values)
 
@@ -3962,7 +4335,7 @@ class GetRulesRuleRuleConditionQueryStringConfigResult(dict):
     @pulumi.getter
     def values(self) -> Sequence['outputs.GetRulesRuleRuleConditionQueryStringConfigValueResult']:
         """
-        The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
+        Add one or more IP addresses or IP address segments.
         """
         return pulumi.get(self, "values")
 
@@ -3994,6 +4367,24 @@ class GetRulesRuleRuleConditionQueryStringConfigValueResult(dict):
         The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRulesRuleRuleConditionSourceIpConfigResult(dict):
+    def __init__(__self__, *,
+                 values: Sequence[str]):
+        """
+        :param Sequence[str] values: Add one or more IP addresses or IP address segments.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        Add one or more IP addresses or IP address segments.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

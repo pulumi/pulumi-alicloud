@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Eci.Inputs
     {
         [Input("sysctls")]
         private InputList<Inputs.ContainerGroupEciSecurityContextSysctlGetArgs>? _sysctls;
+
+        /// <summary>
+        /// system.
+        /// </summary>
         public InputList<Inputs.ContainerGroupEciSecurityContextSysctlGetArgs> Sysctls
         {
             get => _sysctls ?? (_sysctls = new InputList<Inputs.ContainerGroupEciSecurityContextSysctlGetArgs>());

@@ -22,6 +22,16 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testaccountname";
  * const pwd = config.get("pwd") || "Tf-testpwd";
+ * const defaultRegions = alicloud.clickhouse.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultRegions]).then(([defaultNetworks, defaultRegions]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?[0],
+ *     zoneId: defaultRegions.regions?[0]?.zoneIds?[0]?.zoneId,
+ * }));
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
  *     dbClusterVersion: "20.3.10.75",
  *     category: "Basic",
@@ -32,7 +42,7 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: "your_vswitch_id",
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?[0]?.id),
  * });
  * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
  *     dbClusterId: defaultDbCluster.id,
@@ -91,13 +101,42 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly accountPassword!: pulumi.Output<string>;
     /**
+     * The list of databases to which you want to grant permissions. Separate databases with commas (,).
+     */
+    public readonly allowDatabases!: pulumi.Output<string>;
+    /**
+     * The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+     */
+    public readonly allowDictionaries!: pulumi.Output<string>;
+    /**
      * The db cluster id.
      */
     public readonly dbClusterId!: pulumi.Output<string>;
     /**
+     * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
+     */
+    public readonly ddlAuthority!: pulumi.Output<boolean>;
+    /**
+     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+     */
+    public readonly dmlAuthority!: pulumi.Output<string>;
+    /**
      * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The list of all databases. Separate databases with commas (,).
+     */
+    public readonly totalDatabases!: pulumi.Output<string>;
+    /**
+     * The list of all dictionaries. Separate dictionaries with commas (,).
+     */
+    public readonly totalDictionaries!: pulumi.Output<string>;
+    /**
+     * The type of the database account. Valid values: `Normal` or `Super`.
+     */
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
@@ -116,8 +155,14 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
             resourceInputs["accountName"] = state ? state.accountName : undefined;
             resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["allowDatabases"] = state ? state.allowDatabases : undefined;
+            resourceInputs["allowDictionaries"] = state ? state.allowDictionaries : undefined;
             resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["ddlAuthority"] = state ? state.ddlAuthority : undefined;
+            resourceInputs["dmlAuthority"] = state ? state.dmlAuthority : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["totalDatabases"] = state ? state.totalDatabases : undefined;
+            resourceInputs["totalDictionaries"] = state ? state.totalDictionaries : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
@@ -133,7 +178,13 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
             resourceInputs["accountName"] = args ? args.accountName : undefined;
             resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["allowDatabases"] = args ? args.allowDatabases : undefined;
+            resourceInputs["allowDictionaries"] = args ? args.allowDictionaries : undefined;
             resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["ddlAuthority"] = args ? args.ddlAuthority : undefined;
+            resourceInputs["dmlAuthority"] = args ? args.dmlAuthority : undefined;
+            resourceInputs["totalDatabases"] = args ? args.totalDatabases : undefined;
+            resourceInputs["totalDictionaries"] = args ? args.totalDictionaries : undefined;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -159,13 +210,42 @@ export interface AccountState {
      */
     accountPassword?: pulumi.Input<string>;
     /**
+     * The list of databases to which you want to grant permissions. Separate databases with commas (,).
+     */
+    allowDatabases?: pulumi.Input<string>;
+    /**
+     * The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+     */
+    allowDictionaries?: pulumi.Input<string>;
+    /**
      * The db cluster id.
      */
     dbClusterId?: pulumi.Input<string>;
     /**
+     * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
+     */
+    ddlAuthority?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+     */
+    dmlAuthority?: pulumi.Input<string>;
+    /**
      * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The list of all databases. Separate databases with commas (,).
+     */
+    totalDatabases?: pulumi.Input<string>;
+    /**
+     * The list of all dictionaries. Separate dictionaries with commas (,).
+     */
+    totalDictionaries?: pulumi.Input<string>;
+    /**
+     * The type of the database account. Valid values: `Normal` or `Super`.
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -186,7 +266,33 @@ export interface AccountArgs {
      */
     accountPassword: pulumi.Input<string>;
     /**
+     * The list of databases to which you want to grant permissions. Separate databases with commas (,).
+     */
+    allowDatabases?: pulumi.Input<string>;
+    /**
+     * The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+     */
+    allowDictionaries?: pulumi.Input<string>;
+    /**
      * The db cluster id.
      */
     dbClusterId: pulumi.Input<string>;
+    /**
+     * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
+     */
+    ddlAuthority?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+     */
+    dmlAuthority?: pulumi.Input<string>;
+    /**
+     * The list of all databases. Separate databases with commas (,).
+     */
+    totalDatabases?: pulumi.Input<string>;
+    /**
+     * The list of all dictionaries. Separate dictionaries with commas (,).
+     */
+    totalDictionaries?: pulumi.Input<string>;
 }

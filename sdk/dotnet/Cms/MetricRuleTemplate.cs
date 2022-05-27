@@ -235,6 +235,12 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? NotifyLevel { get; set; }
 
         /// <summary>
+        /// The version of the alert template to be modified.
+        /// </summary>
+        [Input("restVersion")]
+        public Input<string>? RestVersion { get; set; }
+
+        /// <summary>
         /// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
         /// </summary>
         [Input("silenceTime")]

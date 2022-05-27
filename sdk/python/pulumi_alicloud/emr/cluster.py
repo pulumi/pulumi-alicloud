@@ -42,11 +42,13 @@ class ClusterArgs:
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-huhehaote-a
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         :param pulumi.Input[bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[str] key_pair_name: Ssh key pair.
         :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
@@ -141,6 +143,9 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="bootstrapActions")
     def bootstrap_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
+        """
+        Boot action parameters.
+        """
         return pulumi.get(self, "bootstrap_actions")
 
     @bootstrap_actions.setter
@@ -210,6 +215,9 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="isOpenPublicIp")
     def is_open_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the MASTER node has a public IP address enabled. Default value is false.
+        """
         return pulumi.get(self, "is_open_public_ip")
 
     @is_open_public_ip.setter
@@ -388,6 +396,7 @@ class _ClusterState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
@@ -395,6 +404,7 @@ class _ClusterState:
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[str] key_pair_name: Ssh key pair.
         :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
@@ -457,6 +467,9 @@ class _ClusterState:
     @property
     @pulumi.getter(name="bootstrapActions")
     def bootstrap_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
+        """
+        Boot action parameters.
+        """
         return pulumi.get(self, "bootstrap_actions")
 
     @bootstrap_actions.setter
@@ -550,6 +563,9 @@ class _ClusterState:
     @property
     @pulumi.getter(name="isOpenPublicIp")
     def is_open_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the MASTER node has a public IP address enabled. Default value is false.
+        """
         return pulumi.get(self, "is_open_public_ip")
 
     @is_open_public_ip.setter
@@ -1175,6 +1191,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]] bootstrap_actions: Boot action parameters.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
@@ -1182,6 +1199,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[str] key_pair_name: Ssh key pair.
         :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
@@ -1750,6 +1768,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]] bootstrap_actions: Boot action parameters.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
@@ -1757,6 +1776,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterHostGroupArgs']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[str] key_pair_name: Ssh key pair.
         :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
@@ -1802,6 +1822,9 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="bootstrapActions")
     def bootstrap_actions(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterBootstrapAction']]]:
+        """
+        Boot action parameters.
+        """
         return pulumi.get(self, "bootstrap_actions")
 
     @property
@@ -1863,6 +1886,9 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isOpenPublicIp")
     def is_open_public_ip(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the MASTER node has a public IP address enabled. Default value is false.
+        """
         return pulumi.get(self, "is_open_public_ip")
 
     @property

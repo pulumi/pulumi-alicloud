@@ -50,30 +50,24 @@ namespace Pulumi.AliCloud.Vpn
     ///                 "10.0.1.0/24",
     ///             },
     ///             EffectImmediately = true,
-    ///             IkeConfigs = 
+    ///             IkeConfig = new AliCloud.Vpn.Inputs.ConnectionIkeConfigArgs
     ///             {
-    ///                 new AliCloud.Vpn.Inputs.ConnectionIkeConfigArgs
-    ///                 {
-    ///                     IkeAuthAlg = "md5",
-    ///                     IkeEncAlg = "des",
-    ///                     IkeVersion = "ikev1",
-    ///                     IkeMode = "main",
-    ///                     IkeLifetime = 86400,
-    ///                     Psk = "tf-testvpn2",
-    ///                     IkePfs = "group1",
-    ///                     IkeRemoteId = "testbob2",
-    ///                     IkeLocalId = "testalice2",
-    ///                 },
+    ///                 IkeAuthAlg = "md5",
+    ///                 IkeEncAlg = "des",
+    ///                 IkeVersion = "ikev1",
+    ///                 IkeMode = "main",
+    ///                 IkeLifetime = 86400,
+    ///                 Psk = "tf-testvpn2",
+    ///                 IkePfs = "group1",
+    ///                 IkeRemoteId = "testbob2",
+    ///                 IkeLocalId = "testalice2",
     ///             },
-    ///             IpsecConfigs = 
+    ///             IpsecConfig = new AliCloud.Vpn.Inputs.ConnectionIpsecConfigArgs
     ///             {
-    ///                 new AliCloud.Vpn.Inputs.ConnectionIpsecConfigArgs
-    ///                 {
-    ///                     IpsecPfs = "group5",
-    ///                     IpsecEncAlg = "des",
-    ///                     IpsecAuthAlg = "md5",
-    ///                     IpsecLifetime = 8640,
-    ///                 },
+    ///                 IpsecPfs = "group5",
+    ///                 IpsecEncAlg = "des",
+    ///                 IpsecAuthAlg = "md5",
+    ///                 IpsecLifetime = 8640,
     ///             },
     ///         });
     ///     }
@@ -93,6 +87,12 @@ namespace Pulumi.AliCloud.Vpn
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>
+        /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        /// </summary>
+        [Output("bgpConfig")]
+        public Output<Outputs.ConnectionBgpConfig> BgpConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the customer gateway.
         /// </summary>
         [Output("customerGatewayId")]
@@ -105,16 +105,34 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool?> EffectImmediately { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of phase-one negotiation.
+        /// Whether to enable NAT traversal.
         /// </summary>
-        [Output("ikeConfigs")]
-        public Output<ImmutableArray<Outputs.ConnectionIkeConfig>> IkeConfigs { get; private set; } = null!;
+        [Output("enableDpd")]
+        public Output<bool> EnableDpd { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of phase-two negotiation.
+        /// Whether to enable NAT traversal.
         /// </summary>
-        [Output("ipsecConfigs")]
-        public Output<ImmutableArray<Outputs.ConnectionIpsecConfig>> IpsecConfigs { get; private set; } = null!;
+        [Output("enableNatTraversal")]
+        public Output<bool> EnableNatTraversal { get; private set; } = null!;
+
+        /// <summary>
+        /// The health check configurations. See the following `Block health_check_config`.
+        /// </summary>
+        [Output("healthCheckConfig")]
+        public Output<Outputs.ConnectionHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The configurations of phase-one negotiation. See the following `Block ike_config`.
+        /// </summary>
+        [Output("ikeConfig")]
+        public Output<Outputs.ConnectionIkeConfig> IkeConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        /// </summary>
+        [Output("ipsecConfig")]
+        public Output<Outputs.ConnectionIpsecConfig> IpsecConfig { get; private set; } = null!;
 
         /// <summary>
         /// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
@@ -193,6 +211,12 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class ConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        /// </summary>
+        [Input("bgpConfig")]
+        public Input<Inputs.ConnectionBgpConfigArgs>? BgpConfig { get; set; }
+
+        /// <summary>
         /// The ID of the customer gateway.
         /// </summary>
         [Input("customerGatewayId", required: true)]
@@ -204,29 +228,35 @@ namespace Pulumi.AliCloud.Vpn
         [Input("effectImmediately")]
         public Input<bool>? EffectImmediately { get; set; }
 
-        [Input("ikeConfigs")]
-        private InputList<Inputs.ConnectionIkeConfigArgs>? _ikeConfigs;
+        /// <summary>
+        /// Whether to enable NAT traversal.
+        /// </summary>
+        [Input("enableDpd")]
+        public Input<bool>? EnableDpd { get; set; }
 
         /// <summary>
-        /// The configurations of phase-one negotiation.
+        /// Whether to enable NAT traversal.
         /// </summary>
-        public InputList<Inputs.ConnectionIkeConfigArgs> IkeConfigs
-        {
-            get => _ikeConfigs ?? (_ikeConfigs = new InputList<Inputs.ConnectionIkeConfigArgs>());
-            set => _ikeConfigs = value;
-        }
-
-        [Input("ipsecConfigs")]
-        private InputList<Inputs.ConnectionIpsecConfigArgs>? _ipsecConfigs;
+        [Input("enableNatTraversal")]
+        public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// The configurations of phase-two negotiation.
+        /// The health check configurations. See the following `Block health_check_config`.
         /// </summary>
-        public InputList<Inputs.ConnectionIpsecConfigArgs> IpsecConfigs
-        {
-            get => _ipsecConfigs ?? (_ipsecConfigs = new InputList<Inputs.ConnectionIpsecConfigArgs>());
-            set => _ipsecConfigs = value;
-        }
+        [Input("healthCheckConfig")]
+        public Input<Inputs.ConnectionHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
+
+        /// <summary>
+        /// The configurations of phase-one negotiation. See the following `Block ike_config`.
+        /// </summary>
+        [Input("ikeConfig")]
+        public Input<Inputs.ConnectionIkeConfigArgs>? IkeConfig { get; set; }
+
+        /// <summary>
+        /// The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        /// </summary>
+        [Input("ipsecConfig")]
+        public Input<Inputs.ConnectionIpsecConfigArgs>? IpsecConfig { get; set; }
 
         [Input("localSubnets", required: true)]
         private InputList<string>? _localSubnets;
@@ -272,6 +302,12 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class ConnectionState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
+        /// </summary>
+        [Input("bgpConfig")]
+        public Input<Inputs.ConnectionBgpConfigGetArgs>? BgpConfig { get; set; }
+
+        /// <summary>
         /// The ID of the customer gateway.
         /// </summary>
         [Input("customerGatewayId")]
@@ -283,29 +319,35 @@ namespace Pulumi.AliCloud.Vpn
         [Input("effectImmediately")]
         public Input<bool>? EffectImmediately { get; set; }
 
-        [Input("ikeConfigs")]
-        private InputList<Inputs.ConnectionIkeConfigGetArgs>? _ikeConfigs;
+        /// <summary>
+        /// Whether to enable NAT traversal.
+        /// </summary>
+        [Input("enableDpd")]
+        public Input<bool>? EnableDpd { get; set; }
 
         /// <summary>
-        /// The configurations of phase-one negotiation.
+        /// Whether to enable NAT traversal.
         /// </summary>
-        public InputList<Inputs.ConnectionIkeConfigGetArgs> IkeConfigs
-        {
-            get => _ikeConfigs ?? (_ikeConfigs = new InputList<Inputs.ConnectionIkeConfigGetArgs>());
-            set => _ikeConfigs = value;
-        }
-
-        [Input("ipsecConfigs")]
-        private InputList<Inputs.ConnectionIpsecConfigGetArgs>? _ipsecConfigs;
+        [Input("enableNatTraversal")]
+        public Input<bool>? EnableNatTraversal { get; set; }
 
         /// <summary>
-        /// The configurations of phase-two negotiation.
+        /// The health check configurations. See the following `Block health_check_config`.
         /// </summary>
-        public InputList<Inputs.ConnectionIpsecConfigGetArgs> IpsecConfigs
-        {
-            get => _ipsecConfigs ?? (_ipsecConfigs = new InputList<Inputs.ConnectionIpsecConfigGetArgs>());
-            set => _ipsecConfigs = value;
-        }
+        [Input("healthCheckConfig")]
+        public Input<Inputs.ConnectionHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
+
+        /// <summary>
+        /// The configurations of phase-one negotiation. See the following `Block ike_config`.
+        /// </summary>
+        [Input("ikeConfig")]
+        public Input<Inputs.ConnectionIkeConfigGetArgs>? IkeConfig { get; set; }
+
+        /// <summary>
+        /// The configurations of phase-two negotiation. See the following `Block ipsec_config`.
+        /// </summary>
+        [Input("ipsecConfig")]
+        public Input<Inputs.ConnectionIpsecConfigGetArgs>? IpsecConfig { get; set; }
 
         [Input("localSubnets")]
         private InputList<string>? _localSubnets;

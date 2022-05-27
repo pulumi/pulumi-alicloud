@@ -102,7 +102,7 @@ class ServiceMeshMeshConfigArgs:
         """
         :param pulumi.Input['ServiceMeshMeshConfigAccessLogArgs'] access_log: The configuration of the access logging.
         :param pulumi.Input['ServiceMeshMeshConfigAuditArgs'] audit: The configuration of the audit. See the following `Block audit`.
-        :param pulumi.Input[bool] customized_zipkin: Whether or not to enable the use of a custom zipkin.
+        :param pulumi.Input[bool] customized_zipkin: Whether to enable the use of a custom zipkin.
         :param pulumi.Input[bool] enable_locality_lb: The enable locality lb.
         :param pulumi.Input['ServiceMeshMeshConfigKialiArgs'] kiali: The configuration of the Kiali. See the following `Block kiali`.
         :param pulumi.Input['ServiceMeshMeshConfigOpaArgs'] opa: The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
@@ -166,7 +166,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter(name="customizedZipkin")
     def customized_zipkin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to enable the use of a custom zipkin.
+        Whether to enable the use of a custom zipkin.
         """
         return pulumi.get(self, "customized_zipkin")
 

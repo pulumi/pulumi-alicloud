@@ -13,6 +13,12 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class GetKubernetesAddonsAddonArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The current custom configuration of the addon. **Note:** Available in v1.166.0+
+        /// </summary>
+        [Input("currentConfig", required: true)]
+        public string CurrentConfig { get; set; } = null!;
+
+        /// <summary>
         /// The current version of addon, if this field is an empty string, it means that the addon is not installed.
         /// </summary>
         [Input("currentVersion", required: true)]

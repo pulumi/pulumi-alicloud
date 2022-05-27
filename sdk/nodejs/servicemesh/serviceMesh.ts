@@ -49,6 +49,14 @@ export class ServiceMesh extends pulumi.CustomResource {
     }
 
     /**
+     * The array of the cluster ids.
+     */
+    public readonly clusterIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     */
+    public readonly clusterSpec!: pulumi.Output<string | undefined>;
+    /**
      * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      */
     public readonly edition!: pulumi.Output<string>;
@@ -94,6 +102,8 @@ export class ServiceMesh extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceMeshState | undefined;
+            resourceInputs["clusterIds"] = state ? state.clusterIds : undefined;
+            resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
             resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["loadBalancer"] = state ? state.loadBalancer : undefined;
@@ -107,6 +117,8 @@ export class ServiceMesh extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            resourceInputs["clusterIds"] = args ? args.clusterIds : undefined;
+            resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
@@ -125,6 +137,14 @@ export class ServiceMesh extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceMesh resources.
  */
 export interface ServiceMeshState {
+    /**
+     * The array of the cluster ids.
+     */
+    clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     */
+    clusterSpec?: pulumi.Input<string>;
     /**
      * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      */
@@ -163,6 +183,14 @@ export interface ServiceMeshState {
  * The set of arguments for constructing a ServiceMesh resource.
  */
 export interface ServiceMeshArgs {
+    /**
+     * The array of the cluster ids.
+     */
+    clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+     */
+    clusterSpec?: pulumi.Input<string>;
     /**
      * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      */

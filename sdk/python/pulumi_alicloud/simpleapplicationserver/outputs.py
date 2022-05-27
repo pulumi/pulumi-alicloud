@@ -25,7 +25,8 @@ class GetImagesImageResult(dict):
                  id: str,
                  image_id: str,
                  image_name: str,
-                 image_type: str):
+                 image_type: str,
+                 platform: str):
         """
         :param str description: The description of the image.
         :param str id: The ID of the Instance Image.
@@ -35,12 +36,14 @@ class GetImagesImageResult(dict):
                * `system`: operating system (OS) image.
                * `app`: application image.
                * `custom`: custom image.
+        :param str platform: The platform of Plan supported.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "image_name", image_name)
         pulumi.set(__self__, "image_type", image_type)
+        pulumi.set(__self__, "platform", platform)
 
     @property
     @pulumi.getter
@@ -84,6 +87,14 @@ class GetImagesImageResult(dict):
         * `custom`: custom image.
         """
         return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter
+    def platform(self) -> str:
+        """
+        The platform of Plan supported.
+        """
+        return pulumi.get(self, "platform")
 
 
 @pulumi.output_type
@@ -508,7 +519,8 @@ class GetServerPlansPlanResult(dict):
                  flow: int,
                  id: str,
                  memory: int,
-                 plan_id: str):
+                 plan_id: str,
+                 support_platform: str):
         """
         :param int bandwidth: The peak bandwidth. Unit: Mbit/s.
         :param int core: The number of CPU cores.
@@ -517,6 +529,7 @@ class GetServerPlansPlanResult(dict):
         :param str id: The ID of the Instance Plan.
         :param int memory: The memory size. Unit: GB.
         :param str plan_id: The ID of the Instance Plan.
+        :param str support_platform: The platform of Plan supported.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "core", core)
@@ -525,6 +538,7 @@ class GetServerPlansPlanResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "memory", memory)
         pulumi.set(__self__, "plan_id", plan_id)
+        pulumi.set(__self__, "support_platform", support_platform)
 
     @property
     @pulumi.getter
@@ -581,6 +595,14 @@ class GetServerPlansPlanResult(dict):
         The ID of the Instance Plan.
         """
         return pulumi.get(self, "plan_id")
+
+    @property
+    @pulumi.getter(name="supportPlatform")
+    def support_platform(self) -> str:
+        """
+        The platform of Plan supported.
+        """
+        return pulumi.get(self, "support_platform")
 
 
 @pulumi.output_type

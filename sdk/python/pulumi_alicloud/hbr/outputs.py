@@ -10,13 +10,19 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'OtsBackupPlanOtsDetail',
+    'OtsBackupPlanRule',
     'ServerBackupPlanDetail',
     'GetBackupJobsFilterResult',
     'GetBackupJobsJobResult',
+    'GetBackupJobsJobOtsDetailResult',
     'GetEcsBackupClientsClientResult',
     'GetEcsBackupPlansPlanResult',
     'GetNasBackupPlansPlanResult',
     'GetOssBackupPlansPlanResult',
+    'GetOtsBackupPlansPlanResult',
+    'GetOtsBackupPlansPlanOtsDetailResult',
+    'GetOtsSnapshotsSnapshotResult',
     'GetReplicationVaultRegionsRegionResult',
     'GetRestoreJobsJobResult',
     'GetServerBackupPlansFilterResult',
@@ -25,6 +31,128 @@ __all__ = [
     'GetSnapshotsSnapshotResult',
     'GetVaultsVaultResult',
 ]
+
+@pulumi.output_type
+class OtsBackupPlanOtsDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableNames":
+            suggest = "table_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OtsBackupPlanOtsDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OtsBackupPlanOtsDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OtsBackupPlanOtsDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table_names: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] table_names: The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        if table_names is not None:
+            pulumi.set(__self__, "table_names", table_names)
+
+    @property
+    @pulumi.getter(name="tableNames")
+    def table_names(self) -> Optional[Sequence[str]]:
+        """
+        The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "table_names")
+
+
+@pulumi.output_type
+class OtsBackupPlanRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupType":
+            suggest = "backup_type"
+        elif key == "ruleName":
+            suggest = "rule_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OtsBackupPlanRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OtsBackupPlanRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OtsBackupPlanRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_type: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 retention: Optional[str] = None,
+                 rule_name: Optional[str] = None,
+                 schedule: Optional[str] = None):
+        """
+        :param str backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param bool disabled: Whether to disable the backup task. Valid values: true, false.
+        :param str retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param str rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+        :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        if backup_type is not None:
+            pulumi.set(__self__, "backup_type", backup_type)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> Optional[str]:
+        """
+        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Whether to disable the backup task. Valid values: true, false.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> Optional[str]:
+        """
+        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "retention")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[str]:
+        """
+        The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[str]:
+        """
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "schedule")
+
 
 @pulumi.output_type
 class ServerBackupPlanDetail(dict):
@@ -251,6 +379,7 @@ class GetBackupJobsJobResult(dict):
                  items_done: str,
                  items_total: str,
                  nas_create_time: str,
+                 ots_details: Sequence['outputs.GetBackupJobsJobOtsDetailResult'],
                  paths: Sequence[str],
                  plan_id: str,
                  prefix: str,
@@ -309,6 +438,7 @@ class GetBackupJobsJobResult(dict):
         pulumi.set(__self__, "items_done", items_done)
         pulumi.set(__self__, "items_total", items_total)
         pulumi.set(__self__, "nas_create_time", nas_create_time)
+        pulumi.set(__self__, "ots_details", ots_details)
         pulumi.set(__self__, "paths", paths)
         pulumi.set(__self__, "plan_id", plan_id)
         pulumi.set(__self__, "prefix", prefix)
@@ -472,6 +602,11 @@ class GetBackupJobsJobResult(dict):
         return pulumi.get(self, "nas_create_time")
 
     @property
+    @pulumi.getter(name="otsDetails")
+    def ots_details(self) -> Sequence['outputs.GetBackupJobsJobOtsDetailResult']:
+        return pulumi.get(self, "ots_details")
+
+    @property
     @pulumi.getter
     def paths(self) -> Sequence[str]:
         """
@@ -542,6 +677,18 @@ class GetBackupJobsJobResult(dict):
         The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
+class GetBackupJobsJobOtsDetailResult(dict):
+    def __init__(__self__, *,
+                 table_names: Sequence[str]):
+        pulumi.set(__self__, "table_names", table_names)
+
+    @property
+    @pulumi.getter(name="tableNames")
+    def table_names(self) -> Sequence[str]:
+        return pulumi.get(self, "table_names")
 
 
 @pulumi.output_type
@@ -1346,6 +1493,393 @@ class GetOssBackupPlansPlanResult(dict):
 
 
 @pulumi.output_type
+class GetOtsBackupPlansPlanResult(dict):
+    def __init__(__self__, *,
+                 backup_type: str,
+                 created_time: str,
+                 disabled: bool,
+                 id: str,
+                 ots_backup_plan_id: str,
+                 ots_backup_plan_name: str,
+                 ots_details: Sequence['outputs.GetOtsBackupPlansPlanOtsDetailResult'],
+                 retention: str,
+                 schedule: str,
+                 source_type: str,
+                 updated_time: str,
+                 vault_id: str):
+        """
+        :param str backup_type: The Backup type. Valid values: `COMPLETE`.
+        :param str created_time: The creation time of the backup plan. UNIX time in seconds.
+        :param bool disabled: Whether to be suspended. Valid values: `true`, `false`.
+        :param str id: The ID of ots backup plan.
+        :param str ots_backup_plan_id: The ID of ots backup plan.
+        :param str ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param str retention: The Backup retention days, the minimum is 1.
+        :param str schedule: The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        :param str source_type: The type of the data source.
+        :param str updated_time: The update time of the backup plan. UNIX time in seconds.
+               *ots_detail - The details about the Tablestore instance.
+        :param str vault_id: The ID of backup vault.
+        """
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ots_backup_plan_id", ots_backup_plan_id)
+        pulumi.set(__self__, "ots_backup_plan_name", ots_backup_plan_name)
+        pulumi.set(__self__, "ots_details", ots_details)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> str:
+        """
+        The Backup type. Valid values: `COMPLETE`.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        """
+        The creation time of the backup plan. UNIX time in seconds.
+        """
+        return pulumi.get(self, "created_time")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Whether to be suspended. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of ots backup plan.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="otsBackupPlanId")
+    def ots_backup_plan_id(self) -> str:
+        """
+        The ID of ots backup plan.
+        """
+        return pulumi.get(self, "ots_backup_plan_id")
+
+    @property
+    @pulumi.getter(name="otsBackupPlanName")
+    def ots_backup_plan_name(self) -> str:
+        """
+        The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        """
+        return pulumi.get(self, "ots_backup_plan_name")
+
+    @property
+    @pulumi.getter(name="otsDetails")
+    def ots_details(self) -> Sequence['outputs.GetOtsBackupPlansPlanOtsDetailResult']:
+        return pulumi.get(self, "ots_details")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> str:
+        """
+        The Backup retention days, the minimum is 1.
+        """
+        return pulumi.get(self, "retention")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> str:
+        """
+        The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        The type of the data source.
+        """
+        return pulumi.get(self, "source_type")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        The update time of the backup plan. UNIX time in seconds.
+        *ots_detail - The details about the Tablestore instance.
+        """
+        return pulumi.get(self, "updated_time")
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> str:
+        """
+        The ID of backup vault.
+        """
+        return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
+class GetOtsBackupPlansPlanOtsDetailResult(dict):
+    def __init__(__self__, *,
+                 table_names: Sequence[str]):
+        pulumi.set(__self__, "table_names", table_names)
+
+    @property
+    @pulumi.getter(name="tableNames")
+    def table_names(self) -> Sequence[str]:
+        return pulumi.get(self, "table_names")
+
+
+@pulumi.output_type
+class GetOtsSnapshotsSnapshotResult(dict):
+    def __init__(__self__, *,
+                 actual_bytes: str,
+                 backup_type: str,
+                 bytes_total: str,
+                 complete_time: str,
+                 create_time: str,
+                 created_time: str,
+                 id: str,
+                 instance_name: str,
+                 job_id: str,
+                 parent_snapshot_hash: str,
+                 range_end: str,
+                 range_start: str,
+                 retention: str,
+                 snapshot_hash: str,
+                 snapshot_id: str,
+                 source_type: str,
+                 start_time: str,
+                 status: str,
+                 table_name: str,
+                 updated_time: str,
+                 vault_id: str):
+        """
+        :param str actual_bytes: The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
+        :param str backup_type: The backup type. Valid value: `COMPLETE`, which indicates full backup.
+        :param str bytes_total: The total amount of data. Unit: bytes.
+        :param str complete_time: The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
+        :param str create_time: The time when the Table store instance was created. This value is a UNIX timestamp. Unit: seconds.
+        :param str created_time: The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
+        :param str id: The ID of the backup snapshot.
+        :param str instance_name: The name of the Table store instance.
+        :param str job_id: The ID of the backup job.
+        :param str parent_snapshot_hash: The hash value of the parent backup snapshot.
+        :param str range_end: The time when the backup job ended. This value is a UNIX timestamp. Unit: milliseconds.
+        :param str range_start: The time when the backup job started. This value is a UNIX timestamp. Unit: milliseconds.
+        :param str retention: The retention period of the backup snapshot.
+        :param str snapshot_hash: The hash value of the backup snapshot.
+        :param str snapshot_id: The ID of the backup snapshot.
+        :param str source_type: The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
+        :param str start_time: The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        :param str status: The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
+        :param str table_name: The name of the table in the Table store instance.
+        :param str updated_time: The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
+        :param str vault_id: The ID of the backup vault that stores the backup snapshot.
+        """
+        pulumi.set(__self__, "actual_bytes", actual_bytes)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "bytes_total", bytes_total)
+        pulumi.set(__self__, "complete_time", complete_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "parent_snapshot_hash", parent_snapshot_hash)
+        pulumi.set(__self__, "range_end", range_end)
+        pulumi.set(__self__, "range_start", range_start)
+        pulumi.set(__self__, "retention", retention)
+        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "updated_time", updated_time)
+        pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="actualBytes")
+    def actual_bytes(self) -> str:
+        """
+        The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
+        """
+        return pulumi.get(self, "actual_bytes")
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> str:
+        """
+        The backup type. Valid value: `COMPLETE`, which indicates full backup.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter(name="bytesTotal")
+    def bytes_total(self) -> str:
+        """
+        The total amount of data. Unit: bytes.
+        """
+        return pulumi.get(self, "bytes_total")
+
+    @property
+    @pulumi.getter(name="completeTime")
+    def complete_time(self) -> str:
+        """
+        The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
+        """
+        return pulumi.get(self, "complete_time")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the Table store instance was created. This value is a UNIX timestamp. Unit: seconds.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> str:
+        """
+        The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
+        """
+        return pulumi.get(self, "created_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the backup snapshot.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of the Table store instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> str:
+        """
+        The ID of the backup job.
+        """
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="parentSnapshotHash")
+    def parent_snapshot_hash(self) -> str:
+        """
+        The hash value of the parent backup snapshot.
+        """
+        return pulumi.get(self, "parent_snapshot_hash")
+
+    @property
+    @pulumi.getter(name="rangeEnd")
+    def range_end(self) -> str:
+        """
+        The time when the backup job ended. This value is a UNIX timestamp. Unit: milliseconds.
+        """
+        return pulumi.get(self, "range_end")
+
+    @property
+    @pulumi.getter(name="rangeStart")
+    def range_start(self) -> str:
+        """
+        The time when the backup job started. This value is a UNIX timestamp. Unit: milliseconds.
+        """
+        return pulumi.get(self, "range_start")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> str:
+        """
+        The retention period of the backup snapshot.
+        """
+        return pulumi.get(self, "retention")
+
+    @property
+    @pulumi.getter(name="snapshotHash")
+    def snapshot_hash(self) -> str:
+        """
+        The hash value of the backup snapshot.
+        """
+        return pulumi.get(self, "snapshot_hash")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        The ID of the backup snapshot.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        """
+        The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
+        """
+        return pulumi.get(self, "source_type")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> str:
+        """
+        The name of the table in the Table store instance.
+        """
+        return pulumi.get(self, "table_name")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> str:
+        """
+        The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
+        """
+        return pulumi.get(self, "updated_time")
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> str:
+        """
+        The ID of the backup vault that stores the backup snapshot.
+        """
+        return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
 class GetReplicationVaultRegionsRegionResult(dict):
     def __init__(__self__, *,
                  replication_region_id: str):
@@ -1416,7 +1950,7 @@ class GetRestoreJobsJobResult(dict):
         :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
         :param str snapshot_hash: The hashcode of Snapshot.
         :param str snapshot_id: The ID of Snapshot.
-        :param str source_type: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param str source_type: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
         :param str start_time: The start time of restore job. Unix Time in Seconds.
         :param str status: The status of restore job.
         :param str target_bucket: The name of target ofo OSS bucket.
@@ -1611,7 +2145,7 @@ class GetRestoreJobsJobResult(dict):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> str:
         """
-        The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
         """
         return pulumi.get(self, "source_type")
 
@@ -2305,7 +2839,7 @@ class GetVaultsVaultResult(dict):
         :param str replication_source_vault_id: The source vault ID of the remote backup Vault.
         :param str retention: Warehouse-level data retention days, only valid for archive libraries.
         :param bool search_enabled: Whether to enable the backup search function.
-        :param str status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         :param str storage_size: Backup vault storage usage. The unit is Byte.
         :param str updated_time: The update time of the Vault. UNIX time in seconds.
         :param str vault_id: The ID of vault, same as `id`.
@@ -2477,7 +3011,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         """
         return pulumi.get(self, "status")
 

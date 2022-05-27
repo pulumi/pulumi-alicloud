@@ -157,7 +157,7 @@ def get_applications(app_name: Optional[str] = None,
     """
     This data source provides the Sae Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available in v1.161.0+.
 
     ## Example Usage
 
@@ -257,7 +257,7 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     """
     This data source provides the Sae Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available in v1.161.0+.
 
     ## Example Usage
 

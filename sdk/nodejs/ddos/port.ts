@@ -74,11 +74,11 @@ export class Port extends pulumi.CustomResource {
     }
 
     /**
-     * The port of the origin server.
+     * The port of the origin server. Valid values: [1~65535].
      */
     public readonly backendPort!: pulumi.Output<string | undefined>;
     /**
-     * The forwarding port.
+     * The forwarding port. Valid values: [1~65535].
      */
     public readonly frontendPort!: pulumi.Output<string>;
     /**
@@ -142,11 +142,11 @@ export class Port extends pulumi.CustomResource {
  */
 export interface PortState {
     /**
-     * The port of the origin server.
+     * The port of the origin server. Valid values: [1~65535].
      */
     backendPort?: pulumi.Input<string>;
     /**
-     * The forwarding port.
+     * The forwarding port. Valid values: [1~65535].
      */
     frontendPort?: pulumi.Input<string>;
     /**
@@ -168,11 +168,11 @@ export interface PortState {
  */
 export interface PortArgs {
     /**
-     * The port of the origin server.
+     * The port of the origin server. Valid values: [1~65535].
      */
     backendPort?: pulumi.Input<string>;
     /**
-     * The forwarding port.
+     * The forwarding port. Valid values: [1~65535].
      */
     frontendPort: pulumi.Input<string>;
     /**

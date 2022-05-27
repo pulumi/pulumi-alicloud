@@ -109,6 +109,13 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly clusterCaCert!: pulumi.Output<string | undefined>;
     /**
+     * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+     * - ack.standard: Standard serverless clusters.
+     * - ack.pro.small: Professional serverless clusters.
+     */
+    public readonly clusterSpec!: pulumi.Output<string>;
+    public readonly createV2Cluster!: pulumi.Output<boolean>;
+    /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -127,9 +134,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      */
-    public readonly loadBalancerSpec!: pulumi.Output<string | undefined>;
+    public readonly loadBalancerSpec!: pulumi.Output<string>;
     /**
      * Enable log service, Valid value `SLS`.
      */
@@ -191,7 +198,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    public readonly vswitchId!: pulumi.Output<string>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */
@@ -218,6 +225,8 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["clientCert"] = state ? state.clientCert : undefined;
             resourceInputs["clientKey"] = state ? state.clientKey : undefined;
             resourceInputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
+            resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
+            resourceInputs["createV2Cluster"] = state ? state.createV2Cluster : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["endpointPublicAccessEnabled"] = state ? state.endpointPublicAccessEnabled : undefined;
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
@@ -250,6 +259,8 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
+            resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
+            resourceInputs["createV2Cluster"] = args ? args.createV2Cluster : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["endpointPublicAccessEnabled"] = args ? args.endpointPublicAccessEnabled : undefined;
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
@@ -300,6 +311,13 @@ export interface ServerlessKubernetesState {
      */
     clusterCaCert?: pulumi.Input<string>;
     /**
+     * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+     * - ack.standard: Standard serverless clusters.
+     * - ack.pro.small: Professional serverless clusters.
+     */
+    clusterSpec?: pulumi.Input<string>;
+    createV2Cluster?: pulumi.Input<boolean>;
+    /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -318,7 +336,7 @@ export interface ServerlessKubernetesState {
      */
     kubeConfig?: pulumi.Input<string>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -414,6 +432,13 @@ export interface ServerlessKubernetesArgs {
      */
     clusterCaCert?: pulumi.Input<string>;
     /**
+     * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+     * - ack.standard: Standard serverless clusters.
+     * - ack.pro.small: Professional serverless clusters.
+     */
+    clusterSpec?: pulumi.Input<string>;
+    createV2Cluster?: pulumi.Input<boolean>;
+    /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -432,7 +457,7 @@ export interface ServerlessKubernetesArgs {
      */
     kubeConfig?: pulumi.Input<string>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**

@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -316,7 +316,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -453,7 +453,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

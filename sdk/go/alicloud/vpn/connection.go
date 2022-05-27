@@ -54,26 +54,22 @@ import (
 // 				pulumi.String("10.0.1.0/24"),
 // 			},
 // 			EffectImmediately: pulumi.Bool(true),
-// 			IkeConfigs: vpn.ConnectionIkeConfigArray{
-// 				&vpn.ConnectionIkeConfigArgs{
-// 					IkeAuthAlg:  pulumi.String("md5"),
-// 					IkeEncAlg:   pulumi.String("des"),
-// 					IkeVersion:  pulumi.String("ikev1"),
-// 					IkeMode:     pulumi.String("main"),
-// 					IkeLifetime: pulumi.Int(86400),
-// 					Psk:         pulumi.String("tf-testvpn2"),
-// 					IkePfs:      pulumi.String("group1"),
-// 					IkeRemoteId: pulumi.String("testbob2"),
-// 					IkeLocalId:  pulumi.String("testalice2"),
-// 				},
+// 			IkeConfig: &vpn.ConnectionIkeConfigArgs{
+// 				IkeAuthAlg:  pulumi.String("md5"),
+// 				IkeEncAlg:   pulumi.String("des"),
+// 				IkeVersion:  pulumi.String("ikev1"),
+// 				IkeMode:     pulumi.String("main"),
+// 				IkeLifetime: pulumi.Int(86400),
+// 				Psk:         pulumi.String("tf-testvpn2"),
+// 				IkePfs:      pulumi.String("group1"),
+// 				IkeRemoteId: pulumi.String("testbob2"),
+// 				IkeLocalId:  pulumi.String("testalice2"),
 // 			},
-// 			IpsecConfigs: vpn.ConnectionIpsecConfigArray{
-// 				&vpn.ConnectionIpsecConfigArgs{
-// 					IpsecPfs:      pulumi.String("group5"),
-// 					IpsecEncAlg:   pulumi.String("des"),
-// 					IpsecAuthAlg:  pulumi.String("md5"),
-// 					IpsecLifetime: pulumi.Int(8640),
-// 				},
+// 			IpsecConfig: &vpn.ConnectionIpsecConfigArgs{
+// 				IpsecPfs:      pulumi.String("group5"),
+// 				IpsecEncAlg:   pulumi.String("des"),
+// 				IpsecAuthAlg:  pulumi.String("md5"),
+// 				IpsecLifetime: pulumi.Int(8640),
 // 			},
 // 		})
 // 		if err != nil {
@@ -94,14 +90,22 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	BgpConfig ConnectionBgpConfigOutput `pulumi:"bgpConfig"`
 	// The ID of the customer gateway.
 	CustomerGatewayId pulumi.StringOutput `pulumi:"customerGatewayId"`
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately pulumi.BoolPtrOutput `pulumi:"effectImmediately"`
-	// The configurations of phase-one negotiation.
-	IkeConfigs ConnectionIkeConfigArrayOutput `pulumi:"ikeConfigs"`
-	// The configurations of phase-two negotiation.
-	IpsecConfigs ConnectionIpsecConfigArrayOutput `pulumi:"ipsecConfigs"`
+	// Whether to enable NAT traversal.
+	EnableDpd pulumi.BoolOutput `pulumi:"enableDpd"`
+	// Whether to enable NAT traversal.
+	EnableNatTraversal pulumi.BoolOutput `pulumi:"enableNatTraversal"`
+	// The health check configurations. See the following `Block healthCheckConfig`.
+	HealthCheckConfig ConnectionHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
+	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	IkeConfig ConnectionIkeConfigOutput `pulumi:"ikeConfig"`
+	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	IpsecConfig ConnectionIpsecConfigOutput `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayOutput `pulumi:"localSubnets"`
 	// The name of the IPsec connection.
@@ -155,14 +159,22 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
+	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	BgpConfig *ConnectionBgpConfig `pulumi:"bgpConfig"`
 	// The ID of the customer gateway.
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately *bool `pulumi:"effectImmediately"`
-	// The configurations of phase-one negotiation.
-	IkeConfigs []ConnectionIkeConfig `pulumi:"ikeConfigs"`
-	// The configurations of phase-two negotiation.
-	IpsecConfigs []ConnectionIpsecConfig `pulumi:"ipsecConfigs"`
+	// Whether to enable NAT traversal.
+	EnableDpd *bool `pulumi:"enableDpd"`
+	// Whether to enable NAT traversal.
+	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
+	// The health check configurations. See the following `Block healthCheckConfig`.
+	HealthCheckConfig *ConnectionHealthCheckConfig `pulumi:"healthCheckConfig"`
+	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	IkeConfig *ConnectionIkeConfig `pulumi:"ikeConfig"`
+	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	IpsecConfig *ConnectionIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets []string `pulumi:"localSubnets"`
 	// The name of the IPsec connection.
@@ -176,14 +188,22 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
+	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	BgpConfig ConnectionBgpConfigPtrInput
 	// The ID of the customer gateway.
 	CustomerGatewayId pulumi.StringPtrInput
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately pulumi.BoolPtrInput
-	// The configurations of phase-one negotiation.
-	IkeConfigs ConnectionIkeConfigArrayInput
-	// The configurations of phase-two negotiation.
-	IpsecConfigs ConnectionIpsecConfigArrayInput
+	// Whether to enable NAT traversal.
+	EnableDpd pulumi.BoolPtrInput
+	// Whether to enable NAT traversal.
+	EnableNatTraversal pulumi.BoolPtrInput
+	// The health check configurations. See the following `Block healthCheckConfig`.
+	HealthCheckConfig ConnectionHealthCheckConfigPtrInput
+	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	IkeConfig ConnectionIkeConfigPtrInput
+	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	IpsecConfig ConnectionIpsecConfigPtrInput
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayInput
 	// The name of the IPsec connection.
@@ -201,14 +221,22 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
+	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	BgpConfig *ConnectionBgpConfig `pulumi:"bgpConfig"`
 	// The ID of the customer gateway.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately *bool `pulumi:"effectImmediately"`
-	// The configurations of phase-one negotiation.
-	IkeConfigs []ConnectionIkeConfig `pulumi:"ikeConfigs"`
-	// The configurations of phase-two negotiation.
-	IpsecConfigs []ConnectionIpsecConfig `pulumi:"ipsecConfigs"`
+	// Whether to enable NAT traversal.
+	EnableDpd *bool `pulumi:"enableDpd"`
+	// Whether to enable NAT traversal.
+	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
+	// The health check configurations. See the following `Block healthCheckConfig`.
+	HealthCheckConfig *ConnectionHealthCheckConfig `pulumi:"healthCheckConfig"`
+	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	IkeConfig *ConnectionIkeConfig `pulumi:"ikeConfig"`
+	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	IpsecConfig *ConnectionIpsecConfig `pulumi:"ipsecConfig"`
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets []string `pulumi:"localSubnets"`
 	// The name of the IPsec connection.
@@ -221,14 +249,22 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
+	// The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+	BgpConfig ConnectionBgpConfigPtrInput
 	// The ID of the customer gateway.
 	CustomerGatewayId pulumi.StringInput
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately pulumi.BoolPtrInput
-	// The configurations of phase-one negotiation.
-	IkeConfigs ConnectionIkeConfigArrayInput
-	// The configurations of phase-two negotiation.
-	IpsecConfigs ConnectionIpsecConfigArrayInput
+	// Whether to enable NAT traversal.
+	EnableDpd pulumi.BoolPtrInput
+	// Whether to enable NAT traversal.
+	EnableNatTraversal pulumi.BoolPtrInput
+	// The health check configurations. See the following `Block healthCheckConfig`.
+	HealthCheckConfig ConnectionHealthCheckConfigPtrInput
+	// The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+	IkeConfig ConnectionIkeConfigPtrInput
+	// The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+	IpsecConfig ConnectionIpsecConfigPtrInput
 	// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
 	LocalSubnets pulumi.StringArrayInput
 	// The name of the IPsec connection.

@@ -10,6 +10,1620 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type EciScalingConfigurationContainer struct {
+	// The arguments passed to the commands.
+	Args []string `pulumi:"args"`
+	// The commands run by the init container.
+	Commands []string `pulumi:"commands"`
+	// The amount of CPU resources allocated to the container.
+	Cpu *float64 `pulumi:"cpu"`
+	// The structure of environmentVars.
+	// See Block_environment_var_in_container below for details.
+	EnvironmentVars []EciScalingConfigurationContainerEnvironmentVar `pulumi:"environmentVars"`
+	// The number GPUs.
+	Gpu *int `pulumi:"gpu"`
+	// The image of the container.
+	Image *string `pulumi:"image"`
+	// The restart policy of the image.
+	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
+	// The amount of memory resources allocated to the container.
+	Memory *float64 `pulumi:"memory"`
+	// The name of the mounted volume.
+	Name *string `pulumi:"name"`
+	// The structure of port. See Block_port_in_container below for details.
+	Ports []EciScalingConfigurationContainerPort `pulumi:"ports"`
+	// The structure of volumeMounts.
+	// See Block_volume_mount_in_container below for details.
+	VolumeMounts []EciScalingConfigurationContainerVolumeMount `pulumi:"volumeMounts"`
+	// The working directory of the container.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// EciScalingConfigurationContainerInput is an input type that accepts EciScalingConfigurationContainerArgs and EciScalingConfigurationContainerOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationContainerInput` via:
+//
+//          EciScalingConfigurationContainerArgs{...}
+type EciScalingConfigurationContainerInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationContainerOutput() EciScalingConfigurationContainerOutput
+	ToEciScalingConfigurationContainerOutputWithContext(context.Context) EciScalingConfigurationContainerOutput
+}
+
+type EciScalingConfigurationContainerArgs struct {
+	// The arguments passed to the commands.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The commands run by the init container.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// The amount of CPU resources allocated to the container.
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// The structure of environmentVars.
+	// See Block_environment_var_in_container below for details.
+	EnvironmentVars EciScalingConfigurationContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
+	// The number GPUs.
+	Gpu pulumi.IntPtrInput `pulumi:"gpu"`
+	// The image of the container.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// The restart policy of the image.
+	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
+	// The amount of memory resources allocated to the container.
+	Memory pulumi.Float64PtrInput `pulumi:"memory"`
+	// The name of the mounted volume.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The structure of port. See Block_port_in_container below for details.
+	Ports EciScalingConfigurationContainerPortArrayInput `pulumi:"ports"`
+	// The structure of volumeMounts.
+	// See Block_volume_mount_in_container below for details.
+	VolumeMounts EciScalingConfigurationContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// The working directory of the container.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (EciScalingConfigurationContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationContainer)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationContainerArgs) ToEciScalingConfigurationContainerOutput() EciScalingConfigurationContainerOutput {
+	return i.ToEciScalingConfigurationContainerOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationContainerArgs) ToEciScalingConfigurationContainerOutputWithContext(ctx context.Context) EciScalingConfigurationContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerOutput)
+}
+
+// EciScalingConfigurationContainerArrayInput is an input type that accepts EciScalingConfigurationContainerArray and EciScalingConfigurationContainerArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationContainerArrayInput` via:
+//
+//          EciScalingConfigurationContainerArray{ EciScalingConfigurationContainerArgs{...} }
+type EciScalingConfigurationContainerArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationContainerArrayOutput() EciScalingConfigurationContainerArrayOutput
+	ToEciScalingConfigurationContainerArrayOutputWithContext(context.Context) EciScalingConfigurationContainerArrayOutput
+}
+
+type EciScalingConfigurationContainerArray []EciScalingConfigurationContainerInput
+
+func (EciScalingConfigurationContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationContainer)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationContainerArray) ToEciScalingConfigurationContainerArrayOutput() EciScalingConfigurationContainerArrayOutput {
+	return i.ToEciScalingConfigurationContainerArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationContainerArray) ToEciScalingConfigurationContainerArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerArrayOutput)
+}
+
+type EciScalingConfigurationContainerOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationContainer)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationContainerOutput) ToEciScalingConfigurationContainerOutput() EciScalingConfigurationContainerOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerOutput) ToEciScalingConfigurationContainerOutputWithContext(ctx context.Context) EciScalingConfigurationContainerOutput {
+	return o
+}
+
+// The arguments passed to the commands.
+func (o EciScalingConfigurationContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The commands run by the init container.
+func (o EciScalingConfigurationContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// The amount of CPU resources allocated to the container.
+func (o EciScalingConfigurationContainerOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// The structure of environmentVars.
+// See Block_environment_var_in_container below for details.
+func (o EciScalingConfigurationContainerOutput) EnvironmentVars() EciScalingConfigurationContainerEnvironmentVarArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerEnvironmentVar {
+		return v.EnvironmentVars
+	}).(EciScalingConfigurationContainerEnvironmentVarArrayOutput)
+}
+
+// The number GPUs.
+func (o EciScalingConfigurationContainerOutput) Gpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.Gpu }).(pulumi.IntPtrOutput)
+}
+
+// The image of the container.
+func (o EciScalingConfigurationContainerOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// The restart policy of the image.
+func (o EciScalingConfigurationContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The amount of memory resources allocated to the container.
+func (o EciScalingConfigurationContainerOutput) Memory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the mounted volume.
+func (o EciScalingConfigurationContainerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The structure of port. See Block_port_in_container below for details.
+func (o EciScalingConfigurationContainerOutput) Ports() EciScalingConfigurationContainerPortArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerPort { return v.Ports }).(EciScalingConfigurationContainerPortArrayOutput)
+}
+
+// The structure of volumeMounts.
+// See Block_volume_mount_in_container below for details.
+func (o EciScalingConfigurationContainerOutput) VolumeMounts() EciScalingConfigurationContainerVolumeMountArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerVolumeMount {
+		return v.VolumeMounts
+	}).(EciScalingConfigurationContainerVolumeMountArrayOutput)
+}
+
+// The working directory of the container.
+func (o EciScalingConfigurationContainerOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationContainer)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationContainerArrayOutput) ToEciScalingConfigurationContainerArrayOutput() EciScalingConfigurationContainerArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerArrayOutput) ToEciScalingConfigurationContainerArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationContainer {
+		return vs[0].([]EciScalingConfigurationContainer)[vs[1].(int)]
+	}).(EciScalingConfigurationContainerOutput)
+}
+
+type EciScalingConfigurationContainerEnvironmentVar struct {
+	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+	// digits, and underscores (_). It cannot start with a digit.
+	Key *string `pulumi:"key"`
+	// The value of the variable. The value can be 0 to 256 characters in length.
+	Value *string `pulumi:"value"`
+}
+
+// EciScalingConfigurationContainerEnvironmentVarInput is an input type that accepts EciScalingConfigurationContainerEnvironmentVarArgs and EciScalingConfigurationContainerEnvironmentVarOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationContainerEnvironmentVarInput` via:
+//
+//          EciScalingConfigurationContainerEnvironmentVarArgs{...}
+type EciScalingConfigurationContainerEnvironmentVarInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationContainerEnvironmentVarOutput() EciScalingConfigurationContainerEnvironmentVarOutput
+	ToEciScalingConfigurationContainerEnvironmentVarOutputWithContext(context.Context) EciScalingConfigurationContainerEnvironmentVarOutput
+}
+
+type EciScalingConfigurationContainerEnvironmentVarArgs struct {
+	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+	// digits, and underscores (_). It cannot start with a digit.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the variable. The value can be 0 to 256 characters in length.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (EciScalingConfigurationContainerEnvironmentVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationContainerEnvironmentVarArgs) ToEciScalingConfigurationContainerEnvironmentVarOutput() EciScalingConfigurationContainerEnvironmentVarOutput {
+	return i.ToEciScalingConfigurationContainerEnvironmentVarOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationContainerEnvironmentVarArgs) ToEciScalingConfigurationContainerEnvironmentVarOutputWithContext(ctx context.Context) EciScalingConfigurationContainerEnvironmentVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerEnvironmentVarOutput)
+}
+
+// EciScalingConfigurationContainerEnvironmentVarArrayInput is an input type that accepts EciScalingConfigurationContainerEnvironmentVarArray and EciScalingConfigurationContainerEnvironmentVarArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationContainerEnvironmentVarArrayInput` via:
+//
+//          EciScalingConfigurationContainerEnvironmentVarArray{ EciScalingConfigurationContainerEnvironmentVarArgs{...} }
+type EciScalingConfigurationContainerEnvironmentVarArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationContainerEnvironmentVarArrayOutput() EciScalingConfigurationContainerEnvironmentVarArrayOutput
+	ToEciScalingConfigurationContainerEnvironmentVarArrayOutputWithContext(context.Context) EciScalingConfigurationContainerEnvironmentVarArrayOutput
+}
+
+type EciScalingConfigurationContainerEnvironmentVarArray []EciScalingConfigurationContainerEnvironmentVarInput
+
+func (EciScalingConfigurationContainerEnvironmentVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationContainerEnvironmentVarArray) ToEciScalingConfigurationContainerEnvironmentVarArrayOutput() EciScalingConfigurationContainerEnvironmentVarArrayOutput {
+	return i.ToEciScalingConfigurationContainerEnvironmentVarArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationContainerEnvironmentVarArray) ToEciScalingConfigurationContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerEnvironmentVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerEnvironmentVarArrayOutput)
+}
+
+type EciScalingConfigurationContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationContainerEnvironmentVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToEciScalingConfigurationContainerEnvironmentVarOutput() EciScalingConfigurationContainerEnvironmentVarOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToEciScalingConfigurationContainerEnvironmentVarOutputWithContext(ctx context.Context) EciScalingConfigurationContainerEnvironmentVarOutput {
+	return o
+}
+
+// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+// digits, and underscores (_). It cannot start with a digit.
+func (o EciScalingConfigurationContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of the variable. The value can be 0 to 256 characters in length.
+func (o EciScalingConfigurationContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationContainerEnvironmentVarArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationContainerEnvironmentVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationContainerEnvironmentVarArrayOutput) ToEciScalingConfigurationContainerEnvironmentVarArrayOutput() EciScalingConfigurationContainerEnvironmentVarArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerEnvironmentVarArrayOutput) ToEciScalingConfigurationContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerEnvironmentVarArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationContainerEnvironmentVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationContainerEnvironmentVar {
+		return vs[0].([]EciScalingConfigurationContainerEnvironmentVar)[vs[1].(int)]
+	}).(EciScalingConfigurationContainerEnvironmentVarOutput)
+}
+
+type EciScalingConfigurationContainerPort struct {
+	// The port number. Valid values: 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Valid values: TCP and UDP.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// EciScalingConfigurationContainerPortInput is an input type that accepts EciScalingConfigurationContainerPortArgs and EciScalingConfigurationContainerPortOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationContainerPortInput` via:
+//
+//          EciScalingConfigurationContainerPortArgs{...}
+type EciScalingConfigurationContainerPortInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationContainerPortOutput() EciScalingConfigurationContainerPortOutput
+	ToEciScalingConfigurationContainerPortOutputWithContext(context.Context) EciScalingConfigurationContainerPortOutput
+}
+
+type EciScalingConfigurationContainerPortArgs struct {
+	// The port number. Valid values: 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Valid values: TCP and UDP.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (EciScalingConfigurationContainerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationContainerPort)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationContainerPortArgs) ToEciScalingConfigurationContainerPortOutput() EciScalingConfigurationContainerPortOutput {
+	return i.ToEciScalingConfigurationContainerPortOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationContainerPortArgs) ToEciScalingConfigurationContainerPortOutputWithContext(ctx context.Context) EciScalingConfigurationContainerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerPortOutput)
+}
+
+// EciScalingConfigurationContainerPortArrayInput is an input type that accepts EciScalingConfigurationContainerPortArray and EciScalingConfigurationContainerPortArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationContainerPortArrayInput` via:
+//
+//          EciScalingConfigurationContainerPortArray{ EciScalingConfigurationContainerPortArgs{...} }
+type EciScalingConfigurationContainerPortArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationContainerPortArrayOutput() EciScalingConfigurationContainerPortArrayOutput
+	ToEciScalingConfigurationContainerPortArrayOutputWithContext(context.Context) EciScalingConfigurationContainerPortArrayOutput
+}
+
+type EciScalingConfigurationContainerPortArray []EciScalingConfigurationContainerPortInput
+
+func (EciScalingConfigurationContainerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationContainerPort)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationContainerPortArray) ToEciScalingConfigurationContainerPortArrayOutput() EciScalingConfigurationContainerPortArrayOutput {
+	return i.ToEciScalingConfigurationContainerPortArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationContainerPortArray) ToEciScalingConfigurationContainerPortArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerPortArrayOutput)
+}
+
+type EciScalingConfigurationContainerPortOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationContainerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationContainerPort)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationContainerPortOutput) ToEciScalingConfigurationContainerPortOutput() EciScalingConfigurationContainerPortOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerPortOutput) ToEciScalingConfigurationContainerPortOutputWithContext(ctx context.Context) EciScalingConfigurationContainerPortOutput {
+	return o
+}
+
+// The port number. Valid values: 1 to 65535.
+func (o EciScalingConfigurationContainerPortOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainerPort) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Valid values: TCP and UDP.
+func (o EciScalingConfigurationContainerPortOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationContainerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationContainerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationContainerPort)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationContainerPortArrayOutput) ToEciScalingConfigurationContainerPortArrayOutput() EciScalingConfigurationContainerPortArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerPortArrayOutput) ToEciScalingConfigurationContainerPortArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerPortArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerPortArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationContainerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationContainerPort {
+		return vs[0].([]EciScalingConfigurationContainerPort)[vs[1].(int)]
+	}).(EciScalingConfigurationContainerPortOutput)
+}
+
+type EciScalingConfigurationContainerVolumeMount struct {
+	// The directory of the mounted volume. Data under this directory will be overwritten by the
+	// data in the volume.
+	MountPath *string `pulumi:"mountPath"`
+	// The name of the mounted volume.
+	Name *string `pulumi:"name"`
+	// Default to `false`.
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// EciScalingConfigurationContainerVolumeMountInput is an input type that accepts EciScalingConfigurationContainerVolumeMountArgs and EciScalingConfigurationContainerVolumeMountOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationContainerVolumeMountInput` via:
+//
+//          EciScalingConfigurationContainerVolumeMountArgs{...}
+type EciScalingConfigurationContainerVolumeMountInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationContainerVolumeMountOutput() EciScalingConfigurationContainerVolumeMountOutput
+	ToEciScalingConfigurationContainerVolumeMountOutputWithContext(context.Context) EciScalingConfigurationContainerVolumeMountOutput
+}
+
+type EciScalingConfigurationContainerVolumeMountArgs struct {
+	// The directory of the mounted volume. Data under this directory will be overwritten by the
+	// data in the volume.
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+	// The name of the mounted volume.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Default to `false`.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (EciScalingConfigurationContainerVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationContainerVolumeMount)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationContainerVolumeMountArgs) ToEciScalingConfigurationContainerVolumeMountOutput() EciScalingConfigurationContainerVolumeMountOutput {
+	return i.ToEciScalingConfigurationContainerVolumeMountOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationContainerVolumeMountArgs) ToEciScalingConfigurationContainerVolumeMountOutputWithContext(ctx context.Context) EciScalingConfigurationContainerVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerVolumeMountOutput)
+}
+
+// EciScalingConfigurationContainerVolumeMountArrayInput is an input type that accepts EciScalingConfigurationContainerVolumeMountArray and EciScalingConfigurationContainerVolumeMountArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationContainerVolumeMountArrayInput` via:
+//
+//          EciScalingConfigurationContainerVolumeMountArray{ EciScalingConfigurationContainerVolumeMountArgs{...} }
+type EciScalingConfigurationContainerVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationContainerVolumeMountArrayOutput() EciScalingConfigurationContainerVolumeMountArrayOutput
+	ToEciScalingConfigurationContainerVolumeMountArrayOutputWithContext(context.Context) EciScalingConfigurationContainerVolumeMountArrayOutput
+}
+
+type EciScalingConfigurationContainerVolumeMountArray []EciScalingConfigurationContainerVolumeMountInput
+
+func (EciScalingConfigurationContainerVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationContainerVolumeMount)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationContainerVolumeMountArray) ToEciScalingConfigurationContainerVolumeMountArrayOutput() EciScalingConfigurationContainerVolumeMountArrayOutput {
+	return i.ToEciScalingConfigurationContainerVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationContainerVolumeMountArray) ToEciScalingConfigurationContainerVolumeMountArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationContainerVolumeMountArrayOutput)
+}
+
+type EciScalingConfigurationContainerVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationContainerVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationContainerVolumeMount)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationContainerVolumeMountOutput) ToEciScalingConfigurationContainerVolumeMountOutput() EciScalingConfigurationContainerVolumeMountOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerVolumeMountOutput) ToEciScalingConfigurationContainerVolumeMountOutputWithContext(ctx context.Context) EciScalingConfigurationContainerVolumeMountOutput {
+	return o
+}
+
+// The directory of the mounted volume. Data under this directory will be overwritten by the
+// data in the volume.
+func (o EciScalingConfigurationContainerVolumeMountOutput) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+// The name of the mounted volume.
+func (o EciScalingConfigurationContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Default to `false`.
+func (o EciScalingConfigurationContainerVolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type EciScalingConfigurationContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationContainerVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationContainerVolumeMount)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationContainerVolumeMountArrayOutput) ToEciScalingConfigurationContainerVolumeMountArrayOutput() EciScalingConfigurationContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerVolumeMountArrayOutput) ToEciScalingConfigurationContainerVolumeMountArrayOutputWithContext(ctx context.Context) EciScalingConfigurationContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationContainerVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationContainerVolumeMount {
+		return vs[0].([]EciScalingConfigurationContainerVolumeMount)[vs[1].(int)]
+	}).(EciScalingConfigurationContainerVolumeMountOutput)
+}
+
+type EciScalingConfigurationHostAlias struct {
+	// Adds a host name.
+	Hostnames []string `pulumi:"hostnames"`
+	// Adds an IP address.
+	Ip *string `pulumi:"ip"`
+}
+
+// EciScalingConfigurationHostAliasInput is an input type that accepts EciScalingConfigurationHostAliasArgs and EciScalingConfigurationHostAliasOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationHostAliasInput` via:
+//
+//          EciScalingConfigurationHostAliasArgs{...}
+type EciScalingConfigurationHostAliasInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationHostAliasOutput() EciScalingConfigurationHostAliasOutput
+	ToEciScalingConfigurationHostAliasOutputWithContext(context.Context) EciScalingConfigurationHostAliasOutput
+}
+
+type EciScalingConfigurationHostAliasArgs struct {
+	// Adds a host name.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+	// Adds an IP address.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+}
+
+func (EciScalingConfigurationHostAliasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationHostAlias)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationHostAliasArgs) ToEciScalingConfigurationHostAliasOutput() EciScalingConfigurationHostAliasOutput {
+	return i.ToEciScalingConfigurationHostAliasOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationHostAliasArgs) ToEciScalingConfigurationHostAliasOutputWithContext(ctx context.Context) EciScalingConfigurationHostAliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationHostAliasOutput)
+}
+
+// EciScalingConfigurationHostAliasArrayInput is an input type that accepts EciScalingConfigurationHostAliasArray and EciScalingConfigurationHostAliasArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationHostAliasArrayInput` via:
+//
+//          EciScalingConfigurationHostAliasArray{ EciScalingConfigurationHostAliasArgs{...} }
+type EciScalingConfigurationHostAliasArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationHostAliasArrayOutput() EciScalingConfigurationHostAliasArrayOutput
+	ToEciScalingConfigurationHostAliasArrayOutputWithContext(context.Context) EciScalingConfigurationHostAliasArrayOutput
+}
+
+type EciScalingConfigurationHostAliasArray []EciScalingConfigurationHostAliasInput
+
+func (EciScalingConfigurationHostAliasArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationHostAlias)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationHostAliasArray) ToEciScalingConfigurationHostAliasArrayOutput() EciScalingConfigurationHostAliasArrayOutput {
+	return i.ToEciScalingConfigurationHostAliasArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationHostAliasArray) ToEciScalingConfigurationHostAliasArrayOutputWithContext(ctx context.Context) EciScalingConfigurationHostAliasArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationHostAliasArrayOutput)
+}
+
+type EciScalingConfigurationHostAliasOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationHostAliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationHostAlias)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationHostAliasOutput) ToEciScalingConfigurationHostAliasOutput() EciScalingConfigurationHostAliasOutput {
+	return o
+}
+
+func (o EciScalingConfigurationHostAliasOutput) ToEciScalingConfigurationHostAliasOutputWithContext(ctx context.Context) EciScalingConfigurationHostAliasOutput {
+	return o
+}
+
+// Adds a host name.
+func (o EciScalingConfigurationHostAliasOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationHostAlias) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// Adds an IP address.
+func (o EciScalingConfigurationHostAliasOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationHostAlias) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationHostAliasArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationHostAliasArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationHostAlias)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationHostAliasArrayOutput) ToEciScalingConfigurationHostAliasArrayOutput() EciScalingConfigurationHostAliasArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationHostAliasArrayOutput) ToEciScalingConfigurationHostAliasArrayOutputWithContext(ctx context.Context) EciScalingConfigurationHostAliasArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationHostAliasArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationHostAliasOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationHostAlias {
+		return vs[0].([]EciScalingConfigurationHostAlias)[vs[1].(int)]
+	}).(EciScalingConfigurationHostAliasOutput)
+}
+
+type EciScalingConfigurationImageRegistryCredential struct {
+	// The password used to log on to the image repository. It is required
+	// when `imageRegistryCredential` is configured.
+	Password *string `pulumi:"password"`
+	// The address of the image repository. It is required when `imageRegistryCredential` is
+	// configured.
+	Server   *string `pulumi:"server"`
+	Username *string `pulumi:"username"`
+}
+
+// EciScalingConfigurationImageRegistryCredentialInput is an input type that accepts EciScalingConfigurationImageRegistryCredentialArgs and EciScalingConfigurationImageRegistryCredentialOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationImageRegistryCredentialInput` via:
+//
+//          EciScalingConfigurationImageRegistryCredentialArgs{...}
+type EciScalingConfigurationImageRegistryCredentialInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationImageRegistryCredentialOutput() EciScalingConfigurationImageRegistryCredentialOutput
+	ToEciScalingConfigurationImageRegistryCredentialOutputWithContext(context.Context) EciScalingConfigurationImageRegistryCredentialOutput
+}
+
+type EciScalingConfigurationImageRegistryCredentialArgs struct {
+	// The password used to log on to the image repository. It is required
+	// when `imageRegistryCredential` is configured.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The address of the image repository. It is required when `imageRegistryCredential` is
+	// configured.
+	Server   pulumi.StringPtrInput `pulumi:"server"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (EciScalingConfigurationImageRegistryCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationImageRegistryCredential)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationImageRegistryCredentialArgs) ToEciScalingConfigurationImageRegistryCredentialOutput() EciScalingConfigurationImageRegistryCredentialOutput {
+	return i.ToEciScalingConfigurationImageRegistryCredentialOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationImageRegistryCredentialArgs) ToEciScalingConfigurationImageRegistryCredentialOutputWithContext(ctx context.Context) EciScalingConfigurationImageRegistryCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationImageRegistryCredentialOutput)
+}
+
+// EciScalingConfigurationImageRegistryCredentialArrayInput is an input type that accepts EciScalingConfigurationImageRegistryCredentialArray and EciScalingConfigurationImageRegistryCredentialArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationImageRegistryCredentialArrayInput` via:
+//
+//          EciScalingConfigurationImageRegistryCredentialArray{ EciScalingConfigurationImageRegistryCredentialArgs{...} }
+type EciScalingConfigurationImageRegistryCredentialArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationImageRegistryCredentialArrayOutput() EciScalingConfigurationImageRegistryCredentialArrayOutput
+	ToEciScalingConfigurationImageRegistryCredentialArrayOutputWithContext(context.Context) EciScalingConfigurationImageRegistryCredentialArrayOutput
+}
+
+type EciScalingConfigurationImageRegistryCredentialArray []EciScalingConfigurationImageRegistryCredentialInput
+
+func (EciScalingConfigurationImageRegistryCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationImageRegistryCredential)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationImageRegistryCredentialArray) ToEciScalingConfigurationImageRegistryCredentialArrayOutput() EciScalingConfigurationImageRegistryCredentialArrayOutput {
+	return i.ToEciScalingConfigurationImageRegistryCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationImageRegistryCredentialArray) ToEciScalingConfigurationImageRegistryCredentialArrayOutputWithContext(ctx context.Context) EciScalingConfigurationImageRegistryCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationImageRegistryCredentialArrayOutput)
+}
+
+type EciScalingConfigurationImageRegistryCredentialOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationImageRegistryCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationImageRegistryCredential)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationImageRegistryCredentialOutput) ToEciScalingConfigurationImageRegistryCredentialOutput() EciScalingConfigurationImageRegistryCredentialOutput {
+	return o
+}
+
+func (o EciScalingConfigurationImageRegistryCredentialOutput) ToEciScalingConfigurationImageRegistryCredentialOutputWithContext(ctx context.Context) EciScalingConfigurationImageRegistryCredentialOutput {
+	return o
+}
+
+// The password used to log on to the image repository. It is required
+// when `imageRegistryCredential` is configured.
+func (o EciScalingConfigurationImageRegistryCredentialOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationImageRegistryCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The address of the image repository. It is required when `imageRegistryCredential` is
+// configured.
+func (o EciScalingConfigurationImageRegistryCredentialOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationImageRegistryCredential) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+func (o EciScalingConfigurationImageRegistryCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationImageRegistryCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationImageRegistryCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationImageRegistryCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationImageRegistryCredential)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationImageRegistryCredentialArrayOutput) ToEciScalingConfigurationImageRegistryCredentialArrayOutput() EciScalingConfigurationImageRegistryCredentialArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationImageRegistryCredentialArrayOutput) ToEciScalingConfigurationImageRegistryCredentialArrayOutputWithContext(ctx context.Context) EciScalingConfigurationImageRegistryCredentialArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationImageRegistryCredentialArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationImageRegistryCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationImageRegistryCredential {
+		return vs[0].([]EciScalingConfigurationImageRegistryCredential)[vs[1].(int)]
+	}).(EciScalingConfigurationImageRegistryCredentialOutput)
+}
+
+type EciScalingConfigurationInitContainer struct {
+	// The arguments passed to the commands.
+	Args []string `pulumi:"args"`
+	// The commands run by the init container.
+	Commands []string `pulumi:"commands"`
+	// The amount of CPU resources allocated to the container.
+	Cpu *float64 `pulumi:"cpu"`
+	// The structure of environmentVars.
+	// See Block_environment_var_in_container below for details.
+	EnvironmentVars []EciScalingConfigurationInitContainerEnvironmentVar `pulumi:"environmentVars"`
+	// The number GPUs.
+	Gpu *int `pulumi:"gpu"`
+	// The image of the container.
+	Image *string `pulumi:"image"`
+	// The restart policy of the image.
+	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
+	// The amount of memory resources allocated to the container.
+	Memory *float64 `pulumi:"memory"`
+	// The name of the mounted volume.
+	Name *string `pulumi:"name"`
+	// The structure of port. See Block_port_in_container below for details.
+	Ports []EciScalingConfigurationInitContainerPort `pulumi:"ports"`
+	// The structure of volumeMounts.
+	// See Block_volume_mount_in_container below for details.
+	VolumeMounts []EciScalingConfigurationInitContainerVolumeMount `pulumi:"volumeMounts"`
+	// The working directory of the container.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// EciScalingConfigurationInitContainerInput is an input type that accepts EciScalingConfigurationInitContainerArgs and EciScalingConfigurationInitContainerOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationInitContainerInput` via:
+//
+//          EciScalingConfigurationInitContainerArgs{...}
+type EciScalingConfigurationInitContainerInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationInitContainerOutput() EciScalingConfigurationInitContainerOutput
+	ToEciScalingConfigurationInitContainerOutputWithContext(context.Context) EciScalingConfigurationInitContainerOutput
+}
+
+type EciScalingConfigurationInitContainerArgs struct {
+	// The arguments passed to the commands.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The commands run by the init container.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// The amount of CPU resources allocated to the container.
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// The structure of environmentVars.
+	// See Block_environment_var_in_container below for details.
+	EnvironmentVars EciScalingConfigurationInitContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
+	// The number GPUs.
+	Gpu pulumi.IntPtrInput `pulumi:"gpu"`
+	// The image of the container.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// The restart policy of the image.
+	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
+	// The amount of memory resources allocated to the container.
+	Memory pulumi.Float64PtrInput `pulumi:"memory"`
+	// The name of the mounted volume.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The structure of port. See Block_port_in_container below for details.
+	Ports EciScalingConfigurationInitContainerPortArrayInput `pulumi:"ports"`
+	// The structure of volumeMounts.
+	// See Block_volume_mount_in_container below for details.
+	VolumeMounts EciScalingConfigurationInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// The working directory of the container.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (EciScalingConfigurationInitContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationInitContainer)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationInitContainerArgs) ToEciScalingConfigurationInitContainerOutput() EciScalingConfigurationInitContainerOutput {
+	return i.ToEciScalingConfigurationInitContainerOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationInitContainerArgs) ToEciScalingConfigurationInitContainerOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerOutput)
+}
+
+// EciScalingConfigurationInitContainerArrayInput is an input type that accepts EciScalingConfigurationInitContainerArray and EciScalingConfigurationInitContainerArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationInitContainerArrayInput` via:
+//
+//          EciScalingConfigurationInitContainerArray{ EciScalingConfigurationInitContainerArgs{...} }
+type EciScalingConfigurationInitContainerArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationInitContainerArrayOutput() EciScalingConfigurationInitContainerArrayOutput
+	ToEciScalingConfigurationInitContainerArrayOutputWithContext(context.Context) EciScalingConfigurationInitContainerArrayOutput
+}
+
+type EciScalingConfigurationInitContainerArray []EciScalingConfigurationInitContainerInput
+
+func (EciScalingConfigurationInitContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationInitContainer)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationInitContainerArray) ToEciScalingConfigurationInitContainerArrayOutput() EciScalingConfigurationInitContainerArrayOutput {
+	return i.ToEciScalingConfigurationInitContainerArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationInitContainerArray) ToEciScalingConfigurationInitContainerArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerArrayOutput)
+}
+
+type EciScalingConfigurationInitContainerOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationInitContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationInitContainer)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationInitContainerOutput) ToEciScalingConfigurationInitContainerOutput() EciScalingConfigurationInitContainerOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerOutput) ToEciScalingConfigurationInitContainerOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerOutput {
+	return o
+}
+
+// The arguments passed to the commands.
+func (o EciScalingConfigurationInitContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The commands run by the init container.
+func (o EciScalingConfigurationInitContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// The amount of CPU resources allocated to the container.
+func (o EciScalingConfigurationInitContainerOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// The structure of environmentVars.
+// See Block_environment_var_in_container below for details.
+func (o EciScalingConfigurationInitContainerOutput) EnvironmentVars() EciScalingConfigurationInitContainerEnvironmentVarArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerEnvironmentVar {
+		return v.EnvironmentVars
+	}).(EciScalingConfigurationInitContainerEnvironmentVarArrayOutput)
+}
+
+// The number GPUs.
+func (o EciScalingConfigurationInitContainerOutput) Gpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *int { return v.Gpu }).(pulumi.IntPtrOutput)
+}
+
+// The image of the container.
+func (o EciScalingConfigurationInitContainerOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// The restart policy of the image.
+func (o EciScalingConfigurationInitContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The amount of memory resources allocated to the container.
+func (o EciScalingConfigurationInitContainerOutput) Memory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the mounted volume.
+func (o EciScalingConfigurationInitContainerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The structure of port. See Block_port_in_container below for details.
+func (o EciScalingConfigurationInitContainerOutput) Ports() EciScalingConfigurationInitContainerPortArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerPort {
+		return v.Ports
+	}).(EciScalingConfigurationInitContainerPortArrayOutput)
+}
+
+// The structure of volumeMounts.
+// See Block_volume_mount_in_container below for details.
+func (o EciScalingConfigurationInitContainerOutput) VolumeMounts() EciScalingConfigurationInitContainerVolumeMountArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerVolumeMount {
+		return v.VolumeMounts
+	}).(EciScalingConfigurationInitContainerVolumeMountArrayOutput)
+}
+
+// The working directory of the container.
+func (o EciScalingConfigurationInitContainerOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationInitContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationInitContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationInitContainer)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationInitContainerArrayOutput) ToEciScalingConfigurationInitContainerArrayOutput() EciScalingConfigurationInitContainerArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerArrayOutput) ToEciScalingConfigurationInitContainerArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationInitContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationInitContainer {
+		return vs[0].([]EciScalingConfigurationInitContainer)[vs[1].(int)]
+	}).(EciScalingConfigurationInitContainerOutput)
+}
+
+type EciScalingConfigurationInitContainerEnvironmentVar struct {
+	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+	// digits, and underscores (_). It cannot start with a digit.
+	Key *string `pulumi:"key"`
+	// The value of the variable. The value can be 0 to 256 characters in length.
+	Value *string `pulumi:"value"`
+}
+
+// EciScalingConfigurationInitContainerEnvironmentVarInput is an input type that accepts EciScalingConfigurationInitContainerEnvironmentVarArgs and EciScalingConfigurationInitContainerEnvironmentVarOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationInitContainerEnvironmentVarInput` via:
+//
+//          EciScalingConfigurationInitContainerEnvironmentVarArgs{...}
+type EciScalingConfigurationInitContainerEnvironmentVarInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationInitContainerEnvironmentVarOutput() EciScalingConfigurationInitContainerEnvironmentVarOutput
+	ToEciScalingConfigurationInitContainerEnvironmentVarOutputWithContext(context.Context) EciScalingConfigurationInitContainerEnvironmentVarOutput
+}
+
+type EciScalingConfigurationInitContainerEnvironmentVarArgs struct {
+	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+	// digits, and underscores (_). It cannot start with a digit.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the variable. The value can be 0 to 256 characters in length.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (EciScalingConfigurationInitContainerEnvironmentVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationInitContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationInitContainerEnvironmentVarArgs) ToEciScalingConfigurationInitContainerEnvironmentVarOutput() EciScalingConfigurationInitContainerEnvironmentVarOutput {
+	return i.ToEciScalingConfigurationInitContainerEnvironmentVarOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationInitContainerEnvironmentVarArgs) ToEciScalingConfigurationInitContainerEnvironmentVarOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerEnvironmentVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerEnvironmentVarOutput)
+}
+
+// EciScalingConfigurationInitContainerEnvironmentVarArrayInput is an input type that accepts EciScalingConfigurationInitContainerEnvironmentVarArray and EciScalingConfigurationInitContainerEnvironmentVarArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationInitContainerEnvironmentVarArrayInput` via:
+//
+//          EciScalingConfigurationInitContainerEnvironmentVarArray{ EciScalingConfigurationInitContainerEnvironmentVarArgs{...} }
+type EciScalingConfigurationInitContainerEnvironmentVarArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutput() EciScalingConfigurationInitContainerEnvironmentVarArrayOutput
+	ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutputWithContext(context.Context) EciScalingConfigurationInitContainerEnvironmentVarArrayOutput
+}
+
+type EciScalingConfigurationInitContainerEnvironmentVarArray []EciScalingConfigurationInitContainerEnvironmentVarInput
+
+func (EciScalingConfigurationInitContainerEnvironmentVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationInitContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationInitContainerEnvironmentVarArray) ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutput() EciScalingConfigurationInitContainerEnvironmentVarArrayOutput {
+	return i.ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationInitContainerEnvironmentVarArray) ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerEnvironmentVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerEnvironmentVarArrayOutput)
+}
+
+type EciScalingConfigurationInitContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationInitContainerEnvironmentVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationInitContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToEciScalingConfigurationInitContainerEnvironmentVarOutput() EciScalingConfigurationInitContainerEnvironmentVarOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToEciScalingConfigurationInitContainerEnvironmentVarOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerEnvironmentVarOutput {
+	return o
+}
+
+// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+// digits, and underscores (_). It cannot start with a digit.
+func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of the variable. The value can be 0 to 256 characters in length.
+func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationInitContainerEnvironmentVarArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationInitContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutput() EciScalingConfigurationInitContainerEnvironmentVarArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) ToEciScalingConfigurationInitContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerEnvironmentVarArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationInitContainerEnvironmentVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationInitContainerEnvironmentVar {
+		return vs[0].([]EciScalingConfigurationInitContainerEnvironmentVar)[vs[1].(int)]
+	}).(EciScalingConfigurationInitContainerEnvironmentVarOutput)
+}
+
+type EciScalingConfigurationInitContainerPort struct {
+	// The port number. Valid values: 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Valid values: TCP and UDP.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// EciScalingConfigurationInitContainerPortInput is an input type that accepts EciScalingConfigurationInitContainerPortArgs and EciScalingConfigurationInitContainerPortOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationInitContainerPortInput` via:
+//
+//          EciScalingConfigurationInitContainerPortArgs{...}
+type EciScalingConfigurationInitContainerPortInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationInitContainerPortOutput() EciScalingConfigurationInitContainerPortOutput
+	ToEciScalingConfigurationInitContainerPortOutputWithContext(context.Context) EciScalingConfigurationInitContainerPortOutput
+}
+
+type EciScalingConfigurationInitContainerPortArgs struct {
+	// The port number. Valid values: 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Valid values: TCP and UDP.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (EciScalingConfigurationInitContainerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationInitContainerPort)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationInitContainerPortArgs) ToEciScalingConfigurationInitContainerPortOutput() EciScalingConfigurationInitContainerPortOutput {
+	return i.ToEciScalingConfigurationInitContainerPortOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationInitContainerPortArgs) ToEciScalingConfigurationInitContainerPortOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerPortOutput)
+}
+
+// EciScalingConfigurationInitContainerPortArrayInput is an input type that accepts EciScalingConfigurationInitContainerPortArray and EciScalingConfigurationInitContainerPortArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationInitContainerPortArrayInput` via:
+//
+//          EciScalingConfigurationInitContainerPortArray{ EciScalingConfigurationInitContainerPortArgs{...} }
+type EciScalingConfigurationInitContainerPortArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationInitContainerPortArrayOutput() EciScalingConfigurationInitContainerPortArrayOutput
+	ToEciScalingConfigurationInitContainerPortArrayOutputWithContext(context.Context) EciScalingConfigurationInitContainerPortArrayOutput
+}
+
+type EciScalingConfigurationInitContainerPortArray []EciScalingConfigurationInitContainerPortInput
+
+func (EciScalingConfigurationInitContainerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationInitContainerPort)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationInitContainerPortArray) ToEciScalingConfigurationInitContainerPortArrayOutput() EciScalingConfigurationInitContainerPortArrayOutput {
+	return i.ToEciScalingConfigurationInitContainerPortArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationInitContainerPortArray) ToEciScalingConfigurationInitContainerPortArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerPortArrayOutput)
+}
+
+type EciScalingConfigurationInitContainerPortOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationInitContainerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationInitContainerPort)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationInitContainerPortOutput) ToEciScalingConfigurationInitContainerPortOutput() EciScalingConfigurationInitContainerPortOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerPortOutput) ToEciScalingConfigurationInitContainerPortOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerPortOutput {
+	return o
+}
+
+// The port number. Valid values: 1 to 65535.
+func (o EciScalingConfigurationInitContainerPortOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainerPort) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Valid values: TCP and UDP.
+func (o EciScalingConfigurationInitContainerPortOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationInitContainerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationInitContainerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationInitContainerPort)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationInitContainerPortArrayOutput) ToEciScalingConfigurationInitContainerPortArrayOutput() EciScalingConfigurationInitContainerPortArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerPortArrayOutput) ToEciScalingConfigurationInitContainerPortArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerPortArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerPortArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationInitContainerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationInitContainerPort {
+		return vs[0].([]EciScalingConfigurationInitContainerPort)[vs[1].(int)]
+	}).(EciScalingConfigurationInitContainerPortOutput)
+}
+
+type EciScalingConfigurationInitContainerVolumeMount struct {
+	// The directory of the mounted volume. Data under this directory will be overwritten by the
+	// data in the volume.
+	MountPath *string `pulumi:"mountPath"`
+	// The name of the mounted volume.
+	Name *string `pulumi:"name"`
+	// Default to `false`.
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// EciScalingConfigurationInitContainerVolumeMountInput is an input type that accepts EciScalingConfigurationInitContainerVolumeMountArgs and EciScalingConfigurationInitContainerVolumeMountOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationInitContainerVolumeMountInput` via:
+//
+//          EciScalingConfigurationInitContainerVolumeMountArgs{...}
+type EciScalingConfigurationInitContainerVolumeMountInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationInitContainerVolumeMountOutput() EciScalingConfigurationInitContainerVolumeMountOutput
+	ToEciScalingConfigurationInitContainerVolumeMountOutputWithContext(context.Context) EciScalingConfigurationInitContainerVolumeMountOutput
+}
+
+type EciScalingConfigurationInitContainerVolumeMountArgs struct {
+	// The directory of the mounted volume. Data under this directory will be overwritten by the
+	// data in the volume.
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+	// The name of the mounted volume.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Default to `false`.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (EciScalingConfigurationInitContainerVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationInitContainerVolumeMount)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationInitContainerVolumeMountArgs) ToEciScalingConfigurationInitContainerVolumeMountOutput() EciScalingConfigurationInitContainerVolumeMountOutput {
+	return i.ToEciScalingConfigurationInitContainerVolumeMountOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationInitContainerVolumeMountArgs) ToEciScalingConfigurationInitContainerVolumeMountOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerVolumeMountOutput)
+}
+
+// EciScalingConfigurationInitContainerVolumeMountArrayInput is an input type that accepts EciScalingConfigurationInitContainerVolumeMountArray and EciScalingConfigurationInitContainerVolumeMountArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationInitContainerVolumeMountArrayInput` via:
+//
+//          EciScalingConfigurationInitContainerVolumeMountArray{ EciScalingConfigurationInitContainerVolumeMountArgs{...} }
+type EciScalingConfigurationInitContainerVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationInitContainerVolumeMountArrayOutput() EciScalingConfigurationInitContainerVolumeMountArrayOutput
+	ToEciScalingConfigurationInitContainerVolumeMountArrayOutputWithContext(context.Context) EciScalingConfigurationInitContainerVolumeMountArrayOutput
+}
+
+type EciScalingConfigurationInitContainerVolumeMountArray []EciScalingConfigurationInitContainerVolumeMountInput
+
+func (EciScalingConfigurationInitContainerVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationInitContainerVolumeMount)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationInitContainerVolumeMountArray) ToEciScalingConfigurationInitContainerVolumeMountArrayOutput() EciScalingConfigurationInitContainerVolumeMountArrayOutput {
+	return i.ToEciScalingConfigurationInitContainerVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationInitContainerVolumeMountArray) ToEciScalingConfigurationInitContainerVolumeMountArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationInitContainerVolumeMountArrayOutput)
+}
+
+type EciScalingConfigurationInitContainerVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationInitContainerVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationInitContainerVolumeMount)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationInitContainerVolumeMountOutput) ToEciScalingConfigurationInitContainerVolumeMountOutput() EciScalingConfigurationInitContainerVolumeMountOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerVolumeMountOutput) ToEciScalingConfigurationInitContainerVolumeMountOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerVolumeMountOutput {
+	return o
+}
+
+// The directory of the mounted volume. Data under this directory will be overwritten by the
+// data in the volume.
+func (o EciScalingConfigurationInitContainerVolumeMountOutput) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+// The name of the mounted volume.
+func (o EciScalingConfigurationInitContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Default to `false`.
+func (o EciScalingConfigurationInitContainerVolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type EciScalingConfigurationInitContainerVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationInitContainerVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationInitContainerVolumeMount)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationInitContainerVolumeMountArrayOutput) ToEciScalingConfigurationInitContainerVolumeMountArrayOutput() EciScalingConfigurationInitContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerVolumeMountArrayOutput) ToEciScalingConfigurationInitContainerVolumeMountArrayOutputWithContext(ctx context.Context) EciScalingConfigurationInitContainerVolumeMountArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationInitContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationInitContainerVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationInitContainerVolumeMount {
+		return vs[0].([]EciScalingConfigurationInitContainerVolumeMount)[vs[1].(int)]
+	}).(EciScalingConfigurationInitContainerVolumeMountOutput)
+}
+
+type EciScalingConfigurationVolume struct {
+	// ConfigFileVolumeConfigFileToPaths.
+	// See Block_config_file_volume_config_file_to_path below for details.
+	ConfigFileVolumeConfigFileToPaths []EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath `pulumi:"configFileVolumeConfigFileToPaths"`
+	// The ID of DiskVolume.
+	DiskVolumeDiskId   *string `pulumi:"diskVolumeDiskId"`
+	DiskVolumeDiskSize *int    `pulumi:"diskVolumeDiskSize"`
+	// The system type of DiskVolume.
+	DiskVolumeFsType *string `pulumi:"diskVolumeFsType"`
+	// The name of the FlexVolume driver.
+	FlexVolumeDriver *string `pulumi:"flexVolumeDriver"`
+	// The type of the mounted file system. The default value is determined by the script
+	// of FlexVolume.
+	FlexVolumeFsType *string `pulumi:"flexVolumeFsType"`
+	// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
+	// string.
+	FlexVolumeOptions *string `pulumi:"flexVolumeOptions"`
+	// The name of the mounted volume.
+	Name *string `pulumi:"name"`
+	// The path to the NFS volume.
+	NfsVolumePath *string `pulumi:"nfsVolumePath"`
+	// The nfs volume read only. Default to `false`.
+	NfsVolumeReadOnly *bool `pulumi:"nfsVolumeReadOnly"`
+	// The address of the NFS server.
+	NfsVolumeServer *string `pulumi:"nfsVolumeServer"`
+	// The type of the volume.
+	Type *string `pulumi:"type"`
+}
+
+// EciScalingConfigurationVolumeInput is an input type that accepts EciScalingConfigurationVolumeArgs and EciScalingConfigurationVolumeOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationVolumeInput` via:
+//
+//          EciScalingConfigurationVolumeArgs{...}
+type EciScalingConfigurationVolumeInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationVolumeOutput() EciScalingConfigurationVolumeOutput
+	ToEciScalingConfigurationVolumeOutputWithContext(context.Context) EciScalingConfigurationVolumeOutput
+}
+
+type EciScalingConfigurationVolumeArgs struct {
+	// ConfigFileVolumeConfigFileToPaths.
+	// See Block_config_file_volume_config_file_to_path below for details.
+	ConfigFileVolumeConfigFileToPaths EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput `pulumi:"configFileVolumeConfigFileToPaths"`
+	// The ID of DiskVolume.
+	DiskVolumeDiskId   pulumi.StringPtrInput `pulumi:"diskVolumeDiskId"`
+	DiskVolumeDiskSize pulumi.IntPtrInput    `pulumi:"diskVolumeDiskSize"`
+	// The system type of DiskVolume.
+	DiskVolumeFsType pulumi.StringPtrInput `pulumi:"diskVolumeFsType"`
+	// The name of the FlexVolume driver.
+	FlexVolumeDriver pulumi.StringPtrInput `pulumi:"flexVolumeDriver"`
+	// The type of the mounted file system. The default value is determined by the script
+	// of FlexVolume.
+	FlexVolumeFsType pulumi.StringPtrInput `pulumi:"flexVolumeFsType"`
+	// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
+	// string.
+	FlexVolumeOptions pulumi.StringPtrInput `pulumi:"flexVolumeOptions"`
+	// The name of the mounted volume.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The path to the NFS volume.
+	NfsVolumePath pulumi.StringPtrInput `pulumi:"nfsVolumePath"`
+	// The nfs volume read only. Default to `false`.
+	NfsVolumeReadOnly pulumi.BoolPtrInput `pulumi:"nfsVolumeReadOnly"`
+	// The address of the NFS server.
+	NfsVolumeServer pulumi.StringPtrInput `pulumi:"nfsVolumeServer"`
+	// The type of the volume.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (EciScalingConfigurationVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationVolume)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationVolumeArgs) ToEciScalingConfigurationVolumeOutput() EciScalingConfigurationVolumeOutput {
+	return i.ToEciScalingConfigurationVolumeOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationVolumeArgs) ToEciScalingConfigurationVolumeOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationVolumeOutput)
+}
+
+// EciScalingConfigurationVolumeArrayInput is an input type that accepts EciScalingConfigurationVolumeArray and EciScalingConfigurationVolumeArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationVolumeArrayInput` via:
+//
+//          EciScalingConfigurationVolumeArray{ EciScalingConfigurationVolumeArgs{...} }
+type EciScalingConfigurationVolumeArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationVolumeArrayOutput() EciScalingConfigurationVolumeArrayOutput
+	ToEciScalingConfigurationVolumeArrayOutputWithContext(context.Context) EciScalingConfigurationVolumeArrayOutput
+}
+
+type EciScalingConfigurationVolumeArray []EciScalingConfigurationVolumeInput
+
+func (EciScalingConfigurationVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationVolume)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationVolumeArray) ToEciScalingConfigurationVolumeArrayOutput() EciScalingConfigurationVolumeArrayOutput {
+	return i.ToEciScalingConfigurationVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationVolumeArray) ToEciScalingConfigurationVolumeArrayOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationVolumeArrayOutput)
+}
+
+type EciScalingConfigurationVolumeOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationVolume)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationVolumeOutput) ToEciScalingConfigurationVolumeOutput() EciScalingConfigurationVolumeOutput {
+	return o
+}
+
+func (o EciScalingConfigurationVolumeOutput) ToEciScalingConfigurationVolumeOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeOutput {
+	return o
+}
+
+// ConfigFileVolumeConfigFileToPaths.
+// See Block_config_file_volume_config_file_to_path below for details.
+func (o EciScalingConfigurationVolumeOutput) ConfigFileVolumeConfigFileToPaths() EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) []EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
+		return v.ConfigFileVolumeConfigFileToPaths
+	}).(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput)
+}
+
+// The ID of DiskVolume.
+func (o EciScalingConfigurationVolumeOutput) DiskVolumeDiskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.DiskVolumeDiskId }).(pulumi.StringPtrOutput)
+}
+
+func (o EciScalingConfigurationVolumeOutput) DiskVolumeDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *int { return v.DiskVolumeDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// The system type of DiskVolume.
+func (o EciScalingConfigurationVolumeOutput) DiskVolumeFsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.DiskVolumeFsType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the FlexVolume driver.
+func (o EciScalingConfigurationVolumeOutput) FlexVolumeDriver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.FlexVolumeDriver }).(pulumi.StringPtrOutput)
+}
+
+// The type of the mounted file system. The default value is determined by the script
+// of FlexVolume.
+func (o EciScalingConfigurationVolumeOutput) FlexVolumeFsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.FlexVolumeFsType }).(pulumi.StringPtrOutput)
+}
+
+// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
+// string.
+func (o EciScalingConfigurationVolumeOutput) FlexVolumeOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.FlexVolumeOptions }).(pulumi.StringPtrOutput)
+}
+
+// The name of the mounted volume.
+func (o EciScalingConfigurationVolumeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The path to the NFS volume.
+func (o EciScalingConfigurationVolumeOutput) NfsVolumePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.NfsVolumePath }).(pulumi.StringPtrOutput)
+}
+
+// The nfs volume read only. Default to `false`.
+func (o EciScalingConfigurationVolumeOutput) NfsVolumeReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *bool { return v.NfsVolumeReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The address of the NFS server.
+func (o EciScalingConfigurationVolumeOutput) NfsVolumeServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.NfsVolumeServer }).(pulumi.StringPtrOutput)
+}
+
+// The type of the volume.
+func (o EciScalingConfigurationVolumeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationVolume)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationVolumeArrayOutput) ToEciScalingConfigurationVolumeArrayOutput() EciScalingConfigurationVolumeArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationVolumeArrayOutput) ToEciScalingConfigurationVolumeArrayOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationVolumeArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationVolume {
+		return vs[0].([]EciScalingConfigurationVolume)[vs[1].(int)]
+	}).(EciScalingConfigurationVolumeOutput)
+}
+
+type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath struct {
+	// The content of the configuration file. Maximum size: 32 KB.
+	Content *string `pulumi:"content"`
+	// The relative file path.
+	Path *string `pulumi:"path"`
+}
+
+// EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput is an input type that accepts EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs and EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput` via:
+//
+//          EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{...}
+type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput() EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput
+	ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutputWithContext(context.Context) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput
+}
+
+type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs struct {
+	// The content of the configuration file. Maximum size: 32 KB.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The relative file path.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput() EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput {
+	return i.ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput)
+}
+
+// EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput is an input type that accepts EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray and EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput values.
+// You can construct a concrete instance of `EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput` via:
+//
+//          EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray{ EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{...} }
+type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput interface {
+	pulumi.Input
+
+	ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput() EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput
+	ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(context.Context) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput
+}
+
+type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray []EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput
+
+func (EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath)(nil)).Elem()
+}
+
+func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput() EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput {
+	return i.ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(context.Background())
+}
+
+func (i EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput)
+}
+
+type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput() EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput {
+	return o
+}
+
+func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput {
+	return o
+}
+
+// The content of the configuration file. Maximum size: 32 KB.
+func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// The relative file path.
+func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput struct{ *pulumi.OutputState }
+
+func (EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath)(nil)).Elem()
+}
+
+func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput() EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput) ToEciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutputWithContext(ctx context.Context) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput {
+	return o
+}
+
+func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput) Index(i pulumi.IntInput) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
+		return vs[0].([]EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath)[vs[1].(int)]
+	}).(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput)
+}
+
 type ScalingConfigurationDataDisk struct {
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	Category             *string `pulumi:"category"`
@@ -2308,6 +3922,30 @@ func (o GetScheduledTasksTaskArrayOutput) Index(i pulumi.IntInput) GetScheduledT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerInput)(nil)).Elem(), EciScalingConfigurationContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerArrayInput)(nil)).Elem(), EciScalingConfigurationContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerEnvironmentVarInput)(nil)).Elem(), EciScalingConfigurationContainerEnvironmentVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerEnvironmentVarArrayInput)(nil)).Elem(), EciScalingConfigurationContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerPortInput)(nil)).Elem(), EciScalingConfigurationContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerPortArrayInput)(nil)).Elem(), EciScalingConfigurationContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerVolumeMountInput)(nil)).Elem(), EciScalingConfigurationContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerVolumeMountArrayInput)(nil)).Elem(), EciScalingConfigurationContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationHostAliasInput)(nil)).Elem(), EciScalingConfigurationHostAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationHostAliasArrayInput)(nil)).Elem(), EciScalingConfigurationHostAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationImageRegistryCredentialInput)(nil)).Elem(), EciScalingConfigurationImageRegistryCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationImageRegistryCredentialArrayInput)(nil)).Elem(), EciScalingConfigurationImageRegistryCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationInitContainerInput)(nil)).Elem(), EciScalingConfigurationInitContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationInitContainerArrayInput)(nil)).Elem(), EciScalingConfigurationInitContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationInitContainerEnvironmentVarInput)(nil)).Elem(), EciScalingConfigurationInitContainerEnvironmentVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationInitContainerEnvironmentVarArrayInput)(nil)).Elem(), EciScalingConfigurationInitContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationInitContainerPortInput)(nil)).Elem(), EciScalingConfigurationInitContainerPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationInitContainerPortArrayInput)(nil)).Elem(), EciScalingConfigurationInitContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationInitContainerVolumeMountInput)(nil)).Elem(), EciScalingConfigurationInitContainerVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationInitContainerVolumeMountArrayInput)(nil)).Elem(), EciScalingConfigurationInitContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeInput)(nil)).Elem(), EciScalingConfigurationVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeArrayInput)(nil)).Elem(), EciScalingConfigurationVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput)(nil)).Elem(), EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput)(nil)).Elem(), EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskInput)(nil)).Elem(), ScalingConfigurationDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskArrayInput)(nil)).Elem(), ScalingConfigurationDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArgs{})
@@ -2336,6 +3974,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleArrayInput)(nil)).Elem(), GetScalingRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskInput)(nil)).Elem(), GetScheduledTasksTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskArrayInput)(nil)).Elem(), GetScheduledTasksTaskArray{})
+	pulumi.RegisterOutputType(EciScalingConfigurationContainerOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationContainerArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationContainerEnvironmentVarOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationContainerEnvironmentVarArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationContainerPortOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationContainerVolumeMountOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationHostAliasOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationHostAliasArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationImageRegistryCredentialOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationImageRegistryCredentialArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationInitContainerOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationInitContainerArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationInitContainerEnvironmentVarOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationInitContainerEnvironmentVarArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationInitContainerPortOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationInitContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationInitContainerVolumeMountOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationInitContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationVolumeOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationVolumeArrayOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput{})
+	pulumi.RegisterOutputType(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitOutput{})

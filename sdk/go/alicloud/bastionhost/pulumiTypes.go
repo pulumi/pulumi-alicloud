@@ -303,6 +303,139 @@ func (o GetHostGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetHostGroupsGro
 	}).(GetHostGroupsGroupOutput)
 }
 
+type GetHostShareKeysKey struct {
+	// The first ID of the resource.
+	HostShareKeyId string `pulumi:"hostShareKeyId"`
+	// The name of the host shared key.
+	HostShareKeyName string `pulumi:"hostShareKeyName"`
+	// The ID of the Host Share Key.
+	Id string `pulumi:"id"`
+	// The ID of the Bastion instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The fingerprint of the private key.
+	PrivateKeyFingerPrint string `pulumi:"privateKeyFingerPrint"`
+}
+
+// GetHostShareKeysKeyInput is an input type that accepts GetHostShareKeysKeyArgs and GetHostShareKeysKeyOutput values.
+// You can construct a concrete instance of `GetHostShareKeysKeyInput` via:
+//
+//          GetHostShareKeysKeyArgs{...}
+type GetHostShareKeysKeyInput interface {
+	pulumi.Input
+
+	ToGetHostShareKeysKeyOutput() GetHostShareKeysKeyOutput
+	ToGetHostShareKeysKeyOutputWithContext(context.Context) GetHostShareKeysKeyOutput
+}
+
+type GetHostShareKeysKeyArgs struct {
+	// The first ID of the resource.
+	HostShareKeyId pulumi.StringInput `pulumi:"hostShareKeyId"`
+	// The name of the host shared key.
+	HostShareKeyName pulumi.StringInput `pulumi:"hostShareKeyName"`
+	// The ID of the Host Share Key.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Bastion instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The fingerprint of the private key.
+	PrivateKeyFingerPrint pulumi.StringInput `pulumi:"privateKeyFingerPrint"`
+}
+
+func (GetHostShareKeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostShareKeysKey)(nil)).Elem()
+}
+
+func (i GetHostShareKeysKeyArgs) ToGetHostShareKeysKeyOutput() GetHostShareKeysKeyOutput {
+	return i.ToGetHostShareKeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetHostShareKeysKeyArgs) ToGetHostShareKeysKeyOutputWithContext(ctx context.Context) GetHostShareKeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostShareKeysKeyOutput)
+}
+
+// GetHostShareKeysKeyArrayInput is an input type that accepts GetHostShareKeysKeyArray and GetHostShareKeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetHostShareKeysKeyArrayInput` via:
+//
+//          GetHostShareKeysKeyArray{ GetHostShareKeysKeyArgs{...} }
+type GetHostShareKeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetHostShareKeysKeyArrayOutput() GetHostShareKeysKeyArrayOutput
+	ToGetHostShareKeysKeyArrayOutputWithContext(context.Context) GetHostShareKeysKeyArrayOutput
+}
+
+type GetHostShareKeysKeyArray []GetHostShareKeysKeyInput
+
+func (GetHostShareKeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostShareKeysKey)(nil)).Elem()
+}
+
+func (i GetHostShareKeysKeyArray) ToGetHostShareKeysKeyArrayOutput() GetHostShareKeysKeyArrayOutput {
+	return i.ToGetHostShareKeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostShareKeysKeyArray) ToGetHostShareKeysKeyArrayOutputWithContext(ctx context.Context) GetHostShareKeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostShareKeysKeyArrayOutput)
+}
+
+type GetHostShareKeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetHostShareKeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostShareKeysKey)(nil)).Elem()
+}
+
+func (o GetHostShareKeysKeyOutput) ToGetHostShareKeysKeyOutput() GetHostShareKeysKeyOutput {
+	return o
+}
+
+func (o GetHostShareKeysKeyOutput) ToGetHostShareKeysKeyOutputWithContext(ctx context.Context) GetHostShareKeysKeyOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetHostShareKeysKeyOutput) HostShareKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.HostShareKeyId }).(pulumi.StringOutput)
+}
+
+// The name of the host shared key.
+func (o GetHostShareKeysKeyOutput) HostShareKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.HostShareKeyName }).(pulumi.StringOutput)
+}
+
+// The ID of the Host Share Key.
+func (o GetHostShareKeysKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Bastion instance.
+func (o GetHostShareKeysKeyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The fingerprint of the private key.
+func (o GetHostShareKeysKeyOutput) PrivateKeyFingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.PrivateKeyFingerPrint }).(pulumi.StringOutput)
+}
+
+type GetHostShareKeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostShareKeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostShareKeysKey)(nil)).Elem()
+}
+
+func (o GetHostShareKeysKeyArrayOutput) ToGetHostShareKeysKeyArrayOutput() GetHostShareKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetHostShareKeysKeyArrayOutput) ToGetHostShareKeysKeyArrayOutputWithContext(ctx context.Context) GetHostShareKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetHostShareKeysKeyArrayOutput) Index(i pulumi.IntInput) GetHostShareKeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostShareKeysKey {
+		return vs[0].([]GetHostShareKeysKey)[vs[1].(int)]
+	}).(GetHostShareKeysKeyOutput)
+}
+
 type GetHostsHost struct {
 	// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
 	ActiveAddressType string `pulumi:"activeAddressType"`
@@ -1189,6 +1322,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAccountsAccountArrayInput)(nil)).Elem(), GetHostAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostGroupsGroupInput)(nil)).Elem(), GetHostGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostGroupsGroupArrayInput)(nil)).Elem(), GetHostGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostShareKeysKeyInput)(nil)).Elem(), GetHostShareKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostShareKeysKeyArrayInput)(nil)).Elem(), GetHostShareKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostInput)(nil)).Elem(), GetHostsHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostArrayInput)(nil)).Elem(), GetHostsHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostProtocolInput)(nil)).Elem(), GetHostsHostProtocolArgs{})
@@ -1203,6 +1338,8 @@ func init() {
 	pulumi.RegisterOutputType(GetHostAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetHostGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetHostGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetHostShareKeysKeyOutput{})
+	pulumi.RegisterOutputType(GetHostShareKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetHostsHostOutput{})
 	pulumi.RegisterOutputType(GetHostsHostArrayOutput{})
 	pulumi.RegisterOutputType(GetHostsHostProtocolOutput{})

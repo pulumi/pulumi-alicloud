@@ -134,6 +134,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
+        /// The switch of delete protection. Valid values:
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Database type.
         /// </summary>
         [Output("engine")]
@@ -372,6 +380,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? ClientCrlEnabled { get; set; }
 
         /// <summary>
+        /// The switch of delete protection. Valid values:
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         /// </summary>
         [Input("engineVersion", required: true)]
@@ -575,6 +591,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
+
+        /// <summary>
+        /// The switch of delete protection. Valid values:
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// Database type.

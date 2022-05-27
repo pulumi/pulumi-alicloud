@@ -80,6 +80,8 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly routerId!: pulumi.Output<string>;
     /**
+     * (Deprecated) It has been deprecated and replaced with `routeTableId`.
+     *
      * @deprecated Attribute router_table_id has been deprecated and replaced with route_table_id.
      */
     public /*out*/ readonly routerTableId!: pulumi.Output<string>;
@@ -87,6 +89,9 @@ export class Network extends pulumi.CustomResource {
      * The secondary CIDR blocks for the VPC.
      */
     public readonly secondaryCidrBlocks!: pulumi.Output<string[] | undefined>;
+    /**
+     * The status of the VPC.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -195,6 +200,8 @@ export interface NetworkState {
      */
     routerId?: pulumi.Input<string>;
     /**
+     * (Deprecated) It has been deprecated and replaced with `routeTableId`.
+     *
      * @deprecated Attribute router_table_id has been deprecated and replaced with route_table_id.
      */
     routerTableId?: pulumi.Input<string>;
@@ -202,6 +209,9 @@ export interface NetworkState {
      * The secondary CIDR blocks for the VPC.
      */
     secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The status of the VPC.
+     */
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

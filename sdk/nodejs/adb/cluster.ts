@@ -79,7 +79,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    public readonly autoRenewPeriod!: pulumi.Output<number>;
     public readonly computeResource!: pulumi.Output<string | undefined>;
     /**
      * (Available in 1.93.0+) The connection string of the ADB cluster.
@@ -121,9 +121,14 @@ export class Cluster extends pulumi.CustomResource {
     public readonly mode!: pulumi.Output<string>;
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+     * Field `payType` has been deprecated. New field `paymentType` instead.
+     *
+     * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     public readonly payType!: pulumi.Output<string>;
+    /**
+     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     */
     public readonly paymentType!: pulumi.Output<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
@@ -132,7 +137,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    public readonly renewalStatus!: pulumi.Output<string>;
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -278,9 +283,14 @@ export interface ClusterState {
     mode?: pulumi.Input<string>;
     modifyType?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+     * Field `payType` has been deprecated. New field `paymentType` instead.
+     *
+     * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     payType?: pulumi.Input<string>;
+    /**
+     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     */
     paymentType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
@@ -357,9 +367,14 @@ export interface ClusterArgs {
     mode: pulumi.Input<string>;
     modifyType?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+     * Field `payType` has been deprecated. New field `paymentType` instead.
+     *
+     * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     payType?: pulumi.Input<string>;
+    /**
+     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     */
     paymentType?: pulumi.Input<string>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.

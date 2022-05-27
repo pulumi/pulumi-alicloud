@@ -97,6 +97,20 @@ class SchedulerRuleRule(dict):
                  type: Optional[str] = None,
                  value: Optional[str] = None,
                  value_type: Optional[int] = None):
+        """
+        :param int priority: The priority of the rule.
+        :param str region_id: The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
+        :param int status: The status of the scheduling rule.
+        :param str type: The address type of the interaction resource. Valid values:
+               `A`: IPv4 address.
+               `CNAME`: CNAME record.
+        :param str value: The address of the interaction resource.
+        :param int value_type: Required. The type of the linked resource. It is an Integer. Valid values:
+               `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
+               `2`: the IP address of the interaction resource (in the tiered protection scenario)
+               `3`: the IP address used to accelerate access (in the network acceleration scenario)
+               `6` the IP address of the interaction resource (in the cloud service interaction scenario)
+        """
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if region_id is not None:
@@ -113,31 +127,55 @@ class SchedulerRuleRule(dict):
     @property
     @pulumi.getter
     def priority(self) -> Optional[int]:
+        """
+        The priority of the rule.
+        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[str]:
+        """
+        The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
+        """
         return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[int]:
+        """
+        The status of the scheduling rule.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        The address type of the interaction resource. Valid values:
+        `A`: IPv4 address.
+        `CNAME`: CNAME record.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The address of the interaction resource.
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[int]:
+        """
+        Required. The type of the linked resource. It is an Integer. Valid values:
+        `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
+        `2`: the IP address of the interaction resource (in the tiered protection scenario)
+        `3`: the IP address used to accelerate access (in the network acceleration scenario)
+        `6` the IP address of the interaction resource (in the cloud service interaction scenario)
+        """
         return pulumi.get(self, "value_type")
 
 

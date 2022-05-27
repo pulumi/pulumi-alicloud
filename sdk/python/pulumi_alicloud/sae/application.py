@@ -7,8 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['ApplicationArgs', 'Application']
 
@@ -34,15 +32,12 @@ class ApplicationArgs:
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
-                 internet_slb_id: Optional[pulumi.Input[str]] = None,
-                 internets: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]] = None,
-                 intranet_slb_id: Optional[pulumi.Input[str]] = None,
-                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
+                 min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  mount_desc: Optional[pulumi.Input[str]] = None,
                  mount_host: Optional[pulumi.Input[str]] = None,
@@ -62,6 +57,7 @@ class ApplicationArgs:
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  sls_configs: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  tomcat_config: Optional[pulumi.Input[str]] = None,
@@ -75,7 +71,7 @@ class ApplicationArgs:
         The set of arguments for constructing a Application resource.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         :param pulumi.Input[str] package_type: Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
-        :param pulumi.Input[int] replicas: Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
         :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
         :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `false`, `true`.
@@ -90,17 +86,16 @@ class ApplicationArgs:
         :param pulumi.Input[str] edas_container_version: The operating environment used by the Pandora application.
         :param pulumi.Input[str] enable_ahas: The enable ahas.
         :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
-        :param pulumi.Input[str] envs: The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        :param pulumi.Input[str] envs: Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
-        :param pulumi.Input[str] internet_slb_id: public network SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]] internets: Bound private network SLB. The details see Block internet.
-        :param pulumi.Input[str] intranet_slb_id: private network SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]] intranets: Bound public network SLB. The details see Block intranet.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+               * `-1`: Initialization value, indicating that percentages are not used.
+               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         :param pulumi.Input[str] mount_desc: Mount description.
         :param pulumi.Input[str] mount_host: Mount point of NAS in application VPC.
@@ -120,6 +115,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
         :param pulumi.Input[str] timezone: Time zone, the default value is Asia/Shanghai.
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
@@ -165,14 +161,6 @@ class ApplicationArgs:
             pulumi.set(__self__, "envs", envs)
         if image_url is not None:
             pulumi.set(__self__, "image_url", image_url)
-        if internet_slb_id is not None:
-            pulumi.set(__self__, "internet_slb_id", internet_slb_id)
-        if internets is not None:
-            pulumi.set(__self__, "internets", internets)
-        if intranet_slb_id is not None:
-            pulumi.set(__self__, "intranet_slb_id", intranet_slb_id)
-        if intranets is not None:
-            pulumi.set(__self__, "intranets", intranets)
         if jar_start_args is not None:
             pulumi.set(__self__, "jar_start_args", jar_start_args)
         if jar_start_options is not None:
@@ -183,6 +171,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "liveness", liveness)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if min_ready_instance_ratio is not None:
+            pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
             pulumi.set(__self__, "min_ready_instances", min_ready_instances)
         if mount_desc is not None:
@@ -221,6 +211,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "sls_configs", sls_configs)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if termination_grace_period_seconds is not None:
             pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
         if timezone is not None:
@@ -268,7 +260,7 @@ class ApplicationArgs:
     @pulumi.getter
     def replicas(self) -> pulumi.Input[int]:
         """
-        Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        Initial number of instances.
         """
         return pulumi.get(self, "replicas")
 
@@ -448,7 +440,7 @@ class ApplicationArgs:
     @pulumi.getter
     def envs(self) -> Optional[pulumi.Input[str]]:
         """
-        The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         """
         return pulumi.get(self, "envs")
 
@@ -467,54 +459,6 @@ class ApplicationArgs:
     @image_url.setter
     def image_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_url", value)
-
-    @property
-    @pulumi.getter(name="internetSlbId")
-    def internet_slb_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        public network SLB ID.
-        """
-        return pulumi.get(self, "internet_slb_id")
-
-    @internet_slb_id.setter
-    def internet_slb_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "internet_slb_id", value)
-
-    @property
-    @pulumi.getter
-    def internets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]]:
-        """
-        Bound private network SLB. The details see Block internet.
-        """
-        return pulumi.get(self, "internets")
-
-    @internets.setter
-    def internets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]]):
-        pulumi.set(self, "internets", value)
-
-    @property
-    @pulumi.getter(name="intranetSlbId")
-    def intranet_slb_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        private network SLB ID.
-        """
-        return pulumi.get(self, "intranet_slb_id")
-
-    @intranet_slb_id.setter
-    def intranet_slb_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "intranet_slb_id", value)
-
-    @property
-    @pulumi.getter
-    def intranets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]]:
-        """
-        Bound public network SLB. The details see Block intranet.
-        """
-        return pulumi.get(self, "intranets")
-
-    @intranets.setter
-    def intranets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]]):
-        pulumi.set(self, "intranets", value)
 
     @property
     @pulumi.getter(name="jarStartArgs")
@@ -575,6 +519,20 @@ class ApplicationArgs:
     @memory.setter
     def memory(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="minReadyInstanceRatio")
+    def min_ready_instance_ratio(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        * `-1`: Initialization value, indicating that percentages are not used.
+        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+        """
+        return pulumi.get(self, "min_ready_instance_ratio")
+
+    @min_ready_instance_ratio.setter
+    def min_ready_instance_ratio(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_ready_instance_ratio", value)
 
     @property
     @pulumi.getter(name="minReadyInstances")
@@ -805,6 +763,18 @@ class ApplicationArgs:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="terminationGracePeriodSeconds")
     def termination_grace_period_seconds(self) -> Optional[pulumi.Input[int]]:
         """
@@ -933,17 +903,12 @@ class _ApplicationState:
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
-                 internet_ip: Optional[pulumi.Input[str]] = None,
-                 internet_slb_id: Optional[pulumi.Input[str]] = None,
-                 internets: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]] = None,
-                 intranet_ip: Optional[pulumi.Input[str]] = None,
-                 intranet_slb_id: Optional[pulumi.Input[str]] = None,
-                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
+                 min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  mount_desc: Optional[pulumi.Input[str]] = None,
                  mount_host: Optional[pulumi.Input[str]] = None,
@@ -965,6 +930,7 @@ class _ApplicationState:
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  sls_configs: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  tomcat_config: Optional[pulumi.Input[str]] = None,
@@ -991,19 +957,16 @@ class _ApplicationState:
         :param pulumi.Input[str] edas_container_version: The operating environment used by the Pandora application.
         :param pulumi.Input[str] enable_ahas: The enable ahas.
         :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
-        :param pulumi.Input[str] envs: The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        :param pulumi.Input[str] envs: Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
-        :param pulumi.Input[str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        :param pulumi.Input[str] internet_slb_id: public network SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]] internets: Bound private network SLB. The details see Block internet.
-        :param pulumi.Input[str] intranet_ip: Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        :param pulumi.Input[str] intranet_slb_id: private network SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]] intranets: Bound public network SLB. The details see Block intranet.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+               * `-1`: Initialization value, indicating that percentages are not used.
+               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         :param pulumi.Input[str] mount_desc: Mount description.
         :param pulumi.Input[str] mount_host: Mount point of NAS in application VPC.
@@ -1021,10 +984,11 @@ class _ApplicationState:
         :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        :param pulumi.Input[int] replicas: Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
         :param pulumi.Input[str] timezone: Time zone, the default value is Asia/Shanghai.
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
@@ -1069,18 +1033,6 @@ class _ApplicationState:
             pulumi.set(__self__, "envs", envs)
         if image_url is not None:
             pulumi.set(__self__, "image_url", image_url)
-        if internet_ip is not None:
-            pulumi.set(__self__, "internet_ip", internet_ip)
-        if internet_slb_id is not None:
-            pulumi.set(__self__, "internet_slb_id", internet_slb_id)
-        if internets is not None:
-            pulumi.set(__self__, "internets", internets)
-        if intranet_ip is not None:
-            pulumi.set(__self__, "intranet_ip", intranet_ip)
-        if intranet_slb_id is not None:
-            pulumi.set(__self__, "intranet_slb_id", intranet_slb_id)
-        if intranets is not None:
-            pulumi.set(__self__, "intranets", intranets)
         if jar_start_args is not None:
             pulumi.set(__self__, "jar_start_args", jar_start_args)
         if jar_start_options is not None:
@@ -1091,6 +1043,8 @@ class _ApplicationState:
             pulumi.set(__self__, "liveness", liveness)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if min_ready_instance_ratio is not None:
+            pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
             pulumi.set(__self__, "min_ready_instances", min_ready_instances)
         if mount_desc is not None:
@@ -1133,6 +1087,8 @@ class _ApplicationState:
             pulumi.set(__self__, "sls_configs", sls_configs)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if termination_grace_period_seconds is not None:
             pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
         if timezone is not None:
@@ -1336,7 +1292,7 @@ class _ApplicationState:
     @pulumi.getter
     def envs(self) -> Optional[pulumi.Input[str]]:
         """
-        The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         """
         return pulumi.get(self, "envs")
 
@@ -1355,78 +1311,6 @@ class _ApplicationState:
     @image_url.setter
     def image_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_url", value)
-
-    @property
-    @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        """
-        return pulumi.get(self, "internet_ip")
-
-    @internet_ip.setter
-    def internet_ip(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "internet_ip", value)
-
-    @property
-    @pulumi.getter(name="internetSlbId")
-    def internet_slb_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        public network SLB ID.
-        """
-        return pulumi.get(self, "internet_slb_id")
-
-    @internet_slb_id.setter
-    def internet_slb_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "internet_slb_id", value)
-
-    @property
-    @pulumi.getter
-    def internets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]]:
-        """
-        Bound private network SLB. The details see Block internet.
-        """
-        return pulumi.get(self, "internets")
-
-    @internets.setter
-    def internets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInternetArgs']]]]):
-        pulumi.set(self, "internets", value)
-
-    @property
-    @pulumi.getter(name="intranetIp")
-    def intranet_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        """
-        return pulumi.get(self, "intranet_ip")
-
-    @intranet_ip.setter
-    def intranet_ip(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "intranet_ip", value)
-
-    @property
-    @pulumi.getter(name="intranetSlbId")
-    def intranet_slb_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        private network SLB ID.
-        """
-        return pulumi.get(self, "intranet_slb_id")
-
-    @intranet_slb_id.setter
-    def intranet_slb_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "intranet_slb_id", value)
-
-    @property
-    @pulumi.getter
-    def intranets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]]:
-        """
-        Bound public network SLB. The details see Block intranet.
-        """
-        return pulumi.get(self, "intranets")
-
-    @intranets.setter
-    def intranets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationIntranetArgs']]]]):
-        pulumi.set(self, "intranets", value)
 
     @property
     @pulumi.getter(name="jarStartArgs")
@@ -1487,6 +1371,20 @@ class _ApplicationState:
     @memory.setter
     def memory(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="minReadyInstanceRatio")
+    def min_ready_instance_ratio(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        * `-1`: Initialization value, indicating that percentages are not used.
+        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+        """
+        return pulumi.get(self, "min_ready_instance_ratio")
+
+    @min_ready_instance_ratio.setter
+    def min_ready_instance_ratio(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_ready_instance_ratio", value)
 
     @property
     @pulumi.getter(name="minReadyInstances")
@@ -1696,7 +1594,7 @@ class _ApplicationState:
     @pulumi.getter
     def replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        Initial number of instances.
         """
         return pulumi.get(self, "replicas")
 
@@ -1739,6 +1637,18 @@ class _ApplicationState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="terminationGracePeriodSeconds")
@@ -1871,15 +1781,12 @@ class Application(pulumi.CustomResource):
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
-                 internet_slb_id: Optional[pulumi.Input[str]] = None,
-                 internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]]] = None,
-                 intranet_slb_id: Optional[pulumi.Input[str]] = None,
-                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
+                 min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  mount_desc: Optional[pulumi.Input[str]] = None,
                  mount_host: Optional[pulumi.Input[str]] = None,
@@ -1901,6 +1808,7 @@ class Application(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  sls_configs: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  tomcat_config: Optional[pulumi.Input[str]] = None,
@@ -1916,7 +1824,7 @@ class Application(pulumi.CustomResource):
 
         For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available in v1.161.0+.
 
         ## Example Usage
 
@@ -1981,17 +1889,16 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] edas_container_version: The operating environment used by the Pandora application.
         :param pulumi.Input[str] enable_ahas: The enable ahas.
         :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
-        :param pulumi.Input[str] envs: The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        :param pulumi.Input[str] envs: Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
-        :param pulumi.Input[str] internet_slb_id: public network SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]] internets: Bound private network SLB. The details see Block internet.
-        :param pulumi.Input[str] intranet_slb_id: private network SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]] intranets: Bound public network SLB. The details see Block intranet.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+               * `-1`: Initialization value, indicating that percentages are not used.
+               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         :param pulumi.Input[str] mount_desc: Mount description.
         :param pulumi.Input[str] mount_host: Mount point of NAS in application VPC.
@@ -2009,10 +1916,11 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        :param pulumi.Input[int] replicas: Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
         :param pulumi.Input[str] timezone: Time zone, the default value is Asia/Shanghai.
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
@@ -2034,7 +1942,7 @@ class Application(pulumi.CustomResource):
 
         For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available in v1.161.0+.
 
         ## Example Usage
 
@@ -2114,15 +2022,12 @@ class Application(pulumi.CustomResource):
                  enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
                  envs: Optional[pulumi.Input[str]] = None,
                  image_url: Optional[pulumi.Input[str]] = None,
-                 internet_slb_id: Optional[pulumi.Input[str]] = None,
-                 internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]]] = None,
-                 intranet_slb_id: Optional[pulumi.Input[str]] = None,
-                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]]] = None,
                  jar_start_args: Optional[pulumi.Input[str]] = None,
                  jar_start_options: Optional[pulumi.Input[str]] = None,
                  jdk: Optional[pulumi.Input[str]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
+                 min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  mount_desc: Optional[pulumi.Input[str]] = None,
                  mount_host: Optional[pulumi.Input[str]] = None,
@@ -2144,6 +2049,7 @@ class Application(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  sls_configs: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  tomcat_config: Optional[pulumi.Input[str]] = None,
@@ -2184,15 +2090,12 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["enable_grey_tag_route"] = enable_grey_tag_route
             __props__.__dict__["envs"] = envs
             __props__.__dict__["image_url"] = image_url
-            __props__.__dict__["internet_slb_id"] = internet_slb_id
-            __props__.__dict__["internets"] = internets
-            __props__.__dict__["intranet_slb_id"] = intranet_slb_id
-            __props__.__dict__["intranets"] = intranets
             __props__.__dict__["jar_start_args"] = jar_start_args
             __props__.__dict__["jar_start_options"] = jar_start_options
             __props__.__dict__["jdk"] = jdk
             __props__.__dict__["liveness"] = liveness
             __props__.__dict__["memory"] = memory
+            __props__.__dict__["min_ready_instance_ratio"] = min_ready_instance_ratio
             __props__.__dict__["min_ready_instances"] = min_ready_instances
             __props__.__dict__["mount_desc"] = mount_desc
             __props__.__dict__["mount_host"] = mount_host
@@ -2218,6 +2121,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["sls_configs"] = sls_configs
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["termination_grace_period_seconds"] = termination_grace_period_seconds
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["tomcat_config"] = tomcat_config
@@ -2227,8 +2131,6 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["war_start_options"] = war_start_options
             __props__.__dict__["web_container"] = web_container
-            __props__.__dict__["internet_ip"] = None
-            __props__.__dict__["intranet_ip"] = None
         super(Application, __self__).__init__(
             'alicloud:sae/application:Application',
             resource_name,
@@ -2256,17 +2158,12 @@ class Application(pulumi.CustomResource):
             enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
             envs: Optional[pulumi.Input[str]] = None,
             image_url: Optional[pulumi.Input[str]] = None,
-            internet_ip: Optional[pulumi.Input[str]] = None,
-            internet_slb_id: Optional[pulumi.Input[str]] = None,
-            internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]]] = None,
-            intranet_ip: Optional[pulumi.Input[str]] = None,
-            intranet_slb_id: Optional[pulumi.Input[str]] = None,
-            intranets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]]] = None,
             jar_start_args: Optional[pulumi.Input[str]] = None,
             jar_start_options: Optional[pulumi.Input[str]] = None,
             jdk: Optional[pulumi.Input[str]] = None,
             liveness: Optional[pulumi.Input[str]] = None,
             memory: Optional[pulumi.Input[int]] = None,
+            min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
             min_ready_instances: Optional[pulumi.Input[int]] = None,
             mount_desc: Optional[pulumi.Input[str]] = None,
             mount_host: Optional[pulumi.Input[str]] = None,
@@ -2288,6 +2185,7 @@ class Application(pulumi.CustomResource):
             security_group_id: Optional[pulumi.Input[str]] = None,
             sls_configs: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             tomcat_config: Optional[pulumi.Input[str]] = None,
@@ -2319,19 +2217,16 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] edas_container_version: The operating environment used by the Pandora application.
         :param pulumi.Input[str] enable_ahas: The enable ahas.
         :param pulumi.Input[bool] enable_grey_tag_route: The enable grey tag route.
-        :param pulumi.Input[str] envs: The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        :param pulumi.Input[str] envs: Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         :param pulumi.Input[str] image_url: Mirror address. Only Image type applications can configure the mirror address.
-        :param pulumi.Input[str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        :param pulumi.Input[str] internet_slb_id: public network SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInternetArgs']]]] internets: Bound private network SLB. The details see Block internet.
-        :param pulumi.Input[str] intranet_ip: Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        :param pulumi.Input[str] intranet_slb_id: private network SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationIntranetArgs']]]] intranets: Bound public network SLB. The details see Block intranet.
         :param pulumi.Input[str] jar_start_args: The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jar_start_options: The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+               * `-1`: Initialization value, indicating that percentages are not used.
+               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         :param pulumi.Input[str] mount_desc: Mount description.
         :param pulumi.Input[str] mount_host: Mount point of NAS in application VPC.
@@ -2349,10 +2244,11 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        :param pulumi.Input[int] replicas: Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        :param pulumi.Input[int] replicas: Initial number of instances.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
         :param pulumi.Input[str] timezone: Time zone, the default value is Asia/Shanghai.
         :param pulumi.Input[str] tomcat_config: Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
@@ -2384,17 +2280,12 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["enable_grey_tag_route"] = enable_grey_tag_route
         __props__.__dict__["envs"] = envs
         __props__.__dict__["image_url"] = image_url
-        __props__.__dict__["internet_ip"] = internet_ip
-        __props__.__dict__["internet_slb_id"] = internet_slb_id
-        __props__.__dict__["internets"] = internets
-        __props__.__dict__["intranet_ip"] = intranet_ip
-        __props__.__dict__["intranet_slb_id"] = intranet_slb_id
-        __props__.__dict__["intranets"] = intranets
         __props__.__dict__["jar_start_args"] = jar_start_args
         __props__.__dict__["jar_start_options"] = jar_start_options
         __props__.__dict__["jdk"] = jdk
         __props__.__dict__["liveness"] = liveness
         __props__.__dict__["memory"] = memory
+        __props__.__dict__["min_ready_instance_ratio"] = min_ready_instance_ratio
         __props__.__dict__["min_ready_instances"] = min_ready_instances
         __props__.__dict__["mount_desc"] = mount_desc
         __props__.__dict__["mount_host"] = mount_host
@@ -2416,6 +2307,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["sls_configs"] = sls_configs
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["termination_grace_period_seconds"] = termination_grace_period_seconds
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["tomcat_config"] = tomcat_config
@@ -2551,7 +2443,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def envs(self) -> pulumi.Output[str]:
         """
-        The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         """
         return pulumi.get(self, "envs")
 
@@ -2562,54 +2454,6 @@ class Application(pulumi.CustomResource):
         Mirror address. Only Image type applications can configure the mirror address.
         """
         return pulumi.get(self, "image_url")
-
-    @property
-    @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> pulumi.Output[str]:
-        """
-        Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        """
-        return pulumi.get(self, "internet_ip")
-
-    @property
-    @pulumi.getter(name="internetSlbId")
-    def internet_slb_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        public network SLB ID.
-        """
-        return pulumi.get(self, "internet_slb_id")
-
-    @property
-    @pulumi.getter
-    def internets(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationInternet']]]:
-        """
-        Bound private network SLB. The details see Block internet.
-        """
-        return pulumi.get(self, "internets")
-
-    @property
-    @pulumi.getter(name="intranetIp")
-    def intranet_ip(self) -> pulumi.Output[str]:
-        """
-        Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        """
-        return pulumi.get(self, "intranet_ip")
-
-    @property
-    @pulumi.getter(name="intranetSlbId")
-    def intranet_slb_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        private network SLB ID.
-        """
-        return pulumi.get(self, "intranet_slb_id")
-
-    @property
-    @pulumi.getter
-    def intranets(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationIntranet']]]:
-        """
-        Bound public network SLB. The details see Block intranet.
-        """
-        return pulumi.get(self, "intranets")
 
     @property
     @pulumi.getter(name="jarStartArgs")
@@ -2650,6 +2494,16 @@ class Application(pulumi.CustomResource):
         The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
         """
         return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="minReadyInstanceRatio")
+    def min_ready_instance_ratio(self) -> pulumi.Output[int]:
+        """
+        Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        * `-1`: Initialization value, indicating that percentages are not used.
+        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+        """
+        return pulumi.get(self, "min_ready_instance_ratio")
 
     @property
     @pulumi.getter(name="minReadyInstances")
@@ -2791,7 +2645,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def replicas(self) -> pulumi.Output[int]:
         """
-        Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        Initial number of instances.
         """
         return pulumi.get(self, "replicas")
 
@@ -2818,6 +2672,14 @@ class Application(pulumi.CustomResource):
         The status of the resource. Valid values: `RUNNING`, `STOPPED`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="terminationGracePeriodSeconds")

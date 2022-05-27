@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Hbr
     public partial class EcsBackupClient : Pulumi.CustomResource
     {
         /// <summary>
-        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
         /// </summary>
         [Output("dataNetworkType")]
         public Output<string> DataNetworkType { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class EcsBackupClientArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
         /// </summary>
         [Input("dataNetworkType")]
         public Input<string>? DataNetworkType { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class EcsBackupClientState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+        /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
         /// </summary>
         [Input("dataNetworkType")]
         public Input<string>? DataNetworkType { get; set; }

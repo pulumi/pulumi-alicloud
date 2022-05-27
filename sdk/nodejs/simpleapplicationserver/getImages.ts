@@ -17,6 +17,7 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
         "imageType": args.imageType,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "platform": args.platform,
     }, opts);
 }
 
@@ -34,6 +35,10 @@ export interface GetImagesArgs {
     imageType?: string;
     nameRegex?: string;
     outputFile?: string;
+    /**
+     * The platform of Plan supported.
+     */
+    platform?: string;
 }
 
 /**
@@ -50,6 +55,7 @@ export interface GetImagesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+    readonly platform?: string;
 }
 
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
@@ -70,4 +76,8 @@ export interface GetImagesOutputArgs {
     imageType?: pulumi.Input<string>;
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    /**
+     * The platform of Plan supported.
+     */
+    platform?: pulumi.Input<string>;
 }

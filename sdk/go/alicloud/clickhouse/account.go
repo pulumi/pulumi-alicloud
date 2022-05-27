@@ -26,6 +26,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/clickhouse"
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 // )
@@ -41,6 +42,25 @@ import (
 // 		if param := cfg.Get("pwd"); param != "" {
 // 			pwd = param
 // 		}
+// 		defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
+// 			Current: pulumi.BoolRef(true),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// 			NameRegex: pulumi.StringRef("default-NODELETING"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// 			VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+// 			ZoneId: pulumi.StringRef(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
 // 		defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
 // 			DbClusterVersion:     pulumi.String("20.3.10.75"),
 // 			Category:             pulumi.String("Basic"),
@@ -51,7 +71,7 @@ import (
 // 			PaymentType:          pulumi.String("PayAsYouGo"),
 // 			DbNodeStorage:        pulumi.String("500"),
 // 			StorageType:          pulumi.String("cloud_essd"),
-// 			VswitchId:            pulumi.String("your_vswitch_id"),
+// 			VswitchId:            pulumi.String(defaultSwitches.Vswitches[0].Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -86,11 +106,26 @@ type Account struct {
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
+	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+	AllowDatabases pulumi.StringOutput `pulumi:"allowDatabases"`
+	// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+	AllowDictionaries pulumi.StringOutput `pulumi:"allowDictionaries"`
 	// The db cluster id.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
+	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+	// -`true`: grants DDL permissions to the database account.
+	// -`false`: does not grant DDL permissions to the database account.
+	DdlAuthority pulumi.BoolOutput `pulumi:"ddlAuthority"`
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	DmlAuthority pulumi.StringOutput `pulumi:"dmlAuthority"`
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	Type   pulumi.StringOutput `pulumi:"type"`
+	// The list of all databases. Separate databases with commas (,).
+	TotalDatabases pulumi.StringOutput `pulumi:"totalDatabases"`
+	// The list of all dictionaries. Separate dictionaries with commas (,).
+	TotalDictionaries pulumi.StringOutput `pulumi:"totalDictionaries"`
+	// The type of the database account. Valid values: `Normal` or `Super`.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
@@ -137,11 +172,26 @@ type accountState struct {
 	AccountName *string `pulumi:"accountName"`
 	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword *string `pulumi:"accountPassword"`
+	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+	AllowDatabases *string `pulumi:"allowDatabases"`
+	// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+	AllowDictionaries *string `pulumi:"allowDictionaries"`
 	// The db cluster id.
 	DbClusterId *string `pulumi:"dbClusterId"`
+	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+	// -`true`: grants DDL permissions to the database account.
+	// -`false`: does not grant DDL permissions to the database account.
+	DdlAuthority *bool `pulumi:"ddlAuthority"`
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	DmlAuthority *string `pulumi:"dmlAuthority"`
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status *string `pulumi:"status"`
-	Type   *string `pulumi:"type"`
+	// The list of all databases. Separate databases with commas (,).
+	TotalDatabases *string `pulumi:"totalDatabases"`
+	// The list of all dictionaries. Separate dictionaries with commas (,).
+	TotalDictionaries *string `pulumi:"totalDictionaries"`
+	// The type of the database account. Valid values: `Normal` or `Super`.
+	Type *string `pulumi:"type"`
 }
 
 type AccountState struct {
@@ -151,11 +201,26 @@ type AccountState struct {
 	AccountName pulumi.StringPtrInput
 	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword pulumi.StringPtrInput
+	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+	AllowDatabases pulumi.StringPtrInput
+	// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+	AllowDictionaries pulumi.StringPtrInput
 	// The db cluster id.
 	DbClusterId pulumi.StringPtrInput
+	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+	// -`true`: grants DDL permissions to the database account.
+	// -`false`: does not grant DDL permissions to the database account.
+	DdlAuthority pulumi.BoolPtrInput
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	DmlAuthority pulumi.StringPtrInput
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status pulumi.StringPtrInput
-	Type   pulumi.StringPtrInput
+	// The list of all databases. Separate databases with commas (,).
+	TotalDatabases pulumi.StringPtrInput
+	// The list of all dictionaries. Separate dictionaries with commas (,).
+	TotalDictionaries pulumi.StringPtrInput
+	// The type of the database account. Valid values: `Normal` or `Super`.
+	Type pulumi.StringPtrInput
 }
 
 func (AccountState) ElementType() reflect.Type {
@@ -169,8 +234,22 @@ type accountArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword string `pulumi:"accountPassword"`
+	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+	AllowDatabases *string `pulumi:"allowDatabases"`
+	// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+	AllowDictionaries *string `pulumi:"allowDictionaries"`
 	// The db cluster id.
 	DbClusterId string `pulumi:"dbClusterId"`
+	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+	// -`true`: grants DDL permissions to the database account.
+	// -`false`: does not grant DDL permissions to the database account.
+	DdlAuthority *bool `pulumi:"ddlAuthority"`
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	DmlAuthority *string `pulumi:"dmlAuthority"`
+	// The list of all databases. Separate databases with commas (,).
+	TotalDatabases *string `pulumi:"totalDatabases"`
+	// The list of all dictionaries. Separate dictionaries with commas (,).
+	TotalDictionaries *string `pulumi:"totalDictionaries"`
 }
 
 // The set of arguments for constructing a Account resource.
@@ -181,8 +260,22 @@ type AccountArgs struct {
 	AccountName pulumi.StringInput
 	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword pulumi.StringInput
+	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+	AllowDatabases pulumi.StringPtrInput
+	// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+	AllowDictionaries pulumi.StringPtrInput
 	// The db cluster id.
 	DbClusterId pulumi.StringInput
+	// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+	// -`true`: grants DDL permissions to the database account.
+	// -`false`: does not grant DDL permissions to the database account.
+	DdlAuthority pulumi.BoolPtrInput
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	DmlAuthority pulumi.StringPtrInput
+	// The list of all databases. Separate databases with commas (,).
+	TotalDatabases pulumi.StringPtrInput
+	// The list of all dictionaries. Separate dictionaries with commas (,).
+	TotalDictionaries pulumi.StringPtrInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {

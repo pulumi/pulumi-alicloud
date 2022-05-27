@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly int? MinReplicas;
         /// <summary>
-        /// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+        /// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         /// </summary>
         public readonly int? TargetReplicas;
 

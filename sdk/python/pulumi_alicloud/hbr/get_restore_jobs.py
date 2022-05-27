@@ -175,7 +175,7 @@ def get_restore_jobs(output_file: Optional[str] = None,
 
     :param Sequence[str] restore_ids: The list of restore job IDs.
     :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
-    :param Sequence[str] source_types: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+    :param Sequence[str] source_types: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
     :param str status: The status of restore job.
     :param Sequence[str] target_buckets: The name of target ofo OSS bucket.
     :param Sequence[str] target_file_system_ids: The ID of destination file system.
@@ -246,7 +246,7 @@ def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] =
 
     :param Sequence[str] restore_ids: The list of restore job IDs.
     :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
-    :param Sequence[str] source_types: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+    :param Sequence[str] source_types: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
     :param str status: The status of restore job.
     :param Sequence[str] target_buckets: The name of target ofo OSS bucket.
     :param Sequence[str] target_file_system_ids: The ID of destination file system.

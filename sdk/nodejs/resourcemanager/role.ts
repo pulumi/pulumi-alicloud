@@ -91,6 +91,9 @@ export class Role extends pulumi.CustomResource {
      * Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
      */
     public readonly maxSessionDuration!: pulumi.Output<number | undefined>;
+    /**
+     * This ID of Resource Manager role. The value is set to `roleName`.
+     */
     public /*out*/ readonly roleId!: pulumi.Output<string>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
@@ -163,6 +166,9 @@ export interface RoleState {
      * Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
      */
     maxSessionDuration?: pulumi.Input<number>;
+    /**
+     * This ID of Resource Manager role. The value is set to `roleName`.
+     */
     roleId?: pulumi.Input<string>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".

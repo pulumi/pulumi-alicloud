@@ -36,6 +36,7 @@ class RdsUpgradeDbInstanceArgs:
                  db_instance_description: Optional[pulumi.Input[str]] = None,
                  db_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
@@ -110,6 +111,9 @@ class RdsUpgradeDbInstanceArgs:
         :param pulumi.Input[str] db_instance_description: The db instance description.
         :param pulumi.Input[str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
@@ -189,6 +193,8 @@ class RdsUpgradeDbInstanceArgs:
             pulumi.set(__self__, "db_name", db_name)
         if dedicated_host_group_id is not None:
             pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
@@ -523,6 +529,20 @@ class RdsUpgradeDbInstanceArgs:
     @dedicated_host_group_id.setter
     def dedicated_host_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dedicated_host_group_id", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The switch of delete protection. Valid values:
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -931,6 +951,7 @@ class _RdsUpgradeDbInstanceState:
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
@@ -997,6 +1018,9 @@ class _RdsUpgradeDbInstanceState:
                * **cloud_essd3**: ESSDs of PL3.
         :param pulumi.Input[str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
@@ -1091,6 +1115,8 @@ class _RdsUpgradeDbInstanceState:
             pulumi.set(__self__, "db_name", db_name)
         if dedicated_host_group_id is not None:
             pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
         if effective_time is not None:
@@ -1378,6 +1404,20 @@ class _RdsUpgradeDbInstanceState:
     @dedicated_host_group_id.setter
     def dedicated_host_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dedicated_host_group_id", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The switch of delete protection. Valid values:
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -1856,6 +1896,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
@@ -1979,6 +2020,9 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                * **cloud_essd3**: ESSDs of PL3.
         :param pulumi.Input[str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
@@ -2133,6 +2177,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_name: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
@@ -2205,6 +2250,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
             __props__.__dict__["db_name"] = db_name
             __props__.__dict__["dedicated_host_group_id"] = dedicated_host_group_id
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["direction"] = direction
             __props__.__dict__["effective_time"] = effective_time
             __props__.__dict__["encryption_key"] = encryption_key
@@ -2279,6 +2325,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
             db_name: Optional[pulumi.Input[str]] = None,
             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             direction: Optional[pulumi.Input[str]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[str]] = None,
@@ -2350,6 +2397,9 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                * **cloud_essd3**: ESSDs of PL3.
         :param pulumi.Input[str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
@@ -2431,6 +2481,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
         __props__.__dict__["db_name"] = db_name
         __props__.__dict__["dedicated_host_group_id"] = dedicated_host_group_id
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["direction"] = direction
         __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["encryption_key"] = encryption_key
@@ -2615,6 +2666,16 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
         """
         return pulumi.get(self, "dedicated_host_group_id")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        The switch of delete protection. Valid values:
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

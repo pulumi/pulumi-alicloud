@@ -69,6 +69,9 @@ namespace Pulumi.AliCloud.ResourceManager
         [Output("regionStatuses")]
         public Output<ImmutableArray<Outputs.ResourceGroupRegionStatus>> RegionStatuses { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
 
@@ -136,6 +139,9 @@ namespace Pulumi.AliCloud.ResourceManager
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
 
@@ -172,6 +178,9 @@ namespace Pulumi.AliCloud.ResourceManager
             set => _regionStatuses = value;
         }
 
+        /// <summary>
+        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
 

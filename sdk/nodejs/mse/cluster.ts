@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  *     aclEntryLists: ["127.0.0.1/32"],
  *     clusterAliasName: "tf-testAccMseCluster",
  *     clusterSpecification: "MSE_SC_1_2_200_c",
- *     clusterType: "Eureka",
- *     clusterVersion: "EUREKA_1_9_3",
+ *     clusterType: "Nacos-Ans",
+ *     clusterVersion: "NACOS_ANS_1_2_1",
  *     instanceCount: 1,
  *     netType: "privatenet",
  *     pubNetworkFlow: "1",
@@ -72,6 +72,10 @@ export class Cluster extends pulumi.CustomResource {
      * The alias of MSE Cluster.
      */
     public readonly clusterAliasName!: pulumi.Output<string | undefined>;
+    /**
+     * (Available in v1.162.0+)  The id of Cluster.
+     */
+    public /*out*/ readonly clusterId!: pulumi.Output<string>;
     /**
      * The engine specification of MSE Cluster. Valid values:
      * `MSE_SC_1_2_200_c`：1C2G
@@ -136,6 +140,7 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["aclEntryLists"] = state ? state.aclEntryLists : undefined;
             resourceInputs["clusterAliasName"] = state ? state.clusterAliasName : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["clusterSpecification"] = state ? state.clusterSpecification : undefined;
             resourceInputs["clusterType"] = state ? state.clusterType : undefined;
             resourceInputs["clusterVersion"] = state ? state.clusterVersion : undefined;
@@ -176,6 +181,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["pubNetworkFlow"] = args ? args.pubNetworkFlow : undefined;
             resourceInputs["pubSlbSpecification"] = args ? args.pubSlbSpecification : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -195,6 +201,10 @@ export interface ClusterState {
      * The alias of MSE Cluster.
      */
     clusterAliasName?: pulumi.Input<string>;
+    /**
+     * (Available in v1.162.0+)  The id of Cluster.
+     */
+    clusterId?: pulumi.Input<string>;
     /**
      * The engine specification of MSE Cluster. Valid values:
      * `MSE_SC_1_2_200_c`：1C2G

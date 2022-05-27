@@ -152,7 +152,7 @@ import (
 // CEN RouteMap can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+//  $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
 // ```
 type RouteMap struct {
 	pulumi.CustomResourceState
@@ -196,7 +196,8 @@ type RouteMap struct {
 	// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
 	PrependAsPaths pulumi.StringArrayOutput `pulumi:"prependAsPaths"`
 	// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
-	Priority   pulumi.IntOutput    `pulumi:"priority"`
+	Priority pulumi.IntOutput `pulumi:"priority"`
+	// ID of the RouteMap. It is available in 1.161.0+.
 	RouteMapId pulumi.StringOutput `pulumi:"routeMapId"`
 	// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
 	RouteTypes pulumi.StringArrayOutput `pulumi:"routeTypes"`
@@ -212,6 +213,8 @@ type RouteMap struct {
 	SourceRouteTableIds pulumi.StringArrayOutput `pulumi:"sourceRouteTableIds"`
 	// (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+	TransitRouterRouteTableId pulumi.StringOutput `pulumi:"transitRouterRouteTableId"`
 	// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
 	TransmitDirection pulumi.StringOutput `pulumi:"transmitDirection"`
 }
@@ -299,7 +302,8 @@ type routeMapState struct {
 	// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
 	PrependAsPaths []string `pulumi:"prependAsPaths"`
 	// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
-	Priority   *int    `pulumi:"priority"`
+	Priority *int `pulumi:"priority"`
+	// ID of the RouteMap. It is available in 1.161.0+.
 	RouteMapId *string `pulumi:"routeMapId"`
 	// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
 	RouteTypes []string `pulumi:"routeTypes"`
@@ -315,6 +319,8 @@ type routeMapState struct {
 	SourceRouteTableIds []string `pulumi:"sourceRouteTableIds"`
 	// (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
 	Status *string `pulumi:"status"`
+	// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+	TransitRouterRouteTableId *string `pulumi:"transitRouterRouteTableId"`
 	// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
 	TransmitDirection *string `pulumi:"transmitDirection"`
 }
@@ -359,7 +365,8 @@ type RouteMapState struct {
 	// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
 	PrependAsPaths pulumi.StringArrayInput
 	// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
-	Priority   pulumi.IntPtrInput
+	Priority pulumi.IntPtrInput
+	// ID of the RouteMap. It is available in 1.161.0+.
 	RouteMapId pulumi.StringPtrInput
 	// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
 	RouteTypes pulumi.StringArrayInput
@@ -375,6 +382,8 @@ type RouteMapState struct {
 	SourceRouteTableIds pulumi.StringArrayInput
 	// (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
 	Status pulumi.StringPtrInput
+	// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+	TransitRouterRouteTableId pulumi.StringPtrInput
 	// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
 	TransmitDirection pulumi.StringPtrInput
 }
@@ -436,6 +445,8 @@ type routeMapArgs struct {
 	SourceRegionIds []string `pulumi:"sourceRegionIds"`
 	// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
 	SourceRouteTableIds []string `pulumi:"sourceRouteTableIds"`
+	// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+	TransitRouterRouteTableId *string `pulumi:"transitRouterRouteTableId"`
 	// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
 	TransmitDirection string `pulumi:"transmitDirection"`
 }
@@ -494,6 +505,8 @@ type RouteMapArgs struct {
 	SourceRegionIds pulumi.StringArrayInput
 	// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
 	SourceRouteTableIds pulumi.StringArrayInput
+	// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+	TransitRouterRouteTableId pulumi.StringPtrInput
 	// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
 	TransmitDirection pulumi.StringInput
 }

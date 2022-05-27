@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *         "10.0.1.0/24",
  *     ],
  *     effectImmediately: true,
- *     ikeConfigs: [{
+ *     ikeConfig: {
  *         ikeAuthAlg: "md5",
  *         ikeEncAlg: "des",
  *         ikeVersion: "ikev1",
@@ -47,13 +47,13 @@ import * as utilities from "../utilities";
  *         ikePfs: "group1",
  *         ikeRemoteId: "testbob2",
  *         ikeLocalId: "testalice2",
- *     }],
- *     ipsecConfigs: [{
+ *     },
+ *     ipsecConfig: {
  *         ipsecPfs: "group5",
  *         ipsecEncAlg: "des",
  *         ipsecAuthAlg: "md5",
  *         ipsecLifetime: 8640,
- *     }],
+ *     },
  * });
  * ```
  *
@@ -94,6 +94,10 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
+     * The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+     */
+    public readonly bgpConfig!: pulumi.Output<outputs.vpn.ConnectionBgpConfig>;
+    /**
      * The ID of the customer gateway.
      */
     public readonly customerGatewayId!: pulumi.Output<string>;
@@ -102,13 +106,25 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly effectImmediately!: pulumi.Output<boolean | undefined>;
     /**
-     * The configurations of phase-one negotiation.
+     * Whether to enable NAT traversal.
      */
-    public readonly ikeConfigs!: pulumi.Output<outputs.vpn.ConnectionIkeConfig[]>;
+    public readonly enableDpd!: pulumi.Output<boolean>;
     /**
-     * The configurations of phase-two negotiation.
+     * Whether to enable NAT traversal.
      */
-    public readonly ipsecConfigs!: pulumi.Output<outputs.vpn.ConnectionIpsecConfig[]>;
+    public readonly enableNatTraversal!: pulumi.Output<boolean>;
+    /**
+     * The health check configurations. See the following `Block healthCheckConfig`.
+     */
+    public readonly healthCheckConfig!: pulumi.Output<outputs.vpn.ConnectionHealthCheckConfig>;
+    /**
+     * The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+     */
+    public readonly ikeConfig!: pulumi.Output<outputs.vpn.ConnectionIkeConfig>;
+    /**
+     * The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+     */
+    public readonly ipsecConfig!: pulumi.Output<outputs.vpn.ConnectionIpsecConfig>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */
@@ -143,10 +159,14 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            resourceInputs["bgpConfig"] = state ? state.bgpConfig : undefined;
             resourceInputs["customerGatewayId"] = state ? state.customerGatewayId : undefined;
             resourceInputs["effectImmediately"] = state ? state.effectImmediately : undefined;
-            resourceInputs["ikeConfigs"] = state ? state.ikeConfigs : undefined;
-            resourceInputs["ipsecConfigs"] = state ? state.ipsecConfigs : undefined;
+            resourceInputs["enableDpd"] = state ? state.enableDpd : undefined;
+            resourceInputs["enableNatTraversal"] = state ? state.enableNatTraversal : undefined;
+            resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
+            resourceInputs["ikeConfig"] = state ? state.ikeConfig : undefined;
+            resourceInputs["ipsecConfig"] = state ? state.ipsecConfig : undefined;
             resourceInputs["localSubnets"] = state ? state.localSubnets : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["remoteSubnets"] = state ? state.remoteSubnets : undefined;
@@ -166,10 +186,14 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
+            resourceInputs["bgpConfig"] = args ? args.bgpConfig : undefined;
             resourceInputs["customerGatewayId"] = args ? args.customerGatewayId : undefined;
             resourceInputs["effectImmediately"] = args ? args.effectImmediately : undefined;
-            resourceInputs["ikeConfigs"] = args ? args.ikeConfigs : undefined;
-            resourceInputs["ipsecConfigs"] = args ? args.ipsecConfigs : undefined;
+            resourceInputs["enableDpd"] = args ? args.enableDpd : undefined;
+            resourceInputs["enableNatTraversal"] = args ? args.enableNatTraversal : undefined;
+            resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
+            resourceInputs["ikeConfig"] = args ? args.ikeConfig : undefined;
+            resourceInputs["ipsecConfig"] = args ? args.ipsecConfig : undefined;
             resourceInputs["localSubnets"] = args ? args.localSubnets : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["remoteSubnets"] = args ? args.remoteSubnets : undefined;
@@ -186,6 +210,10 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
+     * The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+     */
+    bgpConfig?: pulumi.Input<inputs.vpn.ConnectionBgpConfig>;
+    /**
      * The ID of the customer gateway.
      */
     customerGatewayId?: pulumi.Input<string>;
@@ -194,13 +222,25 @@ export interface ConnectionState {
      */
     effectImmediately?: pulumi.Input<boolean>;
     /**
-     * The configurations of phase-one negotiation.
+     * Whether to enable NAT traversal.
      */
-    ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIkeConfig>[]>;
+    enableDpd?: pulumi.Input<boolean>;
     /**
-     * The configurations of phase-two negotiation.
+     * Whether to enable NAT traversal.
      */
-    ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIpsecConfig>[]>;
+    enableNatTraversal?: pulumi.Input<boolean>;
+    /**
+     * The health check configurations. See the following `Block healthCheckConfig`.
+     */
+    healthCheckConfig?: pulumi.Input<inputs.vpn.ConnectionHealthCheckConfig>;
+    /**
+     * The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+     */
+    ikeConfig?: pulumi.Input<inputs.vpn.ConnectionIkeConfig>;
+    /**
+     * The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+     */
+    ipsecConfig?: pulumi.Input<inputs.vpn.ConnectionIpsecConfig>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */
@@ -228,6 +268,10 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
+     * The configurations of the BGP routing protocol. See the following `Block bgpConfig`.
+     */
+    bgpConfig?: pulumi.Input<inputs.vpn.ConnectionBgpConfig>;
+    /**
      * The ID of the customer gateway.
      */
     customerGatewayId: pulumi.Input<string>;
@@ -236,13 +280,25 @@ export interface ConnectionArgs {
      */
     effectImmediately?: pulumi.Input<boolean>;
     /**
-     * The configurations of phase-one negotiation.
+     * Whether to enable NAT traversal.
      */
-    ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIkeConfig>[]>;
+    enableDpd?: pulumi.Input<boolean>;
     /**
-     * The configurations of phase-two negotiation.
+     * Whether to enable NAT traversal.
      */
-    ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIpsecConfig>[]>;
+    enableNatTraversal?: pulumi.Input<boolean>;
+    /**
+     * The health check configurations. See the following `Block healthCheckConfig`.
+     */
+    healthCheckConfig?: pulumi.Input<inputs.vpn.ConnectionHealthCheckConfig>;
+    /**
+     * The configurations of phase-one negotiation. See the following `Block ikeConfig`.
+     */
+    ikeConfig?: pulumi.Input<inputs.vpn.ConnectionIkeConfig>;
+    /**
+     * The configurations of phase-two negotiation. See the following `Block ipsecConfig`.
+     */
+    ipsecConfig?: pulumi.Input<inputs.vpn.ConnectionIpsecConfig>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */

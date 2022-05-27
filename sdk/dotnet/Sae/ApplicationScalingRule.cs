@@ -63,66 +63,60 @@ namespace Pulumi.AliCloud.Sae
     ///             ScalingRuleName = "example-value",
     ///             ScalingRuleEnable = true,
     ///             ScalingRuleType = "mix",
-    ///             ScalingRuleTimers = 
+    ///             ScalingRuleTimer = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerArgs
     ///             {
-    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerArgs
+    ///                 BeginDate = "2022-02-25",
+    ///                 EndDate = "2022-03-25",
+    ///                 Period = "* * *",
+    ///                 Schedules = 
     ///                 {
-    ///                     BeginDate = "2022-02-25",
-    ///                     EndDate = "2022-03-25",
-    ///                     Period = "* * *",
-    ///                     Schedules = 
+    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
     ///                     {
-    ///                         new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
-    ///                         {
-    ///                             AtTime = "08:00",
-    ///                             MaxReplicas = 10,
-    ///                             MinReplicas = 3,
-    ///                         },
-    ///                         new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
-    ///                         {
-    ///                             AtTime = "20:00",
-    ///                             MaxReplicas = 50,
-    ///                             MinReplicas = 3,
-    ///                         },
+    ///                         AtTime = "08:00",
+    ///                         MaxReplicas = 10,
+    ///                         MinReplicas = 3,
+    ///                     },
+    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
+    ///                     {
+    ///                         AtTime = "20:00",
+    ///                         MaxReplicas = 50,
+    ///                         MinReplicas = 3,
     ///                     },
     ///                 },
     ///             },
-    ///             ScalingRuleMetrics = 
+    ///             ScalingRuleMetric = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricArgs
     ///             {
-    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricArgs
+    ///                 MaxReplicas = 50,
+    ///                 MinReplicas = 3,
+    ///                 Metrics = 
     ///                 {
-    ///                     MaxReplicas = 50,
-    ///                     MinReplicas = 3,
-    ///                     Metrics = 
+    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
     ///                     {
-    ///                         new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
-    ///                         {
-    ///                             MetricType = "CPU",
-    ///                             MetricTargetAverageUtilization = 20,
-    ///                         },
-    ///                         new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
-    ///                         {
-    ///                             MetricType = "MEMORY",
-    ///                             MetricTargetAverageUtilization = 30,
-    ///                         },
-    ///                         new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
-    ///                         {
-    ///                             MetricType = "tcpActiveConn",
-    ///                             MetricTargetAverageUtilization = 20,
-    ///                         },
+    ///                         MetricType = "CPU",
+    ///                         MetricTargetAverageUtilization = 20,
     ///                     },
-    ///                     ScaleUpRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs
+    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
     ///                     {
-    ///                         Step = 10,
-    ///                         Disabled = false,
-    ///                         StabilizationWindowSeconds = 0,
+    ///                         MetricType = "MEMORY",
+    ///                         MetricTargetAverageUtilization = 30,
     ///                     },
-    ///                     ScaleDownRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs
+    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
     ///                     {
-    ///                         Step = 10,
-    ///                         Disabled = false,
-    ///                         StabilizationWindowSeconds = 10,
+    ///                         MetricType = "tcpActiveConn",
+    ///                         MetricTargetAverageUtilization = 20,
     ///                     },
+    ///                 },
+    ///                 ScaleUpRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs
+    ///                 {
+    ///                     Step = 10,
+    ///                     Disabled = false,
+    ///                     StabilizationWindowSeconds = 0,
+    ///                 },
+    ///                 ScaleDownRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs
+    ///                 {
+    ///                     Step = 10,
+    ///                     Disabled = false,
+    ///                     StabilizationWindowSeconds = 10,
     ///                 },
     ///             },
     ///         });
@@ -169,8 +163,8 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
         /// </summary>
-        [Output("scalingRuleMetrics")]
-        public Output<ImmutableArray<Outputs.ApplicationScalingRuleScalingRuleMetric>> ScalingRuleMetrics { get; private set; } = null!;
+        [Output("scalingRuleMetric")]
+        public Output<Outputs.ApplicationScalingRuleScalingRuleMetric?> ScalingRuleMetric { get; private set; } = null!;
 
         /// <summary>
         /// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
@@ -181,11 +175,11 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
         /// </summary>
-        [Output("scalingRuleTimers")]
-        public Output<ImmutableArray<Outputs.ApplicationScalingRuleScalingRuleTimer>> ScalingRuleTimers { get; private set; } = null!;
+        [Output("scalingRuleTimer")]
+        public Output<Outputs.ApplicationScalingRuleScalingRuleTimer?> ScalingRuleTimer { get; private set; } = null!;
 
         /// <summary>
-        /// Flexible strategy type. The value description is as follows:  timing: timing flexibility. Valid values: `timing`.
+        /// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         /// </summary>
         [Output("scalingRuleType")]
         public Output<string> ScalingRuleType { get; private set; } = null!;
@@ -260,17 +254,11 @@ namespace Pulumi.AliCloud.Sae
         [Input("scalingRuleEnable")]
         public Input<bool>? ScalingRuleEnable { get; set; }
 
-        [Input("scalingRuleMetrics")]
-        private InputList<Inputs.ApplicationScalingRuleScalingRuleMetricArgs>? _scalingRuleMetrics;
-
         /// <summary>
         /// Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
         /// </summary>
-        public InputList<Inputs.ApplicationScalingRuleScalingRuleMetricArgs> ScalingRuleMetrics
-        {
-            get => _scalingRuleMetrics ?? (_scalingRuleMetrics = new InputList<Inputs.ApplicationScalingRuleScalingRuleMetricArgs>());
-            set => _scalingRuleMetrics = value;
-        }
+        [Input("scalingRuleMetric")]
+        public Input<Inputs.ApplicationScalingRuleScalingRuleMetricArgs>? ScalingRuleMetric { get; set; }
 
         /// <summary>
         /// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
@@ -278,20 +266,14 @@ namespace Pulumi.AliCloud.Sae
         [Input("scalingRuleName", required: true)]
         public Input<string> ScalingRuleName { get; set; } = null!;
 
-        [Input("scalingRuleTimers")]
-        private InputList<Inputs.ApplicationScalingRuleScalingRuleTimerArgs>? _scalingRuleTimers;
-
         /// <summary>
         /// Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
         /// </summary>
-        public InputList<Inputs.ApplicationScalingRuleScalingRuleTimerArgs> ScalingRuleTimers
-        {
-            get => _scalingRuleTimers ?? (_scalingRuleTimers = new InputList<Inputs.ApplicationScalingRuleScalingRuleTimerArgs>());
-            set => _scalingRuleTimers = value;
-        }
+        [Input("scalingRuleTimer")]
+        public Input<Inputs.ApplicationScalingRuleScalingRuleTimerArgs>? ScalingRuleTimer { get; set; }
 
         /// <summary>
-        /// Flexible strategy type. The value description is as follows:  timing: timing flexibility. Valid values: `timing`.
+        /// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         /// </summary>
         [Input("scalingRuleType", required: true)]
         public Input<string> ScalingRuleType { get; set; } = null!;
@@ -327,17 +309,11 @@ namespace Pulumi.AliCloud.Sae
         [Input("scalingRuleEnable")]
         public Input<bool>? ScalingRuleEnable { get; set; }
 
-        [Input("scalingRuleMetrics")]
-        private InputList<Inputs.ApplicationScalingRuleScalingRuleMetricGetArgs>? _scalingRuleMetrics;
-
         /// <summary>
         /// Monitor the configuration of the indicator elasticity strategy. See the following `Block scaling_rule_metric`.
         /// </summary>
-        public InputList<Inputs.ApplicationScalingRuleScalingRuleMetricGetArgs> ScalingRuleMetrics
-        {
-            get => _scalingRuleMetrics ?? (_scalingRuleMetrics = new InputList<Inputs.ApplicationScalingRuleScalingRuleMetricGetArgs>());
-            set => _scalingRuleMetrics = value;
-        }
+        [Input("scalingRuleMetric")]
+        public Input<Inputs.ApplicationScalingRuleScalingRuleMetricGetArgs>? ScalingRuleMetric { get; set; }
 
         /// <summary>
         /// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
@@ -345,20 +321,14 @@ namespace Pulumi.AliCloud.Sae
         [Input("scalingRuleName")]
         public Input<string>? ScalingRuleName { get; set; }
 
-        [Input("scalingRuleTimers")]
-        private InputList<Inputs.ApplicationScalingRuleScalingRuleTimerGetArgs>? _scalingRuleTimers;
-
         /// <summary>
         /// Configuration of Timing Resilient Policies. See the following `Block scaling_rule_timer`.
         /// </summary>
-        public InputList<Inputs.ApplicationScalingRuleScalingRuleTimerGetArgs> ScalingRuleTimers
-        {
-            get => _scalingRuleTimers ?? (_scalingRuleTimers = new InputList<Inputs.ApplicationScalingRuleScalingRuleTimerGetArgs>());
-            set => _scalingRuleTimers = value;
-        }
+        [Input("scalingRuleTimer")]
+        public Input<Inputs.ApplicationScalingRuleScalingRuleTimerGetArgs>? ScalingRuleTimer { get; set; }
 
         /// <summary>
-        /// Flexible strategy type. The value description is as follows:  timing: timing flexibility. Valid values: `timing`.
+        /// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         /// </summary>
         [Input("scalingRuleType")]
         public Input<string>? ScalingRuleType { get; set; }

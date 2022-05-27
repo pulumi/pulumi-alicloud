@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.Vpn
         ///         var vpnGateways = Output.Create(AliCloud.Vpn.GetGateways.InvokeAsync(new AliCloud.Vpn.GetGatewaysArgs
         ///         {
         ///             BusinessStatus = "Normal",
+        ///             EnableIpsec = true,
         ///             Ids = 
         ///             {
         ///                 "fake-vpn-id1",
@@ -67,6 +68,7 @@ namespace Pulumi.AliCloud.Vpn
         ///         var vpnGateways = Output.Create(AliCloud.Vpn.GetGateways.InvokeAsync(new AliCloud.Vpn.GetGatewaysArgs
         ///         {
         ///             BusinessStatus = "Normal",
+        ///             EnableIpsec = true,
         ///             Ids = 
         ///             {
         ///                 "fake-vpn-id1",
@@ -96,6 +98,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("businessStatus")]
         public string? BusinessStatus { get; set; }
+
+        /// <summary>
+        /// Indicates whether the IPsec-VPN feature is enabled.
+        /// </summary>
+        [Input("enableIpsec")]
+        public bool? EnableIpsec { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
@@ -145,6 +153,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("businessStatus")]
         public Input<string>? BusinessStatus { get; set; }
+
+        /// <summary>
+        /// Indicates whether the IPsec-VPN feature is enabled.
+        /// </summary>
+        [Input("enableIpsec")]
+        public Input<bool>? EnableIpsec { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
@@ -196,6 +210,10 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public readonly string? BusinessStatus;
         /// <summary>
+        /// Whether the ipsec function is enabled.
+        /// </summary>
+        public readonly bool? EnableIpsec;
+        /// <summary>
         /// A list of VPN gateways. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewaysGatewayResult> Gateways;
@@ -226,6 +244,8 @@ namespace Pulumi.AliCloud.Vpn
         private GetGatewaysResult(
             string? businessStatus,
 
+            bool? enableIpsec,
+
             ImmutableArray<Outputs.GetGatewaysGatewayResult> gateways,
 
             string id,
@@ -243,6 +263,7 @@ namespace Pulumi.AliCloud.Vpn
             string? vpcId)
         {
             BusinessStatus = businessStatus;
+            EnableIpsec = enableIpsec;
             Gateways = gateways;
             Id = id;
             Ids = ids;

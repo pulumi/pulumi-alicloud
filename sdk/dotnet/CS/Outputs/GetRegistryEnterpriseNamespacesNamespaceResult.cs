@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string DefaultVisibility;
         /// <summary>
-        /// ID of Container Registry Enterprise Edition namespace.
+        /// ID of Container Registry Enterprise Edition namespace. It formats as `&lt;instance_id&gt;:&lt;namespace_name&gt;`. Before 1.161.0, it is a namespace uuid.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -33,6 +33,14 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Name of Container Registry Enterprise Edition namespace.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Container Registry Enterprise Edition namespace id. It is a uuid.
+        /// </summary>
+        public readonly string NamespaceId;
+        /// <summary>
+        /// Name of Container Registry Enterprise Edition namespace.
+        /// </summary>
+        public readonly string NamespaceName;
 
         [OutputConstructor]
         private GetRegistryEnterpriseNamespacesNamespaceResult(
@@ -44,13 +52,19 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string instanceId,
 
-            string name)
+            string name,
+
+            string namespaceId,
+
+            string namespaceName)
         {
             AutoCreate = autoCreate;
             DefaultVisibility = defaultVisibility;
             Id = id;
             InstanceId = instanceId;
             Name = name;
+            NamespaceId = namespaceId;
+            NamespaceName = namespaceName;
         }
     }
 }

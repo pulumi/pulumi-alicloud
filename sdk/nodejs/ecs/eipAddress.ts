@@ -93,6 +93,8 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+     *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
@@ -110,6 +112,8 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly isp!: pulumi.Output<string>;
     /**
+     * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
@@ -222,6 +226,8 @@ export interface EipAddressState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+     *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
@@ -239,6 +245,8 @@ export interface EipAddressState {
      */
     isp?: pulumi.Input<string>;
     /**
+     * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
      */
     name?: pulumi.Input<string>;
@@ -297,6 +305,8 @@ export interface EipAddressArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+     *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
@@ -310,6 +320,8 @@ export interface EipAddressArgs {
      */
     isp?: pulumi.Input<string>;
     /**
+     * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
      */
     name?: pulumi.Input<string>;

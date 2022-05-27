@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAudit? Audit;
         /// <summary>
-        /// Whether or not to enable the use of a custom zipkin.
+        /// Whether to enable the use of a custom zipkin.
         /// </summary>
         public readonly bool? CustomizedZipkin;
         /// <summary>

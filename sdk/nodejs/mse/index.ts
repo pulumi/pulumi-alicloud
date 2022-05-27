@@ -6,13 +6,19 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./cluster";
+export * from "./engineNamespace";
 export * from "./gateway";
 export * from "./getClusters";
+export * from "./getEngineNamespaces";
 export * from "./getGateways";
+export * from "./getZnodes";
+export * from "./znode";
 
 // Import resources to register:
 import { Cluster } from "./cluster";
+import { EngineNamespace } from "./engineNamespace";
 import { Gateway } from "./gateway";
+import { Znode } from "./znode";
 
 const _module = {
     version: utilities.getVersion(),
@@ -20,12 +26,18 @@ const _module = {
         switch (type) {
             case "alicloud:mse/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "alicloud:mse/engineNamespace:EngineNamespace":
+                return new EngineNamespace(name, <any>undefined, { urn })
             case "alicloud:mse/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "alicloud:mse/znode:Znode":
+                return new Znode(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "mse/cluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mse/engineNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mse/gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mse/znode", _module)

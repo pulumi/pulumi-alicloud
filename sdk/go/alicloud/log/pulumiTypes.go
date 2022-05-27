@@ -10,6 +10,476 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AlertAnnotation struct {
+	// Annotations's key for new alert.
+	Key string `pulumi:"key"`
+	// Annotations's value for new alert.
+	Value string `pulumi:"value"`
+}
+
+// AlertAnnotationInput is an input type that accepts AlertAnnotationArgs and AlertAnnotationOutput values.
+// You can construct a concrete instance of `AlertAnnotationInput` via:
+//
+//          AlertAnnotationArgs{...}
+type AlertAnnotationInput interface {
+	pulumi.Input
+
+	ToAlertAnnotationOutput() AlertAnnotationOutput
+	ToAlertAnnotationOutputWithContext(context.Context) AlertAnnotationOutput
+}
+
+type AlertAnnotationArgs struct {
+	// Annotations's key for new alert.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Annotations's value for new alert.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AlertAnnotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertAnnotation)(nil)).Elem()
+}
+
+func (i AlertAnnotationArgs) ToAlertAnnotationOutput() AlertAnnotationOutput {
+	return i.ToAlertAnnotationOutputWithContext(context.Background())
+}
+
+func (i AlertAnnotationArgs) ToAlertAnnotationOutputWithContext(ctx context.Context) AlertAnnotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertAnnotationOutput)
+}
+
+// AlertAnnotationArrayInput is an input type that accepts AlertAnnotationArray and AlertAnnotationArrayOutput values.
+// You can construct a concrete instance of `AlertAnnotationArrayInput` via:
+//
+//          AlertAnnotationArray{ AlertAnnotationArgs{...} }
+type AlertAnnotationArrayInput interface {
+	pulumi.Input
+
+	ToAlertAnnotationArrayOutput() AlertAnnotationArrayOutput
+	ToAlertAnnotationArrayOutputWithContext(context.Context) AlertAnnotationArrayOutput
+}
+
+type AlertAnnotationArray []AlertAnnotationInput
+
+func (AlertAnnotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertAnnotation)(nil)).Elem()
+}
+
+func (i AlertAnnotationArray) ToAlertAnnotationArrayOutput() AlertAnnotationArrayOutput {
+	return i.ToAlertAnnotationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertAnnotationArray) ToAlertAnnotationArrayOutputWithContext(ctx context.Context) AlertAnnotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertAnnotationArrayOutput)
+}
+
+type AlertAnnotationOutput struct{ *pulumi.OutputState }
+
+func (AlertAnnotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertAnnotation)(nil)).Elem()
+}
+
+func (o AlertAnnotationOutput) ToAlertAnnotationOutput() AlertAnnotationOutput {
+	return o
+}
+
+func (o AlertAnnotationOutput) ToAlertAnnotationOutputWithContext(ctx context.Context) AlertAnnotationOutput {
+	return o
+}
+
+// Annotations's key for new alert.
+func (o AlertAnnotationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertAnnotation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Annotations's value for new alert.
+func (o AlertAnnotationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertAnnotation) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AlertAnnotationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertAnnotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertAnnotation)(nil)).Elem()
+}
+
+func (o AlertAnnotationArrayOutput) ToAlertAnnotationArrayOutput() AlertAnnotationArrayOutput {
+	return o
+}
+
+func (o AlertAnnotationArrayOutput) ToAlertAnnotationArrayOutputWithContext(ctx context.Context) AlertAnnotationArrayOutput {
+	return o
+}
+
+func (o AlertAnnotationArrayOutput) Index(i pulumi.IntInput) AlertAnnotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertAnnotation {
+		return vs[0].([]AlertAnnotation)[vs[1].(int)]
+	}).(AlertAnnotationOutput)
+}
+
+type AlertGroupConfiguration struct {
+	Fields []string `pulumi:"fields"`
+	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	Type string `pulumi:"type"`
+}
+
+// AlertGroupConfigurationInput is an input type that accepts AlertGroupConfigurationArgs and AlertGroupConfigurationOutput values.
+// You can construct a concrete instance of `AlertGroupConfigurationInput` via:
+//
+//          AlertGroupConfigurationArgs{...}
+type AlertGroupConfigurationInput interface {
+	pulumi.Input
+
+	ToAlertGroupConfigurationOutput() AlertGroupConfigurationOutput
+	ToAlertGroupConfigurationOutputWithContext(context.Context) AlertGroupConfigurationOutput
+}
+
+type AlertGroupConfigurationArgs struct {
+	Fields pulumi.StringArrayInput `pulumi:"fields"`
+	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AlertGroupConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertGroupConfiguration)(nil)).Elem()
+}
+
+func (i AlertGroupConfigurationArgs) ToAlertGroupConfigurationOutput() AlertGroupConfigurationOutput {
+	return i.ToAlertGroupConfigurationOutputWithContext(context.Background())
+}
+
+func (i AlertGroupConfigurationArgs) ToAlertGroupConfigurationOutputWithContext(ctx context.Context) AlertGroupConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConfigurationOutput)
+}
+
+func (i AlertGroupConfigurationArgs) ToAlertGroupConfigurationPtrOutput() AlertGroupConfigurationPtrOutput {
+	return i.ToAlertGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AlertGroupConfigurationArgs) ToAlertGroupConfigurationPtrOutputWithContext(ctx context.Context) AlertGroupConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConfigurationOutput).ToAlertGroupConfigurationPtrOutputWithContext(ctx)
+}
+
+// AlertGroupConfigurationPtrInput is an input type that accepts AlertGroupConfigurationArgs, AlertGroupConfigurationPtr and AlertGroupConfigurationPtrOutput values.
+// You can construct a concrete instance of `AlertGroupConfigurationPtrInput` via:
+//
+//          AlertGroupConfigurationArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertGroupConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAlertGroupConfigurationPtrOutput() AlertGroupConfigurationPtrOutput
+	ToAlertGroupConfigurationPtrOutputWithContext(context.Context) AlertGroupConfigurationPtrOutput
+}
+
+type alertGroupConfigurationPtrType AlertGroupConfigurationArgs
+
+func AlertGroupConfigurationPtr(v *AlertGroupConfigurationArgs) AlertGroupConfigurationPtrInput {
+	return (*alertGroupConfigurationPtrType)(v)
+}
+
+func (*alertGroupConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertGroupConfiguration)(nil)).Elem()
+}
+
+func (i *alertGroupConfigurationPtrType) ToAlertGroupConfigurationPtrOutput() AlertGroupConfigurationPtrOutput {
+	return i.ToAlertGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *alertGroupConfigurationPtrType) ToAlertGroupConfigurationPtrOutputWithContext(ctx context.Context) AlertGroupConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConfigurationPtrOutput)
+}
+
+type AlertGroupConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AlertGroupConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertGroupConfiguration)(nil)).Elem()
+}
+
+func (o AlertGroupConfigurationOutput) ToAlertGroupConfigurationOutput() AlertGroupConfigurationOutput {
+	return o
+}
+
+func (o AlertGroupConfigurationOutput) ToAlertGroupConfigurationOutputWithContext(ctx context.Context) AlertGroupConfigurationOutput {
+	return o
+}
+
+func (o AlertGroupConfigurationOutput) ToAlertGroupConfigurationPtrOutput() AlertGroupConfigurationPtrOutput {
+	return o.ToAlertGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AlertGroupConfigurationOutput) ToAlertGroupConfigurationPtrOutputWithContext(ctx context.Context) AlertGroupConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertGroupConfiguration) *AlertGroupConfiguration {
+		return &v
+	}).(AlertGroupConfigurationPtrOutput)
+}
+
+func (o AlertGroupConfigurationOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertGroupConfiguration) []string { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
+// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+func (o AlertGroupConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertGroupConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AlertGroupConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertGroupConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertGroupConfiguration)(nil)).Elem()
+}
+
+func (o AlertGroupConfigurationPtrOutput) ToAlertGroupConfigurationPtrOutput() AlertGroupConfigurationPtrOutput {
+	return o
+}
+
+func (o AlertGroupConfigurationPtrOutput) ToAlertGroupConfigurationPtrOutputWithContext(ctx context.Context) AlertGroupConfigurationPtrOutput {
+	return o
+}
+
+func (o AlertGroupConfigurationPtrOutput) Elem() AlertGroupConfigurationOutput {
+	return o.ApplyT(func(v *AlertGroupConfiguration) AlertGroupConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AlertGroupConfiguration
+		return ret
+	}).(AlertGroupConfigurationOutput)
+}
+
+func (o AlertGroupConfigurationPtrOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertGroupConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Fields
+	}).(pulumi.StringArrayOutput)
+}
+
+// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+func (o AlertGroupConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertGroupConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertJoinConfiguration struct {
+	// Join condition.
+	Condition string `pulumi:"condition"`
+	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	Type string `pulumi:"type"`
+}
+
+// AlertJoinConfigurationInput is an input type that accepts AlertJoinConfigurationArgs and AlertJoinConfigurationOutput values.
+// You can construct a concrete instance of `AlertJoinConfigurationInput` via:
+//
+//          AlertJoinConfigurationArgs{...}
+type AlertJoinConfigurationInput interface {
+	pulumi.Input
+
+	ToAlertJoinConfigurationOutput() AlertJoinConfigurationOutput
+	ToAlertJoinConfigurationOutputWithContext(context.Context) AlertJoinConfigurationOutput
+}
+
+type AlertJoinConfigurationArgs struct {
+	// Join condition.
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AlertJoinConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertJoinConfiguration)(nil)).Elem()
+}
+
+func (i AlertJoinConfigurationArgs) ToAlertJoinConfigurationOutput() AlertJoinConfigurationOutput {
+	return i.ToAlertJoinConfigurationOutputWithContext(context.Background())
+}
+
+func (i AlertJoinConfigurationArgs) ToAlertJoinConfigurationOutputWithContext(ctx context.Context) AlertJoinConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertJoinConfigurationOutput)
+}
+
+// AlertJoinConfigurationArrayInput is an input type that accepts AlertJoinConfigurationArray and AlertJoinConfigurationArrayOutput values.
+// You can construct a concrete instance of `AlertJoinConfigurationArrayInput` via:
+//
+//          AlertJoinConfigurationArray{ AlertJoinConfigurationArgs{...} }
+type AlertJoinConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToAlertJoinConfigurationArrayOutput() AlertJoinConfigurationArrayOutput
+	ToAlertJoinConfigurationArrayOutputWithContext(context.Context) AlertJoinConfigurationArrayOutput
+}
+
+type AlertJoinConfigurationArray []AlertJoinConfigurationInput
+
+func (AlertJoinConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertJoinConfiguration)(nil)).Elem()
+}
+
+func (i AlertJoinConfigurationArray) ToAlertJoinConfigurationArrayOutput() AlertJoinConfigurationArrayOutput {
+	return i.ToAlertJoinConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertJoinConfigurationArray) ToAlertJoinConfigurationArrayOutputWithContext(ctx context.Context) AlertJoinConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertJoinConfigurationArrayOutput)
+}
+
+type AlertJoinConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AlertJoinConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertJoinConfiguration)(nil)).Elem()
+}
+
+func (o AlertJoinConfigurationOutput) ToAlertJoinConfigurationOutput() AlertJoinConfigurationOutput {
+	return o
+}
+
+func (o AlertJoinConfigurationOutput) ToAlertJoinConfigurationOutputWithContext(ctx context.Context) AlertJoinConfigurationOutput {
+	return o
+}
+
+// Join condition.
+func (o AlertJoinConfigurationOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertJoinConfiguration) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+func (o AlertJoinConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertJoinConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AlertJoinConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertJoinConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertJoinConfiguration)(nil)).Elem()
+}
+
+func (o AlertJoinConfigurationArrayOutput) ToAlertJoinConfigurationArrayOutput() AlertJoinConfigurationArrayOutput {
+	return o
+}
+
+func (o AlertJoinConfigurationArrayOutput) ToAlertJoinConfigurationArrayOutputWithContext(ctx context.Context) AlertJoinConfigurationArrayOutput {
+	return o
+}
+
+func (o AlertJoinConfigurationArrayOutput) Index(i pulumi.IntInput) AlertJoinConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertJoinConfiguration {
+		return vs[0].([]AlertJoinConfiguration)[vs[1].(int)]
+	}).(AlertJoinConfigurationOutput)
+}
+
+type AlertLabel struct {
+	// Annotations's key for new alert.
+	Key string `pulumi:"key"`
+	// Annotations's value for new alert.
+	Value string `pulumi:"value"`
+}
+
+// AlertLabelInput is an input type that accepts AlertLabelArgs and AlertLabelOutput values.
+// You can construct a concrete instance of `AlertLabelInput` via:
+//
+//          AlertLabelArgs{...}
+type AlertLabelInput interface {
+	pulumi.Input
+
+	ToAlertLabelOutput() AlertLabelOutput
+	ToAlertLabelOutputWithContext(context.Context) AlertLabelOutput
+}
+
+type AlertLabelArgs struct {
+	// Annotations's key for new alert.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Annotations's value for new alert.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AlertLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertLabel)(nil)).Elem()
+}
+
+func (i AlertLabelArgs) ToAlertLabelOutput() AlertLabelOutput {
+	return i.ToAlertLabelOutputWithContext(context.Background())
+}
+
+func (i AlertLabelArgs) ToAlertLabelOutputWithContext(ctx context.Context) AlertLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertLabelOutput)
+}
+
+// AlertLabelArrayInput is an input type that accepts AlertLabelArray and AlertLabelArrayOutput values.
+// You can construct a concrete instance of `AlertLabelArrayInput` via:
+//
+//          AlertLabelArray{ AlertLabelArgs{...} }
+type AlertLabelArrayInput interface {
+	pulumi.Input
+
+	ToAlertLabelArrayOutput() AlertLabelArrayOutput
+	ToAlertLabelArrayOutputWithContext(context.Context) AlertLabelArrayOutput
+}
+
+type AlertLabelArray []AlertLabelInput
+
+func (AlertLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertLabel)(nil)).Elem()
+}
+
+func (i AlertLabelArray) ToAlertLabelArrayOutput() AlertLabelArrayOutput {
+	return i.ToAlertLabelArrayOutputWithContext(context.Background())
+}
+
+func (i AlertLabelArray) ToAlertLabelArrayOutputWithContext(ctx context.Context) AlertLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertLabelArrayOutput)
+}
+
+type AlertLabelOutput struct{ *pulumi.OutputState }
+
+func (AlertLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertLabel)(nil)).Elem()
+}
+
+func (o AlertLabelOutput) ToAlertLabelOutput() AlertLabelOutput {
+	return o
+}
+
+func (o AlertLabelOutput) ToAlertLabelOutputWithContext(ctx context.Context) AlertLabelOutput {
+	return o
+}
+
+// Annotations's key for new alert.
+func (o AlertLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Annotations's value for new alert.
+func (o AlertLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AlertLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertLabel)(nil)).Elem()
+}
+
+func (o AlertLabelArrayOutput) ToAlertLabelArrayOutput() AlertLabelArrayOutput {
+	return o
+}
+
+func (o AlertLabelArrayOutput) ToAlertLabelArrayOutputWithContext(ctx context.Context) AlertLabelArrayOutput {
+	return o
+}
+
+func (o AlertLabelArrayOutput) Index(i pulumi.IntInput) AlertLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertLabel {
+		return vs[0].([]AlertLabel)[vs[1].(int)]
+	}).(AlertLabelOutput)
+}
+
 type AlertNotificationList struct {
 	// Notice content of alarm.
 	Content string `pulumi:"content"`
@@ -19,7 +489,7 @@ type AlertNotificationList struct {
 	MobileLists []string `pulumi:"mobileLists"`
 	// Request address.
 	ServiceUri *string `pulumi:"serviceUri"`
-	// Notification type. support Email, SMS, DingTalk, MessageCenter.
+	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
 	Type string `pulumi:"type"`
 }
 
@@ -43,7 +513,7 @@ type AlertNotificationListArgs struct {
 	MobileLists pulumi.StringArrayInput `pulumi:"mobileLists"`
 	// Request address.
 	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
-	// Notification type. support Email, SMS, DingTalk, MessageCenter.
+	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -118,7 +588,7 @@ func (o AlertNotificationListOutput) ServiceUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertNotificationList) *string { return v.ServiceUri }).(pulumi.StringPtrOutput)
 }
 
-// Notification type. support Email, SMS, DingTalk, MessageCenter.
+// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
 func (o AlertNotificationListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertNotificationList) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -143,17 +613,208 @@ func (o AlertNotificationListArrayOutput) Index(i pulumi.IntInput) AlertNotifica
 	}).(AlertNotificationListOutput)
 }
 
+type AlertPolicyConfiguration struct {
+	// Action Policy Id.
+	ActionPolicyId *string `pulumi:"actionPolicyId"`
+	// Alert Policy Id.
+	AlertPolicyId string `pulumi:"alertPolicyId"`
+	// Repeat interval used by alert policy, 1h, 1m.e.g.
+	RepeatInterval string `pulumi:"repeatInterval"`
+}
+
+// AlertPolicyConfigurationInput is an input type that accepts AlertPolicyConfigurationArgs and AlertPolicyConfigurationOutput values.
+// You can construct a concrete instance of `AlertPolicyConfigurationInput` via:
+//
+//          AlertPolicyConfigurationArgs{...}
+type AlertPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConfigurationOutput() AlertPolicyConfigurationOutput
+	ToAlertPolicyConfigurationOutputWithContext(context.Context) AlertPolicyConfigurationOutput
+}
+
+type AlertPolicyConfigurationArgs struct {
+	// Action Policy Id.
+	ActionPolicyId pulumi.StringPtrInput `pulumi:"actionPolicyId"`
+	// Alert Policy Id.
+	AlertPolicyId pulumi.StringInput `pulumi:"alertPolicyId"`
+	// Repeat interval used by alert policy, 1h, 1m.e.g.
+	RepeatInterval pulumi.StringInput `pulumi:"repeatInterval"`
+}
+
+func (AlertPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConfiguration)(nil)).Elem()
+}
+
+func (i AlertPolicyConfigurationArgs) ToAlertPolicyConfigurationOutput() AlertPolicyConfigurationOutput {
+	return i.ToAlertPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConfigurationArgs) ToAlertPolicyConfigurationOutputWithContext(ctx context.Context) AlertPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConfigurationOutput)
+}
+
+func (i AlertPolicyConfigurationArgs) ToAlertPolicyConfigurationPtrOutput() AlertPolicyConfigurationPtrOutput {
+	return i.ToAlertPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConfigurationArgs) ToAlertPolicyConfigurationPtrOutputWithContext(ctx context.Context) AlertPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConfigurationOutput).ToAlertPolicyConfigurationPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConfigurationPtrInput is an input type that accepts AlertPolicyConfigurationArgs, AlertPolicyConfigurationPtr and AlertPolicyConfigurationPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConfigurationPtrInput` via:
+//
+//          AlertPolicyConfigurationArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertPolicyConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConfigurationPtrOutput() AlertPolicyConfigurationPtrOutput
+	ToAlertPolicyConfigurationPtrOutputWithContext(context.Context) AlertPolicyConfigurationPtrOutput
+}
+
+type alertPolicyConfigurationPtrType AlertPolicyConfigurationArgs
+
+func AlertPolicyConfigurationPtr(v *AlertPolicyConfigurationArgs) AlertPolicyConfigurationPtrInput {
+	return (*alertPolicyConfigurationPtrType)(v)
+}
+
+func (*alertPolicyConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConfiguration)(nil)).Elem()
+}
+
+func (i *alertPolicyConfigurationPtrType) ToAlertPolicyConfigurationPtrOutput() AlertPolicyConfigurationPtrOutput {
+	return i.ToAlertPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConfigurationPtrType) ToAlertPolicyConfigurationPtrOutputWithContext(ctx context.Context) AlertPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConfigurationPtrOutput)
+}
+
+type AlertPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConfiguration)(nil)).Elem()
+}
+
+func (o AlertPolicyConfigurationOutput) ToAlertPolicyConfigurationOutput() AlertPolicyConfigurationOutput {
+	return o
+}
+
+func (o AlertPolicyConfigurationOutput) ToAlertPolicyConfigurationOutputWithContext(ctx context.Context) AlertPolicyConfigurationOutput {
+	return o
+}
+
+func (o AlertPolicyConfigurationOutput) ToAlertPolicyConfigurationPtrOutput() AlertPolicyConfigurationPtrOutput {
+	return o.ToAlertPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConfigurationOutput) ToAlertPolicyConfigurationPtrOutputWithContext(ctx context.Context) AlertPolicyConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConfiguration) *AlertPolicyConfiguration {
+		return &v
+	}).(AlertPolicyConfigurationPtrOutput)
+}
+
+// Action Policy Id.
+func (o AlertPolicyConfigurationOutput) ActionPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConfiguration) *string { return v.ActionPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Alert Policy Id.
+func (o AlertPolicyConfigurationOutput) AlertPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConfiguration) string { return v.AlertPolicyId }).(pulumi.StringOutput)
+}
+
+// Repeat interval used by alert policy, 1h, 1m.e.g.
+func (o AlertPolicyConfigurationOutput) RepeatInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConfiguration) string { return v.RepeatInterval }).(pulumi.StringOutput)
+}
+
+type AlertPolicyConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConfiguration)(nil)).Elem()
+}
+
+func (o AlertPolicyConfigurationPtrOutput) ToAlertPolicyConfigurationPtrOutput() AlertPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConfigurationPtrOutput) ToAlertPolicyConfigurationPtrOutputWithContext(ctx context.Context) AlertPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConfigurationPtrOutput) Elem() AlertPolicyConfigurationOutput {
+	return o.ApplyT(func(v *AlertPolicyConfiguration) AlertPolicyConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConfiguration
+		return ret
+	}).(AlertPolicyConfigurationOutput)
+}
+
+// Action Policy Id.
+func (o AlertPolicyConfigurationPtrOutput) ActionPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionPolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Alert Policy Id.
+func (o AlertPolicyConfigurationPtrOutput) AlertPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AlertPolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repeat interval used by alert policy, 1h, 1m.e.g.
+func (o AlertPolicyConfigurationPtrOutput) RepeatInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepeatInterval
+	}).(pulumi.StringPtrOutput)
+}
+
 type AlertQueryList struct {
-	// chart title
-	ChartTitle string `pulumi:"chartTitle"`
-	// end time. example: 20s.
+	// Chart title, optional from 1.161.0+.
+	ChartTitle *string `pulumi:"chartTitle"`
+	// Query dashboard id.
+	DashboardId *string `pulumi:"dashboardId"`
+	// End time. example: 20s.
 	End string `pulumi:"end"`
-	// Query logstore
-	Logstore string `pulumi:"logstore"`
-	// query corresponding to chart. example: * AND aliyun.
+	// Query logstore, use store for new alert, Deprecated from 1.161.0+.
+	//
+	// Deprecated: Deprecated from 1.161.0+, use store
+	Logstore *string `pulumi:"logstore"`
+	// default disable, whether to use power sql. support auto, enable, disable.
+	PowerSqlMode *string `pulumi:"powerSqlMode"`
+	// Query project.
+	Project *string `pulumi:"project"`
+	// Query corresponding to chart. example: * AND aliyun.
 	Query string `pulumi:"query"`
-	// begin time. example: -60s.
+	// Query project region.
+	Region *string `pulumi:"region"`
+	// Query project store's ARN.
+	RoleArn *string `pulumi:"roleArn"`
+	// Begin time. example: -60s.
 	Start string `pulumi:"start"`
+	// Query store for new alert.
+	Store *string `pulumi:"store"`
+	// Query store type for new alert, including log,metric,meta.
+	StoreType *string `pulumi:"storeType"`
 	// default Custom. No need to configure this parameter.
 	TimeSpanType *string `pulumi:"timeSpanType"`
 }
@@ -170,16 +831,32 @@ type AlertQueryListInput interface {
 }
 
 type AlertQueryListArgs struct {
-	// chart title
-	ChartTitle pulumi.StringInput `pulumi:"chartTitle"`
-	// end time. example: 20s.
+	// Chart title, optional from 1.161.0+.
+	ChartTitle pulumi.StringPtrInput `pulumi:"chartTitle"`
+	// Query dashboard id.
+	DashboardId pulumi.StringPtrInput `pulumi:"dashboardId"`
+	// End time. example: 20s.
 	End pulumi.StringInput `pulumi:"end"`
-	// Query logstore
-	Logstore pulumi.StringInput `pulumi:"logstore"`
-	// query corresponding to chart. example: * AND aliyun.
+	// Query logstore, use store for new alert, Deprecated from 1.161.0+.
+	//
+	// Deprecated: Deprecated from 1.161.0+, use store
+	Logstore pulumi.StringPtrInput `pulumi:"logstore"`
+	// default disable, whether to use power sql. support auto, enable, disable.
+	PowerSqlMode pulumi.StringPtrInput `pulumi:"powerSqlMode"`
+	// Query project.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Query corresponding to chart. example: * AND aliyun.
 	Query pulumi.StringInput `pulumi:"query"`
-	// begin time. example: -60s.
+	// Query project region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Query project store's ARN.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Begin time. example: -60s.
 	Start pulumi.StringInput `pulumi:"start"`
+	// Query store for new alert.
+	Store pulumi.StringPtrInput `pulumi:"store"`
+	// Query store type for new alert, including log,metric,meta.
+	StoreType pulumi.StringPtrInput `pulumi:"storeType"`
 	// default Custom. No need to configure this parameter.
 	TimeSpanType pulumi.StringPtrInput `pulumi:"timeSpanType"`
 }
@@ -235,29 +912,66 @@ func (o AlertQueryListOutput) ToAlertQueryListOutputWithContext(ctx context.Cont
 	return o
 }
 
-// chart title
-func (o AlertQueryListOutput) ChartTitle() pulumi.StringOutput {
-	return o.ApplyT(func(v AlertQueryList) string { return v.ChartTitle }).(pulumi.StringOutput)
+// Chart title, optional from 1.161.0+.
+func (o AlertQueryListOutput) ChartTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.ChartTitle }).(pulumi.StringPtrOutput)
 }
 
-// end time. example: 20s.
+// Query dashboard id.
+func (o AlertQueryListOutput) DashboardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.DashboardId }).(pulumi.StringPtrOutput)
+}
+
+// End time. example: 20s.
 func (o AlertQueryListOutput) End() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertQueryList) string { return v.End }).(pulumi.StringOutput)
 }
 
-// Query logstore
-func (o AlertQueryListOutput) Logstore() pulumi.StringOutput {
-	return o.ApplyT(func(v AlertQueryList) string { return v.Logstore }).(pulumi.StringOutput)
+// Query logstore, use store for new alert, Deprecated from 1.161.0+.
+//
+// Deprecated: Deprecated from 1.161.0+, use store
+func (o AlertQueryListOutput) Logstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.Logstore }).(pulumi.StringPtrOutput)
 }
 
-// query corresponding to chart. example: * AND aliyun.
+// default disable, whether to use power sql. support auto, enable, disable.
+func (o AlertQueryListOutput) PowerSqlMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.PowerSqlMode }).(pulumi.StringPtrOutput)
+}
+
+// Query project.
+func (o AlertQueryListOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Query corresponding to chart. example: * AND aliyun.
 func (o AlertQueryListOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertQueryList) string { return v.Query }).(pulumi.StringOutput)
 }
 
-// begin time. example: -60s.
+// Query project region.
+func (o AlertQueryListOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Query project store's ARN.
+func (o AlertQueryListOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Begin time. example: -60s.
 func (o AlertQueryListOutput) Start() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertQueryList) string { return v.Start }).(pulumi.StringOutput)
+}
+
+// Query store for new alert.
+func (o AlertQueryListOutput) Store() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.Store }).(pulumi.StringPtrOutput)
+}
+
+// Query store type for new alert, including log,metric,meta.
+func (o AlertQueryListOutput) StoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.StoreType }).(pulumi.StringPtrOutput)
 }
 
 // default Custom. No need to configure this parameter.
@@ -283,6 +997,112 @@ func (o AlertQueryListArrayOutput) Index(i pulumi.IntInput) AlertQueryListOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertQueryList {
 		return vs[0].([]AlertQueryList)[vs[1].(int)]
 	}).(AlertQueryListOutput)
+}
+
+type AlertSeverityConfiguration struct {
+	// Severity when this condition is met.
+	EvalCondition map[string]string `pulumi:"evalCondition"`
+	// Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+	Severity int `pulumi:"severity"`
+}
+
+// AlertSeverityConfigurationInput is an input type that accepts AlertSeverityConfigurationArgs and AlertSeverityConfigurationOutput values.
+// You can construct a concrete instance of `AlertSeverityConfigurationInput` via:
+//
+//          AlertSeverityConfigurationArgs{...}
+type AlertSeverityConfigurationInput interface {
+	pulumi.Input
+
+	ToAlertSeverityConfigurationOutput() AlertSeverityConfigurationOutput
+	ToAlertSeverityConfigurationOutputWithContext(context.Context) AlertSeverityConfigurationOutput
+}
+
+type AlertSeverityConfigurationArgs struct {
+	// Severity when this condition is met.
+	EvalCondition pulumi.StringMapInput `pulumi:"evalCondition"`
+	// Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+	Severity pulumi.IntInput `pulumi:"severity"`
+}
+
+func (AlertSeverityConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertSeverityConfiguration)(nil)).Elem()
+}
+
+func (i AlertSeverityConfigurationArgs) ToAlertSeverityConfigurationOutput() AlertSeverityConfigurationOutput {
+	return i.ToAlertSeverityConfigurationOutputWithContext(context.Background())
+}
+
+func (i AlertSeverityConfigurationArgs) ToAlertSeverityConfigurationOutputWithContext(ctx context.Context) AlertSeverityConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertSeverityConfigurationOutput)
+}
+
+// AlertSeverityConfigurationArrayInput is an input type that accepts AlertSeverityConfigurationArray and AlertSeverityConfigurationArrayOutput values.
+// You can construct a concrete instance of `AlertSeverityConfigurationArrayInput` via:
+//
+//          AlertSeverityConfigurationArray{ AlertSeverityConfigurationArgs{...} }
+type AlertSeverityConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToAlertSeverityConfigurationArrayOutput() AlertSeverityConfigurationArrayOutput
+	ToAlertSeverityConfigurationArrayOutputWithContext(context.Context) AlertSeverityConfigurationArrayOutput
+}
+
+type AlertSeverityConfigurationArray []AlertSeverityConfigurationInput
+
+func (AlertSeverityConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertSeverityConfiguration)(nil)).Elem()
+}
+
+func (i AlertSeverityConfigurationArray) ToAlertSeverityConfigurationArrayOutput() AlertSeverityConfigurationArrayOutput {
+	return i.ToAlertSeverityConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertSeverityConfigurationArray) ToAlertSeverityConfigurationArrayOutputWithContext(ctx context.Context) AlertSeverityConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertSeverityConfigurationArrayOutput)
+}
+
+type AlertSeverityConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AlertSeverityConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertSeverityConfiguration)(nil)).Elem()
+}
+
+func (o AlertSeverityConfigurationOutput) ToAlertSeverityConfigurationOutput() AlertSeverityConfigurationOutput {
+	return o
+}
+
+func (o AlertSeverityConfigurationOutput) ToAlertSeverityConfigurationOutputWithContext(ctx context.Context) AlertSeverityConfigurationOutput {
+	return o
+}
+
+// Severity when this condition is met.
+func (o AlertSeverityConfigurationOutput) EvalCondition() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AlertSeverityConfiguration) map[string]string { return v.EvalCondition }).(pulumi.StringMapOutput)
+}
+
+// Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+func (o AlertSeverityConfigurationOutput) Severity() pulumi.IntOutput {
+	return o.ApplyT(func(v AlertSeverityConfiguration) int { return v.Severity }).(pulumi.IntOutput)
+}
+
+type AlertSeverityConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertSeverityConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertSeverityConfiguration)(nil)).Elem()
+}
+
+func (o AlertSeverityConfigurationArrayOutput) ToAlertSeverityConfigurationArrayOutput() AlertSeverityConfigurationArrayOutput {
+	return o
+}
+
+func (o AlertSeverityConfigurationArrayOutput) ToAlertSeverityConfigurationArrayOutputWithContext(ctx context.Context) AlertSeverityConfigurationArrayOutput {
+	return o
+}
+
+func (o AlertSeverityConfigurationArrayOutput) Index(i pulumi.IntInput) AlertSeverityConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertSeverityConfiguration {
+		return vs[0].([]AlertSeverityConfiguration)[vs[1].(int)]
+	}).(AlertSeverityConfigurationOutput)
 }
 
 type EtlEtlSink struct {
@@ -1373,10 +2193,13 @@ func (o StoreIndexFullTextPtrOutput) Token() pulumi.StringPtrOutput {
 }
 
 type StoreShard struct {
+	// The begin value of the shard range(MD5), included in the shard range.
 	BeginKey *string `pulumi:"beginKey"`
-	EndKey   *string `pulumi:"endKey"`
-	// The ID of the log project. It formats of `<project>:<name>`.
-	Id     *int    `pulumi:"id"`
+	// The end value of the shard range(MD5), not included in shard range.
+	EndKey *string `pulumi:"endKey"`
+	// The ID of the shard.
+	Id *int `pulumi:"id"`
+	// Shard status, only two status of `readwrite` and `readonly`.
 	Status *string `pulumi:"status"`
 }
 
@@ -1392,10 +2215,13 @@ type StoreShardInput interface {
 }
 
 type StoreShardArgs struct {
+	// The begin value of the shard range(MD5), included in the shard range.
 	BeginKey pulumi.StringPtrInput `pulumi:"beginKey"`
-	EndKey   pulumi.StringPtrInput `pulumi:"endKey"`
-	// The ID of the log project. It formats of `<project>:<name>`.
-	Id     pulumi.IntPtrInput    `pulumi:"id"`
+	// The end value of the shard range(MD5), not included in shard range.
+	EndKey pulumi.StringPtrInput `pulumi:"endKey"`
+	// The ID of the shard.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// Shard status, only two status of `readwrite` and `readonly`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -1450,19 +2276,22 @@ func (o StoreShardOutput) ToStoreShardOutputWithContext(ctx context.Context) Sto
 	return o
 }
 
+// The begin value of the shard range(MD5), included in the shard range.
 func (o StoreShardOutput) BeginKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreShard) *string { return v.BeginKey }).(pulumi.StringPtrOutput)
 }
 
+// The end value of the shard range(MD5), not included in shard range.
 func (o StoreShardOutput) EndKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreShard) *string { return v.EndKey }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the log project. It formats of `<project>:<name>`.
+// The ID of the shard.
 func (o StoreShardOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StoreShard) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+// Shard status, only two status of `readwrite` and `readonly`.
 func (o StoreShardOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreShard) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -1745,10 +2574,22 @@ func (o GetStoresStoreArrayOutput) Index(i pulumi.IntInput) GetStoresStoreOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertAnnotationInput)(nil)).Elem(), AlertAnnotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertAnnotationArrayInput)(nil)).Elem(), AlertAnnotationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupConfigurationInput)(nil)).Elem(), AlertGroupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupConfigurationPtrInput)(nil)).Elem(), AlertGroupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertJoinConfigurationInput)(nil)).Elem(), AlertJoinConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertJoinConfigurationArrayInput)(nil)).Elem(), AlertJoinConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertLabelInput)(nil)).Elem(), AlertLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertLabelArrayInput)(nil)).Elem(), AlertLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertNotificationListInput)(nil)).Elem(), AlertNotificationListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertNotificationListArrayInput)(nil)).Elem(), AlertNotificationListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConfigurationInput)(nil)).Elem(), AlertPolicyConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConfigurationPtrInput)(nil)).Elem(), AlertPolicyConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertQueryListInput)(nil)).Elem(), AlertQueryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertQueryListArrayInput)(nil)).Elem(), AlertQueryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertSeverityConfigurationInput)(nil)).Elem(), AlertSeverityConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertSeverityConfigurationArrayInput)(nil)).Elem(), AlertSeverityConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlEtlSinkInput)(nil)).Elem(), EtlEtlSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlEtlSinkArrayInput)(nil)).Elem(), EtlEtlSinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperParquetConfigInput)(nil)).Elem(), OssShipperParquetConfigArgs{})
@@ -1769,10 +2610,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStoresStoreInput)(nil)).Elem(), GetStoresStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStoresStoreArrayInput)(nil)).Elem(), GetStoresStoreArray{})
+	pulumi.RegisterOutputType(AlertAnnotationOutput{})
+	pulumi.RegisterOutputType(AlertAnnotationArrayOutput{})
+	pulumi.RegisterOutputType(AlertGroupConfigurationOutput{})
+	pulumi.RegisterOutputType(AlertGroupConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(AlertJoinConfigurationOutput{})
+	pulumi.RegisterOutputType(AlertJoinConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(AlertLabelOutput{})
+	pulumi.RegisterOutputType(AlertLabelArrayOutput{})
 	pulumi.RegisterOutputType(AlertNotificationListOutput{})
 	pulumi.RegisterOutputType(AlertNotificationListArrayOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertQueryListOutput{})
 	pulumi.RegisterOutputType(AlertQueryListArrayOutput{})
+	pulumi.RegisterOutputType(AlertSeverityConfigurationOutput{})
+	pulumi.RegisterOutputType(AlertSeverityConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(EtlEtlSinkOutput{})
 	pulumi.RegisterOutputType(EtlEtlSinkArrayOutput{})
 	pulumi.RegisterOutputType(OssShipperParquetConfigOutput{})

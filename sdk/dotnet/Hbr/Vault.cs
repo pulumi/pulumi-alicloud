@@ -55,6 +55,14 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+        /// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+        /// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+        /// </summary>
+        [Output("redundancyType")]
+        public Output<string> RedundancyType { get; private set; } = null!;
+
+        /// <summary>
         /// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
         /// </summary>
         [Output("status")]
@@ -73,7 +81,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> VaultStorageClass { get; private set; } = null!;
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`.
+        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         /// </summary>
         [Output("vaultType")]
         public Output<string> VaultType { get; private set; } = null!;
@@ -131,6 +139,14 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+        /// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+        /// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+        /// </summary>
+        [Input("redundancyType")]
+        public Input<string>? RedundancyType { get; set; }
+
+        /// <summary>
         /// The name of Vault.
         /// </summary>
         [Input("vaultName", required: true)]
@@ -143,7 +159,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? VaultStorageClass { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`.
+        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }
@@ -160,6 +176,14 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+        /// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+        /// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+        /// </summary>
+        [Input("redundancyType")]
+        public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
         /// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
@@ -180,7 +204,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? VaultStorageClass { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`.
+        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }

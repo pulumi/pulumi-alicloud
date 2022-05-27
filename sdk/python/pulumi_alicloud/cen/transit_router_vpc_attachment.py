@@ -18,8 +18,8 @@ class TransitRouterVpcAttachmentArgs:
                  cen_id: pulumi.Input[str],
                  vpc_id: pulumi.Input[str],
                  zone_mappings: pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]],
-                 auto_create_vpc_route: Optional[pulumi.Input[bool]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
@@ -33,6 +33,7 @@ class TransitRouterVpcAttachmentArgs:
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
@@ -44,10 +45,10 @@ class TransitRouterVpcAttachmentArgs:
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "zone_mappings", zone_mappings)
-        if auto_create_vpc_route is not None:
-            pulumi.set(__self__, "auto_create_vpc_route", auto_create_vpc_route)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
@@ -100,15 +101,6 @@ class TransitRouterVpcAttachmentArgs:
         pulumi.set(self, "zone_mappings", value)
 
     @property
-    @pulumi.getter(name="autoCreateVpcRoute")
-    def auto_create_vpc_route(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "auto_create_vpc_route")
-
-    @auto_create_vpc_route.setter
-    def auto_create_vpc_route(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "auto_create_vpc_route", value)
-
-    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -119,6 +111,18 @@ class TransitRouterVpcAttachmentArgs:
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payment type of the resource. Valid values: `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter(name="resourceType")
@@ -208,9 +212,9 @@ class TransitRouterVpcAttachmentArgs:
 @pulumi.input_type
 class _TransitRouterVpcAttachmentState:
     def __init__(__self__, *,
-                 auto_create_vpc_route: Optional[pulumi.Input[bool]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
@@ -226,6 +230,7 @@ class _TransitRouterVpcAttachmentState:
         Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
@@ -238,12 +243,12 @@ class _TransitRouterVpcAttachmentState:
         :param pulumi.Input[str] vpc_owner_id: The owner id of vpc.
         :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: The list of zone mapping of the VPC.
         """
-        if auto_create_vpc_route is not None:
-            pulumi.set(__self__, "auto_create_vpc_route", auto_create_vpc_route)
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
@@ -268,15 +273,6 @@ class _TransitRouterVpcAttachmentState:
             pulumi.set(__self__, "zone_mappings", zone_mappings)
 
     @property
-    @pulumi.getter(name="autoCreateVpcRoute")
-    def auto_create_vpc_route(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "auto_create_vpc_route")
-
-    @auto_create_vpc_route.setter
-    def auto_create_vpc_route(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "auto_create_vpc_route", value)
-
-    @property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -299,6 +295,18 @@ class _TransitRouterVpcAttachmentState:
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The payment type of the resource. Valid values: `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
 
     @property
     @pulumi.getter(name="resourceType")
@@ -438,9 +446,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create_vpc_route: Optional[pulumi.Input[bool]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
@@ -468,6 +476,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
@@ -512,9 +521,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create_vpc_route: Optional[pulumi.Input[bool]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
@@ -536,11 +545,11 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TransitRouterVpcAttachmentArgs.__new__(TransitRouterVpcAttachmentArgs)
 
-            __props__.__dict__["auto_create_vpc_route"] = auto_create_vpc_route
             if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
             __props__.__dict__["cen_id"] = cen_id
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["resource_type"] = resource_type
             __props__.__dict__["route_table_association_enabled"] = route_table_association_enabled
             __props__.__dict__["route_table_propagation_enabled"] = route_table_propagation_enabled
@@ -566,9 +575,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_create_vpc_route: Optional[pulumi.Input[bool]] = None,
             cen_id: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             resource_type: Optional[pulumi.Input[str]] = None,
             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
             route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
@@ -589,6 +598,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] resource_type: The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
@@ -605,9 +615,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         __props__ = _TransitRouterVpcAttachmentState.__new__(_TransitRouterVpcAttachmentState)
 
-        __props__.__dict__["auto_create_vpc_route"] = auto_create_vpc_route
         __props__.__dict__["cen_id"] = cen_id
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["resource_type"] = resource_type
         __props__.__dict__["route_table_association_enabled"] = route_table_association_enabled
         __props__.__dict__["route_table_propagation_enabled"] = route_table_propagation_enabled
@@ -620,11 +630,6 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         __props__.__dict__["vpc_owner_id"] = vpc_owner_id
         __props__.__dict__["zone_mappings"] = zone_mappings
         return TransitRouterVpcAttachment(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="autoCreateVpcRoute")
-    def auto_create_vpc_route(self) -> pulumi.Output[Optional[bool]]:
-        return pulumi.get(self, "auto_create_vpc_route")
 
     @property
     @pulumi.getter(name="cenId")
@@ -641,6 +646,14 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         The dry run.
         """
         return pulumi.get(self, "dry_run")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        """
+        The payment type of the resource. Valid values: `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter(name="resourceType")

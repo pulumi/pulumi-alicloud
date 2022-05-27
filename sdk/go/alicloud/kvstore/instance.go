@@ -194,8 +194,9 @@ type Instance struct {
 	EnablePublic pulumi.BoolOutput `pulumi:"enablePublic"`
 	// The expiration time of the prepaid instance.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
-	EngineVersion pulumi.StringPtrOutput `pulumi:"engineVersion"`
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
+	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Specifies whether to forcibly change the type. Default to: `true`.
 	ForceUpgrade pulumi.BoolPtrOutput `pulumi:"forceUpgrade"`
 	// Whether to create a distributed cache. Default to: `false`.
@@ -361,7 +362,8 @@ type instanceState struct {
 	EnablePublic *bool `pulumi:"enablePublic"`
 	// The expiration time of the prepaid instance.
 	EndTime *string `pulumi:"endTime"`
-	// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Specifies whether to forcibly change the type. Default to: `true`.
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
@@ -500,7 +502,8 @@ type InstanceState struct {
 	EnablePublic pulumi.BoolPtrInput
 	// The expiration time of the prepaid instance.
 	EndTime pulumi.StringPtrInput
-	// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion pulumi.StringPtrInput
 	// Specifies whether to forcibly change the type. Default to: `true`.
 	ForceUpgrade pulumi.BoolPtrInput
@@ -636,7 +639,8 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	EnablePublic *bool `pulumi:"enablePublic"`
-	// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Specifies whether to forcibly change the type. Default to: `true`.
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
@@ -764,7 +768,8 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	EnablePublic pulumi.BoolPtrInput
-	// The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion pulumi.StringPtrInput
 	// Specifies whether to forcibly change the type. Default to: `true`.
 	ForceUpgrade pulumi.BoolPtrInput

@@ -155,6 +155,10 @@ type RdsCloneDbInstance struct {
 	DbNames pulumi.StringPtrOutput `pulumi:"dbNames"`
 	// The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrOutput `pulumi:"dedicatedHostGroupId"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// The effective time.
@@ -343,6 +347,10 @@ type rdsCloneDbInstanceState struct {
 	DbNames *string `pulumi:"dbNames"`
 	// The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction *string `pulumi:"direction"`
 	// The effective time.
@@ -494,6 +502,10 @@ type RdsCloneDbInstanceState struct {
 	DbNames pulumi.StringPtrInput
 	// The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrInput
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrInput
 	// The effective time.
@@ -647,6 +659,10 @@ type rdsCloneDbInstanceArgs struct {
 	DbNames *string `pulumi:"dbNames"`
 	// The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction *string `pulumi:"direction"`
 	// The effective time.
@@ -797,6 +813,10 @@ type RdsCloneDbInstanceArgs struct {
 	DbNames pulumi.StringPtrInput
 	// The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrInput
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrInput
 	// The effective time.

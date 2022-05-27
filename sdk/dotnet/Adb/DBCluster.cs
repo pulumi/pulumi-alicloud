@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Adb
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
         /// </summary>
         [Output("autoRenewPeriod")]
-        public Output<int?> AutoRenewPeriod { get; private set; } = null!;
+        public Output<int> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
         /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> PayType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Adb
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         /// </summary>
         [Output("renewalStatus")]
-        public Output<string?> RenewalStatus { get; private set; } = null!;
+        public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -361,7 +361,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -517,7 +517,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

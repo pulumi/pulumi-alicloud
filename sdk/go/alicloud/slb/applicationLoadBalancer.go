@@ -68,7 +68,7 @@ type ApplicationLoadBalancer struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
 
@@ -149,7 +149,7 @@ type applicationLoadBalancerState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -202,7 +202,7 @@ type ApplicationLoadBalancerState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapInput
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -259,7 +259,7 @@ type applicationLoadBalancerArgs struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -313,7 +313,7 @@ type ApplicationLoadBalancerArgs struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapInput
-	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
 	VswitchId pulumi.StringPtrInput
 }
 

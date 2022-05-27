@@ -17,9 +17,13 @@ type AutoscalingConfig struct {
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration pulumi.StringPtrOutput `pulumi:"coolDownDuration"`
+	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+	Expander pulumi.StringPtrOutput `pulumi:"expander"`
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold pulumi.StringPtrOutput `pulumi:"gpuUtilizationThreshold"`
-	// The scan interval. Default is `30s`
+	// Specify whether to allow the scale-in of nodes. Default is `true`.
+	ScaleDownEnabled pulumi.BoolPtrOutput `pulumi:"scaleDownEnabled"`
+	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrOutput `pulumi:"scanInterval"`
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration pulumi.StringPtrOutput `pulumi:"unneededDuration"`
@@ -60,9 +64,13 @@ type autoscalingConfigState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration *string `pulumi:"coolDownDuration"`
+	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+	Expander *string `pulumi:"expander"`
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold *string `pulumi:"gpuUtilizationThreshold"`
-	// The scan interval. Default is `30s`
+	// Specify whether to allow the scale-in of nodes. Default is `true`.
+	ScaleDownEnabled *bool `pulumi:"scaleDownEnabled"`
+	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval *string `pulumi:"scanInterval"`
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration *string `pulumi:"unneededDuration"`
@@ -75,9 +83,13 @@ type AutoscalingConfigState struct {
 	ClusterId pulumi.StringPtrInput
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration pulumi.StringPtrInput
+	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+	Expander pulumi.StringPtrInput
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold pulumi.StringPtrInput
-	// The scan interval. Default is `30s`
+	// Specify whether to allow the scale-in of nodes. Default is `true`.
+	ScaleDownEnabled pulumi.BoolPtrInput
+	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrInput
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration pulumi.StringPtrInput
@@ -94,9 +106,13 @@ type autoscalingConfigArgs struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration *string `pulumi:"coolDownDuration"`
+	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+	Expander *string `pulumi:"expander"`
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold *string `pulumi:"gpuUtilizationThreshold"`
-	// The scan interval. Default is `30s`
+	// Specify whether to allow the scale-in of nodes. Default is `true`.
+	ScaleDownEnabled *bool `pulumi:"scaleDownEnabled"`
+	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval *string `pulumi:"scanInterval"`
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration *string `pulumi:"unneededDuration"`
@@ -110,9 +126,13 @@ type AutoscalingConfigArgs struct {
 	ClusterId pulumi.StringPtrInput
 	// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
 	CoolDownDuration pulumi.StringPtrInput
+	// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+	Expander pulumi.StringPtrInput
 	// The scale-in threshold for GPU instance. Default is `0.5`.
 	GpuUtilizationThreshold pulumi.StringPtrInput
-	// The scan interval. Default is `30s`
+	// Specify whether to allow the scale-in of nodes. Default is `true`.
+	ScaleDownEnabled pulumi.BoolPtrInput
+	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrInput
 	// The unneeded duration. Default is `10m`.
 	UnneededDuration pulumi.StringPtrInput

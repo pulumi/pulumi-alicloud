@@ -28,6 +28,18 @@ namespace Pulumi.AliCloud.ServiceMesh
     public partial class ServiceMesh : Pulumi.CustomResource
     {
         /// <summary>
+        /// The array of the cluster ids.
+        /// </summary>
+        [Output("clusterIds")]
+        public Output<ImmutableArray<string>> ClusterIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// </summary>
+        [Output("clusterSpec")]
+        public Output<string?> ClusterSpec { get; private set; } = null!;
+
+        /// <summary>
         /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
         /// </summary>
         [Output("edition")]
@@ -121,6 +133,24 @@ namespace Pulumi.AliCloud.ServiceMesh
 
     public sealed class ServiceMeshArgs : Pulumi.ResourceArgs
     {
+        [Input("clusterIds")]
+        private InputList<string>? _clusterIds;
+
+        /// <summary>
+        /// The array of the cluster ids.
+        /// </summary>
+        public InputList<string> ClusterIds
+        {
+            get => _clusterIds ?? (_clusterIds = new InputList<string>());
+            set => _clusterIds = value;
+        }
+
+        /// <summary>
+        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// </summary>
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
         /// <summary>
         /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
         /// </summary>
@@ -170,6 +200,24 @@ namespace Pulumi.AliCloud.ServiceMesh
 
     public sealed class ServiceMeshState : Pulumi.ResourceArgs
     {
+        [Input("clusterIds")]
+        private InputList<string>? _clusterIds;
+
+        /// <summary>
+        /// The array of the cluster ids.
+        /// </summary>
+        public InputList<string> ClusterIds
+        {
+            get => _clusterIds ?? (_clusterIds = new InputList<string>());
+            set => _clusterIds = value;
+        }
+
+        /// <summary>
+        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// </summary>
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
         /// <summary>
         /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
         /// </summary>

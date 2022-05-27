@@ -34,6 +34,7 @@ __all__ = [
     'GetServiceMeshesMeshMeshConfigSidecarInjectorResult',
     'GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationResult',
     'GetServiceMeshesMeshNetworkResult',
+    'GetVersionsVersionResult',
 ]
 
 @pulumi.output_type
@@ -149,7 +150,7 @@ class ServiceMeshMeshConfig(dict):
         """
         :param 'ServiceMeshMeshConfigAccessLogArgs' access_log: The configuration of the access logging.
         :param 'ServiceMeshMeshConfigAuditArgs' audit: The configuration of the audit. See the following `Block audit`.
-        :param bool customized_zipkin: Whether or not to enable the use of a custom zipkin.
+        :param bool customized_zipkin: Whether to enable the use of a custom zipkin.
         :param bool enable_locality_lb: The enable locality lb.
         :param 'ServiceMeshMeshConfigKialiArgs' kiali: The configuration of the Kiali. See the following `Block kiali`.
         :param 'ServiceMeshMeshConfigOpaArgs' opa: The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
@@ -205,7 +206,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter(name="customizedZipkin")
     def customized_zipkin(self) -> Optional[bool]:
         """
-        Whether or not to enable the use of a custom zipkin.
+        Whether to enable the use of a custom zipkin.
         """
         return pulumi.get(self, "customized_zipkin")
 
@@ -1581,5 +1582,45 @@ class GetServiceMeshesMeshNetworkResult(dict):
         The list of Virtual Switch.
         """
         return pulumi.get(self, "vswitche_lists")
+
+
+@pulumi.output_type
+class GetVersionsVersionResult(dict):
+    def __init__(__self__, *,
+                 edition: str,
+                 id: str,
+                 version: str):
+        """
+        :param str edition: The edition of the ASM instance.
+        :param str id: The ASM version id. It formats as `<edition>:<version>`.
+        :param str version: The AMS version.
+        """
+        pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        The edition of the ASM instance.
+        """
+        return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ASM version id. It formats as `<edition>:<version>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The AMS version.
+        """
+        return pulumi.get(self, "version")
 
 

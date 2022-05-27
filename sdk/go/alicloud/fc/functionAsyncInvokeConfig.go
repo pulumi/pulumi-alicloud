@@ -75,6 +75,30 @@ import (
 // 	})
 // }
 // ```
+// ### Async Job Configuration
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
+// 			ServiceName:        pulumi.Any(alicloud_fc_service.Example.Name),
+// 			FunctionName:       pulumi.Any(alicloud_fc_function.Example.Name),
+// 			StatefulInvocation: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Configuration for Function Latest Unpublished Version
 //
 // ```go
@@ -118,14 +142,16 @@ type FunctionAsyncInvokeConfig struct {
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
 	// The date this resource was last modified.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
-	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
 	MaximumEventAgeInSeconds pulumi.IntPtrOutput `pulumi:"maximumEventAgeInSeconds"`
-	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
 	MaximumRetryAttempts pulumi.IntPtrOutput `pulumi:"maximumRetryAttempts"`
 	// Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
 	Qualifier pulumi.StringPtrOutput `pulumi:"qualifier"`
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Function Compute async job configuration. valid values true or false, default `false`
+	StatefulInvocation pulumi.BoolPtrOutput `pulumi:"statefulInvocation"`
 }
 
 // NewFunctionAsyncInvokeConfig registers a new resource with the given unique name, arguments, and options.
@@ -171,14 +197,16 @@ type functionAsyncInvokeConfigState struct {
 	FunctionName *string `pulumi:"functionName"`
 	// The date this resource was last modified.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
-	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
 	MaximumEventAgeInSeconds *int `pulumi:"maximumEventAgeInSeconds"`
-	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
 	MaximumRetryAttempts *int `pulumi:"maximumRetryAttempts"`
 	// Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
 	Qualifier *string `pulumi:"qualifier"`
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName *string `pulumi:"serviceName"`
+	// Function Compute async job configuration. valid values true or false, default `false`
+	StatefulInvocation *bool `pulumi:"statefulInvocation"`
 }
 
 type FunctionAsyncInvokeConfigState struct {
@@ -190,14 +218,16 @@ type FunctionAsyncInvokeConfigState struct {
 	FunctionName pulumi.StringPtrInput
 	// The date this resource was last modified.
 	LastModifiedTime pulumi.StringPtrInput
-	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
 	MaximumEventAgeInSeconds pulumi.IntPtrInput
-	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
 	MaximumRetryAttempts pulumi.IntPtrInput
 	// Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
 	Qualifier pulumi.StringPtrInput
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName pulumi.StringPtrInput
+	// Function Compute async job configuration. valid values true or false, default `false`
+	StatefulInvocation pulumi.BoolPtrInput
 }
 
 func (FunctionAsyncInvokeConfigState) ElementType() reflect.Type {
@@ -209,14 +239,16 @@ type functionAsyncInvokeConfigArgs struct {
 	DestinationConfig *FunctionAsyncInvokeConfigDestinationConfig `pulumi:"destinationConfig"`
 	// Name of the Function Compute Function.
 	FunctionName string `pulumi:"functionName"`
-	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
 	MaximumEventAgeInSeconds *int `pulumi:"maximumEventAgeInSeconds"`
-	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
 	MaximumRetryAttempts *int `pulumi:"maximumRetryAttempts"`
 	// Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
 	Qualifier *string `pulumi:"qualifier"`
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName string `pulumi:"serviceName"`
+	// Function Compute async job configuration. valid values true or false, default `false`
+	StatefulInvocation *bool `pulumi:"statefulInvocation"`
 }
 
 // The set of arguments for constructing a FunctionAsyncInvokeConfig resource.
@@ -225,14 +257,16 @@ type FunctionAsyncInvokeConfigArgs struct {
 	DestinationConfig FunctionAsyncInvokeConfigDestinationConfigPtrInput
 	// Name of the Function Compute Function.
 	FunctionName pulumi.StringInput
-	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+	// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
 	MaximumEventAgeInSeconds pulumi.IntPtrInput
-	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+	// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
 	MaximumRetryAttempts pulumi.IntPtrInput
 	// Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
 	Qualifier pulumi.StringPtrInput
 	// Name of the Function Compute Function, omitting any version or alias qualifier.
 	ServiceName pulumi.StringInput
+	// Function Compute async job configuration. valid values true or false, default `false`
+	StatefulInvocation pulumi.BoolPtrInput
 }
 
 func (FunctionAsyncInvokeConfigArgs) ElementType() reflect.Type {

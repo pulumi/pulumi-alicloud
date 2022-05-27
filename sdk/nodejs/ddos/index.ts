@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./basicDefenseThreshold";
 export * from "./ddosBgpInstance";
 export * from "./ddosCooInstance";
 export * from "./domainResource";
@@ -16,6 +17,7 @@ export * from "./port";
 export * from "./schedulerRule";
 
 // Import resources to register:
+import { BasicDefenseThreshold } from "./basicDefenseThreshold";
 import { DdosBgpInstance } from "./ddosBgpInstance";
 import { DdosCooInstance } from "./ddosCooInstance";
 import { DomainResource } from "./domainResource";
@@ -26,6 +28,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold":
+                return new BasicDefenseThreshold(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosBgpInstance:DdosBgpInstance":
                 return new DdosBgpInstance(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosCooInstance:DdosCooInstance":
@@ -41,6 +45,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "ddos/basicDefenseThreshold", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosBgpInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosCooInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/domainResource", _module)

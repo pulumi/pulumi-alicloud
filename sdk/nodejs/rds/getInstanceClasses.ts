@@ -35,7 +35,9 @@ export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:rds/getInstanceClasses:getInstanceClasses", {
         "category": args.category,
+        "commodityCode": args.commodityCode,
         "dbInstanceClass": args.dbInstanceClass,
+        "dbInstanceId": args.dbInstanceId,
         "dbInstanceStorageType": args.dbInstanceStorageType,
         "engine": args.engine,
         "engineVersion": args.engineVersion,
@@ -57,9 +59,25 @@ export interface GetInstanceClassesArgs {
      */
     category?: string;
     /**
+     * The commodity code of the instance. Valid values:
+     * * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
+     * * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
+     * * **rords**: The instance is a pay-as-you-go read-only instance. This value is available on the China site (aliyun.com).
+     * * **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available on the China site (aliyun.com).
+     * * **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available on the International site (alibabacloud.com).
+     * * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
+     * * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
+     * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+     */
+    commodityCode?: string;
+    /**
      * The DB instance class type by the user.
      */
     dbInstanceClass?: string;
+    /**
+     * The ID of the instance.
+     */
+    dbInstanceId?: string;
     /**
      * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
      */
@@ -97,7 +115,9 @@ export interface GetInstanceClassesArgs {
  */
 export interface GetInstanceClassesResult {
     readonly category?: string;
+    readonly commodityCode?: string;
     readonly dbInstanceClass?: string;
+    readonly dbInstanceId?: string;
     readonly dbInstanceStorageType?: string;
     readonly engine?: string;
     readonly engineVersion?: string;
@@ -134,9 +154,25 @@ export interface GetInstanceClassesOutputArgs {
      */
     category?: pulumi.Input<string>;
     /**
+     * The commodity code of the instance. Valid values:
+     * * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
+     * * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
+     * * **rords**: The instance is a pay-as-you-go read-only instance. This value is available on the China site (aliyun.com).
+     * * **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available on the China site (aliyun.com).
+     * * **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available on the International site (alibabacloud.com).
+     * * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
+     * * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
+     * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+     */
+    commodityCode?: pulumi.Input<string>;
+    /**
      * The DB instance class type by the user.
      */
     dbInstanceClass?: pulumi.Input<string>;
+    /**
+     * The ID of the instance.
+     */
+    dbInstanceId?: pulumi.Input<string>;
     /**
      * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
      */

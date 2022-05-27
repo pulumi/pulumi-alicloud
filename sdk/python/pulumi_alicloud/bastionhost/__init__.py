@@ -7,18 +7,21 @@ import typing
 # Export this package's modules as members:
 from .get_host_accounts import *
 from .get_host_groups import *
+from .get_host_share_keys import *
 from .get_hosts import *
 from .get_instances import *
 from .get_user_groups import *
 from .get_users import *
 from .host import *
 from .host_account import *
+from .host_account_share_key_attachment import *
 from .host_account_user_attachment import *
 from .host_account_user_group_attachment import *
 from .host_attachment import *
 from .host_group import *
 from .host_group_account_user_attachment import *
 from .host_group_account_user_group_attachment import *
+from .host_share_key import *
 from .instance import *
 from .user import *
 from .user_attachment import *

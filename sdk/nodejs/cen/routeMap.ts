@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  * CEN RouteMap can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+ *  $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
  * ```
  */
 export class RouteMap extends pulumi.CustomResource {
@@ -195,6 +195,9 @@ export class RouteMap extends pulumi.CustomResource {
      * The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
      */
     public readonly priority!: pulumi.Output<number>;
+    /**
+     * ID of the RouteMap. It is available in 1.161.0+.
+     */
     public /*out*/ readonly routeMapId!: pulumi.Output<string>;
     /**
      * A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
@@ -224,6 +227,10 @@ export class RouteMap extends pulumi.CustomResource {
      * (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+     */
+    public readonly transitRouterRouteTableId!: pulumi.Output<string>;
     /**
      * The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
      */
@@ -270,6 +277,7 @@ export class RouteMap extends pulumi.CustomResource {
             resourceInputs["sourceRegionIds"] = state ? state.sourceRegionIds : undefined;
             resourceInputs["sourceRouteTableIds"] = state ? state.sourceRouteTableIds : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["transitRouterRouteTableId"] = state ? state.transitRouterRouteTableId : undefined;
             resourceInputs["transmitDirection"] = state ? state.transmitDirection : undefined;
         } else {
             const args = argsOrState as RouteMapArgs | undefined;
@@ -314,6 +322,7 @@ export class RouteMap extends pulumi.CustomResource {
             resourceInputs["sourceInstanceIdsReverseMatch"] = args ? args.sourceInstanceIdsReverseMatch : undefined;
             resourceInputs["sourceRegionIds"] = args ? args.sourceRegionIds : undefined;
             resourceInputs["sourceRouteTableIds"] = args ? args.sourceRouteTableIds : undefined;
+            resourceInputs["transitRouterRouteTableId"] = args ? args.transitRouterRouteTableId : undefined;
             resourceInputs["transmitDirection"] = args ? args.transmitDirection : undefined;
             resourceInputs["routeMapId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -407,6 +416,9 @@ export interface RouteMapState {
      * The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
      */
     priority?: pulumi.Input<number>;
+    /**
+     * ID of the RouteMap. It is available in 1.161.0+.
+     */
     routeMapId?: pulumi.Input<string>;
     /**
      * A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
@@ -436,6 +448,10 @@ export interface RouteMapState {
      * (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
      */
     status?: pulumi.Input<string>;
+    /**
+     * The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+     */
+    transitRouterRouteTableId?: pulumi.Input<string>;
     /**
      * The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
      */
@@ -550,6 +566,10 @@ export interface RouteMapArgs {
      * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
      */
     sourceRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+     */
+    transitRouterRouteTableId?: pulumi.Input<string>;
     /**
      * The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
      */

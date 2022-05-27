@@ -11,7 +11,7 @@ import (
 )
 
 type AppTemplateConfigList struct {
-	// Configuration item key. Valid values:
+	// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
 	Key *string `pulumi:"key"`
 	// Configuration item content.
 	Value *string `pulumi:"value"`
@@ -29,7 +29,7 @@ type AppTemplateConfigListInput interface {
 }
 
 type AppTemplateConfigListArgs struct {
-	// Configuration item key. Valid values:
+	// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Configuration item content.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -86,7 +86,7 @@ func (o AppTemplateConfigListOutput) ToAppTemplateConfigListOutputWithContext(ct
 	return o
 }
 
-// Configuration item key. Valid values:
+// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
 func (o AppTemplateConfigListOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppTemplateConfigList) *string { return v.Key }).(pulumi.StringPtrOutput)
 }

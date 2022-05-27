@@ -1852,6 +1852,10 @@ type GetInstancesInstance struct {
 	DbType string `pulumi:"dbType"`
 	// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	DeleteDate string `pulumi:"deleteDate"`
+	// (Available in 1.167.0+) Indicates whether the release protection feature is enabled for the instance. Valid values:
+	// * **true**: The release protection feature is enabled.
+	// * **false**: The release protection feature is disabled.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// (Available in 1.124.3+) The description of the encryption key.
 	Description string `pulumi:"description"`
 	// (Available in 1.124.3+) The ID of the encryption key.
@@ -1994,6 +1998,10 @@ type GetInstancesInstanceArgs struct {
 	DbType pulumi.StringInput `pulumi:"dbType"`
 	// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	DeleteDate pulumi.StringInput `pulumi:"deleteDate"`
+	// (Available in 1.167.0+) Indicates whether the release protection feature is enabled for the instance. Valid values:
+	// * **true**: The release protection feature is enabled.
+	// * **false**: The release protection feature is disabled.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// (Available in 1.124.3+) The description of the encryption key.
 	Description pulumi.StringInput `pulumi:"description"`
 	// (Available in 1.124.3+) The ID of the encryption key.
@@ -2215,6 +2223,13 @@ func (o GetInstancesInstanceOutput) DbType() pulumi.StringOutput {
 // (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 func (o GetInstancesInstanceOutput) DeleteDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DeleteDate }).(pulumi.StringOutput)
+}
+
+// (Available in 1.167.0+) Indicates whether the release protection feature is enabled for the instance. Valid values:
+// * **true**: The release protection feature is enabled.
+// * **false**: The release protection feature is disabled.
+func (o GetInstancesInstanceOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // (Available in 1.124.3+) The description of the encryption key.

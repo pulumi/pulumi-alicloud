@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.132.0+.
  *
+ * > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+ *
  * ## Import
  *
  * Lindorm Instance can be imported using the id, e.g.
@@ -71,6 +73,26 @@ export class Instance extends pulumi.CustomResource {
      * The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
      */
     public readonly duration!: pulumi.Output<string | undefined>;
+    /**
+     * (Available in v1.163.0+) Whether to enable file engine.
+     */
+    public /*out*/ readonly enabledFileEngine!: pulumi.Output<boolean>;
+    /**
+     * (Available in v1.163.0+) Whether to enable lts engine.
+     */
+    public /*out*/ readonly enabledLtsEngine!: pulumi.Output<boolean>;
+    /**
+     * (Available in v1.163.0+) Whether to enable search engine.
+     */
+    public /*out*/ readonly enabledSearchEngine!: pulumi.Output<boolean>;
+    /**
+     * (Available in v1.163.0+) Whether to enable table engine.
+     */
+    public /*out*/ readonly enabledTableEngine!: pulumi.Output<boolean>;
+    /**
+     * (Available in v1.163.0+) Whether to enable time serires engine.
+     */
+    public /*out*/ readonly enabledTimeSeriresEngine!: pulumi.Output<boolean>;
     /**
      * The count of file engine.
      */
@@ -148,7 +170,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly timeSeriresEngineSpecification!: pulumi.Output<string>;
     /**
-     * The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+     * The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+     *
+     * @deprecated Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
      */
     public readonly upgradeType!: pulumi.Output<string | undefined>;
     /**
@@ -179,6 +203,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionProection"] = state ? state.deletionProection : undefined;
             resourceInputs["diskCategory"] = state ? state.diskCategory : undefined;
             resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["enabledFileEngine"] = state ? state.enabledFileEngine : undefined;
+            resourceInputs["enabledLtsEngine"] = state ? state.enabledLtsEngine : undefined;
+            resourceInputs["enabledSearchEngine"] = state ? state.enabledSearchEngine : undefined;
+            resourceInputs["enabledTableEngine"] = state ? state.enabledTableEngine : undefined;
+            resourceInputs["enabledTimeSeriresEngine"] = state ? state.enabledTimeSeriresEngine : undefined;
             resourceInputs["fileEngineNodeCount"] = state ? state.fileEngineNodeCount : undefined;
             resourceInputs["fileEngineSpecification"] = state ? state.fileEngineSpecification : undefined;
             resourceInputs["groupName"] = state ? state.groupName : undefined;
@@ -239,6 +268,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["upgradeType"] = args ? args.upgradeType : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["enabledFileEngine"] = undefined /*out*/;
+            resourceInputs["enabledLtsEngine"] = undefined /*out*/;
+            resourceInputs["enabledSearchEngine"] = undefined /*out*/;
+            resourceInputs["enabledTableEngine"] = undefined /*out*/;
+            resourceInputs["enabledTimeSeriresEngine"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -274,6 +308,26 @@ export interface InstanceState {
      * The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
      */
     duration?: pulumi.Input<string>;
+    /**
+     * (Available in v1.163.0+) Whether to enable file engine.
+     */
+    enabledFileEngine?: pulumi.Input<boolean>;
+    /**
+     * (Available in v1.163.0+) Whether to enable lts engine.
+     */
+    enabledLtsEngine?: pulumi.Input<boolean>;
+    /**
+     * (Available in v1.163.0+) Whether to enable search engine.
+     */
+    enabledSearchEngine?: pulumi.Input<boolean>;
+    /**
+     * (Available in v1.163.0+) Whether to enable table engine.
+     */
+    enabledTableEngine?: pulumi.Input<boolean>;
+    /**
+     * (Available in v1.163.0+) Whether to enable time serires engine.
+     */
+    enabledTimeSeriresEngine?: pulumi.Input<boolean>;
     /**
      * The count of file engine.
      */
@@ -351,7 +405,9 @@ export interface InstanceState {
      */
     timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**
-     * The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+     * The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+     *
+     * @deprecated Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
      */
     upgradeType?: pulumi.Input<string>;
     /**
@@ -465,7 +521,9 @@ export interface InstanceArgs {
      */
     timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**
-     * The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+     * The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+     *
+     * @deprecated Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
      */
     upgradeType?: pulumi.Input<string>;
     /**

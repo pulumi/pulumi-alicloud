@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ddos
     ///     {
     ///         var example = new AliCloud.Ddos.SchedulerRule("example", new AliCloud.Ddos.SchedulerRuleArgs
     ///         {
-    ///             RuleName = "tf-testacc7929727******",
+    ///             RuleName = "tf-testacc7929727",
     ///             RuleType = 3,
     ///             Rules = 
     ///             {
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ddos
     ///                     Priority = 100,
     ///                     RegionId = "cn-hangzhou",
     ///                     Type = "A",
-    ///                     Value = "170.33.2.125",
+    ///                     Value = "127.0.0.1",
     ///                     ValueType = 3,
     ///                 },
     ///                 new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ddos
     ///                     Priority = 50,
     ///                     RegionId = "cn-hangzhou",
     ///                     Type = "A",
-    ///                     Value = "170.33.14.193",
+    ///                     Value = "127.0.0.0",
     ///                     ValueType = 1,
     ///                 },
     ///             },
@@ -72,6 +72,9 @@ namespace Pulumi.AliCloud.Ddos
         [Output("cname")]
         public Output<string> Cname { get; private set; } = null!;
 
+        /// <summary>
+        /// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
+        /// </summary>
         [Output("param")]
         public Output<string?> Param { get; private set; } = null!;
 
@@ -97,18 +100,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<int> RuleType { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
-        /// `Type`: String type, required, the address format of the linkage resource. Valid values:
-        /// `A`: IP address.
-        /// `CNAME`: Domain name.
-        /// `Value`: String type, required, link address of resource.
-        /// `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
-        /// `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
-        /// `1`: Anti-DDoS Pro.
-        /// `2`: (Tiered protection) cloud resource IP.
-        /// `3`: (sea acceleration) MCA IP address.
-        /// `6`: (Cloud product linkage) cloud resource IP.
-        /// `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+        /// The information about the scheduling rules. See the following `Block rules`.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SchedulerRuleRule>> Rules { get; private set; } = null!;
@@ -159,6 +151,9 @@ namespace Pulumi.AliCloud.Ddos
 
     public sealed class SchedulerRuleArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
+        /// </summary>
         [Input("param")]
         public Input<string>? Param { get; set; }
 
@@ -187,18 +182,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.SchedulerRuleRuleArgs>? _rules;
 
         /// <summary>
-        /// The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
-        /// `Type`: String type, required, the address format of the linkage resource. Valid values:
-        /// `A`: IP address.
-        /// `CNAME`: Domain name.
-        /// `Value`: String type, required, link address of resource.
-        /// `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
-        /// `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
-        /// `1`: Anti-DDoS Pro.
-        /// `2`: (Tiered protection) cloud resource IP.
-        /// `3`: (sea acceleration) MCA IP address.
-        /// `6`: (Cloud product linkage) cloud resource IP.
-        /// `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+        /// The information about the scheduling rules. See the following `Block rules`.
         /// </summary>
         public InputList<Inputs.SchedulerRuleRuleArgs> Rules
         {
@@ -219,6 +203,9 @@ namespace Pulumi.AliCloud.Ddos
         [Input("cname")]
         public Input<string>? Cname { get; set; }
 
+        /// <summary>
+        /// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
+        /// </summary>
         [Input("param")]
         public Input<string>? Param { get; set; }
 
@@ -247,18 +234,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.SchedulerRuleRuleGetArgs>? _rules;
 
         /// <summary>
-        /// The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
-        /// `Type`: String type, required, the address format of the linkage resource. Valid values:
-        /// `A`: IP address.
-        /// `CNAME`: Domain name.
-        /// `Value`: String type, required, link address of resource.
-        /// `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
-        /// `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
-        /// `1`: Anti-DDoS Pro.
-        /// `2`: (Tiered protection) cloud resource IP.
-        /// `3`: (sea acceleration) MCA IP address.
-        /// `6`: (Cloud product linkage) cloud resource IP.
-        /// `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+        /// The information about the scheduling rules. See the following `Block rules`.
         /// </summary>
         public InputList<Inputs.SchedulerRuleRuleGetArgs> Rules
         {

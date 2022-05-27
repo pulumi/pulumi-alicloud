@@ -29,14 +29,16 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[int] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
-        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+               - 4: eip/vpc instance
+               - 5: vpc instance.
+        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] config: （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
-        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         :param pulumi.Input[str] security_group: （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
@@ -71,7 +73,9 @@ class InstanceArgs:
     @pulumi.getter(name="deployType")
     def deploy_type(self) -> pulumi.Input[int]:
         """
-        The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+        The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+        - 4: eip/vpc instance
+        - 5: vpc instance.
         """
         return pulumi.get(self, "deploy_type")
 
@@ -83,7 +87,7 @@ class InstanceArgs:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> pulumi.Input[int]:
         """
-        The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "disk_size")
 
@@ -119,7 +123,7 @@ class InstanceArgs:
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> pulumi.Input[int]:
         """
-        The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         """
         return pulumi.get(self, "topic_quota")
 
@@ -155,7 +159,7 @@ class InstanceArgs:
     @pulumi.getter(name="eipMax")
     def eip_max(self) -> Optional[pulumi.Input[int]]:
         """
-        The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "eip_max")
 
@@ -259,10 +263,12 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] config: （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
-        :param pulumi.Input[int] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
-        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+               - 4: eip/vpc instance
+               - 5: vpc instance.
+        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -271,7 +277,7 @@ class _InstanceState:
         :param pulumi.Input[str] service_version: （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The Zone to launch the kafka instance.
@@ -327,7 +333,9 @@ class _InstanceState:
     @pulumi.getter(name="deployType")
     def deploy_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+        The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+        - 4: eip/vpc instance
+        - 5: vpc instance.
         """
         return pulumi.get(self, "deploy_type")
 
@@ -339,7 +347,7 @@ class _InstanceState:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "disk_size")
 
@@ -363,7 +371,7 @@ class _InstanceState:
     @pulumi.getter(name="eipMax")
     def eip_max(self) -> Optional[pulumi.Input[int]]:
         """
-        The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "eip_max")
 
@@ -471,7 +479,7 @@ class _InstanceState:
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> Optional[pulumi.Input[int]]:
         """
-        The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         """
         return pulumi.get(self, "topic_quota")
 
@@ -588,10 +596,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
-        :param pulumi.Input[int] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
-        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+               - 4: eip/vpc instance
+               - 5: vpc instance.
+        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
@@ -599,7 +609,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] service_version: （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         """
         ...
@@ -762,10 +772,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
-        :param pulumi.Input[int] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
-        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+               - 4: eip/vpc instance
+               - 5: vpc instance.
+        :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -774,7 +786,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] service_version: （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The Zone to launch the kafka instance.
@@ -814,7 +826,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="deployType")
     def deploy_type(self) -> pulumi.Output[int]:
         """
-        The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+        The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+        - 4: eip/vpc instance
+        - 5: vpc instance.
         """
         return pulumi.get(self, "deploy_type")
 
@@ -822,7 +836,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> pulumi.Output[int]:
         """
-        The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "disk_size")
 
@@ -838,7 +852,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="eipMax")
     def eip_max(self) -> pulumi.Output[int]:
         """
-        The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "eip_max")
 
@@ -910,7 +924,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> pulumi.Output[int]:
         """
-        The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         """
         return pulumi.get(self, "topic_quota")
 

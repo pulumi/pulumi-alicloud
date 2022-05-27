@@ -92,6 +92,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
@@ -114,6 +117,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -235,6 +241,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
@@ -251,6 +260,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -333,6 +345,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
@@ -355,6 +370,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

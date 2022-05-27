@@ -73,6 +73,12 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string DeleteDate;
         /// <summary>
+        /// (Available in 1.167.0+) Indicates whether the release protection feature is enabled for the instance. Valid values:
+        /// * **true**: The release protection feature is enabled.
+        /// * **false**: The release protection feature is disabled.
+        /// </summary>
+        public readonly bool DeletionProtection;
+        /// <summary>
         /// (Available in 1.124.3+) The description of the encryption key.
         /// </summary>
         public readonly string Description;
@@ -276,6 +282,8 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string deleteDate,
 
+            bool deletionProtection,
+
             string description,
 
             string encryptionKey,
@@ -368,6 +376,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
             DbInstanceStorageType = dbInstanceStorageType;
             DbType = dbType;
             DeleteDate = deleteDate;
+            DeletionProtection = deletionProtection;
             Description = description;
             EncryptionKey = encryptionKey;
             EncryptionKeyStatus = encryptionKeyStatus;

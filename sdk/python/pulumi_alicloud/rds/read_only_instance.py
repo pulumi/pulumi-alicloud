@@ -25,6 +25,7 @@ class ReadOnlyInstanceArgs:
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
@@ -62,6 +63,9 @@ class ReadOnlyInstanceArgs:
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
@@ -114,6 +118,8 @@ class ReadOnlyInstanceArgs:
             pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
         if instance_name is not None:
@@ -274,6 +280,20 @@ class ReadOnlyInstanceArgs:
     @client_crl_enabled.setter
     def client_crl_enabled(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "client_crl_enabled", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The switch of delete protection. Valid values:
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="forceRestart")
@@ -486,6 +506,7 @@ class _ReadOnlyInstanceState:
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
@@ -526,6 +547,9 @@ class _ReadOnlyInstanceState:
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -582,6 +606,8 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if engine is not None:
             pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
@@ -718,6 +744,20 @@ class _ReadOnlyInstanceState:
     @connection_string.setter
     def connection_string(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The switch of delete protection. Valid values:
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -1003,6 +1043,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -1094,6 +1135,9 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
@@ -1214,6 +1258,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -1251,6 +1296,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
             __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
             __props__.__dict__["client_crl_enabled"] = client_crl_enabled
+            __props__.__dict__["deletion_protection"] = deletion_protection
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
@@ -1298,6 +1344,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
             client_crl_enabled: Optional[pulumi.Input[int]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             force_restart: Optional[pulumi.Input[bool]] = None,
@@ -1343,6 +1390,9 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -1396,6 +1446,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
         __props__.__dict__["client_crl_enabled"] = client_crl_enabled
         __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["force_restart"] = force_restart
@@ -1484,6 +1535,16 @@ class ReadOnlyInstance(pulumi.CustomResource):
         RDS database connection string.
         """
         return pulumi.get(self, "connection_string")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        The switch of delete protection. Valid values:
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

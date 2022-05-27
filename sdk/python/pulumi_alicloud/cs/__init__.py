@@ -11,6 +11,7 @@ from .cluster import *
 from .edge_kubernetes import *
 from .get_ack_service import *
 from .get_edge_kubernetes_clusters import *
+from .get_kubernetes_addon_metadata import *
 from .get_kubernetes_addons import *
 from .get_kubernetes_clusters import *
 from .get_kubernetes_permission import *

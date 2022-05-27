@@ -21,13 +21,19 @@ class GetInstanceClassesResult:
     """
     A collection of values returned by getInstanceClasses.
     """
-    def __init__(__self__, category=None, db_instance_class=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, instance_classes=None, multi_zone=None, output_file=None, sorted_by=None, storage_type=None, zone_id=None):
+    def __init__(__self__, category=None, commodity_code=None, db_instance_class=None, db_instance_id=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, instance_classes=None, multi_zone=None, output_file=None, sorted_by=None, storage_type=None, zone_id=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
+        if commodity_code and not isinstance(commodity_code, str):
+            raise TypeError("Expected argument 'commodity_code' to be a str")
+        pulumi.set(__self__, "commodity_code", commodity_code)
         if db_instance_class and not isinstance(db_instance_class, str):
             raise TypeError("Expected argument 'db_instance_class' to be a str")
         pulumi.set(__self__, "db_instance_class", db_instance_class)
+        if db_instance_id and not isinstance(db_instance_id, str):
+            raise TypeError("Expected argument 'db_instance_id' to be a str")
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
         if db_instance_storage_type and not isinstance(db_instance_storage_type, str):
             raise TypeError("Expected argument 'db_instance_storage_type' to be a str")
         pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
@@ -71,9 +77,19 @@ class GetInstanceClassesResult:
         return pulumi.get(self, "category")
 
     @property
+    @pulumi.getter(name="commodityCode")
+    def commodity_code(self) -> Optional[str]:
+        return pulumi.get(self, "commodity_code")
+
+    @property
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> Optional[str]:
         return pulumi.get(self, "db_instance_class")
+
+    @property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> Optional[str]:
+        return pulumi.get(self, "db_instance_id")
 
     @property
     @pulumi.getter(name="dbInstanceStorageType")
@@ -152,7 +168,9 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
             yield self
         return GetInstanceClassesResult(
             category=self.category,
+            commodity_code=self.commodity_code,
             db_instance_class=self.db_instance_class,
+            db_instance_id=self.db_instance_id,
             db_instance_storage_type=self.db_instance_storage_type,
             engine=self.engine,
             engine_version=self.engine_version,
@@ -168,7 +186,9 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
 
 
 def get_instance_classes(category: Optional[str] = None,
+                         commodity_code: Optional[str] = None,
                          db_instance_class: Optional[str] = None,
+                         db_instance_id: Optional[str] = None,
                          db_instance_storage_type: Optional[str] = None,
                          engine: Optional[str] = None,
                          engine_version: Optional[str] = None,
@@ -199,7 +219,17 @@ def get_instance_classes(category: Optional[str] = None,
 
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str commodity_code: The commodity code of the instance. Valid values:
+           * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
+           * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
+           * **rords**: The instance is a pay-as-you-go read-only instance. This value is available on the China site (aliyun.com).
+           * **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available on the China site (aliyun.com).
+           * **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available on the International site (alibabacloud.com).
+           * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
+           * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
+           * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
     :param str db_instance_class: The DB instance class type by the user.
+    :param str db_instance_id: The ID of the instance.
     :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
     :param str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -210,7 +240,9 @@ def get_instance_classes(category: Optional[str] = None,
     """
     __args__ = dict()
     __args__['category'] = category
+    __args__['commodityCode'] = commodity_code
     __args__['dbInstanceClass'] = db_instance_class
+    __args__['dbInstanceId'] = db_instance_id
     __args__['dbInstanceStorageType'] = db_instance_storage_type
     __args__['engine'] = engine
     __args__['engineVersion'] = engine_version
@@ -228,7 +260,9 @@ def get_instance_classes(category: Optional[str] = None,
 
     return AwaitableGetInstanceClassesResult(
         category=__ret__.category,
+        commodity_code=__ret__.commodity_code,
         db_instance_class=__ret__.db_instance_class,
+        db_instance_id=__ret__.db_instance_id,
         db_instance_storage_type=__ret__.db_instance_storage_type,
         engine=__ret__.engine,
         engine_version=__ret__.engine_version,
@@ -245,7 +279,9 @@ def get_instance_classes(category: Optional[str] = None,
 
 @_utilities.lift_output_func(get_instance_classes)
 def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                                commodity_code: Optional[pulumi.Input[Optional[str]]] = None,
                                 db_instance_class: Optional[pulumi.Input[Optional[str]]] = None,
+                                db_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 db_instance_storage_type: Optional[pulumi.Input[Optional[str]]] = None,
                                 engine: Optional[pulumi.Input[Optional[str]]] = None,
                                 engine_version: Optional[pulumi.Input[Optional[str]]] = None,
@@ -276,7 +312,17 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
 
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str commodity_code: The commodity code of the instance. Valid values:
+           * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
+           * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
+           * **rords**: The instance is a pay-as-you-go read-only instance. This value is available on the China site (aliyun.com).
+           * **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available on the China site (aliyun.com).
+           * **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available on the International site (alibabacloud.com).
+           * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
+           * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
+           * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
     :param str db_instance_class: The DB instance class type by the user.
+    :param str db_instance_id: The ID of the instance.
     :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
     :param str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.

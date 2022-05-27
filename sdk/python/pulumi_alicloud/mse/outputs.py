@@ -13,8 +13,10 @@ __all__ = [
     'GatewaySlbList',
     'GetClustersClusterResult',
     'GetClustersClusterInstanceModelResult',
+    'GetEngineNamespacesNamespaceResult',
     'GetGatewaysGatewayResult',
     'GetGatewaysGatewaySlbListResult',
+    'GetZnodesZnodeResult',
 ]
 
 @pulumi.output_type
@@ -466,6 +468,107 @@ class GetClustersClusterInstanceModelResult(dict):
 
 
 @pulumi.output_type
+class GetEngineNamespacesNamespaceResult(dict):
+    def __init__(__self__, *,
+                 config_count: int,
+                 id: str,
+                 namespace_desc: str,
+                 namespace_id: str,
+                 namespace_show_name: str,
+                 quota: int,
+                 service_count: str,
+                 type: int):
+        """
+        :param int config_count: The Number of Configuration of the Namespace.
+        :param str id: The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+        :param str namespace_desc: The description of the Namespace.
+        :param str namespace_id: The id of Namespace.
+        :param str namespace_show_name: The name of the Namespace.
+        :param int quota: The Quota of the Namespace.
+        :param str service_count: The number of active services.
+        :param int type: The type of the Namespace, the value is as follows:
+               - '0': Global Configuration.
+               - '1': default namespace.
+               - '2': Custom Namespace.
+        """
+        pulumi.set(__self__, "config_count", config_count)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace_desc", namespace_desc)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "namespace_show_name", namespace_show_name)
+        pulumi.set(__self__, "quota", quota)
+        pulumi.set(__self__, "service_count", service_count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="configCount")
+    def config_count(self) -> int:
+        """
+        The Number of Configuration of the Namespace.
+        """
+        return pulumi.get(self, "config_count")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="namespaceDesc")
+    def namespace_desc(self) -> str:
+        """
+        The description of the Namespace.
+        """
+        return pulumi.get(self, "namespace_desc")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        The id of Namespace.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="namespaceShowName")
+    def namespace_show_name(self) -> str:
+        """
+        The name of the Namespace.
+        """
+        return pulumi.get(self, "namespace_show_name")
+
+    @property
+    @pulumi.getter
+    def quota(self) -> int:
+        """
+        The Quota of the Namespace.
+        """
+        return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter(name="serviceCount")
+    def service_count(self) -> str:
+        """
+        The number of active services.
+        """
+        return pulumi.get(self, "service_count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> int:
+        """
+        The type of the Namespace, the value is as follows:
+        - '0': Global Configuration.
+        - '1': default namespace.
+        - '2': Custom Namespace.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetGatewaysGatewayResult(dict):
     def __init__(__self__, *,
                  backup_vswitch_id: str,
@@ -686,5 +789,78 @@ class GetGatewaysGatewaySlbListResult(dict):
         The type of the gateway slb.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetZnodesZnodeResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 data: str,
+                 dir: bool,
+                 id: str,
+                 path: str,
+                 znode_name: str):
+        """
+        :param str cluster_id: The ID of the Cluster.
+        :param str data: The Node data.
+        :param bool dir: Node list information, the value is as follows:
+        :param str id: The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+        :param str path: The Node path.
+        :param str znode_name: The Node name.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "znode_name", znode_name)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the Cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def data(self) -> str:
+        """
+        The Node data.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def dir(self) -> bool:
+        """
+        Node list information, the value is as follows:
+        """
+        return pulumi.get(self, "dir")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The Node path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="znodeName")
+    def znode_name(self) -> str:
+        """
+        The Node name.
+        """
+        return pulumi.get(self, "znode_name")
 
 

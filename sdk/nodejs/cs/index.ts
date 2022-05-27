@@ -11,6 +11,7 @@ export * from "./cluster";
 export * from "./edgeKubernetes";
 export * from "./getAckService";
 export * from "./getEdgeKubernetesClusters";
+export * from "./getKubernetesAddonMetadata";
 export * from "./getKubernetesAddons";
 export * from "./getKubernetesClusters";
 export * from "./getKubernetesPermission";

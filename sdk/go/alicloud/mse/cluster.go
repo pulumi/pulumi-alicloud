@@ -33,8 +33,8 @@ import (
 // 			},
 // 			ClusterAliasName:     pulumi.String("tf-testAccMseCluster"),
 // 			ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
-// 			ClusterType:          pulumi.String("Eureka"),
-// 			ClusterVersion:       pulumi.String("EUREKA_1_9_3"),
+// 			ClusterType:          pulumi.String("Nacos-Ans"),
+// 			ClusterVersion:       pulumi.String("NACOS_ANS_1_2_1"),
 // 			InstanceCount:        pulumi.Int(1),
 // 			NetType:              pulumi.String("privatenet"),
 // 			PubNetworkFlow:       pulumi.String("1"),
@@ -62,6 +62,8 @@ type Cluster struct {
 	AclEntryLists pulumi.StringArrayOutput `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrOutput `pulumi:"clusterAliasName"`
+	// (Available in v1.162.0+)  The id of Cluster.
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The engine specification of MSE Cluster. Valid values:
 	// `MSE_SC_1_2_200_c`：1C2G
 	// `MSE_SC_2_4_200_c`：2C4G
@@ -138,6 +140,8 @@ type clusterState struct {
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
+	// (Available in v1.162.0+)  The id of Cluster.
+	ClusterId *string `pulumi:"clusterId"`
 	// The engine specification of MSE Cluster. Valid values:
 	// `MSE_SC_1_2_200_c`：1C2G
 	// `MSE_SC_2_4_200_c`：2C4G
@@ -171,6 +175,8 @@ type ClusterState struct {
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
+	// (Available in v1.162.0+)  The id of Cluster.
+	ClusterId pulumi.StringPtrInput
 	// The engine specification of MSE Cluster. Valid values:
 	// `MSE_SC_1_2_200_c`：1C2G
 	// `MSE_SC_2_4_200_c`：2C4G

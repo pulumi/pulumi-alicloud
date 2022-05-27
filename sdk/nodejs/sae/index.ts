@@ -18,6 +18,8 @@ export * from "./getNamespaces";
 export * from "./getService";
 export * from "./greyTagRoute";
 export * from "./ingress";
+export * from "./loadBalancerInternet";
+export * from "./loadBalancerIntranet";
 export * from "./namespace";
 
 // Import resources to register:
@@ -26,6 +28,8 @@ import { ApplicationScalingRule } from "./applicationScalingRule";
 import { ConfigMap } from "./configMap";
 import { GreyTagRoute } from "./greyTagRoute";
 import { Ingress } from "./ingress";
+import { LoadBalancerInternet } from "./loadBalancerInternet";
+import { LoadBalancerIntranet } from "./loadBalancerIntranet";
 import { Namespace } from "./namespace";
 
 const _module = {
@@ -42,6 +46,10 @@ const _module = {
                 return new GreyTagRoute(name, <any>undefined, { urn })
             case "alicloud:sae/ingress:Ingress":
                 return new Ingress(name, <any>undefined, { urn })
+            case "alicloud:sae/loadBalancerInternet:LoadBalancerInternet":
+                return new LoadBalancerInternet(name, <any>undefined, { urn })
+            case "alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet":
+                return new LoadBalancerIntranet(name, <any>undefined, { urn })
             case "alicloud:sae/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
             default:
@@ -54,4 +62,6 @@ pulumi.runtime.registerResourceModule("alicloud", "sae/applicationScalingRule", 
 pulumi.runtime.registerResourceModule("alicloud", "sae/configMap", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sae/greyTagRoute", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sae/ingress", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sae/loadBalancerInternet", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sae/loadBalancerIntranet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sae/namespace", _module)

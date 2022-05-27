@@ -251,6 +251,9 @@ namespace Pulumi.AliCloud.Slb
         [Output("loadBalancerId")]
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the master slave server group.
+        /// </summary>
         [Output("masterSlaveServerGroupId")]
         public Output<string?> MasterSlaveServerGroupId { get; private set; } = null!;
 
@@ -550,6 +553,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the master slave server group.
+        /// </summary>
         [Input("masterSlaveServerGroupId")]
         public Input<string>? MasterSlaveServerGroupId { get; set; }
 
@@ -810,6 +816,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }
 
+        /// <summary>
+        /// The ID of the master slave server group.
+        /// </summary>
         [Input("masterSlaveServerGroupId")]
         public Input<string>? MasterSlaveServerGroupId { get; set; }
 

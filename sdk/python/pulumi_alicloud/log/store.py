@@ -187,6 +187,7 @@ class _StoreState:
         :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        :param pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]] shards: The shard attribute.
         """
         if append_meta is not None:
             pulumi.set(__self__, "append_meta", append_meta)
@@ -320,6 +321,9 @@ class _StoreState:
     @property
     @pulumi.getter
     def shards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]]:
+        """
+        The shard attribute.
+        """
         return pulumi.get(self, "shards")
 
     @shards.setter
@@ -462,6 +466,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreShardArgs']]]] shards: The shard attribute.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -554,5 +559,8 @@ class Store(pulumi.CustomResource):
     @property
     @pulumi.getter
     def shards(self) -> pulumi.Output[Sequence['outputs.StoreShard']]:
+        """
+        The shard attribute.
+        """
         return pulumi.get(self, "shards")
 

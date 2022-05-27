@@ -32,7 +32,9 @@ class InstanceArgs:
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
@@ -116,6 +118,7 @@ class InstanceArgs:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
                - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -123,6 +126,9 @@ class InstanceArgs:
                - If you set the `Engine` parameter to PostgreSQL.
                - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
@@ -233,8 +239,12 @@ class InstanceArgs:
             pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        if db_is_ignore_case is not None:
+            pulumi.set(__self__, "db_is_ignore_case", db_is_ignore_case)
         if db_time_zone is not None:
             pulumi.set(__self__, "db_time_zone", db_time_zone)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if force_restart is not None:
@@ -548,6 +558,18 @@ class InstanceArgs:
         pulumi.set(self, "db_instance_storage_type", value)
 
     @property
+    @pulumi.getter(name="dbIsIgnoreCase")
+    def db_is_ignore_case(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "db_is_ignore_case")
+
+    @db_is_ignore_case.setter
+    def db_is_ignore_case(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "db_is_ignore_case", value)
+
+    @property
     @pulumi.getter(name="dbTimeZone")
     def db_time_zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -564,6 +586,20 @@ class InstanceArgs:
     @db_time_zone.setter
     def db_time_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_time_zone", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The switch of delete protection. Valid values: 
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="encryptionKey")
@@ -1120,7 +1156,9 @@ class _InstanceState:
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -1200,6 +1238,7 @@ class _InstanceState:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
                - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -1207,6 +1246,9 @@ class _InstanceState:
                - If you set the `Engine` parameter to PostgreSQL.
                - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -1326,8 +1368,12 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        if db_is_ignore_case is not None:
+            pulumi.set(__self__, "db_is_ignore_case", db_is_ignore_case)
         if db_time_zone is not None:
             pulumi.set(__self__, "db_time_zone", db_time_zone)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if engine is not None:
@@ -1609,6 +1655,18 @@ class _InstanceState:
         pulumi.set(self, "db_instance_storage_type", value)
 
     @property
+    @pulumi.getter(name="dbIsIgnoreCase")
+    def db_is_ignore_case(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "db_is_ignore_case")
+
+    @db_is_ignore_case.setter
+    def db_is_ignore_case(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "db_is_ignore_case", value)
+
+    @property
     @pulumi.getter(name="dbTimeZone")
     def db_time_zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1625,6 +1683,20 @@ class _InstanceState:
     @db_time_zone.setter
     def db_time_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_time_zone", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The switch of delete protection. Valid values: 
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="encryptionKey")
@@ -2248,7 +2320,9 @@ class Instance(pulumi.CustomResource):
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -2336,6 +2410,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
                - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -2343,6 +2418,9 @@ class Instance(pulumi.CustomResource):
                - If you set the `Engine` parameter to PostgreSQL.
                - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -2476,7 +2554,9 @@ class Instance(pulumi.CustomResource):
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -2548,7 +2628,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
             __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
+            __props__.__dict__["db_is_ignore_case"] = db_is_ignore_case
             __props__.__dict__["db_time_zone"] = db_time_zone
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_key"] = encryption_key
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
@@ -2632,7 +2714,9 @@ class Instance(pulumi.CustomResource):
             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+            db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
             db_time_zone: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             encryption_key: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -2717,6 +2801,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
                - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -2724,6 +2809,9 @@ class Instance(pulumi.CustomResource):
                - If you set the `Engine` parameter to PostgreSQL.
                - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+               - true: delete protect.
+               - false: no delete protect.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -2833,7 +2921,9 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
         __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
+        __props__.__dict__["db_is_ignore_case"] = db_is_ignore_case
         __props__.__dict__["db_time_zone"] = db_time_zone
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
@@ -2977,7 +3067,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionStringPrefix")
-    def connection_string_prefix(self) -> pulumi.Output[Optional[str]]:
+    def connection_string_prefix(self) -> pulumi.Output[str]:
         return pulumi.get(self, "connection_string_prefix")
 
     @property
@@ -3010,6 +3100,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "db_instance_storage_type")
 
     @property
+    @pulumi.getter(name="dbIsIgnoreCase")
+    def db_is_ignore_case(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "db_is_ignore_case")
+
+    @property
     @pulumi.getter(name="dbTimeZone")
     def db_time_zone(self) -> pulumi.Output[str]:
         """
@@ -3022,6 +3120,16 @@ class Instance(pulumi.CustomResource):
         - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         """
         return pulumi.get(self, "db_time_zone")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        The switch of delete protection. Valid values: 
+        - true: delete protect.
+        - false: no delete protect.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="encryptionKey")

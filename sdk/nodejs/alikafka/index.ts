@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./consumerGroup";
 export * from "./instance";
+export * from "./instanceAllowedIpAttachment";
 export * from "./saslAcl";
 export * from "./saslUser";
 export * from "./topic";
@@ -14,6 +15,7 @@ export * from "./topic";
 // Import resources to register:
 import { ConsumerGroup } from "./consumerGroup";
 import { Instance } from "./instance";
+import { InstanceAllowedIpAttachment } from "./instanceAllowedIpAttachment";
 import { SaslAcl } from "./saslAcl";
 import { SaslUser } from "./saslUser";
 import { Topic } from "./topic";
@@ -26,6 +28,8 @@ const _module = {
                 return new ConsumerGroup(name, <any>undefined, { urn })
             case "alicloud:alikafka/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment":
+                return new InstanceAllowedIpAttachment(name, <any>undefined, { urn })
             case "alicloud:alikafka/saslAcl:SaslAcl":
                 return new SaslAcl(name, <any>undefined, { urn })
             case "alicloud:alikafka/saslUser:SaslUser":
@@ -39,6 +43,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/consumerGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alikafka/instanceAllowedIpAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/saslAcl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/saslUser", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alikafka/topic", _module)

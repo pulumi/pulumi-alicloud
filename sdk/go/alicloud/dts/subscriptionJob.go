@@ -103,7 +103,8 @@ type SubscriptionJob struct {
 	SyncArchitecture pulumi.StringPtrOutput `pulumi:"syncArchitecture"`
 	// The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
 	SynchronizationDirection pulumi.StringPtrOutput `pulumi:"synchronizationDirection"`
-	Tags                     pulumi.MapOutput       `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewSubscriptionJob registers a new resource with the given unique name, arguments, and options.
@@ -213,8 +214,9 @@ type subscriptionJobState struct {
 	// The sync architecture. Valid values: `bidirectional`, `oneway`.
 	SyncArchitecture *string `pulumi:"syncArchitecture"`
 	// The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
-	SynchronizationDirection *string                `pulumi:"synchronizationDirection"`
-	Tags                     map[string]interface{} `pulumi:"tags"`
+	SynchronizationDirection *string `pulumi:"synchronizationDirection"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type SubscriptionJobState struct {
@@ -294,7 +296,8 @@ type SubscriptionJobState struct {
 	SyncArchitecture pulumi.StringPtrInput
 	// The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
 	SynchronizationDirection pulumi.StringPtrInput
-	Tags                     pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (SubscriptionJobState) ElementType() reflect.Type {
@@ -377,8 +380,9 @@ type subscriptionJobArgs struct {
 	// The sync architecture. Valid values: `bidirectional`, `oneway`.
 	SyncArchitecture *string `pulumi:"syncArchitecture"`
 	// The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
-	SynchronizationDirection *string                `pulumi:"synchronizationDirection"`
-	Tags                     map[string]interface{} `pulumi:"tags"`
+	SynchronizationDirection *string `pulumi:"synchronizationDirection"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a SubscriptionJob resource.
@@ -459,7 +463,8 @@ type SubscriptionJobArgs struct {
 	SyncArchitecture pulumi.StringPtrInput
 	// The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
 	SynchronizationDirection pulumi.StringPtrInput
-	Tags                     pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (SubscriptionJobArgs) ElementType() reflect.Type {

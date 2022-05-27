@@ -83,7 +83,7 @@ class GetRouteMapsResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         """
-        A list of CEN route map IDs.
+        A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`. Before 1.161.0, its element is `route_map_id`.
         """
         return pulumi.get(self, "ids")
 
@@ -154,19 +154,19 @@ def get_route_maps(cen_id: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     this = alicloud.cen.get_route_maps(cen_id="cen-ihdlgo87ai********",
-        cen_region_id="cn-hangzhou",
+        ids=["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
         description_regex="datasource_test",
-        ids=["cenrmap-bnh97kb3mn********"],
-        status="Active",
-        transmit_direction="RegionIn")
-    pulumi.export("firstCenRouteMapId", this.maps[0].id)
+        cen_region_id="cn-hangzhou",
+        transmit_direction="RegionIn",
+        status="Active")
+    pulumi.export("firstCenRouteMapId", this.maps[0].route_map_id)
     ```
 
 
     :param str cen_id: The ID of the CEN instance.
     :param str cen_region_id: The ID of the region to which the CEN instance belongs.
     :param str description_regex: A regex string to filter CEN route map by description.
-    :param Sequence[str] ids: A list of CEN route map IDs.
+    :param Sequence[str] ids: A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
     :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
     :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
     """
@@ -217,19 +217,19 @@ def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
     import pulumi_alicloud as alicloud
 
     this = alicloud.cen.get_route_maps(cen_id="cen-ihdlgo87ai********",
-        cen_region_id="cn-hangzhou",
+        ids=["cen-ihdlgo87ai:cenrmap-bnh97kb3mn********"],
         description_regex="datasource_test",
-        ids=["cenrmap-bnh97kb3mn********"],
-        status="Active",
-        transmit_direction="RegionIn")
-    pulumi.export("firstCenRouteMapId", this.maps[0].id)
+        cen_region_id="cn-hangzhou",
+        transmit_direction="RegionIn",
+        status="Active")
+    pulumi.export("firstCenRouteMapId", this.maps[0].route_map_id)
     ```
 
 
     :param str cen_id: The ID of the CEN instance.
     :param str cen_region_id: The ID of the region to which the CEN instance belongs.
     :param str description_regex: A regex string to filter CEN route map by description.
-    :param Sequence[str] ids: A list of CEN route map IDs.
+    :param Sequence[str] ids: A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
     :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
     :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
     """

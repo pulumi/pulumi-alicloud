@@ -75,6 +75,9 @@ namespace Pulumi.AliCloud.Log
         [Output("shardCount")]
         public Output<int?> ShardCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The shard attribute.
+        /// </summary>
         [Output("shards")]
         public Output<ImmutableArray<Outputs.StoreShard>> Shards { get; private set; } = null!;
 
@@ -241,6 +244,10 @@ namespace Pulumi.AliCloud.Log
 
         [Input("shards")]
         private InputList<Inputs.StoreShardGetArgs>? _shards;
+
+        /// <summary>
+        /// The shard attribute.
+        /// </summary>
         public InputList<Inputs.StoreShardGetArgs> Shards
         {
             get => _shards ?? (_shards = new InputList<Inputs.StoreShardGetArgs>());

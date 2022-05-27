@@ -76,6 +76,9 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly regionStatuses!: pulumi.Output<outputs.resourcemanager.ResourceGroupRegionStatus[]>;
+    /**
+     * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     */
     public readonly resourceGroupName!: pulumi.Output<string>;
     /**
      * The status of the regional resource group.
@@ -137,6 +140,9 @@ export interface ResourceGroupState {
      */
     name?: pulumi.Input<string>;
     regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[]>;
+    /**
+     * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     */
     resourceGroupName?: pulumi.Input<string>;
     /**
      * The status of the regional resource group.
@@ -158,5 +164,8 @@ export interface ResourceGroupArgs {
      * @deprecated Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     */
     resourceGroupName?: pulumi.Input<string>;
 }

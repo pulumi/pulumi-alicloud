@@ -29,6 +29,8 @@ type GetImagesArgs struct {
 	ImageType  *string `pulumi:"imageType"`
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	// The platform of Plan supported.
+	Platform *string `pulumi:"platform"`
 }
 
 // A collection of values returned by getImages.
@@ -41,6 +43,7 @@ type GetImagesResult struct {
 	NameRegex  *string          `pulumi:"nameRegex"`
 	Names      []string         `pulumi:"names"`
 	OutputFile *string          `pulumi:"outputFile"`
+	Platform   *string          `pulumi:"platform"`
 }
 
 func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
@@ -66,6 +69,8 @@ type GetImagesOutputArgs struct {
 	ImageType  pulumi.StringPtrInput `pulumi:"imageType"`
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The platform of Plan supported.
+	Platform pulumi.StringPtrInput `pulumi:"platform"`
 }
 
 func (GetImagesOutputArgs) ElementType() reflect.Type {
@@ -114,6 +119,10 @@ func (o GetImagesResultOutput) Names() pulumi.StringArrayOutput {
 
 func (o GetImagesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }
 
 func init() {

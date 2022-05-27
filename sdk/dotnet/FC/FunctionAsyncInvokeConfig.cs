@@ -69,6 +69,26 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// }
     /// ```
+    /// ### Async Job Configuration
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new AliCloud.FC.FunctionAsyncInvokeConfigArgs
+    ///         {
+    ///             ServiceName = alicloud_fc_service.Example.Name,
+    ///             FunctionName = alicloud_fc_function.Example.Name,
+    ///             StatefulInvocation = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Configuration for Function Latest Unpublished Version
     /// 
     /// ```csharp
@@ -127,13 +147,13 @@ namespace Pulumi.AliCloud.FC
         public Output<string> LastModifiedTime { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+        /// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         /// </summary>
         [Output("maximumEventAgeInSeconds")]
         public Output<int?> MaximumEventAgeInSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+        /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         /// </summary>
         [Output("maximumRetryAttempts")]
         public Output<int?> MaximumRetryAttempts { get; private set; } = null!;
@@ -149,6 +169,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
+
+        /// <summary>
+        /// Function Compute async job configuration. valid values true or false, default `false`
+        /// </summary>
+        [Output("statefulInvocation")]
+        public Output<bool?> StatefulInvocation { get; private set; } = null!;
 
 
         /// <summary>
@@ -209,13 +235,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string> FunctionName { get; set; } = null!;
 
         /// <summary>
-        /// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+        /// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         /// </summary>
         [Input("maximumEventAgeInSeconds")]
         public Input<int>? MaximumEventAgeInSeconds { get; set; }
 
         /// <summary>
-        /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+        /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         /// </summary>
         [Input("maximumRetryAttempts")]
         public Input<int>? MaximumRetryAttempts { get; set; }
@@ -231,6 +257,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// Function Compute async job configuration. valid values true or false, default `false`
+        /// </summary>
+        [Input("statefulInvocation")]
+        public Input<bool>? StatefulInvocation { get; set; }
 
         public FunctionAsyncInvokeConfigArgs()
         {
@@ -264,13 +296,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? LastModifiedTime { get; set; }
 
         /// <summary>
-        /// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+        /// Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         /// </summary>
         [Input("maximumEventAgeInSeconds")]
         public Input<int>? MaximumEventAgeInSeconds { get; set; }
 
         /// <summary>
-        /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+        /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         /// </summary>
         [Input("maximumRetryAttempts")]
         public Input<int>? MaximumRetryAttempts { get; set; }
@@ -286,6 +318,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
+        /// Function Compute async job configuration. valid values true or false, default `false`
+        /// </summary>
+        [Input("statefulInvocation")]
+        public Input<bool>? StatefulInvocation { get; set; }
 
         public FunctionAsyncInvokeConfigState()
         {

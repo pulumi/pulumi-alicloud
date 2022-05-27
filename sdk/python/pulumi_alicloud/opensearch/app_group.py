@@ -167,6 +167,7 @@ class _AppGroupState:
                  charge_way: Optional[pulumi.Input[str]] = None,
                  current_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -179,6 +180,7 @@ class _AppGroupState:
         :param pulumi.Input[str] charge_way: Billing model. Valid values:`compute_resource` and `qps`.
         :param pulumi.Input[str] current_version: The version of Application Group Name.
         :param pulumi.Input[str] description: The description of the resource.
+        :param pulumi.Input[str] instance_id: The instance id.
         :param pulumi.Input[str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
         :param pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]] orders: Order cycle information. The details see Block order.
         :param pulumi.Input[str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
@@ -194,6 +196,8 @@ class _AppGroupState:
             pulumi.set(__self__, "current_version", current_version)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
         if orders is not None:
@@ -254,6 +258,18 @@ class _AppGroupState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance id.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="orderType")
@@ -490,6 +506,7 @@ class AppGroup(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["instance_id"] = None
             __props__.__dict__["status"] = None
         super(AppGroup, __self__).__init__(
             'alicloud:opensearch/appGroup:AppGroup',
@@ -505,6 +522,7 @@ class AppGroup(pulumi.CustomResource):
             charge_way: Optional[pulumi.Input[str]] = None,
             current_version: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
             order_type: Optional[pulumi.Input[str]] = None,
             orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGroupOrderArgs']]]]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
@@ -522,6 +540,7 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[str] charge_way: Billing model. Valid values:`compute_resource` and `qps`.
         :param pulumi.Input[str] current_version: The version of Application Group Name.
         :param pulumi.Input[str] description: The description of the resource.
+        :param pulumi.Input[str] instance_id: The instance id.
         :param pulumi.Input[str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGroupOrderArgs']]]] orders: Order cycle information. The details see Block order.
         :param pulumi.Input[str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
@@ -537,6 +556,7 @@ class AppGroup(pulumi.CustomResource):
         __props__.__dict__["charge_way"] = charge_way
         __props__.__dict__["current_version"] = current_version
         __props__.__dict__["description"] = description
+        __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["order_type"] = order_type
         __props__.__dict__["orders"] = orders
         __props__.__dict__["payment_type"] = payment_type
@@ -576,6 +596,14 @@ class AppGroup(pulumi.CustomResource):
         The description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        The instance id.
+        """
+        return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="orderType")

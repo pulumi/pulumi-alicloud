@@ -286,6 +286,7 @@ namespace Pulumi.AliCloud
                 public string? Dataworkspublic { get; set; } = null!;
                 public string? Dbfs { get; set; } = null!;
                 public string? Dcdn { get; set; } = null!;
+                public string? Ddosbasic { get; set; } = null!;
                 public string? Ddosbgp { get; set; } = null!;
                 public string? Ddoscoo { get; set; } = null!;
                 public string? Dds { get; set; } = null!;
@@ -357,6 +358,7 @@ namespace Pulumi.AliCloud
                 public string? Servicemesh { get; set; } = null!;
                 public string? Sgw { get; set; } = null!;
                 public string? Slb { get; set; } = null!;
+                public string? Smartag { get; set; } = null!;
                 public string? Sts { get; set; } = null!;
                 public string? Swas { get; set; } = null!;
                 public string? Vod { get; set; } = null!;

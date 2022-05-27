@@ -49,7 +49,13 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<Inputs.RuleRuleConditionQueryStringConfigGetArgs>? QueryStringConfig { get; set; }
 
         /// <summary>
-        /// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        /// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+        /// </summary>
+        [Input("sourceIpConfig")]
+        public Input<Inputs.RuleRuleConditionSourceIpConfigGetArgs>? SourceIpConfig { get; set; }
+
+        /// <summary>
+        /// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

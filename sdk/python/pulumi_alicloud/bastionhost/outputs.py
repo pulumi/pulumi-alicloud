@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'GetHostAccountsAccountResult',
     'GetHostGroupsGroupResult',
+    'GetHostShareKeysKeyResult',
     'GetHostsHostResult',
     'GetHostsHostProtocolResult',
     'GetInstancesInstanceResult',
@@ -174,6 +175,68 @@ class GetHostGroupsGroupResult(dict):
         Specify the New Host Group Where the Bastion Host ID of.
         """
         return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetHostShareKeysKeyResult(dict):
+    def __init__(__self__, *,
+                 host_share_key_id: str,
+                 host_share_key_name: str,
+                 id: str,
+                 instance_id: str,
+                 private_key_finger_print: str):
+        """
+        :param str host_share_key_id: The first ID of the resource.
+        :param str host_share_key_name: The name of the host shared key.
+        :param str id: The ID of the Host Share Key.
+        :param str instance_id: The ID of the Bastion instance.
+        :param str private_key_finger_print: The fingerprint of the private key.
+        """
+        pulumi.set(__self__, "host_share_key_id", host_share_key_id)
+        pulumi.set(__self__, "host_share_key_name", host_share_key_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "private_key_finger_print", private_key_finger_print)
+
+    @property
+    @pulumi.getter(name="hostShareKeyId")
+    def host_share_key_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "host_share_key_id")
+
+    @property
+    @pulumi.getter(name="hostShareKeyName")
+    def host_share_key_name(self) -> str:
+        """
+        The name of the host shared key.
+        """
+        return pulumi.get(self, "host_share_key_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Host Share Key.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the Bastion instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="privateKeyFingerPrint")
+    def private_key_finger_print(self) -> str:
+        """
+        The fingerprint of the private key.
+        """
+        return pulumi.get(self, "private_key_finger_print")
 
 
 @pulumi.output_type

@@ -58,7 +58,9 @@ import (
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// The list of the ACL entries. You can add up to `20` entries in each call.
+	// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayOutput `pulumi:"aclEntries"`
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
 	AclName pulumi.StringOutput `pulumi:"aclName"`
@@ -68,7 +70,8 @@ type Acl struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status pulumi.StringOutput `pulumi:"status"`
-	Tags   pulumi.MapOutput    `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewAcl registers a new resource with the given unique name, arguments, and options.
@@ -103,7 +106,9 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// The list of the ACL entries. You can add up to `20` entries in each call.
+	// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
 	AclEntries []AclAclEntry `pulumi:"aclEntries"`
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
 	AclName *string `pulumi:"aclName"`
@@ -112,12 +117,15 @@ type aclState struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type AclState struct {
-	// The list of the ACL entries. You can add up to `20` entries in each call.
+	// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayInput
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
 	AclName pulumi.StringPtrInput
@@ -127,7 +135,8 @@ type AclState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status pulumi.StringPtrInput
-	Tags   pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (AclState) ElementType() reflect.Type {
@@ -135,20 +144,25 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	// The list of the ACL entries. You can add up to `20` entries in each call.
+	// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
 	AclEntries []AclAclEntry `pulumi:"aclEntries"`
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
 	AclName string `pulumi:"aclName"`
 	// Specifies whether to precheck the API request.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the resource group.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// The list of the ACL entries. You can add up to `20` entries in each call.
+	// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayInput
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
 	AclName pulumi.StringInput
@@ -156,7 +170,8 @@ type AclArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags            pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (AclArgs) ElementType() reflect.Type {

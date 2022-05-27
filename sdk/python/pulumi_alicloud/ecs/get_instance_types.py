@@ -21,7 +21,7 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, system_disk_category=None):
+    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, image_id=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, system_disk_category=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -43,6 +43,9 @@ class GetInstanceTypesResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if image_id and not isinstance(image_id, str):
+            raise TypeError("Expected argument 'image_id' to be a str")
+        pulumi.set(__self__, "image_id", image_id)
         if instance_charge_type and not isinstance(instance_charge_type, str):
             raise TypeError("Expected argument 'instance_charge_type' to be a str")
         pulumi.set(__self__, "instance_charge_type", instance_charge_type)
@@ -125,6 +128,11 @@ class GetInstanceTypesResult:
         return pulumi.get(self, "ids")
 
     @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[str]:
+        return pulumi.get(self, "image_id")
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[str]:
         return pulumi.get(self, "instance_charge_type")
@@ -199,6 +207,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             gpu_spec=self.gpu_spec,
             id=self.id,
             ids=self.ids,
+            image_id=self.image_id,
             instance_charge_type=self.instance_charge_type,
             instance_type_family=self.instance_type_family,
             instance_types=self.instance_types,
@@ -217,6 +226,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
                        eni_amount: Optional[int] = None,
                        gpu_amount: Optional[int] = None,
                        gpu_spec: Optional[str] = None,
+                       image_id: Optional[str] = None,
                        instance_charge_type: Optional[str] = None,
                        instance_type_family: Optional[str] = None,
                        is_outdated: Optional[bool] = None,
@@ -252,6 +262,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     :param int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
     :param int gpu_amount: The GPU amount of an instance type.
     :param str gpu_spec: The GPU spec of an instance type.
+    :param str image_id: The ID of the image.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.
     :param bool is_outdated: If true, outdated instance types are included in the results. Default to false.
@@ -267,6 +278,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     __args__['eniAmount'] = eni_amount
     __args__['gpuAmount'] = gpu_amount
     __args__['gpuSpec'] = gpu_spec
+    __args__['imageId'] = image_id
     __args__['instanceChargeType'] = instance_charge_type
     __args__['instanceTypeFamily'] = instance_type_family
     __args__['isOutdated'] = is_outdated
@@ -291,6 +303,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
         gpu_spec=__ret__.gpu_spec,
         id=__ret__.id,
         ids=__ret__.ids,
+        image_id=__ret__.image_id,
         instance_charge_type=__ret__.instance_charge_type,
         instance_type_family=__ret__.instance_type_family,
         instance_types=__ret__.instance_types,
@@ -310,6 +323,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
                               eni_amount: Optional[pulumi.Input[Optional[int]]] = None,
                               gpu_amount: Optional[pulumi.Input[Optional[int]]] = None,
                               gpu_spec: Optional[pulumi.Input[Optional[str]]] = None,
+                              image_id: Optional[pulumi.Input[Optional[str]]] = None,
                               instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
                               instance_type_family: Optional[pulumi.Input[Optional[str]]] = None,
                               is_outdated: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -345,6 +359,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     :param int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
     :param int gpu_amount: The GPU amount of an instance type.
     :param str gpu_spec: The GPU spec of an instance type.
+    :param str image_id: The ID of the image.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.
     :param bool is_outdated: If true, outdated instance types are included in the results. Default to false.

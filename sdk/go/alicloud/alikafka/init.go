@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConsumerGroup{}
 	case "alicloud:alikafka/instance:Instance":
 		r = &Instance{}
+	case "alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment":
+		r = &InstanceAllowedIpAttachment{}
 	case "alicloud:alikafka/saslAcl:SaslAcl":
 		r = &SaslAcl{}
 	case "alicloud:alikafka/saslUser:SaslUser":
@@ -52,6 +54,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"alikafka/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"alikafka/instanceAllowedIpAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

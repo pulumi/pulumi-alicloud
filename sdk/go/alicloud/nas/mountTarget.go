@@ -80,6 +80,8 @@ type MountTarget struct {
 	AccessGroupName pulumi.StringPtrOutput `pulumi:"accessGroupName"`
 	// The ID of the file system.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
+	// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+	MountTargetDomain pulumi.StringOutput `pulumi:"mountTargetDomain"`
 	// The ID of security group.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
@@ -124,6 +126,8 @@ type mountTargetState struct {
 	AccessGroupName *string `pulumi:"accessGroupName"`
 	// The ID of the file system.
 	FileSystemId *string `pulumi:"fileSystemId"`
+	// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+	MountTargetDomain *string `pulumi:"mountTargetDomain"`
 	// The ID of security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
@@ -137,6 +141,8 @@ type MountTargetState struct {
 	AccessGroupName pulumi.StringPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringPtrInput
+	// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+	MountTargetDomain pulumi.StringPtrInput
 	// The ID of security group.
 	SecurityGroupId pulumi.StringPtrInput
 	// Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.

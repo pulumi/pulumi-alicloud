@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae
     /// 
     /// For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.133.0+.
+    /// &gt; **NOTE:** Available in v1.161.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<bool> EnableGreyTagRoute { get; private set; } = null!;
 
         /// <summary>
-        /// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        /// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         /// </summary>
         [Output("envs")]
         public Output<string> Envs { get; private set; } = null!;
@@ -182,42 +182,6 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Output("imageUrl")]
         public Output<string?> ImageUrl { get; private set; } = null!;
-
-        /// <summary>
-        /// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        /// </summary>
-        [Output("internetIp")]
-        public Output<string> InternetIp { get; private set; } = null!;
-
-        /// <summary>
-        /// public network SLB ID.
-        /// </summary>
-        [Output("internetSlbId")]
-        public Output<string?> InternetSlbId { get; private set; } = null!;
-
-        /// <summary>
-        /// Bound private network SLB. The details see Block internet.
-        /// </summary>
-        [Output("internets")]
-        public Output<ImmutableArray<Outputs.ApplicationInternet>> Internets { get; private set; } = null!;
-
-        /// <summary>
-        /// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        /// </summary>
-        [Output("intranetIp")]
-        public Output<string> IntranetIp { get; private set; } = null!;
-
-        /// <summary>
-        /// private network SLB ID.
-        /// </summary>
-        [Output("intranetSlbId")]
-        public Output<string?> IntranetSlbId { get; private set; } = null!;
-
-        /// <summary>
-        /// Bound public network SLB. The details see Block intranet.
-        /// </summary>
-        [Output("intranets")]
-        public Output<ImmutableArray<Outputs.ApplicationIntranet>> Intranets { get; private set; } = null!;
 
         /// <summary>
         /// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -248,6 +212,14 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Output("memory")]
         public Output<int?> Memory { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        /// * `-1`: Initialization value, indicating that percentages are not used.
+        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+        /// </summary>
+        [Output("minReadyInstanceRatio")]
+        public Output<int> MinReadyInstanceRatio { get; private set; } = null!;
 
         /// <summary>
         /// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
@@ -352,7 +324,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> Readiness { get; private set; } = null!;
 
         /// <summary>
-        /// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        /// Initial number of instances.
         /// </summary>
         [Output("replicas")]
         public Output<int> Replicas { get; private set; } = null!;
@@ -374,6 +346,12 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
@@ -566,7 +544,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<bool>? EnableGreyTagRoute { get; set; }
 
         /// <summary>
-        /// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        /// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         /// </summary>
         [Input("envs")]
         public Input<string>? Envs { get; set; }
@@ -576,42 +554,6 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("imageUrl")]
         public Input<string>? ImageUrl { get; set; }
-
-        /// <summary>
-        /// public network SLB ID.
-        /// </summary>
-        [Input("internetSlbId")]
-        public Input<string>? InternetSlbId { get; set; }
-
-        [Input("internets")]
-        private InputList<Inputs.ApplicationInternetArgs>? _internets;
-
-        /// <summary>
-        /// Bound private network SLB. The details see Block internet.
-        /// </summary>
-        public InputList<Inputs.ApplicationInternetArgs> Internets
-        {
-            get => _internets ?? (_internets = new InputList<Inputs.ApplicationInternetArgs>());
-            set => _internets = value;
-        }
-
-        /// <summary>
-        /// private network SLB ID.
-        /// </summary>
-        [Input("intranetSlbId")]
-        public Input<string>? IntranetSlbId { get; set; }
-
-        [Input("intranets")]
-        private InputList<Inputs.ApplicationIntranetArgs>? _intranets;
-
-        /// <summary>
-        /// Bound public network SLB. The details see Block intranet.
-        /// </summary>
-        public InputList<Inputs.ApplicationIntranetArgs> Intranets
-        {
-            get => _intranets ?? (_intranets = new InputList<Inputs.ApplicationIntranetArgs>());
-            set => _intranets = value;
-        }
 
         /// <summary>
         /// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -642,6 +584,14 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("memory")]
         public Input<int>? Memory { get; set; }
+
+        /// <summary>
+        /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        /// * `-1`: Initialization value, indicating that percentages are not used.
+        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+        /// </summary>
+        [Input("minReadyInstanceRatio")]
+        public Input<int>? MinReadyInstanceRatio { get; set; }
 
         /// <summary>
         /// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
@@ -746,7 +696,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? Readiness { get; set; }
 
         /// <summary>
-        /// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        /// Initial number of instances.
         /// </summary>
         [Input("replicas", required: true)]
         public Input<int> Replicas { get; set; } = null!;
@@ -768,6 +718,18 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
@@ -921,7 +883,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<bool>? EnableGreyTagRoute { get; set; }
 
         /// <summary>
-        /// The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+        /// Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         /// </summary>
         [Input("envs")]
         public Input<string>? Envs { get; set; }
@@ -931,54 +893,6 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("imageUrl")]
         public Input<string>? ImageUrl { get; set; }
-
-        /// <summary>
-        /// Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        /// </summary>
-        [Input("internetIp")]
-        public Input<string>? InternetIp { get; set; }
-
-        /// <summary>
-        /// public network SLB ID.
-        /// </summary>
-        [Input("internetSlbId")]
-        public Input<string>? InternetSlbId { get; set; }
-
-        [Input("internets")]
-        private InputList<Inputs.ApplicationInternetGetArgs>? _internets;
-
-        /// <summary>
-        /// Bound private network SLB. The details see Block internet.
-        /// </summary>
-        public InputList<Inputs.ApplicationInternetGetArgs> Internets
-        {
-            get => _internets ?? (_internets = new InputList<Inputs.ApplicationInternetGetArgs>());
-            set => _internets = value;
-        }
-
-        /// <summary>
-        /// Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-        /// </summary>
-        [Input("intranetIp")]
-        public Input<string>? IntranetIp { get; set; }
-
-        /// <summary>
-        /// private network SLB ID.
-        /// </summary>
-        [Input("intranetSlbId")]
-        public Input<string>? IntranetSlbId { get; set; }
-
-        [Input("intranets")]
-        private InputList<Inputs.ApplicationIntranetGetArgs>? _intranets;
-
-        /// <summary>
-        /// Bound public network SLB. The details see Block intranet.
-        /// </summary>
-        public InputList<Inputs.ApplicationIntranetGetArgs> Intranets
-        {
-            get => _intranets ?? (_intranets = new InputList<Inputs.ApplicationIntranetGetArgs>());
-            set => _intranets = value;
-        }
 
         /// <summary>
         /// The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
@@ -1009,6 +923,14 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("memory")]
         public Input<int>? Memory { get; set; }
+
+        /// <summary>
+        /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+        /// * `-1`: Initialization value, indicating that percentages are not used.
+        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+        /// </summary>
+        [Input("minReadyInstanceRatio")]
+        public Input<int>? MinReadyInstanceRatio { get; set; }
 
         /// <summary>
         /// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
@@ -1113,7 +1035,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? Readiness { get; set; }
 
         /// <summary>
-        /// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+        /// Initial number of instances.
         /// </summary>
         [Input("replicas")]
         public Input<int>? Replicas { get; set; }
@@ -1135,6 +1057,18 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].

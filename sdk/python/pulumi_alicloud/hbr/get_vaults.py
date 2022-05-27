@@ -133,7 +133,7 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Vault IDs.
     :param str name_regex: A regex string to filter results by Vault name.
-    :param str status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+    :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
     :param str vault_type: The type of Vault. Valid values: `STANDARD`.
     """
     __args__ = dict()
@@ -186,7 +186,7 @@ def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     :param Sequence[str] ids: A list of Vault IDs.
     :param str name_regex: A regex string to filter results by Vault name.
-    :param str status: The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+    :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
     :param str vault_type: The type of Vault. Valid values: `STANDARD`.
     """
     ...

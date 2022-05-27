@@ -16,19 +16,45 @@ class AccountArgs:
                  account_name: pulumi.Input[str],
                  account_password: pulumi.Input[str],
                  db_cluster_id: pulumi.Input[str],
-                 account_description: Optional[pulumi.Input[str]] = None):
+                 account_description: Optional[pulumi.Input[str]] = None,
+                 allow_databases: Optional[pulumi.Input[str]] = None,
+                 allow_dictionaries: Optional[pulumi.Input[str]] = None,
+                 ddl_authority: Optional[pulumi.Input[bool]] = None,
+                 dml_authority: Optional[pulumi.Input[str]] = None,
+                 total_databases: Optional[pulumi.Input[str]] = None,
+                 total_dictionaries: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
         :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
         :param pulumi.Input[str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
+        :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+               -`true`: grants DDL permissions to the database account.
+               -`false`: does not grant DDL permissions to the database account.
+        :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
+        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_password", account_password)
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
+        if allow_databases is not None:
+            pulumi.set(__self__, "allow_databases", allow_databases)
+        if allow_dictionaries is not None:
+            pulumi.set(__self__, "allow_dictionaries", allow_dictionaries)
+        if ddl_authority is not None:
+            pulumi.set(__self__, "ddl_authority", ddl_authority)
+        if dml_authority is not None:
+            pulumi.set(__self__, "dml_authority", dml_authority)
+        if total_databases is not None:
+            pulumi.set(__self__, "total_databases", total_databases)
+        if total_dictionaries is not None:
+            pulumi.set(__self__, "total_dictionaries", total_dictionaries)
 
     @property
     @pulumi.getter(name="accountName")
@@ -78,6 +104,80 @@ class AccountArgs:
     def account_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_description", value)
 
+    @property
+    @pulumi.getter(name="allowDatabases")
+    def allow_databases(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        """
+        return pulumi.get(self, "allow_databases")
+
+    @allow_databases.setter
+    def allow_databases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allow_databases", value)
+
+    @property
+    @pulumi.getter(name="allowDictionaries")
+    def allow_dictionaries(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        """
+        return pulumi.get(self, "allow_dictionaries")
+
+    @allow_dictionaries.setter
+    def allow_dictionaries(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allow_dictionaries", value)
+
+    @property
+    @pulumi.getter(name="ddlAuthority")
+    def ddl_authority(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        -`true`: grants DDL permissions to the database account.
+        -`false`: does not grant DDL permissions to the database account.
+        """
+        return pulumi.get(self, "ddl_authority")
+
+    @ddl_authority.setter
+    def ddl_authority(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ddl_authority", value)
+
+    @property
+    @pulumi.getter(name="dmlAuthority")
+    def dml_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+        """
+        return pulumi.get(self, "dml_authority")
+
+    @dml_authority.setter
+    def dml_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dml_authority", value)
+
+    @property
+    @pulumi.getter(name="totalDatabases")
+    def total_databases(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of all databases. Separate databases with commas (,).
+        """
+        return pulumi.get(self, "total_databases")
+
+    @total_databases.setter
+    def total_databases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "total_databases", value)
+
+    @property
+    @pulumi.getter(name="totalDictionaries")
+    def total_dictionaries(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of all dictionaries. Separate dictionaries with commas (,).
+        """
+        return pulumi.get(self, "total_dictionaries")
+
+    @total_dictionaries.setter
+    def total_dictionaries(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "total_dictionaries", value)
+
 
 @pulumi.input_type
 class _AccountState:
@@ -85,16 +185,31 @@ class _AccountState:
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 allow_databases: Optional[pulumi.Input[str]] = None,
+                 allow_dictionaries: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 ddl_authority: Optional[pulumi.Input[bool]] = None,
+                 dml_authority: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 total_databases: Optional[pulumi.Input[str]] = None,
+                 total_dictionaries: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
         :param pulumi.Input[str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
         :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
+        :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+               -`true`: grants DDL permissions to the database account.
+               -`false`: does not grant DDL permissions to the database account.
+        :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
         :param pulumi.Input[str] status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
+        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
+        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
+        :param pulumi.Input[str] type: The type of the database account. Valid values: `Normal` or `Super`.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -102,10 +217,22 @@ class _AccountState:
             pulumi.set(__self__, "account_name", account_name)
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
+        if allow_databases is not None:
+            pulumi.set(__self__, "allow_databases", allow_databases)
+        if allow_dictionaries is not None:
+            pulumi.set(__self__, "allow_dictionaries", allow_dictionaries)
         if db_cluster_id is not None:
             pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if ddl_authority is not None:
+            pulumi.set(__self__, "ddl_authority", ddl_authority)
+        if dml_authority is not None:
+            pulumi.set(__self__, "dml_authority", dml_authority)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if total_databases is not None:
+            pulumi.set(__self__, "total_databases", total_databases)
+        if total_dictionaries is not None:
+            pulumi.set(__self__, "total_dictionaries", total_dictionaries)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -146,6 +273,30 @@ class _AccountState:
         pulumi.set(self, "account_password", value)
 
     @property
+    @pulumi.getter(name="allowDatabases")
+    def allow_databases(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        """
+        return pulumi.get(self, "allow_databases")
+
+    @allow_databases.setter
+    def allow_databases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allow_databases", value)
+
+    @property
+    @pulumi.getter(name="allowDictionaries")
+    def allow_dictionaries(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        """
+        return pulumi.get(self, "allow_dictionaries")
+
+    @allow_dictionaries.setter
+    def allow_dictionaries(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allow_dictionaries", value)
+
+    @property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -156,6 +307,32 @@ class _AccountState:
     @db_cluster_id.setter
     def db_cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="ddlAuthority")
+    def ddl_authority(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        -`true`: grants DDL permissions to the database account.
+        -`false`: does not grant DDL permissions to the database account.
+        """
+        return pulumi.get(self, "ddl_authority")
+
+    @ddl_authority.setter
+    def ddl_authority(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ddl_authority", value)
+
+    @property
+    @pulumi.getter(name="dmlAuthority")
+    def dml_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+        """
+        return pulumi.get(self, "dml_authority")
+
+    @dml_authority.setter
+    def dml_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dml_authority", value)
 
     @property
     @pulumi.getter
@@ -170,8 +347,35 @@ class _AccountState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="totalDatabases")
+    def total_databases(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of all databases. Separate databases with commas (,).
+        """
+        return pulumi.get(self, "total_databases")
+
+    @total_databases.setter
+    def total_databases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "total_databases", value)
+
+    @property
+    @pulumi.getter(name="totalDictionaries")
+    def total_dictionaries(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of all dictionaries. Separate dictionaries with commas (,).
+        """
+        return pulumi.get(self, "total_dictionaries")
+
+    @total_dictionaries.setter
+    def total_dictionaries(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "total_dictionaries", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the database account. Valid values: `Normal` or `Super`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -187,7 +391,13 @@ class Account(pulumi.CustomResource):
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 allow_databases: Optional[pulumi.Input[str]] = None,
+                 allow_dictionaries: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 ddl_authority: Optional[pulumi.Input[bool]] = None,
+                 dml_authority: Optional[pulumi.Input[str]] = None,
+                 total_databases: Optional[pulumi.Input[str]] = None,
+                 total_dictionaries: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Click House Account resource.
@@ -211,6 +421,10 @@ class Account(pulumi.CustomResource):
         pwd = config.get("pwd")
         if pwd is None:
             pwd = "Tf-testpwd"
+        default_regions = alicloud.clickhouse.get_regions(current=True)
+        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
             db_cluster_version="20.3.10.75",
             category="Basic",
@@ -221,7 +435,7 @@ class Account(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             db_node_storage="500",
             storage_type="cloud_essd",
-            vswitch_id="your_vswitch_id")
+            vswitch_id=default_switches.vswitches[0].id)
         default_account = alicloud.clickhouse.Account("defaultAccount",
             db_cluster_id=default_db_cluster.id,
             account_description="your_description",
@@ -242,7 +456,15 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
         :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
+        :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+               -`true`: grants DDL permissions to the database account.
+               -`false`: does not grant DDL permissions to the database account.
+        :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
+        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
         """
         ...
     @overload
@@ -272,6 +494,10 @@ class Account(pulumi.CustomResource):
         pwd = config.get("pwd")
         if pwd is None:
             pwd = "Tf-testpwd"
+        default_regions = alicloud.clickhouse.get_regions(current=True)
+        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
             db_cluster_version="20.3.10.75",
             category="Basic",
@@ -282,7 +508,7 @@ class Account(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             db_node_storage="500",
             storage_type="cloud_essd",
-            vswitch_id="your_vswitch_id")
+            vswitch_id=default_switches.vswitches[0].id)
         default_account = alicloud.clickhouse.Account("defaultAccount",
             db_cluster_id=default_db_cluster.id,
             account_description="your_description",
@@ -316,7 +542,13 @@ class Account(pulumi.CustomResource):
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
+                 allow_databases: Optional[pulumi.Input[str]] = None,
+                 allow_dictionaries: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 ddl_authority: Optional[pulumi.Input[bool]] = None,
+                 dml_authority: Optional[pulumi.Input[str]] = None,
+                 total_databases: Optional[pulumi.Input[str]] = None,
+                 total_dictionaries: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -336,9 +568,15 @@ class Account(pulumi.CustomResource):
             if account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'account_password'")
             __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["allow_databases"] = allow_databases
+            __props__.__dict__["allow_dictionaries"] = allow_dictionaries
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__.__dict__["db_cluster_id"] = db_cluster_id
+            __props__.__dict__["ddl_authority"] = ddl_authority
+            __props__.__dict__["dml_authority"] = dml_authority
+            __props__.__dict__["total_databases"] = total_databases
+            __props__.__dict__["total_dictionaries"] = total_dictionaries
             __props__.__dict__["status"] = None
             __props__.__dict__["type"] = None
         super(Account, __self__).__init__(
@@ -354,8 +592,14 @@ class Account(pulumi.CustomResource):
             account_description: Optional[pulumi.Input[str]] = None,
             account_name: Optional[pulumi.Input[str]] = None,
             account_password: Optional[pulumi.Input[str]] = None,
+            allow_databases: Optional[pulumi.Input[str]] = None,
+            allow_dictionaries: Optional[pulumi.Input[str]] = None,
             db_cluster_id: Optional[pulumi.Input[str]] = None,
+            ddl_authority: Optional[pulumi.Input[bool]] = None,
+            dml_authority: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            total_databases: Optional[pulumi.Input[str]] = None,
+            total_dictionaries: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
@@ -367,8 +611,17 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
         :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
+        :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+               -`true`: grants DDL permissions to the database account.
+               -`false`: does not grant DDL permissions to the database account.
+        :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
         :param pulumi.Input[str] status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
+        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
+        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
+        :param pulumi.Input[str] type: The type of the database account. Valid values: `Normal` or `Super`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -377,8 +630,14 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["account_description"] = account_description
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
+        __props__.__dict__["allow_databases"] = allow_databases
+        __props__.__dict__["allow_dictionaries"] = allow_dictionaries
         __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["ddl_authority"] = ddl_authority
+        __props__.__dict__["dml_authority"] = dml_authority
         __props__.__dict__["status"] = status
+        __props__.__dict__["total_databases"] = total_databases
+        __props__.__dict__["total_dictionaries"] = total_dictionaries
         __props__.__dict__["type"] = type
         return Account(resource_name, opts=opts, __props__=__props__)
 
@@ -407,12 +666,46 @@ class Account(pulumi.CustomResource):
         return pulumi.get(self, "account_password")
 
     @property
+    @pulumi.getter(name="allowDatabases")
+    def allow_databases(self) -> pulumi.Output[str]:
+        """
+        The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        """
+        return pulumi.get(self, "allow_databases")
+
+    @property
+    @pulumi.getter(name="allowDictionaries")
+    def allow_dictionaries(self) -> pulumi.Output[str]:
+        """
+        The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        """
+        return pulumi.get(self, "allow_dictionaries")
+
+    @property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Output[str]:
         """
         The db cluster id.
         """
         return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter(name="ddlAuthority")
+    def ddl_authority(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        -`true`: grants DDL permissions to the database account.
+        -`false`: does not grant DDL permissions to the database account.
+        """
+        return pulumi.get(self, "ddl_authority")
+
+    @property
+    @pulumi.getter(name="dmlAuthority")
+    def dml_authority(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+        """
+        return pulumi.get(self, "dml_authority")
 
     @property
     @pulumi.getter
@@ -423,7 +716,26 @@ class Account(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="totalDatabases")
+    def total_databases(self) -> pulumi.Output[str]:
+        """
+        The list of all databases. Separate databases with commas (,).
+        """
+        return pulumi.get(self, "total_databases")
+
+    @property
+    @pulumi.getter(name="totalDictionaries")
+    def total_dictionaries(self) -> pulumi.Output[str]:
+        """
+        The list of all dictionaries. Separate dictionaries with commas (,).
+        """
+        return pulumi.get(self, "total_dictionaries")
+
+    @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        The type of the database account. Valid values: `Normal` or `Super`.
+        """
         return pulumi.get(self, "type")
 

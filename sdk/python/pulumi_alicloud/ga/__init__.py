@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .accelerator import *
+from .accelerator_spare_ip_attachment import *
 from .acl import *
 from .acl_attachment import *
 from .additional_certificate import *
@@ -13,6 +14,7 @@ from .bandwidth_package import *
 from .bandwidth_package_attachment import *
 from .endpoint_group import *
 from .forwarding_rule import *
+from .get_accelerator_spare_ip_attachments import *
 from .get_accelerators import *
 from .get_acls import *
 from .get_additional_certificates import *

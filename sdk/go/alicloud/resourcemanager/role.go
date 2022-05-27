@@ -61,7 +61,8 @@ type Role struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
 	MaxSessionDuration pulumi.IntPtrOutput `pulumi:"maxSessionDuration"`
-	RoleId             pulumi.StringOutput `pulumi:"roleId"`
+	// This ID of Resource Manager role. The value is set to `roleName`.
+	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
 	// Role update time.
@@ -111,8 +112,9 @@ type roleState struct {
 	// The description of the Resource Manager role.
 	Description *string `pulumi:"description"`
 	// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
-	MaxSessionDuration *int    `pulumi:"maxSessionDuration"`
-	RoleId             *string `pulumi:"roleId"`
+	MaxSessionDuration *int `pulumi:"maxSessionDuration"`
+	// This ID of Resource Manager role. The value is set to `roleName`.
+	RoleId *string `pulumi:"roleId"`
 	// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
 	RoleName *string `pulumi:"roleName"`
 	// Role update time.
@@ -129,7 +131,8 @@ type RoleState struct {
 	Description pulumi.StringPtrInput
 	// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
 	MaxSessionDuration pulumi.IntPtrInput
-	RoleId             pulumi.StringPtrInput
+	// This ID of Resource Manager role. The value is set to `roleName`.
+	RoleId pulumi.StringPtrInput
 	// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
 	RoleName pulumi.StringPtrInput
 	// Role update time.

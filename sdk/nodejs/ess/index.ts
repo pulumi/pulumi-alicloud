@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 export * from "./alarm";
 export * from "./albServerGroupAttachment";
 export * from "./attachment";
+export * from "./eciScalingConfiguration";
 export * from "./getAlarms";
 export * from "./getLifecycleHooks";
 export * from "./getNotifications";
@@ -23,11 +24,13 @@ export * from "./scalingGroupVServerGroups";
 export * from "./scalingRule";
 export * from "./schedule";
 export * from "./scheduledTask";
+export * from "./suspendProcess";
 
 // Import resources to register:
 import { Alarm } from "./alarm";
 import { AlbServerGroupAttachment } from "./albServerGroupAttachment";
 import { Attachment } from "./attachment";
+import { EciScalingConfiguration } from "./eciScalingConfiguration";
 import { LifecycleHook } from "./lifecycleHook";
 import { Notification } from "./notification";
 import { ScalingConfiguration } from "./scalingConfiguration";
@@ -36,6 +39,7 @@ import { ScalingGroupVServerGroups } from "./scalingGroupVServerGroups";
 import { ScalingRule } from "./scalingRule";
 import { Schedule } from "./schedule";
 import { ScheduledTask } from "./scheduledTask";
+import { SuspendProcess } from "./suspendProcess";
 
 const _module = {
     version: utilities.getVersion(),
@@ -47,6 +51,8 @@ const _module = {
                 return new AlbServerGroupAttachment(name, <any>undefined, { urn })
             case "alicloud:ess/attachment:Attachment":
                 return new Attachment(name, <any>undefined, { urn })
+            case "alicloud:ess/eciScalingConfiguration:EciScalingConfiguration":
+                return new EciScalingConfiguration(name, <any>undefined, { urn })
             case "alicloud:ess/lifecycleHook:LifecycleHook":
                 return new LifecycleHook(name, <any>undefined, { urn })
             case "alicloud:ess/notification:Notification":
@@ -63,6 +69,8 @@ const _module = {
                 return new Schedule(name, <any>undefined, { urn })
             case "alicloud:ess/scheduledTask:ScheduledTask":
                 return new ScheduledTask(name, <any>undefined, { urn })
+            case "alicloud:ess/suspendProcess:SuspendProcess":
+                return new SuspendProcess(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -71,6 +79,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "ess/alarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/albServerGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/attachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ess/eciScalingConfiguration", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/lifecycleHook", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/notification", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/scalingConfiguration", _module)
@@ -79,3 +88,4 @@ pulumi.runtime.registerResourceModule("alicloud", "ess/scalingGroupVServerGroups
 pulumi.runtime.registerResourceModule("alicloud", "ess/scalingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/schedule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/scheduledTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ess/suspendProcess", _module)

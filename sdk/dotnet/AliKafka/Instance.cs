@@ -86,13 +86,15 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+        /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+        /// - 4: eip/vpc instance
+        /// - 5: vpc instance.
         /// </summary>
         [Output("deployType")]
         public Output<int> DeployType { get; private set; } = null!;
 
         /// <summary>
-        /// The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         /// </summary>
         [Output("diskSize")]
         public Output<int> DiskSize { get; private set; } = null!;
@@ -104,7 +106,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int> DiskType { get; private set; } = null!;
 
         /// <summary>
-        /// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        /// The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         /// </summary>
         [Output("eipMax")]
         public Output<int> EipMax { get; private set; } = null!;
@@ -158,7 +160,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        /// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         /// </summary>
         [Output("topicQuota")]
         public Output<int> TopicQuota { get; private set; } = null!;
@@ -234,13 +236,15 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+        /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+        /// - 4: eip/vpc instance
+        /// - 5: vpc instance.
         /// </summary>
         [Input("deployType", required: true)]
         public Input<int> DeployType { get; set; } = null!;
 
         /// <summary>
-        /// The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         /// </summary>
         [Input("diskSize", required: true)]
         public Input<int> DiskSize { get; set; } = null!;
@@ -252,7 +256,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int> DiskType { get; set; } = null!;
 
         /// <summary>
-        /// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        /// The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         /// </summary>
         [Input("eipMax")]
         public Input<int>? EipMax { get; set; }
@@ -306,7 +310,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        /// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         /// </summary>
         [Input("topicQuota", required: true)]
         public Input<int> TopicQuota { get; set; } = null!;
@@ -331,13 +335,15 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+        /// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+        /// - 4: eip/vpc instance
+        /// - 5: vpc instance.
         /// </summary>
         [Input("deployType")]
         public Input<int>? DeployType { get; set; }
 
         /// <summary>
-        /// The disk size of the instance. When modify this value, it only support adjust to a greater value.
+        /// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
@@ -349,7 +355,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int>? DiskType { get; set; }
 
         /// <summary>
-        /// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+        /// The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         /// </summary>
         [Input("eipMax")]
         public Input<int>? EipMax { get; set; }
@@ -409,7 +415,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+        /// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
         /// </summary>
         [Input("topicQuota")]
         public Input<int>? TopicQuota { get; set; }

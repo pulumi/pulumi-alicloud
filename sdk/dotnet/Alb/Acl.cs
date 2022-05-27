@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Alb
     public partial class Acl : Pulumi.CustomResource
     {
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
         [Output("aclEntries")]
         public Output<ImmutableArray<Outputs.AclAclEntry>> AclEntries { get; private set; } = null!;
@@ -86,6 +86,9 @@ namespace Pulumi.AliCloud.Alb
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
@@ -139,8 +142,9 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AclAclEntryArgs>? _aclEntries;
 
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
+        [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.")]
         public InputList<Inputs.AclAclEntryArgs> AclEntries
         {
             get => _aclEntries ?? (_aclEntries = new InputList<Inputs.AclAclEntryArgs>());
@@ -167,6 +171,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -184,8 +192,9 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AclAclEntryGetArgs>? _aclEntries;
 
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
+        [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.")]
         public InputList<Inputs.AclAclEntryGetArgs> AclEntries
         {
             get => _aclEntries ?? (_aclEntries = new InputList<Inputs.AclAclEntryGetArgs>());
@@ -218,6 +227,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

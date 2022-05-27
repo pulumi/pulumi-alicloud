@@ -25,13 +25,25 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CoolDownDuration { get; private set; } = null!;
 
         /// <summary>
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// </summary>
+        [Output("expander")]
+        public Output<string?> Expander { get; private set; } = null!;
+
+        /// <summary>
         /// The scale-in threshold for GPU instance. Default is `0.5`.
         /// </summary>
         [Output("gpuUtilizationThreshold")]
         public Output<string?> GpuUtilizationThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The scan interval. Default is `30s`
+        /// Specify whether to allow the scale-in of nodes. Default is `true`.
+        /// </summary>
+        [Output("scaleDownEnabled")]
+        public Output<bool?> ScaleDownEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         /// </summary>
         [Output("scanInterval")]
         public Output<string?> ScanInterval { get; private set; } = null!;
@@ -107,13 +119,25 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? CoolDownDuration { get; set; }
 
         /// <summary>
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// </summary>
+        [Input("expander")]
+        public Input<string>? Expander { get; set; }
+
+        /// <summary>
         /// The scale-in threshold for GPU instance. Default is `0.5`.
         /// </summary>
         [Input("gpuUtilizationThreshold")]
         public Input<string>? GpuUtilizationThreshold { get; set; }
 
         /// <summary>
-        /// The scan interval. Default is `30s`
+        /// Specify whether to allow the scale-in of nodes. Default is `true`.
+        /// </summary>
+        [Input("scaleDownEnabled")]
+        public Input<bool>? ScaleDownEnabled { get; set; }
+
+        /// <summary>
+        /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         /// </summary>
         [Input("scanInterval")]
         public Input<string>? ScanInterval { get; set; }
@@ -150,13 +174,25 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? CoolDownDuration { get; set; }
 
         /// <summary>
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// </summary>
+        [Input("expander")]
+        public Input<string>? Expander { get; set; }
+
+        /// <summary>
         /// The scale-in threshold for GPU instance. Default is `0.5`.
         /// </summary>
         [Input("gpuUtilizationThreshold")]
         public Input<string>? GpuUtilizationThreshold { get; set; }
 
         /// <summary>
-        /// The scan interval. Default is `30s`
+        /// Specify whether to allow the scale-in of nodes. Default is `true`.
+        /// </summary>
+        [Input("scaleDownEnabled")]
+        public Input<bool>? ScaleDownEnabled { get; set; }
+
+        /// <summary>
+        /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         /// </summary>
         [Input("scanInterval")]
         public Input<string>? ScanInterval { get; set; }

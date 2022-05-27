@@ -129,19 +129,19 @@ namespace Pulumi.AliCloud.Hbr
     public partial class RestoreJob : Pulumi.CustomResource
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("exclude")]
         public Output<string?> Exclude { get; private set; } = null!;
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("include")]
         public Output<string?> Include { get; private set; } = null!;
 
         /// <summary>
-        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> RestoreJobId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         /// </summary>
         [Output("restoreType")]
         public Output<string> RestoreType { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
@@ -183,52 +183,76 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The target name of OSS bucket.
+        /// The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         /// </summary>
         [Output("targetBucket")]
         public Output<string?> TargetBucket { get; private set; } = null!;
 
+        /// <summary>
+        /// The target client ID.
+        /// </summary>
         [Output("targetClientId")]
         public Output<string?> TargetClientId { get; private set; } = null!;
 
-        [Output("targetContainer")]
-        public Output<string?> TargetContainer { get; private set; } = null!;
-
-        [Output("targetContainerClusterId")]
-        public Output<string?> TargetContainerClusterId { get; private set; } = null!;
-
         /// <summary>
-        /// The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Output("targetCreateTime")]
         public Output<string?> TargetCreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The target data source ID.
+        /// </summary>
         [Output("targetDataSourceId")]
         public Output<string?> TargetDataSourceId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of destination File System.
+        /// The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
         /// </summary>
         [Output("targetFileSystemId")]
         public Output<string?> TargetFileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// The target ID of ECS instance.
+        /// The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
         /// </summary>
         [Output("targetInstanceId")]
         public Output<string?> TargetInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        /// </summary>
+        [Output("targetInstanceName")]
+        public Output<string?> TargetInstanceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("targetPath")]
         public Output<string?> TargetPath { get; private set; } = null!;
 
         /// <summary>
-        /// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Output("targetPrefix")]
         public Output<string?> TargetPrefix { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        /// </summary>
+        [Output("targetTableName")]
+        public Output<string?> TargetTableName { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        /// </summary>
+        [Output("targetTime")]
+        public Output<string?> TargetTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The full machine backup details.
+        /// </summary>
+        [Output("udmDetail")]
+        public Output<string?> UdmDetail { get; private set; } = null!;
 
         /// <summary>
         /// The ID of backup vault.
@@ -283,19 +307,19 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class RestoreJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -307,7 +331,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? RestoreJobId { get; set; }
 
         /// <summary>
-        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         /// </summary>
         [Input("restoreType", required: true)]
         public Input<string> RestoreType { get; set; } = null!;
@@ -325,58 +349,82 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> SnapshotId { get; set; } = null!;
 
         /// <summary>
-        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
 
         /// <summary>
-        /// The target name of OSS bucket.
+        /// The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         /// </summary>
         [Input("targetBucket")]
         public Input<string>? TargetBucket { get; set; }
 
+        /// <summary>
+        /// The target client ID.
+        /// </summary>
         [Input("targetClientId")]
         public Input<string>? TargetClientId { get; set; }
 
-        [Input("targetContainer")]
-        public Input<string>? TargetContainer { get; set; }
-
-        [Input("targetContainerClusterId")]
-        public Input<string>? TargetContainerClusterId { get; set; }
-
         /// <summary>
-        /// The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("targetCreateTime")]
         public Input<string>? TargetCreateTime { get; set; }
 
+        /// <summary>
+        /// The target data source ID.
+        /// </summary>
         [Input("targetDataSourceId")]
         public Input<string>? TargetDataSourceId { get; set; }
 
         /// <summary>
-        /// The ID of destination File System.
+        /// The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
         /// </summary>
         [Input("targetFileSystemId")]
         public Input<string>? TargetFileSystemId { get; set; }
 
         /// <summary>
-        /// The target ID of ECS instance.
+        /// The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
         /// </summary>
         [Input("targetInstanceId")]
         public Input<string>? TargetInstanceId { get; set; }
 
         /// <summary>
-        /// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        /// </summary>
+        [Input("targetInstanceName")]
+        public Input<string>? TargetInstanceName { get; set; }
+
+        /// <summary>
+        /// The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("targetPath")]
         public Input<string>? TargetPath { get; set; }
 
         /// <summary>
-        /// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("targetPrefix")]
         public Input<string>? TargetPrefix { get; set; }
+
+        /// <summary>
+        /// The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        /// </summary>
+        [Input("targetTableName")]
+        public Input<string>? TargetTableName { get; set; }
+
+        /// <summary>
+        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        /// </summary>
+        [Input("targetTime")]
+        public Input<string>? TargetTime { get; set; }
+
+        /// <summary>
+        /// The full machine backup details.
+        /// </summary>
+        [Input("udmDetail")]
+        public Input<string>? UdmDetail { get; set; }
 
         /// <summary>
         /// The ID of backup vault.
@@ -392,19 +440,19 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class RestoreJobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("exclude")]
         public Input<string>? Exclude { get; set; }
 
         /// <summary>
-        /// The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -416,7 +464,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? RestoreJobId { get; set; }
 
         /// <summary>
-        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         /// </summary>
         [Input("restoreType")]
         public Input<string>? RestoreType { get; set; }
@@ -434,7 +482,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
@@ -446,52 +494,76 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The target name of OSS bucket.
+        /// The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         /// </summary>
         [Input("targetBucket")]
         public Input<string>? TargetBucket { get; set; }
 
+        /// <summary>
+        /// The target client ID.
+        /// </summary>
         [Input("targetClientId")]
         public Input<string>? TargetClientId { get; set; }
 
-        [Input("targetContainer")]
-        public Input<string>? TargetContainer { get; set; }
-
-        [Input("targetContainerClusterId")]
-        public Input<string>? TargetContainerClusterId { get; set; }
-
         /// <summary>
-        /// The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("targetCreateTime")]
         public Input<string>? TargetCreateTime { get; set; }
 
+        /// <summary>
+        /// The target data source ID.
+        /// </summary>
         [Input("targetDataSourceId")]
         public Input<string>? TargetDataSourceId { get; set; }
 
         /// <summary>
-        /// The ID of destination File System.
+        /// The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
         /// </summary>
         [Input("targetFileSystemId")]
         public Input<string>? TargetFileSystemId { get; set; }
 
         /// <summary>
-        /// The target ID of ECS instance.
+        /// The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
         /// </summary>
         [Input("targetInstanceId")]
         public Input<string>? TargetInstanceId { get; set; }
 
         /// <summary>
-        /// The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        /// </summary>
+        [Input("targetInstanceName")]
+        public Input<string>? TargetInstanceName { get; set; }
+
+        /// <summary>
+        /// The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("targetPath")]
         public Input<string>? TargetPath { get; set; }
 
         /// <summary>
-        /// The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        /// The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         /// </summary>
         [Input("targetPrefix")]
         public Input<string>? TargetPrefix { get; set; }
+
+        /// <summary>
+        /// The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        /// </summary>
+        [Input("targetTableName")]
+        public Input<string>? TargetTableName { get; set; }
+
+        /// <summary>
+        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        /// </summary>
+        [Input("targetTime")]
+        public Input<string>? TargetTime { get; set; }
+
+        /// <summary>
+        /// The full machine backup details.
+        /// </summary>
+        [Input("udmDetail")]
+        public Input<string>? UdmDetail { get; set; }
 
         /// <summary>
         /// The ID of backup vault.

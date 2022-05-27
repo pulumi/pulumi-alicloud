@@ -19,6 +19,7 @@ export * from "./getRegionRouteEntries";
 export * from "./getRouteEntries";
 export * from "./getRouteMaps";
 export * from "./getRouteServices";
+export * from "./getTransitRouterAvailableResources";
 export * from "./getTransitRouterPeerAttachments";
 export * from "./getTransitRouterRouteEntries";
 export * from "./getTransitRouterRouteTableAssociations";

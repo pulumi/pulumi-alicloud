@@ -31,10 +31,12 @@ type Listener struct {
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolOutput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrOutput `pulumi:"accessLogTracingConfig"`
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
-	AclConfig ListenerAclConfigPtrOutput `pulumi:"aclConfig"`
-	// The Certificate List. See the following `Block certificates`.
-	Certificates ListenerCertificateArrayOutput `pulumi:"certificates"`
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	//
+	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
+	AclConfig ListenerAclConfigOutput `pulumi:"aclConfig"`
+	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	Certificates ListenerCertificatesPtrOutput `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions ListenerDefaultActionArrayOutput `pulumi:"defaultActions"`
 	// The dry run.
@@ -61,8 +63,8 @@ type Listener struct {
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
-	XforwardedForConfig ListenerXforwardedForConfigOutput `pulumi:"xforwardedForConfig"`
+	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	XForwardedForConfig ListenerXForwardedForConfigOutput `pulumi:"xForwardedForConfig"`
 }
 
 // NewListener registers a new resource with the given unique name, arguments, and options.
@@ -107,10 +109,12 @@ type listenerState struct {
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	//
+	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig *ListenerAclConfig `pulumi:"aclConfig"`
-	// The Certificate List. See the following `Block certificates`.
-	Certificates []ListenerCertificate `pulumi:"certificates"`
+	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	Certificates *ListenerCertificates `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions []ListenerDefaultAction `pulumi:"defaultActions"`
 	// The dry run.
@@ -137,8 +141,8 @@ type listenerState struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
-	// xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
-	XforwardedForConfig *ListenerXforwardedForConfig `pulumi:"xforwardedForConfig"`
+	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	XForwardedForConfig *ListenerXForwardedForConfig `pulumi:"xForwardedForConfig"`
 }
 
 type ListenerState struct {
@@ -146,10 +150,12 @@ type ListenerState struct {
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	//
+	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig ListenerAclConfigPtrInput
-	// The Certificate List. See the following `Block certificates`.
-	Certificates ListenerCertificateArrayInput
+	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	Certificates ListenerCertificatesPtrInput
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions ListenerDefaultActionArrayInput
 	// The dry run.
@@ -176,8 +182,8 @@ type ListenerState struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput
-	// xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
-	XforwardedForConfig ListenerXforwardedForConfigPtrInput
+	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	XForwardedForConfig ListenerXForwardedForConfigPtrInput
 }
 
 func (ListenerState) ElementType() reflect.Type {
@@ -189,10 +195,12 @@ type listenerArgs struct {
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	//
+	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig *ListenerAclConfig `pulumi:"aclConfig"`
-	// The Certificate List. See the following `Block certificates`.
-	Certificates []ListenerCertificate `pulumi:"certificates"`
+	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	Certificates *ListenerCertificates `pulumi:"certificates"`
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions []ListenerDefaultAction `pulumi:"defaultActions"`
 	// The dry run.
@@ -219,8 +227,8 @@ type listenerArgs struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
-	// xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
-	XforwardedForConfig *ListenerXforwardedForConfig `pulumi:"xforwardedForConfig"`
+	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	XForwardedForConfig *ListenerXForwardedForConfig `pulumi:"xForwardedForConfig"`
 }
 
 // The set of arguments for constructing a Listener resource.
@@ -229,10 +237,12 @@ type ListenerArgs struct {
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`.
+	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	//
+	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig ListenerAclConfigPtrInput
-	// The Certificate List. See the following `Block certificates`.
-	Certificates ListenerCertificateArrayInput
+	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	Certificates ListenerCertificatesPtrInput
 	// The Default Rule Action List. See the following `Block defaultActions`.
 	DefaultActions ListenerDefaultActionArrayInput
 	// The dry run.
@@ -259,8 +269,8 @@ type ListenerArgs struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput
-	// xforwardfor Related Attribute Configuration. See the following `Block xforwardedForConfig`.
-	XforwardedForConfig ListenerXforwardedForConfigPtrInput
+	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	XForwardedForConfig ListenerXForwardedForConfigPtrInput
 }
 
 func (ListenerArgs) ElementType() reflect.Type {

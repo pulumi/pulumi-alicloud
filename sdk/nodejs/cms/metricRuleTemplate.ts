@@ -110,7 +110,7 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
     /**
      * The version of the alert template to be modified.
      */
-    public /*out*/ readonly restVersion!: pulumi.Output<string>;
+    public readonly restVersion!: pulumi.Output<string>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
      */
@@ -157,9 +157,9 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["metricRuleTemplateName"] = args ? args.metricRuleTemplateName : undefined;
             resourceInputs["notifyLevel"] = args ? args.notifyLevel : undefined;
+            resourceInputs["restVersion"] = args ? args.restVersion : undefined;
             resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
             resourceInputs["webhook"] = args ? args.webhook : undefined;
-            resourceInputs["restVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MetricRuleTemplate.__pulumiType, name, resourceInputs, opts);
@@ -252,6 +252,10 @@ export interface MetricRuleTemplateArgs {
      * The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
      */
     notifyLevel?: pulumi.Input<string>;
+    /**
+     * The version of the alert template to be modified.
+     */
+    restVersion?: pulumi.Input<string>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
      */

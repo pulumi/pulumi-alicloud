@@ -38,6 +38,10 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleRuleConditionQueryStringConfigResult> QueryStringConfigs;
         /// <summary>
+        /// The Based on source IP traffic matching.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesRuleRuleConditionSourceIpConfigResult> SourceIpConfigs;
+        /// <summary>
         /// The type of the forwarding rule.
         /// </summary>
         public readonly string Type;
@@ -56,6 +60,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             ImmutableArray<Outputs.GetRulesRuleRuleConditionQueryStringConfigResult> queryStringConfigs,
 
+            ImmutableArray<Outputs.GetRulesRuleRuleConditionSourceIpConfigResult> sourceIpConfigs,
+
             string type)
         {
             CookieConfigs = cookieConfigs;
@@ -64,6 +70,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
             MethodConfigs = methodConfigs;
             PathConfigs = pathConfigs;
             QueryStringConfigs = queryStringConfigs;
+            SourceIpConfigs = sourceIpConfigs;
             Type = type;
         }
     }

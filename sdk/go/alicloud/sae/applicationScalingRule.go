@@ -74,53 +74,49 @@ import (
 // 			ScalingRuleName:   pulumi.String("example-value"),
 // 			ScalingRuleEnable: pulumi.Bool(true),
 // 			ScalingRuleType:   pulumi.String("mix"),
-// 			ScalingRuleTimers: sae.ApplicationScalingRuleScalingRuleTimerArray{
-// 				&sae.ApplicationScalingRuleScalingRuleTimerArgs{
-// 					BeginDate: pulumi.String("2022-02-25"),
-// 					EndDate:   pulumi.String("2022-03-25"),
-// 					Period:    pulumi.String("* * *"),
-// 					Schedules: sae.ApplicationScalingRuleScalingRuleTimerScheduleArray{
-// 						&sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs{
-// 							AtTime:      pulumi.String("08:00"),
-// 							MaxReplicas: pulumi.Int(10),
-// 							MinReplicas: pulumi.Int(3),
-// 						},
-// 						&sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs{
-// 							AtTime:      pulumi.String("20:00"),
-// 							MaxReplicas: pulumi.Int(50),
-// 							MinReplicas: pulumi.Int(3),
-// 						},
+// 			ScalingRuleTimer: &sae.ApplicationScalingRuleScalingRuleTimerArgs{
+// 				BeginDate: pulumi.String("2022-02-25"),
+// 				EndDate:   pulumi.String("2022-03-25"),
+// 				Period:    pulumi.String("* * *"),
+// 				Schedules: sae.ApplicationScalingRuleScalingRuleTimerScheduleArray{
+// 					&sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs{
+// 						AtTime:      pulumi.String("08:00"),
+// 						MaxReplicas: pulumi.Int(10),
+// 						MinReplicas: pulumi.Int(3),
+// 					},
+// 					&sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs{
+// 						AtTime:      pulumi.String("20:00"),
+// 						MaxReplicas: pulumi.Int(50),
+// 						MinReplicas: pulumi.Int(3),
 // 					},
 // 				},
 // 			},
-// 			ScalingRuleMetrics: sae.ApplicationScalingRuleScalingRuleMetricArray{
-// 				&sae.ApplicationScalingRuleScalingRuleMetricArgs{
-// 					MaxReplicas: pulumi.Int(50),
-// 					MinReplicas: pulumi.Int(3),
-// 					Metrics: sae.ApplicationScalingRuleScalingRuleMetricMetricArray{
-// 						&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
-// 							MetricType:                     pulumi.String("CPU"),
-// 							MetricTargetAverageUtilization: pulumi.Int(20),
-// 						},
-// 						&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
-// 							MetricType:                     pulumi.String("MEMORY"),
-// 							MetricTargetAverageUtilization: pulumi.Int(30),
-// 						},
-// 						&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
-// 							MetricType:                     pulumi.String("tcpActiveConn"),
-// 							MetricTargetAverageUtilization: pulumi.Int(20),
-// 						},
+// 			ScalingRuleMetric: &sae.ApplicationScalingRuleScalingRuleMetricArgs{
+// 				MaxReplicas: pulumi.Int(50),
+// 				MinReplicas: pulumi.Int(3),
+// 				Metrics: sae.ApplicationScalingRuleScalingRuleMetricMetricArray{
+// 					&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
+// 						MetricType:                     pulumi.String("CPU"),
+// 						MetricTargetAverageUtilization: pulumi.Int(20),
 // 					},
-// 					ScaleUpRules: &sae.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{
-// 						Step:                       pulumi.Int(10),
-// 						Disabled:                   pulumi.Bool(false),
-// 						StabilizationWindowSeconds: pulumi.Int(0),
+// 					&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
+// 						MetricType:                     pulumi.String("MEMORY"),
+// 						MetricTargetAverageUtilization: pulumi.Int(30),
 // 					},
-// 					ScaleDownRules: &sae.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{
-// 						Step:                       pulumi.Int(10),
-// 						Disabled:                   pulumi.Bool(false),
-// 						StabilizationWindowSeconds: pulumi.Int(10),
+// 					&sae.ApplicationScalingRuleScalingRuleMetricMetricArgs{
+// 						MetricType:                     pulumi.String("tcpActiveConn"),
+// 						MetricTargetAverageUtilization: pulumi.Int(20),
 // 					},
+// 				},
+// 				ScaleUpRules: &sae.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs{
+// 					Step:                       pulumi.Int(10),
+// 					Disabled:                   pulumi.Bool(false),
+// 					StabilizationWindowSeconds: pulumi.Int(0),
+// 				},
+// 				ScaleDownRules: &sae.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs{
+// 					Step:                       pulumi.Int(10),
+// 					Disabled:                   pulumi.Bool(false),
+// 					StabilizationWindowSeconds: pulumi.Int(10),
 // 				},
 // 			},
 // 		})
@@ -151,12 +147,12 @@ type ApplicationScalingRule struct {
 	// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
 	ScalingRuleEnable pulumi.BoolOutput `pulumi:"scalingRuleEnable"`
 	// Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
-	ScalingRuleMetrics ApplicationScalingRuleScalingRuleMetricArrayOutput `pulumi:"scalingRuleMetrics"`
+	ScalingRuleMetric ApplicationScalingRuleScalingRuleMetricPtrOutput `pulumi:"scalingRuleMetric"`
 	// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
 	ScalingRuleName pulumi.StringOutput `pulumi:"scalingRuleName"`
 	// Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
-	ScalingRuleTimers ApplicationScalingRuleScalingRuleTimerArrayOutput `pulumi:"scalingRuleTimers"`
-	// Flexible strategy type. The value description is as follows:  timing: timing flexibility. Valid values: `timing`.
+	ScalingRuleTimer ApplicationScalingRuleScalingRuleTimerPtrOutput `pulumi:"scalingRuleTimer"`
+	// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
 	ScalingRuleType pulumi.StringOutput `pulumi:"scalingRuleType"`
 }
 
@@ -207,12 +203,12 @@ type applicationScalingRuleState struct {
 	// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
 	ScalingRuleEnable *bool `pulumi:"scalingRuleEnable"`
 	// Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
-	ScalingRuleMetrics []ApplicationScalingRuleScalingRuleMetric `pulumi:"scalingRuleMetrics"`
+	ScalingRuleMetric *ApplicationScalingRuleScalingRuleMetric `pulumi:"scalingRuleMetric"`
 	// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
 	ScalingRuleName *string `pulumi:"scalingRuleName"`
 	// Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
-	ScalingRuleTimers []ApplicationScalingRuleScalingRuleTimer `pulumi:"scalingRuleTimers"`
-	// Flexible strategy type. The value description is as follows:  timing: timing flexibility. Valid values: `timing`.
+	ScalingRuleTimer *ApplicationScalingRuleScalingRuleTimer `pulumi:"scalingRuleTimer"`
+	// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
 	ScalingRuleType *string `pulumi:"scalingRuleType"`
 }
 
@@ -226,12 +222,12 @@ type ApplicationScalingRuleState struct {
 	// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
 	ScalingRuleEnable pulumi.BoolPtrInput
 	// Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
-	ScalingRuleMetrics ApplicationScalingRuleScalingRuleMetricArrayInput
+	ScalingRuleMetric ApplicationScalingRuleScalingRuleMetricPtrInput
 	// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
 	ScalingRuleName pulumi.StringPtrInput
 	// Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
-	ScalingRuleTimers ApplicationScalingRuleScalingRuleTimerArrayInput
-	// Flexible strategy type. The value description is as follows:  timing: timing flexibility. Valid values: `timing`.
+	ScalingRuleTimer ApplicationScalingRuleScalingRuleTimerPtrInput
+	// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
 	ScalingRuleType pulumi.StringPtrInput
 }
 
@@ -249,12 +245,12 @@ type applicationScalingRuleArgs struct {
 	// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
 	ScalingRuleEnable *bool `pulumi:"scalingRuleEnable"`
 	// Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
-	ScalingRuleMetrics []ApplicationScalingRuleScalingRuleMetric `pulumi:"scalingRuleMetrics"`
+	ScalingRuleMetric *ApplicationScalingRuleScalingRuleMetric `pulumi:"scalingRuleMetric"`
 	// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
 	ScalingRuleName string `pulumi:"scalingRuleName"`
 	// Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
-	ScalingRuleTimers []ApplicationScalingRuleScalingRuleTimer `pulumi:"scalingRuleTimers"`
-	// Flexible strategy type. The value description is as follows:  timing: timing flexibility. Valid values: `timing`.
+	ScalingRuleTimer *ApplicationScalingRuleScalingRuleTimer `pulumi:"scalingRuleTimer"`
+	// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
 	ScalingRuleType string `pulumi:"scalingRuleType"`
 }
 
@@ -269,12 +265,12 @@ type ApplicationScalingRuleArgs struct {
 	// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
 	ScalingRuleEnable pulumi.BoolPtrInput
 	// Monitor the configuration of the indicator elasticity strategy. See the following `Block scalingRuleMetric`.
-	ScalingRuleMetrics ApplicationScalingRuleScalingRuleMetricArrayInput
+	ScalingRuleMetric ApplicationScalingRuleScalingRuleMetricPtrInput
 	// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
 	ScalingRuleName pulumi.StringInput
 	// Configuration of Timing Resilient Policies. See the following `Block scalingRuleTimer`.
-	ScalingRuleTimers ApplicationScalingRuleScalingRuleTimerArrayInput
-	// Flexible strategy type. The value description is as follows:  timing: timing flexibility. Valid values: `timing`.
+	ScalingRuleTimer ApplicationScalingRuleScalingRuleTimerPtrInput
+	// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
 	ScalingRuleType pulumi.StringInput
 }
 

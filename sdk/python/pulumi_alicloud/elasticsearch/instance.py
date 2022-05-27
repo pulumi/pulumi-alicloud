@@ -27,6 +27,7 @@ class InstanceArgs:
                  enable_kibana_public_network: Optional[pulumi.Input[bool]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 kibana_node_spec: Optional[pulumi.Input[str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -58,6 +59,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
         :param pulumi.Input[bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
@@ -97,6 +99,8 @@ class InstanceArgs:
             pulumi.set(__self__, "enable_public", enable_public)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if kibana_node_spec is not None:
+            pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
         if kibana_private_whitelists is not None:
             pulumi.set(__self__, "kibana_private_whitelists", kibana_private_whitelists)
         if kibana_whitelists is not None:
@@ -296,6 +300,18 @@ class InstanceArgs:
         pulumi.set(self, "instance_charge_type", value)
 
     @property
+    @pulumi.getter(name="kibanaNodeSpec")
+    def kibana_node_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+        """
+        return pulumi.get(self, "kibana_node_spec")
+
+    @kibana_node_spec.setter
+    def kibana_node_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kibana_node_spec", value)
+
+    @property
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -483,6 +499,7 @@ class _InstanceState:
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kibana_domain: Optional[pulumi.Input[str]] = None,
+                 kibana_node_spec: Optional[pulumi.Input[str]] = None,
                  kibana_port: Optional[pulumi.Input[int]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -519,6 +536,7 @@ class _InstanceState:
         :param pulumi.Input[bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         :param pulumi.Input[str] kibana_domain: Kibana console domain (Internet access supported).
+        :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[int] kibana_port: Kibana console port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
@@ -569,6 +587,8 @@ class _InstanceState:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if kibana_domain is not None:
             pulumi.set(__self__, "kibana_domain", kibana_domain)
+        if kibana_node_spec is not None:
+            pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
         if kibana_port is not None:
             pulumi.set(__self__, "kibana_port", kibana_port)
         if kibana_private_whitelists is not None:
@@ -776,6 +796,18 @@ class _InstanceState:
     @kibana_domain.setter
     def kibana_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kibana_domain", value)
+
+    @property
+    @pulumi.getter(name="kibanaNodeSpec")
+    def kibana_node_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+        """
+        return pulumi.get(self, "kibana_node_spec")
+
+    @kibana_node_spec.setter
+    def kibana_node_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kibana_node_spec", value)
 
     @property
     @pulumi.getter(name="kibanaPort")
@@ -1025,6 +1057,7 @@ class Instance(pulumi.CustomResource):
                  enable_kibana_public_network: Optional[pulumi.Input[bool]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 kibana_node_spec: Optional[pulumi.Input[str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -1100,6 +1133,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
         :param pulumi.Input[bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
@@ -1195,6 +1229,7 @@ class Instance(pulumi.CustomResource):
                  enable_kibana_public_network: Optional[pulumi.Input[bool]] = None,
                  enable_public: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 kibana_node_spec: Optional[pulumi.Input[str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -1243,6 +1278,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_kibana_public_network"] = enable_kibana_public_network
             __props__.__dict__["enable_public"] = enable_public
             __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["kibana_node_spec"] = kibana_node_spec
             __props__.__dict__["kibana_private_whitelists"] = kibana_private_whitelists
             __props__.__dict__["kibana_whitelists"] = kibana_whitelists
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -1292,6 +1328,7 @@ class Instance(pulumi.CustomResource):
             enable_public: Optional[pulumi.Input[bool]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             kibana_domain: Optional[pulumi.Input[str]] = None,
+            kibana_node_spec: Optional[pulumi.Input[str]] = None,
             kibana_port: Optional[pulumi.Input[int]] = None,
             kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1333,6 +1370,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         :param pulumi.Input[str] kibana_domain: Kibana console domain (Internet access supported).
+        :param pulumi.Input[str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         :param pulumi.Input[int] kibana_port: Kibana console port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
@@ -1373,6 +1411,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["enable_public"] = enable_public
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["kibana_domain"] = kibana_domain
+        __props__.__dict__["kibana_node_spec"] = kibana_node_spec
         __props__.__dict__["kibana_port"] = kibana_port
         __props__.__dict__["kibana_private_whitelists"] = kibana_private_whitelists
         __props__.__dict__["kibana_whitelists"] = kibana_whitelists
@@ -1506,6 +1545,14 @@ class Instance(pulumi.CustomResource):
         Kibana console domain (Internet access supported).
         """
         return pulumi.get(self, "kibana_domain")
+
+    @property
+    @pulumi.getter(name="kibanaNodeSpec")
+    def kibana_node_spec(self) -> pulumi.Output[str]:
+        """
+        The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+        """
+        return pulumi.get(self, "kibana_node_spec")
 
     @property
     @pulumi.getter(name="kibanaPort")

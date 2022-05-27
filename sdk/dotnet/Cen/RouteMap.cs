@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Cen
     /// CEN RouteMap can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+    ///  $ pulumi import alicloud:cen/routeMap:RouteMap default &lt;cen_id&gt;:&lt;route_map_id&gt;.
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/routeMap:RouteMap")]
@@ -282,6 +282,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the RouteMap. It is available in 1.161.0+.
+        /// </summary>
         [Output("routeMapId")]
         public Output<string> RouteMapId { get; private set; } = null!;
 
@@ -326,6 +329,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+        /// </summary>
+        [Output("transitRouterRouteTableId")]
+        public Output<string> TransitRouterRouteTableId { get; private set; } = null!;
 
         /// <summary>
         /// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
@@ -614,6 +623,12 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
+        /// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+        /// </summary>
+        [Input("transitRouterRouteTableId")]
+        public Input<string>? TransitRouterRouteTableId { get; set; }
+
+        /// <summary>
         /// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
         /// </summary>
         [Input("transmitDirection", required: true)]
@@ -794,6 +809,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        /// <summary>
+        /// ID of the RouteMap. It is available in 1.161.0+.
+        /// </summary>
         [Input("routeMapId")]
         public Input<string>? RouteMapId { get; set; }
 
@@ -868,6 +886,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+        /// </summary>
+        [Input("transitRouterRouteTableId")]
+        public Input<string>? TransitRouterRouteTableId { get; set; }
 
         /// <summary>
         /// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].

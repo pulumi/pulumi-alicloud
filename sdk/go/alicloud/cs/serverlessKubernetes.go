@@ -112,6 +112,11 @@ type ServerlessKubernetes struct {
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
+	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+	// - ack.standard: Standard serverless clusters.
+	// - ack.pro.small: Professional serverless clusters.
+	ClusterSpec     pulumi.StringOutput `pulumi:"clusterSpec"`
+	CreateV2Cluster pulumi.BoolOutput   `pulumi:"createV2Cluster"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -122,8 +127,8 @@ type ServerlessKubernetes struct {
 	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// Enable log service, Valid value `SLS`.
 	LoggingType pulumi.StringPtrOutput `pulumi:"loggingType"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
@@ -157,7 +162,7 @@ type ServerlessKubernetes struct {
 	// (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
@@ -204,6 +209,11 @@ type serverlessKubernetesState struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
+	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+	// - ack.standard: Standard serverless clusters.
+	// - ack.pro.small: Professional serverless clusters.
+	ClusterSpec     *string `pulumi:"clusterSpec"`
+	CreateV2Cluster *bool   `pulumi:"createV2Cluster"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -214,7 +224,7 @@ type serverlessKubernetesState struct {
 	ForceUpdate *bool `pulumi:"forceUpdate"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable log service, Valid value `SLS`.
 	LoggingType *string `pulumi:"loggingType"`
@@ -265,6 +275,11 @@ type ServerlessKubernetesState struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
+	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+	// - ack.standard: Standard serverless clusters.
+	// - ack.pro.small: Professional serverless clusters.
+	ClusterSpec     pulumi.StringPtrInput
+	CreateV2Cluster pulumi.BoolPtrInput
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -275,7 +290,7 @@ type ServerlessKubernetesState struct {
 	ForceUpdate pulumi.BoolPtrInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable log service, Valid value `SLS`.
 	LoggingType pulumi.StringPtrInput
@@ -330,6 +345,11 @@ type serverlessKubernetesArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
+	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+	// - ack.standard: Standard serverless clusters.
+	// - ack.pro.small: Professional serverless clusters.
+	ClusterSpec     *string `pulumi:"clusterSpec"`
+	CreateV2Cluster *bool   `pulumi:"createV2Cluster"`
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -340,7 +360,7 @@ type serverlessKubernetesArgs struct {
 	ForceUpdate *bool `pulumi:"forceUpdate"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// Enable log service, Valid value `SLS`.
 	LoggingType *string `pulumi:"loggingType"`
@@ -392,6 +412,11 @@ type ServerlessKubernetesArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
+	// The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+	// - ack.standard: Standard serverless clusters.
+	// - ack.pro.small: Professional serverless clusters.
+	ClusterSpec     pulumi.StringPtrInput
+	CreateV2Cluster pulumi.BoolPtrInput
 	// Whether enable the deletion protection or not.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -402,7 +427,7 @@ type ServerlessKubernetesArgs struct {
 	ForceUpdate pulumi.BoolPtrInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
-	// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
 	LoadBalancerSpec pulumi.StringPtrInput
 	// Enable log service, Valid value `SLS`.
 	LoggingType pulumi.StringPtrInput

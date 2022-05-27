@@ -87,6 +87,10 @@ export class MountTarget extends pulumi.CustomResource {
      */
     public readonly fileSystemId!: pulumi.Output<string>;
     /**
+     * The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+     */
+    public /*out*/ readonly mountTargetDomain!: pulumi.Output<string>;
+    /**
      * The ID of security group.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
@@ -114,6 +118,7 @@ export class MountTarget extends pulumi.CustomResource {
             const state = argsOrState as MountTargetState | undefined;
             resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
             resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
+            resourceInputs["mountTargetDomain"] = state ? state.mountTargetDomain : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -127,6 +132,7 @@ export class MountTarget extends pulumi.CustomResource {
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["mountTargetDomain"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MountTarget.__pulumiType, name, resourceInputs, opts);
@@ -145,6 +151,10 @@ export interface MountTargetState {
      * The ID of the file system.
      */
     fileSystemId?: pulumi.Input<string>;
+    /**
+     * The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+     */
+    mountTargetDomain?: pulumi.Input<string>;
     /**
      * The ID of security group.
      */

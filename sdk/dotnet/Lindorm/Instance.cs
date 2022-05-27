@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Lindorm
     /// 
     /// &gt; **NOTE:** Available in v1.132.0+.
     /// 
+    /// &gt; **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+    /// 
     /// ## Import
     /// 
     /// Lindorm Instance can be imported using the id, e.g.
@@ -62,6 +64,36 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Output("duration")]
         public Output<string?> Duration { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable file engine.
+        /// </summary>
+        [Output("enabledFileEngine")]
+        public Output<bool> EnabledFileEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable lts engine.
+        /// </summary>
+        [Output("enabledLtsEngine")]
+        public Output<bool> EnabledLtsEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable search engine.
+        /// </summary>
+        [Output("enabledSearchEngine")]
+        public Output<bool> EnabledSearchEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable table engine.
+        /// </summary>
+        [Output("enabledTableEngine")]
+        public Output<bool> EnabledTableEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable time serires engine.
+        /// </summary>
+        [Output("enabledTimeSeriresEngine")]
+        public Output<bool> EnabledTimeSeriresEngine { get; private set; } = null!;
 
         /// <summary>
         /// The count of file engine.
@@ -178,7 +210,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> TimeSeriresEngineSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         /// </summary>
         [Output("upgradeType")]
         public Output<string?> UpgradeType { get; private set; } = null!;
@@ -392,7 +424,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? TimeSeriresEngineSpecification { get; set; }
 
         /// <summary>
-        /// The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         /// </summary>
         [Input("upgradeType")]
         public Input<string>? UpgradeType { get; set; }
@@ -451,6 +483,36 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable file engine.
+        /// </summary>
+        [Input("enabledFileEngine")]
+        public Input<bool>? EnabledFileEngine { get; set; }
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable lts engine.
+        /// </summary>
+        [Input("enabledLtsEngine")]
+        public Input<bool>? EnabledLtsEngine { get; set; }
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable search engine.
+        /// </summary>
+        [Input("enabledSearchEngine")]
+        public Input<bool>? EnabledSearchEngine { get; set; }
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable table engine.
+        /// </summary>
+        [Input("enabledTableEngine")]
+        public Input<bool>? EnabledTableEngine { get; set; }
+
+        /// <summary>
+        /// (Available in v1.163.0+) Whether to enable time serires engine.
+        /// </summary>
+        [Input("enabledTimeSeriresEngine")]
+        public Input<bool>? EnabledTimeSeriresEngine { get; set; }
 
         /// <summary>
         /// The count of file engine.
@@ -573,7 +635,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? TimeSeriresEngineSpecification { get; set; }
 
         /// <summary>
-        /// The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        /// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         /// </summary>
         [Input("upgradeType")]
         public Input<string>? UpgradeType { get; set; }

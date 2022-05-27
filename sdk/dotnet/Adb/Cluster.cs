@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Adb
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Output("autoRenewPeriod")]
-        public Output<int?> AutoRenewPeriod { get; private set; } = null!;
+        public Output<int> AutoRenewPeriod { get; private set; } = null!;
 
         [Output("computeResource")]
         public Output<string?> ComputeResource { get; private set; } = null!;
@@ -137,11 +137,14 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
         /// </summary>
         [Output("payType")]
         public Output<string> PayType { get; private set; } = null!;
 
+        /// <summary>
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
@@ -155,7 +158,7 @@ namespace Pulumi.AliCloud.Adb
         /// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         /// </summary>
         [Output("renewalStatus")]
-        public Output<string?> RenewalStatus { get; private set; } = null!;
+        public Output<string> RenewalStatus { get; private set; } = null!;
 
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -299,11 +302,14 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
+        /// <summary>
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
@@ -437,11 +443,14 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
+        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
+        /// <summary>
+        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 

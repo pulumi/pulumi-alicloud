@@ -48,21 +48,22 @@ __all__ = [
 @pulumi.output_type
 class AclEntryList(dict):
     def __init__(__self__, *,
-                 entry: str,
-                 comment: Optional[str] = None):
-        pulumi.set(__self__, "entry", entry)
+                 comment: Optional[str] = None,
+                 entry: Optional[str] = None):
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-
-    @property
-    @pulumi.getter
-    def entry(self) -> str:
-        return pulumi.get(self, "entry")
+        if entry is not None:
+            pulumi.set(__self__, "entry", entry)
 
     @property
     @pulumi.getter
     def comment(self) -> Optional[str]:
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter
+    def entry(self) -> Optional[str]:
+        return pulumi.get(self, "entry")
 
 
 @pulumi.output_type

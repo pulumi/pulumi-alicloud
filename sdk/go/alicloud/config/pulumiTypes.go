@@ -108,6 +108,7 @@ type Endpoints struct {
 	Dataworkspublic     *string `pulumi:"dataworkspublic"`
 	Dbfs                *string `pulumi:"dbfs"`
 	Dcdn                *string `pulumi:"dcdn"`
+	Ddosbasic           *string `pulumi:"ddosbasic"`
 	Ddosbgp             *string `pulumi:"ddosbgp"`
 	Ddoscoo             *string `pulumi:"ddoscoo"`
 	Dds                 *string `pulumi:"dds"`
@@ -179,6 +180,7 @@ type Endpoints struct {
 	Servicemesh         *string `pulumi:"servicemesh"`
 	Sgw                 *string `pulumi:"sgw"`
 	Slb                 *string `pulumi:"slb"`
+	Smartag             *string `pulumi:"smartag"`
 	Sts                 *string `pulumi:"sts"`
 	Swas                *string `pulumi:"swas"`
 	Vod                 *string `pulumi:"vod"`
@@ -230,6 +232,7 @@ type EndpointsArgs struct {
 	Dataworkspublic     pulumi.StringPtrInput `pulumi:"dataworkspublic"`
 	Dbfs                pulumi.StringPtrInput `pulumi:"dbfs"`
 	Dcdn                pulumi.StringPtrInput `pulumi:"dcdn"`
+	Ddosbasic           pulumi.StringPtrInput `pulumi:"ddosbasic"`
 	Ddosbgp             pulumi.StringPtrInput `pulumi:"ddosbgp"`
 	Ddoscoo             pulumi.StringPtrInput `pulumi:"ddoscoo"`
 	Dds                 pulumi.StringPtrInput `pulumi:"dds"`
@@ -301,6 +304,7 @@ type EndpointsArgs struct {
 	Servicemesh         pulumi.StringPtrInput `pulumi:"servicemesh"`
 	Sgw                 pulumi.StringPtrInput `pulumi:"sgw"`
 	Slb                 pulumi.StringPtrInput `pulumi:"slb"`
+	Smartag             pulumi.StringPtrInput `pulumi:"smartag"`
 	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
 	Swas                pulumi.StringPtrInput `pulumi:"swas"`
 	Vod                 pulumi.StringPtrInput `pulumi:"vod"`
@@ -479,6 +483,10 @@ func (o EndpointsOutput) Dbfs() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Dcdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Dcdn }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Ddosbasic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Ddosbasic }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Ddosbgp() pulumi.StringPtrOutput {
@@ -763,6 +771,10 @@ func (o EndpointsOutput) Sgw() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Slb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Slb }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Smartag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Smartag }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Sts() pulumi.StringPtrOutput {

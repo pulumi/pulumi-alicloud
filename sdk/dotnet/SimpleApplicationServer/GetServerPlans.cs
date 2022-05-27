@@ -140,6 +140,12 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+        /// </summary>
+        [Input("platform")]
+        public string? Platform { get; set; }
+
         public GetServerPlansArgs()
         {
         }
@@ -192,6 +198,12 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+        /// </summary>
+        [Input("platform")]
+        public Input<string>? Platform { get; set; }
+
         public GetServerPlansInvokeArgs()
         {
         }
@@ -213,6 +225,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public readonly int? Memory;
         public readonly string? OutputFile;
         public readonly ImmutableArray<Outputs.GetServerPlansPlanResult> Plans;
+        public readonly string? Platform;
 
         [OutputConstructor]
         private GetServerPlansResult(
@@ -232,7 +245,9 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
 
             string? outputFile,
 
-            ImmutableArray<Outputs.GetServerPlansPlanResult> plans)
+            ImmutableArray<Outputs.GetServerPlansPlanResult> plans,
+
+            string? platform)
         {
             Bandwidth = bandwidth;
             Core = core;
@@ -243,6 +258,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
             Memory = memory;
             OutputFile = outputFile;
             Plans = plans;
+            Platform = platform;
         }
     }
 }

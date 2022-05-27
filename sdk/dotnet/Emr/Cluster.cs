@@ -766,6 +766,9 @@ namespace Pulumi.AliCloud.Emr
     [AliCloudResourceType("alicloud:emr/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Boot action parameters.
+        /// </summary>
         [Output("bootstrapActions")]
         public Output<ImmutableArray<Outputs.ClusterBootstrapAction>> BootstrapActions { get; private set; } = null!;
 
@@ -811,6 +814,9 @@ namespace Pulumi.AliCloud.Emr
         [Output("hostGroups")]
         public Output<ImmutableArray<Outputs.ClusterHostGroup>> HostGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the MASTER node has a public IP address enabled. Default value is false.
+        /// </summary>
         [Output("isOpenPublicIp")]
         public Output<bool?> IsOpenPublicIp { get; private set; } = null!;
 
@@ -940,6 +946,10 @@ namespace Pulumi.AliCloud.Emr
     {
         [Input("bootstrapActions")]
         private InputList<Inputs.ClusterBootstrapActionArgs>? _bootstrapActions;
+
+        /// <summary>
+        /// Boot action parameters.
+        /// </summary>
         public InputList<Inputs.ClusterBootstrapActionArgs> BootstrapActions
         {
             get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionArgs>());
@@ -994,6 +1004,9 @@ namespace Pulumi.AliCloud.Emr
             set => _hostGroups = value;
         }
 
+        /// <summary>
+        /// Whether the MASTER node has a public IP address enabled. Default value is false.
+        /// </summary>
         [Input("isOpenPublicIp")]
         public Input<bool>? IsOpenPublicIp { get; set; }
 
@@ -1096,6 +1109,10 @@ namespace Pulumi.AliCloud.Emr
     {
         [Input("bootstrapActions")]
         private InputList<Inputs.ClusterBootstrapActionGetArgs>? _bootstrapActions;
+
+        /// <summary>
+        /// Boot action parameters.
+        /// </summary>
         public InputList<Inputs.ClusterBootstrapActionGetArgs> BootstrapActions
         {
             get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionGetArgs>());
@@ -1150,6 +1167,9 @@ namespace Pulumi.AliCloud.Emr
             set => _hostGroups = value;
         }
 
+        /// <summary>
+        /// Whether the MASTER node has a public IP address enabled. Default value is false.
+        /// </summary>
         [Input("isOpenPublicIp")]
         public Input<bool>? IsOpenPublicIp { get; set; }
 

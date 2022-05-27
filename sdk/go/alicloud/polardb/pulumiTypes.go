@@ -12,11 +12,12 @@ import (
 
 type ClusterDbClusterIpArray struct {
 	// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
-	// > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+	// **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
 	DbClusterIpArrayName *string `pulumi:"dbClusterIpArrayName"`
 	// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+	// **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
 	ModifyMode *string `pulumi:"modifyMode"`
-	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
 }
 
@@ -33,11 +34,12 @@ type ClusterDbClusterIpArrayInput interface {
 
 type ClusterDbClusterIpArrayArgs struct {
 	// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
-	// > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+	// **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
 	DbClusterIpArrayName pulumi.StringPtrInput `pulumi:"dbClusterIpArrayName"`
 	// The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+	// **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
 	ModifyMode pulumi.StringPtrInput `pulumi:"modifyMode"`
-	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput `pulumi:"securityIps"`
 }
 
@@ -93,17 +95,18 @@ func (o ClusterDbClusterIpArrayOutput) ToClusterDbClusterIpArrayOutputWithContex
 }
 
 // The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
-// > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+// **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
 func (o ClusterDbClusterIpArrayOutput) DbClusterIpArrayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDbClusterIpArray) *string { return v.DbClusterIpArrayName }).(pulumi.StringPtrOutput)
 }
 
 // The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+// **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
 func (o ClusterDbClusterIpArrayOutput) ModifyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDbClusterIpArray) *string { return v.ModifyMode }).(pulumi.StringPtrOutput)
 }
 
-// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 func (o ClusterDbClusterIpArrayOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterDbClusterIpArray) []string { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }

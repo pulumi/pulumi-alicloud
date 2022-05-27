@@ -15,15 +15,19 @@ class KubernetesAddonInitArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  version: pulumi.Input[str],
+                 config: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a KubernetesAddon resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] version: The current version of addon.
+        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "version", version)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -53,6 +57,18 @@ class KubernetesAddonInitArgs:
 
     @property
     @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.get_kubernetes_addons`.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of addon.
@@ -69,6 +85,7 @@ class _KubernetesAddonState:
     def __init__(__self__, *,
                  can_upgrade: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  next_version: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
@@ -77,6 +94,7 @@ class _KubernetesAddonState:
         Input properties used for looking up and filtering KubernetesAddon resources.
         :param pulumi.Input[bool] can_upgrade: Is the addon ready for upgrade.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         :param pulumi.Input[str] next_version: The version which addon can be upgraded to.
         :param pulumi.Input[bool] required: Is it a mandatory addon to be installed.
@@ -86,6 +104,8 @@ class _KubernetesAddonState:
             pulumi.set(__self__, "can_upgrade", can_upgrade)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if next_version is not None:
@@ -118,6 +138,18 @@ class _KubernetesAddonState:
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.get_kubernetes_addons`.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -174,6 +206,7 @@ class KubernetesAddon(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -181,6 +214,7 @@ class KubernetesAddon(pulumi.CustomResource):
         This resource will help you to manage addon in Kubernetes Cluster.
 
         > **NOTE:** Available in 1.150.0+.
+        **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
 
         ## Example Usage
 
@@ -228,12 +262,28 @@ class KubernetesAddon(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
 
         ack_node_problem_detector = alicloud.cs.KubernetesAddon("ack-node-problem-detector",
             cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
             version="1.2.7")
+        nginx_ingress_controller = alicloud.cs.KubernetesAddon("nginxIngressController",
+            cluster_id=var["cluster_id"],
+            version="v1.1.2-aliyun.2",
+            config=json.dumps({
+                "CpuLimit": "",
+                "CpuRequest": "100m",
+                "EnableWebhook": True,
+                "HostNetwork": False,
+                "IngressSlbNetworkType": "internet",
+                "IngressSlbSpec": "slb.s2.small",
+                "MemoryLimit": "",
+                "MemoryRequest": "200Mi",
+                "NodeSelector": [],
+            }))
         ```
+
         **Upgrading of addon**
         First, check the `next_version` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `next_version` and apply.
         ```python
@@ -257,6 +307,7 @@ class KubernetesAddon(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         :param pulumi.Input[str] version: The current version of addon.
         """
@@ -270,6 +321,7 @@ class KubernetesAddon(pulumi.CustomResource):
         This resource will help you to manage addon in Kubernetes Cluster.
 
         > **NOTE:** Available in 1.150.0+.
+        **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
 
         ## Example Usage
 
@@ -317,12 +369,28 @@ class KubernetesAddon(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
 
         ack_node_problem_detector = alicloud.cs.KubernetesAddon("ack-node-problem-detector",
             cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"],
             version="1.2.7")
+        nginx_ingress_controller = alicloud.cs.KubernetesAddon("nginxIngressController",
+            cluster_id=var["cluster_id"],
+            version="v1.1.2-aliyun.2",
+            config=json.dumps({
+                "CpuLimit": "",
+                "CpuRequest": "100m",
+                "EnableWebhook": True,
+                "HostNetwork": False,
+                "IngressSlbNetworkType": "internet",
+                "IngressSlbSpec": "slb.s2.small",
+                "MemoryLimit": "",
+                "MemoryRequest": "200Mi",
+                "NodeSelector": [],
+            }))
         ```
+
         **Upgrading of addon**
         First, check the `next_version` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `next_version` and apply.
         ```python
@@ -359,6 +427,7 @@ class KubernetesAddon(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 config: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -376,6 +445,7 @@ class KubernetesAddon(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["config"] = config
             __props__.__dict__["name"] = name
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
@@ -395,6 +465,7 @@ class KubernetesAddon(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             can_upgrade: Optional[pulumi.Input[bool]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
+            config: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             next_version: Optional[pulumi.Input[str]] = None,
             required: Optional[pulumi.Input[bool]] = None,
@@ -408,6 +479,7 @@ class KubernetesAddon(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_upgrade: Is the addon ready for upgrade.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         :param pulumi.Input[str] next_version: The version which addon can be upgraded to.
         :param pulumi.Input[bool] required: Is it a mandatory addon to be installed.
@@ -419,6 +491,7 @@ class KubernetesAddon(pulumi.CustomResource):
 
         __props__.__dict__["can_upgrade"] = can_upgrade
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
         __props__.__dict__["next_version"] = next_version
         __props__.__dict__["required"] = required
@@ -440,6 +513,14 @@ class KubernetesAddon(pulumi.CustomResource):
         The id of kubernetes cluster.
         """
         return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Output[Optional[str]]:
+        """
+        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.get_kubernetes_addons`.
+        """
+        return pulumi.get(self, "config")
 
     @property
     @pulumi.getter

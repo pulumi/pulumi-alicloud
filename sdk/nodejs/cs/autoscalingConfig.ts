@@ -41,11 +41,19 @@ export class AutoscalingConfig extends pulumi.CustomResource {
      */
     public readonly coolDownDuration!: pulumi.Output<string | undefined>;
     /**
+     * The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+     */
+    public readonly expander!: pulumi.Output<string | undefined>;
+    /**
      * The scale-in threshold for GPU instance. Default is `0.5`.
      */
     public readonly gpuUtilizationThreshold!: pulumi.Output<string | undefined>;
     /**
-     * The scan interval. Default is `30s`
+     * Specify whether to allow the scale-in of nodes. Default is `true`.
+     */
+    public readonly scaleDownEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      */
     public readonly scanInterval!: pulumi.Output<string | undefined>;
     /**
@@ -72,7 +80,9 @@ export class AutoscalingConfig extends pulumi.CustomResource {
             const state = argsOrState as AutoscalingConfigState | undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
+            resourceInputs["expander"] = state ? state.expander : undefined;
             resourceInputs["gpuUtilizationThreshold"] = state ? state.gpuUtilizationThreshold : undefined;
+            resourceInputs["scaleDownEnabled"] = state ? state.scaleDownEnabled : undefined;
             resourceInputs["scanInterval"] = state ? state.scanInterval : undefined;
             resourceInputs["unneededDuration"] = state ? state.unneededDuration : undefined;
             resourceInputs["utilizationThreshold"] = state ? state.utilizationThreshold : undefined;
@@ -80,7 +90,9 @@ export class AutoscalingConfig extends pulumi.CustomResource {
             const args = argsOrState as AutoscalingConfigArgs | undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["coolDownDuration"] = args ? args.coolDownDuration : undefined;
+            resourceInputs["expander"] = args ? args.expander : undefined;
             resourceInputs["gpuUtilizationThreshold"] = args ? args.gpuUtilizationThreshold : undefined;
+            resourceInputs["scaleDownEnabled"] = args ? args.scaleDownEnabled : undefined;
             resourceInputs["scanInterval"] = args ? args.scanInterval : undefined;
             resourceInputs["unneededDuration"] = args ? args.unneededDuration : undefined;
             resourceInputs["utilizationThreshold"] = args ? args.utilizationThreshold : undefined;
@@ -103,11 +115,19 @@ export interface AutoscalingConfigState {
      */
     coolDownDuration?: pulumi.Input<string>;
     /**
+     * The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+     */
+    expander?: pulumi.Input<string>;
+    /**
      * The scale-in threshold for GPU instance. Default is `0.5`.
      */
     gpuUtilizationThreshold?: pulumi.Input<string>;
     /**
-     * The scan interval. Default is `30s`
+     * Specify whether to allow the scale-in of nodes. Default is `true`.
+     */
+    scaleDownEnabled?: pulumi.Input<boolean>;
+    /**
+     * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      */
     scanInterval?: pulumi.Input<string>;
     /**
@@ -133,11 +153,19 @@ export interface AutoscalingConfigArgs {
      */
     coolDownDuration?: pulumi.Input<string>;
     /**
+     * The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+     */
+    expander?: pulumi.Input<string>;
+    /**
      * The scale-in threshold for GPU instance. Default is `0.5`.
      */
     gpuUtilizationThreshold?: pulumi.Input<string>;
     /**
-     * The scan interval. Default is `30s`
+     * Specify whether to allow the scale-in of nodes. Default is `true`.
+     */
+    scaleDownEnabled?: pulumi.Input<boolean>;
+    /**
+     * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      */
     scanInterval?: pulumi.Input<string>;
     /**

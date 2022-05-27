@@ -73,7 +73,7 @@ type DedicatedHostGroup struct {
 	CpuAllocationRatio pulumi.IntOutput `pulumi:"cpuAllocationRatio"`
 	// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
 	DedicatedHostGroupDesc pulumi.StringPtrOutput `pulumi:"dedicatedHostGroupDesc"`
-	// The Disk Allocation Ratio of the Dedicated Host Group.
+	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio pulumi.IntOutput `pulumi:"diskAllocationRatio"`
 	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine pulumi.StringOutput `pulumi:"engine"`
@@ -82,6 +82,7 @@ type DedicatedHostGroup struct {
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio pulumi.IntOutput `pulumi:"memAllocationRatio"`
 	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	// **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
 	OpenPermission pulumi.BoolOutput `pulumi:"openPermission"`
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -128,7 +129,7 @@ type dedicatedHostGroupState struct {
 	CpuAllocationRatio *int `pulumi:"cpuAllocationRatio"`
 	// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
 	DedicatedHostGroupDesc *string `pulumi:"dedicatedHostGroupDesc"`
-	// The Disk Allocation Ratio of the Dedicated Host Group.
+	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio *int `pulumi:"diskAllocationRatio"`
 	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine *string `pulumi:"engine"`
@@ -137,6 +138,7 @@ type dedicatedHostGroupState struct {
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio *int `pulumi:"memAllocationRatio"`
 	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	// **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
 	OpenPermission *bool `pulumi:"openPermission"`
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId *string `pulumi:"vpcId"`
@@ -149,7 +151,7 @@ type DedicatedHostGroupState struct {
 	CpuAllocationRatio pulumi.IntPtrInput
 	// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
 	DedicatedHostGroupDesc pulumi.StringPtrInput
-	// The Disk Allocation Ratio of the Dedicated Host Group.
+	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio pulumi.IntPtrInput
 	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine pulumi.StringPtrInput
@@ -158,6 +160,7 @@ type DedicatedHostGroupState struct {
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio pulumi.IntPtrInput
 	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	// **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
 	OpenPermission pulumi.BoolPtrInput
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId pulumi.StringPtrInput
@@ -174,7 +177,7 @@ type dedicatedHostGroupArgs struct {
 	CpuAllocationRatio *int `pulumi:"cpuAllocationRatio"`
 	// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
 	DedicatedHostGroupDesc *string `pulumi:"dedicatedHostGroupDesc"`
-	// The Disk Allocation Ratio of the Dedicated Host Group.
+	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio *int `pulumi:"diskAllocationRatio"`
 	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine string `pulumi:"engine"`
@@ -183,6 +186,7 @@ type dedicatedHostGroupArgs struct {
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio *int `pulumi:"memAllocationRatio"`
 	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	// **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
 	OpenPermission *bool `pulumi:"openPermission"`
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId string `pulumi:"vpcId"`
@@ -196,7 +200,7 @@ type DedicatedHostGroupArgs struct {
 	CpuAllocationRatio pulumi.IntPtrInput
 	// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
 	DedicatedHostGroupDesc pulumi.StringPtrInput
-	// The Disk Allocation Ratio of the Dedicated Host Group.
+	// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
 	DiskAllocationRatio pulumi.IntPtrInput
 	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine pulumi.StringInput
@@ -205,6 +209,7 @@ type DedicatedHostGroupArgs struct {
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio pulumi.IntPtrInput
 	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	// **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
 	OpenPermission pulumi.BoolPtrInput
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId pulumi.StringInput

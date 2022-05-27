@@ -98,6 +98,7 @@ class ProviderEndpointArgs:
                  dataworkspublic: Optional[pulumi.Input[str]] = None,
                  dbfs: Optional[pulumi.Input[str]] = None,
                  dcdn: Optional[pulumi.Input[str]] = None,
+                 ddosbasic: Optional[pulumi.Input[str]] = None,
                  ddosbgp: Optional[pulumi.Input[str]] = None,
                  ddoscoo: Optional[pulumi.Input[str]] = None,
                  dds: Optional[pulumi.Input[str]] = None,
@@ -169,6 +170,7 @@ class ProviderEndpointArgs:
                  servicemesh: Optional[pulumi.Input[str]] = None,
                  sgw: Optional[pulumi.Input[str]] = None,
                  slb: Optional[pulumi.Input[str]] = None,
+                 smartag: Optional[pulumi.Input[str]] = None,
                  sts: Optional[pulumi.Input[str]] = None,
                  swas: Optional[pulumi.Input[str]] = None,
                  vod: Optional[pulumi.Input[str]] = None,
@@ -236,6 +238,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "dbfs", dbfs)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
+        if ddosbasic is not None:
+            pulumi.set(__self__, "ddosbasic", ddosbasic)
         if ddosbgp is not None:
             pulumi.set(__self__, "ddosbgp", ddosbgp)
         if ddoscoo is not None:
@@ -378,6 +382,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "sgw", sgw)
         if slb is not None:
             pulumi.set(__self__, "slb", slb)
+        if smartag is not None:
+            pulumi.set(__self__, "smartag", smartag)
         if sts is not None:
             pulumi.set(__self__, "sts", sts)
         if swas is not None:
@@ -662,6 +668,15 @@ class ProviderEndpointArgs:
     @dcdn.setter
     def dcdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dcdn", value)
+
+    @property
+    @pulumi.getter
+    def ddosbasic(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ddosbasic")
+
+    @ddosbasic.setter
+    def ddosbasic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ddosbasic", value)
 
     @property
     @pulumi.getter
@@ -1301,6 +1316,15 @@ class ProviderEndpointArgs:
     @slb.setter
     def slb(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "slb", value)
+
+    @property
+    @pulumi.getter
+    def smartag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "smartag")
+
+    @smartag.setter
+    def smartag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "smartag", value)
 
     @property
     @pulumi.getter

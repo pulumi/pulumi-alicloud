@@ -99,7 +99,7 @@ type DbCluster struct {
 	DbClusterDescription pulumi.StringOutput `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringOutput `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
 	DbClusterVersion pulumi.StringOutput `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntOutput `pulumi:"dbNodeGroupCount"`
@@ -115,7 +115,7 @@ type DbCluster struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
-	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
@@ -190,7 +190,7 @@ type dbClusterState struct {
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType *string `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount *int `pulumi:"dbNodeGroupCount"`
@@ -206,7 +206,7 @@ type dbClusterState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
-	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType *string `pulumi:"storageType"`
@@ -229,7 +229,7 @@ type DbClusterState struct {
 	DbClusterDescription pulumi.StringPtrInput
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringPtrInput
-	// The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
 	DbClusterVersion pulumi.StringPtrInput
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntPtrInput
@@ -245,7 +245,7 @@ type DbClusterState struct {
 	PaymentType pulumi.StringPtrInput
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
-	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringPtrInput
@@ -272,7 +272,7 @@ type dbClusterArgs struct {
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType string `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
 	DbClusterVersion string `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount int `pulumi:"dbNodeGroupCount"`
@@ -288,7 +288,7 @@ type dbClusterArgs struct {
 	PaymentType string `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
-	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType string `pulumi:"storageType"`
@@ -312,7 +312,7 @@ type DbClusterArgs struct {
 	DbClusterDescription pulumi.StringPtrInput
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringInput
-	// The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
 	DbClusterVersion pulumi.StringInput
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntInput
@@ -328,7 +328,7 @@ type DbClusterArgs struct {
 	PaymentType pulumi.StringInput
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
-	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringInput

@@ -215,9 +215,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+     * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
-    public readonly engineVersion!: pulumi.Output<string | undefined>;
+    public readonly engineVersion!: pulumi.Output<string>;
     /**
      * Specifies whether to forcibly change the type. Default to: `true`.
      */
@@ -613,7 +614,8 @@ export interface InstanceState {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+     * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -858,7 +860,8 @@ export interface InstanceArgs {
      */
     enablePublic?: pulumi.Input<boolean>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: `2.8`, `4.0` and `5.0`. Default to `5.0`.
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+     * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
     engineVersion?: pulumi.Input<string>;
     /**

@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
  * This resource will help you to manage addon in Kubernetes Cluster.
  *
  * > **NOTE:** Available in 1.150.0+.
+ * **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
  *
  * ## Example Usage
  *
@@ -67,7 +68,23 @@ import * as utilities from "../utilities";
  *     clusterId: alicloud_cs_managed_kubernetes["default"][0].id,
  *     version: "1.2.7",
  * });
+ * const nginxIngressController = new alicloud.cs.KubernetesAddon("nginxIngressController", {
+ *     clusterId: _var.cluster_id,
+ *     version: "v1.1.2-aliyun.2",
+ *     config: JSON.stringify({
+ *         CpuLimit: "",
+ *         CpuRequest: "100m",
+ *         EnableWebhook: true,
+ *         HostNetwork: false,
+ *         IngressSlbNetworkType: "internet",
+ *         IngressSlbSpec: "slb.s2.small",
+ *         MemoryLimit: "",
+ *         MemoryRequest: "200Mi",
+ *         NodeSelector: [],
+ *     }),
+ * });
  * ```
+ *
  * **Upgrading of addon**
  * First, check the `nextVersion` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `nextVersion` and apply.
  * ```typescript
@@ -126,6 +143,10 @@ export class KubernetesAddon extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
+     * The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+     */
+    public readonly config!: pulumi.Output<string | undefined>;
+    /**
      * The name of addon.
      */
     public readonly name!: pulumi.Output<string>;
@@ -157,6 +178,7 @@ export class KubernetesAddon extends pulumi.CustomResource {
             const state = argsOrState as KubernetesAddonState | undefined;
             resourceInputs["canUpgrade"] = state ? state.canUpgrade : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nextVersion"] = state ? state.nextVersion : undefined;
             resourceInputs["required"] = state ? state.required : undefined;
@@ -170,6 +192,7 @@ export class KubernetesAddon extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["canUpgrade"] = undefined /*out*/;
@@ -193,6 +216,10 @@ export interface KubernetesAddonState {
      * The id of kubernetes cluster.
      */
     clusterId?: pulumi.Input<string>;
+    /**
+     * The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+     */
+    config?: pulumi.Input<string>;
     /**
      * The name of addon.
      */
@@ -219,6 +246,10 @@ export interface KubernetesAddonArgs {
      * The id of kubernetes cluster.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+     */
+    config?: pulumi.Input<string>;
     /**
      * The name of addon.
      */

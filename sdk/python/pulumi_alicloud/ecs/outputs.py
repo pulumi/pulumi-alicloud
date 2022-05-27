@@ -42,6 +42,9 @@ __all__ = [
     'GetEcsDisksDiskOperationLockResult',
     'GetEcsDisksOperationLockResult',
     'GetEcsImageComponentsComponentResult',
+    'GetEcsImagePipelinePipelineResult',
+    'GetEcsInvocationsInvocationResult',
+    'GetEcsInvocationsInvocationInvokeInstanceResult',
     'GetEcsKeyPairsKeyPairResult',
     'GetEcsKeyPairsKeyPairInstanceResult',
     'GetEcsKeyPairsPairResult',
@@ -50,7 +53,9 @@ __all__ = [
     'GetEcsLaunchTemplatesTemplateDataDiskResult',
     'GetEcsLaunchTemplatesTemplateNetworkInterfaceResult',
     'GetEcsLaunchTemplatesTemplateSystemDiskResult',
+    'GetEcsNetworkInterfacePermissionsPermissionResult',
     'GetEcsNetworkInterfacesInterfaceResult',
+    'GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult',
     'GetEcsPrefixListsListResult',
     'GetEcsPrefixListsListEntryResult',
     'GetEcsSnapshotGroupsGroupResult',
@@ -75,6 +80,7 @@ __all__ = [
     'GetKeyPairsPairResult',
     'GetKeyPairsPairInstanceResult',
     'GetNetworkInterfacesInterfaceResult',
+    'GetNetworkInterfacesInterfaceAssociatedPublicIpResult',
     'GetSecurityGroupRulesRuleResult',
     'GetSecurityGroupsGroupResult',
     'GetSnapshotsSnapshotResult',
@@ -3382,6 +3388,556 @@ class GetEcsImageComponentsComponentResult(dict):
 
 
 @pulumi.output_type
+class GetEcsImagePipelinePipelineResult(dict):
+    def __init__(__self__, *,
+                 add_accounts: Sequence[str],
+                 base_image: str,
+                 base_image_type: str,
+                 build_content: str,
+                 creation_time: str,
+                 delete_instance_on_failure: bool,
+                 description: str,
+                 id: str,
+                 image_name: str,
+                 image_pipeline_id: str,
+                 instance_type: str,
+                 internet_max_bandwidth_out: int,
+                 name: str,
+                 resource_group_id: str,
+                 system_disk_size: int,
+                 to_region_ids: Sequence[str],
+                 vswitch_id: str,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param Sequence[str] add_accounts: The IDs of Alibaba Cloud accounts to which the image was shared.
+        :param str base_image: The source image.
+        :param str base_image_type: The type of the source image.
+        :param str build_content: The content of the image template.
+        :param str creation_time: The time when the image template was created.
+        :param bool delete_instance_on_failure: Indicates whether the intermediate instance was released when the image failed to be created.
+        :param str description: The description of the image template.
+        :param str id: The ID of the Image Pipeline.
+        :param str image_name: The name prefix of the created image.
+        :param str image_pipeline_id: The ID of the image template.
+        :param str instance_type: The instance type of the intermediate instance.
+        :param int internet_max_bandwidth_out: The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`.
+        :param str name: The name of the image template.
+        :param str resource_group_id: The ID of the resource group to which the image template belongs.
+        :param int system_disk_size: The system disk size of the intermediate instance. Unit: `GiB`.
+        :param Sequence[str] to_region_ids: The IDs of regions to which to distribute the created image.
+        :param str vswitch_id: The vswitch id.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "add_accounts", add_accounts)
+        pulumi.set(__self__, "base_image", base_image)
+        pulumi.set(__self__, "base_image_type", base_image_type)
+        pulumi.set(__self__, "build_content", build_content)
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "delete_instance_on_failure", delete_instance_on_failure)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "image_pipeline_id", image_pipeline_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "system_disk_size", system_disk_size)
+        pulumi.set(__self__, "to_region_ids", to_region_ids)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="addAccounts")
+    def add_accounts(self) -> Sequence[str]:
+        """
+        The IDs of Alibaba Cloud accounts to which the image was shared.
+        """
+        return pulumi.get(self, "add_accounts")
+
+    @property
+    @pulumi.getter(name="baseImage")
+    def base_image(self) -> str:
+        """
+        The source image.
+        """
+        return pulumi.get(self, "base_image")
+
+    @property
+    @pulumi.getter(name="baseImageType")
+    def base_image_type(self) -> str:
+        """
+        The type of the source image.
+        """
+        return pulumi.get(self, "base_image_type")
+
+    @property
+    @pulumi.getter(name="buildContent")
+    def build_content(self) -> str:
+        """
+        The content of the image template.
+        """
+        return pulumi.get(self, "build_content")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        """
+        The time when the image template was created.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="deleteInstanceOnFailure")
+    def delete_instance_on_failure(self) -> bool:
+        """
+        Indicates whether the intermediate instance was released when the image failed to be created.
+        """
+        return pulumi.get(self, "delete_instance_on_failure")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the image template.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Image Pipeline.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        """
+        The name prefix of the created image.
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="imagePipelineId")
+    def image_pipeline_id(self) -> str:
+        """
+        The ID of the image template.
+        """
+        return pulumi.get(self, "image_pipeline_id")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The instance type of the intermediate instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="internetMaxBandwidthOut")
+    def internet_max_bandwidth_out(self) -> int:
+        """
+        The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`.
+        """
+        return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the image template.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group to which the image template belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="systemDiskSize")
+    def system_disk_size(self) -> int:
+        """
+        The system disk size of the intermediate instance. Unit: `GiB`.
+        """
+        return pulumi.get(self, "system_disk_size")
+
+    @property
+    @pulumi.getter(name="toRegionIds")
+    def to_region_ids(self) -> Sequence[str]:
+        """
+        The IDs of regions to which to distribute the created image.
+        """
+        return pulumi.get(self, "to_region_ids")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetEcsInvocationsInvocationResult(dict):
+    def __init__(__self__, *,
+                 command_content: str,
+                 command_id: str,
+                 command_name: str,
+                 command_type: str,
+                 create_time: str,
+                 frequency: str,
+                 id: str,
+                 invocation_id: str,
+                 invocation_status: str,
+                 invoke_instances: Sequence['outputs.GetEcsInvocationsInvocationInvokeInstanceResult'],
+                 invoke_status: str,
+                 parameters: str,
+                 repeat_mode: str,
+                 timed: bool,
+                 username: str):
+        """
+        :param str command_content: The Base64-encoded command content.
+        :param str command_id: The ID of the command.
+        :param str command_name: The name of the command.
+        :param str command_type: The type of the command.
+        :param str create_time: The creation time of the resource.
+        :param str frequency: The schedule on which the recurring execution of the command takes place. For information about the value specifications, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
+        :param str id: The ID of the Invocation.
+        :param str invocation_id: The ID of the Invocation.
+        :param str invocation_status: The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+        :param Sequence['GetEcsInvocationsInvocationInvokeInstanceArgs'] invoke_instances: Execute target instance set type.
+        :param str invoke_status: The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        :param str parameters: The custom parameters in the command.
+        :param str repeat_mode: Indicates the execution mode of the command.
+        :param bool timed: Indicates whether the commands are to be automatically run.
+               * `error_code	` - The code that indicates why the command failed to be sent or run.
+               * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        :param str username: The username that was used to run the command on the instance.
+        """
+        pulumi.set(__self__, "command_content", command_content)
+        pulumi.set(__self__, "command_id", command_id)
+        pulumi.set(__self__, "command_name", command_name)
+        pulumi.set(__self__, "command_type", command_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invocation_id", invocation_id)
+        pulumi.set(__self__, "invocation_status", invocation_status)
+        pulumi.set(__self__, "invoke_instances", invoke_instances)
+        pulumi.set(__self__, "invoke_status", invoke_status)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "repeat_mode", repeat_mode)
+        pulumi.set(__self__, "timed", timed)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="commandContent")
+    def command_content(self) -> str:
+        """
+        The Base64-encoded command content.
+        """
+        return pulumi.get(self, "command_content")
+
+    @property
+    @pulumi.getter(name="commandId")
+    def command_id(self) -> str:
+        """
+        The ID of the command.
+        """
+        return pulumi.get(self, "command_id")
+
+    @property
+    @pulumi.getter(name="commandName")
+    def command_name(self) -> str:
+        """
+        The name of the command.
+        """
+        return pulumi.get(self, "command_name")
+
+    @property
+    @pulumi.getter(name="commandType")
+    def command_type(self) -> str:
+        """
+        The type of the command.
+        """
+        return pulumi.get(self, "command_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        """
+        The schedule on which the recurring execution of the command takes place. For information about the value specifications, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Invocation.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="invocationId")
+    def invocation_id(self) -> str:
+        """
+        The ID of the Invocation.
+        """
+        return pulumi.get(self, "invocation_id")
+
+    @property
+    @pulumi.getter(name="invocationStatus")
+    def invocation_status(self) -> str:
+        """
+        The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+        """
+        return pulumi.get(self, "invocation_status")
+
+    @property
+    @pulumi.getter(name="invokeInstances")
+    def invoke_instances(self) -> Sequence['outputs.GetEcsInvocationsInvocationInvokeInstanceResult']:
+        """
+        Execute target instance set type.
+        """
+        return pulumi.get(self, "invoke_instances")
+
+    @property
+    @pulumi.getter(name="invokeStatus")
+    def invoke_status(self) -> str:
+        """
+        The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        """
+        return pulumi.get(self, "invoke_status")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> str:
+        """
+        The custom parameters in the command.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="repeatMode")
+    def repeat_mode(self) -> str:
+        """
+        Indicates the execution mode of the command.
+        """
+        return pulumi.get(self, "repeat_mode")
+
+    @property
+    @pulumi.getter
+    def timed(self) -> bool:
+        """
+        Indicates whether the commands are to be automatically run.
+        * `error_code	` - The code that indicates why the command failed to be sent or run.
+        * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        """
+        return pulumi.get(self, "timed")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username that was used to run the command on the instance.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
+    def __init__(__self__, *,
+                 creation_time: str,
+                 dropped: int,
+                 error_code: str,
+                 error_info: str,
+                 exit_code: int,
+                 finish_time: str,
+                 instance_id: str,
+                 instance_invoke_status: str,
+                 invocation_status: str,
+                 output: str,
+                 repeats: int,
+                 start_time: str,
+                 stop_time: str,
+                 timed: bool,
+                 update_time: str):
+        """
+        :param str creation_time: The start time of the execution.
+        :param int dropped: The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
+        :param str error_info: Details about the reason why the command failed to be sent or run.
+        :param int exit_code: The exit code of the execution.
+        :param str finish_time: The end time of the execution.
+        :param str instance_id: The ID of the instance.
+        :param str invocation_status: The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+        :param str output: The output of the command.
+        :param int repeats: The number of times that the command is run on the instance.
+        :param str start_time: The time when the command started to be run on the instance.
+        :param str stop_time: The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
+        :param bool timed: Indicates whether the commands are to be automatically run.
+               * `error_code	` - The code that indicates why the command failed to be sent or run.
+               * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        :param str update_time: The time when the execution state was updated.
+        """
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "dropped", dropped)
+        pulumi.set(__self__, "error_code", error_code)
+        pulumi.set(__self__, "error_info", error_info)
+        pulumi.set(__self__, "exit_code", exit_code)
+        pulumi.set(__self__, "finish_time", finish_time)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_invoke_status", instance_invoke_status)
+        pulumi.set(__self__, "invocation_status", invocation_status)
+        pulumi.set(__self__, "output", output)
+        pulumi.set(__self__, "repeats", repeats)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "stop_time", stop_time)
+        pulumi.set(__self__, "timed", timed)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> str:
+        """
+        The start time of the execution.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def dropped(self) -> int:
+        """
+        The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
+        """
+        return pulumi.get(self, "dropped")
+
+    @property
+    @pulumi.getter(name="errorCode")
+    def error_code(self) -> str:
+        return pulumi.get(self, "error_code")
+
+    @property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> str:
+        """
+        Details about the reason why the command failed to be sent or run.
+        """
+        return pulumi.get(self, "error_info")
+
+    @property
+    @pulumi.getter(name="exitCode")
+    def exit_code(self) -> int:
+        """
+        The exit code of the execution.
+        """
+        return pulumi.get(self, "exit_code")
+
+    @property
+    @pulumi.getter(name="finishTime")
+    def finish_time(self) -> str:
+        """
+        The end time of the execution.
+        """
+        return pulumi.get(self, "finish_time")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceInvokeStatus")
+    def instance_invoke_status(self) -> str:
+        return pulumi.get(self, "instance_invoke_status")
+
+    @property
+    @pulumi.getter(name="invocationStatus")
+    def invocation_status(self) -> str:
+        """
+        The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+        """
+        return pulumi.get(self, "invocation_status")
+
+    @property
+    @pulumi.getter
+    def output(self) -> str:
+        """
+        The output of the command.
+        """
+        return pulumi.get(self, "output")
+
+    @property
+    @pulumi.getter
+    def repeats(self) -> int:
+        """
+        The number of times that the command is run on the instance.
+        """
+        return pulumi.get(self, "repeats")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time when the command started to be run on the instance.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="stopTime")
+    def stop_time(self) -> str:
+        """
+        The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
+        """
+        return pulumi.get(self, "stop_time")
+
+    @property
+    @pulumi.getter
+    def timed(self) -> bool:
+        """
+        Indicates whether the commands are to be automatically run.
+        * `error_code	` - The code that indicates why the command failed to be sent or run.
+        * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        """
+        return pulumi.get(self, "timed")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time when the execution state was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
 class GetEcsKeyPairsKeyPairResult(dict):
     def __init__(__self__, *,
                  finger_print: str,
@@ -4501,8 +5057,93 @@ class GetEcsLaunchTemplatesTemplateSystemDiskResult(dict):
 
 
 @pulumi.output_type
+class GetEcsNetworkInterfacePermissionsPermissionResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 id: str,
+                 network_interface_id: str,
+                 network_interface_permission_id: str,
+                 permission: str,
+                 service_name: str,
+                 status: str):
+        """
+        :param str account_id: Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
+        :param str id: The ID of the Network Interface Permission.
+        :param str network_interface_id: The ID of the network interface.
+        :param str network_interface_permission_id: The ID of the Network Interface Permissions.
+        :param str permission: The permissions of the Network Interface.
+        :param str service_name: Alibaba Cloud service name.
+        :param str status: The Status of the Network Interface Permissions.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "network_interface_permission_id", network_interface_permission_id)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Network Interface Permission.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> str:
+        """
+        The ID of the network interface.
+        """
+        return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter(name="networkInterfacePermissionId")
+    def network_interface_permission_id(self) -> str:
+        """
+        The ID of the Network Interface Permissions.
+        """
+        return pulumi.get(self, "network_interface_permission_id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        The permissions of the Network Interface.
+        """
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Alibaba Cloud service name.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The Status of the Network Interface Permissions.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetEcsNetworkInterfacesInterfaceResult(dict):
     def __init__(__self__, *,
+                 associated_public_ips: Sequence['outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult'],
                  creation_time: str,
                  description: str,
                  id: str,
@@ -4530,6 +5171,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
                  vswitch_id: str,
                  zone_id: str):
         """
+        :param Sequence['GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs'] associated_public_ips: The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
         :param str creation_time: The creation time.
         :param str description: The description of the ENI.
         :param str id: The ID of the Network Interface.
@@ -4556,6 +5198,7 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone id.
         """
+        pulumi.set(__self__, "associated_public_ips", associated_public_ips)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -4582,6 +5225,14 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="associatedPublicIps")
+    def associated_public_ips(self) -> Sequence['outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult']:
+        """
+        The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
+        """
+        return pulumi.get(self, "associated_public_ips")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -4787,6 +5438,24 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         The zone id.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
+    def __init__(__self__, *,
+                 public_ip_address: str):
+        """
+        :param str public_ip_address: The EIP of the ENI.
+        """
+        pulumi.set(__self__, "public_ip_address", public_ip_address)
+
+    @property
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> str:
+        """
+        The EIP of the ENI.
+        """
+        return pulumi.get(self, "public_ip_address")
 
 
 @pulumi.output_type
@@ -6637,17 +7306,28 @@ class GetInstanceTypesInstanceTypeResult(dict):
                  id: str,
                  local_storage: 'outputs.GetInstanceTypesInstanceTypeLocalStorageResult',
                  memory_size: float,
+                 nvme_support: str,
                  price: str):
         """
         :param Sequence[str] availability_zones: List of availability zones that support the instance type.
         :param 'GetInstanceTypesInstanceTypeBurstableInstanceArgs' burstable_instance: The burstable instance attribution:
+               - initial_credit: The initial CPU credit of a burstable instance.
+               - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
         :param int cpu_core_count: Filter the results to a specific number of cpu cores.
         :param int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
         :param str family: The instance type family.
         :param 'GetInstanceTypesInstanceTypeGpuArgs' gpu: The GPU attribution of an instance type:
+               - amount: The amount of GPU of an instance type.
+               - category: The category of GPU of an instance type.
         :param str id: ID of the instance type.
         :param 'GetInstanceTypesInstanceTypeLocalStorageArgs' local_storage: Local storage of an instance type:
+               - capacity: The capacity of a local storage in GB.
+               - amount:  The number of local storage devices that an instance has been attached to.
+               - category: The category of local storage that an instance has been attached to.
         :param float memory_size: Filter the results to a specific memory size in GB.
+        :param str nvme_support: Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
+               - required: The cloud disk can be attached by using the NVMe protocol.
+               - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "burstable_instance", burstable_instance)
@@ -6658,6 +7338,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "local_storage", local_storage)
         pulumi.set(__self__, "memory_size", memory_size)
+        pulumi.set(__self__, "nvme_support", nvme_support)
         pulumi.set(__self__, "price", price)
 
     @property
@@ -6673,6 +7354,8 @@ class GetInstanceTypesInstanceTypeResult(dict):
     def burstable_instance(self) -> 'outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult':
         """
         The burstable instance attribution:
+        - initial_credit: The initial CPU credit of a burstable instance.
+        - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
         """
         return pulumi.get(self, "burstable_instance")
 
@@ -6705,6 +7388,8 @@ class GetInstanceTypesInstanceTypeResult(dict):
     def gpu(self) -> 'outputs.GetInstanceTypesInstanceTypeGpuResult':
         """
         The GPU attribution of an instance type:
+        - amount: The amount of GPU of an instance type.
+        - category: The category of GPU of an instance type.
         """
         return pulumi.get(self, "gpu")
 
@@ -6721,6 +7406,9 @@ class GetInstanceTypesInstanceTypeResult(dict):
     def local_storage(self) -> 'outputs.GetInstanceTypesInstanceTypeLocalStorageResult':
         """
         Local storage of an instance type:
+        - capacity: The capacity of a local storage in GB.
+        - amount:  The number of local storage devices that an instance has been attached to.
+        - category: The category of local storage that an instance has been attached to.
         """
         return pulumi.get(self, "local_storage")
 
@@ -6733,6 +7421,16 @@ class GetInstanceTypesInstanceTypeResult(dict):
         return pulumi.get(self, "memory_size")
 
     @property
+    @pulumi.getter(name="nvmeSupport")
+    def nvme_support(self) -> str:
+        """
+        Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
+        - required: The cloud disk can be attached by using the NVMe protocol.
+        - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+        """
+        return pulumi.get(self, "nvme_support")
+
+    @property
     @pulumi.getter
     def price(self) -> str:
         return pulumi.get(self, "price")
@@ -6743,27 +7441,17 @@ class GetInstanceTypesInstanceTypeBurstableInstanceResult(dict):
     def __init__(__self__, *,
                  baseline_credit: str,
                  initial_credit: str):
-        """
-        :param str baseline_credit: The compute performance benchmark CPU credit of a burstable instance.
-        :param str initial_credit: The initial CPU credit of a burstable instance.
-        """
         pulumi.set(__self__, "baseline_credit", baseline_credit)
         pulumi.set(__self__, "initial_credit", initial_credit)
 
     @property
     @pulumi.getter(name="baselineCredit")
     def baseline_credit(self) -> str:
-        """
-        The compute performance benchmark CPU credit of a burstable instance.
-        """
         return pulumi.get(self, "baseline_credit")
 
     @property
     @pulumi.getter(name="initialCredit")
     def initial_credit(self) -> str:
-        """
-        The initial CPU credit of a burstable instance.
-        """
         return pulumi.get(self, "initial_credit")
 
 
@@ -6772,27 +7460,17 @@ class GetInstanceTypesInstanceTypeGpuResult(dict):
     def __init__(__self__, *,
                  amount: str,
                  category: str):
-        """
-        :param str amount: The number of local storage devices that an instance has been attached to.
-        :param str category: The category of local storage that an instance has been attached to.
-        """
         pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "category", category)
 
     @property
     @pulumi.getter
     def amount(self) -> str:
-        """
-        The number of local storage devices that an instance has been attached to.
-        """
         return pulumi.get(self, "amount")
 
     @property
     @pulumi.getter
     def category(self) -> str:
-        """
-        The category of local storage that an instance has been attached to.
-        """
         return pulumi.get(self, "category")
 
 
@@ -6802,11 +7480,6 @@ class GetInstanceTypesInstanceTypeLocalStorageResult(dict):
                  amount: str,
                  capacity: str,
                  category: str):
-        """
-        :param str amount: The number of local storage devices that an instance has been attached to.
-        :param str capacity: The capacity of a local storage in GB.
-        :param str category: The category of local storage that an instance has been attached to.
-        """
         pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "category", category)
@@ -6814,25 +7487,16 @@ class GetInstanceTypesInstanceTypeLocalStorageResult(dict):
     @property
     @pulumi.getter
     def amount(self) -> str:
-        """
-        The number of local storage devices that an instance has been attached to.
-        """
         return pulumi.get(self, "amount")
 
     @property
     @pulumi.getter
     def capacity(self) -> str:
-        """
-        The capacity of a local storage in GB.
-        """
         return pulumi.get(self, "capacity")
 
     @property
     @pulumi.getter
     def category(self) -> str:
-        """
-        The category of local storage that an instance has been attached to.
-        """
         return pulumi.get(self, "category")
 
 
@@ -7578,6 +8242,7 @@ class GetKeyPairsPairInstanceResult(dict):
 @pulumi.output_type
 class GetNetworkInterfacesInterfaceResult(dict):
     def __init__(__self__, *,
+                 associated_public_ips: Sequence['outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult'],
                  creation_time: str,
                  description: str,
                  id: str,
@@ -7621,6 +8286,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
         :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
         :param str zone_id: ID of the availability zone that the ENI belongs to.
         """
+        pulumi.set(__self__, "associated_public_ips", associated_public_ips)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -7647,6 +8313,11 @@ class GetNetworkInterfacesInterfaceResult(dict):
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="associatedPublicIps")
+    def associated_public_ips(self) -> Sequence['outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult']:
+        return pulumi.get(self, "associated_public_ips")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -7822,6 +8493,18 @@ class GetNetworkInterfacesInterfaceResult(dict):
         ID of the availability zone that the ENI belongs to.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
+    def __init__(__self__, *,
+                 public_ip_address: str):
+        pulumi.set(__self__, "public_ip_address", public_ip_address)
+
+    @property
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> str:
+        return pulumi.get(self, "public_ip_address")
 
 
 @pulumi.output_type

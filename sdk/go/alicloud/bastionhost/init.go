@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Host{}
 	case "alicloud:bastionhost/hostAccount:HostAccount":
 		r = &HostAccount{}
+	case "alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment":
+		r = &HostAccountShareKeyAttachment{}
 	case "alicloud:bastionhost/hostAccountUserAttachment:HostAccountUserAttachment":
 		r = &HostAccountUserAttachment{}
 	case "alicloud:bastionhost/hostAccountUserGroupAttachment:HostAccountUserGroupAttachment":
@@ -37,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HostGroupAccountUserAttachment{}
 	case "alicloud:bastionhost/hostGroupAccountUserGroupAttachment:HostGroupAccountUserGroupAttachment":
 		r = &HostGroupAccountUserGroupAttachment{}
+	case "alicloud:bastionhost/hostShareKey:HostShareKey":
+		r = &HostShareKey{}
 	case "alicloud:bastionhost/instance:Instance":
 		r = &Instance{}
 	case "alicloud:bastionhost/user:User":
@@ -70,6 +74,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"bastionhost/hostAccountShareKeyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"bastionhost/hostAccountUserAttachment",
 		&module{version},
 	)
@@ -96,6 +105,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"bastionhost/hostGroupAccountUserGroupAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"bastionhost/hostShareKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

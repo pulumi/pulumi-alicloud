@@ -380,6 +380,63 @@ class TrafficMirrorSession(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.142.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g7")
+        default_zones = alicloud.get_zones(available_resource_creation="Instance",
+            available_instance_type=default_instance_types.instance_types[0].id)
+        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        vswitch_id = default_switches.ids[0]
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description="New security group",
+            vpc_id=default_networks.ids[0])
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        default_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
+                availability_zone=default_zones.zones[0].id,
+                instance_name="example_value",
+                host_name="tf-testAcc",
+                image_id=default_images.images[0].id,
+                instance_type=default_instance_types.instance_types[0].id,
+                security_groups=[default_security_group.id],
+                vswitch_id=vswitch_id,
+                system_disk_category="cloud_essd"))
+        default_ecs_network_interface = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"defaultEcsNetworkInterface-{range['value']}",
+                network_interface_name="example_value",
+                vswitch_id=vswitch_id,
+                security_group_ids=[default_security_group.id]))
+        default_ecs_network_interface_attachment = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"defaultEcsNetworkInterfaceAttachment-{range['value']}",
+                instance_id=[__item.id for __item in default_instance][range["value"]],
+                network_interface_id=[__item.id for __item in default_ecs_network_interface][range["value"]]))
+        default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("defaultTrafficMirrorFilter",
+            traffic_mirror_filter_name="example_value",
+            traffic_mirror_filter_description="example_value")
+        default_traffic_mirror_session = alicloud.vpc.TrafficMirrorSession("defaultTrafficMirrorSession",
+            priority=1,
+            virtual_network_id=10,
+            traffic_mirror_session_description="example_value",
+            traffic_mirror_session_name="example_value",
+            traffic_mirror_target_id=default_ecs_network_interface_attachment[0].network_interface_id,
+            traffic_mirror_source_ids=[default_ecs_network_interface_attachment[1].network_interface_id],
+            traffic_mirror_filter_id=default_traffic_mirror_filter.id,
+            traffic_mirror_target_type="NetworkInterface")
+        ```
+
         ## Import
 
         VPC Traffic Mirror Session can be imported using the id, e.g.
@@ -413,6 +470,63 @@ class TrafficMirrorSession(pulumi.CustomResource):
         For information about VPC Traffic Mirror Session and how to use it, see [What is Traffic Mirror Session](https://www.alibabacloud.com/help/en/doc-detail/261364.htm).
 
         > **NOTE:** Available in v1.142.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g7")
+        default_zones = alicloud.get_zones(available_resource_creation="Instance",
+            available_instance_type=default_instance_types.instance_types[0].id)
+        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        vswitch_id = default_switches.ids[0]
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            description="New security group",
+            vpc_id=default_networks.ids[0])
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        default_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
+                availability_zone=default_zones.zones[0].id,
+                instance_name="example_value",
+                host_name="tf-testAcc",
+                image_id=default_images.images[0].id,
+                instance_type=default_instance_types.instance_types[0].id,
+                security_groups=[default_security_group.id],
+                vswitch_id=vswitch_id,
+                system_disk_category="cloud_essd"))
+        default_ecs_network_interface = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"defaultEcsNetworkInterface-{range['value']}",
+                network_interface_name="example_value",
+                vswitch_id=vswitch_id,
+                security_group_ids=[default_security_group.id]))
+        default_ecs_network_interface_attachment = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"defaultEcsNetworkInterfaceAttachment-{range['value']}",
+                instance_id=[__item.id for __item in default_instance][range["value"]],
+                network_interface_id=[__item.id for __item in default_ecs_network_interface][range["value"]]))
+        default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("defaultTrafficMirrorFilter",
+            traffic_mirror_filter_name="example_value",
+            traffic_mirror_filter_description="example_value")
+        default_traffic_mirror_session = alicloud.vpc.TrafficMirrorSession("defaultTrafficMirrorSession",
+            priority=1,
+            virtual_network_id=10,
+            traffic_mirror_session_description="example_value",
+            traffic_mirror_session_name="example_value",
+            traffic_mirror_target_id=default_ecs_network_interface_attachment[0].network_interface_id,
+            traffic_mirror_source_ids=[default_ecs_network_interface_attachment[1].network_interface_id],
+            traffic_mirror_filter_id=default_traffic_mirror_filter.id,
+            traffic_mirror_target_type="NetworkInterface")
+        ```
 
         ## Import
 

@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _sourceTypes;
 
         /// <summary>
-        /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
         /// </summary>
         public List<string> SourceTypes
         {
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _sourceTypes;
 
         /// <summary>
-        /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
         /// </summary>
         public InputList<string> SourceTypes
         {

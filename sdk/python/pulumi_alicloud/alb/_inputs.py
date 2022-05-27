@@ -13,12 +13,12 @@ __all__ = [
     'ListenerAccessLogTracingConfigArgs',
     'ListenerAclConfigArgs',
     'ListenerAclConfigAclRelationArgs',
-    'ListenerCertificateArgs',
+    'ListenerCertificatesArgs',
     'ListenerDefaultActionArgs',
     'ListenerDefaultActionForwardGroupConfigArgs',
     'ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs',
     'ListenerQuicConfigArgs',
-    'ListenerXforwardedForConfigArgs',
+    'ListenerXForwardedForConfigArgs',
     'LoadBalancerAccessLogConfigArgs',
     'LoadBalancerLoadBalancerBillingConfigArgs',
     'LoadBalancerModificationProtectionConfigArgs',
@@ -30,6 +30,10 @@ __all__ = [
     'RuleRuleActionInsertHeaderConfigArgs',
     'RuleRuleActionRedirectConfigArgs',
     'RuleRuleActionRewriteConfigArgs',
+    'RuleRuleActionTrafficLimitConfigArgs',
+    'RuleRuleActionTrafficMirrorConfigArgs',
+    'RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs',
+    'RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs',
     'RuleRuleConditionArgs',
     'RuleRuleConditionCookieConfigArgs',
     'RuleRuleConditionCookieConfigValueArgs',
@@ -39,6 +43,7 @@ __all__ = [
     'RuleRuleConditionPathConfigArgs',
     'RuleRuleConditionQueryStringConfigArgs',
     'RuleRuleConditionQueryStringConfigValueArgs',
+    'RuleRuleConditionSourceIpConfigArgs',
     'ServerGroupHealthCheckConfigArgs',
     'ServerGroupServerArgs',
     'ServerGroupStickySessionConfigArgs',
@@ -233,7 +238,7 @@ class ListenerAclConfigAclRelationArgs:
 
 
 @pulumi.input_type
-class ListenerCertificateArgs:
+class ListenerCertificatesArgs:
     def __init__(__self__, *,
                  certificate_id: Optional[pulumi.Input[str]] = None):
         """
@@ -376,218 +381,218 @@ class ListenerQuicConfigArgs:
 
 
 @pulumi.input_type
-class ListenerXforwardedForConfigArgs:
+class ListenerXForwardedForConfigArgs:
     def __init__(__self__, *,
-                 xforwardedforclientcert_issuerdnalias: Optional[pulumi.Input[str]] = None,
-                 xforwardedforclientcert_issuerdnenabled: Optional[pulumi.Input[bool]] = None,
-                 xforwardedforclientcertclientverifyalias: Optional[pulumi.Input[str]] = None,
-                 xforwardedforclientcertclientverifyenabled: Optional[pulumi.Input[bool]] = None,
-                 xforwardedforclientcertfingerprintalias: Optional[pulumi.Input[str]] = None,
-                 xforwardedforclientcertfingerprintenabled: Optional[pulumi.Input[bool]] = None,
-                 xforwardedforclientcertsubjectdnalias: Optional[pulumi.Input[str]] = None,
-                 xforwardedforclientcertsubjectdnenabled: Optional[pulumi.Input[bool]] = None,
-                 xforwardedforclientsrcportenabled: Optional[pulumi.Input[bool]] = None,
-                 xforwardedforenabled: Optional[pulumi.Input[bool]] = None,
-                 xforwardedforprotoenabled: Optional[pulumi.Input[bool]] = None,
-                 xforwardedforslbidenabled: Optional[pulumi.Input[bool]] = None,
-                 xforwardedforslbportenabled: Optional[pulumi.Input[bool]] = None):
+                 x_forwarded_for_client_cert_client_verify_alias: Optional[pulumi.Input[str]] = None,
+                 x_forwarded_for_client_cert_client_verify_enabled: Optional[pulumi.Input[bool]] = None,
+                 x_forwarded_for_client_cert_finger_print_alias: Optional[pulumi.Input[str]] = None,
+                 x_forwarded_for_client_cert_finger_print_enabled: Optional[pulumi.Input[bool]] = None,
+                 x_forwarded_for_client_cert_issuer_dn_alias: Optional[pulumi.Input[str]] = None,
+                 x_forwarded_for_client_cert_issuer_dn_enabled: Optional[pulumi.Input[bool]] = None,
+                 x_forwarded_for_client_cert_subject_dn_alias: Optional[pulumi.Input[str]] = None,
+                 x_forwarded_for_client_cert_subject_dn_enabled: Optional[pulumi.Input[bool]] = None,
+                 x_forwarded_for_client_src_port_enabled: Optional[pulumi.Input[bool]] = None,
+                 x_forwarded_for_enabled: Optional[pulumi.Input[bool]] = None,
+                 x_forwarded_for_proto_enabled: Optional[pulumi.Input[bool]] = None,
+                 x_forwarded_for_slb_id_enabled: Optional[pulumi.Input[bool]] = None,
+                 x_forwarded_for_slb_port_enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] xforwardedforclientcert_issuerdnalias: The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-        :param pulumi.Input[bool] xforwardedforclientcert_issuerdnenabled: Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-        :param pulumi.Input[str] xforwardedforclientcertclientverifyalias: The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param pulumi.Input[bool] xforwardedforclientcertclientverifyenabled: Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-        :param pulumi.Input[str] xforwardedforclientcertfingerprintalias: The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param pulumi.Input[bool] xforwardedforclientcertfingerprintenabled: Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-        :param pulumi.Input[str] xforwardedforclientcertsubjectdnalias: The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        :param pulumi.Input[bool] xforwardedforclientcertsubjectdnenabled: Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-        :param pulumi.Input[bool] xforwardedforclientsrcportenabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-        :param pulumi.Input[bool] xforwardedforenabled: Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
-        :param pulumi.Input[bool] xforwardedforprotoenabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-        :param pulumi.Input[bool] xforwardedforslbidenabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
-        :param pulumi.Input[bool] xforwardedforslbportenabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+        :param pulumi.Input[str] x_forwarded_for_client_cert_client_verify_alias: The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param pulumi.Input[bool] x_forwarded_for_client_cert_client_verify_enabled: Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+        :param pulumi.Input[str] x_forwarded_for_client_cert_finger_print_alias: The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param pulumi.Input[bool] x_forwarded_for_client_cert_finger_print_enabled: Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        :param pulumi.Input[str] x_forwarded_for_client_cert_issuer_dn_alias: The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+        :param pulumi.Input[bool] x_forwarded_for_client_cert_issuer_dn_enabled: Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+        :param pulumi.Input[str] x_forwarded_for_client_cert_subject_dn_alias: The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param pulumi.Input[bool] x_forwarded_for_client_cert_subject_dn_enabled: Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        :param pulumi.Input[bool] x_forwarded_for_client_src_port_enabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+        :param pulumi.Input[bool] x_forwarded_for_enabled: Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
+        :param pulumi.Input[bool] x_forwarded_for_proto_enabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+        :param pulumi.Input[bool] x_forwarded_for_slb_id_enabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
+        :param pulumi.Input[bool] x_forwarded_for_slb_port_enabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
         """
-        if xforwardedforclientcert_issuerdnalias is not None:
-            pulumi.set(__self__, "xforwardedforclientcert_issuerdnalias", xforwardedforclientcert_issuerdnalias)
-        if xforwardedforclientcert_issuerdnenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientcert_issuerdnenabled", xforwardedforclientcert_issuerdnenabled)
-        if xforwardedforclientcertclientverifyalias is not None:
-            pulumi.set(__self__, "xforwardedforclientcertclientverifyalias", xforwardedforclientcertclientverifyalias)
-        if xforwardedforclientcertclientverifyenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientcertclientverifyenabled", xforwardedforclientcertclientverifyenabled)
-        if xforwardedforclientcertfingerprintalias is not None:
-            pulumi.set(__self__, "xforwardedforclientcertfingerprintalias", xforwardedforclientcertfingerprintalias)
-        if xforwardedforclientcertfingerprintenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientcertfingerprintenabled", xforwardedforclientcertfingerprintenabled)
-        if xforwardedforclientcertsubjectdnalias is not None:
-            pulumi.set(__self__, "xforwardedforclientcertsubjectdnalias", xforwardedforclientcertsubjectdnalias)
-        if xforwardedforclientcertsubjectdnenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientcertsubjectdnenabled", xforwardedforclientcertsubjectdnenabled)
-        if xforwardedforclientsrcportenabled is not None:
-            pulumi.set(__self__, "xforwardedforclientsrcportenabled", xforwardedforclientsrcportenabled)
-        if xforwardedforenabled is not None:
-            pulumi.set(__self__, "xforwardedforenabled", xforwardedforenabled)
-        if xforwardedforprotoenabled is not None:
-            pulumi.set(__self__, "xforwardedforprotoenabled", xforwardedforprotoenabled)
-        if xforwardedforslbidenabled is not None:
-            pulumi.set(__self__, "xforwardedforslbidenabled", xforwardedforslbidenabled)
-        if xforwardedforslbportenabled is not None:
-            pulumi.set(__self__, "xforwardedforslbportenabled", xforwardedforslbportenabled)
+        if x_forwarded_for_client_cert_client_verify_alias is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_client_verify_alias", x_forwarded_for_client_cert_client_verify_alias)
+        if x_forwarded_for_client_cert_client_verify_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_client_verify_enabled", x_forwarded_for_client_cert_client_verify_enabled)
+        if x_forwarded_for_client_cert_finger_print_alias is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_finger_print_alias", x_forwarded_for_client_cert_finger_print_alias)
+        if x_forwarded_for_client_cert_finger_print_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_finger_print_enabled", x_forwarded_for_client_cert_finger_print_enabled)
+        if x_forwarded_for_client_cert_issuer_dn_alias is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_issuer_dn_alias", x_forwarded_for_client_cert_issuer_dn_alias)
+        if x_forwarded_for_client_cert_issuer_dn_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_issuer_dn_enabled", x_forwarded_for_client_cert_issuer_dn_enabled)
+        if x_forwarded_for_client_cert_subject_dn_alias is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_subject_dn_alias", x_forwarded_for_client_cert_subject_dn_alias)
+        if x_forwarded_for_client_cert_subject_dn_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_cert_subject_dn_enabled", x_forwarded_for_client_cert_subject_dn_enabled)
+        if x_forwarded_for_client_src_port_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_client_src_port_enabled", x_forwarded_for_client_src_port_enabled)
+        if x_forwarded_for_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_enabled", x_forwarded_for_enabled)
+        if x_forwarded_for_proto_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_proto_enabled", x_forwarded_for_proto_enabled)
+        if x_forwarded_for_slb_id_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_slb_id_enabled", x_forwarded_for_slb_id_enabled)
+        if x_forwarded_for_slb_port_enabled is not None:
+            pulumi.set(__self__, "x_forwarded_for_slb_port_enabled", x_forwarded_for_slb_port_enabled)
 
     @property
-    @pulumi.getter(name="xforwardedforclientcertIssuerdnalias")
-    def xforwardedforclientcert_issuerdnalias(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="xForwardedForClientCertClientVerifyAlias")
+    def x_forwarded_for_client_cert_client_verify_alias(self) -> Optional[pulumi.Input[str]]:
         """
-        The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+        The Custom Header Field Names Only When `x_forwarded_for_client_cert_client_verify_enabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         """
-        return pulumi.get(self, "xforwardedforclientcert_issuerdnalias")
+        return pulumi.get(self, "x_forwarded_for_client_cert_client_verify_alias")
 
-    @xforwardedforclientcert_issuerdnalias.setter
-    def xforwardedforclientcert_issuerdnalias(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "xforwardedforclientcert_issuerdnalias", value)
-
-    @property
-    @pulumi.getter(name="xforwardedforclientcertIssuerdnenabled")
-    def xforwardedforclientcert_issuerdnenabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-        """
-        return pulumi.get(self, "xforwardedforclientcert_issuerdnenabled")
-
-    @xforwardedforclientcert_issuerdnenabled.setter
-    def xforwardedforclientcert_issuerdnenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforclientcert_issuerdnenabled", value)
+    @x_forwarded_for_client_cert_client_verify_alias.setter
+    def x_forwarded_for_client_cert_client_verify_alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "x_forwarded_for_client_cert_client_verify_alias", value)
 
     @property
-    @pulumi.getter
-    def xforwardedforclientcertclientverifyalias(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        """
-        return pulumi.get(self, "xforwardedforclientcertclientverifyalias")
-
-    @xforwardedforclientcertclientverifyalias.setter
-    def xforwardedforclientcertclientverifyalias(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "xforwardedforclientcertclientverifyalias", value)
-
-    @property
-    @pulumi.getter
-    def xforwardedforclientcertclientverifyenabled(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="xForwardedForClientCertClientVerifyEnabled")
+    def x_forwarded_for_client_cert_client_verify_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
         """
-        return pulumi.get(self, "xforwardedforclientcertclientverifyenabled")
+        return pulumi.get(self, "x_forwarded_for_client_cert_client_verify_enabled")
 
-    @xforwardedforclientcertclientverifyenabled.setter
-    def xforwardedforclientcertclientverifyenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforclientcertclientverifyenabled", value)
-
-    @property
-    @pulumi.getter
-    def xforwardedforclientcertfingerprintalias(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        """
-        return pulumi.get(self, "xforwardedforclientcertfingerprintalias")
-
-    @xforwardedforclientcertfingerprintalias.setter
-    def xforwardedforclientcertfingerprintalias(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "xforwardedforclientcertfingerprintalias", value)
+    @x_forwarded_for_client_cert_client_verify_enabled.setter
+    def x_forwarded_for_client_cert_client_verify_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_client_cert_client_verify_enabled", value)
 
     @property
-    @pulumi.getter
-    def xforwardedforclientcertfingerprintenabled(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="xForwardedForClientCertFingerPrintAlias")
+    def x_forwarded_for_client_cert_finger_print_alias(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        The Custom Header Field Names Only When `x_forwarded_for_client_certfingerprint_enabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
         """
-        return pulumi.get(self, "xforwardedforclientcertfingerprintenabled")
+        return pulumi.get(self, "x_forwarded_for_client_cert_finger_print_alias")
 
-    @xforwardedforclientcertfingerprintenabled.setter
-    def xforwardedforclientcertfingerprintenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforclientcertfingerprintenabled", value)
-
-    @property
-    @pulumi.getter
-    def xforwardedforclientcertsubjectdnalias(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-        """
-        return pulumi.get(self, "xforwardedforclientcertsubjectdnalias")
-
-    @xforwardedforclientcertsubjectdnalias.setter
-    def xforwardedforclientcertsubjectdnalias(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "xforwardedforclientcertsubjectdnalias", value)
+    @x_forwarded_for_client_cert_finger_print_alias.setter
+    def x_forwarded_for_client_cert_finger_print_alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "x_forwarded_for_client_cert_finger_print_alias", value)
 
     @property
-    @pulumi.getter
-    def xforwardedforclientcertsubjectdnenabled(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="xForwardedForClientCertFingerPrintEnabled")
+    def x_forwarded_for_client_cert_finger_print_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
         """
-        return pulumi.get(self, "xforwardedforclientcertsubjectdnenabled")
+        return pulumi.get(self, "x_forwarded_for_client_cert_finger_print_enabled")
 
-    @xforwardedforclientcertsubjectdnenabled.setter
-    def xforwardedforclientcertsubjectdnenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforclientcertsubjectdnenabled", value)
+    @x_forwarded_for_client_cert_finger_print_enabled.setter
+    def x_forwarded_for_client_cert_finger_print_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_client_cert_finger_print_enabled", value)
 
     @property
-    @pulumi.getter
-    def xforwardedforclientsrcportenabled(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="xForwardedForClientCertIssuerDnAlias")
+    def x_forwarded_for_client_cert_issuer_dn_alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Custom Header Field Names Only When `x_forwarded_for_client_cert_issuer_dn_enabled`, Which Evaluates to True When the Entry into Force of.
+        """
+        return pulumi.get(self, "x_forwarded_for_client_cert_issuer_dn_alias")
+
+    @x_forwarded_for_client_cert_issuer_dn_alias.setter
+    def x_forwarded_for_client_cert_issuer_dn_alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "x_forwarded_for_client_cert_issuer_dn_alias", value)
+
+    @property
+    @pulumi.getter(name="xForwardedForClientCertIssuerDnEnabled")
+    def x_forwarded_for_client_cert_issuer_dn_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+        """
+        return pulumi.get(self, "x_forwarded_for_client_cert_issuer_dn_enabled")
+
+    @x_forwarded_for_client_cert_issuer_dn_enabled.setter
+    def x_forwarded_for_client_cert_issuer_dn_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_client_cert_issuer_dn_enabled", value)
+
+    @property
+    @pulumi.getter(name="xForwardedForClientCertSubjectDnAlias")
+    def x_forwarded_for_client_cert_subject_dn_alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the custom header. This parameter is valid only if `x_forwarded_for_client_certsubjectdn_enabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        """
+        return pulumi.get(self, "x_forwarded_for_client_cert_subject_dn_alias")
+
+    @x_forwarded_for_client_cert_subject_dn_alias.setter
+    def x_forwarded_for_client_cert_subject_dn_alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "x_forwarded_for_client_cert_subject_dn_alias", value)
+
+    @property
+    @pulumi.getter(name="xForwardedForClientCertSubjectDnEnabled")
+    def x_forwarded_for_client_cert_subject_dn_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        """
+        return pulumi.get(self, "x_forwarded_for_client_cert_subject_dn_enabled")
+
+    @x_forwarded_for_client_cert_subject_dn_enabled.setter
+    def x_forwarded_for_client_cert_subject_dn_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_client_cert_subject_dn_enabled", value)
+
+    @property
+    @pulumi.getter(name="xForwardedForClientSrcPortEnabled")
+    def x_forwarded_for_client_src_port_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
         """
-        return pulumi.get(self, "xforwardedforclientsrcportenabled")
+        return pulumi.get(self, "x_forwarded_for_client_src_port_enabled")
 
-    @xforwardedforclientsrcportenabled.setter
-    def xforwardedforclientsrcportenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforclientsrcportenabled", value)
+    @x_forwarded_for_client_src_port_enabled.setter
+    def x_forwarded_for_client_src_port_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_client_src_port_enabled", value)
 
     @property
-    @pulumi.getter
-    def xforwardedforenabled(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="xForwardedForEnabled")
+    def x_forwarded_for_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
         """
-        return pulumi.get(self, "xforwardedforenabled")
+        return pulumi.get(self, "x_forwarded_for_enabled")
 
-    @xforwardedforenabled.setter
-    def xforwardedforenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforenabled", value)
+    @x_forwarded_for_enabled.setter
+    def x_forwarded_for_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_enabled", value)
 
     @property
-    @pulumi.getter
-    def xforwardedforprotoenabled(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="xForwardedForProtoEnabled")
+    def x_forwarded_for_proto_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
         """
-        return pulumi.get(self, "xforwardedforprotoenabled")
+        return pulumi.get(self, "x_forwarded_for_proto_enabled")
 
-    @xforwardedforprotoenabled.setter
-    def xforwardedforprotoenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforprotoenabled", value)
+    @x_forwarded_for_proto_enabled.setter
+    def x_forwarded_for_proto_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_proto_enabled", value)
 
     @property
-    @pulumi.getter
-    def xforwardedforslbidenabled(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="xForwardedForSlbIdEnabled")
+    def x_forwarded_for_slb_id_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
         """
-        return pulumi.get(self, "xforwardedforslbidenabled")
+        return pulumi.get(self, "x_forwarded_for_slb_id_enabled")
 
-    @xforwardedforslbidenabled.setter
-    def xforwardedforslbidenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforslbidenabled", value)
+    @x_forwarded_for_slb_id_enabled.setter
+    def x_forwarded_for_slb_id_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_slb_id_enabled", value)
 
     @property
-    @pulumi.getter
-    def xforwardedforslbportenabled(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="xForwardedForSlbPortEnabled")
+    def x_forwarded_for_slb_port_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
         """
-        return pulumi.get(self, "xforwardedforslbportenabled")
+        return pulumi.get(self, "x_forwarded_for_slb_port_enabled")
 
-    @xforwardedforslbportenabled.setter
-    def xforwardedforslbportenabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "xforwardedforslbportenabled", value)
+    @x_forwarded_for_slb_port_enabled.setter
+    def x_forwarded_for_slb_port_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "x_forwarded_for_slb_port_enabled", value)
 
 
 @pulumi.input_type
@@ -736,15 +741,19 @@ class RuleRuleActionArgs:
                  forward_group_config: Optional[pulumi.Input['RuleRuleActionForwardGroupConfigArgs']] = None,
                  insert_header_config: Optional[pulumi.Input['RuleRuleActionInsertHeaderConfigArgs']] = None,
                  redirect_config: Optional[pulumi.Input['RuleRuleActionRedirectConfigArgs']] = None,
-                 rewrite_config: Optional[pulumi.Input['RuleRuleActionRewriteConfigArgs']] = None):
+                 rewrite_config: Optional[pulumi.Input['RuleRuleActionRewriteConfigArgs']] = None,
+                 traffic_limit_config: Optional[pulumi.Input['RuleRuleActionTrafficLimitConfigArgs']] = None,
+                 traffic_mirror_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs']] = None):
         """
         :param pulumi.Input[int] order: The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
-        :param pulumi.Input[str] type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        :param pulumi.Input[str] type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         :param pulumi.Input['RuleRuleActionFixedResponseConfigArgs'] fixed_response_config: The configuration of the fixed response. See the following `Block fixed_response_config`.
         :param pulumi.Input['RuleRuleActionForwardGroupConfigArgs'] forward_group_config: The forward response action within ALB. See the following `Block forward_group_config`.
         :param pulumi.Input['RuleRuleActionInsertHeaderConfigArgs'] insert_header_config: The configuration of the inserted header field. See the following `Block insert_header_config`.
         :param pulumi.Input['RuleRuleActionRedirectConfigArgs'] redirect_config: The configuration of the external redirect action. See the following `Block redirect_config`.
         :param pulumi.Input['RuleRuleActionRewriteConfigArgs'] rewrite_config: The redirect action within ALB. See the following `Block rewrite_config`.
+        :param pulumi.Input['RuleRuleActionTrafficLimitConfigArgs'] traffic_limit_config: The Flow speed limit. See the following `Block traffic_limit_config`.
+        :param pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs'] traffic_mirror_config: The Traffic mirroring. See the following `Block traffic_mirror_config`.
         """
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "type", type)
@@ -758,6 +767,10 @@ class RuleRuleActionArgs:
             pulumi.set(__self__, "redirect_config", redirect_config)
         if rewrite_config is not None:
             pulumi.set(__self__, "rewrite_config", rewrite_config)
+        if traffic_limit_config is not None:
+            pulumi.set(__self__, "traffic_limit_config", traffic_limit_config)
+        if traffic_mirror_config is not None:
+            pulumi.set(__self__, "traffic_mirror_config", traffic_mirror_config)
 
     @property
     @pulumi.getter
@@ -775,7 +788,7 @@ class RuleRuleActionArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         """
         return pulumi.get(self, "type")
 
@@ -842,6 +855,30 @@ class RuleRuleActionArgs:
     @rewrite_config.setter
     def rewrite_config(self, value: Optional[pulumi.Input['RuleRuleActionRewriteConfigArgs']]):
         pulumi.set(self, "rewrite_config", value)
+
+    @property
+    @pulumi.getter(name="trafficLimitConfig")
+    def traffic_limit_config(self) -> Optional[pulumi.Input['RuleRuleActionTrafficLimitConfigArgs']]:
+        """
+        The Flow speed limit. See the following `Block traffic_limit_config`.
+        """
+        return pulumi.get(self, "traffic_limit_config")
+
+    @traffic_limit_config.setter
+    def traffic_limit_config(self, value: Optional[pulumi.Input['RuleRuleActionTrafficLimitConfigArgs']]):
+        pulumi.set(self, "traffic_limit_config", value)
+
+    @property
+    @pulumi.getter(name="trafficMirrorConfig")
+    def traffic_mirror_config(self) -> Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs']]:
+        """
+        The Traffic mirroring. See the following `Block traffic_mirror_config`.
+        """
+        return pulumi.get(self, "traffic_mirror_config")
+
+    @traffic_mirror_config.setter
+    def traffic_mirror_config(self, value: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs']]):
+        pulumi.set(self, "traffic_mirror_config", value)
 
 
 @pulumi.input_type
@@ -924,12 +961,16 @@ class RuleRuleActionForwardGroupConfigArgs:
 @pulumi.input_type
 class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
     def __init__(__self__, *,
-                 server_group_id: Optional[pulumi.Input[str]] = None):
+                 server_group_id: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] server_group_id: The ID of the destination server group to which requests are forwarded.
+        :param pulumi.Input[int] weight: The Weight of server group.
         """
         if server_group_id is not None:
             pulumi.set(__self__, "server_group_id", server_group_id)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="serverGroupId")
@@ -942,6 +983,18 @@ class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
     @server_group_id.setter
     def server_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server_group_id", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Weight of server group.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
@@ -1158,6 +1211,114 @@ class RuleRuleActionRewriteConfigArgs:
 
 
 @pulumi.input_type
+class RuleRuleActionTrafficLimitConfigArgs:
+    def __init__(__self__, *,
+                 qps: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] qps: The Number of requests per second. Value range: 1~100000.
+        """
+        if qps is not None:
+            pulumi.set(__self__, "qps", qps)
+
+    @property
+    @pulumi.getter
+    def qps(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Number of requests per second. Value range: 1~100000.
+        """
+        return pulumi.get(self, "qps")
+
+    @qps.setter
+    def qps(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "qps", value)
+
+
+@pulumi.input_type
+class RuleRuleActionTrafficMirrorConfigArgs:
+    def __init__(__self__, *,
+                 mirror_group_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']] = None,
+                 target_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs'] mirror_group_config: The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+        :param pulumi.Input[str] target_type: The Mirror target type.
+        """
+        if mirror_group_config is not None:
+            pulumi.set(__self__, "mirror_group_config", mirror_group_config)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="mirrorGroupConfig")
+    def mirror_group_config(self) -> Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']]:
+        """
+        The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
+        """
+        return pulumi.get(self, "mirror_group_config")
+
+    @mirror_group_config.setter
+    def mirror_group_config(self, value: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']]):
+        pulumi.set(self, "mirror_group_config", value)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Mirror target type.
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_type", value)
+
+
+@pulumi.input_type
+class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
+    def __init__(__self__, *,
+                 server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded.
+        """
+        if server_group_tuples is not None:
+            pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+
+    @property
+    @pulumi.getter(name="serverGroupTuples")
+    def server_group_tuples(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]]:
+        """
+        The destination server group to which requests are forwarded.
+        """
+        return pulumi.get(self, "server_group_tuples")
+
+    @server_group_tuples.setter
+    def server_group_tuples(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]]):
+        pulumi.set(self, "server_group_tuples", value)
+
+
+@pulumi.input_type
+class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs:
+    def __init__(__self__, *,
+                 server_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] server_group_id: The ID of the destination server group to which requests are forwarded.
+        """
+        if server_group_id is not None:
+            pulumi.set(__self__, "server_group_id", server_group_id)
+
+    @property
+    @pulumi.getter(name="serverGroupId")
+    def server_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the destination server group to which requests are forwarded.
+        """
+        return pulumi.get(self, "server_group_id")
+
+    @server_group_id.setter
+    def server_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_group_id", value)
+
+
+@pulumi.input_type
 class RuleRuleConditionArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
@@ -1166,15 +1327,17 @@ class RuleRuleConditionArgs:
                  host_config: Optional[pulumi.Input['RuleRuleConditionHostConfigArgs']] = None,
                  method_config: Optional[pulumi.Input['RuleRuleConditionMethodConfigArgs']] = None,
                  path_config: Optional[pulumi.Input['RuleRuleConditionPathConfigArgs']] = None,
-                 query_string_config: Optional[pulumi.Input['RuleRuleConditionQueryStringConfigArgs']] = None):
+                 query_string_config: Optional[pulumi.Input['RuleRuleConditionQueryStringConfigArgs']] = None,
+                 source_ip_config: Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']] = None):
         """
-        :param pulumi.Input[str] type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        :param pulumi.Input[str] type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         :param pulumi.Input['RuleRuleConditionCookieConfigArgs'] cookie_config: The configuration of the cookie. See the following `Block cookie_config`.
         :param pulumi.Input['RuleRuleConditionHeaderConfigArgs'] header_config: The configuration of the header field. See the following `Block header_config`.
         :param pulumi.Input['RuleRuleConditionHostConfigArgs'] host_config: The configuration of the host field. See the following `Block host_config`.
         :param pulumi.Input['RuleRuleConditionMethodConfigArgs'] method_config: The configuration of the request method. See the following `Block method_config`.
         :param pulumi.Input['RuleRuleConditionPathConfigArgs'] path_config: The configuration of the path for the request to be forwarded. See the following `Block path_config`.
         :param pulumi.Input['RuleRuleConditionQueryStringConfigArgs'] query_string_config: The configuration of the query string. See the following `Block query_string_config`.
+        :param pulumi.Input['RuleRuleConditionSourceIpConfigArgs'] source_ip_config: The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
         """
         pulumi.set(__self__, "type", type)
         if cookie_config is not None:
@@ -1189,12 +1352,14 @@ class RuleRuleConditionArgs:
             pulumi.set(__self__, "path_config", path_config)
         if query_string_config is not None:
             pulumi.set(__self__, "query_string_config", query_string_config)
+        if source_ip_config is not None:
+            pulumi.set(__self__, "source_ip_config", source_ip_config)
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
         """
         return pulumi.get(self, "type")
 
@@ -1273,6 +1438,18 @@ class RuleRuleConditionArgs:
     @query_string_config.setter
     def query_string_config(self, value: Optional[pulumi.Input['RuleRuleConditionQueryStringConfigArgs']]):
         pulumi.set(self, "query_string_config", value)
+
+    @property
+    @pulumi.getter(name="sourceIpConfig")
+    def source_ip_config(self) -> Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']]:
+        """
+        The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+        """
+        return pulumi.get(self, "source_ip_config")
+
+    @source_ip_config.setter
+    def source_ip_config(self, value: Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']]):
+        pulumi.set(self, "source_ip_config", value)
 
 
 @pulumi.input_type
@@ -1505,6 +1682,29 @@ class RuleRuleConditionQueryStringConfigValueArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class RuleRuleConditionSourceIpConfigArgs:
+    def __init__(__self__, *,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The query string.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The query string.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type

@@ -363,7 +363,7 @@ class JobMonitorRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def phone(self) -> pulumi.Output[str]:
+    def phone(self) -> pulumi.Output[Optional[str]]:
         """
         The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
         """

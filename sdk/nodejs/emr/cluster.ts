@@ -513,6 +513,9 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
+    /**
+     * Boot action parameters.
+     */
     public readonly bootstrapActions!: pulumi.Output<outputs.emr.ClusterBootstrapAction[] | undefined>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
@@ -542,6 +545,9 @@ export class Cluster extends pulumi.CustomResource {
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
     public readonly hostGroups!: pulumi.Output<outputs.emr.ClusterHostGroup[] | undefined>;
+    /**
+     * Whether the MASTER node has a public IP address enabled. Default value is false.
+     */
     public readonly isOpenPublicIp!: pulumi.Output<boolean | undefined>;
     /**
      * Ssh key pair.
@@ -674,6 +680,9 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * Boot action parameters.
+     */
     bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[]>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
@@ -703,6 +712,9 @@ export interface ClusterState {
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
     hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[]>;
+    /**
+     * Whether the MASTER node has a public IP address enabled. Default value is false.
+     */
     isOpenPublicIp?: pulumi.Input<boolean>;
     /**
      * Ssh key pair.
@@ -762,6 +774,9 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Boot action parameters.
+     */
     bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[]>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
@@ -791,6 +806,9 @@ export interface ClusterArgs {
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
     hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[]>;
+    /**
+     * Whether the MASTER node has a public IP address enabled. Default value is false.
+     */
     isOpenPublicIp?: pulumi.Input<boolean>;
     /**
      * Ssh key pair.

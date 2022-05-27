@@ -65,6 +65,12 @@ export class Vault extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+     * `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+     * `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+     */
+    public readonly redundancyType!: pulumi.Output<string>;
+    /**
      * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -77,7 +83,7 @@ export class Vault extends pulumi.CustomResource {
      */
     public readonly vaultStorageClass!: pulumi.Output<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`.
+     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
      */
     public readonly vaultType!: pulumi.Output<string>;
 
@@ -95,6 +101,7 @@ export class Vault extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as VaultState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vaultName"] = state ? state.vaultName : undefined;
             resourceInputs["vaultStorageClass"] = state ? state.vaultStorageClass : undefined;
@@ -105,6 +112,7 @@ export class Vault extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vaultName'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
             resourceInputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
             resourceInputs["vaultType"] = args ? args.vaultType : undefined;
@@ -124,6 +132,12 @@ export interface VaultState {
      */
     description?: pulumi.Input<string>;
     /**
+     * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+     * `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+     * `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+     */
+    redundancyType?: pulumi.Input<string>;
+    /**
      * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
      */
     status?: pulumi.Input<string>;
@@ -136,7 +150,7 @@ export interface VaultState {
      */
     vaultStorageClass?: pulumi.Input<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`.
+     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
      */
     vaultType?: pulumi.Input<string>;
 }
@@ -150,6 +164,12 @@ export interface VaultArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+     * `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+     * `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+     */
+    redundancyType?: pulumi.Input<string>;
+    /**
      * The name of Vault.
      */
     vaultName: pulumi.Input<string>;
@@ -158,7 +178,7 @@ export interface VaultArgs {
      */
     vaultStorageClass?: pulumi.Input<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`.
+     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
      */
     vaultType?: pulumi.Input<string>;
 }

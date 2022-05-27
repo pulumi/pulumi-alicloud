@@ -56,7 +56,7 @@ class GetRegistryEnterpriseNamespacesResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         """
-        A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.
+        A list of matched Container Registry Enterprise Edition namespaces. Each item formats as `<instance_id>:<namespace_name>`. Before 1.161.0, its element is a namespace uuid.
         """
         return pulumi.get(self, "ids")
 
@@ -133,7 +133,7 @@ def get_registry_enterprise_namespaces(ids: Optional[Sequence[str]] = None,
     ```
 
 
-    :param Sequence[str] ids: A list of ids to filter results by namespace id.
+    :param Sequence[str] ids: A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
     :param str instance_id: ID of Container Registry Enterprise Edition instance.
     :param str name_regex: A regex string to filter results by namespace name.
     """
@@ -182,7 +182,7 @@ def get_registry_enterprise_namespaces_output(ids: Optional[pulumi.Input[Optiona
     ```
 
 
-    :param Sequence[str] ids: A list of ids to filter results by namespace id.
+    :param Sequence[str] ids: A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
     :param str instance_id: ID of Container Registry Enterprise Edition instance.
     :param str name_regex: A regex string to filter results by namespace name.
     """

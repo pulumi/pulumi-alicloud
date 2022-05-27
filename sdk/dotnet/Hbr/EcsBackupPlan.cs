@@ -97,6 +97,9 @@ namespace Pulumi.AliCloud.Hbr
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
 
+        /// <summary>
+        /// The detail of the backup plan.
+        /// </summary>
         [Output("detail")]
         public Output<string?> Detail { get; private set; } = null!;
 
@@ -160,6 +163,9 @@ namespace Pulumi.AliCloud.Hbr
         [Output("speedLimit")]
         public Output<string?> SpeedLimit { get; private set; } = null!;
 
+        /// <summary>
+        /// Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        /// </summary>
         [Output("updatePaths")]
         public Output<bool?> UpdatePaths { get; private set; } = null!;
 
@@ -221,6 +227,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("backupType", required: true)]
         public Input<string> BackupType { get; set; } = null!;
 
+        /// <summary>
+        /// The detail of the backup plan.
+        /// </summary>
         [Input("detail")]
         public Input<string>? Detail { get; set; }
 
@@ -290,6 +299,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
 
+        /// <summary>
+        /// Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        /// </summary>
         [Input("updatePaths")]
         public Input<bool>? UpdatePaths { get; set; }
 
@@ -312,6 +324,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
+        /// <summary>
+        /// The detail of the backup plan.
+        /// </summary>
         [Input("detail")]
         public Input<string>? Detail { get; set; }
 
@@ -381,6 +396,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("speedLimit")]
         public Input<string>? SpeedLimit { get; set; }
 
+        /// <summary>
+        /// Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        /// </summary>
         [Input("updatePaths")]
         public Input<bool>? UpdatePaths { get; set; }
 

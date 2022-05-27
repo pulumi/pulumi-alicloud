@@ -32,8 +32,8 @@ namespace Pulumi.AliCloud.Mse
     ///             },
     ///             ClusterAliasName = "tf-testAccMseCluster",
     ///             ClusterSpecification = "MSE_SC_1_2_200_c",
-    ///             ClusterType = "Eureka",
-    ///             ClusterVersion = "EUREKA_1_9_3",
+    ///             ClusterType = "Nacos-Ans",
+    ///             ClusterVersion = "NACOS_ANS_1_2_1",
     ///             InstanceCount = 1,
     ///             NetType = "privatenet",
     ///             PubNetworkFlow = "1",
@@ -66,6 +66,12 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Output("clusterAliasName")]
         public Output<string?> ClusterAliasName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.162.0+)  The id of Cluster.
+        /// </summary>
+        [Output("clusterId")]
+        public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
         /// The engine specification of MSE Cluster. Valid values:
@@ -289,6 +295,12 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Input("clusterAliasName")]
         public Input<string>? ClusterAliasName { get; set; }
+
+        /// <summary>
+        /// (Available in v1.162.0+)  The id of Cluster.
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
 
         /// <summary>
         /// The engine specification of MSE Cluster. Valid values:

@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:mse/cluster:Cluster":
 		r = &Cluster{}
+	case "alicloud:mse/engineNamespace:EngineNamespace":
+		r = &EngineNamespace{}
 	case "alicloud:mse/gateway:Gateway":
 		r = &Gateway{}
+	case "alicloud:mse/znode:Znode":
+		r = &Znode{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -45,7 +49,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"mse/engineNamespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"mse/gateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mse/znode",
 		&module{version},
 	)
 }

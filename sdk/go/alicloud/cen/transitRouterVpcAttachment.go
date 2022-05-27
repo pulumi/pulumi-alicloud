@@ -25,11 +25,12 @@ import (
 type TransitRouterVpcAttachment struct {
 	pulumi.CustomResourceState
 
-	AutoCreateVpcRoute pulumi.BoolPtrOutput `pulumi:"autoCreateVpcRoute"`
 	// The ID of the CEN.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType pulumi.StringPtrOutput `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
@@ -92,11 +93,12 @@ func GetTransitRouterVpcAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
 type transitRouterVpcAttachmentState struct {
-	AutoCreateVpcRoute *bool `pulumi:"autoCreateVpcRoute"`
 	// The ID of the CEN.
 	CenId *string `pulumi:"cenId"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	PaymentType *string `pulumi:"paymentType"`
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType *string `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
@@ -122,11 +124,12 @@ type transitRouterVpcAttachmentState struct {
 }
 
 type TransitRouterVpcAttachmentState struct {
-	AutoCreateVpcRoute pulumi.BoolPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringPtrInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	PaymentType pulumi.StringPtrInput
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType pulumi.StringPtrInput
 	// Whether to enabled route table association. The system default value is `true`.
@@ -156,11 +159,12 @@ func (TransitRouterVpcAttachmentState) ElementType() reflect.Type {
 }
 
 type transitRouterVpcAttachmentArgs struct {
-	AutoCreateVpcRoute *bool `pulumi:"autoCreateVpcRoute"`
 	// The ID of the CEN.
 	CenId string `pulumi:"cenId"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	PaymentType *string `pulumi:"paymentType"`
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType *string `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
@@ -183,11 +187,12 @@ type transitRouterVpcAttachmentArgs struct {
 
 // The set of arguments for constructing a TransitRouterVpcAttachment resource.
 type TransitRouterVpcAttachmentArgs struct {
-	AutoCreateVpcRoute pulumi.BoolPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	PaymentType pulumi.StringPtrInput
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType pulumi.StringPtrInput
 	// Whether to enabled route table association. The system default value is `true`.

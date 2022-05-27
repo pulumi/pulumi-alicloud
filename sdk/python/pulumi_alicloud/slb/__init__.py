@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .acl import *
+from .acl_entry_attachment import *
 from .application_load_balancer import *
 from .attachment import *
 from .backend_server import *
@@ -31,6 +32,7 @@ from .master_slave_server_group import *
 from .rule import *
 from .server_certificate import *
 from .server_group import *
+from .server_group_server_attachment import *
 from .tls_cipher_policy import *
 from ._inputs import *
 from . import outputs

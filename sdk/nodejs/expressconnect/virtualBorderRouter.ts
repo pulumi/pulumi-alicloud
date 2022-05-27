@@ -132,6 +132,10 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
      */
     public readonly physicalConnectionId!: pulumi.Output<string>;
     /**
+     * (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+     */
+    public /*out*/ readonly routeTableId!: pulumi.Output<string>;
+    /**
      * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */
     public readonly status!: pulumi.Output<string>;
@@ -176,6 +180,7 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
             resourceInputs["peeringIpv6SubnetMask"] = state ? state.peeringIpv6SubnetMask : undefined;
             resourceInputs["peeringSubnetMask"] = state ? state.peeringSubnetMask : undefined;
             resourceInputs["physicalConnectionId"] = state ? state.physicalConnectionId : undefined;
+            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vbrOwnerId"] = state ? state.vbrOwnerId : undefined;
             resourceInputs["virtualBorderRouterName"] = state ? state.virtualBorderRouterName : undefined;
@@ -216,6 +221,7 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
             resourceInputs["vbrOwnerId"] = args ? args.vbrOwnerId : undefined;
             resourceInputs["virtualBorderRouterName"] = args ? args.virtualBorderRouterName : undefined;
             resourceInputs["vlanId"] = args ? args.vlanId : undefined;
+            resourceInputs["routeTableId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualBorderRouter.__pulumiType, name, resourceInputs, opts);
@@ -286,6 +292,10 @@ export interface VirtualBorderRouterState {
      * The ID of the Physical Connection to Which the ID.
      */
     physicalConnectionId?: pulumi.Input<string>;
+    /**
+     * (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+     */
+    routeTableId?: pulumi.Input<string>;
     /**
      * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */

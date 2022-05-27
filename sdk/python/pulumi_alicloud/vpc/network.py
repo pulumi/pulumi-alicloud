@@ -210,7 +210,9 @@ class _NetworkState:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
+        :param pulumi.Input[str] router_table_id: (Deprecated) It has been deprecated and replaced with `route_table_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
+        :param pulumi.Input[str] status: The status of the VPC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidrs of the VPC.
         :param pulumi.Input[str] vpc_name: The name of the VPC. Defaults to null.
@@ -363,6 +365,9 @@ class _NetworkState:
     @property
     @pulumi.getter(name="routerTableId")
     def router_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Deprecated) It has been deprecated and replaced with `route_table_id`.
+        """
         return pulumi.get(self, "router_table_id")
 
     @router_table_id.setter
@@ -384,6 +389,9 @@ class _NetworkState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the VPC.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -576,7 +584,9 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
+        :param pulumi.Input[str] router_table_id: (Deprecated) It has been deprecated and replaced with `route_table_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: The secondary CIDR blocks for the VPC.
+        :param pulumi.Input[str] status: The status of the VPC.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: The user cidrs of the VPC.
         :param pulumi.Input[str] vpc_name: The name of the VPC. Defaults to null.
@@ -677,6 +687,9 @@ class Network(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routerTableId")
     def router_table_id(self) -> pulumi.Output[str]:
+        """
+        (Deprecated) It has been deprecated and replaced with `route_table_id`.
+        """
         return pulumi.get(self, "router_table_id")
 
     @property
@@ -690,6 +703,9 @@ class Network(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The status of the VPC.
+        """
         return pulumi.get(self, "status")
 
     @property

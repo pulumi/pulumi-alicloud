@@ -97,7 +97,7 @@ class ContainerGroupContainer(dict):
                  working_dir: Optional[str] = None):
         """
         :param str image: The image of the container.
-        :param str name: The name of the mounted volume.
+        :param str name: The name of the security context that the container group runs.
         :param Sequence[str] args: The arguments passed to the commands.
         :param Sequence[str] commands: The commands run by the init container.
         :param float cpu: The amount of CPU resources allocated to the container.
@@ -148,7 +148,7 @@ class ContainerGroupContainer(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the mounted volume.
+        The name of the security context that the container group runs.
         """
         return pulumi.get(self, "name")
 
@@ -250,7 +250,7 @@ class ContainerGroupContainerEnvironmentVar(dict):
                  value: Optional[str] = None):
         """
         :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        :param str value: The variable value of the security context that the container group runs.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -269,7 +269,7 @@ class ContainerGroupContainerEnvironmentVar(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the variable. The value can be 0 to 256 characters in length.
+        The variable value of the security context that the container group runs.
         """
         return pulumi.get(self, "value")
 
@@ -332,7 +332,7 @@ class ContainerGroupContainerVolumeMount(dict):
                  read_only: Optional[bool] = None):
         """
         :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-        :param str name: The name of the mounted volume.
+        :param str name: The name of the security context that the container group runs.
         :param bool read_only: Default to `false`.
         """
         if mount_path is not None:
@@ -354,7 +354,7 @@ class ContainerGroupContainerVolumeMount(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the mounted volume.
+        The name of the security context that the container group runs.
         """
         return pulumi.get(self, "name")
 
@@ -433,8 +433,8 @@ class ContainerGroupDnsConfigOption(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the mounted volume.
-        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        :param str name: The name of the security context that the container group runs.
+        :param str value: The variable value of the security context that the container group runs.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -445,7 +445,7 @@ class ContainerGroupDnsConfigOption(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the mounted volume.
+        The name of the security context that the container group runs.
         """
         return pulumi.get(self, "name")
 
@@ -453,7 +453,7 @@ class ContainerGroupDnsConfigOption(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the variable. The value can be 0 to 256 characters in length.
+        The variable value of the security context that the container group runs.
         """
         return pulumi.get(self, "value")
 
@@ -462,12 +462,18 @@ class ContainerGroupDnsConfigOption(dict):
 class ContainerGroupEciSecurityContext(dict):
     def __init__(__self__, *,
                  sysctls: Optional[Sequence['outputs.ContainerGroupEciSecurityContextSysctl']] = None):
+        """
+        :param Sequence['ContainerGroupEciSecurityContextSysctlArgs'] sysctls: system.
+        """
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
 
     @property
     @pulumi.getter
     def sysctls(self) -> Optional[Sequence['outputs.ContainerGroupEciSecurityContextSysctl']]:
+        """
+        system.
+        """
         return pulumi.get(self, "sysctls")
 
 
@@ -477,8 +483,8 @@ class ContainerGroupEciSecurityContextSysctl(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the mounted volume.
-        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        :param str name: The name of the security context that the container group runs.
+        :param str value: The variable value of the security context that the container group runs.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -489,7 +495,7 @@ class ContainerGroupEciSecurityContextSysctl(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the mounted volume.
+        The name of the security context that the container group runs.
         """
         return pulumi.get(self, "name")
 
@@ -497,7 +503,7 @@ class ContainerGroupEciSecurityContextSysctl(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the variable. The value can be 0 to 256 characters in length.
+        The variable value of the security context that the container group runs.
         """
         return pulumi.get(self, "value")
 
@@ -641,7 +647,7 @@ class ContainerGroupInitContainer(dict):
         :param str image: The image of the container.
         :param str image_pull_policy: The restart policy of the image.
         :param float memory: The amount of memory resources allocated to the container.
-        :param str name: The name of the mounted volume.
+        :param str name: The name of the security context that the container group runs.
         :param Sequence['ContainerGroupInitContainerPortArgs'] ports: The structure of port.
         :param Sequence['ContainerGroupInitContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
         :param str working_dir: The working directory of the container.
@@ -743,7 +749,7 @@ class ContainerGroupInitContainer(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the mounted volume.
+        The name of the security context that the container group runs.
         """
         return pulumi.get(self, "name")
 
@@ -789,7 +795,7 @@ class ContainerGroupInitContainerEnvironmentVar(dict):
                  value: Optional[str] = None):
         """
         :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        :param str value: The variable value of the security context that the container group runs.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -808,7 +814,7 @@ class ContainerGroupInitContainerEnvironmentVar(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the variable. The value can be 0 to 256 characters in length.
+        The variable value of the security context that the container group runs.
         """
         return pulumi.get(self, "value")
 
@@ -871,7 +877,7 @@ class ContainerGroupInitContainerVolumeMount(dict):
                  read_only: Optional[bool] = None):
         """
         :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-        :param str name: The name of the mounted volume.
+        :param str name: The name of the security context that the container group runs.
         :param bool read_only: Default to `false`.
         """
         if mount_path is not None:
@@ -893,7 +899,7 @@ class ContainerGroupInitContainerVolumeMount(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the mounted volume.
+        The name of the security context that the container group runs.
         """
         return pulumi.get(self, "name")
 
@@ -960,7 +966,7 @@ class ContainerGroupVolume(dict):
         :param str flex_volume_driver: The name of the FlexVolume driver.
         :param str flex_volume_fs_type: The type of the mounted file system. The default value is determined by the script of FlexVolume.
         :param str flex_volume_options: The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
-        :param str name: The name of the mounted volume.
+        :param str name: The name of the security context that the container group runs.
         :param str nfs_volume_path: The path to the NFS volume.
         :param bool nfs_volume_read_only: The nfs volume read only. Default to `false`.
         :param str nfs_volume_server: The address of the NFS server.
@@ -1041,7 +1047,7 @@ class ContainerGroupVolume(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the mounted volume.
+        The name of the security context that the container group runs.
         """
         return pulumi.get(self, "name")
 

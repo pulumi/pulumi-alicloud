@@ -127,6 +127,10 @@ type ReadOnlyInstance struct {
 	ClientCrlEnabled pulumi.IntPtrOutput `pulumi:"clientCrlEnabled"`
 	// RDS database connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Database type.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -256,6 +260,10 @@ type readOnlyInstanceState struct {
 	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
 	// RDS database connection string.
 	ConnectionString *string `pulumi:"connectionString"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Database type.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -345,6 +353,10 @@ type ReadOnlyInstanceState struct {
 	ClientCrlEnabled pulumi.IntPtrInput
 	// RDS database connection string.
 	ConnectionString pulumi.StringPtrInput
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrInput
 	// Database type.
 	Engine pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
@@ -436,6 +448,10 @@ type readOnlyInstanceArgs struct {
 	// - 1: enables the CRL
 	// - 0: disables the CRL
 	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -520,6 +536,10 @@ type ReadOnlyInstanceArgs struct {
 	// - 1: enables the CRL
 	// - 0: disables the CRL
 	ClientCrlEnabled pulumi.IntPtrInput
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.

@@ -97,7 +97,7 @@ export class DBCluster extends pulumi.CustomResource {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    public readonly autoRenewPeriod!: pulumi.Output<number>;
     /**
      * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
      */
@@ -154,17 +154,19 @@ export class DBCluster extends pulumi.CustomResource {
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
+     *
+     * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     public readonly payType!: pulumi.Output<string>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
     public readonly paymentType!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    public readonly renewalStatus!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
@@ -331,10 +333,12 @@ export interface DBClusterState {
     modifyType?: pulumi.Input<string>;
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
+     *
+     * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     payType?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
@@ -430,10 +434,12 @@ export interface DBClusterArgs {
     modifyType?: pulumi.Input<string>;
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
+     *
+     * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
     payType?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;

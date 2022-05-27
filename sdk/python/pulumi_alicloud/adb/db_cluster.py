@@ -51,7 +51,7 @@ class DBClusterArgs:
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -88,6 +88,9 @@ class DBClusterArgs:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
+        if pay_type is not None:
+            warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
         if pay_type is not None:
             pulumi.set(__self__, "pay_type", pay_type)
         if payment_type is not None:
@@ -279,7 +282,7 @@ class DBClusterArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -415,7 +418,7 @@ class _DBClusterState:
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -457,6 +460,9 @@ class _DBClusterState:
             pulumi.set(__self__, "mode", mode)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
+        if pay_type is not None:
+            warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
         if pay_type is not None:
             pulumi.set(__self__, "pay_type", pay_type)
         if payment_type is not None:
@@ -662,7 +668,7 @@ class _DBClusterState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -871,7 +877,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1017,6 +1023,9 @@ class DBCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'mode'")
             __props__.__dict__["mode"] = mode
             __props__.__dict__["modify_type"] = modify_type
+            if pay_type is not None and not opts.urn:
+                warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
+                pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
             __props__.__dict__["pay_type"] = pay_type
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
@@ -1084,7 +1093,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1127,7 +1136,7 @@ class DBCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> pulumi.Output[Optional[int]]:
+    def auto_renew_period(self) -> pulumi.Output[int]:
         """
         Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
         """
@@ -1249,7 +1258,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1260,7 +1269,7 @@ class DBCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> pulumi.Output[Optional[str]]:
+    def renewal_status(self) -> pulumi.Output[str]:
         """
         Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         """

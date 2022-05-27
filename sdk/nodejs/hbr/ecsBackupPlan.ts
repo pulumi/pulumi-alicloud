@@ -100,6 +100,9 @@ export class EcsBackupPlan extends pulumi.CustomResource {
      * Backup type. Valid values: `COMPLETE`.
      */
     public readonly backupType!: pulumi.Output<string>;
+    /**
+     * The detail of the backup plan.
+     */
     public readonly detail!: pulumi.Output<string | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
@@ -142,6 +145,8 @@ export class EcsBackupPlan extends pulumi.CustomResource {
      */
     public readonly speedLimit!: pulumi.Output<string | undefined>;
     /**
+     * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+     *
      * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
     public readonly updatePaths!: pulumi.Output<boolean | undefined>;
@@ -225,6 +230,9 @@ export interface EcsBackupPlanState {
      * Backup type. Valid values: `COMPLETE`.
      */
     backupType?: pulumi.Input<string>;
+    /**
+     * The detail of the backup plan.
+     */
     detail?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
@@ -267,6 +275,8 @@ export interface EcsBackupPlanState {
      */
     speedLimit?: pulumi.Input<string>;
     /**
+     * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+     *
      * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
     updatePaths?: pulumi.Input<boolean>;
@@ -284,6 +294,9 @@ export interface EcsBackupPlanArgs {
      * Backup type. Valid values: `COMPLETE`.
      */
     backupType: pulumi.Input<string>;
+    /**
+     * The detail of the backup plan.
+     */
     detail?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
@@ -326,6 +339,8 @@ export interface EcsBackupPlanArgs {
      */
     speedLimit?: pulumi.Input<string>;
     /**
+     * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+     *
      * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
     updatePaths?: pulumi.Input<boolean>;

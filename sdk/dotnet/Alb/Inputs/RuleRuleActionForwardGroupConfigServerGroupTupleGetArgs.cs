@@ -18,6 +18,12 @@ namespace Pulumi.AliCloud.Alb.Inputs
         [Input("serverGroupId")]
         public Input<string>? ServerGroupId { get; set; }
 
+        /// <summary>
+        /// The Weight of server group.
+        /// </summary>
+        [Input("weight")]
+        public Input<int>? Weight { get; set; }
+
         public RuleRuleActionForwardGroupConfigServerGroupTupleGetArgs()
         {
         }

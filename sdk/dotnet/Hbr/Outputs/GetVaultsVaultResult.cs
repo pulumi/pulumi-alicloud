@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly bool SearchEnabled;
         public readonly ImmutableArray<string> SourceTypes;
         /// <summary>
-        /// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        /// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -19,20 +19,12 @@ __all__ = [
 @pulumi.input_type
 class AclEntryListArgs:
     def __init__(__self__, *,
-                 entry: pulumi.Input[str],
-                 comment: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "entry", entry)
+                 comment: Optional[pulumi.Input[str]] = None,
+                 entry: Optional[pulumi.Input[str]] = None):
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-
-    @property
-    @pulumi.getter
-    def entry(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "entry")
-
-    @entry.setter
-    def entry(self, value: pulumi.Input[str]):
-        pulumi.set(self, "entry", value)
+        if entry is not None:
+            pulumi.set(__self__, "entry", entry)
 
     @property
     @pulumi.getter
@@ -42,6 +34,15 @@ class AclEntryListArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def entry(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "entry")
+
+    @entry.setter
+    def entry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entry", value)
 
 
 @pulumi.input_type

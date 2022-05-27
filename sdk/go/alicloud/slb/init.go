@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:slb/acl:Acl":
 		r = &Acl{}
+	case "alicloud:slb/aclEntryAttachment:AclEntryAttachment":
+		r = &AclEntryAttachment{}
 	case "alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer":
 		r = &ApplicationLoadBalancer{}
 	case "alicloud:slb/attachment:Attachment":
@@ -45,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerCertificate{}
 	case "alicloud:slb/serverGroup:ServerGroup":
 		r = &ServerGroup{}
+	case "alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment":
+		r = &ServerGroupServerAttachment{}
 	case "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy":
 		r = &TlsCipherPolicy{}
 	default:
@@ -63,6 +67,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"slb/acl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"slb/aclEntryAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -118,6 +127,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"slb/serverGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"slb/serverGroupServerAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

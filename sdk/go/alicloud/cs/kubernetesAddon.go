@@ -14,6 +14,7 @@ import (
 // This resource will help you to manage addon in Kubernetes Cluster.
 //
 // > **NOTE:** Available in 1.150.0+.
+// **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
 //
 // ## Example Usage
 //
@@ -110,6 +111,8 @@ import (
 // package main
 //
 // import (
+// 	"encoding/json"
+//
 // 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
@@ -123,10 +126,34 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"CpuLimit":              "",
+// 			"CpuRequest":            "100m",
+// 			"EnableWebhook":         true,
+// 			"HostNetwork":           false,
+// 			"IngressSlbNetworkType": "internet",
+// 			"IngressSlbSpec":        "slb.s2.small",
+// 			"MemoryLimit":           "",
+// 			"MemoryRequest":         "200Mi",
+// 			"NodeSelector":          []interface{}{},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		_, err = cs.NewKubernetesAddon(ctx, "nginxIngressController", &cs.KubernetesAddonArgs{
+// 			ClusterId: pulumi.Any(_var.Cluster_id),
+// 			Version:   pulumi.String("v1.1.2-aliyun.2"),
+// 			Config:    pulumi.String(json0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }
 // ```
+//
 // **Upgrading of addon**
 // First, check the `nextVersion` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `nextVersion` and apply.
 // ```go
@@ -165,6 +192,8 @@ type KubernetesAddon struct {
 	CanUpgrade pulumi.BoolOutput `pulumi:"canUpgrade"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	Config pulumi.StringPtrOutput `pulumi:"config"`
 	// The name of addon.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The version which addon can be upgraded to.
@@ -214,6 +243,8 @@ type kubernetesAddonState struct {
 	CanUpgrade *bool `pulumi:"canUpgrade"`
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`
+	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	Config *string `pulumi:"config"`
 	// The name of addon.
 	Name *string `pulumi:"name"`
 	// The version which addon can be upgraded to.
@@ -229,6 +260,8 @@ type KubernetesAddonState struct {
 	CanUpgrade pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
+	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	Config pulumi.StringPtrInput
 	// The name of addon.
 	Name pulumi.StringPtrInput
 	// The version which addon can be upgraded to.
@@ -246,6 +279,8 @@ func (KubernetesAddonState) ElementType() reflect.Type {
 type kubernetesAddonArgs struct {
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
+	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	Config *string `pulumi:"config"`
 	// The name of addon.
 	Name *string `pulumi:"name"`
 	// The current version of addon.
@@ -256,6 +291,8 @@ type kubernetesAddonArgs struct {
 type KubernetesAddonArgs struct {
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
+	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	Config pulumi.StringPtrInput
 	// The name of addon.
 	Name pulumi.StringPtrInput
 	// The current version of addon.

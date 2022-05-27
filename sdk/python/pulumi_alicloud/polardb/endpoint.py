@@ -134,6 +134,7 @@ class _EndpointState:
     def __init__(__self__, *,
                  auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_endpoint_id: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
@@ -146,6 +147,7 @@ class _EndpointState:
                  ssl_expire_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
+        :param pulumi.Input[str] db_endpoint_id: (Available in v1.161.0+) The ID of the cluster endpoint.
         :param pulumi.Input[str] endpoint_type: Type of endpoint.
         :param pulumi.Input[str] ssl_connection_string: (Available in v1.121.0+) The SSL connection string.
         :param pulumi.Input[str] ssl_expire_time: (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -154,6 +156,8 @@ class _EndpointState:
             pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
         if db_cluster_id is not None:
             pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if db_endpoint_id is not None:
+            pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
         if endpoint_config is not None:
             pulumi.set(__self__, "endpoint_config", endpoint_config)
         if endpoint_type is not None:
@@ -192,6 +196,18 @@ class _EndpointState:
     @db_cluster_id.setter
     def db_cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="dbEndpointId")
+    def db_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.161.0+) The ID of the cluster endpoint.
+        """
+        return pulumi.get(self, "db_endpoint_id")
+
+    @db_endpoint_id.setter
+    def db_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_endpoint_id", value)
 
     @property
     @pulumi.getter(name="endpointConfig")
@@ -329,11 +345,14 @@ class Endpoint(pulumi.CustomResource):
         if name is None:
             name = "polardbconnectionbasic"
         default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="8.0",
@@ -350,7 +369,7 @@ class Endpoint(pulumi.CustomResource):
         The following arguments are supported:
 
         * `db_cluster_id` - (Required, ForceNew) The Id of cluster that can run database.
-        * `endpoint_type` - (Required & ForceNew before v1.121.0, Optional in v1.121.0+) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+        * `endpoint_type` - (Optional, ForceNew) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
         * `read_write_mode` - (Optional) Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         * `nodes` - (Optional) Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -401,11 +420,14 @@ class Endpoint(pulumi.CustomResource):
         if name is None:
             name = "polardbconnectionbasic"
         default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="8.0",
@@ -422,7 +444,7 @@ class Endpoint(pulumi.CustomResource):
         The following arguments are supported:
 
         * `db_cluster_id` - (Required, ForceNew) The Id of cluster that can run database.
-        * `endpoint_type` - (Required & ForceNew before v1.121.0, Optional in v1.121.0+) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+        * `endpoint_type` - (Optional, ForceNew) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
         * `read_write_mode` - (Optional) Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         * `nodes` - (Optional) Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -489,6 +511,7 @@ class Endpoint(pulumi.CustomResource):
             __props__.__dict__["read_write_mode"] = read_write_mode
             __props__.__dict__["ssl_auto_rotate"] = ssl_auto_rotate
             __props__.__dict__["ssl_enabled"] = ssl_enabled
+            __props__.__dict__["db_endpoint_id"] = None
             __props__.__dict__["ssl_certificate_url"] = None
             __props__.__dict__["ssl_connection_string"] = None
             __props__.__dict__["ssl_expire_time"] = None
@@ -504,6 +527,7 @@ class Endpoint(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
             db_cluster_id: Optional[pulumi.Input[str]] = None,
+            db_endpoint_id: Optional[pulumi.Input[str]] = None,
             endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             endpoint_type: Optional[pulumi.Input[str]] = None,
             net_type: Optional[pulumi.Input[str]] = None,
@@ -521,6 +545,7 @@ class Endpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] db_endpoint_id: (Available in v1.161.0+) The ID of the cluster endpoint.
         :param pulumi.Input[str] endpoint_type: Type of endpoint.
         :param pulumi.Input[str] ssl_connection_string: (Available in v1.121.0+) The SSL connection string.
         :param pulumi.Input[str] ssl_expire_time: (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -531,6 +556,7 @@ class Endpoint(pulumi.CustomResource):
 
         __props__.__dict__["auto_add_new_nodes"] = auto_add_new_nodes
         __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["db_endpoint_id"] = db_endpoint_id
         __props__.__dict__["endpoint_config"] = endpoint_config
         __props__.__dict__["endpoint_type"] = endpoint_type
         __props__.__dict__["net_type"] = net_type
@@ -552,6 +578,14 @@ class Endpoint(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter(name="dbEndpointId")
+    def db_endpoint_id(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.161.0+) The ID of the cluster endpoint.
+        """
+        return pulumi.get(self, "db_endpoint_id")
 
     @property
     @pulumi.getter(name="endpointConfig")

@@ -1673,6 +1673,7 @@ class NodePoolDataDisk(dict):
         """
         :param str category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
         :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        :param str kms_key_id: The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
         :param str name: The name of node pool.
         :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param int size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
@@ -1725,6 +1726,9 @@ class NodePoolDataDisk(dict):
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
+        """
+        The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @property
@@ -2338,20 +2342,31 @@ class GetEdgeKubernetesClustersClusterWorkerNodeResult(dict):
 @pulumi.output_type
 class GetKubernetesAddonsAddonResult(dict):
     def __init__(__self__, *,
+                 current_config: str,
                  current_version: str,
                  name: str,
                  next_version: str,
                  required: bool):
         """
+        :param str current_config: The current custom configuration of the addon. **Note:** Available in v1.166.0+
         :param str current_version: The current version of addon, if this field is an empty string, it means that the addon is not installed.
         :param str name: The name of addon.
         :param str next_version: The next version of this addon can be upgraded to.
         :param bool required: Whether the addon is a system addon.
         """
+        pulumi.set(__self__, "current_config", current_config)
         pulumi.set(__self__, "current_version", current_version)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "next_version", next_version)
         pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="currentConfig")
+    def current_config(self) -> str:
+        """
+        The current custom configuration of the addon. **Note:** Available in v1.166.0+
+        """
+        return pulumi.get(self, "current_config")
 
     @property
     @pulumi.getter(name="currentVersion")
@@ -3492,19 +3507,25 @@ class GetRegistryEnterpriseNamespacesNamespaceResult(dict):
                  default_visibility: str,
                  id: str,
                  instance_id: str,
-                 name: str):
+                 name: str,
+                 namespace_id: str,
+                 namespace_name: str):
         """
         :param bool auto_create: Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
         :param str default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-        :param str id: ID of Container Registry Enterprise Edition namespace.
+        :param str id: ID of Container Registry Enterprise Edition namespace. It formats as `<instance_id>:<namespace_name>`. Before 1.161.0, it is a namespace uuid.
         :param str instance_id: ID of Container Registry Enterprise Edition instance.
         :param str name: Name of Container Registry Enterprise Edition namespace.
+        :param str namespace_id: Container Registry Enterprise Edition namespace id. It is a uuid.
+        :param str namespace_name: Name of Container Registry Enterprise Edition namespace.
         """
         pulumi.set(__self__, "auto_create", auto_create)
         pulumi.set(__self__, "default_visibility", default_visibility)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "namespace_name", namespace_name)
 
     @property
     @pulumi.getter(name="autoCreate")
@@ -3526,7 +3547,7 @@ class GetRegistryEnterpriseNamespacesNamespaceResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of Container Registry Enterprise Edition namespace.
+        ID of Container Registry Enterprise Edition namespace. It formats as `<instance_id>:<namespace_name>`. Before 1.161.0, it is a namespace uuid.
         """
         return pulumi.get(self, "id")
 
@@ -3545,6 +3566,22 @@ class GetRegistryEnterpriseNamespacesNamespaceResult(dict):
         Name of Container Registry Enterprise Edition namespace.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        Container Registry Enterprise Edition namespace id. It is a uuid.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> str:
+        """
+        Name of Container Registry Enterprise Edition namespace.
+        """
+        return pulumi.get(self, "namespace_name")
 
 
 @pulumi.output_type
