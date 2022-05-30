@@ -16,6 +16,7 @@ class BandwidthPackageArgs:
                  bandwidth: pulumi.Input[int],
                  type: pulumi.Input[str],
                  auto_pay: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  bandwidth_package_name: Optional[pulumi.Input[str]] = None,
                  bandwidth_type: Optional[pulumi.Input[str]] = None,
@@ -25,7 +26,8 @@ class BandwidthPackageArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 ratio: Optional[pulumi.Input[int]] = None):
+                 ratio: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BandwidthPackage resource.
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
@@ -33,6 +35,7 @@ class BandwidthPackageArgs:
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
                `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
                `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
@@ -43,11 +46,17 @@ class BandwidthPackageArgs:
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "type", type)
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
+        if auto_renew_duration is not None:
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if bandwidth_package_name is not None:
@@ -68,6 +77,8 @@ class BandwidthPackageArgs:
             pulumi.set(__self__, "payment_type", payment_type)
         if ratio is not None:
             pulumi.set(__self__, "ratio", ratio)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
 
     @property
     @pulumi.getter
@@ -106,6 +117,18 @@ class BandwidthPackageArgs:
     @auto_pay.setter
     def auto_pay(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_pay", value)
+
+    @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @auto_renew_duration.setter
+    def auto_renew_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_duration", value)
 
     @property
     @pulumi.getter(name="autoUseCoupon")
@@ -227,11 +250,27 @@ class BandwidthPackageArgs:
     def ratio(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ratio", value)
 
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to renew a bandwidth packet. automatically or not. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
 
 @pulumi.input_type
 class _BandwidthPackageState:
     def __init__(__self__, *,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  bandwidth_package_name: Optional[pulumi.Input[str]] = None,
@@ -243,6 +282,7 @@ class _BandwidthPackageState:
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -250,6 +290,7 @@ class _BandwidthPackageState:
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
                `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
                `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
@@ -261,11 +302,17 @@ class _BandwidthPackageState:
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] status: The status of the bandwidth plan.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
+        if auto_renew_duration is not None:
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if bandwidth is not None:
@@ -288,6 +335,8 @@ class _BandwidthPackageState:
             pulumi.set(__self__, "payment_type", payment_type)
         if ratio is not None:
             pulumi.set(__self__, "ratio", ratio)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
@@ -306,6 +355,18 @@ class _BandwidthPackageState:
     @auto_pay.setter
     def auto_pay(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_pay", value)
+
+    @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @auto_renew_duration.setter
+    def auto_renew_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_duration", value)
 
     @property
     @pulumi.getter(name="autoUseCoupon")
@@ -440,6 +501,21 @@ class _BandwidthPackageState:
         pulumi.set(self, "ratio", value)
 
     @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to renew a bandwidth packet. automatically or not. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -470,6 +546,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  bandwidth_package_name: Optional[pulumi.Input[str]] = None,
@@ -481,6 +558,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -522,6 +600,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
                `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
                `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
@@ -533,6 +612,10 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
         ...
@@ -591,6 +674,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  bandwidth_package_name: Optional[pulumi.Input[str]] = None,
@@ -602,6 +686,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  duration: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -616,6 +701,7 @@ class BandwidthPackage(pulumi.CustomResource):
             __props__ = BandwidthPackageArgs.__new__(BandwidthPackageArgs)
 
             __props__.__dict__["auto_pay"] = auto_pay
+            __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["auto_use_coupon"] = auto_use_coupon
             if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
@@ -629,6 +715,7 @@ class BandwidthPackage(pulumi.CustomResource):
             __props__.__dict__["duration"] = duration
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["ratio"] = ratio
+            __props__.__dict__["renewal_status"] = renewal_status
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -644,6 +731,7 @@ class BandwidthPackage(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_pay: Optional[pulumi.Input[bool]] = None,
+            auto_renew_duration: Optional[pulumi.Input[int]] = None,
             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
             bandwidth_package_name: Optional[pulumi.Input[str]] = None,
@@ -655,6 +743,7 @@ class BandwidthPackage(pulumi.CustomResource):
             duration: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             ratio: Optional[pulumi.Input[int]] = None,
+            renewal_status: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'BandwidthPackage':
         """
@@ -667,6 +756,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
                `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
                `true`: Enable automatic payment, automatic payment order.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
@@ -678,6 +768,10 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] duration: The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         :param pulumi.Input[str] payment_type: The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+        :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] status: The status of the bandwidth plan.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
@@ -686,6 +780,7 @@ class BandwidthPackage(pulumi.CustomResource):
         __props__ = _BandwidthPackageState.__new__(_BandwidthPackageState)
 
         __props__.__dict__["auto_pay"] = auto_pay
+        __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["bandwidth_package_name"] = bandwidth_package_name
@@ -697,6 +792,7 @@ class BandwidthPackage(pulumi.CustomResource):
         __props__.__dict__["duration"] = duration
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["ratio"] = ratio
+        __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         return BandwidthPackage(resource_name, opts=opts, __props__=__props__)
@@ -710,6 +806,14 @@ class BandwidthPackage(pulumi.CustomResource):
         `true`: Enable automatic payment, automatic payment order.
         """
         return pulumi.get(self, "auto_pay")
+
+    @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> pulumi.Output[Optional[int]]:
+        """
+        Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        """
+        return pulumi.get(self, "auto_renew_duration")
 
     @property
     @pulumi.getter(name="autoUseCoupon")
@@ -798,6 +902,17 @@ class BandwidthPackage(pulumi.CustomResource):
         The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
         """
         return pulumi.get(self, "ratio")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> pulumi.Output[str]:
+        """
+        Whether to renew a bandwidth packet. automatically or not. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        """
+        return pulumi.get(self, "renewal_status")
 
     @property
     @pulumi.getter

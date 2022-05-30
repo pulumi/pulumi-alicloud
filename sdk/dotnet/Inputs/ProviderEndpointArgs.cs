@@ -327,6 +327,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("swas")]
         public Input<string>? Swas { get; set; }
 
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
         [Input("vod")]
         public Input<string>? Vod { get; set; }
 

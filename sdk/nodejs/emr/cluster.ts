@@ -228,7 +228,7 @@ import * as utilities from "../utilities";
  *         {
  *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
- *             nodeCount: "2",
+ *             nodeCount: "3",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?[0]?.min > 160 ? dataDisk1.types?[0]?.min : 160),
@@ -262,6 +262,8 @@ import * as utilities from "../utilities";
  * ### 3. Scale Down
  *
  * In the case of scaling down a cluster, we need to specified the host group and the instance list.
+ *
+ * > **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
  *
  * The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
  *
@@ -352,7 +354,7 @@ import * as utilities from "../utilities";
  *         {
  *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
- *             nodeCount: "2",
+ *             nodeCount: "3",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?[0]?.min > 160 ? dataDisk1.types?[0]?.min : 160),

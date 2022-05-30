@@ -117,6 +117,7 @@ export interface ProviderEndpoint {
     smartag?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
     swas?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
     vod?: pulumi.Input<string>;
     vpc?: pulumi.Input<string>;
     vs?: pulumi.Input<string>;
@@ -993,6 +994,108 @@ export namespace arms {
 }
 
 export namespace bastionhost {
+    export interface InstanceAdAuthServer {
+        /**
+         * The username of the account that is used for the LDAP server.
+         */
+        account: pulumi.Input<string>;
+        /**
+         * The Base distinguished name (DN).
+         */
+        baseDn: pulumi.Input<string>;
+        /**
+         * The domain on the AD server.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the email address of a user on the LDAP server.
+         */
+        emailMapping?: pulumi.Input<string>;
+        /**
+         * The condition that is used to filter users.
+         */
+        filter?: pulumi.Input<string>;
+        /**
+         * Specifies whether to support SSL.
+         */
+        isSsl: pulumi.Input<boolean>;
+        /**
+         * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         */
+        mobileMapping?: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the name of a user on the LDAP server.
+         */
+        nameMapping?: pulumi.Input<string>;
+        /**
+         * The password of the account that is used for the LDAP server.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * The port that is used to access the LDAP server.
+         */
+        port: pulumi.Input<number>;
+        /**
+         * The address of the LDAP server.
+         */
+        server: pulumi.Input<string>;
+        /**
+         * The address of the secondary LDAP server.
+         */
+        standbyServer?: pulumi.Input<string>;
+    }
+
+    export interface InstanceLdapAuthServer {
+        /**
+         * The username of the account that is used for the LDAP server.
+         */
+        account: pulumi.Input<string>;
+        /**
+         * The Base distinguished name (DN).
+         */
+        baseDn: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the email address of a user on the LDAP server.
+         */
+        emailMapping?: pulumi.Input<string>;
+        /**
+         * The condition that is used to filter users.
+         */
+        filter?: pulumi.Input<string>;
+        /**
+         * Specifies whether to support SSL.
+         */
+        isSsl?: pulumi.Input<boolean>;
+        /**
+         * The field that is used to indicate the logon name of a user on the LDAP server.
+         */
+        loginNameMapping?: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         */
+        mobileMapping?: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the name of a user on the LDAP server.
+         */
+        nameMapping?: pulumi.Input<string>;
+        /**
+         * The password of the account that is used for the LDAP server.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * The port that is used to access the LDAP server.
+         */
+        port: pulumi.Input<number>;
+        /**
+         * The address of the LDAP server.
+         */
+        server: pulumi.Input<string>;
+        /**
+         * The address of the secondary LDAP server.
+         */
+        standbyServer?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace brain {
@@ -1829,31 +1932,6 @@ export namespace cs {
         required?: pulumi.Input<boolean>;
     }
 
-    export interface GetKubernetesPermissionPermissionArgs {
-        /**
-         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-         */
-        isOwner?: pulumi.Input<boolean>;
-        isRamRole?: pulumi.Input<boolean>;
-        /**
-         * The permission settings to manage ACK clusters.
-         */
-        resourceId: pulumi.Input<string>;
-        /**
-         * The authorization type. Valid values `cluster`, `namespace` and `console`.
-         */
-        resourceType: pulumi.Input<string>;
-        /**
-         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
-         */
-        roleName: pulumi.Input<string>;
-        /**
-         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-         */
-        roleType?: pulumi.Input<string>;
-    }
-
     export interface GetKubernetesPermissionPermission {
         /**
          * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
@@ -1877,6 +1955,31 @@ export namespace cs {
          * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
          */
         roleType?: string;
+    }
+
+    export interface GetKubernetesPermissionPermissionArgs {
+        /**
+         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         */
+        isOwner?: pulumi.Input<boolean>;
+        isRamRole?: pulumi.Input<boolean>;
+        /**
+         * The permission settings to manage ACK clusters.
+         */
+        resourceId: pulumi.Input<string>;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace` and `console`.
+         */
+        resourceType: pulumi.Input<string>;
+        /**
+         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+         */
+        roleName: pulumi.Input<string>;
+        /**
+         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+         */
+        roleType?: pulumi.Input<string>;
     }
 
     export interface KubernetesAddon {
@@ -3326,13 +3429,17 @@ export namespace emr {
 
     export interface ClusterHostGroup {
         /**
-         * Auto renew for prepaid, true of false. Default is false.
+         * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
          */
         autoRenew?: pulumi.Input<boolean>;
         /**
          * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
          */
         chargeType?: pulumi.Input<string>;
+        /**
+         * Graceful decommission timeout, unit: seconds.
+         */
+        decommissionTimeout?: pulumi.Input<number>;
         /**
          * Data disk capacity.
          */
@@ -3345,6 +3452,10 @@ export namespace emr {
          * Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
          */
         diskType?: pulumi.Input<string>;
+        /**
+         * Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+         */
+        enableGracefulDecommission?: pulumi.Input<boolean>;
         gpuDriver?: pulumi.Input<string>;
         /**
          * host group name.
@@ -5918,6 +6029,13 @@ export namespace securitycenter {
 }
 
 export namespace servicemesh {
+    export interface ServiceMeshExtraConfiguration {
+        /**
+         * Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+         */
+        crAggregationEnabled?: pulumi.Input<boolean>;
+    }
+
     export interface ServiceMeshLoadBalancer {
         apiServerLoadbalancerId?: pulumi.Input<string>;
         /**
@@ -6101,7 +6219,6 @@ export namespace servicemesh {
          */
         vswitcheList: pulumi.Input<string>;
     }
-
 }
 
 export namespace simpleapplicationserver {
@@ -6152,6 +6269,9 @@ export namespace slb {
         weight?: pulumi.Input<number>;
     }
 
+}
+
+export namespace tag {
 }
 
 export namespace tsdb {
@@ -6499,4 +6619,34 @@ export namespace waf {
 }
 
 export namespace yundun {
+    export interface BastionHostInstanceAdAuthServer {
+        account: pulumi.Input<string>;
+        baseDn: pulumi.Input<string>;
+        domain: pulumi.Input<string>;
+        emailMapping?: pulumi.Input<string>;
+        filter?: pulumi.Input<string>;
+        isSsl: pulumi.Input<boolean>;
+        mobileMapping?: pulumi.Input<string>;
+        nameMapping?: pulumi.Input<string>;
+        password: pulumi.Input<string>;
+        port: pulumi.Input<number>;
+        server: pulumi.Input<string>;
+        standbyServer?: pulumi.Input<string>;
+    }
+
+    export interface BastionHostInstanceLdapAuthServer {
+        account: pulumi.Input<string>;
+        baseDn: pulumi.Input<string>;
+        emailMapping?: pulumi.Input<string>;
+        filter?: pulumi.Input<string>;
+        isSsl?: pulumi.Input<boolean>;
+        loginNameMapping?: pulumi.Input<string>;
+        mobileMapping?: pulumi.Input<string>;
+        nameMapping?: pulumi.Input<string>;
+        password: pulumi.Input<string>;
+        port: pulumi.Input<number>;
+        server: pulumi.Input<string>;
+        standbyServer?: pulumi.Input<string>;
+    }
+
 }

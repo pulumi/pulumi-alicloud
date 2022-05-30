@@ -215,6 +215,8 @@ if typing.TYPE_CHECKING:
     simpleapplicationserver = __simpleapplicationserver
     import pulumi_alicloud.slb as __slb
     slb = __slb
+    import pulumi_alicloud.tag as __tag
+    tag = __tag
     import pulumi_alicloud.tsdb as __tsdb
     tsdb = __tsdb
     import pulumi_alicloud.videosurveillance as __videosurveillance
@@ -326,6 +328,7 @@ else:
     servicemesh = _utilities.lazy_import('pulumi_alicloud.servicemesh')
     simpleapplicationserver = _utilities.lazy_import('pulumi_alicloud.simpleapplicationserver')
     slb = _utilities.lazy_import('pulumi_alicloud.slb')
+    tag = _utilities.lazy_import('pulumi_alicloud.tag')
     tsdb = _utilities.lazy_import('pulumi_alicloud.tsdb')
     videosurveillance = _utilities.lazy_import('pulumi_alicloud.videosurveillance')
     vod = _utilities.lazy_import('pulumi_alicloud.vod')
@@ -2527,6 +2530,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eds",
   "classes": {
    "alicloud:eds/simpleOfficeSite:SimpleOfficeSite": "SimpleOfficeSite"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eds/snapshot",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/snapshot:Snapshot": "Snapshot"
   }
  },
  {

@@ -61,6 +61,10 @@ export class ServiceMesh extends pulumi.CustomResource {
      */
     public readonly edition!: pulumi.Output<string>;
     /**
+     * The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+     */
+    public readonly extraConfiguration!: pulumi.Output<outputs.servicemesh.ServiceMeshExtraConfiguration>;
+    /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
@@ -105,6 +109,7 @@ export class ServiceMesh extends pulumi.CustomResource {
             resourceInputs["clusterIds"] = state ? state.clusterIds : undefined;
             resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
             resourceInputs["edition"] = state ? state.edition : undefined;
+            resourceInputs["extraConfiguration"] = state ? state.extraConfiguration : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["loadBalancer"] = state ? state.loadBalancer : undefined;
             resourceInputs["meshConfig"] = state ? state.meshConfig : undefined;
@@ -120,6 +125,7 @@ export class ServiceMesh extends pulumi.CustomResource {
             resourceInputs["clusterIds"] = args ? args.clusterIds : undefined;
             resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
+            resourceInputs["extraConfiguration"] = args ? args.extraConfiguration : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
             resourceInputs["meshConfig"] = args ? args.meshConfig : undefined;
@@ -149,6 +155,10 @@ export interface ServiceMeshState {
      * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      */
     edition?: pulumi.Input<string>;
+    /**
+     * The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+     */
+    extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
@@ -195,6 +205,10 @@ export interface ServiceMeshArgs {
      * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      */
     edition?: pulumi.Input<string>;
+    /**
+     * The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+     */
+    extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */

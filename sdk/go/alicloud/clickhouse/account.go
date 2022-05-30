@@ -116,7 +116,7 @@ type Account struct {
 	// -`true`: grants DDL permissions to the database account.
 	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority pulumi.BoolOutput `pulumi:"ddlAuthority"`
-	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority pulumi.StringOutput `pulumi:"dmlAuthority"`
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -182,7 +182,7 @@ type accountState struct {
 	// -`true`: grants DDL permissions to the database account.
 	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority *bool `pulumi:"ddlAuthority"`
-	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority *string `pulumi:"dmlAuthority"`
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status *string `pulumi:"status"`
@@ -211,7 +211,7 @@ type AccountState struct {
 	// -`true`: grants DDL permissions to the database account.
 	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority pulumi.BoolPtrInput
-	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority pulumi.StringPtrInput
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status pulumi.StringPtrInput
@@ -244,7 +244,7 @@ type accountArgs struct {
 	// -`true`: grants DDL permissions to the database account.
 	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority *bool `pulumi:"ddlAuthority"`
-	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority *string `pulumi:"dmlAuthority"`
 	// The list of all databases. Separate databases with commas (,).
 	TotalDatabases *string `pulumi:"totalDatabases"`
@@ -270,7 +270,7 @@ type AccountArgs struct {
 	// -`true`: grants DDL permissions to the database account.
 	// -`false`: does not grant DDL permissions to the database account.
 	DdlAuthority pulumi.BoolPtrInput
-	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority pulumi.StringPtrInput
 	// The list of all databases. Separate databases with commas (,).
 	TotalDatabases pulumi.StringPtrInput

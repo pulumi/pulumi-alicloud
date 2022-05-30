@@ -361,6 +361,7 @@ namespace Pulumi.AliCloud
                 public string? Smartag { get; set; } = null!;
                 public string? Sts { get; set; } = null!;
                 public string? Swas { get; set; } = null!;
+                public string? Tag { get; set; } = null!;
                 public string? Vod { get; set; } = null!;
                 public string? Vpc { get; set; } = null!;
                 public string? Vs { get; set; } = null!;

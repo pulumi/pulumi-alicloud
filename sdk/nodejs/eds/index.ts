@@ -16,11 +16,13 @@ export * from "./getNasFileSystems";
 export * from "./getNetworkPackages";
 export * from "./getPolicyGroups";
 export * from "./getSimpleOfficeSites";
+export * from "./getSnapshots";
 export * from "./getUsers";
 export * from "./image";
 export * from "./nasFileSystem";
 export * from "./networkPackage";
 export * from "./simpleOfficeSite";
+export * from "./snapshot";
 export * from "./user";
 
 // Import resources to register:
@@ -31,6 +33,7 @@ import { Image } from "./image";
 import { NasFileSystem } from "./nasFileSystem";
 import { NetworkPackage } from "./networkPackage";
 import { SimpleOfficeSite } from "./simpleOfficeSite";
+import { Snapshot } from "./snapshot";
 import { User } from "./user";
 
 const _module = {
@@ -51,6 +54,8 @@ const _module = {
                 return new NetworkPackage(name, <any>undefined, { urn })
             case "alicloud:eds/simpleOfficeSite:SimpleOfficeSite":
                 return new SimpleOfficeSite(name, <any>undefined, { urn })
+            case "alicloud:eds/snapshot:Snapshot":
+                return new Snapshot(name, <any>undefined, { urn })
             case "alicloud:eds/user:User":
                 return new User(name, <any>undefined, { urn })
             default:
@@ -65,4 +70,5 @@ pulumi.runtime.registerResourceModule("alicloud", "eds/image", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/nasFileSystem", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/networkPackage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/simpleOfficeSite", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eds/snapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/user", _module)

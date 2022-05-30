@@ -15,6 +15,7 @@ export * from "./getKubernetesAddonMetadata";
 export * from "./getKubernetesAddons";
 export * from "./getKubernetesClusters";
 export * from "./getKubernetesPermission";
+export * from "./getKubernetesVersion";
 export * from "./getManagedKubernetesClusters";
 export * from "./getRegistryEnterpriseInstances";
 export * from "./getRegistryEnterpriseNamespaces";

@@ -46,6 +46,12 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Output<string> Edition { get; private set; } = null!;
 
         /// <summary>
+        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// </summary>
+        [Output("extraConfiguration")]
+        public Output<Outputs.ServiceMeshExtraConfiguration> ExtraConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// This parameter is used for resource destroy. Default value is `false`.
         /// </summary>
         [Output("force")]
@@ -158,6 +164,12 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? Edition { get; set; }
 
         /// <summary>
+        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// </summary>
+        [Input("extraConfiguration")]
+        public Input<Inputs.ServiceMeshExtraConfigurationArgs>? ExtraConfiguration { get; set; }
+
+        /// <summary>
         /// This parameter is used for resource destroy. Default value is `false`.
         /// </summary>
         [Input("force")]
@@ -223,6 +235,12 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
+
+        /// <summary>
+        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// </summary>
+        [Input("extraConfiguration")]
+        public Input<Inputs.ServiceMeshExtraConfigurationGetArgs>? ExtraConfiguration { get; set; }
 
         /// <summary>
         /// This parameter is used for resource destroy. Default value is `false`.

@@ -64,6 +64,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
+        /// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        /// </summary>
+        [Output("autoRenewDuration")]
+        public Output<int?> AutoRenewDuration { get; private set; } = null!;
+
+        /// <summary>
         /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         /// </summary>
         [Output("autoUseCoupon")]
@@ -128,6 +134,15 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Output("ratio")]
         public Output<int?> Ratio { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to renew a bandwidth packet. automatically or not. Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        /// </summary>
+        [Output("renewalStatus")]
+        public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
         /// The status of the bandwidth plan.
@@ -196,6 +211,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
+        /// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
+
+        /// <summary>
         /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         /// </summary>
         [Input("autoUseCoupon")]
@@ -262,6 +283,15 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? Ratio { get; set; }
 
         /// <summary>
+        /// Whether to renew a bandwidth packet. automatically or not. Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
         /// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         /// </summary>
         [Input("type", required: true)]
@@ -281,6 +311,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
+
+        /// <summary>
+        /// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
 
         /// <summary>
         /// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
@@ -347,6 +383,15 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
+
+        /// <summary>
+        /// Whether to renew a bandwidth packet. automatically or not. Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
         /// The status of the bandwidth plan.

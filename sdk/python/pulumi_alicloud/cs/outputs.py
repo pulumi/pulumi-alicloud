@@ -54,6 +54,8 @@ __all__ = [
     'GetKubernetesClustersClusterMasterNodeResult',
     'GetKubernetesClustersClusterWorkerNodeResult',
     'GetKubernetesPermissionPermissionResult',
+    'GetKubernetesVersionMetadataResult',
+    'GetKubernetesVersionMetadataRuntimeResult',
     'GetManagedKubernetesClustersClusterResult',
     'GetManagedKubernetesClustersClusterConnectionsResult',
     'GetManagedKubernetesClustersClusterLogConfigResult',
@@ -2995,6 +2997,64 @@ class GetKubernetesPermissionPermissionResult(dict):
         The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
         """
         return pulumi.get(self, "role_type")
+
+
+@pulumi.output_type
+class GetKubernetesVersionMetadataResult(dict):
+    def __init__(__self__, *,
+                 runtimes: Sequence['outputs.GetKubernetesVersionMetadataRuntimeResult'],
+                 version: str):
+        """
+        :param Sequence['GetKubernetesVersionMetadataRuntimeArgs'] runtimes: The list of supported runtime.
+        :param str version: The ACK released kubernetes version.
+        """
+        pulumi.set(__self__, "runtimes", runtimes)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def runtimes(self) -> Sequence['outputs.GetKubernetesVersionMetadataRuntimeResult']:
+        """
+        The list of supported runtime.
+        """
+        return pulumi.get(self, "runtimes")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The ACK released kubernetes version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetKubernetesVersionMetadataRuntimeResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 version: str):
+        """
+        :param str name: The runtime name.
+        :param str version: The ACK released kubernetes version.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The runtime name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The ACK released kubernetes version.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

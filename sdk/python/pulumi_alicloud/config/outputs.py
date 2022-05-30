@@ -157,6 +157,7 @@ class Endpoints(dict):
                  smartag: Optional[str] = None,
                  sts: Optional[str] = None,
                  swas: Optional[str] = None,
+                 tag: Optional[str] = None,
                  vod: Optional[str] = None,
                  vpc: Optional[str] = None,
                  vs: Optional[str] = None,
@@ -372,6 +373,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "sts", sts)
         if swas is not None:
             pulumi.set(__self__, "swas", swas)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
         if vod is not None:
             pulumi.set(__self__, "vod", vod)
         if vpc is not None:
@@ -907,6 +910,11 @@ class Endpoints(dict):
     @pulumi.getter
     def swas(self) -> Optional[str]:
         return pulumi.get(self, "swas")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter

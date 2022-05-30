@@ -957,7 +957,7 @@ class Cluster(pulumi.CustomResource):
                 alicloud.emr.ClusterHostGroupArgs(
                     host_group_name="core_group",
                     host_group_type="CORE",
-                    node_count="2",
+                    node_count="3",
                     instance_type=default_instance_types.types[0].id,
                     disk_type=data_disk.types[0].value,
                     disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
@@ -990,6 +990,8 @@ class Cluster(pulumi.CustomResource):
         ### 3. Scale Down
 
         In the case of scaling down a cluster, we need to specified the host group and the instance list.
+
+        > **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
 
         The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
 
@@ -1069,7 +1071,7 @@ class Cluster(pulumi.CustomResource):
                 alicloud.emr.ClusterHostGroupArgs(
                     host_group_name="core_group",
                     host_group_type="CORE",
-                    node_count="2",
+                    node_count="3",
                     instance_type=default_instance_types.types[0].id,
                     disk_type=data_disk.types[0].value,
                     disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
@@ -1420,7 +1422,7 @@ class Cluster(pulumi.CustomResource):
                 alicloud.emr.ClusterHostGroupArgs(
                     host_group_name="core_group",
                     host_group_type="CORE",
-                    node_count="2",
+                    node_count="3",
                     instance_type=default_instance_types.types[0].id,
                     disk_type=data_disk.types[0].value,
                     disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
@@ -1453,6 +1455,8 @@ class Cluster(pulumi.CustomResource):
         ### 3. Scale Down
 
         In the case of scaling down a cluster, we need to specified the host group and the instance list.
+
+        > **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
 
         The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
 
@@ -1532,7 +1536,7 @@ class Cluster(pulumi.CustomResource):
                 alicloud.emr.ClusterHostGroupArgs(
                     host_group_name="core_group",
                     host_group_type="CORE",
-                    node_count="2",
+                    node_count="3",
                     instance_type=default_instance_types.types[0].id,
                     disk_type=data_disk.types[0].value,
                     disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",

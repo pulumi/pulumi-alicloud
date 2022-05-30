@@ -294,6 +294,7 @@ type ProviderEndpoint struct {
 	Smartag             *string `pulumi:"smartag"`
 	Sts                 *string `pulumi:"sts"`
 	Swas                *string `pulumi:"swas"`
+	Tag                 *string `pulumi:"tag"`
 	Vod                 *string `pulumi:"vod"`
 	Vpc                 *string `pulumi:"vpc"`
 	Vs                  *string `pulumi:"vs"`
@@ -418,6 +419,7 @@ type ProviderEndpointArgs struct {
 	Smartag             pulumi.StringPtrInput `pulumi:"smartag"`
 	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
 	Swas                pulumi.StringPtrInput `pulumi:"swas"`
+	Tag                 pulumi.StringPtrInput `pulumi:"tag"`
 	Vod                 pulumi.StringPtrInput `pulumi:"vod"`
 	Vpc                 pulumi.StringPtrInput `pulumi:"vpc"`
 	Vs                  pulumi.StringPtrInput `pulumi:"vs"`
@@ -894,6 +896,10 @@ func (o ProviderEndpointOutput) Sts() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Swas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Swas }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Vod() pulumi.StringPtrOutput {

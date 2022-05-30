@@ -22,6 +22,7 @@ class ClusterArgs:
                  collector_status: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
+                 deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,8 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
+        :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+               > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -80,6 +83,8 @@ class ClusterArgs:
             pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
         if db_node_count is not None:
             pulumi.set(__self__, "db_node_count", db_node_count)
+        if deletion_lock is not None:
+            pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encrypt_new_tables is not None:
@@ -196,6 +201,19 @@ class ClusterArgs:
     @db_node_count.setter
     def db_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "db_node_count", value)
+
+    @property
+    @pulumi.getter(name="deletionLock")
+    def deletion_lock(self) -> Optional[pulumi.Input[int]]:
+        """
+        turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        """
+        return pulumi.get(self, "deletion_lock")
+
+    @deletion_lock.setter
+    def deletion_lock(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deletion_lock", value)
 
     @property
     @pulumi.getter
@@ -392,6 +410,7 @@ class _ClusterState:
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
+                 deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
@@ -419,6 +438,8 @@ class _ClusterState:
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+               > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -456,6 +477,8 @@ class _ClusterState:
             pulumi.set(__self__, "db_type", db_type)
         if db_version is not None:
             pulumi.set(__self__, "db_version", db_version)
+        if deletion_lock is not None:
+            pulumi.set(__self__, "deletion_lock", deletion_lock)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encrypt_new_tables is not None:
@@ -584,6 +607,19 @@ class _ClusterState:
     @db_version.setter
     def db_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_version", value)
+
+    @property
+    @pulumi.getter(name="deletionLock")
+    def deletion_lock(self) -> Optional[pulumi.Input[int]]:
+        """
+        turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        """
+        return pulumi.get(self, "deletion_lock")
+
+    @deletion_lock.setter
+    def deletion_lock(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "deletion_lock", value)
 
     @property
     @pulumi.getter
@@ -781,6 +817,7 @@ class Cluster(pulumi.CustomResource):
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
+                 deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
@@ -868,6 +905,8 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+               > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -977,6 +1016,7 @@ class Cluster(pulumi.CustomResource):
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_type: Optional[pulumi.Input[str]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
+                 deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
@@ -1017,6 +1057,7 @@ class Cluster(pulumi.CustomResource):
             if db_version is None and not opts.urn:
                 raise TypeError("Missing required property 'db_version'")
             __props__.__dict__["db_version"] = db_version
+            __props__.__dict__["deletion_lock"] = deletion_lock
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
             __props__.__dict__["maintain_time"] = maintain_time
@@ -1051,6 +1092,7 @@ class Cluster(pulumi.CustomResource):
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_type: Optional[pulumi.Input[str]] = None,
             db_version: Optional[pulumi.Input[str]] = None,
+            deletion_lock: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encrypt_new_tables: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
@@ -1083,6 +1125,8 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+               > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -1116,6 +1160,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["db_node_count"] = db_node_count
         __props__.__dict__["db_type"] = db_type
         __props__.__dict__["db_version"] = db_version
+        __props__.__dict__["deletion_lock"] = deletion_lock
         __props__.__dict__["description"] = description
         __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
         __props__.__dict__["maintain_time"] = maintain_time
@@ -1198,6 +1243,15 @@ class Cluster(pulumi.CustomResource):
         Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         """
         return pulumi.get(self, "db_version")
+
+    @property
+    @pulumi.getter(name="deletionLock")
+    def deletion_lock(self) -> pulumi.Output[Optional[int]]:
+        """
+        turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        """
+        return pulumi.get(self, "deletion_lock")
 
     @property
     @pulumi.getter

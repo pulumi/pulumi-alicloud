@@ -25,6 +25,7 @@ __all__ = [
     'GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult',
     'GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult',
     'GetSimpleOfficeSitesSiteResult',
+    'GetSnapshotsSnapshotResult',
     'GetUsersUserResult',
 ]
 
@@ -1861,6 +1862,145 @@ class GetSimpleOfficeSitesSiteResult(dict):
         The vswitch ids.
         """
         return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class GetSnapshotsSnapshotResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 desktop_id: str,
+                 id: str,
+                 progress: str,
+                 remain_time: int,
+                 snapshot_id: str,
+                 snapshot_name: str,
+                 snapshot_type: str,
+                 source_disk_size: str,
+                 source_disk_type: str,
+                 status: str):
+        """
+        :param str create_time: The time when the snapshot was created.
+        :param str description: The description of the snapshot.
+        :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.
+        :param str id: The ID of the Snapshot.
+        :param str progress: The progress of creating the snapshot.
+        :param int remain_time: The remaining time that is required to create the snapshot. Unit: seconds.
+        :param str snapshot_id: The ID of the snapshot.
+        :param str snapshot_name: -The name of the snapshot.
+        :param str snapshot_type: The type of the snapshot.
+        :param str source_disk_size: The capacity of the source disk. Unit: GiB.
+        :param str source_disk_type: The type of the source disk.
+        :param str status: The status of the snapshot.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "desktop_id", desktop_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "remain_time", remain_time)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
+        pulumi.set(__self__, "source_disk_size", source_disk_size)
+        pulumi.set(__self__, "source_disk_type", source_disk_type)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the snapshot was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the snapshot.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="desktopId")
+    def desktop_id(self) -> str:
+        """
+        The ID of the cloud desktop to which the snapshot belongs.
+        """
+        return pulumi.get(self, "desktop_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Snapshot.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def progress(self) -> str:
+        """
+        The progress of creating the snapshot.
+        """
+        return pulumi.get(self, "progress")
+
+    @property
+    @pulumi.getter(name="remainTime")
+    def remain_time(self) -> int:
+        """
+        The remaining time that is required to create the snapshot. Unit: seconds.
+        """
+        return pulumi.get(self, "remain_time")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        The ID of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> str:
+        """
+        -The name of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> str:
+        """
+        The type of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_type")
+
+    @property
+    @pulumi.getter(name="sourceDiskSize")
+    def source_disk_size(self) -> str:
+        """
+        The capacity of the source disk. Unit: GiB.
+        """
+        return pulumi.get(self, "source_disk_size")
+
+    @property
+    @pulumi.getter(name="sourceDiskType")
+    def source_disk_type(self) -> str:
+        """
+        The type of the source disk.
+        """
+        return pulumi.get(self, "source_disk_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the snapshot.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

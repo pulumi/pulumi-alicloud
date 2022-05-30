@@ -173,6 +173,7 @@ class ProviderEndpointArgs:
                  smartag: Optional[pulumi.Input[str]] = None,
                  sts: Optional[pulumi.Input[str]] = None,
                  swas: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None,
                  vod: Optional[pulumi.Input[str]] = None,
                  vpc: Optional[pulumi.Input[str]] = None,
                  vs: Optional[pulumi.Input[str]] = None,
@@ -388,6 +389,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "sts", sts)
         if swas is not None:
             pulumi.set(__self__, "swas", swas)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
         if vod is not None:
             pulumi.set(__self__, "vod", vod)
         if vpc is not None:
@@ -1343,6 +1346,15 @@ class ProviderEndpointArgs:
     @swas.setter
     def swas(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "swas", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
     @property
     @pulumi.getter

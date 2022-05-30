@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.Emr
     ///                 {
     ///                     HostGroupName = "core_group",
     ///                     HostGroupType = "CORE",
-    ///                     NodeCount = "2",
+    ///                     NodeCount = "3",
     ///                     InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Types?[0]?.Id),
     ///                     DiskType = dataDisk.Apply(dataDisk =&gt; dataDisk.Types?[0]?.Value),
     ///                     DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
@@ -412,6 +412,8 @@ namespace Pulumi.AliCloud.Emr
     /// ### 3. Scale Down
     /// 
     /// In the case of scaling down a cluster, we need to specified the host group and the instance list.
+    /// 
+    /// &gt; **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
     /// 
     /// The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
     /// 
@@ -551,7 +553,7 @@ namespace Pulumi.AliCloud.Emr
     ///                 {
     ///                     HostGroupName = "core_group",
     ///                     HostGroupType = "CORE",
-    ///                     NodeCount = "2",
+    ///                     NodeCount = "3",
     ///                     InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Types?[0]?.Id),
     ///                     DiskType = dataDisk.Apply(dataDisk =&gt; dataDisk.Types?[0]?.Value),
     ///                     DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;

@@ -6286,6 +6286,218 @@ func (o GetKubernetesPermissionPermissionArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetKubernetesPermissionPermissionOutput)
 }
 
+type GetKubernetesVersionMetadata struct {
+	// The list of supported runtime.
+	Runtimes []GetKubernetesVersionMetadataRuntime `pulumi:"runtimes"`
+	// The ACK released kubernetes version.
+	Version string `pulumi:"version"`
+}
+
+// GetKubernetesVersionMetadataInput is an input type that accepts GetKubernetesVersionMetadataArgs and GetKubernetesVersionMetadataOutput values.
+// You can construct a concrete instance of `GetKubernetesVersionMetadataInput` via:
+//
+//          GetKubernetesVersionMetadataArgs{...}
+type GetKubernetesVersionMetadataInput interface {
+	pulumi.Input
+
+	ToGetKubernetesVersionMetadataOutput() GetKubernetesVersionMetadataOutput
+	ToGetKubernetesVersionMetadataOutputWithContext(context.Context) GetKubernetesVersionMetadataOutput
+}
+
+type GetKubernetesVersionMetadataArgs struct {
+	// The list of supported runtime.
+	Runtimes GetKubernetesVersionMetadataRuntimeArrayInput `pulumi:"runtimes"`
+	// The ACK released kubernetes version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetKubernetesVersionMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesVersionMetadata)(nil)).Elem()
+}
+
+func (i GetKubernetesVersionMetadataArgs) ToGetKubernetesVersionMetadataOutput() GetKubernetesVersionMetadataOutput {
+	return i.ToGetKubernetesVersionMetadataOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesVersionMetadataArgs) ToGetKubernetesVersionMetadataOutputWithContext(ctx context.Context) GetKubernetesVersionMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesVersionMetadataOutput)
+}
+
+// GetKubernetesVersionMetadataArrayInput is an input type that accepts GetKubernetesVersionMetadataArray and GetKubernetesVersionMetadataArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesVersionMetadataArrayInput` via:
+//
+//          GetKubernetesVersionMetadataArray{ GetKubernetesVersionMetadataArgs{...} }
+type GetKubernetesVersionMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesVersionMetadataArrayOutput() GetKubernetesVersionMetadataArrayOutput
+	ToGetKubernetesVersionMetadataArrayOutputWithContext(context.Context) GetKubernetesVersionMetadataArrayOutput
+}
+
+type GetKubernetesVersionMetadataArray []GetKubernetesVersionMetadataInput
+
+func (GetKubernetesVersionMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesVersionMetadata)(nil)).Elem()
+}
+
+func (i GetKubernetesVersionMetadataArray) ToGetKubernetesVersionMetadataArrayOutput() GetKubernetesVersionMetadataArrayOutput {
+	return i.ToGetKubernetesVersionMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesVersionMetadataArray) ToGetKubernetesVersionMetadataArrayOutputWithContext(ctx context.Context) GetKubernetesVersionMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesVersionMetadataArrayOutput)
+}
+
+type GetKubernetesVersionMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesVersionMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesVersionMetadata)(nil)).Elem()
+}
+
+func (o GetKubernetesVersionMetadataOutput) ToGetKubernetesVersionMetadataOutput() GetKubernetesVersionMetadataOutput {
+	return o
+}
+
+func (o GetKubernetesVersionMetadataOutput) ToGetKubernetesVersionMetadataOutputWithContext(ctx context.Context) GetKubernetesVersionMetadataOutput {
+	return o
+}
+
+// The list of supported runtime.
+func (o GetKubernetesVersionMetadataOutput) Runtimes() GetKubernetesVersionMetadataRuntimeArrayOutput {
+	return o.ApplyT(func(v GetKubernetesVersionMetadata) []GetKubernetesVersionMetadataRuntime { return v.Runtimes }).(GetKubernetesVersionMetadataRuntimeArrayOutput)
+}
+
+// The ACK released kubernetes version.
+func (o GetKubernetesVersionMetadataOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesVersionMetadata) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetKubernetesVersionMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesVersionMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesVersionMetadata)(nil)).Elem()
+}
+
+func (o GetKubernetesVersionMetadataArrayOutput) ToGetKubernetesVersionMetadataArrayOutput() GetKubernetesVersionMetadataArrayOutput {
+	return o
+}
+
+func (o GetKubernetesVersionMetadataArrayOutput) ToGetKubernetesVersionMetadataArrayOutputWithContext(ctx context.Context) GetKubernetesVersionMetadataArrayOutput {
+	return o
+}
+
+func (o GetKubernetesVersionMetadataArrayOutput) Index(i pulumi.IntInput) GetKubernetesVersionMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesVersionMetadata {
+		return vs[0].([]GetKubernetesVersionMetadata)[vs[1].(int)]
+	}).(GetKubernetesVersionMetadataOutput)
+}
+
+type GetKubernetesVersionMetadataRuntime struct {
+	// The runtime name.
+	Name string `pulumi:"name"`
+	// The ACK released kubernetes version.
+	Version string `pulumi:"version"`
+}
+
+// GetKubernetesVersionMetadataRuntimeInput is an input type that accepts GetKubernetesVersionMetadataRuntimeArgs and GetKubernetesVersionMetadataRuntimeOutput values.
+// You can construct a concrete instance of `GetKubernetesVersionMetadataRuntimeInput` via:
+//
+//          GetKubernetesVersionMetadataRuntimeArgs{...}
+type GetKubernetesVersionMetadataRuntimeInput interface {
+	pulumi.Input
+
+	ToGetKubernetesVersionMetadataRuntimeOutput() GetKubernetesVersionMetadataRuntimeOutput
+	ToGetKubernetesVersionMetadataRuntimeOutputWithContext(context.Context) GetKubernetesVersionMetadataRuntimeOutput
+}
+
+type GetKubernetesVersionMetadataRuntimeArgs struct {
+	// The runtime name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ACK released kubernetes version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetKubernetesVersionMetadataRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesVersionMetadataRuntime)(nil)).Elem()
+}
+
+func (i GetKubernetesVersionMetadataRuntimeArgs) ToGetKubernetesVersionMetadataRuntimeOutput() GetKubernetesVersionMetadataRuntimeOutput {
+	return i.ToGetKubernetesVersionMetadataRuntimeOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesVersionMetadataRuntimeArgs) ToGetKubernetesVersionMetadataRuntimeOutputWithContext(ctx context.Context) GetKubernetesVersionMetadataRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesVersionMetadataRuntimeOutput)
+}
+
+// GetKubernetesVersionMetadataRuntimeArrayInput is an input type that accepts GetKubernetesVersionMetadataRuntimeArray and GetKubernetesVersionMetadataRuntimeArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesVersionMetadataRuntimeArrayInput` via:
+//
+//          GetKubernetesVersionMetadataRuntimeArray{ GetKubernetesVersionMetadataRuntimeArgs{...} }
+type GetKubernetesVersionMetadataRuntimeArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesVersionMetadataRuntimeArrayOutput() GetKubernetesVersionMetadataRuntimeArrayOutput
+	ToGetKubernetesVersionMetadataRuntimeArrayOutputWithContext(context.Context) GetKubernetesVersionMetadataRuntimeArrayOutput
+}
+
+type GetKubernetesVersionMetadataRuntimeArray []GetKubernetesVersionMetadataRuntimeInput
+
+func (GetKubernetesVersionMetadataRuntimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesVersionMetadataRuntime)(nil)).Elem()
+}
+
+func (i GetKubernetesVersionMetadataRuntimeArray) ToGetKubernetesVersionMetadataRuntimeArrayOutput() GetKubernetesVersionMetadataRuntimeArrayOutput {
+	return i.ToGetKubernetesVersionMetadataRuntimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesVersionMetadataRuntimeArray) ToGetKubernetesVersionMetadataRuntimeArrayOutputWithContext(ctx context.Context) GetKubernetesVersionMetadataRuntimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesVersionMetadataRuntimeArrayOutput)
+}
+
+type GetKubernetesVersionMetadataRuntimeOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesVersionMetadataRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesVersionMetadataRuntime)(nil)).Elem()
+}
+
+func (o GetKubernetesVersionMetadataRuntimeOutput) ToGetKubernetesVersionMetadataRuntimeOutput() GetKubernetesVersionMetadataRuntimeOutput {
+	return o
+}
+
+func (o GetKubernetesVersionMetadataRuntimeOutput) ToGetKubernetesVersionMetadataRuntimeOutputWithContext(ctx context.Context) GetKubernetesVersionMetadataRuntimeOutput {
+	return o
+}
+
+// The runtime name.
+func (o GetKubernetesVersionMetadataRuntimeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesVersionMetadataRuntime) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ACK released kubernetes version.
+func (o GetKubernetesVersionMetadataRuntimeOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesVersionMetadataRuntime) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetKubernetesVersionMetadataRuntimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesVersionMetadataRuntimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesVersionMetadataRuntime)(nil)).Elem()
+}
+
+func (o GetKubernetesVersionMetadataRuntimeArrayOutput) ToGetKubernetesVersionMetadataRuntimeArrayOutput() GetKubernetesVersionMetadataRuntimeArrayOutput {
+	return o
+}
+
+func (o GetKubernetesVersionMetadataRuntimeArrayOutput) ToGetKubernetesVersionMetadataRuntimeArrayOutputWithContext(ctx context.Context) GetKubernetesVersionMetadataRuntimeArrayOutput {
+	return o
+}
+
+func (o GetKubernetesVersionMetadataRuntimeArrayOutput) Index(i pulumi.IntInput) GetKubernetesVersionMetadataRuntimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesVersionMetadataRuntime {
+		return vs[0].([]GetKubernetesVersionMetadataRuntime)[vs[1].(int)]
+	}).(GetKubernetesVersionMetadataRuntimeOutput)
+}
+
 type GetManagedKubernetesClustersCluster struct {
 	// The ID of availability zone.
 	AvailabilityZone   string `pulumi:"availabilityZone"`
@@ -8072,6 +8284,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetKubernetesClustersClusterWorkerNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesPermissionPermissionInput)(nil)).Elem(), GetKubernetesPermissionPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesPermissionPermissionArrayInput)(nil)).Elem(), GetKubernetesPermissionPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesVersionMetadataInput)(nil)).Elem(), GetKubernetesVersionMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesVersionMetadataArrayInput)(nil)).Elem(), GetKubernetesVersionMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesVersionMetadataRuntimeInput)(nil)).Elem(), GetKubernetesVersionMetadataRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesVersionMetadataRuntimeArrayInput)(nil)).Elem(), GetKubernetesVersionMetadataRuntimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterInput)(nil)).Elem(), GetManagedKubernetesClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetManagedKubernetesClustersClusterConnectionsArgs{})
@@ -8178,6 +8394,10 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesPermissionPermissionOutput{})
 	pulumi.RegisterOutputType(GetKubernetesPermissionPermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesVersionMetadataOutput{})
+	pulumi.RegisterOutputType(GetKubernetesVersionMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesVersionMetadataRuntimeOutput{})
+	pulumi.RegisterOutputType(GetKubernetesVersionMetadataRuntimeArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterConnectionsOutput{})

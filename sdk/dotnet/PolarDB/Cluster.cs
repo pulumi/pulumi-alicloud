@@ -142,6 +142,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbVersion { get; private set; } = null!;
 
         /// <summary>
+        /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// </summary>
+        [Output("deletionLock")]
+        public Output<int?> DeletionLock { get; private set; } = null!;
+
+        /// <summary>
         /// The description of cluster.
         /// </summary>
         [Output("description")]
@@ -331,6 +338,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbVersion { get; set; } = null!;
 
         /// <summary>
+        /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// </summary>
+        [Input("deletionLock")]
+        public Input<int>? DeletionLock { get; set; }
+
+        /// <summary>
         /// The description of cluster.
         /// </summary>
         [Input("description")]
@@ -509,6 +523,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("dbVersion")]
         public Input<string>? DbVersion { get; set; }
+
+        /// <summary>
+        /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// </summary>
+        [Input("deletionLock")]
+        public Input<int>? DeletionLock { get; set; }
 
         /// <summary>
         /// The description of cluster.

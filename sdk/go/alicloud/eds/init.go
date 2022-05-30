@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkPackage{}
 	case "alicloud:eds/simpleOfficeSite:SimpleOfficeSite":
 		r = &SimpleOfficeSite{}
+	case "alicloud:eds/snapshot:Snapshot":
+		r = &Snapshot{}
 	case "alicloud:eds/user:User":
 		r = &User{}
 	default:
@@ -83,6 +85,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eds/simpleOfficeSite",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eds/snapshot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

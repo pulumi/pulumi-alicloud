@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
     public sealed class ClusterHostGroupGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
+        /// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -23,6 +23,12 @@ namespace Pulumi.AliCloud.Emr.Inputs
         /// </summary>
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
+
+        /// <summary>
+        /// Graceful decommission timeout, unit: seconds.
+        /// </summary>
+        [Input("decommissionTimeout")]
+        public Input<int>? DecommissionTimeout { get; set; }
 
         /// <summary>
         /// Data disk capacity.
@@ -41,6 +47,12 @@ namespace Pulumi.AliCloud.Emr.Inputs
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
+
+        /// <summary>
+        /// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+        /// </summary>
+        [Input("enableGracefulDecommission")]
+        public Input<bool>? EnableGracefulDecommission { get; set; }
 
         [Input("gpuDriver")]
         public Input<string>? GpuDriver { get; set; }

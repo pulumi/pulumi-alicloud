@@ -80,12 +80,16 @@ class ClusterHostGroup(dict):
             suggest = "auto_renew"
         elif key == "chargeType":
             suggest = "charge_type"
+        elif key == "decommissionTimeout":
+            suggest = "decommission_timeout"
         elif key == "diskCapacity":
             suggest = "disk_capacity"
         elif key == "diskCount":
             suggest = "disk_count"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "enableGracefulDecommission":
+            suggest = "enable_graceful_decommission"
         elif key == "gpuDriver":
             suggest = "gpu_driver"
         elif key == "hostGroupName":
@@ -117,9 +121,11 @@ class ClusterHostGroup(dict):
     def __init__(__self__, *,
                  auto_renew: Optional[bool] = None,
                  charge_type: Optional[str] = None,
+                 decommission_timeout: Optional[int] = None,
                  disk_capacity: Optional[str] = None,
                  disk_count: Optional[str] = None,
                  disk_type: Optional[str] = None,
+                 enable_graceful_decommission: Optional[bool] = None,
                  gpu_driver: Optional[str] = None,
                  host_group_name: Optional[str] = None,
                  host_group_type: Optional[str] = None,
@@ -130,11 +136,13 @@ class ClusterHostGroup(dict):
                  sys_disk_capacity: Optional[str] = None,
                  sys_disk_type: Optional[str] = None):
         """
-        :param bool auto_renew: Auto renew for prepaid, true of false. Default is false.
+        :param bool auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param str charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        :param int decommission_timeout: Graceful decommission timeout, unit: seconds.
         :param str disk_capacity: Data disk capacity.
         :param str disk_count: Data disk count.
         :param str disk_type: Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
+        :param bool enable_graceful_decommission: Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
         :param str host_group_name: host group name.
         :param str host_group_type: host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
         :param str instance_list: Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
@@ -148,12 +156,16 @@ class ClusterHostGroup(dict):
             pulumi.set(__self__, "auto_renew", auto_renew)
         if charge_type is not None:
             pulumi.set(__self__, "charge_type", charge_type)
+        if decommission_timeout is not None:
+            pulumi.set(__self__, "decommission_timeout", decommission_timeout)
         if disk_capacity is not None:
             pulumi.set(__self__, "disk_capacity", disk_capacity)
         if disk_count is not None:
             pulumi.set(__self__, "disk_count", disk_count)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if enable_graceful_decommission is not None:
+            pulumi.set(__self__, "enable_graceful_decommission", enable_graceful_decommission)
         if gpu_driver is not None:
             pulumi.set(__self__, "gpu_driver", gpu_driver)
         if host_group_name is not None:
@@ -177,7 +189,7 @@ class ClusterHostGroup(dict):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[bool]:
         """
-        Auto renew for prepaid, true of false. Default is false.
+        Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -188,6 +200,14 @@ class ClusterHostGroup(dict):
         Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         """
         return pulumi.get(self, "charge_type")
+
+    @property
+    @pulumi.getter(name="decommissionTimeout")
+    def decommission_timeout(self) -> Optional[int]:
+        """
+        Graceful decommission timeout, unit: seconds.
+        """
+        return pulumi.get(self, "decommission_timeout")
 
     @property
     @pulumi.getter(name="diskCapacity")
@@ -212,6 +232,14 @@ class ClusterHostGroup(dict):
         Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="enableGracefulDecommission")
+    def enable_graceful_decommission(self) -> Optional[bool]:
+        """
+        Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+        """
+        return pulumi.get(self, "enable_graceful_decommission")
 
     @property
     @pulumi.getter(name="gpuDriver")

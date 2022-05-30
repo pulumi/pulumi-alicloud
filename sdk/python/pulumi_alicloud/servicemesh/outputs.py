@@ -10,6 +10,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ServiceMeshExtraConfiguration',
     'ServiceMeshLoadBalancer',
     'ServiceMeshMeshConfig',
     'ServiceMeshMeshConfigAccessLog',
@@ -36,6 +37,42 @@ __all__ = [
     'GetServiceMeshesMeshNetworkResult',
     'GetVersionsVersionResult',
 ]
+
+@pulumi.output_type
+class ServiceMeshExtraConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crAggregationEnabled":
+            suggest = "cr_aggregation_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMeshExtraConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMeshExtraConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMeshExtraConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cr_aggregation_enabled: Optional[bool] = None):
+        """
+        :param bool cr_aggregation_enabled: Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+        """
+        if cr_aggregation_enabled is not None:
+            pulumi.set(__self__, "cr_aggregation_enabled", cr_aggregation_enabled)
+
+    @property
+    @pulumi.getter(name="crAggregationEnabled")
+    def cr_aggregation_enabled(self) -> Optional[bool]:
+        """
+        Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+        """
+        return pulumi.get(self, "cr_aggregation_enabled")
+
 
 @pulumi.output_type
 class ServiceMeshLoadBalancer(dict):

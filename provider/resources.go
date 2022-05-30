@@ -129,6 +129,7 @@ const (
 	sddpMod                = "Sddp"
 	securityCenterMod      = "SecurityCenter"
 	slbMod                 = "Slb"
+	tagMod                 = "Tag"
 	tsdbMod                = "Tsdb"
 	vpcMod                 = "Vpc"
 	vsMod                  = "VideoSurveillance"
@@ -670,6 +671,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecd_user":               {Tok: resource(edsMod, "User")},
 			"alicloud_ecd_image":              {Tok: resource(edsMod, "Image")},
 			"alicloud_ecd_command":            {Tok: resource(edsMod, "Command")},
+			"alicloud_ecd_snapshot":           {Tok: resource(edsMod, "Snapshot")},
 
 			// Ehpc
 			"alicloud_ehpc_job_template": {Tok: resource(ehpcMod, "JobTemplate")},
@@ -1423,6 +1425,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cs_kubernetes_permissions":         {Tok: dataSource(csMod, "getKubernetesPermission")},
 			"alicloud_cs_kubernetes_addons":              {Tok: dataSource(csMod, "getKubernetesAddons")},
 			"alicloud_cs_kubernetes_addon_metadata":      {Tok: dataSource(csMod, "getKubernetesAddonMetadata")},
+			"alicloud_cs_kubernetes_version":             {Tok: dataSource(csMod, "getKubernetesVersion")},
 
 			// Database Filesystem
 			"alicloud_dbfs_instances": {Tok: dataSource(databaseFilesystemMod, "getInstances")},
@@ -1568,6 +1571,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecd_users":               {Tok: dataSource(edsMod, "getUsers")},
 			"alicloud_ecd_images":              {Tok: dataSource(edsMod, "getImages")},
 			"alicloud_ecd_commands":            {Tok: dataSource(edsMod, "getCommands")},
+			"alicloud_ecd_snapshots":           {Tok: dataSource(edsMod, "getSnapshots")},
 
 			// Ehpc
 			"alicloud_ehpc_job_templates": {Tok: dataSource(ehpcMod, "getJobTemplates")},
@@ -1943,7 +1947,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_slb_load_balancers":             {Tok: dataSource(slbMod, "getApplicationLoadBalancers")},
 			"alicloud_slb_tls_cipher_policies":        {Tok: dataSource(slbMod, "getTlsCipherPolicies")},
 
-			//
+			// Tag
+			"alicloud_tag_meta_tags": {Tok: dataSource(tagMod, "getMetaTags")},
+
+			// tsdb
 			"alicloud_tsdb_instances": {Tok: dataSource(tsdbMod, "getInstances")},
 			"alicloud_tsdb_zones":     {Tok: dataSource(tsdbMod, "getZones")},
 

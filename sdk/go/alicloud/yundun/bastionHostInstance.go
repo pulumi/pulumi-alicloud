@@ -14,14 +14,16 @@ import (
 type BastionHostInstance struct {
 	pulumi.CustomResourceState
 
-	Description        pulumi.StringOutput      `pulumi:"description"`
-	EnablePublicAccess pulumi.BoolOutput        `pulumi:"enablePublicAccess"`
-	LicenseCode        pulumi.StringOutput      `pulumi:"licenseCode"`
-	Period             pulumi.IntPtrOutput      `pulumi:"period"`
-	ResourceGroupId    pulumi.StringPtrOutput   `pulumi:"resourceGroupId"`
-	SecurityGroupIds   pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	Tags               pulumi.MapOutput         `pulumi:"tags"`
-	VswitchId          pulumi.StringOutput      `pulumi:"vswitchId"`
+	AdAuthServers      BastionHostInstanceAdAuthServerArrayOutput   `pulumi:"adAuthServers"`
+	Description        pulumi.StringOutput                          `pulumi:"description"`
+	EnablePublicAccess pulumi.BoolOutput                            `pulumi:"enablePublicAccess"`
+	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayOutput `pulumi:"ldapAuthServers"`
+	LicenseCode        pulumi.StringOutput                          `pulumi:"licenseCode"`
+	Period             pulumi.IntPtrOutput                          `pulumi:"period"`
+	ResourceGroupId    pulumi.StringPtrOutput                       `pulumi:"resourceGroupId"`
+	SecurityGroupIds   pulumi.StringArrayOutput                     `pulumi:"securityGroupIds"`
+	Tags               pulumi.MapOutput                             `pulumi:"tags"`
+	VswitchId          pulumi.StringOutput                          `pulumi:"vswitchId"`
 }
 
 // NewBastionHostInstance registers a new resource with the given unique name, arguments, and options.
@@ -65,19 +67,23 @@ func GetBastionHostInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BastionHostInstance resources.
 type bastionHostInstanceState struct {
-	Description        *string                `pulumi:"description"`
-	EnablePublicAccess *bool                  `pulumi:"enablePublicAccess"`
-	LicenseCode        *string                `pulumi:"licenseCode"`
-	Period             *int                   `pulumi:"period"`
-	ResourceGroupId    *string                `pulumi:"resourceGroupId"`
-	SecurityGroupIds   []string               `pulumi:"securityGroupIds"`
-	Tags               map[string]interface{} `pulumi:"tags"`
-	VswitchId          *string                `pulumi:"vswitchId"`
+	AdAuthServers      []BastionHostInstanceAdAuthServer   `pulumi:"adAuthServers"`
+	Description        *string                             `pulumi:"description"`
+	EnablePublicAccess *bool                               `pulumi:"enablePublicAccess"`
+	LdapAuthServers    []BastionHostInstanceLdapAuthServer `pulumi:"ldapAuthServers"`
+	LicenseCode        *string                             `pulumi:"licenseCode"`
+	Period             *int                                `pulumi:"period"`
+	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
+	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
+	Tags               map[string]interface{}              `pulumi:"tags"`
+	VswitchId          *string                             `pulumi:"vswitchId"`
 }
 
 type BastionHostInstanceState struct {
+	AdAuthServers      BastionHostInstanceAdAuthServerArrayInput
 	Description        pulumi.StringPtrInput
 	EnablePublicAccess pulumi.BoolPtrInput
+	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayInput
 	LicenseCode        pulumi.StringPtrInput
 	Period             pulumi.IntPtrInput
 	ResourceGroupId    pulumi.StringPtrInput
@@ -91,20 +97,24 @@ func (BastionHostInstanceState) ElementType() reflect.Type {
 }
 
 type bastionHostInstanceArgs struct {
-	Description        string                 `pulumi:"description"`
-	EnablePublicAccess *bool                  `pulumi:"enablePublicAccess"`
-	LicenseCode        string                 `pulumi:"licenseCode"`
-	Period             *int                   `pulumi:"period"`
-	ResourceGroupId    *string                `pulumi:"resourceGroupId"`
-	SecurityGroupIds   []string               `pulumi:"securityGroupIds"`
-	Tags               map[string]interface{} `pulumi:"tags"`
-	VswitchId          string                 `pulumi:"vswitchId"`
+	AdAuthServers      []BastionHostInstanceAdAuthServer   `pulumi:"adAuthServers"`
+	Description        string                              `pulumi:"description"`
+	EnablePublicAccess *bool                               `pulumi:"enablePublicAccess"`
+	LdapAuthServers    []BastionHostInstanceLdapAuthServer `pulumi:"ldapAuthServers"`
+	LicenseCode        string                              `pulumi:"licenseCode"`
+	Period             *int                                `pulumi:"period"`
+	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
+	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
+	Tags               map[string]interface{}              `pulumi:"tags"`
+	VswitchId          string                              `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a BastionHostInstance resource.
 type BastionHostInstanceArgs struct {
+	AdAuthServers      BastionHostInstanceAdAuthServerArrayInput
 	Description        pulumi.StringInput
 	EnablePublicAccess pulumi.BoolPtrInput
+	LdapAuthServers    BastionHostInstanceLdapAuthServerArrayInput
 	LicenseCode        pulumi.StringInput
 	Period             pulumi.IntPtrInput
 	ResourceGroupId    pulumi.StringPtrInput

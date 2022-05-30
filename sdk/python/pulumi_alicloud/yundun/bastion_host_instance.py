@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BastionHostInstanceArgs', 'BastionHostInstance']
 
@@ -17,7 +19,9 @@ class BastionHostInstanceArgs:
                  license_code: pulumi.Input[str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  vswitch_id: pulumi.Input[str],
+                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
+                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -28,8 +32,12 @@ class BastionHostInstanceArgs:
         pulumi.set(__self__, "license_code", license_code)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if ad_auth_servers is not None:
+            pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
         if enable_public_access is not None:
             pulumi.set(__self__, "enable_public_access", enable_public_access)
+        if ldap_auth_servers is not None:
+            pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
@@ -74,6 +82,15 @@ class BastionHostInstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="adAuthServers")
+    def ad_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]:
+        return pulumi.get(self, "ad_auth_servers")
+
+    @ad_auth_servers.setter
+    def ad_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]):
+        pulumi.set(self, "ad_auth_servers", value)
+
+    @property
     @pulumi.getter(name="enablePublicAccess")
     def enable_public_access(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "enable_public_access")
@@ -81,6 +98,15 @@ class BastionHostInstanceArgs:
     @enable_public_access.setter
     def enable_public_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_public_access", value)
+
+    @property
+    @pulumi.getter(name="ldapAuthServers")
+    def ldap_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]:
+        return pulumi.get(self, "ldap_auth_servers")
+
+    @ldap_auth_servers.setter
+    def ldap_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]):
+        pulumi.set(self, "ldap_auth_servers", value)
 
     @property
     @pulumi.getter
@@ -113,8 +139,10 @@ class BastionHostInstanceArgs:
 @pulumi.input_type
 class _BastionHostInstanceState:
     def __init__(__self__, *,
+                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
+                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -124,10 +152,14 @@ class _BastionHostInstanceState:
         """
         Input properties used for looking up and filtering BastionHostInstance resources.
         """
+        if ad_auth_servers is not None:
+            pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_public_access is not None:
             pulumi.set(__self__, "enable_public_access", enable_public_access)
+        if ldap_auth_servers is not None:
+            pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if license_code is not None:
             pulumi.set(__self__, "license_code", license_code)
         if period is not None:
@@ -140,6 +172,15 @@ class _BastionHostInstanceState:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="adAuthServers")
+    def ad_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]:
+        return pulumi.get(self, "ad_auth_servers")
+
+    @ad_auth_servers.setter
+    def ad_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]):
+        pulumi.set(self, "ad_auth_servers", value)
 
     @property
     @pulumi.getter
@@ -158,6 +199,15 @@ class _BastionHostInstanceState:
     @enable_public_access.setter
     def enable_public_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_public_access", value)
+
+    @property
+    @pulumi.getter(name="ldapAuthServers")
+    def ldap_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]:
+        return pulumi.get(self, "ldap_auth_servers")
+
+    @ldap_auth_servers.setter
+    def ldap_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]):
+        pulumi.set(self, "ldap_auth_servers", value)
 
     @property
     @pulumi.getter(name="licenseCode")
@@ -219,8 +269,10 @@ class BastionHostInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceAdAuthServerArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
+                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -256,8 +308,10 @@ class BastionHostInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceAdAuthServerArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
+                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -276,10 +330,12 @@ class BastionHostInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BastionHostInstanceArgs.__new__(BastionHostInstanceArgs)
 
+            __props__.__dict__["ad_auth_servers"] = ad_auth_servers
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_public_access"] = enable_public_access
+            __props__.__dict__["ldap_auth_servers"] = ldap_auth_servers
             if license_code is None and not opts.urn:
                 raise TypeError("Missing required property 'license_code'")
             __props__.__dict__["license_code"] = license_code
@@ -302,8 +358,10 @@ class BastionHostInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceAdAuthServerArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_public_access: Optional[pulumi.Input[bool]] = None,
+            ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BastionHostInstanceLdapAuthServerArgs']]]]] = None,
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -322,8 +380,10 @@ class BastionHostInstance(pulumi.CustomResource):
 
         __props__ = _BastionHostInstanceState.__new__(_BastionHostInstanceState)
 
+        __props__.__dict__["ad_auth_servers"] = ad_auth_servers
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_public_access"] = enable_public_access
+        __props__.__dict__["ldap_auth_servers"] = ldap_auth_servers
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -331,6 +391,11 @@ class BastionHostInstance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return BastionHostInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="adAuthServers")
+    def ad_auth_servers(self) -> pulumi.Output[Sequence['outputs.BastionHostInstanceAdAuthServer']]:
+        return pulumi.get(self, "ad_auth_servers")
 
     @property
     @pulumi.getter
@@ -341,6 +406,11 @@ class BastionHostInstance(pulumi.CustomResource):
     @pulumi.getter(name="enablePublicAccess")
     def enable_public_access(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "enable_public_access")
+
+    @property
+    @pulumi.getter(name="ldapAuthServers")
+    def ldap_auth_servers(self) -> pulumi.Output[Sequence['outputs.BastionHostInstanceLdapAuthServer']]:
+        return pulumi.get(self, "ldap_auth_servers")
 
     @property
     @pulumi.getter(name="licenseCode")

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -42,6 +43,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * The AD auth server of the Instance. See the following `Block adAuthServer`.
+     */
+    public readonly adAuthServers!: pulumi.Output<outputs.bastionhost.InstanceAdAuthServer[]>;
+    /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     public readonly description!: pulumi.Output<string>;
@@ -49,6 +54,10 @@ export class Instance extends pulumi.CustomResource {
      * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
      */
     public readonly enablePublicAccess!: pulumi.Output<boolean>;
+    /**
+     * The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+     */
+    public readonly ldapAuthServers!: pulumi.Output<outputs.bastionhost.InstanceLdapAuthServer[]>;
     /**
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
@@ -81,8 +90,10 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["adAuthServers"] = state ? state.adAuthServers : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enablePublicAccess"] = state ? state.enablePublicAccess : undefined;
+            resourceInputs["ldapAuthServers"] = state ? state.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = state ? state.licenseCode : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -103,8 +114,10 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["adAuthServers"] = args ? args.adAuthServers : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enablePublicAccess"] = args ? args.enablePublicAccess : undefined;
+            resourceInputs["ldapAuthServers"] = args ? args.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = args ? args.licenseCode : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -122,6 +135,10 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
+     * The AD auth server of the Instance. See the following `Block adAuthServer`.
+     */
+    adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
+    /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     description?: pulumi.Input<string>;
@@ -129,6 +146,10 @@ export interface InstanceState {
      * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
      */
     enablePublicAccess?: pulumi.Input<boolean>;
+    /**
+     * The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+     */
+    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceLdapAuthServer>[]>;
     /**
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
@@ -154,6 +175,10 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
+     * The AD auth server of the Instance. See the following `Block adAuthServer`.
+     */
+    adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
+    /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     description: pulumi.Input<string>;
@@ -161,6 +186,10 @@ export interface InstanceArgs {
      * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
      */
     enablePublicAccess?: pulumi.Input<boolean>;
+    /**
+     * The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+     */
+    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceLdapAuthServer>[]>;
     /**
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */

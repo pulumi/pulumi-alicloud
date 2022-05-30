@@ -10,6 +10,143 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ServiceMeshExtraConfiguration struct {
+	// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+	CrAggregationEnabled *bool `pulumi:"crAggregationEnabled"`
+}
+
+// ServiceMeshExtraConfigurationInput is an input type that accepts ServiceMeshExtraConfigurationArgs and ServiceMeshExtraConfigurationOutput values.
+// You can construct a concrete instance of `ServiceMeshExtraConfigurationInput` via:
+//
+//          ServiceMeshExtraConfigurationArgs{...}
+type ServiceMeshExtraConfigurationInput interface {
+	pulumi.Input
+
+	ToServiceMeshExtraConfigurationOutput() ServiceMeshExtraConfigurationOutput
+	ToServiceMeshExtraConfigurationOutputWithContext(context.Context) ServiceMeshExtraConfigurationOutput
+}
+
+type ServiceMeshExtraConfigurationArgs struct {
+	// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+	CrAggregationEnabled pulumi.BoolPtrInput `pulumi:"crAggregationEnabled"`
+}
+
+func (ServiceMeshExtraConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshExtraConfiguration)(nil)).Elem()
+}
+
+func (i ServiceMeshExtraConfigurationArgs) ToServiceMeshExtraConfigurationOutput() ServiceMeshExtraConfigurationOutput {
+	return i.ToServiceMeshExtraConfigurationOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshExtraConfigurationArgs) ToServiceMeshExtraConfigurationOutputWithContext(ctx context.Context) ServiceMeshExtraConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshExtraConfigurationOutput)
+}
+
+func (i ServiceMeshExtraConfigurationArgs) ToServiceMeshExtraConfigurationPtrOutput() ServiceMeshExtraConfigurationPtrOutput {
+	return i.ToServiceMeshExtraConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshExtraConfigurationArgs) ToServiceMeshExtraConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshExtraConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshExtraConfigurationOutput).ToServiceMeshExtraConfigurationPtrOutputWithContext(ctx)
+}
+
+// ServiceMeshExtraConfigurationPtrInput is an input type that accepts ServiceMeshExtraConfigurationArgs, ServiceMeshExtraConfigurationPtr and ServiceMeshExtraConfigurationPtrOutput values.
+// You can construct a concrete instance of `ServiceMeshExtraConfigurationPtrInput` via:
+//
+//          ServiceMeshExtraConfigurationArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceMeshExtraConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshExtraConfigurationPtrOutput() ServiceMeshExtraConfigurationPtrOutput
+	ToServiceMeshExtraConfigurationPtrOutputWithContext(context.Context) ServiceMeshExtraConfigurationPtrOutput
+}
+
+type serviceMeshExtraConfigurationPtrType ServiceMeshExtraConfigurationArgs
+
+func ServiceMeshExtraConfigurationPtr(v *ServiceMeshExtraConfigurationArgs) ServiceMeshExtraConfigurationPtrInput {
+	return (*serviceMeshExtraConfigurationPtrType)(v)
+}
+
+func (*serviceMeshExtraConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshExtraConfiguration)(nil)).Elem()
+}
+
+func (i *serviceMeshExtraConfigurationPtrType) ToServiceMeshExtraConfigurationPtrOutput() ServiceMeshExtraConfigurationPtrOutput {
+	return i.ToServiceMeshExtraConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMeshExtraConfigurationPtrType) ToServiceMeshExtraConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshExtraConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshExtraConfigurationPtrOutput)
+}
+
+type ServiceMeshExtraConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshExtraConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshExtraConfiguration)(nil)).Elem()
+}
+
+func (o ServiceMeshExtraConfigurationOutput) ToServiceMeshExtraConfigurationOutput() ServiceMeshExtraConfigurationOutput {
+	return o
+}
+
+func (o ServiceMeshExtraConfigurationOutput) ToServiceMeshExtraConfigurationOutputWithContext(ctx context.Context) ServiceMeshExtraConfigurationOutput {
+	return o
+}
+
+func (o ServiceMeshExtraConfigurationOutput) ToServiceMeshExtraConfigurationPtrOutput() ServiceMeshExtraConfigurationPtrOutput {
+	return o.ToServiceMeshExtraConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshExtraConfigurationOutput) ToServiceMeshExtraConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshExtraConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshExtraConfiguration) *ServiceMeshExtraConfiguration {
+		return &v
+	}).(ServiceMeshExtraConfigurationPtrOutput)
+}
+
+// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+func (o ServiceMeshExtraConfigurationOutput) CrAggregationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceMeshExtraConfiguration) *bool { return v.CrAggregationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceMeshExtraConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshExtraConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshExtraConfiguration)(nil)).Elem()
+}
+
+func (o ServiceMeshExtraConfigurationPtrOutput) ToServiceMeshExtraConfigurationPtrOutput() ServiceMeshExtraConfigurationPtrOutput {
+	return o
+}
+
+func (o ServiceMeshExtraConfigurationPtrOutput) ToServiceMeshExtraConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshExtraConfigurationPtrOutput {
+	return o
+}
+
+func (o ServiceMeshExtraConfigurationPtrOutput) Elem() ServiceMeshExtraConfigurationOutput {
+	return o.ApplyT(func(v *ServiceMeshExtraConfiguration) ServiceMeshExtraConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshExtraConfiguration
+		return ret
+	}).(ServiceMeshExtraConfigurationOutput)
+}
+
+// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+func (o ServiceMeshExtraConfigurationPtrOutput) CrAggregationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshExtraConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CrAggregationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ServiceMeshLoadBalancer struct {
 	ApiServerLoadbalancerId *string `pulumi:"apiServerLoadbalancerId"`
 	// Whether to use the IP address of a public network exposed the API Server.
@@ -3910,6 +4047,8 @@ func (o GetVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetVersionsVersi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshExtraConfigurationInput)(nil)).Elem(), ServiceMeshExtraConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshExtraConfigurationPtrInput)(nil)).Elem(), ServiceMeshExtraConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshLoadBalancerInput)(nil)).Elem(), ServiceMeshLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshLoadBalancerPtrInput)(nil)).Elem(), ServiceMeshLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigInput)(nil)).Elem(), ServiceMeshMeshConfigArgs{})
@@ -3960,6 +4099,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshNetworkArrayInput)(nil)).Elem(), GetServiceMeshesMeshNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionInput)(nil)).Elem(), GetVersionsVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionArrayInput)(nil)).Elem(), GetVersionsVersionArray{})
+	pulumi.RegisterOutputType(ServiceMeshExtraConfigurationOutput{})
+	pulumi.RegisterOutputType(ServiceMeshExtraConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ServiceMeshLoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigOutput{})

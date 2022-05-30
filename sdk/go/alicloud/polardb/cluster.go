@@ -123,6 +123,9 @@ type Cluster struct {
 	DbType pulumi.StringOutput `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
 	DbVersion pulumi.StringOutput `pulumi:"dbVersion"`
+	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	DeletionLock pulumi.IntPtrOutput `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -216,6 +219,9 @@ type clusterState struct {
 	DbType *string `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
 	DbVersion *string `pulumi:"dbVersion"`
+	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	DeletionLock *int `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -272,6 +278,9 @@ type ClusterState struct {
 	DbType pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
 	DbVersion pulumi.StringPtrInput
+	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	DeletionLock pulumi.IntPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -330,6 +339,9 @@ type clusterArgs struct {
 	DbType string `pulumi:"dbType"`
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
 	DbVersion string `pulumi:"dbVersion"`
+	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	DeletionLock *int `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
@@ -385,6 +397,9 @@ type ClusterArgs struct {
 	DbType pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
 	DbVersion pulumi.StringInput
+	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	DeletionLock pulumi.IntPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.

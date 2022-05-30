@@ -12,11 +12,17 @@ namespace Pulumi.AliCloud.Yundun
     [AliCloudResourceType("alicloud:yundun/bastionHostInstance:BastionHostInstance")]
     public partial class BastionHostInstance : Pulumi.CustomResource
     {
+        [Output("adAuthServers")]
+        public Output<ImmutableArray<Outputs.BastionHostInstanceAdAuthServer>> AdAuthServers { get; private set; } = null!;
+
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         [Output("enablePublicAccess")]
         public Output<bool> EnablePublicAccess { get; private set; } = null!;
+
+        [Output("ldapAuthServers")]
+        public Output<ImmutableArray<Outputs.BastionHostInstanceLdapAuthServer>> LdapAuthServers { get; private set; } = null!;
 
         [Output("licenseCode")]
         public Output<string> LicenseCode { get; private set; } = null!;
@@ -82,11 +88,27 @@ namespace Pulumi.AliCloud.Yundun
 
     public sealed class BastionHostInstanceArgs : Pulumi.ResourceArgs
     {
+        [Input("adAuthServers")]
+        private InputList<Inputs.BastionHostInstanceAdAuthServerArgs>? _adAuthServers;
+        public InputList<Inputs.BastionHostInstanceAdAuthServerArgs> AdAuthServers
+        {
+            get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.BastionHostInstanceAdAuthServerArgs>());
+            set => _adAuthServers = value;
+        }
+
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         [Input("enablePublicAccess")]
         public Input<bool>? EnablePublicAccess { get; set; }
+
+        [Input("ldapAuthServers")]
+        private InputList<Inputs.BastionHostInstanceLdapAuthServerArgs>? _ldapAuthServers;
+        public InputList<Inputs.BastionHostInstanceLdapAuthServerArgs> LdapAuthServers
+        {
+            get => _ldapAuthServers ?? (_ldapAuthServers = new InputList<Inputs.BastionHostInstanceLdapAuthServerArgs>());
+            set => _ldapAuthServers = value;
+        }
 
         [Input("licenseCode", required: true)]
         public Input<string> LicenseCode { get; set; } = null!;
@@ -123,11 +145,27 @@ namespace Pulumi.AliCloud.Yundun
 
     public sealed class BastionHostInstanceState : Pulumi.ResourceArgs
     {
+        [Input("adAuthServers")]
+        private InputList<Inputs.BastionHostInstanceAdAuthServerGetArgs>? _adAuthServers;
+        public InputList<Inputs.BastionHostInstanceAdAuthServerGetArgs> AdAuthServers
+        {
+            get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.BastionHostInstanceAdAuthServerGetArgs>());
+            set => _adAuthServers = value;
+        }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("enablePublicAccess")]
         public Input<bool>? EnablePublicAccess { get; set; }
+
+        [Input("ldapAuthServers")]
+        private InputList<Inputs.BastionHostInstanceLdapAuthServerGetArgs>? _ldapAuthServers;
+        public InputList<Inputs.BastionHostInstanceLdapAuthServerGetArgs> LdapAuthServers
+        {
+            get => _ldapAuthServers ?? (_ldapAuthServers = new InputList<Inputs.BastionHostInstanceLdapAuthServerGetArgs>());
+            set => _ldapAuthServers = value;
+        }
 
         [Input("licenseCode")]
         public Input<string>? LicenseCode { get; set; }

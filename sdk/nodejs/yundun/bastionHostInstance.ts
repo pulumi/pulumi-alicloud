@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 export class BastionHostInstance extends pulumi.CustomResource {
@@ -32,8 +33,10 @@ export class BastionHostInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === BastionHostInstance.__pulumiType;
     }
 
+    public readonly adAuthServers!: pulumi.Output<outputs.yundun.BastionHostInstanceAdAuthServer[]>;
     public readonly description!: pulumi.Output<string>;
     public readonly enablePublicAccess!: pulumi.Output<boolean>;
+    public readonly ldapAuthServers!: pulumi.Output<outputs.yundun.BastionHostInstanceLdapAuthServer[]>;
     public readonly licenseCode!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
@@ -54,8 +57,10 @@ export class BastionHostInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BastionHostInstanceState | undefined;
+            resourceInputs["adAuthServers"] = state ? state.adAuthServers : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enablePublicAccess"] = state ? state.enablePublicAccess : undefined;
+            resourceInputs["ldapAuthServers"] = state ? state.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = state ? state.licenseCode : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -76,8 +81,10 @@ export class BastionHostInstance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["adAuthServers"] = args ? args.adAuthServers : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enablePublicAccess"] = args ? args.enablePublicAccess : undefined;
+            resourceInputs["ldapAuthServers"] = args ? args.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = args ? args.licenseCode : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -94,8 +101,10 @@ export class BastionHostInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BastionHostInstance resources.
  */
 export interface BastionHostInstanceState {
+    adAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceAdAuthServer>[]>;
     description?: pulumi.Input<string>;
     enablePublicAccess?: pulumi.Input<boolean>;
+    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceLdapAuthServer>[]>;
     licenseCode?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     resourceGroupId?: pulumi.Input<string>;
@@ -108,8 +117,10 @@ export interface BastionHostInstanceState {
  * The set of arguments for constructing a BastionHostInstance resource.
  */
 export interface BastionHostInstanceArgs {
+    adAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceAdAuthServer>[]>;
     description: pulumi.Input<string>;
     enablePublicAccess?: pulumi.Input<boolean>;
+    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceLdapAuthServer>[]>;
     licenseCode: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     resourceGroupId?: pulumi.Input<string>;

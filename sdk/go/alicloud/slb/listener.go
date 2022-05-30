@@ -83,7 +83,7 @@ type Listener struct {
 	// Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
 	BackendPort pulumi.IntPtrOutput `pulumi:"backendPort"`
 	// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
-	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
+	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
 	CaCertificateId pulumi.StringPtrOutput `pulumi:"caCertificateId"`
 	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.

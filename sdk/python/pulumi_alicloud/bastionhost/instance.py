@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -17,7 +19,9 @@ class InstanceArgs:
                  license_code: pulumi.Input[str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  vswitch_id: pulumi.Input[str],
+                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
+                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -26,7 +30,9 @@ class InstanceArgs:
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -34,8 +40,12 @@ class InstanceArgs:
         pulumi.set(__self__, "license_code", license_code)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if ad_auth_servers is not None:
+            pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
         if enable_public_access is not None:
             pulumi.set(__self__, "enable_public_access", enable_public_access)
+        if ldap_auth_servers is not None:
+            pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
@@ -89,6 +99,18 @@ class InstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="adAuthServers")
+    def ad_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]]:
+        """
+        The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        """
+        return pulumi.get(self, "ad_auth_servers")
+
+    @ad_auth_servers.setter
+    def ad_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]]):
+        pulumi.set(self, "ad_auth_servers", value)
+
+    @property
     @pulumi.getter(name="enablePublicAccess")
     def enable_public_access(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -99,6 +121,18 @@ class InstanceArgs:
     @enable_public_access.setter
     def enable_public_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_public_access", value)
+
+    @property
+    @pulumi.getter(name="ldapAuthServers")
+    def ldap_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]]:
+        """
+        The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        """
+        return pulumi.get(self, "ldap_auth_servers")
+
+    @ldap_auth_servers.setter
+    def ldap_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]]):
+        pulumi.set(self, "ldap_auth_servers", value)
 
     @property
     @pulumi.getter
@@ -137,8 +171,10 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
+                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -147,17 +183,23 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
+        if ad_auth_servers is not None:
+            pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_public_access is not None:
             pulumi.set(__self__, "enable_public_access", enable_public_access)
+        if ldap_auth_servers is not None:
+            pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if license_code is not None:
             pulumi.set(__self__, "license_code", license_code)
         if period is not None:
@@ -170,6 +212,18 @@ class _InstanceState:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="adAuthServers")
+    def ad_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]]:
+        """
+        The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        """
+        return pulumi.get(self, "ad_auth_servers")
+
+    @ad_auth_servers.setter
+    def ad_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]]):
+        pulumi.set(self, "ad_auth_servers", value)
 
     @property
     @pulumi.getter
@@ -194,6 +248,18 @@ class _InstanceState:
     @enable_public_access.setter
     def enable_public_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_public_access", value)
+
+    @property
+    @pulumi.getter(name="ldapAuthServers")
+    def ldap_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]]:
+        """
+        The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        """
+        return pulumi.get(self, "ldap_auth_servers")
+
+    @ldap_auth_servers.setter
+    def ldap_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]]):
+        pulumi.set(self, "ldap_auth_servers", value)
 
     @property
     @pulumi.getter(name="licenseCode")
@@ -267,8 +333,10 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
+                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -287,8 +355,10 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -324,8 +394,10 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
+                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -344,10 +416,12 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["ad_auth_servers"] = ad_auth_servers
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_public_access"] = enable_public_access
+            __props__.__dict__["ldap_auth_servers"] = ldap_auth_servers
             if license_code is None and not opts.urn:
                 raise TypeError("Missing required property 'license_code'")
             __props__.__dict__["license_code"] = license_code
@@ -370,8 +444,10 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_public_access: Optional[pulumi.Input[bool]] = None,
+            ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -385,8 +461,10 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -396,8 +474,10 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["ad_auth_servers"] = ad_auth_servers
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_public_access"] = enable_public_access
+        __props__.__dict__["ldap_auth_servers"] = ldap_auth_servers
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -405,6 +485,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="adAuthServers")
+    def ad_auth_servers(self) -> pulumi.Output[Sequence['outputs.InstanceAdAuthServer']]:
+        """
+        The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        """
+        return pulumi.get(self, "ad_auth_servers")
 
     @property
     @pulumi.getter
@@ -421,6 +509,14 @@ class Instance(pulumi.CustomResource):
         Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_public_access")
+
+    @property
+    @pulumi.getter(name="ldapAuthServers")
+    def ldap_auth_servers(self) -> pulumi.Output[Sequence['outputs.InstanceLdapAuthServer']]:
+        """
+        The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        """
+        return pulumi.get(self, "ldap_auth_servers")
 
     @property
     @pulumi.getter(name="licenseCode")

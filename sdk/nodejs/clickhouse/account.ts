@@ -119,7 +119,7 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly ddlAuthority!: pulumi.Output<boolean>;
     /**
-     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
      */
     public readonly dmlAuthority!: pulumi.Output<string>;
     /**
@@ -228,7 +228,7 @@ export interface AccountState {
      */
     ddlAuthority?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
      */
     dmlAuthority?: pulumi.Input<string>;
     /**
@@ -284,7 +284,7 @@ export interface AccountArgs {
      */
     ddlAuthority?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+     * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
      */
     dmlAuthority?: pulumi.Input<string>;
     /**

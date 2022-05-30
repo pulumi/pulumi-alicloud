@@ -3564,6 +3564,107 @@ export namespace bastionhost {
         userName: string;
     }
 
+    export interface InstanceAdAuthServer {
+        /**
+         * The username of the account that is used for the LDAP server.
+         */
+        account: string;
+        /**
+         * The Base distinguished name (DN).
+         */
+        baseDn: string;
+        /**
+         * The domain on the AD server.
+         */
+        domain: string;
+        /**
+         * The field that is used to indicate the email address of a user on the LDAP server.
+         */
+        emailMapping?: string;
+        /**
+         * The condition that is used to filter users.
+         */
+        filter?: string;
+        /**
+         * Specifies whether to support SSL.
+         */
+        isSsl: boolean;
+        /**
+         * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         */
+        mobileMapping?: string;
+        /**
+         * The field that is used to indicate the name of a user on the LDAP server.
+         */
+        nameMapping?: string;
+        /**
+         * The password of the account that is used for the LDAP server.
+         */
+        password: string;
+        /**
+         * The port that is used to access the LDAP server.
+         */
+        port: number;
+        /**
+         * The address of the LDAP server.
+         */
+        server: string;
+        /**
+         * The address of the secondary LDAP server.
+         */
+        standbyServer?: string;
+    }
+
+    export interface InstanceLdapAuthServer {
+        /**
+         * The username of the account that is used for the LDAP server.
+         */
+        account: string;
+        /**
+         * The Base distinguished name (DN).
+         */
+        baseDn: string;
+        /**
+         * The field that is used to indicate the email address of a user on the LDAP server.
+         */
+        emailMapping?: string;
+        /**
+         * The condition that is used to filter users.
+         */
+        filter?: string;
+        /**
+         * Specifies whether to support SSL.
+         */
+        isSsl?: boolean;
+        /**
+         * The field that is used to indicate the logon name of a user on the LDAP server.
+         */
+        loginNameMapping?: string;
+        /**
+         * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         */
+        mobileMapping?: string;
+        /**
+         * The field that is used to indicate the name of a user on the LDAP server.
+         */
+        nameMapping?: string;
+        /**
+         * The password of the account that is used for the LDAP server.
+         */
+        password: string;
+        /**
+         * The port that is used to access the LDAP server.
+         */
+        port: number;
+        /**
+         * The address of the LDAP server.
+         */
+        server: string;
+        /**
+         * The address of the secondary LDAP server.
+         */
+        standbyServer?: string;
+    }
 }
 
 export namespace brain {
@@ -8012,6 +8113,7 @@ export namespace config {
         smartag?: string;
         sts?: string;
         swas?: string;
+        tag?: string;
         vod?: string;
         vpc?: string;
         vs?: string;
@@ -8785,6 +8887,28 @@ export namespace cs {
          * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
          */
         roleType?: string;
+    }
+
+    export interface GetKubernetesVersionMetadata {
+        /**
+         * The list of supported runtime.
+         */
+        runtimes: outputs.cs.GetKubernetesVersionMetadataRuntime[];
+        /**
+         * The ACK released kubernetes version.
+         */
+        version: string;
+    }
+
+    export interface GetKubernetesVersionMetadataRuntime {
+        /**
+         * The runtime name.
+         */
+        name: string;
+        /**
+         * The ACK released kubernetes version.
+         */
+        version: string;
     }
 
     export interface GetManagedKubernetesClustersCluster {
@@ -9566,7 +9690,6 @@ export namespace cs {
         privateIp: string;
         status: string;
     }
-
 }
 
 export namespace databasefilesystem {
@@ -17147,6 +17270,57 @@ export namespace eds {
         vswitchIds: string[];
     }
 
+    export interface GetSnapshotsSnapshot {
+        /**
+         * The time when the snapshot was created.
+         */
+        createTime: string;
+        /**
+         * The description of the snapshot.
+         */
+        description: string;
+        /**
+         * The ID of the cloud desktop to which the snapshot belongs.
+         */
+        desktopId: string;
+        /**
+         * The ID of the Snapshot.
+         */
+        id: string;
+        /**
+         * The progress of creating the snapshot.
+         */
+        progress: string;
+        /**
+         * The remaining time that is required to create the snapshot. Unit: seconds.
+         */
+        remainTime: number;
+        /**
+         * The ID of the snapshot.
+         */
+        snapshotId: string;
+        /**
+         * -The name of the snapshot.
+         */
+        snapshotName: string;
+        /**
+         * The type of the snapshot.
+         */
+        snapshotType: string;
+        /**
+         * The capacity of the source disk. Unit: GiB.
+         */
+        sourceDiskSize: string;
+        /**
+         * The type of the source disk.
+         */
+        sourceDiskType: string;
+        /**
+         * The status of the snapshot.
+         */
+        status: string;
+    }
+
     export interface GetUsersUser {
         /**
          * The email of the user email.
@@ -17383,13 +17557,17 @@ export namespace emr {
 
     export interface ClusterHostGroup {
         /**
-         * Auto renew for prepaid, true of false. Default is false.
+         * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
          */
         autoRenew?: boolean;
         /**
          * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
          */
         chargeType?: string;
+        /**
+         * Graceful decommission timeout, unit: seconds.
+         */
+        decommissionTimeout?: number;
         /**
          * Data disk capacity.
          */
@@ -17402,6 +17580,10 @@ export namespace emr {
          * Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
          */
         diskType?: string;
+        /**
+         * Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+         */
+        enableGracefulDecommission?: boolean;
         gpuDriver?: string;
         /**
          * host group name.
@@ -30609,6 +30791,13 @@ export namespace servicemesh {
         version: string;
     }
 
+    export interface ServiceMeshExtraConfiguration {
+        /**
+         * Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+         */
+        crAggregationEnabled: boolean;
+    }
+
     export interface ServiceMeshLoadBalancer {
         apiServerLoadbalancerId: string;
         /**
@@ -30792,6 +30981,7 @@ export namespace servicemesh {
          */
         vswitcheList: string;
     }
+
 }
 
 export namespace simpleapplicationserver {
@@ -31987,6 +32177,24 @@ export namespace slb {
         type?: string;
         weight?: number;
     }
+}
+
+export namespace tag {
+    export interface GetMetaTagsTag {
+        /**
+         * The type of the resource tags.
+         */
+        category: string;
+        /**
+         * The name of the key.
+         */
+        keyName: string;
+        /**
+         * The name of the value.
+         */
+        valueName: string;
+    }
+
 }
 
 export namespace tsdb {
@@ -34517,6 +34725,36 @@ export namespace waf {
 }
 
 export namespace yundun {
+    export interface BastionHostInstanceAdAuthServer {
+        account: string;
+        baseDn: string;
+        domain: string;
+        emailMapping?: string;
+        filter?: string;
+        isSsl: boolean;
+        mobileMapping?: string;
+        nameMapping?: string;
+        password: string;
+        port: number;
+        server: string;
+        standbyServer?: string;
+    }
+
+    export interface BastionHostInstanceLdapAuthServer {
+        account: string;
+        baseDn: string;
+        emailMapping?: string;
+        filter?: string;
+        isSsl?: boolean;
+        loginNameMapping?: string;
+        mobileMapping?: string;
+        nameMapping?: string;
+        password: string;
+        port: number;
+        server: string;
+        standbyServer?: string;
+    }
+
     export interface GetBastionHostInstancesInstance {
         description: string;
         id: string;

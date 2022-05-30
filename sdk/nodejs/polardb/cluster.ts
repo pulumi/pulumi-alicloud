@@ -129,6 +129,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbVersion!: pulumi.Output<string>;
     /**
+     * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+     * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     */
+    public readonly deletionLock!: pulumi.Output<number | undefined>;
+    /**
      * The description of cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -213,6 +218,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             resourceInputs["dbType"] = state ? state.dbType : undefined;
             resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
+            resourceInputs["deletionLock"] = state ? state.deletionLock : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
@@ -246,6 +252,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             resourceInputs["dbType"] = args ? args.dbType : undefined;
             resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
+            resourceInputs["deletionLock"] = args ? args.deletionLock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
@@ -306,6 +313,11 @@ export interface ClusterState {
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
      */
     dbVersion?: pulumi.Input<string>;
+    /**
+     * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+     * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     */
+    deletionLock?: pulumi.Input<number>;
     /**
      * The description of cluster.
      */
@@ -405,6 +417,11 @@ export interface ClusterArgs {
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
      */
     dbVersion: pulumi.Input<string>;
+    /**
+     * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+     * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     */
+    deletionLock?: pulumi.Input<number>;
     /**
      * The description of cluster.
      */

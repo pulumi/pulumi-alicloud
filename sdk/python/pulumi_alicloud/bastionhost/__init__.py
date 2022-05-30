@@ -26,4 +26,5 @@ from .instance import *
 from .user import *
 from .user_attachment import *
 from .user_group import *
+from ._inputs import *
 from . import outputs

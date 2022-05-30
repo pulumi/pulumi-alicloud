@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<bool> DdlAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         /// </summary>
         [Output("dmlAuthority")]
         public Output<string> DmlAuthority { get; private set; } = null!;
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<bool>? DdlAuthority { get; set; }
 
         /// <summary>
-        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         /// </summary>
         [Input("dmlAuthority")]
         public Input<string>? DmlAuthority { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<bool>? DdlAuthority { get; set; }
 
         /// <summary>
-        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readonly,modify`.
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         /// </summary>
         [Input("dmlAuthority")]
         public Input<string>? DmlAuthority { get; set; }
