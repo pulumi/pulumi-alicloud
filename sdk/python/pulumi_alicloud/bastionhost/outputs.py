@@ -10,14 +10,363 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'InstanceAdAuthServer',
+    'InstanceLdapAuthServer',
     'GetHostAccountsAccountResult',
     'GetHostGroupsGroupResult',
+    'GetHostShareKeysKeyResult',
     'GetHostsHostResult',
     'GetHostsHostProtocolResult',
     'GetInstancesInstanceResult',
     'GetUserGroupsGroupResult',
     'GetUsersUserResult',
 ]
+
+@pulumi.output_type
+class InstanceAdAuthServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseDn":
+            suggest = "base_dn"
+        elif key == "isSsl":
+            suggest = "is_ssl"
+        elif key == "emailMapping":
+            suggest = "email_mapping"
+        elif key == "mobileMapping":
+            suggest = "mobile_mapping"
+        elif key == "nameMapping":
+            suggest = "name_mapping"
+        elif key == "standbyServer":
+            suggest = "standby_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAdAuthServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAdAuthServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAdAuthServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account: str,
+                 base_dn: str,
+                 domain: str,
+                 is_ssl: bool,
+                 password: str,
+                 port: int,
+                 server: str,
+                 email_mapping: Optional[str] = None,
+                 filter: Optional[str] = None,
+                 mobile_mapping: Optional[str] = None,
+                 name_mapping: Optional[str] = None,
+                 standby_server: Optional[str] = None):
+        """
+        :param str account: The username of the account that is used for the LDAP server.
+        :param str base_dn: The Base distinguished name (DN).
+        :param str domain: The domain on the AD server.
+        :param bool is_ssl: Specifies whether to support SSL.
+        :param str password: The password of the account that is used for the LDAP server.
+        :param int port: The port that is used to access the LDAP server.
+        :param str server: The address of the LDAP server.
+        :param str email_mapping: The field that is used to indicate the email address of a user on the LDAP server.
+        :param str filter: The condition that is used to filter users.
+        :param str mobile_mapping: The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        :param str name_mapping: The field that is used to indicate the name of a user on the LDAP server.
+        :param str standby_server: The address of the secondary LDAP server.
+        """
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "base_dn", base_dn)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "is_ssl", is_ssl)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "server", server)
+        if email_mapping is not None:
+            pulumi.set(__self__, "email_mapping", email_mapping)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if mobile_mapping is not None:
+            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+        if name_mapping is not None:
+            pulumi.set(__self__, "name_mapping", name_mapping)
+        if standby_server is not None:
+            pulumi.set(__self__, "standby_server", standby_server)
+
+    @property
+    @pulumi.getter
+    def account(self) -> str:
+        """
+        The username of the account that is used for the LDAP server.
+        """
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter(name="baseDn")
+    def base_dn(self) -> str:
+        """
+        The Base distinguished name (DN).
+        """
+        return pulumi.get(self, "base_dn")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain on the AD server.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="isSsl")
+    def is_ssl(self) -> bool:
+        """
+        Specifies whether to support SSL.
+        """
+        return pulumi.get(self, "is_ssl")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        The password of the account that is used for the LDAP server.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port that is used to access the LDAP server.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def server(self) -> str:
+        """
+        The address of the LDAP server.
+        """
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter(name="emailMapping")
+    def email_mapping(self) -> Optional[str]:
+        """
+        The field that is used to indicate the email address of a user on the LDAP server.
+        """
+        return pulumi.get(self, "email_mapping")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        """
+        The condition that is used to filter users.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="mobileMapping")
+    def mobile_mapping(self) -> Optional[str]:
+        """
+        The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        """
+        return pulumi.get(self, "mobile_mapping")
+
+    @property
+    @pulumi.getter(name="nameMapping")
+    def name_mapping(self) -> Optional[str]:
+        """
+        The field that is used to indicate the name of a user on the LDAP server.
+        """
+        return pulumi.get(self, "name_mapping")
+
+    @property
+    @pulumi.getter(name="standbyServer")
+    def standby_server(self) -> Optional[str]:
+        """
+        The address of the secondary LDAP server.
+        """
+        return pulumi.get(self, "standby_server")
+
+
+@pulumi.output_type
+class InstanceLdapAuthServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseDn":
+            suggest = "base_dn"
+        elif key == "emailMapping":
+            suggest = "email_mapping"
+        elif key == "isSsl":
+            suggest = "is_ssl"
+        elif key == "loginNameMapping":
+            suggest = "login_name_mapping"
+        elif key == "mobileMapping":
+            suggest = "mobile_mapping"
+        elif key == "nameMapping":
+            suggest = "name_mapping"
+        elif key == "standbyServer":
+            suggest = "standby_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceLdapAuthServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceLdapAuthServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceLdapAuthServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account: str,
+                 base_dn: str,
+                 password: str,
+                 port: int,
+                 server: str,
+                 email_mapping: Optional[str] = None,
+                 filter: Optional[str] = None,
+                 is_ssl: Optional[bool] = None,
+                 login_name_mapping: Optional[str] = None,
+                 mobile_mapping: Optional[str] = None,
+                 name_mapping: Optional[str] = None,
+                 standby_server: Optional[str] = None):
+        """
+        :param str account: The username of the account that is used for the LDAP server.
+        :param str base_dn: The Base distinguished name (DN).
+        :param str password: The password of the account that is used for the LDAP server.
+        :param int port: The port that is used to access the LDAP server.
+        :param str server: The address of the LDAP server.
+        :param str email_mapping: The field that is used to indicate the email address of a user on the LDAP server.
+        :param str filter: The condition that is used to filter users.
+        :param bool is_ssl: Specifies whether to support SSL.
+        :param str login_name_mapping: The field that is used to indicate the logon name of a user on the LDAP server.
+        :param str mobile_mapping: The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        :param str name_mapping: The field that is used to indicate the name of a user on the LDAP server.
+        :param str standby_server: The address of the secondary LDAP server.
+        """
+        pulumi.set(__self__, "account", account)
+        pulumi.set(__self__, "base_dn", base_dn)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "server", server)
+        if email_mapping is not None:
+            pulumi.set(__self__, "email_mapping", email_mapping)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if is_ssl is not None:
+            pulumi.set(__self__, "is_ssl", is_ssl)
+        if login_name_mapping is not None:
+            pulumi.set(__self__, "login_name_mapping", login_name_mapping)
+        if mobile_mapping is not None:
+            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+        if name_mapping is not None:
+            pulumi.set(__self__, "name_mapping", name_mapping)
+        if standby_server is not None:
+            pulumi.set(__self__, "standby_server", standby_server)
+
+    @property
+    @pulumi.getter
+    def account(self) -> str:
+        """
+        The username of the account that is used for the LDAP server.
+        """
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter(name="baseDn")
+    def base_dn(self) -> str:
+        """
+        The Base distinguished name (DN).
+        """
+        return pulumi.get(self, "base_dn")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        The password of the account that is used for the LDAP server.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port that is used to access the LDAP server.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def server(self) -> str:
+        """
+        The address of the LDAP server.
+        """
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter(name="emailMapping")
+    def email_mapping(self) -> Optional[str]:
+        """
+        The field that is used to indicate the email address of a user on the LDAP server.
+        """
+        return pulumi.get(self, "email_mapping")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        """
+        The condition that is used to filter users.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="isSsl")
+    def is_ssl(self) -> Optional[bool]:
+        """
+        Specifies whether to support SSL.
+        """
+        return pulumi.get(self, "is_ssl")
+
+    @property
+    @pulumi.getter(name="loginNameMapping")
+    def login_name_mapping(self) -> Optional[str]:
+        """
+        The field that is used to indicate the logon name of a user on the LDAP server.
+        """
+        return pulumi.get(self, "login_name_mapping")
+
+    @property
+    @pulumi.getter(name="mobileMapping")
+    def mobile_mapping(self) -> Optional[str]:
+        """
+        The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        """
+        return pulumi.get(self, "mobile_mapping")
+
+    @property
+    @pulumi.getter(name="nameMapping")
+    def name_mapping(self) -> Optional[str]:
+        """
+        The field that is used to indicate the name of a user on the LDAP server.
+        """
+        return pulumi.get(self, "name_mapping")
+
+    @property
+    @pulumi.getter(name="standbyServer")
+    def standby_server(self) -> Optional[str]:
+        """
+        The address of the secondary LDAP server.
+        """
+        return pulumi.get(self, "standby_server")
+
 
 @pulumi.output_type
 class GetHostAccountsAccountResult(dict):
@@ -174,6 +523,68 @@ class GetHostGroupsGroupResult(dict):
         Specify the New Host Group Where the Bastion Host ID of.
         """
         return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetHostShareKeysKeyResult(dict):
+    def __init__(__self__, *,
+                 host_share_key_id: str,
+                 host_share_key_name: str,
+                 id: str,
+                 instance_id: str,
+                 private_key_finger_print: str):
+        """
+        :param str host_share_key_id: The first ID of the resource.
+        :param str host_share_key_name: The name of the host shared key.
+        :param str id: The ID of the Host Share Key.
+        :param str instance_id: The ID of the Bastion instance.
+        :param str private_key_finger_print: The fingerprint of the private key.
+        """
+        pulumi.set(__self__, "host_share_key_id", host_share_key_id)
+        pulumi.set(__self__, "host_share_key_name", host_share_key_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "private_key_finger_print", private_key_finger_print)
+
+    @property
+    @pulumi.getter(name="hostShareKeyId")
+    def host_share_key_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "host_share_key_id")
+
+    @property
+    @pulumi.getter(name="hostShareKeyName")
+    def host_share_key_name(self) -> str:
+        """
+        The name of the host shared key.
+        """
+        return pulumi.get(self, "host_share_key_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Host Share Key.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the Bastion instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="privateKeyFingerPrint")
+    def private_key_finger_print(self) -> str:
+        """
+        The fingerprint of the private key.
+        """
+        return pulumi.get(self, "private_key_finger_print")
 
 
 @pulumi.output_type

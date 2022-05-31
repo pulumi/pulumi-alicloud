@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetNetworkInterfacesInterfaceResult
     {
+        public readonly ImmutableArray<Outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult> AssociatedPublicIps;
         /// <summary>
         /// Creation time of the ENI.
         /// </summary>
@@ -87,6 +88,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
         [OutputConstructor]
         private GetNetworkInterfacesInterfaceResult(
+            ImmutableArray<Outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult> associatedPublicIps,
+
             string creationTime,
 
             string description,
@@ -139,6 +142,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string zoneId)
         {
+            AssociatedPublicIps = associatedPublicIps;
             CreationTime = creationTime;
             Description = description;
             Id = id;

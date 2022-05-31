@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlbServerGroupAttachment{}
 	case "alicloud:ess/attachment:Attachment":
 		r = &Attachment{}
+	case "alicloud:ess/eciScalingConfiguration:EciScalingConfiguration":
+		r = &EciScalingConfiguration{}
 	case "alicloud:ess/lifecycleHook:LifecycleHook":
 		r = &LifecycleHook{}
 	case "alicloud:ess/notification:Notification":
@@ -43,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Schedule{}
 	case "alicloud:ess/scheduledTask:ScheduledTask":
 		r = &ScheduledTask{}
+	case "alicloud:ess/suspendProcess:SuspendProcess":
+		r = &SuspendProcess{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -69,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ess/attachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ess/eciScalingConfiguration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -109,6 +118,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ess/scheduledTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ess/suspendProcess",
 		&module{version},
 	)
 }

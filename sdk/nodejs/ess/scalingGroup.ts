@@ -60,6 +60,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly groupDeletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+     */
+    public readonly groupType!: pulumi.Output<string>;
+    /**
      * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      */
     public readonly launchTemplateId!: pulumi.Output<string | undefined>;
@@ -150,6 +154,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             resourceInputs["groupDeletionProtection"] = state ? state.groupDeletionProtection : undefined;
+            resourceInputs["groupType"] = state ? state.groupType : undefined;
             resourceInputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
             resourceInputs["launchTemplateVersion"] = state ? state.launchTemplateVersion : undefined;
             resourceInputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
@@ -177,6 +182,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             resourceInputs["groupDeletionProtection"] = args ? args.groupDeletionProtection : undefined;
+            resourceInputs["groupType"] = args ? args.groupType : undefined;
             resourceInputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
             resourceInputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
             resourceInputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
@@ -220,6 +226,10 @@ export interface ScalingGroupState {
      * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
      */
     groupDeletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+     */
+    groupType?: pulumi.Input<string>;
     /**
      * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      */
@@ -317,6 +327,10 @@ export interface ScalingGroupArgs {
      * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
      */
     groupDeletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
+     */
+    groupType?: pulumi.Input<string>;
     /**
      * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      */

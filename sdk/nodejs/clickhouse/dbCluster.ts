@@ -107,7 +107,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly dbClusterNetworkType!: pulumi.Output<string>;
     /**
-     * The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
      */
     public readonly dbClusterVersion!: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -261,7 +261,7 @@ export interface DbClusterState {
      */
     dbClusterNetworkType?: pulumi.Input<string>;
     /**
-     * The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
      */
     dbClusterVersion?: pulumi.Input<string>;
     /**
@@ -293,7 +293,7 @@ export interface DbClusterState {
      */
     period?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -337,7 +337,7 @@ export interface DbClusterArgs {
      */
     dbClusterNetworkType: pulumi.Input<string>;
     /**
-     * The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
      */
     dbClusterVersion: pulumi.Input<string>;
     /**
@@ -369,7 +369,7 @@ export interface DbClusterArgs {
      */
     period?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
     status?: pulumi.Input<string>;
     /**

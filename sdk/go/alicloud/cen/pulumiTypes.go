@@ -1039,6 +1039,8 @@ type GetPrivateZonesZone struct {
 	HostRegionId string `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
 	HostVpcId string `pulumi:"hostVpcId"`
+	// The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
+	Id string `pulumi:"id"`
 	// The DNS IP addresses of the PrivateZone service.
 	PrivateZoneDnsServers string `pulumi:"privateZoneDnsServers"`
 	// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
@@ -1065,6 +1067,8 @@ type GetPrivateZonesZoneArgs struct {
 	HostRegionId pulumi.StringInput `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
 	HostVpcId pulumi.StringInput `pulumi:"hostVpcId"`
+	// The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The DNS IP addresses of the PrivateZone service.
 	PrivateZoneDnsServers pulumi.StringInput `pulumi:"privateZoneDnsServers"`
 	// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
@@ -1140,6 +1144,11 @@ func (o GetPrivateZonesZoneOutput) HostRegionId() pulumi.StringOutput {
 // The VPC that belongs to the service region.
 func (o GetPrivateZonesZoneOutput) HostVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.HostVpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
+func (o GetPrivateZonesZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The DNS IP addresses of the PrivateZone service.
@@ -1623,7 +1632,7 @@ type GetRouteMapsMap struct {
 	DestinationInstanceIdsReverseMatch bool `pulumi:"destinationInstanceIdsReverseMatch"`
 	// A match statement that indicates the list of IDs of the destination route tables.
 	DestinationRouteTableIds []string `pulumi:"destinationRouteTableIds"`
-	// The ID of the route map.
+	// The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `routeMapId`.
 	Id string `pulumi:"id"`
 	// The action that is performed to a route if the route meets all the match conditions.
 	MapResult string `pulumi:"mapResult"`
@@ -1697,7 +1706,7 @@ type GetRouteMapsMapArgs struct {
 	DestinationInstanceIdsReverseMatch pulumi.BoolInput `pulumi:"destinationInstanceIdsReverseMatch"`
 	// A match statement that indicates the list of IDs of the destination route tables.
 	DestinationRouteTableIds pulumi.StringArrayInput `pulumi:"destinationRouteTableIds"`
-	// The ID of the route map.
+	// The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `routeMapId`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The action that is performed to a route if the route meets all the match conditions.
 	MapResult pulumi.StringInput `pulumi:"mapResult"`
@@ -1846,7 +1855,7 @@ func (o GetRouteMapsMapOutput) DestinationRouteTableIds() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.DestinationRouteTableIds }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the route map.
+// The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `routeMapId`.
 func (o GetRouteMapsMapOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteMapsMap) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2132,6 +2141,112 @@ func (o GetRouteServicesServiceArrayOutput) Index(i pulumi.IntInput) GetRouteSer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteServicesService {
 		return vs[0].([]GetRouteServicesService)[vs[1].(int)]
 	}).(GetRouteServicesServiceOutput)
+}
+
+type GetTransitRouterAvailableResourcesResource struct {
+	// The list of primary zones.
+	MasterZones []string `pulumi:"masterZones"`
+	// The list of secondary zones.
+	SlaveZones []string `pulumi:"slaveZones"`
+}
+
+// GetTransitRouterAvailableResourcesResourceInput is an input type that accepts GetTransitRouterAvailableResourcesResourceArgs and GetTransitRouterAvailableResourcesResourceOutput values.
+// You can construct a concrete instance of `GetTransitRouterAvailableResourcesResourceInput` via:
+//
+//          GetTransitRouterAvailableResourcesResourceArgs{...}
+type GetTransitRouterAvailableResourcesResourceInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterAvailableResourcesResourceOutput() GetTransitRouterAvailableResourcesResourceOutput
+	ToGetTransitRouterAvailableResourcesResourceOutputWithContext(context.Context) GetTransitRouterAvailableResourcesResourceOutput
+}
+
+type GetTransitRouterAvailableResourcesResourceArgs struct {
+	// The list of primary zones.
+	MasterZones pulumi.StringArrayInput `pulumi:"masterZones"`
+	// The list of secondary zones.
+	SlaveZones pulumi.StringArrayInput `pulumi:"slaveZones"`
+}
+
+func (GetTransitRouterAvailableResourcesResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterAvailableResourcesResource)(nil)).Elem()
+}
+
+func (i GetTransitRouterAvailableResourcesResourceArgs) ToGetTransitRouterAvailableResourcesResourceOutput() GetTransitRouterAvailableResourcesResourceOutput {
+	return i.ToGetTransitRouterAvailableResourcesResourceOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterAvailableResourcesResourceArgs) ToGetTransitRouterAvailableResourcesResourceOutputWithContext(ctx context.Context) GetTransitRouterAvailableResourcesResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterAvailableResourcesResourceOutput)
+}
+
+// GetTransitRouterAvailableResourcesResourceArrayInput is an input type that accepts GetTransitRouterAvailableResourcesResourceArray and GetTransitRouterAvailableResourcesResourceArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterAvailableResourcesResourceArrayInput` via:
+//
+//          GetTransitRouterAvailableResourcesResourceArray{ GetTransitRouterAvailableResourcesResourceArgs{...} }
+type GetTransitRouterAvailableResourcesResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterAvailableResourcesResourceArrayOutput() GetTransitRouterAvailableResourcesResourceArrayOutput
+	ToGetTransitRouterAvailableResourcesResourceArrayOutputWithContext(context.Context) GetTransitRouterAvailableResourcesResourceArrayOutput
+}
+
+type GetTransitRouterAvailableResourcesResourceArray []GetTransitRouterAvailableResourcesResourceInput
+
+func (GetTransitRouterAvailableResourcesResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterAvailableResourcesResource)(nil)).Elem()
+}
+
+func (i GetTransitRouterAvailableResourcesResourceArray) ToGetTransitRouterAvailableResourcesResourceArrayOutput() GetTransitRouterAvailableResourcesResourceArrayOutput {
+	return i.ToGetTransitRouterAvailableResourcesResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterAvailableResourcesResourceArray) ToGetTransitRouterAvailableResourcesResourceArrayOutputWithContext(ctx context.Context) GetTransitRouterAvailableResourcesResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterAvailableResourcesResourceArrayOutput)
+}
+
+type GetTransitRouterAvailableResourcesResourceOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterAvailableResourcesResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterAvailableResourcesResource)(nil)).Elem()
+}
+
+func (o GetTransitRouterAvailableResourcesResourceOutput) ToGetTransitRouterAvailableResourcesResourceOutput() GetTransitRouterAvailableResourcesResourceOutput {
+	return o
+}
+
+func (o GetTransitRouterAvailableResourcesResourceOutput) ToGetTransitRouterAvailableResourcesResourceOutputWithContext(ctx context.Context) GetTransitRouterAvailableResourcesResourceOutput {
+	return o
+}
+
+// The list of primary zones.
+func (o GetTransitRouterAvailableResourcesResourceOutput) MasterZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResource) []string { return v.MasterZones }).(pulumi.StringArrayOutput)
+}
+
+// The list of secondary zones.
+func (o GetTransitRouterAvailableResourcesResourceOutput) SlaveZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResource) []string { return v.SlaveZones }).(pulumi.StringArrayOutput)
+}
+
+type GetTransitRouterAvailableResourcesResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterAvailableResourcesResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterAvailableResourcesResource)(nil)).Elem()
+}
+
+func (o GetTransitRouterAvailableResourcesResourceArrayOutput) ToGetTransitRouterAvailableResourcesResourceArrayOutput() GetTransitRouterAvailableResourcesResourceArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterAvailableResourcesResourceArrayOutput) ToGetTransitRouterAvailableResourcesResourceArrayOutputWithContext(ctx context.Context) GetTransitRouterAvailableResourcesResourceArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterAvailableResourcesResourceArrayOutput) Index(i pulumi.IntInput) GetTransitRouterAvailableResourcesResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterAvailableResourcesResource {
+		return vs[0].([]GetTransitRouterAvailableResourcesResource)[vs[1].(int)]
+	}).(GetTransitRouterAvailableResourcesResourceOutput)
 }
 
 type GetTransitRouterPeerAttachmentsAttachment struct {
@@ -3067,6 +3182,8 @@ func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) Index(i pulumi.IntI
 type GetTransitRouterVpcAttachmentsAttachment struct {
 	// The ID of the transit router.
 	Id string `pulumi:"id"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
 	// Type of the resource.
 	ResourceType string `pulumi:"resourceType"`
 	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
@@ -3099,6 +3216,8 @@ type GetTransitRouterVpcAttachmentsAttachmentInput interface {
 type GetTransitRouterVpcAttachmentsAttachmentArgs struct {
 	// The ID of the transit router.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Type of the resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
@@ -3171,6 +3290,11 @@ func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ToGetTransitRouterVpcAtt
 // The ID of the transit router.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // Type of the resource.
@@ -3695,6 +3819,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteMapsMapArrayInput)(nil)).Elem(), GetRouteMapsMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteServicesServiceInput)(nil)).Elem(), GetRouteServicesServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteServicesServiceArrayInput)(nil)).Elem(), GetRouteServicesServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterAvailableResourcesResourceInput)(nil)).Elem(), GetTransitRouterAvailableResourcesResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterAvailableResourcesResourceArrayInput)(nil)).Elem(), GetTransitRouterAvailableResourcesResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterPeerAttachmentsAttachmentInput)(nil)).Elem(), GetTransitRouterPeerAttachmentsAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterPeerAttachmentsAttachmentArrayInput)(nil)).Elem(), GetTransitRouterPeerAttachmentsAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterRouteEntriesEntryInput)(nil)).Elem(), GetTransitRouterRouteEntriesEntryArgs{})
@@ -3739,6 +3865,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetRouteServicesServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterAvailableResourcesResourceOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterAvailableResourcesResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterPeerAttachmentsAttachmentOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterPeerAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterRouteEntriesEntryOutput{})

@@ -68,7 +68,11 @@ export class ServiceCertificate extends pulumi.CustomResource {
      */
     public readonly cert!: pulumi.Output<string>;
     /**
-     * Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
+     * Name of the Certificate. 
+     * This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
+     * and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+     * Suffix .sh and .tel are not supported.
+     * **NOTE:** One of `certificateName` and `name` must be specified.
      */
     public readonly certificateName!: pulumi.Output<string>;
     /**
@@ -80,7 +84,9 @@ export class ServiceCertificate extends pulumi.CustomResource {
      */
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+     * It has been deprecated from version 1.129.0 and using `certificateName` instead.
+     *
+     * @deprecated attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -130,7 +136,11 @@ export interface ServiceCertificateState {
      */
     cert?: pulumi.Input<string>;
     /**
-     * Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
+     * Name of the Certificate. 
+     * This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
+     * and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+     * Suffix .sh and .tel are not supported.
+     * **NOTE:** One of `certificateName` and `name` must be specified.
      */
     certificateName?: pulumi.Input<string>;
     /**
@@ -142,7 +152,9 @@ export interface ServiceCertificateState {
      */
     lang?: pulumi.Input<string>;
     /**
-     * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+     * It has been deprecated from version 1.129.0 and using `certificateName` instead.
+     *
+     * @deprecated attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
      */
     name?: pulumi.Input<string>;
 }
@@ -156,7 +168,11 @@ export interface ServiceCertificateArgs {
      */
     cert: pulumi.Input<string>;
     /**
-     * Name of the Certificate. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
+     * Name of the Certificate. 
+     * This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
+     * and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+     * Suffix .sh and .tel are not supported.
+     * **NOTE:** One of `certificateName` and `name` must be specified.
      */
     certificateName?: pulumi.Input<string>;
     /**
@@ -168,7 +184,9 @@ export interface ServiceCertificateArgs {
      */
     lang?: pulumi.Input<string>;
     /**
-     * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
+     * It has been deprecated from version 1.129.0 and using `certificateName` instead.
+     *
+     * @deprecated attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
      */
     name?: pulumi.Input<string>;
 }

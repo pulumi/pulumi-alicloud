@@ -78,7 +78,7 @@ import (
 type EcsBackupClient struct {
 	pulumi.CustomResourceState
 
-	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
 	DataNetworkType pulumi.StringOutput `pulumi:"dataNetworkType"`
 	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting pulumi.StringOutput `pulumi:"dataProxySetting"`
@@ -134,7 +134,7 @@ func GetEcsBackupClient(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsBackupClient resources.
 type ecsBackupClientState struct {
-	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
 	DataNetworkType *string `pulumi:"dataNetworkType"`
 	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting *string `pulumi:"dataProxySetting"`
@@ -159,7 +159,7 @@ type ecsBackupClientState struct {
 }
 
 type EcsBackupClientState struct {
-	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
 	DataNetworkType pulumi.StringPtrInput
 	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting pulumi.StringPtrInput
@@ -188,7 +188,7 @@ func (EcsBackupClientState) ElementType() reflect.Type {
 }
 
 type ecsBackupClientArgs struct {
-	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
 	DataNetworkType *string `pulumi:"dataNetworkType"`
 	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting *string `pulumi:"dataProxySetting"`
@@ -214,7 +214,7 @@ type ecsBackupClientArgs struct {
 
 // The set of arguments for constructing a EcsBackupClient resource.
 type EcsBackupClientArgs struct {
-	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+	// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
 	DataNetworkType pulumi.StringPtrInput
 	// The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
 	DataProxySetting pulumi.StringPtrInput

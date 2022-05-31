@@ -12,7 +12,7 @@ import (
 
 type AclEntryList struct {
 	Comment *string `pulumi:"comment"`
-	Entry   string  `pulumi:"entry"`
+	Entry   *string `pulumi:"entry"`
 }
 
 // AclEntryListInput is an input type that accepts AclEntryListArgs and AclEntryListOutput values.
@@ -28,7 +28,7 @@ type AclEntryListInput interface {
 
 type AclEntryListArgs struct {
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	Entry   pulumi.StringInput    `pulumi:"entry"`
+	Entry   pulumi.StringPtrInput `pulumi:"entry"`
 }
 
 func (AclEntryListArgs) ElementType() reflect.Type {
@@ -86,8 +86,8 @@ func (o AclEntryListOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclEntryList) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-func (o AclEntryListOutput) Entry() pulumi.StringOutput {
-	return o.ApplyT(func(v AclEntryList) string { return v.Entry }).(pulumi.StringOutput)
+func (o AclEntryListOutput) Entry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclEntryList) *string { return v.Entry }).(pulumi.StringPtrOutput)
 }
 
 type AclEntryListArrayOutput struct{ *pulumi.OutputState }

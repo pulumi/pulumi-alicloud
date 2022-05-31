@@ -21,6 +21,7 @@ __all__ = [
     'ForwardingRuleRuleConditionPathConfig',
     'ListenerCertificate',
     'ListenerPortRange',
+    'GetAcceleratorSpareIpAttachmentsAttachmentResult',
     'GetAcceleratorsAcceleratorResult',
     'GetAcceleratorsAcceleratorBasicBandwidthPackageResult',
     'GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult',
@@ -506,6 +507,57 @@ class ListenerPortRange(dict):
         The end listening port used to receive requests and forward them to terminal nodes.
         """
         return pulumi.get(self, "to_port")
+
+
+@pulumi.output_type
+class GetAcceleratorSpareIpAttachmentsAttachmentResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 id: str,
+                 spare_ip: str,
+                 status: str):
+        """
+        :param str accelerator_id: The ID of the global acceleration instance.
+        :param str id: The ID of the Accelerator Spare Ip Attachment.
+        :param str spare_ip: The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
+        :param str status: The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "spare_ip", spare_ip)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the global acceleration instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Accelerator Spare Ip Attachment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="spareIp")
+    def spare_ip(self) -> str:
+        """
+        The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
+        """
+        return pulumi.get(self, "spare_ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

@@ -82,6 +82,7 @@ class Endpoints(dict):
                  dataworkspublic: Optional[str] = None,
                  dbfs: Optional[str] = None,
                  dcdn: Optional[str] = None,
+                 ddosbasic: Optional[str] = None,
                  ddosbgp: Optional[str] = None,
                  ddoscoo: Optional[str] = None,
                  dds: Optional[str] = None,
@@ -153,8 +154,10 @@ class Endpoints(dict):
                  servicemesh: Optional[str] = None,
                  sgw: Optional[str] = None,
                  slb: Optional[str] = None,
+                 smartag: Optional[str] = None,
                  sts: Optional[str] = None,
                  swas: Optional[str] = None,
+                 tag: Optional[str] = None,
                  vod: Optional[str] = None,
                  vpc: Optional[str] = None,
                  vs: Optional[str] = None,
@@ -220,6 +223,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "dbfs", dbfs)
         if dcdn is not None:
             pulumi.set(__self__, "dcdn", dcdn)
+        if ddosbasic is not None:
+            pulumi.set(__self__, "ddosbasic", ddosbasic)
         if ddosbgp is not None:
             pulumi.set(__self__, "ddosbgp", ddosbgp)
         if ddoscoo is not None:
@@ -362,10 +367,14 @@ class Endpoints(dict):
             pulumi.set(__self__, "sgw", sgw)
         if slb is not None:
             pulumi.set(__self__, "slb", slb)
+        if smartag is not None:
+            pulumi.set(__self__, "smartag", smartag)
         if sts is not None:
             pulumi.set(__self__, "sts", sts)
         if swas is not None:
             pulumi.set(__self__, "swas", swas)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
         if vod is not None:
             pulumi.set(__self__, "vod", vod)
         if vpc is not None:
@@ -526,6 +535,11 @@ class Endpoints(dict):
     @pulumi.getter
     def dcdn(self) -> Optional[str]:
         return pulumi.get(self, "dcdn")
+
+    @property
+    @pulumi.getter
+    def ddosbasic(self) -> Optional[str]:
+        return pulumi.get(self, "ddosbasic")
 
     @property
     @pulumi.getter
@@ -884,6 +898,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def smartag(self) -> Optional[str]:
+        return pulumi.get(self, "smartag")
+
+    @property
+    @pulumi.getter
     def sts(self) -> Optional[str]:
         return pulumi.get(self, "sts")
 
@@ -891,6 +910,11 @@ class Endpoints(dict):
     @pulumi.getter
     def swas(self) -> Optional[str]:
         return pulumi.get(self, "swas")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter

@@ -42,6 +42,7 @@ export interface ProviderEndpoint {
     dataworkspublic?: pulumi.Input<string>;
     dbfs?: pulumi.Input<string>;
     dcdn?: pulumi.Input<string>;
+    ddosbasic?: pulumi.Input<string>;
     ddosbgp?: pulumi.Input<string>;
     ddoscoo?: pulumi.Input<string>;
     dds?: pulumi.Input<string>;
@@ -113,8 +114,10 @@ export interface ProviderEndpoint {
     servicemesh?: pulumi.Input<string>;
     sgw?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
+    smartag?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
     swas?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
     vod?: pulumi.Input<string>;
     vpc?: pulumi.Input<string>;
     vs?: pulumi.Input<string>;
@@ -181,7 +184,7 @@ export namespace alb {
         status?: pulumi.Input<string>;
     }
 
-    export interface ListenerCertificate {
+    export interface ListenerCertificates {
         /**
          * The ID of the Certificate.
          */
@@ -224,59 +227,59 @@ export namespace alb {
         quicUpgradeEnabled?: pulumi.Input<boolean>;
     }
 
-    export interface ListenerXforwardedForConfig {
+    export interface ListenerXForwardedForConfig {
         /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+         * The Custom Header Field Names Only When `xForwardedForClientCertClientVerifyEnabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
          */
-        xforwardedforclientcertIssuerdnalias?: pulumi.Input<string>;
-        /**
-         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-         */
-        xforwardedforclientcertIssuerdnenabled?: pulumi.Input<boolean>;
-        /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-         */
-        xforwardedforclientcertclientverifyalias?: pulumi.Input<string>;
+        xForwardedForClientCertClientVerifyAlias?: pulumi.Input<string>;
         /**
          * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
          */
-        xforwardedforclientcertclientverifyenabled?: pulumi.Input<boolean>;
+        xForwardedForClientCertClientVerifyEnabled?: pulumi.Input<boolean>;
         /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When `xForwardedForClientCertfingerprintEnabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
          */
-        xforwardedforclientcertfingerprintalias?: pulumi.Input<string>;
+        xForwardedForClientCertFingerPrintAlias?: pulumi.Input<string>;
         /**
-         * Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+         * Indicates Whether the `X-Forwarded-client_cert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
          */
-        xforwardedforclientcertfingerprintenabled?: pulumi.Input<boolean>;
+        xForwardedForClientCertFingerPrintEnabled?: pulumi.Input<boolean>;
         /**
-         * The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         * The Custom Header Field Names Only When `xForwardedForClientCertIssuerDnEnabled`, Which Evaluates to True When the Entry into Force of.
          */
-        xforwardedforclientcertsubjectdnalias?: pulumi.Input<string>;
+        xForwardedForClientCertIssuerDnAlias?: pulumi.Input<string>;
         /**
-         * Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
          */
-        xforwardedforclientcertsubjectdnenabled?: pulumi.Input<boolean>;
+        xForwardedForClientCertIssuerDnEnabled?: pulumi.Input<boolean>;
+        /**
+         * The name of the custom header. This parameter is valid only if `xForwardedForClientCertsubjectdnEnabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+         */
+        xForwardedForClientCertSubjectDnAlias?: pulumi.Input<string>;
+        /**
+         * Specifies whether to use the `X-Forwarded-client_cert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+         */
+        xForwardedForClientCertSubjectDnEnabled?: pulumi.Input<boolean>;
         /**
          * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
          */
-        xforwardedforclientsrcportenabled?: pulumi.Input<boolean>;
+        xForwardedForClientSrcPortEnabled?: pulumi.Input<boolean>;
         /**
          * Whether to Enable by X-Forwarded-For Header Field Is Used to Obtain the Client IP Addresses.
          */
-        xforwardedforenabled?: pulumi.Input<boolean>;
+        xForwardedForEnabled?: pulumi.Input<boolean>;
         /**
          * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
          */
-        xforwardedforprotoenabled?: pulumi.Input<boolean>;
+        xForwardedForProtoEnabled?: pulumi.Input<boolean>;
         /**
          * Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
          */
-        xforwardedforslbidenabled?: pulumi.Input<boolean>;
+        xForwardedForSlbIdEnabled?: pulumi.Input<boolean>;
         /**
          * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
          */
-        xforwardedforslbportenabled?: pulumi.Input<boolean>;
+        xForwardedForSlbPortEnabled?: pulumi.Input<boolean>;
     }
 
     export interface LoadBalancerAccessLogConfig {
@@ -345,7 +348,15 @@ export namespace alb {
          */
         rewriteConfig?: pulumi.Input<inputs.alb.RuleRuleActionRewriteConfig>;
         /**
-         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * The Flow speed limit. See the following `Block trafficLimitConfig`.
+         */
+        trafficLimitConfig?: pulumi.Input<inputs.alb.RuleRuleActionTrafficLimitConfig>;
+        /**
+         * The Traffic mirroring. See the following `Block trafficMirrorConfig`.
+         */
+        trafficMirrorConfig?: pulumi.Input<inputs.alb.RuleRuleActionTrafficMirrorConfig>;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          */
         type: pulumi.Input<string>;
     }
@@ -377,6 +388,10 @@ export namespace alb {
          * The ID of the destination server group to which requests are forwarded.
          */
         serverGroupId?: pulumi.Input<string>;
+        /**
+         * The Weight of server group.
+         */
+        weight?: pulumi.Input<number>;
     }
 
     export interface RuleRuleActionInsertHeaderConfig {
@@ -436,6 +451,38 @@ export namespace alb {
         query?: pulumi.Input<string>;
     }
 
+    export interface RuleRuleActionTrafficLimitConfig {
+        /**
+         * The Number of requests per second. Value range: 1~100000.
+         */
+        qps?: pulumi.Input<number>;
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfig {
+        /**
+         * The Traffic is mirrored to the server group. See the following `Block mirrorGroupConfig`.
+         */
+        mirrorGroupConfig?: pulumi.Input<inputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig>;
+        /**
+         * The Mirror target type.
+         */
+        targetType?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
+        /**
+         * The destination server group to which requests are forwarded.
+         */
+        serverGroupTuples?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple>[]>;
+    }
+
+    export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+        /**
+         * The ID of the destination server group to which requests are forwarded.
+         */
+        serverGroupId?: pulumi.Input<string>;
+    }
+
     export interface RuleRuleCondition {
         /**
          * The configuration of the cookie. See the following `Block cookieConfig`.
@@ -462,7 +509,11 @@ export namespace alb {
          */
         queryStringConfig?: pulumi.Input<inputs.alb.RuleRuleConditionQueryStringConfig>;
         /**
-         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
+         */
+        sourceIpConfig?: pulumi.Input<inputs.alb.RuleRuleConditionSourceIpConfig>;
+        /**
+         * The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
          */
         type: pulumi.Input<string>;
     }
@@ -533,6 +584,13 @@ export namespace alb {
          * The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface RuleRuleConditionSourceIpConfig {
+        /**
+         * The query string.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServerGroupHealthCheckConfig {
@@ -936,6 +994,108 @@ export namespace arms {
 }
 
 export namespace bastionhost {
+    export interface InstanceAdAuthServer {
+        /**
+         * The username of the account that is used for the LDAP server.
+         */
+        account: pulumi.Input<string>;
+        /**
+         * The Base distinguished name (DN).
+         */
+        baseDn: pulumi.Input<string>;
+        /**
+         * The domain on the AD server.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the email address of a user on the LDAP server.
+         */
+        emailMapping?: pulumi.Input<string>;
+        /**
+         * The condition that is used to filter users.
+         */
+        filter?: pulumi.Input<string>;
+        /**
+         * Specifies whether to support SSL.
+         */
+        isSsl: pulumi.Input<boolean>;
+        /**
+         * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         */
+        mobileMapping?: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the name of a user on the LDAP server.
+         */
+        nameMapping?: pulumi.Input<string>;
+        /**
+         * The password of the account that is used for the LDAP server.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * The port that is used to access the LDAP server.
+         */
+        port: pulumi.Input<number>;
+        /**
+         * The address of the LDAP server.
+         */
+        server: pulumi.Input<string>;
+        /**
+         * The address of the secondary LDAP server.
+         */
+        standbyServer?: pulumi.Input<string>;
+    }
+
+    export interface InstanceLdapAuthServer {
+        /**
+         * The username of the account that is used for the LDAP server.
+         */
+        account: pulumi.Input<string>;
+        /**
+         * The Base distinguished name (DN).
+         */
+        baseDn: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the email address of a user on the LDAP server.
+         */
+        emailMapping?: pulumi.Input<string>;
+        /**
+         * The condition that is used to filter users.
+         */
+        filter?: pulumi.Input<string>;
+        /**
+         * Specifies whether to support SSL.
+         */
+        isSsl?: pulumi.Input<boolean>;
+        /**
+         * The field that is used to indicate the logon name of a user on the LDAP server.
+         */
+        loginNameMapping?: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         */
+        mobileMapping?: pulumi.Input<string>;
+        /**
+         * The field that is used to indicate the name of a user on the LDAP server.
+         */
+        nameMapping?: pulumi.Input<string>;
+        /**
+         * The password of the account that is used for the LDAP server.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * The port that is used to access the LDAP server.
+         */
+        port: pulumi.Input<number>;
+        /**
+         * The address of the LDAP server.
+         */
+        server: pulumi.Input<string>;
+        /**
+         * The address of the secondary LDAP server.
+         */
+        standbyServer?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace brain {
@@ -1274,7 +1434,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -1293,7 +1453,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -1312,7 +1472,7 @@ export namespace cms {
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+         * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
          */
         statistics?: pulumi.Input<string>;
         /**
@@ -1536,6 +1696,83 @@ export namespace config {
 }
 
 export namespace cr {
+    export interface ChainChainConfig {
+        /**
+         * Each node in the delivery chain.
+         */
+        nodes?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNode>[]>;
+        /**
+         * Execution sequence relationship between delivery chain nodes.
+         */
+        routers?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouter>[]>;
+    }
+
+    export interface ChainChainConfigNode {
+        /**
+         * Whether to enable the delivery chain node. Valid values: `true`, `false`.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * The configuration of delivery chain node.
+         */
+        nodeConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNodeNodeConfig>[]>;
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: pulumi.Input<string>;
+    }
+
+    export interface ChainChainConfigNodeNodeConfig {
+        /**
+         * Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+         */
+        denyPolicies?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigNodeNodeConfigDenyPolicy>[]>;
+    }
+
+    export interface ChainChainConfigNodeNodeConfigDenyPolicy {
+        /**
+         * The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * The count of scanning vulnerabilities that triggers blocking.
+         */
+        issueCount?: pulumi.Input<string>;
+        /**
+         * The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+         */
+        issueLevel?: pulumi.Input<string>;
+        /**
+         * The logic of trigger blocking. Valid values: `AND`, `OR`.
+         */
+        logic?: pulumi.Input<string>;
+    }
+
+    export interface ChainChainConfigRouter {
+        /**
+         * Source node.
+         */
+        froms?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouterFrom>[]>;
+        /**
+         * Destination node.
+         */
+        tos?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfigRouterTo>[]>;
+    }
+
+    export interface ChainChainConfigRouterFrom {
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: pulumi.Input<string>;
+    }
+
+    export interface ChainChainConfigRouterTo {
+        /**
+         * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+         */
+        nodeName?: pulumi.Input<string>;
+    }
+
     export interface RepoDomainList {
         /**
          * Domain of internal endpoint, only in some regions.
@@ -1550,7 +1787,6 @@ export namespace cr {
          */
         vpc?: pulumi.Input<string>;
     }
-
 }
 
 export namespace cs {
@@ -1652,6 +1888,10 @@ export namespace cs {
 
     export interface GetKubernetesAddonsAddon {
         /**
+         * The current custom configuration of the addon. **Note:** Available in v1.166.0+
+         */
+        currentConfig?: string;
+        /**
          * The current version of addon, if this field is an empty string, it means that the addon is not installed.
          */
         currentVersion?: string;
@@ -1671,6 +1911,10 @@ export namespace cs {
 
     export interface GetKubernetesAddonsAddonArgs {
         /**
+         * The current custom configuration of the addon. **Note:** Available in v1.166.0+
+         */
+        currentConfig?: pulumi.Input<string>;
+        /**
          * The current version of addon, if this field is an empty string, it means that the addon is not installed.
          */
         currentVersion?: pulumi.Input<string>;
@@ -1686,31 +1930,6 @@ export namespace cs {
          * Whether the addon is a system addon.
          */
         required?: pulumi.Input<boolean>;
-    }
-
-    export interface GetKubernetesPermissionPermissionArgs {
-        /**
-         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-         */
-        isOwner?: pulumi.Input<boolean>;
-        isRamRole?: pulumi.Input<boolean>;
-        /**
-         * The permission settings to manage ACK clusters.
-         */
-        resourceId: pulumi.Input<string>;
-        /**
-         * The authorization type. Valid values `cluster`, `namespace` and `console`.
-         */
-        resourceType: pulumi.Input<string>;
-        /**
-         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
-         */
-        roleName: pulumi.Input<string>;
-        /**
-         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-         */
-        roleType?: pulumi.Input<string>;
     }
 
     export interface GetKubernetesPermissionPermission {
@@ -1736,6 +1955,31 @@ export namespace cs {
          * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
          */
         roleType?: string;
+    }
+
+    export interface GetKubernetesPermissionPermissionArgs {
+        /**
+         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         */
+        isOwner?: pulumi.Input<boolean>;
+        isRamRole?: pulumi.Input<boolean>;
+        /**
+         * The permission settings to manage ACK clusters.
+         */
+        resourceId: pulumi.Input<string>;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace` and `console`.
+         */
+        resourceType: pulumi.Input<string>;
+        /**
+         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+         */
+        roleName: pulumi.Input<string>;
+        /**
+         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+         */
+        roleType?: pulumi.Input<string>;
     }
 
     export interface KubernetesAddon {
@@ -2026,6 +2270,9 @@ export namespace cs {
          * Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
          */
         encrypted?: pulumi.Input<string>;
+        /**
+         * The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+         */
         kmsKeyId?: pulumi.Input<string>;
         /**
          * The name of node pool.
@@ -2241,11 +2488,35 @@ export namespace ddos {
     }
 
     export interface SchedulerRuleRule {
+        /**
+         * The priority of the rule.
+         */
         priority?: pulumi.Input<number>;
+        /**
+         * The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
+         */
         regionId?: pulumi.Input<string>;
+        /**
+         * The status of the scheduling rule.
+         */
         status?: pulumi.Input<number>;
+        /**
+         * The address type of the interaction resource. Valid values:
+         * `A`: IPv4 address.
+         * `CNAME`: CNAME record.
+         */
         type?: pulumi.Input<string>;
+        /**
+         * The address of the interaction resource.
+         */
         value?: pulumi.Input<string>;
+        /**
+         * Required. The type of the linked resource. It is an Integer. Valid values:
+         * `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
+         * `2`: the IP address of the interaction resource (in the tiered protection scenario)
+         * `3`: the IP address used to accelerate access (in the network acceleration scenario)
+         * `6` the IP address of the interaction resource (in the cloud service interaction scenario)
+         */
         valueType?: pulumi.Input<number>;
     }
 
@@ -2410,7 +2681,7 @@ export namespace eci {
          */
         memory?: pulumi.Input<number>;
         /**
-         * The name of the mounted volume.
+         * The name of the security context that the container group runs.
          */
         name: pulumi.Input<string>;
         /**
@@ -2435,7 +2706,7 @@ export namespace eci {
          */
         key?: pulumi.Input<string>;
         /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
+         * The variable value of the security context that the container group runs.
          */
         value?: pulumi.Input<string>;
     }
@@ -2457,7 +2728,7 @@ export namespace eci {
          */
         mountPath?: pulumi.Input<string>;
         /**
-         * The name of the mounted volume.
+         * The name of the security context that the container group runs.
          */
         name?: pulumi.Input<string>;
         /**
@@ -2483,26 +2754,29 @@ export namespace eci {
 
     export interface ContainerGroupDnsConfigOption {
         /**
-         * The name of the mounted volume.
+         * The name of the security context that the container group runs.
          */
         name?: pulumi.Input<string>;
         /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
+         * The variable value of the security context that the container group runs.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface ContainerGroupEciSecurityContext {
+        /**
+         * system.
+         */
         sysctls?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupEciSecurityContextSysctl>[]>;
     }
 
     export interface ContainerGroupEciSecurityContextSysctl {
         /**
-         * The name of the mounted volume.
+         * The name of the security context that the container group runs.
          */
         name?: pulumi.Input<string>;
         /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
+         * The variable value of the security context that the container group runs.
          */
         value?: pulumi.Input<string>;
     }
@@ -2567,7 +2841,7 @@ export namespace eci {
          */
         memory?: pulumi.Input<number>;
         /**
-         * The name of the mounted volume.
+         * The name of the security context that the container group runs.
          */
         name?: pulumi.Input<string>;
         /**
@@ -2592,7 +2866,7 @@ export namespace eci {
          */
         key?: pulumi.Input<string>;
         /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
+         * The variable value of the security context that the container group runs.
          */
         value?: pulumi.Input<string>;
     }
@@ -2614,7 +2888,7 @@ export namespace eci {
          */
         mountPath?: pulumi.Input<string>;
         /**
-         * The name of the mounted volume.
+         * The name of the security context that the container group runs.
          */
         name?: pulumi.Input<string>;
         /**
@@ -2649,7 +2923,7 @@ export namespace eci {
          */
         flexVolumeOptions?: pulumi.Input<string>;
         /**
-         * The name of the mounted volume.
+         * The name of the security context that the container group runs.
          */
         name?: pulumi.Input<string>;
         /**
@@ -2848,13 +3122,6 @@ export namespace ecs {
         description?: pulumi.Input<string>;
     }
 
-    export interface GetDedicatedHostsOperationLockArgs {
-        /**
-         * The reason why the dedicated host resource is locked.
-         */
-        lockReason?: pulumi.Input<string>;
-    }
-
     export interface GetDedicatedHostsOperationLock {
         /**
          * The reason why the dedicated host resource is locked.
@@ -2862,12 +3129,19 @@ export namespace ecs {
         lockReason?: string;
     }
 
-    export interface GetDisksOperationLockArgs {
+    export interface GetDedicatedHostsOperationLockArgs {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
         lockReason?: pulumi.Input<string>;
     }
 
     export interface GetDisksOperationLock {
         lockReason?: string;
+    }
+
+    export interface GetDisksOperationLockArgs {
+        lockReason?: pulumi.Input<string>;
     }
 
     export interface GetEcsDisksOperationLock {
@@ -3155,13 +3429,17 @@ export namespace emr {
 
     export interface ClusterHostGroup {
         /**
-         * Auto renew for prepaid, true of false. Default is false.
+         * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
          */
         autoRenew?: pulumi.Input<boolean>;
         /**
          * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
          */
         chargeType?: pulumi.Input<string>;
+        /**
+         * Graceful decommission timeout, unit: seconds.
+         */
+        decommissionTimeout?: pulumi.Input<number>;
         /**
          * Data disk capacity.
          */
@@ -3174,6 +3452,10 @@ export namespace emr {
          * Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
          */
         diskType?: pulumi.Input<string>;
+        /**
+         * Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+         */
+        enableGracefulDecommission?: pulumi.Input<boolean>;
         gpuDriver?: pulumi.Input<string>;
         /**
          * host group name.
@@ -3215,6 +3497,277 @@ export namespace ens {
 }
 
 export namespace ess {
+    export interface EciScalingConfigurationContainer {
+        /**
+         * The arguments passed to the commands.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The commands run by the init container.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu?: pulumi.Input<number>;
+        /**
+         * The structure of environmentVars.
+         * See Block_environment_var_in_container below for details.
+         */
+        environmentVars?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainerEnvironmentVar>[]>;
+        /**
+         * The number GPUs.
+         */
+        gpu?: pulumi.Input<number>;
+        /**
+         * The image of the container.
+         */
+        image?: pulumi.Input<string>;
+        /**
+         * The restart policy of the image.
+         */
+        imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * The amount of memory resources allocated to the container.
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The structure of port. See Block_port_in_container below for details.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainerPort>[]>;
+        /**
+         * The structure of volumeMounts.
+         * See Block_volume_mount_in_container below for details.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainerVolumeMount>[]>;
+        /**
+         * The working directory of the container.
+         */
+        workingDir?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationContainerEnvironmentVar {
+        /**
+         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+         * digits, and underscores (_). It cannot start with a digit.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationContainerPort {
+        /**
+         * The port number. Valid values: 1 to 65535.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Valid values: TCP and UDP.
+         */
+        protocol?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationContainerVolumeMount {
+        /**
+         * The directory of the mounted volume. Data under this directory will be overwritten by the
+         * data in the volume.
+         */
+        mountPath?: pulumi.Input<string>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Default to `false`.
+         */
+        readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface EciScalingConfigurationHostAlias {
+        /**
+         * Adds a host name.
+         */
+        hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Adds an IP address.
+         */
+        ip?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationImageRegistryCredential {
+        /**
+         * The password used to log on to the image repository. It is required
+         * when `imageRegistryCredential` is configured.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * The address of the image repository. It is required when `imageRegistryCredential` is
+         * configured.
+         */
+        server?: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationInitContainer {
+        /**
+         * The arguments passed to the commands.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The commands run by the init container.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The amount of CPU resources allocated to the container.
+         */
+        cpu?: pulumi.Input<number>;
+        /**
+         * The structure of environmentVars.
+         * See Block_environment_var_in_container below for details.
+         */
+        environmentVars?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerEnvironmentVar>[]>;
+        /**
+         * The number GPUs.
+         */
+        gpu?: pulumi.Input<number>;
+        /**
+         * The image of the container.
+         */
+        image?: pulumi.Input<string>;
+        /**
+         * The restart policy of the image.
+         */
+        imagePullPolicy?: pulumi.Input<string>;
+        /**
+         * The amount of memory resources allocated to the container.
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The structure of port. See Block_port_in_container below for details.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerPort>[]>;
+        /**
+         * The structure of volumeMounts.
+         * See Block_volume_mount_in_container below for details.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerVolumeMount>[]>;
+        /**
+         * The working directory of the container.
+         */
+        workingDir?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationInitContainerEnvironmentVar {
+        /**
+         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+         * digits, and underscores (_). It cannot start with a digit.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of the variable. The value can be 0 to 256 characters in length.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationInitContainerPort {
+        /**
+         * The port number. Valid values: 1 to 65535.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Valid values: TCP and UDP.
+         */
+        protocol?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationInitContainerVolumeMount {
+        /**
+         * The directory of the mounted volume. Data under this directory will be overwritten by the
+         * data in the volume.
+         */
+        mountPath?: pulumi.Input<string>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Default to `false`.
+         */
+        readOnly?: pulumi.Input<boolean>;
+    }
+
+    export interface EciScalingConfigurationVolume {
+        /**
+         * ConfigFileVolumeConfigFileToPaths.
+         * See Block_config_file_volume_config_file_to_path below for details.
+         */
+        configFileVolumeConfigFileToPaths?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath>[]>;
+        /**
+         * The ID of DiskVolume.
+         */
+        diskVolumeDiskId?: pulumi.Input<string>;
+        diskVolumeDiskSize?: pulumi.Input<number>;
+        /**
+         * The system type of DiskVolume.
+         */
+        diskVolumeFsType?: pulumi.Input<string>;
+        /**
+         * The name of the FlexVolume driver.
+         */
+        flexVolumeDriver?: pulumi.Input<string>;
+        /**
+         * The type of the mounted file system. The default value is determined by the script
+         * of FlexVolume.
+         */
+        flexVolumeFsType?: pulumi.Input<string>;
+        /**
+         * The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
+         * string.
+         */
+        flexVolumeOptions?: pulumi.Input<string>;
+        /**
+         * The name of the mounted volume.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The path to the NFS volume.
+         */
+        nfsVolumePath?: pulumi.Input<string>;
+        /**
+         * The nfs volume read only. Default to `false`.
+         */
+        nfsVolumeReadOnly?: pulumi.Input<boolean>;
+        /**
+         * The address of the NFS server.
+         */
+        nfsVolumeServer?: pulumi.Input<string>;
+        /**
+         * The type of the volume.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
+        /**
+         * The content of the configuration file. Maximum size: 32 KB.
+         */
+        content?: pulumi.Input<string>;
+        /**
+         * The relative file path.
+         */
+        path?: pulumi.Input<string>;
+    }
+
     export interface ScalingConfigurationDataDisk {
         autoSnapshotPolicyId?: pulumi.Input<string>;
         category?: pulumi.Input<string>;
@@ -3256,7 +3809,6 @@ export namespace ess {
         metricIntervalUpperBound?: pulumi.Input<string>;
         scalingAdjustment?: pulumi.Input<number>;
     }
-
 }
 
 export namespace eventbridge {
@@ -3654,6 +4206,17 @@ export namespace hbr {
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface GetServerBackupPlansFilter {
+        /**
+         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+         */
+        key?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
+    }
+
     export interface GetServerBackupPlansFilterArgs {
         /**
          * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
@@ -3665,15 +4228,34 @@ export namespace hbr {
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface GetServerBackupPlansFilter {
+    export interface OtsBackupPlanOtsDetail {
         /**
-         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+         * The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
          */
-        key?: string;
+        tableNames?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OtsBackupPlanRule {
         /**
-         * Set of values that are accepted for the given field.
+         * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
          */
-        values?: string[];
+        backupType?: pulumi.Input<string>;
+        /**
+         * Whether to disable the backup task. Valid values: true, false.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+         */
+        retention?: pulumi.Input<string>;
+        /**
+         * The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
+         */
+        ruleName?: pulumi.Input<string>;
+        /**
+         * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+         */
+        schedule?: pulumi.Input<string>;
     }
 
     export interface ServerBackupPlanDetail {
@@ -3727,7 +4309,7 @@ export namespace imm {
 export namespace imp {
     export interface AppTemplateConfigList {
         /**
-         * Configuration item key. Valid values:
+         * Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
          */
         key?: pulumi.Input<string>;
         /**
@@ -3756,6 +4338,47 @@ export namespace lindorm {
 }
 
 export namespace log {
+    export interface AlertAnnotation {
+        /**
+         * Annotations's key for new alert.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Annotations's value for new alert.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface AlertGroupConfiguration {
+        fields?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AlertJoinConfiguration {
+        /**
+         * Join condition.
+         */
+        condition: pulumi.Input<string>;
+        /**
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AlertLabel {
+        /**
+         * Annotations's key for new alert.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Annotations's value for new alert.
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface AlertNotificationList {
         /**
          * Notice content of alarm.
@@ -3774,36 +4397,92 @@ export namespace log {
          */
         serviceUri?: pulumi.Input<string>;
         /**
-         * Notification type. support Email, SMS, DingTalk, MessageCenter.
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
          */
         type: pulumi.Input<string>;
     }
 
+    export interface AlertPolicyConfiguration {
+        /**
+         * Action Policy Id.
+         */
+        actionPolicyId?: pulumi.Input<string>;
+        /**
+         * Alert Policy Id.
+         */
+        alertPolicyId: pulumi.Input<string>;
+        /**
+         * Repeat interval used by alert policy, 1h, 1m.e.g.
+         */
+        repeatInterval: pulumi.Input<string>;
+    }
+
     export interface AlertQueryList {
         /**
-         * chart title
+         * Chart title, optional from 1.161.0+.
          */
-        chartTitle: pulumi.Input<string>;
+        chartTitle?: pulumi.Input<string>;
         /**
-         * end time. example: 20s.
+         * Query dashboard id.
+         */
+        dashboardId?: pulumi.Input<string>;
+        /**
+         * End time. example: 20s.
          */
         end: pulumi.Input<string>;
         /**
-         * Query logstore
+         * Query logstore, use store for new alert, Deprecated from 1.161.0+.
+         *
+         * @deprecated Deprecated from 1.161.0+, use store
          */
-        logstore: pulumi.Input<string>;
+        logstore?: pulumi.Input<string>;
         /**
-         * query corresponding to chart. example: * AND aliyun.
+         * default disable, whether to use power sql. support auto, enable, disable.
+         */
+        powerSqlMode?: pulumi.Input<string>;
+        /**
+         * Query project.
+         */
+        project?: pulumi.Input<string>;
+        /**
+         * Query corresponding to chart. example: * AND aliyun.
          */
         query: pulumi.Input<string>;
         /**
-         * begin time. example: -60s.
+         * Query project region.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * Query project store's ARN.
+         */
+        roleArn?: pulumi.Input<string>;
+        /**
+         * Begin time. example: -60s.
          */
         start: pulumi.Input<string>;
+        /**
+         * Query store for new alert.
+         */
+        store?: pulumi.Input<string>;
+        /**
+         * Query store type for new alert, including log,metric,meta.
+         */
+        storeType?: pulumi.Input<string>;
         /**
          * default Custom. No need to configure this parameter.
          */
         timeSpanType?: pulumi.Input<string>;
+    }
+
+    export interface AlertSeverityConfiguration {
+        /**
+         * Severity when this condition is met.
+         */
+        evalCondition: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+         */
+        severity: pulumi.Input<number>;
     }
 
     export interface EtlEtlSink {
@@ -3954,12 +4633,21 @@ export namespace log {
     }
 
     export interface StoreShard {
+        /**
+         * The begin value of the shard range(MD5), included in the shard range.
+         */
         beginKey?: pulumi.Input<string>;
+        /**
+         * The end value of the shard range(MD5), not included in shard range.
+         */
         endKey?: pulumi.Input<string>;
         /**
-         * The ID of the log project. It formats of `<project>:<name>`.
+         * The ID of the shard.
          */
         id?: pulumi.Input<number>;
+        /**
+         * Shard status, only two status of `readwrite` and `readonly`.
+         */
         status?: pulumi.Input<string>;
     }
 }
@@ -3984,7 +4672,7 @@ export namespace mongodb {
          */
         connectionPort?: pulumi.Input<string>;
         /**
-         * The network type of the node. Valid values: `Classic`,`VPC`.
+         * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
          */
         networkType?: pulumi.Input<string>;
         /**
@@ -3996,7 +4684,7 @@ export namespace mongodb {
          */
         vpcCloudInstanceId?: pulumi.Input<string>;
         /**
-         * The private network ID of the node.
+         * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
          */
         vpcId?: pulumi.Input<string>;
         /**
@@ -4414,6 +5102,57 @@ export namespace oss {
         referers: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface BucketReplicationDestination {
+        /**
+         * The destination bucket to which the data is replicated.
+         */
+        bucket: pulumi.Input<string>;
+        location: pulumi.Input<string>;
+        /**
+         * The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+         */
+        transferType?: pulumi.Input<string>;
+    }
+
+    export interface BucketReplicationEncryptionConfiguration {
+        /**
+         * The CMK ID used in SSE-KMS.
+         */
+        replicaKmsKeyId: pulumi.Input<string>;
+    }
+
+    export interface BucketReplicationPrefixSet {
+        /**
+         * The list of object key name prefix identifying one or more objects to which the rule applies.
+         */
+        prefixes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BucketReplicationProgress {
+        /**
+         * The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
+         */
+        historicalObject?: pulumi.Input<string>;
+        /**
+         * The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+         */
+        newObject?: pulumi.Input<string>;
+    }
+
+    export interface BucketReplicationSourceSelectionCriteria {
+        /**
+         * Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+         */
+        sseKmsEncryptedObjects?: pulumi.Input<inputs.oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects>;
+    }
+
+    export interface BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
+        /**
+         * Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+         */
+        status?: pulumi.Input<string>;
+    }
+
     export interface BucketServerSideEncryptionRule {
         /**
          * The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
@@ -4468,16 +5207,17 @@ export namespace ots {
 export namespace polardb {
     export interface ClusterDbClusterIpArray {
         /**
-         * The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit. 
-         * > **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
+         * The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
+         * **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
          */
         dbClusterIpArrayName?: pulumi.Input<string>;
         /**
          * The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
+         * **NOTE:** There does not recommend setting modifyMode to `Append` or `Delete` and it will bring a potential diff error.
          */
         modifyMode?: pulumi.Input<string>;
         /**
-         * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
          */
         securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -4941,44 +5681,6 @@ export namespace ros {
 }
 
 export namespace sae {
-    export interface ApplicationInternet {
-        /**
-         * SSL certificate. `httpsCertId` is required when HTTPS is selected
-         */
-        httpsCertId?: pulumi.Input<string>;
-        /**
-         * SLB Port.
-         */
-        port?: pulumi.Input<number>;
-        /**
-         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-         */
-        protocol?: pulumi.Input<string>;
-        /**
-         * Container port.
-         */
-        targetPort?: pulumi.Input<number>;
-    }
-
-    export interface ApplicationIntranet {
-        /**
-         * SSL certificate. `httpsCertId` is required when HTTPS is selected
-         */
-        httpsCertId?: pulumi.Input<string>;
-        /**
-         * SLB Port.
-         */
-        port?: pulumi.Input<number>;
-        /**
-         * Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-         */
-        protocol?: pulumi.Input<string>;
-        /**
-         * Container port.
-         */
-        targetPort?: pulumi.Input<number>;
-    }
-
     export interface ApplicationScalingRuleScalingRuleMetric {
         /**
          * Maximum number of instances applied.
@@ -5081,7 +5783,7 @@ export namespace sae {
          */
         minReplicas?: pulumi.Input<number>;
         /**
-         * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+         * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
          */
         targetReplicas?: pulumi.Input<number>;
     }
@@ -5211,6 +5913,44 @@ export namespace sae {
          */
         path: pulumi.Input<string>;
     }
+
+    export interface LoadBalancerInternetInternet {
+        /**
+         * The SSL certificate. `httpsCertId` is required when HTTPS is selected
+         */
+        httpsCertId?: pulumi.Input<string>;
+        /**
+         * The SLB Port.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * The Container port.
+         */
+        targetPort?: pulumi.Input<number>;
+    }
+
+    export interface LoadBalancerIntranetIntranet {
+        /**
+         * The SSL certificate. `httpsCertId` is required when HTTPS is selected
+         */
+        httpsCertId?: pulumi.Input<string>;
+        /**
+         * The SLB Port.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * The Container port.
+         */
+        targetPort?: pulumi.Input<number>;
+    }
 }
 
 export namespace sag {
@@ -5289,6 +6029,13 @@ export namespace securitycenter {
 }
 
 export namespace servicemesh {
+    export interface ServiceMeshExtraConfiguration {
+        /**
+         * Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+         */
+        crAggregationEnabled?: pulumi.Input<boolean>;
+    }
+
     export interface ServiceMeshLoadBalancer {
         apiServerLoadbalancerId?: pulumi.Input<string>;
         /**
@@ -5312,7 +6059,7 @@ export namespace servicemesh {
          */
         audit?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigAudit>;
         /**
-         * Whether or not to enable the use of a custom zipkin.
+         * Whether to enable the use of a custom zipkin.
          */
         customizedZipkin?: pulumi.Input<boolean>;
         /**
@@ -5480,7 +6227,7 @@ export namespace simpleapplicationserver {
 export namespace slb {
     export interface AclEntryList {
         comment?: pulumi.Input<string>;
-        entry: pulumi.Input<string>;
+        entry?: pulumi.Input<string>;
     }
 
     export interface BackendServerBackendServer {
@@ -5522,6 +6269,9 @@ export namespace slb {
         weight?: pulumi.Input<number>;
     }
 
+}
+
+export namespace tag {
 }
 
 export namespace tsdb {
@@ -5705,6 +6455,48 @@ export namespace vpc {
 }
 
 export namespace vpn {
+    export interface ConnectionBgpConfig {
+        /**
+         * Whether to enable BGP.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * The ASN on the Alibaba Cloud side.
+         */
+        localAsn?: pulumi.Input<string>;
+        /**
+         * The BGP IP address on the Alibaba Cloud side.
+         */
+        localBgpIp?: pulumi.Input<string>;
+        /**
+         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         */
+        tunnelCidr?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionHealthCheckConfig {
+        /**
+         * The destination IP address.
+         */
+        dip?: pulumi.Input<string>;
+        /**
+         * Whether to enable BGP.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * The interval between two consecutive health checks. Unit: seconds.
+         */
+        interval?: pulumi.Input<number>;
+        /**
+         * The maximum number of health check retries.
+         */
+        retry?: pulumi.Input<number>;
+        /**
+         * The source IP address.
+         */
+        sip?: pulumi.Input<string>;
+    }
+
     export interface ConnectionIkeConfig {
         /**
          * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
@@ -5763,6 +6555,59 @@ export namespace vpn {
         ipsecPfs?: pulumi.Input<string>;
     }
 
+    export interface IpsecServerIkeConfig {
+        /**
+         * The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+         */
+        ikeAuthAlg?: pulumi.Input<string>;
+        /**
+         * The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+         */
+        ikeEncAlg?: pulumi.Input<string>;
+        /**
+         * IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+         */
+        ikeLifetime?: pulumi.Input<number>;
+        /**
+         * The IKE negotiation mode. Default value: `main`.
+         */
+        ikeMode?: pulumi.Input<string>;
+        /**
+         * The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+         */
+        ikePfs?: pulumi.Input<string>;
+        /**
+         * The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+         */
+        ikeVersion?: pulumi.Input<string>;
+        /**
+         * The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+         */
+        localId?: pulumi.Input<string>;
+        /**
+         * The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+         */
+        remoteId?: pulumi.Input<string>;
+    }
+
+    export interface IpsecServerIpsecConfig {
+        /**
+         * The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
+         */
+        ipsecAuthAlg?: pulumi.Input<string>;
+        /**
+         * The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
+         */
+        ipsecEncAlg?: pulumi.Input<string>;
+        /**
+         * The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+         */
+        ipsecLifetime?: pulumi.Input<number>;
+        /**
+         * Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
+         */
+        ipsecPfs?: pulumi.Input<string>;
+    }
 }
 
 export namespace waf {
@@ -5774,4 +6619,34 @@ export namespace waf {
 }
 
 export namespace yundun {
+    export interface BastionHostInstanceAdAuthServer {
+        account: pulumi.Input<string>;
+        baseDn: pulumi.Input<string>;
+        domain: pulumi.Input<string>;
+        emailMapping?: pulumi.Input<string>;
+        filter?: pulumi.Input<string>;
+        isSsl: pulumi.Input<boolean>;
+        mobileMapping?: pulumi.Input<string>;
+        nameMapping?: pulumi.Input<string>;
+        password: pulumi.Input<string>;
+        port: pulumi.Input<number>;
+        server: pulumi.Input<string>;
+        standbyServer?: pulumi.Input<string>;
+    }
+
+    export interface BastionHostInstanceLdapAuthServer {
+        account: pulumi.Input<string>;
+        baseDn: pulumi.Input<string>;
+        emailMapping?: pulumi.Input<string>;
+        filter?: pulumi.Input<string>;
+        isSsl?: pulumi.Input<boolean>;
+        loginNameMapping?: pulumi.Input<string>;
+        mobileMapping?: pulumi.Input<string>;
+        nameMapping?: pulumi.Input<string>;
+        password: pulumi.Input<string>;
+        port: pulumi.Input<number>;
+        server: pulumi.Input<string>;
+        standbyServer?: pulumi.Input<string>;
+    }
+
 }

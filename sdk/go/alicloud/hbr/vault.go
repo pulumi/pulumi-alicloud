@@ -54,13 +54,17 @@ type Vault struct {
 
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+	// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+	// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+	RedundancyType pulumi.StringOutput `pulumi:"redundancyType"`
 	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The name of Vault.
 	VaultName pulumi.StringOutput `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringOutput `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`.
+	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType pulumi.StringOutput `pulumi:"vaultType"`
 }
 
@@ -98,26 +102,34 @@ func GetVault(ctx *pulumi.Context,
 type vaultState struct {
 	// The description of Vault. Defaults to an empty string.
 	Description *string `pulumi:"description"`
+	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+	// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+	// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+	RedundancyType *string `pulumi:"redundancyType"`
 	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
 	Status *string `pulumi:"status"`
 	// The name of Vault.
 	VaultName *string `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`.
+	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType *string `pulumi:"vaultType"`
 }
 
 type VaultState struct {
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrInput
+	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+	// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+	// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+	RedundancyType pulumi.StringPtrInput
 	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
 	Status pulumi.StringPtrInput
 	// The name of Vault.
 	VaultName pulumi.StringPtrInput
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringPtrInput
-	// The type of Vault. Valid values: `STANDARD`.
+	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType pulumi.StringPtrInput
 }
 
@@ -128,11 +140,15 @@ func (VaultState) ElementType() reflect.Type {
 type vaultArgs struct {
 	// The description of Vault. Defaults to an empty string.
 	Description *string `pulumi:"description"`
+	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+	// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+	// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+	RedundancyType *string `pulumi:"redundancyType"`
 	// The name of Vault.
 	VaultName string `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`.
+	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType *string `pulumi:"vaultType"`
 }
 
@@ -140,11 +156,15 @@ type vaultArgs struct {
 type VaultArgs struct {
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrInput
+	// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
+	// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
+	// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+	RedundancyType pulumi.StringPtrInput
 	// The name of Vault.
 	VaultName pulumi.StringInput
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringPtrInput
-	// The type of Vault. Valid values: `STANDARD`.
+	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType pulumi.StringPtrInput
 }
 

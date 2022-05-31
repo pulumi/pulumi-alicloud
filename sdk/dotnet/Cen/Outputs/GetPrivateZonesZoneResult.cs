@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string HostVpcId;
         /// <summary>
+        /// The ID of the private zone. It formats as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The DNS IP addresses of the PrivateZone service.
         /// </summary>
         public readonly string PrivateZoneDnsServers;
@@ -48,6 +52,8 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string hostVpcId,
 
+            string id,
+
             string privateZoneDnsServers,
 
             string status)
@@ -56,6 +62,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
             CenId = cenId;
             HostRegionId = hostRegionId;
             HostVpcId = hostVpcId;
+            Id = id;
             PrivateZoneDnsServers = privateZoneDnsServers;
             Status = status;
         }

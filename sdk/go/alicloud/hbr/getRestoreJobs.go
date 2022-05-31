@@ -29,7 +29,7 @@ type GetRestoreJobsArgs struct {
 	RestoreIds []string `pulumi:"restoreIds"`
 	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	RestoreType string `pulumi:"restoreType"`
-	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
 	SourceTypes []string `pulumi:"sourceTypes"`
 	// The status of restore job.
 	Status *string `pulumi:"status"`
@@ -80,7 +80,7 @@ type GetRestoreJobsOutputArgs struct {
 	RestoreIds pulumi.StringArrayInput `pulumi:"restoreIds"`
 	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
 	RestoreType pulumi.StringInput `pulumi:"restoreType"`
-	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
 	SourceTypes pulumi.StringArrayInput `pulumi:"sourceTypes"`
 	// The status of restore job.
 	Status pulumi.StringPtrInput `pulumi:"status"`

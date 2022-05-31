@@ -88,6 +88,9 @@ namespace Pulumi.AliCloud.ResourceManager
         [Output("maxSessionDuration")]
         public Output<int?> MaxSessionDuration { get; private set; } = null!;
 
+        /// <summary>
+        /// This ID of Resource Manager role. The value is set to `role_name`.
+        /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
 
@@ -205,6 +208,9 @@ namespace Pulumi.AliCloud.ResourceManager
         [Input("maxSessionDuration")]
         public Input<int>? MaxSessionDuration { get; set; }
 
+        /// <summary>
+        /// This ID of Resource Manager role. The value is set to `role_name`.
+        /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
 

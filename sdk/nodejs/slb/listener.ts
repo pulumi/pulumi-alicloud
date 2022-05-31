@@ -114,7 +114,7 @@ export class Listener extends pulumi.CustomResource {
     /**
      * Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    public readonly bandwidth!: pulumi.Output<number>;
     /**
      * SLB CA certificate ID. Only when `protocol` is `https` can be specified.
      */
@@ -219,6 +219,9 @@ export class Listener extends pulumi.CustomResource {
      * The Load Balancer ID which is used to launch a new listener.
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
+    /**
+     * The ID of the master slave server group.
+     */
     public readonly masterSlaveServerGroupId!: pulumi.Output<string | undefined>;
     /**
      * Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
@@ -518,6 +521,9 @@ export interface ListenerState {
      * The Load Balancer ID which is used to launch a new listener.
      */
     loadBalancerId?: pulumi.Input<string>;
+    /**
+     * The ID of the master slave server group.
+     */
     masterSlaveServerGroupId?: pulumi.Input<string>;
     /**
      * Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
@@ -700,6 +706,9 @@ export interface ListenerArgs {
      * The Load Balancer ID which is used to launch a new listener.
      */
     loadBalancerId: pulumi.Input<string>;
+    /**
+     * The ID of the master slave server group.
+     */
     masterSlaveServerGroupId?: pulumi.Input<string>;
     /**
      * Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.

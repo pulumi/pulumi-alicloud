@@ -74,6 +74,10 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
     /**
+     * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     */
+    public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
+    /**
      * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
      */
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
@@ -118,6 +122,13 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly ratio!: pulumi.Output<number | undefined>;
     /**
+     * Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     */
+    public readonly renewalStatus!: pulumi.Output<string>;
+    /**
      * The status of the bandwidth plan.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -140,6 +151,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BandwidthPackageState | undefined;
             resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
             resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["bandwidthPackageName"] = state ? state.bandwidthPackageName : undefined;
@@ -151,6 +163,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
             resourceInputs["duration"] = state ? state.duration : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["ratio"] = state ? state.ratio : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
@@ -162,6 +175,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
             resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["bandwidthPackageName"] = args ? args.bandwidthPackageName : undefined;
@@ -173,6 +187,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
             resourceInputs["duration"] = args ? args.duration : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["ratio"] = args ? args.ratio : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -191,6 +206,10 @@ export interface BandwidthPackageState {
      * `true`: Enable automatic payment, automatic payment order.
      */
     autoPay?: pulumi.Input<boolean>;
+    /**
+     * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     */
+    autoRenewDuration?: pulumi.Input<number>;
     /**
      * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
      */
@@ -236,6 +255,13 @@ export interface BandwidthPackageState {
      */
     ratio?: pulumi.Input<number>;
     /**
+     * Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     */
+    renewalStatus?: pulumi.Input<string>;
+    /**
      * The status of the bandwidth plan.
      */
     status?: pulumi.Input<string>;
@@ -255,6 +281,10 @@ export interface BandwidthPackageArgs {
      * `true`: Enable automatic payment, automatic payment order.
      */
     autoPay?: pulumi.Input<boolean>;
+    /**
+     * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     */
+    autoRenewDuration?: pulumi.Input<number>;
     /**
      * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
      */
@@ -299,6 +329,13 @@ export interface BandwidthPackageArgs {
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
      */
     ratio?: pulumi.Input<number>;
+    /**
+     * Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     */
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
      */

@@ -19,6 +19,7 @@ from .get_region_route_entries import *
 from .get_route_entries import *
 from .get_route_maps import *
 from .get_route_services import *
+from .get_transit_router_available_resources import *
 from .get_transit_router_peer_attachments import *
 from .get_transit_router_route_entries import *
 from .get_transit_router_route_table_associations import *

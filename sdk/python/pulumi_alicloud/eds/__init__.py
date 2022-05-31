@@ -16,11 +16,13 @@ from .get_nas_file_systems import *
 from .get_network_packages import *
 from .get_policy_groups import *
 from .get_simple_office_sites import *
+from .get_snapshots import *
 from .get_users import *
 from .image import *
 from .nas_file_system import *
 from .network_package import *
 from .simple_office_site import *
+from .snapshot import *
 from .user import *
 from ._inputs import *
 from . import outputs

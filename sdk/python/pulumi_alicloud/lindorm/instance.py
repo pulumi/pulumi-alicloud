@@ -67,7 +67,7 @@ class InstanceArgs:
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         pulumi.set(__self__, "disk_category", disk_category)
@@ -117,6 +117,9 @@ class InstanceArgs:
             pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
         if time_serires_engine_specification is not None:
             pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
+        if upgrade_type is not None:
+            warnings.warn("""Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
         if upgrade_type is not None:
             pulumi.set(__self__, "upgrade_type", upgrade_type)
         if zone_id is not None:
@@ -426,7 +429,7 @@ class InstanceArgs:
     @pulumi.getter(name="upgradeType")
     def upgrade_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         """
         return pulumi.get(self, "upgrade_type")
 
@@ -456,6 +459,11 @@ class _InstanceState:
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
                  disk_category: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
+                 enabled_file_engine: Optional[pulumi.Input[bool]] = None,
+                 enabled_lts_engine: Optional[pulumi.Input[bool]] = None,
+                 enabled_search_engine: Optional[pulumi.Input[bool]] = None,
+                 enabled_table_engine: Optional[pulumi.Input[bool]] = None,
+                 enabled_time_serires_engine: Optional[pulumi.Input[bool]] = None,
                  file_engine_node_count: Optional[pulumi.Input[int]] = None,
                  file_engine_specification: Optional[pulumi.Input[str]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
@@ -486,6 +494,11 @@ class _InstanceState:
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
         :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+        :param pulumi.Input[bool] enabled_file_engine: (Available in v1.163.0+) Whether to enable file engine.
+        :param pulumi.Input[bool] enabled_lts_engine: (Available in v1.163.0+) Whether to enable lts engine.
+        :param pulumi.Input[bool] enabled_search_engine: (Available in v1.163.0+) Whether to enable search engine.
+        :param pulumi.Input[bool] enabled_table_engine: (Available in v1.163.0+) Whether to enable table engine.
+        :param pulumi.Input[bool] enabled_time_serires_engine: (Available in v1.163.0+) Whether to enable time serires engine.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
         :param pulumi.Input[str] group_name: The group name.
@@ -505,7 +518,7 @@ class _InstanceState:
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -521,6 +534,16 @@ class _InstanceState:
             pulumi.set(__self__, "disk_category", disk_category)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if enabled_file_engine is not None:
+            pulumi.set(__self__, "enabled_file_engine", enabled_file_engine)
+        if enabled_lts_engine is not None:
+            pulumi.set(__self__, "enabled_lts_engine", enabled_lts_engine)
+        if enabled_search_engine is not None:
+            pulumi.set(__self__, "enabled_search_engine", enabled_search_engine)
+        if enabled_table_engine is not None:
+            pulumi.set(__self__, "enabled_table_engine", enabled_table_engine)
+        if enabled_time_serires_engine is not None:
+            pulumi.set(__self__, "enabled_time_serires_engine", enabled_time_serires_engine)
         if file_engine_node_count is not None:
             pulumi.set(__self__, "file_engine_node_count", file_engine_node_count)
         if file_engine_specification is not None:
@@ -559,6 +582,9 @@ class _InstanceState:
             pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
         if time_serires_engine_specification is not None:
             pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
+        if upgrade_type is not None:
+            warnings.warn("""Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
         if upgrade_type is not None:
             pulumi.set(__self__, "upgrade_type", upgrade_type)
         if vswitch_id is not None:
@@ -637,6 +663,66 @@ class _InstanceState:
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="enabledFileEngine")
+    def enabled_file_engine(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available in v1.163.0+) Whether to enable file engine.
+        """
+        return pulumi.get(self, "enabled_file_engine")
+
+    @enabled_file_engine.setter
+    def enabled_file_engine(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_file_engine", value)
+
+    @property
+    @pulumi.getter(name="enabledLtsEngine")
+    def enabled_lts_engine(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available in v1.163.0+) Whether to enable lts engine.
+        """
+        return pulumi.get(self, "enabled_lts_engine")
+
+    @enabled_lts_engine.setter
+    def enabled_lts_engine(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_lts_engine", value)
+
+    @property
+    @pulumi.getter(name="enabledSearchEngine")
+    def enabled_search_engine(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available in v1.163.0+) Whether to enable search engine.
+        """
+        return pulumi.get(self, "enabled_search_engine")
+
+    @enabled_search_engine.setter
+    def enabled_search_engine(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_search_engine", value)
+
+    @property
+    @pulumi.getter(name="enabledTableEngine")
+    def enabled_table_engine(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available in v1.163.0+) Whether to enable table engine.
+        """
+        return pulumi.get(self, "enabled_table_engine")
+
+    @enabled_table_engine.setter
+    def enabled_table_engine(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_table_engine", value)
+
+    @property
+    @pulumi.getter(name="enabledTimeSeriresEngine")
+    def enabled_time_serires_engine(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available in v1.163.0+) Whether to enable time serires engine.
+        """
+        return pulumi.get(self, "enabled_time_serires_engine")
+
+    @enabled_time_serires_engine.setter
+    def enabled_time_serires_engine(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled_time_serires_engine", value)
 
     @property
     @pulumi.getter(name="fileEngineNodeCount")
@@ -870,7 +956,7 @@ class _InstanceState:
     @pulumi.getter(name="upgradeType")
     def upgrade_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         """
         return pulumi.get(self, "upgrade_type")
 
@@ -943,6 +1029,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.132.0+.
 
+        > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+
         ## Import
 
         Lindorm Instance can be imported using the id, e.g.
@@ -977,7 +1065,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -993,6 +1081,8 @@ class Instance(pulumi.CustomResource):
         For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
 
         > **NOTE:** Available in v1.132.0+.
+
+        > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
 
         ## Import
 
@@ -1084,11 +1174,19 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["table_engine_specification"] = table_engine_specification
             __props__.__dict__["time_series_engine_node_count"] = time_series_engine_node_count
             __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
+            if upgrade_type is not None and not opts.urn:
+                warnings.warn("""Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""", DeprecationWarning)
+                pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
             __props__.__dict__["upgrade_type"] = upgrade_type
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["enabled_file_engine"] = None
+            __props__.__dict__["enabled_lts_engine"] = None
+            __props__.__dict__["enabled_search_engine"] = None
+            __props__.__dict__["enabled_table_engine"] = None
+            __props__.__dict__["enabled_time_serires_engine"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:lindorm/instance:Instance',
@@ -1106,6 +1204,11 @@ class Instance(pulumi.CustomResource):
             deletion_proection: Optional[pulumi.Input[bool]] = None,
             disk_category: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[str]] = None,
+            enabled_file_engine: Optional[pulumi.Input[bool]] = None,
+            enabled_lts_engine: Optional[pulumi.Input[bool]] = None,
+            enabled_search_engine: Optional[pulumi.Input[bool]] = None,
+            enabled_table_engine: Optional[pulumi.Input[bool]] = None,
+            enabled_time_serires_engine: Optional[pulumi.Input[bool]] = None,
             file_engine_node_count: Optional[pulumi.Input[int]] = None,
             file_engine_specification: Optional[pulumi.Input[str]] = None,
             group_name: Optional[pulumi.Input[str]] = None,
@@ -1141,6 +1244,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
         :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
+        :param pulumi.Input[bool] enabled_file_engine: (Available in v1.163.0+) Whether to enable file engine.
+        :param pulumi.Input[bool] enabled_lts_engine: (Available in v1.163.0+) Whether to enable lts engine.
+        :param pulumi.Input[bool] enabled_search_engine: (Available in v1.163.0+) Whether to enable search engine.
+        :param pulumi.Input[bool] enabled_table_engine: (Available in v1.163.0+) Whether to enable table engine.
+        :param pulumi.Input[bool] enabled_time_serires_engine: (Available in v1.163.0+) Whether to enable time serires engine.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
         :param pulumi.Input[str] group_name: The group name.
@@ -1160,7 +1268,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -1174,6 +1282,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["deletion_proection"] = deletion_proection
         __props__.__dict__["disk_category"] = disk_category
         __props__.__dict__["duration"] = duration
+        __props__.__dict__["enabled_file_engine"] = enabled_file_engine
+        __props__.__dict__["enabled_lts_engine"] = enabled_lts_engine
+        __props__.__dict__["enabled_search_engine"] = enabled_search_engine
+        __props__.__dict__["enabled_table_engine"] = enabled_table_engine
+        __props__.__dict__["enabled_time_serires_engine"] = enabled_time_serires_engine
         __props__.__dict__["file_engine_node_count"] = file_engine_node_count
         __props__.__dict__["file_engine_specification"] = file_engine_specification
         __props__.__dict__["group_name"] = group_name
@@ -1245,6 +1358,46 @@ class Instance(pulumi.CustomResource):
         The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         """
         return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="enabledFileEngine")
+    def enabled_file_engine(self) -> pulumi.Output[bool]:
+        """
+        (Available in v1.163.0+) Whether to enable file engine.
+        """
+        return pulumi.get(self, "enabled_file_engine")
+
+    @property
+    @pulumi.getter(name="enabledLtsEngine")
+    def enabled_lts_engine(self) -> pulumi.Output[bool]:
+        """
+        (Available in v1.163.0+) Whether to enable lts engine.
+        """
+        return pulumi.get(self, "enabled_lts_engine")
+
+    @property
+    @pulumi.getter(name="enabledSearchEngine")
+    def enabled_search_engine(self) -> pulumi.Output[bool]:
+        """
+        (Available in v1.163.0+) Whether to enable search engine.
+        """
+        return pulumi.get(self, "enabled_search_engine")
+
+    @property
+    @pulumi.getter(name="enabledTableEngine")
+    def enabled_table_engine(self) -> pulumi.Output[bool]:
+        """
+        (Available in v1.163.0+) Whether to enable table engine.
+        """
+        return pulumi.get(self, "enabled_table_engine")
+
+    @property
+    @pulumi.getter(name="enabledTimeSeriresEngine")
+    def enabled_time_serires_engine(self) -> pulumi.Output[bool]:
+        """
+        (Available in v1.163.0+) Whether to enable time serires engine.
+        """
+        return pulumi.get(self, "enabled_time_serires_engine")
 
     @property
     @pulumi.getter(name="fileEngineNodeCount")
@@ -1402,7 +1555,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="upgradeType")
     def upgrade_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         """
         return pulumi.get(self, "upgrade_type")
 

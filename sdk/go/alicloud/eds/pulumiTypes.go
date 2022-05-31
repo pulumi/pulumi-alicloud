@@ -2723,6 +2723,202 @@ func (o GetSimpleOfficeSitesSiteArrayOutput) Index(i pulumi.IntInput) GetSimpleO
 	}).(GetSimpleOfficeSitesSiteOutput)
 }
 
+type GetSnapshotsSnapshot struct {
+	// The time when the snapshot was created.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the snapshot.
+	Description string `pulumi:"description"`
+	// The ID of the cloud desktop to which the snapshot belongs.
+	DesktopId string `pulumi:"desktopId"`
+	// The ID of the Snapshot.
+	Id string `pulumi:"id"`
+	// The progress of creating the snapshot.
+	Progress string `pulumi:"progress"`
+	// The remaining time that is required to create the snapshot. Unit: seconds.
+	RemainTime int `pulumi:"remainTime"`
+	// The ID of the snapshot.
+	SnapshotId string `pulumi:"snapshotId"`
+	// -The name of the snapshot.
+	SnapshotName string `pulumi:"snapshotName"`
+	// The type of the snapshot.
+	SnapshotType string `pulumi:"snapshotType"`
+	// The capacity of the source disk. Unit: GiB.
+	SourceDiskSize string `pulumi:"sourceDiskSize"`
+	// The type of the source disk.
+	SourceDiskType string `pulumi:"sourceDiskType"`
+	// The status of the snapshot.
+	Status string `pulumi:"status"`
+}
+
+// GetSnapshotsSnapshotInput is an input type that accepts GetSnapshotsSnapshotArgs and GetSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetSnapshotsSnapshotInput` via:
+//
+//          GetSnapshotsSnapshotArgs{...}
+type GetSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput
+	ToGetSnapshotsSnapshotOutputWithContext(context.Context) GetSnapshotsSnapshotOutput
+}
+
+type GetSnapshotsSnapshotArgs struct {
+	// The time when the snapshot was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the snapshot.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the cloud desktop to which the snapshot belongs.
+	DesktopId pulumi.StringInput `pulumi:"desktopId"`
+	// The ID of the Snapshot.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The progress of creating the snapshot.
+	Progress pulumi.StringInput `pulumi:"progress"`
+	// The remaining time that is required to create the snapshot. Unit: seconds.
+	RemainTime pulumi.IntInput `pulumi:"remainTime"`
+	// The ID of the snapshot.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// -The name of the snapshot.
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+	// The type of the snapshot.
+	SnapshotType pulumi.StringInput `pulumi:"snapshotType"`
+	// The capacity of the source disk. Unit: GiB.
+	SourceDiskSize pulumi.StringInput `pulumi:"sourceDiskSize"`
+	// The type of the source disk.
+	SourceDiskType pulumi.StringInput `pulumi:"sourceDiskType"`
+	// The status of the snapshot.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput {
+	return i.ToGetSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotsSnapshotArgs) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotOutput)
+}
+
+// GetSnapshotsSnapshotArrayInput is an input type that accepts GetSnapshotsSnapshotArray and GetSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetSnapshotsSnapshotArrayInput` via:
+//
+//          GetSnapshotsSnapshotArray{ GetSnapshotsSnapshotArgs{...} }
+type GetSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput
+	ToGetSnapshotsSnapshotArrayOutputWithContext(context.Context) GetSnapshotsSnapshotArrayOutput
+}
+
+type GetSnapshotsSnapshotArray []GetSnapshotsSnapshotInput
+
+func (GetSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput {
+	return i.ToGetSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotArrayOutput)
+}
+
+type GetSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutput() GetSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx context.Context) GetSnapshotsSnapshotOutput {
+	return o
+}
+
+// The time when the snapshot was created.
+func (o GetSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the snapshot.
+func (o GetSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the cloud desktop to which the snapshot belongs.
+func (o GetSnapshotsSnapshotOutput) DesktopId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.DesktopId }).(pulumi.StringOutput)
+}
+
+// The ID of the Snapshot.
+func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The progress of creating the snapshot.
+func (o GetSnapshotsSnapshotOutput) Progress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Progress }).(pulumi.StringOutput)
+}
+
+// The remaining time that is required to create the snapshot. Unit: seconds.
+func (o GetSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
+}
+
+// The ID of the snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// -The name of the snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// The type of the snapshot.
+func (o GetSnapshotsSnapshotOutput) SnapshotType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotType }).(pulumi.StringOutput)
+}
+
+// The capacity of the source disk. Unit: GiB.
+func (o GetSnapshotsSnapshotOutput) SourceDiskSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskSize }).(pulumi.StringOutput)
+}
+
+// The type of the source disk.
+func (o GetSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
+}
+
+// The status of the snapshot.
+func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutput() GetSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotsSnapshot {
+		return vs[0].([]GetSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetSnapshotsSnapshotOutput)
+}
+
 type GetUsersUser struct {
 	// The email of the user email.
 	Email string `pulumi:"email"`
@@ -2887,6 +3083,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput)(nil)).Elem(), GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSimpleOfficeSitesSiteInput)(nil)).Elem(), GetSimpleOfficeSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSimpleOfficeSitesSiteArrayInput)(nil)).Elem(), GetSimpleOfficeSitesSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotInput)(nil)).Elem(), GetSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotArrayInput)(nil)).Elem(), GetSnapshotsSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleOutput{})
@@ -2919,6 +3117,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetSimpleOfficeSitesSiteOutput{})
 	pulumi.RegisterOutputType(GetSimpleOfficeSitesSiteArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})
 	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

@@ -81,6 +81,12 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
+        /// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        /// </summary>
+        [Output("mountTargetDomain")]
+        public Output<string> MountTargetDomain { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of security group.
         /// </summary>
         [Output("securityGroupId")]
@@ -192,6 +198,12 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("fileSystemId")]
         public Input<string>? FileSystemId { get; set; }
+
+        /// <summary>
+        /// The IPv4 domain name of the mount target. **NOTE:** Available in v1.161.0+.
+        /// </summary>
+        [Input("mountTargetDomain")]
+        public Input<string>? MountTargetDomain { get; set; }
 
         /// <summary>
         /// The ID of security group.

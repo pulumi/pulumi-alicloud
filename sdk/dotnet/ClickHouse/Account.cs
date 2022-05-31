@@ -31,6 +31,24 @@ namespace Pulumi.AliCloud.ClickHouse
     ///         var config = new Config();
     ///         var name = config.Get("name") ?? "testaccountname";
     ///         var pwd = config.Get("pwd") ?? "Tf-testpwd";
+    ///         var defaultRegions = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
+    ///         {
+    ///             Current = true,
+    ///         }));
+    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
+    ///         {
+    ///             NameRegex = "default-NODELETING",
+    ///         }));
+    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultRegions).Apply(values =&gt;
+    ///         {
+    ///             var defaultNetworks = values.Item1;
+    ///             var defaultRegions = values.Item2;
+    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
+    ///             {
+    ///                 VpcId = defaultNetworks.Ids?[0],
+    ///                 ZoneId = defaultRegions.Regions?[0]?.ZoneIds?[0]?.ZoneId,
+    ///             }));
+    ///         });
     ///         var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new AliCloud.ClickHouse.DbClusterArgs
     ///         {
     ///             DbClusterVersion = "20.3.10.75",
@@ -42,7 +60,7 @@ namespace Pulumi.AliCloud.ClickHouse
     ///             PaymentType = "PayAsYouGo",
     ///             DbNodeStorage = "500",
     ///             StorageType = "cloud_essd",
-    ///             VswitchId = "your_vswitch_id",
+    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Vswitches?[0]?.Id),
     ///         });
     ///         var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new AliCloud.ClickHouse.AccountArgs
     ///         {
@@ -86,10 +104,36 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> AccountPassword { get; private set; } = null!;
 
         /// <summary>
+        /// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        /// </summary>
+        [Output("allowDatabases")]
+        public Output<string> AllowDatabases { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        /// </summary>
+        [Output("allowDictionaries")]
+        public Output<string> AllowDictionaries { get; private set; } = null!;
+
+        /// <summary>
         /// The db cluster id.
         /// </summary>
         [Output("dbClusterId")]
         public Output<string> DbClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// -`true`: grants DDL permissions to the database account.
+        /// -`false`: does not grant DDL permissions to the database account.
+        /// </summary>
+        [Output("ddlAuthority")]
+        public Output<bool> DdlAuthority { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
+        /// </summary>
+        [Output("dmlAuthority")]
+        public Output<string> DmlAuthority { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
@@ -97,6 +141,21 @@ namespace Pulumi.AliCloud.ClickHouse
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of all databases. Separate databases with commas (,).
+        /// </summary>
+        [Output("totalDatabases")]
+        public Output<string> TotalDatabases { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of all dictionaries. Separate dictionaries with commas (,).
+        /// </summary>
+        [Output("totalDictionaries")]
+        public Output<string> TotalDictionaries { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the database account. Valid values: `Normal` or `Super`.
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -165,10 +224,48 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> AccountPassword { get; set; } = null!;
 
         /// <summary>
+        /// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        /// </summary>
+        [Input("allowDatabases")]
+        public Input<string>? AllowDatabases { get; set; }
+
+        /// <summary>
+        /// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        /// </summary>
+        [Input("allowDictionaries")]
+        public Input<string>? AllowDictionaries { get; set; }
+
+        /// <summary>
         /// The db cluster id.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// -`true`: grants DDL permissions to the database account.
+        /// -`false`: does not grant DDL permissions to the database account.
+        /// </summary>
+        [Input("ddlAuthority")]
+        public Input<bool>? DdlAuthority { get; set; }
+
+        /// <summary>
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
+        /// </summary>
+        [Input("dmlAuthority")]
+        public Input<string>? DmlAuthority { get; set; }
+
+        /// <summary>
+        /// The list of all databases. Separate databases with commas (,).
+        /// </summary>
+        [Input("totalDatabases")]
+        public Input<string>? TotalDatabases { get; set; }
+
+        /// <summary>
+        /// The list of all dictionaries. Separate dictionaries with commas (,).
+        /// </summary>
+        [Input("totalDictionaries")]
+        public Input<string>? TotalDictionaries { get; set; }
 
         public AccountArgs()
         {
@@ -196,10 +293,36 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? AccountPassword { get; set; }
 
         /// <summary>
+        /// The list of databases to which you want to grant permissions. Separate databases with commas (,).
+        /// </summary>
+        [Input("allowDatabases")]
+        public Input<string>? AllowDatabases { get; set; }
+
+        /// <summary>
+        /// The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        /// </summary>
+        [Input("allowDictionaries")]
+        public Input<string>? AllowDictionaries { get; set; }
+
+        /// <summary>
         /// The db cluster id.
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
+
+        /// <summary>
+        /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// -`true`: grants DDL permissions to the database account.
+        /// -`false`: does not grant DDL permissions to the database account.
+        /// </summary>
+        [Input("ddlAuthority")]
+        public Input<bool>? DdlAuthority { get; set; }
+
+        /// <summary>
+        /// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
+        /// </summary>
+        [Input("dmlAuthority")]
+        public Input<string>? DmlAuthority { get; set; }
 
         /// <summary>
         /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
@@ -207,6 +330,21 @@ namespace Pulumi.AliCloud.ClickHouse
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The list of all databases. Separate databases with commas (,).
+        /// </summary>
+        [Input("totalDatabases")]
+        public Input<string>? TotalDatabases { get; set; }
+
+        /// <summary>
+        /// The list of all dictionaries. Separate dictionaries with commas (,).
+        /// </summary>
+        [Input("totalDictionaries")]
+        public Input<string>? TotalDictionaries { get; set; }
+
+        /// <summary>
+        /// The type of the database account. Valid values: `Normal` or `Super`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

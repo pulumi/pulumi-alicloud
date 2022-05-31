@@ -61,7 +61,7 @@ export interface GetRestoreJobsArgs {
      */
     restoreType: string;
     /**
-     * The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+     * The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
      */
     sourceTypes?: string[];
     /**
@@ -125,7 +125,7 @@ export interface GetRestoreJobsOutputArgs {
      */
     restoreType: pulumi.Input<string>;
     /**
-     * The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+     * The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
      */
     sourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

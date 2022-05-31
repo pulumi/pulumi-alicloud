@@ -20,6 +20,8 @@ class ServerlessKubernetesArgs:
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
+                 create_v2_cluster: Optional[pulumi.Input[bool]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
@@ -49,13 +51,16 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+               - ack.standard: Standard serverless clusters.
+               - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
@@ -81,6 +86,10 @@ class ServerlessKubernetesArgs:
             pulumi.set(__self__, "client_key", client_key)
         if cluster_ca_cert is not None:
             pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+        if cluster_spec is not None:
+            pulumi.set(__self__, "cluster_spec", cluster_spec)
+        if create_v2_cluster is not None:
+            pulumi.set(__self__, "create_v2_cluster", create_v2_cluster)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if endpoint_public_access_enabled is not None:
@@ -193,6 +202,29 @@ class ServerlessKubernetesArgs:
         pulumi.set(self, "cluster_ca_cert", value)
 
     @property
+    @pulumi.getter(name="clusterSpec")
+    def cluster_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+        - ack.standard: Standard serverless clusters.
+        - ack.pro.small: Professional serverless clusters.
+        """
+        return pulumi.get(self, "cluster_spec")
+
+    @cluster_spec.setter
+    def cluster_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_spec", value)
+
+    @property
+    @pulumi.getter(name="createV2Cluster")
+    def create_v2_cluster(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "create_v2_cluster")
+
+    @create_v2_cluster.setter
+    def create_v2_cluster(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_v2_cluster", value)
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -246,7 +278,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter(name="loadBalancerSpec")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -460,6 +492,8 @@ class _ServerlessKubernetesState:
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
+                 create_v2_cluster: Optional[pulumi.Input[bool]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
@@ -489,13 +523,16 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+               - ack.standard: Standard serverless clusters.
+               - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
@@ -521,6 +558,10 @@ class _ServerlessKubernetesState:
             pulumi.set(__self__, "client_key", client_key)
         if cluster_ca_cert is not None:
             pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+        if cluster_spec is not None:
+            pulumi.set(__self__, "cluster_spec", cluster_spec)
+        if create_v2_cluster is not None:
+            pulumi.set(__self__, "create_v2_cluster", create_v2_cluster)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if endpoint_public_access_enabled is not None:
@@ -623,6 +664,29 @@ class _ServerlessKubernetesState:
         pulumi.set(self, "cluster_ca_cert", value)
 
     @property
+    @pulumi.getter(name="clusterSpec")
+    def cluster_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+        - ack.standard: Standard serverless clusters.
+        - ack.pro.small: Professional serverless clusters.
+        """
+        return pulumi.get(self, "cluster_spec")
+
+    @cluster_spec.setter
+    def cluster_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_spec", value)
+
+    @property
+    @pulumi.getter(name="createV2Cluster")
+    def create_v2_cluster(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "create_v2_cluster")
+
+    @create_v2_cluster.setter
+    def create_v2_cluster(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_v2_cluster", value)
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -676,7 +740,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter(name="loadBalancerSpec")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -904,6 +968,8 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
+                 create_v2_cluster: Optional[pulumi.Input[bool]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
@@ -991,13 +1057,16 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+               - ack.standard: Standard serverless clusters.
+               - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
@@ -1097,6 +1166,8 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
+                 create_v2_cluster: Optional[pulumi.Input[bool]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
@@ -1136,6 +1207,8 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__.__dict__["client_cert"] = client_cert
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
+            __props__.__dict__["cluster_spec"] = cluster_spec
+            __props__.__dict__["create_v2_cluster"] = create_v2_cluster
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
             __props__.__dict__["force_update"] = force_update
@@ -1181,6 +1254,8 @@ class ServerlessKubernetes(pulumi.CustomResource):
             client_cert: Optional[pulumi.Input[str]] = None,
             client_key: Optional[pulumi.Input[str]] = None,
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+            cluster_spec: Optional[pulumi.Input[str]] = None,
+            create_v2_cluster: Optional[pulumi.Input[bool]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
@@ -1215,13 +1290,16 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
+        :param pulumi.Input[str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+               - ack.standard: Standard serverless clusters.
+               - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
@@ -1247,6 +1325,8 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__.__dict__["client_cert"] = client_cert
         __props__.__dict__["client_key"] = client_key
         __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
+        __props__.__dict__["cluster_spec"] = cluster_spec
+        __props__.__dict__["create_v2_cluster"] = create_v2_cluster
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
         __props__.__dict__["force_update"] = force_update
@@ -1305,6 +1385,21 @@ class ServerlessKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "cluster_ca_cert")
 
     @property
+    @pulumi.getter(name="clusterSpec")
+    def cluster_spec(self) -> pulumi.Output[str]:
+        """
+        The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
+        - ack.standard: Standard serverless clusters.
+        - ack.pro.small: Professional serverless clusters.
+        """
+        return pulumi.get(self, "cluster_spec")
+
+    @property
+    @pulumi.getter(name="createV2Cluster")
+    def create_v2_cluster(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "create_v2_cluster")
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1340,9 +1435,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    def load_balancer_spec(self) -> pulumi.Output[Optional[str]]:
+    def load_balancer_spec(self) -> pulumi.Output[str]:
         """
-        The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -1462,7 +1557,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Output[Optional[str]]:
+    def vswitch_id(self) -> pulumi.Output[str]:
         """
         (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         """

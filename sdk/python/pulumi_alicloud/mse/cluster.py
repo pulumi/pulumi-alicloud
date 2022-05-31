@@ -218,6 +218,7 @@ class _ClusterState:
     def __init__(__self__, *,
                  acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cluster_alias_name: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_specification: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  cluster_version: Optional[pulumi.Input[str]] = None,
@@ -233,6 +234,7 @@ class _ClusterState:
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
+        :param pulumi.Input[str] cluster_id: (Available in v1.162.0+)  The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
                `MSE_SC_1_2_200_c`：1C2G
                `MSE_SC_2_4_200_c`：2C4G
@@ -253,6 +255,8 @@ class _ClusterState:
             pulumi.set(__self__, "acl_entry_lists", acl_entry_lists)
         if cluster_alias_name is not None:
             pulumi.set(__self__, "cluster_alias_name", cluster_alias_name)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_specification is not None:
             pulumi.set(__self__, "cluster_specification", cluster_specification)
         if cluster_type is not None:
@@ -299,6 +303,18 @@ class _ClusterState:
     @cluster_alias_name.setter
     def cluster_alias_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_alias_name", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.162.0+)  The id of Cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
 
     @property
     @pulumi.getter(name="clusterSpecification")
@@ -470,8 +486,8 @@ class Cluster(pulumi.CustomResource):
             acl_entry_lists=["127.0.0.1/32"],
             cluster_alias_name="tf-testAccMseCluster",
             cluster_specification="MSE_SC_1_2_200_c",
-            cluster_type="Eureka",
-            cluster_version="EUREKA_1_9_3",
+            cluster_type="Nacos-Ans",
+            cluster_version="NACOS_ANS_1_2_1",
             instance_count=1,
             net_type="privatenet",
             pub_network_flow="1",
@@ -526,8 +542,8 @@ class Cluster(pulumi.CustomResource):
             acl_entry_lists=["127.0.0.1/32"],
             cluster_alias_name="tf-testAccMseCluster",
             cluster_specification="MSE_SC_1_2_200_c",
-            cluster_type="Eureka",
-            cluster_version="EUREKA_1_9_3",
+            cluster_type="Nacos-Ans",
+            cluster_version="NACOS_ANS_1_2_1",
             instance_count=1,
             net_type="privatenet",
             pub_network_flow="1",
@@ -603,6 +619,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["pub_network_flow"] = pub_network_flow
             __props__.__dict__["pub_slb_specification"] = pub_slb_specification
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["cluster_id"] = None
             __props__.__dict__["status"] = None
         super(Cluster, __self__).__init__(
             'alicloud:mse/cluster:Cluster',
@@ -616,6 +633,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             cluster_alias_name: Optional[pulumi.Input[str]] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_specification: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
             cluster_version: Optional[pulumi.Input[str]] = None,
@@ -636,6 +654,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
+        :param pulumi.Input[str] cluster_id: (Available in v1.162.0+)  The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
                `MSE_SC_1_2_200_c`：1C2G
                `MSE_SC_2_4_200_c`：2C4G
@@ -658,6 +677,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["acl_entry_lists"] = acl_entry_lists
         __props__.__dict__["cluster_alias_name"] = cluster_alias_name
+        __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_specification"] = cluster_specification
         __props__.__dict__["cluster_type"] = cluster_type
         __props__.__dict__["cluster_version"] = cluster_version
@@ -686,6 +706,14 @@ class Cluster(pulumi.CustomResource):
         The alias of MSE Cluster.
         """
         return pulumi.get(self, "cluster_alias_name")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.162.0+)  The id of Cluster.
+        """
+        return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="clusterSpecification")

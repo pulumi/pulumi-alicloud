@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Eci.Inputs
     public sealed class ContainerGroupEciSecurityContextSysctlArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the mounted volume.
+        /// The name of the security context that the container group runs.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The value of the variable. The value can be 0 to 256 characters in length.
+        /// The variable value of the security context that the container group runs.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

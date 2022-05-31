@@ -59,9 +59,10 @@ type ResourceGroup struct {
 	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
-	Name              pulumi.StringOutput                  `pulumi:"name"`
-	RegionStatuses    ResourceGroupRegionStatusArrayOutput `pulumi:"regionStatuses"`
-	ResourceGroupName pulumi.StringOutput                  `pulumi:"resourceGroupName"`
+	Name           pulumi.StringOutput                  `pulumi:"name"`
+	RegionStatuses ResourceGroupRegionStatusArrayOutput `pulumi:"regionStatuses"`
+	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
 	// The status of the regional resource group.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -105,9 +106,10 @@ type resourceGroupState struct {
 	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
-	Name              *string                     `pulumi:"name"`
-	RegionStatuses    []ResourceGroupRegionStatus `pulumi:"regionStatuses"`
-	ResourceGroupName *string                     `pulumi:"resourceGroupName"`
+	Name           *string                     `pulumi:"name"`
+	RegionStatuses []ResourceGroupRegionStatus `pulumi:"regionStatuses"`
+	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// The status of the regional resource group.
 	Status *string `pulumi:"status"`
 }
@@ -120,8 +122,9 @@ type ResourceGroupState struct {
 	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
-	Name              pulumi.StringPtrInput
-	RegionStatuses    ResourceGroupRegionStatusArrayInput
+	Name           pulumi.StringPtrInput
+	RegionStatuses ResourceGroupRegionStatusArrayInput
+	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	ResourceGroupName pulumi.StringPtrInput
 	// The status of the regional resource group.
 	Status pulumi.StringPtrInput
@@ -137,7 +140,8 @@ type resourceGroupArgs struct {
 	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
-	Name              *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 }
 
@@ -148,7 +152,8 @@ type ResourceGroupArgs struct {
 	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
-	Name              pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
 	ResourceGroupName pulumi.StringPtrInput
 }
 

@@ -182,6 +182,12 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly dedicatedHostGroupId!: pulumi.Output<string | undefined>;
     /**
+     * The switch of delete protection. Valid values:
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
      */
     public readonly direction!: pulumi.Output<string | undefined>;
@@ -382,6 +388,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
             resourceInputs["dbName"] = state ? state.dbName : undefined;
             resourceInputs["dbNames"] = state ? state.dbNames : undefined;
             resourceInputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["direction"] = state ? state.direction : undefined;
             resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
@@ -449,6 +456,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
             resourceInputs["dbName"] = args ? args.dbName : undefined;
             resourceInputs["dbNames"] = args ? args.dbNames : undefined;
             resourceInputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["direction"] = args ? args.direction : undefined;
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
@@ -592,6 +600,12 @@ export interface RdsCloneDbInstanceState {
      * The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
      */
     dedicatedHostGroupId?: pulumi.Input<string>;
+    /**
+     * The switch of delete protection. Valid values:
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
      */
@@ -856,6 +870,12 @@ export interface RdsCloneDbInstanceArgs {
      * The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
      */
     dedicatedHostGroupId?: pulumi.Input<string>;
+    /**
+     * The switch of delete protection. Valid values:
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
      */

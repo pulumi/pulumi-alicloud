@@ -97,6 +97,7 @@ class _RoleState:
         :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[str] description: The description of the Resource Manager role.
         :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
+        :param pulumi.Input[str] role_id: This ID of Resource Manager role. The value is set to `role_name`.
         :param pulumi.Input[str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
         :param pulumi.Input[str] update_date: Role update time.
         """
@@ -167,6 +168,9 @@ class _RoleState:
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This ID of Resource Manager role. The value is set to `role_name`.
+        """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
@@ -376,6 +380,7 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] assume_role_policy_document: The content of the permissions strategy that plays a role.
         :param pulumi.Input[str] description: The description of the Resource Manager role.
         :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
+        :param pulumi.Input[str] role_id: This ID of Resource Manager role. The value is set to `role_name`.
         :param pulumi.Input[str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
         :param pulumi.Input[str] update_date: Role update time.
         """
@@ -428,6 +433,9 @@ class Role(pulumi.CustomResource):
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[str]:
+        """
+        This ID of Resource Manager role. The value is set to `role_name`.
+        """
         return pulumi.get(self, "role_id")
 
     @property

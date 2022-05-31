@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.CS
     /// This resource will help you to manage addon in Kubernetes Cluster.
     /// 
     /// &gt; **NOTE:** Available in 1.150.0+.
+    /// **NOTE:** From version 1.166.0, support specifying addon customizable configuration.
     /// 
     /// ## Example Usage
     /// 
@@ -89,6 +90,8 @@ namespace Pulumi.AliCloud.CS
     /// * If the addon does not exist in the cluster, it will be installed.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -101,10 +104,31 @@ namespace Pulumi.AliCloud.CS
     ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
     ///             Version = "1.2.7",
     ///         });
+    ///         var nginxIngressController = new AliCloud.CS.KubernetesAddon("nginxIngressController", new AliCloud.CS.KubernetesAddonArgs
+    ///         {
+    ///             ClusterId = @var.Cluster_id,
+    ///             Version = "v1.1.2-aliyun.2",
+    ///             Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "CpuLimit", "" },
+    ///                 { "CpuRequest", "100m" },
+    ///                 { "EnableWebhook", true },
+    ///                 { "HostNetwork", false },
+    ///                 { "IngressSlbNetworkType", "internet" },
+    ///                 { "IngressSlbSpec", "slb.s2.small" },
+    ///                 { "MemoryLimit", "" },
+    ///                 { "MemoryRequest", "200Mi" },
+    ///                 { "NodeSelector", new[]
+    ///                     {
+    ///                     }
+    ///                  },
+    ///             }),
+    ///         });
     ///     }
     /// 
     /// }
     /// ```
+    /// 
     /// **Upgrading of addon**
     /// First, check the `next_version` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `next_version` and apply.
     /// ```csharp
@@ -148,6 +172,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+        /// </summary>
+        [Output("config")]
+        public Output<string?> Config { get; private set; } = null!;
 
         /// <summary>
         /// The name of addon.
@@ -226,6 +256,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
+        /// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+        /// </summary>
+        [Input("config")]
+        public Input<string>? Config { get; set; }
+
+        /// <summary>
         /// The name of addon.
         /// </summary>
         [Input("name")]
@@ -255,6 +291,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+        /// </summary>
+        [Input("config")]
+        public Input<string>? Config { get; set; }
 
         /// <summary>
         /// The name of addon.

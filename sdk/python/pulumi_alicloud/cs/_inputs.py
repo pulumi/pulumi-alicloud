@@ -1714,6 +1714,7 @@ class NodePoolDataDiskArgs:
         """
         :param pulumi.Input[str] category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
         :param pulumi.Input[str] encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        :param pulumi.Input[str] kms_key_id: The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
@@ -1782,6 +1783,9 @@ class NodePoolDataDiskArgs:
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -2271,20 +2275,35 @@ class SwarmNodeArgs:
 @pulumi.input_type
 class GetKubernetesAddonsAddonArgs:
     def __init__(__self__, *,
+                 current_config: str,
                  current_version: str,
                  name: str,
                  next_version: str,
                  required: bool):
         """
+        :param str current_config: The current custom configuration of the addon. **Note:** Available in v1.166.0+
         :param str current_version: The current version of addon, if this field is an empty string, it means that the addon is not installed.
         :param str name: The name of addon.
         :param str next_version: The next version of this addon can be upgraded to.
         :param bool required: Whether the addon is a system addon.
         """
+        pulumi.set(__self__, "current_config", current_config)
         pulumi.set(__self__, "current_version", current_version)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "next_version", next_version)
         pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="currentConfig")
+    def current_config(self) -> str:
+        """
+        The current custom configuration of the addon. **Note:** Available in v1.166.0+
+        """
+        return pulumi.get(self, "current_config")
+
+    @current_config.setter
+    def current_config(self, value: str):
+        pulumi.set(self, "current_config", value)
 
     @property
     @pulumi.getter(name="currentVersion")

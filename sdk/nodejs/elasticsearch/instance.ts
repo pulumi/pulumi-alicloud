@@ -134,6 +134,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly kibanaDomain!: pulumi.Output<string>;
     /**
+     * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+     */
+    public readonly kibanaNodeSpec!: pulumi.Output<string>;
+    /**
      * Kibana console port.
      */
     public /*out*/ readonly kibanaPort!: pulumi.Output<number>;
@@ -239,6 +243,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enablePublic"] = state ? state.enablePublic : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["kibanaDomain"] = state ? state.kibanaDomain : undefined;
+            resourceInputs["kibanaNodeSpec"] = state ? state.kibanaNodeSpec : undefined;
             resourceInputs["kibanaPort"] = state ? state.kibanaPort : undefined;
             resourceInputs["kibanaPrivateWhitelists"] = state ? state.kibanaPrivateWhitelists : undefined;
             resourceInputs["kibanaWhitelists"] = state ? state.kibanaWhitelists : undefined;
@@ -290,6 +295,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableKibanaPublicNetwork"] = args ? args.enableKibanaPublicNetwork : undefined;
             resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["kibanaNodeSpec"] = args ? args.kibanaNodeSpec : undefined;
             resourceInputs["kibanaPrivateWhitelists"] = args ? args.kibanaPrivateWhitelists : undefined;
             resourceInputs["kibanaWhitelists"] = args ? args.kibanaWhitelists : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
@@ -378,6 +384,10 @@ export interface InstanceState {
      * Kibana console domain (Internet access supported).
      */
     kibanaDomain?: pulumi.Input<string>;
+    /**
+     * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+     */
+    kibanaNodeSpec?: pulumi.Input<string>;
     /**
      * Kibana console port.
      */
@@ -511,6 +521,10 @@ export interface InstanceArgs {
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+     */
+    kibanaNodeSpec?: pulumi.Input<string>;
     /**
      * Set the Kibana's IP whitelist in private network.
      */

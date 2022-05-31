@@ -73,9 +73,11 @@ class ClusterHostGroupArgs:
     def __init__(__self__, *,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  charge_type: Optional[pulumi.Input[str]] = None,
+                 decommission_timeout: Optional[pulumi.Input[int]] = None,
                  disk_capacity: Optional[pulumi.Input[str]] = None,
                  disk_count: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 enable_graceful_decommission: Optional[pulumi.Input[bool]] = None,
                  gpu_driver: Optional[pulumi.Input[str]] = None,
                  host_group_name: Optional[pulumi.Input[str]] = None,
                  host_group_type: Optional[pulumi.Input[str]] = None,
@@ -86,11 +88,13 @@ class ClusterHostGroupArgs:
                  sys_disk_capacity: Optional[pulumi.Input[str]] = None,
                  sys_disk_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, true of false. Default is false.
+        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        :param pulumi.Input[int] decommission_timeout: Graceful decommission timeout, unit: seconds.
         :param pulumi.Input[str] disk_capacity: Data disk capacity.
         :param pulumi.Input[str] disk_count: Data disk count.
         :param pulumi.Input[str] disk_type: Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
+        :param pulumi.Input[bool] enable_graceful_decommission: Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
         :param pulumi.Input[str] host_group_name: host group name.
         :param pulumi.Input[str] host_group_type: host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[str] instance_list: Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
@@ -104,12 +108,16 @@ class ClusterHostGroupArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if charge_type is not None:
             pulumi.set(__self__, "charge_type", charge_type)
+        if decommission_timeout is not None:
+            pulumi.set(__self__, "decommission_timeout", decommission_timeout)
         if disk_capacity is not None:
             pulumi.set(__self__, "disk_capacity", disk_capacity)
         if disk_count is not None:
             pulumi.set(__self__, "disk_count", disk_count)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if enable_graceful_decommission is not None:
+            pulumi.set(__self__, "enable_graceful_decommission", enable_graceful_decommission)
         if gpu_driver is not None:
             pulumi.set(__self__, "gpu_driver", gpu_driver)
         if host_group_name is not None:
@@ -133,7 +141,7 @@ class ClusterHostGroupArgs:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto renew for prepaid, true of false. Default is false.
+        Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -152,6 +160,18 @@ class ClusterHostGroupArgs:
     @charge_type.setter
     def charge_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "charge_type", value)
+
+    @property
+    @pulumi.getter(name="decommissionTimeout")
+    def decommission_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Graceful decommission timeout, unit: seconds.
+        """
+        return pulumi.get(self, "decommission_timeout")
+
+    @decommission_timeout.setter
+    def decommission_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "decommission_timeout", value)
 
     @property
     @pulumi.getter(name="diskCapacity")
@@ -188,6 +208,18 @@ class ClusterHostGroupArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="enableGracefulDecommission")
+    def enable_graceful_decommission(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+        """
+        return pulumi.get(self, "enable_graceful_decommission")
+
+    @enable_graceful_decommission.setter
+    def enable_graceful_decommission(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_graceful_decommission", value)
 
     @property
     @pulumi.getter(name="gpuDriver")

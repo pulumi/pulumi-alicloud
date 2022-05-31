@@ -126,17 +126,21 @@ func (o ClusterBootstrapActionArrayOutput) Index(i pulumi.IntInput) ClusterBoots
 }
 
 type ClusterHostGroup struct {
-	// Auto renew for prepaid, true of false. Default is false.
+	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType *string `pulumi:"chargeType"`
+	// Graceful decommission timeout, unit: seconds.
+	DecommissionTimeout *int `pulumi:"decommissionTimeout"`
 	// Data disk capacity.
 	DiskCapacity *string `pulumi:"diskCapacity"`
 	// Data disk count.
 	DiskCount *string `pulumi:"diskCount"`
 	// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-	DiskType  *string `pulumi:"diskType"`
-	GpuDriver *string `pulumi:"gpuDriver"`
+	DiskType *string `pulumi:"diskType"`
+	// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+	EnableGracefulDecommission *bool   `pulumi:"enableGracefulDecommission"`
+	GpuDriver                  *string `pulumi:"gpuDriver"`
 	// host group name.
 	HostGroupName *string `pulumi:"hostGroupName"`
 	// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
@@ -167,17 +171,21 @@ type ClusterHostGroupInput interface {
 }
 
 type ClusterHostGroupArgs struct {
-	// Auto renew for prepaid, true of false. Default is false.
+	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType pulumi.StringPtrInput `pulumi:"chargeType"`
+	// Graceful decommission timeout, unit: seconds.
+	DecommissionTimeout pulumi.IntPtrInput `pulumi:"decommissionTimeout"`
 	// Data disk capacity.
 	DiskCapacity pulumi.StringPtrInput `pulumi:"diskCapacity"`
 	// Data disk count.
 	DiskCount pulumi.StringPtrInput `pulumi:"diskCount"`
 	// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-	DiskType  pulumi.StringPtrInput `pulumi:"diskType"`
-	GpuDriver pulumi.StringPtrInput `pulumi:"gpuDriver"`
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+	EnableGracefulDecommission pulumi.BoolPtrInput   `pulumi:"enableGracefulDecommission"`
+	GpuDriver                  pulumi.StringPtrInput `pulumi:"gpuDriver"`
 	// host group name.
 	HostGroupName pulumi.StringPtrInput `pulumi:"hostGroupName"`
 	// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
@@ -247,7 +255,7 @@ func (o ClusterHostGroupOutput) ToClusterHostGroupOutputWithContext(ctx context.
 	return o
 }
 
-// Auto renew for prepaid, true of false. Default is false.
+// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 func (o ClusterHostGroupOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
@@ -255,6 +263,11 @@ func (o ClusterHostGroupOutput) AutoRenew() pulumi.BoolPtrOutput {
 // Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 func (o ClusterHostGroupOutput) ChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.ChargeType }).(pulumi.StringPtrOutput)
+}
+
+// Graceful decommission timeout, unit: seconds.
+func (o ClusterHostGroupOutput) DecommissionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterHostGroup) *int { return v.DecommissionTimeout }).(pulumi.IntPtrOutput)
 }
 
 // Data disk capacity.
@@ -270,6 +283,11 @@ func (o ClusterHostGroupOutput) DiskCount() pulumi.StringPtrOutput {
 // Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
 func (o ClusterHostGroupOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+func (o ClusterHostGroupOutput) EnableGracefulDecommission() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterHostGroup) *bool { return v.EnableGracefulDecommission }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterHostGroupOutput) GpuDriver() pulumi.StringPtrOutput {

@@ -64,13 +64,13 @@ namespace Pulumi.AliCloud.Ddos
     public partial class Port : Pulumi.CustomResource
     {
         /// <summary>
-        /// The port of the origin server.
+        /// The port of the origin server. Valid values: [1~65535].
         /// </summary>
         [Output("backendPort")]
         public Output<string?> BackendPort { get; private set; } = null!;
 
         /// <summary>
-        /// The forwarding port.
+        /// The forwarding port. Valid values: [1~65535].
         /// </summary>
         [Output("frontendPort")]
         public Output<string> FrontendPort { get; private set; } = null!;
@@ -140,13 +140,13 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class PortArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port of the origin server.
+        /// The port of the origin server. Valid values: [1~65535].
         /// </summary>
         [Input("backendPort")]
         public Input<string>? BackendPort { get; set; }
 
         /// <summary>
-        /// The forwarding port.
+        /// The forwarding port. Valid values: [1~65535].
         /// </summary>
         [Input("frontendPort", required: true)]
         public Input<string> FrontendPort { get; set; } = null!;
@@ -183,13 +183,13 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class PortState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port of the origin server.
+        /// The port of the origin server. Valid values: [1~65535].
         /// </summary>
         [Input("backendPort")]
         public Input<string>? BackendPort { get; set; }
 
         /// <summary>
-        /// The forwarding port.
+        /// The forwarding port. Valid values: [1~65535].
         /// </summary>
         [Input("frontendPort")]
         public Input<string>? FrontendPort { get; set; }

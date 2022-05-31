@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getServiceMeshes";
+export * from "./getVersions";
 export * from "./serviceMesh";
 
 // Import resources to register:

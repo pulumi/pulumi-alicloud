@@ -94,9 +94,9 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly int MinReadyInstances;
         /// <summary>
-        /// Mount description.
+        /// Mount description information.
         /// </summary>
-        public readonly string MountDesc;
+        public readonly ImmutableArray<Outputs.GetApplicationsApplicationMountDescResult> MountDescs;
         /// <summary>
         /// Mount point of NAS in application VPC.
         /// </summary>
@@ -121,6 +121,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// OSS mount description information.
         /// </summary>
         public readonly string OssMountDescs;
+        /// <summary>
+        /// The OSS mount detail.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetApplicationsApplicationOssMountDetailResult> OssMountDetails;
         /// <summary>
         /// Application package type. Support FatJar, War and Image.
         /// </summary>
@@ -177,6 +181,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// The status of the resource.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>
         /// Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
         /// </summary>
@@ -248,7 +256,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
 
             int minReadyInstances,
 
-            string mountDesc,
+            ImmutableArray<Outputs.GetApplicationsApplicationMountDescResult> mountDescs,
 
             string mountHost,
 
@@ -261,6 +269,8 @@ namespace Pulumi.AliCloud.Sae.Outputs
             string ossAkSecret,
 
             string ossMountDescs,
+
+            ImmutableArray<Outputs.GetApplicationsApplicationOssMountDetailResult> ossMountDetails,
 
             string packageType,
 
@@ -296,6 +306,8 @@ namespace Pulumi.AliCloud.Sae.Outputs
 
             string status,
 
+            ImmutableDictionary<string, object> tags,
+
             int terminationGracePeriodSeconds,
 
             string timezone,
@@ -330,13 +342,14 @@ namespace Pulumi.AliCloud.Sae.Outputs
             Liveness = liveness;
             Memory = memory;
             MinReadyInstances = minReadyInstances;
-            MountDesc = mountDesc;
+            MountDescs = mountDescs;
             MountHost = mountHost;
             NamespaceId = namespaceId;
             NasId = nasId;
             OssAkId = ossAkId;
             OssAkSecret = ossAkSecret;
             OssMountDescs = ossMountDescs;
+            OssMountDetails = ossMountDetails;
             PackageType = packageType;
             PackageUrl = packageUrl;
             PackageVersion = packageVersion;
@@ -354,6 +367,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
             SecurityGroupId = securityGroupId;
             SlsConfigs = slsConfigs;
             Status = status;
+            Tags = tags;
             TerminationGracePeriodSeconds = terminationGracePeriodSeconds;
             Timezone = timezone;
             TomcatConfig = tomcatConfig;

@@ -21,10 +21,14 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	AdAuthServers InstanceAdAuthServerArrayOutput `pulumi:"adAuthServers"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess pulumi.BoolOutput `pulumi:"enablePublicAccess"`
+	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	LdapAuthServers InstanceLdapAuthServerArrayOutput `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
@@ -78,10 +82,14 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	AdAuthServers []InstanceAdAuthServer `pulumi:"adAuthServers"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description *string `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess *bool `pulumi:"enablePublicAccess"`
+	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	LdapAuthServers []InstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode *string `pulumi:"licenseCode"`
 	Period      *int    `pulumi:"period"`
@@ -95,10 +103,14 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	AdAuthServers InstanceAdAuthServerArrayInput
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringPtrInput
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess pulumi.BoolPtrInput
+	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	LdapAuthServers InstanceLdapAuthServerArrayInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
@@ -116,10 +128,14 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	AdAuthServers []InstanceAdAuthServer `pulumi:"adAuthServers"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description string `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess *bool `pulumi:"enablePublicAccess"`
+	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	LdapAuthServers []InstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode string `pulumi:"licenseCode"`
 	Period      *int   `pulumi:"period"`
@@ -134,10 +150,14 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The AD auth server of the Instance. See the following `Block adAuthServer`.
+	AdAuthServers InstanceAdAuthServerArrayInput
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringInput
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
 	EnablePublicAccess pulumi.BoolPtrInput
+	// The LDAP auth server of the Instance. See the following `Block ldapAuthServer`.
+	LdapAuthServers InstanceLdapAuthServerArrayInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringInput
 	Period      pulumi.IntPtrInput

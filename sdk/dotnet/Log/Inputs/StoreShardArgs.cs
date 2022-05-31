@@ -12,18 +12,27 @@ namespace Pulumi.AliCloud.Log.Inputs
 
     public sealed class StoreShardArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The begin value of the shard range(MD5), included in the shard range.
+        /// </summary>
         [Input("beginKey")]
         public Input<string>? BeginKey { get; set; }
 
+        /// <summary>
+        /// The end value of the shard range(MD5), not included in shard range.
+        /// </summary>
         [Input("endKey")]
         public Input<string>? EndKey { get; set; }
 
         /// <summary>
-        /// The ID of the log project. It formats of `&lt;project&gt;:&lt;name&gt;`.
+        /// The ID of the shard.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
 
+        /// <summary>
+        /// Shard status, only two status of `readwrite` and `readonly`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

@@ -575,6 +575,12 @@ type NodePool struct {
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
+	// Whether to enable system disk encryption.
+	SystemDiskEncrypted pulumi.BoolPtrOutput `pulumi:"systemDiskEncrypted"`
+	// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+	SystemDiskKmsKey pulumi.StringPtrOutput `pulumi:"systemDiskKmsKey"`
 	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
@@ -713,6 +719,12 @@ type nodePoolState struct {
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
+	// Whether to enable system disk encryption.
+	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
+	// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+	SystemDiskKmsKey *string `pulumi:"systemDiskKmsKey"`
 	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
@@ -814,6 +826,12 @@ type NodePoolState struct {
 	SpotStrategy pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
+	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
+	// Whether to enable system disk encryption.
+	SystemDiskEncrypted pulumi.BoolPtrInput
+	// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+	SystemDiskKmsKey pulumi.StringPtrInput
 	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
@@ -917,6 +935,12 @@ type nodePoolArgs struct {
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
+	// Whether to enable system disk encryption.
+	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
+	// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+	SystemDiskKmsKey *string `pulumi:"systemDiskKmsKey"`
 	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
@@ -1015,6 +1039,12 @@ type NodePoolArgs struct {
 	SpotStrategy pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
+	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
+	// Whether to enable system disk encryption.
+	SystemDiskEncrypted pulumi.BoolPtrInput
+	// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+	SystemDiskKmsKey pulumi.StringPtrInput
 	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.

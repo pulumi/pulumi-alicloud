@@ -126,6 +126,12 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
+     * The switch of delete protection. Valid values:
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * Database type.
      */
     public /*out*/ readonly engine!: pulumi.Output<string>;
@@ -250,6 +256,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
             resourceInputs["clientCrlEnabled"] = state ? state.clientCrlEnabled : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
             resourceInputs["forceRestart"] = state ? state.forceRestart : undefined;
@@ -291,6 +298,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
             resourceInputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["forceRestart"] = args ? args.forceRestart : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
@@ -361,6 +369,12 @@ export interface ReadOnlyInstanceState {
      * RDS database connection string.
      */
     connectionString?: pulumi.Input<string>;
+    /**
+     * The switch of delete protection. Valid values:
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Database type.
      */
@@ -505,6 +519,12 @@ export interface ReadOnlyInstanceArgs {
      * - 0: disables the CRL
      */
     clientCrlEnabled?: pulumi.Input<number>;
+    /**
+     * The switch of delete protection. Valid values:
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */

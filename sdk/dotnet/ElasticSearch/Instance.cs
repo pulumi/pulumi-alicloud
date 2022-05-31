@@ -151,6 +151,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> KibanaDomain { get; private set; } = null!;
 
         /// <summary>
+        /// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+        /// </summary>
+        [Output("kibanaNodeSpec")]
+        public Output<string> KibanaNodeSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Kibana console port.
         /// </summary>
         [Output("kibanaPort")]
@@ -385,6 +391,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
+        /// <summary>
+        /// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+        /// </summary>
+        [Input("kibanaNodeSpec")]
+        public Input<string>? KibanaNodeSpec { get; set; }
+
         [Input("kibanaPrivateWhitelists")]
         private InputList<string>? _kibanaPrivateWhitelists;
 
@@ -616,6 +628,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("kibanaDomain")]
         public Input<string>? KibanaDomain { get; set; }
+
+        /// <summary>
+        /// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+        /// </summary>
+        [Input("kibanaNodeSpec")]
+        public Input<string>? KibanaNodeSpec { get; set; }
 
         /// <summary>
         /// Kibana console port.

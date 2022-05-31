@@ -18,6 +18,8 @@ from .get_namespaces import *
 from .get_service import *
 from .grey_tag_route import *
 from .ingress import *
+from .load_balancer_internet import *
+from .load_balancer_intranet import *
 from .namespace import *
 from ._inputs import *
 from . import outputs

@@ -23,6 +23,9 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         /// </summary>
         public readonly string? Encrypted;
+        /// <summary>
+        /// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+        /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
         /// The name of node pool.

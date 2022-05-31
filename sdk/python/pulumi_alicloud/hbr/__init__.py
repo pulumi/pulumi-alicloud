@@ -12,6 +12,8 @@ from .get_ecs_backup_clients import *
 from .get_ecs_backup_plans import *
 from .get_nas_backup_plans import *
 from .get_oss_backup_plans import *
+from .get_ots_backup_plans import *
+from .get_ots_snapshots import *
 from .get_replication_vault_regions import *
 from .get_restore_jobs import *
 from .get_server_backup_plans import *
@@ -19,6 +21,7 @@ from .get_snapshots import *
 from .get_vaults import *
 from .nas_backup_plan import *
 from .oss_backup_plan import *
+from .ots_backup_plan import *
 from .replication_vault import *
 from .restore_job import *
 from .server_backup_plan import *

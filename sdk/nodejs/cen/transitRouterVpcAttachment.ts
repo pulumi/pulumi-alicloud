@@ -46,7 +46,6 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === TransitRouterVpcAttachment.__pulumiType;
     }
 
-    public readonly autoCreateVpcRoute!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the CEN.
      */
@@ -55,6 +54,10 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      * The dry run.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     */
+    public readonly paymentType!: pulumi.Output<string>;
     /**
      * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
      */
@@ -113,9 +116,9 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterVpcAttachmentState | undefined;
-            resourceInputs["autoCreateVpcRoute"] = state ? state.autoCreateVpcRoute : undefined;
             resourceInputs["cenId"] = state ? state.cenId : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["resourceType"] = state ? state.resourceType : undefined;
             resourceInputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
             resourceInputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
@@ -138,9 +141,9 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
             if ((!args || args.zoneMappings === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneMappings'");
             }
-            resourceInputs["autoCreateVpcRoute"] = args ? args.autoCreateVpcRoute : undefined;
             resourceInputs["cenId"] = args ? args.cenId : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["resourceType"] = args ? args.resourceType : undefined;
             resourceInputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
             resourceInputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
@@ -162,7 +165,6 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
  */
 export interface TransitRouterVpcAttachmentState {
-    autoCreateVpcRoute?: pulumi.Input<boolean>;
     /**
      * The ID of the CEN.
      */
@@ -171,6 +173,10 @@ export interface TransitRouterVpcAttachmentState {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     */
+    paymentType?: pulumi.Input<string>;
     /**
      * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
      */
@@ -221,7 +227,6 @@ export interface TransitRouterVpcAttachmentState {
  * The set of arguments for constructing a TransitRouterVpcAttachment resource.
  */
 export interface TransitRouterVpcAttachmentArgs {
-    autoCreateVpcRoute?: pulumi.Input<boolean>;
     /**
      * The ID of the CEN.
      */
@@ -230,6 +235,10 @@ export interface TransitRouterVpcAttachmentArgs {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     */
+    paymentType?: pulumi.Input<string>;
     /**
      * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
      */

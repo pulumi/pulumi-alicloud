@@ -63,6 +63,8 @@ type BandwidthPackage struct {
 	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
 	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
+	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
 	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// The bandwidth value of bandwidth packet.
@@ -85,6 +87,11 @@ type BandwidthPackage struct {
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio pulumi.IntPtrOutput `pulumi:"ratio"`
+	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The status of the bandwidth plan.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -130,6 +137,8 @@ type bandwidthPackageState struct {
 	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
 	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay *bool `pulumi:"autoPay"`
+	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth value of bandwidth packet.
@@ -152,6 +161,11 @@ type bandwidthPackageState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio *int `pulumi:"ratio"`
+	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The status of the bandwidth plan.
 	Status *string `pulumi:"status"`
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -163,6 +177,8 @@ type BandwidthPackageState struct {
 	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
 	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay pulumi.BoolPtrInput
+	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	AutoRenewDuration pulumi.IntPtrInput
 	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth value of bandwidth packet.
@@ -185,6 +201,11 @@ type BandwidthPackageState struct {
 	PaymentType pulumi.StringPtrInput
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio pulumi.IntPtrInput
+	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus pulumi.StringPtrInput
 	// The status of the bandwidth plan.
 	Status pulumi.StringPtrInput
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -200,6 +221,8 @@ type bandwidthPackageArgs struct {
 	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
 	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay *bool `pulumi:"autoPay"`
+	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth value of bandwidth packet.
@@ -222,6 +245,11 @@ type bandwidthPackageArgs struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio *int `pulumi:"ratio"`
+	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type string `pulumi:"type"`
 }
@@ -232,6 +260,8 @@ type BandwidthPackageArgs struct {
 	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
 	// `true`: Enable automatic payment, automatic payment order.
 	AutoPay pulumi.BoolPtrInput
+	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	AutoRenewDuration pulumi.IntPtrInput
 	// Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth value of bandwidth packet.
@@ -254,6 +284,11 @@ type BandwidthPackageArgs struct {
 	PaymentType pulumi.StringPtrInput
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio pulumi.IntPtrInput
+	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus pulumi.StringPtrInput
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type pulumi.StringInput
 }

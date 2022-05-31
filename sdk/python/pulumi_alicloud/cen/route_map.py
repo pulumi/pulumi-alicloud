@@ -39,7 +39,8 @@ class RouteMapArgs:
                  source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
                  source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 transit_router_route_table_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RouteMap resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
@@ -69,6 +70,7 @@ class RouteMapArgs:
         :param pulumi.Input[bool] source_instance_ids_reverse_match: Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_region_ids: A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
+        :param pulumi.Input[str] transit_router_route_table_id: The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "cen_region_id", cen_region_id)
@@ -119,6 +121,8 @@ class RouteMapArgs:
             pulumi.set(__self__, "source_region_ids", source_region_ids)
         if source_route_table_ids is not None:
             pulumi.set(__self__, "source_route_table_ids", source_route_table_ids)
+        if transit_router_route_table_id is not None:
+            pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -444,6 +448,18 @@ class RouteMapArgs:
     def source_route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "source_route_table_ids", value)
 
+    @property
+    @pulumi.getter(name="transitRouterRouteTableId")
+    def transit_router_route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+        """
+        return pulumi.get(self, "transit_router_route_table_id")
+
+    @transit_router_route_table_id.setter
+    def transit_router_route_table_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_router_route_table_id", value)
+
 
 @pulumi.input_type
 class _RouteMapState:
@@ -476,6 +492,7 @@ class _RouteMapState:
                  source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
                  transmit_direction: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouteMap resources.
@@ -499,6 +516,7 @@ class _RouteMapState:
         :param pulumi.Input[int] preference: An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
         :param pulumi.Input[int] priority: The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
+        :param pulumi.Input[str] route_map_id: ID of the RouteMap. It is available in 1.161.0+.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] route_types: A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_child_instance_types: A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_instance_ids: A match statement that indicates the list of IDs of the source instances.
@@ -506,6 +524,7 @@ class _RouteMapState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_region_ids: A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         :param pulumi.Input[str] status: (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
+        :param pulumi.Input[str] transit_router_route_table_id: The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
         :param pulumi.Input[str] transmit_direction: The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
         """
         if as_path_match_mode is not None:
@@ -564,6 +583,8 @@ class _RouteMapState:
             pulumi.set(__self__, "source_route_table_ids", source_route_table_ids)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if transit_router_route_table_id is not None:
+            pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
         if transmit_direction is not None:
             pulumi.set(__self__, "transmit_direction", transmit_direction)
 
@@ -810,6 +831,9 @@ class _RouteMapState:
     @property
     @pulumi.getter(name="routeMapId")
     def route_map_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the RouteMap. It is available in 1.161.0+.
+        """
         return pulumi.get(self, "route_map_id")
 
     @route_map_id.setter
@@ -901,6 +925,18 @@ class _RouteMapState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="transitRouterRouteTableId")
+    def transit_router_route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+        """
+        return pulumi.get(self, "transit_router_route_table_id")
+
+    @transit_router_route_table_id.setter
+    def transit_router_route_table_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_router_route_table_id", value)
+
+    @property
     @pulumi.getter(name="transmitDirection")
     def transmit_direction(self) -> Optional[pulumi.Input[str]]:
         """
@@ -944,6 +980,7 @@ class RouteMap(pulumi.CustomResource):
                  source_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
                  source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
                  transmit_direction: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1021,7 +1058,7 @@ class RouteMap(pulumi.CustomResource):
         CEN RouteMap can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+         $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
         ```
 
         :param str resource_name: The name of the resource.
@@ -1052,6 +1089,7 @@ class RouteMap(pulumi.CustomResource):
         :param pulumi.Input[bool] source_instance_ids_reverse_match: Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_region_ids: A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
+        :param pulumi.Input[str] transit_router_route_table_id: The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
         :param pulumi.Input[str] transmit_direction: The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
         """
         ...
@@ -1135,7 +1173,7 @@ class RouteMap(pulumi.CustomResource):
         CEN RouteMap can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cen/routeMap:RouteMap default cenrmap-tig1xxxxxx
+         $ pulumi import alicloud:cen/routeMap:RouteMap default <cen_id>:<route_map_id>.
         ```
 
         :param str resource_name: The name of the resource.
@@ -1179,6 +1217,7 @@ class RouteMap(pulumi.CustomResource):
                  source_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
                  source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
                  transmit_direction: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -1226,6 +1265,7 @@ class RouteMap(pulumi.CustomResource):
             __props__.__dict__["source_instance_ids_reverse_match"] = source_instance_ids_reverse_match
             __props__.__dict__["source_region_ids"] = source_region_ids
             __props__.__dict__["source_route_table_ids"] = source_route_table_ids
+            __props__.__dict__["transit_router_route_table_id"] = transit_router_route_table_id
             if transmit_direction is None and not opts.urn:
                 raise TypeError("Missing required property 'transmit_direction'")
             __props__.__dict__["transmit_direction"] = transmit_direction
@@ -1269,6 +1309,7 @@ class RouteMap(pulumi.CustomResource):
             source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
             transmit_direction: Optional[pulumi.Input[str]] = None) -> 'RouteMap':
         """
         Get an existing RouteMap resource's state with the given name, id, and optional extra
@@ -1297,6 +1338,7 @@ class RouteMap(pulumi.CustomResource):
         :param pulumi.Input[int] preference: An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
         :param pulumi.Input[int] priority: The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
+        :param pulumi.Input[str] route_map_id: ID of the RouteMap. It is available in 1.161.0+.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] route_types: A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_child_instance_types: A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_instance_ids: A match statement that indicates the list of IDs of the source instances.
@@ -1304,6 +1346,7 @@ class RouteMap(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_region_ids: A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         :param pulumi.Input[str] status: (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
+        :param pulumi.Input[str] transit_router_route_table_id: The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
         :param pulumi.Input[str] transmit_direction: The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1338,6 +1381,7 @@ class RouteMap(pulumi.CustomResource):
         __props__.__dict__["source_region_ids"] = source_region_ids
         __props__.__dict__["source_route_table_ids"] = source_route_table_ids
         __props__.__dict__["status"] = status
+        __props__.__dict__["transit_router_route_table_id"] = transit_router_route_table_id
         __props__.__dict__["transmit_direction"] = transmit_direction
         return RouteMap(resource_name, opts=opts, __props__=__props__)
 
@@ -1504,6 +1548,9 @@ class RouteMap(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routeMapId")
     def route_map_id(self) -> pulumi.Output[str]:
+        """
+        ID of the RouteMap. It is available in 1.161.0+.
+        """
         return pulumi.get(self, "route_map_id")
 
     @property
@@ -1561,6 +1608,14 @@ class RouteMap(pulumi.CustomResource):
         (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouterRouteTableId")
+    def transit_router_route_table_id(self) -> pulumi.Output[str]:
+        """
+        The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
+        """
+        return pulumi.get(self, "transit_router_route_table_id")
 
     @property
     @pulumi.getter(name="transmitDirection")

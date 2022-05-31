@@ -87,6 +87,10 @@ export class AppGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The instance id.
+     */
+    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    /**
      * Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
      */
     public readonly orderType!: pulumi.Output<string>;
@@ -128,6 +132,7 @@ export class AppGroup extends pulumi.CustomResource {
             resourceInputs["chargeWay"] = state ? state.chargeWay : undefined;
             resourceInputs["currentVersion"] = state ? state.currentVersion : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["orderType"] = state ? state.orderType : undefined;
             resourceInputs["orders"] = state ? state.orders : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
@@ -157,6 +162,7 @@ export class AppGroup extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["quota"] = args ? args.quota : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -184,6 +190,10 @@ export interface AppGroupState {
      * The description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The instance id.
+     */
+    instanceId?: pulumi.Input<string>;
     /**
      * Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
      */

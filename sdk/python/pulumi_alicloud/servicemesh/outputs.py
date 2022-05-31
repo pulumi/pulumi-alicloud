@@ -10,6 +10,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ServiceMeshExtraConfiguration',
     'ServiceMeshLoadBalancer',
     'ServiceMeshMeshConfig',
     'ServiceMeshMeshConfigAccessLog',
@@ -34,7 +35,44 @@ __all__ = [
     'GetServiceMeshesMeshMeshConfigSidecarInjectorResult',
     'GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationResult',
     'GetServiceMeshesMeshNetworkResult',
+    'GetVersionsVersionResult',
 ]
+
+@pulumi.output_type
+class ServiceMeshExtraConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crAggregationEnabled":
+            suggest = "cr_aggregation_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMeshExtraConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMeshExtraConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMeshExtraConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cr_aggregation_enabled: Optional[bool] = None):
+        """
+        :param bool cr_aggregation_enabled: Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+        """
+        if cr_aggregation_enabled is not None:
+            pulumi.set(__self__, "cr_aggregation_enabled", cr_aggregation_enabled)
+
+    @property
+    @pulumi.getter(name="crAggregationEnabled")
+    def cr_aggregation_enabled(self) -> Optional[bool]:
+        """
+        Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+        """
+        return pulumi.get(self, "cr_aggregation_enabled")
+
 
 @pulumi.output_type
 class ServiceMeshLoadBalancer(dict):
@@ -149,7 +187,7 @@ class ServiceMeshMeshConfig(dict):
         """
         :param 'ServiceMeshMeshConfigAccessLogArgs' access_log: The configuration of the access logging.
         :param 'ServiceMeshMeshConfigAuditArgs' audit: The configuration of the audit. See the following `Block audit`.
-        :param bool customized_zipkin: Whether or not to enable the use of a custom zipkin.
+        :param bool customized_zipkin: Whether to enable the use of a custom zipkin.
         :param bool enable_locality_lb: The enable locality lb.
         :param 'ServiceMeshMeshConfigKialiArgs' kiali: The configuration of the Kiali. See the following `Block kiali`.
         :param 'ServiceMeshMeshConfigOpaArgs' opa: The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
@@ -205,7 +243,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter(name="customizedZipkin")
     def customized_zipkin(self) -> Optional[bool]:
         """
-        Whether or not to enable the use of a custom zipkin.
+        Whether to enable the use of a custom zipkin.
         """
         return pulumi.get(self, "customized_zipkin")
 
@@ -1581,5 +1619,45 @@ class GetServiceMeshesMeshNetworkResult(dict):
         The list of Virtual Switch.
         """
         return pulumi.get(self, "vswitche_lists")
+
+
+@pulumi.output_type
+class GetVersionsVersionResult(dict):
+    def __init__(__self__, *,
+                 edition: str,
+                 id: str,
+                 version: str):
+        """
+        :param str edition: The edition of the ASM instance.
+        :param str id: The ASM version id. It formats as `<edition>:<version>`.
+        :param str version: The AMS version.
+        """
+        pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        The edition of the ASM instance.
+        """
+        return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ASM version id. It formats as `<edition>:<version>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The AMS version.
+        """
+        return pulumi.get(self, "version")
 
 

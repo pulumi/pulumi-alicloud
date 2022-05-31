@@ -97,6 +97,8 @@ type Instance struct {
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// Kibana console domain (Internet access supported).
 	KibanaDomain pulumi.StringOutput `pulumi:"kibanaDomain"`
+	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+	KibanaNodeSpec pulumi.StringOutput `pulumi:"kibanaNodeSpec"`
 	// Kibana console port.
 	KibanaPort pulumi.IntOutput `pulumi:"kibanaPort"`
 	// Set the Kibana's IP whitelist in private network.
@@ -215,6 +217,8 @@ type instanceState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Kibana console domain (Internet access supported).
 	KibanaDomain *string `pulumi:"kibanaDomain"`
+	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+	KibanaNodeSpec *string `pulumi:"kibanaNodeSpec"`
 	// Kibana console port.
 	KibanaPort *int `pulumi:"kibanaPort"`
 	// Set the Kibana's IP whitelist in private network.
@@ -287,6 +291,8 @@ type InstanceState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// Kibana console domain (Internet access supported).
 	KibanaDomain pulumi.StringPtrInput
+	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+	KibanaNodeSpec pulumi.StringPtrInput
 	// Kibana console port.
 	KibanaPort pulumi.IntPtrInput
 	// Set the Kibana's IP whitelist in private network.
@@ -359,6 +365,8 @@ type instanceArgs struct {
 	EnablePublic *bool `pulumi:"enablePublic"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+	KibanaNodeSpec *string `pulumi:"kibanaNodeSpec"`
 	// Set the Kibana's IP whitelist in private network.
 	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
@@ -422,6 +430,8 @@ type InstanceArgs struct {
 	EnablePublic pulumi.BoolPtrInput
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType pulumi.StringPtrInput
+	// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+	KibanaNodeSpec pulumi.StringPtrInput
 	// Set the Kibana's IP whitelist in private network.
 	KibanaPrivateWhitelists pulumi.StringArrayInput
 	// Set the Kibana's IP whitelist in internet network.

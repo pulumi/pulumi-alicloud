@@ -58,7 +58,7 @@ class ApplicationLoadBalancerArgs:
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -354,7 +354,7 @@ class ApplicationLoadBalancerArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -411,7 +411,7 @@ class _ApplicationLoadBalancerState:
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -707,7 +707,7 @@ class _ApplicationLoadBalancerState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -776,7 +776,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         """
         ...
     @overload
@@ -931,7 +931,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         :param pulumi.Input[str] status: The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1122,7 +1122,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
         """
         return pulumi.get(self, "vswitch_id")
 

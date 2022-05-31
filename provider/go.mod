@@ -11,7 +11,7 @@ replace (
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.160.0
+	github.com/aliyun/terraform-provider-alicloud v1.169.0
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.21.0
 	github.com/pulumi/pulumi/sdk/v3 v3.30.0

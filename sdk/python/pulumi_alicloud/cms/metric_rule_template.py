@@ -23,6 +23,7 @@ class MetricRuleTemplateArgs:
                  enable_start_time: Optional[pulumi.Input[str]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  notify_level: Optional[pulumi.Input[str]] = None,
+                 rest_version: Optional[pulumi.Input[str]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
@@ -35,6 +36,7 @@ class MetricRuleTemplateArgs:
         :param pulumi.Input[str] enable_start_time: The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] notify_level: The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+        :param pulumi.Input[str] rest_version: The version of the alert template to be modified.
         :param pulumi.Input[int] silence_time: The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
@@ -53,6 +55,8 @@ class MetricRuleTemplateArgs:
             pulumi.set(__self__, "group_id", group_id)
         if notify_level is not None:
             pulumi.set(__self__, "notify_level", notify_level)
+        if rest_version is not None:
+            pulumi.set(__self__, "rest_version", rest_version)
         if silence_time is not None:
             pulumi.set(__self__, "silence_time", silence_time)
         if webhook is not None:
@@ -153,6 +157,18 @@ class MetricRuleTemplateArgs:
     @notify_level.setter
     def notify_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "notify_level", value)
+
+    @property
+    @pulumi.getter(name="restVersion")
+    def rest_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the alert template to be modified.
+        """
+        return pulumi.get(self, "rest_version")
+
+    @rest_version.setter
+    def rest_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rest_version", value)
 
     @property
     @pulumi.getter(name="silenceTime")
@@ -376,6 +392,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
                  group_id: Optional[pulumi.Input[str]] = None,
                  metric_rule_template_name: Optional[pulumi.Input[str]] = None,
                  notify_level: Optional[pulumi.Input[str]] = None,
+                 rest_version: Optional[pulumi.Input[str]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -430,6 +447,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] metric_rule_template_name: The name of the alert template.
         :param pulumi.Input[str] notify_level: The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+        :param pulumi.Input[str] rest_version: The version of the alert template to be modified.
         :param pulumi.Input[int] silence_time: The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
@@ -503,6 +521,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
                  group_id: Optional[pulumi.Input[str]] = None,
                  metric_rule_template_name: Optional[pulumi.Input[str]] = None,
                  notify_level: Optional[pulumi.Input[str]] = None,
+                 rest_version: Optional[pulumi.Input[str]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -527,9 +546,9 @@ class MetricRuleTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'metric_rule_template_name'")
             __props__.__dict__["metric_rule_template_name"] = metric_rule_template_name
             __props__.__dict__["notify_level"] = notify_level
+            __props__.__dict__["rest_version"] = rest_version
             __props__.__dict__["silence_time"] = silence_time
             __props__.__dict__["webhook"] = webhook
-            __props__.__dict__["rest_version"] = None
         super(MetricRuleTemplate, __self__).__init__(
             'alicloud:cms/metricRuleTemplate:MetricRuleTemplate',
             resource_name,

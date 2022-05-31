@@ -1167,6 +1167,883 @@ func (o BucketRefererConfigPtrOutput) Referers() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type BucketReplicationDestination struct {
+	// The destination bucket to which the data is replicated.
+	Bucket   string `pulumi:"bucket"`
+	Location string `pulumi:"location"`
+	// The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+	TransferType *string `pulumi:"transferType"`
+}
+
+// BucketReplicationDestinationInput is an input type that accepts BucketReplicationDestinationArgs and BucketReplicationDestinationOutput values.
+// You can construct a concrete instance of `BucketReplicationDestinationInput` via:
+//
+//          BucketReplicationDestinationArgs{...}
+type BucketReplicationDestinationInput interface {
+	pulumi.Input
+
+	ToBucketReplicationDestinationOutput() BucketReplicationDestinationOutput
+	ToBucketReplicationDestinationOutputWithContext(context.Context) BucketReplicationDestinationOutput
+}
+
+type BucketReplicationDestinationArgs struct {
+	// The destination bucket to which the data is replicated.
+	Bucket   pulumi.StringInput `pulumi:"bucket"`
+	Location pulumi.StringInput `pulumi:"location"`
+	// The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+	TransferType pulumi.StringPtrInput `pulumi:"transferType"`
+}
+
+func (BucketReplicationDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationDestination)(nil)).Elem()
+}
+
+func (i BucketReplicationDestinationArgs) ToBucketReplicationDestinationOutput() BucketReplicationDestinationOutput {
+	return i.ToBucketReplicationDestinationOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationDestinationArgs) ToBucketReplicationDestinationOutputWithContext(ctx context.Context) BucketReplicationDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationDestinationOutput)
+}
+
+func (i BucketReplicationDestinationArgs) ToBucketReplicationDestinationPtrOutput() BucketReplicationDestinationPtrOutput {
+	return i.ToBucketReplicationDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationDestinationArgs) ToBucketReplicationDestinationPtrOutputWithContext(ctx context.Context) BucketReplicationDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationDestinationOutput).ToBucketReplicationDestinationPtrOutputWithContext(ctx)
+}
+
+// BucketReplicationDestinationPtrInput is an input type that accepts BucketReplicationDestinationArgs, BucketReplicationDestinationPtr and BucketReplicationDestinationPtrOutput values.
+// You can construct a concrete instance of `BucketReplicationDestinationPtrInput` via:
+//
+//          BucketReplicationDestinationArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketReplicationDestinationPtrInput interface {
+	pulumi.Input
+
+	ToBucketReplicationDestinationPtrOutput() BucketReplicationDestinationPtrOutput
+	ToBucketReplicationDestinationPtrOutputWithContext(context.Context) BucketReplicationDestinationPtrOutput
+}
+
+type bucketReplicationDestinationPtrType BucketReplicationDestinationArgs
+
+func BucketReplicationDestinationPtr(v *BucketReplicationDestinationArgs) BucketReplicationDestinationPtrInput {
+	return (*bucketReplicationDestinationPtrType)(v)
+}
+
+func (*bucketReplicationDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationDestination)(nil)).Elem()
+}
+
+func (i *bucketReplicationDestinationPtrType) ToBucketReplicationDestinationPtrOutput() BucketReplicationDestinationPtrOutput {
+	return i.ToBucketReplicationDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketReplicationDestinationPtrType) ToBucketReplicationDestinationPtrOutputWithContext(ctx context.Context) BucketReplicationDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationDestinationPtrOutput)
+}
+
+type BucketReplicationDestinationOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationDestination)(nil)).Elem()
+}
+
+func (o BucketReplicationDestinationOutput) ToBucketReplicationDestinationOutput() BucketReplicationDestinationOutput {
+	return o
+}
+
+func (o BucketReplicationDestinationOutput) ToBucketReplicationDestinationOutputWithContext(ctx context.Context) BucketReplicationDestinationOutput {
+	return o
+}
+
+func (o BucketReplicationDestinationOutput) ToBucketReplicationDestinationPtrOutput() BucketReplicationDestinationPtrOutput {
+	return o.ToBucketReplicationDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o BucketReplicationDestinationOutput) ToBucketReplicationDestinationPtrOutputWithContext(ctx context.Context) BucketReplicationDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketReplicationDestination) *BucketReplicationDestination {
+		return &v
+	}).(BucketReplicationDestinationPtrOutput)
+}
+
+// The destination bucket to which the data is replicated.
+func (o BucketReplicationDestinationOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketReplicationDestination) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o BucketReplicationDestinationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketReplicationDestination) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+func (o BucketReplicationDestinationOutput) TransferType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketReplicationDestination) *string { return v.TransferType }).(pulumi.StringPtrOutput)
+}
+
+type BucketReplicationDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationDestination)(nil)).Elem()
+}
+
+func (o BucketReplicationDestinationPtrOutput) ToBucketReplicationDestinationPtrOutput() BucketReplicationDestinationPtrOutput {
+	return o
+}
+
+func (o BucketReplicationDestinationPtrOutput) ToBucketReplicationDestinationPtrOutputWithContext(ctx context.Context) BucketReplicationDestinationPtrOutput {
+	return o
+}
+
+func (o BucketReplicationDestinationPtrOutput) Elem() BucketReplicationDestinationOutput {
+	return o.ApplyT(func(v *BucketReplicationDestination) BucketReplicationDestination {
+		if v != nil {
+			return *v
+		}
+		var ret BucketReplicationDestination
+		return ret
+	}).(BucketReplicationDestinationOutput)
+}
+
+// The destination bucket to which the data is replicated.
+func (o BucketReplicationDestinationPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BucketReplicationDestinationPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+func (o BucketReplicationDestinationPtrOutput) TransferType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransferType
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketReplicationEncryptionConfiguration struct {
+	// The CMK ID used in SSE-KMS.
+	ReplicaKmsKeyId string `pulumi:"replicaKmsKeyId"`
+}
+
+// BucketReplicationEncryptionConfigurationInput is an input type that accepts BucketReplicationEncryptionConfigurationArgs and BucketReplicationEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `BucketReplicationEncryptionConfigurationInput` via:
+//
+//          BucketReplicationEncryptionConfigurationArgs{...}
+type BucketReplicationEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToBucketReplicationEncryptionConfigurationOutput() BucketReplicationEncryptionConfigurationOutput
+	ToBucketReplicationEncryptionConfigurationOutputWithContext(context.Context) BucketReplicationEncryptionConfigurationOutput
+}
+
+type BucketReplicationEncryptionConfigurationArgs struct {
+	// The CMK ID used in SSE-KMS.
+	ReplicaKmsKeyId pulumi.StringInput `pulumi:"replicaKmsKeyId"`
+}
+
+func (BucketReplicationEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i BucketReplicationEncryptionConfigurationArgs) ToBucketReplicationEncryptionConfigurationOutput() BucketReplicationEncryptionConfigurationOutput {
+	return i.ToBucketReplicationEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationEncryptionConfigurationArgs) ToBucketReplicationEncryptionConfigurationOutputWithContext(ctx context.Context) BucketReplicationEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationEncryptionConfigurationOutput)
+}
+
+func (i BucketReplicationEncryptionConfigurationArgs) ToBucketReplicationEncryptionConfigurationPtrOutput() BucketReplicationEncryptionConfigurationPtrOutput {
+	return i.ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationEncryptionConfigurationArgs) ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) BucketReplicationEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationEncryptionConfigurationOutput).ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// BucketReplicationEncryptionConfigurationPtrInput is an input type that accepts BucketReplicationEncryptionConfigurationArgs, BucketReplicationEncryptionConfigurationPtr and BucketReplicationEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `BucketReplicationEncryptionConfigurationPtrInput` via:
+//
+//          BucketReplicationEncryptionConfigurationArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketReplicationEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBucketReplicationEncryptionConfigurationPtrOutput() BucketReplicationEncryptionConfigurationPtrOutput
+	ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(context.Context) BucketReplicationEncryptionConfigurationPtrOutput
+}
+
+type bucketReplicationEncryptionConfigurationPtrType BucketReplicationEncryptionConfigurationArgs
+
+func BucketReplicationEncryptionConfigurationPtr(v *BucketReplicationEncryptionConfigurationArgs) BucketReplicationEncryptionConfigurationPtrInput {
+	return (*bucketReplicationEncryptionConfigurationPtrType)(v)
+}
+
+func (*bucketReplicationEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *bucketReplicationEncryptionConfigurationPtrType) ToBucketReplicationEncryptionConfigurationPtrOutput() BucketReplicationEncryptionConfigurationPtrOutput {
+	return i.ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketReplicationEncryptionConfigurationPtrType) ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) BucketReplicationEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationEncryptionConfigurationPtrOutput)
+}
+
+type BucketReplicationEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o BucketReplicationEncryptionConfigurationOutput) ToBucketReplicationEncryptionConfigurationOutput() BucketReplicationEncryptionConfigurationOutput {
+	return o
+}
+
+func (o BucketReplicationEncryptionConfigurationOutput) ToBucketReplicationEncryptionConfigurationOutputWithContext(ctx context.Context) BucketReplicationEncryptionConfigurationOutput {
+	return o
+}
+
+func (o BucketReplicationEncryptionConfigurationOutput) ToBucketReplicationEncryptionConfigurationPtrOutput() BucketReplicationEncryptionConfigurationPtrOutput {
+	return o.ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o BucketReplicationEncryptionConfigurationOutput) ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) BucketReplicationEncryptionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketReplicationEncryptionConfiguration) *BucketReplicationEncryptionConfiguration {
+		return &v
+	}).(BucketReplicationEncryptionConfigurationPtrOutput)
+}
+
+// The CMK ID used in SSE-KMS.
+func (o BucketReplicationEncryptionConfigurationOutput) ReplicaKmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketReplicationEncryptionConfiguration) string { return v.ReplicaKmsKeyId }).(pulumi.StringOutput)
+}
+
+type BucketReplicationEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o BucketReplicationEncryptionConfigurationPtrOutput) ToBucketReplicationEncryptionConfigurationPtrOutput() BucketReplicationEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o BucketReplicationEncryptionConfigurationPtrOutput) ToBucketReplicationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) BucketReplicationEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o BucketReplicationEncryptionConfigurationPtrOutput) Elem() BucketReplicationEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *BucketReplicationEncryptionConfiguration) BucketReplicationEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BucketReplicationEncryptionConfiguration
+		return ret
+	}).(BucketReplicationEncryptionConfigurationOutput)
+}
+
+// The CMK ID used in SSE-KMS.
+func (o BucketReplicationEncryptionConfigurationPtrOutput) ReplicaKmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicaKmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketReplicationPrefixSet struct {
+	// The list of object key name prefix identifying one or more objects to which the rule applies.
+	Prefixes []string `pulumi:"prefixes"`
+}
+
+// BucketReplicationPrefixSetInput is an input type that accepts BucketReplicationPrefixSetArgs and BucketReplicationPrefixSetOutput values.
+// You can construct a concrete instance of `BucketReplicationPrefixSetInput` via:
+//
+//          BucketReplicationPrefixSetArgs{...}
+type BucketReplicationPrefixSetInput interface {
+	pulumi.Input
+
+	ToBucketReplicationPrefixSetOutput() BucketReplicationPrefixSetOutput
+	ToBucketReplicationPrefixSetOutputWithContext(context.Context) BucketReplicationPrefixSetOutput
+}
+
+type BucketReplicationPrefixSetArgs struct {
+	// The list of object key name prefix identifying one or more objects to which the rule applies.
+	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
+}
+
+func (BucketReplicationPrefixSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationPrefixSet)(nil)).Elem()
+}
+
+func (i BucketReplicationPrefixSetArgs) ToBucketReplicationPrefixSetOutput() BucketReplicationPrefixSetOutput {
+	return i.ToBucketReplicationPrefixSetOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationPrefixSetArgs) ToBucketReplicationPrefixSetOutputWithContext(ctx context.Context) BucketReplicationPrefixSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationPrefixSetOutput)
+}
+
+func (i BucketReplicationPrefixSetArgs) ToBucketReplicationPrefixSetPtrOutput() BucketReplicationPrefixSetPtrOutput {
+	return i.ToBucketReplicationPrefixSetPtrOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationPrefixSetArgs) ToBucketReplicationPrefixSetPtrOutputWithContext(ctx context.Context) BucketReplicationPrefixSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationPrefixSetOutput).ToBucketReplicationPrefixSetPtrOutputWithContext(ctx)
+}
+
+// BucketReplicationPrefixSetPtrInput is an input type that accepts BucketReplicationPrefixSetArgs, BucketReplicationPrefixSetPtr and BucketReplicationPrefixSetPtrOutput values.
+// You can construct a concrete instance of `BucketReplicationPrefixSetPtrInput` via:
+//
+//          BucketReplicationPrefixSetArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketReplicationPrefixSetPtrInput interface {
+	pulumi.Input
+
+	ToBucketReplicationPrefixSetPtrOutput() BucketReplicationPrefixSetPtrOutput
+	ToBucketReplicationPrefixSetPtrOutputWithContext(context.Context) BucketReplicationPrefixSetPtrOutput
+}
+
+type bucketReplicationPrefixSetPtrType BucketReplicationPrefixSetArgs
+
+func BucketReplicationPrefixSetPtr(v *BucketReplicationPrefixSetArgs) BucketReplicationPrefixSetPtrInput {
+	return (*bucketReplicationPrefixSetPtrType)(v)
+}
+
+func (*bucketReplicationPrefixSetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationPrefixSet)(nil)).Elem()
+}
+
+func (i *bucketReplicationPrefixSetPtrType) ToBucketReplicationPrefixSetPtrOutput() BucketReplicationPrefixSetPtrOutput {
+	return i.ToBucketReplicationPrefixSetPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketReplicationPrefixSetPtrType) ToBucketReplicationPrefixSetPtrOutputWithContext(ctx context.Context) BucketReplicationPrefixSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationPrefixSetPtrOutput)
+}
+
+type BucketReplicationPrefixSetOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationPrefixSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationPrefixSet)(nil)).Elem()
+}
+
+func (o BucketReplicationPrefixSetOutput) ToBucketReplicationPrefixSetOutput() BucketReplicationPrefixSetOutput {
+	return o
+}
+
+func (o BucketReplicationPrefixSetOutput) ToBucketReplicationPrefixSetOutputWithContext(ctx context.Context) BucketReplicationPrefixSetOutput {
+	return o
+}
+
+func (o BucketReplicationPrefixSetOutput) ToBucketReplicationPrefixSetPtrOutput() BucketReplicationPrefixSetPtrOutput {
+	return o.ToBucketReplicationPrefixSetPtrOutputWithContext(context.Background())
+}
+
+func (o BucketReplicationPrefixSetOutput) ToBucketReplicationPrefixSetPtrOutputWithContext(ctx context.Context) BucketReplicationPrefixSetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketReplicationPrefixSet) *BucketReplicationPrefixSet {
+		return &v
+	}).(BucketReplicationPrefixSetPtrOutput)
+}
+
+// The list of object key name prefix identifying one or more objects to which the rule applies.
+func (o BucketReplicationPrefixSetOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketReplicationPrefixSet) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+type BucketReplicationPrefixSetPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationPrefixSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationPrefixSet)(nil)).Elem()
+}
+
+func (o BucketReplicationPrefixSetPtrOutput) ToBucketReplicationPrefixSetPtrOutput() BucketReplicationPrefixSetPtrOutput {
+	return o
+}
+
+func (o BucketReplicationPrefixSetPtrOutput) ToBucketReplicationPrefixSetPtrOutputWithContext(ctx context.Context) BucketReplicationPrefixSetPtrOutput {
+	return o
+}
+
+func (o BucketReplicationPrefixSetPtrOutput) Elem() BucketReplicationPrefixSetOutput {
+	return o.ApplyT(func(v *BucketReplicationPrefixSet) BucketReplicationPrefixSet {
+		if v != nil {
+			return *v
+		}
+		var ret BucketReplicationPrefixSet
+		return ret
+	}).(BucketReplicationPrefixSetOutput)
+}
+
+// The list of object key name prefix identifying one or more objects to which the rule applies.
+func (o BucketReplicationPrefixSetPtrOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketReplicationPrefixSet) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+type BucketReplicationProgress struct {
+	// The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
+	HistoricalObject *string `pulumi:"historicalObject"`
+	// The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+	NewObject *string `pulumi:"newObject"`
+}
+
+// BucketReplicationProgressInput is an input type that accepts BucketReplicationProgressArgs and BucketReplicationProgressOutput values.
+// You can construct a concrete instance of `BucketReplicationProgressInput` via:
+//
+//          BucketReplicationProgressArgs{...}
+type BucketReplicationProgressInput interface {
+	pulumi.Input
+
+	ToBucketReplicationProgressOutput() BucketReplicationProgressOutput
+	ToBucketReplicationProgressOutputWithContext(context.Context) BucketReplicationProgressOutput
+}
+
+type BucketReplicationProgressArgs struct {
+	// The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
+	HistoricalObject pulumi.StringPtrInput `pulumi:"historicalObject"`
+	// The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+	NewObject pulumi.StringPtrInput `pulumi:"newObject"`
+}
+
+func (BucketReplicationProgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationProgress)(nil)).Elem()
+}
+
+func (i BucketReplicationProgressArgs) ToBucketReplicationProgressOutput() BucketReplicationProgressOutput {
+	return i.ToBucketReplicationProgressOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationProgressArgs) ToBucketReplicationProgressOutputWithContext(ctx context.Context) BucketReplicationProgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationProgressOutput)
+}
+
+func (i BucketReplicationProgressArgs) ToBucketReplicationProgressPtrOutput() BucketReplicationProgressPtrOutput {
+	return i.ToBucketReplicationProgressPtrOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationProgressArgs) ToBucketReplicationProgressPtrOutputWithContext(ctx context.Context) BucketReplicationProgressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationProgressOutput).ToBucketReplicationProgressPtrOutputWithContext(ctx)
+}
+
+// BucketReplicationProgressPtrInput is an input type that accepts BucketReplicationProgressArgs, BucketReplicationProgressPtr and BucketReplicationProgressPtrOutput values.
+// You can construct a concrete instance of `BucketReplicationProgressPtrInput` via:
+//
+//          BucketReplicationProgressArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketReplicationProgressPtrInput interface {
+	pulumi.Input
+
+	ToBucketReplicationProgressPtrOutput() BucketReplicationProgressPtrOutput
+	ToBucketReplicationProgressPtrOutputWithContext(context.Context) BucketReplicationProgressPtrOutput
+}
+
+type bucketReplicationProgressPtrType BucketReplicationProgressArgs
+
+func BucketReplicationProgressPtr(v *BucketReplicationProgressArgs) BucketReplicationProgressPtrInput {
+	return (*bucketReplicationProgressPtrType)(v)
+}
+
+func (*bucketReplicationProgressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationProgress)(nil)).Elem()
+}
+
+func (i *bucketReplicationProgressPtrType) ToBucketReplicationProgressPtrOutput() BucketReplicationProgressPtrOutput {
+	return i.ToBucketReplicationProgressPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketReplicationProgressPtrType) ToBucketReplicationProgressPtrOutputWithContext(ctx context.Context) BucketReplicationProgressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationProgressPtrOutput)
+}
+
+type BucketReplicationProgressOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationProgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationProgress)(nil)).Elem()
+}
+
+func (o BucketReplicationProgressOutput) ToBucketReplicationProgressOutput() BucketReplicationProgressOutput {
+	return o
+}
+
+func (o BucketReplicationProgressOutput) ToBucketReplicationProgressOutputWithContext(ctx context.Context) BucketReplicationProgressOutput {
+	return o
+}
+
+func (o BucketReplicationProgressOutput) ToBucketReplicationProgressPtrOutput() BucketReplicationProgressPtrOutput {
+	return o.ToBucketReplicationProgressPtrOutputWithContext(context.Background())
+}
+
+func (o BucketReplicationProgressOutput) ToBucketReplicationProgressPtrOutputWithContext(ctx context.Context) BucketReplicationProgressPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketReplicationProgress) *BucketReplicationProgress {
+		return &v
+	}).(BucketReplicationProgressPtrOutput)
+}
+
+// The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
+func (o BucketReplicationProgressOutput) HistoricalObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketReplicationProgress) *string { return v.HistoricalObject }).(pulumi.StringPtrOutput)
+}
+
+// The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+func (o BucketReplicationProgressOutput) NewObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketReplicationProgress) *string { return v.NewObject }).(pulumi.StringPtrOutput)
+}
+
+type BucketReplicationProgressPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationProgressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationProgress)(nil)).Elem()
+}
+
+func (o BucketReplicationProgressPtrOutput) ToBucketReplicationProgressPtrOutput() BucketReplicationProgressPtrOutput {
+	return o
+}
+
+func (o BucketReplicationProgressPtrOutput) ToBucketReplicationProgressPtrOutputWithContext(ctx context.Context) BucketReplicationProgressPtrOutput {
+	return o
+}
+
+func (o BucketReplicationProgressPtrOutput) Elem() BucketReplicationProgressOutput {
+	return o.ApplyT(func(v *BucketReplicationProgress) BucketReplicationProgress {
+		if v != nil {
+			return *v
+		}
+		var ret BucketReplicationProgress
+		return ret
+	}).(BucketReplicationProgressOutput)
+}
+
+// The percentage of the replicated historical data. This element is valid only when historicalObjectReplication is set to enabled.
+func (o BucketReplicationProgressPtrOutput) HistoricalObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationProgress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HistoricalObject
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+func (o BucketReplicationProgressPtrOutput) NewObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationProgress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NewObject
+	}).(pulumi.StringPtrOutput)
+}
+
+type BucketReplicationSourceSelectionCriteria struct {
+	// Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+	SseKmsEncryptedObjects *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects `pulumi:"sseKmsEncryptedObjects"`
+}
+
+// BucketReplicationSourceSelectionCriteriaInput is an input type that accepts BucketReplicationSourceSelectionCriteriaArgs and BucketReplicationSourceSelectionCriteriaOutput values.
+// You can construct a concrete instance of `BucketReplicationSourceSelectionCriteriaInput` via:
+//
+//          BucketReplicationSourceSelectionCriteriaArgs{...}
+type BucketReplicationSourceSelectionCriteriaInput interface {
+	pulumi.Input
+
+	ToBucketReplicationSourceSelectionCriteriaOutput() BucketReplicationSourceSelectionCriteriaOutput
+	ToBucketReplicationSourceSelectionCriteriaOutputWithContext(context.Context) BucketReplicationSourceSelectionCriteriaOutput
+}
+
+type BucketReplicationSourceSelectionCriteriaArgs struct {
+	// Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+	SseKmsEncryptedObjects BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput `pulumi:"sseKmsEncryptedObjects"`
+}
+
+func (BucketReplicationSourceSelectionCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationSourceSelectionCriteria)(nil)).Elem()
+}
+
+func (i BucketReplicationSourceSelectionCriteriaArgs) ToBucketReplicationSourceSelectionCriteriaOutput() BucketReplicationSourceSelectionCriteriaOutput {
+	return i.ToBucketReplicationSourceSelectionCriteriaOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationSourceSelectionCriteriaArgs) ToBucketReplicationSourceSelectionCriteriaOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationSourceSelectionCriteriaOutput)
+}
+
+func (i BucketReplicationSourceSelectionCriteriaArgs) ToBucketReplicationSourceSelectionCriteriaPtrOutput() BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return i.ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationSourceSelectionCriteriaArgs) ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationSourceSelectionCriteriaOutput).ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(ctx)
+}
+
+// BucketReplicationSourceSelectionCriteriaPtrInput is an input type that accepts BucketReplicationSourceSelectionCriteriaArgs, BucketReplicationSourceSelectionCriteriaPtr and BucketReplicationSourceSelectionCriteriaPtrOutput values.
+// You can construct a concrete instance of `BucketReplicationSourceSelectionCriteriaPtrInput` via:
+//
+//          BucketReplicationSourceSelectionCriteriaArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketReplicationSourceSelectionCriteriaPtrInput interface {
+	pulumi.Input
+
+	ToBucketReplicationSourceSelectionCriteriaPtrOutput() BucketReplicationSourceSelectionCriteriaPtrOutput
+	ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(context.Context) BucketReplicationSourceSelectionCriteriaPtrOutput
+}
+
+type bucketReplicationSourceSelectionCriteriaPtrType BucketReplicationSourceSelectionCriteriaArgs
+
+func BucketReplicationSourceSelectionCriteriaPtr(v *BucketReplicationSourceSelectionCriteriaArgs) BucketReplicationSourceSelectionCriteriaPtrInput {
+	return (*bucketReplicationSourceSelectionCriteriaPtrType)(v)
+}
+
+func (*bucketReplicationSourceSelectionCriteriaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationSourceSelectionCriteria)(nil)).Elem()
+}
+
+func (i *bucketReplicationSourceSelectionCriteriaPtrType) ToBucketReplicationSourceSelectionCriteriaPtrOutput() BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return i.ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketReplicationSourceSelectionCriteriaPtrType) ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationSourceSelectionCriteriaPtrOutput)
+}
+
+type BucketReplicationSourceSelectionCriteriaOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationSourceSelectionCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationSourceSelectionCriteria)(nil)).Elem()
+}
+
+func (o BucketReplicationSourceSelectionCriteriaOutput) ToBucketReplicationSourceSelectionCriteriaOutput() BucketReplicationSourceSelectionCriteriaOutput {
+	return o
+}
+
+func (o BucketReplicationSourceSelectionCriteriaOutput) ToBucketReplicationSourceSelectionCriteriaOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaOutput {
+	return o
+}
+
+func (o BucketReplicationSourceSelectionCriteriaOutput) ToBucketReplicationSourceSelectionCriteriaPtrOutput() BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return o.ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (o BucketReplicationSourceSelectionCriteriaOutput) ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketReplicationSourceSelectionCriteria) *BucketReplicationSourceSelectionCriteria {
+		return &v
+	}).(BucketReplicationSourceSelectionCriteriaPtrOutput)
+}
+
+// Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+func (o BucketReplicationSourceSelectionCriteriaOutput) SseKmsEncryptedObjects() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyT(func(v BucketReplicationSourceSelectionCriteria) *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
+		return v.SseKmsEncryptedObjects
+	}).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
+}
+
+type BucketReplicationSourceSelectionCriteriaPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationSourceSelectionCriteriaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationSourceSelectionCriteria)(nil)).Elem()
+}
+
+func (o BucketReplicationSourceSelectionCriteriaPtrOutput) ToBucketReplicationSourceSelectionCriteriaPtrOutput() BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return o
+}
+
+func (o BucketReplicationSourceSelectionCriteriaPtrOutput) ToBucketReplicationSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaPtrOutput {
+	return o
+}
+
+func (o BucketReplicationSourceSelectionCriteriaPtrOutput) Elem() BucketReplicationSourceSelectionCriteriaOutput {
+	return o.ApplyT(func(v *BucketReplicationSourceSelectionCriteria) BucketReplicationSourceSelectionCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret BucketReplicationSourceSelectionCriteria
+		return ret
+	}).(BucketReplicationSourceSelectionCriteriaOutput)
+}
+
+// Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+func (o BucketReplicationSourceSelectionCriteriaPtrOutput) SseKmsEncryptedObjects() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationSourceSelectionCriteria) *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.SseKmsEncryptedObjects
+	}).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
+}
+
+type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects struct {
+	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+	Status *string `pulumi:"status"`
+}
+
+// BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsInput is an input type that accepts BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs and BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput values.
+// You can construct a concrete instance of `BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsInput` via:
+//
+//          BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{...}
+type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsInput interface {
+	pulumi.Input
+
+	ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput
+	ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutputWithContext(context.Context) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput
+}
+
+type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs struct {
+	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (i BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput {
+	return i.ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput)
+}
+
+func (i BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return i.ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput).ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(ctx)
+}
+
+// BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput is an input type that accepts BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs, BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtr and BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput values.
+// You can construct a concrete instance of `BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput` via:
+//
+//          BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput
+	ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(context.Context) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput
+}
+
+type bucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrType BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs
+
+func BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtr(v *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput {
+	return (*bucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrType)(v)
+}
+
+func (*bucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (i *bucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrType) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return i.ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrType) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
+}
+
+type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput {
+	return o
+}
+
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput {
+	return o
+}
+
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return o.ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects) *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
+		return &v
+	}).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
+}
+
+// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return o
+}
+
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput) ToBucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
+	return o
+}
+
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput) Elem() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput {
+	return o.ApplyT(func(v *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects) BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects
+		return ret
+	}).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput)
+}
+
+// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type BucketServerSideEncryptionRule struct {
 	// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
 	KmsMasterKeyId *string `pulumi:"kmsMasterKeyId"`
@@ -3505,6 +4382,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingPtrInput)(nil)).Elem(), BucketLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRefererConfigInput)(nil)).Elem(), BucketRefererConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRefererConfigPtrInput)(nil)).Elem(), BucketRefererConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationDestinationInput)(nil)).Elem(), BucketReplicationDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationDestinationPtrInput)(nil)).Elem(), BucketReplicationDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationEncryptionConfigurationInput)(nil)).Elem(), BucketReplicationEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationEncryptionConfigurationPtrInput)(nil)).Elem(), BucketReplicationEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationPrefixSetInput)(nil)).Elem(), BucketReplicationPrefixSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationPrefixSetPtrInput)(nil)).Elem(), BucketReplicationPrefixSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationProgressInput)(nil)).Elem(), BucketReplicationProgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationProgressPtrInput)(nil)).Elem(), BucketReplicationProgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaPtrInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRuleInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRulePtrInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationInput)(nil)).Elem(), BucketTransferAccelerationArgs{})
@@ -3553,6 +4442,18 @@ func init() {
 	pulumi.RegisterOutputType(BucketLoggingPtrOutput{})
 	pulumi.RegisterOutputType(BucketRefererConfigOutput{})
 	pulumi.RegisterOutputType(BucketRefererConfigPtrOutput{})
+	pulumi.RegisterOutputType(BucketReplicationDestinationOutput{})
+	pulumi.RegisterOutputType(BucketReplicationDestinationPtrOutput{})
+	pulumi.RegisterOutputType(BucketReplicationEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(BucketReplicationEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(BucketReplicationPrefixSetOutput{})
+	pulumi.RegisterOutputType(BucketReplicationPrefixSetPtrOutput{})
+	pulumi.RegisterOutputType(BucketReplicationProgressOutput{})
+	pulumi.RegisterOutputType(BucketReplicationProgressPtrOutput{})
+	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaOutput{})
+	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput{})
+	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput{})
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRuleOutput{})
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRulePtrOutput{})
 	pulumi.RegisterOutputType(BucketTransferAccelerationOutput{})

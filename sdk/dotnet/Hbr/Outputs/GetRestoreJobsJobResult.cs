@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
         /// </summary>
         public readonly string SourceType;
         /// <summary>

@@ -10,8 +10,14 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AlertAnnotation',
+    'AlertGroupConfiguration',
+    'AlertJoinConfiguration',
+    'AlertLabel',
     'AlertNotificationList',
+    'AlertPolicyConfiguration',
     'AlertQueryList',
+    'AlertSeverityConfiguration',
     'EtlEtlSink',
     'OssShipperParquetConfig',
     'StoreEncryptConf',
@@ -23,6 +29,119 @@ __all__ = [
     'GetProjectsProjectResult',
     'GetStoresStoreResult',
 ]
+
+@pulumi.output_type
+class AlertAnnotation(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Annotations's key for new alert.
+        :param str value: Annotations's value for new alert.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Annotations's key for new alert.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Annotations's value for new alert.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AlertGroupConfiguration(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 fields: Optional[Sequence[str]] = None):
+        """
+        :param str type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        """
+        pulumi.set(__self__, "type", type)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "fields")
+
+
+@pulumi.output_type
+class AlertJoinConfiguration(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 type: str):
+        """
+        :param str condition: Join condition.
+        :param str type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Join condition.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class AlertLabel(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Annotations's key for new alert.
+        :param str value: Annotations's value for new alert.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Annotations's key for new alert.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Annotations's value for new alert.
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class AlertNotificationList(dict):
@@ -55,7 +174,7 @@ class AlertNotificationList(dict):
                  service_uri: Optional[str] = None):
         """
         :param str content: Notice content of alarm.
-        :param str type: Notification type. support Email, SMS, DingTalk, MessageCenter.
+        :param str type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         :param Sequence[str] email_lists: Email address list.
         :param Sequence[str] mobile_lists: SMS sending mobile number.
         :param str service_uri: Request address.
@@ -81,7 +200,7 @@ class AlertNotificationList(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Notification type. support Email, SMS, DingTalk, MessageCenter.
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         """
         return pulumi.get(self, "type")
 
@@ -111,12 +230,82 @@ class AlertNotificationList(dict):
 
 
 @pulumi.output_type
+class AlertPolicyConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alertPolicyId":
+            suggest = "alert_policy_id"
+        elif key == "repeatInterval":
+            suggest = "repeat_interval"
+        elif key == "actionPolicyId":
+            suggest = "action_policy_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alert_policy_id: str,
+                 repeat_interval: str,
+                 action_policy_id: Optional[str] = None):
+        """
+        :param str alert_policy_id: Alert Policy Id.
+        :param str repeat_interval: Repeat interval used by alert policy, 1h, 1m.e.g.
+        :param str action_policy_id: Action Policy Id.
+        """
+        pulumi.set(__self__, "alert_policy_id", alert_policy_id)
+        pulumi.set(__self__, "repeat_interval", repeat_interval)
+        if action_policy_id is not None:
+            pulumi.set(__self__, "action_policy_id", action_policy_id)
+
+    @property
+    @pulumi.getter(name="alertPolicyId")
+    def alert_policy_id(self) -> str:
+        """
+        Alert Policy Id.
+        """
+        return pulumi.get(self, "alert_policy_id")
+
+    @property
+    @pulumi.getter(name="repeatInterval")
+    def repeat_interval(self) -> str:
+        """
+        Repeat interval used by alert policy, 1h, 1m.e.g.
+        """
+        return pulumi.get(self, "repeat_interval")
+
+    @property
+    @pulumi.getter(name="actionPolicyId")
+    def action_policy_id(self) -> Optional[str]:
+        """
+        Action Policy Id.
+        """
+        return pulumi.get(self, "action_policy_id")
+
+
+@pulumi.output_type
 class AlertQueryList(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "chartTitle":
             suggest = "chart_title"
+        elif key == "dashboardId":
+            suggest = "dashboard_id"
+        elif key == "powerSqlMode":
+            suggest = "power_sql_mode"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "storeType":
+            suggest = "store_type"
         elif key == "timeSpanType":
             suggest = "time_span_type"
 
@@ -132,57 +321,71 @@ class AlertQueryList(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 chart_title: str,
                  end: str,
-                 logstore: str,
                  query: str,
                  start: str,
+                 chart_title: Optional[str] = None,
+                 dashboard_id: Optional[str] = None,
+                 logstore: Optional[str] = None,
+                 power_sql_mode: Optional[str] = None,
+                 project: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 store: Optional[str] = None,
+                 store_type: Optional[str] = None,
                  time_span_type: Optional[str] = None):
         """
-        :param str chart_title: chart title
-        :param str end: end time. example: 20s.
-        :param str logstore: Query logstore
-        :param str query: query corresponding to chart. example: * AND aliyun.
-        :param str start: begin time. example: -60s.
+        :param str end: End time. example: 20s.
+        :param str query: Query corresponding to chart. example: * AND aliyun.
+        :param str start: Begin time. example: -60s.
+        :param str chart_title: Chart title, optional from 1.161.0+.
+        :param str dashboard_id: Query dashboard id.
+        :param str logstore: Query logstore, use store for new alert, Deprecated from 1.161.0+.
+        :param str power_sql_mode: default disable, whether to use power sql. support auto, enable, disable.
+        :param str project: Query project.
+        :param str region: Query project region.
+        :param str role_arn: Query project store's ARN.
+        :param str store: Query store for new alert.
+        :param str store_type: Query store type for new alert, including log,metric,meta.
         :param str time_span_type: default Custom. No need to configure this parameter.
         """
-        pulumi.set(__self__, "chart_title", chart_title)
         pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "logstore", logstore)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "start", start)
+        if chart_title is not None:
+            pulumi.set(__self__, "chart_title", chart_title)
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if logstore is not None:
+            pulumi.set(__self__, "logstore", logstore)
+        if power_sql_mode is not None:
+            pulumi.set(__self__, "power_sql_mode", power_sql_mode)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if store is not None:
+            pulumi.set(__self__, "store", store)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
         if time_span_type is not None:
             pulumi.set(__self__, "time_span_type", time_span_type)
-
-    @property
-    @pulumi.getter(name="chartTitle")
-    def chart_title(self) -> str:
-        """
-        chart title
-        """
-        return pulumi.get(self, "chart_title")
 
     @property
     @pulumi.getter
     def end(self) -> str:
         """
-        end time. example: 20s.
+        End time. example: 20s.
         """
         return pulumi.get(self, "end")
 
     @property
     @pulumi.getter
-    def logstore(self) -> str:
-        """
-        Query logstore
-        """
-        return pulumi.get(self, "logstore")
-
-    @property
-    @pulumi.getter
     def query(self) -> str:
         """
-        query corresponding to chart. example: * AND aliyun.
+        Query corresponding to chart. example: * AND aliyun.
         """
         return pulumi.get(self, "query")
 
@@ -190,9 +393,81 @@ class AlertQueryList(dict):
     @pulumi.getter
     def start(self) -> str:
         """
-        begin time. example: -60s.
+        Begin time. example: -60s.
         """
         return pulumi.get(self, "start")
+
+    @property
+    @pulumi.getter(name="chartTitle")
+    def chart_title(self) -> Optional[str]:
+        """
+        Chart title, optional from 1.161.0+.
+        """
+        return pulumi.get(self, "chart_title")
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[str]:
+        """
+        Query dashboard id.
+        """
+        return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter
+    def logstore(self) -> Optional[str]:
+        """
+        Query logstore, use store for new alert, Deprecated from 1.161.0+.
+        """
+        return pulumi.get(self, "logstore")
+
+    @property
+    @pulumi.getter(name="powerSqlMode")
+    def power_sql_mode(self) -> Optional[str]:
+        """
+        default disable, whether to use power sql. support auto, enable, disable.
+        """
+        return pulumi.get(self, "power_sql_mode")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        """
+        Query project.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Query project region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        Query project store's ARN.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter
+    def store(self) -> Optional[str]:
+        """
+        Query store for new alert.
+        """
+        return pulumi.get(self, "store")
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[str]:
+        """
+        Query store type for new alert, including log,metric,meta.
+        """
+        return pulumi.get(self, "store_type")
 
     @property
     @pulumi.getter(name="timeSpanType")
@@ -201,6 +476,52 @@ class AlertQueryList(dict):
         default Custom. No need to configure this parameter.
         """
         return pulumi.get(self, "time_span_type")
+
+
+@pulumi.output_type
+class AlertSeverityConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evalCondition":
+            suggest = "eval_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertSeverityConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertSeverityConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertSeverityConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 eval_condition: Mapping[str, str],
+                 severity: int):
+        """
+        :param Mapping[str, str] eval_condition: Severity when this condition is met.
+        :param int severity: Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+        """
+        pulumi.set(__self__, "eval_condition", eval_condition)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter(name="evalCondition")
+    def eval_condition(self) -> Mapping[str, str]:
+        """
+        Severity when this condition is met.
+        """
+        return pulumi.get(self, "eval_condition")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> int:
+        """
+        Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+        """
+        return pulumi.get(self, "severity")
 
 
 @pulumi.output_type
@@ -776,7 +1097,10 @@ class StoreShard(dict):
                  id: Optional[int] = None,
                  status: Optional[str] = None):
         """
-        :param int id: The ID of the log project. It formats of `<project>:<name>`.
+        :param str begin_key: The begin value of the shard range(MD5), included in the shard range.
+        :param str end_key: The end value of the shard range(MD5), not included in shard range.
+        :param int id: The ID of the shard.
+        :param str status: Shard status, only two status of `readwrite` and `readonly`.
         """
         if begin_key is not None:
             pulumi.set(__self__, "begin_key", begin_key)
@@ -790,24 +1114,33 @@ class StoreShard(dict):
     @property
     @pulumi.getter(name="beginKey")
     def begin_key(self) -> Optional[str]:
+        """
+        The begin value of the shard range(MD5), included in the shard range.
+        """
         return pulumi.get(self, "begin_key")
 
     @property
     @pulumi.getter(name="endKey")
     def end_key(self) -> Optional[str]:
+        """
+        The end value of the shard range(MD5), not included in shard range.
+        """
         return pulumi.get(self, "end_key")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The ID of the log project. It formats of `<project>:<name>`.
+        The ID of the shard.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        Shard status, only two status of `readwrite` and `readonly`.
+        """
         return pulumi.get(self, "status")
 
 

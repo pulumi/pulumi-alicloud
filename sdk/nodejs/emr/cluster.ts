@@ -228,7 +228,7 @@ import * as utilities from "../utilities";
  *         {
  *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
- *             nodeCount: "2",
+ *             nodeCount: "3",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?[0]?.min > 160 ? dataDisk1.types?[0]?.min : 160),
@@ -262,6 +262,8 @@ import * as utilities from "../utilities";
  * ### 3. Scale Down
  *
  * In the case of scaling down a cluster, we need to specified the host group and the instance list.
+ *
+ * > **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
  *
  * The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
  *
@@ -352,7 +354,7 @@ import * as utilities from "../utilities";
  *         {
  *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
- *             nodeCount: "2",
+ *             nodeCount: "3",
  *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?[0]?.min > 160 ? dataDisk1.types?[0]?.min : 160),
@@ -513,6 +515,9 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
+    /**
+     * Boot action parameters.
+     */
     public readonly bootstrapActions!: pulumi.Output<outputs.emr.ClusterBootstrapAction[] | undefined>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
@@ -542,6 +547,9 @@ export class Cluster extends pulumi.CustomResource {
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
     public readonly hostGroups!: pulumi.Output<outputs.emr.ClusterHostGroup[] | undefined>;
+    /**
+     * Whether the MASTER node has a public IP address enabled. Default value is false.
+     */
     public readonly isOpenPublicIp!: pulumi.Output<boolean | undefined>;
     /**
      * Ssh key pair.
@@ -674,6 +682,9 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * Boot action parameters.
+     */
     bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[]>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
@@ -703,6 +714,9 @@ export interface ClusterState {
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
     hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[]>;
+    /**
+     * Whether the MASTER node has a public IP address enabled. Default value is false.
+     */
     isOpenPublicIp?: pulumi.Input<boolean>;
     /**
      * Ssh key pair.
@@ -762,6 +776,9 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Boot action parameters.
+     */
     bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[]>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
@@ -791,6 +808,9 @@ export interface ClusterArgs {
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
     hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[]>;
+    /**
+     * Whether the MASTER node has a public IP address enabled. Default value is false.
+     */
     isOpenPublicIp?: pulumi.Input<boolean>;
     /**
      * Ssh key pair.

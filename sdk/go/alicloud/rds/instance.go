@@ -52,8 +52,8 @@ type Instance struct {
 	// - 0: disables the CRL
 	ClientCrlEnabled pulumi.IntPtrOutput `pulumi:"clientCrlEnabled"`
 	// RDS database connection string.
-	ConnectionString       pulumi.StringOutput    `pulumi:"connectionString"`
-	ConnectionStringPrefix pulumi.StringPtrOutput `pulumi:"connectionStringPrefix"`
+	ConnectionString       pulumi.StringOutput `pulumi:"connectionString"`
+	ConnectionStringPrefix pulumi.StringOutput `pulumi:"connectionStringPrefix"`
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	DbInstanceIpArrayAttribute pulumi.StringPtrOutput `pulumi:"dbInstanceIpArrayAttribute"`
 	// The name of the IP address whitelist. Default value: Default.
@@ -65,6 +65,8 @@ type Instance struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
+	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+	DbIsIgnoreCase pulumi.BoolOutput `pulumi:"dbIsIgnoreCase"`
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -73,6 +75,10 @@ type Instance struct {
 	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
 	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
 	DbTimeZone pulumi.StringOutput `pulumi:"dbTimeZone"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -299,6 +305,8 @@ type instanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+	DbIsIgnoreCase *bool `pulumi:"dbIsIgnoreCase"`
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -307,6 +315,10 @@ type instanceState struct {
 	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
 	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
 	DbTimeZone *string `pulumi:"dbTimeZone"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -493,6 +505,8 @@ type InstanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
+	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+	DbIsIgnoreCase pulumi.BoolPtrInput
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -501,6 +515,10 @@ type InstanceState struct {
 	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
 	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
 	DbTimeZone pulumi.StringPtrInput
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -689,6 +707,8 @@ type instanceArgs struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+	DbIsIgnoreCase *bool `pulumi:"dbIsIgnoreCase"`
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -697,6 +717,10 @@ type instanceArgs struct {
 	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
 	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
 	DbTimeZone *string `pulumi:"dbTimeZone"`
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
@@ -880,6 +904,8 @@ type InstanceArgs struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
+	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+	DbIsIgnoreCase pulumi.BoolPtrInput
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -888,6 +914,10 @@ type InstanceArgs struct {
 	// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
 	// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
 	DbTimeZone pulumi.StringPtrInput
+	// The switch of delete protection. Valid values:
+	// - true: delete protect.
+	// - false: no delete protect.
+	DeletionProtection pulumi.BoolPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.

@@ -99,6 +99,8 @@ class _RouteEntryState:
                  next_hop: Optional[pulumi.Input[str]] = None,
                  publish_vpc: Optional[pulumi.Input[bool]] = None,
                  route_dest: Optional[pulumi.Input[str]] = None,
+                 route_entry_type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
@@ -106,6 +108,8 @@ class _RouteEntryState:
         :param pulumi.Input[str] next_hop: The next hop of the destination route.
         :param pulumi.Input[bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
+        :param pulumi.Input[str] route_entry_type: (Available in 1.161.0+) The type of the vpn route entry.
+        :param pulumi.Input[str] status: (Available in 1.161.0+) The status of the vpn route entry.
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[int] weight: The value should be 0 or 100.
         """
@@ -115,6 +119,10 @@ class _RouteEntryState:
             pulumi.set(__self__, "publish_vpc", publish_vpc)
         if route_dest is not None:
             pulumi.set(__self__, "route_dest", route_dest)
+        if route_entry_type is not None:
+            pulumi.set(__self__, "route_entry_type", route_entry_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if vpn_gateway_id is not None:
             pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
         if weight is not None:
@@ -155,6 +163,30 @@ class _RouteEntryState:
     @route_dest.setter
     def route_dest(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "route_dest", value)
+
+    @property
+    @pulumi.getter(name="routeEntryType")
+    def route_entry_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.161.0+) The type of the vpn route entry.
+        """
+        return pulumi.get(self, "route_entry_type")
+
+    @route_entry_type.setter
+    def route_entry_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route_entry_type", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.161.0+) The status of the vpn route entry.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="vpnGatewayId")
@@ -341,6 +373,8 @@ class RouteEntry(pulumi.CustomResource):
             if weight is None and not opts.urn:
                 raise TypeError("Missing required property 'weight'")
             __props__.__dict__["weight"] = weight
+            __props__.__dict__["route_entry_type"] = None
+            __props__.__dict__["status"] = None
         super(RouteEntry, __self__).__init__(
             'alicloud:vpn/routeEntry:RouteEntry',
             resource_name,
@@ -354,6 +388,8 @@ class RouteEntry(pulumi.CustomResource):
             next_hop: Optional[pulumi.Input[str]] = None,
             publish_vpc: Optional[pulumi.Input[bool]] = None,
             route_dest: Optional[pulumi.Input[str]] = None,
+            route_entry_type: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
             weight: Optional[pulumi.Input[int]] = None) -> 'RouteEntry':
         """
@@ -366,6 +402,8 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] next_hop: The next hop of the destination route.
         :param pulumi.Input[bool] publish_vpc: Whether to issue the destination route to the VPC.
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
+        :param pulumi.Input[str] route_entry_type: (Available in 1.161.0+) The type of the vpn route entry.
+        :param pulumi.Input[str] status: (Available in 1.161.0+) The status of the vpn route entry.
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[int] weight: The value should be 0 or 100.
         """
@@ -376,6 +414,8 @@ class RouteEntry(pulumi.CustomResource):
         __props__.__dict__["next_hop"] = next_hop
         __props__.__dict__["publish_vpc"] = publish_vpc
         __props__.__dict__["route_dest"] = route_dest
+        __props__.__dict__["route_entry_type"] = route_entry_type
+        __props__.__dict__["status"] = status
         __props__.__dict__["vpn_gateway_id"] = vpn_gateway_id
         __props__.__dict__["weight"] = weight
         return RouteEntry(resource_name, opts=opts, __props__=__props__)
@@ -403,6 +443,22 @@ class RouteEntry(pulumi.CustomResource):
         The destination network segment of the destination route.
         """
         return pulumi.get(self, "route_dest")
+
+    @property
+    @pulumi.getter(name="routeEntryType")
+    def route_entry_type(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.161.0+) The type of the vpn route entry.
+        """
+        return pulumi.get(self, "route_entry_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.161.0+) The status of the vpn route entry.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vpnGatewayId")

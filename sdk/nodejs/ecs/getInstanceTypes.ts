@@ -41,6 +41,7 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         "eniAmount": args.eniAmount,
         "gpuAmount": args.gpuAmount,
         "gpuSpec": args.gpuSpec,
+        "imageId": args.imageId,
         "instanceChargeType": args.instanceChargeType,
         "instanceTypeFamily": args.instanceTypeFamily,
         "isOutdated": args.isOutdated,
@@ -78,6 +79,10 @@ export interface GetInstanceTypesArgs {
      * The GPU spec of an instance type.
      */
     gpuSpec?: string;
+    /**
+     * The ID of the image.
+     */
+    imageId?: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
@@ -135,6 +140,7 @@ export interface GetInstanceTypesResult {
      * A list of instance type IDs.
      */
     readonly ids: string[];
+    readonly imageId?: string;
     readonly instanceChargeType?: string;
     readonly instanceTypeFamily?: string;
     /**
@@ -182,6 +188,10 @@ export interface GetInstanceTypesOutputArgs {
      * The GPU spec of an instance type.
      */
     gpuSpec?: pulumi.Input<string>;
+    /**
+     * The ID of the image.
+     */
+    imageId?: pulumi.Input<string>;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */

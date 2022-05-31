@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./acl";
+export * from "./aclEntryAttachment";
 export * from "./applicationLoadBalancer";
 export * from "./attachment";
 export * from "./backendServer";
@@ -31,10 +32,12 @@ export * from "./masterSlaveServerGroup";
 export * from "./rule";
 export * from "./serverCertificate";
 export * from "./serverGroup";
+export * from "./serverGroupServerAttachment";
 export * from "./tlsCipherPolicy";
 
 // Import resources to register:
 import { Acl } from "./acl";
+import { AclEntryAttachment } from "./aclEntryAttachment";
 import { ApplicationLoadBalancer } from "./applicationLoadBalancer";
 import { Attachment } from "./attachment";
 import { BackendServer } from "./backendServer";
@@ -46,6 +49,7 @@ import { MasterSlaveServerGroup } from "./masterSlaveServerGroup";
 import { Rule } from "./rule";
 import { ServerCertificate } from "./serverCertificate";
 import { ServerGroup } from "./serverGroup";
+import { ServerGroupServerAttachment } from "./serverGroupServerAttachment";
 import { TlsCipherPolicy } from "./tlsCipherPolicy";
 
 const _module = {
@@ -54,6 +58,8 @@ const _module = {
         switch (type) {
             case "alicloud:slb/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
+            case "alicloud:slb/aclEntryAttachment:AclEntryAttachment":
+                return new AclEntryAttachment(name, <any>undefined, { urn })
             case "alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer":
                 return new ApplicationLoadBalancer(name, <any>undefined, { urn })
             case "alicloud:slb/attachment:Attachment":
@@ -76,6 +82,8 @@ const _module = {
                 return new ServerCertificate(name, <any>undefined, { urn })
             case "alicloud:slb/serverGroup:ServerGroup":
                 return new ServerGroup(name, <any>undefined, { urn })
+            case "alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment":
+                return new ServerGroupServerAttachment(name, <any>undefined, { urn })
             case "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy":
                 return new TlsCipherPolicy(name, <any>undefined, { urn })
             default:
@@ -84,6 +92,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "slb/acl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "slb/aclEntryAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/applicationLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/attachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/backendServer", _module)
@@ -95,4 +104,5 @@ pulumi.runtime.registerResourceModule("alicloud", "slb/masterSlaveServerGroup", 
 pulumi.runtime.registerResourceModule("alicloud", "slb/rule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/serverCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/serverGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "slb/serverGroupServerAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "slb/tlsCipherPolicy", _module)

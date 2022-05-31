@@ -84,9 +84,6 @@ namespace Pulumi.AliCloud.Ddos
         [Output("httpsExt")]
         public Output<string> HttpsExt { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// </summary>
         [Output("instanceIds")]
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
@@ -171,10 +168,6 @@ namespace Pulumi.AliCloud.Ddos
 
         [Input("instanceIds", required: true)]
         private InputList<string>? _instanceIds;
-
-        /// <summary>
-        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// </summary>
         public InputList<string> InstanceIds
         {
             get => _instanceIds ?? (_instanceIds = new InputList<string>());
@@ -235,10 +228,6 @@ namespace Pulumi.AliCloud.Ddos
 
         [Input("instanceIds")]
         private InputList<string>? _instanceIds;
-
-        /// <summary>
-        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// </summary>
         public InputList<string> InstanceIds
         {
             get => _instanceIds ?? (_instanceIds = new InputList<string>());

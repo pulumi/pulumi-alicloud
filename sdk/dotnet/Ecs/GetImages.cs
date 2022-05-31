@@ -124,6 +124,12 @@ namespace Pulumi.AliCloud.Ecs
         public string? ImageName { get; set; }
 
         /// <summary>
+        /// The ID of the Alibaba Cloud account to which the image belongs. This parameter takes effect only when you query shared images or community images.
+        /// </summary>
+        [Input("imageOwnerId")]
+        public string? ImageOwnerId { get; set; }
+
+        /// <summary>
         /// The instance type for which the image can be used.
         /// </summary>
         [Input("instanceType")]
@@ -260,6 +266,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
+        /// The ID of the Alibaba Cloud account to which the image belongs. This parameter takes effect only when you query shared images or community images.
+        /// </summary>
+        [Input("imageOwnerId")]
+        public Input<string>? ImageOwnerId { get; set; }
+
+        /// <summary>
         /// The instance type for which the image can be used.
         /// </summary>
         [Input("instanceType")]
@@ -374,6 +386,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? ImageFamily;
         public readonly string? ImageId;
         public readonly string? ImageName;
+        public readonly string? ImageOwnerId;
         /// <summary>
         /// A list of images. Each element contains the following attributes:
         /// </summary>
@@ -416,6 +429,8 @@ namespace Pulumi.AliCloud.Ecs
 
             string? imageName,
 
+            string? imageOwnerId,
+
             ImmutableArray<Outputs.GetImagesImageResult> images,
 
             string? instanceType,
@@ -452,6 +467,7 @@ namespace Pulumi.AliCloud.Ecs
             ImageFamily = imageFamily;
             ImageId = imageId;
             ImageName = imageName;
+            ImageOwnerId = imageOwnerId;
             Images = images;
             InstanceType = instanceType;
             IsSupportCloudInit = isSupportCloudInit;

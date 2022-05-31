@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestinationRouteTableIds;
         /// <summary>
-        /// The ID of the route map.
+        /// The ID of the route map. It formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, it is `route_map_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>

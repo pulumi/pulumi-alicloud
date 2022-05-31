@@ -17,11 +17,19 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// The ID of the destination server group to which requests are forwarded.
         /// </summary>
         public readonly string? ServerGroupId;
+        /// <summary>
+        /// The Weight of server group.
+        /// </summary>
+        public readonly int? Weight;
 
         [OutputConstructor]
-        private RuleRuleActionForwardGroupConfigServerGroupTuple(string? serverGroupId)
+        private RuleRuleActionForwardGroupConfigServerGroupTuple(
+            string? serverGroupId,
+
+            int? weight)
         {
             ServerGroupId = serverGroupId;
+            Weight = weight;
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<Outputs.ShardingInstanceConfigServerList>> ConfigServerLists { get; private set; } = null!;
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -88,6 +88,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// </summary>
+        [Output("networkType")]
+        public Output<string> NetworkType { get; private set; } = null!;
+
+        /// <summary>
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
@@ -101,6 +107,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+        /// </summary>
+        [Output("protocolType")]
+        public Output<string> ProtocolType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Resource Group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
@@ -143,6 +161,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -234,7 +258,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -282,6 +306,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
@@ -295,6 +325,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+        /// </summary>
+        [Input("protocolType")]
+        public Input<string>? ProtocolType { get; set; }
+
+        /// <summary>
+        /// The ID of the Resource Group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The Security Group ID of ECS.
@@ -349,6 +391,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -413,7 +461,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -461,6 +509,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
@@ -474,6 +528,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+        /// </summary>
+        [Input("protocolType")]
+        public Input<string>? ProtocolType { get; set; }
+
+        /// <summary>
+        /// The ID of the Resource Group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
@@ -534,6 +600,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.

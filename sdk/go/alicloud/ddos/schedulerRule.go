@@ -30,21 +30,21 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ddos.NewSchedulerRule(ctx, "example", &ddos.SchedulerRuleArgs{
-// 			RuleName: pulumi.String("tf-testacc7929727******"),
+// 			RuleName: pulumi.String("tf-testacc7929727"),
 // 			RuleType: pulumi.Int(3),
 // 			Rules: ddos.SchedulerRuleRuleArray{
 // 				&ddos.SchedulerRuleRuleArgs{
 // 					Priority:  pulumi.Int(100),
 // 					RegionId:  pulumi.String("cn-hangzhou"),
 // 					Type:      pulumi.String("A"),
-// 					Value:     pulumi.String("170.33.2.125"),
+// 					Value:     pulumi.String("127.0.0.1"),
 // 					ValueType: pulumi.Int(3),
 // 				},
 // 				&ddos.SchedulerRuleRuleArgs{
 // 					Priority:  pulumi.Int(50),
 // 					RegionId:  pulumi.String("cn-hangzhou"),
 // 					Type:      pulumi.String("A"),
-// 					Value:     pulumi.String("170.33.14.193"),
+// 					Value:     pulumi.String("127.0.0.0"),
 // 					ValueType: pulumi.Int(1),
 // 				},
 // 			},
@@ -68,7 +68,8 @@ type SchedulerRule struct {
 	pulumi.CustomResourceState
 
 	// The cname is the traffic scheduler corresponding to rules.
-	Cname pulumi.StringOutput    `pulumi:"cname"`
+	Cname pulumi.StringOutput `pulumi:"cname"`
+	// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
 	Param pulumi.StringPtrOutput `pulumi:"param"`
 	// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
@@ -79,18 +80,7 @@ type SchedulerRule struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntOutput `pulumi:"ruleType"`
-	// The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
-	// `Type`: String type, required, the address format of the linkage resource. Valid values:
-	// `A`: IP address.
-	// `CNAME`: Domain name.
-	// `Value`: String type, required, link address of resource.
-	// `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
-	// `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
-	// `1`: Anti-DDoS Pro.
-	// `2`: (Tiered protection) cloud resource IP.
-	// `3`: (sea acceleration) MCA IP address.
-	// `6`: (Cloud product linkage) cloud resource IP.
-	// `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+	// The information about the scheduling rules. See the following `Block rules`.
 	Rules SchedulerRuleRuleArrayOutput `pulumi:"rules"`
 }
 
@@ -134,6 +124,7 @@ func GetSchedulerRule(ctx *pulumi.Context,
 type schedulerRuleState struct {
 	// The cname is the traffic scheduler corresponding to rules.
 	Cname *string `pulumi:"cname"`
+	// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
 	Param *string `pulumi:"param"`
 	// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -144,24 +135,14 @@ type schedulerRuleState struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType *int `pulumi:"ruleType"`
-	// The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
-	// `Type`: String type, required, the address format of the linkage resource. Valid values:
-	// `A`: IP address.
-	// `CNAME`: Domain name.
-	// `Value`: String type, required, link address of resource.
-	// `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
-	// `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
-	// `1`: Anti-DDoS Pro.
-	// `2`: (Tiered protection) cloud resource IP.
-	// `3`: (sea acceleration) MCA IP address.
-	// `6`: (Cloud product linkage) cloud resource IP.
-	// `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+	// The information about the scheduling rules. See the following `Block rules`.
 	Rules []SchedulerRuleRule `pulumi:"rules"`
 }
 
 type SchedulerRuleState struct {
 	// The cname is the traffic scheduler corresponding to rules.
 	Cname pulumi.StringPtrInput
+	// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
 	Param pulumi.StringPtrInput
 	// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
 	ResourceGroupId pulumi.StringPtrInput
@@ -172,18 +153,7 @@ type SchedulerRuleState struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntPtrInput
-	// The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
-	// `Type`: String type, required, the address format of the linkage resource. Valid values:
-	// `A`: IP address.
-	// `CNAME`: Domain name.
-	// `Value`: String type, required, link address of resource.
-	// `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
-	// `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
-	// `1`: Anti-DDoS Pro.
-	// `2`: (Tiered protection) cloud resource IP.
-	// `3`: (sea acceleration) MCA IP address.
-	// `6`: (Cloud product linkage) cloud resource IP.
-	// `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+	// The information about the scheduling rules. See the following `Block rules`.
 	Rules SchedulerRuleRuleArrayInput
 }
 
@@ -192,6 +162,7 @@ func (SchedulerRuleState) ElementType() reflect.Type {
 }
 
 type schedulerRuleArgs struct {
+	// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
 	Param *string `pulumi:"param"`
 	// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -202,23 +173,13 @@ type schedulerRuleArgs struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType int `pulumi:"ruleType"`
-	// The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
-	// `Type`: String type, required, the address format of the linkage resource. Valid values:
-	// `A`: IP address.
-	// `CNAME`: Domain name.
-	// `Value`: String type, required, link address of resource.
-	// `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
-	// `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
-	// `1`: Anti-DDoS Pro.
-	// `2`: (Tiered protection) cloud resource IP.
-	// `3`: (sea acceleration) MCA IP address.
-	// `6`: (Cloud product linkage) cloud resource IP.
-	// `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+	// The information about the scheduling rules. See the following `Block rules`.
 	Rules []SchedulerRuleRule `pulumi:"rules"`
 }
 
 // The set of arguments for constructing a SchedulerRule resource.
 type SchedulerRuleArgs struct {
+	// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
 	Param pulumi.StringPtrInput
 	// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
 	ResourceGroupId pulumi.StringPtrInput
@@ -229,18 +190,7 @@ type SchedulerRuleArgs struct {
 	// `3`: globalization acceleration.
 	// `6`: Cloud product interaction.
 	RuleType pulumi.IntInput
-	// The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:
-	// `Type`: String type, required, the address format of the linkage resource. Valid values:
-	// `A`: IP address.
-	// `CNAME`: Domain name.
-	// `Value`: String type, required, link address of resource.
-	// `Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.
-	// `ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:
-	// `1`: Anti-DDoS Pro.
-	// `2`: (Tiered protection) cloud resource IP.
-	// `3`: (sea acceleration) MCA IP address.
-	// `6`: (Cloud product linkage) cloud resource IP.
-	// `RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.
+	// The information about the scheduling rules. See the following `Block rules`.
 	Rules SchedulerRuleRuleArrayInput
 }
 

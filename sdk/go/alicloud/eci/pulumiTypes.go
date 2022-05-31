@@ -27,7 +27,7 @@ type ContainerGroupContainer struct {
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
 	// The amount of memory resources allocated to the container.
 	Memory *float64 `pulumi:"memory"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name string `pulumi:"name"`
 	// The structure of port.
 	Ports        []ContainerGroupContainerPort `pulumi:"ports"`
@@ -67,7 +67,7 @@ type ContainerGroupContainerArgs struct {
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
 	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The structure of port.
 	Ports        ContainerGroupContainerPortArrayInput `pulumi:"ports"`
@@ -170,7 +170,7 @@ func (o ContainerGroupContainerOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the security context that the container group runs.
 func (o ContainerGroupContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerGroupContainer) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -221,7 +221,7 @@ func (o ContainerGroupContainerArrayOutput) Index(i pulumi.IntInput) ContainerGr
 type ContainerGroupContainerEnvironmentVar struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value *string `pulumi:"value"`
 }
 
@@ -239,7 +239,7 @@ type ContainerGroupContainerEnvironmentVarInput interface {
 type ContainerGroupContainerEnvironmentVarArgs struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -299,7 +299,7 @@ func (o ContainerGroupContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ContainerGroupContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
+// The variable value of the security context that the container group runs.
 func (o ContainerGroupContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -433,7 +433,7 @@ func (o ContainerGroupContainerPortArrayOutput) Index(i pulumi.IntInput) Contain
 type ContainerGroupContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath *string `pulumi:"mountPath"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name *string `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -453,7 +453,7 @@ type ContainerGroupContainerVolumeMountInput interface {
 type ContainerGroupContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
@@ -515,7 +515,7 @@ func (o ContainerGroupContainerVolumeMountOutput) MountPath() pulumi.StringPtrOu
 	return o.ApplyT(func(v ContainerGroupContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the security context that the container group runs.
 func (o ContainerGroupContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -721,9 +721,9 @@ func (o ContainerGroupDnsConfigPtrOutput) Searches() pulumi.StringArrayOutput {
 }
 
 type ContainerGroupDnsConfigOption struct {
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name *string `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value *string `pulumi:"value"`
 }
 
@@ -739,9 +739,9 @@ type ContainerGroupDnsConfigOptionInput interface {
 }
 
 type ContainerGroupDnsConfigOptionArgs struct {
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -796,12 +796,12 @@ func (o ContainerGroupDnsConfigOptionOutput) ToContainerGroupDnsConfigOptionOutp
 	return o
 }
 
-// The name of the mounted volume.
+// The name of the security context that the container group runs.
 func (o ContainerGroupDnsConfigOptionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupDnsConfigOption) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
+// The variable value of the security context that the container group runs.
 func (o ContainerGroupDnsConfigOptionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupDnsConfigOption) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -827,6 +827,7 @@ func (o ContainerGroupDnsConfigOptionArrayOutput) Index(i pulumi.IntInput) Conta
 }
 
 type ContainerGroupEciSecurityContext struct {
+	// system.
 	Sysctls []ContainerGroupEciSecurityContextSysctl `pulumi:"sysctls"`
 }
 
@@ -842,6 +843,7 @@ type ContainerGroupEciSecurityContextInput interface {
 }
 
 type ContainerGroupEciSecurityContextArgs struct {
+	// system.
 	Sysctls ContainerGroupEciSecurityContextSysctlArrayInput `pulumi:"sysctls"`
 }
 
@@ -922,6 +924,7 @@ func (o ContainerGroupEciSecurityContextOutput) ToContainerGroupEciSecurityConte
 	}).(ContainerGroupEciSecurityContextPtrOutput)
 }
 
+// system.
 func (o ContainerGroupEciSecurityContextOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
 	return o.ApplyT(func(v ContainerGroupEciSecurityContext) []ContainerGroupEciSecurityContextSysctl { return v.Sysctls }).(ContainerGroupEciSecurityContextSysctlArrayOutput)
 }
@@ -950,6 +953,7 @@ func (o ContainerGroupEciSecurityContextPtrOutput) Elem() ContainerGroupEciSecur
 	}).(ContainerGroupEciSecurityContextOutput)
 }
 
+// system.
 func (o ContainerGroupEciSecurityContextPtrOutput) Sysctls() ContainerGroupEciSecurityContextSysctlArrayOutput {
 	return o.ApplyT(func(v *ContainerGroupEciSecurityContext) []ContainerGroupEciSecurityContextSysctl {
 		if v == nil {
@@ -960,9 +964,9 @@ func (o ContainerGroupEciSecurityContextPtrOutput) Sysctls() ContainerGroupEciSe
 }
 
 type ContainerGroupEciSecurityContextSysctl struct {
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name *string `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value *string `pulumi:"value"`
 }
 
@@ -978,9 +982,9 @@ type ContainerGroupEciSecurityContextSysctlInput interface {
 }
 
 type ContainerGroupEciSecurityContextSysctlArgs struct {
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1035,12 +1039,12 @@ func (o ContainerGroupEciSecurityContextSysctlOutput) ToContainerGroupEciSecurit
 	return o
 }
 
-// The name of the mounted volume.
+// The name of the security context that the container group runs.
 func (o ContainerGroupEciSecurityContextSysctlOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupEciSecurityContextSysctl) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
+// The variable value of the security context that the container group runs.
 func (o ContainerGroupEciSecurityContextSysctlOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupEciSecurityContextSysctl) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1303,7 +1307,7 @@ type ContainerGroupInitContainer struct {
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
 	// The amount of memory resources allocated to the container.
 	Memory *float64 `pulumi:"memory"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name *string `pulumi:"name"`
 	// The structure of port.
 	Ports        []ContainerGroupInitContainerPort `pulumi:"ports"`
@@ -1343,7 +1347,7 @@ type ContainerGroupInitContainerArgs struct {
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
 	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The structure of port.
 	Ports        ContainerGroupInitContainerPortArrayInput `pulumi:"ports"`
@@ -1448,7 +1452,7 @@ func (o ContainerGroupInitContainerOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the security context that the container group runs.
 func (o ContainerGroupInitContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1499,7 +1503,7 @@ func (o ContainerGroupInitContainerArrayOutput) Index(i pulumi.IntInput) Contain
 type ContainerGroupInitContainerEnvironmentVar struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value *string `pulumi:"value"`
 }
 
@@ -1517,7 +1521,7 @@ type ContainerGroupInitContainerEnvironmentVarInput interface {
 type ContainerGroupInitContainerEnvironmentVarArgs struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
+	// The variable value of the security context that the container group runs.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1577,7 +1581,7 @@ func (o ContainerGroupInitContainerEnvironmentVarOutput) Key() pulumi.StringPtrO
 	return o.ApplyT(func(v ContainerGroupInitContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
+// The variable value of the security context that the container group runs.
 func (o ContainerGroupInitContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1711,7 +1715,7 @@ func (o ContainerGroupInitContainerPortArrayOutput) Index(i pulumi.IntInput) Con
 type ContainerGroupInitContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath *string `pulumi:"mountPath"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name *string `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -1731,7 +1735,7 @@ type ContainerGroupInitContainerVolumeMountInput interface {
 type ContainerGroupInitContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
@@ -1793,7 +1797,7 @@ func (o ContainerGroupInitContainerVolumeMountOutput) MountPath() pulumi.StringP
 	return o.ApplyT(func(v ContainerGroupInitContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the security context that the container group runs.
 func (o ContainerGroupInitContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupInitContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1836,7 +1840,7 @@ type ContainerGroupVolume struct {
 	FlexVolumeFsType *string `pulumi:"flexVolumeFsType"`
 	// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
 	FlexVolumeOptions *string `pulumi:"flexVolumeOptions"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name *string `pulumi:"name"`
 	// The path to the NFS volume.
 	NfsVolumePath *string `pulumi:"nfsVolumePath"`
@@ -1872,7 +1876,7 @@ type ContainerGroupVolumeArgs struct {
 	FlexVolumeFsType pulumi.StringPtrInput `pulumi:"flexVolumeFsType"`
 	// The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
 	FlexVolumeOptions pulumi.StringPtrInput `pulumi:"flexVolumeOptions"`
-	// The name of the mounted volume.
+	// The name of the security context that the container group runs.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The path to the NFS volume.
 	NfsVolumePath pulumi.StringPtrInput `pulumi:"nfsVolumePath"`
@@ -1967,7 +1971,7 @@ func (o ContainerGroupVolumeOutput) FlexVolumeOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) *string { return v.FlexVolumeOptions }).(pulumi.StringPtrOutput)
 }
 
-// The name of the mounted volume.
+// The name of the security context that the container group runs.
 func (o ContainerGroupVolumeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

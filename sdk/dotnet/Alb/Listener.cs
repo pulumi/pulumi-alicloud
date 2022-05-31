@@ -40,16 +40,16 @@ namespace Pulumi.AliCloud.Alb
         public Output<Outputs.ListenerAccessLogTracingConfig?> AccessLogTracingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
         /// </summary>
         [Output("aclConfig")]
-        public Output<Outputs.ListenerAclConfig?> AclConfig { get; private set; } = null!;
+        public Output<Outputs.ListenerAclConfig> AclConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Certificate List. See the following `Block certificates`.
+        /// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         /// </summary>
         [Output("certificates")]
-        public Output<ImmutableArray<Outputs.ListenerCertificate>> Certificates { get; private set; } = null!;
+        public Output<Outputs.ListenerCertificates?> Certificates { get; private set; } = null!;
 
         /// <summary>
         /// The Default Rule Action List. See the following `Block default_actions`.
@@ -130,10 +130,10 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        /// The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         /// </summary>
-        [Output("xforwardedForConfig")]
-        public Output<Outputs.ListenerXforwardedForConfig> XforwardedForConfig { get; private set; } = null!;
+        [Output("xForwardedForConfig")]
+        public Output<Outputs.ListenerXForwardedForConfig> XForwardedForConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -194,22 +194,16 @@ namespace Pulumi.AliCloud.Alb
         public Input<Inputs.ListenerAccessLogTracingConfigArgs>? AccessLogTracingConfig { get; set; }
 
         /// <summary>
-        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
         /// </summary>
         [Input("aclConfig")]
         public Input<Inputs.ListenerAclConfigArgs>? AclConfig { get; set; }
 
-        [Input("certificates")]
-        private InputList<Inputs.ListenerCertificateArgs>? _certificates;
-
         /// <summary>
-        /// The Certificate List. See the following `Block certificates`.
+        /// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         /// </summary>
-        public InputList<Inputs.ListenerCertificateArgs> Certificates
-        {
-            get => _certificates ?? (_certificates = new InputList<Inputs.ListenerCertificateArgs>());
-            set => _certificates = value;
-        }
+        [Input("certificates")]
+        public Input<Inputs.ListenerCertificatesArgs>? Certificates { get; set; }
 
         [Input("defaultActions")]
         private InputList<Inputs.ListenerDefaultActionArgs>? _defaultActions;
@@ -296,10 +290,10 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        /// The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         /// </summary>
-        [Input("xforwardedForConfig")]
-        public Input<Inputs.ListenerXforwardedForConfigArgs>? XforwardedForConfig { get; set; }
+        [Input("xForwardedForConfig")]
+        public Input<Inputs.ListenerXForwardedForConfigArgs>? XForwardedForConfig { get; set; }
 
         public ListenerArgs()
         {
@@ -321,22 +315,16 @@ namespace Pulumi.AliCloud.Alb
         public Input<Inputs.ListenerAccessLogTracingConfigGetArgs>? AccessLogTracingConfig { get; set; }
 
         /// <summary>
-        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`.
+        /// The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
         /// </summary>
         [Input("aclConfig")]
         public Input<Inputs.ListenerAclConfigGetArgs>? AclConfig { get; set; }
 
-        [Input("certificates")]
-        private InputList<Inputs.ListenerCertificateGetArgs>? _certificates;
-
         /// <summary>
-        /// The Certificate List. See the following `Block certificates`.
+        /// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
         /// </summary>
-        public InputList<Inputs.ListenerCertificateGetArgs> Certificates
-        {
-            get => _certificates ?? (_certificates = new InputList<Inputs.ListenerCertificateGetArgs>());
-            set => _certificates = value;
-        }
+        [Input("certificates")]
+        public Input<Inputs.ListenerCertificatesGetArgs>? Certificates { get; set; }
 
         [Input("defaultActions")]
         private InputList<Inputs.ListenerDefaultActionGetArgs>? _defaultActions;
@@ -423,10 +411,10 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// xforwardfor Related Attribute Configuration. See the following `Block xforwarded_for_config`.
+        /// The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         /// </summary>
-        [Input("xforwardedForConfig")]
-        public Input<Inputs.ListenerXforwardedForConfigGetArgs>? XforwardedForConfig { get; set; }
+        [Input("xForwardedForConfig")]
+        public Input<Inputs.ListenerXForwardedForConfigGetArgs>? XForwardedForConfig { get; set; }
 
         public ListenerState()
         {

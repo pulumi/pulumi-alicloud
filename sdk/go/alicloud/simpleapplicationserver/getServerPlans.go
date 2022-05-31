@@ -67,6 +67,8 @@ type GetServerPlansArgs struct {
 	// The memory size. Unit: GB.
 	Memory     *int    `pulumi:"memory"`
 	OutputFile *string `pulumi:"outputFile"`
+	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+	Platform *string `pulumi:"platform"`
 }
 
 // A collection of values returned by getServerPlans.
@@ -81,6 +83,7 @@ type GetServerPlansResult struct {
 	Memory     *int                 `pulumi:"memory"`
 	OutputFile *string              `pulumi:"outputFile"`
 	Plans      []GetServerPlansPlan `pulumi:"plans"`
+	Platform   *string              `pulumi:"platform"`
 }
 
 func GetServerPlansOutput(ctx *pulumi.Context, args GetServerPlansOutputArgs, opts ...pulumi.InvokeOption) GetServerPlansResultOutput {
@@ -111,6 +114,8 @@ type GetServerPlansOutputArgs struct {
 	// The memory size. Unit: GB.
 	Memory     pulumi.IntPtrInput    `pulumi:"memory"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+	Platform pulumi.StringPtrInput `pulumi:"platform"`
 }
 
 func (GetServerPlansOutputArgs) ElementType() reflect.Type {
@@ -167,6 +172,10 @@ func (o GetServerPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
 
 func (o GetServerPlansResultOutput) Plans() GetServerPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetServerPlansResult) []GetServerPlansPlan { return v.Plans }).(GetServerPlansPlanArrayOutput)
+}
+
+func (o GetServerPlansResultOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServerPlansResult) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }
 
 func init() {

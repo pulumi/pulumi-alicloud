@@ -35,12 +35,14 @@ class EcsBackupPlanArgs:
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
+        :param pulumi.Input[str] detail: The detail of the backup plan.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
         :param pulumi.Input[str] include: Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
         :param pulumi.Input[str] options: Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "ecs_backup_plan_name", ecs_backup_plan_name)
@@ -143,6 +145,9 @@ class EcsBackupPlanArgs:
     @property
     @pulumi.getter
     def detail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The detail of the backup plan.
+        """
         return pulumi.get(self, "detail")
 
     @detail.setter
@@ -224,6 +229,9 @@ class EcsBackupPlanArgs:
     @property
     @pulumi.getter(name="updatePaths")
     def update_paths(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        """
         return pulumi.get(self, "update_paths")
 
     @update_paths.setter
@@ -251,6 +259,7 @@ class _EcsBackupPlanState:
         """
         Input properties used for looking up and filtering EcsBackupPlan resources.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] detail: The detail of the backup plan.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] ecs_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
@@ -261,6 +270,7 @@ class _EcsBackupPlanState:
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         if backup_type is not None:
@@ -310,6 +320,9 @@ class _EcsBackupPlanState:
     @property
     @pulumi.getter
     def detail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The detail of the backup plan.
+        """
         return pulumi.get(self, "detail")
 
     @detail.setter
@@ -439,6 +452,9 @@ class _EcsBackupPlanState:
     @property
     @pulumi.getter(name="updatePaths")
     def update_paths(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        """
         return pulumi.get(self, "update_paths")
 
     @update_paths.setter
@@ -544,6 +560,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] detail: The detail of the backup plan.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] ecs_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
@@ -554,6 +571,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         ...
@@ -727,6 +745,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
+        :param pulumi.Input[str] detail: The detail of the backup plan.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] ecs_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] exclude: Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
@@ -737,6 +756,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
+        :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -770,6 +790,9 @@ class EcsBackupPlan(pulumi.CustomResource):
     @property
     @pulumi.getter
     def detail(self) -> pulumi.Output[Optional[str]]:
+        """
+        The detail of the backup plan.
+        """
         return pulumi.get(self, "detail")
 
     @property
@@ -855,6 +878,9 @@ class EcsBackupPlan(pulumi.CustomResource):
     @property
     @pulumi.getter(name="updatePaths")
     def update_paths(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+        """
         return pulumi.get(self, "update_paths")
 
     @property

@@ -89,6 +89,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// File system creation time. UNIX time in seconds.
         /// </summary>
         public readonly string NasCreateTime;
+        public readonly ImmutableArray<Outputs.GetBackupJobsJobOtsDetailResult> OtsDetails;
         /// <summary>
         /// List of backup path. e.g. `["/home", "/var"]`.
         /// </summary>
@@ -166,6 +167,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string nasCreateTime,
 
+            ImmutableArray<Outputs.GetBackupJobsJobOtsDetailResult> otsDetails,
+
             ImmutableArray<string> paths,
 
             string planId,
@@ -203,6 +206,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             ItemsDone = itemsDone;
             ItemsTotal = itemsTotal;
             NasCreateTime = nasCreateTime;
+            OtsDetails = otsDetails;
             Paths = paths;
             PlanId = planId;
             Prefix = prefix;

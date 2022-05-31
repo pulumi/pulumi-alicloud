@@ -595,6 +595,175 @@ func (o GetClustersClusterInstanceModelArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetClustersClusterInstanceModelOutput)
 }
 
+type GetEngineNamespacesNamespace struct {
+	// The Number of Configuration of the Namespace.
+	ConfigCount int `pulumi:"configCount"`
+	// The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+	Id string `pulumi:"id"`
+	// The description of the Namespace.
+	NamespaceDesc string `pulumi:"namespaceDesc"`
+	// The id of Namespace.
+	NamespaceId string `pulumi:"namespaceId"`
+	// The name of the Namespace.
+	NamespaceShowName string `pulumi:"namespaceShowName"`
+	// The Quota of the Namespace.
+	Quota int `pulumi:"quota"`
+	// The number of active services.
+	ServiceCount string `pulumi:"serviceCount"`
+	// The type of the Namespace, the value is as follows:
+	// - '0': Global Configuration.
+	// - '1': default namespace.
+	// - '2': Custom Namespace.
+	Type int `pulumi:"type"`
+}
+
+// GetEngineNamespacesNamespaceInput is an input type that accepts GetEngineNamespacesNamespaceArgs and GetEngineNamespacesNamespaceOutput values.
+// You can construct a concrete instance of `GetEngineNamespacesNamespaceInput` via:
+//
+//          GetEngineNamespacesNamespaceArgs{...}
+type GetEngineNamespacesNamespaceInput interface {
+	pulumi.Input
+
+	ToGetEngineNamespacesNamespaceOutput() GetEngineNamespacesNamespaceOutput
+	ToGetEngineNamespacesNamespaceOutputWithContext(context.Context) GetEngineNamespacesNamespaceOutput
+}
+
+type GetEngineNamespacesNamespaceArgs struct {
+	// The Number of Configuration of the Namespace.
+	ConfigCount pulumi.IntInput `pulumi:"configCount"`
+	// The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The description of the Namespace.
+	NamespaceDesc pulumi.StringInput `pulumi:"namespaceDesc"`
+	// The id of Namespace.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// The name of the Namespace.
+	NamespaceShowName pulumi.StringInput `pulumi:"namespaceShowName"`
+	// The Quota of the Namespace.
+	Quota pulumi.IntInput `pulumi:"quota"`
+	// The number of active services.
+	ServiceCount pulumi.StringInput `pulumi:"serviceCount"`
+	// The type of the Namespace, the value is as follows:
+	// - '0': Global Configuration.
+	// - '1': default namespace.
+	// - '2': Custom Namespace.
+	Type pulumi.IntInput `pulumi:"type"`
+}
+
+func (GetEngineNamespacesNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEngineNamespacesNamespace)(nil)).Elem()
+}
+
+func (i GetEngineNamespacesNamespaceArgs) ToGetEngineNamespacesNamespaceOutput() GetEngineNamespacesNamespaceOutput {
+	return i.ToGetEngineNamespacesNamespaceOutputWithContext(context.Background())
+}
+
+func (i GetEngineNamespacesNamespaceArgs) ToGetEngineNamespacesNamespaceOutputWithContext(ctx context.Context) GetEngineNamespacesNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEngineNamespacesNamespaceOutput)
+}
+
+// GetEngineNamespacesNamespaceArrayInput is an input type that accepts GetEngineNamespacesNamespaceArray and GetEngineNamespacesNamespaceArrayOutput values.
+// You can construct a concrete instance of `GetEngineNamespacesNamespaceArrayInput` via:
+//
+//          GetEngineNamespacesNamespaceArray{ GetEngineNamespacesNamespaceArgs{...} }
+type GetEngineNamespacesNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToGetEngineNamespacesNamespaceArrayOutput() GetEngineNamespacesNamespaceArrayOutput
+	ToGetEngineNamespacesNamespaceArrayOutputWithContext(context.Context) GetEngineNamespacesNamespaceArrayOutput
+}
+
+type GetEngineNamespacesNamespaceArray []GetEngineNamespacesNamespaceInput
+
+func (GetEngineNamespacesNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEngineNamespacesNamespace)(nil)).Elem()
+}
+
+func (i GetEngineNamespacesNamespaceArray) ToGetEngineNamespacesNamespaceArrayOutput() GetEngineNamespacesNamespaceArrayOutput {
+	return i.ToGetEngineNamespacesNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetEngineNamespacesNamespaceArray) ToGetEngineNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetEngineNamespacesNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEngineNamespacesNamespaceArrayOutput)
+}
+
+type GetEngineNamespacesNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GetEngineNamespacesNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEngineNamespacesNamespace)(nil)).Elem()
+}
+
+func (o GetEngineNamespacesNamespaceOutput) ToGetEngineNamespacesNamespaceOutput() GetEngineNamespacesNamespaceOutput {
+	return o
+}
+
+func (o GetEngineNamespacesNamespaceOutput) ToGetEngineNamespacesNamespaceOutputWithContext(ctx context.Context) GetEngineNamespacesNamespaceOutput {
+	return o
+}
+
+// The Number of Configuration of the Namespace.
+func (o GetEngineNamespacesNamespaceOutput) ConfigCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEngineNamespacesNamespace) int { return v.ConfigCount }).(pulumi.IntOutput)
+}
+
+// The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+func (o GetEngineNamespacesNamespaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEngineNamespacesNamespace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The description of the Namespace.
+func (o GetEngineNamespacesNamespaceOutput) NamespaceDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEngineNamespacesNamespace) string { return v.NamespaceDesc }).(pulumi.StringOutput)
+}
+
+// The id of Namespace.
+func (o GetEngineNamespacesNamespaceOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEngineNamespacesNamespace) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The name of the Namespace.
+func (o GetEngineNamespacesNamespaceOutput) NamespaceShowName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEngineNamespacesNamespace) string { return v.NamespaceShowName }).(pulumi.StringOutput)
+}
+
+// The Quota of the Namespace.
+func (o GetEngineNamespacesNamespaceOutput) Quota() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEngineNamespacesNamespace) int { return v.Quota }).(pulumi.IntOutput)
+}
+
+// The number of active services.
+func (o GetEngineNamespacesNamespaceOutput) ServiceCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEngineNamespacesNamespace) string { return v.ServiceCount }).(pulumi.StringOutput)
+}
+
+// The type of the Namespace, the value is as follows:
+// - '0': Global Configuration.
+// - '1': default namespace.
+// - '2': Custom Namespace.
+func (o GetEngineNamespacesNamespaceOutput) Type() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEngineNamespacesNamespace) int { return v.Type }).(pulumi.IntOutput)
+}
+
+type GetEngineNamespacesNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEngineNamespacesNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEngineNamespacesNamespace)(nil)).Elem()
+}
+
+func (o GetEngineNamespacesNamespaceArrayOutput) ToGetEngineNamespacesNamespaceArrayOutput() GetEngineNamespacesNamespaceArrayOutput {
+	return o
+}
+
+func (o GetEngineNamespacesNamespaceArrayOutput) ToGetEngineNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetEngineNamespacesNamespaceArrayOutput {
+	return o
+}
+
+func (o GetEngineNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetEngineNamespacesNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEngineNamespacesNamespace {
+		return vs[0].([]GetEngineNamespacesNamespace)[vs[1].(int)]
+	}).(GetEngineNamespacesNamespaceOutput)
+}
+
 type GetGatewaysGateway struct {
 	// The backup vswitch id.
 	BackupVswitchId string `pulumi:"backupVswitchId"`
@@ -942,6 +1111,148 @@ func (o GetGatewaysGatewaySlbListArrayOutput) Index(i pulumi.IntInput) GetGatewa
 	}).(GetGatewaysGatewaySlbListOutput)
 }
 
+type GetZnodesZnode struct {
+	// The ID of the Cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The Node data.
+	Data string `pulumi:"data"`
+	// Node list information, the value is as follows:
+	Dir bool `pulumi:"dir"`
+	// The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+	Id string `pulumi:"id"`
+	// The Node path.
+	Path string `pulumi:"path"`
+	// The Node name.
+	ZnodeName string `pulumi:"znodeName"`
+}
+
+// GetZnodesZnodeInput is an input type that accepts GetZnodesZnodeArgs and GetZnodesZnodeOutput values.
+// You can construct a concrete instance of `GetZnodesZnodeInput` via:
+//
+//          GetZnodesZnodeArgs{...}
+type GetZnodesZnodeInput interface {
+	pulumi.Input
+
+	ToGetZnodesZnodeOutput() GetZnodesZnodeOutput
+	ToGetZnodesZnodeOutputWithContext(context.Context) GetZnodesZnodeOutput
+}
+
+type GetZnodesZnodeArgs struct {
+	// The ID of the Cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The Node data.
+	Data pulumi.StringInput `pulumi:"data"`
+	// Node list information, the value is as follows:
+	Dir pulumi.BoolInput `pulumi:"dir"`
+	// The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Node path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The Node name.
+	ZnodeName pulumi.StringInput `pulumi:"znodeName"`
+}
+
+func (GetZnodesZnodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZnodesZnode)(nil)).Elem()
+}
+
+func (i GetZnodesZnodeArgs) ToGetZnodesZnodeOutput() GetZnodesZnodeOutput {
+	return i.ToGetZnodesZnodeOutputWithContext(context.Background())
+}
+
+func (i GetZnodesZnodeArgs) ToGetZnodesZnodeOutputWithContext(ctx context.Context) GetZnodesZnodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZnodesZnodeOutput)
+}
+
+// GetZnodesZnodeArrayInput is an input type that accepts GetZnodesZnodeArray and GetZnodesZnodeArrayOutput values.
+// You can construct a concrete instance of `GetZnodesZnodeArrayInput` via:
+//
+//          GetZnodesZnodeArray{ GetZnodesZnodeArgs{...} }
+type GetZnodesZnodeArrayInput interface {
+	pulumi.Input
+
+	ToGetZnodesZnodeArrayOutput() GetZnodesZnodeArrayOutput
+	ToGetZnodesZnodeArrayOutputWithContext(context.Context) GetZnodesZnodeArrayOutput
+}
+
+type GetZnodesZnodeArray []GetZnodesZnodeInput
+
+func (GetZnodesZnodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZnodesZnode)(nil)).Elem()
+}
+
+func (i GetZnodesZnodeArray) ToGetZnodesZnodeArrayOutput() GetZnodesZnodeArrayOutput {
+	return i.ToGetZnodesZnodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetZnodesZnodeArray) ToGetZnodesZnodeArrayOutputWithContext(ctx context.Context) GetZnodesZnodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZnodesZnodeArrayOutput)
+}
+
+type GetZnodesZnodeOutput struct{ *pulumi.OutputState }
+
+func (GetZnodesZnodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZnodesZnode)(nil)).Elem()
+}
+
+func (o GetZnodesZnodeOutput) ToGetZnodesZnodeOutput() GetZnodesZnodeOutput {
+	return o
+}
+
+func (o GetZnodesZnodeOutput) ToGetZnodesZnodeOutputWithContext(ctx context.Context) GetZnodesZnodeOutput {
+	return o
+}
+
+// The ID of the Cluster.
+func (o GetZnodesZnodeOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The Node data.
+func (o GetZnodesZnodeOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// Node list information, the value is as follows:
+func (o GetZnodesZnodeOutput) Dir() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZnodesZnode) bool { return v.Dir }).(pulumi.BoolOutput)
+}
+
+// The ID of the Znode. The value formats as `<cluster_id>:<path>`.
+func (o GetZnodesZnodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Node path.
+func (o GetZnodesZnodeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The Node name.
+func (o GetZnodesZnodeOutput) ZnodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZnodesZnode) string { return v.ZnodeName }).(pulumi.StringOutput)
+}
+
+type GetZnodesZnodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZnodesZnodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZnodesZnode)(nil)).Elem()
+}
+
+func (o GetZnodesZnodeArrayOutput) ToGetZnodesZnodeArrayOutput() GetZnodesZnodeArrayOutput {
+	return o
+}
+
+func (o GetZnodesZnodeArrayOutput) ToGetZnodesZnodeArrayOutputWithContext(ctx context.Context) GetZnodesZnodeArrayOutput {
+	return o
+}
+
+func (o GetZnodesZnodeArrayOutput) Index(i pulumi.IntInput) GetZnodesZnodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZnodesZnode {
+		return vs[0].([]GetZnodesZnode)[vs[1].(int)]
+	}).(GetZnodesZnodeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySlbListInput)(nil)).Elem(), GatewaySlbListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySlbListArrayInput)(nil)).Elem(), GatewaySlbListArray{})
@@ -949,18 +1260,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInstanceModelInput)(nil)).Elem(), GetClustersClusterInstanceModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInstanceModelArrayInput)(nil)).Elem(), GetClustersClusterInstanceModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEngineNamespacesNamespaceInput)(nil)).Elem(), GetEngineNamespacesNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEngineNamespacesNamespaceArrayInput)(nil)).Elem(), GetEngineNamespacesNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySlbListInput)(nil)).Elem(), GetGatewaysGatewaySlbListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySlbListArrayInput)(nil)).Elem(), GetGatewaysGatewaySlbListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZnodesZnodeInput)(nil)).Elem(), GetZnodesZnodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZnodesZnodeArrayInput)(nil)).Elem(), GetZnodesZnodeArray{})
 	pulumi.RegisterOutputType(GatewaySlbListOutput{})
 	pulumi.RegisterOutputType(GatewaySlbListArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterInstanceModelOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterInstanceModelArrayOutput{})
+	pulumi.RegisterOutputType(GetEngineNamespacesNamespaceOutput{})
+	pulumi.RegisterOutputType(GetEngineNamespacesNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewaySlbListOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewaySlbListArrayOutput{})
+	pulumi.RegisterOutputType(GetZnodesZnodeOutput{})
+	pulumi.RegisterOutputType(GetZnodesZnodeArrayOutput{})
 }

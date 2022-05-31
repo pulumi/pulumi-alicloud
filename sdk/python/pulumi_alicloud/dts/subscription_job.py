@@ -92,6 +92,7 @@ class SubscriptionJobArgs:
         :param pulumi.Input[str] subscription_instance_vswitch_id: The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `bidirectional`, `oneway`.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "payment_type", payment_type)
         if checkpoint is not None:
@@ -630,6 +631,9 @@ class SubscriptionJobArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -719,6 +723,7 @@ class _SubscriptionJobState:
         :param pulumi.Input[str] subscription_instance_vswitch_id: The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `bidirectional`, `oneway`.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if checkpoint is not None:
             pulumi.set(__self__, "checkpoint", checkpoint)
@@ -1258,6 +1263,9 @@ class _SubscriptionJobState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1429,6 +1437,7 @@ class SubscriptionJob(pulumi.CustomResource):
         :param pulumi.Input[str] subscription_instance_vswitch_id: The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `bidirectional`, `oneway`.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -1716,6 +1725,7 @@ class SubscriptionJob(pulumi.CustomResource):
         :param pulumi.Input[str] subscription_instance_vswitch_id: The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `bidirectional`, `oneway`.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2069,5 +2079,8 @@ class SubscriptionJob(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 

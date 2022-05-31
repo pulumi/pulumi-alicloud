@@ -72,7 +72,7 @@ export class JobMonitorRule extends pulumi.CustomResource {
     /**
      * The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
      */
-    public readonly phone!: pulumi.Output<string>;
+    public readonly phone!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable monitoring rules, valid values: `Y`, `N`.
      */

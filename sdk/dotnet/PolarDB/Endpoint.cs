@@ -35,6 +35,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         }));
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "172.16.0.0/16",
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
@@ -42,6 +43,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
     ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///             VswitchName = name,
     ///         });
     ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
     ///         {
@@ -66,7 +68,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// The following arguments are supported:
     /// 
     /// * `db_cluster_id` - (Required, ForceNew) The Id of cluster that can run database.
-    /// * `endpoint_type` - (Required &amp; ForceNew before v1.121.0, Optional in v1.121.0+) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+    /// * `endpoint_type` - (Optional, ForceNew) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
     /// * `read_write_mode` - (Optional) Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
     /// * `nodes` - (Optional) Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
     /// * `auto_add_new_nodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -94,6 +96,12 @@ namespace Pulumi.AliCloud.PolarDB
 
         [Output("dbClusterId")]
         public Output<string> DbClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.161.0+) The ID of the cluster endpoint.
+        /// </summary>
+        [Output("dbEndpointId")]
+        public Output<string> DbEndpointId { get; private set; } = null!;
 
         [Output("endpointConfig")]
         public Output<ImmutableDictionary<string, object>> EndpointConfig { get; private set; } = null!;
@@ -232,6 +240,12 @@ namespace Pulumi.AliCloud.PolarDB
 
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
+
+        /// <summary>
+        /// (Available in v1.161.0+) The ID of the cluster endpoint.
+        /// </summary>
+        [Input("dbEndpointId")]
+        public Input<string>? DbEndpointId { get; set; }
 
         [Input("endpointConfig")]
         private InputMap<object>? _endpointConfig;

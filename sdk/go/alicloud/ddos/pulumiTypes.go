@@ -117,12 +117,24 @@ func (o DomainResourceProxyTypeArrayOutput) Index(i pulumi.IntInput) DomainResou
 }
 
 type SchedulerRuleRule struct {
-	Priority  *int    `pulumi:"priority"`
-	RegionId  *string `pulumi:"regionId"`
-	Status    *int    `pulumi:"status"`
-	Type      *string `pulumi:"type"`
-	Value     *string `pulumi:"value"`
-	ValueType *int    `pulumi:"valueType"`
+	// The priority of the rule.
+	Priority *int `pulumi:"priority"`
+	// The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
+	RegionId *string `pulumi:"regionId"`
+	// The status of the scheduling rule.
+	Status *int `pulumi:"status"`
+	// The address type of the interaction resource. Valid values:
+	// `A`: IPv4 address.
+	// `CNAME`: CNAME record.
+	Type *string `pulumi:"type"`
+	// The address of the interaction resource.
+	Value *string `pulumi:"value"`
+	// Required. The type of the linked resource. It is an Integer. Valid values:
+	// `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
+	// `2`: the IP address of the interaction resource (in the tiered protection scenario)
+	// `3`: the IP address used to accelerate access (in the network acceleration scenario)
+	// `6` the IP address of the interaction resource (in the cloud service interaction scenario)
+	ValueType *int `pulumi:"valueType"`
 }
 
 // SchedulerRuleRuleInput is an input type that accepts SchedulerRuleRuleArgs and SchedulerRuleRuleOutput values.
@@ -137,12 +149,24 @@ type SchedulerRuleRuleInput interface {
 }
 
 type SchedulerRuleRuleArgs struct {
-	Priority  pulumi.IntPtrInput    `pulumi:"priority"`
-	RegionId  pulumi.StringPtrInput `pulumi:"regionId"`
-	Status    pulumi.IntPtrInput    `pulumi:"status"`
-	Type      pulumi.StringPtrInput `pulumi:"type"`
-	Value     pulumi.StringPtrInput `pulumi:"value"`
-	ValueType pulumi.IntPtrInput    `pulumi:"valueType"`
+	// The priority of the rule.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The status of the scheduling rule.
+	Status pulumi.IntPtrInput `pulumi:"status"`
+	// The address type of the interaction resource. Valid values:
+	// `A`: IPv4 address.
+	// `CNAME`: CNAME record.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The address of the interaction resource.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Required. The type of the linked resource. It is an Integer. Valid values:
+	// `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
+	// `2`: the IP address of the interaction resource (in the tiered protection scenario)
+	// `3`: the IP address used to accelerate access (in the network acceleration scenario)
+	// `6` the IP address of the interaction resource (in the cloud service interaction scenario)
+	ValueType pulumi.IntPtrInput `pulumi:"valueType"`
 }
 
 func (SchedulerRuleRuleArgs) ElementType() reflect.Type {
@@ -196,26 +220,38 @@ func (o SchedulerRuleRuleOutput) ToSchedulerRuleRuleOutputWithContext(ctx contex
 	return o
 }
 
+// The priority of the rule.
 func (o SchedulerRuleRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SchedulerRuleRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
 func (o SchedulerRuleRuleOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchedulerRuleRule) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the scheduling rule.
 func (o SchedulerRuleRuleOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SchedulerRuleRule) *int { return v.Status }).(pulumi.IntPtrOutput)
 }
 
+// The address type of the interaction resource. Valid values:
+// `A`: IPv4 address.
+// `CNAME`: CNAME record.
 func (o SchedulerRuleRuleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchedulerRuleRule) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The address of the interaction resource.
 func (o SchedulerRuleRuleOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchedulerRuleRule) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
+// Required. The type of the linked resource. It is an Integer. Valid values:
+// `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
+// `2`: the IP address of the interaction resource (in the tiered protection scenario)
+// `3`: the IP address used to accelerate access (in the network acceleration scenario)
+// `6` the IP address of the interaction resource (in the cloud service interaction scenario)
 func (o SchedulerRuleRuleOutput) ValueType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SchedulerRuleRule) *int { return v.ValueType }).(pulumi.IntPtrOutput)
 }

@@ -1216,6 +1216,130 @@ func (o ListenerPortRangeArrayOutput) Index(i pulumi.IntInput) ListenerPortRange
 	}).(ListenerPortRangeOutput)
 }
 
+type GetAcceleratorSpareIpAttachmentsAttachment struct {
+	// The ID of the global acceleration instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The ID of the Accelerator Spare Ip Attachment.
+	Id string `pulumi:"id"`
+	// The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
+	SpareIp string `pulumi:"spareIp"`
+	// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+	Status string `pulumi:"status"`
+}
+
+// GetAcceleratorSpareIpAttachmentsAttachmentInput is an input type that accepts GetAcceleratorSpareIpAttachmentsAttachmentArgs and GetAcceleratorSpareIpAttachmentsAttachmentOutput values.
+// You can construct a concrete instance of `GetAcceleratorSpareIpAttachmentsAttachmentInput` via:
+//
+//          GetAcceleratorSpareIpAttachmentsAttachmentArgs{...}
+type GetAcceleratorSpareIpAttachmentsAttachmentInput interface {
+	pulumi.Input
+
+	ToGetAcceleratorSpareIpAttachmentsAttachmentOutput() GetAcceleratorSpareIpAttachmentsAttachmentOutput
+	ToGetAcceleratorSpareIpAttachmentsAttachmentOutputWithContext(context.Context) GetAcceleratorSpareIpAttachmentsAttachmentOutput
+}
+
+type GetAcceleratorSpareIpAttachmentsAttachmentArgs struct {
+	// The ID of the global acceleration instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The ID of the Accelerator Spare Ip Attachment.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
+	SpareIp pulumi.StringInput `pulumi:"spareIp"`
+	// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAcceleratorSpareIpAttachmentsAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcceleratorSpareIpAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetAcceleratorSpareIpAttachmentsAttachmentArgs) ToGetAcceleratorSpareIpAttachmentsAttachmentOutput() GetAcceleratorSpareIpAttachmentsAttachmentOutput {
+	return i.ToGetAcceleratorSpareIpAttachmentsAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetAcceleratorSpareIpAttachmentsAttachmentArgs) ToGetAcceleratorSpareIpAttachmentsAttachmentOutputWithContext(ctx context.Context) GetAcceleratorSpareIpAttachmentsAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAcceleratorSpareIpAttachmentsAttachmentOutput)
+}
+
+// GetAcceleratorSpareIpAttachmentsAttachmentArrayInput is an input type that accepts GetAcceleratorSpareIpAttachmentsAttachmentArray and GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetAcceleratorSpareIpAttachmentsAttachmentArrayInput` via:
+//
+//          GetAcceleratorSpareIpAttachmentsAttachmentArray{ GetAcceleratorSpareIpAttachmentsAttachmentArgs{...} }
+type GetAcceleratorSpareIpAttachmentsAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetAcceleratorSpareIpAttachmentsAttachmentArrayOutput() GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput
+	ToGetAcceleratorSpareIpAttachmentsAttachmentArrayOutputWithContext(context.Context) GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput
+}
+
+type GetAcceleratorSpareIpAttachmentsAttachmentArray []GetAcceleratorSpareIpAttachmentsAttachmentInput
+
+func (GetAcceleratorSpareIpAttachmentsAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAcceleratorSpareIpAttachmentsAttachment)(nil)).Elem()
+}
+
+func (i GetAcceleratorSpareIpAttachmentsAttachmentArray) ToGetAcceleratorSpareIpAttachmentsAttachmentArrayOutput() GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput {
+	return i.ToGetAcceleratorSpareIpAttachmentsAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetAcceleratorSpareIpAttachmentsAttachmentArray) ToGetAcceleratorSpareIpAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput)
+}
+
+type GetAcceleratorSpareIpAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetAcceleratorSpareIpAttachmentsAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcceleratorSpareIpAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetAcceleratorSpareIpAttachmentsAttachmentOutput) ToGetAcceleratorSpareIpAttachmentsAttachmentOutput() GetAcceleratorSpareIpAttachmentsAttachmentOutput {
+	return o
+}
+
+func (o GetAcceleratorSpareIpAttachmentsAttachmentOutput) ToGetAcceleratorSpareIpAttachmentsAttachmentOutputWithContext(ctx context.Context) GetAcceleratorSpareIpAttachmentsAttachmentOutput {
+	return o
+}
+
+// The ID of the global acceleration instance.
+func (o GetAcceleratorSpareIpAttachmentsAttachmentOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcceleratorSpareIpAttachmentsAttachment) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The ID of the Accelerator Spare Ip Attachment.
+func (o GetAcceleratorSpareIpAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcceleratorSpareIpAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
+func (o GetAcceleratorSpareIpAttachmentsAttachmentOutput) SpareIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcceleratorSpareIpAttachmentsAttachment) string { return v.SpareIp }).(pulumi.StringOutput)
+}
+
+// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
+func (o GetAcceleratorSpareIpAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcceleratorSpareIpAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAcceleratorSpareIpAttachmentsAttachment)(nil)).Elem()
+}
+
+func (o GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput) ToGetAcceleratorSpareIpAttachmentsAttachmentArrayOutput() GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput) ToGetAcceleratorSpareIpAttachmentsAttachmentArrayOutputWithContext(ctx context.Context) GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput {
+	return o
+}
+
+func (o GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetAcceleratorSpareIpAttachmentsAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAcceleratorSpareIpAttachmentsAttachment {
+		return vs[0].([]GetAcceleratorSpareIpAttachmentsAttachment)[vs[1].(int)]
+	}).(GetAcceleratorSpareIpAttachmentsAttachmentOutput)
+}
+
 type GetAcceleratorsAccelerator struct {
 	// The ID of the GA instance to query.
 	AcceleratorId string `pulumi:"acceleratorId"`
@@ -4048,6 +4172,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateArrayInput)(nil)).Elem(), ListenerCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerPortRangeInput)(nil)).Elem(), ListenerPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerPortRangeArrayInput)(nil)).Elem(), ListenerPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorSpareIpAttachmentsAttachmentInput)(nil)).Elem(), GetAcceleratorSpareIpAttachmentsAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorSpareIpAttachmentsAttachmentArrayInput)(nil)).Elem(), GetAcceleratorSpareIpAttachmentsAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorInput)(nil)).Elem(), GetAcceleratorsAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorBasicBandwidthPackageInput)(nil)).Elem(), GetAcceleratorsAcceleratorBasicBandwidthPackageArgs{})
@@ -4111,6 +4237,8 @@ func init() {
 	pulumi.RegisterOutputType(ListenerCertificateArrayOutput{})
 	pulumi.RegisterOutputType(ListenerPortRangeOutput{})
 	pulumi.RegisterOutputType(ListenerPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetAcceleratorSpareIpAttachmentsAttachmentOutput{})
+	pulumi.RegisterOutputType(GetAcceleratorSpareIpAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorBasicBandwidthPackageOutput{})

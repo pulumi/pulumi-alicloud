@@ -102,8 +102,9 @@ type EcsBackupPlan struct {
 	pulumi.CustomResourceState
 
 	// Backup type. Valid values: `COMPLETE`.
-	BackupType pulumi.StringOutput    `pulumi:"backupType"`
-	Detail     pulumi.StringPtrOutput `pulumi:"detail"`
+	BackupType pulumi.StringOutput `pulumi:"backupType"`
+	// The detail of the backup plan.
+	Detail pulumi.StringPtrOutput `pulumi:"detail"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -124,6 +125,8 @@ type EcsBackupPlan struct {
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit pulumi.StringPtrOutput `pulumi:"speedLimit"`
+	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+	//
 	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths pulumi.BoolPtrOutput `pulumi:"updatePaths"`
 	// The ID of Backup vault.
@@ -179,7 +182,8 @@ func GetEcsBackupPlan(ctx *pulumi.Context,
 type ecsBackupPlanState struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
-	Detail     *string `pulumi:"detail"`
+	// The detail of the backup plan.
+	Detail *string `pulumi:"detail"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -200,6 +204,8 @@ type ecsBackupPlanState struct {
 	Schedule *string `pulumi:"schedule"`
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit *string `pulumi:"speedLimit"`
+	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+	//
 	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths *bool `pulumi:"updatePaths"`
 	// The ID of Backup vault.
@@ -209,7 +215,8 @@ type ecsBackupPlanState struct {
 type EcsBackupPlanState struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
-	Detail     pulumi.StringPtrInput
+	// The detail of the backup plan.
+	Detail pulumi.StringPtrInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -230,6 +237,8 @@ type EcsBackupPlanState struct {
 	Schedule pulumi.StringPtrInput
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit pulumi.StringPtrInput
+	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+	//
 	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths pulumi.BoolPtrInput
 	// The ID of Backup vault.
@@ -242,8 +251,9 @@ func (EcsBackupPlanState) ElementType() reflect.Type {
 
 type ecsBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
-	BackupType string  `pulumi:"backupType"`
-	Detail     *string `pulumi:"detail"`
+	BackupType string `pulumi:"backupType"`
+	// The detail of the backup plan.
+	Detail *string `pulumi:"detail"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled *bool `pulumi:"disabled"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -264,6 +274,8 @@ type ecsBackupPlanArgs struct {
 	Schedule string `pulumi:"schedule"`
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit *string `pulumi:"speedLimit"`
+	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+	//
 	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths *bool `pulumi:"updatePaths"`
 	// The ID of Backup vault.
@@ -274,7 +286,8 @@ type ecsBackupPlanArgs struct {
 type EcsBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringInput
-	Detail     pulumi.StringPtrInput
+	// The detail of the backup plan.
+	Detail pulumi.StringPtrInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -295,6 +308,8 @@ type EcsBackupPlanArgs struct {
 	Schedule pulumi.StringInput
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit pulumi.StringPtrInput
+	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
+	//
 	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths pulumi.BoolPtrInput
 	// The ID of Backup vault.

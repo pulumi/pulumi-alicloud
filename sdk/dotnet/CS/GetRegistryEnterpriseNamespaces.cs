@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.CS
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ids to filter results by namespace id.
+        /// A list of ids to filter results by namespace id. Each item formats as `&lt;instance_id&gt;:&lt;namespace_name&gt;`.
         /// </summary>
         public List<string> Ids
         {
@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of ids to filter results by namespace id.
+        /// A list of ids to filter results by namespace id. Each item formats as `&lt;instance_id&gt;:&lt;namespace_name&gt;`.
         /// </summary>
         public InputList<string> Ids
         {
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.
+        /// A list of matched Container Registry Enterprise Edition namespaces. Each item formats as `&lt;instance_id&gt;:&lt;namespace_name&gt;`. Before 1.161.0, its element is a namespace uuid.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>

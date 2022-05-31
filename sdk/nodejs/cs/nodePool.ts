@@ -468,6 +468,18 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
     /**
+     * The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+     */
+    public readonly systemDiskEncryptAlgorithm!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to enable system disk encryption.
+     */
+    public readonly systemDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    /**
+     * The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+     */
+    public readonly systemDiskKmsKey!: pulumi.Output<string | undefined>;
+    /**
      * The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
      */
     public readonly systemDiskPerformanceLevel!: pulumi.Output<string | undefined>;
@@ -551,6 +563,9 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
+            resourceInputs["systemDiskEncryptAlgorithm"] = state ? state.systemDiskEncryptAlgorithm : undefined;
+            resourceInputs["systemDiskEncrypted"] = state ? state.systemDiskEncrypted : undefined;
+            resourceInputs["systemDiskKmsKey"] = state ? state.systemDiskKmsKey : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
             resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -607,6 +622,9 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
             resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
+            resourceInputs["systemDiskEncryptAlgorithm"] = args ? args.systemDiskEncryptAlgorithm : undefined;
+            resourceInputs["systemDiskEncrypted"] = args ? args.systemDiskEncrypted : undefined;
+            resourceInputs["systemDiskKmsKey"] = args ? args.systemDiskKmsKey : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
             resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -784,6 +802,18 @@ export interface NodePoolState {
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     systemDiskCategory?: pulumi.Input<string>;
+    /**
+     * The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+     */
+    systemDiskEncryptAlgorithm?: pulumi.Input<string>;
+    /**
+     * Whether to enable system disk encryption.
+     */
+    systemDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+     */
+    systemDiskKmsKey?: pulumi.Input<string>;
     /**
      * The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
      */
@@ -976,6 +1006,18 @@ export interface NodePoolArgs {
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     systemDiskCategory?: pulumi.Input<string>;
+    /**
+     * The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
+     */
+    systemDiskEncryptAlgorithm?: pulumi.Input<string>;
+    /**
+     * Whether to enable system disk encryption.
+     */
+    systemDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+     */
+    systemDiskKmsKey?: pulumi.Input<string>;
     /**
      * The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
      */

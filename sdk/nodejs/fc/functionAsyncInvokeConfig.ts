@@ -46,6 +46,18 @@ import * as utilities from "../utilities";
  *     maximumRetryAttempts: 0,
  * });
  * ```
+ * ### Async Job Configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.fc.FunctionAsyncInvokeConfig("example", {
+ *     serviceName: alicloud_fc_service.example.name,
+ *     functionName: alicloud_fc_function.example.name,
+ *     statefulInvocation: true,
+ * });
+ * ```
  * ### Configuration for Function Latest Unpublished Version
  *
  * ```typescript
@@ -113,11 +125,11 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
     /**
-     * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+     * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
      */
     public readonly maximumEventAgeInSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+     * Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
      */
     public readonly maximumRetryAttempts!: pulumi.Output<number | undefined>;
     /**
@@ -128,6 +140,10 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * Function Compute async job configuration. valid values true or false, default `false`
+     */
+    public readonly statefulInvocation!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a FunctionAsyncInvokeConfig resource with the given unique name, arguments, and options.
@@ -150,6 +166,7 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
             resourceInputs["maximumRetryAttempts"] = state ? state.maximumRetryAttempts : undefined;
             resourceInputs["qualifier"] = state ? state.qualifier : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["statefulInvocation"] = state ? state.statefulInvocation : undefined;
         } else {
             const args = argsOrState as FunctionAsyncInvokeConfigArgs | undefined;
             if ((!args || args.functionName === undefined) && !opts.urn) {
@@ -164,6 +181,7 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
             resourceInputs["maximumRetryAttempts"] = args ? args.maximumRetryAttempts : undefined;
             resourceInputs["qualifier"] = args ? args.qualifier : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["statefulInvocation"] = args ? args.statefulInvocation : undefined;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
@@ -193,11 +211,11 @@ export interface FunctionAsyncInvokeConfigState {
      */
     lastModifiedTime?: pulumi.Input<string>;
     /**
-     * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+     * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
      */
     maximumEventAgeInSeconds?: pulumi.Input<number>;
     /**
-     * Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+     * Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
      */
     maximumRetryAttempts?: pulumi.Input<number>;
     /**
@@ -208,6 +226,10 @@ export interface FunctionAsyncInvokeConfigState {
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Function Compute async job configuration. valid values true or false, default `false`
+     */
+    statefulInvocation?: pulumi.Input<boolean>;
 }
 
 /**
@@ -223,11 +245,11 @@ export interface FunctionAsyncInvokeConfigArgs {
      */
     functionName: pulumi.Input<string>;
     /**
-     * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
+     * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
      */
     maximumEventAgeInSeconds?: pulumi.Input<number>;
     /**
-     * Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
+     * Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
      */
     maximumRetryAttempts?: pulumi.Input<number>;
     /**
@@ -238,4 +260,8 @@ export interface FunctionAsyncInvokeConfigArgs {
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      */
     serviceName: pulumi.Input<string>;
+    /**
+     * Function Compute async job configuration. valid values true or false, default `false`
+     */
+    statefulInvocation?: pulumi.Input<boolean>;
 }

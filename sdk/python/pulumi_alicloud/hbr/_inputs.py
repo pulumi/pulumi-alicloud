@@ -9,10 +9,122 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'OtsBackupPlanOtsDetailArgs',
+    'OtsBackupPlanRuleArgs',
     'ServerBackupPlanDetailArgs',
     'GetBackupJobsFilterArgs',
     'GetServerBackupPlansFilterArgs',
 ]
+
+@pulumi.input_type
+class OtsBackupPlanOtsDetailArgs:
+    def __init__(__self__, *,
+                 table_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] table_names: The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        if table_names is not None:
+            pulumi.set(__self__, "table_names", table_names)
+
+    @property
+    @pulumi.getter(name="tableNames")
+    def table_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "table_names")
+
+    @table_names.setter
+    def table_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "table_names", value)
+
+
+@pulumi.input_type
+class OtsBackupPlanRuleArgs:
+    def __init__(__self__, *,
+                 backup_type: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 retention: Optional[pulumi.Input[str]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: true, false.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+        :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        if backup_type is not None:
+            pulumi.set(__self__, "backup_type", backup_type)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @backup_type.setter
+    def backup_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_type", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to disable the backup task. Valid values: true, false.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def retention(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_name", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
 
 @pulumi.input_type
 class ServerBackupPlanDetailArgs:

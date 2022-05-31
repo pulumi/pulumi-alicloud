@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainConfig{}
 	case "alicloud:cdn/domainNew:DomainNew":
 		r = &DomainNew{}
+	case "alicloud:cdn/fcTrigger:FcTrigger":
+		r = &FcTrigger{}
 	case "alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery":
 		r = &RealTimeLogDelivery{}
 	default:
@@ -55,6 +57,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cdn/domainNew",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cdn/fcTrigger",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

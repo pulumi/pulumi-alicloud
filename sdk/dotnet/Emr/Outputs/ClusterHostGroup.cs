@@ -14,13 +14,17 @@ namespace Pulumi.AliCloud.Emr.Outputs
     public sealed class ClusterHostGroup
     {
         /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
+        /// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         /// </summary>
         public readonly bool? AutoRenew;
         /// <summary>
         /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         /// </summary>
         public readonly string? ChargeType;
+        /// <summary>
+        /// Graceful decommission timeout, unit: seconds.
+        /// </summary>
+        public readonly int? DecommissionTimeout;
         /// <summary>
         /// Data disk capacity.
         /// </summary>
@@ -33,6 +37,10 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
         /// </summary>
         public readonly string? DiskType;
+        /// <summary>
+        /// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+        /// </summary>
+        public readonly bool? EnableGracefulDecommission;
         public readonly string? GpuDriver;
         /// <summary>
         /// host group name.
@@ -73,11 +81,15 @@ namespace Pulumi.AliCloud.Emr.Outputs
 
             string? chargeType,
 
+            int? decommissionTimeout,
+
             string? diskCapacity,
 
             string? diskCount,
 
             string? diskType,
+
+            bool? enableGracefulDecommission,
 
             string? gpuDriver,
 
@@ -99,9 +111,11 @@ namespace Pulumi.AliCloud.Emr.Outputs
         {
             AutoRenew = autoRenew;
             ChargeType = chargeType;
+            DecommissionTimeout = decommissionTimeout;
             DiskCapacity = diskCapacity;
             DiskCount = diskCount;
             DiskType = diskType;
+            EnableGracefulDecommission = enableGracefulDecommission;
             GpuDriver = gpuDriver;
             HostGroupName = hostGroupName;
             HostGroupType = hostGroupType;

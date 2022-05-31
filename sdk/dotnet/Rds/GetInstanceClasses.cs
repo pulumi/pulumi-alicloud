@@ -96,10 +96,30 @@ namespace Pulumi.AliCloud.Rds
         public string? Category { get; set; }
 
         /// <summary>
+        /// The commodity code of the instance. Valid values:
+        /// * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
+        /// * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
+        /// * **rords**: The instance is a pay-as-you-go read-only instance. This value is available on the China site (aliyun.com).
+        /// * **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available on the China site (aliyun.com).
+        /// * **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available on the International site (alibabacloud.com).
+        /// * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
+        /// * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
+        /// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+        /// </summary>
+        [Input("commodityCode")]
+        public string? CommodityCode { get; set; }
+
+        /// <summary>
         /// The DB instance class type by the user.
         /// </summary>
         [Input("dbInstanceClass")]
         public string? DbInstanceClass { get; set; }
+
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
+        [Input("dbInstanceId")]
+        public string? DbInstanceId { get; set; }
 
         /// <summary>
         /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
@@ -163,10 +183,30 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Category { get; set; }
 
         /// <summary>
+        /// The commodity code of the instance. Valid values:
+        /// * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
+        /// * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
+        /// * **rords**: The instance is a pay-as-you-go read-only instance. This value is available on the China site (aliyun.com).
+        /// * **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available on the China site (aliyun.com).
+        /// * **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available on the International site (alibabacloud.com).
+        /// * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
+        /// * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
+        /// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+        /// </summary>
+        [Input("commodityCode")]
+        public Input<string>? CommodityCode { get; set; }
+
+        /// <summary>
         /// The DB instance class type by the user.
         /// </summary>
         [Input("dbInstanceClass")]
         public Input<string>? DbInstanceClass { get; set; }
+
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
+        [Input("dbInstanceId")]
+        public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
         /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
@@ -226,7 +266,9 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetInstanceClassesResult
     {
         public readonly string? Category;
+        public readonly string? CommodityCode;
         public readonly string? DbInstanceClass;
+        public readonly string? DbInstanceId;
         public readonly string? DbInstanceStorageType;
         public readonly string? Engine;
         public readonly string? EngineVersion;
@@ -253,7 +295,11 @@ namespace Pulumi.AliCloud.Rds
         private GetInstanceClassesResult(
             string? category,
 
+            string? commodityCode,
+
             string? dbInstanceClass,
+
+            string? dbInstanceId,
 
             string? dbInstanceStorageType,
 
@@ -280,7 +326,9 @@ namespace Pulumi.AliCloud.Rds
             string? zoneId)
         {
             Category = category;
+            CommodityCode = commodityCode;
             DbInstanceClass = dbInstanceClass;
+            DbInstanceId = dbInstanceId;
             DbInstanceStorageType = dbInstanceStorageType;
             Engine = engine;
             EngineVersion = engineVersion;

@@ -36,6 +36,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         }));
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "172.16.0.0/16",
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
@@ -43,6 +44,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
     ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+    ///             VswitchName = name,
     ///         });
     ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
     ///         {
@@ -52,6 +54,26 @@ namespace Pulumi.AliCloud.PolarDB
     ///             PayType = "PostPaid",
     ///             Description = name,
     ///             VswitchId = defaultSwitch.Id,
+    ///             DbClusterIpArrays = 
+    ///             {
+    ///                 new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
+    ///                 {
+    ///                     DbClusterIpArrayName = "default",
+    ///                     SecurityIps = 
+    ///                     {
+    ///                         "1.2.3.4",
+    ///                         "1.2.3.5",
+    ///                     },
+    ///                 },
+    ///                 new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
+    ///                 {
+    ///                     DbClusterIpArrayName = "test_ips1",
+    ///                     SecurityIps = 
+    ///                     {
+    ///                         "1.2.3.6",
+    ///                     },
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -120,6 +142,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbVersion { get; private set; } = null!;
 
         /// <summary>
+        /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// </summary>
+        [Output("deletionLock")]
+        public Output<int?> DeletionLock { get; private set; } = null!;
+
+        /// <summary>
         /// The description of cluster.
         /// </summary>
         [Output("description")]
@@ -179,7 +208,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        /// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
@@ -309,6 +338,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbVersion { get; set; } = null!;
 
         /// <summary>
+        /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// </summary>
+        [Input("deletionLock")]
+        public Input<int>? DeletionLock { get; set; }
+
+        /// <summary>
         /// The description of cluster.
         /// </summary>
         [Input("description")]
@@ -383,7 +419,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        /// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         /// </summary>
         public InputList<string> SecurityIps
         {
@@ -489,6 +525,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbVersion { get; set; }
 
         /// <summary>
+        /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+        /// &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        /// </summary>
+        [Input("deletionLock")]
+        public Input<int>? DeletionLock { get; set; }
+
+        /// <summary>
         /// The description of cluster.
         /// </summary>
         [Input("description")]
@@ -563,7 +606,7 @@ namespace Pulumi.AliCloud.PolarDB
         private InputList<string>? _securityIps;
 
         /// <summary>
-        /// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        /// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         /// </summary>
         public InputList<string> SecurityIps
         {

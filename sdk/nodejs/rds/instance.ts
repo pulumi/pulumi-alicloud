@@ -94,7 +94,7 @@ export class Instance extends pulumi.CustomResource {
      * RDS database connection string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
-    public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
+    public readonly connectionStringPrefix!: pulumi.Output<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
      */
@@ -113,6 +113,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
+     * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+     */
+    public readonly dbIsIgnoreCase!: pulumi.Output<boolean>;
+    /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
      * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -122,6 +126,12 @@ export class Instance extends pulumi.CustomResource {
      * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      */
     public readonly dbTimeZone!: pulumi.Output<string>;
+    /**
+     * The switch of delete protection. Valid values: 
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
@@ -379,7 +389,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
             resourceInputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
             resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
+            resourceInputs["dbIsIgnoreCase"] = state ? state.dbIsIgnoreCase : undefined;
             resourceInputs["dbTimeZone"] = state ? state.dbTimeZone : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
@@ -454,7 +466,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
             resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
             resourceInputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
+            resourceInputs["dbIsIgnoreCase"] = args ? args.dbIsIgnoreCase : undefined;
             resourceInputs["dbTimeZone"] = args ? args.dbTimeZone : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
@@ -584,6 +598,10 @@ export interface InstanceState {
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
+     * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+     */
+    dbIsIgnoreCase?: pulumi.Input<boolean>;
+    /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
      * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -593,6 +611,12 @@ export interface InstanceState {
      * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      */
     dbTimeZone?: pulumi.Input<string>;
+    /**
+     * The switch of delete protection. Valid values: 
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
@@ -895,6 +919,10 @@ export interface InstanceArgs {
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
+     * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+     */
+    dbIsIgnoreCase?: pulumi.Input<boolean>;
+    /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
      * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -904,6 +932,12 @@ export interface InstanceArgs {
      * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      */
     dbTimeZone?: pulumi.Input<string>;
+    /**
+     * The switch of delete protection. Valid values: 
+     * - true: delete protect.
+     * - false: no delete protect.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */

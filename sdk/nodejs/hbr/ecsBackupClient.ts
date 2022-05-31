@@ -83,7 +83,7 @@ export class EcsBackupClient extends pulumi.CustomResource {
     }
 
     /**
-     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
      */
     public readonly dataNetworkType!: pulumi.Output<string>;
     /**
@@ -178,7 +178,7 @@ export class EcsBackupClient extends pulumi.CustomResource {
  */
 export interface EcsBackupClientState {
     /**
-     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
      */
     dataNetworkType?: pulumi.Input<string>;
     /**
@@ -228,7 +228,7 @@ export interface EcsBackupClientState {
  */
 export interface EcsBackupClientArgs {
     /**
-     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
+     * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
      */
     dataNetworkType?: pulumi.Input<string>;
     /**

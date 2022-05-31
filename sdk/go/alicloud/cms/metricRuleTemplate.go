@@ -194,6 +194,8 @@ type metricRuleTemplateArgs struct {
 	MetricRuleTemplateName string `pulumi:"metricRuleTemplateName"`
 	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
 	NotifyLevel *string `pulumi:"notifyLevel"`
+	// The version of the alert template to be modified.
+	RestVersion *string `pulumi:"restVersion"`
 	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
 	SilenceTime *int `pulumi:"silenceTime"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
@@ -218,6 +220,8 @@ type MetricRuleTemplateArgs struct {
 	MetricRuleTemplateName pulumi.StringInput
 	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
 	NotifyLevel pulumi.StringPtrInput
+	// The version of the alert template to be modified.
+	RestVersion pulumi.StringPtrInput
 	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
 	SilenceTime pulumi.IntPtrInput
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.

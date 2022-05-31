@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Dashboard{}
 	case "alicloud:log/etl:Etl":
 		r = &Etl{}
+	case "alicloud:log/ingestion:Ingestion":
+		r = &Ingestion{}
 	case "alicloud:log/logTailAttachment:LogTailAttachment":
 		r = &LogTailAttachment{}
 	case "alicloud:log/logTailConfig:LogTailConfig":
@@ -39,6 +41,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OssShipper{}
 	case "alicloud:log/project:Project":
 		r = &Project{}
+	case "alicloud:log/resource:Resource":
+		r = &Resource{}
+	case "alicloud:log/resourceRecord:ResourceRecord":
+		r = &ResourceRecord{}
 	case "alicloud:log/store:Store":
 		r = &Store{}
 	case "alicloud:log/storeIndex:StoreIndex":
@@ -78,6 +84,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"log/ingestion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"log/logTailAttachment",
 		&module{version},
 	)
@@ -99,6 +110,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"log/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"log/resource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"log/resourceRecord",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

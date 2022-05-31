@@ -11,6 +11,82 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.142.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     instanceTypeFamily: "ecs.g7",
+ * });
+ * const defaultZones = defaultInstanceTypes.then(defaultInstanceTypes => alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ *     availableInstanceType: defaultInstanceTypes.instanceTypes?[0]?.id,
+ * }));
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?[0],
+ *     zoneId: defaultZones.zones?[0]?.id,
+ * }));
+ * const vswitchId = defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]);
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
+ *     description: "New security group",
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
+ * });
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultInstance: alicloud.ecs.Instance[];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`defaultInstance-${range.value}`, {
+ *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *         instanceName: "example_value",
+ *         hostName: "tf-testAcc",
+ *         imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
+ *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
+ *         securityGroups: [defaultSecurityGroup.id],
+ *         vswitchId: vswitchId,
+ *         systemDiskCategory: "cloud_essd",
+ *     }));
+ * }
+ * const defaultEcsNetworkInterface: alicloud.ecs.EcsNetworkInterface[];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultEcsNetworkInterface.push(new alicloud.ecs.EcsNetworkInterface(`defaultEcsNetworkInterface-${range.value}`, {
+ *         networkInterfaceName: "example_value",
+ *         vswitchId: vswitchId,
+ *         securityGroupIds: [defaultSecurityGroup.id],
+ *     }));
+ * }
+ * const defaultEcsNetworkInterfaceAttachment: alicloud.ecs.EcsNetworkInterfaceAttachment[];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultEcsNetworkInterfaceAttachment.push(new alicloud.ecs.EcsNetworkInterfaceAttachment(`defaultEcsNetworkInterfaceAttachment-${range.value}`, {
+ *         instanceId: defaultInstance.map(__item => __item.id)[range.value],
+ *         networkInterfaceId: defaultEcsNetworkInterface.map(__item => __item.id)[range.value],
+ *     }));
+ * }
+ * const defaultTrafficMirrorFilter = new alicloud.vpc.TrafficMirrorFilter("defaultTrafficMirrorFilter", {
+ *     trafficMirrorFilterName: "example_value",
+ *     trafficMirrorFilterDescription: "example_value",
+ * });
+ * const defaultTrafficMirrorSession = new alicloud.vpc.TrafficMirrorSession("defaultTrafficMirrorSession", {
+ *     priority: 1,
+ *     virtualNetworkId: 10,
+ *     trafficMirrorSessionDescription: "example_value",
+ *     trafficMirrorSessionName: "example_value",
+ *     trafficMirrorTargetId: defaultEcsNetworkInterfaceAttachment[0].networkInterfaceId,
+ *     trafficMirrorSourceIds: [defaultEcsNetworkInterfaceAttachment[1].networkInterfaceId],
+ *     trafficMirrorFilterId: defaultTrafficMirrorFilter.id,
+ *     trafficMirrorTargetType: "NetworkInterface",
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Traffic Mirror Session can be imported using the id, e.g.

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Imp.Inputs
     public sealed class AppTemplateConfigListArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration item key. Valid values:
+        /// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

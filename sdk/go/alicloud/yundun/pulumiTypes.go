@@ -10,6 +10,326 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type BastionHostInstanceAdAuthServer struct {
+	Account       string  `pulumi:"account"`
+	BaseDn        string  `pulumi:"baseDn"`
+	Domain        string  `pulumi:"domain"`
+	EmailMapping  *string `pulumi:"emailMapping"`
+	Filter        *string `pulumi:"filter"`
+	IsSsl         bool    `pulumi:"isSsl"`
+	MobileMapping *string `pulumi:"mobileMapping"`
+	NameMapping   *string `pulumi:"nameMapping"`
+	Password      string  `pulumi:"password"`
+	Port          int     `pulumi:"port"`
+	Server        string  `pulumi:"server"`
+	StandbyServer *string `pulumi:"standbyServer"`
+}
+
+// BastionHostInstanceAdAuthServerInput is an input type that accepts BastionHostInstanceAdAuthServerArgs and BastionHostInstanceAdAuthServerOutput values.
+// You can construct a concrete instance of `BastionHostInstanceAdAuthServerInput` via:
+//
+//          BastionHostInstanceAdAuthServerArgs{...}
+type BastionHostInstanceAdAuthServerInput interface {
+	pulumi.Input
+
+	ToBastionHostInstanceAdAuthServerOutput() BastionHostInstanceAdAuthServerOutput
+	ToBastionHostInstanceAdAuthServerOutputWithContext(context.Context) BastionHostInstanceAdAuthServerOutput
+}
+
+type BastionHostInstanceAdAuthServerArgs struct {
+	Account       pulumi.StringInput    `pulumi:"account"`
+	BaseDn        pulumi.StringInput    `pulumi:"baseDn"`
+	Domain        pulumi.StringInput    `pulumi:"domain"`
+	EmailMapping  pulumi.StringPtrInput `pulumi:"emailMapping"`
+	Filter        pulumi.StringPtrInput `pulumi:"filter"`
+	IsSsl         pulumi.BoolInput      `pulumi:"isSsl"`
+	MobileMapping pulumi.StringPtrInput `pulumi:"mobileMapping"`
+	NameMapping   pulumi.StringPtrInput `pulumi:"nameMapping"`
+	Password      pulumi.StringInput    `pulumi:"password"`
+	Port          pulumi.IntInput       `pulumi:"port"`
+	Server        pulumi.StringInput    `pulumi:"server"`
+	StandbyServer pulumi.StringPtrInput `pulumi:"standbyServer"`
+}
+
+func (BastionHostInstanceAdAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BastionHostInstanceAdAuthServer)(nil)).Elem()
+}
+
+func (i BastionHostInstanceAdAuthServerArgs) ToBastionHostInstanceAdAuthServerOutput() BastionHostInstanceAdAuthServerOutput {
+	return i.ToBastionHostInstanceAdAuthServerOutputWithContext(context.Background())
+}
+
+func (i BastionHostInstanceAdAuthServerArgs) ToBastionHostInstanceAdAuthServerOutputWithContext(ctx context.Context) BastionHostInstanceAdAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceAdAuthServerOutput)
+}
+
+// BastionHostInstanceAdAuthServerArrayInput is an input type that accepts BastionHostInstanceAdAuthServerArray and BastionHostInstanceAdAuthServerArrayOutput values.
+// You can construct a concrete instance of `BastionHostInstanceAdAuthServerArrayInput` via:
+//
+//          BastionHostInstanceAdAuthServerArray{ BastionHostInstanceAdAuthServerArgs{...} }
+type BastionHostInstanceAdAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToBastionHostInstanceAdAuthServerArrayOutput() BastionHostInstanceAdAuthServerArrayOutput
+	ToBastionHostInstanceAdAuthServerArrayOutputWithContext(context.Context) BastionHostInstanceAdAuthServerArrayOutput
+}
+
+type BastionHostInstanceAdAuthServerArray []BastionHostInstanceAdAuthServerInput
+
+func (BastionHostInstanceAdAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BastionHostInstanceAdAuthServer)(nil)).Elem()
+}
+
+func (i BastionHostInstanceAdAuthServerArray) ToBastionHostInstanceAdAuthServerArrayOutput() BastionHostInstanceAdAuthServerArrayOutput {
+	return i.ToBastionHostInstanceAdAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i BastionHostInstanceAdAuthServerArray) ToBastionHostInstanceAdAuthServerArrayOutputWithContext(ctx context.Context) BastionHostInstanceAdAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceAdAuthServerArrayOutput)
+}
+
+type BastionHostInstanceAdAuthServerOutput struct{ *pulumi.OutputState }
+
+func (BastionHostInstanceAdAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BastionHostInstanceAdAuthServer)(nil)).Elem()
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) ToBastionHostInstanceAdAuthServerOutput() BastionHostInstanceAdAuthServerOutput {
+	return o
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) ToBastionHostInstanceAdAuthServerOutputWithContext(ctx context.Context) BastionHostInstanceAdAuthServerOutput {
+	return o
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.Account }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) BaseDn() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.BaseDn }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) EmailMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) IsSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) bool { return v.IsSsl }).(pulumi.BoolOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) MobileMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.MobileMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.Server }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceAdAuthServerOutput) StandbyServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.StandbyServer }).(pulumi.StringPtrOutput)
+}
+
+type BastionHostInstanceAdAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (BastionHostInstanceAdAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BastionHostInstanceAdAuthServer)(nil)).Elem()
+}
+
+func (o BastionHostInstanceAdAuthServerArrayOutput) ToBastionHostInstanceAdAuthServerArrayOutput() BastionHostInstanceAdAuthServerArrayOutput {
+	return o
+}
+
+func (o BastionHostInstanceAdAuthServerArrayOutput) ToBastionHostInstanceAdAuthServerArrayOutputWithContext(ctx context.Context) BastionHostInstanceAdAuthServerArrayOutput {
+	return o
+}
+
+func (o BastionHostInstanceAdAuthServerArrayOutput) Index(i pulumi.IntInput) BastionHostInstanceAdAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BastionHostInstanceAdAuthServer {
+		return vs[0].([]BastionHostInstanceAdAuthServer)[vs[1].(int)]
+	}).(BastionHostInstanceAdAuthServerOutput)
+}
+
+type BastionHostInstanceLdapAuthServer struct {
+	Account          string  `pulumi:"account"`
+	BaseDn           string  `pulumi:"baseDn"`
+	EmailMapping     *string `pulumi:"emailMapping"`
+	Filter           *string `pulumi:"filter"`
+	IsSsl            *bool   `pulumi:"isSsl"`
+	LoginNameMapping *string `pulumi:"loginNameMapping"`
+	MobileMapping    *string `pulumi:"mobileMapping"`
+	NameMapping      *string `pulumi:"nameMapping"`
+	Password         string  `pulumi:"password"`
+	Port             int     `pulumi:"port"`
+	Server           string  `pulumi:"server"`
+	StandbyServer    *string `pulumi:"standbyServer"`
+}
+
+// BastionHostInstanceLdapAuthServerInput is an input type that accepts BastionHostInstanceLdapAuthServerArgs and BastionHostInstanceLdapAuthServerOutput values.
+// You can construct a concrete instance of `BastionHostInstanceLdapAuthServerInput` via:
+//
+//          BastionHostInstanceLdapAuthServerArgs{...}
+type BastionHostInstanceLdapAuthServerInput interface {
+	pulumi.Input
+
+	ToBastionHostInstanceLdapAuthServerOutput() BastionHostInstanceLdapAuthServerOutput
+	ToBastionHostInstanceLdapAuthServerOutputWithContext(context.Context) BastionHostInstanceLdapAuthServerOutput
+}
+
+type BastionHostInstanceLdapAuthServerArgs struct {
+	Account          pulumi.StringInput    `pulumi:"account"`
+	BaseDn           pulumi.StringInput    `pulumi:"baseDn"`
+	EmailMapping     pulumi.StringPtrInput `pulumi:"emailMapping"`
+	Filter           pulumi.StringPtrInput `pulumi:"filter"`
+	IsSsl            pulumi.BoolPtrInput   `pulumi:"isSsl"`
+	LoginNameMapping pulumi.StringPtrInput `pulumi:"loginNameMapping"`
+	MobileMapping    pulumi.StringPtrInput `pulumi:"mobileMapping"`
+	NameMapping      pulumi.StringPtrInput `pulumi:"nameMapping"`
+	Password         pulumi.StringInput    `pulumi:"password"`
+	Port             pulumi.IntInput       `pulumi:"port"`
+	Server           pulumi.StringInput    `pulumi:"server"`
+	StandbyServer    pulumi.StringPtrInput `pulumi:"standbyServer"`
+}
+
+func (BastionHostInstanceLdapAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BastionHostInstanceLdapAuthServer)(nil)).Elem()
+}
+
+func (i BastionHostInstanceLdapAuthServerArgs) ToBastionHostInstanceLdapAuthServerOutput() BastionHostInstanceLdapAuthServerOutput {
+	return i.ToBastionHostInstanceLdapAuthServerOutputWithContext(context.Background())
+}
+
+func (i BastionHostInstanceLdapAuthServerArgs) ToBastionHostInstanceLdapAuthServerOutputWithContext(ctx context.Context) BastionHostInstanceLdapAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceLdapAuthServerOutput)
+}
+
+// BastionHostInstanceLdapAuthServerArrayInput is an input type that accepts BastionHostInstanceLdapAuthServerArray and BastionHostInstanceLdapAuthServerArrayOutput values.
+// You can construct a concrete instance of `BastionHostInstanceLdapAuthServerArrayInput` via:
+//
+//          BastionHostInstanceLdapAuthServerArray{ BastionHostInstanceLdapAuthServerArgs{...} }
+type BastionHostInstanceLdapAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToBastionHostInstanceLdapAuthServerArrayOutput() BastionHostInstanceLdapAuthServerArrayOutput
+	ToBastionHostInstanceLdapAuthServerArrayOutputWithContext(context.Context) BastionHostInstanceLdapAuthServerArrayOutput
+}
+
+type BastionHostInstanceLdapAuthServerArray []BastionHostInstanceLdapAuthServerInput
+
+func (BastionHostInstanceLdapAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BastionHostInstanceLdapAuthServer)(nil)).Elem()
+}
+
+func (i BastionHostInstanceLdapAuthServerArray) ToBastionHostInstanceLdapAuthServerArrayOutput() BastionHostInstanceLdapAuthServerArrayOutput {
+	return i.ToBastionHostInstanceLdapAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i BastionHostInstanceLdapAuthServerArray) ToBastionHostInstanceLdapAuthServerArrayOutputWithContext(ctx context.Context) BastionHostInstanceLdapAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceLdapAuthServerArrayOutput)
+}
+
+type BastionHostInstanceLdapAuthServerOutput struct{ *pulumi.OutputState }
+
+func (BastionHostInstanceLdapAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BastionHostInstanceLdapAuthServer)(nil)).Elem()
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) ToBastionHostInstanceLdapAuthServerOutput() BastionHostInstanceLdapAuthServerOutput {
+	return o
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) ToBastionHostInstanceLdapAuthServerOutputWithContext(ctx context.Context) BastionHostInstanceLdapAuthServerOutput {
+	return o
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) string { return v.Account }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) BaseDn() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) string { return v.BaseDn }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) EmailMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) IsSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *bool { return v.IsSsl }).(pulumi.BoolPtrOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) LoginNameMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.LoginNameMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) MobileMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.MobileMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) string { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) string { return v.Server }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceLdapAuthServerOutput) StandbyServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.StandbyServer }).(pulumi.StringPtrOutput)
+}
+
+type BastionHostInstanceLdapAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (BastionHostInstanceLdapAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BastionHostInstanceLdapAuthServer)(nil)).Elem()
+}
+
+func (o BastionHostInstanceLdapAuthServerArrayOutput) ToBastionHostInstanceLdapAuthServerArrayOutput() BastionHostInstanceLdapAuthServerArrayOutput {
+	return o
+}
+
+func (o BastionHostInstanceLdapAuthServerArrayOutput) ToBastionHostInstanceLdapAuthServerArrayOutputWithContext(ctx context.Context) BastionHostInstanceLdapAuthServerArrayOutput {
+	return o
+}
+
+func (o BastionHostInstanceLdapAuthServerArrayOutput) Index(i pulumi.IntInput) BastionHostInstanceLdapAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BastionHostInstanceLdapAuthServer {
+		return vs[0].([]BastionHostInstanceLdapAuthServer)[vs[1].(int)]
+	}).(BastionHostInstanceLdapAuthServerOutput)
+}
+
 type GetBastionHostInstancesInstance struct {
 	Description         string                 `pulumi:"description"`
 	Id                  string                 `pulumi:"id"`
@@ -301,10 +621,18 @@ func (o GetDBAuditInstanceInstanceArrayOutput) Index(i pulumi.IntInput) GetDBAud
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BastionHostInstanceAdAuthServerInput)(nil)).Elem(), BastionHostInstanceAdAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BastionHostInstanceAdAuthServerArrayInput)(nil)).Elem(), BastionHostInstanceAdAuthServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BastionHostInstanceLdapAuthServerInput)(nil)).Elem(), BastionHostInstanceLdapAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BastionHostInstanceLdapAuthServerArrayInput)(nil)).Elem(), BastionHostInstanceLdapAuthServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBastionHostInstancesInstanceInput)(nil)).Elem(), GetBastionHostInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBastionHostInstancesInstanceArrayInput)(nil)).Elem(), GetBastionHostInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBAuditInstanceInstanceInput)(nil)).Elem(), GetDBAuditInstanceInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBAuditInstanceInstanceArrayInput)(nil)).Elem(), GetDBAuditInstanceInstanceArray{})
+	pulumi.RegisterOutputType(BastionHostInstanceAdAuthServerOutput{})
+	pulumi.RegisterOutputType(BastionHostInstanceAdAuthServerArrayOutput{})
+	pulumi.RegisterOutputType(BastionHostInstanceLdapAuthServerOutput{})
+	pulumi.RegisterOutputType(BastionHostInstanceLdapAuthServerArrayOutput{})
 	pulumi.RegisterOutputType(GetBastionHostInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetBastionHostInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetDBAuditInstanceInstanceOutput{})

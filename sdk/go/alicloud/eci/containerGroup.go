@@ -124,6 +124,8 @@ import (
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to automatically match the image cache. Default value: false.
+	AutoMatchImageCache pulumi.BoolPtrOutput `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName pulumi.StringOutput `pulumi:"containerGroupName"`
 	// The list of containers.
@@ -131,7 +133,8 @@ type ContainerGroup struct {
 	// The amount of CPU resources allocated to the container.
 	Cpu pulumi.Float64PtrOutput `pulumi:"cpu"`
 	// The structure of dnsConfig.
-	DnsConfig          ContainerGroupDnsConfigPtrOutput          `pulumi:"dnsConfig"`
+	DnsConfig ContainerGroupDnsConfigPtrOutput `pulumi:"dnsConfig"`
+	// The security context of the container group.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrOutput `pulumi:"eciSecurityContext"`
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayOutput `pulumi:"hostAliases"`
@@ -153,7 +156,10 @@ type ContainerGroup struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The status of container group.
 	Status pulumi.StringOutput `pulumi:"status"`
-	Tags   pulumi.MapOutput    `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The list of volumes.
 	Volumes ContainerGroupVolumeArrayOutput `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -203,6 +209,8 @@ func GetContainerGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerGroup resources.
 type containerGroupState struct {
+	// Specifies whether to automatically match the image cache. Default value: false.
+	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers.
@@ -210,7 +218,8 @@ type containerGroupState struct {
 	// The amount of CPU resources allocated to the container.
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of dnsConfig.
-	DnsConfig          *ContainerGroupDnsConfig          `pulumi:"dnsConfig"`
+	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
+	// The security context of the container group.
 	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
 	// HostAliases.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
@@ -231,8 +240,11 @@ type containerGroupState struct {
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The status of container group.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The list of volumes.
 	Volumes []ContainerGroupVolume `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -242,6 +254,8 @@ type containerGroupState struct {
 }
 
 type ContainerGroupState struct {
+	// Specifies whether to automatically match the image cache. Default value: false.
+	AutoMatchImageCache pulumi.BoolPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers.
@@ -249,7 +263,8 @@ type ContainerGroupState struct {
 	// The amount of CPU resources allocated to the container.
 	Cpu pulumi.Float64PtrInput
 	// The structure of dnsConfig.
-	DnsConfig          ContainerGroupDnsConfigPtrInput
+	DnsConfig ContainerGroupDnsConfigPtrInput
+	// The security context of the container group.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayInput
@@ -271,7 +286,10 @@ type ContainerGroupState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// The status of container group.
 	Status pulumi.StringPtrInput
-	Tags   pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
 	// The list of volumes.
 	Volumes ContainerGroupVolumeArrayInput
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -285,6 +303,8 @@ func (ContainerGroupState) ElementType() reflect.Type {
 }
 
 type containerGroupArgs struct {
+	// Specifies whether to automatically match the image cache. Default value: false.
+	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
 	ContainerGroupName string `pulumi:"containerGroupName"`
 	// The list of containers.
@@ -292,7 +312,8 @@ type containerGroupArgs struct {
 	// The amount of CPU resources allocated to the container.
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of dnsConfig.
-	DnsConfig          *ContainerGroupDnsConfig          `pulumi:"dnsConfig"`
+	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
+	// The security context of the container group.
 	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
 	// HostAliases.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
@@ -311,8 +332,11 @@ type containerGroupArgs struct {
 	// The restart policy of the container group. Default to `Always`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
-	SecurityGroupId string                 `pulumi:"securityGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The list of volumes.
 	Volumes []ContainerGroupVolume `pulumi:"volumes"`
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
@@ -323,6 +347,8 @@ type containerGroupArgs struct {
 
 // The set of arguments for constructing a ContainerGroup resource.
 type ContainerGroupArgs struct {
+	// Specifies whether to automatically match the image cache. Default value: false.
+	AutoMatchImageCache pulumi.BoolPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringInput
 	// The list of containers.
@@ -330,7 +356,8 @@ type ContainerGroupArgs struct {
 	// The amount of CPU resources allocated to the container.
 	Cpu pulumi.Float64PtrInput
 	// The structure of dnsConfig.
-	DnsConfig          ContainerGroupDnsConfigPtrInput
+	DnsConfig ContainerGroupDnsConfigPtrInput
+	// The security context of the container group.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayInput
@@ -350,7 +377,10 @@ type ContainerGroupArgs struct {
 	RestartPolicy pulumi.StringPtrInput
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringInput
-	Tags            pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags pulumi.MapInput
 	// The list of volumes.
 	Volumes ContainerGroupVolumeArrayInput
 	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.

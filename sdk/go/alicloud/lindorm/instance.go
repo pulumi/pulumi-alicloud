@@ -17,6 +17,8 @@ import (
 //
 // > **NOTE:** Available in v1.132.0+.
 //
+// > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+//
 // ## Import
 //
 // Lindorm Instance can be imported using the id, e.g.
@@ -39,6 +41,16 @@ type Instance struct {
 	DiskCategory pulumi.StringOutput `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
+	// (Available in v1.163.0+) Whether to enable file engine.
+	EnabledFileEngine pulumi.BoolOutput `pulumi:"enabledFileEngine"`
+	// (Available in v1.163.0+) Whether to enable lts engine.
+	EnabledLtsEngine pulumi.BoolOutput `pulumi:"enabledLtsEngine"`
+	// (Available in v1.163.0+) Whether to enable search engine.
+	EnabledSearchEngine pulumi.BoolOutput `pulumi:"enabledSearchEngine"`
+	// (Available in v1.163.0+) Whether to enable table engine.
+	EnabledTableEngine pulumi.BoolOutput `pulumi:"enabledTableEngine"`
+	// (Available in v1.163.0+) Whether to enable time serires engine.
+	EnabledTimeSeriresEngine pulumi.BoolOutput `pulumi:"enabledTimeSeriresEngine"`
 	// The count of file engine.
 	FileEngineNodeCount pulumi.IntOutput `pulumi:"fileEngineNodeCount"`
 	// The specification of file engine. Valid values: `lindorm.c.xlarge`.
@@ -77,7 +89,9 @@ type Instance struct {
 	TimeSeriesEngineNodeCount pulumi.IntOutput `pulumi:"timeSeriesEngineNodeCount"`
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TimeSeriresEngineSpecification pulumi.StringOutput `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	//
+	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrOutput `pulumi:"upgradeType"`
 	// The vswitch id.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
@@ -135,6 +149,16 @@ type instanceState struct {
 	DiskCategory *string `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration *string `pulumi:"duration"`
+	// (Available in v1.163.0+) Whether to enable file engine.
+	EnabledFileEngine *bool `pulumi:"enabledFileEngine"`
+	// (Available in v1.163.0+) Whether to enable lts engine.
+	EnabledLtsEngine *bool `pulumi:"enabledLtsEngine"`
+	// (Available in v1.163.0+) Whether to enable search engine.
+	EnabledSearchEngine *bool `pulumi:"enabledSearchEngine"`
+	// (Available in v1.163.0+) Whether to enable table engine.
+	EnabledTableEngine *bool `pulumi:"enabledTableEngine"`
+	// (Available in v1.163.0+) Whether to enable time serires engine.
+	EnabledTimeSeriresEngine *bool `pulumi:"enabledTimeSeriresEngine"`
 	// The count of file engine.
 	FileEngineNodeCount *int `pulumi:"fileEngineNodeCount"`
 	// The specification of file engine. Valid values: `lindorm.c.xlarge`.
@@ -173,7 +197,9 @@ type instanceState struct {
 	TimeSeriesEngineNodeCount *int `pulumi:"timeSeriesEngineNodeCount"`
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	//
+	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType *string `pulumi:"upgradeType"`
 	// The vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -194,6 +220,16 @@ type InstanceState struct {
 	DiskCategory pulumi.StringPtrInput
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrInput
+	// (Available in v1.163.0+) Whether to enable file engine.
+	EnabledFileEngine pulumi.BoolPtrInput
+	// (Available in v1.163.0+) Whether to enable lts engine.
+	EnabledLtsEngine pulumi.BoolPtrInput
+	// (Available in v1.163.0+) Whether to enable search engine.
+	EnabledSearchEngine pulumi.BoolPtrInput
+	// (Available in v1.163.0+) Whether to enable table engine.
+	EnabledTableEngine pulumi.BoolPtrInput
+	// (Available in v1.163.0+) Whether to enable time serires engine.
+	EnabledTimeSeriresEngine pulumi.BoolPtrInput
 	// The count of file engine.
 	FileEngineNodeCount pulumi.IntPtrInput
 	// The specification of file engine. Valid values: `lindorm.c.xlarge`.
@@ -232,7 +268,9 @@ type InstanceState struct {
 	TimeSeriesEngineNodeCount pulumi.IntPtrInput
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
-	// The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	//
+	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringPtrInput
@@ -293,7 +331,9 @@ type instanceArgs struct {
 	TimeSeriesEngineNodeCount *int `pulumi:"timeSeriesEngineNodeCount"`
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	//
+	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType *string `pulumi:"upgradeType"`
 	// The vswitch id.
 	VswitchId string `pulumi:"vswitchId"`
@@ -351,7 +391,9 @@ type InstanceArgs struct {
 	TimeSeriesEngineNodeCount pulumi.IntPtrInput
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
-	// The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	//
+	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringInput

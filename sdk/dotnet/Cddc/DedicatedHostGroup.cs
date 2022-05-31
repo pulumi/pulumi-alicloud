@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Cddc
         public Output<string?> DedicatedHostGroupDesc { get; private set; } = null!;
 
         /// <summary>
-        /// The Disk Allocation Ratio of the Dedicated Host Group.
+        /// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         /// </summary>
         [Output("diskAllocationRatio")]
         public Output<int> DiskAllocationRatio { get; private set; } = null!;
@@ -104,6 +104,7 @@ namespace Pulumi.AliCloud.Cddc
 
         /// <summary>
         /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        /// **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         /// </summary>
         [Output("openPermission")]
         public Output<bool> OpenPermission { get; private set; } = null!;
@@ -179,7 +180,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? DedicatedHostGroupDesc { get; set; }
 
         /// <summary>
-        /// The Disk Allocation Ratio of the Dedicated Host Group.
+        /// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         /// </summary>
         [Input("diskAllocationRatio")]
         public Input<int>? DiskAllocationRatio { get; set; }
@@ -204,6 +205,7 @@ namespace Pulumi.AliCloud.Cddc
 
         /// <summary>
         /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        /// **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         /// </summary>
         [Input("openPermission")]
         public Input<bool>? OpenPermission { get; set; }
@@ -240,7 +242,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? DedicatedHostGroupDesc { get; set; }
 
         /// <summary>
-        /// The Disk Allocation Ratio of the Dedicated Host Group.
+        /// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         /// </summary>
         [Input("diskAllocationRatio")]
         public Input<int>? DiskAllocationRatio { get; set; }
@@ -265,6 +267,7 @@ namespace Pulumi.AliCloud.Cddc
 
         /// <summary>
         /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        /// **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         /// </summary>
         [Input("openPermission")]
         public Input<bool>? OpenPermission { get; set; }

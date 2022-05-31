@@ -30,6 +30,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 

@@ -108,6 +108,7 @@ def get_kubernetes_addons(addons: Optional[Sequence[pulumi.InputType['GetKuberne
     This data source provides a list of available addons that the cluster can install.
 
     > **NOTE:** Available in 1.150.0+.
+    **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
 
     ## Example Usage
 
@@ -155,6 +156,7 @@ def get_kubernetes_addons_output(addons: Optional[pulumi.Input[Optional[Sequence
     This data source provides a list of available addons that the cluster can install.
 
     > **NOTE:** Available in 1.150.0+.
+    **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
 
     ## Example Usage
 

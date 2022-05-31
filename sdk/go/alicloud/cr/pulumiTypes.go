@@ -10,6 +10,750 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ChainChainConfig struct {
+	// Each node in the delivery chain.
+	Nodes []ChainChainConfigNode `pulumi:"nodes"`
+	// Execution sequence relationship between delivery chain nodes.
+	Routers []ChainChainConfigRouter `pulumi:"routers"`
+}
+
+// ChainChainConfigInput is an input type that accepts ChainChainConfigArgs and ChainChainConfigOutput values.
+// You can construct a concrete instance of `ChainChainConfigInput` via:
+//
+//          ChainChainConfigArgs{...}
+type ChainChainConfigInput interface {
+	pulumi.Input
+
+	ToChainChainConfigOutput() ChainChainConfigOutput
+	ToChainChainConfigOutputWithContext(context.Context) ChainChainConfigOutput
+}
+
+type ChainChainConfigArgs struct {
+	// Each node in the delivery chain.
+	Nodes ChainChainConfigNodeArrayInput `pulumi:"nodes"`
+	// Execution sequence relationship between delivery chain nodes.
+	Routers ChainChainConfigRouterArrayInput `pulumi:"routers"`
+}
+
+func (ChainChainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfig)(nil)).Elem()
+}
+
+func (i ChainChainConfigArgs) ToChainChainConfigOutput() ChainChainConfigOutput {
+	return i.ToChainChainConfigOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigArgs) ToChainChainConfigOutputWithContext(ctx context.Context) ChainChainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigOutput)
+}
+
+// ChainChainConfigArrayInput is an input type that accepts ChainChainConfigArray and ChainChainConfigArrayOutput values.
+// You can construct a concrete instance of `ChainChainConfigArrayInput` via:
+//
+//          ChainChainConfigArray{ ChainChainConfigArgs{...} }
+type ChainChainConfigArrayInput interface {
+	pulumi.Input
+
+	ToChainChainConfigArrayOutput() ChainChainConfigArrayOutput
+	ToChainChainConfigArrayOutputWithContext(context.Context) ChainChainConfigArrayOutput
+}
+
+type ChainChainConfigArray []ChainChainConfigInput
+
+func (ChainChainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfig)(nil)).Elem()
+}
+
+func (i ChainChainConfigArray) ToChainChainConfigArrayOutput() ChainChainConfigArrayOutput {
+	return i.ToChainChainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigArray) ToChainChainConfigArrayOutputWithContext(ctx context.Context) ChainChainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigArrayOutput)
+}
+
+type ChainChainConfigOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfig)(nil)).Elem()
+}
+
+func (o ChainChainConfigOutput) ToChainChainConfigOutput() ChainChainConfigOutput {
+	return o
+}
+
+func (o ChainChainConfigOutput) ToChainChainConfigOutputWithContext(ctx context.Context) ChainChainConfigOutput {
+	return o
+}
+
+// Each node in the delivery chain.
+func (o ChainChainConfigOutput) Nodes() ChainChainConfigNodeArrayOutput {
+	return o.ApplyT(func(v ChainChainConfig) []ChainChainConfigNode { return v.Nodes }).(ChainChainConfigNodeArrayOutput)
+}
+
+// Execution sequence relationship between delivery chain nodes.
+func (o ChainChainConfigOutput) Routers() ChainChainConfigRouterArrayOutput {
+	return o.ApplyT(func(v ChainChainConfig) []ChainChainConfigRouter { return v.Routers }).(ChainChainConfigRouterArrayOutput)
+}
+
+type ChainChainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfig)(nil)).Elem()
+}
+
+func (o ChainChainConfigArrayOutput) ToChainChainConfigArrayOutput() ChainChainConfigArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigArrayOutput) ToChainChainConfigArrayOutputWithContext(ctx context.Context) ChainChainConfigArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigArrayOutput) Index(i pulumi.IntInput) ChainChainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChainChainConfig {
+		return vs[0].([]ChainChainConfig)[vs[1].(int)]
+	}).(ChainChainConfigOutput)
+}
+
+type ChainChainConfigNode struct {
+	// Whether to enable the delivery chain node. Valid values: `true`, `false`.
+	Enable *bool `pulumi:"enable"`
+	// The configuration of delivery chain node.
+	NodeConfigs []ChainChainConfigNodeNodeConfig `pulumi:"nodeConfigs"`
+	// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+	NodeName *string `pulumi:"nodeName"`
+}
+
+// ChainChainConfigNodeInput is an input type that accepts ChainChainConfigNodeArgs and ChainChainConfigNodeOutput values.
+// You can construct a concrete instance of `ChainChainConfigNodeInput` via:
+//
+//          ChainChainConfigNodeArgs{...}
+type ChainChainConfigNodeInput interface {
+	pulumi.Input
+
+	ToChainChainConfigNodeOutput() ChainChainConfigNodeOutput
+	ToChainChainConfigNodeOutputWithContext(context.Context) ChainChainConfigNodeOutput
+}
+
+type ChainChainConfigNodeArgs struct {
+	// Whether to enable the delivery chain node. Valid values: `true`, `false`.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// The configuration of delivery chain node.
+	NodeConfigs ChainChainConfigNodeNodeConfigArrayInput `pulumi:"nodeConfigs"`
+	// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+}
+
+func (ChainChainConfigNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigNode)(nil)).Elem()
+}
+
+func (i ChainChainConfigNodeArgs) ToChainChainConfigNodeOutput() ChainChainConfigNodeOutput {
+	return i.ToChainChainConfigNodeOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigNodeArgs) ToChainChainConfigNodeOutputWithContext(ctx context.Context) ChainChainConfigNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeOutput)
+}
+
+// ChainChainConfigNodeArrayInput is an input type that accepts ChainChainConfigNodeArray and ChainChainConfigNodeArrayOutput values.
+// You can construct a concrete instance of `ChainChainConfigNodeArrayInput` via:
+//
+//          ChainChainConfigNodeArray{ ChainChainConfigNodeArgs{...} }
+type ChainChainConfigNodeArrayInput interface {
+	pulumi.Input
+
+	ToChainChainConfigNodeArrayOutput() ChainChainConfigNodeArrayOutput
+	ToChainChainConfigNodeArrayOutputWithContext(context.Context) ChainChainConfigNodeArrayOutput
+}
+
+type ChainChainConfigNodeArray []ChainChainConfigNodeInput
+
+func (ChainChainConfigNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigNode)(nil)).Elem()
+}
+
+func (i ChainChainConfigNodeArray) ToChainChainConfigNodeArrayOutput() ChainChainConfigNodeArrayOutput {
+	return i.ToChainChainConfigNodeArrayOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigNodeArray) ToChainChainConfigNodeArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeArrayOutput)
+}
+
+type ChainChainConfigNodeOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigNode)(nil)).Elem()
+}
+
+func (o ChainChainConfigNodeOutput) ToChainChainConfigNodeOutput() ChainChainConfigNodeOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeOutput) ToChainChainConfigNodeOutputWithContext(ctx context.Context) ChainChainConfigNodeOutput {
+	return o
+}
+
+// Whether to enable the delivery chain node. Valid values: `true`, `false`.
+func (o ChainChainConfigNodeOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ChainChainConfigNode) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The configuration of delivery chain node.
+func (o ChainChainConfigNodeOutput) NodeConfigs() ChainChainConfigNodeNodeConfigArrayOutput {
+	return o.ApplyT(func(v ChainChainConfigNode) []ChainChainConfigNodeNodeConfig { return v.NodeConfigs }).(ChainChainConfigNodeNodeConfigArrayOutput)
+}
+
+// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+func (o ChainChainConfigNodeOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChainChainConfigNode) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+}
+
+type ChainChainConfigNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigNode)(nil)).Elem()
+}
+
+func (o ChainChainConfigNodeArrayOutput) ToChainChainConfigNodeArrayOutput() ChainChainConfigNodeArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeArrayOutput) ToChainChainConfigNodeArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeArrayOutput) Index(i pulumi.IntInput) ChainChainConfigNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChainChainConfigNode {
+		return vs[0].([]ChainChainConfigNode)[vs[1].(int)]
+	}).(ChainChainConfigNodeOutput)
+}
+
+type ChainChainConfigNodeNodeConfig struct {
+	// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+	DenyPolicies []ChainChainConfigNodeNodeConfigDenyPolicy `pulumi:"denyPolicies"`
+}
+
+// ChainChainConfigNodeNodeConfigInput is an input type that accepts ChainChainConfigNodeNodeConfigArgs and ChainChainConfigNodeNodeConfigOutput values.
+// You can construct a concrete instance of `ChainChainConfigNodeNodeConfigInput` via:
+//
+//          ChainChainConfigNodeNodeConfigArgs{...}
+type ChainChainConfigNodeNodeConfigInput interface {
+	pulumi.Input
+
+	ToChainChainConfigNodeNodeConfigOutput() ChainChainConfigNodeNodeConfigOutput
+	ToChainChainConfigNodeNodeConfigOutputWithContext(context.Context) ChainChainConfigNodeNodeConfigOutput
+}
+
+type ChainChainConfigNodeNodeConfigArgs struct {
+	// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+	DenyPolicies ChainChainConfigNodeNodeConfigDenyPolicyArrayInput `pulumi:"denyPolicies"`
+}
+
+func (ChainChainConfigNodeNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigNodeNodeConfig)(nil)).Elem()
+}
+
+func (i ChainChainConfigNodeNodeConfigArgs) ToChainChainConfigNodeNodeConfigOutput() ChainChainConfigNodeNodeConfigOutput {
+	return i.ToChainChainConfigNodeNodeConfigOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigNodeNodeConfigArgs) ToChainChainConfigNodeNodeConfigOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeNodeConfigOutput)
+}
+
+// ChainChainConfigNodeNodeConfigArrayInput is an input type that accepts ChainChainConfigNodeNodeConfigArray and ChainChainConfigNodeNodeConfigArrayOutput values.
+// You can construct a concrete instance of `ChainChainConfigNodeNodeConfigArrayInput` via:
+//
+//          ChainChainConfigNodeNodeConfigArray{ ChainChainConfigNodeNodeConfigArgs{...} }
+type ChainChainConfigNodeNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToChainChainConfigNodeNodeConfigArrayOutput() ChainChainConfigNodeNodeConfigArrayOutput
+	ToChainChainConfigNodeNodeConfigArrayOutputWithContext(context.Context) ChainChainConfigNodeNodeConfigArrayOutput
+}
+
+type ChainChainConfigNodeNodeConfigArray []ChainChainConfigNodeNodeConfigInput
+
+func (ChainChainConfigNodeNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigNodeNodeConfig)(nil)).Elem()
+}
+
+func (i ChainChainConfigNodeNodeConfigArray) ToChainChainConfigNodeNodeConfigArrayOutput() ChainChainConfigNodeNodeConfigArrayOutput {
+	return i.ToChainChainConfigNodeNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigNodeNodeConfigArray) ToChainChainConfigNodeNodeConfigArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeNodeConfigArrayOutput)
+}
+
+type ChainChainConfigNodeNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigNodeNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigNodeNodeConfig)(nil)).Elem()
+}
+
+func (o ChainChainConfigNodeNodeConfigOutput) ToChainChainConfigNodeNodeConfigOutput() ChainChainConfigNodeNodeConfigOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigOutput) ToChainChainConfigNodeNodeConfigOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigOutput {
+	return o
+}
+
+// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+func (o ChainChainConfigNodeNodeConfigOutput) DenyPolicies() ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return o.ApplyT(func(v ChainChainConfigNodeNodeConfig) []ChainChainConfigNodeNodeConfigDenyPolicy {
+		return v.DenyPolicies
+	}).(ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput)
+}
+
+type ChainChainConfigNodeNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigNodeNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigNodeNodeConfig)(nil)).Elem()
+}
+
+func (o ChainChainConfigNodeNodeConfigArrayOutput) ToChainChainConfigNodeNodeConfigArrayOutput() ChainChainConfigNodeNodeConfigArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigArrayOutput) ToChainChainConfigNodeNodeConfigArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigArrayOutput) Index(i pulumi.IntInput) ChainChainConfigNodeNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChainChainConfigNodeNodeConfig {
+		return vs[0].([]ChainChainConfigNodeNodeConfig)[vs[1].(int)]
+	}).(ChainChainConfigNodeNodeConfigOutput)
+}
+
+type ChainChainConfigNodeNodeConfigDenyPolicy struct {
+	// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+	Action *string `pulumi:"action"`
+	// The count of scanning vulnerabilities that triggers blocking.
+	IssueCount *string `pulumi:"issueCount"`
+	// The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+	IssueLevel *string `pulumi:"issueLevel"`
+	// The logic of trigger blocking. Valid values: `AND`, `OR`.
+	Logic *string `pulumi:"logic"`
+}
+
+// ChainChainConfigNodeNodeConfigDenyPolicyInput is an input type that accepts ChainChainConfigNodeNodeConfigDenyPolicyArgs and ChainChainConfigNodeNodeConfigDenyPolicyOutput values.
+// You can construct a concrete instance of `ChainChainConfigNodeNodeConfigDenyPolicyInput` via:
+//
+//          ChainChainConfigNodeNodeConfigDenyPolicyArgs{...}
+type ChainChainConfigNodeNodeConfigDenyPolicyInput interface {
+	pulumi.Input
+
+	ToChainChainConfigNodeNodeConfigDenyPolicyOutput() ChainChainConfigNodeNodeConfigDenyPolicyOutput
+	ToChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(context.Context) ChainChainConfigNodeNodeConfigDenyPolicyOutput
+}
+
+type ChainChainConfigNodeNodeConfigDenyPolicyArgs struct {
+	// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// The count of scanning vulnerabilities that triggers blocking.
+	IssueCount pulumi.StringPtrInput `pulumi:"issueCount"`
+	// The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+	IssueLevel pulumi.StringPtrInput `pulumi:"issueLevel"`
+	// The logic of trigger blocking. Valid values: `AND`, `OR`.
+	Logic pulumi.StringPtrInput `pulumi:"logic"`
+}
+
+func (ChainChainConfigNodeNodeConfigDenyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigNodeNodeConfigDenyPolicy)(nil)).Elem()
+}
+
+func (i ChainChainConfigNodeNodeConfigDenyPolicyArgs) ToChainChainConfigNodeNodeConfigDenyPolicyOutput() ChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return i.ToChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigNodeNodeConfigDenyPolicyArgs) ToChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeNodeConfigDenyPolicyOutput)
+}
+
+// ChainChainConfigNodeNodeConfigDenyPolicyArrayInput is an input type that accepts ChainChainConfigNodeNodeConfigDenyPolicyArray and ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput values.
+// You can construct a concrete instance of `ChainChainConfigNodeNodeConfigDenyPolicyArrayInput` via:
+//
+//          ChainChainConfigNodeNodeConfigDenyPolicyArray{ ChainChainConfigNodeNodeConfigDenyPolicyArgs{...} }
+type ChainChainConfigNodeNodeConfigDenyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutput() ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput
+	ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(context.Context) ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput
+}
+
+type ChainChainConfigNodeNodeConfigDenyPolicyArray []ChainChainConfigNodeNodeConfigDenyPolicyInput
+
+func (ChainChainConfigNodeNodeConfigDenyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigNodeNodeConfigDenyPolicy)(nil)).Elem()
+}
+
+func (i ChainChainConfigNodeNodeConfigDenyPolicyArray) ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutput() ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return i.ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigNodeNodeConfigDenyPolicyArray) ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput)
+}
+
+type ChainChainConfigNodeNodeConfigDenyPolicyOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigNodeNodeConfigDenyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigNodeNodeConfigDenyPolicy)(nil)).Elem()
+}
+
+func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) ToChainChainConfigNodeNodeConfigDenyPolicyOutput() ChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) ToChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return o
+}
+
+// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChainChainConfigNodeNodeConfigDenyPolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The count of scanning vulnerabilities that triggers blocking.
+func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) IssueCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChainChainConfigNodeNodeConfigDenyPolicy) *string { return v.IssueCount }).(pulumi.StringPtrOutput)
+}
+
+// The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) IssueLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChainChainConfigNodeNodeConfigDenyPolicy) *string { return v.IssueLevel }).(pulumi.StringPtrOutput)
+}
+
+// The logic of trigger blocking. Valid values: `AND`, `OR`.
+func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChainChainConfigNodeNodeConfigDenyPolicy) *string { return v.Logic }).(pulumi.StringPtrOutput)
+}
+
+type ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigNodeNodeConfigDenyPolicy)(nil)).Elem()
+}
+
+func (o ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutput() ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(ctx context.Context) ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) Index(i pulumi.IntInput) ChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChainChainConfigNodeNodeConfigDenyPolicy {
+		return vs[0].([]ChainChainConfigNodeNodeConfigDenyPolicy)[vs[1].(int)]
+	}).(ChainChainConfigNodeNodeConfigDenyPolicyOutput)
+}
+
+type ChainChainConfigRouter struct {
+	// Source node.
+	Froms []ChainChainConfigRouterFrom `pulumi:"froms"`
+	// Destination node.
+	Tos []ChainChainConfigRouterTo `pulumi:"tos"`
+}
+
+// ChainChainConfigRouterInput is an input type that accepts ChainChainConfigRouterArgs and ChainChainConfigRouterOutput values.
+// You can construct a concrete instance of `ChainChainConfigRouterInput` via:
+//
+//          ChainChainConfigRouterArgs{...}
+type ChainChainConfigRouterInput interface {
+	pulumi.Input
+
+	ToChainChainConfigRouterOutput() ChainChainConfigRouterOutput
+	ToChainChainConfigRouterOutputWithContext(context.Context) ChainChainConfigRouterOutput
+}
+
+type ChainChainConfigRouterArgs struct {
+	// Source node.
+	Froms ChainChainConfigRouterFromArrayInput `pulumi:"froms"`
+	// Destination node.
+	Tos ChainChainConfigRouterToArrayInput `pulumi:"tos"`
+}
+
+func (ChainChainConfigRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigRouter)(nil)).Elem()
+}
+
+func (i ChainChainConfigRouterArgs) ToChainChainConfigRouterOutput() ChainChainConfigRouterOutput {
+	return i.ToChainChainConfigRouterOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigRouterArgs) ToChainChainConfigRouterOutputWithContext(ctx context.Context) ChainChainConfigRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterOutput)
+}
+
+// ChainChainConfigRouterArrayInput is an input type that accepts ChainChainConfigRouterArray and ChainChainConfigRouterArrayOutput values.
+// You can construct a concrete instance of `ChainChainConfigRouterArrayInput` via:
+//
+//          ChainChainConfigRouterArray{ ChainChainConfigRouterArgs{...} }
+type ChainChainConfigRouterArrayInput interface {
+	pulumi.Input
+
+	ToChainChainConfigRouterArrayOutput() ChainChainConfigRouterArrayOutput
+	ToChainChainConfigRouterArrayOutputWithContext(context.Context) ChainChainConfigRouterArrayOutput
+}
+
+type ChainChainConfigRouterArray []ChainChainConfigRouterInput
+
+func (ChainChainConfigRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigRouter)(nil)).Elem()
+}
+
+func (i ChainChainConfigRouterArray) ToChainChainConfigRouterArrayOutput() ChainChainConfigRouterArrayOutput {
+	return i.ToChainChainConfigRouterArrayOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigRouterArray) ToChainChainConfigRouterArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterArrayOutput)
+}
+
+type ChainChainConfigRouterOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigRouter)(nil)).Elem()
+}
+
+func (o ChainChainConfigRouterOutput) ToChainChainConfigRouterOutput() ChainChainConfigRouterOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterOutput) ToChainChainConfigRouterOutputWithContext(ctx context.Context) ChainChainConfigRouterOutput {
+	return o
+}
+
+// Source node.
+func (o ChainChainConfigRouterOutput) Froms() ChainChainConfigRouterFromArrayOutput {
+	return o.ApplyT(func(v ChainChainConfigRouter) []ChainChainConfigRouterFrom { return v.Froms }).(ChainChainConfigRouterFromArrayOutput)
+}
+
+// Destination node.
+func (o ChainChainConfigRouterOutput) Tos() ChainChainConfigRouterToArrayOutput {
+	return o.ApplyT(func(v ChainChainConfigRouter) []ChainChainConfigRouterTo { return v.Tos }).(ChainChainConfigRouterToArrayOutput)
+}
+
+type ChainChainConfigRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigRouter)(nil)).Elem()
+}
+
+func (o ChainChainConfigRouterArrayOutput) ToChainChainConfigRouterArrayOutput() ChainChainConfigRouterArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterArrayOutput) ToChainChainConfigRouterArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterArrayOutput) Index(i pulumi.IntInput) ChainChainConfigRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChainChainConfigRouter {
+		return vs[0].([]ChainChainConfigRouter)[vs[1].(int)]
+	}).(ChainChainConfigRouterOutput)
+}
+
+type ChainChainConfigRouterFrom struct {
+	// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+	NodeName *string `pulumi:"nodeName"`
+}
+
+// ChainChainConfigRouterFromInput is an input type that accepts ChainChainConfigRouterFromArgs and ChainChainConfigRouterFromOutput values.
+// You can construct a concrete instance of `ChainChainConfigRouterFromInput` via:
+//
+//          ChainChainConfigRouterFromArgs{...}
+type ChainChainConfigRouterFromInput interface {
+	pulumi.Input
+
+	ToChainChainConfigRouterFromOutput() ChainChainConfigRouterFromOutput
+	ToChainChainConfigRouterFromOutputWithContext(context.Context) ChainChainConfigRouterFromOutput
+}
+
+type ChainChainConfigRouterFromArgs struct {
+	// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+}
+
+func (ChainChainConfigRouterFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigRouterFrom)(nil)).Elem()
+}
+
+func (i ChainChainConfigRouterFromArgs) ToChainChainConfigRouterFromOutput() ChainChainConfigRouterFromOutput {
+	return i.ToChainChainConfigRouterFromOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigRouterFromArgs) ToChainChainConfigRouterFromOutputWithContext(ctx context.Context) ChainChainConfigRouterFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterFromOutput)
+}
+
+// ChainChainConfigRouterFromArrayInput is an input type that accepts ChainChainConfigRouterFromArray and ChainChainConfigRouterFromArrayOutput values.
+// You can construct a concrete instance of `ChainChainConfigRouterFromArrayInput` via:
+//
+//          ChainChainConfigRouterFromArray{ ChainChainConfigRouterFromArgs{...} }
+type ChainChainConfigRouterFromArrayInput interface {
+	pulumi.Input
+
+	ToChainChainConfigRouterFromArrayOutput() ChainChainConfigRouterFromArrayOutput
+	ToChainChainConfigRouterFromArrayOutputWithContext(context.Context) ChainChainConfigRouterFromArrayOutput
+}
+
+type ChainChainConfigRouterFromArray []ChainChainConfigRouterFromInput
+
+func (ChainChainConfigRouterFromArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigRouterFrom)(nil)).Elem()
+}
+
+func (i ChainChainConfigRouterFromArray) ToChainChainConfigRouterFromArrayOutput() ChainChainConfigRouterFromArrayOutput {
+	return i.ToChainChainConfigRouterFromArrayOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigRouterFromArray) ToChainChainConfigRouterFromArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterFromArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterFromArrayOutput)
+}
+
+type ChainChainConfigRouterFromOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigRouterFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigRouterFrom)(nil)).Elem()
+}
+
+func (o ChainChainConfigRouterFromOutput) ToChainChainConfigRouterFromOutput() ChainChainConfigRouterFromOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterFromOutput) ToChainChainConfigRouterFromOutputWithContext(ctx context.Context) ChainChainConfigRouterFromOutput {
+	return o
+}
+
+// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+func (o ChainChainConfigRouterFromOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChainChainConfigRouterFrom) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+}
+
+type ChainChainConfigRouterFromArrayOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigRouterFromArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigRouterFrom)(nil)).Elem()
+}
+
+func (o ChainChainConfigRouterFromArrayOutput) ToChainChainConfigRouterFromArrayOutput() ChainChainConfigRouterFromArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterFromArrayOutput) ToChainChainConfigRouterFromArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterFromArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterFromArrayOutput) Index(i pulumi.IntInput) ChainChainConfigRouterFromOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChainChainConfigRouterFrom {
+		return vs[0].([]ChainChainConfigRouterFrom)[vs[1].(int)]
+	}).(ChainChainConfigRouterFromOutput)
+}
+
+type ChainChainConfigRouterTo struct {
+	// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+	NodeName *string `pulumi:"nodeName"`
+}
+
+// ChainChainConfigRouterToInput is an input type that accepts ChainChainConfigRouterToArgs and ChainChainConfigRouterToOutput values.
+// You can construct a concrete instance of `ChainChainConfigRouterToInput` via:
+//
+//          ChainChainConfigRouterToArgs{...}
+type ChainChainConfigRouterToInput interface {
+	pulumi.Input
+
+	ToChainChainConfigRouterToOutput() ChainChainConfigRouterToOutput
+	ToChainChainConfigRouterToOutputWithContext(context.Context) ChainChainConfigRouterToOutput
+}
+
+type ChainChainConfigRouterToArgs struct {
+	// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+}
+
+func (ChainChainConfigRouterToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigRouterTo)(nil)).Elem()
+}
+
+func (i ChainChainConfigRouterToArgs) ToChainChainConfigRouterToOutput() ChainChainConfigRouterToOutput {
+	return i.ToChainChainConfigRouterToOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigRouterToArgs) ToChainChainConfigRouterToOutputWithContext(ctx context.Context) ChainChainConfigRouterToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterToOutput)
+}
+
+// ChainChainConfigRouterToArrayInput is an input type that accepts ChainChainConfigRouterToArray and ChainChainConfigRouterToArrayOutput values.
+// You can construct a concrete instance of `ChainChainConfigRouterToArrayInput` via:
+//
+//          ChainChainConfigRouterToArray{ ChainChainConfigRouterToArgs{...} }
+type ChainChainConfigRouterToArrayInput interface {
+	pulumi.Input
+
+	ToChainChainConfigRouterToArrayOutput() ChainChainConfigRouterToArrayOutput
+	ToChainChainConfigRouterToArrayOutputWithContext(context.Context) ChainChainConfigRouterToArrayOutput
+}
+
+type ChainChainConfigRouterToArray []ChainChainConfigRouterToInput
+
+func (ChainChainConfigRouterToArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigRouterTo)(nil)).Elem()
+}
+
+func (i ChainChainConfigRouterToArray) ToChainChainConfigRouterToArrayOutput() ChainChainConfigRouterToArrayOutput {
+	return i.ToChainChainConfigRouterToArrayOutputWithContext(context.Background())
+}
+
+func (i ChainChainConfigRouterToArray) ToChainChainConfigRouterToArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterToArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChainChainConfigRouterToArrayOutput)
+}
+
+type ChainChainConfigRouterToOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigRouterToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChainChainConfigRouterTo)(nil)).Elem()
+}
+
+func (o ChainChainConfigRouterToOutput) ToChainChainConfigRouterToOutput() ChainChainConfigRouterToOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterToOutput) ToChainChainConfigRouterToOutputWithContext(ctx context.Context) ChainChainConfigRouterToOutput {
+	return o
+}
+
+// The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+func (o ChainChainConfigRouterToOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChainChainConfigRouterTo) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+}
+
+type ChainChainConfigRouterToArrayOutput struct{ *pulumi.OutputState }
+
+func (ChainChainConfigRouterToArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChainChainConfigRouterTo)(nil)).Elem()
+}
+
+func (o ChainChainConfigRouterToArrayOutput) ToChainChainConfigRouterToArrayOutput() ChainChainConfigRouterToArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterToArrayOutput) ToChainChainConfigRouterToArrayOutputWithContext(ctx context.Context) ChainChainConfigRouterToArrayOutput {
+	return o
+}
+
+func (o ChainChainConfigRouterToArrayOutput) Index(i pulumi.IntInput) ChainChainConfigRouterToOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChainChainConfigRouterTo {
+		return vs[0].([]ChainChainConfigRouterTo)[vs[1].(int)]
+	}).(ChainChainConfigRouterToOutput)
+}
+
 type RepoDomainList struct {
 	// Domain of internal endpoint, only in some regions.
 	Internal *string `pulumi:"internal"`
@@ -183,6 +927,928 @@ func (o RepoDomainListPtrOutput) Vpc() pulumi.StringPtrOutput {
 		}
 		return v.Vpc
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetChainsChain struct {
+	// The configuration of delivery chain.
+	ChainConfigs []GetChainsChainChainConfig `pulumi:"chainConfigs"`
+	// The ID of delivery chain.
+	ChainId string `pulumi:"chainId"`
+	// The name of delivery chain.
+	ChainName string `pulumi:"chainName"`
+	// The creation time of delivery chain.
+	CreateTime string `pulumi:"createTime"`
+	// The description of delivery chain.
+	Description string `pulumi:"description"`
+	// The resource ID of the delivery chain. The value formats as `<instance_id>:<chain_id>`.
+	Id string `pulumi:"id"`
+	// The ID of CR Enterprise Edition instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The modification time of delivery chain description.
+	ModifiedTime string `pulumi:"modifiedTime"`
+	// Delivery chain scope ID.
+	ScopeId string `pulumi:"scopeId"`
+	// Delivery chain scope type.
+	ScopeType string `pulumi:"scopeType"`
+}
+
+// GetChainsChainInput is an input type that accepts GetChainsChainArgs and GetChainsChainOutput values.
+// You can construct a concrete instance of `GetChainsChainInput` via:
+//
+//          GetChainsChainArgs{...}
+type GetChainsChainInput interface {
+	pulumi.Input
+
+	ToGetChainsChainOutput() GetChainsChainOutput
+	ToGetChainsChainOutputWithContext(context.Context) GetChainsChainOutput
+}
+
+type GetChainsChainArgs struct {
+	// The configuration of delivery chain.
+	ChainConfigs GetChainsChainChainConfigArrayInput `pulumi:"chainConfigs"`
+	// The ID of delivery chain.
+	ChainId pulumi.StringInput `pulumi:"chainId"`
+	// The name of delivery chain.
+	ChainName pulumi.StringInput `pulumi:"chainName"`
+	// The creation time of delivery chain.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of delivery chain.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The resource ID of the delivery chain. The value formats as `<instance_id>:<chain_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of CR Enterprise Edition instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The modification time of delivery chain description.
+	ModifiedTime pulumi.StringInput `pulumi:"modifiedTime"`
+	// Delivery chain scope ID.
+	ScopeId pulumi.StringInput `pulumi:"scopeId"`
+	// Delivery chain scope type.
+	ScopeType pulumi.StringInput `pulumi:"scopeType"`
+}
+
+func (GetChainsChainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChain)(nil)).Elem()
+}
+
+func (i GetChainsChainArgs) ToGetChainsChainOutput() GetChainsChainOutput {
+	return i.ToGetChainsChainOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainArgs) ToGetChainsChainOutputWithContext(ctx context.Context) GetChainsChainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainOutput)
+}
+
+// GetChainsChainArrayInput is an input type that accepts GetChainsChainArray and GetChainsChainArrayOutput values.
+// You can construct a concrete instance of `GetChainsChainArrayInput` via:
+//
+//          GetChainsChainArray{ GetChainsChainArgs{...} }
+type GetChainsChainArrayInput interface {
+	pulumi.Input
+
+	ToGetChainsChainArrayOutput() GetChainsChainArrayOutput
+	ToGetChainsChainArrayOutputWithContext(context.Context) GetChainsChainArrayOutput
+}
+
+type GetChainsChainArray []GetChainsChainInput
+
+func (GetChainsChainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChain)(nil)).Elem()
+}
+
+func (i GetChainsChainArray) ToGetChainsChainArrayOutput() GetChainsChainArrayOutput {
+	return i.ToGetChainsChainArrayOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainArray) ToGetChainsChainArrayOutputWithContext(ctx context.Context) GetChainsChainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainArrayOutput)
+}
+
+type GetChainsChainOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChain)(nil)).Elem()
+}
+
+func (o GetChainsChainOutput) ToGetChainsChainOutput() GetChainsChainOutput {
+	return o
+}
+
+func (o GetChainsChainOutput) ToGetChainsChainOutputWithContext(ctx context.Context) GetChainsChainOutput {
+	return o
+}
+
+// The configuration of delivery chain.
+func (o GetChainsChainOutput) ChainConfigs() GetChainsChainChainConfigArrayOutput {
+	return o.ApplyT(func(v GetChainsChain) []GetChainsChainChainConfig { return v.ChainConfigs }).(GetChainsChainChainConfigArrayOutput)
+}
+
+// The ID of delivery chain.
+func (o GetChainsChainOutput) ChainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.ChainId }).(pulumi.StringOutput)
+}
+
+// The name of delivery chain.
+func (o GetChainsChainOutput) ChainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.ChainName }).(pulumi.StringOutput)
+}
+
+// The creation time of delivery chain.
+func (o GetChainsChainOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of delivery chain.
+func (o GetChainsChainOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource ID of the delivery chain. The value formats as `<instance_id>:<chain_id>`.
+func (o GetChainsChainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of CR Enterprise Edition instance.
+func (o GetChainsChainOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The modification time of delivery chain description.
+func (o GetChainsChainOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
+// Delivery chain scope ID.
+func (o GetChainsChainOutput) ScopeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.ScopeId }).(pulumi.StringOutput)
+}
+
+// Delivery chain scope type.
+func (o GetChainsChainOutput) ScopeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChain) string { return v.ScopeType }).(pulumi.StringOutput)
+}
+
+type GetChainsChainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChain)(nil)).Elem()
+}
+
+func (o GetChainsChainArrayOutput) ToGetChainsChainArrayOutput() GetChainsChainArrayOutput {
+	return o
+}
+
+func (o GetChainsChainArrayOutput) ToGetChainsChainArrayOutputWithContext(ctx context.Context) GetChainsChainArrayOutput {
+	return o
+}
+
+func (o GetChainsChainArrayOutput) Index(i pulumi.IntInput) GetChainsChainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChain {
+		return vs[0].([]GetChainsChain)[vs[1].(int)]
+	}).(GetChainsChainOutput)
+}
+
+type GetChainsChainChainConfig struct {
+	// Each node in the delivery chain.
+	Nodes []GetChainsChainChainConfigNode `pulumi:"nodes"`
+	// Execution sequence relationship between delivery chain nodes.
+	Routers []GetChainsChainChainConfigRouter `pulumi:"routers"`
+}
+
+// GetChainsChainChainConfigInput is an input type that accepts GetChainsChainChainConfigArgs and GetChainsChainChainConfigOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigInput` via:
+//
+//          GetChainsChainChainConfigArgs{...}
+type GetChainsChainChainConfigInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigOutput() GetChainsChainChainConfigOutput
+	ToGetChainsChainChainConfigOutputWithContext(context.Context) GetChainsChainChainConfigOutput
+}
+
+type GetChainsChainChainConfigArgs struct {
+	// Each node in the delivery chain.
+	Nodes GetChainsChainChainConfigNodeArrayInput `pulumi:"nodes"`
+	// Execution sequence relationship between delivery chain nodes.
+	Routers GetChainsChainChainConfigRouterArrayInput `pulumi:"routers"`
+}
+
+func (GetChainsChainChainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfig)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigArgs) ToGetChainsChainChainConfigOutput() GetChainsChainChainConfigOutput {
+	return i.ToGetChainsChainChainConfigOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigArgs) ToGetChainsChainChainConfigOutputWithContext(ctx context.Context) GetChainsChainChainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigOutput)
+}
+
+// GetChainsChainChainConfigArrayInput is an input type that accepts GetChainsChainChainConfigArray and GetChainsChainChainConfigArrayOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigArrayInput` via:
+//
+//          GetChainsChainChainConfigArray{ GetChainsChainChainConfigArgs{...} }
+type GetChainsChainChainConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigArrayOutput() GetChainsChainChainConfigArrayOutput
+	ToGetChainsChainChainConfigArrayOutputWithContext(context.Context) GetChainsChainChainConfigArrayOutput
+}
+
+type GetChainsChainChainConfigArray []GetChainsChainChainConfigInput
+
+func (GetChainsChainChainConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfig)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigArray) ToGetChainsChainChainConfigArrayOutput() GetChainsChainChainConfigArrayOutput {
+	return i.ToGetChainsChainChainConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigArray) ToGetChainsChainChainConfigArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigArrayOutput)
+}
+
+type GetChainsChainChainConfigOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfig)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigOutput) ToGetChainsChainChainConfigOutput() GetChainsChainChainConfigOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigOutput) ToGetChainsChainChainConfigOutputWithContext(ctx context.Context) GetChainsChainChainConfigOutput {
+	return o
+}
+
+// Each node in the delivery chain.
+func (o GetChainsChainChainConfigOutput) Nodes() GetChainsChainChainConfigNodeArrayOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfig) []GetChainsChainChainConfigNode { return v.Nodes }).(GetChainsChainChainConfigNodeArrayOutput)
+}
+
+// Execution sequence relationship between delivery chain nodes.
+func (o GetChainsChainChainConfigOutput) Routers() GetChainsChainChainConfigRouterArrayOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfig) []GetChainsChainChainConfigRouter { return v.Routers }).(GetChainsChainChainConfigRouterArrayOutput)
+}
+
+type GetChainsChainChainConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfig)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigArrayOutput) ToGetChainsChainChainConfigArrayOutput() GetChainsChainChainConfigArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigArrayOutput) ToGetChainsChainChainConfigArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChainChainConfig {
+		return vs[0].([]GetChainsChainChainConfig)[vs[1].(int)]
+	}).(GetChainsChainChainConfigOutput)
+}
+
+type GetChainsChainChainConfigNode struct {
+	// Whether to enable the delivery chain node. Valid values: `true`, `false`.
+	Enable bool `pulumi:"enable"`
+	// The configuration of delivery chain node.
+	NodeConfigs []GetChainsChainChainConfigNodeNodeConfig `pulumi:"nodeConfigs"`
+	// The name of delivery chain node.
+	NodeName string `pulumi:"nodeName"`
+}
+
+// GetChainsChainChainConfigNodeInput is an input type that accepts GetChainsChainChainConfigNodeArgs and GetChainsChainChainConfigNodeOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigNodeInput` via:
+//
+//          GetChainsChainChainConfigNodeArgs{...}
+type GetChainsChainChainConfigNodeInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigNodeOutput() GetChainsChainChainConfigNodeOutput
+	ToGetChainsChainChainConfigNodeOutputWithContext(context.Context) GetChainsChainChainConfigNodeOutput
+}
+
+type GetChainsChainChainConfigNodeArgs struct {
+	// Whether to enable the delivery chain node. Valid values: `true`, `false`.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// The configuration of delivery chain node.
+	NodeConfigs GetChainsChainChainConfigNodeNodeConfigArrayInput `pulumi:"nodeConfigs"`
+	// The name of delivery chain node.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+}
+
+func (GetChainsChainChainConfigNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigNode)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigNodeArgs) ToGetChainsChainChainConfigNodeOutput() GetChainsChainChainConfigNodeOutput {
+	return i.ToGetChainsChainChainConfigNodeOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigNodeArgs) ToGetChainsChainChainConfigNodeOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeOutput)
+}
+
+// GetChainsChainChainConfigNodeArrayInput is an input type that accepts GetChainsChainChainConfigNodeArray and GetChainsChainChainConfigNodeArrayOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigNodeArrayInput` via:
+//
+//          GetChainsChainChainConfigNodeArray{ GetChainsChainChainConfigNodeArgs{...} }
+type GetChainsChainChainConfigNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigNodeArrayOutput() GetChainsChainChainConfigNodeArrayOutput
+	ToGetChainsChainChainConfigNodeArrayOutputWithContext(context.Context) GetChainsChainChainConfigNodeArrayOutput
+}
+
+type GetChainsChainChainConfigNodeArray []GetChainsChainChainConfigNodeInput
+
+func (GetChainsChainChainConfigNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigNode)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigNodeArray) ToGetChainsChainChainConfigNodeArrayOutput() GetChainsChainChainConfigNodeArrayOutput {
+	return i.ToGetChainsChainChainConfigNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigNodeArray) ToGetChainsChainChainConfigNodeArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeArrayOutput)
+}
+
+type GetChainsChainChainConfigNodeOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigNode)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigNodeOutput) ToGetChainsChainChainConfigNodeOutput() GetChainsChainChainConfigNodeOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeOutput) ToGetChainsChainChainConfigNodeOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeOutput {
+	return o
+}
+
+// Whether to enable the delivery chain node. Valid values: `true`, `false`.
+func (o GetChainsChainChainConfigNodeOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigNode) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// The configuration of delivery chain node.
+func (o GetChainsChainChainConfigNodeOutput) NodeConfigs() GetChainsChainChainConfigNodeNodeConfigArrayOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigNode) []GetChainsChainChainConfigNodeNodeConfig { return v.NodeConfigs }).(GetChainsChainChainConfigNodeNodeConfigArrayOutput)
+}
+
+// The name of delivery chain node.
+func (o GetChainsChainChainConfigNodeOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigNode) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+type GetChainsChainChainConfigNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigNode)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigNodeArrayOutput) ToGetChainsChainChainConfigNodeArrayOutput() GetChainsChainChainConfigNodeArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeArrayOutput) ToGetChainsChainChainConfigNodeArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChainChainConfigNode {
+		return vs[0].([]GetChainsChainChainConfigNode)[vs[1].(int)]
+	}).(GetChainsChainChainConfigNodeOutput)
+}
+
+type GetChainsChainChainConfigNodeNodeConfig struct {
+	// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+	DenyPolicies []GetChainsChainChainConfigNodeNodeConfigDenyPolicy `pulumi:"denyPolicies"`
+}
+
+// GetChainsChainChainConfigNodeNodeConfigInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigArgs and GetChainsChainChainConfigNodeNodeConfigOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigInput` via:
+//
+//          GetChainsChainChainConfigNodeNodeConfigArgs{...}
+type GetChainsChainChainConfigNodeNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigNodeNodeConfigOutput() GetChainsChainChainConfigNodeNodeConfigOutput
+	ToGetChainsChainChainConfigNodeNodeConfigOutputWithContext(context.Context) GetChainsChainChainConfigNodeNodeConfigOutput
+}
+
+type GetChainsChainChainConfigNodeNodeConfigArgs struct {
+	// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+	DenyPolicies GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput `pulumi:"denyPolicies"`
+}
+
+func (GetChainsChainChainConfigNodeNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigNodeNodeConfig)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigNodeNodeConfigArgs) ToGetChainsChainChainConfigNodeNodeConfigOutput() GetChainsChainChainConfigNodeNodeConfigOutput {
+	return i.ToGetChainsChainChainConfigNodeNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigNodeNodeConfigArgs) ToGetChainsChainChainConfigNodeNodeConfigOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeNodeConfigOutput)
+}
+
+// GetChainsChainChainConfigNodeNodeConfigArrayInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigArray and GetChainsChainChainConfigNodeNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigArrayInput` via:
+//
+//          GetChainsChainChainConfigNodeNodeConfigArray{ GetChainsChainChainConfigNodeNodeConfigArgs{...} }
+type GetChainsChainChainConfigNodeNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigNodeNodeConfigArrayOutput() GetChainsChainChainConfigNodeNodeConfigArrayOutput
+	ToGetChainsChainChainConfigNodeNodeConfigArrayOutputWithContext(context.Context) GetChainsChainChainConfigNodeNodeConfigArrayOutput
+}
+
+type GetChainsChainChainConfigNodeNodeConfigArray []GetChainsChainChainConfigNodeNodeConfigInput
+
+func (GetChainsChainChainConfigNodeNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigNodeNodeConfig)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigNodeNodeConfigArray) ToGetChainsChainChainConfigNodeNodeConfigArrayOutput() GetChainsChainChainConfigNodeNodeConfigArrayOutput {
+	return i.ToGetChainsChainChainConfigNodeNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigNodeNodeConfigArray) ToGetChainsChainChainConfigNodeNodeConfigArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeNodeConfigArrayOutput)
+}
+
+type GetChainsChainChainConfigNodeNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigNodeNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigNodeNodeConfig)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigOutput) ToGetChainsChainChainConfigNodeNodeConfigOutput() GetChainsChainChainConfigNodeNodeConfigOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigOutput) ToGetChainsChainChainConfigNodeNodeConfigOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigOutput {
+	return o
+}
+
+// Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `nodeName` is `VULNERABILITY_SCANNING`, the parameters in `denyPolicy` need to be filled in.
+func (o GetChainsChainChainConfigNodeNodeConfigOutput) DenyPolicies() GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigNodeNodeConfig) []GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
+		return v.DenyPolicies
+	}).(GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput)
+}
+
+type GetChainsChainChainConfigNodeNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigNodeNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigNodeNodeConfig)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigArrayOutput) ToGetChainsChainChainConfigNodeNodeConfigArrayOutput() GetChainsChainChainConfigNodeNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigArrayOutput) ToGetChainsChainChainConfigNodeNodeConfigArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigNodeNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChainChainConfigNodeNodeConfig {
+		return vs[0].([]GetChainsChainChainConfigNodeNodeConfig)[vs[1].(int)]
+	}).(GetChainsChainChainConfigNodeNodeConfigOutput)
+}
+
+type GetChainsChainChainConfigNodeNodeConfigDenyPolicy struct {
+	// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+	Action *string `pulumi:"action"`
+	// The count of scanning vulnerabilities that triggers blocking.
+	IssueCount string `pulumi:"issueCount"`
+	// The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+	IssueLevel string `pulumi:"issueLevel"`
+	// The logic of trigger blocking. Valid values: `AND`, `OR`.
+	Logic string `pulumi:"logic"`
+}
+
+// GetChainsChainChainConfigNodeNodeConfigDenyPolicyInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs and GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigDenyPolicyInput` via:
+//
+//          GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs{...}
+type GetChainsChainChainConfigNodeNodeConfigDenyPolicyInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput() GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput
+	ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(context.Context) GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput
+}
+
+type GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs struct {
+	// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// The count of scanning vulnerabilities that triggers blocking.
+	IssueCount pulumi.StringInput `pulumi:"issueCount"`
+	// The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+	IssueLevel pulumi.StringInput `pulumi:"issueLevel"`
+	// The logic of trigger blocking. Valid values: `AND`, `OR`.
+	Logic pulumi.StringInput `pulumi:"logic"`
+}
+
+func (GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigNodeNodeConfigDenyPolicy)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput() GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return i.ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput)
+}
+
+// GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput is an input type that accepts GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray and GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput` via:
+//
+//          GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray{ GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs{...} }
+type GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput() GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput
+	ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(context.Context) GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput
+}
+
+type GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray []GetChainsChainChainConfigNodeNodeConfigDenyPolicyInput
+
+func (GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigNodeNodeConfigDenyPolicy)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput() GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return i.ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput)
+}
+
+type GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigNodeNodeConfigDenyPolicy)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput() GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return o
+}
+
+// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigNodeNodeConfigDenyPolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The count of scanning vulnerabilities that triggers blocking.
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) IssueCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigNodeNodeConfigDenyPolicy) string { return v.IssueCount }).(pulumi.StringOutput)
+}
+
+// The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) IssueLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigNodeNodeConfigDenyPolicy) string { return v.IssueLevel }).(pulumi.StringOutput)
+}
+
+// The logic of trigger blocking. Valid values: `AND`, `OR`.
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput) Logic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigNodeNodeConfigDenyPolicy) string { return v.Logic }).(pulumi.StringOutput)
+}
+
+type GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigNodeNodeConfigDenyPolicy)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput() GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) ToGetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
+		return vs[0].([]GetChainsChainChainConfigNodeNodeConfigDenyPolicy)[vs[1].(int)]
+	}).(GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput)
+}
+
+type GetChainsChainChainConfigRouter struct {
+	// Source node.
+	Froms []GetChainsChainChainConfigRouterFrom `pulumi:"froms"`
+	// Destination node.
+	Tos []GetChainsChainChainConfigRouterTo `pulumi:"tos"`
+}
+
+// GetChainsChainChainConfigRouterInput is an input type that accepts GetChainsChainChainConfigRouterArgs and GetChainsChainChainConfigRouterOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigRouterInput` via:
+//
+//          GetChainsChainChainConfigRouterArgs{...}
+type GetChainsChainChainConfigRouterInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigRouterOutput() GetChainsChainChainConfigRouterOutput
+	ToGetChainsChainChainConfigRouterOutputWithContext(context.Context) GetChainsChainChainConfigRouterOutput
+}
+
+type GetChainsChainChainConfigRouterArgs struct {
+	// Source node.
+	Froms GetChainsChainChainConfigRouterFromArrayInput `pulumi:"froms"`
+	// Destination node.
+	Tos GetChainsChainChainConfigRouterToArrayInput `pulumi:"tos"`
+}
+
+func (GetChainsChainChainConfigRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigRouter)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigRouterArgs) ToGetChainsChainChainConfigRouterOutput() GetChainsChainChainConfigRouterOutput {
+	return i.ToGetChainsChainChainConfigRouterOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigRouterArgs) ToGetChainsChainChainConfigRouterOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterOutput)
+}
+
+// GetChainsChainChainConfigRouterArrayInput is an input type that accepts GetChainsChainChainConfigRouterArray and GetChainsChainChainConfigRouterArrayOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigRouterArrayInput` via:
+//
+//          GetChainsChainChainConfigRouterArray{ GetChainsChainChainConfigRouterArgs{...} }
+type GetChainsChainChainConfigRouterArrayInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigRouterArrayOutput() GetChainsChainChainConfigRouterArrayOutput
+	ToGetChainsChainChainConfigRouterArrayOutputWithContext(context.Context) GetChainsChainChainConfigRouterArrayOutput
+}
+
+type GetChainsChainChainConfigRouterArray []GetChainsChainChainConfigRouterInput
+
+func (GetChainsChainChainConfigRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigRouter)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigRouterArray) ToGetChainsChainChainConfigRouterArrayOutput() GetChainsChainChainConfigRouterArrayOutput {
+	return i.ToGetChainsChainChainConfigRouterArrayOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigRouterArray) ToGetChainsChainChainConfigRouterArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterArrayOutput)
+}
+
+type GetChainsChainChainConfigRouterOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigRouter)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigRouterOutput) ToGetChainsChainChainConfigRouterOutput() GetChainsChainChainConfigRouterOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterOutput) ToGetChainsChainChainConfigRouterOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterOutput {
+	return o
+}
+
+// Source node.
+func (o GetChainsChainChainConfigRouterOutput) Froms() GetChainsChainChainConfigRouterFromArrayOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigRouter) []GetChainsChainChainConfigRouterFrom { return v.Froms }).(GetChainsChainChainConfigRouterFromArrayOutput)
+}
+
+// Destination node.
+func (o GetChainsChainChainConfigRouterOutput) Tos() GetChainsChainChainConfigRouterToArrayOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigRouter) []GetChainsChainChainConfigRouterTo { return v.Tos }).(GetChainsChainChainConfigRouterToArrayOutput)
+}
+
+type GetChainsChainChainConfigRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigRouter)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigRouterArrayOutput) ToGetChainsChainChainConfigRouterArrayOutput() GetChainsChainChainConfigRouterArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterArrayOutput) ToGetChainsChainChainConfigRouterArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChainChainConfigRouter {
+		return vs[0].([]GetChainsChainChainConfigRouter)[vs[1].(int)]
+	}).(GetChainsChainChainConfigRouterOutput)
+}
+
+type GetChainsChainChainConfigRouterFrom struct {
+	// The name of delivery chain node.
+	NodeName string `pulumi:"nodeName"`
+}
+
+// GetChainsChainChainConfigRouterFromInput is an input type that accepts GetChainsChainChainConfigRouterFromArgs and GetChainsChainChainConfigRouterFromOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigRouterFromInput` via:
+//
+//          GetChainsChainChainConfigRouterFromArgs{...}
+type GetChainsChainChainConfigRouterFromInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigRouterFromOutput() GetChainsChainChainConfigRouterFromOutput
+	ToGetChainsChainChainConfigRouterFromOutputWithContext(context.Context) GetChainsChainChainConfigRouterFromOutput
+}
+
+type GetChainsChainChainConfigRouterFromArgs struct {
+	// The name of delivery chain node.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+}
+
+func (GetChainsChainChainConfigRouterFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigRouterFrom)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigRouterFromArgs) ToGetChainsChainChainConfigRouterFromOutput() GetChainsChainChainConfigRouterFromOutput {
+	return i.ToGetChainsChainChainConfigRouterFromOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigRouterFromArgs) ToGetChainsChainChainConfigRouterFromOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterFromOutput)
+}
+
+// GetChainsChainChainConfigRouterFromArrayInput is an input type that accepts GetChainsChainChainConfigRouterFromArray and GetChainsChainChainConfigRouterFromArrayOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigRouterFromArrayInput` via:
+//
+//          GetChainsChainChainConfigRouterFromArray{ GetChainsChainChainConfigRouterFromArgs{...} }
+type GetChainsChainChainConfigRouterFromArrayInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigRouterFromArrayOutput() GetChainsChainChainConfigRouterFromArrayOutput
+	ToGetChainsChainChainConfigRouterFromArrayOutputWithContext(context.Context) GetChainsChainChainConfigRouterFromArrayOutput
+}
+
+type GetChainsChainChainConfigRouterFromArray []GetChainsChainChainConfigRouterFromInput
+
+func (GetChainsChainChainConfigRouterFromArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigRouterFrom)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigRouterFromArray) ToGetChainsChainChainConfigRouterFromArrayOutput() GetChainsChainChainConfigRouterFromArrayOutput {
+	return i.ToGetChainsChainChainConfigRouterFromArrayOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigRouterFromArray) ToGetChainsChainChainConfigRouterFromArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterFromArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterFromArrayOutput)
+}
+
+type GetChainsChainChainConfigRouterFromOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigRouterFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigRouterFrom)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigRouterFromOutput) ToGetChainsChainChainConfigRouterFromOutput() GetChainsChainChainConfigRouterFromOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterFromOutput) ToGetChainsChainChainConfigRouterFromOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterFromOutput {
+	return o
+}
+
+// The name of delivery chain node.
+func (o GetChainsChainChainConfigRouterFromOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigRouterFrom) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+type GetChainsChainChainConfigRouterFromArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigRouterFromArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigRouterFrom)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigRouterFromArrayOutput) ToGetChainsChainChainConfigRouterFromArrayOutput() GetChainsChainChainConfigRouterFromArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterFromArrayOutput) ToGetChainsChainChainConfigRouterFromArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterFromArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterFromArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigRouterFromOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChainChainConfigRouterFrom {
+		return vs[0].([]GetChainsChainChainConfigRouterFrom)[vs[1].(int)]
+	}).(GetChainsChainChainConfigRouterFromOutput)
+}
+
+type GetChainsChainChainConfigRouterTo struct {
+	// The name of delivery chain node.
+	NodeName string `pulumi:"nodeName"`
+}
+
+// GetChainsChainChainConfigRouterToInput is an input type that accepts GetChainsChainChainConfigRouterToArgs and GetChainsChainChainConfigRouterToOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigRouterToInput` via:
+//
+//          GetChainsChainChainConfigRouterToArgs{...}
+type GetChainsChainChainConfigRouterToInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigRouterToOutput() GetChainsChainChainConfigRouterToOutput
+	ToGetChainsChainChainConfigRouterToOutputWithContext(context.Context) GetChainsChainChainConfigRouterToOutput
+}
+
+type GetChainsChainChainConfigRouterToArgs struct {
+	// The name of delivery chain node.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+}
+
+func (GetChainsChainChainConfigRouterToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigRouterTo)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigRouterToArgs) ToGetChainsChainChainConfigRouterToOutput() GetChainsChainChainConfigRouterToOutput {
+	return i.ToGetChainsChainChainConfigRouterToOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigRouterToArgs) ToGetChainsChainChainConfigRouterToOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterToOutput)
+}
+
+// GetChainsChainChainConfigRouterToArrayInput is an input type that accepts GetChainsChainChainConfigRouterToArray and GetChainsChainChainConfigRouterToArrayOutput values.
+// You can construct a concrete instance of `GetChainsChainChainConfigRouterToArrayInput` via:
+//
+//          GetChainsChainChainConfigRouterToArray{ GetChainsChainChainConfigRouterToArgs{...} }
+type GetChainsChainChainConfigRouterToArrayInput interface {
+	pulumi.Input
+
+	ToGetChainsChainChainConfigRouterToArrayOutput() GetChainsChainChainConfigRouterToArrayOutput
+	ToGetChainsChainChainConfigRouterToArrayOutputWithContext(context.Context) GetChainsChainChainConfigRouterToArrayOutput
+}
+
+type GetChainsChainChainConfigRouterToArray []GetChainsChainChainConfigRouterToInput
+
+func (GetChainsChainChainConfigRouterToArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigRouterTo)(nil)).Elem()
+}
+
+func (i GetChainsChainChainConfigRouterToArray) ToGetChainsChainChainConfigRouterToArrayOutput() GetChainsChainChainConfigRouterToArrayOutput {
+	return i.ToGetChainsChainChainConfigRouterToArrayOutputWithContext(context.Background())
+}
+
+func (i GetChainsChainChainConfigRouterToArray) ToGetChainsChainChainConfigRouterToArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterToArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChainsChainChainConfigRouterToArrayOutput)
+}
+
+type GetChainsChainChainConfigRouterToOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigRouterToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChainsChainChainConfigRouterTo)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigRouterToOutput) ToGetChainsChainChainConfigRouterToOutput() GetChainsChainChainConfigRouterToOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterToOutput) ToGetChainsChainChainConfigRouterToOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterToOutput {
+	return o
+}
+
+// The name of delivery chain node.
+func (o GetChainsChainChainConfigRouterToOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChainsChainChainConfigRouterTo) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+type GetChainsChainChainConfigRouterToArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChainsChainChainConfigRouterToArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChainsChainChainConfigRouterTo)(nil)).Elem()
+}
+
+func (o GetChainsChainChainConfigRouterToArrayOutput) ToGetChainsChainChainConfigRouterToArrayOutput() GetChainsChainChainConfigRouterToArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterToArrayOutput) ToGetChainsChainChainConfigRouterToArrayOutputWithContext(ctx context.Context) GetChainsChainChainConfigRouterToArrayOutput {
+	return o
+}
+
+func (o GetChainsChainChainConfigRouterToArrayOutput) Index(i pulumi.IntInput) GetChainsChainChainConfigRouterToOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChainsChainChainConfigRouterTo {
+		return vs[0].([]GetChainsChainChainConfigRouterTo)[vs[1].(int)]
+	}).(GetChainsChainChainConfigRouterToOutput)
 }
 
 type GetChartNamespacesNamespace struct {
@@ -1099,8 +2765,38 @@ func (o GetReposRepoTagArrayOutput) Index(i pulumi.IntInput) GetReposRepoTagOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigInput)(nil)).Elem(), ChainChainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigArrayInput)(nil)).Elem(), ChainChainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigNodeInput)(nil)).Elem(), ChainChainConfigNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigNodeArrayInput)(nil)).Elem(), ChainChainConfigNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigNodeNodeConfigInput)(nil)).Elem(), ChainChainConfigNodeNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigNodeNodeConfigArrayInput)(nil)).Elem(), ChainChainConfigNodeNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigNodeNodeConfigDenyPolicyInput)(nil)).Elem(), ChainChainConfigNodeNodeConfigDenyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigNodeNodeConfigDenyPolicyArrayInput)(nil)).Elem(), ChainChainConfigNodeNodeConfigDenyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterInput)(nil)).Elem(), ChainChainConfigRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterArrayInput)(nil)).Elem(), ChainChainConfigRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterFromInput)(nil)).Elem(), ChainChainConfigRouterFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterFromArrayInput)(nil)).Elem(), ChainChainConfigRouterFromArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterToInput)(nil)).Elem(), ChainChainConfigRouterToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigRouterToArrayInput)(nil)).Elem(), ChainChainConfigRouterToArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListInput)(nil)).Elem(), RepoDomainListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListPtrInput)(nil)).Elem(), RepoDomainListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainInput)(nil)).Elem(), GetChainsChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainArrayInput)(nil)).Elem(), GetChainsChainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigInput)(nil)).Elem(), GetChainsChainChainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigArrayInput)(nil)).Elem(), GetChainsChainChainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigNodeInput)(nil)).Elem(), GetChainsChainChainConfigNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigNodeArrayInput)(nil)).Elem(), GetChainsChainChainConfigNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigNodeNodeConfigInput)(nil)).Elem(), GetChainsChainChainConfigNodeNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigNodeNodeConfigArrayInput)(nil)).Elem(), GetChainsChainChainConfigNodeNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigNodeNodeConfigDenyPolicyInput)(nil)).Elem(), GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayInput)(nil)).Elem(), GetChainsChainChainConfigNodeNodeConfigDenyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigRouterInput)(nil)).Elem(), GetChainsChainChainConfigRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigRouterArrayInput)(nil)).Elem(), GetChainsChainChainConfigRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigRouterFromInput)(nil)).Elem(), GetChainsChainChainConfigRouterFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigRouterFromArrayInput)(nil)).Elem(), GetChainsChainChainConfigRouterFromArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigRouterToInput)(nil)).Elem(), GetChainsChainChainConfigRouterToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigRouterToArrayInput)(nil)).Elem(), GetChainsChainChainConfigRouterToArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChartNamespacesNamespaceInput)(nil)).Elem(), GetChartNamespacesNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChartNamespacesNamespaceArrayInput)(nil)).Elem(), GetChartNamespacesNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChartRepositoriesRepositoryInput)(nil)).Elem(), GetChartRepositoriesRepositoryArgs{})
@@ -1114,8 +2810,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoDomainListInput)(nil)).Elem(), GetReposRepoDomainListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagInput)(nil)).Elem(), GetReposRepoTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagArrayInput)(nil)).Elem(), GetReposRepoTagArray{})
+	pulumi.RegisterOutputType(ChainChainConfigOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigArrayOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigNodeOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigNodeArrayOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigNodeNodeConfigOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigNodeNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigNodeNodeConfigDenyPolicyOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigNodeNodeConfigDenyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigRouterOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigRouterArrayOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigRouterFromOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigRouterFromArrayOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigRouterToOutput{})
+	pulumi.RegisterOutputType(ChainChainConfigRouterToArrayOutput{})
 	pulumi.RegisterOutputType(RepoDomainListOutput{})
 	pulumi.RegisterOutputType(RepoDomainListPtrOutput{})
+	pulumi.RegisterOutputType(GetChainsChainOutput{})
+	pulumi.RegisterOutputType(GetChainsChainArrayOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigNodeOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigNodeNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigNodeNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigNodeNodeConfigDenyPolicyOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigNodeNodeConfigDenyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigRouterOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigRouterArrayOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigRouterFromOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigRouterFromArrayOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigRouterToOutput{})
+	pulumi.RegisterOutputType(GetChainsChainChainConfigRouterToArrayOutput{})
 	pulumi.RegisterOutputType(GetChartNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetChartNamespacesNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetChartRepositoriesRepositoryOutput{})

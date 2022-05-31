@@ -483,13 +483,141 @@ func (o GetEnterpriseUsersUserArrayOutput) Index(i pulumi.IntInput) GetEnterpris
 	}).(GetEnterpriseUsersUserOutput)
 }
 
+type GetUserTenantsTenant struct {
+	// The user tenant id.
+	Id string `pulumi:"id"`
+	// The status of the user tenant.
+	Status string `pulumi:"status"`
+	// The name of the user tenant.
+	TenantName string `pulumi:"tenantName"`
+	// The user tenant id. Same as id.
+	Tid string `pulumi:"tid"`
+}
+
+// GetUserTenantsTenantInput is an input type that accepts GetUserTenantsTenantArgs and GetUserTenantsTenantOutput values.
+// You can construct a concrete instance of `GetUserTenantsTenantInput` via:
+//
+//          GetUserTenantsTenantArgs{...}
+type GetUserTenantsTenantInput interface {
+	pulumi.Input
+
+	ToGetUserTenantsTenantOutput() GetUserTenantsTenantOutput
+	ToGetUserTenantsTenantOutputWithContext(context.Context) GetUserTenantsTenantOutput
+}
+
+type GetUserTenantsTenantArgs struct {
+	// The user tenant id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the user tenant.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The name of the user tenant.
+	TenantName pulumi.StringInput `pulumi:"tenantName"`
+	// The user tenant id. Same as id.
+	Tid pulumi.StringInput `pulumi:"tid"`
+}
+
+func (GetUserTenantsTenantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserTenantsTenant)(nil)).Elem()
+}
+
+func (i GetUserTenantsTenantArgs) ToGetUserTenantsTenantOutput() GetUserTenantsTenantOutput {
+	return i.ToGetUserTenantsTenantOutputWithContext(context.Background())
+}
+
+func (i GetUserTenantsTenantArgs) ToGetUserTenantsTenantOutputWithContext(ctx context.Context) GetUserTenantsTenantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserTenantsTenantOutput)
+}
+
+// GetUserTenantsTenantArrayInput is an input type that accepts GetUserTenantsTenantArray and GetUserTenantsTenantArrayOutput values.
+// You can construct a concrete instance of `GetUserTenantsTenantArrayInput` via:
+//
+//          GetUserTenantsTenantArray{ GetUserTenantsTenantArgs{...} }
+type GetUserTenantsTenantArrayInput interface {
+	pulumi.Input
+
+	ToGetUserTenantsTenantArrayOutput() GetUserTenantsTenantArrayOutput
+	ToGetUserTenantsTenantArrayOutputWithContext(context.Context) GetUserTenantsTenantArrayOutput
+}
+
+type GetUserTenantsTenantArray []GetUserTenantsTenantInput
+
+func (GetUserTenantsTenantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserTenantsTenant)(nil)).Elem()
+}
+
+func (i GetUserTenantsTenantArray) ToGetUserTenantsTenantArrayOutput() GetUserTenantsTenantArrayOutput {
+	return i.ToGetUserTenantsTenantArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserTenantsTenantArray) ToGetUserTenantsTenantArrayOutputWithContext(ctx context.Context) GetUserTenantsTenantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserTenantsTenantArrayOutput)
+}
+
+type GetUserTenantsTenantOutput struct{ *pulumi.OutputState }
+
+func (GetUserTenantsTenantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserTenantsTenant)(nil)).Elem()
+}
+
+func (o GetUserTenantsTenantOutput) ToGetUserTenantsTenantOutput() GetUserTenantsTenantOutput {
+	return o
+}
+
+func (o GetUserTenantsTenantOutput) ToGetUserTenantsTenantOutputWithContext(ctx context.Context) GetUserTenantsTenantOutput {
+	return o
+}
+
+// The user tenant id.
+func (o GetUserTenantsTenantOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserTenantsTenant) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the user tenant.
+func (o GetUserTenantsTenantOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserTenantsTenant) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of the user tenant.
+func (o GetUserTenantsTenantOutput) TenantName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserTenantsTenant) string { return v.TenantName }).(pulumi.StringOutput)
+}
+
+// The user tenant id. Same as id.
+func (o GetUserTenantsTenantOutput) Tid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserTenantsTenant) string { return v.Tid }).(pulumi.StringOutput)
+}
+
+type GetUserTenantsTenantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserTenantsTenantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserTenantsTenant)(nil)).Elem()
+}
+
+func (o GetUserTenantsTenantArrayOutput) ToGetUserTenantsTenantArrayOutput() GetUserTenantsTenantArrayOutput {
+	return o
+}
+
+func (o GetUserTenantsTenantArrayOutput) ToGetUserTenantsTenantArrayOutputWithContext(ctx context.Context) GetUserTenantsTenantArrayOutput {
+	return o
+}
+
+func (o GetUserTenantsTenantArrayOutput) Index(i pulumi.IntInput) GetUserTenantsTenantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserTenantsTenant {
+		return vs[0].([]GetUserTenantsTenant)[vs[1].(int)]
+	}).(GetUserTenantsTenantOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseInstancesInstanceInput)(nil)).Elem(), GetEnterpriseInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseInstancesInstanceArrayInput)(nil)).Elem(), GetEnterpriseInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseUsersUserInput)(nil)).Elem(), GetEnterpriseUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseUsersUserArrayInput)(nil)).Elem(), GetEnterpriseUsersUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserTenantsTenantInput)(nil)).Elem(), GetUserTenantsTenantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserTenantsTenantArrayInput)(nil)).Elem(), GetUserTenantsTenantArray{})
 	pulumi.RegisterOutputType(GetEnterpriseInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseUsersUserOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseUsersUserArrayOutput{})
+	pulumi.RegisterOutputType(GetUserTenantsTenantOutput{})
+	pulumi.RegisterOutputType(GetUserTenantsTenantArrayOutput{})
 }

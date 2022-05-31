@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// User-defined DB instance storage space.Unit: GB. Value range:
-        /// - Custom storage space; value range: [10,2000]
+        /// - Custom storage space.
         /// - 10-GB increments.
         /// </summary>
         [Output("dbInstanceStorage")]
@@ -103,6 +103,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// </summary>
+        [Output("networkType")]
+        public Output<string> NetworkType { get; private set; } = null!;
+
+        /// <summary>
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
@@ -134,6 +140,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("replicationFactor")]
         public Output<int> ReplicationFactor { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Resource Group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Instance log backup retention days. Available in 1.42.0+.
@@ -182,6 +194,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -282,7 +300,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// User-defined DB instance storage space.Unit: GB. Value range:
-        /// - Custom storage space; value range: [10,2000]
+        /// - Custom storage space.
         /// - 10-GB increments.
         /// </summary>
         [Input("dbInstanceStorage", required: true)]
@@ -337,6 +355,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
@@ -356,6 +380,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
+
+        /// <summary>
+        /// The ID of the Resource Group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The Security Group ID of ECS.
@@ -404,6 +434,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -465,7 +501,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// User-defined DB instance storage space.Unit: GB. Value range:
-        /// - Custom storage space; value range: [10,2000]
+        /// - Custom storage space.
         /// - 10-GB increments.
         /// </summary>
         [Input("dbInstanceStorage")]
@@ -520,6 +556,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
@@ -557,6 +599,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
+
+        /// <summary>
+        /// The ID of the Resource Group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Instance log backup retention days. Available in 1.42.0+.
@@ -617,6 +665,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.

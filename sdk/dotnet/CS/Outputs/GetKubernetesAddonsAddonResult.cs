@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetKubernetesAddonsAddonResult
     {
         /// <summary>
+        /// The current custom configuration of the addon. **Note:** Available in v1.166.0+
+        /// </summary>
+        public readonly string CurrentConfig;
+        /// <summary>
         /// The current version of addon, if this field is an empty string, it means that the addon is not installed.
         /// </summary>
         public readonly string CurrentVersion;
@@ -32,6 +36,8 @@ namespace Pulumi.AliCloud.CS.Outputs
 
         [OutputConstructor]
         private GetKubernetesAddonsAddonResult(
+            string currentConfig,
+
             string currentVersion,
 
             string name,
@@ -40,6 +46,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             bool required)
         {
+            CurrentConfig = currentConfig;
             CurrentVersion = currentVersion;
             Name = name;
             NextVersion = nextVersion;

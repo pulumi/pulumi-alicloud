@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class ContainerGroupEciSecurityContext
     {
+        /// <summary>
+        /// system.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupEciSecurityContextSysctl> Sysctls;
 
         [OutputConstructor]

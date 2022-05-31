@@ -10,6 +10,236 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type OtsBackupPlanOtsDetail struct {
+	// The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
+	TableNames []string `pulumi:"tableNames"`
+}
+
+// OtsBackupPlanOtsDetailInput is an input type that accepts OtsBackupPlanOtsDetailArgs and OtsBackupPlanOtsDetailOutput values.
+// You can construct a concrete instance of `OtsBackupPlanOtsDetailInput` via:
+//
+//          OtsBackupPlanOtsDetailArgs{...}
+type OtsBackupPlanOtsDetailInput interface {
+	pulumi.Input
+
+	ToOtsBackupPlanOtsDetailOutput() OtsBackupPlanOtsDetailOutput
+	ToOtsBackupPlanOtsDetailOutputWithContext(context.Context) OtsBackupPlanOtsDetailOutput
+}
+
+type OtsBackupPlanOtsDetailArgs struct {
+	// The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
+	TableNames pulumi.StringArrayInput `pulumi:"tableNames"`
+}
+
+func (OtsBackupPlanOtsDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OtsBackupPlanOtsDetail)(nil)).Elem()
+}
+
+func (i OtsBackupPlanOtsDetailArgs) ToOtsBackupPlanOtsDetailOutput() OtsBackupPlanOtsDetailOutput {
+	return i.ToOtsBackupPlanOtsDetailOutputWithContext(context.Background())
+}
+
+func (i OtsBackupPlanOtsDetailArgs) ToOtsBackupPlanOtsDetailOutputWithContext(ctx context.Context) OtsBackupPlanOtsDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OtsBackupPlanOtsDetailOutput)
+}
+
+// OtsBackupPlanOtsDetailArrayInput is an input type that accepts OtsBackupPlanOtsDetailArray and OtsBackupPlanOtsDetailArrayOutput values.
+// You can construct a concrete instance of `OtsBackupPlanOtsDetailArrayInput` via:
+//
+//          OtsBackupPlanOtsDetailArray{ OtsBackupPlanOtsDetailArgs{...} }
+type OtsBackupPlanOtsDetailArrayInput interface {
+	pulumi.Input
+
+	ToOtsBackupPlanOtsDetailArrayOutput() OtsBackupPlanOtsDetailArrayOutput
+	ToOtsBackupPlanOtsDetailArrayOutputWithContext(context.Context) OtsBackupPlanOtsDetailArrayOutput
+}
+
+type OtsBackupPlanOtsDetailArray []OtsBackupPlanOtsDetailInput
+
+func (OtsBackupPlanOtsDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OtsBackupPlanOtsDetail)(nil)).Elem()
+}
+
+func (i OtsBackupPlanOtsDetailArray) ToOtsBackupPlanOtsDetailArrayOutput() OtsBackupPlanOtsDetailArrayOutput {
+	return i.ToOtsBackupPlanOtsDetailArrayOutputWithContext(context.Background())
+}
+
+func (i OtsBackupPlanOtsDetailArray) ToOtsBackupPlanOtsDetailArrayOutputWithContext(ctx context.Context) OtsBackupPlanOtsDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OtsBackupPlanOtsDetailArrayOutput)
+}
+
+type OtsBackupPlanOtsDetailOutput struct{ *pulumi.OutputState }
+
+func (OtsBackupPlanOtsDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OtsBackupPlanOtsDetail)(nil)).Elem()
+}
+
+func (o OtsBackupPlanOtsDetailOutput) ToOtsBackupPlanOtsDetailOutput() OtsBackupPlanOtsDetailOutput {
+	return o
+}
+
+func (o OtsBackupPlanOtsDetailOutput) ToOtsBackupPlanOtsDetailOutputWithContext(ctx context.Context) OtsBackupPlanOtsDetailOutput {
+	return o
+}
+
+// The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanOtsDetailOutput) TableNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OtsBackupPlanOtsDetail) []string { return v.TableNames }).(pulumi.StringArrayOutput)
+}
+
+type OtsBackupPlanOtsDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (OtsBackupPlanOtsDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OtsBackupPlanOtsDetail)(nil)).Elem()
+}
+
+func (o OtsBackupPlanOtsDetailArrayOutput) ToOtsBackupPlanOtsDetailArrayOutput() OtsBackupPlanOtsDetailArrayOutput {
+	return o
+}
+
+func (o OtsBackupPlanOtsDetailArrayOutput) ToOtsBackupPlanOtsDetailArrayOutputWithContext(ctx context.Context) OtsBackupPlanOtsDetailArrayOutput {
+	return o
+}
+
+func (o OtsBackupPlanOtsDetailArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanOtsDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OtsBackupPlanOtsDetail {
+		return vs[0].([]OtsBackupPlanOtsDetail)[vs[1].(int)]
+	}).(OtsBackupPlanOtsDetailOutput)
+}
+
+type OtsBackupPlanRule struct {
+	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	BackupType *string `pulumi:"backupType"`
+	// Whether to disable the backup task. Valid values: true, false.
+	Disabled *bool `pulumi:"disabled"`
+	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	Retention *string `pulumi:"retention"`
+	// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
+	RuleName *string `pulumi:"ruleName"`
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	Schedule *string `pulumi:"schedule"`
+}
+
+// OtsBackupPlanRuleInput is an input type that accepts OtsBackupPlanRuleArgs and OtsBackupPlanRuleOutput values.
+// You can construct a concrete instance of `OtsBackupPlanRuleInput` via:
+//
+//          OtsBackupPlanRuleArgs{...}
+type OtsBackupPlanRuleInput interface {
+	pulumi.Input
+
+	ToOtsBackupPlanRuleOutput() OtsBackupPlanRuleOutput
+	ToOtsBackupPlanRuleOutputWithContext(context.Context) OtsBackupPlanRuleOutput
+}
+
+type OtsBackupPlanRuleArgs struct {
+	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	BackupType pulumi.StringPtrInput `pulumi:"backupType"`
+	// Whether to disable the backup task. Valid values: true, false.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	Retention pulumi.StringPtrInput `pulumi:"retention"`
+	// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
+	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+}
+
+func (OtsBackupPlanRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OtsBackupPlanRule)(nil)).Elem()
+}
+
+func (i OtsBackupPlanRuleArgs) ToOtsBackupPlanRuleOutput() OtsBackupPlanRuleOutput {
+	return i.ToOtsBackupPlanRuleOutputWithContext(context.Background())
+}
+
+func (i OtsBackupPlanRuleArgs) ToOtsBackupPlanRuleOutputWithContext(ctx context.Context) OtsBackupPlanRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OtsBackupPlanRuleOutput)
+}
+
+// OtsBackupPlanRuleArrayInput is an input type that accepts OtsBackupPlanRuleArray and OtsBackupPlanRuleArrayOutput values.
+// You can construct a concrete instance of `OtsBackupPlanRuleArrayInput` via:
+//
+//          OtsBackupPlanRuleArray{ OtsBackupPlanRuleArgs{...} }
+type OtsBackupPlanRuleArrayInput interface {
+	pulumi.Input
+
+	ToOtsBackupPlanRuleArrayOutput() OtsBackupPlanRuleArrayOutput
+	ToOtsBackupPlanRuleArrayOutputWithContext(context.Context) OtsBackupPlanRuleArrayOutput
+}
+
+type OtsBackupPlanRuleArray []OtsBackupPlanRuleInput
+
+func (OtsBackupPlanRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OtsBackupPlanRule)(nil)).Elem()
+}
+
+func (i OtsBackupPlanRuleArray) ToOtsBackupPlanRuleArrayOutput() OtsBackupPlanRuleArrayOutput {
+	return i.ToOtsBackupPlanRuleArrayOutputWithContext(context.Background())
+}
+
+func (i OtsBackupPlanRuleArray) ToOtsBackupPlanRuleArrayOutputWithContext(ctx context.Context) OtsBackupPlanRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OtsBackupPlanRuleArrayOutput)
+}
+
+type OtsBackupPlanRuleOutput struct{ *pulumi.OutputState }
+
+func (OtsBackupPlanRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OtsBackupPlanRule)(nil)).Elem()
+}
+
+func (o OtsBackupPlanRuleOutput) ToOtsBackupPlanRuleOutput() OtsBackupPlanRuleOutput {
+	return o
+}
+
+func (o OtsBackupPlanRuleOutput) ToOtsBackupPlanRuleOutputWithContext(ctx context.Context) OtsBackupPlanRuleOutput {
+	return o
+}
+
+// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanRuleOutput) BackupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.BackupType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to disable the backup task. Valid values: true, false.
+func (o OtsBackupPlanRuleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OtsBackupPlanRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanRuleOutput) Retention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.Retention }).(pulumi.StringPtrOutput)
+}
+
+// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
+func (o OtsBackupPlanRuleOutput) RuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+func (o OtsBackupPlanRuleOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+type OtsBackupPlanRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (OtsBackupPlanRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OtsBackupPlanRule)(nil)).Elem()
+}
+
+func (o OtsBackupPlanRuleArrayOutput) ToOtsBackupPlanRuleArrayOutput() OtsBackupPlanRuleArrayOutput {
+	return o
+}
+
+func (o OtsBackupPlanRuleArrayOutput) ToOtsBackupPlanRuleArrayOutputWithContext(ctx context.Context) OtsBackupPlanRuleArrayOutput {
+	return o
+}
+
+func (o OtsBackupPlanRuleArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OtsBackupPlanRule {
+		return vs[0].([]OtsBackupPlanRule)[vs[1].(int)]
+	}).(OtsBackupPlanRuleOutput)
+}
+
 type ServerBackupPlanDetail struct {
 	// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
 	AppConsistent bool `pulumi:"appConsistent"`
@@ -341,7 +571,8 @@ type GetBackupJobsJob struct {
 	// The total number of items restore job recovered.
 	ItemsTotal string `pulumi:"itemsTotal"`
 	// File system creation time. UNIX time in seconds.
-	NasCreateTime string `pulumi:"nasCreateTime"`
+	NasCreateTime string                      `pulumi:"nasCreateTime"`
+	OtsDetails    []GetBackupJobsJobOtsDetail `pulumi:"otsDetails"`
 	// List of backup path. e.g. `["/home", "/var"]`.
 	Paths []string `pulumi:"paths"`
 	// The ID of a backup plan.
@@ -411,7 +642,8 @@ type GetBackupJobsJobArgs struct {
 	// The total number of items restore job recovered.
 	ItemsTotal pulumi.StringInput `pulumi:"itemsTotal"`
 	// File system creation time. UNIX time in seconds.
-	NasCreateTime pulumi.StringInput `pulumi:"nasCreateTime"`
+	NasCreateTime pulumi.StringInput                  `pulumi:"nasCreateTime"`
+	OtsDetails    GetBackupJobsJobOtsDetailArrayInput `pulumi:"otsDetails"`
 	// List of backup path. e.g. `["/home", "/var"]`.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
 	// The ID of a backup plan.
@@ -578,6 +810,10 @@ func (o GetBackupJobsJobOutput) NasCreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) string { return v.NasCreateTime }).(pulumi.StringOutput)
 }
 
+func (o GetBackupJobsJobOutput) OtsDetails() GetBackupJobsJobOtsDetailArrayOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) []GetBackupJobsJobOtsDetail { return v.OtsDetails }).(GetBackupJobsJobOtsDetailArrayOutput)
+}
+
 // List of backup path. e.g. `["/home", "/var"]`.
 func (o GetBackupJobsJobOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) []string { return v.Paths }).(pulumi.StringArrayOutput)
@@ -641,6 +877,100 @@ func (o GetBackupJobsJobArrayOutput) Index(i pulumi.IntInput) GetBackupJobsJobOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupJobsJob {
 		return vs[0].([]GetBackupJobsJob)[vs[1].(int)]
 	}).(GetBackupJobsJobOutput)
+}
+
+type GetBackupJobsJobOtsDetail struct {
+	TableNames []string `pulumi:"tableNames"`
+}
+
+// GetBackupJobsJobOtsDetailInput is an input type that accepts GetBackupJobsJobOtsDetailArgs and GetBackupJobsJobOtsDetailOutput values.
+// You can construct a concrete instance of `GetBackupJobsJobOtsDetailInput` via:
+//
+//          GetBackupJobsJobOtsDetailArgs{...}
+type GetBackupJobsJobOtsDetailInput interface {
+	pulumi.Input
+
+	ToGetBackupJobsJobOtsDetailOutput() GetBackupJobsJobOtsDetailOutput
+	ToGetBackupJobsJobOtsDetailOutputWithContext(context.Context) GetBackupJobsJobOtsDetailOutput
+}
+
+type GetBackupJobsJobOtsDetailArgs struct {
+	TableNames pulumi.StringArrayInput `pulumi:"tableNames"`
+}
+
+func (GetBackupJobsJobOtsDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupJobsJobOtsDetail)(nil)).Elem()
+}
+
+func (i GetBackupJobsJobOtsDetailArgs) ToGetBackupJobsJobOtsDetailOutput() GetBackupJobsJobOtsDetailOutput {
+	return i.ToGetBackupJobsJobOtsDetailOutputWithContext(context.Background())
+}
+
+func (i GetBackupJobsJobOtsDetailArgs) ToGetBackupJobsJobOtsDetailOutputWithContext(ctx context.Context) GetBackupJobsJobOtsDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsJobOtsDetailOutput)
+}
+
+// GetBackupJobsJobOtsDetailArrayInput is an input type that accepts GetBackupJobsJobOtsDetailArray and GetBackupJobsJobOtsDetailArrayOutput values.
+// You can construct a concrete instance of `GetBackupJobsJobOtsDetailArrayInput` via:
+//
+//          GetBackupJobsJobOtsDetailArray{ GetBackupJobsJobOtsDetailArgs{...} }
+type GetBackupJobsJobOtsDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupJobsJobOtsDetailArrayOutput() GetBackupJobsJobOtsDetailArrayOutput
+	ToGetBackupJobsJobOtsDetailArrayOutputWithContext(context.Context) GetBackupJobsJobOtsDetailArrayOutput
+}
+
+type GetBackupJobsJobOtsDetailArray []GetBackupJobsJobOtsDetailInput
+
+func (GetBackupJobsJobOtsDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupJobsJobOtsDetail)(nil)).Elem()
+}
+
+func (i GetBackupJobsJobOtsDetailArray) ToGetBackupJobsJobOtsDetailArrayOutput() GetBackupJobsJobOtsDetailArrayOutput {
+	return i.ToGetBackupJobsJobOtsDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupJobsJobOtsDetailArray) ToGetBackupJobsJobOtsDetailArrayOutputWithContext(ctx context.Context) GetBackupJobsJobOtsDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupJobsJobOtsDetailArrayOutput)
+}
+
+type GetBackupJobsJobOtsDetailOutput struct{ *pulumi.OutputState }
+
+func (GetBackupJobsJobOtsDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupJobsJobOtsDetail)(nil)).Elem()
+}
+
+func (o GetBackupJobsJobOtsDetailOutput) ToGetBackupJobsJobOtsDetailOutput() GetBackupJobsJobOtsDetailOutput {
+	return o
+}
+
+func (o GetBackupJobsJobOtsDetailOutput) ToGetBackupJobsJobOtsDetailOutputWithContext(ctx context.Context) GetBackupJobsJobOtsDetailOutput {
+	return o
+}
+
+func (o GetBackupJobsJobOtsDetailOutput) TableNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackupJobsJobOtsDetail) []string { return v.TableNames }).(pulumi.StringArrayOutput)
+}
+
+type GetBackupJobsJobOtsDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupJobsJobOtsDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupJobsJobOtsDetail)(nil)).Elem()
+}
+
+func (o GetBackupJobsJobOtsDetailArrayOutput) ToGetBackupJobsJobOtsDetailArrayOutput() GetBackupJobsJobOtsDetailArrayOutput {
+	return o
+}
+
+func (o GetBackupJobsJobOtsDetailArrayOutput) ToGetBackupJobsJobOtsDetailArrayOutputWithContext(ctx context.Context) GetBackupJobsJobOtsDetailArrayOutput {
+	return o
+}
+
+func (o GetBackupJobsJobOtsDetailArrayOutput) Index(i pulumi.IntInput) GetBackupJobsJobOtsDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupJobsJobOtsDetail {
+		return vs[0].([]GetBackupJobsJobOtsDetail)[vs[1].(int)]
+	}).(GetBackupJobsJobOtsDetailOutput)
 }
 
 type GetEcsBackupClientsClient struct {
@@ -1628,6 +1958,573 @@ func (o GetOssBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetOssBackupP
 	}).(GetOssBackupPlansPlanOutput)
 }
 
+type GetOtsBackupPlansPlan struct {
+	// The Backup type. Valid values: `COMPLETE`.
+	BackupType string `pulumi:"backupType"`
+	// The creation time of the backup plan. UNIX time in seconds.
+	CreatedTime string `pulumi:"createdTime"`
+	// Whether to be suspended. Valid values: `true`, `false`.
+	Disabled bool `pulumi:"disabled"`
+	// The ID of ots backup plan.
+	Id string `pulumi:"id"`
+	// The ID of ots backup plan.
+	OtsBackupPlanId string `pulumi:"otsBackupPlanId"`
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+	OtsBackupPlanName string                           `pulumi:"otsBackupPlanName"`
+	OtsDetails        []GetOtsBackupPlansPlanOtsDetail `pulumi:"otsDetails"`
+	// The Backup retention days, the minimum is 1.
+	Retention string `pulumi:"retention"`
+	// The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	Schedule string `pulumi:"schedule"`
+	// The type of the data source.
+	SourceType string `pulumi:"sourceType"`
+	// The update time of the backup plan. UNIX time in seconds.
+	// *ots_detail - The details about the Tablestore instance.
+	UpdatedTime string `pulumi:"updatedTime"`
+	// The ID of backup vault.
+	VaultId string `pulumi:"vaultId"`
+}
+
+// GetOtsBackupPlansPlanInput is an input type that accepts GetOtsBackupPlansPlanArgs and GetOtsBackupPlansPlanOutput values.
+// You can construct a concrete instance of `GetOtsBackupPlansPlanInput` via:
+//
+//          GetOtsBackupPlansPlanArgs{...}
+type GetOtsBackupPlansPlanInput interface {
+	pulumi.Input
+
+	ToGetOtsBackupPlansPlanOutput() GetOtsBackupPlansPlanOutput
+	ToGetOtsBackupPlansPlanOutputWithContext(context.Context) GetOtsBackupPlansPlanOutput
+}
+
+type GetOtsBackupPlansPlanArgs struct {
+	// The Backup type. Valid values: `COMPLETE`.
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The creation time of the backup plan. UNIX time in seconds.
+	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
+	// Whether to be suspended. Valid values: `true`, `false`.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// The ID of ots backup plan.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of ots backup plan.
+	OtsBackupPlanId pulumi.StringInput `pulumi:"otsBackupPlanId"`
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+	OtsBackupPlanName pulumi.StringInput                       `pulumi:"otsBackupPlanName"`
+	OtsDetails        GetOtsBackupPlansPlanOtsDetailArrayInput `pulumi:"otsDetails"`
+	// The Backup retention days, the minimum is 1.
+	Retention pulumi.StringInput `pulumi:"retention"`
+	// The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+	// The type of the data source.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The update time of the backup plan. UNIX time in seconds.
+	// *ots_detail - The details about the Tablestore instance.
+	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
+	// The ID of backup vault.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
+}
+
+func (GetOtsBackupPlansPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOtsBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetOtsBackupPlansPlanArgs) ToGetOtsBackupPlansPlanOutput() GetOtsBackupPlansPlanOutput {
+	return i.ToGetOtsBackupPlansPlanOutputWithContext(context.Background())
+}
+
+func (i GetOtsBackupPlansPlanArgs) ToGetOtsBackupPlansPlanOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOtsBackupPlansPlanOutput)
+}
+
+// GetOtsBackupPlansPlanArrayInput is an input type that accepts GetOtsBackupPlansPlanArray and GetOtsBackupPlansPlanArrayOutput values.
+// You can construct a concrete instance of `GetOtsBackupPlansPlanArrayInput` via:
+//
+//          GetOtsBackupPlansPlanArray{ GetOtsBackupPlansPlanArgs{...} }
+type GetOtsBackupPlansPlanArrayInput interface {
+	pulumi.Input
+
+	ToGetOtsBackupPlansPlanArrayOutput() GetOtsBackupPlansPlanArrayOutput
+	ToGetOtsBackupPlansPlanArrayOutputWithContext(context.Context) GetOtsBackupPlansPlanArrayOutput
+}
+
+type GetOtsBackupPlansPlanArray []GetOtsBackupPlansPlanInput
+
+func (GetOtsBackupPlansPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOtsBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetOtsBackupPlansPlanArray) ToGetOtsBackupPlansPlanArrayOutput() GetOtsBackupPlansPlanArrayOutput {
+	return i.ToGetOtsBackupPlansPlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetOtsBackupPlansPlanArray) ToGetOtsBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOtsBackupPlansPlanArrayOutput)
+}
+
+type GetOtsBackupPlansPlanOutput struct{ *pulumi.OutputState }
+
+func (GetOtsBackupPlansPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOtsBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetOtsBackupPlansPlanOutput) ToGetOtsBackupPlansPlanOutput() GetOtsBackupPlansPlanOutput {
+	return o
+}
+
+func (o GetOtsBackupPlansPlanOutput) ToGetOtsBackupPlansPlanOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOutput {
+	return o
+}
+
+// The Backup type. Valid values: `COMPLETE`.
+func (o GetOtsBackupPlansPlanOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The creation time of the backup plan. UNIX time in seconds.
+func (o GetOtsBackupPlansPlanOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
+// Whether to be suspended. Valid values: `true`, `false`.
+func (o GetOtsBackupPlansPlanOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The ID of ots backup plan.
+func (o GetOtsBackupPlansPlanOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of ots backup plan.
+func (o GetOtsBackupPlansPlanOutput) OtsBackupPlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.OtsBackupPlanId }).(pulumi.StringOutput)
+}
+
+// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+func (o GetOtsBackupPlansPlanOutput) OtsBackupPlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.OtsBackupPlanName }).(pulumi.StringOutput)
+}
+
+func (o GetOtsBackupPlansPlanOutput) OtsDetails() GetOtsBackupPlansPlanOtsDetailArrayOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) []GetOtsBackupPlansPlanOtsDetail { return v.OtsDetails }).(GetOtsBackupPlansPlanOtsDetailArrayOutput)
+}
+
+// The Backup retention days, the minimum is 1.
+func (o GetOtsBackupPlansPlanOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+// The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+func (o GetOtsBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The type of the data source.
+func (o GetOtsBackupPlansPlanOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The update time of the backup plan. UNIX time in seconds.
+// *ots_detail - The details about the Tablestore instance.
+func (o GetOtsBackupPlansPlanOutput) UpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.UpdatedTime }).(pulumi.StringOutput)
+}
+
+// The ID of backup vault.
+func (o GetOtsBackupPlansPlanOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.VaultId }).(pulumi.StringOutput)
+}
+
+type GetOtsBackupPlansPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOtsBackupPlansPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOtsBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetOtsBackupPlansPlanArrayOutput) ToGetOtsBackupPlansPlanArrayOutput() GetOtsBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetOtsBackupPlansPlanArrayOutput) ToGetOtsBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetOtsBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetOtsBackupPlansPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOtsBackupPlansPlan {
+		return vs[0].([]GetOtsBackupPlansPlan)[vs[1].(int)]
+	}).(GetOtsBackupPlansPlanOutput)
+}
+
+type GetOtsBackupPlansPlanOtsDetail struct {
+	TableNames []string `pulumi:"tableNames"`
+}
+
+// GetOtsBackupPlansPlanOtsDetailInput is an input type that accepts GetOtsBackupPlansPlanOtsDetailArgs and GetOtsBackupPlansPlanOtsDetailOutput values.
+// You can construct a concrete instance of `GetOtsBackupPlansPlanOtsDetailInput` via:
+//
+//          GetOtsBackupPlansPlanOtsDetailArgs{...}
+type GetOtsBackupPlansPlanOtsDetailInput interface {
+	pulumi.Input
+
+	ToGetOtsBackupPlansPlanOtsDetailOutput() GetOtsBackupPlansPlanOtsDetailOutput
+	ToGetOtsBackupPlansPlanOtsDetailOutputWithContext(context.Context) GetOtsBackupPlansPlanOtsDetailOutput
+}
+
+type GetOtsBackupPlansPlanOtsDetailArgs struct {
+	TableNames pulumi.StringArrayInput `pulumi:"tableNames"`
+}
+
+func (GetOtsBackupPlansPlanOtsDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOtsBackupPlansPlanOtsDetail)(nil)).Elem()
+}
+
+func (i GetOtsBackupPlansPlanOtsDetailArgs) ToGetOtsBackupPlansPlanOtsDetailOutput() GetOtsBackupPlansPlanOtsDetailOutput {
+	return i.ToGetOtsBackupPlansPlanOtsDetailOutputWithContext(context.Background())
+}
+
+func (i GetOtsBackupPlansPlanOtsDetailArgs) ToGetOtsBackupPlansPlanOtsDetailOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOtsDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOtsBackupPlansPlanOtsDetailOutput)
+}
+
+// GetOtsBackupPlansPlanOtsDetailArrayInput is an input type that accepts GetOtsBackupPlansPlanOtsDetailArray and GetOtsBackupPlansPlanOtsDetailArrayOutput values.
+// You can construct a concrete instance of `GetOtsBackupPlansPlanOtsDetailArrayInput` via:
+//
+//          GetOtsBackupPlansPlanOtsDetailArray{ GetOtsBackupPlansPlanOtsDetailArgs{...} }
+type GetOtsBackupPlansPlanOtsDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetOtsBackupPlansPlanOtsDetailArrayOutput() GetOtsBackupPlansPlanOtsDetailArrayOutput
+	ToGetOtsBackupPlansPlanOtsDetailArrayOutputWithContext(context.Context) GetOtsBackupPlansPlanOtsDetailArrayOutput
+}
+
+type GetOtsBackupPlansPlanOtsDetailArray []GetOtsBackupPlansPlanOtsDetailInput
+
+func (GetOtsBackupPlansPlanOtsDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOtsBackupPlansPlanOtsDetail)(nil)).Elem()
+}
+
+func (i GetOtsBackupPlansPlanOtsDetailArray) ToGetOtsBackupPlansPlanOtsDetailArrayOutput() GetOtsBackupPlansPlanOtsDetailArrayOutput {
+	return i.ToGetOtsBackupPlansPlanOtsDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOtsBackupPlansPlanOtsDetailArray) ToGetOtsBackupPlansPlanOtsDetailArrayOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOtsDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOtsBackupPlansPlanOtsDetailArrayOutput)
+}
+
+type GetOtsBackupPlansPlanOtsDetailOutput struct{ *pulumi.OutputState }
+
+func (GetOtsBackupPlansPlanOtsDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOtsBackupPlansPlanOtsDetail)(nil)).Elem()
+}
+
+func (o GetOtsBackupPlansPlanOtsDetailOutput) ToGetOtsBackupPlansPlanOtsDetailOutput() GetOtsBackupPlansPlanOtsDetailOutput {
+	return o
+}
+
+func (o GetOtsBackupPlansPlanOtsDetailOutput) ToGetOtsBackupPlansPlanOtsDetailOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOtsDetailOutput {
+	return o
+}
+
+func (o GetOtsBackupPlansPlanOtsDetailOutput) TableNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOtsBackupPlansPlanOtsDetail) []string { return v.TableNames }).(pulumi.StringArrayOutput)
+}
+
+type GetOtsBackupPlansPlanOtsDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOtsBackupPlansPlanOtsDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOtsBackupPlansPlanOtsDetail)(nil)).Elem()
+}
+
+func (o GetOtsBackupPlansPlanOtsDetailArrayOutput) ToGetOtsBackupPlansPlanOtsDetailArrayOutput() GetOtsBackupPlansPlanOtsDetailArrayOutput {
+	return o
+}
+
+func (o GetOtsBackupPlansPlanOtsDetailArrayOutput) ToGetOtsBackupPlansPlanOtsDetailArrayOutputWithContext(ctx context.Context) GetOtsBackupPlansPlanOtsDetailArrayOutput {
+	return o
+}
+
+func (o GetOtsBackupPlansPlanOtsDetailArrayOutput) Index(i pulumi.IntInput) GetOtsBackupPlansPlanOtsDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOtsBackupPlansPlanOtsDetail {
+		return vs[0].([]GetOtsBackupPlansPlanOtsDetail)[vs[1].(int)]
+	}).(GetOtsBackupPlansPlanOtsDetailOutput)
+}
+
+type GetOtsSnapshotsSnapshot struct {
+	// The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
+	ActualBytes string `pulumi:"actualBytes"`
+	// The backup type. Valid value: `COMPLETE`, which indicates full backup.
+	BackupType string `pulumi:"backupType"`
+	// The total amount of data. Unit: bytes.
+	BytesTotal string `pulumi:"bytesTotal"`
+	// The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
+	CompleteTime string `pulumi:"completeTime"`
+	// The time when the Table store instance was created. This value is a UNIX timestamp. Unit: seconds.
+	CreateTime string `pulumi:"createTime"`
+	// The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
+	CreatedTime string `pulumi:"createdTime"`
+	// The ID of the backup snapshot.
+	Id string `pulumi:"id"`
+	// The name of the Table store instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The ID of the backup job.
+	JobId string `pulumi:"jobId"`
+	// The hash value of the parent backup snapshot.
+	ParentSnapshotHash string `pulumi:"parentSnapshotHash"`
+	// The time when the backup job ended. This value is a UNIX timestamp. Unit: milliseconds.
+	RangeEnd string `pulumi:"rangeEnd"`
+	// The time when the backup job started. This value is a UNIX timestamp. Unit: milliseconds.
+	RangeStart string `pulumi:"rangeStart"`
+	// The retention period of the backup snapshot.
+	Retention string `pulumi:"retention"`
+	// The hash value of the backup snapshot.
+	SnapshotHash string `pulumi:"snapshotHash"`
+	// The ID of the backup snapshot.
+	SnapshotId string `pulumi:"snapshotId"`
+	// The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
+	SourceType string `pulumi:"sourceType"`
+	// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+	StartTime string `pulumi:"startTime"`
+	// The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
+	Status string `pulumi:"status"`
+	// The name of the table in the Table store instance.
+	TableName string `pulumi:"tableName"`
+	// The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
+	UpdatedTime string `pulumi:"updatedTime"`
+	// The ID of the backup vault that stores the backup snapshot.
+	VaultId string `pulumi:"vaultId"`
+}
+
+// GetOtsSnapshotsSnapshotInput is an input type that accepts GetOtsSnapshotsSnapshotArgs and GetOtsSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetOtsSnapshotsSnapshotInput` via:
+//
+//          GetOtsSnapshotsSnapshotArgs{...}
+type GetOtsSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetOtsSnapshotsSnapshotOutput() GetOtsSnapshotsSnapshotOutput
+	ToGetOtsSnapshotsSnapshotOutputWithContext(context.Context) GetOtsSnapshotsSnapshotOutput
+}
+
+type GetOtsSnapshotsSnapshotArgs struct {
+	// The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
+	ActualBytes pulumi.StringInput `pulumi:"actualBytes"`
+	// The backup type. Valid value: `COMPLETE`, which indicates full backup.
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The total amount of data. Unit: bytes.
+	BytesTotal pulumi.StringInput `pulumi:"bytesTotal"`
+	// The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
+	CompleteTime pulumi.StringInput `pulumi:"completeTime"`
+	// The time when the Table store instance was created. This value is a UNIX timestamp. Unit: seconds.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
+	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
+	// The ID of the backup snapshot.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the Table store instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The ID of the backup job.
+	JobId pulumi.StringInput `pulumi:"jobId"`
+	// The hash value of the parent backup snapshot.
+	ParentSnapshotHash pulumi.StringInput `pulumi:"parentSnapshotHash"`
+	// The time when the backup job ended. This value is a UNIX timestamp. Unit: milliseconds.
+	RangeEnd pulumi.StringInput `pulumi:"rangeEnd"`
+	// The time when the backup job started. This value is a UNIX timestamp. Unit: milliseconds.
+	RangeStart pulumi.StringInput `pulumi:"rangeStart"`
+	// The retention period of the backup snapshot.
+	Retention pulumi.StringInput `pulumi:"retention"`
+	// The hash value of the backup snapshot.
+	SnapshotHash pulumi.StringInput `pulumi:"snapshotHash"`
+	// The ID of the backup snapshot.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The name of the table in the Table store instance.
+	TableName pulumi.StringInput `pulumi:"tableName"`
+	// The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
+	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
+	// The ID of the backup vault that stores the backup snapshot.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
+}
+
+func (GetOtsSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOtsSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetOtsSnapshotsSnapshotArgs) ToGetOtsSnapshotsSnapshotOutput() GetOtsSnapshotsSnapshotOutput {
+	return i.ToGetOtsSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetOtsSnapshotsSnapshotArgs) ToGetOtsSnapshotsSnapshotOutputWithContext(ctx context.Context) GetOtsSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOtsSnapshotsSnapshotOutput)
+}
+
+// GetOtsSnapshotsSnapshotArrayInput is an input type that accepts GetOtsSnapshotsSnapshotArray and GetOtsSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetOtsSnapshotsSnapshotArrayInput` via:
+//
+//          GetOtsSnapshotsSnapshotArray{ GetOtsSnapshotsSnapshotArgs{...} }
+type GetOtsSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetOtsSnapshotsSnapshotArrayOutput() GetOtsSnapshotsSnapshotArrayOutput
+	ToGetOtsSnapshotsSnapshotArrayOutputWithContext(context.Context) GetOtsSnapshotsSnapshotArrayOutput
+}
+
+type GetOtsSnapshotsSnapshotArray []GetOtsSnapshotsSnapshotInput
+
+func (GetOtsSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOtsSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetOtsSnapshotsSnapshotArray) ToGetOtsSnapshotsSnapshotArrayOutput() GetOtsSnapshotsSnapshotArrayOutput {
+	return i.ToGetOtsSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetOtsSnapshotsSnapshotArray) ToGetOtsSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetOtsSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOtsSnapshotsSnapshotArrayOutput)
+}
+
+type GetOtsSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetOtsSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOtsSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetOtsSnapshotsSnapshotOutput) ToGetOtsSnapshotsSnapshotOutput() GetOtsSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetOtsSnapshotsSnapshotOutput) ToGetOtsSnapshotsSnapshotOutputWithContext(ctx context.Context) GetOtsSnapshotsSnapshotOutput {
+	return o
+}
+
+// The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
+func (o GetOtsSnapshotsSnapshotOutput) ActualBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.ActualBytes }).(pulumi.StringOutput)
+}
+
+// The backup type. Valid value: `COMPLETE`, which indicates full backup.
+func (o GetOtsSnapshotsSnapshotOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The total amount of data. Unit: bytes.
+func (o GetOtsSnapshotsSnapshotOutput) BytesTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.BytesTotal }).(pulumi.StringOutput)
+}
+
+// The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
+func (o GetOtsSnapshotsSnapshotOutput) CompleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.CompleteTime }).(pulumi.StringOutput)
+}
+
+// The time when the Table store instance was created. This value is a UNIX timestamp. Unit: seconds.
+func (o GetOtsSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
+func (o GetOtsSnapshotsSnapshotOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
+// The ID of the backup snapshot.
+func (o GetOtsSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the Table store instance.
+func (o GetOtsSnapshotsSnapshotOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The ID of the backup job.
+func (o GetOtsSnapshotsSnapshotOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// The hash value of the parent backup snapshot.
+func (o GetOtsSnapshotsSnapshotOutput) ParentSnapshotHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.ParentSnapshotHash }).(pulumi.StringOutput)
+}
+
+// The time when the backup job ended. This value is a UNIX timestamp. Unit: milliseconds.
+func (o GetOtsSnapshotsSnapshotOutput) RangeEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.RangeEnd }).(pulumi.StringOutput)
+}
+
+// The time when the backup job started. This value is a UNIX timestamp. Unit: milliseconds.
+func (o GetOtsSnapshotsSnapshotOutput) RangeStart() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.RangeStart }).(pulumi.StringOutput)
+}
+
+// The retention period of the backup snapshot.
+func (o GetOtsSnapshotsSnapshotOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+// The hash value of the backup snapshot.
+func (o GetOtsSnapshotsSnapshotOutput) SnapshotHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.SnapshotHash }).(pulumi.StringOutput)
+}
+
+// The ID of the backup snapshot.
+func (o GetOtsSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
+func (o GetOtsSnapshotsSnapshotOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+func (o GetOtsSnapshotsSnapshotOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
+func (o GetOtsSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of the table in the Table store instance.
+func (o GetOtsSnapshotsSnapshotOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+// The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
+func (o GetOtsSnapshotsSnapshotOutput) UpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.UpdatedTime }).(pulumi.StringOutput)
+}
+
+// The ID of the backup vault that stores the backup snapshot.
+func (o GetOtsSnapshotsSnapshotOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOtsSnapshotsSnapshot) string { return v.VaultId }).(pulumi.StringOutput)
+}
+
+type GetOtsSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOtsSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOtsSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetOtsSnapshotsSnapshotArrayOutput) ToGetOtsSnapshotsSnapshotArrayOutput() GetOtsSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetOtsSnapshotsSnapshotArrayOutput) ToGetOtsSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetOtsSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetOtsSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetOtsSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOtsSnapshotsSnapshot {
+		return vs[0].([]GetOtsSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetOtsSnapshotsSnapshotOutput)
+}
+
 type GetReplicationVaultRegionsRegion struct {
 	// The ID of the replication region.
 	ReplicationRegionId string `pulumi:"replicationRegionId"`
@@ -1762,7 +2659,7 @@ type GetRestoreJobsJob struct {
 	SnapshotHash string `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
 	SourceType string `pulumi:"sourceType"`
 	// The start time of restore job. Unix Time in Seconds.
 	StartTime string `pulumi:"startTime"`
@@ -1836,7 +2733,7 @@ type GetRestoreJobsJobArgs struct {
 	SnapshotHash pulumi.StringInput `pulumi:"snapshotHash"`
 	// The ID of Snapshot.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
 	// The start time of restore job. Unix Time in Seconds.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
@@ -2006,7 +2903,7 @@ func (o GetRestoreJobsJobOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
 func (o GetRestoreJobsJobOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRestoreJobsJob) string { return v.SourceType }).(pulumi.StringOutput)
 }
@@ -2904,7 +3801,7 @@ type GetVaultsVault struct {
 	// Whether to enable the backup search function.
 	SearchEnabled bool     `pulumi:"searchEnabled"`
 	SourceTypes   []string `pulumi:"sourceTypes"`
-	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status string `pulumi:"status"`
 	// Backup vault storage usage. The unit is Byte.
 	StorageSize string `pulumi:"storageSize"`
@@ -2967,7 +3864,7 @@ type GetVaultsVaultArgs struct {
 	// Whether to enable the backup search function.
 	SearchEnabled pulumi.BoolInput        `pulumi:"searchEnabled"`
 	SourceTypes   pulumi.StringArrayInput `pulumi:"sourceTypes"`
-	// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Backup vault storage usage. The unit is Byte.
 	StorageSize pulumi.StringInput `pulumi:"storageSize"`
@@ -3120,7 +4017,7 @@ func (o GetVaultsVaultOutput) SourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVaultsVault) []string { return v.SourceTypes }).(pulumi.StringArrayOutput)
 }
 
-// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 func (o GetVaultsVaultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -3181,12 +4078,18 @@ func (o GetVaultsVaultArrayOutput) Index(i pulumi.IntInput) GetVaultsVaultOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanOtsDetailInput)(nil)).Elem(), OtsBackupPlanOtsDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanOtsDetailArrayInput)(nil)).Elem(), OtsBackupPlanOtsDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleInput)(nil)).Elem(), OtsBackupPlanRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleArrayInput)(nil)).Elem(), OtsBackupPlanRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailInput)(nil)).Elem(), ServerBackupPlanDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailArrayInput)(nil)).Elem(), ServerBackupPlanDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsFilterInput)(nil)).Elem(), GetBackupJobsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsFilterArrayInput)(nil)).Elem(), GetBackupJobsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsJobInput)(nil)).Elem(), GetBackupJobsJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsJobArrayInput)(nil)).Elem(), GetBackupJobsJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsJobOtsDetailInput)(nil)).Elem(), GetBackupJobsJobOtsDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsJobOtsDetailArrayInput)(nil)).Elem(), GetBackupJobsJobOtsDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupClientsClientInput)(nil)).Elem(), GetEcsBackupClientsClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupClientsClientArrayInput)(nil)).Elem(), GetEcsBackupClientsClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupPlansPlanInput)(nil)).Elem(), GetEcsBackupPlansPlanArgs{})
@@ -3195,6 +4098,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasBackupPlansPlanArrayInput)(nil)).Elem(), GetNasBackupPlansPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOssBackupPlansPlanInput)(nil)).Elem(), GetOssBackupPlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOssBackupPlansPlanArrayInput)(nil)).Elem(), GetOssBackupPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOtsBackupPlansPlanInput)(nil)).Elem(), GetOtsBackupPlansPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOtsBackupPlansPlanArrayInput)(nil)).Elem(), GetOtsBackupPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOtsBackupPlansPlanOtsDetailInput)(nil)).Elem(), GetOtsBackupPlansPlanOtsDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOtsBackupPlansPlanOtsDetailArrayInput)(nil)).Elem(), GetOtsBackupPlansPlanOtsDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOtsSnapshotsSnapshotInput)(nil)).Elem(), GetOtsSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOtsSnapshotsSnapshotArrayInput)(nil)).Elem(), GetOtsSnapshotsSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationVaultRegionsRegionInput)(nil)).Elem(), GetReplicationVaultRegionsRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationVaultRegionsRegionArrayInput)(nil)).Elem(), GetReplicationVaultRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRestoreJobsJobInput)(nil)).Elem(), GetRestoreJobsJobArgs{})
@@ -3209,12 +4118,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotArrayInput)(nil)).Elem(), GetSnapshotsSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVaultsVaultInput)(nil)).Elem(), GetVaultsVaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVaultsVaultArrayInput)(nil)).Elem(), GetVaultsVaultArray{})
+	pulumi.RegisterOutputType(OtsBackupPlanOtsDetailOutput{})
+	pulumi.RegisterOutputType(OtsBackupPlanOtsDetailArrayOutput{})
+	pulumi.RegisterOutputType(OtsBackupPlanRuleOutput{})
+	pulumi.RegisterOutputType(OtsBackupPlanRuleArrayOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanDetailOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsFilterOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsJobOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsJobArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupJobsJobOtsDetailOutput{})
+	pulumi.RegisterOutputType(GetBackupJobsJobOtsDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupClientsClientOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupClientsClientArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupPlansPlanOutput{})
@@ -3223,6 +4138,12 @@ func init() {
 	pulumi.RegisterOutputType(GetNasBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetOssBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetOssBackupPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetOtsBackupPlansPlanOutput{})
+	pulumi.RegisterOutputType(GetOtsBackupPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetOtsBackupPlansPlanOtsDetailOutput{})
+	pulumi.RegisterOutputType(GetOtsBackupPlansPlanOtsDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetOtsSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetOtsSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetReplicationVaultRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetReplicationVaultRegionsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetRestoreJobsJobOutput{})

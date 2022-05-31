@@ -102,6 +102,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("dcdn")]
         public Input<string>? Dcdn { get; set; }
 
+        [Input("ddosbasic")]
+        public Input<string>? Ddosbasic { get; set; }
+
         [Input("ddosbgp")]
         public Input<string>? Ddosbgp { get; set; }
 
@@ -315,11 +318,17 @@ namespace Pulumi.AliCloud.Inputs
         [Input("slb")]
         public Input<string>? Slb { get; set; }
 
+        [Input("smartag")]
+        public Input<string>? Smartag { get; set; }
+
         [Input("sts")]
         public Input<string>? Sts { get; set; }
 
         [Input("swas")]
         public Input<string>? Swas { get; set; }
+
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
 
         [Input("vod")]
         public Input<string>? Vod { get; set; }

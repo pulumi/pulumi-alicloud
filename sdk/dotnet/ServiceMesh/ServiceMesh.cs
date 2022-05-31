@@ -28,10 +28,28 @@ namespace Pulumi.AliCloud.ServiceMesh
     public partial class ServiceMesh : Pulumi.CustomResource
     {
         /// <summary>
+        /// The array of the cluster ids.
+        /// </summary>
+        [Output("clusterIds")]
+        public Output<ImmutableArray<string>> ClusterIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// </summary>
+        [Output("clusterSpec")]
+        public Output<string?> ClusterSpec { get; private set; } = null!;
+
+        /// <summary>
         /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
         /// </summary>
         [Output("edition")]
         public Output<string> Edition { get; private set; } = null!;
+
+        /// <summary>
+        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// </summary>
+        [Output("extraConfiguration")]
+        public Output<Outputs.ServiceMeshExtraConfiguration> ExtraConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// This parameter is used for resource destroy. Default value is `false`.
@@ -121,11 +139,35 @@ namespace Pulumi.AliCloud.ServiceMesh
 
     public sealed class ServiceMeshArgs : Pulumi.ResourceArgs
     {
+        [Input("clusterIds")]
+        private InputList<string>? _clusterIds;
+
+        /// <summary>
+        /// The array of the cluster ids.
+        /// </summary>
+        public InputList<string> ClusterIds
+        {
+            get => _clusterIds ?? (_clusterIds = new InputList<string>());
+            set => _clusterIds = value;
+        }
+
+        /// <summary>
+        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// </summary>
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
         /// <summary>
         /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
+
+        /// <summary>
+        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// </summary>
+        [Input("extraConfiguration")]
+        public Input<Inputs.ServiceMeshExtraConfigurationArgs>? ExtraConfiguration { get; set; }
 
         /// <summary>
         /// This parameter is used for resource destroy. Default value is `false`.
@@ -170,11 +212,35 @@ namespace Pulumi.AliCloud.ServiceMesh
 
     public sealed class ServiceMeshState : Pulumi.ResourceArgs
     {
+        [Input("clusterIds")]
+        private InputList<string>? _clusterIds;
+
+        /// <summary>
+        /// The array of the cluster ids.
+        /// </summary>
+        public InputList<string> ClusterIds
+        {
+            get => _clusterIds ?? (_clusterIds = new InputList<string>());
+            set => _clusterIds = value;
+        }
+
+        /// <summary>
+        /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        /// </summary>
+        [Input("clusterSpec")]
+        public Input<string>? ClusterSpec { get; set; }
+
         /// <summary>
         /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
+
+        /// <summary>
+        /// The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        /// </summary>
+        [Input("extraConfiguration")]
+        public Input<Inputs.ServiceMeshExtraConfigurationGetArgs>? ExtraConfiguration { get; set; }
 
         /// <summary>
         /// This parameter is used for resource destroy. Default value is `false`.

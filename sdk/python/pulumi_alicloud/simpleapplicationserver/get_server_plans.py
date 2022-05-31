@@ -21,7 +21,7 @@ class GetServerPlansResult:
     """
     A collection of values returned by getServerPlans.
     """
-    def __init__(__self__, bandwidth=None, core=None, disk_size=None, flow=None, id=None, ids=None, memory=None, output_file=None, plans=None):
+    def __init__(__self__, bandwidth=None, core=None, disk_size=None, flow=None, id=None, ids=None, memory=None, output_file=None, plans=None, platform=None):
         if bandwidth and not isinstance(bandwidth, int):
             raise TypeError("Expected argument 'bandwidth' to be a int")
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -49,6 +49,9 @@ class GetServerPlansResult:
         if plans and not isinstance(plans, list):
             raise TypeError("Expected argument 'plans' to be a list")
         pulumi.set(__self__, "plans", plans)
+        if platform and not isinstance(platform, str):
+            raise TypeError("Expected argument 'platform' to be a str")
+        pulumi.set(__self__, "platform", platform)
 
     @property
     @pulumi.getter
@@ -98,6 +101,11 @@ class GetServerPlansResult:
     def plans(self) -> Sequence['outputs.GetServerPlansPlanResult']:
         return pulumi.get(self, "plans")
 
+    @property
+    @pulumi.getter
+    def platform(self) -> Optional[str]:
+        return pulumi.get(self, "platform")
+
 
 class AwaitableGetServerPlansResult(GetServerPlansResult):
     # pylint: disable=using-constant-test
@@ -113,7 +121,8 @@ class AwaitableGetServerPlansResult(GetServerPlansResult):
             ids=self.ids,
             memory=self.memory,
             output_file=self.output_file,
-            plans=self.plans)
+            plans=self.plans,
+            platform=self.platform)
 
 
 def get_server_plans(bandwidth: Optional[int] = None,
@@ -123,6 +132,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
                      ids: Optional[Sequence[str]] = None,
                      memory: Optional[int] = None,
                      output_file: Optional[str] = None,
+                     platform: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerPlansResult:
     """
     This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
@@ -152,6 +162,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
     :param int flow: The monthly data transfer quota. Unit: GB.
     :param Sequence[str] ids: A list of Instance Plan IDs.
     :param int memory: The memory size. Unit: GB.
+    :param str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
     __args__ = dict()
     __args__['bandwidth'] = bandwidth
@@ -161,6 +172,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
     __args__['ids'] = ids
     __args__['memory'] = memory
     __args__['outputFile'] = output_file
+    __args__['platform'] = platform
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -176,7 +188,8 @@ def get_server_plans(bandwidth: Optional[int] = None,
         ids=__ret__.ids,
         memory=__ret__.memory,
         output_file=__ret__.output_file,
-        plans=__ret__.plans)
+        plans=__ret__.plans,
+        platform=__ret__.platform)
 
 
 @_utilities.lift_output_func(get_server_plans)
@@ -187,6 +200,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             memory: Optional[pulumi.Input[Optional[int]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            platform: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerPlansResult]:
     """
     This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
@@ -216,5 +230,6 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
     :param int flow: The monthly data transfer quota. Unit: GB.
     :param Sequence[str] ids: A list of Instance Plan IDs.
     :param int memory: The memory size. Unit: GB.
+    :param str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
     ...

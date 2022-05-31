@@ -136,6 +136,9 @@ export class DedicatedHost extends pulumi.CustomResource {
      * The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The subscription duration of the host. Valid values: 
@@ -267,6 +270,9 @@ export interface DedicatedHostState {
      * The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The subscription duration of the host. Valid values: 
@@ -325,6 +331,9 @@ export interface DedicatedHostArgs {
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
      */
     period?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The subscription duration of the host. Valid values: 

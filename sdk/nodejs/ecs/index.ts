@@ -18,11 +18,14 @@ export * from "./ecsDeploymentSet";
 export * from "./ecsDisk";
 export * from "./ecsDiskAttachment";
 export * from "./ecsImageComponent";
+export * from "./ecsImagePipeline";
+export * from "./ecsInvocation";
 export * from "./ecsKeyPair";
 export * from "./ecsKeyPairAttachment";
 export * from "./ecsLaunchTemplate";
 export * from "./ecsNetworkInterface";
 export * from "./ecsNetworkInterfaceAttachment";
+export * from "./ecsNetworkInterfacePermission";
 export * from "./ecsPrefixList";
 export * from "./ecsSessionManagerStatus";
 export * from "./ecsSnapshot";
@@ -38,8 +41,11 @@ export * from "./getEcsDedicatedHostClusters";
 export * from "./getEcsDeploymentSets";
 export * from "./getEcsDisks";
 export * from "./getEcsImageComponents";
+export * from "./getEcsImagePipeline";
+export * from "./getEcsInvocations";
 export * from "./getEcsKeyPairs";
 export * from "./getEcsLaunchTemplates";
+export * from "./getEcsNetworkInterfacePermissions";
 export * from "./getEcsNetworkInterfaces";
 export * from "./getEcsPrefixLists";
 export * from "./getEcsSnapshotGroups";
@@ -88,11 +94,14 @@ import { EcsDeploymentSet } from "./ecsDeploymentSet";
 import { EcsDisk } from "./ecsDisk";
 import { EcsDiskAttachment } from "./ecsDiskAttachment";
 import { EcsImageComponent } from "./ecsImageComponent";
+import { EcsImagePipeline } from "./ecsImagePipeline";
+import { EcsInvocation } from "./ecsInvocation";
 import { EcsKeyPair } from "./ecsKeyPair";
 import { EcsKeyPairAttachment } from "./ecsKeyPairAttachment";
 import { EcsLaunchTemplate } from "./ecsLaunchTemplate";
 import { EcsNetworkInterface } from "./ecsNetworkInterface";
 import { EcsNetworkInterfaceAttachment } from "./ecsNetworkInterfaceAttachment";
+import { EcsNetworkInterfacePermission } from "./ecsNetworkInterfacePermission";
 import { EcsPrefixList } from "./ecsPrefixList";
 import { EcsSessionManagerStatus } from "./ecsSessionManagerStatus";
 import { EcsSnapshot } from "./ecsSnapshot";
@@ -147,6 +156,10 @@ const _module = {
                 return new EcsDiskAttachment(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsImageComponent:EcsImageComponent":
                 return new EcsImageComponent(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsImagePipeline:EcsImagePipeline":
+                return new EcsImagePipeline(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsInvocation:EcsInvocation":
+                return new EcsInvocation(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsKeyPair:EcsKeyPair":
                 return new EcsKeyPair(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsKeyPairAttachment:EcsKeyPairAttachment":
@@ -157,6 +170,8 @@ const _module = {
                 return new EcsNetworkInterface(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment":
                 return new EcsNetworkInterfaceAttachment(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission":
+                return new EcsNetworkInterfacePermission(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsPrefixList:EcsPrefixList":
                 return new EcsPrefixList(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus":
@@ -221,11 +236,14 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDeploymentSet", _modul
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDisk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDiskAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsImageComponent", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsImagePipeline", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsInvocation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPair", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPairAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsLaunchTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterface", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterfaceAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterfacePermission", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsPrefixList", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSessionManagerStatus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshot", _module)

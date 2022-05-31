@@ -100,13 +100,15 @@ type Instance struct {
 
 	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config pulumi.StringOutput `pulumi:"config"`
-	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+	// - 4: eip/vpc instance
+	// - 5: vpc instance.
 	DeployType pulumi.IntOutput `pulumi:"deployType"`
-	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
+	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntOutput `pulumi:"diskType"`
-	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntOutput `pulumi:"eipMax"`
 	// The EndPoint to access the kafka instance.
 	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
@@ -124,7 +126,7 @@ type Instance struct {
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota pulumi.IntOutput `pulumi:"topicQuota"`
 	// The ID of attaching VPC to instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -183,13 +185,15 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config *string `pulumi:"config"`
-	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+	// - 4: eip/vpc instance
+	// - 5: vpc instance.
 	DeployType *int `pulumi:"deployType"`
-	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
+	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
 	DiskSize *int `pulumi:"diskSize"`
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType *int `pulumi:"diskType"`
-	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax *int `pulumi:"eipMax"`
 	// The EndPoint to access the kafka instance.
 	EndPoint *string `pulumi:"endPoint"`
@@ -207,7 +211,7 @@ type instanceState struct {
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota *int `pulumi:"topicQuota"`
 	// The ID of attaching VPC to instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -220,13 +224,15 @@ type instanceState struct {
 type InstanceState struct {
 	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config pulumi.StringPtrInput
-	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+	// - 4: eip/vpc instance
+	// - 5: vpc instance.
 	DeployType pulumi.IntPtrInput
-	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
+	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
 	DiskSize pulumi.IntPtrInput
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntPtrInput
-	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntPtrInput
 	// The EndPoint to access the kafka instance.
 	EndPoint pulumi.StringPtrInput
@@ -244,7 +250,7 @@ type InstanceState struct {
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota pulumi.IntPtrInput
 	// The ID of attaching VPC to instance.
 	VpcId pulumi.StringPtrInput
@@ -261,13 +267,15 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config *string `pulumi:"config"`
-	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+	// - 4: eip/vpc instance
+	// - 5: vpc instance.
 	DeployType int `pulumi:"deployType"`
-	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
+	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
 	DiskSize int `pulumi:"diskSize"`
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType int `pulumi:"diskType"`
-	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax *int `pulumi:"eipMax"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax int `pulumi:"ioMax"`
@@ -283,7 +291,7 @@ type instanceArgs struct {
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota int `pulumi:"topicQuota"`
 	// The ID of attaching vswitch to instance.
 	VswitchId string `pulumi:"vswitchId"`
@@ -293,13 +301,15 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
 	Config pulumi.StringPtrInput
-	// The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
+	// The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
+	// - 4: eip/vpc instance
+	// - 5: vpc instance.
 	DeployType pulumi.IntInput
-	// The disk size of the instance. When modify this value, it only support adjust to a greater value.
+	// The disk size of the instance. When modify this value, it only supports adjust to a greater value.
 	DiskSize pulumi.IntInput
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntInput
-	// The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
+	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntInput
@@ -315,7 +325,7 @@ type InstanceArgs struct {
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
+	// The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
 	TopicQuota pulumi.IntInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringInput

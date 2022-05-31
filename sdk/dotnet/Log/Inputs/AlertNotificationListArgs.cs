@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<string>? ServiceUri { get; set; }
 
         /// <summary>
-        /// Notification type. support Email, SMS, DingTalk, MessageCenter.
+        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

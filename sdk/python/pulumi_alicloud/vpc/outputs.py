@@ -27,6 +27,9 @@ __all__ = [
     'GetEnhancedNatAvailableZonesZoneResult',
     'GetForwardEntriesEntryResult',
     'GetHavipsHavipResult',
+    'GetIpsecServersServerResult',
+    'GetIpsecServersServerIkeConfigResult',
+    'GetIpsecServersServerIpsecConfigResult',
     'GetIpv6AddressesAddressResult',
     'GetIpv6EgressRulesRuleResult',
     'GetIpv6GatewaysGatewayResult',
@@ -39,6 +42,7 @@ __all__ = [
     'GetNetworkAclsAclIngressAclEntryResult',
     'GetNetworkAclsAclResourceResult',
     'GetNetworksVpcResult',
+    'GetPbrRouteEntriesEntryResult',
     'GetRouteEntriesEntryResult',
     'GetRouteTablesTableResult',
     'GetRouterInterfacesInterfaceResult',
@@ -1713,6 +1717,346 @@ class GetHavipsHavipResult(dict):
 
 
 @pulumi.output_type
+class GetIpsecServersServerResult(dict):
+    def __init__(__self__, *,
+                 client_ip_pool: str,
+                 create_time: str,
+                 effect_immediately: bool,
+                 id: str,
+                 idaas_instance_id: str,
+                 ike_configs: Sequence['outputs.GetIpsecServersServerIkeConfigResult'],
+                 internet_ip: str,
+                 ipsec_configs: Sequence['outputs.GetIpsecServersServerIpsecConfigResult'],
+                 ipsec_server_id: str,
+                 ipsec_server_name: str,
+                 local_subnet: str,
+                 max_connections: int,
+                 multi_factor_auth_enabled: bool,
+                 online_client_count: int,
+                 psk: str,
+                 psk_enabled: bool,
+                 vpn_gateway_id: str):
+        """
+        :param str client_ip_pool: The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
+        :param str create_time: The creation time of the IPsec server. T represents the delimiter, and Z represents UTC, which is World Standard Time.
+        :param bool effect_immediately: Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
+        :param str id: The ID of the Ipsec Server.
+        :param str idaas_instance_id: The ID of the Identity as a Service (IDaaS) instance.
+        :param Sequence['GetIpsecServersServerIkeConfigArgs'] ike_configs: The configurations of Phase 1 negotiations.
+        :param str internet_ip: The public IP address of the VPN gateway.
+        :param Sequence['GetIpsecServersServerIpsecConfigArgs'] ipsec_configs: The configuration of Phase 2 negotiations.
+        :param str ipsec_server_id: The ID of the IPsec server.
+        :param str ipsec_server_name: The name of the IPsec server.
+        :param str local_subnet: Local network segment: the network segment on The VPC side that needs to be interconnected with the client network segment.
+        :param int max_connections: The number of SSL connections of the VPN gateway. SSL-VPN the number of SSL connections shared with the IPsec server. For example, if the number of SSL connections is 5 and you have three SSL clients connected to the SSL-VPN, you can also use two clients to connect to the IPsec server.
+        :param bool multi_factor_auth_enabled: Whether the two-factor authentication function has been turned on.
+        :param int online_client_count: The number of clients that have connected to the IPsec server.
+        :param str psk: The pre-shared key.
+        :param bool psk_enabled: Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+        :param str vpn_gateway_id: The ID of the VPN gateway.
+        """
+        pulumi.set(__self__, "client_ip_pool", client_ip_pool)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "effect_immediately", effect_immediately)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "idaas_instance_id", idaas_instance_id)
+        pulumi.set(__self__, "ike_configs", ike_configs)
+        pulumi.set(__self__, "internet_ip", internet_ip)
+        pulumi.set(__self__, "ipsec_configs", ipsec_configs)
+        pulumi.set(__self__, "ipsec_server_id", ipsec_server_id)
+        pulumi.set(__self__, "ipsec_server_name", ipsec_server_name)
+        pulumi.set(__self__, "local_subnet", local_subnet)
+        pulumi.set(__self__, "max_connections", max_connections)
+        pulumi.set(__self__, "multi_factor_auth_enabled", multi_factor_auth_enabled)
+        pulumi.set(__self__, "online_client_count", online_client_count)
+        pulumi.set(__self__, "psk", psk)
+        pulumi.set(__self__, "psk_enabled", psk_enabled)
+        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+
+    @property
+    @pulumi.getter(name="clientIpPool")
+    def client_ip_pool(self) -> str:
+        """
+        The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
+        """
+        return pulumi.get(self, "client_ip_pool")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the IPsec server. T represents the delimiter, and Z represents UTC, which is World Standard Time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="effectImmediately")
+    def effect_immediately(self) -> bool:
+        """
+        Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
+        """
+        return pulumi.get(self, "effect_immediately")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ipsec Server.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="idaasInstanceId")
+    def idaas_instance_id(self) -> str:
+        """
+        The ID of the Identity as a Service (IDaaS) instance.
+        """
+        return pulumi.get(self, "idaas_instance_id")
+
+    @property
+    @pulumi.getter(name="ikeConfigs")
+    def ike_configs(self) -> Sequence['outputs.GetIpsecServersServerIkeConfigResult']:
+        """
+        The configurations of Phase 1 negotiations.
+        """
+        return pulumi.get(self, "ike_configs")
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> str:
+        """
+        The public IP address of the VPN gateway.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @property
+    @pulumi.getter(name="ipsecConfigs")
+    def ipsec_configs(self) -> Sequence['outputs.GetIpsecServersServerIpsecConfigResult']:
+        """
+        The configuration of Phase 2 negotiations.
+        """
+        return pulumi.get(self, "ipsec_configs")
+
+    @property
+    @pulumi.getter(name="ipsecServerId")
+    def ipsec_server_id(self) -> str:
+        """
+        The ID of the IPsec server.
+        """
+        return pulumi.get(self, "ipsec_server_id")
+
+    @property
+    @pulumi.getter(name="ipsecServerName")
+    def ipsec_server_name(self) -> str:
+        """
+        The name of the IPsec server.
+        """
+        return pulumi.get(self, "ipsec_server_name")
+
+    @property
+    @pulumi.getter(name="localSubnet")
+    def local_subnet(self) -> str:
+        """
+        Local network segment: the network segment on The VPC side that needs to be interconnected with the client network segment.
+        """
+        return pulumi.get(self, "local_subnet")
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> int:
+        """
+        The number of SSL connections of the VPN gateway. SSL-VPN the number of SSL connections shared with the IPsec server. For example, if the number of SSL connections is 5 and you have three SSL clients connected to the SSL-VPN, you can also use two clients to connect to the IPsec server.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter(name="multiFactorAuthEnabled")
+    def multi_factor_auth_enabled(self) -> bool:
+        """
+        Whether the two-factor authentication function has been turned on.
+        """
+        return pulumi.get(self, "multi_factor_auth_enabled")
+
+    @property
+    @pulumi.getter(name="onlineClientCount")
+    def online_client_count(self) -> int:
+        """
+        The number of clients that have connected to the IPsec server.
+        """
+        return pulumi.get(self, "online_client_count")
+
+    @property
+    @pulumi.getter
+    def psk(self) -> str:
+        """
+        The pre-shared key.
+        """
+        return pulumi.get(self, "psk")
+
+    @property
+    @pulumi.getter(name="pskEnabled")
+    def psk_enabled(self) -> bool:
+        """
+        Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+        """
+        return pulumi.get(self, "psk_enabled")
+
+    @property
+    @pulumi.getter(name="vpnGatewayId")
+    def vpn_gateway_id(self) -> str:
+        """
+        The ID of the VPN gateway.
+        """
+        return pulumi.get(self, "vpn_gateway_id")
+
+
+@pulumi.output_type
+class GetIpsecServersServerIkeConfigResult(dict):
+    def __init__(__self__, *,
+                 ike_auth_alg: str,
+                 ike_enc_alg: str,
+                 ike_lifetime: int,
+                 ike_mode: str,
+                 ike_pfs: str,
+                 ike_version: str,
+                 local_id: str,
+                 remote_id: str):
+        """
+        :param str ike_auth_alg: The IKE authentication algorithm.
+        :param str ike_enc_alg: The IKE encryption algorithm.
+        :param int ike_lifetime: The IKE lifetime. Unit: seconds.
+        :param str ike_mode: The IKE negotiation mode.
+        :param str ike_pfs: Diffie-Hellman key exchange algorithm.
+        :param str ike_version: The IKE version.
+        :param str local_id: IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
+        :param str remote_id: The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
+        """
+        pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
+        pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
+        pulumi.set(__self__, "ike_lifetime", ike_lifetime)
+        pulumi.set(__self__, "ike_mode", ike_mode)
+        pulumi.set(__self__, "ike_pfs", ike_pfs)
+        pulumi.set(__self__, "ike_version", ike_version)
+        pulumi.set(__self__, "local_id", local_id)
+        pulumi.set(__self__, "remote_id", remote_id)
+
+    @property
+    @pulumi.getter(name="ikeAuthAlg")
+    def ike_auth_alg(self) -> str:
+        """
+        The IKE authentication algorithm.
+        """
+        return pulumi.get(self, "ike_auth_alg")
+
+    @property
+    @pulumi.getter(name="ikeEncAlg")
+    def ike_enc_alg(self) -> str:
+        """
+        The IKE encryption algorithm.
+        """
+        return pulumi.get(self, "ike_enc_alg")
+
+    @property
+    @pulumi.getter(name="ikeLifetime")
+    def ike_lifetime(self) -> int:
+        """
+        The IKE lifetime. Unit: seconds.
+        """
+        return pulumi.get(self, "ike_lifetime")
+
+    @property
+    @pulumi.getter(name="ikeMode")
+    def ike_mode(self) -> str:
+        """
+        The IKE negotiation mode.
+        """
+        return pulumi.get(self, "ike_mode")
+
+    @property
+    @pulumi.getter(name="ikePfs")
+    def ike_pfs(self) -> str:
+        """
+        Diffie-Hellman key exchange algorithm.
+        """
+        return pulumi.get(self, "ike_pfs")
+
+    @property
+    @pulumi.getter(name="ikeVersion")
+    def ike_version(self) -> str:
+        """
+        The IKE version.
+        """
+        return pulumi.get(self, "ike_version")
+
+    @property
+    @pulumi.getter(name="localId")
+    def local_id(self) -> str:
+        """
+        IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
+        """
+        return pulumi.get(self, "local_id")
+
+    @property
+    @pulumi.getter(name="remoteId")
+    def remote_id(self) -> str:
+        """
+        The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
+        """
+        return pulumi.get(self, "remote_id")
+
+
+@pulumi.output_type
+class GetIpsecServersServerIpsecConfigResult(dict):
+    def __init__(__self__, *,
+                 ipsec_auth_alg: str,
+                 ipsec_enc_alg: str,
+                 ipsec_lifetime: int,
+                 ipsec_pfs: str):
+        """
+        :param str ipsec_auth_alg: IPsec authentication algorithm.
+        :param str ipsec_enc_alg: IPsec encryption algorithm.
+        :param int ipsec_lifetime: IPsec survival time. Unit: seconds.
+        :param str ipsec_pfs: Diffie-Hellman key exchange algorithm.
+        """
+        pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
+        pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
+        pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
+        pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+
+    @property
+    @pulumi.getter(name="ipsecAuthAlg")
+    def ipsec_auth_alg(self) -> str:
+        """
+        IPsec authentication algorithm.
+        """
+        return pulumi.get(self, "ipsec_auth_alg")
+
+    @property
+    @pulumi.getter(name="ipsecEncAlg")
+    def ipsec_enc_alg(self) -> str:
+        """
+        IPsec encryption algorithm.
+        """
+        return pulumi.get(self, "ipsec_enc_alg")
+
+    @property
+    @pulumi.getter(name="ipsecLifetime")
+    def ipsec_lifetime(self) -> int:
+        """
+        IPsec survival time. Unit: seconds.
+        """
+        return pulumi.get(self, "ipsec_lifetime")
+
+    @property
+    @pulumi.getter(name="ipsecPfs")
+    def ipsec_pfs(self) -> str:
+        """
+        Diffie-Hellman key exchange algorithm.
+        """
+        return pulumi.get(self, "ipsec_pfs")
+
+
+@pulumi.output_type
 class GetIpv6AddressesAddressResult(dict):
     def __init__(__self__, *,
                  associated_instance_id: str,
@@ -3136,6 +3480,101 @@ class GetNetworksVpcResult(dict):
         List of VSwitch IDs in the specified VPC
         """
         return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class GetPbrRouteEntriesEntryResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 id: str,
+                 next_hop: str,
+                 route_dest: str,
+                 route_source: str,
+                 status: str,
+                 vpn_gateway_id: str,
+                 weight: int):
+        """
+        :param str create_time: The creation time of the VPN Pbr Route Entry.
+        :param str id: The id of the vpn pbr route entry. The value formats as `<vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>`.
+        :param str next_hop: The next hop of the policy-based route.
+        :param str route_dest: The destination CIDR block of the policy-based route.
+        :param str route_source: The source CIDR block of the policy-based route.
+        :param str status: The status of the VPN Pbr Route Entry.
+        :param str vpn_gateway_id: The ID of the VPN gateway.
+        :param int weight: The weight of the policy-based route. Valid values: 0 and 100.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "next_hop", next_hop)
+        pulumi.set(__self__, "route_dest", route_dest)
+        pulumi.set(__self__, "route_source", route_source)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the VPN Pbr Route Entry.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the vpn pbr route entry. The value formats as `<vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> str:
+        """
+        The next hop of the policy-based route.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @property
+    @pulumi.getter(name="routeDest")
+    def route_dest(self) -> str:
+        """
+        The destination CIDR block of the policy-based route.
+        """
+        return pulumi.get(self, "route_dest")
+
+    @property
+    @pulumi.getter(name="routeSource")
+    def route_source(self) -> str:
+        """
+        The source CIDR block of the policy-based route.
+        """
+        return pulumi.get(self, "route_source")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the VPN Pbr Route Entry.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpnGatewayId")
+    def vpn_gateway_id(self) -> str:
+        """
+        The ID of the VPN gateway.
+        """
+        return pulumi.get(self, "vpn_gateway_id")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        """
+        The weight of the policy-based route. Valid values: 0 and 100.
+        """
+        return pulumi.get(self, "weight")
 
 
 @pulumi.output_type

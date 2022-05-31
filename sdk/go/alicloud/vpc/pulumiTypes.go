@@ -2650,6 +2650,531 @@ func (o GetHavipsHavipArrayOutput) Index(i pulumi.IntInput) GetHavipsHavipOutput
 	}).(GetHavipsHavipOutput)
 }
 
+type GetIpsecServersServer struct {
+	// The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
+	ClientIpPool string `pulumi:"clientIpPool"`
+	// The creation time of the IPsec server. T represents the delimiter, and Z represents UTC, which is World Standard Time.
+	CreateTime string `pulumi:"createTime"`
+	// Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
+	EffectImmediately bool `pulumi:"effectImmediately"`
+	// The ID of the Ipsec Server.
+	Id string `pulumi:"id"`
+	// The ID of the Identity as a Service (IDaaS) instance.
+	IdaasInstanceId string `pulumi:"idaasInstanceId"`
+	// The configurations of Phase 1 negotiations.
+	IkeConfigs []GetIpsecServersServerIkeConfig `pulumi:"ikeConfigs"`
+	// The public IP address of the VPN gateway.
+	InternetIp string `pulumi:"internetIp"`
+	// The configuration of Phase 2 negotiations.
+	IpsecConfigs []GetIpsecServersServerIpsecConfig `pulumi:"ipsecConfigs"`
+	// The ID of the IPsec server.
+	IpsecServerId string `pulumi:"ipsecServerId"`
+	// The name of the IPsec server.
+	IpsecServerName string `pulumi:"ipsecServerName"`
+	// Local network segment: the network segment on The VPC side that needs to be interconnected with the client network segment.
+	LocalSubnet string `pulumi:"localSubnet"`
+	// The number of SSL connections of the VPN gateway. SSL-VPN the number of SSL connections shared with the IPsec server. For example, if the number of SSL connections is 5 and you have three SSL clients connected to the SSL-VPN, you can also use two clients to connect to the IPsec server.
+	MaxConnections int `pulumi:"maxConnections"`
+	// Whether the two-factor authentication function has been turned on.
+	MultiFactorAuthEnabled bool `pulumi:"multiFactorAuthEnabled"`
+	// The number of clients that have connected to the IPsec server.
+	OnlineClientCount int `pulumi:"onlineClientCount"`
+	// The pre-shared key.
+	Psk string `pulumi:"psk"`
+	// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+	PskEnabled bool `pulumi:"pskEnabled"`
+	// The ID of the VPN gateway.
+	VpnGatewayId string `pulumi:"vpnGatewayId"`
+}
+
+// GetIpsecServersServerInput is an input type that accepts GetIpsecServersServerArgs and GetIpsecServersServerOutput values.
+// You can construct a concrete instance of `GetIpsecServersServerInput` via:
+//
+//          GetIpsecServersServerArgs{...}
+type GetIpsecServersServerInput interface {
+	pulumi.Input
+
+	ToGetIpsecServersServerOutput() GetIpsecServersServerOutput
+	ToGetIpsecServersServerOutputWithContext(context.Context) GetIpsecServersServerOutput
+}
+
+type GetIpsecServersServerArgs struct {
+	// The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
+	ClientIpPool pulumi.StringInput `pulumi:"clientIpPool"`
+	// The creation time of the IPsec server. T represents the delimiter, and Z represents UTC, which is World Standard Time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
+	EffectImmediately pulumi.BoolInput `pulumi:"effectImmediately"`
+	// The ID of the Ipsec Server.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Identity as a Service (IDaaS) instance.
+	IdaasInstanceId pulumi.StringInput `pulumi:"idaasInstanceId"`
+	// The configurations of Phase 1 negotiations.
+	IkeConfigs GetIpsecServersServerIkeConfigArrayInput `pulumi:"ikeConfigs"`
+	// The public IP address of the VPN gateway.
+	InternetIp pulumi.StringInput `pulumi:"internetIp"`
+	// The configuration of Phase 2 negotiations.
+	IpsecConfigs GetIpsecServersServerIpsecConfigArrayInput `pulumi:"ipsecConfigs"`
+	// The ID of the IPsec server.
+	IpsecServerId pulumi.StringInput `pulumi:"ipsecServerId"`
+	// The name of the IPsec server.
+	IpsecServerName pulumi.StringInput `pulumi:"ipsecServerName"`
+	// Local network segment: the network segment on The VPC side that needs to be interconnected with the client network segment.
+	LocalSubnet pulumi.StringInput `pulumi:"localSubnet"`
+	// The number of SSL connections of the VPN gateway. SSL-VPN the number of SSL connections shared with the IPsec server. For example, if the number of SSL connections is 5 and you have three SSL clients connected to the SSL-VPN, you can also use two clients to connect to the IPsec server.
+	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
+	// Whether the two-factor authentication function has been turned on.
+	MultiFactorAuthEnabled pulumi.BoolInput `pulumi:"multiFactorAuthEnabled"`
+	// The number of clients that have connected to the IPsec server.
+	OnlineClientCount pulumi.IntInput `pulumi:"onlineClientCount"`
+	// The pre-shared key.
+	Psk pulumi.StringInput `pulumi:"psk"`
+	// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+	PskEnabled pulumi.BoolInput `pulumi:"pskEnabled"`
+	// The ID of the VPN gateway.
+	VpnGatewayId pulumi.StringInput `pulumi:"vpnGatewayId"`
+}
+
+func (GetIpsecServersServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpsecServersServer)(nil)).Elem()
+}
+
+func (i GetIpsecServersServerArgs) ToGetIpsecServersServerOutput() GetIpsecServersServerOutput {
+	return i.ToGetIpsecServersServerOutputWithContext(context.Background())
+}
+
+func (i GetIpsecServersServerArgs) ToGetIpsecServersServerOutputWithContext(ctx context.Context) GetIpsecServersServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpsecServersServerOutput)
+}
+
+// GetIpsecServersServerArrayInput is an input type that accepts GetIpsecServersServerArray and GetIpsecServersServerArrayOutput values.
+// You can construct a concrete instance of `GetIpsecServersServerArrayInput` via:
+//
+//          GetIpsecServersServerArray{ GetIpsecServersServerArgs{...} }
+type GetIpsecServersServerArrayInput interface {
+	pulumi.Input
+
+	ToGetIpsecServersServerArrayOutput() GetIpsecServersServerArrayOutput
+	ToGetIpsecServersServerArrayOutputWithContext(context.Context) GetIpsecServersServerArrayOutput
+}
+
+type GetIpsecServersServerArray []GetIpsecServersServerInput
+
+func (GetIpsecServersServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpsecServersServer)(nil)).Elem()
+}
+
+func (i GetIpsecServersServerArray) ToGetIpsecServersServerArrayOutput() GetIpsecServersServerArrayOutput {
+	return i.ToGetIpsecServersServerArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpsecServersServerArray) ToGetIpsecServersServerArrayOutputWithContext(ctx context.Context) GetIpsecServersServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpsecServersServerArrayOutput)
+}
+
+type GetIpsecServersServerOutput struct{ *pulumi.OutputState }
+
+func (GetIpsecServersServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpsecServersServer)(nil)).Elem()
+}
+
+func (o GetIpsecServersServerOutput) ToGetIpsecServersServerOutput() GetIpsecServersServerOutput {
+	return o
+}
+
+func (o GetIpsecServersServerOutput) ToGetIpsecServersServerOutputWithContext(ctx context.Context) GetIpsecServersServerOutput {
+	return o
+}
+
+// The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
+func (o GetIpsecServersServerOutput) ClientIpPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.ClientIpPool }).(pulumi.StringOutput)
+}
+
+// The creation time of the IPsec server. T represents the delimiter, and Z represents UTC, which is World Standard Time.
+func (o GetIpsecServersServerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
+func (o GetIpsecServersServerOutput) EffectImmediately() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) bool { return v.EffectImmediately }).(pulumi.BoolOutput)
+}
+
+// The ID of the Ipsec Server.
+func (o GetIpsecServersServerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Identity as a Service (IDaaS) instance.
+func (o GetIpsecServersServerOutput) IdaasInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.IdaasInstanceId }).(pulumi.StringOutput)
+}
+
+// The configurations of Phase 1 negotiations.
+func (o GetIpsecServersServerOutput) IkeConfigs() GetIpsecServersServerIkeConfigArrayOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) []GetIpsecServersServerIkeConfig { return v.IkeConfigs }).(GetIpsecServersServerIkeConfigArrayOutput)
+}
+
+// The public IP address of the VPN gateway.
+func (o GetIpsecServersServerOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// The configuration of Phase 2 negotiations.
+func (o GetIpsecServersServerOutput) IpsecConfigs() GetIpsecServersServerIpsecConfigArrayOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) []GetIpsecServersServerIpsecConfig { return v.IpsecConfigs }).(GetIpsecServersServerIpsecConfigArrayOutput)
+}
+
+// The ID of the IPsec server.
+func (o GetIpsecServersServerOutput) IpsecServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.IpsecServerId }).(pulumi.StringOutput)
+}
+
+// The name of the IPsec server.
+func (o GetIpsecServersServerOutput) IpsecServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.IpsecServerName }).(pulumi.StringOutput)
+}
+
+// Local network segment: the network segment on The VPC side that needs to be interconnected with the client network segment.
+func (o GetIpsecServersServerOutput) LocalSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.LocalSubnet }).(pulumi.StringOutput)
+}
+
+// The number of SSL connections of the VPN gateway. SSL-VPN the number of SSL connections shared with the IPsec server. For example, if the number of SSL connections is 5 and you have three SSL clients connected to the SSL-VPN, you can also use two clients to connect to the IPsec server.
+func (o GetIpsecServersServerOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) int { return v.MaxConnections }).(pulumi.IntOutput)
+}
+
+// Whether the two-factor authentication function has been turned on.
+func (o GetIpsecServersServerOutput) MultiFactorAuthEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) bool { return v.MultiFactorAuthEnabled }).(pulumi.BoolOutput)
+}
+
+// The number of clients that have connected to the IPsec server.
+func (o GetIpsecServersServerOutput) OnlineClientCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) int { return v.OnlineClientCount }).(pulumi.IntOutput)
+}
+
+// The pre-shared key.
+func (o GetIpsecServersServerOutput) Psk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.Psk }).(pulumi.StringOutput)
+}
+
+// Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
+func (o GetIpsecServersServerOutput) PskEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) bool { return v.PskEnabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the VPN gateway.
+func (o GetIpsecServersServerOutput) VpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServer) string { return v.VpnGatewayId }).(pulumi.StringOutput)
+}
+
+type GetIpsecServersServerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpsecServersServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpsecServersServer)(nil)).Elem()
+}
+
+func (o GetIpsecServersServerArrayOutput) ToGetIpsecServersServerArrayOutput() GetIpsecServersServerArrayOutput {
+	return o
+}
+
+func (o GetIpsecServersServerArrayOutput) ToGetIpsecServersServerArrayOutputWithContext(ctx context.Context) GetIpsecServersServerArrayOutput {
+	return o
+}
+
+func (o GetIpsecServersServerArrayOutput) Index(i pulumi.IntInput) GetIpsecServersServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpsecServersServer {
+		return vs[0].([]GetIpsecServersServer)[vs[1].(int)]
+	}).(GetIpsecServersServerOutput)
+}
+
+type GetIpsecServersServerIkeConfig struct {
+	// The IKE authentication algorithm.
+	IkeAuthAlg string `pulumi:"ikeAuthAlg"`
+	// The IKE encryption algorithm.
+	IkeEncAlg string `pulumi:"ikeEncAlg"`
+	// The IKE lifetime. Unit: seconds.
+	IkeLifetime int `pulumi:"ikeLifetime"`
+	// The IKE negotiation mode.
+	IkeMode string `pulumi:"ikeMode"`
+	// Diffie-Hellman key exchange algorithm.
+	IkePfs string `pulumi:"ikePfs"`
+	// The IKE version.
+	IkeVersion string `pulumi:"ikeVersion"`
+	// IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
+	LocalId string `pulumi:"localId"`
+	// The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
+	RemoteId string `pulumi:"remoteId"`
+}
+
+// GetIpsecServersServerIkeConfigInput is an input type that accepts GetIpsecServersServerIkeConfigArgs and GetIpsecServersServerIkeConfigOutput values.
+// You can construct a concrete instance of `GetIpsecServersServerIkeConfigInput` via:
+//
+//          GetIpsecServersServerIkeConfigArgs{...}
+type GetIpsecServersServerIkeConfigInput interface {
+	pulumi.Input
+
+	ToGetIpsecServersServerIkeConfigOutput() GetIpsecServersServerIkeConfigOutput
+	ToGetIpsecServersServerIkeConfigOutputWithContext(context.Context) GetIpsecServersServerIkeConfigOutput
+}
+
+type GetIpsecServersServerIkeConfigArgs struct {
+	// The IKE authentication algorithm.
+	IkeAuthAlg pulumi.StringInput `pulumi:"ikeAuthAlg"`
+	// The IKE encryption algorithm.
+	IkeEncAlg pulumi.StringInput `pulumi:"ikeEncAlg"`
+	// The IKE lifetime. Unit: seconds.
+	IkeLifetime pulumi.IntInput `pulumi:"ikeLifetime"`
+	// The IKE negotiation mode.
+	IkeMode pulumi.StringInput `pulumi:"ikeMode"`
+	// Diffie-Hellman key exchange algorithm.
+	IkePfs pulumi.StringInput `pulumi:"ikePfs"`
+	// The IKE version.
+	IkeVersion pulumi.StringInput `pulumi:"ikeVersion"`
+	// IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
+	LocalId pulumi.StringInput `pulumi:"localId"`
+	// The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
+	RemoteId pulumi.StringInput `pulumi:"remoteId"`
+}
+
+func (GetIpsecServersServerIkeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpsecServersServerIkeConfig)(nil)).Elem()
+}
+
+func (i GetIpsecServersServerIkeConfigArgs) ToGetIpsecServersServerIkeConfigOutput() GetIpsecServersServerIkeConfigOutput {
+	return i.ToGetIpsecServersServerIkeConfigOutputWithContext(context.Background())
+}
+
+func (i GetIpsecServersServerIkeConfigArgs) ToGetIpsecServersServerIkeConfigOutputWithContext(ctx context.Context) GetIpsecServersServerIkeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpsecServersServerIkeConfigOutput)
+}
+
+// GetIpsecServersServerIkeConfigArrayInput is an input type that accepts GetIpsecServersServerIkeConfigArray and GetIpsecServersServerIkeConfigArrayOutput values.
+// You can construct a concrete instance of `GetIpsecServersServerIkeConfigArrayInput` via:
+//
+//          GetIpsecServersServerIkeConfigArray{ GetIpsecServersServerIkeConfigArgs{...} }
+type GetIpsecServersServerIkeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetIpsecServersServerIkeConfigArrayOutput() GetIpsecServersServerIkeConfigArrayOutput
+	ToGetIpsecServersServerIkeConfigArrayOutputWithContext(context.Context) GetIpsecServersServerIkeConfigArrayOutput
+}
+
+type GetIpsecServersServerIkeConfigArray []GetIpsecServersServerIkeConfigInput
+
+func (GetIpsecServersServerIkeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpsecServersServerIkeConfig)(nil)).Elem()
+}
+
+func (i GetIpsecServersServerIkeConfigArray) ToGetIpsecServersServerIkeConfigArrayOutput() GetIpsecServersServerIkeConfigArrayOutput {
+	return i.ToGetIpsecServersServerIkeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpsecServersServerIkeConfigArray) ToGetIpsecServersServerIkeConfigArrayOutputWithContext(ctx context.Context) GetIpsecServersServerIkeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpsecServersServerIkeConfigArrayOutput)
+}
+
+type GetIpsecServersServerIkeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetIpsecServersServerIkeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpsecServersServerIkeConfig)(nil)).Elem()
+}
+
+func (o GetIpsecServersServerIkeConfigOutput) ToGetIpsecServersServerIkeConfigOutput() GetIpsecServersServerIkeConfigOutput {
+	return o
+}
+
+func (o GetIpsecServersServerIkeConfigOutput) ToGetIpsecServersServerIkeConfigOutputWithContext(ctx context.Context) GetIpsecServersServerIkeConfigOutput {
+	return o
+}
+
+// The IKE authentication algorithm.
+func (o GetIpsecServersServerIkeConfigOutput) IkeAuthAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIkeConfig) string { return v.IkeAuthAlg }).(pulumi.StringOutput)
+}
+
+// The IKE encryption algorithm.
+func (o GetIpsecServersServerIkeConfigOutput) IkeEncAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIkeConfig) string { return v.IkeEncAlg }).(pulumi.StringOutput)
+}
+
+// The IKE lifetime. Unit: seconds.
+func (o GetIpsecServersServerIkeConfigOutput) IkeLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIkeConfig) int { return v.IkeLifetime }).(pulumi.IntOutput)
+}
+
+// The IKE negotiation mode.
+func (o GetIpsecServersServerIkeConfigOutput) IkeMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIkeConfig) string { return v.IkeMode }).(pulumi.StringOutput)
+}
+
+// Diffie-Hellman key exchange algorithm.
+func (o GetIpsecServersServerIkeConfigOutput) IkePfs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIkeConfig) string { return v.IkePfs }).(pulumi.StringOutput)
+}
+
+// The IKE version.
+func (o GetIpsecServersServerIkeConfigOutput) IkeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIkeConfig) string { return v.IkeVersion }).(pulumi.StringOutput)
+}
+
+// IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
+func (o GetIpsecServersServerIkeConfigOutput) LocalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIkeConfig) string { return v.LocalId }).(pulumi.StringOutput)
+}
+
+// The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
+func (o GetIpsecServersServerIkeConfigOutput) RemoteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIkeConfig) string { return v.RemoteId }).(pulumi.StringOutput)
+}
+
+type GetIpsecServersServerIkeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpsecServersServerIkeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpsecServersServerIkeConfig)(nil)).Elem()
+}
+
+func (o GetIpsecServersServerIkeConfigArrayOutput) ToGetIpsecServersServerIkeConfigArrayOutput() GetIpsecServersServerIkeConfigArrayOutput {
+	return o
+}
+
+func (o GetIpsecServersServerIkeConfigArrayOutput) ToGetIpsecServersServerIkeConfigArrayOutputWithContext(ctx context.Context) GetIpsecServersServerIkeConfigArrayOutput {
+	return o
+}
+
+func (o GetIpsecServersServerIkeConfigArrayOutput) Index(i pulumi.IntInput) GetIpsecServersServerIkeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpsecServersServerIkeConfig {
+		return vs[0].([]GetIpsecServersServerIkeConfig)[vs[1].(int)]
+	}).(GetIpsecServersServerIkeConfigOutput)
+}
+
+type GetIpsecServersServerIpsecConfig struct {
+	// IPsec authentication algorithm.
+	IpsecAuthAlg string `pulumi:"ipsecAuthAlg"`
+	// IPsec encryption algorithm.
+	IpsecEncAlg string `pulumi:"ipsecEncAlg"`
+	// IPsec survival time. Unit: seconds.
+	IpsecLifetime int `pulumi:"ipsecLifetime"`
+	// Diffie-Hellman key exchange algorithm.
+	IpsecPfs string `pulumi:"ipsecPfs"`
+}
+
+// GetIpsecServersServerIpsecConfigInput is an input type that accepts GetIpsecServersServerIpsecConfigArgs and GetIpsecServersServerIpsecConfigOutput values.
+// You can construct a concrete instance of `GetIpsecServersServerIpsecConfigInput` via:
+//
+//          GetIpsecServersServerIpsecConfigArgs{...}
+type GetIpsecServersServerIpsecConfigInput interface {
+	pulumi.Input
+
+	ToGetIpsecServersServerIpsecConfigOutput() GetIpsecServersServerIpsecConfigOutput
+	ToGetIpsecServersServerIpsecConfigOutputWithContext(context.Context) GetIpsecServersServerIpsecConfigOutput
+}
+
+type GetIpsecServersServerIpsecConfigArgs struct {
+	// IPsec authentication algorithm.
+	IpsecAuthAlg pulumi.StringInput `pulumi:"ipsecAuthAlg"`
+	// IPsec encryption algorithm.
+	IpsecEncAlg pulumi.StringInput `pulumi:"ipsecEncAlg"`
+	// IPsec survival time. Unit: seconds.
+	IpsecLifetime pulumi.IntInput `pulumi:"ipsecLifetime"`
+	// Diffie-Hellman key exchange algorithm.
+	IpsecPfs pulumi.StringInput `pulumi:"ipsecPfs"`
+}
+
+func (GetIpsecServersServerIpsecConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpsecServersServerIpsecConfig)(nil)).Elem()
+}
+
+func (i GetIpsecServersServerIpsecConfigArgs) ToGetIpsecServersServerIpsecConfigOutput() GetIpsecServersServerIpsecConfigOutput {
+	return i.ToGetIpsecServersServerIpsecConfigOutputWithContext(context.Background())
+}
+
+func (i GetIpsecServersServerIpsecConfigArgs) ToGetIpsecServersServerIpsecConfigOutputWithContext(ctx context.Context) GetIpsecServersServerIpsecConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpsecServersServerIpsecConfigOutput)
+}
+
+// GetIpsecServersServerIpsecConfigArrayInput is an input type that accepts GetIpsecServersServerIpsecConfigArray and GetIpsecServersServerIpsecConfigArrayOutput values.
+// You can construct a concrete instance of `GetIpsecServersServerIpsecConfigArrayInput` via:
+//
+//          GetIpsecServersServerIpsecConfigArray{ GetIpsecServersServerIpsecConfigArgs{...} }
+type GetIpsecServersServerIpsecConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetIpsecServersServerIpsecConfigArrayOutput() GetIpsecServersServerIpsecConfigArrayOutput
+	ToGetIpsecServersServerIpsecConfigArrayOutputWithContext(context.Context) GetIpsecServersServerIpsecConfigArrayOutput
+}
+
+type GetIpsecServersServerIpsecConfigArray []GetIpsecServersServerIpsecConfigInput
+
+func (GetIpsecServersServerIpsecConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpsecServersServerIpsecConfig)(nil)).Elem()
+}
+
+func (i GetIpsecServersServerIpsecConfigArray) ToGetIpsecServersServerIpsecConfigArrayOutput() GetIpsecServersServerIpsecConfigArrayOutput {
+	return i.ToGetIpsecServersServerIpsecConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpsecServersServerIpsecConfigArray) ToGetIpsecServersServerIpsecConfigArrayOutputWithContext(ctx context.Context) GetIpsecServersServerIpsecConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpsecServersServerIpsecConfigArrayOutput)
+}
+
+type GetIpsecServersServerIpsecConfigOutput struct{ *pulumi.OutputState }
+
+func (GetIpsecServersServerIpsecConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpsecServersServerIpsecConfig)(nil)).Elem()
+}
+
+func (o GetIpsecServersServerIpsecConfigOutput) ToGetIpsecServersServerIpsecConfigOutput() GetIpsecServersServerIpsecConfigOutput {
+	return o
+}
+
+func (o GetIpsecServersServerIpsecConfigOutput) ToGetIpsecServersServerIpsecConfigOutputWithContext(ctx context.Context) GetIpsecServersServerIpsecConfigOutput {
+	return o
+}
+
+// IPsec authentication algorithm.
+func (o GetIpsecServersServerIpsecConfigOutput) IpsecAuthAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIpsecConfig) string { return v.IpsecAuthAlg }).(pulumi.StringOutput)
+}
+
+// IPsec encryption algorithm.
+func (o GetIpsecServersServerIpsecConfigOutput) IpsecEncAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIpsecConfig) string { return v.IpsecEncAlg }).(pulumi.StringOutput)
+}
+
+// IPsec survival time. Unit: seconds.
+func (o GetIpsecServersServerIpsecConfigOutput) IpsecLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIpsecConfig) int { return v.IpsecLifetime }).(pulumi.IntOutput)
+}
+
+// Diffie-Hellman key exchange algorithm.
+func (o GetIpsecServersServerIpsecConfigOutput) IpsecPfs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpsecServersServerIpsecConfig) string { return v.IpsecPfs }).(pulumi.StringOutput)
+}
+
+type GetIpsecServersServerIpsecConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpsecServersServerIpsecConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpsecServersServerIpsecConfig)(nil)).Elem()
+}
+
+func (o GetIpsecServersServerIpsecConfigArrayOutput) ToGetIpsecServersServerIpsecConfigArrayOutput() GetIpsecServersServerIpsecConfigArrayOutput {
+	return o
+}
+
+func (o GetIpsecServersServerIpsecConfigArrayOutput) ToGetIpsecServersServerIpsecConfigArrayOutputWithContext(ctx context.Context) GetIpsecServersServerIpsecConfigArrayOutput {
+	return o
+}
+
+func (o GetIpsecServersServerIpsecConfigArrayOutput) Index(i pulumi.IntInput) GetIpsecServersServerIpsecConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpsecServersServerIpsecConfig {
+		return vs[0].([]GetIpsecServersServerIpsecConfig)[vs[1].(int)]
+	}).(GetIpsecServersServerIpsecConfigOutput)
+}
+
 type GetIpv6AddressesAddress struct {
 	// The ID of the instance that is assigned the IPv6 address.
 	AssociatedInstanceId string `pulumi:"associatedInstanceId"`
@@ -4802,6 +5327,166 @@ func (o GetNetworksVpcArrayOutput) Index(i pulumi.IntInput) GetNetworksVpcOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksVpc {
 		return vs[0].([]GetNetworksVpc)[vs[1].(int)]
 	}).(GetNetworksVpcOutput)
+}
+
+type GetPbrRouteEntriesEntry struct {
+	// The creation time of the VPN Pbr Route Entry.
+	CreateTime string `pulumi:"createTime"`
+	// The id of the vpn pbr route entry. The value formats as `<vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>`.
+	Id string `pulumi:"id"`
+	// The next hop of the policy-based route.
+	NextHop string `pulumi:"nextHop"`
+	// The destination CIDR block of the policy-based route.
+	RouteDest string `pulumi:"routeDest"`
+	// The source CIDR block of the policy-based route.
+	RouteSource string `pulumi:"routeSource"`
+	// The status of the VPN Pbr Route Entry.
+	Status string `pulumi:"status"`
+	// The ID of the VPN gateway.
+	VpnGatewayId string `pulumi:"vpnGatewayId"`
+	// The weight of the policy-based route. Valid values: 0 and 100.
+	Weight int `pulumi:"weight"`
+}
+
+// GetPbrRouteEntriesEntryInput is an input type that accepts GetPbrRouteEntriesEntryArgs and GetPbrRouteEntriesEntryOutput values.
+// You can construct a concrete instance of `GetPbrRouteEntriesEntryInput` via:
+//
+//          GetPbrRouteEntriesEntryArgs{...}
+type GetPbrRouteEntriesEntryInput interface {
+	pulumi.Input
+
+	ToGetPbrRouteEntriesEntryOutput() GetPbrRouteEntriesEntryOutput
+	ToGetPbrRouteEntriesEntryOutputWithContext(context.Context) GetPbrRouteEntriesEntryOutput
+}
+
+type GetPbrRouteEntriesEntryArgs struct {
+	// The creation time of the VPN Pbr Route Entry.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The id of the vpn pbr route entry. The value formats as `<vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The next hop of the policy-based route.
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+	// The destination CIDR block of the policy-based route.
+	RouteDest pulumi.StringInput `pulumi:"routeDest"`
+	// The source CIDR block of the policy-based route.
+	RouteSource pulumi.StringInput `pulumi:"routeSource"`
+	// The status of the VPN Pbr Route Entry.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPN gateway.
+	VpnGatewayId pulumi.StringInput `pulumi:"vpnGatewayId"`
+	// The weight of the policy-based route. Valid values: 0 and 100.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetPbrRouteEntriesEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPbrRouteEntriesEntry)(nil)).Elem()
+}
+
+func (i GetPbrRouteEntriesEntryArgs) ToGetPbrRouteEntriesEntryOutput() GetPbrRouteEntriesEntryOutput {
+	return i.ToGetPbrRouteEntriesEntryOutputWithContext(context.Background())
+}
+
+func (i GetPbrRouteEntriesEntryArgs) ToGetPbrRouteEntriesEntryOutputWithContext(ctx context.Context) GetPbrRouteEntriesEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPbrRouteEntriesEntryOutput)
+}
+
+// GetPbrRouteEntriesEntryArrayInput is an input type that accepts GetPbrRouteEntriesEntryArray and GetPbrRouteEntriesEntryArrayOutput values.
+// You can construct a concrete instance of `GetPbrRouteEntriesEntryArrayInput` via:
+//
+//          GetPbrRouteEntriesEntryArray{ GetPbrRouteEntriesEntryArgs{...} }
+type GetPbrRouteEntriesEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetPbrRouteEntriesEntryArrayOutput() GetPbrRouteEntriesEntryArrayOutput
+	ToGetPbrRouteEntriesEntryArrayOutputWithContext(context.Context) GetPbrRouteEntriesEntryArrayOutput
+}
+
+type GetPbrRouteEntriesEntryArray []GetPbrRouteEntriesEntryInput
+
+func (GetPbrRouteEntriesEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPbrRouteEntriesEntry)(nil)).Elem()
+}
+
+func (i GetPbrRouteEntriesEntryArray) ToGetPbrRouteEntriesEntryArrayOutput() GetPbrRouteEntriesEntryArrayOutput {
+	return i.ToGetPbrRouteEntriesEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetPbrRouteEntriesEntryArray) ToGetPbrRouteEntriesEntryArrayOutputWithContext(ctx context.Context) GetPbrRouteEntriesEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPbrRouteEntriesEntryArrayOutput)
+}
+
+type GetPbrRouteEntriesEntryOutput struct{ *pulumi.OutputState }
+
+func (GetPbrRouteEntriesEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPbrRouteEntriesEntry)(nil)).Elem()
+}
+
+func (o GetPbrRouteEntriesEntryOutput) ToGetPbrRouteEntriesEntryOutput() GetPbrRouteEntriesEntryOutput {
+	return o
+}
+
+func (o GetPbrRouteEntriesEntryOutput) ToGetPbrRouteEntriesEntryOutputWithContext(ctx context.Context) GetPbrRouteEntriesEntryOutput {
+	return o
+}
+
+// The creation time of the VPN Pbr Route Entry.
+func (o GetPbrRouteEntriesEntryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPbrRouteEntriesEntry) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The id of the vpn pbr route entry. The value formats as `<vpn_gateway_id>:<next_hop>:<route_source>:<route_dest>`.
+func (o GetPbrRouteEntriesEntryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPbrRouteEntriesEntry) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The next hop of the policy-based route.
+func (o GetPbrRouteEntriesEntryOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPbrRouteEntriesEntry) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// The destination CIDR block of the policy-based route.
+func (o GetPbrRouteEntriesEntryOutput) RouteDest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPbrRouteEntriesEntry) string { return v.RouteDest }).(pulumi.StringOutput)
+}
+
+// The source CIDR block of the policy-based route.
+func (o GetPbrRouteEntriesEntryOutput) RouteSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPbrRouteEntriesEntry) string { return v.RouteSource }).(pulumi.StringOutput)
+}
+
+// The status of the VPN Pbr Route Entry.
+func (o GetPbrRouteEntriesEntryOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPbrRouteEntriesEntry) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPN gateway.
+func (o GetPbrRouteEntriesEntryOutput) VpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPbrRouteEntriesEntry) string { return v.VpnGatewayId }).(pulumi.StringOutput)
+}
+
+// The weight of the policy-based route. Valid values: 0 and 100.
+func (o GetPbrRouteEntriesEntryOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPbrRouteEntriesEntry) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetPbrRouteEntriesEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPbrRouteEntriesEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPbrRouteEntriesEntry)(nil)).Elem()
+}
+
+func (o GetPbrRouteEntriesEntryArrayOutput) ToGetPbrRouteEntriesEntryArrayOutput() GetPbrRouteEntriesEntryArrayOutput {
+	return o
+}
+
+func (o GetPbrRouteEntriesEntryArrayOutput) ToGetPbrRouteEntriesEntryArrayOutputWithContext(ctx context.Context) GetPbrRouteEntriesEntryArrayOutput {
+	return o
+}
+
+func (o GetPbrRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetPbrRouteEntriesEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPbrRouteEntriesEntry {
+		return vs[0].([]GetPbrRouteEntriesEntry)[vs[1].(int)]
+	}).(GetPbrRouteEntriesEntryOutput)
 }
 
 type GetRouteEntriesEntry struct {
@@ -7059,6 +7744,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardEntriesEntryArrayInput)(nil)).Elem(), GetForwardEntriesEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHavipsHavipInput)(nil)).Elem(), GetHavipsHavipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHavipsHavipArrayInput)(nil)).Elem(), GetHavipsHavipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerInput)(nil)).Elem(), GetIpsecServersServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerArrayInput)(nil)).Elem(), GetIpsecServersServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerIkeConfigInput)(nil)).Elem(), GetIpsecServersServerIkeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerIkeConfigArrayInput)(nil)).Elem(), GetIpsecServersServerIkeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerIpsecConfigInput)(nil)).Elem(), GetIpsecServersServerIpsecConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpsecServersServerIpsecConfigArrayInput)(nil)).Elem(), GetIpsecServersServerIpsecConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6AddressesAddressInput)(nil)).Elem(), GetIpv6AddressesAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6AddressesAddressArrayInput)(nil)).Elem(), GetIpv6AddressesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6EgressRulesRuleInput)(nil)).Elem(), GetIpv6EgressRulesRuleArgs{})
@@ -7083,6 +7774,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclsAclResourceArrayInput)(nil)).Elem(), GetNetworkAclsAclResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksVpcInput)(nil)).Elem(), GetNetworksVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksVpcArrayInput)(nil)).Elem(), GetNetworksVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPbrRouteEntriesEntryInput)(nil)).Elem(), GetPbrRouteEntriesEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPbrRouteEntriesEntryArrayInput)(nil)).Elem(), GetPbrRouteEntriesEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryInput)(nil)).Elem(), GetRouteEntriesEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryArrayInput)(nil)).Elem(), GetRouteEntriesEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTablesTableInput)(nil)).Elem(), GetRouteTablesTableArgs{})
@@ -7141,6 +7834,12 @@ func init() {
 	pulumi.RegisterOutputType(GetForwardEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetHavipsHavipOutput{})
 	pulumi.RegisterOutputType(GetHavipsHavipArrayOutput{})
+	pulumi.RegisterOutputType(GetIpsecServersServerOutput{})
+	pulumi.RegisterOutputType(GetIpsecServersServerArrayOutput{})
+	pulumi.RegisterOutputType(GetIpsecServersServerIkeConfigOutput{})
+	pulumi.RegisterOutputType(GetIpsecServersServerIkeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetIpsecServersServerIpsecConfigOutput{})
+	pulumi.RegisterOutputType(GetIpsecServersServerIpsecConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6AddressesAddressOutput{})
 	pulumi.RegisterOutputType(GetIpv6AddressesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6EgressRulesRuleOutput{})
@@ -7165,6 +7864,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworkAclsAclResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcOutput{})
 	pulumi.RegisterOutputType(GetNetworksVpcArrayOutput{})
+	pulumi.RegisterOutputType(GetPbrRouteEntriesEntryOutput{})
+	pulumi.RegisterOutputType(GetPbrRouteEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteTablesTableOutput{})

@@ -5610,6 +5610,710 @@ func (o GetEcsImageComponentsComponentArrayOutput) Index(i pulumi.IntInput) GetE
 	}).(GetEcsImageComponentsComponentOutput)
 }
 
+type GetEcsImagePipelinePipeline struct {
+	// The IDs of Alibaba Cloud accounts to which the image was shared.
+	AddAccounts []string `pulumi:"addAccounts"`
+	// The source image.
+	BaseImage string `pulumi:"baseImage"`
+	// The type of the source image.
+	BaseImageType string `pulumi:"baseImageType"`
+	// The content of the image template.
+	BuildContent string `pulumi:"buildContent"`
+	// The time when the image template was created.
+	CreationTime string `pulumi:"creationTime"`
+	// Indicates whether the intermediate instance was released when the image failed to be created.
+	DeleteInstanceOnFailure bool `pulumi:"deleteInstanceOnFailure"`
+	// The description of the image template.
+	Description string `pulumi:"description"`
+	// The ID of the Image Pipeline.
+	Id string `pulumi:"id"`
+	// The name prefix of the created image.
+	ImageName string `pulumi:"imageName"`
+	// The ID of the image template.
+	ImagePipelineId string `pulumi:"imagePipelineId"`
+	// The instance type of the intermediate instance.
+	InstanceType string `pulumi:"instanceType"`
+	// The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`.
+	InternetMaxBandwidthOut int `pulumi:"internetMaxBandwidthOut"`
+	// The name of the image template.
+	Name string `pulumi:"name"`
+	// The ID of the resource group to which the image template belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The system disk size of the intermediate instance. Unit: `GiB`.
+	SystemDiskSize int `pulumi:"systemDiskSize"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The IDs of regions to which to distribute the created image.
+	ToRegionIds []string `pulumi:"toRegionIds"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetEcsImagePipelinePipelineInput is an input type that accepts GetEcsImagePipelinePipelineArgs and GetEcsImagePipelinePipelineOutput values.
+// You can construct a concrete instance of `GetEcsImagePipelinePipelineInput` via:
+//
+//          GetEcsImagePipelinePipelineArgs{...}
+type GetEcsImagePipelinePipelineInput interface {
+	pulumi.Input
+
+	ToGetEcsImagePipelinePipelineOutput() GetEcsImagePipelinePipelineOutput
+	ToGetEcsImagePipelinePipelineOutputWithContext(context.Context) GetEcsImagePipelinePipelineOutput
+}
+
+type GetEcsImagePipelinePipelineArgs struct {
+	// The IDs of Alibaba Cloud accounts to which the image was shared.
+	AddAccounts pulumi.StringArrayInput `pulumi:"addAccounts"`
+	// The source image.
+	BaseImage pulumi.StringInput `pulumi:"baseImage"`
+	// The type of the source image.
+	BaseImageType pulumi.StringInput `pulumi:"baseImageType"`
+	// The content of the image template.
+	BuildContent pulumi.StringInput `pulumi:"buildContent"`
+	// The time when the image template was created.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// Indicates whether the intermediate instance was released when the image failed to be created.
+	DeleteInstanceOnFailure pulumi.BoolInput `pulumi:"deleteInstanceOnFailure"`
+	// The description of the image template.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Image Pipeline.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name prefix of the created image.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// The ID of the image template.
+	ImagePipelineId pulumi.StringInput `pulumi:"imagePipelineId"`
+	// The instance type of the intermediate instance.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`.
+	InternetMaxBandwidthOut pulumi.IntInput `pulumi:"internetMaxBandwidthOut"`
+	// The name of the image template.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the resource group to which the image template belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The system disk size of the intermediate instance. Unit: `GiB`.
+	SystemDiskSize pulumi.IntInput `pulumi:"systemDiskSize"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The IDs of regions to which to distribute the created image.
+	ToRegionIds pulumi.StringArrayInput `pulumi:"toRegionIds"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetEcsImagePipelinePipelineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsImagePipelinePipeline)(nil)).Elem()
+}
+
+func (i GetEcsImagePipelinePipelineArgs) ToGetEcsImagePipelinePipelineOutput() GetEcsImagePipelinePipelineOutput {
+	return i.ToGetEcsImagePipelinePipelineOutputWithContext(context.Background())
+}
+
+func (i GetEcsImagePipelinePipelineArgs) ToGetEcsImagePipelinePipelineOutputWithContext(ctx context.Context) GetEcsImagePipelinePipelineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsImagePipelinePipelineOutput)
+}
+
+// GetEcsImagePipelinePipelineArrayInput is an input type that accepts GetEcsImagePipelinePipelineArray and GetEcsImagePipelinePipelineArrayOutput values.
+// You can construct a concrete instance of `GetEcsImagePipelinePipelineArrayInput` via:
+//
+//          GetEcsImagePipelinePipelineArray{ GetEcsImagePipelinePipelineArgs{...} }
+type GetEcsImagePipelinePipelineArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsImagePipelinePipelineArrayOutput() GetEcsImagePipelinePipelineArrayOutput
+	ToGetEcsImagePipelinePipelineArrayOutputWithContext(context.Context) GetEcsImagePipelinePipelineArrayOutput
+}
+
+type GetEcsImagePipelinePipelineArray []GetEcsImagePipelinePipelineInput
+
+func (GetEcsImagePipelinePipelineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsImagePipelinePipeline)(nil)).Elem()
+}
+
+func (i GetEcsImagePipelinePipelineArray) ToGetEcsImagePipelinePipelineArrayOutput() GetEcsImagePipelinePipelineArrayOutput {
+	return i.ToGetEcsImagePipelinePipelineArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsImagePipelinePipelineArray) ToGetEcsImagePipelinePipelineArrayOutputWithContext(ctx context.Context) GetEcsImagePipelinePipelineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsImagePipelinePipelineArrayOutput)
+}
+
+type GetEcsImagePipelinePipelineOutput struct{ *pulumi.OutputState }
+
+func (GetEcsImagePipelinePipelineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsImagePipelinePipeline)(nil)).Elem()
+}
+
+func (o GetEcsImagePipelinePipelineOutput) ToGetEcsImagePipelinePipelineOutput() GetEcsImagePipelinePipelineOutput {
+	return o
+}
+
+func (o GetEcsImagePipelinePipelineOutput) ToGetEcsImagePipelinePipelineOutputWithContext(ctx context.Context) GetEcsImagePipelinePipelineOutput {
+	return o
+}
+
+// The IDs of Alibaba Cloud accounts to which the image was shared.
+func (o GetEcsImagePipelinePipelineOutput) AddAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) []string { return v.AddAccounts }).(pulumi.StringArrayOutput)
+}
+
+// The source image.
+func (o GetEcsImagePipelinePipelineOutput) BaseImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.BaseImage }).(pulumi.StringOutput)
+}
+
+// The type of the source image.
+func (o GetEcsImagePipelinePipelineOutput) BaseImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.BaseImageType }).(pulumi.StringOutput)
+}
+
+// The content of the image template.
+func (o GetEcsImagePipelinePipelineOutput) BuildContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.BuildContent }).(pulumi.StringOutput)
+}
+
+// The time when the image template was created.
+func (o GetEcsImagePipelinePipelineOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether the intermediate instance was released when the image failed to be created.
+func (o GetEcsImagePipelinePipelineOutput) DeleteInstanceOnFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) bool { return v.DeleteInstanceOnFailure }).(pulumi.BoolOutput)
+}
+
+// The description of the image template.
+func (o GetEcsImagePipelinePipelineOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Image Pipeline.
+func (o GetEcsImagePipelinePipelineOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name prefix of the created image.
+func (o GetEcsImagePipelinePipelineOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The ID of the image template.
+func (o GetEcsImagePipelinePipelineOutput) ImagePipelineId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.ImagePipelineId }).(pulumi.StringOutput)
+}
+
+// The instance type of the intermediate instance.
+func (o GetEcsImagePipelinePipelineOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`.
+func (o GetEcsImagePipelinePipelineOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) int { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
+}
+
+// The name of the image template.
+func (o GetEcsImagePipelinePipelineOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group to which the image template belongs.
+func (o GetEcsImagePipelinePipelineOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The system disk size of the intermediate instance. Unit: `GiB`.
+func (o GetEcsImagePipelinePipelineOutput) SystemDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) int { return v.SystemDiskSize }).(pulumi.IntOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetEcsImagePipelinePipelineOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The IDs of regions to which to distribute the created image.
+func (o GetEcsImagePipelinePipelineOutput) ToRegionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) []string { return v.ToRegionIds }).(pulumi.StringArrayOutput)
+}
+
+// The vswitch id.
+func (o GetEcsImagePipelinePipelineOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsImagePipelinePipeline) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetEcsImagePipelinePipelineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsImagePipelinePipelineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsImagePipelinePipeline)(nil)).Elem()
+}
+
+func (o GetEcsImagePipelinePipelineArrayOutput) ToGetEcsImagePipelinePipelineArrayOutput() GetEcsImagePipelinePipelineArrayOutput {
+	return o
+}
+
+func (o GetEcsImagePipelinePipelineArrayOutput) ToGetEcsImagePipelinePipelineArrayOutputWithContext(ctx context.Context) GetEcsImagePipelinePipelineArrayOutput {
+	return o
+}
+
+func (o GetEcsImagePipelinePipelineArrayOutput) Index(i pulumi.IntInput) GetEcsImagePipelinePipelineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsImagePipelinePipeline {
+		return vs[0].([]GetEcsImagePipelinePipeline)[vs[1].(int)]
+	}).(GetEcsImagePipelinePipelineOutput)
+}
+
+type GetEcsInvocationsInvocation struct {
+	// The Base64-encoded command content.
+	CommandContent string `pulumi:"commandContent"`
+	// The ID of the command.
+	CommandId string `pulumi:"commandId"`
+	// The name of the command.
+	CommandName string `pulumi:"commandName"`
+	// The type of the command.
+	CommandType string `pulumi:"commandType"`
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The schedule on which the recurring execution of the command takes place. For information about the value specifications, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
+	Frequency string `pulumi:"frequency"`
+	// The ID of the Invocation.
+	Id string `pulumi:"id"`
+	// The ID of the Invocation.
+	InvocationId string `pulumi:"invocationId"`
+	// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+	InvocationStatus string `pulumi:"invocationStatus"`
+	// Execute target instance set type.
+	InvokeInstances []GetEcsInvocationsInvocationInvokeInstance `pulumi:"invokeInstances"`
+	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	InvokeStatus string `pulumi:"invokeStatus"`
+	// The custom parameters in the command.
+	Parameters string `pulumi:"parameters"`
+	// Indicates the execution mode of the command.
+	RepeatMode string `pulumi:"repeatMode"`
+	// Indicates whether the commands are to be automatically run.
+	// * `errorCode	` - The code that indicates why the command failed to be sent or run.
+	// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	Timed bool `pulumi:"timed"`
+	// The username that was used to run the command on the instance.
+	Username string `pulumi:"username"`
+}
+
+// GetEcsInvocationsInvocationInput is an input type that accepts GetEcsInvocationsInvocationArgs and GetEcsInvocationsInvocationOutput values.
+// You can construct a concrete instance of `GetEcsInvocationsInvocationInput` via:
+//
+//          GetEcsInvocationsInvocationArgs{...}
+type GetEcsInvocationsInvocationInput interface {
+	pulumi.Input
+
+	ToGetEcsInvocationsInvocationOutput() GetEcsInvocationsInvocationOutput
+	ToGetEcsInvocationsInvocationOutputWithContext(context.Context) GetEcsInvocationsInvocationOutput
+}
+
+type GetEcsInvocationsInvocationArgs struct {
+	// The Base64-encoded command content.
+	CommandContent pulumi.StringInput `pulumi:"commandContent"`
+	// The ID of the command.
+	CommandId pulumi.StringInput `pulumi:"commandId"`
+	// The name of the command.
+	CommandName pulumi.StringInput `pulumi:"commandName"`
+	// The type of the command.
+	CommandType pulumi.StringInput `pulumi:"commandType"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The schedule on which the recurring execution of the command takes place. For information about the value specifications, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// The ID of the Invocation.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Invocation.
+	InvocationId pulumi.StringInput `pulumi:"invocationId"`
+	// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+	InvocationStatus pulumi.StringInput `pulumi:"invocationStatus"`
+	// Execute target instance set type.
+	InvokeInstances GetEcsInvocationsInvocationInvokeInstanceArrayInput `pulumi:"invokeInstances"`
+	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	InvokeStatus pulumi.StringInput `pulumi:"invokeStatus"`
+	// The custom parameters in the command.
+	Parameters pulumi.StringInput `pulumi:"parameters"`
+	// Indicates the execution mode of the command.
+	RepeatMode pulumi.StringInput `pulumi:"repeatMode"`
+	// Indicates whether the commands are to be automatically run.
+	// * `errorCode	` - The code that indicates why the command failed to be sent or run.
+	// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	Timed pulumi.BoolInput `pulumi:"timed"`
+	// The username that was used to run the command on the instance.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetEcsInvocationsInvocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsInvocationsInvocation)(nil)).Elem()
+}
+
+func (i GetEcsInvocationsInvocationArgs) ToGetEcsInvocationsInvocationOutput() GetEcsInvocationsInvocationOutput {
+	return i.ToGetEcsInvocationsInvocationOutputWithContext(context.Background())
+}
+
+func (i GetEcsInvocationsInvocationArgs) ToGetEcsInvocationsInvocationOutputWithContext(ctx context.Context) GetEcsInvocationsInvocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsInvocationsInvocationOutput)
+}
+
+// GetEcsInvocationsInvocationArrayInput is an input type that accepts GetEcsInvocationsInvocationArray and GetEcsInvocationsInvocationArrayOutput values.
+// You can construct a concrete instance of `GetEcsInvocationsInvocationArrayInput` via:
+//
+//          GetEcsInvocationsInvocationArray{ GetEcsInvocationsInvocationArgs{...} }
+type GetEcsInvocationsInvocationArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsInvocationsInvocationArrayOutput() GetEcsInvocationsInvocationArrayOutput
+	ToGetEcsInvocationsInvocationArrayOutputWithContext(context.Context) GetEcsInvocationsInvocationArrayOutput
+}
+
+type GetEcsInvocationsInvocationArray []GetEcsInvocationsInvocationInput
+
+func (GetEcsInvocationsInvocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsInvocationsInvocation)(nil)).Elem()
+}
+
+func (i GetEcsInvocationsInvocationArray) ToGetEcsInvocationsInvocationArrayOutput() GetEcsInvocationsInvocationArrayOutput {
+	return i.ToGetEcsInvocationsInvocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsInvocationsInvocationArray) ToGetEcsInvocationsInvocationArrayOutputWithContext(ctx context.Context) GetEcsInvocationsInvocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsInvocationsInvocationArrayOutput)
+}
+
+type GetEcsInvocationsInvocationOutput struct{ *pulumi.OutputState }
+
+func (GetEcsInvocationsInvocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsInvocationsInvocation)(nil)).Elem()
+}
+
+func (o GetEcsInvocationsInvocationOutput) ToGetEcsInvocationsInvocationOutput() GetEcsInvocationsInvocationOutput {
+	return o
+}
+
+func (o GetEcsInvocationsInvocationOutput) ToGetEcsInvocationsInvocationOutputWithContext(ctx context.Context) GetEcsInvocationsInvocationOutput {
+	return o
+}
+
+// The Base64-encoded command content.
+func (o GetEcsInvocationsInvocationOutput) CommandContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.CommandContent }).(pulumi.StringOutput)
+}
+
+// The ID of the command.
+func (o GetEcsInvocationsInvocationOutput) CommandId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.CommandId }).(pulumi.StringOutput)
+}
+
+// The name of the command.
+func (o GetEcsInvocationsInvocationOutput) CommandName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.CommandName }).(pulumi.StringOutput)
+}
+
+// The type of the command.
+func (o GetEcsInvocationsInvocationOutput) CommandType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.CommandType }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource.
+func (o GetEcsInvocationsInvocationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The schedule on which the recurring execution of the command takes place. For information about the value specifications, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
+func (o GetEcsInvocationsInvocationOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// The ID of the Invocation.
+func (o GetEcsInvocationsInvocationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Invocation.
+func (o GetEcsInvocationsInvocationOutput) InvocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.InvocationId }).(pulumi.StringOutput)
+}
+
+// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+func (o GetEcsInvocationsInvocationOutput) InvocationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.InvocationStatus }).(pulumi.StringOutput)
+}
+
+// Execute target instance set type.
+func (o GetEcsInvocationsInvocationOutput) InvokeInstances() GetEcsInvocationsInvocationInvokeInstanceArrayOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) []GetEcsInvocationsInvocationInvokeInstance {
+		return v.InvokeInstances
+	}).(GetEcsInvocationsInvocationInvokeInstanceArrayOutput)
+}
+
+// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+func (o GetEcsInvocationsInvocationOutput) InvokeStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.InvokeStatus }).(pulumi.StringOutput)
+}
+
+// The custom parameters in the command.
+func (o GetEcsInvocationsInvocationOutput) Parameters() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.Parameters }).(pulumi.StringOutput)
+}
+
+// Indicates the execution mode of the command.
+func (o GetEcsInvocationsInvocationOutput) RepeatMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.RepeatMode }).(pulumi.StringOutput)
+}
+
+// Indicates whether the commands are to be automatically run.
+// * `errorCode	` - The code that indicates why the command failed to be sent or run.
+// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+func (o GetEcsInvocationsInvocationOutput) Timed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) bool { return v.Timed }).(pulumi.BoolOutput)
+}
+
+// The username that was used to run the command on the instance.
+func (o GetEcsInvocationsInvocationOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetEcsInvocationsInvocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsInvocationsInvocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsInvocationsInvocation)(nil)).Elem()
+}
+
+func (o GetEcsInvocationsInvocationArrayOutput) ToGetEcsInvocationsInvocationArrayOutput() GetEcsInvocationsInvocationArrayOutput {
+	return o
+}
+
+func (o GetEcsInvocationsInvocationArrayOutput) ToGetEcsInvocationsInvocationArrayOutputWithContext(ctx context.Context) GetEcsInvocationsInvocationArrayOutput {
+	return o
+}
+
+func (o GetEcsInvocationsInvocationArrayOutput) Index(i pulumi.IntInput) GetEcsInvocationsInvocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsInvocationsInvocation {
+		return vs[0].([]GetEcsInvocationsInvocation)[vs[1].(int)]
+	}).(GetEcsInvocationsInvocationOutput)
+}
+
+type GetEcsInvocationsInvocationInvokeInstance struct {
+	// The start time of the execution.
+	CreationTime string `pulumi:"creationTime"`
+	// The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
+	Dropped   int    `pulumi:"dropped"`
+	ErrorCode string `pulumi:"errorCode"`
+	// Details about the reason why the command failed to be sent or run.
+	ErrorInfo string `pulumi:"errorInfo"`
+	// The exit code of the execution.
+	ExitCode int `pulumi:"exitCode"`
+	// The end time of the execution.
+	FinishTime string `pulumi:"finishTime"`
+	// The ID of the instance.
+	InstanceId           string `pulumi:"instanceId"`
+	InstanceInvokeStatus string `pulumi:"instanceInvokeStatus"`
+	// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+	InvocationStatus string `pulumi:"invocationStatus"`
+	// The output of the command.
+	Output string `pulumi:"output"`
+	// The number of times that the command is run on the instance.
+	Repeats int `pulumi:"repeats"`
+	// The time when the command started to be run on the instance.
+	StartTime string `pulumi:"startTime"`
+	// The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
+	StopTime string `pulumi:"stopTime"`
+	// Indicates whether the commands are to be automatically run.
+	// * `errorCode	` - The code that indicates why the command failed to be sent or run.
+	// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	Timed bool `pulumi:"timed"`
+	// The time when the execution state was updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetEcsInvocationsInvocationInvokeInstanceInput is an input type that accepts GetEcsInvocationsInvocationInvokeInstanceArgs and GetEcsInvocationsInvocationInvokeInstanceOutput values.
+// You can construct a concrete instance of `GetEcsInvocationsInvocationInvokeInstanceInput` via:
+//
+//          GetEcsInvocationsInvocationInvokeInstanceArgs{...}
+type GetEcsInvocationsInvocationInvokeInstanceInput interface {
+	pulumi.Input
+
+	ToGetEcsInvocationsInvocationInvokeInstanceOutput() GetEcsInvocationsInvocationInvokeInstanceOutput
+	ToGetEcsInvocationsInvocationInvokeInstanceOutputWithContext(context.Context) GetEcsInvocationsInvocationInvokeInstanceOutput
+}
+
+type GetEcsInvocationsInvocationInvokeInstanceArgs struct {
+	// The start time of the execution.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
+	Dropped   pulumi.IntInput    `pulumi:"dropped"`
+	ErrorCode pulumi.StringInput `pulumi:"errorCode"`
+	// Details about the reason why the command failed to be sent or run.
+	ErrorInfo pulumi.StringInput `pulumi:"errorInfo"`
+	// The exit code of the execution.
+	ExitCode pulumi.IntInput `pulumi:"exitCode"`
+	// The end time of the execution.
+	FinishTime pulumi.StringInput `pulumi:"finishTime"`
+	// The ID of the instance.
+	InstanceId           pulumi.StringInput `pulumi:"instanceId"`
+	InstanceInvokeStatus pulumi.StringInput `pulumi:"instanceInvokeStatus"`
+	// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+	InvocationStatus pulumi.StringInput `pulumi:"invocationStatus"`
+	// The output of the command.
+	Output pulumi.StringInput `pulumi:"output"`
+	// The number of times that the command is run on the instance.
+	Repeats pulumi.IntInput `pulumi:"repeats"`
+	// The time when the command started to be run on the instance.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
+	StopTime pulumi.StringInput `pulumi:"stopTime"`
+	// Indicates whether the commands are to be automatically run.
+	// * `errorCode	` - The code that indicates why the command failed to be sent or run.
+	// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	Timed pulumi.BoolInput `pulumi:"timed"`
+	// The time when the execution state was updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetEcsInvocationsInvocationInvokeInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsInvocationsInvocationInvokeInstance)(nil)).Elem()
+}
+
+func (i GetEcsInvocationsInvocationInvokeInstanceArgs) ToGetEcsInvocationsInvocationInvokeInstanceOutput() GetEcsInvocationsInvocationInvokeInstanceOutput {
+	return i.ToGetEcsInvocationsInvocationInvokeInstanceOutputWithContext(context.Background())
+}
+
+func (i GetEcsInvocationsInvocationInvokeInstanceArgs) ToGetEcsInvocationsInvocationInvokeInstanceOutputWithContext(ctx context.Context) GetEcsInvocationsInvocationInvokeInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsInvocationsInvocationInvokeInstanceOutput)
+}
+
+// GetEcsInvocationsInvocationInvokeInstanceArrayInput is an input type that accepts GetEcsInvocationsInvocationInvokeInstanceArray and GetEcsInvocationsInvocationInvokeInstanceArrayOutput values.
+// You can construct a concrete instance of `GetEcsInvocationsInvocationInvokeInstanceArrayInput` via:
+//
+//          GetEcsInvocationsInvocationInvokeInstanceArray{ GetEcsInvocationsInvocationInvokeInstanceArgs{...} }
+type GetEcsInvocationsInvocationInvokeInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsInvocationsInvocationInvokeInstanceArrayOutput() GetEcsInvocationsInvocationInvokeInstanceArrayOutput
+	ToGetEcsInvocationsInvocationInvokeInstanceArrayOutputWithContext(context.Context) GetEcsInvocationsInvocationInvokeInstanceArrayOutput
+}
+
+type GetEcsInvocationsInvocationInvokeInstanceArray []GetEcsInvocationsInvocationInvokeInstanceInput
+
+func (GetEcsInvocationsInvocationInvokeInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsInvocationsInvocationInvokeInstance)(nil)).Elem()
+}
+
+func (i GetEcsInvocationsInvocationInvokeInstanceArray) ToGetEcsInvocationsInvocationInvokeInstanceArrayOutput() GetEcsInvocationsInvocationInvokeInstanceArrayOutput {
+	return i.ToGetEcsInvocationsInvocationInvokeInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsInvocationsInvocationInvokeInstanceArray) ToGetEcsInvocationsInvocationInvokeInstanceArrayOutputWithContext(ctx context.Context) GetEcsInvocationsInvocationInvokeInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsInvocationsInvocationInvokeInstanceArrayOutput)
+}
+
+type GetEcsInvocationsInvocationInvokeInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetEcsInvocationsInvocationInvokeInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsInvocationsInvocationInvokeInstance)(nil)).Elem()
+}
+
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) ToGetEcsInvocationsInvocationInvokeInstanceOutput() GetEcsInvocationsInvocationInvokeInstanceOutput {
+	return o
+}
+
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) ToGetEcsInvocationsInvocationInvokeInstanceOutputWithContext(ctx context.Context) GetEcsInvocationsInvocationInvokeInstanceOutput {
+	return o
+}
+
+// The start time of the execution.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) Dropped() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) int { return v.Dropped }).(pulumi.IntOutput)
+}
+
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// Details about the reason why the command failed to be sent or run.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) ErrorInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.ErrorInfo }).(pulumi.StringOutput)
+}
+
+// The exit code of the execution.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) ExitCode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) int { return v.ExitCode }).(pulumi.IntOutput)
+}
+
+// The end time of the execution.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) FinishTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.FinishTime }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) InstanceInvokeStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.InstanceInvokeStatus }).(pulumi.StringOutput)
+}
+
+// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) InvocationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.InvocationStatus }).(pulumi.StringOutput)
+}
+
+// The output of the command.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) Output() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.Output }).(pulumi.StringOutput)
+}
+
+// The number of times that the command is run on the instance.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) Repeats() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) int { return v.Repeats }).(pulumi.IntOutput)
+}
+
+// The time when the command started to be run on the instance.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) StopTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.StopTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether the commands are to be automatically run.
+// * `errorCode	` - The code that indicates why the command failed to be sent or run.
+// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) Timed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) bool { return v.Timed }).(pulumi.BoolOutput)
+}
+
+// The time when the execution state was updated.
+func (o GetEcsInvocationsInvocationInvokeInstanceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetEcsInvocationsInvocationInvokeInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsInvocationsInvocationInvokeInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsInvocationsInvocationInvokeInstance)(nil)).Elem()
+}
+
+func (o GetEcsInvocationsInvocationInvokeInstanceArrayOutput) ToGetEcsInvocationsInvocationInvokeInstanceArrayOutput() GetEcsInvocationsInvocationInvokeInstanceArrayOutput {
+	return o
+}
+
+func (o GetEcsInvocationsInvocationInvokeInstanceArrayOutput) ToGetEcsInvocationsInvocationInvokeInstanceArrayOutputWithContext(ctx context.Context) GetEcsInvocationsInvocationInvokeInstanceArrayOutput {
+	return o
+}
+
+func (o GetEcsInvocationsInvocationInvokeInstanceArrayOutput) Index(i pulumi.IntInput) GetEcsInvocationsInvocationInvokeInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsInvocationsInvocationInvokeInstance {
+		return vs[0].([]GetEcsInvocationsInvocationInvokeInstance)[vs[1].(int)]
+	}).(GetEcsInvocationsInvocationInvokeInstanceOutput)
+}
+
 type GetEcsKeyPairsKeyPair struct {
 	// The finger print of the key pair.
 	FingerPrint string `pulumi:"fingerPrint"`
@@ -7189,7 +7893,160 @@ func (o GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput) Index(i pulumi.IntIn
 	}).(GetEcsLaunchTemplatesTemplateSystemDiskOutput)
 }
 
+type GetEcsNetworkInterfacePermissionsPermission struct {
+	// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
+	AccountId string `pulumi:"accountId"`
+	// The ID of the Network Interface Permission.
+	Id string `pulumi:"id"`
+	// The ID of the network interface.
+	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
+	// The ID of the Network Interface Permissions.
+	NetworkInterfacePermissionId string `pulumi:"networkInterfacePermissionId"`
+	// The permissions of the Network Interface.
+	Permission string `pulumi:"permission"`
+	// Alibaba Cloud service name.
+	ServiceName string `pulumi:"serviceName"`
+	// The Status of the Network Interface Permissions.
+	Status string `pulumi:"status"`
+}
+
+// GetEcsNetworkInterfacePermissionsPermissionInput is an input type that accepts GetEcsNetworkInterfacePermissionsPermissionArgs and GetEcsNetworkInterfacePermissionsPermissionOutput values.
+// You can construct a concrete instance of `GetEcsNetworkInterfacePermissionsPermissionInput` via:
+//
+//          GetEcsNetworkInterfacePermissionsPermissionArgs{...}
+type GetEcsNetworkInterfacePermissionsPermissionInput interface {
+	pulumi.Input
+
+	ToGetEcsNetworkInterfacePermissionsPermissionOutput() GetEcsNetworkInterfacePermissionsPermissionOutput
+	ToGetEcsNetworkInterfacePermissionsPermissionOutputWithContext(context.Context) GetEcsNetworkInterfacePermissionsPermissionOutput
+}
+
+type GetEcsNetworkInterfacePermissionsPermissionArgs struct {
+	// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The ID of the Network Interface Permission.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the network interface.
+	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
+	// The ID of the Network Interface Permissions.
+	NetworkInterfacePermissionId pulumi.StringInput `pulumi:"networkInterfacePermissionId"`
+	// The permissions of the Network Interface.
+	Permission pulumi.StringInput `pulumi:"permission"`
+	// Alibaba Cloud service name.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The Status of the Network Interface Permissions.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEcsNetworkInterfacePermissionsPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsNetworkInterfacePermissionsPermission)(nil)).Elem()
+}
+
+func (i GetEcsNetworkInterfacePermissionsPermissionArgs) ToGetEcsNetworkInterfacePermissionsPermissionOutput() GetEcsNetworkInterfacePermissionsPermissionOutput {
+	return i.ToGetEcsNetworkInterfacePermissionsPermissionOutputWithContext(context.Background())
+}
+
+func (i GetEcsNetworkInterfacePermissionsPermissionArgs) ToGetEcsNetworkInterfacePermissionsPermissionOutputWithContext(ctx context.Context) GetEcsNetworkInterfacePermissionsPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsNetworkInterfacePermissionsPermissionOutput)
+}
+
+// GetEcsNetworkInterfacePermissionsPermissionArrayInput is an input type that accepts GetEcsNetworkInterfacePermissionsPermissionArray and GetEcsNetworkInterfacePermissionsPermissionArrayOutput values.
+// You can construct a concrete instance of `GetEcsNetworkInterfacePermissionsPermissionArrayInput` via:
+//
+//          GetEcsNetworkInterfacePermissionsPermissionArray{ GetEcsNetworkInterfacePermissionsPermissionArgs{...} }
+type GetEcsNetworkInterfacePermissionsPermissionArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsNetworkInterfacePermissionsPermissionArrayOutput() GetEcsNetworkInterfacePermissionsPermissionArrayOutput
+	ToGetEcsNetworkInterfacePermissionsPermissionArrayOutputWithContext(context.Context) GetEcsNetworkInterfacePermissionsPermissionArrayOutput
+}
+
+type GetEcsNetworkInterfacePermissionsPermissionArray []GetEcsNetworkInterfacePermissionsPermissionInput
+
+func (GetEcsNetworkInterfacePermissionsPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsNetworkInterfacePermissionsPermission)(nil)).Elem()
+}
+
+func (i GetEcsNetworkInterfacePermissionsPermissionArray) ToGetEcsNetworkInterfacePermissionsPermissionArrayOutput() GetEcsNetworkInterfacePermissionsPermissionArrayOutput {
+	return i.ToGetEcsNetworkInterfacePermissionsPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsNetworkInterfacePermissionsPermissionArray) ToGetEcsNetworkInterfacePermissionsPermissionArrayOutputWithContext(ctx context.Context) GetEcsNetworkInterfacePermissionsPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsNetworkInterfacePermissionsPermissionArrayOutput)
+}
+
+type GetEcsNetworkInterfacePermissionsPermissionOutput struct{ *pulumi.OutputState }
+
+func (GetEcsNetworkInterfacePermissionsPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsNetworkInterfacePermissionsPermission)(nil)).Elem()
+}
+
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) ToGetEcsNetworkInterfacePermissionsPermissionOutput() GetEcsNetworkInterfacePermissionsPermissionOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) ToGetEcsNetworkInterfacePermissionsPermissionOutputWithContext(ctx context.Context) GetEcsNetworkInterfacePermissionsPermissionOutput {
+	return o
+}
+
+// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The ID of the Network Interface Permission.
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the network interface.
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+// The ID of the Network Interface Permissions.
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) NetworkInterfacePermissionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.NetworkInterfacePermissionId }).(pulumi.StringOutput)
+}
+
+// The permissions of the Network Interface.
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud service name.
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The Status of the Network Interface Permissions.
+func (o GetEcsNetworkInterfacePermissionsPermissionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEcsNetworkInterfacePermissionsPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsNetworkInterfacePermissionsPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsNetworkInterfacePermissionsPermission)(nil)).Elem()
+}
+
+func (o GetEcsNetworkInterfacePermissionsPermissionArrayOutput) ToGetEcsNetworkInterfacePermissionsPermissionArrayOutput() GetEcsNetworkInterfacePermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacePermissionsPermissionArrayOutput) ToGetEcsNetworkInterfacePermissionsPermissionArrayOutputWithContext(ctx context.Context) GetEcsNetworkInterfacePermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacePermissionsPermissionArrayOutput) Index(i pulumi.IntInput) GetEcsNetworkInterfacePermissionsPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsNetworkInterfacePermissionsPermission {
+		return vs[0].([]GetEcsNetworkInterfacePermissionsPermission)[vs[1].(int)]
+	}).(GetEcsNetworkInterfacePermissionsPermissionOutput)
+}
+
 type GetEcsNetworkInterfacesInterface struct {
+	// The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
+	AssociatedPublicIps []GetEcsNetworkInterfacesInterfaceAssociatedPublicIp `pulumi:"associatedPublicIps"`
 	// The creation time.
 	CreationTime string `pulumi:"creationTime"`
 	// The description of the ENI.
@@ -7255,6 +8112,8 @@ type GetEcsNetworkInterfacesInterfaceInput interface {
 }
 
 type GetEcsNetworkInterfacesInterfaceArgs struct {
+	// The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
+	AssociatedPublicIps GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayInput `pulumi:"associatedPublicIps"`
 	// The creation time.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// The description of the ENI.
@@ -7357,6 +8216,13 @@ func (o GetEcsNetworkInterfacesInterfaceOutput) ToGetEcsNetworkInterfacesInterfa
 
 func (o GetEcsNetworkInterfacesInterfaceOutput) ToGetEcsNetworkInterfacesInterfaceOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceOutput {
 	return o
+}
+
+// The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
+func (o GetEcsNetworkInterfacesInterfaceOutput) AssociatedPublicIps() GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) []GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
+		return v.AssociatedPublicIps
+	}).(GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput)
 }
 
 // The creation time.
@@ -7506,6 +8372,103 @@ func (o GetEcsNetworkInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsNetworkInterfacesInterface {
 		return vs[0].([]GetEcsNetworkInterfacesInterface)[vs[1].(int)]
 	}).(GetEcsNetworkInterfacesInterfaceOutput)
+}
+
+type GetEcsNetworkInterfacesInterfaceAssociatedPublicIp struct {
+	// The EIP of the ENI.
+	PublicIpAddress string `pulumi:"publicIpAddress"`
+}
+
+// GetEcsNetworkInterfacesInterfaceAssociatedPublicIpInput is an input type that accepts GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs and GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput values.
+// You can construct a concrete instance of `GetEcsNetworkInterfacesInterfaceAssociatedPublicIpInput` via:
+//
+//          GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs{...}
+type GetEcsNetworkInterfacesInterfaceAssociatedPublicIpInput interface {
+	pulumi.Input
+
+	ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput() GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput
+	ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutputWithContext(context.Context) GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput
+}
+
+type GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs struct {
+	// The EIP of the ENI.
+	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
+}
+
+func (GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceAssociatedPublicIp)(nil)).Elem()
+}
+
+func (i GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs) ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput() GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return i.ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutputWithContext(context.Background())
+}
+
+func (i GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs) ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput)
+}
+
+// GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayInput is an input type that accepts GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArray and GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput values.
+// You can construct a concrete instance of `GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayInput` via:
+//
+//          GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArray{ GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs{...} }
+type GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput() GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput
+	ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutputWithContext(context.Context) GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput
+}
+
+type GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArray []GetEcsNetworkInterfacesInterfaceAssociatedPublicIpInput
+
+func (GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsNetworkInterfacesInterfaceAssociatedPublicIp)(nil)).Elem()
+}
+
+func (i GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArray) ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput() GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return i.ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArray) ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput)
+}
+
+type GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput struct{ *pulumi.OutputState }
+
+func (GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceAssociatedPublicIp)(nil)).Elem()
+}
+
+func (o GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput) ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput() GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput) ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return o
+}
+
+// The EIP of the ENI.
+func (o GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput) PublicIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterfaceAssociatedPublicIp) string { return v.PublicIpAddress }).(pulumi.StringOutput)
+}
+
+type GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsNetworkInterfacesInterfaceAssociatedPublicIp)(nil)).Elem()
+}
+
+func (o GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput() GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) ToGetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutputWithContext(ctx context.Context) GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return o
+}
+
+func (o GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) Index(i pulumi.IntInput) GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
+		return vs[0].([]GetEcsNetworkInterfacesInterfaceAssociatedPublicIp)[vs[1].(int)]
+	}).(GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput)
 }
 
 type GetEcsPrefixListsList struct {
@@ -10102,6 +11065,8 @@ type GetInstanceTypesInstanceType struct {
 	// List of availability zones that support the instance type.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// The burstable instance attribution:
+	// - initial_credit: The initial CPU credit of a burstable instance.
+	// - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
 	BurstableInstance GetInstanceTypesInstanceTypeBurstableInstance `pulumi:"burstableInstance"`
 	// Filter the results to a specific number of cpu cores.
 	CpuCoreCount int `pulumi:"cpuCoreCount"`
@@ -10110,14 +11075,23 @@ type GetInstanceTypesInstanceType struct {
 	// The instance type family.
 	Family string `pulumi:"family"`
 	// The GPU attribution of an instance type:
+	// - amount: The amount of GPU of an instance type.
+	// - category: The category of GPU of an instance type.
 	Gpu GetInstanceTypesInstanceTypeGpu `pulumi:"gpu"`
 	// ID of the instance type.
 	Id string `pulumi:"id"`
 	// Local storage of an instance type:
+	// - capacity: The capacity of a local storage in GB.
+	// - amount:  The number of local storage devices that an instance has been attached to.
+	// - category: The category of local storage that an instance has been attached to.
 	LocalStorage GetInstanceTypesInstanceTypeLocalStorage `pulumi:"localStorage"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize float64 `pulumi:"memorySize"`
-	Price      string  `pulumi:"price"`
+	// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
+	// - required: The cloud disk can be attached by using the NVMe protocol.
+	// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+	NvmeSupport string `pulumi:"nvmeSupport"`
+	Price       string `pulumi:"price"`
 }
 
 // GetInstanceTypesInstanceTypeInput is an input type that accepts GetInstanceTypesInstanceTypeArgs and GetInstanceTypesInstanceTypeOutput values.
@@ -10135,6 +11109,8 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	// List of availability zones that support the instance type.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// The burstable instance attribution:
+	// - initial_credit: The initial CPU credit of a burstable instance.
+	// - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
 	BurstableInstance GetInstanceTypesInstanceTypeBurstableInstanceInput `pulumi:"burstableInstance"`
 	// Filter the results to a specific number of cpu cores.
 	CpuCoreCount pulumi.IntInput `pulumi:"cpuCoreCount"`
@@ -10143,14 +11119,23 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	// The instance type family.
 	Family pulumi.StringInput `pulumi:"family"`
 	// The GPU attribution of an instance type:
+	// - amount: The amount of GPU of an instance type.
+	// - category: The category of GPU of an instance type.
 	Gpu GetInstanceTypesInstanceTypeGpuInput `pulumi:"gpu"`
 	// ID of the instance type.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Local storage of an instance type:
+	// - capacity: The capacity of a local storage in GB.
+	// - amount:  The number of local storage devices that an instance has been attached to.
+	// - category: The category of local storage that an instance has been attached to.
 	LocalStorage GetInstanceTypesInstanceTypeLocalStorageInput `pulumi:"localStorage"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize pulumi.Float64Input `pulumi:"memorySize"`
-	Price      pulumi.StringInput  `pulumi:"price"`
+	// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
+	// - required: The cloud disk can be attached by using the NVMe protocol.
+	// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+	NvmeSupport pulumi.StringInput `pulumi:"nvmeSupport"`
+	Price       pulumi.StringInput `pulumi:"price"`
 }
 
 func (GetInstanceTypesInstanceTypeArgs) ElementType() reflect.Type {
@@ -10210,6 +11195,8 @@ func (o GetInstanceTypesInstanceTypeOutput) AvailabilityZones() pulumi.StringArr
 }
 
 // The burstable instance attribution:
+// - initial_credit: The initial CPU credit of a burstable instance.
+// - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
 func (o GetInstanceTypesInstanceTypeOutput) BurstableInstance() GetInstanceTypesInstanceTypeBurstableInstanceOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeBurstableInstance {
 		return v.BurstableInstance
@@ -10232,6 +11219,8 @@ func (o GetInstanceTypesInstanceTypeOutput) Family() pulumi.StringOutput {
 }
 
 // The GPU attribution of an instance type:
+// - amount: The amount of GPU of an instance type.
+// - category: The category of GPU of an instance type.
 func (o GetInstanceTypesInstanceTypeOutput) Gpu() GetInstanceTypesInstanceTypeGpuOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeGpu { return v.Gpu }).(GetInstanceTypesInstanceTypeGpuOutput)
 }
@@ -10242,6 +11231,9 @@ func (o GetInstanceTypesInstanceTypeOutput) Id() pulumi.StringOutput {
 }
 
 // Local storage of an instance type:
+// - capacity: The capacity of a local storage in GB.
+// - amount:  The number of local storage devices that an instance has been attached to.
+// - category: The category of local storage that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeOutput) LocalStorage() GetInstanceTypesInstanceTypeLocalStorageOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeLocalStorage { return v.LocalStorage }).(GetInstanceTypesInstanceTypeLocalStorageOutput)
 }
@@ -10249,6 +11241,13 @@ func (o GetInstanceTypesInstanceTypeOutput) LocalStorage() GetInstanceTypesInsta
 // Filter the results to a specific memory size in GB.
 func (o GetInstanceTypesInstanceTypeOutput) MemorySize() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) float64 { return v.MemorySize }).(pulumi.Float64Output)
+}
+
+// Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
+// - required: The cloud disk can be attached by using the NVMe protocol.
+// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+func (o GetInstanceTypesInstanceTypeOutput) NvmeSupport() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.NvmeSupport }).(pulumi.StringOutput)
 }
 
 func (o GetInstanceTypesInstanceTypeOutput) Price() pulumi.StringOutput {
@@ -10276,10 +11275,8 @@ func (o GetInstanceTypesInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetIns
 }
 
 type GetInstanceTypesInstanceTypeBurstableInstance struct {
-	// The compute performance benchmark CPU credit of a burstable instance.
 	BaselineCredit string `pulumi:"baselineCredit"`
-	// The initial CPU credit of a burstable instance.
-	InitialCredit string `pulumi:"initialCredit"`
+	InitialCredit  string `pulumi:"initialCredit"`
 }
 
 // GetInstanceTypesInstanceTypeBurstableInstanceInput is an input type that accepts GetInstanceTypesInstanceTypeBurstableInstanceArgs and GetInstanceTypesInstanceTypeBurstableInstanceOutput values.
@@ -10294,10 +11291,8 @@ type GetInstanceTypesInstanceTypeBurstableInstanceInput interface {
 }
 
 type GetInstanceTypesInstanceTypeBurstableInstanceArgs struct {
-	// The compute performance benchmark CPU credit of a burstable instance.
 	BaselineCredit pulumi.StringInput `pulumi:"baselineCredit"`
-	// The initial CPU credit of a burstable instance.
-	InitialCredit pulumi.StringInput `pulumi:"initialCredit"`
+	InitialCredit  pulumi.StringInput `pulumi:"initialCredit"`
 }
 
 func (GetInstanceTypesInstanceTypeBurstableInstanceArgs) ElementType() reflect.Type {
@@ -10326,20 +11321,16 @@ func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) ToGetInstanceTypesI
 	return o
 }
 
-// The compute performance benchmark CPU credit of a burstable instance.
 func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) BaselineCredit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.BaselineCredit }).(pulumi.StringOutput)
 }
 
-// The initial CPU credit of a burstable instance.
 func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) InitialCredit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.InitialCredit }).(pulumi.StringOutput)
 }
 
 type GetInstanceTypesInstanceTypeGpu struct {
-	// The number of local storage devices that an instance has been attached to.
-	Amount string `pulumi:"amount"`
-	// The category of local storage that an instance has been attached to.
+	Amount   string `pulumi:"amount"`
 	Category string `pulumi:"category"`
 }
 
@@ -10355,9 +11346,7 @@ type GetInstanceTypesInstanceTypeGpuInput interface {
 }
 
 type GetInstanceTypesInstanceTypeGpuArgs struct {
-	// The number of local storage devices that an instance has been attached to.
-	Amount pulumi.StringInput `pulumi:"amount"`
-	// The category of local storage that an instance has been attached to.
+	Amount   pulumi.StringInput `pulumi:"amount"`
 	Category pulumi.StringInput `pulumi:"category"`
 }
 
@@ -10387,22 +11376,17 @@ func (o GetInstanceTypesInstanceTypeGpuOutput) ToGetInstanceTypesInstanceTypeGpu
 	return o
 }
 
-// The number of local storage devices that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeGpuOutput) Amount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpu) string { return v.Amount }).(pulumi.StringOutput)
 }
 
-// The category of local storage that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeGpuOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpu) string { return v.Category }).(pulumi.StringOutput)
 }
 
 type GetInstanceTypesInstanceTypeLocalStorage struct {
-	// The number of local storage devices that an instance has been attached to.
-	Amount string `pulumi:"amount"`
-	// The capacity of a local storage in GB.
+	Amount   string `pulumi:"amount"`
 	Capacity string `pulumi:"capacity"`
-	// The category of local storage that an instance has been attached to.
 	Category string `pulumi:"category"`
 }
 
@@ -10418,11 +11402,8 @@ type GetInstanceTypesInstanceTypeLocalStorageInput interface {
 }
 
 type GetInstanceTypesInstanceTypeLocalStorageArgs struct {
-	// The number of local storage devices that an instance has been attached to.
-	Amount pulumi.StringInput `pulumi:"amount"`
-	// The capacity of a local storage in GB.
+	Amount   pulumi.StringInput `pulumi:"amount"`
 	Capacity pulumi.StringInput `pulumi:"capacity"`
-	// The category of local storage that an instance has been attached to.
 	Category pulumi.StringInput `pulumi:"category"`
 }
 
@@ -10452,17 +11433,14 @@ func (o GetInstanceTypesInstanceTypeLocalStorageOutput) ToGetInstanceTypesInstan
 	return o
 }
 
-// The number of local storage devices that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Amount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Amount }).(pulumi.StringOutput)
 }
 
-// The capacity of a local storage in GB.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Capacity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Capacity }).(pulumi.StringOutput)
 }
 
-// The category of local storage that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -11623,6 +12601,7 @@ func (o GetKeyPairsPairInstanceArrayOutput) Index(i pulumi.IntInput) GetKeyPairs
 }
 
 type GetNetworkInterfacesInterface struct {
+	AssociatedPublicIps []GetNetworkInterfacesInterfaceAssociatedPublicIp `pulumi:"associatedPublicIps"`
 	// Creation time of the ENI.
 	CreationTime string `pulumi:"creationTime"`
 	// Description of the ENI.
@@ -11678,6 +12657,7 @@ type GetNetworkInterfacesInterfaceInput interface {
 }
 
 type GetNetworkInterfacesInterfaceArgs struct {
+	AssociatedPublicIps GetNetworkInterfacesInterfaceAssociatedPublicIpArrayInput `pulumi:"associatedPublicIps"`
 	// Creation time of the ENI.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Description of the ENI.
@@ -11770,6 +12750,12 @@ func (o GetNetworkInterfacesInterfaceOutput) ToGetNetworkInterfacesInterfaceOutp
 
 func (o GetNetworkInterfacesInterfaceOutput) ToGetNetworkInterfacesInterfaceOutputWithContext(ctx context.Context) GetNetworkInterfacesInterfaceOutput {
 	return o
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) AssociatedPublicIps() GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) []GetNetworkInterfacesInterfaceAssociatedPublicIp {
+		return v.AssociatedPublicIps
+	}).(GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput)
 }
 
 // Creation time of the ENI.
@@ -11909,6 +12895,100 @@ func (o GetNetworkInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) GetNe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkInterfacesInterface {
 		return vs[0].([]GetNetworkInterfacesInterface)[vs[1].(int)]
 	}).(GetNetworkInterfacesInterfaceOutput)
+}
+
+type GetNetworkInterfacesInterfaceAssociatedPublicIp struct {
+	PublicIpAddress string `pulumi:"publicIpAddress"`
+}
+
+// GetNetworkInterfacesInterfaceAssociatedPublicIpInput is an input type that accepts GetNetworkInterfacesInterfaceAssociatedPublicIpArgs and GetNetworkInterfacesInterfaceAssociatedPublicIpOutput values.
+// You can construct a concrete instance of `GetNetworkInterfacesInterfaceAssociatedPublicIpInput` via:
+//
+//          GetNetworkInterfacesInterfaceAssociatedPublicIpArgs{...}
+type GetNetworkInterfacesInterfaceAssociatedPublicIpInput interface {
+	pulumi.Input
+
+	ToGetNetworkInterfacesInterfaceAssociatedPublicIpOutput() GetNetworkInterfacesInterfaceAssociatedPublicIpOutput
+	ToGetNetworkInterfacesInterfaceAssociatedPublicIpOutputWithContext(context.Context) GetNetworkInterfacesInterfaceAssociatedPublicIpOutput
+}
+
+type GetNetworkInterfacesInterfaceAssociatedPublicIpArgs struct {
+	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
+}
+
+func (GetNetworkInterfacesInterfaceAssociatedPublicIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkInterfacesInterfaceAssociatedPublicIp)(nil)).Elem()
+}
+
+func (i GetNetworkInterfacesInterfaceAssociatedPublicIpArgs) ToGetNetworkInterfacesInterfaceAssociatedPublicIpOutput() GetNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return i.ToGetNetworkInterfacesInterfaceAssociatedPublicIpOutputWithContext(context.Background())
+}
+
+func (i GetNetworkInterfacesInterfaceAssociatedPublicIpArgs) ToGetNetworkInterfacesInterfaceAssociatedPublicIpOutputWithContext(ctx context.Context) GetNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkInterfacesInterfaceAssociatedPublicIpOutput)
+}
+
+// GetNetworkInterfacesInterfaceAssociatedPublicIpArrayInput is an input type that accepts GetNetworkInterfacesInterfaceAssociatedPublicIpArray and GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput values.
+// You can construct a concrete instance of `GetNetworkInterfacesInterfaceAssociatedPublicIpArrayInput` via:
+//
+//          GetNetworkInterfacesInterfaceAssociatedPublicIpArray{ GetNetworkInterfacesInterfaceAssociatedPublicIpArgs{...} }
+type GetNetworkInterfacesInterfaceAssociatedPublicIpArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput() GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput
+	ToGetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutputWithContext(context.Context) GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput
+}
+
+type GetNetworkInterfacesInterfaceAssociatedPublicIpArray []GetNetworkInterfacesInterfaceAssociatedPublicIpInput
+
+func (GetNetworkInterfacesInterfaceAssociatedPublicIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkInterfacesInterfaceAssociatedPublicIp)(nil)).Elem()
+}
+
+func (i GetNetworkInterfacesInterfaceAssociatedPublicIpArray) ToGetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput() GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return i.ToGetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkInterfacesInterfaceAssociatedPublicIpArray) ToGetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutputWithContext(ctx context.Context) GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput)
+}
+
+type GetNetworkInterfacesInterfaceAssociatedPublicIpOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkInterfacesInterfaceAssociatedPublicIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkInterfacesInterfaceAssociatedPublicIp)(nil)).Elem()
+}
+
+func (o GetNetworkInterfacesInterfaceAssociatedPublicIpOutput) ToGetNetworkInterfacesInterfaceAssociatedPublicIpOutput() GetNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return o
+}
+
+func (o GetNetworkInterfacesInterfaceAssociatedPublicIpOutput) ToGetNetworkInterfacesInterfaceAssociatedPublicIpOutputWithContext(ctx context.Context) GetNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return o
+}
+
+func (o GetNetworkInterfacesInterfaceAssociatedPublicIpOutput) PublicIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterfaceAssociatedPublicIp) string { return v.PublicIpAddress }).(pulumi.StringOutput)
+}
+
+type GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkInterfacesInterfaceAssociatedPublicIp)(nil)).Elem()
+}
+
+func (o GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) ToGetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput() GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return o
+}
+
+func (o GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) ToGetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutputWithContext(ctx context.Context) GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
+	return o
+}
+
+func (o GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) Index(i pulumi.IntInput) GetNetworkInterfacesInterfaceAssociatedPublicIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkInterfacesInterfaceAssociatedPublicIp {
+		return vs[0].([]GetNetworkInterfacesInterfaceAssociatedPublicIp)[vs[1].(int)]
+	}).(GetNetworkInterfacesInterfaceAssociatedPublicIpOutput)
 }
 
 type GetSecurityGroupRulesRule struct {
@@ -12708,6 +13788,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksOperationLockArrayInput)(nil)).Elem(), GetEcsDisksOperationLockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsImageComponentsComponentInput)(nil)).Elem(), GetEcsImageComponentsComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsImageComponentsComponentArrayInput)(nil)).Elem(), GetEcsImageComponentsComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsImagePipelinePipelineInput)(nil)).Elem(), GetEcsImagePipelinePipelineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsImagePipelinePipelineArrayInput)(nil)).Elem(), GetEcsImagePipelinePipelineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsInvocationsInvocationInput)(nil)).Elem(), GetEcsInvocationsInvocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsInvocationsInvocationArrayInput)(nil)).Elem(), GetEcsInvocationsInvocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsInvocationsInvocationInvokeInstanceInput)(nil)).Elem(), GetEcsInvocationsInvocationInvokeInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsInvocationsInvocationInvokeInstanceArrayInput)(nil)).Elem(), GetEcsInvocationsInvocationInvokeInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairInput)(nil)).Elem(), GetEcsKeyPairsKeyPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairArrayInput)(nil)).Elem(), GetEcsKeyPairsKeyPairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsKeyPairsKeyPairInstanceInput)(nil)).Elem(), GetEcsKeyPairsKeyPairInstanceArgs{})
@@ -12724,8 +13810,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateSystemDiskInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsLaunchTemplatesTemplateSystemDiskArrayInput)(nil)).Elem(), GetEcsLaunchTemplatesTemplateSystemDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacePermissionsPermissionInput)(nil)).Elem(), GetEcsNetworkInterfacePermissionsPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacePermissionsPermissionArrayInput)(nil)).Elem(), GetEcsNetworkInterfacePermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceInput)(nil)).Elem(), GetEcsNetworkInterfacesInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceArrayInput)(nil)).Elem(), GetEcsNetworkInterfacesInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceAssociatedPublicIpInput)(nil)).Elem(), GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayInput)(nil)).Elem(), GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListInput)(nil)).Elem(), GetEcsPrefixListsListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListArrayInput)(nil)).Elem(), GetEcsPrefixListsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsPrefixListsListEntryInput)(nil)).Elem(), GetEcsPrefixListsListEntryArgs{})
@@ -12771,6 +13861,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPairsPairInstanceArrayInput)(nil)).Elem(), GetKeyPairsPairInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkInterfacesInterfaceInput)(nil)).Elem(), GetNetworkInterfacesInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkInterfacesInterfaceArrayInput)(nil)).Elem(), GetNetworkInterfacesInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkInterfacesInterfaceAssociatedPublicIpInput)(nil)).Elem(), GetNetworkInterfacesInterfaceAssociatedPublicIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkInterfacesInterfaceAssociatedPublicIpArrayInput)(nil)).Elem(), GetNetworkInterfacesInterfaceAssociatedPublicIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRulesRuleInput)(nil)).Elem(), GetSecurityGroupRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRulesRuleArrayInput)(nil)).Elem(), GetSecurityGroupRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupsGroupInput)(nil)).Elem(), GetSecurityGroupsGroupArgs{})
@@ -12841,6 +13933,12 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsDisksOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsImageComponentsComponentOutput{})
 	pulumi.RegisterOutputType(GetEcsImageComponentsComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsImagePipelinePipelineOutput{})
+	pulumi.RegisterOutputType(GetEcsImagePipelinePipelineArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsInvocationsInvocationOutput{})
+	pulumi.RegisterOutputType(GetEcsInvocationsInvocationArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsInvocationsInvocationInvokeInstanceOutput{})
+	pulumi.RegisterOutputType(GetEcsInvocationsInvocationInvokeInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsKeyPairsKeyPairInstanceOutput{})
@@ -12857,8 +13955,12 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateSystemDiskOutput{})
 	pulumi.RegisterOutputType(GetEcsLaunchTemplatesTemplateSystemDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsNetworkInterfacePermissionsPermissionOutput{})
+	pulumi.RegisterOutputType(GetEcsNetworkInterfacePermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceOutput{})
 	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceAssociatedPublicIpOutput{})
+	pulumi.RegisterOutputType(GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsPrefixListsListOutput{})
 	pulumi.RegisterOutputType(GetEcsPrefixListsListArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsPrefixListsListEntryOutput{})
@@ -12904,6 +14006,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKeyPairsPairInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkInterfacesInterfaceOutput{})
 	pulumi.RegisterOutputType(GetNetworkInterfacesInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkInterfacesInterfaceAssociatedPublicIpOutput{})
+	pulumi.RegisterOutputType(GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupsGroupOutput{})

@@ -21,7 +21,7 @@ class AppTemplateConfigList(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: Configuration item key. Valid values:
+        :param str key: Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
         :param str value: Configuration item content.
         """
         if key is not None:
@@ -33,7 +33,7 @@ class AppTemplateConfigList(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        Configuration item key. Valid values:
+        Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
         """
         return pulumi.get(self, "key")
 

@@ -16,7 +16,10 @@ __all__ = ['ServiceMeshArgs', 'ServiceMesh']
 class ServiceMeshArgs:
     def __init__(__self__, *,
                  network: pulumi.Input['ServiceMeshNetworkArgs'],
+                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 extra_configuration: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  load_balancer: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']] = None,
                  mesh_config: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']] = None,
@@ -25,7 +28,10 @@ class ServiceMeshArgs:
         """
         The set of arguments for constructing a ServiceMesh resource.
         :param pulumi.Input['ServiceMeshNetworkArgs'] network: The network configuration of the Service grid. See the following `Block network`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: The array of the cluster ids.
+        :param pulumi.Input[str] cluster_spec: The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
         :param pulumi.Input[str] edition: The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        :param pulumi.Input['ServiceMeshExtraConfigurationArgs'] extra_configuration: The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: The configuration of the Load Balancer. See the following `Block load_balancer`.
         :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: The configuration of the Service grid. See the following `Block mesh_config`.
@@ -33,8 +39,14 @@ class ServiceMeshArgs:
         :param pulumi.Input[str] version: The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
         """
         pulumi.set(__self__, "network", network)
+        if cluster_ids is not None:
+            pulumi.set(__self__, "cluster_ids", cluster_ids)
+        if cluster_spec is not None:
+            pulumi.set(__self__, "cluster_spec", cluster_spec)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if extra_configuration is not None:
+            pulumi.set(__self__, "extra_configuration", extra_configuration)
         if force is not None:
             pulumi.set(__self__, "force", force)
         if load_balancer is not None:
@@ -59,6 +71,30 @@ class ServiceMeshArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="clusterIds")
+    def cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The array of the cluster ids.
+        """
+        return pulumi.get(self, "cluster_ids")
+
+    @cluster_ids.setter
+    def cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cluster_ids", value)
+
+    @property
+    @pulumi.getter(name="clusterSpec")
+    def cluster_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        """
+        return pulumi.get(self, "cluster_spec")
+
+    @cluster_spec.setter
+    def cluster_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_spec", value)
+
+    @property
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
@@ -69,6 +105,18 @@ class ServiceMeshArgs:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter(name="extraConfiguration")
+    def extra_configuration(self) -> Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]:
+        """
+        The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        """
+        return pulumi.get(self, "extra_configuration")
+
+    @extra_configuration.setter
+    def extra_configuration(self, value: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]):
+        pulumi.set(self, "extra_configuration", value)
 
     @property
     @pulumi.getter
@@ -134,7 +182,10 @@ class ServiceMeshArgs:
 @pulumi.input_type
 class _ServiceMeshState:
     def __init__(__self__, *,
+                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 extra_configuration: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  load_balancer: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']] = None,
                  mesh_config: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']] = None,
@@ -144,7 +195,10 @@ class _ServiceMeshState:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceMesh resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: The array of the cluster ids.
+        :param pulumi.Input[str] cluster_spec: The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
         :param pulumi.Input[str] edition: The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        :param pulumi.Input['ServiceMeshExtraConfigurationArgs'] extra_configuration: The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: The configuration of the Load Balancer. See the following `Block load_balancer`.
         :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: The configuration of the Service grid. See the following `Block mesh_config`.
@@ -153,8 +207,14 @@ class _ServiceMeshState:
         :param pulumi.Input[str] status: The status of the resource. Valid values: `running` or `initial`.
         :param pulumi.Input[str] version: The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
         """
+        if cluster_ids is not None:
+            pulumi.set(__self__, "cluster_ids", cluster_ids)
+        if cluster_spec is not None:
+            pulumi.set(__self__, "cluster_spec", cluster_spec)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if extra_configuration is not None:
+            pulumi.set(__self__, "extra_configuration", extra_configuration)
         if force is not None:
             pulumi.set(__self__, "force", force)
         if load_balancer is not None:
@@ -171,6 +231,30 @@ class _ServiceMeshState:
             pulumi.set(__self__, "version", version)
 
     @property
+    @pulumi.getter(name="clusterIds")
+    def cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The array of the cluster ids.
+        """
+        return pulumi.get(self, "cluster_ids")
+
+    @cluster_ids.setter
+    def cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cluster_ids", value)
+
+    @property
+    @pulumi.getter(name="clusterSpec")
+    def cluster_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        """
+        return pulumi.get(self, "cluster_spec")
+
+    @cluster_spec.setter
+    def cluster_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_spec", value)
+
+    @property
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
@@ -181,6 +265,18 @@ class _ServiceMeshState:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter(name="extraConfiguration")
+    def extra_configuration(self) -> Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]:
+        """
+        The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        """
+        return pulumi.get(self, "extra_configuration")
+
+    @extra_configuration.setter
+    def extra_configuration(self, value: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]):
+        pulumi.set(self, "extra_configuration", value)
 
     @property
     @pulumi.getter
@@ -272,7 +368,10 @@ class ServiceMesh(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 extra_configuration: Optional[pulumi.Input[pulumi.InputType['ServiceMeshExtraConfigurationArgs']]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  load_balancer: Optional[pulumi.Input[pulumi.InputType['ServiceMeshLoadBalancerArgs']]] = None,
                  mesh_config: Optional[pulumi.Input[pulumi.InputType['ServiceMeshMeshConfigArgs']]] = None,
@@ -297,7 +396,10 @@ class ServiceMesh(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: The array of the cluster ids.
+        :param pulumi.Input[str] cluster_spec: The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
         :param pulumi.Input[str] edition: The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        :param pulumi.Input[pulumi.InputType['ServiceMeshExtraConfigurationArgs']] extra_configuration: The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input[pulumi.InputType['ServiceMeshLoadBalancerArgs']] load_balancer: The configuration of the Load Balancer. See the following `Block load_balancer`.
         :param pulumi.Input[pulumi.InputType['ServiceMeshMeshConfigArgs']] mesh_config: The configuration of the Service grid. See the following `Block mesh_config`.
@@ -341,7 +443,10 @@ class ServiceMesh(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cluster_spec: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 extra_configuration: Optional[pulumi.Input[pulumi.InputType['ServiceMeshExtraConfigurationArgs']]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  load_balancer: Optional[pulumi.Input[pulumi.InputType['ServiceMeshLoadBalancerArgs']]] = None,
                  mesh_config: Optional[pulumi.Input[pulumi.InputType['ServiceMeshMeshConfigArgs']]] = None,
@@ -360,7 +465,10 @@ class ServiceMesh(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceMeshArgs.__new__(ServiceMeshArgs)
 
+            __props__.__dict__["cluster_ids"] = cluster_ids
+            __props__.__dict__["cluster_spec"] = cluster_spec
             __props__.__dict__["edition"] = edition
+            __props__.__dict__["extra_configuration"] = extra_configuration
             __props__.__dict__["force"] = force
             __props__.__dict__["load_balancer"] = load_balancer
             __props__.__dict__["mesh_config"] = mesh_config
@@ -380,7 +488,10 @@ class ServiceMesh(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            cluster_spec: Optional[pulumi.Input[str]] = None,
             edition: Optional[pulumi.Input[str]] = None,
+            extra_configuration: Optional[pulumi.Input[pulumi.InputType['ServiceMeshExtraConfigurationArgs']]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             load_balancer: Optional[pulumi.Input[pulumi.InputType['ServiceMeshLoadBalancerArgs']]] = None,
             mesh_config: Optional[pulumi.Input[pulumi.InputType['ServiceMeshMeshConfigArgs']]] = None,
@@ -395,7 +506,10 @@ class ServiceMesh(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: The array of the cluster ids.
+        :param pulumi.Input[str] cluster_spec: The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
         :param pulumi.Input[str] edition: The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        :param pulumi.Input[pulumi.InputType['ServiceMeshExtraConfigurationArgs']] extra_configuration: The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input[pulumi.InputType['ServiceMeshLoadBalancerArgs']] load_balancer: The configuration of the Load Balancer. See the following `Block load_balancer`.
         :param pulumi.Input[pulumi.InputType['ServiceMeshMeshConfigArgs']] mesh_config: The configuration of the Service grid. See the following `Block mesh_config`.
@@ -408,7 +522,10 @@ class ServiceMesh(pulumi.CustomResource):
 
         __props__ = _ServiceMeshState.__new__(_ServiceMeshState)
 
+        __props__.__dict__["cluster_ids"] = cluster_ids
+        __props__.__dict__["cluster_spec"] = cluster_spec
         __props__.__dict__["edition"] = edition
+        __props__.__dict__["extra_configuration"] = extra_configuration
         __props__.__dict__["force"] = force
         __props__.__dict__["load_balancer"] = load_balancer
         __props__.__dict__["mesh_config"] = mesh_config
@@ -419,12 +536,36 @@ class ServiceMesh(pulumi.CustomResource):
         return ServiceMesh(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="clusterIds")
+    def cluster_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The array of the cluster ids.
+        """
+        return pulumi.get(self, "cluster_ids")
+
+    @property
+    @pulumi.getter(name="clusterSpec")
+    def cluster_spec(self) -> pulumi.Output[Optional[str]]:
+        """
+        The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+        """
+        return pulumi.get(self, "cluster_spec")
+
+    @property
     @pulumi.getter
     def edition(self) -> pulumi.Output[str]:
         """
         The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
         """
         return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter(name="extraConfiguration")
+    def extra_configuration(self) -> pulumi.Output['outputs.ServiceMeshExtraConfiguration']:
+        """
+        The configurations of additional features for the ASM instance. See the following `Block extra_configuration`.
+        """
+        return pulumi.get(self, "extra_configuration")
 
     @property
     @pulumi.getter

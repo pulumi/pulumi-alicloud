@@ -43,6 +43,7 @@ export function getServerPlans(args?: GetServerPlansArgs, opts?: pulumi.InvokeOp
         "ids": args.ids,
         "memory": args.memory,
         "outputFile": args.outputFile,
+        "platform": args.platform,
     }, opts);
 }
 
@@ -75,6 +76,10 @@ export interface GetServerPlansArgs {
      */
     memory?: number;
     outputFile?: string;
+    /**
+     * The platform of Plan supported. Valid values: ["Linux", "Windows"].
+     */
+    platform?: string;
 }
 
 /**
@@ -93,6 +98,7 @@ export interface GetServerPlansResult {
     readonly memory?: number;
     readonly outputFile?: string;
     readonly plans: outputs.simpleapplicationserver.GetServerPlansPlan[];
+    readonly platform?: string;
 }
 
 export function getServerPlansOutput(args?: GetServerPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerPlansResult> {
@@ -128,4 +134,8 @@ export interface GetServerPlansOutputArgs {
      */
     memory?: pulumi.Input<number>;
     outputFile?: pulumi.Input<string>;
+    /**
+     * The platform of Plan supported. Valid values: ["Linux", "Windows"].
+     */
+    platform?: pulumi.Input<string>;
 }

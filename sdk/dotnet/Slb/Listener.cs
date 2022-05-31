@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Slb
         /// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
         /// </summary>
         [Output("bandwidth")]
-        public Output<int?> Bandwidth { get; private set; } = null!;
+        public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
         /// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
@@ -251,6 +251,9 @@ namespace Pulumi.AliCloud.Slb
         [Output("loadBalancerId")]
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the master slave server group.
+        /// </summary>
         [Output("masterSlaveServerGroupId")]
         public Output<string?> MasterSlaveServerGroupId { get; private set; } = null!;
 
@@ -550,6 +553,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the master slave server group.
+        /// </summary>
         [Input("masterSlaveServerGroupId")]
         public Input<string>? MasterSlaveServerGroupId { get; set; }
 
@@ -810,6 +816,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }
 
+        /// <summary>
+        /// The ID of the master slave server group.
+        /// </summary>
         [Input("masterSlaveServerGroupId")]
         public Input<string>? MasterSlaveServerGroupId { get; set; }
 

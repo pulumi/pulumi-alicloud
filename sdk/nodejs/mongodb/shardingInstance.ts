@@ -63,7 +63,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -87,6 +87,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     */
+    public readonly networkType!: pulumi.Output<string>;
+    /**
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
@@ -97,6 +101,14 @@ export class ShardingInstance extends pulumi.CustomResource {
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
     public readonly period!: pulumi.Output<number>;
+    /**
+     * The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+     */
+    public readonly protocolType!: pulumi.Output<string>;
+    /**
+     * The ID of the Resource Group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
      */
@@ -125,6 +137,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -159,8 +175,11 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             resourceInputs["mongoLists"] = state ? state.mongoLists : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["orderType"] = state ? state.orderType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
@@ -168,6 +187,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -191,14 +211,18 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["mongoLists"] = args ? args.mongoLists : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["orderType"] = args ? args.orderType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
             resourceInputs["shardLists"] = args ? args.shardLists : undefined;
             resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["configServerLists"] = undefined /*out*/;
@@ -234,7 +258,7 @@ export interface ShardingInstanceState {
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -258,6 +282,10 @@ export interface ShardingInstanceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     */
+    networkType?: pulumi.Input<string>;
+    /**
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
@@ -268,6 +296,14 @@ export interface ShardingInstanceState {
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
     period?: pulumi.Input<number>;
+    /**
+     * The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+     */
+    protocolType?: pulumi.Input<string>;
+    /**
+     * The ID of the Resource Group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Instance log backup retention days. **NOTE:** Available in 1.42.0+.
      */
@@ -296,6 +332,10 @@ export interface ShardingInstanceState {
      * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
      */
     tdeStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -328,7 +368,7 @@ export interface ShardingInstanceArgs {
      */
     backupTime?: pulumi.Input<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
      */
     engineVersion: pulumi.Input<string>;
     /**
@@ -352,6 +392,10 @@ export interface ShardingInstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     */
+    networkType?: pulumi.Input<string>;
+    /**
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
@@ -362,6 +406,14 @@ export interface ShardingInstanceArgs {
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
     period?: pulumi.Input<number>;
+    /**
+     * The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
+     */
+    protocolType?: pulumi.Input<string>;
+    /**
+     * The ID of the Resource Group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The Security Group ID of ECS.
      */
@@ -386,6 +438,10 @@ export interface ShardingInstanceArgs {
      * The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0+.
      */
     tdeStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */

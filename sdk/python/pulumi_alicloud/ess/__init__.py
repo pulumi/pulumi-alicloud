@@ -8,6 +8,7 @@ import typing
 from .alarm import *
 from .alb_server_group_attachment import *
 from .attachment import *
+from .eci_scaling_configuration import *
 from .get_alarms import *
 from .get_lifecycle_hooks import *
 from .get_notifications import *
@@ -23,5 +24,6 @@ from .scaling_group_v_server_groups import *
 from .scaling_rule import *
 from .schedule import *
 from .scheduled_task import *
+from .suspend_process import *
 from ._inputs import *
 from . import outputs

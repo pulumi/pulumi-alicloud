@@ -11,6 +11,8 @@ from .gateway import *
 from .get_connections import *
 from .get_customer_gateways import *
 from .get_gateways import *
+from .ipsec_server import *
+from .pbr_route_entry import *
 from .route_entry import *
 from .ssl_vpn_client_cert import *
 from .ssl_vpn_server import *

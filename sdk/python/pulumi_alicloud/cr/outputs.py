@@ -10,7 +10,22 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ChainChainConfig',
+    'ChainChainConfigNode',
+    'ChainChainConfigNodeNodeConfig',
+    'ChainChainConfigNodeNodeConfigDenyPolicy',
+    'ChainChainConfigRouter',
+    'ChainChainConfigRouterFrom',
+    'ChainChainConfigRouterTo',
     'RepoDomainList',
+    'GetChainsChainResult',
+    'GetChainsChainChainConfigResult',
+    'GetChainsChainChainConfigNodeResult',
+    'GetChainsChainChainConfigNodeNodeConfigResult',
+    'GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult',
+    'GetChainsChainChainConfigRouterResult',
+    'GetChainsChainChainConfigRouterFromResult',
+    'GetChainsChainChainConfigRouterToResult',
     'GetChartNamespacesNamespaceResult',
     'GetChartRepositoriesRepositoryResult',
     'GetEndpointAclPoliciesPolicyResult',
@@ -19,6 +34,312 @@ __all__ = [
     'GetReposRepoDomainListResult',
     'GetReposRepoTagResult',
 ]
+
+@pulumi.output_type
+class ChainChainConfig(dict):
+    def __init__(__self__, *,
+                 nodes: Optional[Sequence['outputs.ChainChainConfigNode']] = None,
+                 routers: Optional[Sequence['outputs.ChainChainConfigRouter']] = None):
+        """
+        :param Sequence['ChainChainConfigNodeArgs'] nodes: Each node in the delivery chain.
+        :param Sequence['ChainChainConfigRouterArgs'] routers: Execution sequence relationship between delivery chain nodes.
+        """
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
+        if routers is not None:
+            pulumi.set(__self__, "routers", routers)
+
+    @property
+    @pulumi.getter
+    def nodes(self) -> Optional[Sequence['outputs.ChainChainConfigNode']]:
+        """
+        Each node in the delivery chain.
+        """
+        return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter
+    def routers(self) -> Optional[Sequence['outputs.ChainChainConfigRouter']]:
+        """
+        Execution sequence relationship between delivery chain nodes.
+        """
+        return pulumi.get(self, "routers")
+
+
+@pulumi.output_type
+class ChainChainConfigNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeConfigs":
+            suggest = "node_configs"
+        elif key == "nodeName":
+            suggest = "node_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChainChainConfigNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChainChainConfigNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChainChainConfigNode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable: Optional[bool] = None,
+                 node_configs: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfig']] = None,
+                 node_name: Optional[str] = None):
+        """
+        :param bool enable: Whether to enable the delivery chain node. Valid values: `true`, `false`.
+        :param Sequence['ChainChainConfigNodeNodeConfigArgs'] node_configs: The configuration of delivery chain node.
+        :param str node_name: The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if node_configs is not None:
+            pulumi.set(__self__, "node_configs", node_configs)
+        if node_name is not None:
+            pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        Whether to enable the delivery chain node. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="nodeConfigs")
+    def node_configs(self) -> Optional[Sequence['outputs.ChainChainConfigNodeNodeConfig']]:
+        """
+        The configuration of delivery chain node.
+        """
+        return pulumi.get(self, "node_configs")
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> Optional[str]:
+        """
+        The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        """
+        return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class ChainChainConfigNodeNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "denyPolicies":
+            suggest = "deny_policies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChainChainConfigNodeNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChainChainConfigNodeNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChainChainConfigNodeNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deny_policies: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfigDenyPolicy']] = None):
+        """
+        :param Sequence['ChainChainConfigNodeNodeConfigDenyPolicyArgs'] deny_policies: Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+        """
+        if deny_policies is not None:
+            pulumi.set(__self__, "deny_policies", deny_policies)
+
+    @property
+    @pulumi.getter(name="denyPolicies")
+    def deny_policies(self) -> Optional[Sequence['outputs.ChainChainConfigNodeNodeConfigDenyPolicy']]:
+        """
+        Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+        """
+        return pulumi.get(self, "deny_policies")
+
+
+@pulumi.output_type
+class ChainChainConfigNodeNodeConfigDenyPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issueCount":
+            suggest = "issue_count"
+        elif key == "issueLevel":
+            suggest = "issue_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChainChainConfigNodeNodeConfigDenyPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChainChainConfigNodeNodeConfigDenyPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChainChainConfigNodeNodeConfigDenyPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 issue_count: Optional[str] = None,
+                 issue_level: Optional[str] = None,
+                 logic: Optional[str] = None):
+        """
+        :param str action: The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+        :param str issue_count: The count of scanning vulnerabilities that triggers blocking.
+        :param str issue_level: The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+        :param str logic: The logic of trigger blocking. Valid values: `AND`, `OR`.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if issue_count is not None:
+            pulumi.set(__self__, "issue_count", issue_count)
+        if issue_level is not None:
+            pulumi.set(__self__, "issue_level", issue_level)
+        if logic is not None:
+            pulumi.set(__self__, "logic", logic)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="issueCount")
+    def issue_count(self) -> Optional[str]:
+        """
+        The count of scanning vulnerabilities that triggers blocking.
+        """
+        return pulumi.get(self, "issue_count")
+
+    @property
+    @pulumi.getter(name="issueLevel")
+    def issue_level(self) -> Optional[str]:
+        """
+        The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+        """
+        return pulumi.get(self, "issue_level")
+
+    @property
+    @pulumi.getter
+    def logic(self) -> Optional[str]:
+        """
+        The logic of trigger blocking. Valid values: `AND`, `OR`.
+        """
+        return pulumi.get(self, "logic")
+
+
+@pulumi.output_type
+class ChainChainConfigRouter(dict):
+    def __init__(__self__, *,
+                 froms: Optional[Sequence['outputs.ChainChainConfigRouterFrom']] = None,
+                 tos: Optional[Sequence['outputs.ChainChainConfigRouterTo']] = None):
+        """
+        :param Sequence['ChainChainConfigRouterFromArgs'] froms: Source node.
+        :param Sequence['ChainChainConfigRouterToArgs'] tos: Destination node.
+        """
+        if froms is not None:
+            pulumi.set(__self__, "froms", froms)
+        if tos is not None:
+            pulumi.set(__self__, "tos", tos)
+
+    @property
+    @pulumi.getter
+    def froms(self) -> Optional[Sequence['outputs.ChainChainConfigRouterFrom']]:
+        """
+        Source node.
+        """
+        return pulumi.get(self, "froms")
+
+    @property
+    @pulumi.getter
+    def tos(self) -> Optional[Sequence['outputs.ChainChainConfigRouterTo']]:
+        """
+        Destination node.
+        """
+        return pulumi.get(self, "tos")
+
+
+@pulumi.output_type
+class ChainChainConfigRouterFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeName":
+            suggest = "node_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChainChainConfigRouterFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChainChainConfigRouterFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChainChainConfigRouterFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_name: Optional[str] = None):
+        """
+        :param str node_name: The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        """
+        if node_name is not None:
+            pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> Optional[str]:
+        """
+        The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        """
+        return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class ChainChainConfigRouterTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeName":
+            suggest = "node_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChainChainConfigRouterTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChainChainConfigRouterTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChainChainConfigRouterTo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_name: Optional[str] = None):
+        """
+        :param str node_name: The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        """
+        if node_name is not None:
+            pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> Optional[str]:
+        """
+        The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        """
+        return pulumi.get(self, "node_name")
+
 
 @pulumi.output_type
 class RepoDomainList(dict):
@@ -61,6 +382,327 @@ class RepoDomainList(dict):
         Domain of vpc endpoint.
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class GetChainsChainResult(dict):
+    def __init__(__self__, *,
+                 chain_configs: Sequence['outputs.GetChainsChainChainConfigResult'],
+                 chain_id: str,
+                 chain_name: str,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 instance_id: str,
+                 modified_time: str,
+                 scope_id: str,
+                 scope_type: str):
+        """
+        :param Sequence['GetChainsChainChainConfigArgs'] chain_configs: The configuration of delivery chain.
+        :param str chain_id: The ID of delivery chain.
+        :param str chain_name: The name of delivery chain.
+        :param str create_time: The creation time of delivery chain.
+        :param str description: The description of delivery chain.
+        :param str id: The resource ID of the delivery chain. The value formats as `<instance_id>:<chain_id>`.
+        :param str instance_id: The ID of CR Enterprise Edition instance.
+        :param str modified_time: The modification time of delivery chain description.
+        :param str scope_id: Delivery chain scope ID.
+        :param str scope_type: Delivery chain scope type.
+        """
+        pulumi.set(__self__, "chain_configs", chain_configs)
+        pulumi.set(__self__, "chain_id", chain_id)
+        pulumi.set(__self__, "chain_name", chain_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "scope_id", scope_id)
+        pulumi.set(__self__, "scope_type", scope_type)
+
+    @property
+    @pulumi.getter(name="chainConfigs")
+    def chain_configs(self) -> Sequence['outputs.GetChainsChainChainConfigResult']:
+        """
+        The configuration of delivery chain.
+        """
+        return pulumi.get(self, "chain_configs")
+
+    @property
+    @pulumi.getter(name="chainId")
+    def chain_id(self) -> str:
+        """
+        The ID of delivery chain.
+        """
+        return pulumi.get(self, "chain_id")
+
+    @property
+    @pulumi.getter(name="chainName")
+    def chain_name(self) -> str:
+        """
+        The name of delivery chain.
+        """
+        return pulumi.get(self, "chain_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of delivery chain.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of delivery chain.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The resource ID of the delivery chain. The value formats as `<instance_id>:<chain_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of CR Enterprise Edition instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> str:
+        """
+        The modification time of delivery chain description.
+        """
+        return pulumi.get(self, "modified_time")
+
+    @property
+    @pulumi.getter(name="scopeId")
+    def scope_id(self) -> str:
+        """
+        Delivery chain scope ID.
+        """
+        return pulumi.get(self, "scope_id")
+
+    @property
+    @pulumi.getter(name="scopeType")
+    def scope_type(self) -> str:
+        """
+        Delivery chain scope type.
+        """
+        return pulumi.get(self, "scope_type")
+
+
+@pulumi.output_type
+class GetChainsChainChainConfigResult(dict):
+    def __init__(__self__, *,
+                 nodes: Sequence['outputs.GetChainsChainChainConfigNodeResult'],
+                 routers: Sequence['outputs.GetChainsChainChainConfigRouterResult']):
+        """
+        :param Sequence['GetChainsChainChainConfigNodeArgs'] nodes: Each node in the delivery chain.
+        :param Sequence['GetChainsChainChainConfigRouterArgs'] routers: Execution sequence relationship between delivery chain nodes.
+        """
+        pulumi.set(__self__, "nodes", nodes)
+        pulumi.set(__self__, "routers", routers)
+
+    @property
+    @pulumi.getter
+    def nodes(self) -> Sequence['outputs.GetChainsChainChainConfigNodeResult']:
+        """
+        Each node in the delivery chain.
+        """
+        return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter
+    def routers(self) -> Sequence['outputs.GetChainsChainChainConfigRouterResult']:
+        """
+        Execution sequence relationship between delivery chain nodes.
+        """
+        return pulumi.get(self, "routers")
+
+
+@pulumi.output_type
+class GetChainsChainChainConfigNodeResult(dict):
+    def __init__(__self__, *,
+                 enable: bool,
+                 node_configs: Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigResult'],
+                 node_name: str):
+        """
+        :param bool enable: Whether to enable the delivery chain node. Valid values: `true`, `false`.
+        :param Sequence['GetChainsChainChainConfigNodeNodeConfigArgs'] node_configs: The configuration of delivery chain node.
+        :param str node_name: The name of delivery chain node.
+        """
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "node_configs", node_configs)
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Whether to enable the delivery chain node. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="nodeConfigs")
+    def node_configs(self) -> Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigResult']:
+        """
+        The configuration of delivery chain node.
+        """
+        return pulumi.get(self, "node_configs")
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        """
+        The name of delivery chain node.
+        """
+        return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class GetChainsChainChainConfigNodeNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 deny_policies: Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult']):
+        """
+        :param Sequence['GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs'] deny_policies: Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+        """
+        pulumi.set(__self__, "deny_policies", deny_policies)
+
+    @property
+    @pulumi.getter(name="denyPolicies")
+    def deny_policies(self) -> Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult']:
+        """
+        Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+        """
+        return pulumi.get(self, "deny_policies")
+
+
+@pulumi.output_type
+class GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult(dict):
+    def __init__(__self__, *,
+                 issue_count: str,
+                 issue_level: str,
+                 logic: str,
+                 action: Optional[str] = None):
+        """
+        :param str issue_count: The count of scanning vulnerabilities that triggers blocking.
+        :param str issue_level: The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+        :param str logic: The logic of trigger blocking. Valid values: `AND`, `OR`.
+        :param str action: The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+        """
+        pulumi.set(__self__, "issue_count", issue_count)
+        pulumi.set(__self__, "issue_level", issue_level)
+        pulumi.set(__self__, "logic", logic)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+
+    @property
+    @pulumi.getter(name="issueCount")
+    def issue_count(self) -> str:
+        """
+        The count of scanning vulnerabilities that triggers blocking.
+        """
+        return pulumi.get(self, "issue_count")
+
+    @property
+    @pulumi.getter(name="issueLevel")
+    def issue_level(self) -> str:
+        """
+        The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+        """
+        return pulumi.get(self, "issue_level")
+
+    @property
+    @pulumi.getter
+    def logic(self) -> str:
+        """
+        The logic of trigger blocking. Valid values: `AND`, `OR`.
+        """
+        return pulumi.get(self, "logic")
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+        """
+        return pulumi.get(self, "action")
+
+
+@pulumi.output_type
+class GetChainsChainChainConfigRouterResult(dict):
+    def __init__(__self__, *,
+                 froms: Sequence['outputs.GetChainsChainChainConfigRouterFromResult'],
+                 tos: Sequence['outputs.GetChainsChainChainConfigRouterToResult']):
+        """
+        :param Sequence['GetChainsChainChainConfigRouterFromArgs'] froms: Source node.
+        :param Sequence['GetChainsChainChainConfigRouterToArgs'] tos: Destination node.
+        """
+        pulumi.set(__self__, "froms", froms)
+        pulumi.set(__self__, "tos", tos)
+
+    @property
+    @pulumi.getter
+    def froms(self) -> Sequence['outputs.GetChainsChainChainConfigRouterFromResult']:
+        """
+        Source node.
+        """
+        return pulumi.get(self, "froms")
+
+    @property
+    @pulumi.getter
+    def tos(self) -> Sequence['outputs.GetChainsChainChainConfigRouterToResult']:
+        """
+        Destination node.
+        """
+        return pulumi.get(self, "tos")
+
+
+@pulumi.output_type
+class GetChainsChainChainConfigRouterFromResult(dict):
+    def __init__(__self__, *,
+                 node_name: str):
+        """
+        :param str node_name: The name of delivery chain node.
+        """
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        """
+        The name of delivery chain node.
+        """
+        return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class GetChainsChainChainConfigRouterToResult(dict):
+    def __init__(__self__, *,
+                 node_name: str):
+        """
+        :param str node_name: The name of delivery chain node.
+        """
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        """
+        The name of delivery chain node.
+        """
+        return pulumi.get(self, "node_name")
 
 
 @pulumi.output_type

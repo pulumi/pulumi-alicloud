@@ -9,8 +9,6 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ApplicationInternetArgs',
-    'ApplicationIntranetArgs',
     'ApplicationScalingRuleScalingRuleMetricArgs',
     'ApplicationScalingRuleScalingRuleMetricMetricArgs',
     'ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs',
@@ -23,149 +21,9 @@ __all__ = [
     'GreyTagRouteScRuleItemArgs',
     'IngressDefaultRuleArgs',
     'IngressRuleArgs',
+    'LoadBalancerInternetInternetArgs',
+    'LoadBalancerIntranetIntranetArgs',
 ]
-
-@pulumi.input_type
-class ApplicationInternetArgs:
-    def __init__(__self__, *,
-                 https_cert_id: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None,
-                 target_port: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] https_cert_id: SSL certificate. `https_cert_id` is required when HTTPS is selected
-        :param pulumi.Input[int] port: SLB Port.
-        :param pulumi.Input[str] protocol: Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        :param pulumi.Input[int] target_port: Container port.
-        """
-        if https_cert_id is not None:
-            pulumi.set(__self__, "https_cert_id", https_cert_id)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
-
-    @property
-    @pulumi.getter(name="httpsCertId")
-    def https_cert_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL certificate. `https_cert_id` is required when HTTPS is selected
-        """
-        return pulumi.get(self, "https_cert_id")
-
-    @https_cert_id.setter
-    def https_cert_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "https_cert_id", value)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        SLB Port.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "protocol", value)
-
-    @property
-    @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Container port.
-        """
-        return pulumi.get(self, "target_port")
-
-    @target_port.setter
-    def target_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_port", value)
-
-
-@pulumi.input_type
-class ApplicationIntranetArgs:
-    def __init__(__self__, *,
-                 https_cert_id: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None,
-                 target_port: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] https_cert_id: SSL certificate. `https_cert_id` is required when HTTPS is selected
-        :param pulumi.Input[int] port: SLB Port.
-        :param pulumi.Input[str] protocol: Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        :param pulumi.Input[int] target_port: Container port.
-        """
-        if https_cert_id is not None:
-            pulumi.set(__self__, "https_cert_id", https_cert_id)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
-
-    @property
-    @pulumi.getter(name="httpsCertId")
-    def https_cert_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        SSL certificate. `https_cert_id` is required when HTTPS is selected
-        """
-        return pulumi.get(self, "https_cert_id")
-
-    @https_cert_id.setter
-    def https_cert_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "https_cert_id", value)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        SLB Port.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "protocol", value)
-
-    @property
-    @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Container port.
-        """
-        return pulumi.get(self, "target_port")
-
-    @target_port.setter
-    def target_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_port", value)
-
 
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricArgs:
@@ -495,7 +353,7 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
         :param pulumi.Input[str] at_time: Trigger point in time. When supporting format: minutes, for example: `08:00`.
         :param pulumi.Input[int] max_replicas: Maximum number of instances applied.
         :param pulumi.Input[int] min_replicas: Minimum number of instances applied.
-        :param pulumi.Input[int] target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+        :param pulumi.Input[int] target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         """
         if at_time is not None:
             pulumi.set(__self__, "at_time", at_time)
@@ -546,7 +404,7 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
     @pulumi.getter(name="targetReplicas")
     def target_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+        This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         """
         return pulumi.get(self, "target_replicas")
 
@@ -1022,5 +880,147 @@ class IngressRuleArgs:
     @path.setter
     def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class LoadBalancerInternetInternetArgs:
+    def __init__(__self__, *,
+                 https_cert_id: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 target_port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] https_cert_id: The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        :param pulumi.Input[int] port: The SLB Port.
+        :param pulumi.Input[str] protocol: The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        :param pulumi.Input[int] target_port: The Container port.
+        """
+        if https_cert_id is not None:
+            pulumi.set(__self__, "https_cert_id", https_cert_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if target_port is not None:
+            pulumi.set(__self__, "target_port", target_port)
+
+    @property
+    @pulumi.getter(name="httpsCertId")
+    def https_cert_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        """
+        return pulumi.get(self, "https_cert_id")
+
+    @https_cert_id.setter
+    def https_cert_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "https_cert_id", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The SLB Port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Container port.
+        """
+        return pulumi.get(self, "target_port")
+
+    @target_port.setter
+    def target_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_port", value)
+
+
+@pulumi.input_type
+class LoadBalancerIntranetIntranetArgs:
+    def __init__(__self__, *,
+                 https_cert_id: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 target_port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] https_cert_id: The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        :param pulumi.Input[int] port: The SLB Port.
+        :param pulumi.Input[str] protocol: The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        :param pulumi.Input[int] target_port: The Container port.
+        """
+        if https_cert_id is not None:
+            pulumi.set(__self__, "https_cert_id", https_cert_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if target_port is not None:
+            pulumi.set(__self__, "target_port", target_port)
+
+    @property
+    @pulumi.getter(name="httpsCertId")
+    def https_cert_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        """
+        return pulumi.get(self, "https_cert_id")
+
+    @https_cert_id.setter
+    def https_cert_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "https_cert_id", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The SLB Port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Container port.
+        """
+        return pulumi.get(self, "target_port")
+
+    @target_port.setter
+    def target_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_port", value)
 
 

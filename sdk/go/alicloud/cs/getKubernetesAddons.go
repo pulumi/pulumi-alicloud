@@ -13,6 +13,7 @@ import (
 // This data source provides a list of available addons that the cluster can install.
 //
 // > **NOTE:** Available in 1.150.0+.
+// **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
 //
 // ## Example Usage
 //

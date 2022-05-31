@@ -24,31 +24,39 @@ class RestoreJobArgs:
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  target_bucket: Optional[pulumi.Input[str]] = None,
                  target_client_id: Optional[pulumi.Input[str]] = None,
-                 target_container: Optional[pulumi.Input[str]] = None,
-                 target_container_cluster_id: Optional[pulumi.Input[str]] = None,
                  target_create_time: Optional[pulumi.Input[str]] = None,
                  target_data_source_id: Optional[pulumi.Input[str]] = None,
                  target_file_system_id: Optional[pulumi.Input[str]] = None,
                  target_instance_id: Optional[pulumi.Input[str]] = None,
+                 target_instance_name: Optional[pulumi.Input[str]] = None,
                  target_path: Optional[pulumi.Input[str]] = None,
-                 target_prefix: Optional[pulumi.Input[str]] = None):
+                 target_prefix: Optional[pulumi.Input[str]] = None,
+                 target_table_name: Optional[pulumi.Input[str]] = None,
+                 target_time: Optional[pulumi.Input[str]] = None,
+                 udm_detail: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RestoreJob resource.
-        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
-        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
-        :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] include: The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
-        :param pulumi.Input[str] target_bucket: The target name of OSS bucket.
-        :param pulumi.Input[str] target_create_time: The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-        :param pulumi.Input[str] target_file_system_id: The ID of destination File System.
-        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance.
-        :param pulumi.Input[str] target_path: The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] target_prefix: The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_bucket: The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+        :param pulumi.Input[str] target_client_id: The target client ID.
+        :param pulumi.Input[str] target_create_time: The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] target_data_source_id: The target data source ID.
+        :param pulumi.Input[str] target_file_system_id: The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+        :param pulumi.Input[str] target_instance_name: The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] target_path: The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_prefix: The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_table_name: The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] target_time: The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        :param pulumi.Input[str] udm_detail: The full machine backup details.
         """
         pulumi.set(__self__, "restore_type", restore_type)
         pulumi.set(__self__, "snapshot_hash", snapshot_hash)
@@ -67,10 +75,6 @@ class RestoreJobArgs:
             pulumi.set(__self__, "target_bucket", target_bucket)
         if target_client_id is not None:
             pulumi.set(__self__, "target_client_id", target_client_id)
-        if target_container is not None:
-            pulumi.set(__self__, "target_container", target_container)
-        if target_container_cluster_id is not None:
-            pulumi.set(__self__, "target_container_cluster_id", target_container_cluster_id)
         if target_create_time is not None:
             pulumi.set(__self__, "target_create_time", target_create_time)
         if target_data_source_id is not None:
@@ -79,16 +83,24 @@ class RestoreJobArgs:
             pulumi.set(__self__, "target_file_system_id", target_file_system_id)
         if target_instance_id is not None:
             pulumi.set(__self__, "target_instance_id", target_instance_id)
+        if target_instance_name is not None:
+            pulumi.set(__self__, "target_instance_name", target_instance_name)
         if target_path is not None:
             pulumi.set(__self__, "target_path", target_path)
         if target_prefix is not None:
             pulumi.set(__self__, "target_prefix", target_prefix)
+        if target_table_name is not None:
+            pulumi.set(__self__, "target_table_name", target_table_name)
+        if target_time is not None:
+            pulumi.set(__self__, "target_time", target_time)
+        if udm_detail is not None:
+            pulumi.set(__self__, "udm_detail", udm_detail)
 
     @property
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> pulumi.Input[str]:
         """
-        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         """
         return pulumi.get(self, "restore_type")
 
@@ -124,7 +136,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Input[str]:
         """
-        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         """
         return pulumi.get(self, "source_type")
 
@@ -148,7 +160,7 @@ class RestoreJobArgs:
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[str]]:
         """
-        The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "exclude")
 
@@ -160,7 +172,7 @@ class RestoreJobArgs:
     @pulumi.getter
     def include(self) -> Optional[pulumi.Input[str]]:
         """
-        The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "include")
 
@@ -172,7 +184,7 @@ class RestoreJobArgs:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
         """
-        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         """
         return pulumi.get(self, "options")
 
@@ -196,7 +208,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetBucket")
     def target_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The target name of OSS bucket.
+        The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         """
         return pulumi.get(self, "target_bucket")
 
@@ -207,6 +219,9 @@ class RestoreJobArgs:
     @property
     @pulumi.getter(name="targetClientId")
     def target_client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target client ID.
+        """
         return pulumi.get(self, "target_client_id")
 
     @target_client_id.setter
@@ -214,28 +229,10 @@ class RestoreJobArgs:
         pulumi.set(self, "target_client_id", value)
 
     @property
-    @pulumi.getter(name="targetContainer")
-    def target_container(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "target_container")
-
-    @target_container.setter
-    def target_container(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "target_container", value)
-
-    @property
-    @pulumi.getter(name="targetContainerClusterId")
-    def target_container_cluster_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "target_container_cluster_id")
-
-    @target_container_cluster_id.setter
-    def target_container_cluster_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "target_container_cluster_id", value)
-
-    @property
     @pulumi.getter(name="targetCreateTime")
     def target_create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "target_create_time")
 
@@ -246,6 +243,9 @@ class RestoreJobArgs:
     @property
     @pulumi.getter(name="targetDataSourceId")
     def target_data_source_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target data source ID.
+        """
         return pulumi.get(self, "target_data_source_id")
 
     @target_data_source_id.setter
@@ -256,7 +256,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetFileSystemId")
     def target_file_system_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of destination File System.
+        The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
         """
         return pulumi.get(self, "target_file_system_id")
 
@@ -268,7 +268,7 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The target ID of ECS instance.
+        The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
         """
         return pulumi.get(self, "target_instance_id")
 
@@ -277,10 +277,22 @@ class RestoreJobArgs:
         pulumi.set(self, "target_instance_id", value)
 
     @property
+    @pulumi.getter(name="targetInstanceName")
+    def target_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "target_instance_name")
+
+    @target_instance_name.setter
+    def target_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_instance_name", value)
+
+    @property
     @pulumi.getter(name="targetPath")
     def target_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_path")
 
@@ -292,13 +304,49 @@ class RestoreJobArgs:
     @pulumi.getter(name="targetPrefix")
     def target_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_prefix")
 
     @target_prefix.setter
     def target_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_prefix", value)
+
+    @property
+    @pulumi.getter(name="targetTableName")
+    def target_table_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "target_table_name")
+
+    @target_table_name.setter
+    def target_table_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_table_name", value)
+
+    @property
+    @pulumi.getter(name="targetTime")
+    def target_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        """
+        return pulumi.get(self, "target_time")
+
+    @target_time.setter
+    def target_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_time", value)
+
+    @property
+    @pulumi.getter(name="udmDetail")
+    def udm_detail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full machine backup details.
+        """
+        return pulumi.get(self, "udm_detail")
+
+    @udm_detail.setter
+    def udm_detail(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "udm_detail", value)
 
 
 @pulumi.input_type
@@ -315,32 +363,40 @@ class _RestoreJobState:
                  status: Optional[pulumi.Input[str]] = None,
                  target_bucket: Optional[pulumi.Input[str]] = None,
                  target_client_id: Optional[pulumi.Input[str]] = None,
-                 target_container: Optional[pulumi.Input[str]] = None,
-                 target_container_cluster_id: Optional[pulumi.Input[str]] = None,
                  target_create_time: Optional[pulumi.Input[str]] = None,
                  target_data_source_id: Optional[pulumi.Input[str]] = None,
                  target_file_system_id: Optional[pulumi.Input[str]] = None,
                  target_instance_id: Optional[pulumi.Input[str]] = None,
+                 target_instance_name: Optional[pulumi.Input[str]] = None,
                  target_path: Optional[pulumi.Input[str]] = None,
                  target_prefix: Optional[pulumi.Input[str]] = None,
+                 target_table_name: Optional[pulumi.Input[str]] = None,
+                 target_time: Optional[pulumi.Input[str]] = None,
+                 udm_detail: Optional[pulumi.Input[str]] = None,
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RestoreJob resources.
-        :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] include: The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
-        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
-        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         :param pulumi.Input[str] status: The Restore Job Status.
-        :param pulumi.Input[str] target_bucket: The target name of OSS bucket.
-        :param pulumi.Input[str] target_create_time: The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-        :param pulumi.Input[str] target_file_system_id: The ID of destination File System.
-        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance.
-        :param pulumi.Input[str] target_path: The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] target_prefix: The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_bucket: The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+        :param pulumi.Input[str] target_client_id: The target client ID.
+        :param pulumi.Input[str] target_create_time: The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] target_data_source_id: The target data source ID.
+        :param pulumi.Input[str] target_file_system_id: The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+        :param pulumi.Input[str] target_instance_name: The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] target_path: The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_prefix: The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_table_name: The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] target_time: The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        :param pulumi.Input[str] udm_detail: The full machine backup details.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         if exclude is not None:
@@ -365,10 +421,6 @@ class _RestoreJobState:
             pulumi.set(__self__, "target_bucket", target_bucket)
         if target_client_id is not None:
             pulumi.set(__self__, "target_client_id", target_client_id)
-        if target_container is not None:
-            pulumi.set(__self__, "target_container", target_container)
-        if target_container_cluster_id is not None:
-            pulumi.set(__self__, "target_container_cluster_id", target_container_cluster_id)
         if target_create_time is not None:
             pulumi.set(__self__, "target_create_time", target_create_time)
         if target_data_source_id is not None:
@@ -377,10 +429,18 @@ class _RestoreJobState:
             pulumi.set(__self__, "target_file_system_id", target_file_system_id)
         if target_instance_id is not None:
             pulumi.set(__self__, "target_instance_id", target_instance_id)
+        if target_instance_name is not None:
+            pulumi.set(__self__, "target_instance_name", target_instance_name)
         if target_path is not None:
             pulumi.set(__self__, "target_path", target_path)
         if target_prefix is not None:
             pulumi.set(__self__, "target_prefix", target_prefix)
+        if target_table_name is not None:
+            pulumi.set(__self__, "target_table_name", target_table_name)
+        if target_time is not None:
+            pulumi.set(__self__, "target_time", target_time)
+        if udm_detail is not None:
+            pulumi.set(__self__, "udm_detail", udm_detail)
         if vault_id is not None:
             pulumi.set(__self__, "vault_id", vault_id)
 
@@ -388,7 +448,7 @@ class _RestoreJobState:
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[str]]:
         """
-        The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "exclude")
 
@@ -400,7 +460,7 @@ class _RestoreJobState:
     @pulumi.getter
     def include(self) -> Optional[pulumi.Input[str]]:
         """
-        The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "include")
 
@@ -412,7 +472,7 @@ class _RestoreJobState:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
         """
-        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         """
         return pulumi.get(self, "options")
 
@@ -436,7 +496,7 @@ class _RestoreJobState:
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         """
         return pulumi.get(self, "restore_type")
 
@@ -472,7 +532,7 @@ class _RestoreJobState:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         """
         return pulumi.get(self, "source_type")
 
@@ -496,7 +556,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetBucket")
     def target_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The target name of OSS bucket.
+        The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         """
         return pulumi.get(self, "target_bucket")
 
@@ -507,6 +567,9 @@ class _RestoreJobState:
     @property
     @pulumi.getter(name="targetClientId")
     def target_client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target client ID.
+        """
         return pulumi.get(self, "target_client_id")
 
     @target_client_id.setter
@@ -514,28 +577,10 @@ class _RestoreJobState:
         pulumi.set(self, "target_client_id", value)
 
     @property
-    @pulumi.getter(name="targetContainer")
-    def target_container(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "target_container")
-
-    @target_container.setter
-    def target_container(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "target_container", value)
-
-    @property
-    @pulumi.getter(name="targetContainerClusterId")
-    def target_container_cluster_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "target_container_cluster_id")
-
-    @target_container_cluster_id.setter
-    def target_container_cluster_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "target_container_cluster_id", value)
-
-    @property
     @pulumi.getter(name="targetCreateTime")
     def target_create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "target_create_time")
 
@@ -546,6 +591,9 @@ class _RestoreJobState:
     @property
     @pulumi.getter(name="targetDataSourceId")
     def target_data_source_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target data source ID.
+        """
         return pulumi.get(self, "target_data_source_id")
 
     @target_data_source_id.setter
@@ -556,7 +604,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetFileSystemId")
     def target_file_system_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of destination File System.
+        The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
         """
         return pulumi.get(self, "target_file_system_id")
 
@@ -568,7 +616,7 @@ class _RestoreJobState:
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The target ID of ECS instance.
+        The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
         """
         return pulumi.get(self, "target_instance_id")
 
@@ -577,10 +625,22 @@ class _RestoreJobState:
         pulumi.set(self, "target_instance_id", value)
 
     @property
+    @pulumi.getter(name="targetInstanceName")
+    def target_instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "target_instance_name")
+
+    @target_instance_name.setter
+    def target_instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_instance_name", value)
+
+    @property
     @pulumi.getter(name="targetPath")
     def target_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_path")
 
@@ -592,13 +652,49 @@ class _RestoreJobState:
     @pulumi.getter(name="targetPrefix")
     def target_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_prefix")
 
     @target_prefix.setter
     def target_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_prefix", value)
+
+    @property
+    @pulumi.getter(name="targetTableName")
+    def target_table_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "target_table_name")
+
+    @target_table_name.setter
+    def target_table_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_table_name", value)
+
+    @property
+    @pulumi.getter(name="targetTime")
+    def target_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        """
+        return pulumi.get(self, "target_time")
+
+    @target_time.setter
+    def target_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_time", value)
+
+    @property
+    @pulumi.getter(name="udmDetail")
+    def udm_detail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full machine backup details.
+        """
+        return pulumi.get(self, "udm_detail")
+
+    @udm_detail.setter
+    def udm_detail(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "udm_detail", value)
 
     @property
     @pulumi.getter(name="vaultId")
@@ -628,14 +724,16 @@ class RestoreJob(pulumi.CustomResource):
                  source_type: Optional[pulumi.Input[str]] = None,
                  target_bucket: Optional[pulumi.Input[str]] = None,
                  target_client_id: Optional[pulumi.Input[str]] = None,
-                 target_container: Optional[pulumi.Input[str]] = None,
-                 target_container_cluster_id: Optional[pulumi.Input[str]] = None,
                  target_create_time: Optional[pulumi.Input[str]] = None,
                  target_data_source_id: Optional[pulumi.Input[str]] = None,
                  target_file_system_id: Optional[pulumi.Input[str]] = None,
                  target_instance_id: Optional[pulumi.Input[str]] = None,
+                 target_instance_name: Optional[pulumi.Input[str]] = None,
                  target_path: Optional[pulumi.Input[str]] = None,
                  target_prefix: Optional[pulumi.Input[str]] = None,
+                 target_table_name: Optional[pulumi.Input[str]] = None,
+                 target_time: Optional[pulumi.Input[str]] = None,
+                 udm_detail: Optional[pulumi.Input[str]] = None,
                  vault_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -707,20 +805,26 @@ class RestoreJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] include: The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
-        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
-        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
-        :param pulumi.Input[str] target_bucket: The target name of OSS bucket.
-        :param pulumi.Input[str] target_create_time: The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-        :param pulumi.Input[str] target_file_system_id: The ID of destination File System.
-        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance.
-        :param pulumi.Input[str] target_path: The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] target_prefix: The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
+        :param pulumi.Input[str] target_bucket: The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+        :param pulumi.Input[str] target_client_id: The target client ID.
+        :param pulumi.Input[str] target_create_time: The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] target_data_source_id: The target data source ID.
+        :param pulumi.Input[str] target_file_system_id: The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+        :param pulumi.Input[str] target_instance_name: The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] target_path: The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_prefix: The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_table_name: The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] target_time: The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        :param pulumi.Input[str] udm_detail: The full machine backup details.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         ...
@@ -821,14 +925,16 @@ class RestoreJob(pulumi.CustomResource):
                  source_type: Optional[pulumi.Input[str]] = None,
                  target_bucket: Optional[pulumi.Input[str]] = None,
                  target_client_id: Optional[pulumi.Input[str]] = None,
-                 target_container: Optional[pulumi.Input[str]] = None,
-                 target_container_cluster_id: Optional[pulumi.Input[str]] = None,
                  target_create_time: Optional[pulumi.Input[str]] = None,
                  target_data_source_id: Optional[pulumi.Input[str]] = None,
                  target_file_system_id: Optional[pulumi.Input[str]] = None,
                  target_instance_id: Optional[pulumi.Input[str]] = None,
+                 target_instance_name: Optional[pulumi.Input[str]] = None,
                  target_path: Optional[pulumi.Input[str]] = None,
                  target_prefix: Optional[pulumi.Input[str]] = None,
+                 target_table_name: Optional[pulumi.Input[str]] = None,
+                 target_time: Optional[pulumi.Input[str]] = None,
+                 udm_detail: Optional[pulumi.Input[str]] = None,
                  vault_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -860,14 +966,16 @@ class RestoreJob(pulumi.CustomResource):
             __props__.__dict__["source_type"] = source_type
             __props__.__dict__["target_bucket"] = target_bucket
             __props__.__dict__["target_client_id"] = target_client_id
-            __props__.__dict__["target_container"] = target_container
-            __props__.__dict__["target_container_cluster_id"] = target_container_cluster_id
             __props__.__dict__["target_create_time"] = target_create_time
             __props__.__dict__["target_data_source_id"] = target_data_source_id
             __props__.__dict__["target_file_system_id"] = target_file_system_id
             __props__.__dict__["target_instance_id"] = target_instance_id
+            __props__.__dict__["target_instance_name"] = target_instance_name
             __props__.__dict__["target_path"] = target_path
             __props__.__dict__["target_prefix"] = target_prefix
+            __props__.__dict__["target_table_name"] = target_table_name
+            __props__.__dict__["target_time"] = target_time
+            __props__.__dict__["udm_detail"] = udm_detail
             if vault_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_id'")
             __props__.__dict__["vault_id"] = vault_id
@@ -893,14 +1001,16 @@ class RestoreJob(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             target_bucket: Optional[pulumi.Input[str]] = None,
             target_client_id: Optional[pulumi.Input[str]] = None,
-            target_container: Optional[pulumi.Input[str]] = None,
-            target_container_cluster_id: Optional[pulumi.Input[str]] = None,
             target_create_time: Optional[pulumi.Input[str]] = None,
             target_data_source_id: Optional[pulumi.Input[str]] = None,
             target_file_system_id: Optional[pulumi.Input[str]] = None,
             target_instance_id: Optional[pulumi.Input[str]] = None,
+            target_instance_name: Optional[pulumi.Input[str]] = None,
             target_path: Optional[pulumi.Input[str]] = None,
             target_prefix: Optional[pulumi.Input[str]] = None,
+            target_table_name: Optional[pulumi.Input[str]] = None,
+            target_time: Optional[pulumi.Input[str]] = None,
+            udm_detail: Optional[pulumi.Input[str]] = None,
             vault_id: Optional[pulumi.Input[str]] = None) -> 'RestoreJob':
         """
         Get an existing RestoreJob resource's state with the given name, id, and optional extra
@@ -909,21 +1019,27 @@ class RestoreJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] exclude: The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] include: The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] options: Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
-        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
-        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         :param pulumi.Input[str] status: The Restore Job Status.
-        :param pulumi.Input[str] target_bucket: The target name of OSS bucket.
-        :param pulumi.Input[str] target_create_time: The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-        :param pulumi.Input[str] target_file_system_id: The ID of destination File System.
-        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance.
-        :param pulumi.Input[str] target_path: The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
-        :param pulumi.Input[str] target_prefix: The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_bucket: The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
+        :param pulumi.Input[str] target_client_id: The target client ID.
+        :param pulumi.Input[str] target_create_time: The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] target_data_source_id: The target data source ID.
+        :param pulumi.Input[str] target_file_system_id: The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
+        :param pulumi.Input[str] target_instance_id: The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
+        :param pulumi.Input[str] target_instance_name: The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] target_path: The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_prefix: The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        :param pulumi.Input[str] target_table_name: The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[str] target_time: The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        :param pulumi.Input[str] udm_detail: The full machine backup details.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -941,14 +1057,16 @@ class RestoreJob(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["target_bucket"] = target_bucket
         __props__.__dict__["target_client_id"] = target_client_id
-        __props__.__dict__["target_container"] = target_container
-        __props__.__dict__["target_container_cluster_id"] = target_container_cluster_id
         __props__.__dict__["target_create_time"] = target_create_time
         __props__.__dict__["target_data_source_id"] = target_data_source_id
         __props__.__dict__["target_file_system_id"] = target_file_system_id
         __props__.__dict__["target_instance_id"] = target_instance_id
+        __props__.__dict__["target_instance_name"] = target_instance_name
         __props__.__dict__["target_path"] = target_path
         __props__.__dict__["target_prefix"] = target_prefix
+        __props__.__dict__["target_table_name"] = target_table_name
+        __props__.__dict__["target_time"] = target_time
+        __props__.__dict__["udm_detail"] = udm_detail
         __props__.__dict__["vault_id"] = vault_id
         return RestoreJob(resource_name, opts=opts, __props__=__props__)
 
@@ -956,7 +1074,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter
     def exclude(self) -> pulumi.Output[Optional[str]]:
         """
-        The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "exclude")
 
@@ -964,7 +1082,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter
     def include(self) -> pulumi.Output[Optional[str]]:
         """
-        The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "include")
 
@@ -972,7 +1090,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional[str]]:
         """
-        Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
+        Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
         """
         return pulumi.get(self, "options")
 
@@ -988,7 +1106,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> pulumi.Output[str]:
         """
-        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
+        The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         """
         return pulumi.get(self, "restore_type")
 
@@ -1012,7 +1130,7 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[str]:
         """
-        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         """
         return pulumi.get(self, "source_type")
 
@@ -1028,43 +1146,39 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetBucket")
     def target_bucket(self) -> pulumi.Output[Optional[str]]:
         """
-        The target name of OSS bucket.
+        The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         """
         return pulumi.get(self, "target_bucket")
 
     @property
     @pulumi.getter(name="targetClientId")
     def target_client_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The target client ID.
+        """
         return pulumi.get(self, "target_client_id")
-
-    @property
-    @pulumi.getter(name="targetContainer")
-    def target_container(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "target_container")
-
-    @property
-    @pulumi.getter(name="targetContainerClusterId")
-    def target_container_cluster_id(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "target_container_cluster_id")
 
     @property
     @pulumi.getter(name="targetCreateTime")
     def target_create_time(self) -> pulumi.Output[Optional[str]]:
         """
-        The creation time of destination File System. While source_type equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "target_create_time")
 
     @property
     @pulumi.getter(name="targetDataSourceId")
     def target_data_source_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The target data source ID.
+        """
         return pulumi.get(self, "target_data_source_id")
 
     @property
     @pulumi.getter(name="targetFileSystemId")
     def target_file_system_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of destination File System.
+        The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
         """
         return pulumi.get(self, "target_file_system_id")
 
@@ -1072,15 +1186,23 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetInstanceId")
     def target_instance_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The target ID of ECS instance.
+        The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
         """
         return pulumi.get(self, "target_instance_id")
+
+    @property
+    @pulumi.getter(name="targetInstanceName")
+    def target_instance_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "target_instance_name")
 
     @property
     @pulumi.getter(name="targetPath")
     def target_path(self) -> pulumi.Output[Optional[str]]:
         """
-        The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_path")
 
@@ -1088,9 +1210,33 @@ class RestoreJob(pulumi.CustomResource):
     @pulumi.getter(name="targetPrefix")
     def target_prefix(self) -> pulumi.Output[Optional[str]]:
         """
-        The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
+        The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_prefix")
+
+    @property
+    @pulumi.getter(name="targetTableName")
+    def target_table_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
+        """
+        return pulumi.get(self, "target_table_name")
+
+    @property
+    @pulumi.getter(name="targetTime")
+    def target_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        """
+        return pulumi.get(self, "target_time")
+
+    @property
+    @pulumi.getter(name="udmDetail")
+    def udm_detail(self) -> pulumi.Output[Optional[str]]:
+        """
+        The full machine backup details.
+        """
+        return pulumi.get(self, "udm_detail")
 
     @property
     @pulumi.getter(name="vaultId")

@@ -71,6 +71,8 @@ type EipAddress struct {
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// The description of the EIP.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// The metering method of the EIP.
@@ -80,6 +82,8 @@ type EipAddress struct {
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp pulumi.StringOutput `pulumi:"isp"`
+	// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of the network. Valid value is `public` (Internet).
@@ -137,6 +141,8 @@ type eipAddressState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The description of the EIP.
 	Description *string `pulumi:"description"`
+	// Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The metering method of the EIP.
@@ -146,6 +152,8 @@ type eipAddressState struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp *string `pulumi:"isp"`
+	// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
 	Name *string `pulumi:"name"`
 	// The type of the network. Valid value is `public` (Internet).
@@ -175,6 +183,8 @@ type EipAddressState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The description of the EIP.
 	Description pulumi.StringPtrInput
+	// Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The metering method of the EIP.
@@ -184,6 +194,8 @@ type EipAddressState struct {
 	IpAddress pulumi.StringPtrInput
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
 	Name pulumi.StringPtrInput
 	// The type of the network. Valid value is `public` (Internet).
@@ -217,6 +229,8 @@ type eipAddressArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The description of the EIP.
 	Description *string `pulumi:"description"`
+	// Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The metering method of the EIP.
@@ -224,6 +238,8 @@ type eipAddressArgs struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp *string `pulumi:"isp"`
+	// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
 	Name *string `pulumi:"name"`
 	// The type of the network. Valid value is `public` (Internet).
@@ -252,6 +268,8 @@ type EipAddressArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The description of the EIP.
 	Description pulumi.StringPtrInput
+	// Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
+	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The metering method of the EIP.
@@ -259,6 +277,8 @@ type EipAddressArgs struct {
 	InternetChargeType pulumi.StringPtrInput
 	// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
 	Isp pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
 	Name pulumi.StringPtrInput
 	// The type of the network. Valid value is `public` (Internet).

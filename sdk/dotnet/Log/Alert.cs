@@ -13,6 +13,8 @@ namespace Pulumi.AliCloud.Log
     /// Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
     /// Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
     /// 
+    /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
+    /// 
     /// &gt; **NOTE:** Available in 1.78.0
     /// 
     /// ## Example Usage
@@ -93,6 +95,154 @@ namespace Pulumi.AliCloud.Log
     /// }
     /// ```
     /// 
+    /// Basic Usage for new alert
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleProject = new AliCloud.Log.Project("exampleProject", new AliCloud.Log.ProjectArgs
+    ///         {
+    ///             Description = "create by terraform",
+    ///         });
+    ///         var exampleStore = new AliCloud.Log.Store("exampleStore", new AliCloud.Log.StoreArgs
+    ///         {
+    ///             Project = exampleProject.Name,
+    ///             RetentionPeriod = 3650,
+    ///             ShardCount = 3,
+    ///             AutoSplit = true,
+    ///             MaxSplitShardCount = 60,
+    ///             AppendMeta = true,
+    ///         });
+    ///         var example_2 = new AliCloud.Log.Alert("example-2", new AliCloud.Log.AlertArgs
+    ///         {
+    ///             Version = "2.0",
+    ///             Type = "default",
+    ///             ProjectName = exampleProject.Name,
+    ///             AlertName = "tf-test-alert-2",
+    ///             AlertDisplayname = "tf-test-alert-displayname-2",
+    ///             Dashboard = "tf-test-dashboard",
+    ///             MuteUntil = 1632486684,
+    ///             NoDataFire = false,
+    ///             NoDataSeverity = 8,
+    ///             SendResolved = true,
+    ///             ScheduleInterval = "5m",
+    ///             ScheduleType = "FixedRate",
+    ///             AutoAnnotation = true,
+    ///             QueryLists = 
+    ///             {
+    ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
+    ///                 {
+    ///                     Store = "tf-test-logstore",
+    ///                     StoreType = "log",
+    ///                     Project = exampleProject.Name,
+    ///                     Region = "cn-heyuan",
+    ///                     ChartTitle = "chart_title",
+    ///                     Start = "-60s",
+    ///                     End = "20s",
+    ///                     Query = "* AND aliyun | select count(1) as cnt",
+    ///                     PowerSqlMode = "auto",
+    ///                 },
+    ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
+    ///                 {
+    ///                     Store = "tf-test-logstore",
+    ///                     StoreType = "log",
+    ///                     Project = exampleProject.Name,
+    ///                     Region = "cn-heyuan",
+    ///                     ChartTitle = "chart_title",
+    ///                     Start = "-60s",
+    ///                     End = "20s",
+    ///                     Query = "error | select count(1) as error_cnt",
+    ///                     PowerSqlMode = "enable",
+    ///                 },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 new AliCloud.Log.Inputs.AlertLabelArgs
+    ///                 {
+    ///                     Key = "env",
+    ///                     Value = "test",
+    ///                 },
+    ///             },
+    ///             Annotations = 
+    ///             {
+    ///                 new AliCloud.Log.Inputs.AlertAnnotationArgs
+    ///                 {
+    ///                     Key = "title",
+    ///                     Value = "alert title",
+    ///                 },
+    ///                 new AliCloud.Log.Inputs.AlertAnnotationArgs
+    ///                 {
+    ///                     Key = "desc",
+    ///                     Value = "alert desc",
+    ///                 },
+    ///                 new AliCloud.Log.Inputs.AlertAnnotationArgs
+    ///                 {
+    ///                     Key = "test_key",
+    ///                     Value = "test value",
+    ///                 },
+    ///             },
+    ///             GroupConfiguration = new AliCloud.Log.Inputs.AlertGroupConfigurationArgs
+    ///             {
+    ///                 Type = "custom",
+    ///                 Fields = 
+    ///                 {
+    ///                     "cnt",
+    ///                 },
+    ///             },
+    ///             PolicyConfiguration = new AliCloud.Log.Inputs.AlertPolicyConfigurationArgs
+    ///             {
+    ///                 AlertPolicyId = "sls.bultin",
+    ///                 ActionPolicyId = "sls_test_action",
+    ///                 RepeatInterval = "4h",
+    ///             },
+    ///             SeverityConfigurations = 
+    ///             {
+    ///                 new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
+    ///                 {
+    ///                     Severity = 8,
+    ///                     EvalCondition = 
+    ///                     {
+    ///                         { "condition", "cnt &gt; 3" },
+    ///                         { "count_condition", "__count__ &gt; 3" },
+    ///                     },
+    ///                 },
+    ///                 new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
+    ///                 {
+    ///                     Severity = 6,
+    ///                     EvalCondition = 
+    ///                     {
+    ///                         { "condition", "" },
+    ///                         { "count_condition", "__count__ &gt; 0" },
+    ///                     },
+    ///                 },
+    ///                 new AliCloud.Log.Inputs.AlertSeverityConfigurationArgs
+    ///                 {
+    ///                     Severity = 2,
+    ///                     EvalCondition = 
+    ///                     {
+    ///                         { "condition", "" },
+    ///                         { "count_condition", "" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             JoinConfigurations = 
+    ///             {
+    ///                 new AliCloud.Log.Inputs.AlertJoinConfigurationArgs
+    ///                 {
+    ///                     Type = "cross_join",
+    ///                     Condition = "",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Log alert can be imported using the id, e.g.
@@ -123,13 +273,43 @@ namespace Pulumi.AliCloud.Log
         public Output<string> AlertName { get; private set; } = null!;
 
         /// <summary>
-        /// Conditional expression, such as: count&gt; 100.
+        /// Annotations for new alert.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableArray<Outputs.AlertAnnotation>> Annotations { get; private set; } = null!;
+
+        /// <summary>
+        /// whether to add automatic annotation, default is false.
+        /// </summary>
+        [Output("autoAnnotation")]
+        public Output<bool?> AutoAnnotation { get; private set; } = null!;
+
+        /// <summary>
+        /// Join condition.
         /// </summary>
         [Output("condition")]
-        public Output<string> Condition { get; private set; } = null!;
+        public Output<string?> Condition { get; private set; } = null!;
 
         [Output("dashboard")]
-        public Output<string> Dashboard { get; private set; } = null!;
+        public Output<string?> Dashboard { get; private set; } = null!;
+
+        /// <summary>
+        /// Group configuration for new alert.
+        /// </summary>
+        [Output("groupConfiguration")]
+        public Output<Outputs.AlertGroupConfiguration?> GroupConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// Join configuration for different queries.
+        /// </summary>
+        [Output("joinConfigurations")]
+        public Output<ImmutableArray<Outputs.AlertJoinConfiguration>> JoinConfigurations { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels for new alert.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableArray<Outputs.AlertLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp, notifications before closing again.
@@ -138,16 +318,34 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> MuteUntil { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm information notification list.
+        /// Switch for whether new alert fires when no data happens, default is false.
+        /// </summary>
+        [Output("noDataFire")]
+        public Output<bool?> NoDataFire { get; private set; } = null!;
+
+        /// <summary>
+        /// when no data happens, the severity of new alert.
+        /// </summary>
+        [Output("noDataSeverity")]
+        public Output<int?> NoDataSeverity { get; private set; } = null!;
+
+        /// <summary>
+        /// Alarm information notification list, Deprecated from 1.161.0+.
         /// </summary>
         [Output("notificationLists")]
         public Output<ImmutableArray<Outputs.AlertNotificationList>> NotificationLists { get; private set; } = null!;
 
         /// <summary>
-        /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         /// </summary>
         [Output("notifyThreshold")]
         public Output<int?> NotifyThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy configuration for new alert.
+        /// </summary>
+        [Output("policyConfiguration")]
+        public Output<Outputs.AlertPolicyConfiguration?> PolicyConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The project name.
@@ -174,10 +372,40 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> ScheduleType { get; private set; } = null!;
 
         /// <summary>
-        /// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        /// when new alert is resolved, whether to notify, default is false.
+        /// </summary>
+        [Output("sendResolved")]
+        public Output<bool?> SendResolved { get; private set; } = null!;
+
+        /// <summary>
+        /// Severity configuration for new alert.
+        /// </summary>
+        [Output("severityConfigurations")]
+        public Output<ImmutableArray<Outputs.AlertSeverityConfiguration>> SeverityConfigurations { get; private set; } = null!;
+
+        /// <summary>
+        /// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        /// </summary>
+        [Output("threshold")]
+        public Output<int> Threshold { get; private set; } = null!;
+
+        /// <summary>
+        /// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         /// </summary>
         [Output("throttling")]
         public Output<string?> Throttling { get; private set; } = null!;
+
+        /// <summary>
+        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of alert, new alert is 2.0.
+        /// </summary>
+        [Output("version")]
+        public Output<string?> Version { get; private set; } = null!;
 
 
         /// <summary>
@@ -243,14 +471,62 @@ namespace Pulumi.AliCloud.Log
         [Input("alertName", required: true)]
         public Input<string> AlertName { get; set; } = null!;
 
-        /// <summary>
-        /// Conditional expression, such as: count&gt; 100.
-        /// </summary>
-        [Input("condition", required: true)]
-        public Input<string> Condition { get; set; } = null!;
+        [Input("annotations")]
+        private InputList<Inputs.AlertAnnotationArgs>? _annotations;
 
-        [Input("dashboard", required: true)]
-        public Input<string> Dashboard { get; set; } = null!;
+        /// <summary>
+        /// Annotations for new alert.
+        /// </summary>
+        public InputList<Inputs.AlertAnnotationArgs> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputList<Inputs.AlertAnnotationArgs>());
+            set => _annotations = value;
+        }
+
+        /// <summary>
+        /// whether to add automatic annotation, default is false.
+        /// </summary>
+        [Input("autoAnnotation")]
+        public Input<bool>? AutoAnnotation { get; set; }
+
+        /// <summary>
+        /// Join condition.
+        /// </summary>
+        [Input("condition")]
+        public Input<string>? Condition { get; set; }
+
+        [Input("dashboard")]
+        public Input<string>? Dashboard { get; set; }
+
+        /// <summary>
+        /// Group configuration for new alert.
+        /// </summary>
+        [Input("groupConfiguration")]
+        public Input<Inputs.AlertGroupConfigurationArgs>? GroupConfiguration { get; set; }
+
+        [Input("joinConfigurations")]
+        private InputList<Inputs.AlertJoinConfigurationArgs>? _joinConfigurations;
+
+        /// <summary>
+        /// Join configuration for different queries.
+        /// </summary>
+        public InputList<Inputs.AlertJoinConfigurationArgs> JoinConfigurations
+        {
+            get => _joinConfigurations ?? (_joinConfigurations = new InputList<Inputs.AlertJoinConfigurationArgs>());
+            set => _joinConfigurations = value;
+        }
+
+        [Input("labels")]
+        private InputList<Inputs.AlertLabelArgs>? _labels;
+
+        /// <summary>
+        /// Labels for new alert.
+        /// </summary>
+        public InputList<Inputs.AlertLabelArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.AlertLabelArgs>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// Timestamp, notifications before closing again.
@@ -258,12 +534,25 @@ namespace Pulumi.AliCloud.Log
         [Input("muteUntil")]
         public Input<int>? MuteUntil { get; set; }
 
-        [Input("notificationLists", required: true)]
+        /// <summary>
+        /// Switch for whether new alert fires when no data happens, default is false.
+        /// </summary>
+        [Input("noDataFire")]
+        public Input<bool>? NoDataFire { get; set; }
+
+        /// <summary>
+        /// when no data happens, the severity of new alert.
+        /// </summary>
+        [Input("noDataSeverity")]
+        public Input<int>? NoDataSeverity { get; set; }
+
+        [Input("notificationLists")]
         private InputList<Inputs.AlertNotificationListArgs>? _notificationLists;
 
         /// <summary>
-        /// Alarm information notification list.
+        /// Alarm information notification list, Deprecated from 1.161.0+.
         /// </summary>
+        [Obsolete(@"Deprecated from 1.161.0+, use policy_configuration for notification")]
         public InputList<Inputs.AlertNotificationListArgs> NotificationLists
         {
             get => _notificationLists ?? (_notificationLists = new InputList<Inputs.AlertNotificationListArgs>());
@@ -271,10 +560,16 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         /// </summary>
         [Input("notifyThreshold")]
         public Input<int>? NotifyThreshold { get; set; }
+
+        /// <summary>
+        /// Policy configuration for new alert.
+        /// </summary>
+        [Input("policyConfiguration")]
+        public Input<Inputs.AlertPolicyConfigurationArgs>? PolicyConfiguration { get; set; }
 
         /// <summary>
         /// The project name.
@@ -307,10 +602,46 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        /// when new alert is resolved, whether to notify, default is false.
+        /// </summary>
+        [Input("sendResolved")]
+        public Input<bool>? SendResolved { get; set; }
+
+        [Input("severityConfigurations")]
+        private InputList<Inputs.AlertSeverityConfigurationArgs>? _severityConfigurations;
+
+        /// <summary>
+        /// Severity configuration for new alert.
+        /// </summary>
+        public InputList<Inputs.AlertSeverityConfigurationArgs> SeverityConfigurations
+        {
+            get => _severityConfigurations ?? (_severityConfigurations = new InputList<Inputs.AlertSeverityConfigurationArgs>());
+            set => _severityConfigurations = value;
+        }
+
+        /// <summary>
+        /// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        /// </summary>
+        [Input("threshold")]
+        public Input<int>? Threshold { get; set; }
+
+        /// <summary>
+        /// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         /// </summary>
         [Input("throttling")]
         public Input<string>? Throttling { get; set; }
+
+        /// <summary>
+        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// The version of alert, new alert is 2.0.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public AlertArgs()
         {
@@ -337,8 +668,26 @@ namespace Pulumi.AliCloud.Log
         [Input("alertName")]
         public Input<string>? AlertName { get; set; }
 
+        [Input("annotations")]
+        private InputList<Inputs.AlertAnnotationGetArgs>? _annotations;
+
         /// <summary>
-        /// Conditional expression, such as: count&gt; 100.
+        /// Annotations for new alert.
+        /// </summary>
+        public InputList<Inputs.AlertAnnotationGetArgs> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputList<Inputs.AlertAnnotationGetArgs>());
+            set => _annotations = value;
+        }
+
+        /// <summary>
+        /// whether to add automatic annotation, default is false.
+        /// </summary>
+        [Input("autoAnnotation")]
+        public Input<bool>? AutoAnnotation { get; set; }
+
+        /// <summary>
+        /// Join condition.
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
@@ -347,17 +696,60 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Dashboard { get; set; }
 
         /// <summary>
+        /// Group configuration for new alert.
+        /// </summary>
+        [Input("groupConfiguration")]
+        public Input<Inputs.AlertGroupConfigurationGetArgs>? GroupConfiguration { get; set; }
+
+        [Input("joinConfigurations")]
+        private InputList<Inputs.AlertJoinConfigurationGetArgs>? _joinConfigurations;
+
+        /// <summary>
+        /// Join configuration for different queries.
+        /// </summary>
+        public InputList<Inputs.AlertJoinConfigurationGetArgs> JoinConfigurations
+        {
+            get => _joinConfigurations ?? (_joinConfigurations = new InputList<Inputs.AlertJoinConfigurationGetArgs>());
+            set => _joinConfigurations = value;
+        }
+
+        [Input("labels")]
+        private InputList<Inputs.AlertLabelGetArgs>? _labels;
+
+        /// <summary>
+        /// Labels for new alert.
+        /// </summary>
+        public InputList<Inputs.AlertLabelGetArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.AlertLabelGetArgs>());
+            set => _labels = value;
+        }
+
+        /// <summary>
         /// Timestamp, notifications before closing again.
         /// </summary>
         [Input("muteUntil")]
         public Input<int>? MuteUntil { get; set; }
 
+        /// <summary>
+        /// Switch for whether new alert fires when no data happens, default is false.
+        /// </summary>
+        [Input("noDataFire")]
+        public Input<bool>? NoDataFire { get; set; }
+
+        /// <summary>
+        /// when no data happens, the severity of new alert.
+        /// </summary>
+        [Input("noDataSeverity")]
+        public Input<int>? NoDataSeverity { get; set; }
+
         [Input("notificationLists")]
         private InputList<Inputs.AlertNotificationListGetArgs>? _notificationLists;
 
         /// <summary>
-        /// Alarm information notification list.
+        /// Alarm information notification list, Deprecated from 1.161.0+.
         /// </summary>
+        [Obsolete(@"Deprecated from 1.161.0+, use policy_configuration for notification")]
         public InputList<Inputs.AlertNotificationListGetArgs> NotificationLists
         {
             get => _notificationLists ?? (_notificationLists = new InputList<Inputs.AlertNotificationListGetArgs>());
@@ -365,10 +757,16 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
+        /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         /// </summary>
         [Input("notifyThreshold")]
         public Input<int>? NotifyThreshold { get; set; }
+
+        /// <summary>
+        /// Policy configuration for new alert.
+        /// </summary>
+        [Input("policyConfiguration")]
+        public Input<Inputs.AlertPolicyConfigurationGetArgs>? PolicyConfiguration { get; set; }
 
         /// <summary>
         /// The project name.
@@ -401,10 +799,46 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h.
+        /// when new alert is resolved, whether to notify, default is false.
+        /// </summary>
+        [Input("sendResolved")]
+        public Input<bool>? SendResolved { get; set; }
+
+        [Input("severityConfigurations")]
+        private InputList<Inputs.AlertSeverityConfigurationGetArgs>? _severityConfigurations;
+
+        /// <summary>
+        /// Severity configuration for new alert.
+        /// </summary>
+        public InputList<Inputs.AlertSeverityConfigurationGetArgs> SeverityConfigurations
+        {
+            get => _severityConfigurations ?? (_severityConfigurations = new InputList<Inputs.AlertSeverityConfigurationGetArgs>());
+            set => _severityConfigurations = value;
+        }
+
+        /// <summary>
+        /// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
+        /// </summary>
+        [Input("threshold")]
+        public Input<int>? Threshold { get; set; }
+
+        /// <summary>
+        /// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         /// </summary>
         [Input("throttling")]
         public Input<string>? Throttling { get; set; }
+
+        /// <summary>
+        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// The version of alert, new alert is 2.0.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public AlertState()
         {

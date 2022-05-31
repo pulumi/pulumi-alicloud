@@ -53,6 +53,9 @@ class NodePoolArgs:
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -99,6 +102,9 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
+        :param pulumi.Input[str] system_disk_kms_key: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -188,6 +194,12 @@ class NodePoolArgs:
             pulumi.set(__self__, "spot_strategy", spot_strategy)
         if system_disk_category is not None:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
+        if system_disk_encrypt_algorithm is not None:
+            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+        if system_disk_encrypted is not None:
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_kms_key is not None:
+            pulumi.set(__self__, "system_disk_kms_key", system_disk_kms_key)
         if system_disk_performance_level is not None:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
@@ -658,6 +670,42 @@ class NodePoolArgs:
         pulumi.set(self, "system_disk_category", value)
 
     @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @system_disk_encrypt_algorithm.setter
+    def system_disk_encrypt_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_encrypt_algorithm", value)
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable system disk encryption.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @system_disk_encrypted.setter
+    def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKey")
+    def system_disk_kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        """
+        return pulumi.get(self, "system_disk_kms_key")
+
+    @system_disk_kms_key.setter
+    def system_disk_kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_kms_key", value)
+
+    @property
     @pulumi.getter(name="systemDiskPerformanceLevel")
     def system_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -771,6 +819,9 @@ class _NodePoolState:
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -819,6 +870,9 @@ class _NodePoolState:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
+        :param pulumi.Input[str] system_disk_kms_key: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -913,6 +967,12 @@ class _NodePoolState:
             pulumi.set(__self__, "spot_strategy", spot_strategy)
         if system_disk_category is not None:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
+        if system_disk_encrypt_algorithm is not None:
+            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+        if system_disk_encrypted is not None:
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_kms_key is not None:
+            pulumi.set(__self__, "system_disk_kms_key", system_disk_kms_key)
         if system_disk_performance_level is not None:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
@@ -1387,6 +1447,42 @@ class _NodePoolState:
         pulumi.set(self, "system_disk_category", value)
 
     @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @system_disk_encrypt_algorithm.setter
+    def system_disk_encrypt_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_encrypt_algorithm", value)
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable system disk encryption.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @system_disk_encrypted.setter
+    def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKey")
+    def system_disk_kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        """
+        return pulumi.get(self, "system_disk_kms_key")
+
+    @system_disk_kms_key.setter
+    def system_disk_kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_kms_key", value)
+
+    @property
     @pulumi.getter(name="systemDiskPerformanceLevel")
     def system_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1525,6 +1621,9 @@ class NodePool(pulumi.CustomResource):
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1831,6 +1930,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
+        :param pulumi.Input[str] system_disk_kms_key: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -2156,6 +2258,9 @@ class NodePool(pulumi.CustomResource):
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -2225,6 +2330,9 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["spot_price_limits"] = spot_price_limits
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["system_disk_category"] = system_disk_category
+            __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
+            __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
+            __props__.__dict__["system_disk_kms_key"] = system_disk_kms_key
             __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
             __props__.__dict__["system_disk_size"] = system_disk_size
             __props__.__dict__["tags"] = tags
@@ -2284,6 +2392,9 @@ class NodePool(pulumi.CustomResource):
             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
+            system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+            system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+            system_disk_kms_key: Optional[pulumi.Input[str]] = None,
             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -2337,6 +2448,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
+        :param pulumi.Input[str] system_disk_kms_key: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -2388,6 +2502,9 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["spot_price_limits"] = spot_price_limits
         __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["system_disk_category"] = system_disk_category
+        __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
+        __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
+        __props__.__dict__["system_disk_kms_key"] = system_disk_kms_key
         __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
         __props__.__dict__["system_disk_size"] = system_disk_size
         __props__.__dict__["tags"] = tags
@@ -2701,6 +2818,30 @@ class NodePool(pulumi.CustomResource):
         The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "system_disk_category")
+
+    @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> pulumi.Output[Optional[str]]:
+        """
+        The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable system disk encryption.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKey")
+    def system_disk_kms_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        """
+        return pulumi.get(self, "system_disk_kms_key")
 
     @property
     @pulumi.getter(name="systemDiskPerformanceLevel")

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? ConnectionPort;
         /// <summary>
-        /// The network type of the node. Valid values: `Classic`,`VPC`.
+        /// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         /// </summary>
         public readonly string? NetworkType;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? VpcCloudInstanceId;
         /// <summary>
-        /// The private network ID of the node.
+        /// The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         /// </summary>
         public readonly string? VpcId;
         /// <summary>

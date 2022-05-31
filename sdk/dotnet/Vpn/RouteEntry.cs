@@ -105,6 +105,18 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> RouteDest { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.161.0+) The type of the vpn route entry.
+        /// </summary>
+        [Output("routeEntryType")]
+        public Output<string> RouteEntryType { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.161.0+) The status of the vpn route entry.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
         /// The id of the vpn gateway.
         /// </summary>
         [Output("vpnGatewayId")]
@@ -216,6 +228,18 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("routeDest")]
         public Input<string>? RouteDest { get; set; }
+
+        /// <summary>
+        /// (Available in 1.161.0+) The type of the vpn route entry.
+        /// </summary>
+        [Input("routeEntryType")]
+        public Input<string>? RouteEntryType { get; set; }
+
+        /// <summary>
+        /// (Available in 1.161.0+) The status of the vpn route entry.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The id of the vpn gateway.

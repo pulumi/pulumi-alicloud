@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ConnectionString { get; private set; } = null!;
 
         [Output("connectionStringPrefix")]
-        public Output<string?> ConnectionStringPrefix { get; private set; } = null!;
+        public Output<string> ConnectionStringPrefix { get; private set; } = null!;
 
         /// <summary>
         /// The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -120,6 +120,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("dbIsIgnoreCase")]
+        public Output<bool> DbIsIgnoreCase { get; private set; } = null!;
+
+        /// <summary>
         /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
         /// - If you set the `Engine` parameter to MySQL.
         /// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -130,6 +136,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("dbTimeZone")]
         public Output<string> DbTimeZone { get; private set; } = null!;
+
+        /// <summary>
+        /// The switch of delete protection. Valid values: 
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -591,6 +605,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
+        /// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("dbIsIgnoreCase")]
+        public Input<bool>? DbIsIgnoreCase { get; set; }
+
+        /// <summary>
         /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
         /// - If you set the `Engine` parameter to MySQL.
         /// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -601,6 +621,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("dbTimeZone")]
         public Input<string>? DbTimeZone { get; set; }
+
+        /// <summary>
+        /// The switch of delete protection. Valid values: 
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -1053,6 +1081,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
+        /// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("dbIsIgnoreCase")]
+        public Input<bool>? DbIsIgnoreCase { get; set; }
+
+        /// <summary>
         /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
         /// - If you set the `Engine` parameter to MySQL.
         /// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -1063,6 +1097,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("dbTimeZone")]
         public Input<string>? DbTimeZone { get; set; }
+
+        /// <summary>
+        /// The switch of delete protection. Valid values: 
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.

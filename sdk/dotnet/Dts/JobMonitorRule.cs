@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Dts
         /// The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
         /// </summary>
         [Output("phone")]
-        public Output<string> Phone { get; private set; } = null!;
+        public Output<string?> Phone { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable monitoring rules, valid values: `Y`, `N`.

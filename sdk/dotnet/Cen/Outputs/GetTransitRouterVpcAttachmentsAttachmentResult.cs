@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The payment type of the resource.
+        /// </summary>
+        public readonly string PaymentType;
+        /// <summary>
         /// Type of the resource.
         /// </summary>
         public readonly string ResourceType;
@@ -54,6 +58,8 @@ namespace Pulumi.AliCloud.Cen.Outputs
         private GetTransitRouterVpcAttachmentsAttachmentResult(
             string id,
 
+            string paymentType,
+
             string resourceType,
 
             string status,
@@ -71,6 +77,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
             ImmutableArray<Outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult> zoneMappings)
         {
             Id = id;
+            PaymentType = paymentType;
             ResourceType = resourceType;
             Status = status;
             TransitRouterAttachmentDescription = transitRouterAttachmentDescription;

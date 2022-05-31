@@ -21,7 +21,7 @@ class GetImagesResult:
     """
     A collection of values returned by getImages.
     """
-    def __init__(__self__, action_type=None, architecture=None, dry_run=None, id=None, ids=None, image_family=None, image_id=None, image_name=None, images=None, instance_type=None, is_support_cloud_init=None, is_support_io_optimized=None, most_recent=None, name_regex=None, os_type=None, output_file=None, owners=None, resource_group_id=None, snapshot_id=None, status=None, tags=None, usage=None):
+    def __init__(__self__, action_type=None, architecture=None, dry_run=None, id=None, ids=None, image_family=None, image_id=None, image_name=None, image_owner_id=None, images=None, instance_type=None, is_support_cloud_init=None, is_support_io_optimized=None, most_recent=None, name_regex=None, os_type=None, output_file=None, owners=None, resource_group_id=None, snapshot_id=None, status=None, tags=None, usage=None):
         if action_type and not isinstance(action_type, str):
             raise TypeError("Expected argument 'action_type' to be a str")
         pulumi.set(__self__, "action_type", action_type)
@@ -46,6 +46,9 @@ class GetImagesResult:
         if image_name and not isinstance(image_name, str):
             raise TypeError("Expected argument 'image_name' to be a str")
         pulumi.set(__self__, "image_name", image_name)
+        if image_owner_id and not isinstance(image_owner_id, str):
+            raise TypeError("Expected argument 'image_owner_id' to be a str")
+        pulumi.set(__self__, "image_owner_id", image_owner_id)
         if images and not isinstance(images, list):
             raise TypeError("Expected argument 'images' to be a list")
         pulumi.set(__self__, "images", images)
@@ -137,6 +140,11 @@ class GetImagesResult:
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[str]:
         return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="imageOwnerId")
+    def image_owner_id(self) -> Optional[str]:
+        return pulumi.get(self, "image_owner_id")
 
     @property
     @pulumi.getter
@@ -232,6 +240,7 @@ class AwaitableGetImagesResult(GetImagesResult):
             image_family=self.image_family,
             image_id=self.image_id,
             image_name=self.image_name,
+            image_owner_id=self.image_owner_id,
             images=self.images,
             instance_type=self.instance_type,
             is_support_cloud_init=self.is_support_cloud_init,
@@ -254,6 +263,7 @@ def get_images(action_type: Optional[str] = None,
                image_family: Optional[str] = None,
                image_id: Optional[str] = None,
                image_name: Optional[str] = None,
+               image_owner_id: Optional[str] = None,
                instance_type: Optional[str] = None,
                is_support_cloud_init: Optional[bool] = None,
                is_support_io_optimized: Optional[bool] = None,
@@ -294,6 +304,7 @@ def get_images(action_type: Optional[str] = None,
     :param str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
     :param str image_id: The ID of the image.
     :param str image_name: The name of the image.
+    :param str image_owner_id: The ID of the Alibaba Cloud account to which the image belongs. This parameter takes effect only when you query shared images or community images.
     :param str instance_type: The instance type for which the image can be used.
     :param bool is_support_cloud_init: Specifies whether the image supports cloud-init.
     :param bool is_support_io_optimized: Specifies whether the image can be used on I/O optimized instances.
@@ -322,6 +333,7 @@ def get_images(action_type: Optional[str] = None,
     __args__['imageFamily'] = image_family
     __args__['imageId'] = image_id
     __args__['imageName'] = image_name
+    __args__['imageOwnerId'] = image_owner_id
     __args__['instanceType'] = instance_type
     __args__['isSupportCloudInit'] = is_support_cloud_init
     __args__['isSupportIoOptimized'] = is_support_io_optimized
@@ -350,6 +362,7 @@ def get_images(action_type: Optional[str] = None,
         image_family=__ret__.image_family,
         image_id=__ret__.image_id,
         image_name=__ret__.image_name,
+        image_owner_id=__ret__.image_owner_id,
         images=__ret__.images,
         instance_type=__ret__.instance_type,
         is_support_cloud_init=__ret__.is_support_cloud_init,
@@ -373,6 +386,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
                       image_family: Optional[pulumi.Input[Optional[str]]] = None,
                       image_id: Optional[pulumi.Input[Optional[str]]] = None,
                       image_name: Optional[pulumi.Input[Optional[str]]] = None,
+                      image_owner_id: Optional[pulumi.Input[Optional[str]]] = None,
                       instance_type: Optional[pulumi.Input[Optional[str]]] = None,
                       is_support_cloud_init: Optional[pulumi.Input[Optional[bool]]] = None,
                       is_support_io_optimized: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -413,6 +427,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     :param str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
     :param str image_id: The ID of the image.
     :param str image_name: The name of the image.
+    :param str image_owner_id: The ID of the Alibaba Cloud account to which the image belongs. This parameter takes effect only when you query shared images or community images.
     :param str instance_type: The instance type for which the image can be used.
     :param bool is_support_cloud_init: Specifies whether the image supports cloud-init.
     :param bool is_support_io_optimized: Specifies whether the image can be used on I/O optimized instances.

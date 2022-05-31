@@ -12,7 +12,7 @@ import (
 
 // This data source provides the Sae Applications of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available in v1.161.0+.
 //
 // ## Example Usage
 //

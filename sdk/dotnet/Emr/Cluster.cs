@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.Emr
     ///                 {
     ///                     HostGroupName = "core_group",
     ///                     HostGroupType = "CORE",
-    ///                     NodeCount = "2",
+    ///                     NodeCount = "3",
     ///                     InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Types?[0]?.Id),
     ///                     DiskType = dataDisk.Apply(dataDisk =&gt; dataDisk.Types?[0]?.Value),
     ///                     DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
@@ -412,6 +412,8 @@ namespace Pulumi.AliCloud.Emr
     /// ### 3. Scale Down
     /// 
     /// In the case of scaling down a cluster, we need to specified the host group and the instance list.
+    /// 
+    /// &gt; **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
     /// 
     /// The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
     /// 
@@ -551,7 +553,7 @@ namespace Pulumi.AliCloud.Emr
     ///                 {
     ///                     HostGroupName = "core_group",
     ///                     HostGroupType = "CORE",
-    ///                     NodeCount = "2",
+    ///                     NodeCount = "3",
     ///                     InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.Types?[0]?.Id),
     ///                     DiskType = dataDisk.Apply(dataDisk =&gt; dataDisk.Types?[0]?.Value),
     ///                     DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
@@ -766,6 +768,9 @@ namespace Pulumi.AliCloud.Emr
     [AliCloudResourceType("alicloud:emr/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Boot action parameters.
+        /// </summary>
         [Output("bootstrapActions")]
         public Output<ImmutableArray<Outputs.ClusterBootstrapAction>> BootstrapActions { get; private set; } = null!;
 
@@ -811,6 +816,9 @@ namespace Pulumi.AliCloud.Emr
         [Output("hostGroups")]
         public Output<ImmutableArray<Outputs.ClusterHostGroup>> HostGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the MASTER node has a public IP address enabled. Default value is false.
+        /// </summary>
         [Output("isOpenPublicIp")]
         public Output<bool?> IsOpenPublicIp { get; private set; } = null!;
 
@@ -940,6 +948,10 @@ namespace Pulumi.AliCloud.Emr
     {
         [Input("bootstrapActions")]
         private InputList<Inputs.ClusterBootstrapActionArgs>? _bootstrapActions;
+
+        /// <summary>
+        /// Boot action parameters.
+        /// </summary>
         public InputList<Inputs.ClusterBootstrapActionArgs> BootstrapActions
         {
             get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionArgs>());
@@ -994,6 +1006,9 @@ namespace Pulumi.AliCloud.Emr
             set => _hostGroups = value;
         }
 
+        /// <summary>
+        /// Whether the MASTER node has a public IP address enabled. Default value is false.
+        /// </summary>
         [Input("isOpenPublicIp")]
         public Input<bool>? IsOpenPublicIp { get; set; }
 
@@ -1096,6 +1111,10 @@ namespace Pulumi.AliCloud.Emr
     {
         [Input("bootstrapActions")]
         private InputList<Inputs.ClusterBootstrapActionGetArgs>? _bootstrapActions;
+
+        /// <summary>
+        /// Boot action parameters.
+        /// </summary>
         public InputList<Inputs.ClusterBootstrapActionGetArgs> BootstrapActions
         {
             get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionGetArgs>());
@@ -1150,6 +1169,9 @@ namespace Pulumi.AliCloud.Emr
             set => _hostGroups = value;
         }
 
+        /// <summary>
+        /// Whether the MASTER node has a public IP address enabled. Default value is false.
+        /// </summary>
         [Input("isOpenPublicIp")]
         public Input<bool>? IsOpenPublicIp { get; set; }
 

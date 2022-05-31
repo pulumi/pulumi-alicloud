@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -10,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Serverless App Engine (SAE) Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/97792.html).
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available in v1.161.0+.
  *
  * ## Example Usage
  *
@@ -151,37 +150,13 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly enableGreyTagRoute!: pulumi.Output<boolean>;
     /**
-     * The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+     * Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
      */
     public readonly envs!: pulumi.Output<string>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
     public readonly imageUrl!: pulumi.Output<string | undefined>;
-    /**
-     * Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-     */
-    public /*out*/ readonly internetIp!: pulumi.Output<string>;
-    /**
-     * public network SLB ID.
-     */
-    public readonly internetSlbId!: pulumi.Output<string | undefined>;
-    /**
-     * Bound private network SLB. The details see Block internet.
-     */
-    public readonly internets!: pulumi.Output<outputs.sae.ApplicationInternet[] | undefined>;
-    /**
-     * Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-     */
-    public /*out*/ readonly intranetIp!: pulumi.Output<string>;
-    /**
-     * private network SLB ID.
-     */
-    public readonly intranetSlbId!: pulumi.Output<string | undefined>;
-    /**
-     * Bound public network SLB. The details see Block intranet.
-     */
-    public readonly intranets!: pulumi.Output<outputs.sae.ApplicationIntranet[] | undefined>;
     /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
@@ -202,6 +177,12 @@ export class Application extends pulumi.CustomResource {
      * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
      */
     public readonly memory!: pulumi.Output<number | undefined>;
+    /**
+     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+     * * `-1`: Initialization value, indicating that percentages are not used.
+     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+     */
+    public readonly minReadyInstanceRatio!: pulumi.Output<number>;
     /**
      * The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
      */
@@ -271,7 +252,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly readiness!: pulumi.Output<string | undefined>;
     /**
-     * Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+     * Initial number of instances.
      */
     public readonly replicas!: pulumi.Output<number>;
     /**
@@ -286,6 +267,10 @@ export class Application extends pulumi.CustomResource {
      * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
      */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
      */
@@ -353,17 +338,12 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["enableGreyTagRoute"] = state ? state.enableGreyTagRoute : undefined;
             resourceInputs["envs"] = state ? state.envs : undefined;
             resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
-            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
-            resourceInputs["internetSlbId"] = state ? state.internetSlbId : undefined;
-            resourceInputs["internets"] = state ? state.internets : undefined;
-            resourceInputs["intranetIp"] = state ? state.intranetIp : undefined;
-            resourceInputs["intranetSlbId"] = state ? state.intranetSlbId : undefined;
-            resourceInputs["intranets"] = state ? state.intranets : undefined;
             resourceInputs["jarStartArgs"] = state ? state.jarStartArgs : undefined;
             resourceInputs["jarStartOptions"] = state ? state.jarStartOptions : undefined;
             resourceInputs["jdk"] = state ? state.jdk : undefined;
             resourceInputs["liveness"] = state ? state.liveness : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["minReadyInstanceRatio"] = state ? state.minReadyInstanceRatio : undefined;
             resourceInputs["minReadyInstances"] = state ? state.minReadyInstances : undefined;
             resourceInputs["mountDesc"] = state ? state.mountDesc : undefined;
             resourceInputs["mountHost"] = state ? state.mountHost : undefined;
@@ -385,6 +365,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["slsConfigs"] = state ? state.slsConfigs : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["terminationGracePeriodSeconds"] = state ? state.terminationGracePeriodSeconds : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
             resourceInputs["tomcatConfig"] = state ? state.tomcatConfig : undefined;
@@ -422,15 +403,12 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["enableGreyTagRoute"] = args ? args.enableGreyTagRoute : undefined;
             resourceInputs["envs"] = args ? args.envs : undefined;
             resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
-            resourceInputs["internetSlbId"] = args ? args.internetSlbId : undefined;
-            resourceInputs["internets"] = args ? args.internets : undefined;
-            resourceInputs["intranetSlbId"] = args ? args.intranetSlbId : undefined;
-            resourceInputs["intranets"] = args ? args.intranets : undefined;
             resourceInputs["jarStartArgs"] = args ? args.jarStartArgs : undefined;
             resourceInputs["jarStartOptions"] = args ? args.jarStartOptions : undefined;
             resourceInputs["jdk"] = args ? args.jdk : undefined;
             resourceInputs["liveness"] = args ? args.liveness : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
+            resourceInputs["minReadyInstanceRatio"] = args ? args.minReadyInstanceRatio : undefined;
             resourceInputs["minReadyInstances"] = args ? args.minReadyInstances : undefined;
             resourceInputs["mountDesc"] = args ? args.mountDesc : undefined;
             resourceInputs["mountHost"] = args ? args.mountHost : undefined;
@@ -452,6 +430,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["slsConfigs"] = args ? args.slsConfigs : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["terminationGracePeriodSeconds"] = args ? args.terminationGracePeriodSeconds : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["tomcatConfig"] = args ? args.tomcatConfig : undefined;
@@ -461,8 +440,6 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["warStartOptions"] = args ? args.warStartOptions : undefined;
             resourceInputs["webContainer"] = args ? args.webContainer : undefined;
-            resourceInputs["internetIp"] = undefined /*out*/;
-            resourceInputs["intranetIp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Application.__pulumiType, name, resourceInputs, opts);
@@ -534,37 +511,13 @@ export interface ApplicationState {
      */
     enableGreyTagRoute?: pulumi.Input<boolean>;
     /**
-     * The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+     * Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
      */
     envs?: pulumi.Input<string>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
     imageUrl?: pulumi.Input<string>;
-    /**
-     * Use designated public network SLBs that have been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-     */
-    internetIp?: pulumi.Input<string>;
-    /**
-     * public network SLB ID.
-     */
-    internetSlbId?: pulumi.Input<string>;
-    /**
-     * Bound private network SLB. The details see Block internet.
-     */
-    internets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationInternet>[]>;
-    /**
-     * Use the designated private network SLB that has been purchased to support non-shared instances. **NOTE:** Available in v1.139+.
-     */
-    intranetIp?: pulumi.Input<string>;
-    /**
-     * private network SLB ID.
-     */
-    intranetSlbId?: pulumi.Input<string>;
-    /**
-     * Bound public network SLB. The details see Block intranet.
-     */
-    intranets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationIntranet>[]>;
     /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
@@ -585,6 +538,12 @@ export interface ApplicationState {
      * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
      */
     memory?: pulumi.Input<number>;
+    /**
+     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+     * * `-1`: Initialization value, indicating that percentages are not used.
+     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+     */
+    minReadyInstanceRatio?: pulumi.Input<number>;
     /**
      * The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
      */
@@ -654,7 +613,7 @@ export interface ApplicationState {
      */
     readiness?: pulumi.Input<string>;
     /**
-     * Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+     * Initial number of instances.
      */
     replicas?: pulumi.Input<number>;
     /**
@@ -669,6 +628,10 @@ export interface ApplicationState {
      * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
      */
@@ -772,29 +735,13 @@ export interface ApplicationArgs {
      */
     enableGreyTagRoute?: pulumi.Input<boolean>;
     /**
-     * The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
+     * Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
      */
     envs?: pulumi.Input<string>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
     imageUrl?: pulumi.Input<string>;
-    /**
-     * public network SLB ID.
-     */
-    internetSlbId?: pulumi.Input<string>;
-    /**
-     * Bound private network SLB. The details see Block internet.
-     */
-    internets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationInternet>[]>;
-    /**
-     * private network SLB ID.
-     */
-    intranetSlbId?: pulumi.Input<string>;
-    /**
-     * Bound public network SLB. The details see Block intranet.
-     */
-    intranets?: pulumi.Input<pulumi.Input<inputs.sae.ApplicationIntranet>[]>;
     /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
@@ -815,6 +762,12 @@ export interface ApplicationArgs {
      * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
      */
     memory?: pulumi.Input<number>;
+    /**
+     * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
+     * * `-1`: Initialization value, indicating that percentages are not used.
+     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+     */
+    minReadyInstanceRatio?: pulumi.Input<number>;
     /**
      * The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
      */
@@ -884,7 +837,7 @@ export interface ApplicationArgs {
      */
     readiness?: pulumi.Input<string>;
     /**
-     * Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
+     * Initial number of instances.
      */
     replicas: pulumi.Input<number>;
     /**
@@ -899,6 +852,10 @@ export interface ApplicationArgs {
      * The status of the resource. Valid values: `RUNNING`, `STOPPED`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
      */

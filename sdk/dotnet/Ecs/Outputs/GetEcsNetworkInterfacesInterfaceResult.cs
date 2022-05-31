@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsNetworkInterfacesInterfaceResult
     {
         /// <summary>
+        /// The EIP associated with the secondary private IP address of the ENI.  **NOTE:** Available in v1.163.0+.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult> AssociatedPublicIps;
+        /// <summary>
         /// The creation time.
         /// </summary>
         public readonly string CreationTime;
@@ -117,6 +121,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
         [OutputConstructor]
         private GetEcsNetworkInterfacesInterfaceResult(
+            ImmutableArray<Outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult> associatedPublicIps,
+
             string creationTime,
 
             string description,
@@ -169,6 +175,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string zoneId)
         {
+            AssociatedPublicIps = associatedPublicIps;
             CreationTime = creationTime;
             Description = description;
             Id = id;

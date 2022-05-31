@@ -39,7 +39,7 @@ class DbClusterArgs:
                * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
         :param pulumi.Input[str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
@@ -50,7 +50,7 @@ class DbClusterArgs:
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
         """
@@ -123,7 +123,7 @@ class DbClusterArgs:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Input[str]:
         """
-        The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -255,7 +255,7 @@ class DbClusterArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         """
         return pulumi.get(self, "status")
 
@@ -317,7 +317,7 @@ class _DbClusterState:
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
@@ -325,7 +325,7 @@ class _DbClusterState:
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
@@ -431,7 +431,7 @@ class _DbClusterState:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -527,7 +527,7 @@ class _DbClusterState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         """
         return pulumi.get(self, "status")
 
@@ -648,7 +648,7 @@ class DbCluster(pulumi.CustomResource):
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
@@ -656,7 +656,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
@@ -829,7 +829,7 @@ class DbCluster(pulumi.CustomResource):
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] db_cluster_network_type: The DBCluster network type. Valid values: `vpc`.
-        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
@@ -837,7 +837,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
@@ -911,7 +911,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Output[str]:
         """
-        The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
+        The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -975,7 +975,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         """
         return pulumi.get(self, "status")
 

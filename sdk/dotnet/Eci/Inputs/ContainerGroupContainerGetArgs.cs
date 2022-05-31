@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<double>? Memory { get; set; }
 
         /// <summary>
-        /// The name of the mounted volume.
+        /// The name of the security context that the container group runs.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .consumer_group import *
 from .instance import *
+from .instance_allowed_ip_attachment import *
 from .sasl_acl import *
 from .sasl_user import *
 from .topic import *

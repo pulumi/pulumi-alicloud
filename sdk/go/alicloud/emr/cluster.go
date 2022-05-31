@@ -27,6 +27,7 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Boot action parameters.
 	BootstrapActions ClusterBootstrapActionArrayOutput `pulumi:"bootstrapActions"`
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType pulumi.StringPtrOutput `pulumi:"chargeType"`
@@ -41,8 +42,9 @@ type Cluster struct {
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable pulumi.BoolPtrOutput `pulumi:"highAvailabilityEnable"`
 	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-	HostGroups     ClusterHostGroupArrayOutput `pulumi:"hostGroups"`
-	IsOpenPublicIp pulumi.BoolPtrOutput        `pulumi:"isOpenPublicIp"`
+	HostGroups ClusterHostGroupArrayOutput `pulumi:"hostGroups"`
+	// Whether the MASTER node has a public IP address enabled. Default value is false.
+	IsOpenPublicIp pulumi.BoolPtrOutput `pulumi:"isOpenPublicIp"`
 	// Ssh key pair.
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
 	// Master ssh password.
@@ -109,6 +111,7 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// Boot action parameters.
 	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType *string `pulumi:"chargeType"`
@@ -123,8 +126,9 @@ type clusterState struct {
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable *bool `pulumi:"highAvailabilityEnable"`
 	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-	HostGroups     []ClusterHostGroup `pulumi:"hostGroups"`
-	IsOpenPublicIp *bool              `pulumi:"isOpenPublicIp"`
+	HostGroups []ClusterHostGroup `pulumi:"hostGroups"`
+	// Whether the MASTER node has a public IP address enabled. Default value is false.
+	IsOpenPublicIp *bool `pulumi:"isOpenPublicIp"`
 	// Ssh key pair.
 	KeyPairName *string `pulumi:"keyPairName"`
 	// Master ssh password.
@@ -154,6 +158,7 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	// Boot action parameters.
 	BootstrapActions ClusterBootstrapActionArrayInput
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType pulumi.StringPtrInput
@@ -168,7 +173,8 @@ type ClusterState struct {
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable pulumi.BoolPtrInput
 	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-	HostGroups     ClusterHostGroupArrayInput
+	HostGroups ClusterHostGroupArrayInput
+	// Whether the MASTER node has a public IP address enabled. Default value is false.
 	IsOpenPublicIp pulumi.BoolPtrInput
 	// Ssh key pair.
 	KeyPairName pulumi.StringPtrInput
@@ -203,6 +209,7 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// Boot action parameters.
 	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType *string `pulumi:"chargeType"`
@@ -217,8 +224,9 @@ type clusterArgs struct {
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable *bool `pulumi:"highAvailabilityEnable"`
 	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-	HostGroups     []ClusterHostGroup `pulumi:"hostGroups"`
-	IsOpenPublicIp *bool              `pulumi:"isOpenPublicIp"`
+	HostGroups []ClusterHostGroup `pulumi:"hostGroups"`
+	// Whether the MASTER node has a public IP address enabled. Default value is false.
+	IsOpenPublicIp *bool `pulumi:"isOpenPublicIp"`
 	// Ssh key pair.
 	KeyPairName *string `pulumi:"keyPairName"`
 	// Master ssh password.
@@ -249,6 +257,7 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// Boot action parameters.
 	BootstrapActions ClusterBootstrapActionArrayInput
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType pulumi.StringPtrInput
@@ -263,7 +272,8 @@ type ClusterArgs struct {
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable pulumi.BoolPtrInput
 	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-	HostGroups     ClusterHostGroupArrayInput
+	HostGroups ClusterHostGroupArrayInput
+	// Whether the MASTER node has a public IP address enabled. Default value is false.
 	IsOpenPublicIp pulumi.BoolPtrInput
 	// Ssh key pair.
 	KeyPairName pulumi.StringPtrInput

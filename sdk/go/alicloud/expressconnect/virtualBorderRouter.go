@@ -96,6 +96,8 @@ type VirtualBorderRouter struct {
 	PeeringSubnetMask pulumi.StringOutput `pulumi:"peeringSubnetMask"`
 	// The ID of the Physical Connection to Which the ID.
 	PhysicalConnectionId pulumi.StringOutput `pulumi:"physicalConnectionId"`
+	// (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The vbr owner id.
@@ -180,6 +182,8 @@ type virtualBorderRouterState struct {
 	PeeringSubnetMask *string `pulumi:"peeringSubnetMask"`
 	// The ID of the Physical Connection to Which the ID.
 	PhysicalConnectionId *string `pulumi:"physicalConnectionId"`
+	// (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+	RouteTableId *string `pulumi:"routeTableId"`
 	// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status *string `pulumi:"status"`
 	// The vbr owner id.
@@ -221,6 +225,8 @@ type VirtualBorderRouterState struct {
 	PeeringSubnetMask pulumi.StringPtrInput
 	// The ID of the Physical Connection to Which the ID.
 	PhysicalConnectionId pulumi.StringPtrInput
+	// (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+	RouteTableId pulumi.StringPtrInput
 	// The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status pulumi.StringPtrInput
 	// The vbr owner id.

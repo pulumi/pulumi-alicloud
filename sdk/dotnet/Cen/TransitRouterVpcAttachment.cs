@@ -25,9 +25,6 @@ namespace Pulumi.AliCloud.Cen
     [AliCloudResourceType("alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment")]
     public partial class TransitRouterVpcAttachment : Pulumi.CustomResource
     {
-        [Output("autoCreateVpcRoute")]
-        public Output<bool?> AutoCreateVpcRoute { get; private set; } = null!;
-
         /// <summary>
         /// The ID of the CEN.
         /// </summary>
@@ -39,6 +36,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// The payment type of the resource. Valid values: `PayAsYouGo`.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
@@ -152,9 +155,6 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class TransitRouterVpcAttachmentArgs : Pulumi.ResourceArgs
     {
-        [Input("autoCreateVpcRoute")]
-        public Input<bool>? AutoCreateVpcRoute { get; set; }
-
         /// <summary>
         /// The ID of the CEN.
         /// </summary>
@@ -166,6 +166,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The payment type of the resource. Valid values: `PayAsYouGo`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
@@ -234,9 +240,6 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class TransitRouterVpcAttachmentState : Pulumi.ResourceArgs
     {
-        [Input("autoCreateVpcRoute")]
-        public Input<bool>? AutoCreateVpcRoute { get; set; }
-
         /// <summary>
         /// The ID of the CEN.
         /// </summary>
@@ -248,6 +251,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The payment type of the resource. Valid values: `PayAsYouGo`.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.

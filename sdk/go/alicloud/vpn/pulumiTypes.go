@@ -10,6 +10,413 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ConnectionBgpConfig struct {
+	// Whether to enable BGP.
+	Enable *bool `pulumi:"enable"`
+	// The ASN on the Alibaba Cloud side.
+	LocalAsn *string `pulumi:"localAsn"`
+	// The BGP IP address on the Alibaba Cloud side.
+	LocalBgpIp *string `pulumi:"localBgpIp"`
+	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+	TunnelCidr *string `pulumi:"tunnelCidr"`
+}
+
+// ConnectionBgpConfigInput is an input type that accepts ConnectionBgpConfigArgs and ConnectionBgpConfigOutput values.
+// You can construct a concrete instance of `ConnectionBgpConfigInput` via:
+//
+//          ConnectionBgpConfigArgs{...}
+type ConnectionBgpConfigInput interface {
+	pulumi.Input
+
+	ToConnectionBgpConfigOutput() ConnectionBgpConfigOutput
+	ToConnectionBgpConfigOutputWithContext(context.Context) ConnectionBgpConfigOutput
+}
+
+type ConnectionBgpConfigArgs struct {
+	// Whether to enable BGP.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// The ASN on the Alibaba Cloud side.
+	LocalAsn pulumi.StringPtrInput `pulumi:"localAsn"`
+	// The BGP IP address on the Alibaba Cloud side.
+	LocalBgpIp pulumi.StringPtrInput `pulumi:"localBgpIp"`
+	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+	TunnelCidr pulumi.StringPtrInput `pulumi:"tunnelCidr"`
+}
+
+func (ConnectionBgpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBgpConfig)(nil)).Elem()
+}
+
+func (i ConnectionBgpConfigArgs) ToConnectionBgpConfigOutput() ConnectionBgpConfigOutput {
+	return i.ToConnectionBgpConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionBgpConfigArgs) ToConnectionBgpConfigOutputWithContext(ctx context.Context) ConnectionBgpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBgpConfigOutput)
+}
+
+func (i ConnectionBgpConfigArgs) ToConnectionBgpConfigPtrOutput() ConnectionBgpConfigPtrOutput {
+	return i.ToConnectionBgpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionBgpConfigArgs) ToConnectionBgpConfigPtrOutputWithContext(ctx context.Context) ConnectionBgpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBgpConfigOutput).ToConnectionBgpConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionBgpConfigPtrInput is an input type that accepts ConnectionBgpConfigArgs, ConnectionBgpConfigPtr and ConnectionBgpConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionBgpConfigPtrInput` via:
+//
+//          ConnectionBgpConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionBgpConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionBgpConfigPtrOutput() ConnectionBgpConfigPtrOutput
+	ToConnectionBgpConfigPtrOutputWithContext(context.Context) ConnectionBgpConfigPtrOutput
+}
+
+type connectionBgpConfigPtrType ConnectionBgpConfigArgs
+
+func ConnectionBgpConfigPtr(v *ConnectionBgpConfigArgs) ConnectionBgpConfigPtrInput {
+	return (*connectionBgpConfigPtrType)(v)
+}
+
+func (*connectionBgpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBgpConfig)(nil)).Elem()
+}
+
+func (i *connectionBgpConfigPtrType) ToConnectionBgpConfigPtrOutput() ConnectionBgpConfigPtrOutput {
+	return i.ToConnectionBgpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionBgpConfigPtrType) ToConnectionBgpConfigPtrOutputWithContext(ctx context.Context) ConnectionBgpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionBgpConfigPtrOutput)
+}
+
+type ConnectionBgpConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBgpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionBgpConfig)(nil)).Elem()
+}
+
+func (o ConnectionBgpConfigOutput) ToConnectionBgpConfigOutput() ConnectionBgpConfigOutput {
+	return o
+}
+
+func (o ConnectionBgpConfigOutput) ToConnectionBgpConfigOutputWithContext(ctx context.Context) ConnectionBgpConfigOutput {
+	return o
+}
+
+func (o ConnectionBgpConfigOutput) ToConnectionBgpConfigPtrOutput() ConnectionBgpConfigPtrOutput {
+	return o.ToConnectionBgpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionBgpConfigOutput) ToConnectionBgpConfigPtrOutputWithContext(ctx context.Context) ConnectionBgpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionBgpConfig) *ConnectionBgpConfig {
+		return &v
+	}).(ConnectionBgpConfigPtrOutput)
+}
+
+// Whether to enable BGP.
+func (o ConnectionBgpConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionBgpConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The ASN on the Alibaba Cloud side.
+func (o ConnectionBgpConfigOutput) LocalAsn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBgpConfig) *string { return v.LocalAsn }).(pulumi.StringPtrOutput)
+}
+
+// The BGP IP address on the Alibaba Cloud side.
+func (o ConnectionBgpConfigOutput) LocalBgpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBgpConfig) *string { return v.LocalBgpIp }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+func (o ConnectionBgpConfigOutput) TunnelCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionBgpConfig) *string { return v.TunnelCidr }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionBgpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionBgpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionBgpConfig)(nil)).Elem()
+}
+
+func (o ConnectionBgpConfigPtrOutput) ToConnectionBgpConfigPtrOutput() ConnectionBgpConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionBgpConfigPtrOutput) ToConnectionBgpConfigPtrOutputWithContext(ctx context.Context) ConnectionBgpConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionBgpConfigPtrOutput) Elem() ConnectionBgpConfigOutput {
+	return o.ApplyT(func(v *ConnectionBgpConfig) ConnectionBgpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionBgpConfig
+		return ret
+	}).(ConnectionBgpConfigOutput)
+}
+
+// Whether to enable BGP.
+func (o ConnectionBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionBgpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ASN on the Alibaba Cloud side.
+func (o ConnectionBgpConfigPtrOutput) LocalAsn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalAsn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The BGP IP address on the Alibaba Cloud side.
+func (o ConnectionBgpConfigPtrOutput) LocalBgpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalBgpIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+func (o ConnectionBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TunnelCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionHealthCheckConfig struct {
+	// The destination IP address.
+	Dip *string `pulumi:"dip"`
+	// Whether to enable BGP.
+	Enable *bool `pulumi:"enable"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	Interval *int `pulumi:"interval"`
+	// The maximum number of health check retries.
+	Retry *int `pulumi:"retry"`
+	// The source IP address.
+	Sip *string `pulumi:"sip"`
+}
+
+// ConnectionHealthCheckConfigInput is an input type that accepts ConnectionHealthCheckConfigArgs and ConnectionHealthCheckConfigOutput values.
+// You can construct a concrete instance of `ConnectionHealthCheckConfigInput` via:
+//
+//          ConnectionHealthCheckConfigArgs{...}
+type ConnectionHealthCheckConfigInput interface {
+	pulumi.Input
+
+	ToConnectionHealthCheckConfigOutput() ConnectionHealthCheckConfigOutput
+	ToConnectionHealthCheckConfigOutputWithContext(context.Context) ConnectionHealthCheckConfigOutput
+}
+
+type ConnectionHealthCheckConfigArgs struct {
+	// The destination IP address.
+	Dip pulumi.StringPtrInput `pulumi:"dip"`
+	// Whether to enable BGP.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// The interval between two consecutive health checks. Unit: seconds.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The maximum number of health check retries.
+	Retry pulumi.IntPtrInput `pulumi:"retry"`
+	// The source IP address.
+	Sip pulumi.StringPtrInput `pulumi:"sip"`
+}
+
+func (ConnectionHealthCheckConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHealthCheckConfig)(nil)).Elem()
+}
+
+func (i ConnectionHealthCheckConfigArgs) ToConnectionHealthCheckConfigOutput() ConnectionHealthCheckConfigOutput {
+	return i.ToConnectionHealthCheckConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionHealthCheckConfigArgs) ToConnectionHealthCheckConfigOutputWithContext(ctx context.Context) ConnectionHealthCheckConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHealthCheckConfigOutput)
+}
+
+func (i ConnectionHealthCheckConfigArgs) ToConnectionHealthCheckConfigPtrOutput() ConnectionHealthCheckConfigPtrOutput {
+	return i.ToConnectionHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionHealthCheckConfigArgs) ToConnectionHealthCheckConfigPtrOutputWithContext(ctx context.Context) ConnectionHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHealthCheckConfigOutput).ToConnectionHealthCheckConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionHealthCheckConfigPtrInput is an input type that accepts ConnectionHealthCheckConfigArgs, ConnectionHealthCheckConfigPtr and ConnectionHealthCheckConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionHealthCheckConfigPtrInput` via:
+//
+//          ConnectionHealthCheckConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionHealthCheckConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionHealthCheckConfigPtrOutput() ConnectionHealthCheckConfigPtrOutput
+	ToConnectionHealthCheckConfigPtrOutputWithContext(context.Context) ConnectionHealthCheckConfigPtrOutput
+}
+
+type connectionHealthCheckConfigPtrType ConnectionHealthCheckConfigArgs
+
+func ConnectionHealthCheckConfigPtr(v *ConnectionHealthCheckConfigArgs) ConnectionHealthCheckConfigPtrInput {
+	return (*connectionHealthCheckConfigPtrType)(v)
+}
+
+func (*connectionHealthCheckConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHealthCheckConfig)(nil)).Elem()
+}
+
+func (i *connectionHealthCheckConfigPtrType) ToConnectionHealthCheckConfigPtrOutput() ConnectionHealthCheckConfigPtrOutput {
+	return i.ToConnectionHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionHealthCheckConfigPtrType) ToConnectionHealthCheckConfigPtrOutputWithContext(ctx context.Context) ConnectionHealthCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionHealthCheckConfigPtrOutput)
+}
+
+type ConnectionHealthCheckConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHealthCheckConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionHealthCheckConfig)(nil)).Elem()
+}
+
+func (o ConnectionHealthCheckConfigOutput) ToConnectionHealthCheckConfigOutput() ConnectionHealthCheckConfigOutput {
+	return o
+}
+
+func (o ConnectionHealthCheckConfigOutput) ToConnectionHealthCheckConfigOutputWithContext(ctx context.Context) ConnectionHealthCheckConfigOutput {
+	return o
+}
+
+func (o ConnectionHealthCheckConfigOutput) ToConnectionHealthCheckConfigPtrOutput() ConnectionHealthCheckConfigPtrOutput {
+	return o.ToConnectionHealthCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionHealthCheckConfigOutput) ToConnectionHealthCheckConfigPtrOutputWithContext(ctx context.Context) ConnectionHealthCheckConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionHealthCheckConfig) *ConnectionHealthCheckConfig {
+		return &v
+	}).(ConnectionHealthCheckConfigPtrOutput)
+}
+
+// The destination IP address.
+func (o ConnectionHealthCheckConfigOutput) Dip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionHealthCheckConfig) *string { return v.Dip }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable BGP.
+func (o ConnectionHealthCheckConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionHealthCheckConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The interval between two consecutive health checks. Unit: seconds.
+func (o ConnectionHealthCheckConfigOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionHealthCheckConfig) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of health check retries.
+func (o ConnectionHealthCheckConfigOutput) Retry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionHealthCheckConfig) *int { return v.Retry }).(pulumi.IntPtrOutput)
+}
+
+// The source IP address.
+func (o ConnectionHealthCheckConfigOutput) Sip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionHealthCheckConfig) *string { return v.Sip }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionHealthCheckConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionHealthCheckConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionHealthCheckConfig)(nil)).Elem()
+}
+
+func (o ConnectionHealthCheckConfigPtrOutput) ToConnectionHealthCheckConfigPtrOutput() ConnectionHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionHealthCheckConfigPtrOutput) ToConnectionHealthCheckConfigPtrOutputWithContext(ctx context.Context) ConnectionHealthCheckConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionHealthCheckConfigPtrOutput) Elem() ConnectionHealthCheckConfigOutput {
+	return o.ApplyT(func(v *ConnectionHealthCheckConfig) ConnectionHealthCheckConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionHealthCheckConfig
+		return ret
+	}).(ConnectionHealthCheckConfigOutput)
+}
+
+// The destination IP address.
+func (o ConnectionHealthCheckConfigPtrOutput) Dip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dip
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable BGP.
+func (o ConnectionHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The interval between two consecutive health checks. Unit: seconds.
+func (o ConnectionHealthCheckConfigPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of health check retries.
+func (o ConnectionHealthCheckConfigPtrOutput) Retry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Retry
+	}).(pulumi.IntPtrOutput)
+}
+
+// The source IP address.
+func (o ConnectionHealthCheckConfigPtrOutput) Sip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sip
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionIkeConfig struct {
 	// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
 	IkeAuthAlg *string `pulumi:"ikeAuthAlg"`
@@ -75,29 +482,45 @@ func (i ConnectionIkeConfigArgs) ToConnectionIkeConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIkeConfigOutput)
 }
 
-// ConnectionIkeConfigArrayInput is an input type that accepts ConnectionIkeConfigArray and ConnectionIkeConfigArrayOutput values.
-// You can construct a concrete instance of `ConnectionIkeConfigArrayInput` via:
+func (i ConnectionIkeConfigArgs) ToConnectionIkeConfigPtrOutput() ConnectionIkeConfigPtrOutput {
+	return i.ToConnectionIkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionIkeConfigArgs) ToConnectionIkeConfigPtrOutputWithContext(ctx context.Context) ConnectionIkeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIkeConfigOutput).ToConnectionIkeConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionIkeConfigPtrInput is an input type that accepts ConnectionIkeConfigArgs, ConnectionIkeConfigPtr and ConnectionIkeConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionIkeConfigPtrInput` via:
 //
-//          ConnectionIkeConfigArray{ ConnectionIkeConfigArgs{...} }
-type ConnectionIkeConfigArrayInput interface {
+//          ConnectionIkeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionIkeConfigPtrInput interface {
 	pulumi.Input
 
-	ToConnectionIkeConfigArrayOutput() ConnectionIkeConfigArrayOutput
-	ToConnectionIkeConfigArrayOutputWithContext(context.Context) ConnectionIkeConfigArrayOutput
+	ToConnectionIkeConfigPtrOutput() ConnectionIkeConfigPtrOutput
+	ToConnectionIkeConfigPtrOutputWithContext(context.Context) ConnectionIkeConfigPtrOutput
 }
 
-type ConnectionIkeConfigArray []ConnectionIkeConfigInput
+type connectionIkeConfigPtrType ConnectionIkeConfigArgs
 
-func (ConnectionIkeConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionIkeConfig)(nil)).Elem()
+func ConnectionIkeConfigPtr(v *ConnectionIkeConfigArgs) ConnectionIkeConfigPtrInput {
+	return (*connectionIkeConfigPtrType)(v)
 }
 
-func (i ConnectionIkeConfigArray) ToConnectionIkeConfigArrayOutput() ConnectionIkeConfigArrayOutput {
-	return i.ToConnectionIkeConfigArrayOutputWithContext(context.Background())
+func (*connectionIkeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIkeConfig)(nil)).Elem()
 }
 
-func (i ConnectionIkeConfigArray) ToConnectionIkeConfigArrayOutputWithContext(ctx context.Context) ConnectionIkeConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIkeConfigArrayOutput)
+func (i *connectionIkeConfigPtrType) ToConnectionIkeConfigPtrOutput() ConnectionIkeConfigPtrOutput {
+	return i.ToConnectionIkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionIkeConfigPtrType) ToConnectionIkeConfigPtrOutputWithContext(ctx context.Context) ConnectionIkeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIkeConfigPtrOutput)
 }
 
 type ConnectionIkeConfigOutput struct{ *pulumi.OutputState }
@@ -112,6 +535,16 @@ func (o ConnectionIkeConfigOutput) ToConnectionIkeConfigOutput() ConnectionIkeCo
 
 func (o ConnectionIkeConfigOutput) ToConnectionIkeConfigOutputWithContext(ctx context.Context) ConnectionIkeConfigOutput {
 	return o
+}
+
+func (o ConnectionIkeConfigOutput) ToConnectionIkeConfigPtrOutput() ConnectionIkeConfigPtrOutput {
+	return o.ToConnectionIkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionIkeConfigOutput) ToConnectionIkeConfigPtrOutputWithContext(ctx context.Context) ConnectionIkeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIkeConfig) *ConnectionIkeConfig {
+		return &v
+	}).(ConnectionIkeConfigPtrOutput)
 }
 
 // The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
@@ -159,24 +592,118 @@ func (o ConnectionIkeConfigOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionIkeConfigArrayOutput struct{ *pulumi.OutputState }
+type ConnectionIkeConfigPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIkeConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionIkeConfig)(nil)).Elem()
+func (ConnectionIkeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIkeConfig)(nil)).Elem()
 }
 
-func (o ConnectionIkeConfigArrayOutput) ToConnectionIkeConfigArrayOutput() ConnectionIkeConfigArrayOutput {
+func (o ConnectionIkeConfigPtrOutput) ToConnectionIkeConfigPtrOutput() ConnectionIkeConfigPtrOutput {
 	return o
 }
 
-func (o ConnectionIkeConfigArrayOutput) ToConnectionIkeConfigArrayOutputWithContext(ctx context.Context) ConnectionIkeConfigArrayOutput {
+func (o ConnectionIkeConfigPtrOutput) ToConnectionIkeConfigPtrOutputWithContext(ctx context.Context) ConnectionIkeConfigPtrOutput {
 	return o
 }
 
-func (o ConnectionIkeConfigArrayOutput) Index(i pulumi.IntInput) ConnectionIkeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionIkeConfig {
-		return vs[0].([]ConnectionIkeConfig)[vs[1].(int)]
+func (o ConnectionIkeConfigPtrOutput) Elem() ConnectionIkeConfigOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) ConnectionIkeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionIkeConfig
+		return ret
 	}).(ConnectionIkeConfigOutput)
+}
+
+// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
+func (o ConnectionIkeConfigPtrOutput) IkeAuthAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeAuthAlg
+	}).(pulumi.StringPtrOutput)
+}
+
+// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
+func (o ConnectionIkeConfigPtrOutput) IkeEncAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeEncAlg
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+func (o ConnectionIkeConfigPtrOutput) IkeLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IkeLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+// The identification of the VPN gateway.
+func (o ConnectionIkeConfigPtrOutput) IkeLocalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeLocalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
+func (o ConnectionIkeConfigPtrOutput) IkeMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+func (o ConnectionIkeConfigPtrOutput) IkePfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkePfs
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identification of the customer gateway.
+func (o ConnectionIkeConfigPtrOutput) IkeRemoteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeRemoteId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
+func (o ConnectionIkeConfigPtrOutput) IkeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Used for authentication between the IPsec VPN gateway and the customer gateway.
+func (o ConnectionIkeConfigPtrOutput) Psk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Psk
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionIpsecConfig struct {
@@ -224,29 +751,45 @@ func (i ConnectionIpsecConfigArgs) ToConnectionIpsecConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIpsecConfigOutput)
 }
 
-// ConnectionIpsecConfigArrayInput is an input type that accepts ConnectionIpsecConfigArray and ConnectionIpsecConfigArrayOutput values.
-// You can construct a concrete instance of `ConnectionIpsecConfigArrayInput` via:
+func (i ConnectionIpsecConfigArgs) ToConnectionIpsecConfigPtrOutput() ConnectionIpsecConfigPtrOutput {
+	return i.ToConnectionIpsecConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionIpsecConfigArgs) ToConnectionIpsecConfigPtrOutputWithContext(ctx context.Context) ConnectionIpsecConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIpsecConfigOutput).ToConnectionIpsecConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionIpsecConfigPtrInput is an input type that accepts ConnectionIpsecConfigArgs, ConnectionIpsecConfigPtr and ConnectionIpsecConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionIpsecConfigPtrInput` via:
 //
-//          ConnectionIpsecConfigArray{ ConnectionIpsecConfigArgs{...} }
-type ConnectionIpsecConfigArrayInput interface {
+//          ConnectionIpsecConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionIpsecConfigPtrInput interface {
 	pulumi.Input
 
-	ToConnectionIpsecConfigArrayOutput() ConnectionIpsecConfigArrayOutput
-	ToConnectionIpsecConfigArrayOutputWithContext(context.Context) ConnectionIpsecConfigArrayOutput
+	ToConnectionIpsecConfigPtrOutput() ConnectionIpsecConfigPtrOutput
+	ToConnectionIpsecConfigPtrOutputWithContext(context.Context) ConnectionIpsecConfigPtrOutput
 }
 
-type ConnectionIpsecConfigArray []ConnectionIpsecConfigInput
+type connectionIpsecConfigPtrType ConnectionIpsecConfigArgs
 
-func (ConnectionIpsecConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionIpsecConfig)(nil)).Elem()
+func ConnectionIpsecConfigPtr(v *ConnectionIpsecConfigArgs) ConnectionIpsecConfigPtrInput {
+	return (*connectionIpsecConfigPtrType)(v)
 }
 
-func (i ConnectionIpsecConfigArray) ToConnectionIpsecConfigArrayOutput() ConnectionIpsecConfigArrayOutput {
-	return i.ToConnectionIpsecConfigArrayOutputWithContext(context.Background())
+func (*connectionIpsecConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIpsecConfig)(nil)).Elem()
 }
 
-func (i ConnectionIpsecConfigArray) ToConnectionIpsecConfigArrayOutputWithContext(ctx context.Context) ConnectionIpsecConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIpsecConfigArrayOutput)
+func (i *connectionIpsecConfigPtrType) ToConnectionIpsecConfigPtrOutput() ConnectionIpsecConfigPtrOutput {
+	return i.ToConnectionIpsecConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionIpsecConfigPtrType) ToConnectionIpsecConfigPtrOutputWithContext(ctx context.Context) ConnectionIpsecConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIpsecConfigPtrOutput)
 }
 
 type ConnectionIpsecConfigOutput struct{ *pulumi.OutputState }
@@ -261,6 +804,16 @@ func (o ConnectionIpsecConfigOutput) ToConnectionIpsecConfigOutput() ConnectionI
 
 func (o ConnectionIpsecConfigOutput) ToConnectionIpsecConfigOutputWithContext(ctx context.Context) ConnectionIpsecConfigOutput {
 	return o
+}
+
+func (o ConnectionIpsecConfigOutput) ToConnectionIpsecConfigPtrOutput() ConnectionIpsecConfigPtrOutput {
+	return o.ToConnectionIpsecConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionIpsecConfigOutput) ToConnectionIpsecConfigPtrOutputWithContext(ctx context.Context) ConnectionIpsecConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIpsecConfig) *ConnectionIpsecConfig {
+		return &v
+	}).(ConnectionIpsecConfigPtrOutput)
 }
 
 // The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
@@ -283,24 +836,352 @@ func (o ConnectionIpsecConfigOutput) IpsecPfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionIpsecConfigArrayOutput struct{ *pulumi.OutputState }
+type ConnectionIpsecConfigPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIpsecConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionIpsecConfig)(nil)).Elem()
+func (ConnectionIpsecConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIpsecConfig)(nil)).Elem()
 }
 
-func (o ConnectionIpsecConfigArrayOutput) ToConnectionIpsecConfigArrayOutput() ConnectionIpsecConfigArrayOutput {
+func (o ConnectionIpsecConfigPtrOutput) ToConnectionIpsecConfigPtrOutput() ConnectionIpsecConfigPtrOutput {
 	return o
 }
 
-func (o ConnectionIpsecConfigArrayOutput) ToConnectionIpsecConfigArrayOutputWithContext(ctx context.Context) ConnectionIpsecConfigArrayOutput {
+func (o ConnectionIpsecConfigPtrOutput) ToConnectionIpsecConfigPtrOutputWithContext(ctx context.Context) ConnectionIpsecConfigPtrOutput {
 	return o
 }
 
-func (o ConnectionIpsecConfigArrayOutput) Index(i pulumi.IntInput) ConnectionIpsecConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionIpsecConfig {
-		return vs[0].([]ConnectionIpsecConfig)[vs[1].(int)]
+func (o ConnectionIpsecConfigPtrOutput) Elem() ConnectionIpsecConfigOutput {
+	return o.ApplyT(func(v *ConnectionIpsecConfig) ConnectionIpsecConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionIpsecConfig
+		return ret
 	}).(ConnectionIpsecConfigOutput)
+}
+
+// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+func (o ConnectionIpsecConfigPtrOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIpsecConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpsecAuthAlg
+	}).(pulumi.StringPtrOutput)
+}
+
+// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+func (o ConnectionIpsecConfigPtrOutput) IpsecEncAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIpsecConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpsecEncAlg
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+func (o ConnectionIpsecConfigPtrOutput) IpsecLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionIpsecConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IpsecLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+func (o ConnectionIpsecConfigPtrOutput) IpsecPfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIpsecConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpsecPfs
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpsecServerIkeConfig struct {
+	// The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+	IkeAuthAlg *string `pulumi:"ikeAuthAlg"`
+	// The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+	IkeEncAlg *string `pulumi:"ikeEncAlg"`
+	// IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+	IkeLifetime *int `pulumi:"ikeLifetime"`
+	// The IKE negotiation mode. Default value: `main`.
+	IkeMode *string `pulumi:"ikeMode"`
+	// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+	IkePfs *string `pulumi:"ikePfs"`
+	// The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+	IkeVersion *string `pulumi:"ikeVersion"`
+	// The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+	LocalId *string `pulumi:"localId"`
+	// The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+	RemoteId *string `pulumi:"remoteId"`
+}
+
+// IpsecServerIkeConfigInput is an input type that accepts IpsecServerIkeConfigArgs and IpsecServerIkeConfigOutput values.
+// You can construct a concrete instance of `IpsecServerIkeConfigInput` via:
+//
+//          IpsecServerIkeConfigArgs{...}
+type IpsecServerIkeConfigInput interface {
+	pulumi.Input
+
+	ToIpsecServerIkeConfigOutput() IpsecServerIkeConfigOutput
+	ToIpsecServerIkeConfigOutputWithContext(context.Context) IpsecServerIkeConfigOutput
+}
+
+type IpsecServerIkeConfigArgs struct {
+	// The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+	IkeAuthAlg pulumi.StringPtrInput `pulumi:"ikeAuthAlg"`
+	// The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+	IkeEncAlg pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
+	// IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+	IkeLifetime pulumi.IntPtrInput `pulumi:"ikeLifetime"`
+	// The IKE negotiation mode. Default value: `main`.
+	IkeMode pulumi.StringPtrInput `pulumi:"ikeMode"`
+	// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+	IkePfs pulumi.StringPtrInput `pulumi:"ikePfs"`
+	// The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+	IkeVersion pulumi.StringPtrInput `pulumi:"ikeVersion"`
+	// The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+	LocalId pulumi.StringPtrInput `pulumi:"localId"`
+	// The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+	RemoteId pulumi.StringPtrInput `pulumi:"remoteId"`
+}
+
+func (IpsecServerIkeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpsecServerIkeConfig)(nil)).Elem()
+}
+
+func (i IpsecServerIkeConfigArgs) ToIpsecServerIkeConfigOutput() IpsecServerIkeConfigOutput {
+	return i.ToIpsecServerIkeConfigOutputWithContext(context.Background())
+}
+
+func (i IpsecServerIkeConfigArgs) ToIpsecServerIkeConfigOutputWithContext(ctx context.Context) IpsecServerIkeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerIkeConfigOutput)
+}
+
+// IpsecServerIkeConfigArrayInput is an input type that accepts IpsecServerIkeConfigArray and IpsecServerIkeConfigArrayOutput values.
+// You can construct a concrete instance of `IpsecServerIkeConfigArrayInput` via:
+//
+//          IpsecServerIkeConfigArray{ IpsecServerIkeConfigArgs{...} }
+type IpsecServerIkeConfigArrayInput interface {
+	pulumi.Input
+
+	ToIpsecServerIkeConfigArrayOutput() IpsecServerIkeConfigArrayOutput
+	ToIpsecServerIkeConfigArrayOutputWithContext(context.Context) IpsecServerIkeConfigArrayOutput
+}
+
+type IpsecServerIkeConfigArray []IpsecServerIkeConfigInput
+
+func (IpsecServerIkeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpsecServerIkeConfig)(nil)).Elem()
+}
+
+func (i IpsecServerIkeConfigArray) ToIpsecServerIkeConfigArrayOutput() IpsecServerIkeConfigArrayOutput {
+	return i.ToIpsecServerIkeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i IpsecServerIkeConfigArray) ToIpsecServerIkeConfigArrayOutputWithContext(ctx context.Context) IpsecServerIkeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerIkeConfigArrayOutput)
+}
+
+type IpsecServerIkeConfigOutput struct{ *pulumi.OutputState }
+
+func (IpsecServerIkeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpsecServerIkeConfig)(nil)).Elem()
+}
+
+func (o IpsecServerIkeConfigOutput) ToIpsecServerIkeConfigOutput() IpsecServerIkeConfigOutput {
+	return o
+}
+
+func (o IpsecServerIkeConfigOutput) ToIpsecServerIkeConfigOutputWithContext(ctx context.Context) IpsecServerIkeConfigOutput {
+	return o
+}
+
+// The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+func (o IpsecServerIkeConfigOutput) IkeAuthAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
+}
+
+// The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+func (o IpsecServerIkeConfigOutput) IkeEncAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
+}
+
+// IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+func (o IpsecServerIkeConfigOutput) IkeLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IpsecServerIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
+}
+
+// The IKE negotiation mode. Default value: `main`.
+func (o IpsecServerIkeConfigOutput) IkeMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
+}
+
+// The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+func (o IpsecServerIkeConfigOutput) IkePfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
+}
+
+// The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+func (o IpsecServerIkeConfigOutput) IkeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+func (o IpsecServerIkeConfigOutput) LocalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIkeConfig) *string { return v.LocalId }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+func (o IpsecServerIkeConfigOutput) RemoteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIkeConfig) *string { return v.RemoteId }).(pulumi.StringPtrOutput)
+}
+
+type IpsecServerIkeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (IpsecServerIkeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpsecServerIkeConfig)(nil)).Elem()
+}
+
+func (o IpsecServerIkeConfigArrayOutput) ToIpsecServerIkeConfigArrayOutput() IpsecServerIkeConfigArrayOutput {
+	return o
+}
+
+func (o IpsecServerIkeConfigArrayOutput) ToIpsecServerIkeConfigArrayOutputWithContext(ctx context.Context) IpsecServerIkeConfigArrayOutput {
+	return o
+}
+
+func (o IpsecServerIkeConfigArrayOutput) Index(i pulumi.IntInput) IpsecServerIkeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpsecServerIkeConfig {
+		return vs[0].([]IpsecServerIkeConfig)[vs[1].(int)]
+	}).(IpsecServerIkeConfigOutput)
+}
+
+type IpsecServerIpsecConfig struct {
+	// The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
+	IpsecAuthAlg *string `pulumi:"ipsecAuthAlg"`
+	// The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
+	IpsecEncAlg *string `pulumi:"ipsecEncAlg"`
+	// The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+	IpsecLifetime *int `pulumi:"ipsecLifetime"`
+	// Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
+	IpsecPfs *string `pulumi:"ipsecPfs"`
+}
+
+// IpsecServerIpsecConfigInput is an input type that accepts IpsecServerIpsecConfigArgs and IpsecServerIpsecConfigOutput values.
+// You can construct a concrete instance of `IpsecServerIpsecConfigInput` via:
+//
+//          IpsecServerIpsecConfigArgs{...}
+type IpsecServerIpsecConfigInput interface {
+	pulumi.Input
+
+	ToIpsecServerIpsecConfigOutput() IpsecServerIpsecConfigOutput
+	ToIpsecServerIpsecConfigOutputWithContext(context.Context) IpsecServerIpsecConfigOutput
+}
+
+type IpsecServerIpsecConfigArgs struct {
+	// The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
+	IpsecAuthAlg pulumi.StringPtrInput `pulumi:"ipsecAuthAlg"`
+	// The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
+	IpsecEncAlg pulumi.StringPtrInput `pulumi:"ipsecEncAlg"`
+	// The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+	IpsecLifetime pulumi.IntPtrInput `pulumi:"ipsecLifetime"`
+	// Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
+	IpsecPfs pulumi.StringPtrInput `pulumi:"ipsecPfs"`
+}
+
+func (IpsecServerIpsecConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpsecServerIpsecConfig)(nil)).Elem()
+}
+
+func (i IpsecServerIpsecConfigArgs) ToIpsecServerIpsecConfigOutput() IpsecServerIpsecConfigOutput {
+	return i.ToIpsecServerIpsecConfigOutputWithContext(context.Background())
+}
+
+func (i IpsecServerIpsecConfigArgs) ToIpsecServerIpsecConfigOutputWithContext(ctx context.Context) IpsecServerIpsecConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerIpsecConfigOutput)
+}
+
+// IpsecServerIpsecConfigArrayInput is an input type that accepts IpsecServerIpsecConfigArray and IpsecServerIpsecConfigArrayOutput values.
+// You can construct a concrete instance of `IpsecServerIpsecConfigArrayInput` via:
+//
+//          IpsecServerIpsecConfigArray{ IpsecServerIpsecConfigArgs{...} }
+type IpsecServerIpsecConfigArrayInput interface {
+	pulumi.Input
+
+	ToIpsecServerIpsecConfigArrayOutput() IpsecServerIpsecConfigArrayOutput
+	ToIpsecServerIpsecConfigArrayOutputWithContext(context.Context) IpsecServerIpsecConfigArrayOutput
+}
+
+type IpsecServerIpsecConfigArray []IpsecServerIpsecConfigInput
+
+func (IpsecServerIpsecConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpsecServerIpsecConfig)(nil)).Elem()
+}
+
+func (i IpsecServerIpsecConfigArray) ToIpsecServerIpsecConfigArrayOutput() IpsecServerIpsecConfigArrayOutput {
+	return i.ToIpsecServerIpsecConfigArrayOutputWithContext(context.Background())
+}
+
+func (i IpsecServerIpsecConfigArray) ToIpsecServerIpsecConfigArrayOutputWithContext(ctx context.Context) IpsecServerIpsecConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpsecServerIpsecConfigArrayOutput)
+}
+
+type IpsecServerIpsecConfigOutput struct{ *pulumi.OutputState }
+
+func (IpsecServerIpsecConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpsecServerIpsecConfig)(nil)).Elem()
+}
+
+func (o IpsecServerIpsecConfigOutput) ToIpsecServerIpsecConfigOutput() IpsecServerIpsecConfigOutput {
+	return o
+}
+
+func (o IpsecServerIpsecConfigOutput) ToIpsecServerIpsecConfigOutputWithContext(ctx context.Context) IpsecServerIpsecConfigOutput {
+	return o
+}
+
+// The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
+func (o IpsecServerIpsecConfigOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
+}
+
+// The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
+func (o IpsecServerIpsecConfigOutput) IpsecEncAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
+}
+
+// The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+func (o IpsecServerIpsecConfigOutput) IpsecLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IpsecServerIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
+}
+
+// Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
+func (o IpsecServerIpsecConfigOutput) IpsecPfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpsecServerIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
+}
+
+type IpsecServerIpsecConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (IpsecServerIpsecConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpsecServerIpsecConfig)(nil)).Elem()
+}
+
+func (o IpsecServerIpsecConfigArrayOutput) ToIpsecServerIpsecConfigArrayOutput() IpsecServerIpsecConfigArrayOutput {
+	return o
+}
+
+func (o IpsecServerIpsecConfigArrayOutput) ToIpsecServerIpsecConfigArrayOutputWithContext(ctx context.Context) IpsecServerIpsecConfigArrayOutput {
+	return o
+}
+
+func (o IpsecServerIpsecConfigArrayOutput) Index(i pulumi.IntInput) IpsecServerIpsecConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpsecServerIpsecConfig {
+		return vs[0].([]IpsecServerIpsecConfig)[vs[1].(int)]
+	}).(IpsecServerIpsecConfigOutput)
 }
 
 type GetConnectionsConnection struct {
@@ -917,7 +1798,7 @@ type GetGatewaysGateway struct {
 	CreateTime string `pulumi:"createTime"`
 	// The description of the VPN
 	Description string `pulumi:"description"`
-	// Whether the ipsec function is enabled.
+	// Indicates whether the IPsec-VPN feature is enabled.
 	EnableIpsec string `pulumi:"enableIpsec"`
 	// Whether the ssl function is enabled.
 	EnableSsl string `pulumi:"enableSsl"`
@@ -959,7 +1840,7 @@ type GetGatewaysGatewayArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the VPN
 	Description pulumi.StringInput `pulumi:"description"`
-	// Whether the ipsec function is enabled.
+	// Indicates whether the IPsec-VPN feature is enabled.
 	EnableIpsec pulumi.StringInput `pulumi:"enableIpsec"`
 	// Whether the ssl function is enabled.
 	EnableSsl pulumi.StringInput `pulumi:"enableSsl"`
@@ -1049,7 +1930,7 @@ func (o GetGatewaysGatewayOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether the ipsec function is enabled.
+// Indicates whether the IPsec-VPN feature is enabled.
 func (o GetGatewaysGatewayOutput) EnableIpsec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.EnableIpsec }).(pulumi.StringOutput)
 }
@@ -1125,10 +2006,18 @@ func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatew
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBgpConfigInput)(nil)).Elem(), ConnectionBgpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBgpConfigPtrInput)(nil)).Elem(), ConnectionBgpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHealthCheckConfigInput)(nil)).Elem(), ConnectionHealthCheckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionHealthCheckConfigPtrInput)(nil)).Elem(), ConnectionHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIkeConfigInput)(nil)).Elem(), ConnectionIkeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIkeConfigArrayInput)(nil)).Elem(), ConnectionIkeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIkeConfigPtrInput)(nil)).Elem(), ConnectionIkeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIpsecConfigInput)(nil)).Elem(), ConnectionIpsecConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIpsecConfigArrayInput)(nil)).Elem(), ConnectionIpsecConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIpsecConfigPtrInput)(nil)).Elem(), ConnectionIpsecConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpsecServerIkeConfigInput)(nil)).Elem(), IpsecServerIkeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpsecServerIkeConfigArrayInput)(nil)).Elem(), IpsecServerIkeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpsecServerIpsecConfigInput)(nil)).Elem(), IpsecServerIpsecConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpsecServerIpsecConfigArrayInput)(nil)).Elem(), IpsecServerIpsecConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionInput)(nil)).Elem(), GetConnectionsConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionArrayInput)(nil)).Elem(), GetConnectionsConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionIkeConfigInput)(nil)).Elem(), GetConnectionsConnectionIkeConfigArgs{})
@@ -1139,10 +2028,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomerGatewaysGatewayArrayInput)(nil)).Elem(), GetCustomerGatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
+	pulumi.RegisterOutputType(ConnectionBgpConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionBgpConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionHealthCheckConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionHealthCheckConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionIkeConfigOutput{})
-	pulumi.RegisterOutputType(ConnectionIkeConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionIkeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionIpsecConfigOutput{})
-	pulumi.RegisterOutputType(ConnectionIpsecConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionIpsecConfigPtrOutput{})
+	pulumi.RegisterOutputType(IpsecServerIkeConfigOutput{})
+	pulumi.RegisterOutputType(IpsecServerIkeConfigArrayOutput{})
+	pulumi.RegisterOutputType(IpsecServerIpsecConfigOutput{})
+	pulumi.RegisterOutputType(IpsecServerIpsecConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionsConnectionOutput{})
 	pulumi.RegisterOutputType(GetConnectionsConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionsConnectionIkeConfigOutput{})

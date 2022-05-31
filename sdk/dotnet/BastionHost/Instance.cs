@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.BastionHost
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        /// </summary>
+        [Output("adAuthServers")]
+        public Output<ImmutableArray<Outputs.InstanceAdAuthServer>> AdAuthServers { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
         /// </summary>
         [Output("description")]
@@ -32,6 +38,12 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         [Output("enablePublicAccess")]
         public Output<bool> EnablePublicAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        /// </summary>
+        [Output("ldapAuthServers")]
+        public Output<ImmutableArray<Outputs.InstanceLdapAuthServer>> LdapAuthServers { get; private set; } = null!;
 
         /// <summary>
         /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
@@ -109,6 +121,18 @@ namespace Pulumi.AliCloud.BastionHost
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        [Input("adAuthServers")]
+        private InputList<Inputs.InstanceAdAuthServerArgs>? _adAuthServers;
+
+        /// <summary>
+        /// The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        /// </summary>
+        public InputList<Inputs.InstanceAdAuthServerArgs> AdAuthServers
+        {
+            get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.InstanceAdAuthServerArgs>());
+            set => _adAuthServers = value;
+        }
+
         /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
         /// </summary>
@@ -120,6 +144,18 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         [Input("enablePublicAccess")]
         public Input<bool>? EnablePublicAccess { get; set; }
+
+        [Input("ldapAuthServers")]
+        private InputList<Inputs.InstanceLdapAuthServerArgs>? _ldapAuthServers;
+
+        /// <summary>
+        /// The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        /// </summary>
+        public InputList<Inputs.InstanceLdapAuthServerArgs> LdapAuthServers
+        {
+            get => _ldapAuthServers ?? (_ldapAuthServers = new InputList<Inputs.InstanceLdapAuthServerArgs>());
+            set => _ldapAuthServers = value;
+        }
 
         /// <summary>
         /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
@@ -169,6 +205,18 @@ namespace Pulumi.AliCloud.BastionHost
 
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
+        [Input("adAuthServers")]
+        private InputList<Inputs.InstanceAdAuthServerGetArgs>? _adAuthServers;
+
+        /// <summary>
+        /// The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        /// </summary>
+        public InputList<Inputs.InstanceAdAuthServerGetArgs> AdAuthServers
+        {
+            get => _adAuthServers ?? (_adAuthServers = new InputList<Inputs.InstanceAdAuthServerGetArgs>());
+            set => _adAuthServers = value;
+        }
+
         /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
         /// </summary>
@@ -180,6 +228,18 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         [Input("enablePublicAccess")]
         public Input<bool>? EnablePublicAccess { get; set; }
+
+        [Input("ldapAuthServers")]
+        private InputList<Inputs.InstanceLdapAuthServerGetArgs>? _ldapAuthServers;
+
+        /// <summary>
+        /// The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        /// </summary>
+        public InputList<Inputs.InstanceLdapAuthServerGetArgs> LdapAuthServers
+        {
+            get => _ldapAuthServers ?? (_ldapAuthServers = new InputList<Inputs.InstanceLdapAuthServerGetArgs>());
+            set => _ldapAuthServers = value;
+        }
 
         /// <summary>
         /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).

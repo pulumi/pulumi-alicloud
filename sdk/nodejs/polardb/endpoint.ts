@@ -23,11 +23,15 @@ import * as utilities from "../utilities";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: creation,
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     vswitchName: name,
  * });
  * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
  *     dbType: "MySQL",
@@ -47,7 +51,7 @@ import * as utilities from "../utilities";
  * The following arguments are supported:
  *
  * * `dbClusterId` - (Required, ForceNew) The Id of cluster that can run database.
- * * `endpointType` - (Required & ForceNew before v1.121.0, Optional in v1.121.0+) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+ * * `endpointType` - (Optional, ForceNew) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
  * * `readWriteMode` - (Optional) Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
  * * `nodes` - (Optional) Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
  * * `autoAddNewNodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -97,6 +101,10 @@ export class Endpoint extends pulumi.CustomResource {
 
     public readonly autoAddNewNodes!: pulumi.Output<string>;
     public readonly dbClusterId!: pulumi.Output<string>;
+    /**
+     * (Available in v1.161.0+) The ID of the cluster endpoint.
+     */
+    public /*out*/ readonly dbEndpointId!: pulumi.Output<string>;
     public readonly endpointConfig!: pulumi.Output<{[key: string]: any}>;
     /**
      * Type of endpoint.
@@ -132,6 +140,7 @@ export class Endpoint extends pulumi.CustomResource {
             const state = argsOrState as EndpointState | undefined;
             resourceInputs["autoAddNewNodes"] = state ? state.autoAddNewNodes : undefined;
             resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["dbEndpointId"] = state ? state.dbEndpointId : undefined;
             resourceInputs["endpointConfig"] = state ? state.endpointConfig : undefined;
             resourceInputs["endpointType"] = state ? state.endpointType : undefined;
             resourceInputs["netType"] = state ? state.netType : undefined;
@@ -156,6 +165,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["readWriteMode"] = args ? args.readWriteMode : undefined;
             resourceInputs["sslAutoRotate"] = args ? args.sslAutoRotate : undefined;
             resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
+            resourceInputs["dbEndpointId"] = undefined /*out*/;
             resourceInputs["sslCertificateUrl"] = undefined /*out*/;
             resourceInputs["sslConnectionString"] = undefined /*out*/;
             resourceInputs["sslExpireTime"] = undefined /*out*/;
@@ -171,6 +181,10 @@ export class Endpoint extends pulumi.CustomResource {
 export interface EndpointState {
     autoAddNewNodes?: pulumi.Input<string>;
     dbClusterId?: pulumi.Input<string>;
+    /**
+     * (Available in v1.161.0+) The ID of the cluster endpoint.
+     */
+    dbEndpointId?: pulumi.Input<string>;
     endpointConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * Type of endpoint.

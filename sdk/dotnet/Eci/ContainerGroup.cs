@@ -140,6 +140,12 @@ namespace Pulumi.AliCloud.Eci
     public partial class ContainerGroup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to automatically match the image cache. Default value: false.
+        /// </summary>
+        [Output("autoMatchImageCache")]
+        public Output<bool?> AutoMatchImageCache { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the container group.
         /// </summary>
         [Output("containerGroupName")]
@@ -163,6 +169,9 @@ namespace Pulumi.AliCloud.Eci
         [Output("dnsConfig")]
         public Output<Outputs.ContainerGroupDnsConfig?> DnsConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The security context of the container group.
+        /// </summary>
         [Output("eciSecurityContext")]
         public Output<Outputs.ContainerGroupEciSecurityContext?> EciSecurityContext { get; private set; } = null!;
 
@@ -226,6 +235,11 @@ namespace Pulumi.AliCloud.Eci
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
@@ -294,6 +308,12 @@ namespace Pulumi.AliCloud.Eci
     public sealed class ContainerGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to automatically match the image cache. Default value: false.
+        /// </summary>
+        [Input("autoMatchImageCache")]
+        public Input<bool>? AutoMatchImageCache { get; set; }
+
+        /// <summary>
         /// The name of the container group.
         /// </summary>
         [Input("containerGroupName", required: true)]
@@ -323,6 +343,9 @@ namespace Pulumi.AliCloud.Eci
         [Input("dnsConfig")]
         public Input<Inputs.ContainerGroupDnsConfigArgs>? DnsConfig { get; set; }
 
+        /// <summary>
+        /// The security context of the container group.
+        /// </summary>
         [Input("eciSecurityContext")]
         public Input<Inputs.ContainerGroupEciSecurityContextArgs>? EciSecurityContext { get; set; }
 
@@ -400,6 +423,12 @@ namespace Pulumi.AliCloud.Eci
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -438,6 +467,12 @@ namespace Pulumi.AliCloud.Eci
     public sealed class ContainerGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to automatically match the image cache. Default value: false.
+        /// </summary>
+        [Input("autoMatchImageCache")]
+        public Input<bool>? AutoMatchImageCache { get; set; }
+
+        /// <summary>
         /// The name of the container group.
         /// </summary>
         [Input("containerGroupName")]
@@ -467,6 +502,9 @@ namespace Pulumi.AliCloud.Eci
         [Input("dnsConfig")]
         public Input<Inputs.ContainerGroupDnsConfigGetArgs>? DnsConfig { get; set; }
 
+        /// <summary>
+        /// The security context of the container group.
+        /// </summary>
         [Input("eciSecurityContext")]
         public Input<Inputs.ContainerGroupEciSecurityContextGetArgs>? EciSecurityContext { get; set; }
 
@@ -550,6 +588,12 @@ namespace Pulumi.AliCloud.Eci
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

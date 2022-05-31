@@ -36,6 +36,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
         /// * `custom`: custom image.
         /// </summary>
         public readonly string ImageType;
+        /// <summary>
+        /// The platform of Plan supported.
+        /// </summary>
+        public readonly string Platform;
 
         [OutputConstructor]
         private GetImagesImageResult(
@@ -47,13 +51,16 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
 
             string imageName,
 
-            string imageType)
+            string imageType,
+
+            string platform)
         {
             Description = description;
             Id = id;
             ImageId = imageId;
             ImageName = imageName;
             ImageType = imageType;
+            Platform = platform;
         }
     }
 }

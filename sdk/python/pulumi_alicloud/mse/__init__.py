@@ -6,8 +6,12 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cluster import *
+from .engine_namespace import *
 from .gateway import *
 from .get_clusters import *
+from .get_engine_namespaces import *
 from .get_gateways import *
+from .get_znodes import *
+from .znode import *
 from ._inputs import *
 from . import outputs

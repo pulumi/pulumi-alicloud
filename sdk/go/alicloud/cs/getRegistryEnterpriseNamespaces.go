@@ -50,7 +50,7 @@ func GetRegistryEnterpriseNamespaces(ctx *pulumi.Context, args *GetRegistryEnter
 
 // A collection of arguments for invoking getRegistryEnterpriseNamespaces.
 type GetRegistryEnterpriseNamespacesArgs struct {
-	// A list of ids to filter results by namespace id.
+	// A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
 	Ids []string `pulumi:"ids"`
 	// ID of Container Registry Enterprise Edition instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -63,7 +63,7 @@ type GetRegistryEnterpriseNamespacesArgs struct {
 type GetRegistryEnterpriseNamespacesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.
+	// A list of matched Container Registry Enterprise Edition namespaces. Each item formats as `<instance_id>:<namespace_name>`. Before 1.161.0, its element is a namespace uuid.
 	Ids []string `pulumi:"ids"`
 	// ID of Container Registry Enterprise Edition instance.
 	InstanceId string  `pulumi:"instanceId"`
@@ -90,7 +90,7 @@ func GetRegistryEnterpriseNamespacesOutput(ctx *pulumi.Context, args GetRegistry
 
 // A collection of arguments for invoking getRegistryEnterpriseNamespaces.
 type GetRegistryEnterpriseNamespacesOutputArgs struct {
-	// A list of ids to filter results by namespace id.
+	// A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// ID of Container Registry Enterprise Edition instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -123,7 +123,7 @@ func (o GetRegistryEnterpriseNamespacesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.
+// A list of matched Container Registry Enterprise Edition namespaces. Each item formats as `<instance_id>:<namespace_name>`. Before 1.161.0, its element is a namespace uuid.
 func (o GetRegistryEnterpriseNamespacesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

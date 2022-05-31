@@ -87,7 +87,7 @@ type Cluster struct {
 	pulumi.CustomResourceState
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
-	AutoRenewPeriod pulumi.IntPtrOutput    `pulumi:"autoRenewPeriod"`
+	AutoRenewPeriod pulumi.IntOutput       `pulumi:"autoRenewPeriod"`
 	ComputeResource pulumi.StringPtrOutput `pulumi:"computeResource"`
 	// (Available in 1.93.0+) The connection string of the ADB cluster.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -110,14 +110,17 @@ type Cluster struct {
 	MaintainTime pulumi.StringOutput    `pulumi:"maintainTime"`
 	Mode         pulumi.StringOutput    `pulumi:"mode"`
 	ModifyType   pulumi.StringPtrOutput `pulumi:"modifyType"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType     pulumi.StringOutput `pulumi:"payType"`
+	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	PayType pulumi.StringOutput `pulumi:"payType"`
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
-	RenewalStatus   pulumi.StringPtrOutput `pulumi:"renewalStatus"`
-	ResourceGroupId pulumi.StringOutput    `pulumi:"resourceGroupId"`
+	RenewalStatus   pulumi.StringOutput `pulumi:"renewalStatus"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
 	Status      pulumi.StringOutput      `pulumi:"status"`
@@ -190,8 +193,11 @@ type clusterState struct {
 	MaintainTime *string `pulumi:"maintainTime"`
 	Mode         *string `pulumi:"mode"`
 	ModifyType   *string `pulumi:"modifyType"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType     *string `pulumi:"payType"`
+	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	PayType *string `pulumi:"payType"`
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period *int `pulumi:"period"`
@@ -236,8 +242,11 @@ type ClusterState struct {
 	MaintainTime pulumi.StringPtrInput
 	Mode         pulumi.StringPtrInput
 	ModifyType   pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType     pulumi.StringPtrInput
+	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	PayType pulumi.StringPtrInput
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrInput
@@ -284,8 +293,11 @@ type clusterArgs struct {
 	MaintainTime *string `pulumi:"maintainTime"`
 	Mode         string  `pulumi:"mode"`
 	ModifyType   *string `pulumi:"modifyType"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType     *string `pulumi:"payType"`
+	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	PayType *string `pulumi:"payType"`
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period *int `pulumi:"period"`
@@ -328,8 +340,11 @@ type ClusterArgs struct {
 	MaintainTime pulumi.StringPtrInput
 	Mode         pulumi.StringInput
 	ModifyType   pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
-	PayType     pulumi.StringPtrInput
+	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	PayType pulumi.StringPtrInput
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrInput

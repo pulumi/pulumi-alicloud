@@ -105,7 +105,7 @@ type DBCluster struct {
 	pulumi.CustomResourceState
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
-	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	AutoRenewPeriod pulumi.IntOutput `pulumi:"autoRenewPeriod"`
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource pulumi.StringPtrOutput `pulumi:"computeResource"`
 	// The endpoint of the cluster.
@@ -135,12 +135,14 @@ type DBCluster struct {
 	// The modify type.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringOutput `pulumi:"payType"`
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
-	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -223,8 +225,10 @@ type dbclusterState struct {
 	// The modify type.
 	ModifyType *string `pulumi:"modifyType"`
 	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType *string `pulumi:"payType"`
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -277,8 +281,10 @@ type DBClusterState struct {
 	// The modify type.
 	ModifyType pulumi.StringPtrInput
 	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringPtrInput
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -333,8 +339,10 @@ type dbclusterArgs struct {
 	// The modify type.
 	ModifyType *string `pulumi:"modifyType"`
 	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType *string `pulumi:"payType"`
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -384,8 +392,10 @@ type DBClusterArgs struct {
 	// The modify type.
 	ModifyType pulumi.StringPtrInput
 	// Field `payType` has been deprecated. New field `paymentType` instead.
+	//
+	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringPtrInput
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.

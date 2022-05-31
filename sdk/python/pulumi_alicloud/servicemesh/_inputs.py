@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'ServiceMeshExtraConfigurationArgs',
     'ServiceMeshLoadBalancerArgs',
     'ServiceMeshMeshConfigArgs',
     'ServiceMeshMeshConfigAccessLogArgs',
@@ -20,6 +21,29 @@ __all__ = [
     'ServiceMeshMeshConfigSidecarInjectorArgs',
     'ServiceMeshNetworkArgs',
 ]
+
+@pulumi.input_type
+class ServiceMeshExtraConfigurationArgs:
+    def __init__(__self__, *,
+                 cr_aggregation_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] cr_aggregation_enabled: Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+        """
+        if cr_aggregation_enabled is not None:
+            pulumi.set(__self__, "cr_aggregation_enabled", cr_aggregation_enabled)
+
+    @property
+    @pulumi.getter(name="crAggregationEnabled")
+    def cr_aggregation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+        """
+        return pulumi.get(self, "cr_aggregation_enabled")
+
+    @cr_aggregation_enabled.setter
+    def cr_aggregation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cr_aggregation_enabled", value)
+
 
 @pulumi.input_type
 class ServiceMeshLoadBalancerArgs:
@@ -102,7 +126,7 @@ class ServiceMeshMeshConfigArgs:
         """
         :param pulumi.Input['ServiceMeshMeshConfigAccessLogArgs'] access_log: The configuration of the access logging.
         :param pulumi.Input['ServiceMeshMeshConfigAuditArgs'] audit: The configuration of the audit. See the following `Block audit`.
-        :param pulumi.Input[bool] customized_zipkin: Whether or not to enable the use of a custom zipkin.
+        :param pulumi.Input[bool] customized_zipkin: Whether to enable the use of a custom zipkin.
         :param pulumi.Input[bool] enable_locality_lb: The enable locality lb.
         :param pulumi.Input['ServiceMeshMeshConfigKialiArgs'] kiali: The configuration of the Kiali. See the following `Block kiali`.
         :param pulumi.Input['ServiceMeshMeshConfigOpaArgs'] opa: The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
@@ -166,7 +190,7 @@ class ServiceMeshMeshConfigArgs:
     @pulumi.getter(name="customizedZipkin")
     def customized_zipkin(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to enable the use of a custom zipkin.
+        Whether to enable the use of a custom zipkin.
         """
         return pulumi.get(self, "customized_zipkin")
 

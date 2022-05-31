@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
  *
- * For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/85978.htm).
+ * For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
  *
  * ## Example Usage
  *
@@ -57,8 +57,8 @@ import * as utilities from "../utilities";
  *
  * The entry mapping supports the following:
  *
- * * `entry` - (Required) An IP addresses or CIDR blocks.
- * * `comment` - (Optional) the comment of the entry.
+ * * `entry` - (Optional, Computed) The CIDR blocks.
+ * * `comment` - (Optional, Computed) The comment of the entry.
  *
  * ## Import
  *
@@ -97,9 +97,11 @@ export class Acl extends pulumi.CustomResource {
     }
 
     /**
-     * A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
+     * A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+     *
+     * @deprecated Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
      */
-    public readonly entryLists!: pulumi.Output<outputs.slb.AclEntryList[] | undefined>;
+    public readonly entryLists!: pulumi.Output<outputs.slb.AclEntryList[]>;
     /**
      * The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
      */
@@ -153,7 +155,9 @@ export class Acl extends pulumi.CustomResource {
  */
 export interface AclState {
     /**
-     * A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
+     * A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+     *
+     * @deprecated Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
      */
     entryLists?: pulumi.Input<pulumi.Input<inputs.slb.AclEntryList>[]>;
     /**
@@ -179,7 +183,9 @@ export interface AclState {
  */
 export interface AclArgs {
     /**
-     * A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
+     * A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+     *
+     * @deprecated Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
      */
     entryLists?: pulumi.Input<pulumi.Input<inputs.slb.AclEntryList>[]>;
     /**

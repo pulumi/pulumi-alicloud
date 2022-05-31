@@ -83,6 +83,12 @@ namespace Pulumi.AliCloud.OpenSearch
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The instance id.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
         /// </summary>
         [Output("orderType")]
@@ -254,6 +260,12 @@ namespace Pulumi.AliCloud.OpenSearch
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instance id.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.

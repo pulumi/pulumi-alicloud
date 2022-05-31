@@ -10,8 +10,6 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'ApplicationInternet',
-    'ApplicationIntranet',
     'ApplicationScalingRuleScalingRuleMetric',
     'ApplicationScalingRuleScalingRuleMetricMetric',
     'ApplicationScalingRuleScalingRuleMetricScaleDownRules',
@@ -24,6 +22,8 @@ __all__ = [
     'GreyTagRouteScRuleItem',
     'IngressDefaultRule',
     'IngressRule',
+    'LoadBalancerInternetInternet',
+    'LoadBalancerIntranetIntranet',
     'GetApplicationScalingRulesRuleResult',
     'GetApplicationScalingRulesRuleScalingRuleMetricResult',
     'GetApplicationScalingRulesRuleScalingRuleMetricMetricResult',
@@ -35,6 +35,8 @@ __all__ = [
     'GetApplicationScalingRulesRuleScalingRuleTimerResult',
     'GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult',
     'GetApplicationsApplicationResult',
+    'GetApplicationsApplicationMountDescResult',
+    'GetApplicationsApplicationOssMountDetailResult',
     'GetConfigMapsMapResult',
     'GetGreyTagRoutesRouteResult',
     'GetGreyTagRoutesRouteDubboRuleResult',
@@ -45,154 +47,6 @@ __all__ = [
     'GetInstanceSpecificationsSpecificationResult',
     'GetNamespacesNamespaceResult',
 ]
-
-@pulumi.output_type
-class ApplicationInternet(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "httpsCertId":
-            suggest = "https_cert_id"
-        elif key == "targetPort":
-            suggest = "target_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationInternet. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationInternet.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationInternet.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 https_cert_id: Optional[str] = None,
-                 port: Optional[int] = None,
-                 protocol: Optional[str] = None,
-                 target_port: Optional[int] = None):
-        """
-        :param str https_cert_id: SSL certificate. `https_cert_id` is required when HTTPS is selected
-        :param int port: SLB Port.
-        :param str protocol: Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        :param int target_port: Container port.
-        """
-        if https_cert_id is not None:
-            pulumi.set(__self__, "https_cert_id", https_cert_id)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
-
-    @property
-    @pulumi.getter(name="httpsCertId")
-    def https_cert_id(self) -> Optional[str]:
-        """
-        SSL certificate. `https_cert_id` is required when HTTPS is selected
-        """
-        return pulumi.get(self, "https_cert_id")
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[int]:
-        """
-        SLB Port.
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        """
-        Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        """
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[int]:
-        """
-        Container port.
-        """
-        return pulumi.get(self, "target_port")
-
-
-@pulumi.output_type
-class ApplicationIntranet(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "httpsCertId":
-            suggest = "https_cert_id"
-        elif key == "targetPort":
-            suggest = "target_port"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationIntranet. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationIntranet.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationIntranet.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 https_cert_id: Optional[str] = None,
-                 port: Optional[int] = None,
-                 protocol: Optional[str] = None,
-                 target_port: Optional[int] = None):
-        """
-        :param str https_cert_id: SSL certificate. `https_cert_id` is required when HTTPS is selected
-        :param int port: SLB Port.
-        :param str protocol: Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        :param int target_port: Container port.
-        """
-        if https_cert_id is not None:
-            pulumi.set(__self__, "https_cert_id", https_cert_id)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
-
-    @property
-    @pulumi.getter(name="httpsCertId")
-    def https_cert_id(self) -> Optional[str]:
-        """
-        SSL certificate. `https_cert_id` is required when HTTPS is selected
-        """
-        return pulumi.get(self, "https_cert_id")
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[int]:
-        """
-        SLB Port.
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        """
-        Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
-        """
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[int]:
-        """
-        Container port.
-        """
-        return pulumi.get(self, "target_port")
-
 
 @pulumi.output_type
 class ApplicationScalingRuleScalingRuleMetric(dict):
@@ -572,7 +426,7 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
         :param str at_time: Trigger point in time. When supporting format: minutes, for example: `08:00`.
         :param int max_replicas: Maximum number of instances applied.
         :param int min_replicas: Minimum number of instances applied.
-        :param int target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+        :param int target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         """
         if at_time is not None:
             pulumi.set(__self__, "at_time", at_time)
@@ -611,7 +465,7 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
     @pulumi.getter(name="targetReplicas")
     def target_replicas(self) -> Optional[int]:
         """
-        This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50].
+        This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         """
         return pulumi.get(self, "target_replicas")
 
@@ -1036,6 +890,154 @@ class IngressRule(dict):
         URL path.
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class LoadBalancerInternetInternet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpsCertId":
+            suggest = "https_cert_id"
+        elif key == "targetPort":
+            suggest = "target_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerInternetInternet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerInternetInternet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerInternetInternet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 https_cert_id: Optional[str] = None,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None,
+                 target_port: Optional[int] = None):
+        """
+        :param str https_cert_id: The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        :param int port: The SLB Port.
+        :param str protocol: The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        :param int target_port: The Container port.
+        """
+        if https_cert_id is not None:
+            pulumi.set(__self__, "https_cert_id", https_cert_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if target_port is not None:
+            pulumi.set(__self__, "target_port", target_port)
+
+    @property
+    @pulumi.getter(name="httpsCertId")
+    def https_cert_id(self) -> Optional[str]:
+        """
+        The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        """
+        return pulumi.get(self, "https_cert_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The SLB Port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> Optional[int]:
+        """
+        The Container port.
+        """
+        return pulumi.get(self, "target_port")
+
+
+@pulumi.output_type
+class LoadBalancerIntranetIntranet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpsCertId":
+            suggest = "https_cert_id"
+        elif key == "targetPort":
+            suggest = "target_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerIntranetIntranet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerIntranetIntranet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerIntranetIntranet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 https_cert_id: Optional[str] = None,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None,
+                 target_port: Optional[int] = None):
+        """
+        :param str https_cert_id: The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        :param int port: The SLB Port.
+        :param str protocol: The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        :param int target_port: The Container port.
+        """
+        if https_cert_id is not None:
+            pulumi.set(__self__, "https_cert_id", https_cert_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if target_port is not None:
+            pulumi.set(__self__, "target_port", target_port)
+
+    @property
+    @pulumi.getter(name="httpsCertId")
+    def https_cert_id(self) -> Optional[str]:
+        """
+        The SSL certificate. `https_cert_id` is required when HTTPS is selected
+        """
+        return pulumi.get(self, "https_cert_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The SLB Port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> Optional[int]:
+        """
+        The Container port.
+        """
+        return pulumi.get(self, "target_port")
 
 
 @pulumi.output_type
@@ -1615,13 +1617,14 @@ class GetApplicationsApplicationResult(dict):
                  liveness: str,
                  memory: int,
                  min_ready_instances: int,
-                 mount_desc: str,
+                 mount_descs: Sequence['outputs.GetApplicationsApplicationMountDescResult'],
                  mount_host: str,
                  namespace_id: str,
                  nas_id: str,
                  oss_ak_id: str,
                  oss_ak_secret: str,
                  oss_mount_descs: str,
+                 oss_mount_details: Sequence['outputs.GetApplicationsApplicationOssMountDetailResult'],
                  package_type: str,
                  package_url: str,
                  package_version: str,
@@ -1639,6 +1642,7 @@ class GetApplicationsApplicationResult(dict):
                  security_group_id: str,
                  sls_configs: str,
                  status: str,
+                 tags: Mapping[str, Any],
                  termination_grace_period_seconds: int,
                  timezone: str,
                  tomcat_config: str,
@@ -1667,13 +1671,14 @@ class GetApplicationsApplicationResult(dict):
         :param str liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param int memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU.
         :param int min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
-        :param str mount_desc: Mount description.
+        :param Sequence['GetApplicationsApplicationMountDescArgs'] mount_descs: Mount description information.
         :param str mount_host: Mount point of NAS in application VPC.
         :param str namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
         :param str nas_id: ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
         :param str oss_ak_id: OSS AccessKey ID.
         :param str oss_ak_secret: OSS  AccessKey Secret.
         :param str oss_mount_descs: OSS mount description information.
+        :param Sequence['GetApplicationsApplicationOssMountDetailArgs'] oss_mount_details: The OSS mount detail.
         :param str package_type: Application package type. Support FatJar, War and Image.
         :param str package_url: Deployment package address. Only FatJar or War type applications can configure the deployment package address.
         :param str package_version: The version number of the deployment package. Required when the Package Type is War and FatJar.
@@ -1687,6 +1692,7 @@ class GetApplicationsApplicationResult(dict):
         :param str security_group_id: Security group ID.
         :param str sls_configs: SLS  configuration.
         :param str status: The status of the resource.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param int termination_grace_period_seconds: Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
         :param str timezone: Time zone, the default value is Asia/Shanghai.
         :param str tomcat_config: Tomcat file configuration, set to "" or "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL.
@@ -1715,13 +1721,14 @@ class GetApplicationsApplicationResult(dict):
         pulumi.set(__self__, "liveness", liveness)
         pulumi.set(__self__, "memory", memory)
         pulumi.set(__self__, "min_ready_instances", min_ready_instances)
-        pulumi.set(__self__, "mount_desc", mount_desc)
+        pulumi.set(__self__, "mount_descs", mount_descs)
         pulumi.set(__self__, "mount_host", mount_host)
         pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "nas_id", nas_id)
         pulumi.set(__self__, "oss_ak_id", oss_ak_id)
         pulumi.set(__self__, "oss_ak_secret", oss_ak_secret)
         pulumi.set(__self__, "oss_mount_descs", oss_mount_descs)
+        pulumi.set(__self__, "oss_mount_details", oss_mount_details)
         pulumi.set(__self__, "package_type", package_type)
         pulumi.set(__self__, "package_url", package_url)
         pulumi.set(__self__, "package_version", package_version)
@@ -1739,6 +1746,7 @@ class GetApplicationsApplicationResult(dict):
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "sls_configs", sls_configs)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
         pulumi.set(__self__, "timezone", timezone)
         pulumi.set(__self__, "tomcat_config", tomcat_config)
@@ -1908,12 +1916,12 @@ class GetApplicationsApplicationResult(dict):
         return pulumi.get(self, "min_ready_instances")
 
     @property
-    @pulumi.getter(name="mountDesc")
-    def mount_desc(self) -> str:
+    @pulumi.getter(name="mountDescs")
+    def mount_descs(self) -> Sequence['outputs.GetApplicationsApplicationMountDescResult']:
         """
-        Mount description.
+        Mount description information.
         """
-        return pulumi.get(self, "mount_desc")
+        return pulumi.get(self, "mount_descs")
 
     @property
     @pulumi.getter(name="mountHost")
@@ -1962,6 +1970,14 @@ class GetApplicationsApplicationResult(dict):
         OSS mount description information.
         """
         return pulumi.get(self, "oss_mount_descs")
+
+    @property
+    @pulumi.getter(name="ossMountDetails")
+    def oss_mount_details(self) -> Sequence['outputs.GetApplicationsApplicationOssMountDetailResult']:
+        """
+        The OSS mount detail.
+        """
+        return pulumi.get(self, "oss_mount_details")
 
     @property
     @pulumi.getter(name="packageType")
@@ -2088,6 +2104,14 @@ class GetApplicationsApplicationResult(dict):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="terminationGracePeriodSeconds")
     def termination_grace_period_seconds(self) -> int:
         """
@@ -2142,6 +2166,86 @@ class GetApplicationsApplicationResult(dict):
         The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
         return pulumi.get(self, "web_container")
+
+
+@pulumi.output_type
+class GetApplicationsApplicationMountDescResult(dict):
+    def __init__(__self__, *,
+                 mount_path: str,
+                 nas_path: str):
+        """
+        :param str mount_path: The Container mount path.
+        :param str nas_path: NAS relative file directory.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "nas_path", nas_path)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        The Container mount path.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter(name="nasPath")
+    def nas_path(self) -> str:
+        """
+        NAS relative file directory.
+        """
+        return pulumi.get(self, "nas_path")
+
+
+@pulumi.output_type
+class GetApplicationsApplicationOssMountDetailResult(dict):
+    def __init__(__self__, *,
+                 bucket_name: str,
+                 bucket_path: str,
+                 mount_path: str,
+                 read_only: bool):
+        """
+        :param str bucket_name: The name of the bucket.
+        :param str bucket_path: The path of the bucket.
+        :param str mount_path: The Container mount path.
+        :param bool read_only: Whether the container path has readable permission to mount directory resources.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_path", bucket_path)
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="bucketPath")
+    def bucket_path(self) -> str:
+        """
+        The path of the bucket.
+        """
+        return pulumi.get(self, "bucket_path")
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        """
+        The Container mount path.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        """
+        Whether the container path has readable permission to mount directory resources.
+        """
+        return pulumi.get(self, "read_only")
 
 
 @pulumi.output_type

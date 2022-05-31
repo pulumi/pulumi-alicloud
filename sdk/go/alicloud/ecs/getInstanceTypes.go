@@ -66,6 +66,8 @@ type GetInstanceTypesArgs struct {
 	GpuAmount *int `pulumi:"gpuAmount"`
 	// The GPU spec of an instance type.
 	GpuSpec *string `pulumi:"gpuSpec"`
+	// The ID of the image.
+	ImageId *string `pulumi:"imageId"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Filter the results based on their family name. For example: 'ecs.n4'.
@@ -99,6 +101,7 @@ type GetInstanceTypesResult struct {
 	Id string `pulumi:"id"`
 	// A list of instance type IDs.
 	Ids                []string `pulumi:"ids"`
+	ImageId            *string  `pulumi:"imageId"`
 	InstanceChargeType *string  `pulumi:"instanceChargeType"`
 	InstanceTypeFamily *string  `pulumi:"instanceTypeFamily"`
 	// A list of image types. Each element contains the following attributes:
@@ -139,6 +142,8 @@ type GetInstanceTypesOutputArgs struct {
 	GpuAmount pulumi.IntPtrInput `pulumi:"gpuAmount"`
 	// The GPU spec of an instance type.
 	GpuSpec pulumi.StringPtrInput `pulumi:"gpuSpec"`
+	// The ID of the image.
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
 	// Filter the results based on their family name. For example: 'ecs.n4'.
@@ -208,6 +213,10 @@ func (o GetInstanceTypesResultOutput) Id() pulumi.StringOutput {
 // A list of instance type IDs.
 func (o GetInstanceTypesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceTypesResultOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.ImageId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetInstanceTypesResultOutput) InstanceChargeType() pulumi.StringPtrOutput {

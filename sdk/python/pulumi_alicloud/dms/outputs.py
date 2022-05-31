@@ -11,6 +11,7 @@ from .. import _utilities
 __all__ = [
     'GetEnterpriseInstancesInstanceResult',
     'GetEnterpriseUsersUserResult',
+    'GetUserTenantsTenantResult',
 ]
 
 @pulumi.output_type
@@ -387,5 +388,56 @@ class GetEnterpriseUsersUserResult(dict):
         The nickname of the user.
         """
         return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class GetUserTenantsTenantResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 status: str,
+                 tenant_name: str,
+                 tid: str):
+        """
+        :param str id: The user tenant id.
+        :param str status: The status of the user tenant.
+        :param str tenant_name: The name of the user tenant.
+        :param str tid: The user tenant id. Same as id.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tenant_name", tenant_name)
+        pulumi.set(__self__, "tid", tid)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The user tenant id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the user tenant.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tenantName")
+    def tenant_name(self) -> str:
+        """
+        The name of the user tenant.
+        """
+        return pulumi.get(self, "tenant_name")
+
+    @property
+    @pulumi.getter
+    def tid(self) -> str:
+        """
+        The user tenant id. Same as id.
+        """
+        return pulumi.get(self, "tid")
 
 

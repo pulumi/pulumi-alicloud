@@ -122,6 +122,12 @@ namespace Pulumi.AliCloud.Ecs
         public string? GpuSpec { get; set; }
 
         /// <summary>
+        /// The ID of the image.
+        /// </summary>
+        [Input("imageId")]
+        public string? ImageId { get; set; }
+
+        /// <summary>
         /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
         /// </summary>
         [Input("instanceChargeType")]
@@ -211,6 +217,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? GpuSpec { get; set; }
 
         /// <summary>
+        /// The ID of the image.
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
         /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
         /// </summary>
         [Input("instanceChargeType")]
@@ -290,6 +302,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A list of instance type IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly string? ImageId;
         public readonly string? InstanceChargeType;
         public readonly string? InstanceTypeFamily;
         /// <summary>
@@ -324,6 +337,8 @@ namespace Pulumi.AliCloud.Ecs
 
             ImmutableArray<string> ids,
 
+            string? imageId,
+
             string? instanceChargeType,
 
             string? instanceTypeFamily,
@@ -353,6 +368,7 @@ namespace Pulumi.AliCloud.Ecs
             GpuSpec = gpuSpec;
             Id = id;
             Ids = ids;
+            ImageId = imageId;
             InstanceChargeType = instanceChargeType;
             InstanceTypeFamily = instanceTypeFamily;
             InstanceTypes = instanceTypes;

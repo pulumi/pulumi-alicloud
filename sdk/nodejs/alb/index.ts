@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./acl";
+export * from "./aclEntryAttachment";
 export * from "./getAcls";
 export * from "./getHealthCheckTemplates";
 export * from "./getListeners";
@@ -16,6 +17,8 @@ export * from "./getServerGroups";
 export * from "./getZones";
 export * from "./healthCheckTemplate";
 export * from "./listener";
+export * from "./listenerAclAttachment";
+export * from "./listenerAdditionalCertificateAttachment";
 export * from "./loadBalancer";
 export * from "./rule";
 export * from "./securityPolicy";
@@ -23,8 +26,11 @@ export * from "./serverGroup";
 
 // Import resources to register:
 import { Acl } from "./acl";
+import { AclEntryAttachment } from "./aclEntryAttachment";
 import { HealthCheckTemplate } from "./healthCheckTemplate";
 import { Listener } from "./listener";
+import { ListenerAclAttachment } from "./listenerAclAttachment";
+import { ListenerAdditionalCertificateAttachment } from "./listenerAdditionalCertificateAttachment";
 import { LoadBalancer } from "./loadBalancer";
 import { Rule } from "./rule";
 import { SecurityPolicy } from "./securityPolicy";
@@ -36,10 +42,16 @@ const _module = {
         switch (type) {
             case "alicloud:alb/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
+            case "alicloud:alb/aclEntryAttachment:AclEntryAttachment":
+                return new AclEntryAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/healthCheckTemplate:HealthCheckTemplate":
                 return new HealthCheckTemplate(name, <any>undefined, { urn })
             case "alicloud:alb/listener:Listener":
                 return new Listener(name, <any>undefined, { urn })
+            case "alicloud:alb/listenerAclAttachment:ListenerAclAttachment":
+                return new ListenerAclAttachment(name, <any>undefined, { urn })
+            case "alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment":
+                return new ListenerAdditionalCertificateAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "alicloud:alb/rule:Rule":
@@ -54,8 +66,11 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "alb/acl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alb/aclEntryAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/healthCheckTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/listener", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alb/listenerAclAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alb/listenerAdditionalCertificateAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/rule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/securityPolicy", _module)

@@ -700,6 +700,24 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
 
         /// <summary>
+        /// The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        /// </summary>
+        [Output("systemDiskEncryptAlgorithm")]
+        public Output<string?> SystemDiskEncryptAlgorithm { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable system disk encryption.
+        /// </summary>
+        [Output("systemDiskEncrypted")]
+        public Output<bool?> SystemDiskEncrypted { get; private set; } = null!;
+
+        /// <summary>
+        /// The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        /// </summary>
+        [Output("systemDiskKmsKey")]
+        public Output<string?> SystemDiskKmsKey { get; private set; } = null!;
+
+        /// <summary>
         /// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         /// </summary>
         [Output("systemDiskPerformanceLevel")]
@@ -1052,6 +1070,24 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
+        /// The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        /// </summary>
+        [Input("systemDiskEncryptAlgorithm")]
+        public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
+
+        /// <summary>
+        /// Whether to enable system disk encryption.
+        /// </summary>
+        [Input("systemDiskEncrypted")]
+        public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        /// </summary>
+        [Input("systemDiskKmsKey")]
+        public Input<string>? SystemDiskKmsKey { get; set; }
+
+        /// <summary>
         /// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
@@ -1381,6 +1417,24 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
+
+        /// <summary>
+        /// The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+        /// </summary>
+        [Input("systemDiskEncryptAlgorithm")]
+        public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
+
+        /// <summary>
+        /// Whether to enable system disk encryption.
+        /// </summary>
+        [Input("systemDiskEncrypted")]
+        public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        /// </summary>
+        [Input("systemDiskKmsKey")]
+        public Input<string>? SystemDiskKmsKey { get; set; }
 
         /// <summary>
         /// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.

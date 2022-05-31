@@ -198,6 +198,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> DedicatedHostGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The switch of delete protection. Valid values:
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         /// </summary>
         [Output("direction")]
@@ -590,6 +598,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DedicatedHostGroupId { get; set; }
 
         /// <summary>
+        /// The switch of delete protection. Valid values:
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         /// </summary>
         [Input("direction")]
@@ -965,6 +981,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("dedicatedHostGroupId")]
         public Input<string>? DedicatedHostGroupId { get; set; }
+
+        /// <summary>
+        /// The switch of delete protection. Valid values:
+        /// - true: delete protect.
+        /// - false: no delete protect.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.

@@ -33,7 +33,7 @@ type Instance struct {
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass pulumi.StringOutput `pulumi:"dbInstanceClass"`
 	// User-defined DB instance storage space.Unit: GB. Value range:
-	// - Custom storage space; value range: [10,2000]
+	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage pulumi.IntOutput `pulumi:"dbInstanceStorage"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
@@ -50,6 +50,8 @@ type Instance struct {
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -63,6 +65,8 @@ type Instance struct {
 	ReplicaSets InstanceReplicaSetArrayOutput `pulumi:"replicaSets"`
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
+	// The ID of the Resource Group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
 	// The Security Group ID of ECS.
@@ -79,6 +83,8 @@ type Instance struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
@@ -137,7 +143,7 @@ type instanceState struct {
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
 	// User-defined DB instance storage space.Unit: GB. Value range:
-	// - Custom storage space; value range: [10,2000]
+	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage *int `pulumi:"dbInstanceStorage"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
@@ -154,6 +160,8 @@ type instanceState struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -167,6 +175,8 @@ type instanceState struct {
 	ReplicaSets []InstanceReplicaSet `pulumi:"replicaSets"`
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor *int `pulumi:"replicationFactor"`
+	// The ID of the Resource Group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 	// The Security Group ID of ECS.
@@ -183,6 +193,8 @@ type instanceState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
@@ -204,7 +216,7 @@ type InstanceState struct {
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass pulumi.StringPtrInput
 	// User-defined DB instance storage space.Unit: GB. Value range:
-	// - Custom storage space; value range: [10,2000]
+	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage pulumi.IntPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
@@ -221,6 +233,8 @@ type InstanceState struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -234,6 +248,8 @@ type InstanceState struct {
 	ReplicaSets InstanceReplicaSetArrayInput
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntPtrInput
+	// The ID of the Resource Group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntPtrInput
 	// The Security Group ID of ECS.
@@ -250,6 +266,8 @@ type InstanceState struct {
 	Tags pulumi.MapInput
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrInput
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. it supports multiple zone.
@@ -275,7 +293,7 @@ type instanceArgs struct {
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass string `pulumi:"dbInstanceClass"`
 	// User-defined DB instance storage space.Unit: GB. Value range:
-	// - Custom storage space; value range: [10,2000]
+	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage int `pulumi:"dbInstanceStorage"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
@@ -292,6 +310,8 @@ type instanceArgs struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -301,6 +321,8 @@ type instanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor *int `pulumi:"replicationFactor"`
+	// The ID of the Resource Group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -313,6 +335,8 @@ type instanceArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus *string `pulumi:"tdeStatus"`
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
@@ -335,7 +359,7 @@ type InstanceArgs struct {
 	// Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	DbInstanceClass pulumi.StringInput
 	// User-defined DB instance storage space.Unit: GB. Value range:
-	// - Custom storage space; value range: [10,2000]
+	// - Custom storage space.
 	// - 10-GB increments.
 	DbInstanceStorage pulumi.IntInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
@@ -352,6 +376,8 @@ type InstanceArgs struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
+	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
@@ -361,6 +387,8 @@ type InstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntPtrInput
+	// The ID of the Resource Group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -373,6 +401,8 @@ type InstanceArgs struct {
 	Tags pulumi.MapInput
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrInput
+	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. it supports multiple zone.

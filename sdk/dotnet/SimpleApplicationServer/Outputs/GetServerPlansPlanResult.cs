@@ -41,6 +41,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
         /// The ID of the Instance Plan.
         /// </summary>
         public readonly string PlanId;
+        /// <summary>
+        /// The platform of Plan supported.
+        /// </summary>
+        public readonly string SupportPlatform;
 
         [OutputConstructor]
         private GetServerPlansPlanResult(
@@ -56,7 +60,9 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
 
             int memory,
 
-            string planId)
+            string planId,
+
+            string supportPlatform)
         {
             Bandwidth = bandwidth;
             Core = core;
@@ -65,6 +71,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
             Id = id;
             Memory = memory;
             PlanId = planId;
+            SupportPlatform = supportPlatform;
         }
     }
 }

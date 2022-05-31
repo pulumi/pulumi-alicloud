@@ -18,11 +18,14 @@ from .ecs_deployment_set import *
 from .ecs_disk import *
 from .ecs_disk_attachment import *
 from .ecs_image_component import *
+from .ecs_image_pipeline import *
+from .ecs_invocation import *
 from .ecs_key_pair import *
 from .ecs_key_pair_attachment import *
 from .ecs_launch_template import *
 from .ecs_network_interface import *
 from .ecs_network_interface_attachment import *
+from .ecs_network_interface_permission import *
 from .ecs_prefix_list import *
 from .ecs_session_manager_status import *
 from .ecs_snapshot import *
@@ -38,8 +41,11 @@ from .get_ecs_dedicated_host_clusters import *
 from .get_ecs_deployment_sets import *
 from .get_ecs_disks import *
 from .get_ecs_image_components import *
+from .get_ecs_image_pipeline import *
+from .get_ecs_invocations import *
 from .get_ecs_key_pairs import *
 from .get_ecs_launch_templates import *
+from .get_ecs_network_interface_permissions import *
 from .get_ecs_network_interfaces import *
 from .get_ecs_prefix_lists import *
 from .get_ecs_snapshot_groups import *

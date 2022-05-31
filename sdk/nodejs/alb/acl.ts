@@ -66,9 +66,11 @@ export class Acl extends pulumi.CustomResource {
     }
 
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.
+     * The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+     *
+     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */
-    public readonly aclEntries!: pulumi.Output<outputs.alb.AclAclEntry[] | undefined>;
+    public readonly aclEntries!: pulumi.Output<outputs.alb.AclAclEntry[]>;
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
@@ -85,6 +87,9 @@ export class Acl extends pulumi.CustomResource {
      * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
@@ -128,7 +133,9 @@ export class Acl extends pulumi.CustomResource {
  */
 export interface AclState {
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.
+     * The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+     *
+     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.alb.AclAclEntry>[]>;
     /**
@@ -147,6 +154,9 @@ export interface AclState {
      * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -155,7 +165,9 @@ export interface AclState {
  */
 export interface AclArgs {
     /**
-     * The list of the ACL entries. You can add up to `20` entries in each call.
+     * The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+     *
+     * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.alb.AclAclEntry>[]>;
     /**
@@ -170,5 +182,8 @@ export interface AclArgs {
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

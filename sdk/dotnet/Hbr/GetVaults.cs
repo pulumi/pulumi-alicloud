@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        /// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        /// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

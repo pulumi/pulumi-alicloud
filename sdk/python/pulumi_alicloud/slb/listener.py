@@ -90,6 +90,7 @@ class ListenerArgs:
         :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
@@ -579,6 +580,9 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="masterSlaveServerGroupId")
     def master_slave_server_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the master slave server group.
+        """
         return pulumi.get(self, "master_slave_server_group_id")
 
     @master_slave_server_group_id.setter
@@ -796,6 +800,7 @@ class _ListenerState:
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
+        :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
@@ -1277,6 +1282,9 @@ class _ListenerState:
     @property
     @pulumi.getter(name="masterSlaveServerGroupId")
     def master_slave_server_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the master slave server group.
+        """
         return pulumi.get(self, "master_slave_server_group_id")
 
     @master_slave_server_group_id.setter
@@ -1571,6 +1579,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
+        :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
@@ -1875,6 +1884,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
         :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
+        :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
         :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
         :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
@@ -1973,7 +1983,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[Optional[int]]:
+    def bandwidth(self) -> pulumi.Output[int]:
         """
         Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
         """
@@ -2181,6 +2191,9 @@ class Listener(pulumi.CustomResource):
     @property
     @pulumi.getter(name="masterSlaveServerGroupId")
     def master_slave_server_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the master slave server group.
+        """
         return pulumi.get(self, "master_slave_server_group_id")
 
     @property

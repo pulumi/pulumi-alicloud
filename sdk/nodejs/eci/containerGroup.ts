@@ -122,6 +122,10 @@ export class ContainerGroup extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to automatically match the image cache. Default value: false.
+     */
+    public readonly autoMatchImageCache!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the container group.
      */
     public readonly containerGroupName!: pulumi.Output<string>;
@@ -137,6 +141,9 @@ export class ContainerGroup extends pulumi.CustomResource {
      * The structure of dnsConfig.
      */
     public readonly dnsConfig!: pulumi.Output<outputs.eci.ContainerGroupDnsConfig | undefined>;
+    /**
+     * The security context of the container group.
+     */
     public readonly eciSecurityContext!: pulumi.Output<outputs.eci.ContainerGroupEciSecurityContext | undefined>;
     /**
      * HostAliases.
@@ -178,6 +185,11 @@ export class ContainerGroup extends pulumi.CustomResource {
      * The status of container group.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The list of volumes.
@@ -205,6 +217,7 @@ export class ContainerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerGroupState | undefined;
+            resourceInputs["autoMatchImageCache"] = state ? state.autoMatchImageCache : undefined;
             resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
             resourceInputs["containers"] = state ? state.containers : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
@@ -238,6 +251,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["autoMatchImageCache"] = args ? args.autoMatchImageCache : undefined;
             resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
             resourceInputs["containers"] = args ? args.containers : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
@@ -268,6 +282,10 @@ export class ContainerGroup extends pulumi.CustomResource {
  */
 export interface ContainerGroupState {
     /**
+     * Specifies whether to automatically match the image cache. Default value: false.
+     */
+    autoMatchImageCache?: pulumi.Input<boolean>;
+    /**
      * The name of the container group.
      */
     containerGroupName?: pulumi.Input<string>;
@@ -283,6 +301,9 @@ export interface ContainerGroupState {
      * The structure of dnsConfig.
      */
     dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
+    /**
+     * The security context of the container group.
+     */
     eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
     /**
      * HostAliases.
@@ -324,6 +345,11 @@ export interface ContainerGroupState {
      * The status of container group.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The list of volumes.
@@ -344,6 +370,10 @@ export interface ContainerGroupState {
  */
 export interface ContainerGroupArgs {
     /**
+     * Specifies whether to automatically match the image cache. Default value: false.
+     */
+    autoMatchImageCache?: pulumi.Input<boolean>;
+    /**
      * The name of the container group.
      */
     containerGroupName: pulumi.Input<string>;
@@ -359,6 +389,9 @@ export interface ContainerGroupArgs {
      * The structure of dnsConfig.
      */
     dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
+    /**
+     * The security context of the container group.
+     */
     eciSecurityContext?: pulumi.Input<inputs.eci.ContainerGroupEciSecurityContext>;
     /**
      * HostAliases.
@@ -396,6 +429,11 @@ export interface ContainerGroupArgs {
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
     securityGroupId: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The list of volumes.

@@ -27,8 +27,14 @@ import (
 type ServiceMesh struct {
 	pulumi.CustomResourceState
 
+	// The array of the cluster ids.
+	ClusterIds pulumi.StringArrayOutput `pulumi:"clusterIds"`
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec pulumi.StringPtrOutput `pulumi:"clusterSpec"`
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition pulumi.StringOutput `pulumi:"edition"`
+	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	ExtraConfiguration ServiceMeshExtraConfigurationOutput `pulumi:"extraConfiguration"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
@@ -77,8 +83,14 @@ func GetServiceMesh(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceMesh resources.
 type serviceMeshState struct {
+	// The array of the cluster ids.
+	ClusterIds []string `pulumi:"clusterIds"`
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec *string `pulumi:"clusterSpec"`
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition *string `pulumi:"edition"`
+	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	ExtraConfiguration *ServiceMeshExtraConfiguration `pulumi:"extraConfiguration"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force *bool `pulumi:"force"`
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
@@ -96,8 +108,14 @@ type serviceMeshState struct {
 }
 
 type ServiceMeshState struct {
+	// The array of the cluster ids.
+	ClusterIds pulumi.StringArrayInput
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec pulumi.StringPtrInput
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition pulumi.StringPtrInput
+	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	ExtraConfiguration ServiceMeshExtraConfigurationPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrInput
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
@@ -119,8 +137,14 @@ func (ServiceMeshState) ElementType() reflect.Type {
 }
 
 type serviceMeshArgs struct {
+	// The array of the cluster ids.
+	ClusterIds []string `pulumi:"clusterIds"`
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec *string `pulumi:"clusterSpec"`
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition *string `pulumi:"edition"`
+	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	ExtraConfiguration *ServiceMeshExtraConfiguration `pulumi:"extraConfiguration"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force *bool `pulumi:"force"`
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.
@@ -137,8 +161,14 @@ type serviceMeshArgs struct {
 
 // The set of arguments for constructing a ServiceMesh resource.
 type ServiceMeshArgs struct {
+	// The array of the cluster ids.
+	ClusterIds pulumi.StringArrayInput
+	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
+	ClusterSpec pulumi.StringPtrInput
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition pulumi.StringPtrInput
+	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
+	ExtraConfiguration ServiceMeshExtraConfigurationPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrInput
 	// The configuration of the Load Balancer. See the following `Block loadBalancer`.

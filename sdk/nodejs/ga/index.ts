@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./accelerator";
+export * from "./acceleratorSpareIpAttachment";
 export * from "./acl";
 export * from "./aclAttachment";
 export * from "./additionalCertificate";
@@ -13,6 +14,7 @@ export * from "./bandwidthPackage";
 export * from "./bandwidthPackageAttachment";
 export * from "./endpointGroup";
 export * from "./forwardingRule";
+export * from "./getAcceleratorSpareIpAttachments";
 export * from "./getAccelerators";
 export * from "./getAcls";
 export * from "./getAdditionalCertificates";
@@ -26,6 +28,7 @@ export * from "./listener";
 
 // Import resources to register:
 import { Accelerator } from "./accelerator";
+import { AcceleratorSpareIpAttachment } from "./acceleratorSpareIpAttachment";
 import { Acl } from "./acl";
 import { AclAttachment } from "./aclAttachment";
 import { AdditionalCertificate } from "./additionalCertificate";
@@ -42,6 +45,8 @@ const _module = {
         switch (type) {
             case "alicloud:ga/accelerator:Accelerator":
                 return new Accelerator(name, <any>undefined, { urn })
+            case "alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment":
+                return new AcceleratorSpareIpAttachment(name, <any>undefined, { urn })
             case "alicloud:ga/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
             case "alicloud:ga/aclAttachment:AclAttachment":
@@ -66,6 +71,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ga/accelerator", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/acceleratorSpareIpAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/acl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/aclAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/additionalCertificate", _module)

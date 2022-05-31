@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetInstanceTypesInstanceTypeLocalStorageResult
     {
-        /// <summary>
-        /// The number of local storage devices that an instance has been attached to.
-        /// </summary>
         public readonly string Amount;
-        /// <summary>
-        /// The capacity of a local storage in GB.
-        /// </summary>
         public readonly string Capacity;
-        /// <summary>
-        /// The category of local storage that an instance has been attached to.
-        /// </summary>
         public readonly string Category;
 
         [OutputConstructor]

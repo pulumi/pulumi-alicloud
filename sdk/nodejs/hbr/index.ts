@@ -12,6 +12,8 @@ export * from "./getEcsBackupClients";
 export * from "./getEcsBackupPlans";
 export * from "./getNasBackupPlans";
 export * from "./getOssBackupPlans";
+export * from "./getOtsBackupPlans";
+export * from "./getOtsSnapshots";
 export * from "./getReplicationVaultRegions";
 export * from "./getRestoreJobs";
 export * from "./getServerBackupPlans";
@@ -19,6 +21,7 @@ export * from "./getSnapshots";
 export * from "./getVaults";
 export * from "./nasBackupPlan";
 export * from "./ossBackupPlan";
+export * from "./otsBackupPlan";
 export * from "./replicationVault";
 export * from "./restoreJob";
 export * from "./serverBackupPlan";
@@ -29,6 +32,7 @@ import { EcsBackupClient } from "./ecsBackupClient";
 import { EcsBackupPlan } from "./ecsBackupPlan";
 import { NasBackupPlan } from "./nasBackupPlan";
 import { OssBackupPlan } from "./ossBackupPlan";
+import { OtsBackupPlan } from "./otsBackupPlan";
 import { ReplicationVault } from "./replicationVault";
 import { RestoreJob } from "./restoreJob";
 import { ServerBackupPlan } from "./serverBackupPlan";
@@ -46,6 +50,8 @@ const _module = {
                 return new NasBackupPlan(name, <any>undefined, { urn })
             case "alicloud:hbr/ossBackupPlan:OssBackupPlan":
                 return new OssBackupPlan(name, <any>undefined, { urn })
+            case "alicloud:hbr/otsBackupPlan:OtsBackupPlan":
+                return new OtsBackupPlan(name, <any>undefined, { urn })
             case "alicloud:hbr/replicationVault:ReplicationVault":
                 return new ReplicationVault(name, <any>undefined, { urn })
             case "alicloud:hbr/restoreJob:RestoreJob":
@@ -63,6 +69,7 @@ pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupClient", _module
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/nasBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ossBackupPlan", _module)
+pulumi.runtime.registerResourceModule("alicloud", "hbr/otsBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/replicationVault", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/restoreJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/serverBackupPlan", _module)

@@ -10,6 +10,398 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceAdAuthServer struct {
+	// The username of the account that is used for the LDAP server.
+	Account string `pulumi:"account"`
+	// The Base distinguished name (DN).
+	BaseDn string `pulumi:"baseDn"`
+	// The domain on the AD server.
+	Domain string `pulumi:"domain"`
+	// The field that is used to indicate the email address of a user on the LDAP server.
+	EmailMapping *string `pulumi:"emailMapping"`
+	// The condition that is used to filter users.
+	Filter *string `pulumi:"filter"`
+	// Specifies whether to support SSL.
+	IsSsl bool `pulumi:"isSsl"`
+	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	MobileMapping *string `pulumi:"mobileMapping"`
+	// The field that is used to indicate the name of a user on the LDAP server.
+	NameMapping *string `pulumi:"nameMapping"`
+	// The password of the account that is used for the LDAP server.
+	Password string `pulumi:"password"`
+	// The port that is used to access the LDAP server.
+	Port int `pulumi:"port"`
+	// The address of the LDAP server.
+	Server string `pulumi:"server"`
+	// The address of the secondary LDAP server.
+	StandbyServer *string `pulumi:"standbyServer"`
+}
+
+// InstanceAdAuthServerInput is an input type that accepts InstanceAdAuthServerArgs and InstanceAdAuthServerOutput values.
+// You can construct a concrete instance of `InstanceAdAuthServerInput` via:
+//
+//          InstanceAdAuthServerArgs{...}
+type InstanceAdAuthServerInput interface {
+	pulumi.Input
+
+	ToInstanceAdAuthServerOutput() InstanceAdAuthServerOutput
+	ToInstanceAdAuthServerOutputWithContext(context.Context) InstanceAdAuthServerOutput
+}
+
+type InstanceAdAuthServerArgs struct {
+	// The username of the account that is used for the LDAP server.
+	Account pulumi.StringInput `pulumi:"account"`
+	// The Base distinguished name (DN).
+	BaseDn pulumi.StringInput `pulumi:"baseDn"`
+	// The domain on the AD server.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The field that is used to indicate the email address of a user on the LDAP server.
+	EmailMapping pulumi.StringPtrInput `pulumi:"emailMapping"`
+	// The condition that is used to filter users.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Specifies whether to support SSL.
+	IsSsl pulumi.BoolInput `pulumi:"isSsl"`
+	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	MobileMapping pulumi.StringPtrInput `pulumi:"mobileMapping"`
+	// The field that is used to indicate the name of a user on the LDAP server.
+	NameMapping pulumi.StringPtrInput `pulumi:"nameMapping"`
+	// The password of the account that is used for the LDAP server.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The port that is used to access the LDAP server.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The address of the LDAP server.
+	Server pulumi.StringInput `pulumi:"server"`
+	// The address of the secondary LDAP server.
+	StandbyServer pulumi.StringPtrInput `pulumi:"standbyServer"`
+}
+
+func (InstanceAdAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAdAuthServer)(nil)).Elem()
+}
+
+func (i InstanceAdAuthServerArgs) ToInstanceAdAuthServerOutput() InstanceAdAuthServerOutput {
+	return i.ToInstanceAdAuthServerOutputWithContext(context.Background())
+}
+
+func (i InstanceAdAuthServerArgs) ToInstanceAdAuthServerOutputWithContext(ctx context.Context) InstanceAdAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAdAuthServerOutput)
+}
+
+// InstanceAdAuthServerArrayInput is an input type that accepts InstanceAdAuthServerArray and InstanceAdAuthServerArrayOutput values.
+// You can construct a concrete instance of `InstanceAdAuthServerArrayInput` via:
+//
+//          InstanceAdAuthServerArray{ InstanceAdAuthServerArgs{...} }
+type InstanceAdAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToInstanceAdAuthServerArrayOutput() InstanceAdAuthServerArrayOutput
+	ToInstanceAdAuthServerArrayOutputWithContext(context.Context) InstanceAdAuthServerArrayOutput
+}
+
+type InstanceAdAuthServerArray []InstanceAdAuthServerInput
+
+func (InstanceAdAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAdAuthServer)(nil)).Elem()
+}
+
+func (i InstanceAdAuthServerArray) ToInstanceAdAuthServerArrayOutput() InstanceAdAuthServerArrayOutput {
+	return i.ToInstanceAdAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceAdAuthServerArray) ToInstanceAdAuthServerArrayOutputWithContext(ctx context.Context) InstanceAdAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAdAuthServerArrayOutput)
+}
+
+type InstanceAdAuthServerOutput struct{ *pulumi.OutputState }
+
+func (InstanceAdAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAdAuthServer)(nil)).Elem()
+}
+
+func (o InstanceAdAuthServerOutput) ToInstanceAdAuthServerOutput() InstanceAdAuthServerOutput {
+	return o
+}
+
+func (o InstanceAdAuthServerOutput) ToInstanceAdAuthServerOutputWithContext(ctx context.Context) InstanceAdAuthServerOutput {
+	return o
+}
+
+// The username of the account that is used for the LDAP server.
+func (o InstanceAdAuthServerOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Account }).(pulumi.StringOutput)
+}
+
+// The Base distinguished name (DN).
+func (o InstanceAdAuthServerOutput) BaseDn() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.BaseDn }).(pulumi.StringOutput)
+}
+
+// The domain on the AD server.
+func (o InstanceAdAuthServerOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The field that is used to indicate the email address of a user on the LDAP server.
+func (o InstanceAdAuthServerOutput) EmailMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
+}
+
+// The condition that is used to filter users.
+func (o InstanceAdAuthServerOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to support SSL.
+func (o InstanceAdAuthServerOutput) IsSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) bool { return v.IsSsl }).(pulumi.BoolOutput)
+}
+
+// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+func (o InstanceAdAuthServerOutput) MobileMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.MobileMapping }).(pulumi.StringPtrOutput)
+}
+
+// The field that is used to indicate the name of a user on the LDAP server.
+func (o InstanceAdAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
+}
+
+// The password of the account that is used for the LDAP server.
+func (o InstanceAdAuthServerOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The port that is used to access the LDAP server.
+func (o InstanceAdAuthServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The address of the LDAP server.
+func (o InstanceAdAuthServerOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) string { return v.Server }).(pulumi.StringOutput)
+}
+
+// The address of the secondary LDAP server.
+func (o InstanceAdAuthServerOutput) StandbyServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAdAuthServer) *string { return v.StandbyServer }).(pulumi.StringPtrOutput)
+}
+
+type InstanceAdAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceAdAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAdAuthServer)(nil)).Elem()
+}
+
+func (o InstanceAdAuthServerArrayOutput) ToInstanceAdAuthServerArrayOutput() InstanceAdAuthServerArrayOutput {
+	return o
+}
+
+func (o InstanceAdAuthServerArrayOutput) ToInstanceAdAuthServerArrayOutputWithContext(ctx context.Context) InstanceAdAuthServerArrayOutput {
+	return o
+}
+
+func (o InstanceAdAuthServerArrayOutput) Index(i pulumi.IntInput) InstanceAdAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceAdAuthServer {
+		return vs[0].([]InstanceAdAuthServer)[vs[1].(int)]
+	}).(InstanceAdAuthServerOutput)
+}
+
+type InstanceLdapAuthServer struct {
+	// The username of the account that is used for the LDAP server.
+	Account string `pulumi:"account"`
+	// The Base distinguished name (DN).
+	BaseDn string `pulumi:"baseDn"`
+	// The field that is used to indicate the email address of a user on the LDAP server.
+	EmailMapping *string `pulumi:"emailMapping"`
+	// The condition that is used to filter users.
+	Filter *string `pulumi:"filter"`
+	// Specifies whether to support SSL.
+	IsSsl *bool `pulumi:"isSsl"`
+	// The field that is used to indicate the logon name of a user on the LDAP server.
+	LoginNameMapping *string `pulumi:"loginNameMapping"`
+	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	MobileMapping *string `pulumi:"mobileMapping"`
+	// The field that is used to indicate the name of a user on the LDAP server.
+	NameMapping *string `pulumi:"nameMapping"`
+	// The password of the account that is used for the LDAP server.
+	Password string `pulumi:"password"`
+	// The port that is used to access the LDAP server.
+	Port int `pulumi:"port"`
+	// The address of the LDAP server.
+	Server string `pulumi:"server"`
+	// The address of the secondary LDAP server.
+	StandbyServer *string `pulumi:"standbyServer"`
+}
+
+// InstanceLdapAuthServerInput is an input type that accepts InstanceLdapAuthServerArgs and InstanceLdapAuthServerOutput values.
+// You can construct a concrete instance of `InstanceLdapAuthServerInput` via:
+//
+//          InstanceLdapAuthServerArgs{...}
+type InstanceLdapAuthServerInput interface {
+	pulumi.Input
+
+	ToInstanceLdapAuthServerOutput() InstanceLdapAuthServerOutput
+	ToInstanceLdapAuthServerOutputWithContext(context.Context) InstanceLdapAuthServerOutput
+}
+
+type InstanceLdapAuthServerArgs struct {
+	// The username of the account that is used for the LDAP server.
+	Account pulumi.StringInput `pulumi:"account"`
+	// The Base distinguished name (DN).
+	BaseDn pulumi.StringInput `pulumi:"baseDn"`
+	// The field that is used to indicate the email address of a user on the LDAP server.
+	EmailMapping pulumi.StringPtrInput `pulumi:"emailMapping"`
+	// The condition that is used to filter users.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Specifies whether to support SSL.
+	IsSsl pulumi.BoolPtrInput `pulumi:"isSsl"`
+	// The field that is used to indicate the logon name of a user on the LDAP server.
+	LoginNameMapping pulumi.StringPtrInput `pulumi:"loginNameMapping"`
+	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	MobileMapping pulumi.StringPtrInput `pulumi:"mobileMapping"`
+	// The field that is used to indicate the name of a user on the LDAP server.
+	NameMapping pulumi.StringPtrInput `pulumi:"nameMapping"`
+	// The password of the account that is used for the LDAP server.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The port that is used to access the LDAP server.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The address of the LDAP server.
+	Server pulumi.StringInput `pulumi:"server"`
+	// The address of the secondary LDAP server.
+	StandbyServer pulumi.StringPtrInput `pulumi:"standbyServer"`
+}
+
+func (InstanceLdapAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLdapAuthServer)(nil)).Elem()
+}
+
+func (i InstanceLdapAuthServerArgs) ToInstanceLdapAuthServerOutput() InstanceLdapAuthServerOutput {
+	return i.ToInstanceLdapAuthServerOutputWithContext(context.Background())
+}
+
+func (i InstanceLdapAuthServerArgs) ToInstanceLdapAuthServerOutputWithContext(ctx context.Context) InstanceLdapAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLdapAuthServerOutput)
+}
+
+// InstanceLdapAuthServerArrayInput is an input type that accepts InstanceLdapAuthServerArray and InstanceLdapAuthServerArrayOutput values.
+// You can construct a concrete instance of `InstanceLdapAuthServerArrayInput` via:
+//
+//          InstanceLdapAuthServerArray{ InstanceLdapAuthServerArgs{...} }
+type InstanceLdapAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToInstanceLdapAuthServerArrayOutput() InstanceLdapAuthServerArrayOutput
+	ToInstanceLdapAuthServerArrayOutputWithContext(context.Context) InstanceLdapAuthServerArrayOutput
+}
+
+type InstanceLdapAuthServerArray []InstanceLdapAuthServerInput
+
+func (InstanceLdapAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLdapAuthServer)(nil)).Elem()
+}
+
+func (i InstanceLdapAuthServerArray) ToInstanceLdapAuthServerArrayOutput() InstanceLdapAuthServerArrayOutput {
+	return i.ToInstanceLdapAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceLdapAuthServerArray) ToInstanceLdapAuthServerArrayOutputWithContext(ctx context.Context) InstanceLdapAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLdapAuthServerArrayOutput)
+}
+
+type InstanceLdapAuthServerOutput struct{ *pulumi.OutputState }
+
+func (InstanceLdapAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLdapAuthServer)(nil)).Elem()
+}
+
+func (o InstanceLdapAuthServerOutput) ToInstanceLdapAuthServerOutput() InstanceLdapAuthServerOutput {
+	return o
+}
+
+func (o InstanceLdapAuthServerOutput) ToInstanceLdapAuthServerOutputWithContext(ctx context.Context) InstanceLdapAuthServerOutput {
+	return o
+}
+
+// The username of the account that is used for the LDAP server.
+func (o InstanceLdapAuthServerOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.Account }).(pulumi.StringOutput)
+}
+
+// The Base distinguished name (DN).
+func (o InstanceLdapAuthServerOutput) BaseDn() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.BaseDn }).(pulumi.StringOutput)
+}
+
+// The field that is used to indicate the email address of a user on the LDAP server.
+func (o InstanceLdapAuthServerOutput) EmailMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
+}
+
+// The condition that is used to filter users.
+func (o InstanceLdapAuthServerOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to support SSL.
+func (o InstanceLdapAuthServerOutput) IsSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) *bool { return v.IsSsl }).(pulumi.BoolPtrOutput)
+}
+
+// The field that is used to indicate the logon name of a user on the LDAP server.
+func (o InstanceLdapAuthServerOutput) LoginNameMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.LoginNameMapping }).(pulumi.StringPtrOutput)
+}
+
+// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+func (o InstanceLdapAuthServerOutput) MobileMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.MobileMapping }).(pulumi.StringPtrOutput)
+}
+
+// The field that is used to indicate the name of a user on the LDAP server.
+func (o InstanceLdapAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
+}
+
+// The password of the account that is used for the LDAP server.
+func (o InstanceLdapAuthServerOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The port that is used to access the LDAP server.
+func (o InstanceLdapAuthServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The address of the LDAP server.
+func (o InstanceLdapAuthServerOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) string { return v.Server }).(pulumi.StringOutput)
+}
+
+// The address of the secondary LDAP server.
+func (o InstanceLdapAuthServerOutput) StandbyServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLdapAuthServer) *string { return v.StandbyServer }).(pulumi.StringPtrOutput)
+}
+
+type InstanceLdapAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceLdapAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLdapAuthServer)(nil)).Elem()
+}
+
+func (o InstanceLdapAuthServerArrayOutput) ToInstanceLdapAuthServerArrayOutput() InstanceLdapAuthServerArrayOutput {
+	return o
+}
+
+func (o InstanceLdapAuthServerArrayOutput) ToInstanceLdapAuthServerArrayOutputWithContext(ctx context.Context) InstanceLdapAuthServerArrayOutput {
+	return o
+}
+
+func (o InstanceLdapAuthServerArrayOutput) Index(i pulumi.IntInput) InstanceLdapAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceLdapAuthServer {
+		return vs[0].([]InstanceLdapAuthServer)[vs[1].(int)]
+	}).(InstanceLdapAuthServerOutput)
+}
+
 type GetHostAccountsAccount struct {
 	// Whether to set a new password.
 	HasPassword bool `pulumi:"hasPassword"`
@@ -301,6 +693,139 @@ func (o GetHostGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetHostGroupsGro
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostGroupsGroup {
 		return vs[0].([]GetHostGroupsGroup)[vs[1].(int)]
 	}).(GetHostGroupsGroupOutput)
+}
+
+type GetHostShareKeysKey struct {
+	// The first ID of the resource.
+	HostShareKeyId string `pulumi:"hostShareKeyId"`
+	// The name of the host shared key.
+	HostShareKeyName string `pulumi:"hostShareKeyName"`
+	// The ID of the Host Share Key.
+	Id string `pulumi:"id"`
+	// The ID of the Bastion instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The fingerprint of the private key.
+	PrivateKeyFingerPrint string `pulumi:"privateKeyFingerPrint"`
+}
+
+// GetHostShareKeysKeyInput is an input type that accepts GetHostShareKeysKeyArgs and GetHostShareKeysKeyOutput values.
+// You can construct a concrete instance of `GetHostShareKeysKeyInput` via:
+//
+//          GetHostShareKeysKeyArgs{...}
+type GetHostShareKeysKeyInput interface {
+	pulumi.Input
+
+	ToGetHostShareKeysKeyOutput() GetHostShareKeysKeyOutput
+	ToGetHostShareKeysKeyOutputWithContext(context.Context) GetHostShareKeysKeyOutput
+}
+
+type GetHostShareKeysKeyArgs struct {
+	// The first ID of the resource.
+	HostShareKeyId pulumi.StringInput `pulumi:"hostShareKeyId"`
+	// The name of the host shared key.
+	HostShareKeyName pulumi.StringInput `pulumi:"hostShareKeyName"`
+	// The ID of the Host Share Key.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Bastion instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The fingerprint of the private key.
+	PrivateKeyFingerPrint pulumi.StringInput `pulumi:"privateKeyFingerPrint"`
+}
+
+func (GetHostShareKeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostShareKeysKey)(nil)).Elem()
+}
+
+func (i GetHostShareKeysKeyArgs) ToGetHostShareKeysKeyOutput() GetHostShareKeysKeyOutput {
+	return i.ToGetHostShareKeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetHostShareKeysKeyArgs) ToGetHostShareKeysKeyOutputWithContext(ctx context.Context) GetHostShareKeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostShareKeysKeyOutput)
+}
+
+// GetHostShareKeysKeyArrayInput is an input type that accepts GetHostShareKeysKeyArray and GetHostShareKeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetHostShareKeysKeyArrayInput` via:
+//
+//          GetHostShareKeysKeyArray{ GetHostShareKeysKeyArgs{...} }
+type GetHostShareKeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetHostShareKeysKeyArrayOutput() GetHostShareKeysKeyArrayOutput
+	ToGetHostShareKeysKeyArrayOutputWithContext(context.Context) GetHostShareKeysKeyArrayOutput
+}
+
+type GetHostShareKeysKeyArray []GetHostShareKeysKeyInput
+
+func (GetHostShareKeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostShareKeysKey)(nil)).Elem()
+}
+
+func (i GetHostShareKeysKeyArray) ToGetHostShareKeysKeyArrayOutput() GetHostShareKeysKeyArrayOutput {
+	return i.ToGetHostShareKeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostShareKeysKeyArray) ToGetHostShareKeysKeyArrayOutputWithContext(ctx context.Context) GetHostShareKeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostShareKeysKeyArrayOutput)
+}
+
+type GetHostShareKeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetHostShareKeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostShareKeysKey)(nil)).Elem()
+}
+
+func (o GetHostShareKeysKeyOutput) ToGetHostShareKeysKeyOutput() GetHostShareKeysKeyOutput {
+	return o
+}
+
+func (o GetHostShareKeysKeyOutput) ToGetHostShareKeysKeyOutputWithContext(ctx context.Context) GetHostShareKeysKeyOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetHostShareKeysKeyOutput) HostShareKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.HostShareKeyId }).(pulumi.StringOutput)
+}
+
+// The name of the host shared key.
+func (o GetHostShareKeysKeyOutput) HostShareKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.HostShareKeyName }).(pulumi.StringOutput)
+}
+
+// The ID of the Host Share Key.
+func (o GetHostShareKeysKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Bastion instance.
+func (o GetHostShareKeysKeyOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The fingerprint of the private key.
+func (o GetHostShareKeysKeyOutput) PrivateKeyFingerPrint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostShareKeysKey) string { return v.PrivateKeyFingerPrint }).(pulumi.StringOutput)
+}
+
+type GetHostShareKeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostShareKeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostShareKeysKey)(nil)).Elem()
+}
+
+func (o GetHostShareKeysKeyArrayOutput) ToGetHostShareKeysKeyArrayOutput() GetHostShareKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetHostShareKeysKeyArrayOutput) ToGetHostShareKeysKeyArrayOutputWithContext(ctx context.Context) GetHostShareKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetHostShareKeysKeyArrayOutput) Index(i pulumi.IntInput) GetHostShareKeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostShareKeysKey {
+		return vs[0].([]GetHostShareKeysKey)[vs[1].(int)]
+	}).(GetHostShareKeysKeyOutput)
 }
 
 type GetHostsHost struct {
@@ -1185,10 +1710,16 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAdAuthServerInput)(nil)).Elem(), InstanceAdAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAdAuthServerArrayInput)(nil)).Elem(), InstanceAdAuthServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLdapAuthServerInput)(nil)).Elem(), InstanceLdapAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLdapAuthServerArrayInput)(nil)).Elem(), InstanceLdapAuthServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAccountsAccountInput)(nil)).Elem(), GetHostAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAccountsAccountArrayInput)(nil)).Elem(), GetHostAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostGroupsGroupInput)(nil)).Elem(), GetHostGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostGroupsGroupArrayInput)(nil)).Elem(), GetHostGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostShareKeysKeyInput)(nil)).Elem(), GetHostShareKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostShareKeysKeyArrayInput)(nil)).Elem(), GetHostShareKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostInput)(nil)).Elem(), GetHostsHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostArrayInput)(nil)).Elem(), GetHostsHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsHostProtocolInput)(nil)).Elem(), GetHostsHostProtocolArgs{})
@@ -1199,10 +1730,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserGroupsGroupArrayInput)(nil)).Elem(), GetUserGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
+	pulumi.RegisterOutputType(InstanceAdAuthServerOutput{})
+	pulumi.RegisterOutputType(InstanceAdAuthServerArrayOutput{})
+	pulumi.RegisterOutputType(InstanceLdapAuthServerOutput{})
+	pulumi.RegisterOutputType(InstanceLdapAuthServerArrayOutput{})
 	pulumi.RegisterOutputType(GetHostAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetHostAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetHostGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetHostGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetHostShareKeysKeyOutput{})
+	pulumi.RegisterOutputType(GetHostShareKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetHostsHostOutput{})
 	pulumi.RegisterOutputType(GetHostsHostArrayOutput{})
 	pulumi.RegisterOutputType(GetHostsHostProtocolOutput{})

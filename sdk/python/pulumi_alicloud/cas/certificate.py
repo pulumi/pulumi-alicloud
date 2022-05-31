@@ -31,8 +31,8 @@ class CertificateArgs:
         if lang is not None:
             pulumi.set(__self__, "lang", lang)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+            warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -114,8 +114,8 @@ class _CertificateState:
         if lang is not None:
             pulumi.set(__self__, "lang", lang)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+            warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -270,8 +270,8 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["key"] = key
             __props__.__dict__["lang"] = lang
             if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
+                warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
             __props__.__dict__["name"] = name
         super(Certificate, __self__).__init__(
             'alicloud:cas/certificate:Certificate',

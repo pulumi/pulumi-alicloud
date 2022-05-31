@@ -64,6 +64,8 @@ type GetImagesArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// The name of the image.
 	ImageName *string `pulumi:"imageName"`
+	// The ID of the Alibaba Cloud account to which the image belongs. This parameter takes effect only when you query shared images or community images.
+	ImageOwnerId *string `pulumi:"imageOwnerId"`
 	// The instance type for which the image can be used.
 	InstanceType *string `pulumi:"instanceType"`
 	// Specifies whether the image supports cloud-init.
@@ -108,10 +110,11 @@ type GetImagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of image IDs.
-	Ids         []string `pulumi:"ids"`
-	ImageFamily *string  `pulumi:"imageFamily"`
-	ImageId     *string  `pulumi:"imageId"`
-	ImageName   *string  `pulumi:"imageName"`
+	Ids          []string `pulumi:"ids"`
+	ImageFamily  *string  `pulumi:"imageFamily"`
+	ImageId      *string  `pulumi:"imageId"`
+	ImageName    *string  `pulumi:"imageName"`
+	ImageOwnerId *string  `pulumi:"imageOwnerId"`
 	// A list of images. Each element contains the following attributes:
 	Images               []GetImagesImage `pulumi:"images"`
 	InstanceType         *string          `pulumi:"instanceType"`
@@ -162,6 +165,8 @@ type GetImagesOutputArgs struct {
 	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
 	// The name of the image.
 	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
+	// The ID of the Alibaba Cloud account to which the image belongs. This parameter takes effect only when you query shared images or community images.
+	ImageOwnerId pulumi.StringPtrInput `pulumi:"imageOwnerId"`
 	// The instance type for which the image can be used.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Specifies whether the image supports cloud-init.
@@ -249,6 +254,10 @@ func (o GetImagesResultOutput) ImageId() pulumi.StringPtrOutput {
 
 func (o GetImagesResultOutput) ImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) ImageOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageOwnerId }).(pulumi.StringPtrOutput)
 }
 
 // A list of images. Each element contains the following attributes:

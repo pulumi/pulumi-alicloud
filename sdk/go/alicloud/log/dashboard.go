@@ -14,7 +14,7 @@ import (
 // The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
 // [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
 //
-// > **NOTE:** Available in 1.86.0
+// > **NOTE:** Available in 1.86.0, parameter "action" in charList is supported since 1.164.0+.
 //
 // ## Example Usage
 //
@@ -47,7 +47,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
-// 			CharList:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  [\n", "    {\n", "      \"title\":\"new_title\",\n", "      \"type\":\"map\",\n", "      \"search\":{\n", "        \"logstore\":\"tf-logstore\",\n", "        \"topic\":\"new_topic\",\n", "        \"query\":\"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\",\n", "        \"start\":\"-86400s\",\n", "        \"end\":\"now\"\n", "      },\n", "      \"display\":{\n", "        \"xAxis\":[\n", "          \"ct_name\"\n", "        ],\n", "        \"yAxis\":[\n", "          \"ct_product\"\n", "        ],\n", "        \"xPos\":0,\n", "        \"yPos\":0,\n", "        \"width\":10,\n", "        \"height\":12,\n", "        \"displayName\":\"xixihaha911\"\n", "      }\n", "    }\n", "  ]\n", "\n")),
+// 			CharList:      pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  [\n", "    {\n", "      \"action\": {},\n", "      \"title\":\"new_title\",\n", "      \"type\":\"map\",\n", "      \"search\":{\n", "        \"logstore\":\"tf-logstore\",\n", "        \"topic\":\"new_topic\",\n", "        \"query\":\"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\",\n", "        \"start\":\"-86400s\",\n", "        \"end\":\"now\"\n", "      },\n", "      \"display\":{\n", "        \"xAxis\":[\n", "          \"ct_name\"\n", "        ],\n", "        \"yAxis\":[\n", "          \"ct_product\"\n", "        ],\n", "        \"xPos\":0,\n", "        \"yPos\":0,\n", "        \"width\":10,\n", "        \"height\":12,\n", "        \"displayName\":\"xixihaha911\"\n", "      }\n", "    }\n", "  ]\n", "\n")),
 // 			DashboardName: pulumi.String("tf-dashboard"),
 // 			ProjectName:   pulumi.String("tf-project"),
 // 		})

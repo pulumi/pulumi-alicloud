@@ -335,6 +335,7 @@ class _VirtualBorderRouterState:
                  peering_ipv6_subnet_mask: Optional[pulumi.Input[str]] = None,
                  peering_subnet_mask: Optional[pulumi.Input[str]] = None,
                  physical_connection_id: Optional[pulumi.Input[str]] = None,
+                 route_table_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vbr_owner_id: Optional[pulumi.Input[str]] = None,
                  virtual_border_router_name: Optional[pulumi.Input[str]] = None,
@@ -356,6 +357,7 @@ class _VirtualBorderRouterState:
         :param pulumi.Input[str] peering_ipv6_subnet_mask: Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
         :param pulumi.Input[str] peering_subnet_mask: Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
         :param pulumi.Input[str] physical_connection_id: The ID of the Physical Connection to Which the ID.
+        :param pulumi.Input[str] route_table_id: (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
         :param pulumi.Input[str] status: The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
         :param pulumi.Input[str] vbr_owner_id: The vbr owner id.
         :param pulumi.Input[str] virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
@@ -391,6 +393,8 @@ class _VirtualBorderRouterState:
             pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
         if physical_connection_id is not None:
             pulumi.set(__self__, "physical_connection_id", physical_connection_id)
+        if route_table_id is not None:
+            pulumi.set(__self__, "route_table_id", route_table_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if vbr_owner_id is not None:
@@ -579,6 +583,18 @@ class _VirtualBorderRouterState:
     @physical_connection_id.setter
     def physical_connection_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "physical_connection_id", value)
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @route_table_id.setter
+    def route_table_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route_table_id", value)
 
     @property
     @pulumi.getter
@@ -829,6 +845,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             if vlan_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vlan_id'")
             __props__.__dict__["vlan_id"] = vlan_id
+            __props__.__dict__["route_table_id"] = None
         super(VirtualBorderRouter, __self__).__init__(
             'alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter',
             resource_name,
@@ -854,6 +871,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             peering_ipv6_subnet_mask: Optional[pulumi.Input[str]] = None,
             peering_subnet_mask: Optional[pulumi.Input[str]] = None,
             physical_connection_id: Optional[pulumi.Input[str]] = None,
+            route_table_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vbr_owner_id: Optional[pulumi.Input[str]] = None,
             virtual_border_router_name: Optional[pulumi.Input[str]] = None,
@@ -880,6 +898,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
         :param pulumi.Input[str] peering_ipv6_subnet_mask: Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
         :param pulumi.Input[str] peering_subnet_mask: Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
         :param pulumi.Input[str] physical_connection_id: The ID of the Physical Connection to Which the ID.
+        :param pulumi.Input[str] route_table_id: (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
         :param pulumi.Input[str] status: The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
         :param pulumi.Input[str] vbr_owner_id: The vbr owner id.
         :param pulumi.Input[str] virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
@@ -904,6 +923,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
         __props__.__dict__["peering_ipv6_subnet_mask"] = peering_ipv6_subnet_mask
         __props__.__dict__["peering_subnet_mask"] = peering_subnet_mask
         __props__.__dict__["physical_connection_id"] = physical_connection_id
+        __props__.__dict__["route_table_id"] = route_table_id
         __props__.__dict__["status"] = status
         __props__.__dict__["vbr_owner_id"] = vbr_owner_id
         __props__.__dict__["virtual_border_router_name"] = virtual_border_router_name
@@ -1029,6 +1049,14 @@ class VirtualBorderRouter(pulumi.CustomResource):
         The ID of the Physical Connection to Which the ID.
         """
         return pulumi.get(self, "physical_connection_id")
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+        """
+        return pulumi.get(self, "route_table_id")
 
     @property
     @pulumi.getter

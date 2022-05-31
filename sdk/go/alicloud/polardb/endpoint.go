@@ -48,15 +48,17 @@ import (
 // 			return err
 // 		}
 // 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String(name),
 // 			CidrBlock: pulumi.String("172.16.0.0/16"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:     defaultNetwork.ID(),
-// 			CidrBlock: pulumi.String("172.16.0.0/24"),
-// 			ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+// 			VpcId:       defaultNetwork.ID(),
+// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
+// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+// 			VswitchName: pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -88,7 +90,7 @@ import (
 // The following arguments are supported:
 //
 // * `dbClusterId` - (Required, ForceNew) The Id of cluster that can run database.
-// * `endpointType` - (Required & ForceNew before v1.121.0, Optional in v1.121.0+) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
+// * `endpointType` - (Optional, ForceNew) Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
 // * `readWriteMode` - (Optional) Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
 // * `nodes` - (Optional) Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
 // * `autoAddNewNodes` - (Optional) Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
@@ -112,7 +114,9 @@ type Endpoint struct {
 
 	AutoAddNewNodes pulumi.StringOutput `pulumi:"autoAddNewNodes"`
 	DbClusterId     pulumi.StringOutput `pulumi:"dbClusterId"`
-	EndpointConfig  pulumi.MapOutput    `pulumi:"endpointConfig"`
+	// (Available in v1.161.0+) The ID of the cluster endpoint.
+	DbEndpointId   pulumi.StringOutput `pulumi:"dbEndpointId"`
+	EndpointConfig pulumi.MapOutput    `pulumi:"endpointConfig"`
 	// Type of endpoint.
 	EndpointType      pulumi.StringPtrOutput   `pulumi:"endpointType"`
 	NetType           pulumi.StringPtrOutput   `pulumi:"netType"`
@@ -159,9 +163,11 @@ func GetEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Endpoint resources.
 type endpointState struct {
-	AutoAddNewNodes *string                `pulumi:"autoAddNewNodes"`
-	DbClusterId     *string                `pulumi:"dbClusterId"`
-	EndpointConfig  map[string]interface{} `pulumi:"endpointConfig"`
+	AutoAddNewNodes *string `pulumi:"autoAddNewNodes"`
+	DbClusterId     *string `pulumi:"dbClusterId"`
+	// (Available in v1.161.0+) The ID of the cluster endpoint.
+	DbEndpointId   *string                `pulumi:"dbEndpointId"`
+	EndpointConfig map[string]interface{} `pulumi:"endpointConfig"`
 	// Type of endpoint.
 	EndpointType      *string  `pulumi:"endpointType"`
 	NetType           *string  `pulumi:"netType"`
@@ -179,7 +185,9 @@ type endpointState struct {
 type EndpointState struct {
 	AutoAddNewNodes pulumi.StringPtrInput
 	DbClusterId     pulumi.StringPtrInput
-	EndpointConfig  pulumi.MapInput
+	// (Available in v1.161.0+) The ID of the cluster endpoint.
+	DbEndpointId   pulumi.StringPtrInput
+	EndpointConfig pulumi.MapInput
 	// Type of endpoint.
 	EndpointType      pulumi.StringPtrInput
 	NetType           pulumi.StringPtrInput

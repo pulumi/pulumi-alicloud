@@ -10,6 +10,18 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'EciScalingConfigurationContainer',
+    'EciScalingConfigurationContainerEnvironmentVar',
+    'EciScalingConfigurationContainerPort',
+    'EciScalingConfigurationContainerVolumeMount',
+    'EciScalingConfigurationHostAlias',
+    'EciScalingConfigurationImageRegistryCredential',
+    'EciScalingConfigurationInitContainer',
+    'EciScalingConfigurationInitContainerEnvironmentVar',
+    'EciScalingConfigurationInitContainerPort',
+    'EciScalingConfigurationInitContainerVolumeMount',
+    'EciScalingConfigurationVolume',
+    'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath',
     'ScalingConfigurationDataDisk',
     'ScalingConfigurationSpotPriceLimit',
     'ScalingGroupVServerGroupsVserverGroup',
@@ -25,6 +37,911 @@ __all__ = [
     'GetScalingRulesRuleResult',
     'GetScheduledTasksTaskResult',
 ]
+
+@pulumi.output_type
+class EciScalingConfigurationContainer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentVars":
+            suggest = "environment_vars"
+        elif key == "imagePullPolicy":
+            suggest = "image_pull_policy"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
+        elif key == "workingDir":
+            suggest = "working_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EciScalingConfigurationContainer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EciScalingConfigurationContainer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EciScalingConfigurationContainer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 args: Optional[Sequence[str]] = None,
+                 commands: Optional[Sequence[str]] = None,
+                 cpu: Optional[float] = None,
+                 environment_vars: Optional[Sequence['outputs.EciScalingConfigurationContainerEnvironmentVar']] = None,
+                 gpu: Optional[int] = None,
+                 image: Optional[str] = None,
+                 image_pull_policy: Optional[str] = None,
+                 memory: Optional[float] = None,
+                 name: Optional[str] = None,
+                 ports: Optional[Sequence['outputs.EciScalingConfigurationContainerPort']] = None,
+                 volume_mounts: Optional[Sequence['outputs.EciScalingConfigurationContainerVolumeMount']] = None,
+                 working_dir: Optional[str] = None):
+        """
+        :param Sequence[str] args: The arguments passed to the commands.
+        :param Sequence[str] commands: The commands run by the init container.
+        :param float cpu: The amount of CPU resources allocated to the container.
+        :param Sequence['EciScalingConfigurationContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
+               See Block_environment_var_in_container below for details.
+        :param int gpu: The number GPUs.
+        :param str image: The image of the container.
+        :param str image_pull_policy: The restart policy of the image.
+        :param float memory: The amount of memory resources allocated to the container.
+        :param str name: The name of the mounted volume.
+        :param Sequence['EciScalingConfigurationContainerPortArgs'] ports: The structure of port. See Block_port_in_container below for details.
+        :param Sequence['EciScalingConfigurationContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
+               See Block_volume_mount_in_container below for details.
+        :param str working_dir: The working directory of the container.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if gpu is not None:
+            pulumi.set(__self__, "gpu", gpu)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments passed to the commands.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        The commands run by the init container.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[float]:
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[Sequence['outputs.EciScalingConfigurationContainerEnvironmentVar']]:
+        """
+        The structure of environmentVars.
+        See Block_environment_var_in_container below for details.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[int]:
+        """
+        The number GPUs.
+        """
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        The image of the container.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[str]:
+        """
+        The restart policy of the image.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[float]:
+        """
+        The amount of memory resources allocated to the container.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence['outputs.EciScalingConfigurationContainerPort']]:
+        """
+        The structure of port. See Block_port_in_container below for details.
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.EciScalingConfigurationContainerVolumeMount']]:
+        """
+        The structure of volumeMounts.
+        See Block_volume_mount_in_container below for details.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[str]:
+        """
+        The working directory of the container.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class EciScalingConfigurationContainerEnvironmentVar(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+               digits, and underscores (_). It cannot start with a digit.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+        digits, and underscores (_). It cannot start with a digit.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class EciScalingConfigurationContainerPort(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param int port: The port number. Valid values: 1 to 65535.
+        :param str protocol: Valid values: TCP and UDP.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        Valid values: TCP and UDP.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class EciScalingConfigurationContainerVolumeMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EciScalingConfigurationContainerVolumeMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EciScalingConfigurationContainerVolumeMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EciScalingConfigurationContainerVolumeMount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: Optional[str] = None,
+                 name: Optional[str] = None,
+                 read_only: Optional[bool] = None):
+        """
+        :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
+               data in the volume.
+        :param str name: The name of the mounted volume.
+        :param bool read_only: Default to `false`.
+        """
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[str]:
+        """
+        The directory of the mounted volume. Data under this directory will be overwritten by the
+        data in the volume.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        Default to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class EciScalingConfigurationHostAlias(dict):
+    def __init__(__self__, *,
+                 hostnames: Optional[Sequence[str]] = None,
+                 ip: Optional[str] = None):
+        """
+        :param Sequence[str] hostnames: Adds a host name.
+        :param str ip: Adds an IP address.
+        """
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Optional[Sequence[str]]:
+        """
+        Adds a host name.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        Adds an IP address.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class EciScalingConfigurationImageRegistryCredential(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 server: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str password: The password used to log on to the image repository. It is required
+               when `image_registry_credential` is configured.
+        :param str server: The address of the image repository. It is required when `image_registry_credential` is
+               configured.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if server is not None:
+            pulumi.set(__self__, "server", server)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password used to log on to the image repository. It is required
+        when `image_registry_credential` is configured.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def server(self) -> Optional[str]:
+        """
+        The address of the image repository. It is required when `image_registry_credential` is
+        configured.
+        """
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class EciScalingConfigurationInitContainer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentVars":
+            suggest = "environment_vars"
+        elif key == "imagePullPolicy":
+            suggest = "image_pull_policy"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
+        elif key == "workingDir":
+            suggest = "working_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EciScalingConfigurationInitContainer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EciScalingConfigurationInitContainer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EciScalingConfigurationInitContainer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 args: Optional[Sequence[str]] = None,
+                 commands: Optional[Sequence[str]] = None,
+                 cpu: Optional[float] = None,
+                 environment_vars: Optional[Sequence['outputs.EciScalingConfigurationInitContainerEnvironmentVar']] = None,
+                 gpu: Optional[int] = None,
+                 image: Optional[str] = None,
+                 image_pull_policy: Optional[str] = None,
+                 memory: Optional[float] = None,
+                 name: Optional[str] = None,
+                 ports: Optional[Sequence['outputs.EciScalingConfigurationInitContainerPort']] = None,
+                 volume_mounts: Optional[Sequence['outputs.EciScalingConfigurationInitContainerVolumeMount']] = None,
+                 working_dir: Optional[str] = None):
+        """
+        :param Sequence[str] args: The arguments passed to the commands.
+        :param Sequence[str] commands: The commands run by the init container.
+        :param float cpu: The amount of CPU resources allocated to the container.
+        :param Sequence['EciScalingConfigurationInitContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
+               See Block_environment_var_in_container below for details.
+        :param int gpu: The number GPUs.
+        :param str image: The image of the container.
+        :param str image_pull_policy: The restart policy of the image.
+        :param float memory: The amount of memory resources allocated to the container.
+        :param str name: The name of the mounted volume.
+        :param Sequence['EciScalingConfigurationInitContainerPortArgs'] ports: The structure of port. See Block_port_in_container below for details.
+        :param Sequence['EciScalingConfigurationInitContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
+               See Block_volume_mount_in_container below for details.
+        :param str working_dir: The working directory of the container.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if gpu is not None:
+            pulumi.set(__self__, "gpu", gpu)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if image_pull_policy is not None:
+            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if working_dir is not None:
+            pulumi.set(__self__, "working_dir", working_dir)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments passed to the commands.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        The commands run by the init container.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[float]:
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[Sequence['outputs.EciScalingConfigurationInitContainerEnvironmentVar']]:
+        """
+        The structure of environmentVars.
+        See Block_environment_var_in_container below for details.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[int]:
+        """
+        The number GPUs.
+        """
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        The image of the container.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter(name="imagePullPolicy")
+    def image_pull_policy(self) -> Optional[str]:
+        """
+        The restart policy of the image.
+        """
+        return pulumi.get(self, "image_pull_policy")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[float]:
+        """
+        The amount of memory resources allocated to the container.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence['outputs.EciScalingConfigurationInitContainerPort']]:
+        """
+        The structure of port. See Block_port_in_container below for details.
+        """
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.EciScalingConfigurationInitContainerVolumeMount']]:
+        """
+        The structure of volumeMounts.
+        See Block_volume_mount_in_container below for details.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @property
+    @pulumi.getter(name="workingDir")
+    def working_dir(self) -> Optional[str]:
+        """
+        The working directory of the container.
+        """
+        return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class EciScalingConfigurationInitContainerEnvironmentVar(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+               digits, and underscores (_). It cannot start with a digit.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+        digits, and underscores (_). It cannot start with a digit.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the variable. The value can be 0 to 256 characters in length.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class EciScalingConfigurationInitContainerPort(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param int port: The port number. Valid values: 1 to 65535.
+        :param str protocol: Valid values: TCP and UDP.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        Valid values: TCP and UDP.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class EciScalingConfigurationInitContainerVolumeMount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EciScalingConfigurationInitContainerVolumeMount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EciScalingConfigurationInitContainerVolumeMount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EciScalingConfigurationInitContainerVolumeMount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_path: Optional[str] = None,
+                 name: Optional[str] = None,
+                 read_only: Optional[bool] = None):
+        """
+        :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
+               data in the volume.
+        :param str name: The name of the mounted volume.
+        :param bool read_only: Default to `false`.
+        """
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[str]:
+        """
+        The directory of the mounted volume. Data under this directory will be overwritten by the
+        data in the volume.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        Default to `false`.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class EciScalingConfigurationVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configFileVolumeConfigFileToPaths":
+            suggest = "config_file_volume_config_file_to_paths"
+        elif key == "diskVolumeDiskId":
+            suggest = "disk_volume_disk_id"
+        elif key == "diskVolumeDiskSize":
+            suggest = "disk_volume_disk_size"
+        elif key == "diskVolumeFsType":
+            suggest = "disk_volume_fs_type"
+        elif key == "flexVolumeDriver":
+            suggest = "flex_volume_driver"
+        elif key == "flexVolumeFsType":
+            suggest = "flex_volume_fs_type"
+        elif key == "flexVolumeOptions":
+            suggest = "flex_volume_options"
+        elif key == "nfsVolumePath":
+            suggest = "nfs_volume_path"
+        elif key == "nfsVolumeReadOnly":
+            suggest = "nfs_volume_read_only"
+        elif key == "nfsVolumeServer":
+            suggest = "nfs_volume_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EciScalingConfigurationVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EciScalingConfigurationVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EciScalingConfigurationVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_file_volume_config_file_to_paths: Optional[Sequence['outputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath']] = None,
+                 disk_volume_disk_id: Optional[str] = None,
+                 disk_volume_disk_size: Optional[int] = None,
+                 disk_volume_fs_type: Optional[str] = None,
+                 flex_volume_driver: Optional[str] = None,
+                 flex_volume_fs_type: Optional[str] = None,
+                 flex_volume_options: Optional[str] = None,
+                 name: Optional[str] = None,
+                 nfs_volume_path: Optional[str] = None,
+                 nfs_volume_read_only: Optional[bool] = None,
+                 nfs_volume_server: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param Sequence['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs'] config_file_volume_config_file_to_paths: ConfigFileVolumeConfigFileToPaths.
+               See Block_config_file_volume_config_file_to_path below for details.
+        :param str disk_volume_disk_id: The ID of DiskVolume.
+        :param str disk_volume_fs_type: The system type of DiskVolume.
+        :param str flex_volume_driver: The name of the FlexVolume driver.
+        :param str flex_volume_fs_type: The type of the mounted file system. The default value is determined by the script
+               of FlexVolume.
+        :param str flex_volume_options: The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
+               string.
+        :param str name: The name of the mounted volume.
+        :param str nfs_volume_path: The path to the NFS volume.
+        :param bool nfs_volume_read_only: The nfs volume read only. Default to `false`.
+        :param str nfs_volume_server: The address of the NFS server.
+        :param str type: The type of the volume.
+        """
+        if config_file_volume_config_file_to_paths is not None:
+            pulumi.set(__self__, "config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
+        if disk_volume_disk_id is not None:
+            pulumi.set(__self__, "disk_volume_disk_id", disk_volume_disk_id)
+        if disk_volume_disk_size is not None:
+            pulumi.set(__self__, "disk_volume_disk_size", disk_volume_disk_size)
+        if disk_volume_fs_type is not None:
+            pulumi.set(__self__, "disk_volume_fs_type", disk_volume_fs_type)
+        if flex_volume_driver is not None:
+            pulumi.set(__self__, "flex_volume_driver", flex_volume_driver)
+        if flex_volume_fs_type is not None:
+            pulumi.set(__self__, "flex_volume_fs_type", flex_volume_fs_type)
+        if flex_volume_options is not None:
+            pulumi.set(__self__, "flex_volume_options", flex_volume_options)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nfs_volume_path is not None:
+            pulumi.set(__self__, "nfs_volume_path", nfs_volume_path)
+        if nfs_volume_read_only is not None:
+            pulumi.set(__self__, "nfs_volume_read_only", nfs_volume_read_only)
+        if nfs_volume_server is not None:
+            pulumi.set(__self__, "nfs_volume_server", nfs_volume_server)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="configFileVolumeConfigFileToPaths")
+    def config_file_volume_config_file_to_paths(self) -> Optional[Sequence['outputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath']]:
+        """
+        ConfigFileVolumeConfigFileToPaths.
+        See Block_config_file_volume_config_file_to_path below for details.
+        """
+        return pulumi.get(self, "config_file_volume_config_file_to_paths")
+
+    @property
+    @pulumi.getter(name="diskVolumeDiskId")
+    def disk_volume_disk_id(self) -> Optional[str]:
+        """
+        The ID of DiskVolume.
+        """
+        return pulumi.get(self, "disk_volume_disk_id")
+
+    @property
+    @pulumi.getter(name="diskVolumeDiskSize")
+    def disk_volume_disk_size(self) -> Optional[int]:
+        return pulumi.get(self, "disk_volume_disk_size")
+
+    @property
+    @pulumi.getter(name="diskVolumeFsType")
+    def disk_volume_fs_type(self) -> Optional[str]:
+        """
+        The system type of DiskVolume.
+        """
+        return pulumi.get(self, "disk_volume_fs_type")
+
+    @property
+    @pulumi.getter(name="flexVolumeDriver")
+    def flex_volume_driver(self) -> Optional[str]:
+        """
+        The name of the FlexVolume driver.
+        """
+        return pulumi.get(self, "flex_volume_driver")
+
+    @property
+    @pulumi.getter(name="flexVolumeFsType")
+    def flex_volume_fs_type(self) -> Optional[str]:
+        """
+        The type of the mounted file system. The default value is determined by the script
+        of FlexVolume.
+        """
+        return pulumi.get(self, "flex_volume_fs_type")
+
+    @property
+    @pulumi.getter(name="flexVolumeOptions")
+    def flex_volume_options(self) -> Optional[str]:
+        """
+        The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
+        string.
+        """
+        return pulumi.get(self, "flex_volume_options")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the mounted volume.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nfsVolumePath")
+    def nfs_volume_path(self) -> Optional[str]:
+        """
+        The path to the NFS volume.
+        """
+        return pulumi.get(self, "nfs_volume_path")
+
+    @property
+    @pulumi.getter(name="nfsVolumeReadOnly")
+    def nfs_volume_read_only(self) -> Optional[bool]:
+        """
+        The nfs volume read only. Default to `false`.
+        """
+        return pulumi.get(self, "nfs_volume_read_only")
+
+    @property
+    @pulumi.getter(name="nfsVolumeServer")
+    def nfs_volume_server(self) -> Optional[str]:
+        """
+        The address of the NFS server.
+        """
+        return pulumi.get(self, "nfs_volume_server")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the volume.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(dict):
+    def __init__(__self__, *,
+                 content: Optional[str] = None,
+                 path: Optional[str] = None):
+        """
+        :param str content: The content of the configuration file. Maximum size: 32 KB.
+        :param str path: The relative file path.
+        """
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        """
+        The content of the configuration file. Maximum size: 32 KB.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The relative file path.
+        """
+        return pulumi.get(self, "path")
+
 
 @pulumi.output_type
 class ScalingConfigurationDataDisk(dict):
