@@ -1086,6 +1086,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cfg/delivery",
+  "fqn": "pulumi_alicloud.cfg",
+  "classes": {
+   "alicloud:cfg/delivery:Delivery": "Delivery"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cfg/deliveryChannel",
   "fqn": "pulumi_alicloud.cfg",
   "classes": {
@@ -1382,10 +1390,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cms/namespace",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cms/siteMonitor",
   "fqn": "pulumi_alicloud.cms",
   "classes": {
    "alicloud:cms/siteMonitor:SiteMonitor": "SiteMonitor"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cms/slsGroup",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/slsGroup:SlsGroup": "SlsGroup"
   }
  },
  {
@@ -2474,6 +2498,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.edas",
   "classes": {
    "alicloud:edas/slbAttachment:SlbAttachment": "SlbAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eds/bundle",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/bundle:Bundle": "Bundle"
   }
  },
  {

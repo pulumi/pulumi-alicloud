@@ -5,11 +5,13 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .bundle import *
 from .command import *
 from .desktop import *
 from .ecd_policy_group import *
 from .get_bundles import *
 from .get_commands import *
+from .get_desktop_types import *
 from .get_desktops import *
 from .get_images import *
 from .get_nas_file_systems import *

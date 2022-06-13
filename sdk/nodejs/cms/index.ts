@@ -16,12 +16,16 @@ export * from "./getGroupMetricRules";
 export * from "./getMetricRuleTemplates";
 export * from "./getMonitorGroupInstances";
 export * from "./getMonitorGroups";
+export * from "./getNamespaces";
 export * from "./getService";
+export * from "./getSlsGroups";
 export * from "./groupMetricRule";
 export * from "./metricRuleTemplate";
 export * from "./monitorGroup";
 export * from "./monitorGroupInstances";
+export * from "./namespace";
 export * from "./siteMonitor";
+export * from "./slsGroup";
 
 // Import resources to register:
 import { Alarm } from "./alarm";
@@ -32,7 +36,9 @@ import { GroupMetricRule } from "./groupMetricRule";
 import { MetricRuleTemplate } from "./metricRuleTemplate";
 import { MonitorGroup } from "./monitorGroup";
 import { MonitorGroupInstances } from "./monitorGroupInstances";
+import { Namespace } from "./namespace";
 import { SiteMonitor } from "./siteMonitor";
+import { SlsGroup } from "./slsGroup";
 
 const _module = {
     version: utilities.getVersion(),
@@ -54,8 +60,12 @@ const _module = {
                 return new MonitorGroup(name, <any>undefined, { urn })
             case "alicloud:cms/monitorGroupInstances:MonitorGroupInstances":
                 return new MonitorGroupInstances(name, <any>undefined, { urn })
+            case "alicloud:cms/namespace:Namespace":
+                return new Namespace(name, <any>undefined, { urn })
             case "alicloud:cms/siteMonitor:SiteMonitor":
                 return new SiteMonitor(name, <any>undefined, { urn })
+            case "alicloud:cms/slsGroup:SlsGroup":
+                return new SlsGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -69,4 +79,6 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module
 pulumi.runtime.registerResourceModule("alicloud", "cms/metricRuleTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroupInstances", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/siteMonitor", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/slsGroup", _module)

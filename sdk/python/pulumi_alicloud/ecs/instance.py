@@ -56,6 +56,7 @@ class InstanceArgs:
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 stopped_mode: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -126,6 +127,7 @@ class InstanceArgs:
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -229,6 +231,8 @@ class InstanceArgs:
             pulumi.set(__self__, "spot_strategy", spot_strategy)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if stopped_mode is not None:
+            pulumi.set(__self__, "stopped_mode", stopped_mode)
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if system_disk_auto_snapshot_policy_id is not None:
@@ -757,6 +761,18 @@ class InstanceArgs:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="stoppedMode")
+    def stopped_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        """
+        return pulumi.get(self, "stopped_mode")
+
+    @stopped_mode.setter
+    def stopped_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stopped_mode", value)
+
+    @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "subnet_id")
@@ -936,6 +952,7 @@ class _InstanceState:
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 stopped_mode: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1008,6 +1025,7 @@ class _InstanceState:
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -1118,6 +1136,8 @@ class _InstanceState:
             pulumi.set(__self__, "spot_strategy", spot_strategy)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if stopped_mode is not None:
+            pulumi.set(__self__, "stopped_mode", stopped_mode)
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if system_disk_auto_snapshot_policy_id is not None:
@@ -1670,6 +1690,18 @@ class _InstanceState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="stoppedMode")
+    def stopped_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        """
+        return pulumi.get(self, "stopped_mode")
+
+    @stopped_mode.setter
+    def stopped_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stopped_mode", value)
+
+    @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "subnet_id")
@@ -1849,6 +1881,7 @@ class Instance(pulumi.CustomResource):
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 stopped_mode: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1929,6 +1962,7 @@ class Instance(pulumi.CustomResource):
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -2015,6 +2049,7 @@ class Instance(pulumi.CustomResource):
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 stopped_mode: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -2094,6 +2129,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["spot_price_limit"] = spot_price_limit
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["status"] = status
+            __props__.__dict__["stopped_mode"] = stopped_mode
             __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
             __props__.__dict__["system_disk_category"] = system_disk_category
@@ -2160,6 +2196,7 @@ class Instance(pulumi.CustomResource):
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            stopped_mode: Optional[pulumi.Input[str]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -2237,6 +2274,7 @@ class Instance(pulumi.CustomResource):
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -2299,6 +2337,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["spot_price_limit"] = spot_price_limit
         __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["status"] = status
+        __props__.__dict__["stopped_mode"] = stopped_mode
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
         __props__.__dict__["system_disk_category"] = system_disk_category
@@ -2667,6 +2706,14 @@ class Instance(pulumi.CustomResource):
         The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="stoppedMode")
+    def stopped_mode(self) -> pulumi.Output[str]:
+        """
+        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        """
+        return pulumi.get(self, "stopped_mode")
 
     @property
     @pulumi.getter(name="subnetId")

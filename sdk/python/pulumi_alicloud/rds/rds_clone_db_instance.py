@@ -67,6 +67,7 @@ class RdsCloneDbInstanceArgs:
                  switch_time: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
                  table_meta: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -158,6 +159,9 @@ class RdsCloneDbInstanceArgs:
                * **Async**: asynchronous
         :param pulumi.Input[str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values:
                * Enabled
                * Disabled
@@ -269,6 +273,8 @@ class RdsCloneDbInstanceArgs:
             pulumi.set(__self__, "sync_mode", sync_mode)
         if table_meta is not None:
             pulumi.set(__self__, "table_meta", table_meta)
+        if tcp_connection_type is not None:
+            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if used_time is not None:
@@ -937,6 +943,20 @@ class RdsCloneDbInstanceArgs:
         pulumi.set(self, "table_meta", value)
 
     @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
+
+    @tcp_connection_type.setter
+    def tcp_connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tcp_connection_type", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1057,6 +1077,7 @@ class _RdsCloneDbInstanceState:
                  switch_time: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
                  table_meta: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1149,6 +1170,9 @@ class _RdsCloneDbInstanceState:
                * **Async**: asynchronous
         :param pulumi.Input[str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values:
                * Enabled
                * Disabled
@@ -1265,6 +1289,8 @@ class _RdsCloneDbInstanceState:
             pulumi.set(__self__, "sync_mode", sync_mode)
         if table_meta is not None:
             pulumi.set(__self__, "table_meta", table_meta)
+        if tcp_connection_type is not None:
+            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if used_time is not None:
@@ -1945,6 +1971,20 @@ class _RdsCloneDbInstanceState:
         pulumi.set(self, "table_meta", value)
 
     @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
+
+    @tcp_connection_type.setter
+    def tcp_connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tcp_connection_type", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2066,6 +2106,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  switch_time: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
                  table_meta: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -2210,6 +2251,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Async**: asynchronous
         :param pulumi.Input[str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values:
                * Enabled
                * Disabled
@@ -2345,6 +2389,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  switch_time: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
                  table_meta: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -2420,6 +2465,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             __props__.__dict__["switch_time"] = switch_time
             __props__.__dict__["sync_mode"] = sync_mode
             __props__.__dict__["table_meta"] = table_meta
+            __props__.__dict__["tcp_connection_type"] = tcp_connection_type
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["used_time"] = used_time
             __props__.__dict__["vpc_id"] = vpc_id
@@ -2489,6 +2535,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             switch_time: Optional[pulumi.Input[str]] = None,
             sync_mode: Optional[pulumi.Input[str]] = None,
             table_meta: Optional[pulumi.Input[str]] = None,
+            tcp_connection_type: Optional[pulumi.Input[str]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             used_time: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -2586,6 +2633,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Async**: asynchronous
         :param pulumi.Input[str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values:
                * Enabled
                * Disabled
@@ -2653,6 +2703,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         __props__.__dict__["switch_time"] = switch_time
         __props__.__dict__["sync_mode"] = sync_mode
         __props__.__dict__["table_meta"] = table_meta
+        __props__.__dict__["tcp_connection_type"] = tcp_connection_type
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["used_time"] = used_time
         __props__.__dict__["vpc_id"] = vpc_id
@@ -3115,6 +3166,16 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
         """
         return pulumi.get(self, "table_meta")
+
+    @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> pulumi.Output[str]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
 
     @property
     @pulumi.getter(name="tdeStatus")

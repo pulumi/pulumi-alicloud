@@ -85,6 +85,9 @@ export class MonitorGroup extends pulumi.CustomResource {
      * The name of the resource group.
      */
     public readonly resourceGroupName!: pulumi.Output<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
@@ -138,6 +141,9 @@ export interface MonitorGroupState {
      * The name of the resource group.
      */
     resourceGroupName?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -161,5 +167,8 @@ export interface MonitorGroupArgs {
      * The name of the resource group.
      */
     resourceGroupName?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

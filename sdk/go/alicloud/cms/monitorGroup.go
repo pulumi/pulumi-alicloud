@@ -73,7 +73,8 @@ type MonitorGroup struct {
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringPtrOutput `pulumi:"resourceGroupName"`
-	Tags              pulumi.MapOutput       `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewMonitorGroup registers a new resource with the given unique name, arguments, and options.
@@ -112,8 +113,9 @@ type monitorGroupState struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of the resource group.
-	ResourceGroupName *string                `pulumi:"resourceGroupName"`
-	Tags              map[string]interface{} `pulumi:"tags"`
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type MonitorGroupState struct {
@@ -125,7 +127,8 @@ type MonitorGroupState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringPtrInput
-	Tags              pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (MonitorGroupState) ElementType() reflect.Type {
@@ -140,8 +143,9 @@ type monitorGroupArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of the resource group.
-	ResourceGroupName *string                `pulumi:"resourceGroupName"`
-	Tags              map[string]interface{} `pulumi:"tags"`
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a MonitorGroup resource.
@@ -154,7 +158,8 @@ type MonitorGroupArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringPtrInput
-	Tags              pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (MonitorGroupArgs) ElementType() reflect.Type {

@@ -291,6 +291,12 @@ namespace Pulumi.AliCloud.Ecs
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// </summary>
+        [Output("stoppedMode")]
+        public Output<string> StoppedMode { get; private set; } = null!;
+
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
 
@@ -686,6 +692,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// </summary>
+        [Input("stoppedMode")]
+        public Input<string>? StoppedMode { get; set; }
+
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
@@ -1065,6 +1077,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// </summary>
+        [Input("stoppedMode")]
+        public Input<string>? StoppedMode { get; set; }
 
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

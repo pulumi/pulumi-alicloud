@@ -106,6 +106,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     */
+    public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
+    /**
      * Enable login to the node through SSH. Default to `false`.
      */
     public readonly enableSsh!: pulumi.Output<boolean | undefined>;
@@ -189,7 +193,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     /**
      * The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
      */
-    public readonly platform!: pulumi.Output<string | undefined>;
+    public readonly platform!: pulumi.Output<string>;
     /**
      * - [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
@@ -357,6 +361,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["cpuPolicy"] = state ? state.cpuPolicy : undefined;
             resourceInputs["customSan"] = state ? state.customSan : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["enableRrsa"] = state ? state.enableRrsa : undefined;
             resourceInputs["enableSsh"] = state ? state.enableSsh : undefined;
             resourceInputs["encryptionProviderKey"] = state ? state.encryptionProviderKey : undefined;
             resourceInputs["excludeAutoscalerNodes"] = state ? state.excludeAutoscalerNodes : undefined;
@@ -436,6 +441,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["cpuPolicy"] = args ? args.cpuPolicy : undefined;
             resourceInputs["customSan"] = args ? args.customSan : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["enableRrsa"] = args ? args.enableRrsa : undefined;
             resourceInputs["enableSsh"] = args ? args.enableSsh : undefined;
             resourceInputs["encryptionProviderKey"] = args ? args.encryptionProviderKey : undefined;
             resourceInputs["excludeAutoscalerNodes"] = args ? args.excludeAutoscalerNodes : undefined;
@@ -571,6 +577,10 @@ export interface ManagedKubernetesState {
      * Whether to enable cluster deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     */
+    enableRrsa?: pulumi.Input<boolean>;
     /**
      * Enable login to the node through SSH. Default to `false`.
      */
@@ -854,6 +864,10 @@ export interface ManagedKubernetesArgs {
      * Whether to enable cluster deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     */
+    enableRrsa?: pulumi.Input<boolean>;
     /**
      * Enable login to the node through SSH. Default to `false`.
      */

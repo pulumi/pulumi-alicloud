@@ -10,12 +10,14 @@ export * from "./aggregateConfigRule";
 export * from "./aggregator";
 export * from "./compliancePack";
 export * from "./configurationRecorder";
+export * from "./delivery";
 export * from "./deliveryChannel";
 export * from "./getAggregateCompliancePacks";
 export * from "./getAggregateConfigRules";
 export * from "./getAggregators";
 export * from "./getCompliancePacks";
 export * from "./getConfigurationRecorders";
+export * from "./getDeliveries";
 export * from "./getDeliveryChannels";
 export * from "./getRules";
 export * from "./rule";
@@ -26,6 +28,7 @@ import { AggregateConfigRule } from "./aggregateConfigRule";
 import { Aggregator } from "./aggregator";
 import { CompliancePack } from "./compliancePack";
 import { ConfigurationRecorder } from "./configurationRecorder";
+import { Delivery } from "./delivery";
 import { DeliveryChannel } from "./deliveryChannel";
 import { Rule } from "./rule";
 
@@ -43,6 +46,8 @@ const _module = {
                 return new CompliancePack(name, <any>undefined, { urn })
             case "alicloud:cfg/configurationRecorder:ConfigurationRecorder":
                 return new ConfigurationRecorder(name, <any>undefined, { urn })
+            case "alicloud:cfg/delivery:Delivery":
+                return new Delivery(name, <any>undefined, { urn })
             case "alicloud:cfg/deliveryChannel:DeliveryChannel":
                 return new DeliveryChannel(name, <any>undefined, { urn })
             case "alicloud:cfg/rule:Rule":
@@ -57,5 +62,6 @@ pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregateConfigRule", _mo
 pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregator", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/compliancePack", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/configurationRecorder", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cfg/delivery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/deliveryChannel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/rule", _module)

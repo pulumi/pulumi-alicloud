@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult> AuthorizeSecurityPolicyRules;
         /// <summary>
+        /// Whether to enable local camera redirection. Valid values: `on`, `off`.
+        /// </summary>
+        public readonly string CameraRedirect;
+        /// <summary>
         /// The clipboard policy.
         /// </summary>
         public readonly string Clipboard;
@@ -62,6 +66,22 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string PolicyGroupType;
         /// <summary>
+        /// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        /// </summary>
+        public readonly string Recording;
+        /// <summary>
+        /// The end time of recording.
+        /// </summary>
+        public readonly string RecordingEndTime;
+        /// <summary>
+        /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        /// </summary>
+        public readonly int RecordingFps;
+        /// <summary>
+        /// The start time of recording.
+        /// </summary>
+        public readonly string RecordingStartTime;
+        /// <summary>
         /// The status of policy.
         /// </summary>
         public readonly string Status;
@@ -92,6 +112,8 @@ namespace Pulumi.AliCloud.Eds.Outputs
 
             ImmutableArray<Outputs.GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult> authorizeSecurityPolicyRules,
 
+            string cameraRedirect,
+
             string clipboard,
 
             string domainList,
@@ -112,6 +134,14 @@ namespace Pulumi.AliCloud.Eds.Outputs
 
             string policyGroupType,
 
+            string recording,
+
+            string recordingEndTime,
+
+            int recordingFps,
+
+            string recordingStartTime,
+
             string status,
 
             string usbRedirect,
@@ -126,6 +156,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         {
             AuthorizeAccessPolicyRules = authorizeAccessPolicyRules;
             AuthorizeSecurityPolicyRules = authorizeSecurityPolicyRules;
+            CameraRedirect = cameraRedirect;
             Clipboard = clipboard;
             DomainList = domainList;
             EdsCount = edsCount;
@@ -136,6 +167,10 @@ namespace Pulumi.AliCloud.Eds.Outputs
             PolicyGroupId = policyGroupId;
             PolicyGroupName = policyGroupName;
             PolicyGroupType = policyGroupType;
+            Recording = recording;
+            RecordingEndTime = recordingEndTime;
+            RecordingFps = recordingFps;
+            RecordingStartTime = recordingStartTime;
             Status = status;
             UsbRedirect = usbRedirect;
             VisualQuality = visualQuality;

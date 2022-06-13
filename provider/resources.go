@@ -428,6 +428,15 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_monitor_group_instances": {Tok: resource(cmsMod, "MonitorGroupInstances")},
 			"alicloud_cms_metric_rule_template":    {Tok: resource(cmsMod, "MetricRuleTemplate")},
 			"alicloud_cms_dynamic_tag_group":       {Tok: resource(cmsMod, "DynamicTagGroup")},
+			"alicloud_cms_namespace": {
+				Tok: resource(cmsMod, "Namespace"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"namespace": {
+						CSharpName: "NamespaceName",
+					},
+				},
+			},
+			"alicloud_cms_sls_group": {Tok: resource(cmsMod, "SlsGroup")},
 
 			// Config
 			"alicloud_config_configuration_recorder":    {Tok: resource(cfgMod, "ConfigurationRecorder")},
@@ -437,6 +446,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_config_aggregate_config_rule":     {Tok: resource(cfgMod, "AggregateConfigRule")},
 			"alicloud_config_aggregator":                {Tok: resource(cfgMod, "Aggregator")},
 			"alicloud_config_compliance_pack":           {Tok: resource(cfgMod, "CompliancePack")},
+			"alicloud_config_delivery":                  {Tok: resource(cfgMod, "Delivery")},
 
 			// CR
 			"alicloud_cr_repo":                {Tok: resource(crMod, "Repo")},
@@ -672,6 +682,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecd_image":              {Tok: resource(edsMod, "Image")},
 			"alicloud_ecd_command":            {Tok: resource(edsMod, "Command")},
 			"alicloud_ecd_snapshot":           {Tok: resource(edsMod, "Snapshot")},
+			"alicloud_ecd_bundle":             {Tok: resource(edsMod, "Bundle")},
 
 			// Ehpc
 			"alicloud_ehpc_job_template": {Tok: resource(ehpcMod, "JobTemplate")},
@@ -1392,6 +1403,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"alicloud_cms_metric_rule_templates": {Tok: dataSource(cmsMod, "getMetricRuleTemplates")},
 			"alicloud_cms_dynamic_tag_groups":    {Tok: dataSource(cmsMod, "getDynamicTagGroups")},
+			"alicloud_cms_namespaces":            {Tok: dataSource(cmsMod, "getNamespaces")},
+			"alicloud_cms_sls_groups":            {Tok: dataSource(cmsMod, "getSlsGroups")},
 
 			// Config
 			"alicloud_config_configuration_recorders":    {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -1401,6 +1414,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_config_aggregate_config_rules":     {Tok: dataSource(cfgMod, "getAggregateConfigRules")},
 			"alicloud_config_aggregators":                {Tok: dataSource(cfgMod, "getAggregators")},
 			"alicloud_config_compliance_packs":           {Tok: dataSource(cfgMod, "getCompliancePacks")},
+			"alicloud_config_deliveries":                 {Tok: dataSource(cfgMod, "getDeliveries")},
 
 			// Cr
 			"alicloud_cr_namespaces":            {Tok: dataSource(crMod, "getNamespaces")},
@@ -1572,6 +1586,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecd_images":              {Tok: dataSource(edsMod, "getImages")},
 			"alicloud_ecd_commands":            {Tok: dataSource(edsMod, "getCommands")},
 			"alicloud_ecd_snapshots":           {Tok: dataSource(edsMod, "getSnapshots")},
+			"alicloud_ecd_desktop_types":       {Tok: dataSource(edsMod, "getDesktopTypes")},
 
 			// Ehpc
 			"alicloud_ehpc_job_templates": {Tok: dataSource(ehpcMod, "getJobTemplates")},

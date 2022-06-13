@@ -2586,6 +2586,130 @@ func (o SiteMonitorIspCityArrayOutput) Index(i pulumi.IntInput) SiteMonitorIspCi
 	}).(SiteMonitorIspCityOutput)
 }
 
+type SlsGroupSlsGroupConfig struct {
+	// The name of the Log Store.
+	SlsLogstore string `pulumi:"slsLogstore"`
+	// The name of the Project.
+	SlsProject string `pulumi:"slsProject"`
+	// The Sls Region.
+	SlsRegion string `pulumi:"slsRegion"`
+	// The ID of the Sls User.
+	SlsUserId *string `pulumi:"slsUserId"`
+}
+
+// SlsGroupSlsGroupConfigInput is an input type that accepts SlsGroupSlsGroupConfigArgs and SlsGroupSlsGroupConfigOutput values.
+// You can construct a concrete instance of `SlsGroupSlsGroupConfigInput` via:
+//
+//          SlsGroupSlsGroupConfigArgs{...}
+type SlsGroupSlsGroupConfigInput interface {
+	pulumi.Input
+
+	ToSlsGroupSlsGroupConfigOutput() SlsGroupSlsGroupConfigOutput
+	ToSlsGroupSlsGroupConfigOutputWithContext(context.Context) SlsGroupSlsGroupConfigOutput
+}
+
+type SlsGroupSlsGroupConfigArgs struct {
+	// The name of the Log Store.
+	SlsLogstore pulumi.StringInput `pulumi:"slsLogstore"`
+	// The name of the Project.
+	SlsProject pulumi.StringInput `pulumi:"slsProject"`
+	// The Sls Region.
+	SlsRegion pulumi.StringInput `pulumi:"slsRegion"`
+	// The ID of the Sls User.
+	SlsUserId pulumi.StringPtrInput `pulumi:"slsUserId"`
+}
+
+func (SlsGroupSlsGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsGroupSlsGroupConfig)(nil)).Elem()
+}
+
+func (i SlsGroupSlsGroupConfigArgs) ToSlsGroupSlsGroupConfigOutput() SlsGroupSlsGroupConfigOutput {
+	return i.ToSlsGroupSlsGroupConfigOutputWithContext(context.Background())
+}
+
+func (i SlsGroupSlsGroupConfigArgs) ToSlsGroupSlsGroupConfigOutputWithContext(ctx context.Context) SlsGroupSlsGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsGroupSlsGroupConfigOutput)
+}
+
+// SlsGroupSlsGroupConfigArrayInput is an input type that accepts SlsGroupSlsGroupConfigArray and SlsGroupSlsGroupConfigArrayOutput values.
+// You can construct a concrete instance of `SlsGroupSlsGroupConfigArrayInput` via:
+//
+//          SlsGroupSlsGroupConfigArray{ SlsGroupSlsGroupConfigArgs{...} }
+type SlsGroupSlsGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToSlsGroupSlsGroupConfigArrayOutput() SlsGroupSlsGroupConfigArrayOutput
+	ToSlsGroupSlsGroupConfigArrayOutputWithContext(context.Context) SlsGroupSlsGroupConfigArrayOutput
+}
+
+type SlsGroupSlsGroupConfigArray []SlsGroupSlsGroupConfigInput
+
+func (SlsGroupSlsGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlsGroupSlsGroupConfig)(nil)).Elem()
+}
+
+func (i SlsGroupSlsGroupConfigArray) ToSlsGroupSlsGroupConfigArrayOutput() SlsGroupSlsGroupConfigArrayOutput {
+	return i.ToSlsGroupSlsGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SlsGroupSlsGroupConfigArray) ToSlsGroupSlsGroupConfigArrayOutputWithContext(ctx context.Context) SlsGroupSlsGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlsGroupSlsGroupConfigArrayOutput)
+}
+
+type SlsGroupSlsGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (SlsGroupSlsGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlsGroupSlsGroupConfig)(nil)).Elem()
+}
+
+func (o SlsGroupSlsGroupConfigOutput) ToSlsGroupSlsGroupConfigOutput() SlsGroupSlsGroupConfigOutput {
+	return o
+}
+
+func (o SlsGroupSlsGroupConfigOutput) ToSlsGroupSlsGroupConfigOutputWithContext(ctx context.Context) SlsGroupSlsGroupConfigOutput {
+	return o
+}
+
+// The name of the Log Store.
+func (o SlsGroupSlsGroupConfigOutput) SlsLogstore() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsGroupSlsGroupConfig) string { return v.SlsLogstore }).(pulumi.StringOutput)
+}
+
+// The name of the Project.
+func (o SlsGroupSlsGroupConfigOutput) SlsProject() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsGroupSlsGroupConfig) string { return v.SlsProject }).(pulumi.StringOutput)
+}
+
+// The Sls Region.
+func (o SlsGroupSlsGroupConfigOutput) SlsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsGroupSlsGroupConfig) string { return v.SlsRegion }).(pulumi.StringOutput)
+}
+
+// The ID of the Sls User.
+func (o SlsGroupSlsGroupConfigOutput) SlsUserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsGroupSlsGroupConfig) *string { return v.SlsUserId }).(pulumi.StringPtrOutput)
+}
+
+type SlsGroupSlsGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SlsGroupSlsGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlsGroupSlsGroupConfig)(nil)).Elem()
+}
+
+func (o SlsGroupSlsGroupConfigArrayOutput) ToSlsGroupSlsGroupConfigArrayOutput() SlsGroupSlsGroupConfigArrayOutput {
+	return o
+}
+
+func (o SlsGroupSlsGroupConfigArrayOutput) ToSlsGroupSlsGroupConfigArrayOutputWithContext(ctx context.Context) SlsGroupSlsGroupConfigArrayOutput {
+	return o
+}
+
+func (o SlsGroupSlsGroupConfigArrayOutput) Index(i pulumi.IntInput) SlsGroupSlsGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlsGroupSlsGroupConfig {
+		return vs[0].([]SlsGroupSlsGroupConfig)[vs[1].(int)]
+	}).(SlsGroupSlsGroupConfigOutput)
+}
+
 type GetAlarmContactGroupsGroup struct {
 	// The name of Alarm Contact Group.
 	AlarmContactGroupName string `pulumi:"alarmContactGroupName"`
@@ -5128,6 +5252,414 @@ func (o GetMonitorGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetMonitorGro
 	}).(GetMonitorGroupsGroupOutput)
 }
 
+type GetNamespacesNamespace struct {
+	// Create the timestamp of the indicator warehouse.
+	CreateTime string `pulumi:"createTime"`
+	// Description of indicator warehouse.
+	Description string `pulumi:"description"`
+	// The ID of the Namespace.
+	Id string `pulumi:"id"`
+	// The timestamp of the last modification indicator warehouse.
+	ModifyTime string `pulumi:"modifyTime"`
+	// Indicator warehouse name.
+	Namespace string `pulumi:"namespace"`
+	// The ID of the Namespace.
+	NamespaceId string `pulumi:"namespaceId"`
+	// Data storage duration.
+	Specification string `pulumi:"specification"`
+}
+
+// GetNamespacesNamespaceInput is an input type that accepts GetNamespacesNamespaceArgs and GetNamespacesNamespaceOutput values.
+// You can construct a concrete instance of `GetNamespacesNamespaceInput` via:
+//
+//          GetNamespacesNamespaceArgs{...}
+type GetNamespacesNamespaceInput interface {
+	pulumi.Input
+
+	ToGetNamespacesNamespaceOutput() GetNamespacesNamespaceOutput
+	ToGetNamespacesNamespaceOutputWithContext(context.Context) GetNamespacesNamespaceOutput
+}
+
+type GetNamespacesNamespaceArgs struct {
+	// Create the timestamp of the indicator warehouse.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Description of indicator warehouse.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Namespace.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The timestamp of the last modification indicator warehouse.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// Indicator warehouse name.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The ID of the Namespace.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// Data storage duration.
+	Specification pulumi.StringInput `pulumi:"specification"`
+}
+
+func (GetNamespacesNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespacesNamespace)(nil)).Elem()
+}
+
+func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutput() GetNamespacesNamespaceOutput {
+	return i.ToGetNamespacesNamespaceOutputWithContext(context.Background())
+}
+
+func (i GetNamespacesNamespaceArgs) ToGetNamespacesNamespaceOutputWithContext(ctx context.Context) GetNamespacesNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceOutput)
+}
+
+// GetNamespacesNamespaceArrayInput is an input type that accepts GetNamespacesNamespaceArray and GetNamespacesNamespaceArrayOutput values.
+// You can construct a concrete instance of `GetNamespacesNamespaceArrayInput` via:
+//
+//          GetNamespacesNamespaceArray{ GetNamespacesNamespaceArgs{...} }
+type GetNamespacesNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToGetNamespacesNamespaceArrayOutput() GetNamespacesNamespaceArrayOutput
+	ToGetNamespacesNamespaceArrayOutputWithContext(context.Context) GetNamespacesNamespaceArrayOutput
+}
+
+type GetNamespacesNamespaceArray []GetNamespacesNamespaceInput
+
+func (GetNamespacesNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespacesNamespace)(nil)).Elem()
+}
+
+func (i GetNamespacesNamespaceArray) ToGetNamespacesNamespaceArrayOutput() GetNamespacesNamespaceArrayOutput {
+	return i.ToGetNamespacesNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamespacesNamespaceArray) ToGetNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetNamespacesNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceArrayOutput)
+}
+
+type GetNamespacesNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GetNamespacesNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamespacesNamespace)(nil)).Elem()
+}
+
+func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutput() GetNamespacesNamespaceOutput {
+	return o
+}
+
+func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutputWithContext(ctx context.Context) GetNamespacesNamespaceOutput {
+	return o
+}
+
+// Create the timestamp of the indicator warehouse.
+func (o GetNamespacesNamespaceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of indicator warehouse.
+func (o GetNamespacesNamespaceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Namespace.
+func (o GetNamespacesNamespaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The timestamp of the last modification indicator warehouse.
+func (o GetNamespacesNamespaceOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// Indicator warehouse name.
+func (o GetNamespacesNamespaceOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The ID of the Namespace.
+func (o GetNamespacesNamespaceOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// Data storage duration.
+func (o GetNamespacesNamespaceOutput) Specification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.Specification }).(pulumi.StringOutput)
+}
+
+type GetNamespacesNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamespacesNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamespacesNamespace)(nil)).Elem()
+}
+
+func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutput() GetNamespacesNamespaceArrayOutput {
+	return o
+}
+
+func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetNamespacesNamespaceArrayOutput {
+	return o
+}
+
+func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespacesNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespacesNamespace {
+		return vs[0].([]GetNamespacesNamespace)[vs[1].(int)]
+	}).(GetNamespacesNamespaceOutput)
+}
+
+type GetSlsGroupsGroup struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Sls Group. Its value is same as Queue Name.
+	Id string `pulumi:"id"`
+	// The Config of the Sls Group.
+	SlsGroupConfigs []GetSlsGroupsGroupSlsGroupConfig `pulumi:"slsGroupConfigs"`
+	// The Description of the Sls Group.
+	SlsGroupDescription string `pulumi:"slsGroupDescription"`
+	// The name of the resource.
+	SlsGroupName string `pulumi:"slsGroupName"`
+}
+
+// GetSlsGroupsGroupInput is an input type that accepts GetSlsGroupsGroupArgs and GetSlsGroupsGroupOutput values.
+// You can construct a concrete instance of `GetSlsGroupsGroupInput` via:
+//
+//          GetSlsGroupsGroupArgs{...}
+type GetSlsGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetSlsGroupsGroupOutput() GetSlsGroupsGroupOutput
+	ToGetSlsGroupsGroupOutputWithContext(context.Context) GetSlsGroupsGroupOutput
+}
+
+type GetSlsGroupsGroupArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Sls Group. Its value is same as Queue Name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Config of the Sls Group.
+	SlsGroupConfigs GetSlsGroupsGroupSlsGroupConfigArrayInput `pulumi:"slsGroupConfigs"`
+	// The Description of the Sls Group.
+	SlsGroupDescription pulumi.StringInput `pulumi:"slsGroupDescription"`
+	// The name of the resource.
+	SlsGroupName pulumi.StringInput `pulumi:"slsGroupName"`
+}
+
+func (GetSlsGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSlsGroupsGroup)(nil)).Elem()
+}
+
+func (i GetSlsGroupsGroupArgs) ToGetSlsGroupsGroupOutput() GetSlsGroupsGroupOutput {
+	return i.ToGetSlsGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetSlsGroupsGroupArgs) ToGetSlsGroupsGroupOutputWithContext(ctx context.Context) GetSlsGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSlsGroupsGroupOutput)
+}
+
+// GetSlsGroupsGroupArrayInput is an input type that accepts GetSlsGroupsGroupArray and GetSlsGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetSlsGroupsGroupArrayInput` via:
+//
+//          GetSlsGroupsGroupArray{ GetSlsGroupsGroupArgs{...} }
+type GetSlsGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetSlsGroupsGroupArrayOutput() GetSlsGroupsGroupArrayOutput
+	ToGetSlsGroupsGroupArrayOutputWithContext(context.Context) GetSlsGroupsGroupArrayOutput
+}
+
+type GetSlsGroupsGroupArray []GetSlsGroupsGroupInput
+
+func (GetSlsGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSlsGroupsGroup)(nil)).Elem()
+}
+
+func (i GetSlsGroupsGroupArray) ToGetSlsGroupsGroupArrayOutput() GetSlsGroupsGroupArrayOutput {
+	return i.ToGetSlsGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetSlsGroupsGroupArray) ToGetSlsGroupsGroupArrayOutputWithContext(ctx context.Context) GetSlsGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSlsGroupsGroupArrayOutput)
+}
+
+type GetSlsGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetSlsGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSlsGroupsGroup)(nil)).Elem()
+}
+
+func (o GetSlsGroupsGroupOutput) ToGetSlsGroupsGroupOutput() GetSlsGroupsGroupOutput {
+	return o
+}
+
+func (o GetSlsGroupsGroupOutput) ToGetSlsGroupsGroupOutputWithContext(ctx context.Context) GetSlsGroupsGroupOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetSlsGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Sls Group. Its value is same as Queue Name.
+func (o GetSlsGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Config of the Sls Group.
+func (o GetSlsGroupsGroupOutput) SlsGroupConfigs() GetSlsGroupsGroupSlsGroupConfigArrayOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroup) []GetSlsGroupsGroupSlsGroupConfig { return v.SlsGroupConfigs }).(GetSlsGroupsGroupSlsGroupConfigArrayOutput)
+}
+
+// The Description of the Sls Group.
+func (o GetSlsGroupsGroupOutput) SlsGroupDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroup) string { return v.SlsGroupDescription }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetSlsGroupsGroupOutput) SlsGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroup) string { return v.SlsGroupName }).(pulumi.StringOutput)
+}
+
+type GetSlsGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSlsGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSlsGroupsGroup)(nil)).Elem()
+}
+
+func (o GetSlsGroupsGroupArrayOutput) ToGetSlsGroupsGroupArrayOutput() GetSlsGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetSlsGroupsGroupArrayOutput) ToGetSlsGroupsGroupArrayOutputWithContext(ctx context.Context) GetSlsGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetSlsGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetSlsGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSlsGroupsGroup {
+		return vs[0].([]GetSlsGroupsGroup)[vs[1].(int)]
+	}).(GetSlsGroupsGroupOutput)
+}
+
+type GetSlsGroupsGroupSlsGroupConfig struct {
+	// The name of the Log Store.
+	SlsLogstore string `pulumi:"slsLogstore"`
+	// The name of the Project.
+	SlsProject string `pulumi:"slsProject"`
+	// The Sls Region.
+	SlsRegion string `pulumi:"slsRegion"`
+	// The ID of the Sls User.
+	SlsUserId string `pulumi:"slsUserId"`
+}
+
+// GetSlsGroupsGroupSlsGroupConfigInput is an input type that accepts GetSlsGroupsGroupSlsGroupConfigArgs and GetSlsGroupsGroupSlsGroupConfigOutput values.
+// You can construct a concrete instance of `GetSlsGroupsGroupSlsGroupConfigInput` via:
+//
+//          GetSlsGroupsGroupSlsGroupConfigArgs{...}
+type GetSlsGroupsGroupSlsGroupConfigInput interface {
+	pulumi.Input
+
+	ToGetSlsGroupsGroupSlsGroupConfigOutput() GetSlsGroupsGroupSlsGroupConfigOutput
+	ToGetSlsGroupsGroupSlsGroupConfigOutputWithContext(context.Context) GetSlsGroupsGroupSlsGroupConfigOutput
+}
+
+type GetSlsGroupsGroupSlsGroupConfigArgs struct {
+	// The name of the Log Store.
+	SlsLogstore pulumi.StringInput `pulumi:"slsLogstore"`
+	// The name of the Project.
+	SlsProject pulumi.StringInput `pulumi:"slsProject"`
+	// The Sls Region.
+	SlsRegion pulumi.StringInput `pulumi:"slsRegion"`
+	// The ID of the Sls User.
+	SlsUserId pulumi.StringInput `pulumi:"slsUserId"`
+}
+
+func (GetSlsGroupsGroupSlsGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfig)(nil)).Elem()
+}
+
+func (i GetSlsGroupsGroupSlsGroupConfigArgs) ToGetSlsGroupsGroupSlsGroupConfigOutput() GetSlsGroupsGroupSlsGroupConfigOutput {
+	return i.ToGetSlsGroupsGroupSlsGroupConfigOutputWithContext(context.Background())
+}
+
+func (i GetSlsGroupsGroupSlsGroupConfigArgs) ToGetSlsGroupsGroupSlsGroupConfigOutputWithContext(ctx context.Context) GetSlsGroupsGroupSlsGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSlsGroupsGroupSlsGroupConfigOutput)
+}
+
+// GetSlsGroupsGroupSlsGroupConfigArrayInput is an input type that accepts GetSlsGroupsGroupSlsGroupConfigArray and GetSlsGroupsGroupSlsGroupConfigArrayOutput values.
+// You can construct a concrete instance of `GetSlsGroupsGroupSlsGroupConfigArrayInput` via:
+//
+//          GetSlsGroupsGroupSlsGroupConfigArray{ GetSlsGroupsGroupSlsGroupConfigArgs{...} }
+type GetSlsGroupsGroupSlsGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSlsGroupsGroupSlsGroupConfigArrayOutput() GetSlsGroupsGroupSlsGroupConfigArrayOutput
+	ToGetSlsGroupsGroupSlsGroupConfigArrayOutputWithContext(context.Context) GetSlsGroupsGroupSlsGroupConfigArrayOutput
+}
+
+type GetSlsGroupsGroupSlsGroupConfigArray []GetSlsGroupsGroupSlsGroupConfigInput
+
+func (GetSlsGroupsGroupSlsGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSlsGroupsGroupSlsGroupConfig)(nil)).Elem()
+}
+
+func (i GetSlsGroupsGroupSlsGroupConfigArray) ToGetSlsGroupsGroupSlsGroupConfigArrayOutput() GetSlsGroupsGroupSlsGroupConfigArrayOutput {
+	return i.ToGetSlsGroupsGroupSlsGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSlsGroupsGroupSlsGroupConfigArray) ToGetSlsGroupsGroupSlsGroupConfigArrayOutputWithContext(ctx context.Context) GetSlsGroupsGroupSlsGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSlsGroupsGroupSlsGroupConfigArrayOutput)
+}
+
+type GetSlsGroupsGroupSlsGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSlsGroupsGroupSlsGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfig)(nil)).Elem()
+}
+
+func (o GetSlsGroupsGroupSlsGroupConfigOutput) ToGetSlsGroupsGroupSlsGroupConfigOutput() GetSlsGroupsGroupSlsGroupConfigOutput {
+	return o
+}
+
+func (o GetSlsGroupsGroupSlsGroupConfigOutput) ToGetSlsGroupsGroupSlsGroupConfigOutputWithContext(ctx context.Context) GetSlsGroupsGroupSlsGroupConfigOutput {
+	return o
+}
+
+// The name of the Log Store.
+func (o GetSlsGroupsGroupSlsGroupConfigOutput) SlsLogstore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroupSlsGroupConfig) string { return v.SlsLogstore }).(pulumi.StringOutput)
+}
+
+// The name of the Project.
+func (o GetSlsGroupsGroupSlsGroupConfigOutput) SlsProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroupSlsGroupConfig) string { return v.SlsProject }).(pulumi.StringOutput)
+}
+
+// The Sls Region.
+func (o GetSlsGroupsGroupSlsGroupConfigOutput) SlsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroupSlsGroupConfig) string { return v.SlsRegion }).(pulumi.StringOutput)
+}
+
+// The ID of the Sls User.
+func (o GetSlsGroupsGroupSlsGroupConfigOutput) SlsUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlsGroupsGroupSlsGroupConfig) string { return v.SlsUserId }).(pulumi.StringOutput)
+}
+
+type GetSlsGroupsGroupSlsGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSlsGroupsGroupSlsGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSlsGroupsGroupSlsGroupConfig)(nil)).Elem()
+}
+
+func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) ToGetSlsGroupsGroupSlsGroupConfigArrayOutput() GetSlsGroupsGroupSlsGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) ToGetSlsGroupsGroupSlsGroupConfigArrayOutputWithContext(ctx context.Context) GetSlsGroupsGroupSlsGroupConfigArrayOutput {
+	return o
+}
+
+func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) Index(i pulumi.IntInput) GetSlsGroupsGroupSlsGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSlsGroupsGroupSlsGroupConfig {
+		return vs[0].([]GetSlsGroupsGroupSlsGroupConfig)[vs[1].(int)]
+	}).(GetSlsGroupsGroupSlsGroupConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsCriticalInput)(nil)).Elem(), AlarmEscalationsCriticalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsCriticalPtrInput)(nil)).Elem(), AlarmEscalationsCriticalArgs{})
@@ -5159,6 +5691,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesInstanceArrayInput)(nil)).Elem(), MonitorGroupInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorIspCityInput)(nil)).Elem(), SiteMonitorIspCityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorIspCityArrayInput)(nil)).Elem(), SiteMonitorIspCityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsGroupSlsGroupConfigInput)(nil)).Elem(), SlsGroupSlsGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlsGroupSlsGroupConfigArrayInput)(nil)).Elem(), SlsGroupSlsGroupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactGroupsGroupInput)(nil)).Elem(), GetAlarmContactGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactGroupsGroupArrayInput)(nil)).Elem(), GetAlarmContactGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactsContactInput)(nil)).Elem(), GetAlarmContactsContactArgs{})
@@ -5195,6 +5729,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupInstancesInstanceInstanceArrayInput)(nil)).Elem(), GetMonitorGroupInstancesInstanceInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupsGroupInput)(nil)).Elem(), GetMonitorGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupsGroupArrayInput)(nil)).Elem(), GetMonitorGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupInput)(nil)).Elem(), GetSlsGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupArrayInput)(nil)).Elem(), GetSlsGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfigInput)(nil)).Elem(), GetSlsGroupsGroupSlsGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfigArrayInput)(nil)).Elem(), GetSlsGroupsGroupSlsGroupConfigArray{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalPtrOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsInfoOutput{})
@@ -5225,6 +5765,8 @@ func init() {
 	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityArrayOutput{})
+	pulumi.RegisterOutputType(SlsGroupSlsGroupConfigOutput{})
+	pulumi.RegisterOutputType(SlsGroupSlsGroupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactOutput{})
@@ -5261,4 +5803,10 @@ func init() {
 	pulumi.RegisterOutputType(GetMonitorGroupInstancesInstanceInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetMonitorGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
+	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(GetSlsGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetSlsGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetSlsGroupsGroupSlsGroupConfigOutput{})
+	pulumi.RegisterOutputType(GetSlsGroupsGroupSlsGroupConfigArrayOutput{})
 }

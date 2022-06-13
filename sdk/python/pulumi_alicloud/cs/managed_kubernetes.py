@@ -30,6 +30,7 @@ class ManagedKubernetesArgs:
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
                  exclude_autoscaler_nodes: Optional[pulumi.Input[bool]] = None,
@@ -99,6 +100,7 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
@@ -177,6 +179,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "custom_san", custom_san)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if enable_rrsa is not None:
+            pulumi.set(__self__, "enable_rrsa", enable_rrsa)
         if enable_ssh is not None:
             pulumi.set(__self__, "enable_ssh", enable_ssh)
         if encryption_provider_key is not None:
@@ -457,6 +461,18 @@ class ManagedKubernetesArgs:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="enableRrsa")
+    def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        """
+        return pulumi.get(self, "enable_rrsa")
+
+    @enable_rrsa.setter
+    def enable_rrsa(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_rrsa", value)
 
     @property
     @pulumi.getter(name="enableSsh")
@@ -1090,6 +1106,7 @@ class _ManagedKubernetesState:
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
                  exclude_autoscaler_nodes: Optional[pulumi.Input[bool]] = None,
@@ -1169,6 +1186,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
@@ -1255,6 +1273,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "custom_san", custom_san)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if enable_rrsa is not None:
+            pulumi.set(__self__, "enable_rrsa", enable_rrsa)
         if enable_ssh is not None:
             pulumi.set(__self__, "enable_ssh", enable_ssh)
         if encryption_provider_key is not None:
@@ -1569,6 +1589,18 @@ class _ManagedKubernetesState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="enableRrsa")
+    def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        """
+        return pulumi.get(self, "enable_rrsa")
+
+    @enable_rrsa.setter
+    def enable_rrsa(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_rrsa", value)
 
     @property
     @pulumi.getter(name="enableSsh")
@@ -2289,6 +2321,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
                  exclude_autoscaler_nodes: Optional[pulumi.Input[bool]] = None,
@@ -2369,6 +2402,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
@@ -2462,6 +2496,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
                  exclude_autoscaler_nodes: Optional[pulumi.Input[bool]] = None,
@@ -2541,6 +2576,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["cpu_policy"] = cpu_policy
             __props__.__dict__["custom_san"] = custom_san
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["enable_rrsa"] = enable_rrsa
             __props__.__dict__["enable_ssh"] = enable_ssh
             __props__.__dict__["encryption_provider_key"] = encryption_provider_key
             __props__.__dict__["exclude_autoscaler_nodes"] = exclude_autoscaler_nodes
@@ -2631,6 +2667,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             cpu_policy: Optional[pulumi.Input[str]] = None,
             custom_san: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            enable_rrsa: Optional[pulumi.Input[bool]] = None,
             enable_ssh: Optional[pulumi.Input[bool]] = None,
             encryption_provider_key: Optional[pulumi.Input[str]] = None,
             exclude_autoscaler_nodes: Optional[pulumi.Input[bool]] = None,
@@ -2715,6 +2752,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
         :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
@@ -2789,6 +2827,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["cpu_policy"] = cpu_policy
         __props__.__dict__["custom_san"] = custom_san
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["enable_rrsa"] = enable_rrsa
         __props__.__dict__["enable_ssh"] = enable_ssh
         __props__.__dict__["encryption_provider_key"] = encryption_provider_key
         __props__.__dict__["exclude_autoscaler_nodes"] = exclude_autoscaler_nodes
@@ -2979,6 +3018,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "deletion_protection")
 
     @property
+    @pulumi.getter(name="enableRrsa")
+    def enable_rrsa(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        """
+        return pulumi.get(self, "enable_rrsa")
+
+    @property
     @pulumi.getter(name="enableSsh")
     def enable_ssh(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -3145,7 +3192,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def platform(self) -> pulumi.Output[Optional[str]]:
+    def platform(self) -> pulumi.Output[str]:
         """
         The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         """

@@ -115,9 +115,21 @@ namespace Pulumi.AliCloud.GraphDatabase
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of attaching vswitch to instance.
+        /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
 
+        /// <summary>
+        /// The zone ID of the resource.
+        /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
@@ -227,6 +239,24 @@ namespace Pulumi.AliCloud.GraphDatabase
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
+        /// <summary>
+        /// ID of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The ID of attaching vswitch to instance.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The zone ID of the resource.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public DbInstanceArgs()
         {
         }
@@ -300,9 +330,21 @@ namespace Pulumi.AliCloud.GraphDatabase
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// ID of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The ID of attaching vswitch to instance.
+        /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
+        /// <summary>
+        /// The zone ID of the resource.
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 

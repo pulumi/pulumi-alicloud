@@ -784,11 +784,13 @@ class GetServiceMeshesMeshResult(dict):
                  endpoints: Sequence['outputs.GetServiceMeshesMeshEndpointResult'],
                  error_message: str,
                  id: str,
+                 istio_operator_version: str,
                  load_balancers: Sequence['outputs.GetServiceMeshesMeshLoadBalancerResult'],
                  mesh_configs: Sequence['outputs.GetServiceMeshesMeshMeshConfigResult'],
                  networks: Sequence['outputs.GetServiceMeshesMeshNetworkResult'],
                  service_mesh_id: str,
                  service_mesh_name: str,
+                 sidecar_version: str,
                  status: str,
                  version: str):
         """
@@ -798,11 +800,13 @@ class GetServiceMeshesMeshResult(dict):
         :param Sequence['GetServiceMeshesMeshEndpointArgs'] endpoints: The endpoint details.
         :param str error_message: The Cause of the Error.
         :param str id: The ID of the Service Mesh.
+        :param str istio_operator_version: The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
         :param Sequence['GetServiceMeshesMeshLoadBalancerArgs'] load_balancers: The configuration of the Load Balancer.
         :param Sequence['GetServiceMeshesMeshMeshConfigArgs'] mesh_configs: The configuration of the Service grid.
         :param Sequence['GetServiceMeshesMeshNetworkArgs'] networks: The configuration of the Service grid network.
         :param str service_mesh_id: The first ID of the resource.
         :param str service_mesh_name: The name of the resource.
+        :param str sidecar_version: The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
         :param str status: The status of the resource.
         :param str version: The version of the resource.
         """
@@ -812,11 +816,13 @@ class GetServiceMeshesMeshResult(dict):
         pulumi.set(__self__, "endpoints", endpoints)
         pulumi.set(__self__, "error_message", error_message)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "istio_operator_version", istio_operator_version)
         pulumi.set(__self__, "load_balancers", load_balancers)
         pulumi.set(__self__, "mesh_configs", mesh_configs)
         pulumi.set(__self__, "networks", networks)
         pulumi.set(__self__, "service_mesh_id", service_mesh_id)
         pulumi.set(__self__, "service_mesh_name", service_mesh_name)
+        pulumi.set(__self__, "sidecar_version", sidecar_version)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "version", version)
 
@@ -869,6 +875,14 @@ class GetServiceMeshesMeshResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="istioOperatorVersion")
+    def istio_operator_version(self) -> str:
+        """
+        The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
+        """
+        return pulumi.get(self, "istio_operator_version")
+
+    @property
     @pulumi.getter(name="loadBalancers")
     def load_balancers(self) -> Sequence['outputs.GetServiceMeshesMeshLoadBalancerResult']:
         """
@@ -907,6 +921,14 @@ class GetServiceMeshesMeshResult(dict):
         The name of the resource.
         """
         return pulumi.get(self, "service_mesh_name")
+
+    @property
+    @pulumi.getter(name="sidecarVersion")
+    def sidecar_version(self) -> str:
+        """
+        The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
+        """
+        return pulumi.get(self, "sidecar_version")
 
     @property
     @pulumi.getter

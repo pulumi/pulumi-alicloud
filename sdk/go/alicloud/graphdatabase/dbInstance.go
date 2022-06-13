@@ -78,9 +78,13 @@ type DbInstance struct {
 	// The paymen type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
-	Status    pulumi.StringOutput `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
+	// ID of the VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
-	ZoneId    pulumi.StringOutput `pulumi:"zoneId"`
+	// The zone ID of the resource.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewDbInstance registers a new resource with the given unique name, arguments, and options.
@@ -152,9 +156,13 @@ type dbInstanceState struct {
 	// The paymen type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
-	Status    *string `pulumi:"status"`
+	Status *string `pulumi:"status"`
+	// ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
+	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
-	ZoneId    *string `pulumi:"zoneId"`
+	// The zone ID of the resource.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type DbInstanceState struct {
@@ -177,9 +185,13 @@ type DbInstanceState struct {
 	// The paymen type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
-	Status    pulumi.StringPtrInput
+	Status pulumi.StringPtrInput
+	// ID of the VPC.
+	VpcId pulumi.StringPtrInput
+	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
-	ZoneId    pulumi.StringPtrInput
+	// The zone ID of the resource.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (DbInstanceState) ElementType() reflect.Type {
@@ -205,6 +217,12 @@ type dbInstanceArgs struct {
 	DbVersion string `pulumi:"dbVersion"`
 	// The paymen type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
+	// ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
+	// The ID of attaching vswitch to instance.
+	VswitchId *string `pulumi:"vswitchId"`
+	// The zone ID of the resource.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a DbInstance resource.
@@ -227,6 +245,12 @@ type DbInstanceArgs struct {
 	DbVersion pulumi.StringInput
 	// The paymen type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringInput
+	// ID of the VPC.
+	VpcId pulumi.StringPtrInput
+	// The ID of attaching vswitch to instance.
+	VswitchId pulumi.StringPtrInput
+	// The zone ID of the resource.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (DbInstanceArgs) ElementType() reflect.Type {

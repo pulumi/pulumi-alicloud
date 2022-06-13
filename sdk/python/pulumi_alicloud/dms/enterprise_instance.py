@@ -54,12 +54,16 @@ class EnterpriseInstanceArgs:
         :param pulumi.Input[int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
         :param pulumi.Input[str] data_link_name: Cross-database query datalink name.
+        :param pulumi.Input[str] dba_id: The dba id of the database instance.
         :param pulumi.Input[int] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
         :param pulumi.Input[str] ecs_instance_id: ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
         :param pulumi.Input[str] ecs_region: The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
-        :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        :param pulumi.Input[str] instance_alias: Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+        :param pulumi.Input[str] instance_id: The instance id of the database instance.
         :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
+        :param pulumi.Input[str] safe_rule_id: The safe rule id of the database instance.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
+        :param pulumi.Input[bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         :param pulumi.Input[int] tid: The tenant ID.
         :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         :param pulumi.Input[str] vpc_id: VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
@@ -267,6 +271,9 @@ class EnterpriseInstanceArgs:
     @property
     @pulumi.getter(name="dbaId")
     def dba_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dba id of the database instance.
+        """
         return pulumi.get(self, "dba_id")
 
     @dba_id.setter
@@ -313,7 +320,7 @@ class EnterpriseInstanceArgs:
     @pulumi.getter(name="instanceAlias")
     def instance_alias(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         """
         return pulumi.get(self, "instance_alias")
 
@@ -324,6 +331,9 @@ class EnterpriseInstanceArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance id of the database instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -345,6 +355,9 @@ class EnterpriseInstanceArgs:
     @property
     @pulumi.getter(name="safeRuleId")
     def safe_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The safe rule id of the database instance.
+        """
         return pulumi.get(self, "safe_rule_id")
 
     @safe_rule_id.setter
@@ -366,6 +379,9 @@ class EnterpriseInstanceArgs:
     @property
     @pulumi.getter(name="skipTest")
     def skip_test(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "skip_test")
 
     @skip_test.setter
@@ -446,6 +462,7 @@ class _EnterpriseInstanceState:
         :param pulumi.Input[str] data_link_name: Cross-database query datalink name.
         :param pulumi.Input[str] database_password: Database access password.
         :param pulumi.Input[str] database_user: Database access account.
+        :param pulumi.Input[str] dba_id: The dba id of the database instance.
         :param pulumi.Input[str] dba_nick_name: The instance dba nickname.
         :param pulumi.Input[int] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
         :param pulumi.Input[int] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
@@ -454,7 +471,8 @@ class _EnterpriseInstanceState:
         :param pulumi.Input[str] env_type: Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
         :param pulumi.Input[int] export_timeout: Export timeout, unit: s (seconds).
         :param pulumi.Input[str] host: Host address of the target database.
-        :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        :param pulumi.Input[str] instance_alias: Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+        :param pulumi.Input[str] instance_id: The instance id of the database instance.
         :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
         :param pulumi.Input[str] instance_source: The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         :param pulumi.Input[str] instance_type: Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
@@ -462,7 +480,9 @@ class _EnterpriseInstanceState:
         :param pulumi.Input[int] port: Access port of the target database.
         :param pulumi.Input[int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
+        :param pulumi.Input[str] safe_rule_id: The safe rule id of the database instance.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
+        :param pulumi.Input[bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         :param pulumi.Input[str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
         :param pulumi.Input[str] status: The instance status.
         :param pulumi.Input[int] tid: The tenant ID.
@@ -573,6 +593,9 @@ class _EnterpriseInstanceState:
     @property
     @pulumi.getter(name="dbaId")
     def dba_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dba id of the database instance.
+        """
         return pulumi.get(self, "dba_id")
 
     @dba_id.setter
@@ -679,7 +702,7 @@ class _EnterpriseInstanceState:
     @pulumi.getter(name="instanceAlias")
     def instance_alias(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         """
         return pulumi.get(self, "instance_alias")
 
@@ -690,6 +713,9 @@ class _EnterpriseInstanceState:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance id of the database instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -783,6 +809,9 @@ class _EnterpriseInstanceState:
     @property
     @pulumi.getter(name="safeRuleId")
     def safe_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The safe rule id of the database instance.
+        """
         return pulumi.get(self, "safe_rule_id")
 
     @safe_rule_id.setter
@@ -804,6 +833,9 @@ class _EnterpriseInstanceState:
     @property
     @pulumi.getter(name="skipTest")
     def skip_test(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "skip_test")
 
     @skip_test.setter
@@ -946,6 +978,7 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] data_link_name: Cross-database query datalink name.
         :param pulumi.Input[str] database_password: Database access password.
         :param pulumi.Input[str] database_user: Database access account.
+        :param pulumi.Input[str] dba_id: The dba id of the database instance.
         :param pulumi.Input[int] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
         :param pulumi.Input[int] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
         :param pulumi.Input[str] ecs_instance_id: ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
@@ -953,7 +986,8 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] env_type: Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
         :param pulumi.Input[int] export_timeout: Export timeout, unit: s (seconds).
         :param pulumi.Input[str] host: Host address of the target database.
-        :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        :param pulumi.Input[str] instance_alias: Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+        :param pulumi.Input[str] instance_id: The instance id of the database instance.
         :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
         :param pulumi.Input[str] instance_source: The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         :param pulumi.Input[str] instance_type: Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
@@ -961,7 +995,9 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[int] port: Access port of the target database.
         :param pulumi.Input[int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
+        :param pulumi.Input[str] safe_rule_id: The safe rule id of the database instance.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
+        :param pulumi.Input[bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         :param pulumi.Input[int] tid: The tenant ID.
         :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         :param pulumi.Input[str] vpc_id: VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
@@ -1168,6 +1204,7 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] data_link_name: Cross-database query datalink name.
         :param pulumi.Input[str] database_password: Database access password.
         :param pulumi.Input[str] database_user: Database access account.
+        :param pulumi.Input[str] dba_id: The dba id of the database instance.
         :param pulumi.Input[str] dba_nick_name: The instance dba nickname.
         :param pulumi.Input[int] dba_uid: The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
         :param pulumi.Input[int] ddl_online: Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
@@ -1176,7 +1213,8 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] env_type: Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
         :param pulumi.Input[int] export_timeout: Export timeout, unit: s (seconds).
         :param pulumi.Input[str] host: Host address of the target database.
-        :param pulumi.Input[str] instance_alias: It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        :param pulumi.Input[str] instance_alias: Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
+        :param pulumi.Input[str] instance_id: The instance id of the database instance.
         :param pulumi.Input[str] instance_name: Instance name, to help users quickly distinguish positioning.
         :param pulumi.Input[str] instance_source: The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         :param pulumi.Input[str] instance_type: Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
@@ -1184,7 +1222,9 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[int] port: Access port of the target database.
         :param pulumi.Input[int] query_timeout: Query timeout time, unit: s (seconds).
         :param pulumi.Input[str] safe_rule: The security rule of the instance is passed into the name of the security rule in the enterprise.
+        :param pulumi.Input[str] safe_rule_id: The safe rule id of the database instance.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
+        :param pulumi.Input[bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         :param pulumi.Input[str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
         :param pulumi.Input[str] status: The instance status.
         :param pulumi.Input[int] tid: The tenant ID.
@@ -1253,6 +1293,9 @@ class EnterpriseInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dbaId")
     def dba_id(self) -> pulumi.Output[str]:
+        """
+        The dba id of the database instance.
+        """
         return pulumi.get(self, "dba_id")
 
     @property
@@ -1323,13 +1366,16 @@ class EnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceAlias")
     def instance_alias(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         """
         return pulumi.get(self, "instance_alias")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
+        """
+        The instance id of the database instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
@@ -1391,6 +1437,9 @@ class EnterpriseInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="safeRuleId")
     def safe_rule_id(self) -> pulumi.Output[str]:
+        """
+        The safe rule id of the database instance.
+        """
         return pulumi.get(self, "safe_rule_id")
 
     @property
@@ -1404,6 +1453,9 @@ class EnterpriseInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="skipTest")
     def skip_test(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "skip_test")
 
     @property

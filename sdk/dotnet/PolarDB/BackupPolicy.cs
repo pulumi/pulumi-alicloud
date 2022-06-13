@@ -28,6 +28,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> BackupRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+        /// </summary>
+        [Output("backupRetentionPolicyOnClusterDeletion")]
+        public Output<string> BackupRetentionPolicyOnClusterDeletion { get; private set; } = null!;
+
+        /// <summary>
         /// The Id of cluster that can run database.
         /// </summary>
         [Output("dbClusterId")]
@@ -92,6 +98,12 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class BackupPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+        /// </summary>
+        [Input("backupRetentionPolicyOnClusterDeletion")]
+        public Input<string>? BackupRetentionPolicyOnClusterDeletion { get; set; }
+
+        /// <summary>
         /// The Id of cluster that can run database.
         /// </summary>
         [Input("dbClusterId", required: true)]
@@ -127,6 +139,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("backupRetentionPeriod")]
         public Input<string>? BackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+        /// </summary>
+        [Input("backupRetentionPolicyOnClusterDeletion")]
+        public Input<string>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
         /// The Id of cluster that can run database.

@@ -17,12 +17,17 @@ class EcdPolicyGroupArgs:
     def __init__(__self__, *,
                  authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
                  authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
+                 camera_redirect: Optional[pulumi.Input[str]] = None,
                  clipboard: Optional[pulumi.Input[str]] = None,
                  domain_list: Optional[pulumi.Input[str]] = None,
                  html_access: Optional[pulumi.Input[str]] = None,
                  html_file_transfer: Optional[pulumi.Input[str]] = None,
                  local_drive: Optional[pulumi.Input[str]] = None,
                  policy_group_name: Optional[pulumi.Input[str]] = None,
+                 recording: Optional[pulumi.Input[str]] = None,
+                 recording_end_time: Optional[pulumi.Input[str]] = None,
+                 recording_fps: Optional[pulumi.Input[int]] = None,
+                 recording_start_time: Optional[pulumi.Input[str]] = None,
                  usb_redirect: Optional[pulumi.Input[str]] = None,
                  visual_quality: Optional[pulumi.Input[str]] = None,
                  watermark: Optional[pulumi.Input[str]] = None,
@@ -32,12 +37,17 @@ class EcdPolicyGroupArgs:
         The set of arguments for constructing a EcdPolicyGroup resource.
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule.
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule.
+        :param pulumi.Input[str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[str] domain_list: The list of domain.
         :param pulumi.Input[str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         :param pulumi.Input[str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         :param pulumi.Input[str] policy_group_name: The name of policy group.
+        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] usb_redirect: The usb redirect policy. Valid values: `off`, `on`.
         :param pulumi.Input[str] visual_quality: The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
         :param pulumi.Input[str] watermark: The watermark policy. Valid values: `off`, `on`.
@@ -48,6 +58,8 @@ class EcdPolicyGroupArgs:
             pulumi.set(__self__, "authorize_access_policy_rules", authorize_access_policy_rules)
         if authorize_security_policy_rules is not None:
             pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
+        if camera_redirect is not None:
+            pulumi.set(__self__, "camera_redirect", camera_redirect)
         if clipboard is not None:
             pulumi.set(__self__, "clipboard", clipboard)
         if domain_list is not None:
@@ -60,6 +72,14 @@ class EcdPolicyGroupArgs:
             pulumi.set(__self__, "local_drive", local_drive)
         if policy_group_name is not None:
             pulumi.set(__self__, "policy_group_name", policy_group_name)
+        if recording is not None:
+            pulumi.set(__self__, "recording", recording)
+        if recording_end_time is not None:
+            pulumi.set(__self__, "recording_end_time", recording_end_time)
+        if recording_fps is not None:
+            pulumi.set(__self__, "recording_fps", recording_fps)
+        if recording_start_time is not None:
+            pulumi.set(__self__, "recording_start_time", recording_start_time)
         if usb_redirect is not None:
             pulumi.set(__self__, "usb_redirect", usb_redirect)
         if visual_quality is not None:
@@ -94,6 +114,18 @@ class EcdPolicyGroupArgs:
     @authorize_security_policy_rules.setter
     def authorize_security_policy_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "authorize_security_policy_rules", value)
+
+    @property
+    @pulumi.getter(name="cameraRedirect")
+    def camera_redirect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable local camera redirection. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "camera_redirect")
+
+    @camera_redirect.setter
+    def camera_redirect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "camera_redirect", value)
 
     @property
     @pulumi.getter
@@ -166,6 +198,54 @@ class EcdPolicyGroupArgs:
     @policy_group_name.setter
     def policy_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy_group_name", value)
+
+    @property
+    @pulumi.getter
+    def recording(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        """
+        return pulumi.get(self, "recording")
+
+    @recording.setter
+    def recording(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recording", value)
+
+    @property
+    @pulumi.getter(name="recordingEndTime")
+    def recording_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        """
+        return pulumi.get(self, "recording_end_time")
+
+    @recording_end_time.setter
+    def recording_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recording_end_time", value)
+
+    @property
+    @pulumi.getter(name="recordingFps")
+    def recording_fps(self) -> Optional[pulumi.Input[int]]:
+        """
+        The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        """
+        return pulumi.get(self, "recording_fps")
+
+    @recording_fps.setter
+    def recording_fps(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "recording_fps", value)
+
+    @property
+    @pulumi.getter(name="recordingStartTime")
+    def recording_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        """
+        return pulumi.get(self, "recording_start_time")
+
+    @recording_start_time.setter
+    def recording_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recording_start_time", value)
 
     @property
     @pulumi.getter(name="usbRedirect")
@@ -233,12 +313,17 @@ class _EcdPolicyGroupState:
     def __init__(__self__, *,
                  authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
                  authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
+                 camera_redirect: Optional[pulumi.Input[str]] = None,
                  clipboard: Optional[pulumi.Input[str]] = None,
                  domain_list: Optional[pulumi.Input[str]] = None,
                  html_access: Optional[pulumi.Input[str]] = None,
                  html_file_transfer: Optional[pulumi.Input[str]] = None,
                  local_drive: Optional[pulumi.Input[str]] = None,
                  policy_group_name: Optional[pulumi.Input[str]] = None,
+                 recording: Optional[pulumi.Input[str]] = None,
+                 recording_end_time: Optional[pulumi.Input[str]] = None,
+                 recording_fps: Optional[pulumi.Input[int]] = None,
+                 recording_start_time: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  usb_redirect: Optional[pulumi.Input[str]] = None,
                  visual_quality: Optional[pulumi.Input[str]] = None,
@@ -249,12 +334,17 @@ class _EcdPolicyGroupState:
         Input properties used for looking up and filtering EcdPolicyGroup resources.
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule.
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule.
+        :param pulumi.Input[str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[str] domain_list: The list of domain.
         :param pulumi.Input[str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         :param pulumi.Input[str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         :param pulumi.Input[str] policy_group_name: The name of policy group.
+        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] status: The status of policy.
         :param pulumi.Input[str] usb_redirect: The usb redirect policy. Valid values: `off`, `on`.
         :param pulumi.Input[str] visual_quality: The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
@@ -266,6 +356,8 @@ class _EcdPolicyGroupState:
             pulumi.set(__self__, "authorize_access_policy_rules", authorize_access_policy_rules)
         if authorize_security_policy_rules is not None:
             pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
+        if camera_redirect is not None:
+            pulumi.set(__self__, "camera_redirect", camera_redirect)
         if clipboard is not None:
             pulumi.set(__self__, "clipboard", clipboard)
         if domain_list is not None:
@@ -278,6 +370,14 @@ class _EcdPolicyGroupState:
             pulumi.set(__self__, "local_drive", local_drive)
         if policy_group_name is not None:
             pulumi.set(__self__, "policy_group_name", policy_group_name)
+        if recording is not None:
+            pulumi.set(__self__, "recording", recording)
+        if recording_end_time is not None:
+            pulumi.set(__self__, "recording_end_time", recording_end_time)
+        if recording_fps is not None:
+            pulumi.set(__self__, "recording_fps", recording_fps)
+        if recording_start_time is not None:
+            pulumi.set(__self__, "recording_start_time", recording_start_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if usb_redirect is not None:
@@ -314,6 +414,18 @@ class _EcdPolicyGroupState:
     @authorize_security_policy_rules.setter
     def authorize_security_policy_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "authorize_security_policy_rules", value)
+
+    @property
+    @pulumi.getter(name="cameraRedirect")
+    def camera_redirect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable local camera redirection. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "camera_redirect")
+
+    @camera_redirect.setter
+    def camera_redirect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "camera_redirect", value)
 
     @property
     @pulumi.getter
@@ -386,6 +498,54 @@ class _EcdPolicyGroupState:
     @policy_group_name.setter
     def policy_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy_group_name", value)
+
+    @property
+    @pulumi.getter
+    def recording(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        """
+        return pulumi.get(self, "recording")
+
+    @recording.setter
+    def recording(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recording", value)
+
+    @property
+    @pulumi.getter(name="recordingEndTime")
+    def recording_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        """
+        return pulumi.get(self, "recording_end_time")
+
+    @recording_end_time.setter
+    def recording_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recording_end_time", value)
+
+    @property
+    @pulumi.getter(name="recordingFps")
+    def recording_fps(self) -> Optional[pulumi.Input[int]]:
+        """
+        The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        """
+        return pulumi.get(self, "recording_fps")
+
+    @recording_fps.setter
+    def recording_fps(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "recording_fps", value)
+
+    @property
+    @pulumi.getter(name="recordingStartTime")
+    def recording_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        """
+        return pulumi.get(self, "recording_start_time")
+
+    @recording_start_time.setter
+    def recording_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recording_start_time", value)
 
     @property
     @pulumi.getter
@@ -467,12 +627,17 @@ class EcdPolicyGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]] = None,
                  authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]] = None,
+                 camera_redirect: Optional[pulumi.Input[str]] = None,
                  clipboard: Optional[pulumi.Input[str]] = None,
                  domain_list: Optional[pulumi.Input[str]] = None,
                  html_access: Optional[pulumi.Input[str]] = None,
                  html_file_transfer: Optional[pulumi.Input[str]] = None,
                  local_drive: Optional[pulumi.Input[str]] = None,
                  policy_group_name: Optional[pulumi.Input[str]] = None,
+                 recording: Optional[pulumi.Input[str]] = None,
+                 recording_end_time: Optional[pulumi.Input[str]] = None,
+                 recording_fps: Optional[pulumi.Input[int]] = None,
+                 recording_start_time: Optional[pulumi.Input[str]] = None,
                  usb_redirect: Optional[pulumi.Input[str]] = None,
                  visual_quality: Optional[pulumi.Input[str]] = None,
                  watermark: Optional[pulumi.Input[str]] = None,
@@ -527,12 +692,17 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] authorize_access_policy_rules: The rule of authorize access rule.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] authorize_security_policy_rules: The policy rule.
+        :param pulumi.Input[str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[str] domain_list: The list of domain.
         :param pulumi.Input[str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         :param pulumi.Input[str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         :param pulumi.Input[str] policy_group_name: The name of policy group.
+        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] usb_redirect: The usb redirect policy. Valid values: `off`, `on`.
         :param pulumi.Input[str] visual_quality: The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
         :param pulumi.Input[str] watermark: The watermark policy. Valid values: `off`, `on`.
@@ -606,12 +776,17 @@ class EcdPolicyGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]] = None,
                  authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]] = None,
+                 camera_redirect: Optional[pulumi.Input[str]] = None,
                  clipboard: Optional[pulumi.Input[str]] = None,
                  domain_list: Optional[pulumi.Input[str]] = None,
                  html_access: Optional[pulumi.Input[str]] = None,
                  html_file_transfer: Optional[pulumi.Input[str]] = None,
                  local_drive: Optional[pulumi.Input[str]] = None,
                  policy_group_name: Optional[pulumi.Input[str]] = None,
+                 recording: Optional[pulumi.Input[str]] = None,
+                 recording_end_time: Optional[pulumi.Input[str]] = None,
+                 recording_fps: Optional[pulumi.Input[int]] = None,
+                 recording_start_time: Optional[pulumi.Input[str]] = None,
                  usb_redirect: Optional[pulumi.Input[str]] = None,
                  visual_quality: Optional[pulumi.Input[str]] = None,
                  watermark: Optional[pulumi.Input[str]] = None,
@@ -631,12 +806,17 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
             __props__.__dict__["authorize_access_policy_rules"] = authorize_access_policy_rules
             __props__.__dict__["authorize_security_policy_rules"] = authorize_security_policy_rules
+            __props__.__dict__["camera_redirect"] = camera_redirect
             __props__.__dict__["clipboard"] = clipboard
             __props__.__dict__["domain_list"] = domain_list
             __props__.__dict__["html_access"] = html_access
             __props__.__dict__["html_file_transfer"] = html_file_transfer
             __props__.__dict__["local_drive"] = local_drive
             __props__.__dict__["policy_group_name"] = policy_group_name
+            __props__.__dict__["recording"] = recording
+            __props__.__dict__["recording_end_time"] = recording_end_time
+            __props__.__dict__["recording_fps"] = recording_fps
+            __props__.__dict__["recording_start_time"] = recording_start_time
             __props__.__dict__["usb_redirect"] = usb_redirect
             __props__.__dict__["visual_quality"] = visual_quality
             __props__.__dict__["watermark"] = watermark
@@ -655,12 +835,17 @@ class EcdPolicyGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]] = None,
             authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]] = None,
+            camera_redirect: Optional[pulumi.Input[str]] = None,
             clipboard: Optional[pulumi.Input[str]] = None,
             domain_list: Optional[pulumi.Input[str]] = None,
             html_access: Optional[pulumi.Input[str]] = None,
             html_file_transfer: Optional[pulumi.Input[str]] = None,
             local_drive: Optional[pulumi.Input[str]] = None,
             policy_group_name: Optional[pulumi.Input[str]] = None,
+            recording: Optional[pulumi.Input[str]] = None,
+            recording_end_time: Optional[pulumi.Input[str]] = None,
+            recording_fps: Optional[pulumi.Input[int]] = None,
+            recording_start_time: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             usb_redirect: Optional[pulumi.Input[str]] = None,
             visual_quality: Optional[pulumi.Input[str]] = None,
@@ -676,12 +861,17 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] authorize_access_policy_rules: The rule of authorize access rule.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] authorize_security_policy_rules: The policy rule.
+        :param pulumi.Input[str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[str] domain_list: The list of domain.
         :param pulumi.Input[str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         :param pulumi.Input[str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         :param pulumi.Input[str] policy_group_name: The name of policy group.
+        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] status: The status of policy.
         :param pulumi.Input[str] usb_redirect: The usb redirect policy. Valid values: `off`, `on`.
         :param pulumi.Input[str] visual_quality: The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
@@ -695,12 +885,17 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         __props__.__dict__["authorize_access_policy_rules"] = authorize_access_policy_rules
         __props__.__dict__["authorize_security_policy_rules"] = authorize_security_policy_rules
+        __props__.__dict__["camera_redirect"] = camera_redirect
         __props__.__dict__["clipboard"] = clipboard
         __props__.__dict__["domain_list"] = domain_list
         __props__.__dict__["html_access"] = html_access
         __props__.__dict__["html_file_transfer"] = html_file_transfer
         __props__.__dict__["local_drive"] = local_drive
         __props__.__dict__["policy_group_name"] = policy_group_name
+        __props__.__dict__["recording"] = recording
+        __props__.__dict__["recording_end_time"] = recording_end_time
+        __props__.__dict__["recording_fps"] = recording_fps
+        __props__.__dict__["recording_start_time"] = recording_start_time
         __props__.__dict__["status"] = status
         __props__.__dict__["usb_redirect"] = usb_redirect
         __props__.__dict__["visual_quality"] = visual_quality
@@ -724,6 +919,14 @@ class EcdPolicyGroup(pulumi.CustomResource):
         The policy rule.
         """
         return pulumi.get(self, "authorize_security_policy_rules")
+
+    @property
+    @pulumi.getter(name="cameraRedirect")
+    def camera_redirect(self) -> pulumi.Output[str]:
+        """
+        Whether to enable local camera redirection. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "camera_redirect")
 
     @property
     @pulumi.getter
@@ -772,6 +975,38 @@ class EcdPolicyGroup(pulumi.CustomResource):
         The name of policy group.
         """
         return pulumi.get(self, "policy_group_name")
+
+    @property
+    @pulumi.getter
+    def recording(self) -> pulumi.Output[str]:
+        """
+        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        """
+        return pulumi.get(self, "recording")
+
+    @property
+    @pulumi.getter(name="recordingEndTime")
+    def recording_end_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        """
+        return pulumi.get(self, "recording_end_time")
+
+    @property
+    @pulumi.getter(name="recordingFps")
+    def recording_fps(self) -> pulumi.Output[int]:
+        """
+        The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        """
+        return pulumi.get(self, "recording_fps")
+
+    @property
+    @pulumi.getter(name="recordingStartTime")
+    def recording_start_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        """
+        return pulumi.get(self, "recording_start_time")
 
     @property
     @pulumi.getter

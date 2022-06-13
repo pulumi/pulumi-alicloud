@@ -73,9 +73,11 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eds/getImages:getImages", {
+        "desktopInstanceType": args.desktopInstanceType,
         "ids": args.ids,
         "imageType": args.imageType,
         "nameRegex": args.nameRegex,
+        "osType": args.osType,
         "outputFile": args.outputFile,
         "status": args.status,
     }, opts);
@@ -85,6 +87,10 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getImages.
  */
 export interface GetImagesArgs {
+    /**
+     * The desktop type of the image.
+     */
+    desktopInstanceType?: string;
     /**
      * A list of Image IDs.
      */
@@ -97,6 +103,10 @@ export interface GetImagesArgs {
      * A regex string to filter results by Image name.
      */
     nameRegex?: string;
+    /**
+     * The os type of the image.
+     */
+    osType?: string;
     outputFile?: string;
     /**
      * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
@@ -108,6 +118,7 @@ export interface GetImagesArgs {
  * A collection of values returned by getImages.
  */
 export interface GetImagesResult {
+    readonly desktopInstanceType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -117,6 +128,7 @@ export interface GetImagesResult {
     readonly images: outputs.eds.GetImagesImage[];
     readonly nameRegex?: string;
     readonly names: string[];
+    readonly osType?: string;
     readonly outputFile?: string;
     readonly status?: string;
 }
@@ -130,6 +142,10 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetImagesOutputArgs {
     /**
+     * The desktop type of the image.
+     */
+    desktopInstanceType?: pulumi.Input<string>;
+    /**
      * A list of Image IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
@@ -141,6 +157,10 @@ export interface GetImagesOutputArgs {
      * A regex string to filter results by Image name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * The os type of the image.
+     */
+    osType?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.

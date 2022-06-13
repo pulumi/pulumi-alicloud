@@ -108,8 +108,18 @@ export class DbInstance extends pulumi.CustomResource {
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
-    public /*out*/ readonly vswitchId!: pulumi.Output<string>;
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    /**
+     * ID of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
+     * The ID of attaching vswitch to instance.
+     */
+    public readonly vswitchId!: pulumi.Output<string>;
+    /**
+     * The zone ID of the resource.
+     */
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a DbInstance resource with the given unique name, arguments, and options.
@@ -134,6 +144,7 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -168,9 +179,10 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
             resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["vswitchId"] = undefined /*out*/;
-            resourceInputs["zoneId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbInstance.__pulumiType, name, resourceInputs, opts);
@@ -221,7 +233,17 @@ export interface DbInstanceState {
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * ID of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The ID of attaching vswitch to instance.
+     */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone ID of the resource.
+     */
     zoneId?: pulumi.Input<string>;
 }
 
@@ -265,4 +287,16 @@ export interface DbInstanceArgs {
      * The paymen type of the resource. Valid values: `PayAsYouGo`.
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * ID of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The ID of attaching vswitch to instance.
+     */
+    vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone ID of the resource.
+     */
+    zoneId?: pulumi.Input<string>;
 }

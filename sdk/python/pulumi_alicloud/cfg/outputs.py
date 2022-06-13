@@ -28,6 +28,7 @@ __all__ = [
     'GetCompliancePacksPackConfigRuleResult',
     'GetCompliancePacksPackConfigRuleConfigRuleParameterResult',
     'GetConfigurationRecordersRecorderResult',
+    'GetDeliveriesDeliveryResult',
     'GetDeliveryChannelsChannelResult',
     'GetRulesRuleResult',
     'GetRulesRuleComplianceResult',
@@ -1224,6 +1225,167 @@ class GetConfigurationRecordersRecorderResult(dict):
     def status(self) -> str:
         """
         Status of resource monitoring.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetDeliveriesDeliveryResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 configuration_item_change_notification: bool,
+                 configuration_snapshot: bool,
+                 delivery_channel_assume_role_arn: str,
+                 delivery_channel_condition: str,
+                 delivery_channel_id: str,
+                 delivery_channel_name: str,
+                 delivery_channel_target_arn: str,
+                 delivery_channel_type: str,
+                 description: str,
+                 id: str,
+                 non_compliant_notification: bool,
+                 oversized_data_oss_target_arn: str,
+                 status: int):
+        """
+        :param str account_id: The Aliyun User Id.
+        :param bool configuration_item_change_notification: Open or close delivery configuration change history.
+        :param bool configuration_snapshot: Open or close timed snapshot of shipping resources.
+        :param str delivery_channel_assume_role_arn: The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+        :param str delivery_channel_condition: The rule attached to the delivery method.
+        :param str delivery_channel_id: The ID of the delivery method.
+        :param str delivery_channel_name: The name of the delivery method.
+        :param str delivery_channel_target_arn: The ARN of the delivery destination.
+        :param str delivery_channel_type: The type of the delivery method.
+        :param str description: The description of the delivery method.
+        :param str id: The ID of the Delivery.
+        :param bool non_compliant_notification: Open or close non-compliance events of delivery resources.
+        :param str oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
+        :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "configuration_item_change_notification", configuration_item_change_notification)
+        pulumi.set(__self__, "configuration_snapshot", configuration_snapshot)
+        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
+        pulumi.set(__self__, "delivery_channel_id", delivery_channel_id)
+        pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
+        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
+        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "non_compliant_notification", non_compliant_notification)
+        pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The Aliyun User Id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="configurationItemChangeNotification")
+    def configuration_item_change_notification(self) -> bool:
+        """
+        Open or close delivery configuration change history.
+        """
+        return pulumi.get(self, "configuration_item_change_notification")
+
+    @property
+    @pulumi.getter(name="configurationSnapshot")
+    def configuration_snapshot(self) -> bool:
+        """
+        Open or close timed snapshot of shipping resources.
+        """
+        return pulumi.get(self, "configuration_snapshot")
+
+    @property
+    @pulumi.getter(name="deliveryChannelAssumeRoleArn")
+    def delivery_channel_assume_role_arn(self) -> str:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+        """
+        return pulumi.get(self, "delivery_channel_assume_role_arn")
+
+    @property
+    @pulumi.getter(name="deliveryChannelCondition")
+    def delivery_channel_condition(self) -> str:
+        """
+        The rule attached to the delivery method.
+        """
+        return pulumi.get(self, "delivery_channel_condition")
+
+    @property
+    @pulumi.getter(name="deliveryChannelId")
+    def delivery_channel_id(self) -> str:
+        """
+        The ID of the delivery method.
+        """
+        return pulumi.get(self, "delivery_channel_id")
+
+    @property
+    @pulumi.getter(name="deliveryChannelName")
+    def delivery_channel_name(self) -> str:
+        """
+        The name of the delivery method.
+        """
+        return pulumi.get(self, "delivery_channel_name")
+
+    @property
+    @pulumi.getter(name="deliveryChannelTargetArn")
+    def delivery_channel_target_arn(self) -> str:
+        """
+        The ARN of the delivery destination.
+        """
+        return pulumi.get(self, "delivery_channel_target_arn")
+
+    @property
+    @pulumi.getter(name="deliveryChannelType")
+    def delivery_channel_type(self) -> str:
+        """
+        The type of the delivery method.
+        """
+        return pulumi.get(self, "delivery_channel_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the delivery method.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Delivery.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nonCompliantNotification")
+    def non_compliant_notification(self) -> bool:
+        """
+        Open or close non-compliance events of delivery resources.
+        """
+        return pulumi.get(self, "non_compliant_notification")
+
+    @property
+    @pulumi.getter(name="oversizedDataOssTargetArn")
+    def oversized_data_oss_target_arn(self) -> str:
+        """
+        The oss ARN of the delivery channel when the value data oversized limit.
+        """
+        return pulumi.get(self, "oversized_data_oss_target_arn")
+
+    @property
+    @pulumi.getter
+    def status(self) -> int:
+        """
+        The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
         """
         return pulumi.get(self, "status")
 

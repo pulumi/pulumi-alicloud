@@ -121,6 +121,8 @@ type ServerlessKubernetes struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
 	// Whether to create internet  eip for API Server. Default to false.
 	EndpointPublicAccessEnabled pulumi.BoolPtrOutput `pulumi:"endpointPublicAccessEnabled"`
 	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
@@ -218,6 +220,8 @@ type serverlessKubernetesState struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// Whether to create internet  eip for API Server. Default to false.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
 	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
@@ -284,6 +288,8 @@ type ServerlessKubernetesState struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa pulumi.BoolPtrInput
 	// Whether to create internet  eip for API Server. Default to false.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
 	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
@@ -354,6 +360,8 @@ type serverlessKubernetesArgs struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// Whether to create internet  eip for API Server. Default to false.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
 	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
@@ -421,6 +429,8 @@ type ServerlessKubernetesArgs struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa pulumi.BoolPtrInput
 	// Whether to create internet  eip for API Server. Default to false.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
 	// Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.

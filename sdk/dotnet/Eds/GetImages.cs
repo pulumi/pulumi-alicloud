@@ -207,6 +207,12 @@ namespace Pulumi.AliCloud.Eds
 
     public sealed class GetImagesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The desktop type of the image.
+        /// </summary>
+        [Input("desktopInstanceType")]
+        public string? DesktopInstanceType { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -231,6 +237,12 @@ namespace Pulumi.AliCloud.Eds
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The os type of the image.
+        /// </summary>
+        [Input("osType")]
+        public string? OsType { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -247,6 +259,12 @@ namespace Pulumi.AliCloud.Eds
 
     public sealed class GetImagesInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The desktop type of the image.
+        /// </summary>
+        [Input("desktopInstanceType")]
+        public Input<string>? DesktopInstanceType { get; set; }
+
         [Input("ids")]
         private InputList<string>? _ids;
 
@@ -271,6 +289,12 @@ namespace Pulumi.AliCloud.Eds
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// The os type of the image.
+        /// </summary>
+        [Input("osType")]
+        public Input<string>? OsType { get; set; }
+
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -289,6 +313,7 @@ namespace Pulumi.AliCloud.Eds
     [OutputType]
     public sealed class GetImagesResult
     {
+        public readonly string? DesktopInstanceType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -298,11 +323,14 @@ namespace Pulumi.AliCloud.Eds
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
+        public readonly string? OsType;
         public readonly string? OutputFile;
         public readonly string? Status;
 
         [OutputConstructor]
         private GetImagesResult(
+            string? desktopInstanceType,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -315,16 +343,20 @@ namespace Pulumi.AliCloud.Eds
 
             ImmutableArray<string> names,
 
+            string? osType,
+
             string? outputFile,
 
             string? status)
         {
+            DesktopInstanceType = desktopInstanceType;
             Id = id;
             Ids = ids;
             ImageType = imageType;
             Images = images;
             NameRegex = nameRegex;
             Names = names;
+            OsType = osType;
             OutputFile = outputFile;
             Status = status;
         }

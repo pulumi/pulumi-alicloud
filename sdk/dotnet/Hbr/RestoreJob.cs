@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Include { get; private set; } = null!;
 
         /// <summary>
-        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
         /// </summary>
         [Output("options")]
         public Output<string?> Options { get; private set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> TargetTableName { get; private set; } = null!;
 
         /// <summary>
-        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
         /// </summary>
         [Output("targetTime")]
         public Output<string?> TargetTime { get; private set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -415,7 +415,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetTableName { get; set; }
 
         /// <summary>
-        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
         /// </summary>
         [Input("targetTime")]
         public Input<string>? TargetTime { get; set; }
@@ -452,7 +452,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Include { get; set; }
 
         /// <summary>
-        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
+        /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
@@ -554,7 +554,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? TargetTableName { get; set; }
 
         /// <summary>
-        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+        /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
         /// </summary>
         [Input("targetTime")]
         public Input<string>? TargetTime { get; set; }

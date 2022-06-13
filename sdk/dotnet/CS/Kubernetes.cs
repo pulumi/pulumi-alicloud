@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.CS
         /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         /// </summary>
         [Output("platform")]
-        public Output<string?> Platform { get; private set; } = null!;
+        public Output<string> Platform { get; private set; } = null!;
 
         /// <summary>
         /// - [Flannel Specific] The CIDR block for the pod network when using Flannel.

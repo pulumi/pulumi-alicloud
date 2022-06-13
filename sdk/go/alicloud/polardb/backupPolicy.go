@@ -23,6 +23,8 @@ type BackupPolicy struct {
 
 	// Cluster backup retention days, Fixed for 7 days, not modified.
 	BackupRetentionPeriod pulumi.StringOutput `pulumi:"backupRetentionPeriod"`
+	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+	BackupRetentionPolicyOnClusterDeletion pulumi.StringOutput `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
 	// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -65,6 +67,8 @@ func GetBackupPolicy(ctx *pulumi.Context,
 type backupPolicyState struct {
 	// Cluster backup retention days, Fixed for 7 days, not modified.
 	BackupRetentionPeriod *string `pulumi:"backupRetentionPeriod"`
+	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+	BackupRetentionPolicyOnClusterDeletion *string `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// The Id of cluster that can run database.
 	DbClusterId *string `pulumi:"dbClusterId"`
 	// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -76,6 +80,8 @@ type backupPolicyState struct {
 type BackupPolicyState struct {
 	// Cluster backup retention days, Fixed for 7 days, not modified.
 	BackupRetentionPeriod pulumi.StringPtrInput
+	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+	BackupRetentionPolicyOnClusterDeletion pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringPtrInput
 	// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -89,6 +95,8 @@ func (BackupPolicyState) ElementType() reflect.Type {
 }
 
 type backupPolicyArgs struct {
+	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+	BackupRetentionPolicyOnClusterDeletion *string `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// The Id of cluster that can run database.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -99,6 +107,8 @@ type backupPolicyArgs struct {
 
 // The set of arguments for constructing a BackupPolicy resource.
 type BackupPolicyArgs struct {
+	// Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+	BackupRetentionPolicyOnClusterDeletion pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringInput
 	// PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].

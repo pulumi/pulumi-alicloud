@@ -61,7 +61,9 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+	// Attribute perm has been deprecated and suggest removing it from your template.
+	//
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrOutput `pulumi:"bizName"`
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos DomainCertInfoArrayOutput `pulumi:"certInfos"`
@@ -114,7 +116,9 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+	// Attribute perm has been deprecated and suggest removing it from your template.
+	//
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName *string `pulumi:"bizName"`
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos []DomainCertInfo `pulumi:"certInfos"`
@@ -133,7 +137,9 @@ type domainState struct {
 }
 
 type DomainState struct {
-	// from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+	// Attribute perm has been deprecated and suggest removing it from your template.
+	//
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrInput
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos DomainCertInfoArrayInput
@@ -156,7 +162,9 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+	// Attribute perm has been deprecated and suggest removing it from your template.
+	//
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName *string `pulumi:"bizName"`
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos []DomainCertInfo `pulumi:"certInfos"`
@@ -176,7 +184,9 @@ type domainArgs struct {
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+	// Attribute perm has been deprecated and suggest removing it from your template.
+	//
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrInput
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos DomainCertInfoArrayInput

@@ -2846,7 +2846,7 @@ class GetVaultsVaultResult(dict):
         :param str vault_name: The name of vault.
         :param str vault_status_message: Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
         :param str vault_storage_class: The storage class of vault. Valid values: `STANDARD`.
-        :param str vault_type: The type of Vault. Valid values: `STANDARD`.
+        :param str vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "bytes_done", bytes_done)
@@ -3067,7 +3067,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="vaultType")
     def vault_type(self) -> str:
         """
-        The type of Vault. Valid values: `STANDARD`.
+        The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         """
         return pulumi.get(self, "vault_type")
 

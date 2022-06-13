@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Scdn
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>
-        /// from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        /// Attribute perm has been deprecated and suggest removing it from your template.
         /// </summary>
         [Output("bizName")]
         public Output<string?> BizName { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Scdn
     public sealed class DomainArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        /// Attribute perm has been deprecated and suggest removing it from your template.
         /// </summary>
         [Input("bizName")]
         public Input<string>? BizName { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Scdn
     public sealed class DomainState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        /// Attribute perm has been deprecated and suggest removing it from your template.
         /// </summary>
         [Input("bizName")]
         public Input<string>? BizName { get; set; }

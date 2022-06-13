@@ -17,6 +17,7 @@ __all__ = [
     'GetBundlesBundleDiskResult',
     'GetCommandsCommandResult',
     'GetCommandsCommandInvokeDesktopResult',
+    'GetDesktopTypesTypeResult',
     'GetDesktopsDesktopResult',
     'GetImagesImageResult',
     'GetNasFileSystemsSystemResult',
@@ -596,6 +597,123 @@ class GetCommandsCommandInvokeDesktopResult(dict):
         If You Use the invocation Indicates That the Call of the Time.
         """
         return pulumi.get(self, "stop_time")
+
+
+@pulumi.output_type
+class GetDesktopTypesTypeResult(dict):
+    def __init__(__self__, *,
+                 cpu_count: str,
+                 data_disk_size: str,
+                 desktop_type_id: str,
+                 gpu_count: float,
+                 gpu_spec: str,
+                 id: str,
+                 instance_type_family: str,
+                 memory_size: str,
+                 status: str,
+                 system_disk_size: str):
+        """
+        :param str cpu_count: The CPU cores.
+        :param str data_disk_size: The size of the data disk. Unit: GiB.
+        :param str desktop_type_id: Specification ID.
+        :param float gpu_count: The GPU cores.
+        :param str gpu_spec: The GPU video memory.
+        :param str id: The ID of the Desktop Type.
+        :param str instance_type_family: The Specification family.
+        :param str memory_size: The Memory size. Unit: MiB.
+        :param str status: The status of the resource.
+        :param str system_disk_size: The size of the system disk. Unit: GiB.
+        """
+        pulumi.set(__self__, "cpu_count", cpu_count)
+        pulumi.set(__self__, "data_disk_size", data_disk_size)
+        pulumi.set(__self__, "desktop_type_id", desktop_type_id)
+        pulumi.set(__self__, "gpu_count", gpu_count)
+        pulumi.set(__self__, "gpu_spec", gpu_spec)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_type_family", instance_type_family)
+        pulumi.set(__self__, "memory_size", memory_size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "system_disk_size", system_disk_size)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> str:
+        """
+        The CPU cores.
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @property
+    @pulumi.getter(name="dataDiskSize")
+    def data_disk_size(self) -> str:
+        """
+        The size of the data disk. Unit: GiB.
+        """
+        return pulumi.get(self, "data_disk_size")
+
+    @property
+    @pulumi.getter(name="desktopTypeId")
+    def desktop_type_id(self) -> str:
+        """
+        Specification ID.
+        """
+        return pulumi.get(self, "desktop_type_id")
+
+    @property
+    @pulumi.getter(name="gpuCount")
+    def gpu_count(self) -> float:
+        """
+        The GPU cores.
+        """
+        return pulumi.get(self, "gpu_count")
+
+    @property
+    @pulumi.getter(name="gpuSpec")
+    def gpu_spec(self) -> str:
+        """
+        The GPU video memory.
+        """
+        return pulumi.get(self, "gpu_spec")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Desktop Type.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceTypeFamily")
+    def instance_type_family(self) -> str:
+        """
+        The Specification family.
+        """
+        return pulumi.get(self, "instance_type_family")
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> str:
+        """
+        The Memory size. Unit: MiB.
+        """
+        return pulumi.get(self, "memory_size")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="systemDiskSize")
+    def system_disk_size(self) -> str:
+        """
+        The size of the system disk. Unit: GiB.
+        """
+        return pulumi.get(self, "system_disk_size")
 
 
 @pulumi.output_type
@@ -1214,6 +1332,7 @@ class GetPolicyGroupsGroupResult(dict):
     def __init__(__self__, *,
                  authorize_access_policy_rules: Sequence['outputs.GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult'],
                  authorize_security_policy_rules: Sequence['outputs.GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult'],
+                 camera_redirect: str,
                  clipboard: str,
                  domain_list: str,
                  eds_count: int,
@@ -1224,6 +1343,10 @@ class GetPolicyGroupsGroupResult(dict):
                  policy_group_id: str,
                  policy_group_name: str,
                  policy_group_type: str,
+                 recording: str,
+                 recording_end_time: str,
+                 recording_fps: int,
+                 recording_start_time: str,
                  status: str,
                  usb_redirect: str,
                  visual_quality: str,
@@ -1233,6 +1356,7 @@ class GetPolicyGroupsGroupResult(dict):
         """
         :param Sequence['GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs'] authorize_access_policy_rules: The rule of authorize access rule.
         :param Sequence['GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs'] authorize_security_policy_rules: The policy rule.
+        :param str camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param str clipboard: The clipboard policy.
         :param str domain_list: The list of domain.
         :param int eds_count: The count of eds.
@@ -1243,6 +1367,10 @@ class GetPolicyGroupsGroupResult(dict):
         :param str policy_group_id: The policy group id.
         :param str policy_group_name: The name of policy group.
         :param str policy_group_type: The type of policy group.
+        :param str recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param str recording_end_time: The end time of recording.
+        :param int recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        :param str recording_start_time: The start time of recording.
         :param str status: The status of policy.
         :param str usb_redirect: The usb redirect policy.
         :param str visual_quality: The quality of visual.sae_ecdsae_nameecd_po
@@ -1252,6 +1380,7 @@ class GetPolicyGroupsGroupResult(dict):
         """
         pulumi.set(__self__, "authorize_access_policy_rules", authorize_access_policy_rules)
         pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
+        pulumi.set(__self__, "camera_redirect", camera_redirect)
         pulumi.set(__self__, "clipboard", clipboard)
         pulumi.set(__self__, "domain_list", domain_list)
         pulumi.set(__self__, "eds_count", eds_count)
@@ -1262,6 +1391,10 @@ class GetPolicyGroupsGroupResult(dict):
         pulumi.set(__self__, "policy_group_id", policy_group_id)
         pulumi.set(__self__, "policy_group_name", policy_group_name)
         pulumi.set(__self__, "policy_group_type", policy_group_type)
+        pulumi.set(__self__, "recording", recording)
+        pulumi.set(__self__, "recording_end_time", recording_end_time)
+        pulumi.set(__self__, "recording_fps", recording_fps)
+        pulumi.set(__self__, "recording_start_time", recording_start_time)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "usb_redirect", usb_redirect)
         pulumi.set(__self__, "visual_quality", visual_quality)
@@ -1284,6 +1417,14 @@ class GetPolicyGroupsGroupResult(dict):
         The policy rule.
         """
         return pulumi.get(self, "authorize_security_policy_rules")
+
+    @property
+    @pulumi.getter(name="cameraRedirect")
+    def camera_redirect(self) -> str:
+        """
+        Whether to enable local camera redirection. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "camera_redirect")
 
     @property
     @pulumi.getter
@@ -1364,6 +1505,38 @@ class GetPolicyGroupsGroupResult(dict):
         The type of policy group.
         """
         return pulumi.get(self, "policy_group_type")
+
+    @property
+    @pulumi.getter
+    def recording(self) -> str:
+        """
+        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        """
+        return pulumi.get(self, "recording")
+
+    @property
+    @pulumi.getter(name="recordingEndTime")
+    def recording_end_time(self) -> str:
+        """
+        The end time of recording.
+        """
+        return pulumi.get(self, "recording_end_time")
+
+    @property
+    @pulumi.getter(name="recordingFps")
+    def recording_fps(self) -> int:
+        """
+        The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        """
+        return pulumi.get(self, "recording_fps")
+
+    @property
+    @pulumi.getter(name="recordingStartTime")
+    def recording_start_time(self) -> str:
+        """
+        The start time of recording.
+        """
+        return pulumi.get(self, "recording_start_time")
 
     @property
     @pulumi.getter

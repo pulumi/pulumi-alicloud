@@ -128,8 +128,10 @@ type Instance struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-	Status   pulumi.StringOutput `pulumi:"status"`
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	StoppedMode pulumi.StringOutput `pulumi:"stoppedMode"`
+	SubnetId    pulumi.StringOutput `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
@@ -301,8 +303,10 @@ type instanceState struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-	Status   *string `pulumi:"status"`
-	SubnetId *string `pulumi:"subnetId"`
+	Status *string `pulumi:"status"`
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	StoppedMode *string `pulumi:"stoppedMode"`
+	SubnetId    *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
@@ -437,8 +441,10 @@ type InstanceState struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-	Status   pulumi.StringPtrInput
-	SubnetId pulumi.StringPtrInput
+	Status pulumi.StringPtrInput
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	StoppedMode pulumi.StringPtrInput
+	SubnetId    pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
@@ -573,8 +579,10 @@ type instanceArgs struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-	Status   *string `pulumi:"status"`
-	SubnetId *string `pulumi:"subnetId"`
+	Status *string `pulumi:"status"`
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	StoppedMode *string `pulumi:"stoppedMode"`
+	SubnetId    *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
@@ -706,8 +714,10 @@ type InstanceArgs struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-	Status   pulumi.StringPtrInput
-	SubnetId pulumi.StringPtrInput
+	Status pulumi.StringPtrInput
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	StoppedMode pulumi.StringPtrInput
+	SubnetId    pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.

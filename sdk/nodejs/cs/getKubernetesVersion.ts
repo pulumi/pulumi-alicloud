@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the details of the Kubernetes version supported by ACK.
  *
- * > **NOTE:** Available in 1.169.0+.
+ * > **NOTE:** Available in 1.170.0+.
  */
 export function getKubernetesVersion(args: GetKubernetesVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionResult> {
     if (!opts) {

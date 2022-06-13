@@ -117,6 +117,12 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// </summary>
+        [Output("enableRrsa")]
+        public Output<bool?> EnableRrsa { get; private set; } = null!;
+
+        /// <summary>
         /// Enable login to the node through SSH. Default to `false`.
         /// </summary>
         [Output("enableSsh")]
@@ -243,7 +249,7 @@ namespace Pulumi.AliCloud.CS
         /// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         /// </summary>
         [Output("platform")]
-        public Output<string?> Platform { get; private set; } = null!;
+        public Output<string> Platform { get; private set; } = null!;
 
         /// <summary>
         /// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
@@ -600,6 +606,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// </summary>
+        [Input("enableRrsa")]
+        public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
         /// Enable login to the node through SSH. Default to `false`.
@@ -1074,6 +1086,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// </summary>
+        [Input("enableRrsa")]
+        public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
         /// Enable login to the node through SSH. Default to `false`.

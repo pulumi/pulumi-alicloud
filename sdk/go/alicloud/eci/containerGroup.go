@@ -124,6 +124,8 @@ import (
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+	AutoCreateEip pulumi.BoolPtrOutput `pulumi:"autoCreateEip"`
 	// Specifies whether to automatically match the image cache. Default value: false.
 	AutoMatchImageCache pulumi.BoolPtrOutput `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
@@ -136,16 +138,28 @@ type ContainerGroup struct {
 	DnsConfig ContainerGroupDnsConfigPtrOutput `pulumi:"dnsConfig"`
 	// The security context of the container group.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrOutput `pulumi:"eciSecurityContext"`
+	// The bandwidth of the EIP. The default value is `5`.
+	EipBandwidth pulumi.IntPtrOutput `pulumi:"eipBandwidth"`
+	// The ID of the elastic IP address (EIP).
+	EipInstanceId pulumi.StringPtrOutput `pulumi:"eipInstanceId"`
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayOutput `pulumi:"hostAliases"`
 	// The image registry credential. The details see Block `imageRegistryCredential`.
 	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayOutput `pulumi:"imageRegistryCredentials"`
 	// The list of initContainers.
 	InitContainers ContainerGroupInitContainerArrayOutput `pulumi:"initContainers"`
+	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+	InsecureRegistry pulumi.StringPtrOutput `pulumi:"insecureRegistry"`
 	// The type of the ECS instance.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
+	// (Available in v1.170.0+) The Public IP of the container group.
+	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
+	// (Available in v1.170.0+) The Private IP of the container group.
+	IntranetIp pulumi.StringOutput `pulumi:"intranetIp"`
 	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64PtrOutput `pulumi:"memory"`
+	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+	PlainHttpRegistry pulumi.StringPtrOutput `pulumi:"plainHttpRegistry"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
 	// The ID of the resource group.
@@ -209,6 +223,8 @@ func GetContainerGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerGroup resources.
 type containerGroupState struct {
+	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// Specifies whether to automatically match the image cache. Default value: false.
 	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
@@ -221,16 +237,28 @@ type containerGroupState struct {
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
 	// The security context of the container group.
 	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
+	// The bandwidth of the EIP. The default value is `5`.
+	EipBandwidth *int `pulumi:"eipBandwidth"`
+	// The ID of the elastic IP address (EIP).
+	EipInstanceId *string `pulumi:"eipInstanceId"`
 	// HostAliases.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
 	// The image registry credential. The details see Block `imageRegistryCredential`.
 	ImageRegistryCredentials []ContainerGroupImageRegistryCredential `pulumi:"imageRegistryCredentials"`
 	// The list of initContainers.
 	InitContainers []ContainerGroupInitContainer `pulumi:"initContainers"`
+	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+	InsecureRegistry *string `pulumi:"insecureRegistry"`
 	// The type of the ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
+	// (Available in v1.170.0+) The Public IP of the container group.
+	InternetIp *string `pulumi:"internetIp"`
+	// (Available in v1.170.0+) The Private IP of the container group.
+	IntranetIp *string `pulumi:"intranetIp"`
 	// The amount of memory resources allocated to the container.
 	Memory *float64 `pulumi:"memory"`
+	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+	PlainHttpRegistry *string `pulumi:"plainHttpRegistry"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The ID of the resource group.
@@ -254,6 +282,8 @@ type containerGroupState struct {
 }
 
 type ContainerGroupState struct {
+	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+	AutoCreateEip pulumi.BoolPtrInput
 	// Specifies whether to automatically match the image cache. Default value: false.
 	AutoMatchImageCache pulumi.BoolPtrInput
 	// The name of the container group.
@@ -266,16 +296,28 @@ type ContainerGroupState struct {
 	DnsConfig ContainerGroupDnsConfigPtrInput
 	// The security context of the container group.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
+	// The bandwidth of the EIP. The default value is `5`.
+	EipBandwidth pulumi.IntPtrInput
+	// The ID of the elastic IP address (EIP).
+	EipInstanceId pulumi.StringPtrInput
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayInput
 	// The image registry credential. The details see Block `imageRegistryCredential`.
 	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayInput
 	// The list of initContainers.
 	InitContainers ContainerGroupInitContainerArrayInput
+	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+	InsecureRegistry pulumi.StringPtrInput
 	// The type of the ECS instance.
 	InstanceType pulumi.StringPtrInput
+	// (Available in v1.170.0+) The Public IP of the container group.
+	InternetIp pulumi.StringPtrInput
+	// (Available in v1.170.0+) The Private IP of the container group.
+	IntranetIp pulumi.StringPtrInput
 	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64PtrInput
+	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+	PlainHttpRegistry pulumi.StringPtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrInput
 	// The ID of the resource group.
@@ -303,6 +345,8 @@ func (ContainerGroupState) ElementType() reflect.Type {
 }
 
 type containerGroupArgs struct {
+	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// Specifies whether to automatically match the image cache. Default value: false.
 	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
 	// The name of the container group.
@@ -315,16 +359,24 @@ type containerGroupArgs struct {
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
 	// The security context of the container group.
 	EciSecurityContext *ContainerGroupEciSecurityContext `pulumi:"eciSecurityContext"`
+	// The bandwidth of the EIP. The default value is `5`.
+	EipBandwidth *int `pulumi:"eipBandwidth"`
+	// The ID of the elastic IP address (EIP).
+	EipInstanceId *string `pulumi:"eipInstanceId"`
 	// HostAliases.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
 	// The image registry credential. The details see Block `imageRegistryCredential`.
 	ImageRegistryCredentials []ContainerGroupImageRegistryCredential `pulumi:"imageRegistryCredentials"`
 	// The list of initContainers.
 	InitContainers []ContainerGroupInitContainer `pulumi:"initContainers"`
+	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+	InsecureRegistry *string `pulumi:"insecureRegistry"`
 	// The type of the ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
 	// The amount of memory resources allocated to the container.
 	Memory *float64 `pulumi:"memory"`
+	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+	PlainHttpRegistry *string `pulumi:"plainHttpRegistry"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The ID of the resource group.
@@ -347,6 +399,8 @@ type containerGroupArgs struct {
 
 // The set of arguments for constructing a ContainerGroup resource.
 type ContainerGroupArgs struct {
+	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+	AutoCreateEip pulumi.BoolPtrInput
 	// Specifies whether to automatically match the image cache. Default value: false.
 	AutoMatchImageCache pulumi.BoolPtrInput
 	// The name of the container group.
@@ -359,16 +413,24 @@ type ContainerGroupArgs struct {
 	DnsConfig ContainerGroupDnsConfigPtrInput
 	// The security context of the container group.
 	EciSecurityContext ContainerGroupEciSecurityContextPtrInput
+	// The bandwidth of the EIP. The default value is `5`.
+	EipBandwidth pulumi.IntPtrInput
+	// The ID of the elastic IP address (EIP).
+	EipInstanceId pulumi.StringPtrInput
 	// HostAliases.
 	HostAliases ContainerGroupHostAliasArrayInput
 	// The image registry credential. The details see Block `imageRegistryCredential`.
 	ImageRegistryCredentials ContainerGroupImageRegistryCredentialArrayInput
 	// The list of initContainers.
 	InitContainers ContainerGroupInitContainerArrayInput
+	// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+	InsecureRegistry pulumi.StringPtrInput
 	// The type of the ECS instance.
 	InstanceType pulumi.StringPtrInput
 	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64PtrInput
+	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+	PlainHttpRegistry pulumi.StringPtrInput
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
 	RamRoleName pulumi.StringPtrInput
 	// The ID of the resource group.

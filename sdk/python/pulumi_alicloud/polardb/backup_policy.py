@@ -14,15 +14,19 @@ __all__ = ['BackupPolicyArgs', 'BackupPolicy']
 class BackupPolicyArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[str],
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if backup_retention_policy_on_cluster_deletion is not None:
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if preferred_backup_periods is not None:
             pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
@@ -39,6 +43,18 @@ class BackupPolicyArgs:
     @db_cluster_id.setter
     def db_cluster_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
+
+    @backup_retention_policy_on_cluster_deletion.setter
+    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @property
     @pulumi.getter(name="preferredBackupPeriods")
@@ -69,18 +85,22 @@ class BackupPolicyArgs:
 class _BackupPolicyState:
     def __init__(__self__, *,
                  backup_retention_period: Optional[pulumi.Input[str]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
         :param pulumi.Input[str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         if backup_retention_period is not None:
             pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+        if backup_retention_policy_on_cluster_deletion is not None:
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if db_cluster_id is not None:
             pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if preferred_backup_periods is not None:
@@ -99,6 +119,18 @@ class _BackupPolicyState:
     @backup_retention_period.setter
     def backup_retention_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backup_retention_period", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
+
+    @backup_retention_policy_on_cluster_deletion.setter
+    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -142,6 +174,7 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None,
@@ -157,6 +190,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
@@ -191,6 +225,7 @@ class BackupPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None,
@@ -206,6 +241,7 @@ class BackupPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BackupPolicyArgs.__new__(BackupPolicyArgs)
 
+            __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__.__dict__["db_cluster_id"] = db_cluster_id
@@ -223,6 +259,7 @@ class BackupPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_retention_period: Optional[pulumi.Input[str]] = None,
+            backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
             db_cluster_id: Optional[pulumi.Input[str]] = None,
             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preferred_backup_time: Optional[pulumi.Input[str]] = None) -> 'BackupPolicy':
@@ -234,6 +271,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
@@ -243,6 +281,7 @@ class BackupPolicy(pulumi.CustomResource):
         __props__ = _BackupPolicyState.__new__(_BackupPolicyState)
 
         __props__.__dict__["backup_retention_period"] = backup_retention_period
+        __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["db_cluster_id"] = db_cluster_id
         __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
         __props__.__dict__["preferred_backup_time"] = preferred_backup_time
@@ -255,6 +294,14 @@ class BackupPolicy(pulumi.CustomResource):
         Cluster backup retention days, Fixed for 7 days, not modified.
         """
         return pulumi.get(self, "backup_retention_period")
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @property
     @pulumi.getter(name="dbClusterId")

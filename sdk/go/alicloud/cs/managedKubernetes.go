@@ -54,6 +54,8 @@ type ManagedKubernetes struct {
 	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrOutput `pulumi:"enableSsh"`
 	// The disk encryption key.
@@ -96,7 +98,7 @@ type ManagedKubernetes struct {
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-	Platform pulumi.StringPtrOutput `pulumi:"platform"`
+	Platform pulumi.StringOutput `pulumi:"platform"`
 	// - [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
 	// - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
@@ -235,6 +237,8 @@ type managedKubernetesState struct {
 	CustomSan *string `pulumi:"customSan"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh *bool `pulumi:"enableSsh"`
 	// The disk encryption key.
@@ -385,6 +389,8 @@ type ManagedKubernetesState struct {
 	CustomSan pulumi.StringPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa pulumi.BoolPtrInput
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrInput
 	// The disk encryption key.
@@ -535,6 +541,8 @@ type managedKubernetesArgs struct {
 	CustomSan *string `pulumi:"customSan"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh *bool `pulumi:"enableSsh"`
 	// The disk encryption key.
@@ -669,6 +677,8 @@ type ManagedKubernetesArgs struct {
 	CustomSan pulumi.StringPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	EnableRrsa pulumi.BoolPtrInput
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrInput
 	// The disk encryption key.

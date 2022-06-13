@@ -3815,7 +3815,7 @@ type GetVaultsVault struct {
 	VaultStatusMessage string `pulumi:"vaultStatusMessage"`
 	// The storage class of vault. Valid values: `STANDARD`.
 	VaultStorageClass string `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`.
+	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType string `pulumi:"vaultType"`
 }
 
@@ -3878,7 +3878,7 @@ type GetVaultsVaultArgs struct {
 	VaultStatusMessage pulumi.StringInput `pulumi:"vaultStatusMessage"`
 	// The storage class of vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringInput `pulumi:"vaultStorageClass"`
-	// The type of Vault. Valid values: `STANDARD`.
+	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType pulumi.StringInput `pulumi:"vaultType"`
 }
 
@@ -4052,7 +4052,7 @@ func (o GetVaultsVaultOutput) VaultStorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.VaultStorageClass }).(pulumi.StringOutput)
 }
 
-// The type of Vault. Valid values: `STANDARD`.
+// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
 func (o GetVaultsVaultOutput) VaultType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.VaultType }).(pulumi.StringOutput)
 }

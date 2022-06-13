@@ -331,6 +331,12 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly tableMeta!: pulumi.Output<string | undefined>;
     /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    public readonly tcpConnectionType!: pulumi.Output<string>;
+    /**
      * Specifies whether to enable TDE. Valid values:
      * * Enabled
      * * Disabled
@@ -421,6 +427,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
             resourceInputs["switchTime"] = state ? state.switchTime : undefined;
             resourceInputs["syncMode"] = state ? state.syncMode : undefined;
             resourceInputs["tableMeta"] = state ? state.tableMeta : undefined;
+            resourceInputs["tcpConnectionType"] = state ? state.tcpConnectionType : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["usedTime"] = state ? state.usedTime : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -489,6 +496,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
             resourceInputs["switchTime"] = args ? args.switchTime : undefined;
             resourceInputs["syncMode"] = args ? args.syncMode : undefined;
             resourceInputs["tableMeta"] = args ? args.tableMeta : undefined;
+            resourceInputs["tcpConnectionType"] = args ? args.tcpConnectionType : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             resourceInputs["usedTime"] = args ? args.usedTime : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -749,6 +757,12 @@ export interface RdsCloneDbInstanceState {
      * [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
      */
     tableMeta?: pulumi.Input<string>;
+    /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    tcpConnectionType?: pulumi.Input<string>;
     /**
      * Specifies whether to enable TDE. Valid values:
      * * Enabled
@@ -1019,6 +1033,12 @@ export interface RdsCloneDbInstanceArgs {
      * [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
      */
     tableMeta?: pulumi.Input<string>;
+    /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    tcpConnectionType?: pulumi.Input<string>;
     /**
      * Specifies whether to enable TDE. Valid values:
      * * Enabled

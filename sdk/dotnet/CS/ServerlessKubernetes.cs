@@ -139,6 +139,12 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// </summary>
+        [Output("enableRrsa")]
+        public Output<bool?> EnableRrsa { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to create internet  eip for API Server. Default to false.
         /// </summary>
         [Output("endpointPublicAccessEnabled")]
@@ -360,6 +366,12 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// </summary>
+        [Input("enableRrsa")]
+        public Input<bool>? EnableRrsa { get; set; }
+
+        /// <summary>
         /// Whether to create internet  eip for API Server. Default to false.
         /// </summary>
         [Input("endpointPublicAccessEnabled")]
@@ -563,6 +575,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// </summary>
+        [Input("enableRrsa")]
+        public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
         /// Whether to create internet  eip for API Server. Default to false.

@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CompliancePack{}
 	case "alicloud:cfg/configurationRecorder:ConfigurationRecorder":
 		r = &ConfigurationRecorder{}
+	case "alicloud:cfg/delivery:Delivery":
+		r = &Delivery{}
 	case "alicloud:cfg/deliveryChannel:DeliveryChannel":
 		r = &DeliveryChannel{}
 	case "alicloud:cfg/rule:Rule":
@@ -71,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cfg/configurationRecorder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cfg/delivery",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

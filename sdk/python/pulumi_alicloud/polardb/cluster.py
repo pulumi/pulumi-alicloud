@@ -19,6 +19,7 @@ class ClusterArgs:
                  db_type: pulumi.Input[str],
                  db_version: pulumi.Input[str],
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
@@ -45,6 +46,7 @@ class ClusterArgs:
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
@@ -77,6 +79,8 @@ class ClusterArgs:
         pulumi.set(__self__, "db_version", db_version)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if backup_retention_policy_on_cluster_deletion is not None:
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if collector_status is not None:
             pulumi.set(__self__, "collector_status", collector_status)
         if db_cluster_ip_arrays is not None:
@@ -164,6 +168,18 @@ class ClusterArgs:
     @auto_renew_period.setter
     def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[str]]:
+        """
+        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
+
+    @backup_retention_policy_on_cluster_deletion.setter
+    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @property
     @pulumi.getter(name="collectorStatus")
@@ -403,6 +419,7 @@ class ClusterArgs:
 class _ClusterState:
     def __init__(__self__, *,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
@@ -429,6 +446,7 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
@@ -463,6 +481,8 @@ class _ClusterState:
         """
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if backup_retention_policy_on_cluster_deletion is not None:
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if collector_status is not None:
             pulumi.set(__self__, "collector_status", collector_status)
         if connection_string is not None:
@@ -521,6 +541,18 @@ class _ClusterState:
     @auto_renew_period.setter
     def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[str]]:
+        """
+        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
+
+    @backup_retention_policy_on_cluster_deletion.setter
+    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @property
     @pulumi.getter(name="collectorStatus")
@@ -811,6 +843,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
@@ -897,6 +930,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
@@ -1010,6 +1044,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
@@ -1045,6 +1080,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["auto_renew_period"] = auto_renew_period
+            __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             __props__.__dict__["collector_status"] = collector_status
             __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
             if db_node_class is None and not opts.urn:
@@ -1085,6 +1121,7 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
+            backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
             collector_status: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
@@ -1116,6 +1153,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
@@ -1153,6 +1191,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = _ClusterState.__new__(_ClusterState)
 
         __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["collector_status"] = collector_status
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
@@ -1185,6 +1224,14 @@ class Cluster(pulumi.CustomResource):
         Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         """
         return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Output[str]:
+        """
+        The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @property
     @pulumi.getter(name="collectorStatus")

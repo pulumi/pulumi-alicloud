@@ -76,9 +76,11 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly messageType!: pulumi.Output<number>;
     /**
-     * This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+     * This attribute has been deprecated.
+     *
+     * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */
-    public readonly perm!: pulumi.Output<number | undefined>;
+    public readonly perm!: pulumi.Output<number>;
     /**
      * This attribute is a concise description of topic. The length cannot exceed 128.
      */
@@ -154,7 +156,9 @@ export interface TopicState {
      */
     messageType?: pulumi.Input<number>;
     /**
-     * This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+     * This attribute has been deprecated.
+     *
+     * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */
     perm?: pulumi.Input<number>;
     /**
@@ -192,7 +196,9 @@ export interface TopicArgs {
      */
     messageType: pulumi.Input<number>;
     /**
-     * This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+     * This attribute has been deprecated.
+     *
+     * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */
     perm?: pulumi.Input<number>;
     /**

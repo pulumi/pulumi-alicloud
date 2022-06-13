@@ -23,7 +23,10 @@ class DbInstanceArgs:
                  db_version: pulumi.Input[str],
                  payment_type: pulumi.Input[str],
                  db_instance_description: Optional[pulumi.Input[str]] = None,
-                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None):
+                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DbInstance resource.
         :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`.
@@ -35,6 +38,9 @@ class DbInstanceArgs:
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
         :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
+        :param pulumi.Input[str] vpc_id: ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
         pulumi.set(__self__, "db_instance_category", db_instance_category)
         pulumi.set(__self__, "db_instance_network_type", db_instance_network_type)
@@ -47,6 +53,12 @@ class DbInstanceArgs:
             pulumi.set(__self__, "db_instance_description", db_instance_description)
         if db_instance_ip_arrays is not None:
             pulumi.set(__self__, "db_instance_ip_arrays", db_instance_ip_arrays)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dbInstanceCategory")
@@ -156,6 +168,42 @@ class DbInstanceArgs:
     def db_instance_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]):
         pulumi.set(self, "db_instance_ip_arrays", value)
 
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of attaching vswitch to instance.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID of the resource.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _DbInstanceState:
@@ -170,6 +218,7 @@ class _DbInstanceState:
                  db_version: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -184,6 +233,9 @@ class _DbInstanceState:
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        :param pulumi.Input[str] vpc_id: ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
         if db_instance_category is not None:
             pulumi.set(__self__, "db_instance_category", db_instance_category)
@@ -205,6 +257,8 @@ class _DbInstanceState:
             pulumi.set(__self__, "payment_type", payment_type)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -331,8 +385,23 @@ class _DbInstanceState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of attaching vswitch to instance.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -342,6 +411,9 @@ class _DbInstanceState:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID of the resource.
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -363,6 +435,9 @@ class DbInstance(pulumi.CustomResource):
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Graph Database Db Instance resource.
@@ -409,6 +484,9 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[int] db_node_storage: Instance storage space, which is measured in GB.
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] vpc_id: ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
         ...
     @overload
@@ -474,6 +552,9 @@ class DbInstance(pulumi.CustomResource):
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  db_version: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -509,9 +590,10 @@ class DbInstance(pulumi.CustomResource):
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["status"] = None
-            __props__.__dict__["vswitch_id"] = None
-            __props__.__dict__["zone_id"] = None
         super(DbInstance, __self__).__init__(
             'alicloud:graphdatabase/dbInstance:DbInstance',
             resource_name,
@@ -532,6 +614,7 @@ class DbInstance(pulumi.CustomResource):
             db_version: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'DbInstance':
         """
@@ -551,6 +634,9 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
         :param pulumi.Input[str] status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        :param pulumi.Input[str] vpc_id: ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -566,6 +652,7 @@ class DbInstance(pulumi.CustomResource):
         __props__.__dict__["db_version"] = db_version
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["status"] = status
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return DbInstance(resource_name, opts=opts, __props__=__props__)
@@ -651,12 +738,26 @@ class DbInstance(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
+        """
+        The ID of attaching vswitch to instance.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
+        """
+        The zone ID of the resource.
+        """
         return pulumi.get(self, "zone_id")
 
