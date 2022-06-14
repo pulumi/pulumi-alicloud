@@ -63,6 +63,7 @@ class RdsUpgradeDbInstanceArgs:
                  switch_time: Optional[pulumi.Input[str]] = None,
                  switch_time_mode: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -154,6 +155,9 @@ class RdsUpgradeDbInstanceArgs:
                * **Sync**: strong synchronization.
                * **Semi-sync**: Semi-synchronous.
                * **Async**: asynchronous.
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
@@ -247,6 +251,8 @@ class RdsUpgradeDbInstanceArgs:
             pulumi.set(__self__, "switch_time_mode", switch_time_mode)
         if sync_mode is not None:
             pulumi.set(__self__, "sync_mode", sync_mode)
+        if tcp_connection_type is not None:
+            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if vpc_id is not None:
@@ -871,6 +877,20 @@ class RdsUpgradeDbInstanceArgs:
         pulumi.set(self, "sync_mode", value)
 
     @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
+
+    @tcp_connection_type.setter
+    def tcp_connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tcp_connection_type", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -983,6 +1003,7 @@ class _RdsUpgradeDbInstanceState:
                  switch_time_mode: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
                  target_major_version: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1075,6 +1096,9 @@ class _RdsUpgradeDbInstanceState:
                * **Semi-sync**: Semi-synchronous.
                * **Async**: asynchronous.
         :param pulumi.Input[str] target_major_version: The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
@@ -1179,6 +1203,8 @@ class _RdsUpgradeDbInstanceState:
             pulumi.set(__self__, "sync_mode", sync_mode)
         if target_major_version is not None:
             pulumi.set(__self__, "target_major_version", target_major_version)
+        if tcp_connection_type is not None:
+            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if vpc_id is not None:
@@ -1815,6 +1841,20 @@ class _RdsUpgradeDbInstanceState:
         pulumi.set(self, "target_major_version", value)
 
     @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
+
+    @tcp_connection_type.setter
+    def tcp_connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tcp_connection_type", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1928,6 +1968,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                  switch_time_mode: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
                  target_major_version: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -2077,6 +2118,9 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                * **Semi-sync**: Semi-synchronous.
                * **Async**: asynchronous.
         :param pulumi.Input[str] target_major_version: The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
@@ -2209,6 +2253,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                  switch_time_mode: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
                  target_major_version: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -2292,6 +2337,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             if target_major_version is None and not opts.urn:
                 raise TypeError("Missing required property 'target_major_version'")
             __props__.__dict__["target_major_version"] = target_major_version
+            __props__.__dict__["tcp_connection_type"] = tcp_connection_type
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
@@ -2357,6 +2403,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             switch_time_mode: Optional[pulumi.Input[str]] = None,
             sync_mode: Optional[pulumi.Input[str]] = None,
             target_major_version: Optional[pulumi.Input[str]] = None,
+            tcp_connection_type: Optional[pulumi.Input[str]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -2454,6 +2501,9 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                * **Semi-sync**: Semi-synchronous.
                * **Async**: asynchronous.
         :param pulumi.Input[str] target_major_version: The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
@@ -2513,6 +2563,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         __props__.__dict__["switch_time_mode"] = switch_time_mode
         __props__.__dict__["sync_mode"] = sync_mode
         __props__.__dict__["target_major_version"] = target_major_version
+        __props__.__dict__["tcp_connection_type"] = tcp_connection_type
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -2947,6 +2998,16 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
         """
         return pulumi.get(self, "target_major_version")
+
+    @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> pulumi.Output[str]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
 
     @property
     @pulumi.getter(name="tdeStatus")

@@ -76,6 +76,8 @@ type EcdPolicyGroup struct {
 	AuthorizeAccessPolicyRules EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput `pulumi:"authorizeSecurityPolicyRules"`
+	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	CameraRedirect pulumi.StringOutput `pulumi:"cameraRedirect"`
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard pulumi.StringOutput `pulumi:"clipboard"`
 	// The list of domain.
@@ -88,6 +90,14 @@ type EcdPolicyGroup struct {
 	LocalDrive pulumi.StringOutput `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrOutput `pulumi:"policyGroupName"`
+	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	Recording pulumi.StringOutput `pulumi:"recording"`
+	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingEndTime pulumi.StringPtrOutput `pulumi:"recordingEndTime"`
+	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	RecordingFps pulumi.IntOutput `pulumi:"recordingFps"`
+	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingStartTime pulumi.StringPtrOutput `pulumi:"recordingStartTime"`
 	// The status of policy.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The usb redirect policy. Valid values: `off`, `on`.
@@ -135,6 +145,8 @@ type ecdPolicyGroupState struct {
 	AuthorizeAccessPolicyRules []EcdPolicyGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules []EcdPolicyGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
+	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	CameraRedirect *string `pulumi:"cameraRedirect"`
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard *string `pulumi:"clipboard"`
 	// The list of domain.
@@ -147,6 +159,14 @@ type ecdPolicyGroupState struct {
 	LocalDrive *string `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName *string `pulumi:"policyGroupName"`
+	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	Recording *string `pulumi:"recording"`
+	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingEndTime *string `pulumi:"recordingEndTime"`
+	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	RecordingFps *int `pulumi:"recordingFps"`
+	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingStartTime *string `pulumi:"recordingStartTime"`
 	// The status of policy.
 	Status *string `pulumi:"status"`
 	// The usb redirect policy. Valid values: `off`, `on`.
@@ -166,6 +186,8 @@ type EcdPolicyGroupState struct {
 	AuthorizeAccessPolicyRules EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput
 	// The policy rule.
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput
+	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	CameraRedirect pulumi.StringPtrInput
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard pulumi.StringPtrInput
 	// The list of domain.
@@ -178,6 +200,14 @@ type EcdPolicyGroupState struct {
 	LocalDrive pulumi.StringPtrInput
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrInput
+	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	Recording pulumi.StringPtrInput
+	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingEndTime pulumi.StringPtrInput
+	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	RecordingFps pulumi.IntPtrInput
+	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingStartTime pulumi.StringPtrInput
 	// The status of policy.
 	Status pulumi.StringPtrInput
 	// The usb redirect policy. Valid values: `off`, `on`.
@@ -201,6 +231,8 @@ type ecdPolicyGroupArgs struct {
 	AuthorizeAccessPolicyRules []EcdPolicyGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules []EcdPolicyGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
+	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	CameraRedirect *string `pulumi:"cameraRedirect"`
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard *string `pulumi:"clipboard"`
 	// The list of domain.
@@ -213,6 +245,14 @@ type ecdPolicyGroupArgs struct {
 	LocalDrive *string `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName *string `pulumi:"policyGroupName"`
+	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	Recording *string `pulumi:"recording"`
+	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingEndTime *string `pulumi:"recordingEndTime"`
+	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	RecordingFps *int `pulumi:"recordingFps"`
+	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingStartTime *string `pulumi:"recordingStartTime"`
 	// The usb redirect policy. Valid values: `off`, `on`.
 	UsbRedirect *string `pulumi:"usbRedirect"`
 	// The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
@@ -231,6 +271,8 @@ type EcdPolicyGroupArgs struct {
 	AuthorizeAccessPolicyRules EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput
 	// The policy rule.
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput
+	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	CameraRedirect pulumi.StringPtrInput
 	// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
 	Clipboard pulumi.StringPtrInput
 	// The list of domain.
@@ -243,6 +285,14 @@ type EcdPolicyGroupArgs struct {
 	LocalDrive pulumi.StringPtrInput
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrInput
+	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	Recording pulumi.StringPtrInput
+	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingEndTime pulumi.StringPtrInput
+	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	RecordingFps pulumi.IntPtrInput
+	// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+	RecordingStartTime pulumi.StringPtrInput
 	// The usb redirect policy. Valid values: `off`, `on`.
 	UsbRedirect pulumi.StringPtrInput
 	// The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.

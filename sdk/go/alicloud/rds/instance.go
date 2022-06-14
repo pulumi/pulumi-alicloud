@@ -192,6 +192,10 @@ type Instance struct {
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	TargetMinorVersion pulumi.StringOutput `pulumi:"targetMinorVersion"`
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType pulumi.StringOutput `pulumi:"tcpConnectionType"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
@@ -432,6 +436,10 @@ type instanceState struct {
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType *string `pulumi:"tcpConnectionType"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
@@ -632,6 +640,10 @@ type InstanceState struct {
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	TargetMinorVersion pulumi.StringPtrInput
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
 	// Whether to upgrade a minor version of the kernel. Valid values:
@@ -832,6 +844,10 @@ type instanceArgs struct {
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType *string `pulumi:"tcpConnectionType"`
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Whether to upgrade a minor version of the kernel. Valid values:
@@ -1029,6 +1045,10 @@ type InstanceArgs struct {
 	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	TargetMinorVersion pulumi.StringPtrInput
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
 	TdeStatus pulumi.StringPtrInput
 	// Whether to upgrade a minor version of the kernel. Valid values:

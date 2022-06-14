@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides the details of the Kubernetes version supported by ACK.
         /// 
-        /// &gt; **NOTE:** Available in 1.169.0+.
+        /// &gt; **NOTE:** Available in 1.170.0+.
         /// </summary>
         public static Task<GetKubernetesVersionResult> InvokeAsync(GetKubernetesVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides the details of the Kubernetes version supported by ACK.
         /// 
-        /// &gt; **NOTE:** Available in 1.169.0+.
+        /// &gt; **NOTE:** Available in 1.170.0+.
         /// </summary>
         public static Output<GetKubernetesVersionResult> Invoke(GetKubernetesVersionInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionInvokeArgs(), options.WithDefaults());

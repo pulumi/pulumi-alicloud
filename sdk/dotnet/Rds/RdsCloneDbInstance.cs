@@ -430,6 +430,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> TableMeta { get; private set; } = null!;
 
         /// <summary>
+        /// The availability check method of the instance. Valid values:
+        /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// </summary>
+        [Output("tcpConnectionType")]
+        public Output<string> TcpConnectionType { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable TDE. Valid values:
         /// * Enabled
         /// * Disabled
@@ -872,6 +880,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? TableMeta { get; set; }
 
         /// <summary>
+        /// The availability check method of the instance. Valid values:
+        /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// </summary>
+        [Input("tcpConnectionType")]
+        public Input<string>? TcpConnectionType { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable TDE. Valid values:
         /// * Enabled
         /// * Disabled
@@ -1279,6 +1295,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("tableMeta")]
         public Input<string>? TableMeta { get; set; }
+
+        /// <summary>
+        /// The availability check method of the instance. Valid values:
+        /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// </summary>
+        [Input("tcpConnectionType")]
+        public Input<string>? TcpConnectionType { get; set; }
 
         /// <summary>
         /// Specifies whether to enable TDE. Valid values:

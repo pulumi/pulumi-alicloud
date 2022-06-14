@@ -30,7 +30,7 @@ type ServiceMesh struct {
 	// The array of the cluster ids.
 	ClusterIds pulumi.StringArrayOutput `pulumi:"clusterIds"`
 	// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
-	ClusterSpec pulumi.StringPtrOutput `pulumi:"clusterSpec"`
+	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
 	// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
 	Edition pulumi.StringOutput `pulumi:"edition"`
 	// The configurations of additional features for the ASM instance. See the following `Block extraConfiguration`.
@@ -47,7 +47,7 @@ type ServiceMesh struct {
 	ServiceMeshName pulumi.StringPtrOutput `pulumi:"serviceMeshName"`
 	// The status of the resource. Valid values: `running` or `initial`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -103,7 +103,7 @@ type serviceMeshState struct {
 	ServiceMeshName *string `pulumi:"serviceMeshName"`
 	// The status of the resource. Valid values: `running` or `initial`.
 	Status *string `pulumi:"status"`
-	// The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
 	Version *string `pulumi:"version"`
 }
 
@@ -128,7 +128,7 @@ type ServiceMeshState struct {
 	ServiceMeshName pulumi.StringPtrInput
 	// The status of the resource. Valid values: `running` or `initial`.
 	Status pulumi.StringPtrInput
-	// The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
 	Version pulumi.StringPtrInput
 }
 
@@ -155,7 +155,7 @@ type serviceMeshArgs struct {
 	Network ServiceMeshNetwork `pulumi:"network"`
 	// The name of the resource.
 	ServiceMeshName *string `pulumi:"serviceMeshName"`
-	// The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
 	Version *string `pulumi:"version"`
 }
 
@@ -179,7 +179,7 @@ type ServiceMeshArgs struct {
 	Network ServiceMeshNetworkInput
 	// The name of the resource.
 	ServiceMeshName pulumi.StringPtrInput
-	// The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+	// The version of the resource. you can look up the version using `servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `servicemesh.getServiceMeshes`.
 	Version pulumi.StringPtrInput
 }
 

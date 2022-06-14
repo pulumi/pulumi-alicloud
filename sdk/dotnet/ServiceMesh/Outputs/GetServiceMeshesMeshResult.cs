@@ -38,6 +38,10 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
+        /// </summary>
+        public readonly string IstioOperatorVersion;
+        /// <summary>
         /// The configuration of the Load Balancer.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshLoadBalancerResult> LoadBalancers;
@@ -57,6 +61,10 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// The name of the resource.
         /// </summary>
         public readonly string ServiceMeshName;
+        /// <summary>
+        /// The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
+        /// </summary>
+        public readonly string SidecarVersion;
         /// <summary>
         /// The status of the resource.
         /// </summary>
@@ -80,6 +88,8 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
 
             string id,
 
+            string istioOperatorVersion,
+
             ImmutableArray<Outputs.GetServiceMeshesMeshLoadBalancerResult> loadBalancers,
 
             ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigResult> meshConfigs,
@@ -89,6 +99,8 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
             string serviceMeshId,
 
             string serviceMeshName,
+
+            string sidecarVersion,
 
             string status,
 
@@ -100,11 +112,13 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
             Endpoints = endpoints;
             ErrorMessage = errorMessage;
             Id = id;
+            IstioOperatorVersion = istioOperatorVersion;
             LoadBalancers = loadBalancers;
             MeshConfigs = meshConfigs;
             Networks = networks;
             ServiceMeshId = serviceMeshId;
             ServiceMeshName = serviceMeshName;
+            SidecarVersion = sidecarVersion;
             Status = status;
             Version = version;
         }

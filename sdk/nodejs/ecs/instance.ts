@@ -232,6 +232,10 @@ export class Instance extends pulumi.CustomResource {
      * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
      */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     */
+    public readonly stoppedMode!: pulumi.Output<string>;
     public readonly subnetId!: pulumi.Output<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
@@ -334,6 +338,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["stoppedMode"] = state ? state.stoppedMode : undefined;
             resourceInputs["subnetId"] = state ? state.subnetId : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
@@ -397,6 +402,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["stoppedMode"] = args ? args.stoppedMode : undefined;
             resourceInputs["subnetId"] = args ? args.subnetId : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
@@ -610,6 +616,10 @@ export interface InstanceState {
      * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     */
+    stoppedMode?: pulumi.Input<string>;
     subnetId?: pulumi.Input<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
@@ -843,6 +853,10 @@ export interface InstanceArgs {
      * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     */
+    stoppedMode?: pulumi.Input<string>;
     subnetId?: pulumi.Input<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.

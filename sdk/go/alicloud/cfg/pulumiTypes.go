@@ -2374,6 +2374,220 @@ func (o GetConfigurationRecordersRecorderArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetConfigurationRecordersRecorderOutput)
 }
 
+type GetDeliveriesDelivery struct {
+	// The Aliyun User Id.
+	AccountId string `pulumi:"accountId"`
+	// Open or close delivery configuration change history.
+	ConfigurationItemChangeNotification bool `pulumi:"configurationItemChangeNotification"`
+	// Open or close timed snapshot of shipping resources.
+	ConfigurationSnapshot bool `pulumi:"configurationSnapshot"`
+	// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+	DeliveryChannelAssumeRoleArn string `pulumi:"deliveryChannelAssumeRoleArn"`
+	// The rule attached to the delivery method.
+	DeliveryChannelCondition string `pulumi:"deliveryChannelCondition"`
+	// The ID of the delivery method.
+	DeliveryChannelId string `pulumi:"deliveryChannelId"`
+	// The name of the delivery method.
+	DeliveryChannelName string `pulumi:"deliveryChannelName"`
+	// The ARN of the delivery destination.
+	DeliveryChannelTargetArn string `pulumi:"deliveryChannelTargetArn"`
+	// The type of the delivery method.
+	DeliveryChannelType string `pulumi:"deliveryChannelType"`
+	// The description of the delivery method.
+	Description string `pulumi:"description"`
+	// The ID of the Delivery.
+	Id string `pulumi:"id"`
+	// Open or close non-compliance events of delivery resources.
+	NonCompliantNotification bool `pulumi:"nonCompliantNotification"`
+	// The oss ARN of the delivery channel when the value data oversized limit.
+	OversizedDataOssTargetArn string `pulumi:"oversizedDataOssTargetArn"`
+	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+	Status int `pulumi:"status"`
+}
+
+// GetDeliveriesDeliveryInput is an input type that accepts GetDeliveriesDeliveryArgs and GetDeliveriesDeliveryOutput values.
+// You can construct a concrete instance of `GetDeliveriesDeliveryInput` via:
+//
+//          GetDeliveriesDeliveryArgs{...}
+type GetDeliveriesDeliveryInput interface {
+	pulumi.Input
+
+	ToGetDeliveriesDeliveryOutput() GetDeliveriesDeliveryOutput
+	ToGetDeliveriesDeliveryOutputWithContext(context.Context) GetDeliveriesDeliveryOutput
+}
+
+type GetDeliveriesDeliveryArgs struct {
+	// The Aliyun User Id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Open or close delivery configuration change history.
+	ConfigurationItemChangeNotification pulumi.BoolInput `pulumi:"configurationItemChangeNotification"`
+	// Open or close timed snapshot of shipping resources.
+	ConfigurationSnapshot pulumi.BoolInput `pulumi:"configurationSnapshot"`
+	// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+	DeliveryChannelAssumeRoleArn pulumi.StringInput `pulumi:"deliveryChannelAssumeRoleArn"`
+	// The rule attached to the delivery method.
+	DeliveryChannelCondition pulumi.StringInput `pulumi:"deliveryChannelCondition"`
+	// The ID of the delivery method.
+	DeliveryChannelId pulumi.StringInput `pulumi:"deliveryChannelId"`
+	// The name of the delivery method.
+	DeliveryChannelName pulumi.StringInput `pulumi:"deliveryChannelName"`
+	// The ARN of the delivery destination.
+	DeliveryChannelTargetArn pulumi.StringInput `pulumi:"deliveryChannelTargetArn"`
+	// The type of the delivery method.
+	DeliveryChannelType pulumi.StringInput `pulumi:"deliveryChannelType"`
+	// The description of the delivery method.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Delivery.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Open or close non-compliance events of delivery resources.
+	NonCompliantNotification pulumi.BoolInput `pulumi:"nonCompliantNotification"`
+	// The oss ARN of the delivery channel when the value data oversized limit.
+	OversizedDataOssTargetArn pulumi.StringInput `pulumi:"oversizedDataOssTargetArn"`
+	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+	Status pulumi.IntInput `pulumi:"status"`
+}
+
+func (GetDeliveriesDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDeliveriesDelivery)(nil)).Elem()
+}
+
+func (i GetDeliveriesDeliveryArgs) ToGetDeliveriesDeliveryOutput() GetDeliveriesDeliveryOutput {
+	return i.ToGetDeliveriesDeliveryOutputWithContext(context.Background())
+}
+
+func (i GetDeliveriesDeliveryArgs) ToGetDeliveriesDeliveryOutputWithContext(ctx context.Context) GetDeliveriesDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDeliveriesDeliveryOutput)
+}
+
+// GetDeliveriesDeliveryArrayInput is an input type that accepts GetDeliveriesDeliveryArray and GetDeliveriesDeliveryArrayOutput values.
+// You can construct a concrete instance of `GetDeliveriesDeliveryArrayInput` via:
+//
+//          GetDeliveriesDeliveryArray{ GetDeliveriesDeliveryArgs{...} }
+type GetDeliveriesDeliveryArrayInput interface {
+	pulumi.Input
+
+	ToGetDeliveriesDeliveryArrayOutput() GetDeliveriesDeliveryArrayOutput
+	ToGetDeliveriesDeliveryArrayOutputWithContext(context.Context) GetDeliveriesDeliveryArrayOutput
+}
+
+type GetDeliveriesDeliveryArray []GetDeliveriesDeliveryInput
+
+func (GetDeliveriesDeliveryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDeliveriesDelivery)(nil)).Elem()
+}
+
+func (i GetDeliveriesDeliveryArray) ToGetDeliveriesDeliveryArrayOutput() GetDeliveriesDeliveryArrayOutput {
+	return i.ToGetDeliveriesDeliveryArrayOutputWithContext(context.Background())
+}
+
+func (i GetDeliveriesDeliveryArray) ToGetDeliveriesDeliveryArrayOutputWithContext(ctx context.Context) GetDeliveriesDeliveryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDeliveriesDeliveryArrayOutput)
+}
+
+type GetDeliveriesDeliveryOutput struct{ *pulumi.OutputState }
+
+func (GetDeliveriesDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDeliveriesDelivery)(nil)).Elem()
+}
+
+func (o GetDeliveriesDeliveryOutput) ToGetDeliveriesDeliveryOutput() GetDeliveriesDeliveryOutput {
+	return o
+}
+
+func (o GetDeliveriesDeliveryOutput) ToGetDeliveriesDeliveryOutputWithContext(ctx context.Context) GetDeliveriesDeliveryOutput {
+	return o
+}
+
+// The Aliyun User Id.
+func (o GetDeliveriesDeliveryOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Open or close delivery configuration change history.
+func (o GetDeliveriesDeliveryOutput) ConfigurationItemChangeNotification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) bool { return v.ConfigurationItemChangeNotification }).(pulumi.BoolOutput)
+}
+
+// Open or close timed snapshot of shipping resources.
+func (o GetDeliveriesDeliveryOutput) ConfigurationSnapshot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) bool { return v.ConfigurationSnapshot }).(pulumi.BoolOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+func (o GetDeliveriesDeliveryOutput) DeliveryChannelAssumeRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.DeliveryChannelAssumeRoleArn }).(pulumi.StringOutput)
+}
+
+// The rule attached to the delivery method.
+func (o GetDeliveriesDeliveryOutput) DeliveryChannelCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.DeliveryChannelCondition }).(pulumi.StringOutput)
+}
+
+// The ID of the delivery method.
+func (o GetDeliveriesDeliveryOutput) DeliveryChannelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.DeliveryChannelId }).(pulumi.StringOutput)
+}
+
+// The name of the delivery method.
+func (o GetDeliveriesDeliveryOutput) DeliveryChannelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.DeliveryChannelName }).(pulumi.StringOutput)
+}
+
+// The ARN of the delivery destination.
+func (o GetDeliveriesDeliveryOutput) DeliveryChannelTargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.DeliveryChannelTargetArn }).(pulumi.StringOutput)
+}
+
+// The type of the delivery method.
+func (o GetDeliveriesDeliveryOutput) DeliveryChannelType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.DeliveryChannelType }).(pulumi.StringOutput)
+}
+
+// The description of the delivery method.
+func (o GetDeliveriesDeliveryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Delivery.
+func (o GetDeliveriesDeliveryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Open or close non-compliance events of delivery resources.
+func (o GetDeliveriesDeliveryOutput) NonCompliantNotification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) bool { return v.NonCompliantNotification }).(pulumi.BoolOutput)
+}
+
+// The oss ARN of the delivery channel when the value data oversized limit.
+func (o GetDeliveriesDeliveryOutput) OversizedDataOssTargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) string { return v.OversizedDataOssTargetArn }).(pulumi.StringOutput)
+}
+
+// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+func (o GetDeliveriesDeliveryOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDeliveriesDelivery) int { return v.Status }).(pulumi.IntOutput)
+}
+
+type GetDeliveriesDeliveryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDeliveriesDeliveryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDeliveriesDelivery)(nil)).Elem()
+}
+
+func (o GetDeliveriesDeliveryArrayOutput) ToGetDeliveriesDeliveryArrayOutput() GetDeliveriesDeliveryArrayOutput {
+	return o
+}
+
+func (o GetDeliveriesDeliveryArrayOutput) ToGetDeliveriesDeliveryArrayOutputWithContext(ctx context.Context) GetDeliveriesDeliveryArrayOutput {
+	return o
+}
+
+func (o GetDeliveriesDeliveryArrayOutput) Index(i pulumi.IntInput) GetDeliveriesDeliveryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeliveriesDelivery {
+		return vs[0].([]GetDeliveriesDelivery)[vs[1].(int)]
+	}).(GetDeliveriesDeliveryOutput)
+}
+
 type GetDeliveryChannelsChannel struct {
 	// The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
 	DeliveryChannelAssumeRoleArn string `pulumi:"deliveryChannelAssumeRoleArn"`
@@ -3023,6 +3237,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCompliancePacksPackConfigRuleConfigRuleParameterArrayInput)(nil)).Elem(), GetCompliancePacksPackConfigRuleConfigRuleParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigurationRecordersRecorderInput)(nil)).Elem(), GetConfigurationRecordersRecorderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigurationRecordersRecorderArrayInput)(nil)).Elem(), GetConfigurationRecordersRecorderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeliveriesDeliveryInput)(nil)).Elem(), GetDeliveriesDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeliveriesDeliveryArrayInput)(nil)).Elem(), GetDeliveriesDeliveryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeliveryChannelsChannelInput)(nil)).Elem(), GetDeliveryChannelsChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeliveryChannelsChannelArrayInput)(nil)).Elem(), GetDeliveryChannelsChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleInput)(nil)).Elem(), GetRulesRuleArgs{})
@@ -3065,6 +3281,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetConfigurationRecordersRecorderOutput{})
 	pulumi.RegisterOutputType(GetConfigurationRecordersRecorderArrayOutput{})
+	pulumi.RegisterOutputType(GetDeliveriesDeliveryOutput{})
+	pulumi.RegisterOutputType(GetDeliveriesDeliveryArrayOutput{})
 	pulumi.RegisterOutputType(GetDeliveryChannelsChannelOutput{})
 	pulumi.RegisterOutputType(GetDeliveryChannelsChannelArrayOutput{})
 	pulumi.RegisterOutputType(GetRulesRuleOutput{})

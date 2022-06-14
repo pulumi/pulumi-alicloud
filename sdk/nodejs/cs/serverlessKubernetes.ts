@@ -122,6 +122,10 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     */
+    public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to create internet  eip for API Server. Default to false.
      */
     public readonly endpointPublicAccessEnabled!: pulumi.Output<boolean | undefined>;
@@ -228,6 +232,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
             resourceInputs["createV2Cluster"] = state ? state.createV2Cluster : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["enableRrsa"] = state ? state.enableRrsa : undefined;
             resourceInputs["endpointPublicAccessEnabled"] = state ? state.endpointPublicAccessEnabled : undefined;
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
@@ -262,6 +267,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
             resourceInputs["createV2Cluster"] = args ? args.createV2Cluster : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["enableRrsa"] = args ? args.enableRrsa : undefined;
             resourceInputs["endpointPublicAccessEnabled"] = args ? args.endpointPublicAccessEnabled : undefined;
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["kubeConfig"] = args ? args.kubeConfig : undefined;
@@ -323,6 +329,10 @@ export interface ServerlessKubernetesState {
      * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     */
+    enableRrsa?: pulumi.Input<boolean>;
     /**
      * Whether to create internet  eip for API Server. Default to false.
      */
@@ -444,6 +454,10 @@ export interface ServerlessKubernetesArgs {
      * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+     */
+    enableRrsa?: pulumi.Input<boolean>;
     /**
      * Whether to create internet  eip for API Server. Default to false.
      */

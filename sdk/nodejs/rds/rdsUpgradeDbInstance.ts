@@ -324,6 +324,12 @@ export class RdsUpgradeDbInstance extends pulumi.CustomResource {
      */
     public readonly targetMajorVersion!: pulumi.Output<string>;
     /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    public readonly tcpConnectionType!: pulumi.Output<string>;
+    /**
      * Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
@@ -406,6 +412,7 @@ export class RdsUpgradeDbInstance extends pulumi.CustomResource {
             resourceInputs["switchTimeMode"] = state ? state.switchTimeMode : undefined;
             resourceInputs["syncMode"] = state ? state.syncMode : undefined;
             resourceInputs["targetMajorVersion"] = state ? state.targetMajorVersion : undefined;
+            resourceInputs["tcpConnectionType"] = state ? state.tcpConnectionType : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -488,6 +495,7 @@ export class RdsUpgradeDbInstance extends pulumi.CustomResource {
             resourceInputs["switchTimeMode"] = args ? args.switchTimeMode : undefined;
             resourceInputs["syncMode"] = args ? args.syncMode : undefined;
             resourceInputs["targetMajorVersion"] = args ? args.targetMajorVersion : undefined;
+            resourceInputs["tcpConnectionType"] = args ? args.tcpConnectionType : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -736,6 +744,12 @@ export interface RdsUpgradeDbInstanceState {
      * The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
      */
     targetMajorVersion?: pulumi.Input<string>;
+    /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    tcpConnectionType?: pulumi.Input<string>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
      */
@@ -990,6 +1004,12 @@ export interface RdsUpgradeDbInstanceArgs {
      * The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
      */
     targetMajorVersion: pulumi.Input<string>;
+    /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    tcpConnectionType?: pulumi.Input<string>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
      */

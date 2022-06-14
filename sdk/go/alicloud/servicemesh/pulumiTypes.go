@@ -2092,6 +2092,8 @@ type GetServiceMeshesMesh struct {
 	ErrorMessage string `pulumi:"errorMessage"`
 	// The ID of the Service Mesh.
 	Id string `pulumi:"id"`
+	// The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
+	IstioOperatorVersion string `pulumi:"istioOperatorVersion"`
 	// The configuration of the Load Balancer.
 	LoadBalancers []GetServiceMeshesMeshLoadBalancer `pulumi:"loadBalancers"`
 	// The configuration of the Service grid.
@@ -2102,6 +2104,8 @@ type GetServiceMeshesMesh struct {
 	ServiceMeshId string `pulumi:"serviceMeshId"`
 	// The name of the resource.
 	ServiceMeshName string `pulumi:"serviceMeshName"`
+	// The SideCar Version. **Note:** the `sidecarVersion` is available from the version v1.170.0.
+	SidecarVersion string `pulumi:"sidecarVersion"`
 	// The status of the resource.
 	Status string `pulumi:"status"`
 	// The version of the resource.
@@ -2132,6 +2136,8 @@ type GetServiceMeshesMeshArgs struct {
 	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
 	// The ID of the Service Mesh.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
+	IstioOperatorVersion pulumi.StringInput `pulumi:"istioOperatorVersion"`
 	// The configuration of the Load Balancer.
 	LoadBalancers GetServiceMeshesMeshLoadBalancerArrayInput `pulumi:"loadBalancers"`
 	// The configuration of the Service grid.
@@ -2142,6 +2148,8 @@ type GetServiceMeshesMeshArgs struct {
 	ServiceMeshId pulumi.StringInput `pulumi:"serviceMeshId"`
 	// The name of the resource.
 	ServiceMeshName pulumi.StringInput `pulumi:"serviceMeshName"`
+	// The SideCar Version. **Note:** the `sidecarVersion` is available from the version v1.170.0.
+	SidecarVersion pulumi.StringInput `pulumi:"sidecarVersion"`
 	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The version of the resource.
@@ -2229,6 +2237,11 @@ func (o GetServiceMeshesMeshOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
+func (o GetServiceMeshesMeshOutput) IstioOperatorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.IstioOperatorVersion }).(pulumi.StringOutput)
+}
+
 // The configuration of the Load Balancer.
 func (o GetServiceMeshesMeshOutput) LoadBalancers() GetServiceMeshesMeshLoadBalancerArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) []GetServiceMeshesMeshLoadBalancer { return v.LoadBalancers }).(GetServiceMeshesMeshLoadBalancerArrayOutput)
@@ -2252,6 +2265,11 @@ func (o GetServiceMeshesMeshOutput) ServiceMeshId() pulumi.StringOutput {
 // The name of the resource.
 func (o GetServiceMeshesMeshOutput) ServiceMeshName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.ServiceMeshName }).(pulumi.StringOutput)
+}
+
+// The SideCar Version. **Note:** the `sidecarVersion` is available from the version v1.170.0.
+func (o GetServiceMeshesMeshOutput) SidecarVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.SidecarVersion }).(pulumi.StringOutput)
 }
 
 // The status of the resource.

@@ -69,7 +69,8 @@ type EnterpriseInstance struct {
 	DatabasePassword pulumi.StringOutput `pulumi:"databasePassword"`
 	// Database access account.
 	DatabaseUser pulumi.StringOutput `pulumi:"databaseUser"`
-	DbaId        pulumi.StringOutput `pulumi:"dbaId"`
+	// The dba id of the database instance.
+	DbaId pulumi.StringOutput `pulumi:"dbaId"`
 	// The instance dba nickname.
 	DbaNickName pulumi.StringOutput `pulumi:"dbaNickName"`
 	// The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
@@ -86,11 +87,12 @@ type EnterpriseInstance struct {
 	ExportTimeout pulumi.IntOutput `pulumi:"exportTimeout"`
 	// Host address of the target database.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	// Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
 	//
 	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
 	InstanceAlias pulumi.StringOutput `pulumi:"instanceAlias"`
-	InstanceId    pulumi.StringOutput `pulumi:"instanceId"`
+	// The instance id of the database instance.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Instance name, to help users quickly distinguish positioning.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
@@ -104,11 +106,13 @@ type EnterpriseInstance struct {
 	// Query timeout time, unit: s (seconds).
 	QueryTimeout pulumi.IntOutput `pulumi:"queryTimeout"`
 	// The security rule of the instance is passed into the name of the security rule in the enterprise.
-	SafeRule   pulumi.StringOutput `pulumi:"safeRule"`
+	SafeRule pulumi.StringOutput `pulumi:"safeRule"`
+	// The safe rule id of the database instance.
 	SafeRuleId pulumi.StringOutput `pulumi:"safeRuleId"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid      pulumi.StringPtrOutput `pulumi:"sid"`
-	SkipTest pulumi.BoolPtrOutput   `pulumi:"skipTest"`
+	Sid pulumi.StringPtrOutput `pulumi:"sid"`
+	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+	SkipTest pulumi.BoolPtrOutput `pulumi:"skipTest"`
 	// It has been deprecated from provider version 1.100.0 and 'status' instead.
 	//
 	// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
@@ -194,7 +198,8 @@ type enterpriseInstanceState struct {
 	DatabasePassword *string `pulumi:"databasePassword"`
 	// Database access account.
 	DatabaseUser *string `pulumi:"databaseUser"`
-	DbaId        *string `pulumi:"dbaId"`
+	// The dba id of the database instance.
+	DbaId *string `pulumi:"dbaId"`
 	// The instance dba nickname.
 	DbaNickName *string `pulumi:"dbaNickName"`
 	// The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
@@ -211,11 +216,12 @@ type enterpriseInstanceState struct {
 	ExportTimeout *int `pulumi:"exportTimeout"`
 	// Host address of the target database.
 	Host *string `pulumi:"host"`
-	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	// Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
 	//
 	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
 	InstanceAlias *string `pulumi:"instanceAlias"`
-	InstanceId    *string `pulumi:"instanceId"`
+	// The instance id of the database instance.
+	InstanceId *string `pulumi:"instanceId"`
 	// Instance name, to help users quickly distinguish positioning.
 	InstanceName *string `pulumi:"instanceName"`
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
@@ -229,11 +235,13 @@ type enterpriseInstanceState struct {
 	// Query timeout time, unit: s (seconds).
 	QueryTimeout *int `pulumi:"queryTimeout"`
 	// The security rule of the instance is passed into the name of the security rule in the enterprise.
-	SafeRule   *string `pulumi:"safeRule"`
+	SafeRule *string `pulumi:"safeRule"`
+	// The safe rule id of the database instance.
 	SafeRuleId *string `pulumi:"safeRuleId"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid      *string `pulumi:"sid"`
-	SkipTest *bool   `pulumi:"skipTest"`
+	Sid *string `pulumi:"sid"`
+	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+	SkipTest *bool `pulumi:"skipTest"`
 	// It has been deprecated from provider version 1.100.0 and 'status' instead.
 	//
 	// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
@@ -255,7 +263,8 @@ type EnterpriseInstanceState struct {
 	DatabasePassword pulumi.StringPtrInput
 	// Database access account.
 	DatabaseUser pulumi.StringPtrInput
-	DbaId        pulumi.StringPtrInput
+	// The dba id of the database instance.
+	DbaId pulumi.StringPtrInput
 	// The instance dba nickname.
 	DbaNickName pulumi.StringPtrInput
 	// The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
@@ -272,11 +281,12 @@ type EnterpriseInstanceState struct {
 	ExportTimeout pulumi.IntPtrInput
 	// Host address of the target database.
 	Host pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	// Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
 	//
 	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
 	InstanceAlias pulumi.StringPtrInput
-	InstanceId    pulumi.StringPtrInput
+	// The instance id of the database instance.
+	InstanceId pulumi.StringPtrInput
 	// Instance name, to help users quickly distinguish positioning.
 	InstanceName pulumi.StringPtrInput
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
@@ -290,10 +300,12 @@ type EnterpriseInstanceState struct {
 	// Query timeout time, unit: s (seconds).
 	QueryTimeout pulumi.IntPtrInput
 	// The security rule of the instance is passed into the name of the security rule in the enterprise.
-	SafeRule   pulumi.StringPtrInput
+	SafeRule pulumi.StringPtrInput
+	// The safe rule id of the database instance.
 	SafeRuleId pulumi.StringPtrInput
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid      pulumi.StringPtrInput
+	Sid pulumi.StringPtrInput
+	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
 	SkipTest pulumi.BoolPtrInput
 	// It has been deprecated from provider version 1.100.0 and 'status' instead.
 	//
@@ -319,8 +331,9 @@ type enterpriseInstanceArgs struct {
 	// Database access password.
 	DatabasePassword string `pulumi:"databasePassword"`
 	// Database access account.
-	DatabaseUser string  `pulumi:"databaseUser"`
-	DbaId        *string `pulumi:"dbaId"`
+	DatabaseUser string `pulumi:"databaseUser"`
+	// The dba id of the database instance.
+	DbaId *string `pulumi:"dbaId"`
 	// The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
 	DbaUid int `pulumi:"dbaUid"`
 	// Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
@@ -335,11 +348,12 @@ type enterpriseInstanceArgs struct {
 	ExportTimeout int `pulumi:"exportTimeout"`
 	// Host address of the target database.
 	Host string `pulumi:"host"`
-	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	// Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
 	//
 	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
 	InstanceAlias *string `pulumi:"instanceAlias"`
-	InstanceId    *string `pulumi:"instanceId"`
+	// The instance id of the database instance.
+	InstanceId *string `pulumi:"instanceId"`
 	// Instance name, to help users quickly distinguish positioning.
 	InstanceName *string `pulumi:"instanceName"`
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
@@ -353,11 +367,13 @@ type enterpriseInstanceArgs struct {
 	// Query timeout time, unit: s (seconds).
 	QueryTimeout int `pulumi:"queryTimeout"`
 	// The security rule of the instance is passed into the name of the security rule in the enterprise.
-	SafeRule   string  `pulumi:"safeRule"`
+	SafeRule string `pulumi:"safeRule"`
+	// The safe rule id of the database instance.
 	SafeRuleId *string `pulumi:"safeRuleId"`
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid      *string `pulumi:"sid"`
-	SkipTest *bool   `pulumi:"skipTest"`
+	Sid *string `pulumi:"sid"`
+	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+	SkipTest *bool `pulumi:"skipTest"`
 	// The tenant ID.
 	Tid *int `pulumi:"tid"`
 	// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
@@ -374,7 +390,8 @@ type EnterpriseInstanceArgs struct {
 	DatabasePassword pulumi.StringInput
 	// Database access account.
 	DatabaseUser pulumi.StringInput
-	DbaId        pulumi.StringPtrInput
+	// The dba id of the database instance.
+	DbaId pulumi.StringPtrInput
 	// The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
 	DbaUid pulumi.IntInput
 	// Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
@@ -389,11 +406,12 @@ type EnterpriseInstanceArgs struct {
 	ExportTimeout pulumi.IntInput
 	// Host address of the target database.
 	Host pulumi.StringInput
-	// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+	// Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
 	//
 	// Deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
 	InstanceAlias pulumi.StringPtrInput
-	InstanceId    pulumi.StringPtrInput
+	// The instance id of the database instance.
+	InstanceId pulumi.StringPtrInput
 	// Instance name, to help users quickly distinguish positioning.
 	InstanceName pulumi.StringPtrInput
 	// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
@@ -407,10 +425,12 @@ type EnterpriseInstanceArgs struct {
 	// Query timeout time, unit: s (seconds).
 	QueryTimeout pulumi.IntInput
 	// The security rule of the instance is passed into the name of the security rule in the enterprise.
-	SafeRule   pulumi.StringInput
+	SafeRule pulumi.StringInput
+	// The safe rule id of the database instance.
 	SafeRuleId pulumi.StringPtrInput
 	// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
-	Sid      pulumi.StringPtrInput
+	Sid pulumi.StringPtrInput
+	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
 	SkipTest pulumi.BoolPtrInput
 	// The tenant ID.
 	Tid pulumi.IntPtrInput

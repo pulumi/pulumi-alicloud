@@ -25,6 +25,7 @@ __all__ = [
     'MetricRuleTemplateAlertTemplateEscalationsWarn',
     'MonitorGroupInstancesInstance',
     'SiteMonitorIspCity',
+    'SlsGroupSlsGroupConfig',
     'GetAlarmContactGroupsGroupResult',
     'GetAlarmContactsContactResult',
     'GetDynamicTagGroupsGroupResult',
@@ -43,6 +44,9 @@ __all__ = [
     'GetMonitorGroupInstancesInstanceResult',
     'GetMonitorGroupInstancesInstanceInstanceResult',
     'GetMonitorGroupsGroupResult',
+    'GetNamespacesNamespaceResult',
+    'GetSlsGroupsGroupResult',
+    'GetSlsGroupsGroupSlsGroupConfigResult',
 ]
 
 @pulumi.output_type
@@ -1010,6 +1014,81 @@ class SiteMonitorIspCity(dict):
     @pulumi.getter
     def isp(self) -> str:
         return pulumi.get(self, "isp")
+
+
+@pulumi.output_type
+class SlsGroupSlsGroupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slsLogstore":
+            suggest = "sls_logstore"
+        elif key == "slsProject":
+            suggest = "sls_project"
+        elif key == "slsRegion":
+            suggest = "sls_region"
+        elif key == "slsUserId":
+            suggest = "sls_user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlsGroupSlsGroupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlsGroupSlsGroupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlsGroupSlsGroupConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sls_logstore: str,
+                 sls_project: str,
+                 sls_region: str,
+                 sls_user_id: Optional[str] = None):
+        """
+        :param str sls_logstore: The name of the Log Store.
+        :param str sls_project: The name of the Project.
+        :param str sls_region: The Sls Region.
+        :param str sls_user_id: The ID of the Sls User.
+        """
+        pulumi.set(__self__, "sls_logstore", sls_logstore)
+        pulumi.set(__self__, "sls_project", sls_project)
+        pulumi.set(__self__, "sls_region", sls_region)
+        if sls_user_id is not None:
+            pulumi.set(__self__, "sls_user_id", sls_user_id)
+
+    @property
+    @pulumi.getter(name="slsLogstore")
+    def sls_logstore(self) -> str:
+        """
+        The name of the Log Store.
+        """
+        return pulumi.get(self, "sls_logstore")
+
+    @property
+    @pulumi.getter(name="slsProject")
+    def sls_project(self) -> str:
+        """
+        The name of the Project.
+        """
+        return pulumi.get(self, "sls_project")
+
+    @property
+    @pulumi.getter(name="slsRegion")
+    def sls_region(self) -> str:
+        """
+        The Sls Region.
+        """
+        return pulumi.get(self, "sls_region")
+
+    @property
+    @pulumi.getter(name="slsUserId")
+    def sls_user_id(self) -> Optional[str]:
+        """
+        The ID of the Sls User.
+        """
+        return pulumi.get(self, "sls_user_id")
 
 
 @pulumi.output_type
@@ -2276,5 +2355,202 @@ class GetMonitorGroupsGroupResult(dict):
         The type of the application group.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNamespacesNamespaceResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 modify_time: str,
+                 namespace: str,
+                 namespace_id: str,
+                 specification: str):
+        """
+        :param str create_time: Create the timestamp of the indicator warehouse.
+        :param str description: Description of indicator warehouse.
+        :param str id: The ID of the Namespace.
+        :param str modify_time: The timestamp of the last modification indicator warehouse.
+        :param str namespace: Indicator warehouse name.
+        :param str namespace_id: The ID of the Namespace.
+        :param str specification: Data storage duration.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "namespace_id", namespace_id)
+        pulumi.set(__self__, "specification", specification)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Create the timestamp of the indicator warehouse.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of indicator warehouse.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Namespace.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> str:
+        """
+        The timestamp of the last modification indicator warehouse.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        Indicator warehouse name.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        The ID of the Namespace.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter
+    def specification(self) -> str:
+        """
+        Data storage duration.
+        """
+        return pulumi.get(self, "specification")
+
+
+@pulumi.output_type
+class GetSlsGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 id: str,
+                 sls_group_configs: Sequence['outputs.GetSlsGroupsGroupSlsGroupConfigResult'],
+                 sls_group_description: str,
+                 sls_group_name: str):
+        """
+        :param str create_time: The creation time of the resource.
+        :param str id: The ID of the Sls Group. Its value is same as Queue Name.
+        :param Sequence['GetSlsGroupsGroupSlsGroupConfigArgs'] sls_group_configs: The Config of the Sls Group.
+        :param str sls_group_description: The Description of the Sls Group.
+        :param str sls_group_name: The name of the resource.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sls_group_configs", sls_group_configs)
+        pulumi.set(__self__, "sls_group_description", sls_group_description)
+        pulumi.set(__self__, "sls_group_name", sls_group_name)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Sls Group. Its value is same as Queue Name.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="slsGroupConfigs")
+    def sls_group_configs(self) -> Sequence['outputs.GetSlsGroupsGroupSlsGroupConfigResult']:
+        """
+        The Config of the Sls Group.
+        """
+        return pulumi.get(self, "sls_group_configs")
+
+    @property
+    @pulumi.getter(name="slsGroupDescription")
+    def sls_group_description(self) -> str:
+        """
+        The Description of the Sls Group.
+        """
+        return pulumi.get(self, "sls_group_description")
+
+    @property
+    @pulumi.getter(name="slsGroupName")
+    def sls_group_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "sls_group_name")
+
+
+@pulumi.output_type
+class GetSlsGroupsGroupSlsGroupConfigResult(dict):
+    def __init__(__self__, *,
+                 sls_logstore: str,
+                 sls_project: str,
+                 sls_region: str,
+                 sls_user_id: str):
+        """
+        :param str sls_logstore: The name of the Log Store.
+        :param str sls_project: The name of the Project.
+        :param str sls_region: The Sls Region.
+        :param str sls_user_id: The ID of the Sls User.
+        """
+        pulumi.set(__self__, "sls_logstore", sls_logstore)
+        pulumi.set(__self__, "sls_project", sls_project)
+        pulumi.set(__self__, "sls_region", sls_region)
+        pulumi.set(__self__, "sls_user_id", sls_user_id)
+
+    @property
+    @pulumi.getter(name="slsLogstore")
+    def sls_logstore(self) -> str:
+        """
+        The name of the Log Store.
+        """
+        return pulumi.get(self, "sls_logstore")
+
+    @property
+    @pulumi.getter(name="slsProject")
+    def sls_project(self) -> str:
+        """
+        The name of the Project.
+        """
+        return pulumi.get(self, "sls_project")
+
+    @property
+    @pulumi.getter(name="slsRegion")
+    def sls_region(self) -> str:
+        """
+        The Sls Region.
+        """
+        return pulumi.get(self, "sls_region")
+
+    @property
+    @pulumi.getter(name="slsUserId")
+    def sls_user_id(self) -> str:
+        """
+        The ID of the Sls User.
+        """
+        return pulumi.get(self, "sls_user_id")
 
 

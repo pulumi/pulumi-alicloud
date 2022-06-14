@@ -3394,7 +3394,7 @@ class Kubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def platform(self) -> pulumi.Output[Optional[str]]:
+    def platform(self) -> pulumi.Output[str]:
         """
         The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
         """

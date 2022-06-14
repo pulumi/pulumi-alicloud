@@ -69,6 +69,7 @@ class InstanceArgs:
                  switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  target_minor_version: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
@@ -190,6 +191,9 @@ class InstanceArgs:
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
@@ -316,6 +320,8 @@ class InstanceArgs:
             pulumi.set(__self__, "tags", tags)
         if target_minor_version is not None:
             pulumi.set(__self__, "target_minor_version", target_minor_version)
+        if tcp_connection_type is not None:
+            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if upgrade_db_instance_kernel_version is not None:
@@ -1033,6 +1039,20 @@ class InstanceArgs:
         pulumi.set(self, "target_minor_version", value)
 
     @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
+
+    @tcp_connection_type.setter
+    def tcp_connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tcp_connection_type", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1198,6 +1218,7 @@ class _InstanceState:
                  switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  target_minor_version: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
@@ -1321,6 +1342,9 @@ class _InstanceState:
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
@@ -1455,6 +1479,8 @@ class _InstanceState:
             pulumi.set(__self__, "tags", tags)
         if target_minor_version is not None:
             pulumi.set(__self__, "target_minor_version", target_minor_version)
+        if tcp_connection_type is not None:
+            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if upgrade_db_instance_kernel_version is not None:
@@ -2196,6 +2222,20 @@ class _InstanceState:
         pulumi.set(self, "target_minor_version", value)
 
     @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
+
+    @tcp_connection_type.setter
+    def tcp_connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tcp_connection_type", value)
+
+    @property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2361,6 +2401,7 @@ class Instance(pulumi.CustomResource):
                  switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  target_minor_version: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
@@ -2492,6 +2533,9 @@ class Instance(pulumi.CustomResource):
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
@@ -2595,6 +2639,7 @@ class Instance(pulumi.CustomResource):
                  switch_time: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  target_minor_version: Optional[pulumi.Input[str]] = None,
+                 tcp_connection_type: Optional[pulumi.Input[str]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
@@ -2680,6 +2725,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["switch_time"] = switch_time
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_minor_version"] = target_minor_version
+            __props__.__dict__["tcp_connection_type"] = tcp_connection_type
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
             __props__.__dict__["upgrade_time"] = upgrade_time
@@ -2756,6 +2802,7 @@ class Instance(pulumi.CustomResource):
             switch_time: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             target_minor_version: Optional[pulumi.Input[str]] = None,
+            tcp_connection_type: Optional[pulumi.Input[str]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
             upgrade_time: Optional[pulumi.Input[str]] = None,
@@ -2884,6 +2931,9 @@ class Instance(pulumi.CustomResource):
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+        :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
+               - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+               - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
@@ -2963,6 +3013,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["switch_time"] = switch_time
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_minor_version"] = target_minor_version
+        __props__.__dict__["tcp_connection_type"] = tcp_connection_type
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
         __props__.__dict__["upgrade_time"] = upgrade_time
@@ -3471,6 +3522,16 @@ class Instance(pulumi.CustomResource):
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
         """
         return pulumi.get(self, "target_minor_version")
+
+    @property
+    @pulumi.getter(name="tcpConnectionType")
+    def tcp_connection_type(self) -> pulumi.Output[str]:
+        """
+        The availability check method of the instance. Valid values:
+        - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        """
+        return pulumi.get(self, "tcp_connection_type")
 
     @property
     @pulumi.getter(name="tdeStatus")

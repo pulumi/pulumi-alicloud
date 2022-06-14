@@ -58,7 +58,7 @@ export interface GetVaultsArgs {
      */
     status?: string;
     /**
-     * The type of Vault. Valid values: `STANDARD`.
+     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
      */
     vaultType?: string;
 }
@@ -102,7 +102,7 @@ export interface GetVaultsOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The type of Vault. Valid values: `STANDARD`.
+     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
      */
     vaultType?: pulumi.Input<string>;
 }

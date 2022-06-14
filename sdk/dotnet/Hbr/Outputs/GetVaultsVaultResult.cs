@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string VaultStorageClass;
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`.
+        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         /// </summary>
         public readonly string VaultType;
 

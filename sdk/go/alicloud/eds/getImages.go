@@ -110,12 +110,16 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getImages.
 type GetImagesArgs struct {
+	// The desktop type of the image.
+	DesktopInstanceType *string `pulumi:"desktopInstanceType"`
 	// A list of Image IDs.
 	Ids []string `pulumi:"ids"`
 	// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
 	ImageType *string `pulumi:"imageType"`
 	// A regex string to filter results by Image name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// The os type of the image.
+	OsType     *string `pulumi:"osType"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
 	Status *string `pulumi:"status"`
@@ -123,6 +127,7 @@ type GetImagesArgs struct {
 
 // A collection of values returned by getImages.
 type GetImagesResult struct {
+	DesktopInstanceType *string `pulumi:"desktopInstanceType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string           `pulumi:"id"`
 	Ids        []string         `pulumi:"ids"`
@@ -130,6 +135,7 @@ type GetImagesResult struct {
 	Images     []GetImagesImage `pulumi:"images"`
 	NameRegex  *string          `pulumi:"nameRegex"`
 	Names      []string         `pulumi:"names"`
+	OsType     *string          `pulumi:"osType"`
 	OutputFile *string          `pulumi:"outputFile"`
 	Status     *string          `pulumi:"status"`
 }
@@ -149,12 +155,16 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getImages.
 type GetImagesOutputArgs struct {
+	// The desktop type of the image.
+	DesktopInstanceType pulumi.StringPtrInput `pulumi:"desktopInstanceType"`
 	// A list of Image IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// A regex string to filter results by Image name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The os type of the image.
+	OsType     pulumi.StringPtrInput `pulumi:"osType"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -177,6 +187,10 @@ func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
 
 func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
 	return o
+}
+
+func (o GetImagesResultOutput) DesktopInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.DesktopInstanceType }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -202,6 +216,10 @@ func (o GetImagesResultOutput) NameRegex() pulumi.StringPtrOutput {
 
 func (o GetImagesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImagesResultOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
 func (o GetImagesResultOutput) OutputFile() pulumi.StringPtrOutput {

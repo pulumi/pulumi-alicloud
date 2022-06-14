@@ -21,7 +21,10 @@ class GetImagesResult:
     """
     A collection of values returned by getImages.
     """
-    def __init__(__self__, id=None, ids=None, image_type=None, images=None, name_regex=None, names=None, output_file=None, status=None):
+    def __init__(__self__, desktop_instance_type=None, id=None, ids=None, image_type=None, images=None, name_regex=None, names=None, os_type=None, output_file=None, status=None):
+        if desktop_instance_type and not isinstance(desktop_instance_type, str):
+            raise TypeError("Expected argument 'desktop_instance_type' to be a str")
+        pulumi.set(__self__, "desktop_instance_type", desktop_instance_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,12 +43,20 @@ class GetImagesResult:
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         pulumi.set(__self__, "names", names)
+        if os_type and not isinstance(os_type, str):
+            raise TypeError("Expected argument 'os_type' to be a str")
+        pulumi.set(__self__, "os_type", os_type)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="desktopInstanceType")
+    def desktop_instance_type(self) -> Optional[str]:
+        return pulumi.get(self, "desktop_instance_type")
 
     @property
     @pulumi.getter
@@ -81,6 +92,11 @@ class GetImagesResult:
         return pulumi.get(self, "names")
 
     @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> Optional[str]:
+        return pulumi.get(self, "os_type")
+
+    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
@@ -97,19 +113,23 @@ class AwaitableGetImagesResult(GetImagesResult):
         if False:
             yield self
         return GetImagesResult(
+            desktop_instance_type=self.desktop_instance_type,
             id=self.id,
             ids=self.ids,
             image_type=self.image_type,
             images=self.images,
             name_regex=self.name_regex,
             names=self.names,
+            os_type=self.os_type,
             output_file=self.output_file,
             status=self.status)
 
 
-def get_images(ids: Optional[Sequence[str]] = None,
+def get_images(desktop_instance_type: Optional[str] = None,
+               ids: Optional[Sequence[str]] = None,
                image_type: Optional[str] = None,
                name_regex: Optional[str] = None,
+               os_type: Optional[str] = None,
                output_file: Optional[str] = None,
                status: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
@@ -164,15 +184,19 @@ def get_images(ids: Optional[Sequence[str]] = None,
     ```
 
 
+    :param str desktop_instance_type: The desktop type of the image.
     :param Sequence[str] ids: A list of Image IDs.
     :param str image_type: The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
     :param str name_regex: A regex string to filter results by Image name.
+    :param str os_type: The os type of the image.
     :param str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
     """
     __args__ = dict()
+    __args__['desktopInstanceType'] = desktop_instance_type
     __args__['ids'] = ids
     __args__['imageType'] = image_type
     __args__['nameRegex'] = name_regex
+    __args__['osType'] = os_type
     __args__['outputFile'] = output_file
     __args__['status'] = status
     if opts is None:
@@ -182,20 +206,24 @@ def get_images(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eds/getImages:getImages', __args__, opts=opts, typ=GetImagesResult).value
 
     return AwaitableGetImagesResult(
+        desktop_instance_type=__ret__.desktop_instance_type,
         id=__ret__.id,
         ids=__ret__.ids,
         image_type=__ret__.image_type,
         images=__ret__.images,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
+        os_type=__ret__.os_type,
         output_file=__ret__.output_file,
         status=__ret__.status)
 
 
 @_utilities.lift_output_func(get_images)
-def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       image_type: Optional[pulumi.Input[Optional[str]]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      os_type: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       status: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
@@ -250,9 +278,11 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     ```
 
 
+    :param str desktop_instance_type: The desktop type of the image.
     :param Sequence[str] ids: A list of Image IDs.
     :param str image_type: The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
     :param str name_regex: A regex string to filter results by Image name.
+    :param str os_type: The os type of the image.
     :param str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
     """
     ...

@@ -98,6 +98,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        /// </summary>
+        [Output("backupRetentionPolicyOnClusterDeletion")]
+        public Output<string> BackupRetentionPolicyOnClusterDeletion { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         /// </summary>
         [Output("collectorStatus")]
@@ -294,6 +300,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
+        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        /// </summary>
+        [Input("backupRetentionPolicyOnClusterDeletion")]
+        public Input<string>? BackupRetentionPolicyOnClusterDeletion { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         /// </summary>
         [Input("collectorStatus")]
@@ -473,6 +485,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+        /// </summary>
+        [Input("backupRetentionPolicyOnClusterDeletion")]
+        public Input<string>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
         /// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.

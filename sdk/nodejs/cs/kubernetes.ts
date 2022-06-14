@@ -211,7 +211,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
      */
-    public readonly platform!: pulumi.Output<string | undefined>;
+    public readonly platform!: pulumi.Output<string>;
     /**
      * - [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */

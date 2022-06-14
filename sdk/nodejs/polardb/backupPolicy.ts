@@ -46,6 +46,10 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly backupRetentionPeriod!: pulumi.Output<string>;
     /**
+     * Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+     */
+    public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<string>;
+    /**
      * The Id of cluster that can run database.
      */
     public readonly dbClusterId!: pulumi.Output<string>;
@@ -72,6 +76,7 @@ export class BackupPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
             resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
             resourceInputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
             resourceInputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
@@ -80,6 +85,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
             resourceInputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
             resourceInputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
@@ -99,6 +105,10 @@ export interface BackupPolicyState {
      */
     backupRetentionPeriod?: pulumi.Input<string>;
     /**
+     * Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+     */
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
+    /**
      * The Id of cluster that can run database.
      */
     dbClusterId?: pulumi.Input<string>;
@@ -116,6 +126,10 @@ export interface BackupPolicyState {
  * The set of arguments for constructing a BackupPolicy resource.
  */
 export interface BackupPolicyArgs {
+    /**
+     * Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://help.aliyun.com/document_detail/98103.html)
+     */
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
     /**
      * The Id of cluster that can run database.
      */

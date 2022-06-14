@@ -75,8 +75,10 @@ type Topic struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType pulumi.IntOutput `pulumi:"messageType"`
-	// This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
-	Perm pulumi.IntPtrOutput `pulumi:"perm"`
+	// This attribute has been deprecated.
+	//
+	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
+	Perm pulumi.IntOutput `pulumi:"perm"`
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// A mapping of tags to assign to the resource.
@@ -130,7 +132,9 @@ type topicState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType *int `pulumi:"messageType"`
-	// This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+	// This attribute has been deprecated.
+	//
+	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm *int `pulumi:"perm"`
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark *string `pulumi:"remark"`
@@ -151,7 +155,9 @@ type TopicState struct {
 	InstanceId pulumi.StringPtrInput
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType pulumi.IntPtrInput
-	// This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+	// This attribute has been deprecated.
+	//
+	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm pulumi.IntPtrInput
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark pulumi.StringPtrInput
@@ -176,7 +182,9 @@ type topicArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType int `pulumi:"messageType"`
-	// This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+	// This attribute has been deprecated.
+	//
+	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm *int `pulumi:"perm"`
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark *string `pulumi:"remark"`
@@ -198,7 +206,9 @@ type TopicArgs struct {
 	InstanceId pulumi.StringInput
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType pulumi.IntInput
-	// This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+	// This attribute has been deprecated.
+	//
+	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm pulumi.IntPtrInput
 	// This attribute is a concise description of topic. The length cannot exceed 128.
 	Remark pulumi.StringPtrInput

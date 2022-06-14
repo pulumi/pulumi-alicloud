@@ -1013,6 +1013,184 @@ func (o GetCommandsCommandInvokeDesktopArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetCommandsCommandInvokeDesktopOutput)
 }
 
+type GetDesktopTypesType struct {
+	// The CPU cores.
+	CpuCount string `pulumi:"cpuCount"`
+	// The size of the data disk. Unit: GiB.
+	DataDiskSize string `pulumi:"dataDiskSize"`
+	// Specification ID.
+	DesktopTypeId string `pulumi:"desktopTypeId"`
+	// The GPU cores.
+	GpuCount float64 `pulumi:"gpuCount"`
+	// The GPU video memory.
+	GpuSpec string `pulumi:"gpuSpec"`
+	// The ID of the Desktop Type.
+	Id string `pulumi:"id"`
+	// The Specification family.
+	InstanceTypeFamily string `pulumi:"instanceTypeFamily"`
+	// The Memory size. Unit: MiB.
+	MemorySize string `pulumi:"memorySize"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The size of the system disk. Unit: GiB.
+	SystemDiskSize string `pulumi:"systemDiskSize"`
+}
+
+// GetDesktopTypesTypeInput is an input type that accepts GetDesktopTypesTypeArgs and GetDesktopTypesTypeOutput values.
+// You can construct a concrete instance of `GetDesktopTypesTypeInput` via:
+//
+//          GetDesktopTypesTypeArgs{...}
+type GetDesktopTypesTypeInput interface {
+	pulumi.Input
+
+	ToGetDesktopTypesTypeOutput() GetDesktopTypesTypeOutput
+	ToGetDesktopTypesTypeOutputWithContext(context.Context) GetDesktopTypesTypeOutput
+}
+
+type GetDesktopTypesTypeArgs struct {
+	// The CPU cores.
+	CpuCount pulumi.StringInput `pulumi:"cpuCount"`
+	// The size of the data disk. Unit: GiB.
+	DataDiskSize pulumi.StringInput `pulumi:"dataDiskSize"`
+	// Specification ID.
+	DesktopTypeId pulumi.StringInput `pulumi:"desktopTypeId"`
+	// The GPU cores.
+	GpuCount pulumi.Float64Input `pulumi:"gpuCount"`
+	// The GPU video memory.
+	GpuSpec pulumi.StringInput `pulumi:"gpuSpec"`
+	// The ID of the Desktop Type.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Specification family.
+	InstanceTypeFamily pulumi.StringInput `pulumi:"instanceTypeFamily"`
+	// The Memory size. Unit: MiB.
+	MemorySize pulumi.StringInput `pulumi:"memorySize"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The size of the system disk. Unit: GiB.
+	SystemDiskSize pulumi.StringInput `pulumi:"systemDiskSize"`
+}
+
+func (GetDesktopTypesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDesktopTypesType)(nil)).Elem()
+}
+
+func (i GetDesktopTypesTypeArgs) ToGetDesktopTypesTypeOutput() GetDesktopTypesTypeOutput {
+	return i.ToGetDesktopTypesTypeOutputWithContext(context.Background())
+}
+
+func (i GetDesktopTypesTypeArgs) ToGetDesktopTypesTypeOutputWithContext(ctx context.Context) GetDesktopTypesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopTypesTypeOutput)
+}
+
+// GetDesktopTypesTypeArrayInput is an input type that accepts GetDesktopTypesTypeArray and GetDesktopTypesTypeArrayOutput values.
+// You can construct a concrete instance of `GetDesktopTypesTypeArrayInput` via:
+//
+//          GetDesktopTypesTypeArray{ GetDesktopTypesTypeArgs{...} }
+type GetDesktopTypesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetDesktopTypesTypeArrayOutput() GetDesktopTypesTypeArrayOutput
+	ToGetDesktopTypesTypeArrayOutputWithContext(context.Context) GetDesktopTypesTypeArrayOutput
+}
+
+type GetDesktopTypesTypeArray []GetDesktopTypesTypeInput
+
+func (GetDesktopTypesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDesktopTypesType)(nil)).Elem()
+}
+
+func (i GetDesktopTypesTypeArray) ToGetDesktopTypesTypeArrayOutput() GetDesktopTypesTypeArrayOutput {
+	return i.ToGetDesktopTypesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetDesktopTypesTypeArray) ToGetDesktopTypesTypeArrayOutputWithContext(ctx context.Context) GetDesktopTypesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopTypesTypeArrayOutput)
+}
+
+type GetDesktopTypesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetDesktopTypesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDesktopTypesType)(nil)).Elem()
+}
+
+func (o GetDesktopTypesTypeOutput) ToGetDesktopTypesTypeOutput() GetDesktopTypesTypeOutput {
+	return o
+}
+
+func (o GetDesktopTypesTypeOutput) ToGetDesktopTypesTypeOutputWithContext(ctx context.Context) GetDesktopTypesTypeOutput {
+	return o
+}
+
+// The CPU cores.
+func (o GetDesktopTypesTypeOutput) CpuCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.CpuCount }).(pulumi.StringOutput)
+}
+
+// The size of the data disk. Unit: GiB.
+func (o GetDesktopTypesTypeOutput) DataDiskSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.DataDiskSize }).(pulumi.StringOutput)
+}
+
+// Specification ID.
+func (o GetDesktopTypesTypeOutput) DesktopTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.DesktopTypeId }).(pulumi.StringOutput)
+}
+
+// The GPU cores.
+func (o GetDesktopTypesTypeOutput) GpuCount() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDesktopTypesType) float64 { return v.GpuCount }).(pulumi.Float64Output)
+}
+
+// The GPU video memory.
+func (o GetDesktopTypesTypeOutput) GpuSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.GpuSpec }).(pulumi.StringOutput)
+}
+
+// The ID of the Desktop Type.
+func (o GetDesktopTypesTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Specification family.
+func (o GetDesktopTypesTypeOutput) InstanceTypeFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.InstanceTypeFamily }).(pulumi.StringOutput)
+}
+
+// The Memory size. Unit: MiB.
+func (o GetDesktopTypesTypeOutput) MemorySize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.MemorySize }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetDesktopTypesTypeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The size of the system disk. Unit: GiB.
+func (o GetDesktopTypesTypeOutput) SystemDiskSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopTypesType) string { return v.SystemDiskSize }).(pulumi.StringOutput)
+}
+
+type GetDesktopTypesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDesktopTypesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDesktopTypesType)(nil)).Elem()
+}
+
+func (o GetDesktopTypesTypeArrayOutput) ToGetDesktopTypesTypeArrayOutput() GetDesktopTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetDesktopTypesTypeArrayOutput) ToGetDesktopTypesTypeArrayOutputWithContext(ctx context.Context) GetDesktopTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetDesktopTypesTypeArrayOutput) Index(i pulumi.IntInput) GetDesktopTypesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDesktopTypesType {
+		return vs[0].([]GetDesktopTypesType)[vs[1].(int)]
+	}).(GetDesktopTypesTypeOutput)
+}
+
 type GetDesktopsDesktop struct {
 	// The number of CPUs.
 	Cpu int `pulumi:"cpu"`
@@ -1847,6 +2025,8 @@ type GetPolicyGroupsGroup struct {
 	AuthorizeAccessPolicyRules []GetPolicyGroupsGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules []GetPolicyGroupsGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
+	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	CameraRedirect string `pulumi:"cameraRedirect"`
 	// The clipboard policy.
 	Clipboard string `pulumi:"clipboard"`
 	// The list of domain.
@@ -1867,6 +2047,14 @@ type GetPolicyGroupsGroup struct {
 	PolicyGroupName string `pulumi:"policyGroupName"`
 	// The type of policy group.
 	PolicyGroupType string `pulumi:"policyGroupType"`
+	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	Recording string `pulumi:"recording"`
+	// The end time of recording.
+	RecordingEndTime string `pulumi:"recordingEndTime"`
+	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	RecordingFps int `pulumi:"recordingFps"`
+	// The start time of recording.
+	RecordingStartTime string `pulumi:"recordingStartTime"`
 	// The status of policy.
 	Status string `pulumi:"status"`
 	// The usb redirect policy.
@@ -1897,6 +2085,8 @@ type GetPolicyGroupsGroupArgs struct {
 	AuthorizeAccessPolicyRules GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput `pulumi:"authorizeSecurityPolicyRules"`
+	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	CameraRedirect pulumi.StringInput `pulumi:"cameraRedirect"`
 	// The clipboard policy.
 	Clipboard pulumi.StringInput `pulumi:"clipboard"`
 	// The list of domain.
@@ -1917,6 +2107,14 @@ type GetPolicyGroupsGroupArgs struct {
 	PolicyGroupName pulumi.StringInput `pulumi:"policyGroupName"`
 	// The type of policy group.
 	PolicyGroupType pulumi.StringInput `pulumi:"policyGroupType"`
+	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	Recording pulumi.StringInput `pulumi:"recording"`
+	// The end time of recording.
+	RecordingEndTime pulumi.StringInput `pulumi:"recordingEndTime"`
+	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	RecordingFps pulumi.IntInput `pulumi:"recordingFps"`
+	// The start time of recording.
+	RecordingStartTime pulumi.StringInput `pulumi:"recordingStartTime"`
 	// The status of policy.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The usb redirect policy.
@@ -1996,6 +2194,11 @@ func (o GetPolicyGroupsGroupOutput) AuthorizeSecurityPolicyRules() GetPolicyGrou
 	}).(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput)
 }
 
+// Whether to enable local camera redirection. Valid values: `on`, `off`.
+func (o GetPolicyGroupsGroupOutput) CameraRedirect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.CameraRedirect }).(pulumi.StringOutput)
+}
+
 // The clipboard policy.
 func (o GetPolicyGroupsGroupOutput) Clipboard() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.Clipboard }).(pulumi.StringOutput)
@@ -2044,6 +2247,26 @@ func (o GetPolicyGroupsGroupOutput) PolicyGroupName() pulumi.StringOutput {
 // The type of policy group.
 func (o GetPolicyGroupsGroupOutput) PolicyGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.PolicyGroupType }).(pulumi.StringOutput)
+}
+
+// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+func (o GetPolicyGroupsGroupOutput) Recording() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.Recording }).(pulumi.StringOutput)
+}
+
+// The end time of recording.
+func (o GetPolicyGroupsGroupOutput) RecordingEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.RecordingEndTime }).(pulumi.StringOutput)
+}
+
+// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+func (o GetPolicyGroupsGroupOutput) RecordingFps() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPolicyGroupsGroup) int { return v.RecordingFps }).(pulumi.IntOutput)
+}
+
+// The start time of recording.
+func (o GetPolicyGroupsGroupOutput) RecordingStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.RecordingStartTime }).(pulumi.StringOutput)
 }
 
 // The status of policy.
@@ -3067,6 +3290,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandArrayInput)(nil)).Elem(), GetCommandsCommandArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInvokeDesktopInput)(nil)).Elem(), GetCommandsCommandInvokeDesktopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInvokeDesktopArrayInput)(nil)).Elem(), GetCommandsCommandInvokeDesktopArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopTypesTypeInput)(nil)).Elem(), GetDesktopTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopTypesTypeArrayInput)(nil)).Elem(), GetDesktopTypesTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopInput)(nil)).Elem(), GetDesktopsDesktopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopArrayInput)(nil)).Elem(), GetDesktopsDesktopArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
@@ -3101,6 +3326,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCommandsCommandArrayOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandInvokeDesktopOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandInvokeDesktopArrayOutput{})
+	pulumi.RegisterOutputType(GetDesktopTypesTypeOutput{})
+	pulumi.RegisterOutputType(GetDesktopTypesTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetDesktopsDesktopOutput{})
 	pulumi.RegisterOutputType(GetDesktopsDesktopArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})

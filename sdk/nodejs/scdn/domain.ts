@@ -69,7 +69,9 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
-     * from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+     * Attribute perm has been deprecated and suggest removing it from your template.
+     *
+     * @deprecated Attribute biz_name has been deprecated and suggest removing it from your template.
      */
     public readonly bizName!: pulumi.Output<string | undefined>;
     /**
@@ -149,7 +151,9 @@ export class Domain extends pulumi.CustomResource {
  */
 export interface DomainState {
     /**
-     * from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+     * Attribute perm has been deprecated and suggest removing it from your template.
+     *
+     * @deprecated Attribute biz_name has been deprecated and suggest removing it from your template.
      */
     bizName?: pulumi.Input<string>;
     /**
@@ -187,7 +191,9 @@ export interface DomainState {
  */
 export interface DomainArgs {
     /**
-     * from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+     * Attribute perm has been deprecated and suggest removing it from your template.
+     *
+     * @deprecated Attribute biz_name has been deprecated and suggest removing it from your template.
      */
     bizName?: pulumi.Input<string>;
     /**

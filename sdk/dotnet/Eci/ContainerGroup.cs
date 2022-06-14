@@ -140,6 +140,12 @@ namespace Pulumi.AliCloud.Eci
     public partial class ContainerGroup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+        /// </summary>
+        [Output("autoCreateEip")]
+        public Output<bool?> AutoCreateEip { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to automatically match the image cache. Default value: false.
         /// </summary>
         [Output("autoMatchImageCache")]
@@ -176,6 +182,18 @@ namespace Pulumi.AliCloud.Eci
         public Output<Outputs.ContainerGroupEciSecurityContext?> EciSecurityContext { get; private set; } = null!;
 
         /// <summary>
+        /// The bandwidth of the EIP. The default value is `5`.
+        /// </summary>
+        [Output("eipBandwidth")]
+        public Output<int?> EipBandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the elastic IP address (EIP).
+        /// </summary>
+        [Output("eipInstanceId")]
+        public Output<string?> EipInstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// HostAliases.
         /// </summary>
         [Output("hostAliases")]
@@ -194,16 +212,40 @@ namespace Pulumi.AliCloud.Eci
         public Output<ImmutableArray<Outputs.ContainerGroupInitContainer>> InitContainers { get; private set; } = null!;
 
         /// <summary>
+        /// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+        /// </summary>
+        [Output("insecureRegistry")]
+        public Output<string?> InsecureRegistry { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the ECS instance.
         /// </summary>
         [Output("instanceType")]
         public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in v1.170.0+) The Public IP of the container group.
+        /// </summary>
+        [Output("internetIp")]
+        public Output<string> InternetIp { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.170.0+) The Private IP of the container group.
+        /// </summary>
+        [Output("intranetIp")]
+        public Output<string> IntranetIp { get; private set; } = null!;
+
+        /// <summary>
         /// The amount of memory resources allocated to the container.
         /// </summary>
         [Output("memory")]
         public Output<double?> Memory { get; private set; } = null!;
+
+        /// <summary>
+        /// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+        /// </summary>
+        [Output("plainHttpRegistry")]
+        public Output<string?> PlainHttpRegistry { get; private set; } = null!;
 
         /// <summary>
         /// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
@@ -308,6 +350,12 @@ namespace Pulumi.AliCloud.Eci
     public sealed class ContainerGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+        /// </summary>
+        [Input("autoCreateEip")]
+        public Input<bool>? AutoCreateEip { get; set; }
+
+        /// <summary>
         /// Specifies whether to automatically match the image cache. Default value: false.
         /// </summary>
         [Input("autoMatchImageCache")]
@@ -349,6 +397,18 @@ namespace Pulumi.AliCloud.Eci
         [Input("eciSecurityContext")]
         public Input<Inputs.ContainerGroupEciSecurityContextArgs>? EciSecurityContext { get; set; }
 
+        /// <summary>
+        /// The bandwidth of the EIP. The default value is `5`.
+        /// </summary>
+        [Input("eipBandwidth")]
+        public Input<int>? EipBandwidth { get; set; }
+
+        /// <summary>
+        /// The ID of the elastic IP address (EIP).
+        /// </summary>
+        [Input("eipInstanceId")]
+        public Input<string>? EipInstanceId { get; set; }
+
         [Input("hostAliases")]
         private InputList<Inputs.ContainerGroupHostAliasArgs>? _hostAliases;
 
@@ -386,6 +446,12 @@ namespace Pulumi.AliCloud.Eci
         }
 
         /// <summary>
+        /// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+        /// </summary>
+        [Input("insecureRegistry")]
+        public Input<string>? InsecureRegistry { get; set; }
+
+        /// <summary>
         /// The type of the ECS instance.
         /// </summary>
         [Input("instanceType")]
@@ -396,6 +462,12 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
+
+        /// <summary>
+        /// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+        /// </summary>
+        [Input("plainHttpRegistry")]
+        public Input<string>? PlainHttpRegistry { get; set; }
 
         /// <summary>
         /// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
@@ -467,6 +539,12 @@ namespace Pulumi.AliCloud.Eci
     public sealed class ContainerGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+        /// </summary>
+        [Input("autoCreateEip")]
+        public Input<bool>? AutoCreateEip { get; set; }
+
+        /// <summary>
         /// Specifies whether to automatically match the image cache. Default value: false.
         /// </summary>
         [Input("autoMatchImageCache")]
@@ -508,6 +586,18 @@ namespace Pulumi.AliCloud.Eci
         [Input("eciSecurityContext")]
         public Input<Inputs.ContainerGroupEciSecurityContextGetArgs>? EciSecurityContext { get; set; }
 
+        /// <summary>
+        /// The bandwidth of the EIP. The default value is `5`.
+        /// </summary>
+        [Input("eipBandwidth")]
+        public Input<int>? EipBandwidth { get; set; }
+
+        /// <summary>
+        /// The ID of the elastic IP address (EIP).
+        /// </summary>
+        [Input("eipInstanceId")]
+        public Input<string>? EipInstanceId { get; set; }
+
         [Input("hostAliases")]
         private InputList<Inputs.ContainerGroupHostAliasGetArgs>? _hostAliases;
 
@@ -545,16 +635,40 @@ namespace Pulumi.AliCloud.Eci
         }
 
         /// <summary>
+        /// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+        /// </summary>
+        [Input("insecureRegistry")]
+        public Input<string>? InsecureRegistry { get; set; }
+
+        /// <summary>
         /// The type of the ECS instance.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
+        /// (Available in v1.170.0+) The Public IP of the container group.
+        /// </summary>
+        [Input("internetIp")]
+        public Input<string>? InternetIp { get; set; }
+
+        /// <summary>
+        /// (Available in v1.170.0+) The Private IP of the container group.
+        /// </summary>
+        [Input("intranetIp")]
+        public Input<string>? IntranetIp { get; set; }
+
+        /// <summary>
         /// The amount of memory resources allocated to the container.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
+
+        /// <summary>
+        /// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+        /// </summary>
+        [Input("plainHttpRegistry")]
+        public Input<string>? PlainHttpRegistry { get; set; }
 
         /// <summary>
         /// The RAM role that the container group assumes. ECI and ECS share the same RAM role.

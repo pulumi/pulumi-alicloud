@@ -21,7 +21,7 @@ import (
 //
 // * `serverId` - (Required) A list backend server ID (ECS instance ID).
 // * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100].
-// * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`. Default to `ecs`.
+// * `type` - (Optional) Type of the backend server. Valid value `ecs`, `eni`, `eci`. Default to `ecs`. **NOTE:** From 1.170.0+, The `eci` is valid.
 // * `serverIp` - (Optional, Computed, Available in 1.93.0+) ServerIp of the backend server. This parameter can be specified when the type is `eni`. `ecs` type currently does not support adding `serverIp` parameter.
 //
 // ## Import
@@ -29,7 +29,7 @@ import (
 // Load balancer backend server can be imported using the load balancer id.
 //
 // ```sh
-//  $ pulumi import alicloud:slb/backendServer:BackendServer example lb-abc123456
+//  $ pulumi import alicloud:slb/backendServer:BackendServer example <load_balancer_id>
 // ```
 type BackendServer struct {
 	pulumi.CustomResourceState

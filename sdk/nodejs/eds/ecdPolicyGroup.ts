@@ -87,6 +87,10 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      */
     public readonly authorizeSecurityPolicyRules!: pulumi.Output<outputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule[] | undefined>;
     /**
+     * Whether to enable local camera redirection. Valid values: `on`, `off`.
+     */
+    public readonly cameraRedirect!: pulumi.Output<string>;
+    /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
     public readonly clipboard!: pulumi.Output<string>;
@@ -110,6 +114,22 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      * The name of policy group.
      */
     public readonly policyGroupName!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     */
+    public readonly recording!: pulumi.Output<string>;
+    /**
+     * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+     */
+    public readonly recordingEndTime!: pulumi.Output<string | undefined>;
+    /**
+     * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+     */
+    public readonly recordingFps!: pulumi.Output<number>;
+    /**
+     * The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+     */
+    public readonly recordingStartTime!: pulumi.Output<string | undefined>;
     /**
      * The status of policy.
      */
@@ -150,12 +170,17 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
             const state = argsOrState as EcdPolicyGroupState | undefined;
             resourceInputs["authorizeAccessPolicyRules"] = state ? state.authorizeAccessPolicyRules : undefined;
             resourceInputs["authorizeSecurityPolicyRules"] = state ? state.authorizeSecurityPolicyRules : undefined;
+            resourceInputs["cameraRedirect"] = state ? state.cameraRedirect : undefined;
             resourceInputs["clipboard"] = state ? state.clipboard : undefined;
             resourceInputs["domainList"] = state ? state.domainList : undefined;
             resourceInputs["htmlAccess"] = state ? state.htmlAccess : undefined;
             resourceInputs["htmlFileTransfer"] = state ? state.htmlFileTransfer : undefined;
             resourceInputs["localDrive"] = state ? state.localDrive : undefined;
             resourceInputs["policyGroupName"] = state ? state.policyGroupName : undefined;
+            resourceInputs["recording"] = state ? state.recording : undefined;
+            resourceInputs["recordingEndTime"] = state ? state.recordingEndTime : undefined;
+            resourceInputs["recordingFps"] = state ? state.recordingFps : undefined;
+            resourceInputs["recordingStartTime"] = state ? state.recordingStartTime : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["usbRedirect"] = state ? state.usbRedirect : undefined;
             resourceInputs["visualQuality"] = state ? state.visualQuality : undefined;
@@ -166,12 +191,17 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
             const args = argsOrState as EcdPolicyGroupArgs | undefined;
             resourceInputs["authorizeAccessPolicyRules"] = args ? args.authorizeAccessPolicyRules : undefined;
             resourceInputs["authorizeSecurityPolicyRules"] = args ? args.authorizeSecurityPolicyRules : undefined;
+            resourceInputs["cameraRedirect"] = args ? args.cameraRedirect : undefined;
             resourceInputs["clipboard"] = args ? args.clipboard : undefined;
             resourceInputs["domainList"] = args ? args.domainList : undefined;
             resourceInputs["htmlAccess"] = args ? args.htmlAccess : undefined;
             resourceInputs["htmlFileTransfer"] = args ? args.htmlFileTransfer : undefined;
             resourceInputs["localDrive"] = args ? args.localDrive : undefined;
             resourceInputs["policyGroupName"] = args ? args.policyGroupName : undefined;
+            resourceInputs["recording"] = args ? args.recording : undefined;
+            resourceInputs["recordingEndTime"] = args ? args.recordingEndTime : undefined;
+            resourceInputs["recordingFps"] = args ? args.recordingFps : undefined;
+            resourceInputs["recordingStartTime"] = args ? args.recordingStartTime : undefined;
             resourceInputs["usbRedirect"] = args ? args.usbRedirect : undefined;
             resourceInputs["visualQuality"] = args ? args.visualQuality : undefined;
             resourceInputs["watermark"] = args ? args.watermark : undefined;
@@ -197,6 +227,10 @@ export interface EcdPolicyGroupState {
      */
     authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
     /**
+     * Whether to enable local camera redirection. Valid values: `on`, `off`.
+     */
+    cameraRedirect?: pulumi.Input<string>;
+    /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
     clipboard?: pulumi.Input<string>;
@@ -220,6 +254,22 @@ export interface EcdPolicyGroupState {
      * The name of policy group.
      */
     policyGroupName?: pulumi.Input<string>;
+    /**
+     * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     */
+    recording?: pulumi.Input<string>;
+    /**
+     * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+     */
+    recordingEndTime?: pulumi.Input<string>;
+    /**
+     * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+     */
+    recordingFps?: pulumi.Input<number>;
+    /**
+     * The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+     */
+    recordingStartTime?: pulumi.Input<string>;
     /**
      * The status of policy.
      */
@@ -259,6 +309,10 @@ export interface EcdPolicyGroupArgs {
      */
     authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
     /**
+     * Whether to enable local camera redirection. Valid values: `on`, `off`.
+     */
+    cameraRedirect?: pulumi.Input<string>;
+    /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
     clipboard?: pulumi.Input<string>;
@@ -282,6 +336,22 @@ export interface EcdPolicyGroupArgs {
      * The name of policy group.
      */
     policyGroupName?: pulumi.Input<string>;
+    /**
+     * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     */
+    recording?: pulumi.Input<string>;
+    /**
+     * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+     */
+    recordingEndTime?: pulumi.Input<string>;
+    /**
+     * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+     */
+    recordingFps?: pulumi.Input<number>;
+    /**
+     * The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+     */
+    recordingStartTime?: pulumi.Input<string>;
     /**
      * The usb redirect policy. Valid values: `off`, `on`.
      */

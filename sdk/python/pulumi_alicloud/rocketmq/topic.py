@@ -24,7 +24,7 @@ class TopicArgs:
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the topics.
         :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
-        :param pulumi.Input[int] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        :param pulumi.Input[int] perm: This attribute has been deprecated.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -34,6 +34,9 @@ class TopicArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "message_type", message_type)
+        if perm is not None:
+            warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+            pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
         if perm is not None:
             pulumi.set(__self__, "perm", perm)
         if remark is not None:
@@ -76,7 +79,7 @@ class TopicArgs:
     @pulumi.getter
     def perm(self) -> Optional[pulumi.Input[int]]:
         """
-        This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        This attribute has been deprecated.
         """
         return pulumi.get(self, "perm")
 
@@ -149,7 +152,7 @@ class _TopicState:
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the topics.
         :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
-        :param pulumi.Input[int] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        :param pulumi.Input[int] perm: This attribute has been deprecated.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -161,6 +164,9 @@ class _TopicState:
             pulumi.set(__self__, "instance_id", instance_id)
         if message_type is not None:
             pulumi.set(__self__, "message_type", message_type)
+        if perm is not None:
+            warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+            pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
         if perm is not None:
             pulumi.set(__self__, "perm", perm)
         if remark is not None:
@@ -203,7 +209,7 @@ class _TopicState:
     @pulumi.getter
     def perm(self) -> Optional[pulumi.Input[int]]:
         """
-        This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        This attribute has been deprecated.
         """
         return pulumi.get(self, "perm")
 
@@ -317,7 +323,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the topics.
         :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
-        :param pulumi.Input[int] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        :param pulumi.Input[int] perm: This attribute has been deprecated.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -409,6 +415,9 @@ class Topic(pulumi.CustomResource):
             if message_type is None and not opts.urn:
                 raise TypeError("Missing required property 'message_type'")
             __props__.__dict__["message_type"] = message_type
+            if perm is not None and not opts.urn:
+                warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+                pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
             __props__.__dict__["perm"] = perm
             __props__.__dict__["remark"] = remark
             __props__.__dict__["tags"] = tags
@@ -443,7 +452,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the topics.
         :param pulumi.Input[int] message_type: The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
-        :param pulumi.Input[int] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        :param pulumi.Input[int] perm: This attribute has been deprecated.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -482,9 +491,9 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def perm(self) -> pulumi.Output[Optional[int]]:
+    def perm(self) -> pulumi.Output[int]:
         """
-        This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
+        This attribute has been deprecated.
         """
         return pulumi.get(self, "perm")
 

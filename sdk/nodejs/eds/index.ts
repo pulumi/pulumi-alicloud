@@ -5,11 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./bundle";
 export * from "./command";
 export * from "./desktop";
 export * from "./ecdPolicyGroup";
 export * from "./getBundles";
 export * from "./getCommands";
+export * from "./getDesktopTypes";
 export * from "./getDesktops";
 export * from "./getImages";
 export * from "./getNasFileSystems";
@@ -26,6 +28,7 @@ export * from "./snapshot";
 export * from "./user";
 
 // Import resources to register:
+import { Bundle } from "./bundle";
 import { Command } from "./command";
 import { Desktop } from "./desktop";
 import { EcdPolicyGroup } from "./ecdPolicyGroup";
@@ -40,6 +43,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:eds/bundle:Bundle":
+                return new Bundle(name, <any>undefined, { urn })
             case "alicloud:eds/command:Command":
                 return new Command(name, <any>undefined, { urn })
             case "alicloud:eds/desktop:Desktop":
@@ -63,6 +68,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "eds/bundle", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/command", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/desktop", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/ecdPolicyGroup", _module)

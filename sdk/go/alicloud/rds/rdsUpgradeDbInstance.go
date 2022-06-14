@@ -239,6 +239,10 @@ type RdsUpgradeDbInstance struct {
 	SyncMode pulumi.StringOutput `pulumi:"syncMode"`
 	// The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
 	TargetMajorVersion pulumi.StringOutput `pulumi:"targetMajorVersion"`
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType pulumi.StringOutput `pulumi:"tcpConnectionType"`
 	// Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The ID of the VPC to which the new instance belongs.
@@ -441,6 +445,10 @@ type rdsUpgradeDbInstanceState struct {
 	SyncMode *string `pulumi:"syncMode"`
 	// The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
 	TargetMajorVersion *string `pulumi:"targetMajorVersion"`
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType *string `pulumi:"tcpConnectionType"`
 	// Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The ID of the VPC to which the new instance belongs.
@@ -588,6 +596,10 @@ type RdsUpgradeDbInstanceState struct {
 	SyncMode pulumi.StringPtrInput
 	// The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
 	TargetMajorVersion pulumi.StringPtrInput
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType pulumi.StringPtrInput
 	// Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
 	TdeStatus pulumi.StringPtrInput
 	// The ID of the VPC to which the new instance belongs.
@@ -737,6 +749,10 @@ type rdsUpgradeDbInstanceArgs struct {
 	SyncMode *string `pulumi:"syncMode"`
 	// The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
 	TargetMajorVersion string `pulumi:"targetMajorVersion"`
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType *string `pulumi:"tcpConnectionType"`
 	// Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The ID of the VPC to which the new instance belongs.
@@ -883,6 +899,10 @@ type RdsUpgradeDbInstanceArgs struct {
 	SyncMode pulumi.StringPtrInput
 	// The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
 	TargetMajorVersion pulumi.StringInput
+	// The availability check method of the instance. Valid values:
+	// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	TcpConnectionType pulumi.StringPtrInput
 	// Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
 	TdeStatus pulumi.StringPtrInput
 	// The ID of the VPC to which the new instance belongs.

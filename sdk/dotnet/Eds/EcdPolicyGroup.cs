@@ -86,6 +86,12 @@ namespace Pulumi.AliCloud.Eds
         public Output<ImmutableArray<Outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule>> AuthorizeSecurityPolicyRules { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable local camera redirection. Valid values: `on`, `off`.
+        /// </summary>
+        [Output("cameraRedirect")]
+        public Output<string> CameraRedirect { get; private set; } = null!;
+
+        /// <summary>
         /// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         /// </summary>
         [Output("clipboard")]
@@ -120,6 +126,30 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Output("policyGroupName")]
         public Output<string?> PolicyGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        /// </summary>
+        [Output("recording")]
+        public Output<string> Recording { get; private set; } = null!;
+
+        /// <summary>
+        /// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        /// </summary>
+        [Output("recordingEndTime")]
+        public Output<string?> RecordingEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        /// </summary>
+        [Output("recordingFps")]
+        public Output<int> RecordingFps { get; private set; } = null!;
+
+        /// <summary>
+        /// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        /// </summary>
+        [Output("recordingStartTime")]
+        public Output<string?> RecordingStartTime { get; private set; } = null!;
 
         /// <summary>
         /// The status of policy.
@@ -228,6 +258,12 @@ namespace Pulumi.AliCloud.Eds
         }
 
         /// <summary>
+        /// Whether to enable local camera redirection. Valid values: `on`, `off`.
+        /// </summary>
+        [Input("cameraRedirect")]
+        public Input<string>? CameraRedirect { get; set; }
+
+        /// <summary>
         /// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         /// </summary>
         [Input("clipboard")]
@@ -262,6 +298,30 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Input("policyGroupName")]
         public Input<string>? PolicyGroupName { get; set; }
+
+        /// <summary>
+        /// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        /// </summary>
+        [Input("recording")]
+        public Input<string>? Recording { get; set; }
+
+        /// <summary>
+        /// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        /// </summary>
+        [Input("recordingEndTime")]
+        public Input<string>? RecordingEndTime { get; set; }
+
+        /// <summary>
+        /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        /// </summary>
+        [Input("recordingFps")]
+        public Input<int>? RecordingFps { get; set; }
+
+        /// <summary>
+        /// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        /// </summary>
+        [Input("recordingStartTime")]
+        public Input<string>? RecordingStartTime { get; set; }
 
         /// <summary>
         /// The usb redirect policy. Valid values: `off`, `on`.
@@ -325,6 +385,12 @@ namespace Pulumi.AliCloud.Eds
         }
 
         /// <summary>
+        /// Whether to enable local camera redirection. Valid values: `on`, `off`.
+        /// </summary>
+        [Input("cameraRedirect")]
+        public Input<string>? CameraRedirect { get; set; }
+
+        /// <summary>
         /// The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         /// </summary>
         [Input("clipboard")]
@@ -359,6 +425,30 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         [Input("policyGroupName")]
         public Input<string>? PolicyGroupName { get; set; }
+
+        /// <summary>
+        /// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        /// </summary>
+        [Input("recording")]
+        public Input<string>? Recording { get; set; }
+
+        /// <summary>
+        /// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        /// </summary>
+        [Input("recordingEndTime")]
+        public Input<string>? RecordingEndTime { get; set; }
+
+        /// <summary>
+        /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        /// </summary>
+        [Input("recordingFps")]
+        public Input<int>? RecordingFps { get; set; }
+
+        /// <summary>
+        /// The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
+        /// </summary>
+        [Input("recordingStartTime")]
+        public Input<string>? RecordingStartTime { get; set; }
 
         /// <summary>
         /// The status of policy.

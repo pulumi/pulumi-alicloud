@@ -55,7 +55,7 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
      */
-    public readonly clusterSpec!: pulumi.Output<string | undefined>;
+    public readonly clusterSpec!: pulumi.Output<string>;
     /**
      * The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      */
@@ -89,7 +89,7 @@ export class ServiceMesh extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+     * The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `alicloud.servicemesh.getServiceMeshes`.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -184,7 +184,7 @@ export interface ServiceMeshState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+     * The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `alicloud.servicemesh.getServiceMeshes`.
      */
     version?: pulumi.Input<string>;
 }
@@ -230,7 +230,7 @@ export interface ServiceMeshArgs {
      */
     serviceMeshName?: pulumi.Input<string>;
     /**
-     * The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+     * The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `alicloud.servicemesh.getServiceMeshes`.
      */
     version?: pulumi.Input<string>;
 }

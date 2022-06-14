@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-alicloud/sdk/v3
 
-go 1.14
+go 1.17
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

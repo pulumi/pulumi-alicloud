@@ -24,6 +24,7 @@ __all__ = [
     'MetricRuleTemplateAlertTemplateEscalationsWarnArgs',
     'MonitorGroupInstancesInstanceArgs',
     'SiteMonitorIspCityArgs',
+    'SlsGroupSlsGroupConfigArgs',
 ]
 
 @pulumi.input_type
@@ -1003,5 +1004,73 @@ class SiteMonitorIspCityArgs:
     @isp.setter
     def isp(self, value: pulumi.Input[str]):
         pulumi.set(self, "isp", value)
+
+
+@pulumi.input_type
+class SlsGroupSlsGroupConfigArgs:
+    def __init__(__self__, *,
+                 sls_logstore: pulumi.Input[str],
+                 sls_project: pulumi.Input[str],
+                 sls_region: pulumi.Input[str],
+                 sls_user_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] sls_logstore: The name of the Log Store.
+        :param pulumi.Input[str] sls_project: The name of the Project.
+        :param pulumi.Input[str] sls_region: The Sls Region.
+        :param pulumi.Input[str] sls_user_id: The ID of the Sls User.
+        """
+        pulumi.set(__self__, "sls_logstore", sls_logstore)
+        pulumi.set(__self__, "sls_project", sls_project)
+        pulumi.set(__self__, "sls_region", sls_region)
+        if sls_user_id is not None:
+            pulumi.set(__self__, "sls_user_id", sls_user_id)
+
+    @property
+    @pulumi.getter(name="slsLogstore")
+    def sls_logstore(self) -> pulumi.Input[str]:
+        """
+        The name of the Log Store.
+        """
+        return pulumi.get(self, "sls_logstore")
+
+    @sls_logstore.setter
+    def sls_logstore(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sls_logstore", value)
+
+    @property
+    @pulumi.getter(name="slsProject")
+    def sls_project(self) -> pulumi.Input[str]:
+        """
+        The name of the Project.
+        """
+        return pulumi.get(self, "sls_project")
+
+    @sls_project.setter
+    def sls_project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sls_project", value)
+
+    @property
+    @pulumi.getter(name="slsRegion")
+    def sls_region(self) -> pulumi.Input[str]:
+        """
+        The Sls Region.
+        """
+        return pulumi.get(self, "sls_region")
+
+    @sls_region.setter
+    def sls_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sls_region", value)
+
+    @property
+    @pulumi.getter(name="slsUserId")
+    def sls_user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Sls User.
+        """
+        return pulumi.get(self, "sls_user_id")
+
+    @sls_user_id.setter
+    def sls_user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sls_user_id", value)
 
 

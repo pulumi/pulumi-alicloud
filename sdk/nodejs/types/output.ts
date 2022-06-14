@@ -5769,6 +5769,65 @@ export namespace cfg {
         status: string;
     }
 
+    export interface GetDeliveriesDelivery {
+        /**
+         * The Aliyun User Id.
+         */
+        accountId: string;
+        /**
+         * Open or close delivery configuration change history.
+         */
+        configurationItemChangeNotification: boolean;
+        /**
+         * Open or close timed snapshot of shipping resources.
+         */
+        configurationSnapshot: boolean;
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+         */
+        deliveryChannelAssumeRoleArn: string;
+        /**
+         * The rule attached to the delivery method.
+         */
+        deliveryChannelCondition: string;
+        /**
+         * The ID of the delivery method.
+         */
+        deliveryChannelId: string;
+        /**
+         * The name of the delivery method.
+         */
+        deliveryChannelName: string;
+        /**
+         * The ARN of the delivery destination.
+         */
+        deliveryChannelTargetArn: string;
+        /**
+         * The type of the delivery method.
+         */
+        deliveryChannelType: string;
+        /**
+         * The description of the delivery method.
+         */
+        description: string;
+        /**
+         * The ID of the Delivery.
+         */
+        id: string;
+        /**
+         * Open or close non-compliance events of delivery resources.
+         */
+        nonCompliantNotification: boolean;
+        /**
+         * The oss ARN of the delivery channel when the value data oversized limit.
+         */
+        oversizedDataOssTargetArn: string;
+        /**
+         * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+         */
+        status: number;
+    }
+
     export interface GetDeliveryChannelsChannel {
         /**
          * The Alibaba Cloud Resource Name (ARN) of the role assumed by delivery method.
@@ -7802,6 +7861,79 @@ export namespace cms {
         type: string;
     }
 
+    export interface GetNamespacesNamespace {
+        /**
+         * Create the timestamp of the indicator warehouse.
+         */
+        createTime: string;
+        /**
+         * Description of indicator warehouse.
+         */
+        description: string;
+        /**
+         * The ID of the Namespace.
+         */
+        id: string;
+        /**
+         * The timestamp of the last modification indicator warehouse.
+         */
+        modifyTime: string;
+        /**
+         * Indicator warehouse name.
+         */
+        namespace: string;
+        /**
+         * The ID of the Namespace.
+         */
+        namespaceId: string;
+        /**
+         * Data storage duration.
+         */
+        specification: string;
+    }
+
+    export interface GetSlsGroupsGroup {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The ID of the Sls Group. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The Config of the Sls Group.
+         */
+        slsGroupConfigs: outputs.cms.GetSlsGroupsGroupSlsGroupConfig[];
+        /**
+         * The Description of the Sls Group.
+         */
+        slsGroupDescription: string;
+        /**
+         * The name of the resource.
+         */
+        slsGroupName: string;
+    }
+
+    export interface GetSlsGroupsGroupSlsGroupConfig {
+        /**
+         * The name of the Log Store.
+         */
+        slsLogstore: string;
+        /**
+         * The name of the Project.
+         */
+        slsProject: string;
+        /**
+         * The Sls Region.
+         */
+        slsRegion: string;
+        /**
+         * The ID of the Sls User.
+         */
+        slsUserId: string;
+    }
+
     export interface GroupMetricRuleEscalations {
         /**
          * The critical level.
@@ -7997,6 +8129,24 @@ export namespace cms {
         isp: string;
     }
 
+    export interface SlsGroupSlsGroupConfig {
+        /**
+         * The name of the Log Store.
+         */
+        slsLogstore: string;
+        /**
+         * The name of the Project.
+         */
+        slsProject: string;
+        /**
+         * The Sls Region.
+         */
+        slsRegion: string;
+        /**
+         * The ID of the Sls User.
+         */
+        slsUserId?: string;
+    }
 }
 
 export namespace config {
@@ -16802,6 +16952,49 @@ export namespace eds {
         stopTime: string;
     }
 
+    export interface GetDesktopTypesType {
+        /**
+         * The CPU cores.
+         */
+        cpuCount: string;
+        /**
+         * The size of the data disk. Unit: GiB.
+         */
+        dataDiskSize: string;
+        /**
+         * Specification ID.
+         */
+        desktopTypeId: string;
+        /**
+         * The GPU cores.
+         */
+        gpuCount: number;
+        /**
+         * The GPU video memory.
+         */
+        gpuSpec: string;
+        /**
+         * The ID of the Desktop Type.
+         */
+        id: string;
+        /**
+         * The Specification family.
+         */
+        instanceTypeFamily: string;
+        /**
+         * The Memory size. Unit: MiB.
+         */
+        memorySize: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The size of the system disk. Unit: GiB.
+         */
+        systemDiskSize: string;
+    }
+
     export interface GetDesktopsDesktop {
         /**
          * The number of CPUs.
@@ -17036,6 +17229,10 @@ export namespace eds {
          */
         authorizeSecurityPolicyRules: outputs.eds.GetPolicyGroupsGroupAuthorizeSecurityPolicyRule[];
         /**
+         * Whether to enable local camera redirection. Valid values: `on`, `off`.
+         */
+        cameraRedirect: string;
+        /**
          * The clipboard policy.
          */
         clipboard: string;
@@ -17075,6 +17272,22 @@ export namespace eds {
          * The type of policy group.
          */
         policyGroupType: string;
+        /**
+         * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+         */
+        recording: string;
+        /**
+         * The end time of recording.
+         */
+        recordingEndTime: string;
+        /**
+         * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+         */
+        recordingFps: number;
+        /**
+         * The start time of recording.
+         */
+        recordingStartTime: string;
         /**
          * The status of policy.
          */
@@ -21857,7 +22070,7 @@ export namespace hbr {
          */
         vaultStorageClass: string;
         /**
-         * The type of Vault. Valid values: `STANDARD`.
+         * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
          */
         vaultType: string;
     }
@@ -30488,6 +30701,10 @@ export namespace servicemesh {
          */
         id: string;
         /**
+         * The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
+         */
+        istioOperatorVersion: string;
+        /**
          * The configuration of the Load Balancer.
          */
         loadBalancers: outputs.servicemesh.GetServiceMeshesMeshLoadBalancer[];
@@ -30507,6 +30724,10 @@ export namespace servicemesh {
          * The name of the resource.
          */
         serviceMeshName: string;
+        /**
+         * The SideCar Version. **Note:** the `sidecarVersion` is available from the version v1.170.0.
+         */
+        sidecarVersion: string;
         /**
          * The status of the resource.
          */

@@ -16,11 +16,15 @@ from .get_group_metric_rules import *
 from .get_metric_rule_templates import *
 from .get_monitor_group_instances import *
 from .get_monitor_groups import *
+from .get_namespaces import *
 from .get_service import *
+from .get_sls_groups import *
 from .group_metric_rule import *
 from .metric_rule_template import *
 from .monitor_group import *
 from .monitor_group_instances import *
+from .namespace import *
 from .site_monitor import *
+from .sls_group import *
 from ._inputs import *
 from . import outputs

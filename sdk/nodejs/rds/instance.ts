@@ -320,6 +320,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly targetMinorVersion!: pulumi.Output<string>;
     /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    public readonly tcpConnectionType!: pulumi.Output<string>;
+    /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
@@ -431,6 +437,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["switchTime"] = state ? state.switchTime : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetMinorVersion"] = state ? state.targetMinorVersion : undefined;
+            resourceInputs["tcpConnectionType"] = state ? state.tcpConnectionType : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = state ? state.upgradeTime : undefined;
@@ -507,6 +514,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["switchTime"] = args ? args.switchTime : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetMinorVersion"] = args ? args.targetMinorVersion : undefined;
+            resourceInputs["tcpConnectionType"] = args ? args.tcpConnectionType : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             resourceInputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = args ? args.upgradeTime : undefined;
@@ -804,6 +812,12 @@ export interface InstanceState {
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      */
     targetMinorVersion?: pulumi.Input<string>;
+    /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    tcpConnectionType?: pulumi.Input<string>;
     /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
@@ -1121,6 +1135,12 @@ export interface InstanceArgs {
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      */
     targetMinorVersion?: pulumi.Input<string>;
+    /**
+     * The availability check method of the instance. Valid values:
+     * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+     * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     */
+    tcpConnectionType?: pulumi.Input<string>;
     /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */

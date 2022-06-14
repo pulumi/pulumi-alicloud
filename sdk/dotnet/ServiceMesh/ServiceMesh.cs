@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
         /// </summary>
         [Output("clusterSpec")]
-        public Output<string?> ClusterSpec { get; private set; } = null!;
+        public Output<string> ClusterSpec { get; private set; } = null!;
 
         /// <summary>
         /// The type  of the resource. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+        /// The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `alicloud.servicemesh.getServiceMeshes`.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? ServiceMeshName { get; set; }
 
         /// <summary>
-        /// The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+        /// The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `alicloud.servicemesh.getServiceMeshes`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The version of the resource. Valid values: `v1.8.6.52-g60741c97-aliyun` and `v1.9.7.31-g24cdcb43-aliyun`.
+        /// The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `alicloud.servicemesh.getServiceMeshes`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

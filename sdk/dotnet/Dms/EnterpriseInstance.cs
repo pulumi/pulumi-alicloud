@@ -77,6 +77,9 @@ namespace Pulumi.AliCloud.Dms
         [Output("databaseUser")]
         public Output<string> DatabaseUser { get; private set; } = null!;
 
+        /// <summary>
+        /// The dba id of the database instance.
+        /// </summary>
         [Output("dbaId")]
         public Output<string> DbaId { get; private set; } = null!;
 
@@ -129,11 +132,14 @@ namespace Pulumi.AliCloud.Dms
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        /// Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         /// </summary>
         [Output("instanceAlias")]
         public Output<string> InstanceAlias { get; private set; } = null!;
 
+        /// <summary>
+        /// The instance id of the database instance.
+        /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
@@ -179,6 +185,9 @@ namespace Pulumi.AliCloud.Dms
         [Output("safeRule")]
         public Output<string> SafeRule { get; private set; } = null!;
 
+        /// <summary>
+        /// The safe rule id of the database instance.
+        /// </summary>
         [Output("safeRuleId")]
         public Output<string> SafeRuleId { get; private set; } = null!;
 
@@ -188,6 +197,9 @@ namespace Pulumi.AliCloud.Dms
         [Output("sid")]
         public Output<string?> Sid { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        /// </summary>
         [Output("skipTest")]
         public Output<bool?> SkipTest { get; private set; } = null!;
 
@@ -285,6 +297,9 @@ namespace Pulumi.AliCloud.Dms
         [Input("databaseUser", required: true)]
         public Input<string> DatabaseUser { get; set; } = null!;
 
+        /// <summary>
+        /// The dba id of the database instance.
+        /// </summary>
         [Input("dbaId")]
         public Input<string>? DbaId { get; set; }
 
@@ -331,11 +346,14 @@ namespace Pulumi.AliCloud.Dms
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        /// Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         /// </summary>
         [Input("instanceAlias")]
         public Input<string>? InstanceAlias { get; set; }
 
+        /// <summary>
+        /// The instance id of the database instance.
+        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
@@ -381,6 +399,9 @@ namespace Pulumi.AliCloud.Dms
         [Input("safeRule", required: true)]
         public Input<string> SafeRule { get; set; } = null!;
 
+        /// <summary>
+        /// The safe rule id of the database instance.
+        /// </summary>
         [Input("safeRuleId")]
         public Input<string>? SafeRuleId { get; set; }
 
@@ -390,6 +411,9 @@ namespace Pulumi.AliCloud.Dms
         [Input("sid")]
         public Input<string>? Sid { get; set; }
 
+        /// <summary>
+        /// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        /// </summary>
         [Input("skipTest")]
         public Input<bool>? SkipTest { get; set; }
 
@@ -436,6 +460,9 @@ namespace Pulumi.AliCloud.Dms
         [Input("databaseUser")]
         public Input<string>? DatabaseUser { get; set; }
 
+        /// <summary>
+        /// The dba id of the database instance.
+        /// </summary>
         [Input("dbaId")]
         public Input<string>? DbaId { get; set; }
 
@@ -488,11 +515,14 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+        /// Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         /// </summary>
         [Input("instanceAlias")]
         public Input<string>? InstanceAlias { get; set; }
 
+        /// <summary>
+        /// The instance id of the database instance.
+        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
@@ -538,6 +568,9 @@ namespace Pulumi.AliCloud.Dms
         [Input("safeRule")]
         public Input<string>? SafeRule { get; set; }
 
+        /// <summary>
+        /// The safe rule id of the database instance.
+        /// </summary>
         [Input("safeRuleId")]
         public Input<string>? SafeRuleId { get; set; }
 
@@ -547,6 +580,9 @@ namespace Pulumi.AliCloud.Dms
         [Input("sid")]
         public Input<string>? Sid { get; set; }
 
+        /// <summary>
+        /// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+        /// </summary>
         [Input("skipTest")]
         public Input<bool>? SkipTest { get; set; }
 

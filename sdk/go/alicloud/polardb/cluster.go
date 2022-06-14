@@ -107,6 +107,8 @@ type Cluster struct {
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+	BackupRetentionPolicyOnClusterDeletion pulumi.StringOutput `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringOutput `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
@@ -203,6 +205,8 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+	BackupRetentionPolicyOnClusterDeletion *string `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
@@ -262,6 +266,8 @@ type clusterState struct {
 type ClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+	BackupRetentionPolicyOnClusterDeletion pulumi.StringPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
 	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
@@ -325,6 +331,8 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+	BackupRetentionPolicyOnClusterDeletion *string `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// db_cluster_ip_array defines how users can send requests to your API.
@@ -383,6 +391,8 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+	BackupRetentionPolicyOnClusterDeletion pulumi.StringPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
 	// db_cluster_ip_array defines how users can send requests to your API.

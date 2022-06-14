@@ -83,6 +83,9 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      * Database access account.
      */
     public readonly databaseUser!: pulumi.Output<string>;
+    /**
+     * The dba id of the database instance.
+     */
     public readonly dbaId!: pulumi.Output<string>;
     /**
      * The instance dba nickname.
@@ -117,11 +120,14 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string>;
     /**
-     * It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+     * Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      *
      * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
     public readonly instanceAlias!: pulumi.Output<string>;
+    /**
+     * The instance id of the database instance.
+     */
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * Instance name, to help users quickly distinguish positioning.
@@ -151,11 +157,17 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      * The security rule of the instance is passed into the name of the security rule in the enterprise.
      */
     public readonly safeRule!: pulumi.Output<string>;
+    /**
+     * The safe rule id of the database instance.
+     */
     public readonly safeRuleId!: pulumi.Output<string>;
     /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
     public readonly sid!: pulumi.Output<string | undefined>;
+    /**
+     * Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+     */
     public readonly skipTest!: pulumi.Output<boolean | undefined>;
     /**
      * It has been deprecated from provider version 1.100.0 and 'status' instead.
@@ -311,6 +323,9 @@ export interface EnterpriseInstanceState {
      * Database access account.
      */
     databaseUser?: pulumi.Input<string>;
+    /**
+     * The dba id of the database instance.
+     */
     dbaId?: pulumi.Input<string>;
     /**
      * The instance dba nickname.
@@ -345,11 +360,14 @@ export interface EnterpriseInstanceState {
      */
     host?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+     * Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      *
      * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
     instanceAlias?: pulumi.Input<string>;
+    /**
+     * The instance id of the database instance.
+     */
     instanceId?: pulumi.Input<string>;
     /**
      * Instance name, to help users quickly distinguish positioning.
@@ -379,11 +397,17 @@ export interface EnterpriseInstanceState {
      * The security rule of the instance is passed into the name of the security rule in the enterprise.
      */
     safeRule?: pulumi.Input<string>;
+    /**
+     * The safe rule id of the database instance.
+     */
     safeRuleId?: pulumi.Input<string>;
     /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
     sid?: pulumi.Input<string>;
+    /**
+     * Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+     */
     skipTest?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from provider version 1.100.0 and 'status' instead.
@@ -425,6 +449,9 @@ export interface EnterpriseInstanceArgs {
      * Database access account.
      */
     databaseUser: pulumi.Input<string>;
+    /**
+     * The dba id of the database instance.
+     */
     dbaId?: pulumi.Input<string>;
     /**
      * The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
@@ -455,11 +482,14 @@ export interface EnterpriseInstanceArgs {
      */
     host: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
+     * Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      *
      * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
     instanceAlias?: pulumi.Input<string>;
+    /**
+     * The instance id of the database instance.
+     */
     instanceId?: pulumi.Input<string>;
     /**
      * Instance name, to help users quickly distinguish positioning.
@@ -489,11 +519,17 @@ export interface EnterpriseInstanceArgs {
      * The security rule of the instance is passed into the name of the security rule in the enterprise.
      */
     safeRule: pulumi.Input<string>;
+    /**
+     * The safe rule id of the database instance.
+     */
     safeRuleId?: pulumi.Input<string>;
     /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
     sid?: pulumi.Input<string>;
+    /**
+     * Whether the instance ignores test connectivity. Valid values: `true`, `false`.
+     */
     skipTest?: pulumi.Input<boolean>;
     /**
      * The tenant ID.

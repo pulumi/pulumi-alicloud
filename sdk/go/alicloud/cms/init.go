@@ -37,8 +37,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MonitorGroup{}
 	case "alicloud:cms/monitorGroupInstances:MonitorGroupInstances":
 		r = &MonitorGroupInstances{}
+	case "alicloud:cms/namespace:Namespace":
+		r = &Namespace{}
 	case "alicloud:cms/siteMonitor:SiteMonitor":
 		r = &SiteMonitor{}
+	case "alicloud:cms/slsGroup:SlsGroup":
+		r = &SlsGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -94,7 +98,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cms/namespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cms/siteMonitor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/slsGroup",
 		&module{version},
 	)
 }

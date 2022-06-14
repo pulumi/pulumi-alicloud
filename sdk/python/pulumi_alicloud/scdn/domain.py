@@ -27,7 +27,7 @@ class DomainArgs:
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] domain_name: The name of domain.
         :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: the Origin Server Information. See the following `Block sources`.
-        :param pulumi.Input[str] biz_name: from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        :param pulumi.Input[str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
         :param pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]] cert_infos: Certificate Information. See the following `Block cert_infos`.
         :param pulumi.Input[str] check_url: The health check url.
         :param pulumi.Input[str] force_set: Whether to set certificate forcibly.
@@ -36,6 +36,9 @@ class DomainArgs:
         """
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "sources", sources)
+        if biz_name is not None:
+            warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+            pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
         if biz_name is not None:
             pulumi.set(__self__, "biz_name", biz_name)
         if cert_infos is not None:
@@ -77,7 +80,7 @@ class DomainArgs:
     @pulumi.getter(name="bizName")
     def biz_name(self) -> Optional[pulumi.Input[str]]:
         """
-        from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        Attribute perm has been deprecated and suggest removing it from your template.
         """
         return pulumi.get(self, "biz_name")
 
@@ -159,7 +162,7 @@ class _DomainState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
-        :param pulumi.Input[str] biz_name: from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        :param pulumi.Input[str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
         :param pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]] cert_infos: Certificate Information. See the following `Block cert_infos`.
         :param pulumi.Input[str] check_url: The health check url.
         :param pulumi.Input[str] domain_name: The name of domain.
@@ -168,6 +171,9 @@ class _DomainState:
         :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: the Origin Server Information. See the following `Block sources`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `offline`, `online`.
         """
+        if biz_name is not None:
+            warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+            pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
         if biz_name is not None:
             pulumi.set(__self__, "biz_name", biz_name)
         if cert_infos is not None:
@@ -189,7 +195,7 @@ class _DomainState:
     @pulumi.getter(name="bizName")
     def biz_name(self) -> Optional[pulumi.Input[str]]:
         """
-        from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        Attribute perm has been deprecated and suggest removing it from your template.
         """
         return pulumi.get(self, "biz_name")
 
@@ -332,7 +338,7 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] biz_name: from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        :param pulumi.Input[str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainCertInfoArgs']]]] cert_infos: Certificate Information. See the following `Block cert_infos`.
         :param pulumi.Input[str] check_url: The health check url.
         :param pulumi.Input[str] domain_name: The name of domain.
@@ -416,6 +422,9 @@ class Domain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DomainArgs.__new__(DomainArgs)
 
+            if biz_name is not None and not opts.urn:
+                warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+                pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
             __props__.__dict__["biz_name"] = biz_name
             __props__.__dict__["cert_infos"] = cert_infos
             __props__.__dict__["check_url"] = check_url
@@ -453,7 +462,7 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] biz_name: from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        :param pulumi.Input[str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainCertInfoArgs']]]] cert_infos: Certificate Information. See the following `Block cert_infos`.
         :param pulumi.Input[str] check_url: The health check url.
         :param pulumi.Input[str] domain_name: The name of domain.
@@ -480,7 +489,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="bizName")
     def biz_name(self) -> pulumi.Output[Optional[str]]:
         """
-        from the Business Type Drop-down List. Valid values: `download`, `image`, `scdn`, `video`.
+        Attribute perm has been deprecated and suggest removing it from your template.
         """
         return pulumi.get(self, "biz_name")
 

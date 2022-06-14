@@ -1690,6 +1690,25 @@ export namespace cms {
         city: pulumi.Input<string>;
         isp: pulumi.Input<string>;
     }
+
+    export interface SlsGroupSlsGroupConfig {
+        /**
+         * The name of the Log Store.
+         */
+        slsLogstore: pulumi.Input<string>;
+        /**
+         * The name of the Project.
+         */
+        slsProject: pulumi.Input<string>;
+        /**
+         * The Sls Region.
+         */
+        slsRegion: pulumi.Input<string>;
+        /**
+         * The ID of the Sls User.
+         */
+        slsUserId?: pulumi.Input<string>;
+    }
 }
 
 export namespace config {

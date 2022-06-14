@@ -23,6 +23,7 @@ class ServerlessKubernetesArgs:
                  cluster_spec: Optional[pulumi.Input[str]] = None,
                  create_v2_cluster: Optional[pulumi.Input[bool]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
@@ -57,6 +58,7 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -92,6 +94,8 @@ class ServerlessKubernetesArgs:
             pulumi.set(__self__, "create_v2_cluster", create_v2_cluster)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if enable_rrsa is not None:
+            pulumi.set(__self__, "enable_rrsa", enable_rrsa)
         if endpoint_public_access_enabled is not None:
             pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
         if force_update is not None:
@@ -237,6 +241,18 @@ class ServerlessKubernetesArgs:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="enableRrsa")
+    def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        """
+        return pulumi.get(self, "enable_rrsa")
+
+    @enable_rrsa.setter
+    def enable_rrsa(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_rrsa", value)
 
     @property
     @pulumi.getter(name="endpointPublicAccessEnabled")
@@ -495,6 +511,7 @@ class _ServerlessKubernetesState:
                  cluster_spec: Optional[pulumi.Input[str]] = None,
                  create_v2_cluster: Optional[pulumi.Input[bool]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
@@ -529,6 +546,7 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -564,6 +582,8 @@ class _ServerlessKubernetesState:
             pulumi.set(__self__, "create_v2_cluster", create_v2_cluster)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if enable_rrsa is not None:
+            pulumi.set(__self__, "enable_rrsa", enable_rrsa)
         if endpoint_public_access_enabled is not None:
             pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
         if force_update is not None:
@@ -699,6 +719,18 @@ class _ServerlessKubernetesState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="enableRrsa")
+    def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        """
+        return pulumi.get(self, "enable_rrsa")
+
+    @enable_rrsa.setter
+    def enable_rrsa(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_rrsa", value)
 
     @property
     @pulumi.getter(name="endpointPublicAccessEnabled")
@@ -971,6 +1003,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  cluster_spec: Optional[pulumi.Input[str]] = None,
                  create_v2_cluster: Optional[pulumi.Input[bool]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
@@ -1063,6 +1096,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -1169,6 +1203,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  cluster_spec: Optional[pulumi.Input[str]] = None,
                  create_v2_cluster: Optional[pulumi.Input[bool]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
@@ -1210,6 +1245,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__.__dict__["cluster_spec"] = cluster_spec
             __props__.__dict__["create_v2_cluster"] = create_v2_cluster
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["enable_rrsa"] = enable_rrsa
             __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
             __props__.__dict__["force_update"] = force_update
             __props__.__dict__["kube_config"] = kube_config
@@ -1257,6 +1293,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             cluster_spec: Optional[pulumi.Input[str]] = None,
             create_v2_cluster: Optional[pulumi.Input[bool]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            enable_rrsa: Optional[pulumi.Input[bool]] = None,
             endpoint_public_access_enabled: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
@@ -1296,6 +1333,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -1328,6 +1366,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__.__dict__["cluster_spec"] = cluster_spec
         __props__.__dict__["create_v2_cluster"] = create_v2_cluster
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["enable_rrsa"] = enable_rrsa
         __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
         __props__.__dict__["force_update"] = force_update
         __props__.__dict__["kube_config"] = kube_config
@@ -1408,6 +1447,14 @@ class ServerlessKubernetes(pulumi.CustomResource):
         - false: Disable deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="enableRrsa")
+    def enable_rrsa(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        """
+        return pulumi.get(self, "enable_rrsa")
 
     @property
     @pulumi.getter(name="endpointPublicAccessEnabled")

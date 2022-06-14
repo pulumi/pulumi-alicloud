@@ -134,7 +134,7 @@ type RestoreJob struct {
 	Exclude pulumi.StringPtrOutput `pulumi:"exclude"`
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrOutput `pulumi:"include"`
-	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringOutput `pulumi:"restoreJobId"`
@@ -168,7 +168,7 @@ type RestoreJob struct {
 	TargetPrefix pulumi.StringPtrOutput `pulumi:"targetPrefix"`
 	// The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
 	TargetTableName pulumi.StringPtrOutput `pulumi:"targetTableName"`
-	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
 	TargetTime pulumi.StringPtrOutput `pulumi:"targetTime"`
 	// The full machine backup details.
 	UdmDetail pulumi.StringPtrOutput `pulumi:"udmDetail"`
@@ -224,7 +224,7 @@ type restoreJobState struct {
 	Exclude *string `pulumi:"exclude"`
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include *string `pulumi:"include"`
-	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options *string `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
@@ -258,7 +258,7 @@ type restoreJobState struct {
 	TargetPrefix *string `pulumi:"targetPrefix"`
 	// The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
 	TargetTableName *string `pulumi:"targetTableName"`
-	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
 	TargetTime *string `pulumi:"targetTime"`
 	// The full machine backup details.
 	UdmDetail *string `pulumi:"udmDetail"`
@@ -271,7 +271,7 @@ type RestoreJobState struct {
 	Exclude pulumi.StringPtrInput
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrInput
-	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrInput
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput
@@ -305,7 +305,7 @@ type RestoreJobState struct {
 	TargetPrefix pulumi.StringPtrInput
 	// The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
 	TargetTableName pulumi.StringPtrInput
-	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
 	TargetTime pulumi.StringPtrInput
 	// The full machine backup details.
 	UdmDetail pulumi.StringPtrInput
@@ -322,7 +322,7 @@ type restoreJobArgs struct {
 	Exclude *string `pulumi:"exclude"`
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include *string `pulumi:"include"`
-	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options *string `pulumi:"options"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
@@ -354,7 +354,7 @@ type restoreJobArgs struct {
 	TargetPrefix *string `pulumi:"targetPrefix"`
 	// The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
 	TargetTableName *string `pulumi:"targetTableName"`
-	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
 	TargetTime *string `pulumi:"targetTime"`
 	// The full machine backup details.
 	UdmDetail *string `pulumi:"udmDetail"`
@@ -368,7 +368,7 @@ type RestoreJobArgs struct {
 	Exclude pulumi.StringPtrInput
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrInput
-	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018`}`
+	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrInput
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput
@@ -400,7 +400,7 @@ type RestoreJobArgs struct {
 	TargetPrefix pulumi.StringPtrInput
 	// The name of the table that stores the restored data. **WARNING:** Required while sourceType equals `OTS_TABLE`.
 	TargetTableName pulumi.StringPtrInput
-	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the rangEnd time of the snapshot.
+	// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while sourceType equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
 	TargetTime pulumi.StringPtrInput
 	// The full machine backup details.
 	UdmDetail pulumi.StringPtrInput

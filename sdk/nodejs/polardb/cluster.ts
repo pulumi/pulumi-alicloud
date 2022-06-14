@@ -99,6 +99,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
+     * The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+     */
+    public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<string>;
+    /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     public readonly collectorStatus!: pulumi.Output<string>;
@@ -211,6 +215,7 @@ export class Cluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["collectorStatus"] = state ? state.collectorStatus : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
@@ -246,6 +251,7 @@ export class Cluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'dbVersion'");
             }
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["collectorStatus"] = args ? args.collectorStatus : undefined;
             resourceInputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
             resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
@@ -283,6 +289,10 @@ export interface ClusterState {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+     */
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
     /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
@@ -391,6 +401,10 @@ export interface ClusterArgs {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
+     */
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
     /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */

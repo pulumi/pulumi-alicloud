@@ -409,6 +409,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> TargetMinorVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The availability check method of the instance. Valid values:
+        /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// </summary>
+        [Output("tcpConnectionType")]
+        public Output<string> TcpConnectionType { get; private set; } = null!;
+
+        /// <summary>
         /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// </summary>
         [Output("tdeStatus")]
@@ -918,6 +926,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? TargetMinorVersion { get; set; }
 
         /// <summary>
+        /// The availability check method of the instance. Valid values:
+        /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// </summary>
+        [Input("tcpConnectionType")]
+        public Input<string>? TcpConnectionType { get; set; }
+
+        /// <summary>
         /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// </summary>
         [Input("tdeStatus")]
@@ -1398,6 +1414,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("targetMinorVersion")]
         public Input<string>? TargetMinorVersion { get; set; }
+
+        /// <summary>
+        /// The availability check method of the instance. Valid values:
+        /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// </summary>
+        [Input("tcpConnectionType")]
+        public Input<string>? TcpConnectionType { get; set; }
 
         /// <summary>
         /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).

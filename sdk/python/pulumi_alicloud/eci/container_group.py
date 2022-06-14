@@ -19,15 +19,20 @@ class ContainerGroupArgs:
                  containers: pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]],
                  security_group_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
+                 auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
                  eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
+                 eip_bandwidth: Optional[pulumi.Input[int]] = None,
+                 eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
                  image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
+                 insecure_registry: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
+                 plain_http_registry: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
@@ -40,15 +45,20 @@ class ContainerGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
+        :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
         :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig.
         :param pulumi.Input['ContainerGroupEciSecurityContextArgs'] eci_security_context: The security context of the container group.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. The default value is `5`.
+        :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers.
+        :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -62,6 +72,8 @@ class ContainerGroupArgs:
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if auto_create_eip is not None:
+            pulumi.set(__self__, "auto_create_eip", auto_create_eip)
         if auto_match_image_cache is not None:
             pulumi.set(__self__, "auto_match_image_cache", auto_match_image_cache)
         if cpu is not None:
@@ -70,16 +82,24 @@ class ContainerGroupArgs:
             pulumi.set(__self__, "dns_config", dns_config)
         if eci_security_context is not None:
             pulumi.set(__self__, "eci_security_context", eci_security_context)
+        if eip_bandwidth is not None:
+            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+        if eip_instance_id is not None:
+            pulumi.set(__self__, "eip_instance_id", eip_instance_id)
         if host_aliases is not None:
             pulumi.set(__self__, "host_aliases", host_aliases)
         if image_registry_credentials is not None:
             pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
+        if insecure_registry is not None:
+            pulumi.set(__self__, "insecure_registry", insecure_registry)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if plain_http_registry is not None:
+            pulumi.set(__self__, "plain_http_registry", plain_http_registry)
         if ram_role_name is not None:
             pulumi.set(__self__, "ram_role_name", ram_role_name)
         if resource_group_id is not None:
@@ -142,6 +162,18 @@ class ContainerGroupArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="autoCreateEip")
+    def auto_create_eip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+        """
+        return pulumi.get(self, "auto_create_eip")
+
+    @auto_create_eip.setter
+    def auto_create_eip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_create_eip", value)
+
+    @property
     @pulumi.getter(name="autoMatchImageCache")
     def auto_match_image_cache(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -190,6 +222,30 @@ class ContainerGroupArgs:
         pulumi.set(self, "eci_security_context", value)
 
     @property
+    @pulumi.getter(name="eipBandwidth")
+    def eip_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The bandwidth of the EIP. The default value is `5`.
+        """
+        return pulumi.get(self, "eip_bandwidth")
+
+    @eip_bandwidth.setter
+    def eip_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "eip_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="eipInstanceId")
+    def eip_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the elastic IP address (EIP).
+        """
+        return pulumi.get(self, "eip_instance_id")
+
+    @eip_instance_id.setter
+    def eip_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eip_instance_id", value)
+
+    @property
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
         """
@@ -226,6 +282,18 @@ class ContainerGroupArgs:
         pulumi.set(self, "init_containers", value)
 
     @property
+    @pulumi.getter(name="insecureRegistry")
+    def insecure_registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+        """
+        return pulumi.get(self, "insecure_registry")
+
+    @insecure_registry.setter
+    def insecure_registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insecure_registry", value)
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -248,6 +316,18 @@ class ContainerGroupArgs:
     @memory.setter
     def memory(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="plainHttpRegistry")
+    def plain_http_registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+        """
+        return pulumi.get(self, "plain_http_registry")
+
+    @plain_http_registry.setter
+    def plain_http_registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plain_http_registry", value)
 
     @property
     @pulumi.getter(name="ramRoleName")
@@ -327,17 +407,24 @@ class ContainerGroupArgs:
 @pulumi.input_type
 class _ContainerGroupState:
     def __init__(__self__, *,
+                 auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
                  eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
+                 eip_bandwidth: Optional[pulumi.Input[int]] = None,
+                 eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
                  image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
+                 insecure_registry: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 internet_ip: Optional[pulumi.Input[str]] = None,
+                 intranet_ip: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
+                 plain_http_registry: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
@@ -349,17 +436,24 @@ class _ContainerGroupState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ContainerGroup resources.
+        :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: false.
         :param pulumi.Input[str] container_group_name: The name of the container group.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
         :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig.
         :param pulumi.Input['ContainerGroupEciSecurityContextArgs'] eci_security_context: The security context of the container group.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. The default value is `5`.
+        :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers.
+        :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
+        :param pulumi.Input[str] internet_ip: (Available in v1.170.0+) The Public IP of the container group.
+        :param pulumi.Input[str] intranet_ip: (Available in v1.170.0+) The Private IP of the container group.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -372,6 +466,8 @@ class _ContainerGroupState:
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
+        if auto_create_eip is not None:
+            pulumi.set(__self__, "auto_create_eip", auto_create_eip)
         if auto_match_image_cache is not None:
             pulumi.set(__self__, "auto_match_image_cache", auto_match_image_cache)
         if container_group_name is not None:
@@ -384,16 +480,28 @@ class _ContainerGroupState:
             pulumi.set(__self__, "dns_config", dns_config)
         if eci_security_context is not None:
             pulumi.set(__self__, "eci_security_context", eci_security_context)
+        if eip_bandwidth is not None:
+            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+        if eip_instance_id is not None:
+            pulumi.set(__self__, "eip_instance_id", eip_instance_id)
         if host_aliases is not None:
             pulumi.set(__self__, "host_aliases", host_aliases)
         if image_registry_credentials is not None:
             pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
+        if insecure_registry is not None:
+            pulumi.set(__self__, "insecure_registry", insecure_registry)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if internet_ip is not None:
+            pulumi.set(__self__, "internet_ip", internet_ip)
+        if intranet_ip is not None:
+            pulumi.set(__self__, "intranet_ip", intranet_ip)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if plain_http_registry is not None:
+            pulumi.set(__self__, "plain_http_registry", plain_http_registry)
         if ram_role_name is not None:
             pulumi.set(__self__, "ram_role_name", ram_role_name)
         if resource_group_id is not None:
@@ -412,6 +520,18 @@ class _ContainerGroupState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="autoCreateEip")
+    def auto_create_eip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+        """
+        return pulumi.get(self, "auto_create_eip")
+
+    @auto_create_eip.setter
+    def auto_create_eip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_create_eip", value)
 
     @property
     @pulumi.getter(name="autoMatchImageCache")
@@ -486,6 +606,30 @@ class _ContainerGroupState:
         pulumi.set(self, "eci_security_context", value)
 
     @property
+    @pulumi.getter(name="eipBandwidth")
+    def eip_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The bandwidth of the EIP. The default value is `5`.
+        """
+        return pulumi.get(self, "eip_bandwidth")
+
+    @eip_bandwidth.setter
+    def eip_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "eip_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="eipInstanceId")
+    def eip_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the elastic IP address (EIP).
+        """
+        return pulumi.get(self, "eip_instance_id")
+
+    @eip_instance_id.setter
+    def eip_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eip_instance_id", value)
+
+    @property
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
         """
@@ -522,6 +666,18 @@ class _ContainerGroupState:
         pulumi.set(self, "init_containers", value)
 
     @property
+    @pulumi.getter(name="insecureRegistry")
+    def insecure_registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+        """
+        return pulumi.get(self, "insecure_registry")
+
+    @insecure_registry.setter
+    def insecure_registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insecure_registry", value)
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -534,6 +690,30 @@ class _ContainerGroupState:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.170.0+) The Public IP of the container group.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @internet_ip.setter
+    def internet_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internet_ip", value)
+
+    @property
+    @pulumi.getter(name="intranetIp")
+    def intranet_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.170.0+) The Private IP of the container group.
+        """
+        return pulumi.get(self, "intranet_ip")
+
+    @intranet_ip.setter
+    def intranet_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intranet_ip", value)
+
+    @property
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[float]]:
         """
@@ -544,6 +724,18 @@ class _ContainerGroupState:
     @memory.setter
     def memory(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="plainHttpRegistry")
+    def plain_http_registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+        """
+        return pulumi.get(self, "plain_http_registry")
+
+    @plain_http_registry.setter
+    def plain_http_registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plain_http_registry", value)
 
     @property
     @pulumi.getter(name="ramRoleName")
@@ -661,17 +853,22 @@ class ContainerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
                  eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
+                 eip_bandwidth: Optional[pulumi.Input[int]] = None,
+                 eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
                  image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
+                 insecure_registry: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
+                 plain_http_registry: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
@@ -770,17 +967,22 @@ class ContainerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: false.
         :param pulumi.Input[str] container_group_name: The name of the container group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
         :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig.
         :param pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']] eci_security_context: The security context of the container group.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. The default value is `5`.
+        :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers.
+        :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -900,17 +1102,22 @@ class ContainerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
                  eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
+                 eip_bandwidth: Optional[pulumi.Input[int]] = None,
+                 eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
                  image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
+                 insecure_registry: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
+                 plain_http_registry: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
@@ -931,6 +1138,7 @@ class ContainerGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContainerGroupArgs.__new__(ContainerGroupArgs)
 
+            __props__.__dict__["auto_create_eip"] = auto_create_eip
             __props__.__dict__["auto_match_image_cache"] = auto_match_image_cache
             if container_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'container_group_name'")
@@ -941,11 +1149,15 @@ class ContainerGroup(pulumi.CustomResource):
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["eci_security_context"] = eci_security_context
+            __props__.__dict__["eip_bandwidth"] = eip_bandwidth
+            __props__.__dict__["eip_instance_id"] = eip_instance_id
             __props__.__dict__["host_aliases"] = host_aliases
             __props__.__dict__["image_registry_credentials"] = image_registry_credentials
             __props__.__dict__["init_containers"] = init_containers
+            __props__.__dict__["insecure_registry"] = insecure_registry
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["memory"] = memory
+            __props__.__dict__["plain_http_registry"] = plain_http_registry
             __props__.__dict__["ram_role_name"] = ram_role_name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["restart_policy"] = restart_policy
@@ -958,6 +1170,8 @@ class ContainerGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["internet_ip"] = None
+            __props__.__dict__["intranet_ip"] = None
             __props__.__dict__["status"] = None
         super(ContainerGroup, __self__).__init__(
             'alicloud:eci/containerGroup:ContainerGroup',
@@ -969,17 +1183,24 @@ class ContainerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_create_eip: Optional[pulumi.Input[bool]] = None,
             auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
             container_group_name: Optional[pulumi.Input[str]] = None,
             containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]]] = None,
             cpu: Optional[pulumi.Input[float]] = None,
             dns_config: Optional[pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']]] = None,
             eci_security_context: Optional[pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']]] = None,
+            eip_bandwidth: Optional[pulumi.Input[int]] = None,
+            eip_instance_id: Optional[pulumi.Input[str]] = None,
             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]]] = None,
             image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]]] = None,
             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]]] = None,
+            insecure_registry: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            internet_ip: Optional[pulumi.Input[str]] = None,
+            intranet_ip: Optional[pulumi.Input[str]] = None,
             memory: Optional[pulumi.Input[float]] = None,
+            plain_http_registry: Optional[pulumi.Input[str]] = None,
             ram_role_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             restart_policy: Optional[pulumi.Input[str]] = None,
@@ -996,17 +1217,24 @@ class ContainerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_create_eip: Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: false.
         :param pulumi.Input[str] container_group_name: The name of the container group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupContainerArgs']]]] containers: The list of containers.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
         :param pulumi.Input[pulumi.InputType['ContainerGroupDnsConfigArgs']] dns_config: The structure of dnsConfig.
         :param pulumi.Input[pulumi.InputType['ContainerGroupEciSecurityContextArgs']] eci_security_context: The security context of the container group.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. The default value is `5`.
+        :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupHostAliasArgs']]]] host_aliases: HostAliases.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. The details see Block `image_registry_credential`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerGroupInitContainerArgs']]]] init_containers: The list of initContainers.
+        :param pulumi.Input[str] insecure_registry: The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         :param pulumi.Input[str] instance_type: The type of the ECS instance.
+        :param pulumi.Input[str] internet_ip: (Available in v1.170.0+) The Public IP of the container group.
+        :param pulumi.Input[str] intranet_ip: (Available in v1.170.0+) The Private IP of the container group.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -1023,17 +1251,24 @@ class ContainerGroup(pulumi.CustomResource):
 
         __props__ = _ContainerGroupState.__new__(_ContainerGroupState)
 
+        __props__.__dict__["auto_create_eip"] = auto_create_eip
         __props__.__dict__["auto_match_image_cache"] = auto_match_image_cache
         __props__.__dict__["container_group_name"] = container_group_name
         __props__.__dict__["containers"] = containers
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["dns_config"] = dns_config
         __props__.__dict__["eci_security_context"] = eci_security_context
+        __props__.__dict__["eip_bandwidth"] = eip_bandwidth
+        __props__.__dict__["eip_instance_id"] = eip_instance_id
         __props__.__dict__["host_aliases"] = host_aliases
         __props__.__dict__["image_registry_credentials"] = image_registry_credentials
         __props__.__dict__["init_containers"] = init_containers
+        __props__.__dict__["insecure_registry"] = insecure_registry
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["internet_ip"] = internet_ip
+        __props__.__dict__["intranet_ip"] = intranet_ip
         __props__.__dict__["memory"] = memory
+        __props__.__dict__["plain_http_registry"] = plain_http_registry
         __props__.__dict__["ram_role_name"] = ram_role_name
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["restart_policy"] = restart_policy
@@ -1044,6 +1279,14 @@ class ContainerGroup(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return ContainerGroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoCreateEip")
+    def auto_create_eip(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
+        """
+        return pulumi.get(self, "auto_create_eip")
 
     @property
     @pulumi.getter(name="autoMatchImageCache")
@@ -1094,6 +1337,22 @@ class ContainerGroup(pulumi.CustomResource):
         return pulumi.get(self, "eci_security_context")
 
     @property
+    @pulumi.getter(name="eipBandwidth")
+    def eip_bandwidth(self) -> pulumi.Output[Optional[int]]:
+        """
+        The bandwidth of the EIP. The default value is `5`.
+        """
+        return pulumi.get(self, "eip_bandwidth")
+
+    @property
+    @pulumi.getter(name="eipInstanceId")
+    def eip_instance_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the elastic IP address (EIP).
+        """
+        return pulumi.get(self, "eip_instance_id")
+
+    @property
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerGroupHostAlias']]]:
         """
@@ -1118,6 +1377,14 @@ class ContainerGroup(pulumi.CustomResource):
         return pulumi.get(self, "init_containers")
 
     @property
+    @pulumi.getter(name="insecureRegistry")
+    def insecure_registry(self) -> pulumi.Output[Optional[str]]:
+        """
+        The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
+        """
+        return pulumi.get(self, "insecure_registry")
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1126,12 +1393,36 @@ class ContainerGroup(pulumi.CustomResource):
         return pulumi.get(self, "instance_type")
 
     @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.170.0+) The Public IP of the container group.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @property
+    @pulumi.getter(name="intranetIp")
+    def intranet_ip(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.170.0+) The Private IP of the container group.
+        """
+        return pulumi.get(self, "intranet_ip")
+
+    @property
     @pulumi.getter
     def memory(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of memory resources allocated to the container.
         """
         return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="plainHttpRegistry")
+    def plain_http_registry(self) -> pulumi.Output[Optional[str]]:
+        """
+        The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
+        """
+        return pulumi.get(self, "plain_http_registry")
 
     @property
     @pulumi.getter(name="ramRoleName")

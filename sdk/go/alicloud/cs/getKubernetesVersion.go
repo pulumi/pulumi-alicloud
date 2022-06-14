@@ -12,7 +12,7 @@ import (
 
 // This data source provides the details of the Kubernetes version supported by ACK.
 //
-// > **NOTE:** Available in 1.169.0+.
+// > **NOTE:** Available in 1.170.0+.
 func GetKubernetesVersion(ctx *pulumi.Context, args *GetKubernetesVersionArgs, opts ...pulumi.InvokeOption) (*GetKubernetesVersionResult, error) {
 	var rv GetKubernetesVersionResult
 	err := ctx.Invoke("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args, &rv, opts...)
