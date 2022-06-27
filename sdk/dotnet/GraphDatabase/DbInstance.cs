@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.GraphDatabase
     public partial class DbInstance : Pulumi.CustomResource
     {
         /// <summary>
-        /// The category of the db instance. Valid values: `HA`.
+        /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         /// </summary>
         [Output("dbInstanceCategory")]
         public Output<string> DbInstanceCategory { get; private set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
 
         /// <summary>
-        /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.GraphDatabase
     public sealed class DbInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the db instance. Valid values: `HA`.
+        /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         /// </summary>
         [Input("dbInstanceCategory", required: true)]
         public Input<string> DbInstanceCategory { get; set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         public Input<string> DbInstanceStorageType { get; set; } = null!;
 
         /// <summary>
-        /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         /// </summary>
         [Input("dbNodeClass", required: true)]
         public Input<string> DbNodeClass { get; set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.GraphDatabase
     public sealed class DbInstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the db instance. Valid values: `HA`.
+        /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         /// </summary>
         [Input("dbInstanceCategory")]
         public Input<string>? DbInstanceCategory { get; set; }
@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
-        /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }

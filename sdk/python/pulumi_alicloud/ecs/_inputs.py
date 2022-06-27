@@ -11,6 +11,8 @@ from .. import _utilities
 __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfigArgs',
     'DedicatedHostNetworkAttributeArgs',
+    'EcsInstanceSetDataDiskArgs',
+    'EcsInstanceSetNetworkInterfaceArgs',
     'EcsLaunchTemplateDataDiskArgs',
     'EcsLaunchTemplateNetworkInterfacesArgs',
     'EcsLaunchTemplateSystemDiskArgs',
@@ -125,6 +127,246 @@ class DedicatedHostNetworkAttributeArgs:
     @udp_timeout.setter
     def udp_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "udp_timeout", value)
+
+
+@pulumi.input_type
+class EcsInstanceSetDataDiskArgs:
+    def __init__(__self__, *,
+                 disk_size: pulumi.Input[int],
+                 auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+                 disk_category: Optional[pulumi.Input[str]] = None,
+                 disk_description: Optional[pulumi.Input[str]] = None,
+                 disk_name: Optional[pulumi.Input[str]] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] disk_size: The size of the data disk. Unit: GiB.
+               - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
+               - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
+               - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
+               - When `disk_category` is `cloud`, Valid values: `5` to `200`.
+        :param pulumi.Input[str] auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
+        :param pulumi.Input[str] disk_category: The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        :param pulumi.Input[str] disk_description: The description of the data disk.
+        :param pulumi.Input[str] disk_name: The name of the data disk.
+        :param pulumi.Input[str] kms_key_id: The KMS key ID corresponding to the data disk.
+        :param pulumi.Input[str] performance_level: The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+        :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        """
+        pulumi.set(__self__, "disk_size", disk_size)
+        if auto_snapshot_policy_id is not None:
+            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        if disk_category is not None:
+            pulumi.set(__self__, "disk_category", disk_category)
+        if disk_description is not None:
+            pulumi.set(__self__, "disk_description", disk_description)
+        if disk_name is not None:
+            pulumi.set(__self__, "disk_name", disk_name)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> pulumi.Input[int]:
+        """
+        The size of the data disk. Unit: GiB.
+        - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
+        - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
+        - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
+        - When `disk_category` is `cloud`, Valid values: `5` to `200`.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "disk_size", value)
+
+    @property
+    @pulumi.getter(name="autoSnapshotPolicyId")
+    def auto_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the automatic snapshot policy applied to the system disk.
+        """
+        return pulumi.get(self, "auto_snapshot_policy_id")
+
+    @auto_snapshot_policy_id.setter
+    def auto_snapshot_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_snapshot_policy_id", value)
+
+    @property
+    @pulumi.getter(name="diskCategory")
+    def disk_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        """
+        return pulumi.get(self, "disk_category")
+
+    @disk_category.setter
+    def disk_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_category", value)
+
+    @property
+    @pulumi.getter(name="diskDescription")
+    def disk_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the data disk.
+        """
+        return pulumi.get(self, "disk_description")
+
+    @disk_description.setter
+    def disk_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_description", value)
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the data disk.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @disk_name.setter
+    def disk_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_name", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The KMS key ID corresponding to the data disk.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+
+@pulumi.input_type
+class EcsInstanceSetNetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 security_group_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 network_interface_name: Optional[pulumi.Input[str]] = None,
+                 primary_ip_address: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] security_group_id: -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+        :param pulumi.Input[str] description: The description of ENI.
+        :param pulumi.Input[str] network_interface_name: The name of ENI.
+        :param pulumi.Input[str] primary_ip_address: The primary private IP address of ENI.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which to connect ENI.
+        """
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if network_interface_name is not None:
+            pulumi.set(__self__, "network_interface_name", network_interface_name)
+        if primary_ip_address is not None:
+            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> pulumi.Input[str]:
+        """
+        -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of ENI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaceName")
+    def network_interface_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of ENI.
+        """
+        return pulumi.get(self, "network_interface_name")
+
+    @network_interface_name.setter
+    def network_interface_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_name", value)
+
+    @property
+    @pulumi.getter(name="primaryIpAddress")
+    def primary_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary private IP address of ENI.
+        """
+        return pulumi.get(self, "primary_ip_address")
+
+    @primary_ip_address.setter
+    def primary_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_ip_address", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the vSwitch to which to connect ENI.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type

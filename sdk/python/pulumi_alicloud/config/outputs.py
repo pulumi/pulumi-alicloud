@@ -96,8 +96,11 @@ class Endpoints(dict):
                  eais: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
+                 edas: Optional[str] = None,
+                 edasschedulerx: Optional[str] = None,
                  edsuser: Optional[str] = None,
                  ehpc: Optional[str] = None,
+                 ehs: Optional[str] = None,
                  eipanycast: Optional[str] = None,
                  elasticsearch: Optional[str] = None,
                  emr: Optional[str] = None,
@@ -251,10 +254,16 @@ class Endpoints(dict):
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if edas is not None:
+            pulumi.set(__self__, "edas", edas)
+        if edasschedulerx is not None:
+            pulumi.set(__self__, "edasschedulerx", edasschedulerx)
         if edsuser is not None:
             pulumi.set(__self__, "edsuser", edsuser)
         if ehpc is not None:
             pulumi.set(__self__, "ehpc", ehpc)
+        if ehs is not None:
+            pulumi.set(__self__, "ehs", ehs)
         if eipanycast is not None:
             pulumi.set(__self__, "eipanycast", eipanycast)
         if elasticsearch is not None:
@@ -608,6 +617,16 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def edas(self) -> Optional[str]:
+        return pulumi.get(self, "edas")
+
+    @property
+    @pulumi.getter
+    def edasschedulerx(self) -> Optional[str]:
+        return pulumi.get(self, "edasschedulerx")
+
+    @property
+    @pulumi.getter
     def edsuser(self) -> Optional[str]:
         return pulumi.get(self, "edsuser")
 
@@ -615,6 +634,11 @@ class Endpoints(dict):
     @pulumi.getter
     def ehpc(self) -> Optional[str]:
         return pulumi.get(self, "ehpc")
+
+    @property
+    @pulumi.getter
+    def ehs(self) -> Optional[str]:
+        return pulumi.get(self, "ehs")
 
     @property
     @pulumi.getter

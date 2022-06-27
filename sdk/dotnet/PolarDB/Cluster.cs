@@ -168,6 +168,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> EncryptNewTables { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+        /// &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+        /// &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        /// </summary>
+        [Output("imciSwitch")]
+        public Output<string> ImciSwitch { get; private set; } = null!;
+
+        /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Output("maintainTime")]
@@ -370,6 +378,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? EncryptNewTables { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+        /// &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+        /// &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        /// </summary>
+        [Input("imciSwitch")]
+        public Input<string>? ImciSwitch { get; set; }
+
+        /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         /// </summary>
         [Input("maintainTime")]
@@ -561,6 +577,14 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("encryptNewTables")]
         public Input<string>? EncryptNewTables { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+        /// &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+        /// &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        /// </summary>
+        [Input("imciSwitch")]
+        public Input<string>? ImciSwitch { get; set; }
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)

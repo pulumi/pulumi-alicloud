@@ -61,7 +61,7 @@ class ContainerGroupArgs:
         :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
+        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -357,7 +357,7 @@ class ContainerGroupArgs:
     @pulumi.getter(name="restartPolicy")
     def restart_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The restart policy of the container group. Default to `Always`.
+        The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         """
         return pulumi.get(self, "restart_policy")
 
@@ -456,7 +456,7 @@ class _ContainerGroupState:
         :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
+        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[str] status: The status of container group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -765,7 +765,7 @@ class _ContainerGroupState:
     @pulumi.getter(name="restartPolicy")
     def restart_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The restart policy of the container group. Default to `Always`.
+        The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         """
         return pulumi.get(self, "restart_policy")
 
@@ -985,7 +985,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
+        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1237,7 +1237,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] plain_http_registry: The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
+        :param pulumi.Input[str] restart_policy: The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         :param pulumi.Input[str] status: The status of container group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1442,9 +1442,9 @@ class ContainerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="restartPolicy")
-    def restart_policy(self) -> pulumi.Output[Optional[str]]:
+    def restart_policy(self) -> pulumi.Output[str]:
         """
-        The restart policy of the container group. Default to `Always`.
+        The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         """
         return pulumi.get(self, "restart_policy")
 

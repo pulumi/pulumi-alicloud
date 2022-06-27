@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Mse
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
-        /// The whitelist.
+        /// The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         /// </summary>
         [Output("aclEntryLists")]
         public Output<ImmutableArray<string>> AclEntryLists { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Mse
         /// The public network bandwidth. `0` means no access to the public network.
         /// </summary>
         [Output("pubNetworkFlow")]
-        public Output<string?> PubNetworkFlow { get; private set; } = null!;
+        public Output<string> PubNetworkFlow { get; private set; } = null!;
 
         /// <summary>
         /// The specification of public network SLB.
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Mse
         private InputList<string>? _aclEntryLists;
 
         /// <summary>
-        /// The whitelist.
+        /// The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         /// </summary>
         public InputList<string> AclEntryLists
         {
@@ -256,8 +256,8 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// The public network bandwidth. `0` means no access to the public network.
         /// </summary>
-        [Input("pubNetworkFlow")]
-        public Input<string>? PubNetworkFlow { get; set; }
+        [Input("pubNetworkFlow", required: true)]
+        public Input<string> PubNetworkFlow { get; set; } = null!;
 
         /// <summary>
         /// The specification of public network SLB.
@@ -282,7 +282,7 @@ namespace Pulumi.AliCloud.Mse
         private InputList<string>? _aclEntryLists;
 
         /// <summary>
-        /// The whitelist.
+        /// The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         /// </summary>
         public InputList<string> AclEntryLists
         {

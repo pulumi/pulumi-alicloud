@@ -592,6 +592,112 @@ func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type AlarmMetricDimension struct {
+	// The Key of metric_dimensions.
+	Key *string `pulumi:"key"`
+	// The Value of metric_dimensions.
+	Value *string `pulumi:"value"`
+}
+
+// AlarmMetricDimensionInput is an input type that accepts AlarmMetricDimensionArgs and AlarmMetricDimensionOutput values.
+// You can construct a concrete instance of `AlarmMetricDimensionInput` via:
+//
+//          AlarmMetricDimensionArgs{...}
+type AlarmMetricDimensionInput interface {
+	pulumi.Input
+
+	ToAlarmMetricDimensionOutput() AlarmMetricDimensionOutput
+	ToAlarmMetricDimensionOutputWithContext(context.Context) AlarmMetricDimensionOutput
+}
+
+type AlarmMetricDimensionArgs struct {
+	// The Key of metric_dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The Value of metric_dimensions.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlarmMetricDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmMetricDimension)(nil)).Elem()
+}
+
+func (i AlarmMetricDimensionArgs) ToAlarmMetricDimensionOutput() AlarmMetricDimensionOutput {
+	return i.ToAlarmMetricDimensionOutputWithContext(context.Background())
+}
+
+func (i AlarmMetricDimensionArgs) ToAlarmMetricDimensionOutputWithContext(ctx context.Context) AlarmMetricDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmMetricDimensionOutput)
+}
+
+// AlarmMetricDimensionArrayInput is an input type that accepts AlarmMetricDimensionArray and AlarmMetricDimensionArrayOutput values.
+// You can construct a concrete instance of `AlarmMetricDimensionArrayInput` via:
+//
+//          AlarmMetricDimensionArray{ AlarmMetricDimensionArgs{...} }
+type AlarmMetricDimensionArrayInput interface {
+	pulumi.Input
+
+	ToAlarmMetricDimensionArrayOutput() AlarmMetricDimensionArrayOutput
+	ToAlarmMetricDimensionArrayOutputWithContext(context.Context) AlarmMetricDimensionArrayOutput
+}
+
+type AlarmMetricDimensionArray []AlarmMetricDimensionInput
+
+func (AlarmMetricDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmMetricDimension)(nil)).Elem()
+}
+
+func (i AlarmMetricDimensionArray) ToAlarmMetricDimensionArrayOutput() AlarmMetricDimensionArrayOutput {
+	return i.ToAlarmMetricDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmMetricDimensionArray) ToAlarmMetricDimensionArrayOutputWithContext(ctx context.Context) AlarmMetricDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmMetricDimensionArrayOutput)
+}
+
+type AlarmMetricDimensionOutput struct{ *pulumi.OutputState }
+
+func (AlarmMetricDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmMetricDimension)(nil)).Elem()
+}
+
+func (o AlarmMetricDimensionOutput) ToAlarmMetricDimensionOutput() AlarmMetricDimensionOutput {
+	return o
+}
+
+func (o AlarmMetricDimensionOutput) ToAlarmMetricDimensionOutputWithContext(ctx context.Context) AlarmMetricDimensionOutput {
+	return o
+}
+
+// The Key of metric_dimensions.
+func (o AlarmMetricDimensionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmMetricDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The Value of metric_dimensions.
+func (o AlarmMetricDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmMetricDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlarmMetricDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmMetricDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmMetricDimension)(nil)).Elem()
+}
+
+func (o AlarmMetricDimensionArrayOutput) ToAlarmMetricDimensionArrayOutput() AlarmMetricDimensionArrayOutput {
+	return o
+}
+
+func (o AlarmMetricDimensionArrayOutput) ToAlarmMetricDimensionArrayOutputWithContext(ctx context.Context) AlarmMetricDimensionArrayOutput {
+	return o
+}
+
+func (o AlarmMetricDimensionArrayOutput) Index(i pulumi.IntInput) AlarmMetricDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmMetricDimension {
+		return vs[0].([]AlarmMetricDimension)[vs[1].(int)]
+	}).(AlarmMetricDimensionOutput)
+}
+
 type DynamicTagGroupMatchExpress struct {
 	// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
 	TagValue string `pulumi:"tagValue"`
@@ -5667,6 +5773,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsInfoPtrInput)(nil)).Elem(), AlarmEscalationsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnPtrInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmMetricDimensionInput)(nil)).Elem(), AlarmMetricDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmMetricDimensionArrayInput)(nil)).Elem(), AlarmMetricDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressInput)(nil)).Elem(), DynamicTagGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressArrayInput)(nil)).Elem(), DynamicTagGroupMatchExpressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
@@ -5741,6 +5849,8 @@ func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsInfoPtrOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsWarnOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsWarnPtrOutput{})
+	pulumi.RegisterOutputType(AlarmMetricDimensionOutput{})
+	pulumi.RegisterOutputType(AlarmMetricDimensionArrayOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressArrayOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsOutput{})

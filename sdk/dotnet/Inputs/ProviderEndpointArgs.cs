@@ -144,11 +144,20 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ecs")]
         public Input<string>? Ecs { get; set; }
 
+        [Input("edas")]
+        public Input<string>? Edas { get; set; }
+
+        [Input("edasschedulerx")]
+        public Input<string>? Edasschedulerx { get; set; }
+
         [Input("edsuser")]
         public Input<string>? Edsuser { get; set; }
 
         [Input("ehpc")]
         public Input<string>? Ehpc { get; set; }
+
+        [Input("ehs")]
+        public Input<string>? Ehs { get; set; }
 
         [Input("eipanycast")]
         public Input<string>? Eipanycast { get; set; }

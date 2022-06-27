@@ -58,7 +58,7 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// The whitelist.
+	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists pulumi.StringArrayOutput `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrOutput `pulumi:"clusterAliasName"`
@@ -83,7 +83,7 @@ type Cluster struct {
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrOutput `pulumi:"privateSlbSpecification"`
 	// The public network bandwidth. `0` means no access to the public network.
-	PubNetworkFlow pulumi.StringPtrOutput `pulumi:"pubNetworkFlow"`
+	PubNetworkFlow pulumi.StringOutput `pulumi:"pubNetworkFlow"`
 	// The specification of public network SLB.
 	PubSlbSpecification pulumi.StringPtrOutput `pulumi:"pubSlbSpecification"`
 	// The status of MSE Cluster.
@@ -114,6 +114,9 @@ func NewCluster(ctx *pulumi.Context,
 	if args.NetType == nil {
 		return nil, errors.New("invalid value for required argument 'NetType'")
 	}
+	if args.PubNetworkFlow == nil {
+		return nil, errors.New("invalid value for required argument 'PubNetworkFlow'")
+	}
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:mse/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -136,7 +139,7 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// The whitelist.
+	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
@@ -171,7 +174,7 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	// The whitelist.
+	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
@@ -210,7 +213,7 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// The whitelist.
+	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
@@ -233,7 +236,7 @@ type clusterArgs struct {
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
 	// The public network bandwidth. `0` means no access to the public network.
-	PubNetworkFlow *string `pulumi:"pubNetworkFlow"`
+	PubNetworkFlow string `pulumi:"pubNetworkFlow"`
 	// The specification of public network SLB.
 	PubSlbSpecification *string `pulumi:"pubSlbSpecification"`
 	// The id of VSwitch.
@@ -242,7 +245,7 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// The whitelist.
+	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
@@ -265,7 +268,7 @@ type ClusterArgs struct {
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput
 	// The public network bandwidth. `0` means no access to the public network.
-	PubNetworkFlow pulumi.StringPtrInput
+	PubNetworkFlow pulumi.StringInput
 	// The specification of public network SLB.
 	PubSlbSpecification pulumi.StringPtrInput
 	// The id of VSwitch.

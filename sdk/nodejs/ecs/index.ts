@@ -19,6 +19,7 @@ export * from "./ecsDisk";
 export * from "./ecsDiskAttachment";
 export * from "./ecsImageComponent";
 export * from "./ecsImagePipeline";
+export * from "./ecsInstanceSet";
 export * from "./ecsInvocation";
 export * from "./ecsKeyPair";
 export * from "./ecsKeyPairAttachment";
@@ -95,6 +96,7 @@ import { EcsDisk } from "./ecsDisk";
 import { EcsDiskAttachment } from "./ecsDiskAttachment";
 import { EcsImageComponent } from "./ecsImageComponent";
 import { EcsImagePipeline } from "./ecsImagePipeline";
+import { EcsInstanceSet } from "./ecsInstanceSet";
 import { EcsInvocation } from "./ecsInvocation";
 import { EcsKeyPair } from "./ecsKeyPair";
 import { EcsKeyPairAttachment } from "./ecsKeyPairAttachment";
@@ -158,6 +160,8 @@ const _module = {
                 return new EcsImageComponent(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsImagePipeline:EcsImagePipeline":
                 return new EcsImagePipeline(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsInstanceSet:EcsInstanceSet":
+                return new EcsInstanceSet(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsInvocation:EcsInvocation":
                 return new EcsInvocation(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsKeyPair:EcsKeyPair":
@@ -237,6 +241,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDisk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDiskAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsImageComponent", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsImagePipeline", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsInstanceSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsInvocation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPair", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPairAttachment", _module)

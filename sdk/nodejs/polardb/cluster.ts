@@ -147,6 +147,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly encryptNewTables!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+     * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+     * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+     */
+    public readonly imciSwitch!: pulumi.Output<string>;
+    /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     public readonly maintainTime!: pulumi.Output<string>;
@@ -226,6 +232,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionLock"] = state ? state.deletionLock : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
+            resourceInputs["imciSwitch"] = state ? state.imciSwitch : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
@@ -261,6 +268,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionLock"] = args ? args.deletionLock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
+            resourceInputs["imciSwitch"] = args ? args.imciSwitch : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
@@ -337,6 +345,12 @@ export interface ClusterState {
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     encryptNewTables?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+     * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+     * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+     */
+    imciSwitch?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
@@ -445,6 +459,12 @@ export interface ClusterArgs {
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     encryptNewTables?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+     * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+     * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+     */
+    imciSwitch?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */

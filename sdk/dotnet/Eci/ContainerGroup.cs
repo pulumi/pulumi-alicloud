@@ -260,10 +260,10 @@ namespace Pulumi.AliCloud.Eci
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The restart policy of the container group. Default to `Always`.
+        /// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         /// </summary>
         [Output("restartPolicy")]
-        public Output<string?> RestartPolicy { get; private set; } = null!;
+        public Output<string> RestartPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
@@ -482,7 +482,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The restart policy of the container group. Default to `Always`.
+        /// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         /// </summary>
         [Input("restartPolicy")]
         public Input<string>? RestartPolicy { get; set; }
@@ -683,7 +683,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The restart policy of the container group. Default to `Always`.
+        /// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         /// </summary>
         [Input("restartPolicy")]
         public Input<string>? RestartPolicy { get; set; }

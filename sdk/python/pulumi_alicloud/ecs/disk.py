@@ -1137,7 +1137,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableAutoSnapshot")
-    def enable_auto_snapshot(self) -> pulumi.Output[Optional[bool]]:
+    def enable_auto_snapshot(self) -> pulumi.Output[bool]:
         """
         Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
         """

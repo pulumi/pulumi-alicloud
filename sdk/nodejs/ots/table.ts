@@ -47,6 +47,8 @@ import * as utilities from "../utilities";
  *     timeToLive: -1,
  *     maxVersion: 1,
  *     deviationCellVersionInSec: "1",
+ *     enableSse: true,
+ *     sseKeyType: "SSE_KMS_SERVICE",
  * });
  * ```
  *
@@ -91,6 +93,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly deviationCellVersionInSec!: pulumi.Output<string | undefined>;
     /**
+     * Whether enable OTS server side encryption. Default value is false.
+     */
+    public readonly enableSse!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the OTS instance in which table will located.
      */
     public readonly instanceName!: pulumi.Output<string>;
@@ -102,6 +108,10 @@ export class Table extends pulumi.CustomResource {
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
      */
     public readonly primaryKeys!: pulumi.Output<outputs.ots.TablePrimaryKey[]>;
+    /**
+     * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     */
+    public readonly sseKeyType!: pulumi.Output<string | undefined>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */
@@ -125,9 +135,11 @@ export class Table extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
             resourceInputs["deviationCellVersionInSec"] = state ? state.deviationCellVersionInSec : undefined;
+            resourceInputs["enableSse"] = state ? state.enableSse : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["maxVersion"] = state ? state.maxVersion : undefined;
             resourceInputs["primaryKeys"] = state ? state.primaryKeys : undefined;
+            resourceInputs["sseKeyType"] = state ? state.sseKeyType : undefined;
             resourceInputs["tableName"] = state ? state.tableName : undefined;
             resourceInputs["timeToLive"] = state ? state.timeToLive : undefined;
         } else {
@@ -148,9 +160,11 @@ export class Table extends pulumi.CustomResource {
                 throw new Error("Missing required property 'timeToLive'");
             }
             resourceInputs["deviationCellVersionInSec"] = args ? args.deviationCellVersionInSec : undefined;
+            resourceInputs["enableSse"] = args ? args.enableSse : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["maxVersion"] = args ? args.maxVersion : undefined;
             resourceInputs["primaryKeys"] = args ? args.primaryKeys : undefined;
+            resourceInputs["sseKeyType"] = args ? args.sseKeyType : undefined;
             resourceInputs["tableName"] = args ? args.tableName : undefined;
             resourceInputs["timeToLive"] = args ? args.timeToLive : undefined;
         }
@@ -168,6 +182,10 @@ export interface TableState {
      */
     deviationCellVersionInSec?: pulumi.Input<string>;
     /**
+     * Whether enable OTS server side encryption. Default value is false.
+     */
+    enableSse?: pulumi.Input<boolean>;
+    /**
      * The name of the OTS instance in which table will located.
      */
     instanceName?: pulumi.Input<string>;
@@ -179,6 +197,10 @@ export interface TableState {
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
      */
     primaryKeys?: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
+    /**
+     * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     */
+    sseKeyType?: pulumi.Input<string>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */
@@ -198,6 +220,10 @@ export interface TableArgs {
      */
     deviationCellVersionInSec?: pulumi.Input<string>;
     /**
+     * Whether enable OTS server side encryption. Default value is false.
+     */
+    enableSse?: pulumi.Input<boolean>;
+    /**
      * The name of the OTS instance in which table will located.
      */
     instanceName: pulumi.Input<string>;
@@ -209,6 +235,10 @@ export interface TableArgs {
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
      */
     primaryKeys: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
+    /**
+     * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     */
+    sseKeyType?: pulumi.Input<string>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */

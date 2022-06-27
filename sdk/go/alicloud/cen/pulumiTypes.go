@@ -2143,6 +2143,166 @@ func (o GetRouteServicesServiceArrayOutput) Index(i pulumi.IntInput) GetRouteSer
 	}).(GetRouteServicesServiceOutput)
 }
 
+type GetTrafficMarkingPoliciesPolicy struct {
+	// The description of the Traffic Marking Policy.
+	Description string `pulumi:"description"`
+	// The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
+	Id string `pulumi:"id"`
+	// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
+	MarkingDscp int `pulumi:"markingDscp"`
+	// The Priority of the Traffic Marking Policy.
+	Priority int `pulumi:"priority"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The ID of the Traffic Marking Policy.
+	TrafficMarkingPolicyId string `pulumi:"trafficMarkingPolicyId"`
+	// The name of the Traffic Marking Policy.
+	TrafficMarkingPolicyName string `pulumi:"trafficMarkingPolicyName"`
+	// The ID of the transit router.
+	TransitRouterId string `pulumi:"transitRouterId"`
+}
+
+// GetTrafficMarkingPoliciesPolicyInput is an input type that accepts GetTrafficMarkingPoliciesPolicyArgs and GetTrafficMarkingPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetTrafficMarkingPoliciesPolicyInput` via:
+//
+//          GetTrafficMarkingPoliciesPolicyArgs{...}
+type GetTrafficMarkingPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetTrafficMarkingPoliciesPolicyOutput() GetTrafficMarkingPoliciesPolicyOutput
+	ToGetTrafficMarkingPoliciesPolicyOutputWithContext(context.Context) GetTrafficMarkingPoliciesPolicyOutput
+}
+
+type GetTrafficMarkingPoliciesPolicyArgs struct {
+	// The description of the Traffic Marking Policy.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
+	MarkingDscp pulumi.IntInput `pulumi:"markingDscp"`
+	// The Priority of the Traffic Marking Policy.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the Traffic Marking Policy.
+	TrafficMarkingPolicyId pulumi.StringInput `pulumi:"trafficMarkingPolicyId"`
+	// The name of the Traffic Marking Policy.
+	TrafficMarkingPolicyName pulumi.StringInput `pulumi:"trafficMarkingPolicyName"`
+	// The ID of the transit router.
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
+}
+
+func (GetTrafficMarkingPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMarkingPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetTrafficMarkingPoliciesPolicyArgs) ToGetTrafficMarkingPoliciesPolicyOutput() GetTrafficMarkingPoliciesPolicyOutput {
+	return i.ToGetTrafficMarkingPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetTrafficMarkingPoliciesPolicyArgs) ToGetTrafficMarkingPoliciesPolicyOutputWithContext(ctx context.Context) GetTrafficMarkingPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficMarkingPoliciesPolicyOutput)
+}
+
+// GetTrafficMarkingPoliciesPolicyArrayInput is an input type that accepts GetTrafficMarkingPoliciesPolicyArray and GetTrafficMarkingPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetTrafficMarkingPoliciesPolicyArrayInput` via:
+//
+//          GetTrafficMarkingPoliciesPolicyArray{ GetTrafficMarkingPoliciesPolicyArgs{...} }
+type GetTrafficMarkingPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetTrafficMarkingPoliciesPolicyArrayOutput() GetTrafficMarkingPoliciesPolicyArrayOutput
+	ToGetTrafficMarkingPoliciesPolicyArrayOutputWithContext(context.Context) GetTrafficMarkingPoliciesPolicyArrayOutput
+}
+
+type GetTrafficMarkingPoliciesPolicyArray []GetTrafficMarkingPoliciesPolicyInput
+
+func (GetTrafficMarkingPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrafficMarkingPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetTrafficMarkingPoliciesPolicyArray) ToGetTrafficMarkingPoliciesPolicyArrayOutput() GetTrafficMarkingPoliciesPolicyArrayOutput {
+	return i.ToGetTrafficMarkingPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetTrafficMarkingPoliciesPolicyArray) ToGetTrafficMarkingPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetTrafficMarkingPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficMarkingPoliciesPolicyArrayOutput)
+}
+
+type GetTrafficMarkingPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficMarkingPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMarkingPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetTrafficMarkingPoliciesPolicyOutput) ToGetTrafficMarkingPoliciesPolicyOutput() GetTrafficMarkingPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetTrafficMarkingPoliciesPolicyOutput) ToGetTrafficMarkingPoliciesPolicyOutputWithContext(ctx context.Context) GetTrafficMarkingPoliciesPolicyOutput {
+	return o
+}
+
+// The description of the Traffic Marking Policy.
+func (o GetTrafficMarkingPoliciesPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
+func (o GetTrafficMarkingPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
+func (o GetTrafficMarkingPoliciesPolicyOutput) MarkingDscp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) int { return v.MarkingDscp }).(pulumi.IntOutput)
+}
+
+// The Priority of the Traffic Marking Policy.
+func (o GetTrafficMarkingPoliciesPolicyOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The status of the resource.
+func (o GetTrafficMarkingPoliciesPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the Traffic Marking Policy.
+func (o GetTrafficMarkingPoliciesPolicyOutput) TrafficMarkingPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) string { return v.TrafficMarkingPolicyId }).(pulumi.StringOutput)
+}
+
+// The name of the Traffic Marking Policy.
+func (o GetTrafficMarkingPoliciesPolicyOutput) TrafficMarkingPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) string { return v.TrafficMarkingPolicyName }).(pulumi.StringOutput)
+}
+
+// The ID of the transit router.
+func (o GetTrafficMarkingPoliciesPolicyOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMarkingPoliciesPolicy) string { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+type GetTrafficMarkingPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficMarkingPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrafficMarkingPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetTrafficMarkingPoliciesPolicyArrayOutput) ToGetTrafficMarkingPoliciesPolicyArrayOutput() GetTrafficMarkingPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetTrafficMarkingPoliciesPolicyArrayOutput) ToGetTrafficMarkingPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetTrafficMarkingPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetTrafficMarkingPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetTrafficMarkingPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTrafficMarkingPoliciesPolicy {
+		return vs[0].([]GetTrafficMarkingPoliciesPolicy)[vs[1].(int)]
+	}).(GetTrafficMarkingPoliciesPolicyOutput)
+}
+
 type GetTransitRouterAvailableResourcesResource struct {
 	// The list of primary zones.
 	MasterZones []string `pulumi:"masterZones"`
@@ -3819,6 +3979,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteMapsMapArrayInput)(nil)).Elem(), GetRouteMapsMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteServicesServiceInput)(nil)).Elem(), GetRouteServicesServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteServicesServiceArrayInput)(nil)).Elem(), GetRouteServicesServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMarkingPoliciesPolicyInput)(nil)).Elem(), GetTrafficMarkingPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMarkingPoliciesPolicyArrayInput)(nil)).Elem(), GetTrafficMarkingPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterAvailableResourcesResourceInput)(nil)).Elem(), GetTransitRouterAvailableResourcesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterAvailableResourcesResourceArrayInput)(nil)).Elem(), GetTransitRouterAvailableResourcesResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterPeerAttachmentsAttachmentInput)(nil)).Elem(), GetTransitRouterPeerAttachmentsAttachmentArgs{})
@@ -3865,6 +4027,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteMapsMapArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetRouteServicesServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetTrafficMarkingPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetTrafficMarkingPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterAvailableResourcesResourceOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterAvailableResourcesResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterPeerAttachmentsAttachmentOutput{})

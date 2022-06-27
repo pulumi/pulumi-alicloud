@@ -18,6 +18,18 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string? Arg;
         /// <summary>
+        /// bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+        /// </summary>
+        public readonly string? ExecutionFailStrategy;
+        /// <summary>
+        /// bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+        /// </summary>
+        public readonly string? ExecutionMoment;
+        /// <summary>
+        /// bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
+        /// </summary>
+        public readonly string? ExecutionTarget;
+        /// <summary>
         /// bootstrap action name.
         /// </summary>
         public readonly string? Name;
@@ -30,11 +42,20 @@ namespace Pulumi.AliCloud.Emr.Outputs
         private ClusterBootstrapAction(
             string? arg,
 
+            string? executionFailStrategy,
+
+            string? executionMoment,
+
+            string? executionTarget,
+
             string? name,
 
             string? path)
         {
             Arg = arg;
+            ExecutionFailStrategy = executionFailStrategy;
+            ExecutionMoment = executionMoment;
+            ExecutionTarget = executionTarget;
             Name = name;
             Path = path;
         }

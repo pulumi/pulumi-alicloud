@@ -128,6 +128,7 @@ const (
 	scdnMod                = "Scdn"
 	sddpMod                = "Sddp"
 	securityCenterMod      = "SecurityCenter"
+	schedulerXMod          = "SchedulerX"
 	slbMod                 = "Slb"
 	tagMod                 = "Tag"
 	tsdbMod                = "Tsdb"
@@ -361,6 +362,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_transit_router_vbr_attachment":  {Tok: resource(cenMod, "TransitRouterVbrAttachment")},
 			"alicloud_cen_transit_router_vpc_attachment":  {Tok: resource(cenMod, "TransitRouterVpcAttachment")},
 			"alicloud_cen_transit_router_peer_attachment": {Tok: resource(cenMod, "TransitRouterPeerAttachment")},
+			"alicloud_cen_traffic_marking_policy":         {Tok: resource(cenMod, "TrafficMarkingPolicy")},
 
 			// Clickhouse
 			"alicloud_click_house_db_cluster":    {Tok: resource(clickHouseMod, "DbCluster")},
@@ -447,6 +449,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_config_aggregator":                {Tok: resource(cfgMod, "Aggregator")},
 			"alicloud_config_compliance_pack":           {Tok: resource(cfgMod, "CompliancePack")},
 			"alicloud_config_delivery":                  {Tok: resource(cfgMod, "Delivery")},
+			"alicloud_config_aggregate_delivery":        {Tok: resource(cfgMod, "AggregateDelivery")},
 
 			// CR
 			"alicloud_cr_repo":                {Tok: resource(crMod, "Repo")},
@@ -660,6 +663,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_image_pipeline":                  {Tok: resource(ecsMod, "EcsImagePipeline")},
 			"alicloud_ecs_invocation":                      {Tok: resource(ecsMod, "EcsInvocation")},
 			"alicloud_ecs_network_interface_permission":    {Tok: resource(ecsMod, "EcsNetworkInterfacePermission")},
+			"alicloud_ecs_instance_set":                    {Tok: resource(ecsMod, "EcsInstanceSet")},
 
 			// Edas
 			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
@@ -671,6 +675,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_application_deployment":      {Tok: resource(edasMod, "ApplicationDeployment")},
 			"alicloud_edas_k8s_cluster":                 {Tok: resource(edasMod, "K8sCluster")},
 			"alicloud_edas_k8s_application":             {Tok: resource(edasMod, "K8sApplication")},
+			"alicloud_edas_namespace":                   {Tok: resource(edasMod, "Namespace")},
 
 			// Eds
 			"alicloud_ecd_policy_group":       {Tok: resource(edsMod, "EcdPolicyGroup")},
@@ -686,6 +691,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Ehpc
 			"alicloud_ehpc_job_template": {Tok: resource(ehpcMod, "JobTemplate")},
+			"alicloud_ehpc_cluster":      {Tok: resource(ehpcMod, "Cluster")},
 
 			// EipAnycast
 			"alicloud_eipanycast_anycast_eip_address":            {Tok: resource(eipAnyCastMod, "AnycastEipAddress")},
@@ -918,6 +924,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ots_instance":            {Tok: resource(otsMod, "Instance")},
 			"alicloud_ots_instance_attachment": {Tok: resource(otsMod, "InstanceAttachment")},
 			"alicloud_ots_table":               {Tok: resource(otsMod, "Table")},
+			"alicloud_ots_tunnel":              {Tok: resource(otsMod, "Tunnel")},
 
 			// PrivateLink
 			"alicloud_privatelink_vpc_endpoint":         {Tok: resource(privateLinkMod, "VpcEndpoint")},
@@ -1072,6 +1079,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Scdn
 			"alicloud_scdn_domain_config": {Tok: resource(scdnMod, "DomainConfig")},
 			"alicloud_scdn_domain":        {Tok: resource(scdnMod, "Domain")},
+
+			// SchedulerX
+			"alicloud_schedulerx_namespace": {Tok: resource(schedulerXMod, "Namespace")},
 
 			// Sddp
 			"alicloud_sddp_rule":       {Tok: resource(sddpMod, "Rule")},
@@ -1321,6 +1331,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cdn_service":                  {Tok: dataSource(cdnMod, "getService")},
 			"alicloud_cdn_real_time_log_deliveries": {Tok: dataSource(cdnMod, "getRealTimeLogDeliveries")},
 			"alicloud_cdn_ip_info":                  {Tok: dataSource(cdnMod, "getIpInfo")},
+			"alicloud_cdn_blocked_regions":          {Tok: dataSource(cdnMod, "getBlockedRegions")},
 
 			// Cen
 			"alicloud_cen_bandwidth_limits":            {Tok: dataSource(cenMod, "getBandwidthLimits")},
@@ -1348,6 +1359,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_transit_router_peer_attachments":    {Tok: dataSource(cenMod, "getTransitRouterPeerAttachments")},
 			"alicloud_cen_transit_router_service":             {Tok: dataSource(cenMod, "getTransitRouterService")},
 			"alicloud_cen_transit_router_available_resources": {Tok: dataSource(cenMod, "getTransitRouterAvailableResources")},
+			"alicloud_cen_traffic_marking_policies":           {Tok: dataSource(cenMod, "getTrafficMarkingPolicies")},
 
 			// Clickhouse
 			"alicloud_click_house_db_clusters":     {Tok: dataSource(clickHouseMod, "getDbClusters")},
@@ -1415,6 +1427,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_config_aggregators":                {Tok: dataSource(cfgMod, "getAggregators")},
 			"alicloud_config_compliance_packs":           {Tok: dataSource(cfgMod, "getCompliancePacks")},
 			"alicloud_config_deliveries":                 {Tok: dataSource(cfgMod, "getDeliveries")},
+			"alicloud_config_aggregate_deliveries":       {Tok: dataSource(cfgMod, "getAggregateDeliveries")},
 
 			// Cr
 			"alicloud_cr_namespaces":            {Tok: dataSource(crMod, "getNamespaces")},
@@ -1574,6 +1587,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_deploy_groups": {Tok: dataSource(edasMod, "getDeployGroups")},
 			"alicloud_edas_clusters":      {Tok: dataSource(edasMod, "getClusters")},
 			"alicloud_edas_service":       {Tok: dataSource(edasMod, "getService")},
+			"alicloud_edas_namespaces":    {Tok: dataSource(edasMod, "getNamespaces")},
 
 			// Eds
 			"alicloud_ecd_policy_groups":       {Tok: dataSource(edsMod, "getPolicyGroups")},
@@ -1590,6 +1604,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Ehpc
 			"alicloud_ehpc_job_templates": {Tok: dataSource(ehpcMod, "getJobTemplates")},
+			"alicloud_ehpc_clusters":      {Tok: dataSource(ehpcMod, "getClusters")},
 
 			// EipAnycast
 			"alicloud_eipanycast_anycast_eip_addresses": {Tok: dataSource(eipAnyCastMod, "getAnycastEipAddresses")},
@@ -1791,6 +1806,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Ots
 			"alicloud_ots_service": {Tok: dataSource(otsMod, "getService")},
+			"alicloud_ots_tunnels": {Tok: dataSource(otsMod, "getTunnels")},
 
 			// PrivateLink
 			"alicloud_privatelink_vpc_endpoints":      {Tok: dataSource(privateLinkMod, "getVpcEndpoints")},
@@ -1932,6 +1948,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Scdn
 			"alicloud_scdn_domains": {Tok: dataSource(scdnMod, "getDomains")},
+
+			// SchedulerX
+			"alicloud_schedulerx_namespaces": {Tok: dataSource(schedulerXMod, "getNamespaces")},
 
 			// sddp
 			"alicloud_sddp_rules":       {Tok: dataSource(sddpMod, "getRules")},

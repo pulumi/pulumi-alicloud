@@ -5,16 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./cluster";
+export * from "./getClusters";
 export * from "./getJobTemplates";
 export * from "./jobTemplate";
 
 // Import resources to register:
+import { Cluster } from "./cluster";
 import { JobTemplate } from "./jobTemplate";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:ehpc/cluster:Cluster":
+                return new Cluster(name, <any>undefined, { urn })
             case "alicloud:ehpc/jobTemplate:JobTemplate":
                 return new JobTemplate(name, <any>undefined, { urn })
             default:
@@ -22,4 +27,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "ehpc/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ehpc/jobTemplate", _module)

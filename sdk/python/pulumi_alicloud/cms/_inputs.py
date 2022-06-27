@@ -12,6 +12,7 @@ __all__ = [
     'AlarmEscalationsCriticalArgs',
     'AlarmEscalationsInfoArgs',
     'AlarmEscalationsWarnArgs',
+    'AlarmMetricDimensionArgs',
     'DynamicTagGroupMatchExpressArgs',
     'GroupMetricRuleEscalationsArgs',
     'GroupMetricRuleEscalationsCriticalArgs',
@@ -238,6 +239,45 @@ class AlarmEscalationsWarnArgs:
     @times.setter
     def times(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class AlarmMetricDimensionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The Key of metric_dimensions.
+        :param pulumi.Input[str] value: The Value of metric_dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Key of metric_dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Value of metric_dimensions.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

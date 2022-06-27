@@ -4521,6 +4521,21 @@ export namespace cdn {
         referType?: string;
     }
 
+    export interface GetBlockedRegionsRegion {
+        /**
+         * The region to which the country belongs.
+         */
+        continent: string;
+        /**
+         * National region abbreviation.
+         */
+        countriesAndRegions: string;
+        /**
+         * The name of the country and region.
+         */
+        countriesAndRegionsName: string;
+    }
+
     export interface GetRealTimeLogDeliveriesDelivery {
         /**
          * Real-Time Log Service Domain.
@@ -5051,6 +5066,41 @@ export namespace cen {
          * The update interval. Default value: 5. The value cannot be modified.
          */
         updateInterval: string;
+    }
+
+    export interface GetTrafficMarkingPoliciesPolicy {
+        /**
+         * The description of the Traffic Marking Policy.
+         */
+        description: string;
+        /**
+         * The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
+         */
+        id: string;
+        /**
+         * The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
+         */
+        markingDscp: number;
+        /**
+         * The Priority of the Traffic Marking Policy.
+         */
+        priority: number;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The ID of the Traffic Marking Policy.
+         */
+        trafficMarkingPolicyId: string;
+        /**
+         * The name of the Traffic Marking Policy.
+         */
+        trafficMarkingPolicyName: string;
+        /**
+         * The ID of the transit router.
+         */
+        transitRouterId: string;
     }
 
     export interface GetTransitRouterAvailableResourcesResource {
@@ -5623,6 +5673,69 @@ export namespace cfg {
          * The Count.
          */
         count: number;
+    }
+
+    export interface GetAggregateDeliveriesDelivery {
+        /**
+         * The Aliyun User Id.
+         */
+        accountId: string;
+        /**
+         * The ID of the Aggregator.
+         */
+        aggregatorId: string;
+        /**
+         * Open or close delivery configuration change history.
+         */
+        configurationItemChangeNotification: boolean;
+        /**
+         * Open or close timed snapshot of shipping resources.
+         */
+        configurationSnapshot: boolean;
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+         */
+        deliveryChannelAssumeRoleArn: string;
+        /**
+         * The rule attached to the delivery method.
+         */
+        deliveryChannelCondition: string;
+        /**
+         * The ID of the delivery method.
+         */
+        deliveryChannelId: string;
+        /**
+         * The name of the delivery method.
+         */
+        deliveryChannelName: string;
+        /**
+         * The ARN of the delivery destination.
+         */
+        deliveryChannelTargetArn: string;
+        /**
+         * The type of the delivery method.
+         */
+        deliveryChannelType: string;
+        /**
+         * The description of the delivery method.
+         */
+        description: string;
+        /**
+         * The ID of the Aggregate Delivery.
+         */
+        id: string;
+        /**
+         * Open or close non-compliance events of delivery resources.
+         */
+        nonCompliantNotification: boolean;
+        /**
+         * The oss ARN of the delivery channel when the value data oversized limit.
+         */
+        oversizedDataOssTargetArn: string;
+        /**
+         * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+         */
+        status: number;
     }
 
     export interface GetAggregatorsAggregator {
@@ -7390,6 +7503,17 @@ export namespace cms {
         times?: number;
     }
 
+    export interface AlarmMetricDimension {
+        /**
+         * The Key of metric_dimensions.
+         */
+        key?: string;
+        /**
+         * The Value of metric_dimensions.
+         */
+        value?: string;
+    }
+
     export interface DynamicTagGroupMatchExpress {
         /**
          * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
@@ -8147,6 +8271,7 @@ export namespace cms {
          */
         slsUserId?: string;
     }
+
 }
 
 export namespace config {
@@ -8202,8 +8327,11 @@ export namespace config {
         eais?: string;
         eci?: string;
         ecs?: string;
+        edas?: string;
+        edasschedulerx?: string;
         edsuser?: string;
         ehpc?: string;
+        ehs?: string;
         eipanycast?: string;
         elasticsearch?: string;
         emr?: string;
@@ -13638,6 +13766,69 @@ export namespace ecs {
         udpTimeout?: number;
     }
 
+    export interface EcsInstanceSetDataDisk {
+        /**
+         * The ID of the automatic snapshot policy applied to the system disk.
+         */
+        autoSnapshotPolicyId?: string;
+        /**
+         * The category of the disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+         */
+        diskCategory: string;
+        /**
+         * The description of the data disk.
+         */
+        diskDescription?: string;
+        /**
+         * The name of the data disk.
+         */
+        diskName?: string;
+        /**
+         * The size of the data disk. Unit: GiB.
+         * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
+         * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
+         * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
+         * - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
+         */
+        diskSize: number;
+        encrypted?: boolean;
+        /**
+         * The KMS key ID corresponding to the data disk.
+         */
+        kmsKeyId?: string;
+        /**
+         * The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+         */
+        performanceLevel: string;
+        /**
+         * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+         */
+        snapshotId?: string;
+    }
+
+    export interface EcsInstanceSetNetworkInterface {
+        /**
+         * The description of ENI.
+         */
+        description?: string;
+        /**
+         * The name of ENI.
+         */
+        networkInterfaceName?: string;
+        /**
+         * The primary private IP address of ENI.
+         */
+        primaryIpAddress?: string;
+        /**
+         * -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+         */
+        securityGroupId: string;
+        /**
+         * The ID of the vSwitch to which to connect ENI.
+         */
+        vswitchId?: string;
+    }
+
     export interface EcsLaunchTemplateDataDisk {
         /**
          * The category of the disk.
@@ -16756,6 +16947,41 @@ export namespace edas {
         updateTime: number;
     }
 
+    export interface GetNamespacesNamespace {
+        /**
+         * The ID of the physical region to which the namespace belongs.
+         */
+        belongRegion: string;
+        /**
+         * Indicates whether remote debugging is allowed in this region.
+         */
+        debugEnable: boolean;
+        /**
+         * The description of the namespace.
+         */
+        description: string;
+        /**
+         * The ID of the resource.
+         */
+        id: string;
+        /**
+         * The unique ID of the namespace generated by Enterprise Distributed Application Service (EDAS).
+         */
+        namespaceId: string;
+        /**
+         * The ID of the namespace. **Note:** The ID cannot be changed after the namespace is created. The ID is in the format of `Physical region ID:Logical region identifier`.
+         */
+        namespaceLogicalId: string;
+        /**
+         * The name of the namespace.
+         */
+        namespaceName: string;
+        /**
+         * The ID of the Alibaba Cloud account to which the namespace belongs.
+         */
+        userId: string;
+    }
+
 }
 
 export namespace eds {
@@ -17190,6 +17416,10 @@ export namespace eds {
          */
         createTime: string;
         /**
+         * The public IP address list of the network packet.
+         */
+        eipAddresses: string[];
+        /**
          * The expired time of package.
          */
         expiredTime: string;
@@ -17560,6 +17790,207 @@ export namespace eds {
 }
 
 export namespace ehpc {
+    export interface ClusterAdditionalVolume {
+        /**
+         * The queue of the nodes to which the additional file system is attached.
+         */
+        jobQueue?: string;
+        /**
+         * The local directory on which the additional file system is mounted.
+         */
+        localDirectory?: string;
+        /**
+         * The type of the cluster. Valid value: `PublicCloud`.
+         */
+        location?: string;
+        /**
+         * The remote directory to which the additional file system is mounted.
+         */
+        remoteDirectory?: string;
+        /**
+         * The roles. See the following `Block roles`.
+         */
+        roles?: outputs.ehpc.ClusterAdditionalVolumeRole[];
+        /**
+         * The ID of the additional file system.
+         */
+        volumeId?: string;
+        /**
+         * The mount options of the file system.
+         */
+        volumeMountOption?: string;
+        /**
+         * The mount target of the additional file system.
+         */
+        volumeMountpoint?: string;
+        /**
+         * The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+         */
+        volumeProtocol?: string;
+        /**
+         * The type of the additional shared storage. Only NAS file systems are supported.
+         */
+        volumeType?: string;
+    }
+
+    export interface ClusterAdditionalVolumeRole {
+        /**
+         * The type of the nodes to which the additional file system is attached.
+         */
+        name?: string;
+    }
+
+    export interface ClusterApplication {
+        /**
+         * The tag of the software.
+         */
+        tag?: string;
+    }
+
+    export interface ClusterPostInstallScript {
+        /**
+         * The parameter that is used to run the script after the cluster is created.
+         */
+        args?: string;
+        /**
+         * The URL that is used to download the script after the cluster is created.
+         */
+        url?: string;
+    }
+
+    export interface GetClustersCluster {
+        /**
+         * The server type of the account.
+         */
+        accountType: string;
+        applications: outputs.ehpc.GetClustersClusterApplication[];
+        /**
+         * The version number of the client used by the cluster.
+         */
+        clientVersion: string;
+        /**
+         * The id of E-HPC Cluster.
+         */
+        clusterId: string;
+        /**
+         * The name of E-HPC cluster.
+         */
+        clusterName: string;
+        /**
+         * The number of compute nodes in the cluster.
+         */
+        computeCount: number;
+        /**
+         * Cluster compute node specifications.
+         */
+        computeInstanceType: string;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * Cluster deployment mode. Possible values:
+         * - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+         * - Advanced:HA mode deployment.
+         * - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+         * - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+         * - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+         */
+        deployMode: string;
+        /**
+         * The description of E-HPC cluster.
+         */
+        description: string;
+        /**
+         * Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+         */
+        haEnable: boolean;
+        /**
+         * The ID of the Cluster.
+         */
+        id: string;
+        /**
+         * The ID of the Image.
+         */
+        imageId: string;
+        /**
+         * The type of the image.
+         */
+        imageOwnerAlias: string;
+        /**
+         * The number of cluster login nodes. Only configuration 1 is supported.
+         */
+        loginCount: number;
+        /**
+         * Cluster login node specifications.
+         */
+        loginInstanceType: string;
+        managerCount: number;
+        /**
+         * The instance type of manager nodes.
+         */
+        managerInstanceType: string;
+        /**
+         * The image tag of the operating system.
+         */
+        osTag: string;
+        postInstallScripts: outputs.ehpc.GetClustersClusterPostInstallScript[];
+        /**
+         * Mount the remote directory of the shared storage.
+         */
+        remoteDirectory: string;
+        /**
+         * The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+         */
+        sccClusterId: string;
+        /**
+         * Dispatch server type.
+         */
+        schedulerType: string;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+         */
+        volumeId: string;
+        /**
+         * The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+         */
+        volumeMountpoint: string;
+        /**
+         * The type of the protocol that is used by the file system.
+         */
+        volumeProtocol: string;
+        /**
+         * The type of the network shared storage. Valid value: NAS.
+         */
+        volumeType: string;
+        /**
+         * The ID of the VPC network.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        zoneId: string;
+    }
+
+    export interface GetClustersClusterApplication {
+        tag: string;
+    }
+
+    export interface GetClustersClusterPostInstallScript {
+        args: string;
+        url: string;
+    }
+
     export interface GetJobTemplatesTemplate {
         /**
          * Queue Jobs, Is of the Form: 1-10:2.
@@ -17758,6 +18189,18 @@ export namespace emr {
          * bootstrap action args, e.g. "--a=b".
          */
         arg?: string;
+        /**
+         * bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+         */
+        executionFailStrategy?: string;
+        /**
+         * bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+         */
+        executionMoment?: string;
+        /**
+         * bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
+         */
+        executionTarget?: string;
         /**
          * bootstrap action name.
          */
@@ -19868,7 +20311,7 @@ export namespace fc {
          */
         sourceArn: string;
         /**
-         * Type of the trigger. Valid values: `oss`, `log`, `timer`, `http` and `mnsTopic`.
+         * Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mnsTopic`, `cdnEvents` and `eventbridge`.
          */
         type: string;
     }
@@ -26191,6 +26634,76 @@ export namespace ots {
         type: string;
     }
 
+    export interface GetTunnelsTunnel {
+        /**
+         * The channels of OTS tunnel. Each element contains the following attributes:
+         */
+        channels: outputs.ots.GetTunnelsTunnelChannel[];
+        /**
+         * The creation time of the Tunnel.
+         */
+        createTime: number;
+        /**
+         * Whether the tunnel has expired.
+         */
+        expired: boolean;
+        /**
+         * The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
+         */
+        id: string;
+        /**
+         * The name of OTS instance.
+         */
+        instanceName: string;
+        /**
+         * The name of OTS table.
+         */
+        tableName: string;
+        /**
+         * The tunnel id of the OTS which could not be changed.
+         */
+        tunnelId: string;
+        /**
+         * The tunnel name of the OTS which could not be changed.
+         */
+        tunnelName: string;
+        /**
+         * The latest consumption time of the tunnel, unix time in nanosecond.
+         */
+        tunnelRpo: number;
+        /**
+         * The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
+         */
+        tunnelStage: string;
+        /**
+         * The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
+         */
+        tunnelType: string;
+    }
+
+    export interface GetTunnelsTunnelChannel {
+        /**
+         * The id of the channel.
+         */
+        channelId: string;
+        /**
+         * The latest consumption time of the channel, unix time in nanosecond
+         */
+        channelRpo: number;
+        /**
+         * The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+         */
+        channelStatus: string;
+        /**
+         * The type of the channel, valid values: `BaseData`, `Stream`.
+         */
+        channelType: string;
+        /**
+         * The client id of the channel.
+         */
+        clientId: string;
+    }
+
     export interface TablePrimaryKey {
         /**
          * Name for primary key.
@@ -26202,6 +26715,28 @@ export namespace ots {
         type: string;
     }
 
+    export interface TunnelChannel {
+        /**
+         * The id of the channel.
+         */
+        channelId: string;
+        /**
+         * The latest consumption time of the channel, unix time in nanosecond.
+         */
+        channelRpo: number;
+        /**
+         * The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+         */
+        channelStatus: string;
+        /**
+         * The type of the channel, valid values: `BaseData`, `Stream`.
+         */
+        channelType: string;
+        /**
+         * The client id of the channel.
+         */
+        clientId: string;
+    }
 }
 
 export namespace polardb {
@@ -30433,6 +30968,28 @@ export namespace scdn {
          * the Origin Server Type. Valid Values: Ipaddr: IP Source Station Domain: the Domain Name, See Extra Domain Quota OSS: OSS Bucket as a Source Station.
          */
         type: string;
+    }
+
+}
+
+export namespace schedulerx {
+    export interface GetNamespacesNamespace {
+        /**
+         * The description of the resource.
+         */
+        description: string;
+        /**
+         * The ID of the resource.
+         */
+        id: string;
+        /**
+         * The ID of the Namespace.
+         */
+        namespaceId: string;
+        /**
+         * The name of the resource.
+         */
+        namespaceName: string;
     }
 
 }

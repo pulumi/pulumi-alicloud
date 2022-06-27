@@ -65,7 +65,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * The whitelist.
+     * The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      */
     public readonly aclEntryLists!: pulumi.Output<string[] | undefined>;
     /**
@@ -111,7 +111,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The public network bandwidth. `0` means no access to the public network.
      */
-    public readonly pubNetworkFlow!: pulumi.Output<string | undefined>;
+    public readonly pubNetworkFlow!: pulumi.Output<string>;
     /**
      * The specification of public network SLB.
      */
@@ -169,6 +169,9 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.netType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'netType'");
             }
+            if ((!args || args.pubNetworkFlow === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'pubNetworkFlow'");
+            }
             resourceInputs["aclEntryLists"] = args ? args.aclEntryLists : undefined;
             resourceInputs["clusterAliasName"] = args ? args.clusterAliasName : undefined;
             resourceInputs["clusterSpecification"] = args ? args.clusterSpecification : undefined;
@@ -194,7 +197,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * The whitelist.
+     * The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      */
     aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -260,7 +263,7 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * The whitelist.
+     * The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      */
     aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -302,7 +305,7 @@ export interface ClusterArgs {
     /**
      * The public network bandwidth. `0` means no access to the public network.
      */
-    pubNetworkFlow?: pulumi.Input<string>;
+    pubNetworkFlow: pulumi.Input<string>;
     /**
      * The specification of public network SLB.
      */

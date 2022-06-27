@@ -234,6 +234,317 @@ func (o DedicatedHostNetworkAttributeArrayOutput) Index(i pulumi.IntInput) Dedic
 	}).(DedicatedHostNetworkAttributeOutput)
 }
 
+type EcsInstanceSetDataDisk struct {
+	// The ID of the automatic snapshot policy applied to the system disk.
+	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
+	// The category of the disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+	DiskCategory *string `pulumi:"diskCategory"`
+	// The description of the data disk.
+	DiskDescription *string `pulumi:"diskDescription"`
+	// The name of the data disk.
+	DiskName *string `pulumi:"diskName"`
+	// The size of the data disk. Unit: GiB.
+	// - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
+	// - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
+	// - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
+	// - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
+	DiskSize  int   `pulumi:"diskSize"`
+	Encrypted *bool `pulumi:"encrypted"`
+	// The KMS key ID corresponding to the data disk.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+	SnapshotId *string `pulumi:"snapshotId"`
+}
+
+// EcsInstanceSetDataDiskInput is an input type that accepts EcsInstanceSetDataDiskArgs and EcsInstanceSetDataDiskOutput values.
+// You can construct a concrete instance of `EcsInstanceSetDataDiskInput` via:
+//
+//          EcsInstanceSetDataDiskArgs{...}
+type EcsInstanceSetDataDiskInput interface {
+	pulumi.Input
+
+	ToEcsInstanceSetDataDiskOutput() EcsInstanceSetDataDiskOutput
+	ToEcsInstanceSetDataDiskOutputWithContext(context.Context) EcsInstanceSetDataDiskOutput
+}
+
+type EcsInstanceSetDataDiskArgs struct {
+	// The ID of the automatic snapshot policy applied to the system disk.
+	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
+	// The category of the disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+	DiskCategory pulumi.StringPtrInput `pulumi:"diskCategory"`
+	// The description of the data disk.
+	DiskDescription pulumi.StringPtrInput `pulumi:"diskDescription"`
+	// The name of the data disk.
+	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
+	// The size of the data disk. Unit: GiB.
+	// - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
+	// - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
+	// - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
+	// - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
+	DiskSize  pulumi.IntInput     `pulumi:"diskSize"`
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The KMS key ID corresponding to the data disk.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+}
+
+func (EcsInstanceSetDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsInstanceSetDataDisk)(nil)).Elem()
+}
+
+func (i EcsInstanceSetDataDiskArgs) ToEcsInstanceSetDataDiskOutput() EcsInstanceSetDataDiskOutput {
+	return i.ToEcsInstanceSetDataDiskOutputWithContext(context.Background())
+}
+
+func (i EcsInstanceSetDataDiskArgs) ToEcsInstanceSetDataDiskOutputWithContext(ctx context.Context) EcsInstanceSetDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetDataDiskOutput)
+}
+
+// EcsInstanceSetDataDiskArrayInput is an input type that accepts EcsInstanceSetDataDiskArray and EcsInstanceSetDataDiskArrayOutput values.
+// You can construct a concrete instance of `EcsInstanceSetDataDiskArrayInput` via:
+//
+//          EcsInstanceSetDataDiskArray{ EcsInstanceSetDataDiskArgs{...} }
+type EcsInstanceSetDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToEcsInstanceSetDataDiskArrayOutput() EcsInstanceSetDataDiskArrayOutput
+	ToEcsInstanceSetDataDiskArrayOutputWithContext(context.Context) EcsInstanceSetDataDiskArrayOutput
+}
+
+type EcsInstanceSetDataDiskArray []EcsInstanceSetDataDiskInput
+
+func (EcsInstanceSetDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcsInstanceSetDataDisk)(nil)).Elem()
+}
+
+func (i EcsInstanceSetDataDiskArray) ToEcsInstanceSetDataDiskArrayOutput() EcsInstanceSetDataDiskArrayOutput {
+	return i.ToEcsInstanceSetDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i EcsInstanceSetDataDiskArray) ToEcsInstanceSetDataDiskArrayOutputWithContext(ctx context.Context) EcsInstanceSetDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetDataDiskArrayOutput)
+}
+
+type EcsInstanceSetDataDiskOutput struct{ *pulumi.OutputState }
+
+func (EcsInstanceSetDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsInstanceSetDataDisk)(nil)).Elem()
+}
+
+func (o EcsInstanceSetDataDiskOutput) ToEcsInstanceSetDataDiskOutput() EcsInstanceSetDataDiskOutput {
+	return o
+}
+
+func (o EcsInstanceSetDataDiskOutput) ToEcsInstanceSetDataDiskOutputWithContext(ctx context.Context) EcsInstanceSetDataDiskOutput {
+	return o
+}
+
+// The ID of the automatic snapshot policy applied to the system disk.
+func (o EcsInstanceSetDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The category of the disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+func (o EcsInstanceSetDataDiskOutput) DiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) *string { return v.DiskCategory }).(pulumi.StringPtrOutput)
+}
+
+// The description of the data disk.
+func (o EcsInstanceSetDataDiskOutput) DiskDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) *string { return v.DiskDescription }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data disk.
+func (o EcsInstanceSetDataDiskOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) *string { return v.DiskName }).(pulumi.StringPtrOutput)
+}
+
+// The size of the data disk. Unit: GiB.
+// - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
+// - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
+// - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
+// - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
+func (o EcsInstanceSetDataDiskOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+func (o EcsInstanceSetDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The KMS key ID corresponding to the data disk.
+func (o EcsInstanceSetDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+func (o EcsInstanceSetDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+func (o EcsInstanceSetDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+type EcsInstanceSetDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (EcsInstanceSetDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcsInstanceSetDataDisk)(nil)).Elem()
+}
+
+func (o EcsInstanceSetDataDiskArrayOutput) ToEcsInstanceSetDataDiskArrayOutput() EcsInstanceSetDataDiskArrayOutput {
+	return o
+}
+
+func (o EcsInstanceSetDataDiskArrayOutput) ToEcsInstanceSetDataDiskArrayOutputWithContext(ctx context.Context) EcsInstanceSetDataDiskArrayOutput {
+	return o
+}
+
+func (o EcsInstanceSetDataDiskArrayOutput) Index(i pulumi.IntInput) EcsInstanceSetDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsInstanceSetDataDisk {
+		return vs[0].([]EcsInstanceSetDataDisk)[vs[1].(int)]
+	}).(EcsInstanceSetDataDiskOutput)
+}
+
+type EcsInstanceSetNetworkInterface struct {
+	// The description of ENI.
+	Description *string `pulumi:"description"`
+	// The name of ENI.
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+	// The primary private IP address of ENI.
+	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
+	// -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The ID of the vSwitch to which to connect ENI.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// EcsInstanceSetNetworkInterfaceInput is an input type that accepts EcsInstanceSetNetworkInterfaceArgs and EcsInstanceSetNetworkInterfaceOutput values.
+// You can construct a concrete instance of `EcsInstanceSetNetworkInterfaceInput` via:
+//
+//          EcsInstanceSetNetworkInterfaceArgs{...}
+type EcsInstanceSetNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToEcsInstanceSetNetworkInterfaceOutput() EcsInstanceSetNetworkInterfaceOutput
+	ToEcsInstanceSetNetworkInterfaceOutputWithContext(context.Context) EcsInstanceSetNetworkInterfaceOutput
+}
+
+type EcsInstanceSetNetworkInterfaceArgs struct {
+	// The description of ENI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name of ENI.
+	NetworkInterfaceName pulumi.StringPtrInput `pulumi:"networkInterfaceName"`
+	// The primary private IP address of ENI.
+	PrimaryIpAddress pulumi.StringPtrInput `pulumi:"primaryIpAddress"`
+	// -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The ID of the vSwitch to which to connect ENI.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (EcsInstanceSetNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsInstanceSetNetworkInterface)(nil)).Elem()
+}
+
+func (i EcsInstanceSetNetworkInterfaceArgs) ToEcsInstanceSetNetworkInterfaceOutput() EcsInstanceSetNetworkInterfaceOutput {
+	return i.ToEcsInstanceSetNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i EcsInstanceSetNetworkInterfaceArgs) ToEcsInstanceSetNetworkInterfaceOutputWithContext(ctx context.Context) EcsInstanceSetNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetNetworkInterfaceOutput)
+}
+
+// EcsInstanceSetNetworkInterfaceArrayInput is an input type that accepts EcsInstanceSetNetworkInterfaceArray and EcsInstanceSetNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `EcsInstanceSetNetworkInterfaceArrayInput` via:
+//
+//          EcsInstanceSetNetworkInterfaceArray{ EcsInstanceSetNetworkInterfaceArgs{...} }
+type EcsInstanceSetNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToEcsInstanceSetNetworkInterfaceArrayOutput() EcsInstanceSetNetworkInterfaceArrayOutput
+	ToEcsInstanceSetNetworkInterfaceArrayOutputWithContext(context.Context) EcsInstanceSetNetworkInterfaceArrayOutput
+}
+
+type EcsInstanceSetNetworkInterfaceArray []EcsInstanceSetNetworkInterfaceInput
+
+func (EcsInstanceSetNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcsInstanceSetNetworkInterface)(nil)).Elem()
+}
+
+func (i EcsInstanceSetNetworkInterfaceArray) ToEcsInstanceSetNetworkInterfaceArrayOutput() EcsInstanceSetNetworkInterfaceArrayOutput {
+	return i.ToEcsInstanceSetNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i EcsInstanceSetNetworkInterfaceArray) ToEcsInstanceSetNetworkInterfaceArrayOutputWithContext(ctx context.Context) EcsInstanceSetNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetNetworkInterfaceArrayOutput)
+}
+
+type EcsInstanceSetNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (EcsInstanceSetNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsInstanceSetNetworkInterface)(nil)).Elem()
+}
+
+func (o EcsInstanceSetNetworkInterfaceOutput) ToEcsInstanceSetNetworkInterfaceOutput() EcsInstanceSetNetworkInterfaceOutput {
+	return o
+}
+
+func (o EcsInstanceSetNetworkInterfaceOutput) ToEcsInstanceSetNetworkInterfaceOutputWithContext(ctx context.Context) EcsInstanceSetNetworkInterfaceOutput {
+	return o
+}
+
+// The description of ENI.
+func (o EcsInstanceSetNetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetNetworkInterface) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of ENI.
+func (o EcsInstanceSetNetworkInterfaceOutput) NetworkInterfaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetNetworkInterface) *string { return v.NetworkInterfaceName }).(pulumi.StringPtrOutput)
+}
+
+// The primary private IP address of ENI.
+func (o EcsInstanceSetNetworkInterfaceOutput) PrimaryIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetNetworkInterface) *string { return v.PrimaryIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+func (o EcsInstanceSetNetworkInterfaceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v EcsInstanceSetNetworkInterface) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch to which to connect ENI.
+func (o EcsInstanceSetNetworkInterfaceOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EcsInstanceSetNetworkInterface) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type EcsInstanceSetNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (EcsInstanceSetNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EcsInstanceSetNetworkInterface)(nil)).Elem()
+}
+
+func (o EcsInstanceSetNetworkInterfaceArrayOutput) ToEcsInstanceSetNetworkInterfaceArrayOutput() EcsInstanceSetNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o EcsInstanceSetNetworkInterfaceArrayOutput) ToEcsInstanceSetNetworkInterfaceArrayOutputWithContext(ctx context.Context) EcsInstanceSetNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o EcsInstanceSetNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) EcsInstanceSetNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsInstanceSetNetworkInterface {
+		return vs[0].([]EcsInstanceSetNetworkInterface)[vs[1].(int)]
+	}).(EcsInstanceSetNetworkInterfaceOutput)
+}
+
 type EcsLaunchTemplateDataDisk struct {
 	// The category of the disk.
 	Category *string `pulumi:"category"`
@@ -13728,6 +14039,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupLaunchTemplateConfigArrayInput)(nil)).Elem(), AutoProvisioningGroupLaunchTemplateConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeInput)(nil)).Elem(), DedicatedHostNetworkAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeArrayInput)(nil)).Elem(), DedicatedHostNetworkAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetDataDiskInput)(nil)).Elem(), EcsInstanceSetDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetDataDiskArrayInput)(nil)).Elem(), EcsInstanceSetDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetNetworkInterfaceInput)(nil)).Elem(), EcsInstanceSetNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetNetworkInterfaceArrayInput)(nil)).Elem(), EcsInstanceSetNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateDataDiskInput)(nil)).Elem(), EcsLaunchTemplateDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateDataDiskArrayInput)(nil)).Elem(), EcsLaunchTemplateDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateNetworkInterfacesInput)(nil)).Elem(), EcsLaunchTemplateNetworkInterfacesArgs{})
@@ -13873,6 +14188,10 @@ func init() {
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigArrayOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeArrayOutput{})
+	pulumi.RegisterOutputType(EcsInstanceSetDataDiskOutput{})
+	pulumi.RegisterOutputType(EcsInstanceSetDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(EcsInstanceSetNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(EcsInstanceSetNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateNetworkInterfacesOutput{})

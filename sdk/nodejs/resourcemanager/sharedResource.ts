@@ -56,7 +56,7 @@ export class SharedResource extends pulumi.CustomResource {
      */
     public readonly resourceShareId!: pulumi.Output<string>;
     /**
-     * The resource type of should shared, valid value `VSwitch`.
+     * The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
@@ -115,7 +115,7 @@ export interface SharedResourceState {
      */
     resourceShareId?: pulumi.Input<string>;
     /**
-     * The resource type of should shared, valid value `VSwitch`.
+     * The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -137,7 +137,7 @@ export interface SharedResourceArgs {
      */
     resourceShareId: pulumi.Input<string>;
     /**
-     * The resource type of should shared, valid value `VSwitch`.
+     * The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      */
     resourceType: pulumi.Input<string>;
 }

@@ -6,12 +6,6 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
- *
- * > **NOTE:**  Available in 1.99.0+.
- *
- * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
- *
  * ## Example Usage
  *
  * ```typescript

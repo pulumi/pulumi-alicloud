@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<bool> DataSynchronization { get; private set; } = null!;
 
         /// <summary>
-        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         /// </summary>
         [Output("dbList")]
         public Output<string> DbList { get; private set; } = null!;
@@ -385,7 +385,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<bool> DataSynchronization { get; set; } = null!;
 
         /// <summary>
-        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         /// </summary>
         [Input("dbList", required: true)]
         public Input<string> DbList { get; set; } = null!;
@@ -626,7 +626,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<bool>? DataSynchronization { get; set; }
 
         /// <summary>
-        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         /// </summary>
         [Input("dbList")]
         public Input<string>? DbList { get; set; }

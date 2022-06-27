@@ -488,7 +488,7 @@ import (
 // Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
 //
 // ```sh
-//  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+//  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
 // ```
 type NodePool struct {
 	pulumi.CustomResourceState
@@ -497,6 +497,8 @@ type NodePool struct {
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	CisEnabled pulumi.BoolPtrOutput `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -569,6 +571,9 @@ type NodePool struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	SocEnabled pulumi.BoolPtrOutput `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -641,6 +646,8 @@ type nodePoolState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -713,6 +720,9 @@ type nodePoolState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	SocEnabled *bool `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -748,6 +758,8 @@ type NodePoolState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -820,6 +832,9 @@ type NodePoolState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	SocEnabled pulumi.BoolPtrInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -859,6 +874,8 @@ type nodePoolArgs struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -929,6 +946,9 @@ type nodePoolArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	SocEnabled *bool `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -963,6 +983,8 @@ type NodePoolArgs struct {
 	AutoRenew pulumi.BoolPtrInput
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
@@ -1033,6 +1055,9 @@ type NodePoolArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	SocEnabled pulumi.BoolPtrInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.

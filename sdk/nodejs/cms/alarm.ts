@@ -19,10 +19,6 @@ import * as utilities from "../utilities";
  *
  * const basic = new alicloud.cms.Alarm("basic", {
  *     contactGroups: ["test-group"],
- *     dimensions: {
- *         device: "/dev/vda1,/dev/vdb1",
- *         instanceId: "i-bp1247,i-bp11gd",
- *     },
  *     effectiveInterval: "0:00-2:00",
  *     escalationsCritical: {
  *         comparisonOperator: "<=",
@@ -30,7 +26,16 @@ import * as utilities from "../utilities";
  *         threshold: "35",
  *         times: 2,
  *     },
- *     metric: "disk_writebytes",
+ *     metricDimensions: [
+ *         {
+ *             key: "instanceId",
+ *             value: "i-bp1247jeep0y53nu3bnk",
+ *         },
+ *         {
+ *             key: "device",
+ *             value: "/dev/vda1",
+ *         },
+ *     ],
  *     period: 900,
  *     project: "acs_ecs_dashboard",
  *     webhook: pulumi.interpolate`https://${alicloud_account_current.id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/`,
@@ -78,7 +83,9 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly contactGroups!: pulumi.Output<string[]>;
     /**
-     * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+     *
+     * @deprecated Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -111,6 +118,10 @@ export class Alarm extends pulumi.CustomResource {
      * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     public readonly metric!: pulumi.Output<string>;
+    /**
+     * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     */
+    public readonly metricDimensions!: pulumi.Output<outputs.cms.AlarmMetricDimension[]>;
     /**
      * The alarm rule name.
      */
@@ -188,6 +199,7 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["escalationsInfo"] = state ? state.escalationsInfo : undefined;
             resourceInputs["escalationsWarn"] = state ? state.escalationsWarn : undefined;
             resourceInputs["metric"] = state ? state.metric : undefined;
+            resourceInputs["metricDimensions"] = state ? state.metricDimensions : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["operator"] = state ? state.operator : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
@@ -204,9 +216,6 @@ export class Alarm extends pulumi.CustomResource {
             if ((!args || args.contactGroups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'contactGroups'");
             }
-            if ((!args || args.dimensions === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dimensions'");
-            }
             if ((!args || args.metric === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metric'");
             }
@@ -222,6 +231,7 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["escalationsInfo"] = args ? args.escalationsInfo : undefined;
             resourceInputs["escalationsWarn"] = args ? args.escalationsWarn : undefined;
             resourceInputs["metric"] = args ? args.metric : undefined;
+            resourceInputs["metricDimensions"] = args ? args.metricDimensions : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["operator"] = args ? args.operator : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
@@ -248,7 +258,9 @@ export interface AlarmState {
      */
     contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+     *
+     * @deprecated Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -281,6 +293,10 @@ export interface AlarmState {
      * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     metric?: pulumi.Input<string>;
+    /**
+     * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     */
+    metricDimensions?: pulumi.Input<pulumi.Input<inputs.cms.AlarmMetricDimension>[]>;
     /**
      * The alarm rule name.
      */
@@ -346,9 +362,11 @@ export interface AlarmArgs {
      */
     contactGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+     *
+     * @deprecated Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
      */
-    dimensions: pulumi.Input<{[key: string]: any}>;
+    dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
@@ -379,6 +397,10 @@ export interface AlarmArgs {
      * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     metric: pulumi.Input<string>;
+    /**
+     * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     */
+    metricDimensions?: pulumi.Input<pulumi.Input<inputs.cms.AlarmMetricDimension>[]>;
     /**
      * The alarm rule name.
      */

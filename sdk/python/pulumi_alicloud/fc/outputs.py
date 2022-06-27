@@ -1250,7 +1250,7 @@ class GetTriggersTriggerResult(dict):
         :param str last_modification_time: FC trigger last modification time.
         :param str name: FC trigger name.
         :param str source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
-        :param str type: Type of the trigger. Valid values: `oss`, `log`, `timer`, `http` and `mns_topic`.
+        :param str type: Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -1321,7 +1321,7 @@ class GetTriggersTriggerResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the trigger. Valid values: `oss`, `log`, `timer`, `http` and `mns_topic`.
+        Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
         """
         return pulumi.get(self, "type")
 

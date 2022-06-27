@@ -29,10 +29,10 @@ class DbInstanceArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DbInstance resource.
-        :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`.
+        :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
-        :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         :param pulumi.Input[int] db_node_storage: Instance storage space, which is measured in GB.
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
@@ -64,7 +64,7 @@ class DbInstanceArgs:
     @pulumi.getter(name="dbInstanceCategory")
     def db_instance_category(self) -> pulumi.Input[str]:
         """
-        The category of the db instance. Valid values: `HA`.
+        The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         """
         return pulumi.get(self, "db_instance_category")
 
@@ -100,7 +100,7 @@ class DbInstanceArgs:
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> pulumi.Input[str]:
         """
-        The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         """
         return pulumi.get(self, "db_node_class")
 
@@ -223,12 +223,12 @@ class _DbInstanceState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DbInstance resources.
-        :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`.
+        :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
         :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
-        :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         :param pulumi.Input[int] db_node_storage: Instance storage space, which is measured in GB.
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
@@ -268,7 +268,7 @@ class _DbInstanceState:
     @pulumi.getter(name="dbInstanceCategory")
     def db_instance_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The category of the db instance. Valid values: `HA`.
+        The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         """
         return pulumi.get(self, "db_instance_category")
 
@@ -328,7 +328,7 @@ class _DbInstanceState:
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         """
         return pulumi.get(self, "db_node_class")
 
@@ -475,12 +475,12 @@ class DbInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`.
+        :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
-        :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         :param pulumi.Input[int] db_node_storage: Instance storage space, which is measured in GB.
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
@@ -624,12 +624,12 @@ class DbInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`.
+        :param pulumi.Input[str] db_instance_category: The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         :param pulumi.Input[str] db_instance_description: According to the practical example or notes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceDbInstanceIpArrayArgs']]]] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See the following `Block db_instance_ip_array`.
         :param pulumi.Input[str] db_instance_network_type: The network type of the db instance. Valid values: `vpc`.
         :param pulumi.Input[str] db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
-        :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        :param pulumi.Input[str] db_node_class: The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         :param pulumi.Input[int] db_node_storage: Instance storage space, which is measured in GB.
         :param pulumi.Input[str] db_version: Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `PayAsYouGo`.
@@ -661,7 +661,7 @@ class DbInstance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceCategory")
     def db_instance_category(self) -> pulumi.Output[str]:
         """
-        The category of the db instance. Valid values: `HA`.
+        The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         """
         return pulumi.get(self, "db_instance_category")
 
@@ -701,7 +701,7 @@ class DbInstance(pulumi.CustomResource):
     @pulumi.getter(name="dbNodeClass")
     def db_node_class(self) -> pulumi.Output[str]:
         """
-        The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+        The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         """
         return pulumi.get(self, "db_node_class")
 

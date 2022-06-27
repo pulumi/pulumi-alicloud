@@ -69,7 +69,7 @@ export class DbInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The category of the db instance. Valid values: `HA`.
+     * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      */
     public readonly dbInstanceCategory!: pulumi.Output<string>;
     /**
@@ -89,7 +89,7 @@ export class DbInstance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
-     * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+     * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
     /**
@@ -194,7 +194,7 @@ export class DbInstance extends pulumi.CustomResource {
  */
 export interface DbInstanceState {
     /**
-     * The category of the db instance. Valid values: `HA`.
+     * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      */
     dbInstanceCategory?: pulumi.Input<string>;
     /**
@@ -214,7 +214,7 @@ export interface DbInstanceState {
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
-     * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+     * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
      */
     dbNodeClass?: pulumi.Input<string>;
     /**
@@ -252,7 +252,7 @@ export interface DbInstanceState {
  */
 export interface DbInstanceArgs {
     /**
-     * The category of the db instance. Valid values: `HA`.
+     * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      */
     dbInstanceCategory: pulumi.Input<string>;
     /**
@@ -272,7 +272,7 @@ export interface DbInstanceArgs {
      */
     dbInstanceStorageType: pulumi.Input<string>;
     /**
-     * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+     * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
      */
     dbNodeClass: pulumi.Input<string>;
     /**

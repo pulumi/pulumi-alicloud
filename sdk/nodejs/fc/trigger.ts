@@ -82,7 +82,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly triggerId!: pulumi.Output<string>;
     /**
-     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -183,7 +183,7 @@ export interface TriggerState {
      */
     triggerId?: pulumi.Input<string>;
     /**
-     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      */
     type?: pulumi.Input<string>;
 }
@@ -225,7 +225,7 @@ export interface TriggerArgs {
      */
     sourceArn?: pulumi.Input<string>;
     /**
-     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      */
     type: pulumi.Input<string>;
 }

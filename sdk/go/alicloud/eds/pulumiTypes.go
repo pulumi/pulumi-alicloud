@@ -1856,6 +1856,8 @@ type GetNetworkPackagesPackage struct {
 	Bandwidth int `pulumi:"bandwidth"`
 	// The creation time of network package.
 	CreateTime string `pulumi:"createTime"`
+	// The public IP address list of the network packet.
+	EipAddresses []string `pulumi:"eipAddresses"`
 	// The expired time of package.
 	ExpiredTime string `pulumi:"expiredTime"`
 	// The ID of the Network Package.
@@ -1888,6 +1890,8 @@ type GetNetworkPackagesPackageArgs struct {
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
 	// The creation time of network package.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The public IP address list of the network packet.
+	EipAddresses pulumi.StringArrayInput `pulumi:"eipAddresses"`
 	// The expired time of package.
 	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
 	// The ID of the Network Package.
@@ -1963,6 +1967,11 @@ func (o GetNetworkPackagesPackageOutput) Bandwidth() pulumi.IntOutput {
 // The creation time of network package.
 func (o GetNetworkPackagesPackageOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The public IP address list of the network packet.
+func (o GetNetworkPackagesPackageOutput) EipAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) []string { return v.EipAddresses }).(pulumi.StringArrayOutput)
 }
 
 // The expired time of package.

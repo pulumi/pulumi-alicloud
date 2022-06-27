@@ -16,15 +16,16 @@ __all__ = ['AlarmArgs', 'Alarm']
 class AlarmArgs:
     def __init__(__self__, *,
                  contact_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 dimensions: pulumi.Input[Mapping[str, Any]],
                  metric: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  escalations_critical: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']] = None,
                  escalations_info: Optional[pulumi.Input['AlarmEscalationsInfoArgs']] = None,
                  escalations_warn: Optional[pulumi.Input['AlarmEscalationsWarnArgs']] = None,
+                 metric_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmMetricDimensionArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -37,15 +38,16 @@ class AlarmArgs:
         """
         The set of arguments for constructing a Alarm resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input['AlarmEscalationsCriticalArgs'] escalations_critical: A configuration of critical alarm (documented below).
         :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info (documented below).
         :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmMetricDimensionArgs']]] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
         :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -57,9 +59,13 @@ class AlarmArgs:
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         pulumi.set(__self__, "contact_groups", contact_groups)
-        pulumi.set(__self__, "dimensions", dimensions)
         pulumi.set(__self__, "metric", metric)
         pulumi.set(__self__, "project", project)
+        if dimensions is not None:
+            warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
+            pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
         if effective_interval is not None:
             pulumi.set(__self__, "effective_interval", effective_interval)
         if enabled is not None:
@@ -75,6 +81,8 @@ class AlarmArgs:
             pulumi.set(__self__, "escalations_info", escalations_info)
         if escalations_warn is not None:
             pulumi.set(__self__, "escalations_warn", escalations_warn)
+        if metric_dimensions is not None:
+            pulumi.set(__self__, "metric_dimensions", metric_dimensions)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if operator is not None:
@@ -123,18 +131,6 @@ class AlarmArgs:
 
     @property
     @pulumi.getter
-    def dimensions(self) -> pulumi.Input[Mapping[str, Any]]:
-        """
-        Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        """
-        return pulumi.get(self, "dimensions")
-
-    @dimensions.setter
-    def dimensions(self, value: pulumi.Input[Mapping[str, Any]]):
-        pulumi.set(self, "dimensions", value)
-
-    @property
-    @pulumi.getter
     def metric(self) -> pulumi.Input[str]:
         """
         Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
@@ -156,6 +152,18 @@ class AlarmArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "dimensions", value)
 
     @property
     @pulumi.getter(name="effectiveInterval")
@@ -228,6 +236,18 @@ class AlarmArgs:
     @escalations_warn.setter
     def escalations_warn(self, value: Optional[pulumi.Input['AlarmEscalationsWarnArgs']]):
         pulumi.set(self, "escalations_warn", value)
+
+    @property
+    @pulumi.getter(name="metricDimensions")
+    def metric_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmMetricDimensionArgs']]]]:
+        """
+        Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        """
+        return pulumi.get(self, "metric_dimensions")
+
+    @metric_dimensions.setter
+    def metric_dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmMetricDimensionArgs']]]]):
+        pulumi.set(self, "metric_dimensions", value)
 
     @property
     @pulumi.getter
@@ -350,6 +370,7 @@ class _AlarmState:
                  escalations_info: Optional[pulumi.Input['AlarmEscalationsInfoArgs']] = None,
                  escalations_warn: Optional[pulumi.Input['AlarmEscalationsWarnArgs']] = None,
                  metric: Optional[pulumi.Input[str]] = None,
+                 metric_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmMetricDimensionArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -364,7 +385,7 @@ class _AlarmState:
         """
         Input properties used for looking up and filtering Alarm resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
@@ -372,6 +393,7 @@ class _AlarmState:
         :param pulumi.Input['AlarmEscalationsInfoArgs'] escalations_info: A configuration of critical info (documented below).
         :param pulumi.Input['AlarmEscalationsWarnArgs'] escalations_warn: A configuration of critical warn (documented below).
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmMetricDimensionArgs']]] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
         :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -386,6 +408,9 @@ class _AlarmState:
         """
         if contact_groups is not None:
             pulumi.set(__self__, "contact_groups", contact_groups)
+        if dimensions is not None:
+            warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
+            pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if effective_interval is not None:
@@ -405,6 +430,8 @@ class _AlarmState:
             pulumi.set(__self__, "escalations_warn", escalations_warn)
         if metric is not None:
             pulumi.set(__self__, "metric", metric)
+        if metric_dimensions is not None:
+            pulumi.set(__self__, "metric_dimensions", metric_dimensions)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if operator is not None:
@@ -459,7 +486,7 @@ class _AlarmState:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         """
         return pulumi.get(self, "dimensions")
 
@@ -550,6 +577,18 @@ class _AlarmState:
     @metric.setter
     def metric(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metric", value)
+
+    @property
+    @pulumi.getter(name="metricDimensions")
+    def metric_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmMetricDimensionArgs']]]]:
+        """
+        Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        """
+        return pulumi.get(self, "metric_dimensions")
+
+    @metric_dimensions.setter
+    def metric_dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmMetricDimensionArgs']]]]):
+        pulumi.set(self, "metric_dimensions", value)
 
     @property
     @pulumi.getter
@@ -698,6 +737,7 @@ class Alarm(pulumi.CustomResource):
                  escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
                  escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
                  metric: Optional[pulumi.Input[str]] = None,
+                 metric_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmMetricDimensionArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -723,10 +763,6 @@ class Alarm(pulumi.CustomResource):
 
         basic = alicloud.cms.Alarm("basic",
             contact_groups=["test-group"],
-            dimensions={
-                "device": "/dev/vda1,/dev/vdb1",
-                "instanceId": "i-bp1247,i-bp11gd",
-            },
             effective_interval="0:00-2:00",
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
                 comparison_operator="<=",
@@ -734,7 +770,16 @@ class Alarm(pulumi.CustomResource):
                 threshold="35",
                 times=2,
             ),
-            metric="disk_writebytes",
+            metric_dimensions=[
+                alicloud.cms.AlarmMetricDimensionArgs(
+                    key="instanceId",
+                    value="i-bp1247jeep0y53nu3bnk",
+                ),
+                alicloud.cms.AlarmMetricDimensionArgs(
+                    key="device",
+                    value="/dev/vda1",
+                ),
+            ],
             period=900,
             project="acs_ecs_dashboard",
             webhook=f"https://{data['alicloud_account']['current']['id']}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")
@@ -751,7 +796,7 @@ class Alarm(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
@@ -759,6 +804,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info (documented below).
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn (documented below).
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmMetricDimensionArgs']]]] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
         :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -790,10 +836,6 @@ class Alarm(pulumi.CustomResource):
 
         basic = alicloud.cms.Alarm("basic",
             contact_groups=["test-group"],
-            dimensions={
-                "device": "/dev/vda1,/dev/vdb1",
-                "instanceId": "i-bp1247,i-bp11gd",
-            },
             effective_interval="0:00-2:00",
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
                 comparison_operator="<=",
@@ -801,7 +843,16 @@ class Alarm(pulumi.CustomResource):
                 threshold="35",
                 times=2,
             ),
-            metric="disk_writebytes",
+            metric_dimensions=[
+                alicloud.cms.AlarmMetricDimensionArgs(
+                    key="instanceId",
+                    value="i-bp1247jeep0y53nu3bnk",
+                ),
+                alicloud.cms.AlarmMetricDimensionArgs(
+                    key="device",
+                    value="/dev/vda1",
+                ),
+            ],
             period=900,
             project="acs_ecs_dashboard",
             webhook=f"https://{data['alicloud_account']['current']['id']}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")
@@ -839,6 +890,7 @@ class Alarm(pulumi.CustomResource):
                  escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
                  escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
                  metric: Optional[pulumi.Input[str]] = None,
+                 metric_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmMetricDimensionArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -864,8 +916,9 @@ class Alarm(pulumi.CustomResource):
             if contact_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'contact_groups'")
             __props__.__dict__["contact_groups"] = contact_groups
-            if dimensions is None and not opts.urn:
-                raise TypeError("Missing required property 'dimensions'")
+            if dimensions is not None and not opts.urn:
+                warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
+                pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
             __props__.__dict__["dimensions"] = dimensions
             __props__.__dict__["effective_interval"] = effective_interval
             __props__.__dict__["enabled"] = enabled
@@ -879,6 +932,7 @@ class Alarm(pulumi.CustomResource):
             if metric is None and not opts.urn:
                 raise TypeError("Missing required property 'metric'")
             __props__.__dict__["metric"] = metric
+            __props__.__dict__["metric_dimensions"] = metric_dimensions
             __props__.__dict__["name"] = name
             if operator is not None and not opts.urn:
                 warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
@@ -926,6 +980,7 @@ class Alarm(pulumi.CustomResource):
             escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
             escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
             metric: Optional[pulumi.Input[str]] = None,
+            metric_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmMetricDimensionArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             operator: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
@@ -945,7 +1000,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[Mapping[str, Any]] dimensions: Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
         :param pulumi.Input[int] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
@@ -953,6 +1008,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info (documented below).
         :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn (documented below).
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmMetricDimensionArgs']]]] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
         :param pulumi.Input[str] operator: It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
@@ -978,6 +1034,7 @@ class Alarm(pulumi.CustomResource):
         __props__.__dict__["escalations_info"] = escalations_info
         __props__.__dict__["escalations_warn"] = escalations_warn
         __props__.__dict__["metric"] = metric
+        __props__.__dict__["metric_dimensions"] = metric_dimensions
         __props__.__dict__["name"] = name
         __props__.__dict__["operator"] = operator
         __props__.__dict__["period"] = period
@@ -1003,7 +1060,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def dimensions(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         """
         return pulumi.get(self, "dimensions")
 
@@ -1062,6 +1119,14 @@ class Alarm(pulumi.CustomResource):
         Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric")
+
+    @property
+    @pulumi.getter(name="metricDimensions")
+    def metric_dimensions(self) -> pulumi.Output[Sequence['outputs.AlarmMetricDimension']]:
+        """
+        Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        """
+        return pulumi.get(self, "metric_dimensions")
 
     @property
     @pulumi.getter

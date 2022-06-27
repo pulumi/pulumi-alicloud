@@ -12,12 +12,6 @@ namespace Pulumi.AliCloud.Cfg
     public static class GetDeliveryChannels
     {
         /// <summary>
-        /// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
-        /// 
-        /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -52,12 +46,6 @@ namespace Pulumi.AliCloud.Cfg
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
-        /// 
-        /// &gt; **NOTE:**  Available in 1.99.0+.
-        /// 
-        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

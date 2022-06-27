@@ -30,17 +30,50 @@ __all__ = [
 
 @pulumi.output_type
 class ClusterBootstrapAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executionFailStrategy":
+            suggest = "execution_fail_strategy"
+        elif key == "executionMoment":
+            suggest = "execution_moment"
+        elif key == "executionTarget":
+            suggest = "execution_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterBootstrapAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterBootstrapAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterBootstrapAction.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  arg: Optional[str] = None,
+                 execution_fail_strategy: Optional[str] = None,
+                 execution_moment: Optional[str] = None,
+                 execution_target: Optional[str] = None,
                  name: Optional[str] = None,
                  path: Optional[str] = None):
         """
         :param str arg: bootstrap action args, e.g. "--a=b".
+        :param str execution_fail_strategy: bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+        :param str execution_moment: bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+        :param str execution_target: bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
         :param str name: bootstrap action name.
         :param str path: bootstrap action path, e.g. "oss://bucket/path".
         """
         if arg is not None:
             pulumi.set(__self__, "arg", arg)
+        if execution_fail_strategy is not None:
+            pulumi.set(__self__, "execution_fail_strategy", execution_fail_strategy)
+        if execution_moment is not None:
+            pulumi.set(__self__, "execution_moment", execution_moment)
+        if execution_target is not None:
+            pulumi.set(__self__, "execution_target", execution_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if path is not None:
@@ -53,6 +86,30 @@ class ClusterBootstrapAction(dict):
         bootstrap action args, e.g. "--a=b".
         """
         return pulumi.get(self, "arg")
+
+    @property
+    @pulumi.getter(name="executionFailStrategy")
+    def execution_fail_strategy(self) -> Optional[str]:
+        """
+        bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+        """
+        return pulumi.get(self, "execution_fail_strategy")
+
+    @property
+    @pulumi.getter(name="executionMoment")
+    def execution_moment(self) -> Optional[str]:
+        """
+        bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+        """
+        return pulumi.get(self, "execution_moment")
+
+    @property
+    @pulumi.getter(name="executionTarget")
+    def execution_target(self) -> Optional[str]:
+        """
+        bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
+        """
+        return pulumi.get(self, "execution_target")
 
     @property
     @pulumi.getter

@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RouteMap{}
 	case "alicloud:cen/routeService:RouteService":
 		r = &RouteService{}
+	case "alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy":
+		r = &TrafficMarkingPolicy{}
 	case "alicloud:cen/transitRouter:TransitRouter":
 		r = &TransitRouter{}
 	case "alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment":
@@ -127,6 +129,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cen/routeService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/trafficMarkingPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

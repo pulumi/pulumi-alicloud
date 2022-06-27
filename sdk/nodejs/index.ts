@@ -111,6 +111,7 @@ import * as ros from "./ros";
 import * as sae from "./sae";
 import * as sag from "./sag";
 import * as scdn from "./scdn";
+import * as schedulerx from "./schedulerx";
 import * as sddp from "./sddp";
 import * as securitycenter from "./securitycenter";
 import * as servicemesh from "./servicemesh";
@@ -218,6 +219,7 @@ export {
     sae,
     sag,
     scdn,
+    schedulerx,
     sddp,
     securitycenter,
     servicemesh,

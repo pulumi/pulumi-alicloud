@@ -233,8 +233,11 @@ type ProviderEndpoint struct {
 	Eais                *string `pulumi:"eais"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
+	Edas                *string `pulumi:"edas"`
+	Edasschedulerx      *string `pulumi:"edasschedulerx"`
 	Edsuser             *string `pulumi:"edsuser"`
 	Ehpc                *string `pulumi:"ehpc"`
+	Ehs                 *string `pulumi:"ehs"`
 	Eipanycast          *string `pulumi:"eipanycast"`
 	Elasticsearch       *string `pulumi:"elasticsearch"`
 	Emr                 *string `pulumi:"emr"`
@@ -358,8 +361,11 @@ type ProviderEndpointArgs struct {
 	Eais                pulumi.StringPtrInput `pulumi:"eais"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
+	Edas                pulumi.StringPtrInput `pulumi:"edas"`
+	Edasschedulerx      pulumi.StringPtrInput `pulumi:"edasschedulerx"`
 	Edsuser             pulumi.StringPtrInput `pulumi:"edsuser"`
 	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
+	Ehs                 pulumi.StringPtrInput `pulumi:"ehs"`
 	Eipanycast          pulumi.StringPtrInput `pulumi:"eipanycast"`
 	Elasticsearch       pulumi.StringPtrInput `pulumi:"elasticsearch"`
 	Emr                 pulumi.StringPtrInput `pulumi:"emr"`
@@ -654,12 +660,24 @@ func (o ProviderEndpointOutput) Ecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ecs }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Edas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Edas }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Edasschedulerx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Edasschedulerx }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Edsuser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Edsuser }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ehpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ehpc }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Ehs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ehs }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Eipanycast() pulumi.StringPtrOutput {

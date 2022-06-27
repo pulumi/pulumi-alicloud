@@ -49,7 +49,7 @@ class EcsDiskArgs:
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
                * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
                * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
-        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -237,7 +237,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        Indicates whether to enable creating snapshot automatically.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -470,7 +470,7 @@ class _EcsDiskState:
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
                * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
                * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
-        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -661,7 +661,7 @@ class _EcsDiskState:
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        Indicates whether to enable creating snapshot automatically.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -944,7 +944,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
                * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
                * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
-        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -1145,7 +1145,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
                * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
                * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
-        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -1271,9 +1271,9 @@ class EcsDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableAutoSnapshot")
-    def enable_auto_snapshot(self) -> pulumi.Output[Optional[bool]]:
+    def enable_auto_snapshot(self) -> pulumi.Output[bool]:
         """
-        Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        Indicates whether to enable creating snapshot automatically.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 

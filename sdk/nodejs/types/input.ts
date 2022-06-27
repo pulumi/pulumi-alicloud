@@ -56,8 +56,11 @@ export interface ProviderEndpoint {
     eais?: pulumi.Input<string>;
     eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
+    edas?: pulumi.Input<string>;
+    edasschedulerx?: pulumi.Input<string>;
     edsuser?: pulumi.Input<string>;
     ehpc?: pulumi.Input<string>;
+    ehs?: pulumi.Input<string>;
     eipanycast?: pulumi.Input<string>;
     elasticsearch?: pulumi.Input<string>;
     emr?: pulumi.Input<string>;
@@ -1485,6 +1488,17 @@ export namespace cms {
         times?: pulumi.Input<number>;
     }
 
+    export interface AlarmMetricDimension {
+        /**
+         * The Key of metric_dimensions.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The Value of metric_dimensions.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface DynamicTagGroupMatchExpress {
         /**
          * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
@@ -1709,6 +1723,7 @@ export namespace cms {
          */
         slsUserId?: pulumi.Input<string>;
     }
+
 }
 
 export namespace config {
@@ -3035,6 +3050,69 @@ export namespace ecs {
         udpTimeout?: pulumi.Input<number>;
     }
 
+    export interface EcsInstanceSetDataDisk {
+        /**
+         * The ID of the automatic snapshot policy applied to the system disk.
+         */
+        autoSnapshotPolicyId?: pulumi.Input<string>;
+        /**
+         * The category of the disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+         */
+        diskCategory?: pulumi.Input<string>;
+        /**
+         * The description of the data disk.
+         */
+        diskDescription?: pulumi.Input<string>;
+        /**
+         * The name of the data disk.
+         */
+        diskName?: pulumi.Input<string>;
+        /**
+         * The size of the data disk. Unit: GiB.
+         * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
+         * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
+         * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
+         * - When `diskCategory` is `cloud`, Valid values: `5` to `200`.
+         */
+        diskSize: pulumi.Input<number>;
+        encrypted?: pulumi.Input<boolean>;
+        /**
+         * The KMS key ID corresponding to the data disk.
+         */
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+         */
+        snapshotId?: pulumi.Input<string>;
+    }
+
+    export interface EcsInstanceSetNetworkInterface {
+        /**
+         * The description of ENI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The name of ENI.
+         */
+        networkInterfaceName?: pulumi.Input<string>;
+        /**
+         * The primary private IP address of ENI.
+         */
+        primaryIpAddress?: pulumi.Input<string>;
+        /**
+         * -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+         */
+        securityGroupId: pulumi.Input<string>;
+        /**
+         * The ID of the vSwitch to which to connect ENI.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
     export interface EcsLaunchTemplateDataDisk {
         /**
          * The category of the disk.
@@ -3141,18 +3219,18 @@ export namespace ecs {
         description?: pulumi.Input<string>;
     }
 
-    export interface GetDedicatedHostsOperationLock {
-        /**
-         * The reason why the dedicated host resource is locked.
-         */
-        lockReason?: string;
-    }
-
     export interface GetDedicatedHostsOperationLockArgs {
         /**
          * The reason why the dedicated host resource is locked.
          */
         lockReason?: pulumi.Input<string>;
+    }
+
+    export interface GetDedicatedHostsOperationLock {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason?: string;
     }
 
     export interface GetDisksOperationLock {
@@ -3163,12 +3241,12 @@ export namespace ecs {
         lockReason?: pulumi.Input<string>;
     }
 
-    export interface GetEcsDisksOperationLock {
-        lockReason?: string;
-    }
-
     export interface GetEcsDisksOperationLockArgs {
         lockReason?: pulumi.Input<string>;
+    }
+
+    export interface GetEcsDisksOperationLock {
+        lockReason?: string;
     }
 
     export interface ImageDiskDeviceMapping {
@@ -3422,6 +3500,74 @@ export namespace eds {
 }
 
 export namespace ehpc {
+    export interface ClusterAdditionalVolume {
+        /**
+         * The queue of the nodes to which the additional file system is attached.
+         */
+        jobQueue?: pulumi.Input<string>;
+        /**
+         * The local directory on which the additional file system is mounted.
+         */
+        localDirectory?: pulumi.Input<string>;
+        /**
+         * The type of the cluster. Valid value: `PublicCloud`.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * The remote directory to which the additional file system is mounted.
+         */
+        remoteDirectory?: pulumi.Input<string>;
+        /**
+         * The roles. See the following `Block roles`.
+         */
+        roles?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterAdditionalVolumeRole>[]>;
+        /**
+         * The ID of the additional file system.
+         */
+        volumeId?: pulumi.Input<string>;
+        /**
+         * The mount options of the file system.
+         */
+        volumeMountOption?: pulumi.Input<string>;
+        /**
+         * The mount target of the additional file system.
+         */
+        volumeMountpoint?: pulumi.Input<string>;
+        /**
+         * The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+         */
+        volumeProtocol?: pulumi.Input<string>;
+        /**
+         * The type of the additional shared storage. Only NAS file systems are supported.
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface ClusterAdditionalVolumeRole {
+        /**
+         * The type of the nodes to which the additional file system is attached.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface ClusterApplication {
+        /**
+         * The tag of the software.
+         */
+        tag?: pulumi.Input<string>;
+    }
+
+    export interface ClusterPostInstallScript {
+        /**
+         * The parameter that is used to run the script after the cluster is created.
+         */
+        args?: pulumi.Input<string>;
+        /**
+         * The URL that is used to download the script after the cluster is created.
+         */
+        url?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace eipanycast {
@@ -3436,6 +3582,18 @@ export namespace emr {
          * bootstrap action args, e.g. "--a=b".
          */
         arg?: pulumi.Input<string>;
+        /**
+         * bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+         */
+        executionFailStrategy?: pulumi.Input<string>;
+        /**
+         * bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+         */
+        executionMoment?: pulumi.Input<string>;
+        /**
+         * bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
+         */
+        executionTarget?: pulumi.Input<string>;
         /**
          * bootstrap action name.
          */
@@ -5221,6 +5379,30 @@ export namespace ots {
          */
         type: pulumi.Input<string>;
     }
+
+    export interface TunnelChannel {
+        /**
+         * The id of the channel.
+         */
+        channelId?: pulumi.Input<string>;
+        /**
+         * The latest consumption time of the channel, unix time in nanosecond.
+         */
+        channelRpo?: pulumi.Input<number>;
+        /**
+         * The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+         */
+        channelStatus?: pulumi.Input<string>;
+        /**
+         * The type of the channel, valid values: `BaseData`, `Stream`.
+         */
+        channelType?: pulumi.Input<string>;
+        /**
+         * The client id of the channel.
+         */
+        clientId?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace polardb {
@@ -6039,6 +6221,9 @@ export namespace scdn {
         type: pulumi.Input<string>;
     }
 
+}
+
+export namespace schedulerx {
 }
 
 export namespace sddp {

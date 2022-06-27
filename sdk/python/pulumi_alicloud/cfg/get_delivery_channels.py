@@ -116,12 +116,6 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
                           status: Optional[int] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeliveryChannelsResult:
     """
-    This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
-
-    > **NOTE:**  Available in 1.99.0+.
-
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-
     ## Example Usage
 
     ```python
@@ -166,12 +160,6 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  status: Optional[pulumi.Input[Optional[int]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeliveryChannelsResult]:
     """
-    This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
-
-    > **NOTE:**  Available in 1.99.0+.
-
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-
     ## Example Usage
 
     ```python

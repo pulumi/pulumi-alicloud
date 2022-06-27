@@ -55,9 +55,23 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
+        /// </summary>
+        [Output("encryptType")]
+        public Output<string> EncryptType { get; private set; } = null!;
+
+        /// <summary>
+        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string?> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
-        /// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+        /// - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
+        /// - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         /// </summary>
         [Output("redundancyType")]
         public Output<string> RedundancyType { get; private set; } = null!;
@@ -139,9 +153,23 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
+        /// </summary>
+        [Input("encryptType")]
+        public Input<string>? EncryptType { get; set; }
+
+        /// <summary>
+        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
-        /// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+        /// - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
+        /// - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -178,9 +206,23 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
+        /// </summary>
+        [Input("encryptType")]
+        public Input<string>? EncryptType { get; set; }
+
+        /// <summary>
+        /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
-        /// `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+        /// - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
+        /// - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }

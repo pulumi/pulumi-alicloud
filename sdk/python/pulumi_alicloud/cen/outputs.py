@@ -22,6 +22,7 @@ __all__ = [
     'GetRouteEntriesEntryConflictResult',
     'GetRouteMapsMapResult',
     'GetRouteServicesServiceResult',
+    'GetTrafficMarkingPoliciesPolicyResult',
     'GetTransitRouterAvailableResourcesResourceResult',
     'GetTransitRouterPeerAttachmentsAttachmentResult',
     'GetTransitRouterRouteEntriesEntryResult',
@@ -1454,6 +1455,101 @@ class GetRouteServicesServiceResult(dict):
         The update interval. Default value: 5. The value cannot be modified.
         """
         return pulumi.get(self, "update_interval")
+
+
+@pulumi.output_type
+class GetTrafficMarkingPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 id: str,
+                 marking_dscp: int,
+                 priority: int,
+                 status: str,
+                 traffic_marking_policy_id: str,
+                 traffic_marking_policy_name: str,
+                 transit_router_id: str):
+        """
+        :param str description: The description of the Traffic Marking Policy.
+        :param str id: The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
+        :param int marking_dscp: The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
+        :param int priority: The Priority of the Traffic Marking Policy.
+        :param str status: The status of the resource.
+        :param str traffic_marking_policy_id: The ID of the Traffic Marking Policy.
+        :param str traffic_marking_policy_name: The name of the Traffic Marking Policy.
+        :param str transit_router_id: The ID of the transit router.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "marking_dscp", marking_dscp)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_marking_policy_id", traffic_marking_policy_id)
+        pulumi.set(__self__, "traffic_marking_policy_name", traffic_marking_policy_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Traffic Marking Policy.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="markingDscp")
+    def marking_dscp(self) -> int:
+        """
+        The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
+        """
+        return pulumi.get(self, "marking_dscp")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        The Priority of the Traffic Marking Policy.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trafficMarkingPolicyId")
+    def traffic_marking_policy_id(self) -> str:
+        """
+        The ID of the Traffic Marking Policy.
+        """
+        return pulumi.get(self, "traffic_marking_policy_id")
+
+    @property
+    @pulumi.getter(name="trafficMarkingPolicyName")
+    def traffic_marking_policy_name(self) -> str:
+        """
+        The name of the Traffic Marking Policy.
+        """
+        return pulumi.get(self, "traffic_marking_policy_name")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of the transit router.
+        """
+        return pulumi.get(self, "transit_router_id")
 
 
 @pulumi.output_type

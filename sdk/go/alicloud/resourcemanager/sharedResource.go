@@ -31,7 +31,7 @@ type SharedResource struct {
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringOutput `pulumi:"resourceShareId"`
-	// The resource type of should shared, valid value `VSwitch`.
+	// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// status.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -79,7 +79,7 @@ type sharedResourceState struct {
 	ResourceId *string `pulumi:"resourceId"`
 	// The resource share ID of resource manager.
 	ResourceShareId *string `pulumi:"resourceShareId"`
-	// The resource type of should shared, valid value `VSwitch`.
+	// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	ResourceType *string `pulumi:"resourceType"`
 	// status.
 	Status *string `pulumi:"status"`
@@ -90,7 +90,7 @@ type SharedResourceState struct {
 	ResourceId pulumi.StringPtrInput
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringPtrInput
-	// The resource type of should shared, valid value `VSwitch`.
+	// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	ResourceType pulumi.StringPtrInput
 	// status.
 	Status pulumi.StringPtrInput
@@ -105,7 +105,7 @@ type sharedResourceArgs struct {
 	ResourceId string `pulumi:"resourceId"`
 	// The resource share ID of resource manager.
 	ResourceShareId string `pulumi:"resourceShareId"`
-	// The resource type of should shared, valid value `VSwitch`.
+	// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -115,7 +115,7 @@ type SharedResourceArgs struct {
 	ResourceId pulumi.StringInput
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringInput
-	// The resource type of should shared, valid value `VSwitch`.
+	// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	ResourceType pulumi.StringInput
 }
 

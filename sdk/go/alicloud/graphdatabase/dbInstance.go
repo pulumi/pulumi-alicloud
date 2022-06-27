@@ -59,7 +59,7 @@ import (
 type DbInstance struct {
 	pulumi.CustomResourceState
 
-	// The category of the db instance. Valid values: `HA`.
+	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory pulumi.StringOutput `pulumi:"dbInstanceCategory"`
 	// According to the practical example or notes.
 	DbInstanceDescription pulumi.StringPtrOutput `pulumi:"dbInstanceDescription"`
@@ -69,7 +69,7 @@ type DbInstance struct {
 	DbInstanceNetworkType pulumi.StringOutput `pulumi:"dbInstanceNetworkType"`
 	// Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
-	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
 	// Instance storage space, which is measured in GB.
 	DbNodeStorage pulumi.IntOutput `pulumi:"dbNodeStorage"`
@@ -137,7 +137,7 @@ func GetDbInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DbInstance resources.
 type dbInstanceState struct {
-	// The category of the db instance. Valid values: `HA`.
+	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`
 	// According to the practical example or notes.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
@@ -147,7 +147,7 @@ type dbInstanceState struct {
 	DbInstanceNetworkType *string `pulumi:"dbInstanceNetworkType"`
 	// Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
-	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// Instance storage space, which is measured in GB.
 	DbNodeStorage *int `pulumi:"dbNodeStorage"`
@@ -166,7 +166,7 @@ type dbInstanceState struct {
 }
 
 type DbInstanceState struct {
-	// The category of the db instance. Valid values: `HA`.
+	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory pulumi.StringPtrInput
 	// According to the practical example or notes.
 	DbInstanceDescription pulumi.StringPtrInput
@@ -176,7 +176,7 @@ type DbInstanceState struct {
 	DbInstanceNetworkType pulumi.StringPtrInput
 	// Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
 	DbInstanceStorageType pulumi.StringPtrInput
-	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
 	DbNodeClass pulumi.StringPtrInput
 	// Instance storage space, which is measured in GB.
 	DbNodeStorage pulumi.IntPtrInput
@@ -199,7 +199,7 @@ func (DbInstanceState) ElementType() reflect.Type {
 }
 
 type dbInstanceArgs struct {
-	// The category of the db instance. Valid values: `HA`.
+	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory string `pulumi:"dbInstanceCategory"`
 	// According to the practical example or notes.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
@@ -209,7 +209,7 @@ type dbInstanceArgs struct {
 	DbInstanceNetworkType string `pulumi:"dbInstanceNetworkType"`
 	// Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
 	DbInstanceStorageType string `pulumi:"dbInstanceStorageType"`
-	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
 	DbNodeClass string `pulumi:"dbNodeClass"`
 	// Instance storage space, which is measured in GB.
 	DbNodeStorage int `pulumi:"dbNodeStorage"`
@@ -227,7 +227,7 @@ type dbInstanceArgs struct {
 
 // The set of arguments for constructing a DbInstance resource.
 type DbInstanceArgs struct {
-	// The category of the db instance. Valid values: `HA`.
+	// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
 	DbInstanceCategory pulumi.StringInput
 	// According to the practical example or notes.
 	DbInstanceDescription pulumi.StringPtrInput
@@ -237,7 +237,7 @@ type DbInstanceArgs struct {
 	DbInstanceNetworkType pulumi.StringInput
 	// Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
 	DbInstanceStorageType pulumi.StringInput
-	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
+	// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
 	DbNodeClass pulumi.StringInput
 	// Instance storage space, which is measured in GB.
 	DbNodeStorage pulumi.IntInput

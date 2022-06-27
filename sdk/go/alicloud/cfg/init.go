@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AggregateCompliancePack{}
 	case "alicloud:cfg/aggregateConfigRule:AggregateConfigRule":
 		r = &AggregateConfigRule{}
+	case "alicloud:cfg/aggregateDelivery:AggregateDelivery":
+		r = &AggregateDelivery{}
 	case "alicloud:cfg/aggregator:Aggregator":
 		r = &Aggregator{}
 	case "alicloud:cfg/compliancePack:CompliancePack":
@@ -58,6 +60,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cfg/aggregateConfigRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cfg/aggregateDelivery",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

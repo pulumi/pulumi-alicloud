@@ -9,6 +9,7 @@ export * from "./domain";
 export * from "./domainConfig";
 export * from "./domainNew";
 export * from "./fcTrigger";
+export * from "./getBlockedRegions";
 export * from "./getIpInfo";
 export * from "./getRealTimeLogDeliveries";
 export * from "./getService";

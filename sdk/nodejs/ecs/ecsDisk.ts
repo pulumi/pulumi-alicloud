@@ -104,9 +104,9 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates whether to enable creating snapshot automatically. Default value: `false`.
+     * Indicates whether to enable creating snapshot automatically.
      */
-    public readonly enableAutoSnapshot!: pulumi.Output<boolean | undefined>;
+    public readonly enableAutoSnapshot!: pulumi.Output<boolean>;
     public readonly encryptAlgorithm!: pulumi.Output<string | undefined>;
     /**
      * If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -290,7 +290,7 @@ export interface EcsDiskState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Indicates whether to enable creating snapshot automatically. Default value: `false`.
+     * Indicates whether to enable creating snapshot automatically.
      */
     enableAutoSnapshot?: pulumi.Input<boolean>;
     encryptAlgorithm?: pulumi.Input<string>;
@@ -404,7 +404,7 @@ export interface EcsDiskArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Indicates whether to enable creating snapshot automatically. Default value: `false`.
+     * Indicates whether to enable creating snapshot automatically.
      */
     enableAutoSnapshot?: pulumi.Input<boolean>;
     encryptAlgorithm?: pulumi.Input<string>;

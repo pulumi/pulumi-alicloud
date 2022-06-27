@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceAttachment{}
 	case "alicloud:ots/table:Table":
 		r = &Table{}
+	case "alicloud:ots/tunnel:Tunnel":
+		r = &Tunnel{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ots/table",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ots/tunnel",
 		&module{version},
 	)
 }
