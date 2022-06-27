@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &K8sApplication{}
 	case "alicloud:edas/k8sCluster:K8sCluster":
 		r = &K8sCluster{}
+	case "alicloud:edas/namespace:Namespace":
+		r = &Namespace{}
 	case "alicloud:edas/slbAttachment:SlbAttachment":
 		r = &SlbAttachment{}
 	default:
@@ -90,6 +92,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"edas/k8sCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"edas/namespace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

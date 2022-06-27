@@ -11,10 +11,13 @@ from . import outputs
 
 __all__ = [
     'TablePrimaryKey',
+    'TunnelChannel',
     'GetInstanceAttachmentsAttachmentResult',
     'GetInstancesInstanceResult',
     'GetTablesTableResult',
     'GetTablesTablePrimaryKeyResult',
+    'GetTunnelsTunnelResult',
+    'GetTunnelsTunnelChannelResult',
 ]
 
 @pulumi.output_type
@@ -44,6 +47,98 @@ class TablePrimaryKey(dict):
         Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class TunnelChannel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "channelId":
+            suggest = "channel_id"
+        elif key == "channelRpo":
+            suggest = "channel_rpo"
+        elif key == "channelStatus":
+            suggest = "channel_status"
+        elif key == "channelType":
+            suggest = "channel_type"
+        elif key == "clientId":
+            suggest = "client_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TunnelChannel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TunnelChannel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TunnelChannel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 channel_id: Optional[str] = None,
+                 channel_rpo: Optional[int] = None,
+                 channel_status: Optional[str] = None,
+                 channel_type: Optional[str] = None,
+                 client_id: Optional[str] = None):
+        """
+        :param str channel_id: The id of the channel.
+        :param int channel_rpo: The latest consumption time of the channel, unix time in nanosecond.
+        :param str channel_status: The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+        :param str channel_type: The type of the channel, valid values: `BaseData`, `Stream`.
+        :param str client_id: The client id of the channel.
+        """
+        if channel_id is not None:
+            pulumi.set(__self__, "channel_id", channel_id)
+        if channel_rpo is not None:
+            pulumi.set(__self__, "channel_rpo", channel_rpo)
+        if channel_status is not None:
+            pulumi.set(__self__, "channel_status", channel_status)
+        if channel_type is not None:
+            pulumi.set(__self__, "channel_type", channel_type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+
+    @property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> Optional[str]:
+        """
+        The id of the channel.
+        """
+        return pulumi.get(self, "channel_id")
+
+    @property
+    @pulumi.getter(name="channelRpo")
+    def channel_rpo(self) -> Optional[int]:
+        """
+        The latest consumption time of the channel, unix time in nanosecond.
+        """
+        return pulumi.get(self, "channel_rpo")
+
+    @property
+    @pulumi.getter(name="channelStatus")
+    def channel_status(self) -> Optional[str]:
+        """
+        The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+        """
+        return pulumi.get(self, "channel_status")
+
+    @property
+    @pulumi.getter(name="channelType")
+    def channel_type(self) -> Optional[str]:
+        """
+        The type of the channel, valid values: `BaseData`, `Stream`.
+        """
+        return pulumi.get(self, "channel_type")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        The client id of the channel.
+        """
+        return pulumi.get(self, "client_id")
 
 
 @pulumi.output_type
@@ -377,5 +472,195 @@ class GetTablesTablePrimaryKeyResult(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetTunnelsTunnelResult(dict):
+    def __init__(__self__, *,
+                 channels: Sequence['outputs.GetTunnelsTunnelChannelResult'],
+                 create_time: int,
+                 expired: bool,
+                 id: str,
+                 instance_name: str,
+                 table_name: str,
+                 tunnel_id: str,
+                 tunnel_name: str,
+                 tunnel_rpo: int,
+                 tunnel_stage: str,
+                 tunnel_type: str):
+        """
+        :param Sequence['GetTunnelsTunnelChannelArgs'] channels: The channels of OTS tunnel. Each element contains the following attributes:
+        :param int create_time: The creation time of the Tunnel.
+        :param bool expired: Whether the tunnel has expired.
+        :param str id: The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
+        :param str instance_name: The name of OTS instance.
+        :param str table_name: The name of OTS table.
+        :param str tunnel_id: The tunnel id of the OTS which could not be changed.
+        :param str tunnel_name: The tunnel name of the OTS which could not be changed.
+        :param int tunnel_rpo: The latest consumption time of the tunnel, unix time in nanosecond.
+        :param str tunnel_stage: The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
+        :param str tunnel_type: The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
+        """
+        pulumi.set(__self__, "channels", channels)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "table_name", table_name)
+        pulumi.set(__self__, "tunnel_id", tunnel_id)
+        pulumi.set(__self__, "tunnel_name", tunnel_name)
+        pulumi.set(__self__, "tunnel_rpo", tunnel_rpo)
+        pulumi.set(__self__, "tunnel_stage", tunnel_stage)
+        pulumi.set(__self__, "tunnel_type", tunnel_type)
+
+    @property
+    @pulumi.getter
+    def channels(self) -> Sequence['outputs.GetTunnelsTunnelChannelResult']:
+        """
+        The channels of OTS tunnel. Each element contains the following attributes:
+        """
+        return pulumi.get(self, "channels")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> int:
+        """
+        The creation time of the Tunnel.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def expired(self) -> bool:
+        """
+        Whether the tunnel has expired.
+        """
+        return pulumi.get(self, "expired")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of OTS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="tableName")
+    def table_name(self) -> str:
+        """
+        The name of OTS table.
+        """
+        return pulumi.get(self, "table_name")
+
+    @property
+    @pulumi.getter(name="tunnelId")
+    def tunnel_id(self) -> str:
+        """
+        The tunnel id of the OTS which could not be changed.
+        """
+        return pulumi.get(self, "tunnel_id")
+
+    @property
+    @pulumi.getter(name="tunnelName")
+    def tunnel_name(self) -> str:
+        """
+        The tunnel name of the OTS which could not be changed.
+        """
+        return pulumi.get(self, "tunnel_name")
+
+    @property
+    @pulumi.getter(name="tunnelRpo")
+    def tunnel_rpo(self) -> int:
+        """
+        The latest consumption time of the tunnel, unix time in nanosecond.
+        """
+        return pulumi.get(self, "tunnel_rpo")
+
+    @property
+    @pulumi.getter(name="tunnelStage")
+    def tunnel_stage(self) -> str:
+        """
+        The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
+        """
+        return pulumi.get(self, "tunnel_stage")
+
+    @property
+    @pulumi.getter(name="tunnelType")
+    def tunnel_type(self) -> str:
+        """
+        The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
+        """
+        return pulumi.get(self, "tunnel_type")
+
+
+@pulumi.output_type
+class GetTunnelsTunnelChannelResult(dict):
+    def __init__(__self__, *,
+                 channel_id: str,
+                 channel_rpo: int,
+                 channel_status: str,
+                 channel_type: str,
+                 client_id: str):
+        """
+        :param str channel_id: The id of the channel.
+        :param int channel_rpo: The latest consumption time of the channel, unix time in nanosecond
+        :param str channel_status: The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+        :param str channel_type: The type of the channel, valid values: `BaseData`, `Stream`.
+        :param str client_id: The client id of the channel.
+        """
+        pulumi.set(__self__, "channel_id", channel_id)
+        pulumi.set(__self__, "channel_rpo", channel_rpo)
+        pulumi.set(__self__, "channel_status", channel_status)
+        pulumi.set(__self__, "channel_type", channel_type)
+        pulumi.set(__self__, "client_id", client_id)
+
+    @property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> str:
+        """
+        The id of the channel.
+        """
+        return pulumi.get(self, "channel_id")
+
+    @property
+    @pulumi.getter(name="channelRpo")
+    def channel_rpo(self) -> int:
+        """
+        The latest consumption time of the channel, unix time in nanosecond
+        """
+        return pulumi.get(self, "channel_rpo")
+
+    @property
+    @pulumi.getter(name="channelStatus")
+    def channel_status(self) -> str:
+        """
+        The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+        """
+        return pulumi.get(self, "channel_status")
+
+    @property
+    @pulumi.getter(name="channelType")
+    def channel_type(self) -> str:
+        """
+        The type of the channel, valid values: `BaseData`, `Stream`.
+        """
+        return pulumi.get(self, "channel_type")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client id of the channel.
+        """
+        return pulumi.get(self, "client_id")
 
 

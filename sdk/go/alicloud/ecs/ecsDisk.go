@@ -80,8 +80,8 @@ type EcsDisk struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
-	EnableAutoSnapshot pulumi.BoolPtrOutput   `pulumi:"enableAutoSnapshot"`
+	// Indicates whether to enable creating snapshot automatically.
+	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
@@ -173,7 +173,7 @@ type ecsDiskState struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun *bool `pulumi:"dryRun"`
-	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -238,7 +238,7 @@ type EcsDiskState struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrInput
-	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -307,7 +307,7 @@ type ecsDiskArgs struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun *bool `pulumi:"dryRun"`
-	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -371,7 +371,7 @@ type EcsDiskArgs struct {
 	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrInput
-	// Indicates whether to enable creating snapshot automatically. Default value: `false`.
+	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
 	// If true, the disk will be encrypted, conflict with `snapshotId`.

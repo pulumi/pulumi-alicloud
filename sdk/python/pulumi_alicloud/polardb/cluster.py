@@ -26,6 +26,7 @@ class ClusterArgs:
                  deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
+                 imci_switch: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
@@ -56,6 +57,9 @@ class ClusterArgs:
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+        :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+               > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+               > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
@@ -93,6 +97,8 @@ class ClusterArgs:
             pulumi.set(__self__, "description", description)
         if encrypt_new_tables is not None:
             pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
+        if imci_switch is not None:
+            pulumi.set(__self__, "imci_switch", imci_switch)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
@@ -255,6 +261,20 @@ class ClusterArgs:
     @encrypt_new_tables.setter
     def encrypt_new_tables(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encrypt_new_tables", value)
+
+    @property
+    @pulumi.getter(name="imciSwitch")
+    def imci_switch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+        > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+        > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        """
+        return pulumi.get(self, "imci_switch")
+
+    @imci_switch.setter
+    def imci_switch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "imci_switch", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -430,6 +450,7 @@ class _ClusterState:
                  deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
+                 imci_switch: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
@@ -461,6 +482,9 @@ class _ClusterState:
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+        :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+               > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+               > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
@@ -503,6 +527,8 @@ class _ClusterState:
             pulumi.set(__self__, "description", description)
         if encrypt_new_tables is not None:
             pulumi.set(__self__, "encrypt_new_tables", encrypt_new_tables)
+        if imci_switch is not None:
+            pulumi.set(__self__, "imci_switch", imci_switch)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
@@ -679,6 +705,20 @@ class _ClusterState:
         pulumi.set(self, "encrypt_new_tables", value)
 
     @property
+    @pulumi.getter(name="imciSwitch")
+    def imci_switch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+        > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+        > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        """
+        return pulumi.get(self, "imci_switch")
+
+    @imci_switch.setter
+    def imci_switch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "imci_switch", value)
+
+    @property
     @pulumi.getter(name="maintainTime")
     def maintain_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -853,6 +893,7 @@ class Cluster(pulumi.CustomResource):
                  deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
+                 imci_switch: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
@@ -944,6 +985,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+        :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+               > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+               > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
@@ -1054,6 +1098,7 @@ class Cluster(pulumi.CustomResource):
                  deletion_lock: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_new_tables: Optional[pulumi.Input[str]] = None,
+                 imci_switch: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
@@ -1096,6 +1141,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["deletion_lock"] = deletion_lock
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
+            __props__.__dict__["imci_switch"] = imci_switch
             __props__.__dict__["maintain_time"] = maintain_time
             __props__.__dict__["modify_type"] = modify_type
             __props__.__dict__["parameters"] = parameters
@@ -1132,6 +1178,7 @@ class Cluster(pulumi.CustomResource):
             deletion_lock: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encrypt_new_tables: Optional[pulumi.Input[str]] = None,
+            imci_switch: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
@@ -1168,6 +1215,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
+        :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+               > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+               > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
@@ -1202,6 +1252,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["deletion_lock"] = deletion_lock
         __props__.__dict__["description"] = description
         __props__.__dict__["encrypt_new_tables"] = encrypt_new_tables
+        __props__.__dict__["imci_switch"] = imci_switch
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["modify_type"] = modify_type
         __props__.__dict__["parameters"] = parameters
@@ -1316,6 +1367,16 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
         """
         return pulumi.get(self, "encrypt_new_tables")
+
+    @property
+    @pulumi.getter(name="imciSwitch")
+    def imci_switch(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+        > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
+        > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+        """
+        return pulumi.get(self, "imci_switch")
 
     @property
     @pulumi.getter(name="maintainTime")

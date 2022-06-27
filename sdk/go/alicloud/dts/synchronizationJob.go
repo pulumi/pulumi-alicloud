@@ -98,7 +98,7 @@ type SynchronizationJob struct {
 	DataInitialization pulumi.BoolOutput `pulumi:"dataInitialization"`
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization pulumi.BoolOutput `pulumi:"dataSynchronization"`
-	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList pulumi.StringOutput `pulumi:"dbList"`
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice pulumi.BoolPtrOutput `pulumi:"delayNotice"`
@@ -241,7 +241,7 @@ type synchronizationJobState struct {
 	DataInitialization *bool `pulumi:"dataInitialization"`
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization *bool `pulumi:"dataSynchronization"`
-	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList *string `pulumi:"dbList"`
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice *bool `pulumi:"delayNotice"`
@@ -326,7 +326,7 @@ type SynchronizationJobState struct {
 	DataInitialization pulumi.BoolPtrInput
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization pulumi.BoolPtrInput
-	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList pulumi.StringPtrInput
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice pulumi.BoolPtrInput
@@ -415,7 +415,7 @@ type synchronizationJobArgs struct {
 	DataInitialization bool `pulumi:"dataInitialization"`
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization bool `pulumi:"dataSynchronization"`
-	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList string `pulumi:"dbList"`
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice *bool `pulumi:"delayNotice"`
@@ -501,7 +501,7 @@ type SynchronizationJobArgs struct {
 	DataInitialization pulumi.BoolInput
 	// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
 	DataSynchronization pulumi.BoolInput
-	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
 	DbList pulumi.StringInput
 	// The delay notice. Valid values: `true`, `false`.
 	DelayNotice pulumi.BoolPtrInput

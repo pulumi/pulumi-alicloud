@@ -91,7 +91,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      */
-    public readonly enableAutoSnapshot!: pulumi.Output<boolean | undefined>;
+    public readonly enableAutoSnapshot!: pulumi.Output<boolean>;
     public readonly encryptAlgorithm!: pulumi.Output<string | undefined>;
     /**
      * If true, the disk will be encrypted, conflict with `snapshotId`.

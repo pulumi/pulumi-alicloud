@@ -1226,6 +1226,7 @@ class GetNetworkPackagesPackageResult(dict):
     def __init__(__self__, *,
                  bandwidth: int,
                  create_time: str,
+                 eip_addresses: Sequence[str],
                  expired_time: str,
                  id: str,
                  internet_charge_type: str,
@@ -1236,6 +1237,7 @@ class GetNetworkPackagesPackageResult(dict):
         """
         :param int bandwidth: The bandwidth of package.
         :param str create_time: The creation time of network package.
+        :param Sequence[str] eip_addresses: The public IP address list of the network packet.
         :param str expired_time: The expired time of package.
         :param str id: The ID of the Network Package.
         :param str internet_charge_type: The internet charge type  of  package.
@@ -1246,6 +1248,7 @@ class GetNetworkPackagesPackageResult(dict):
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "eip_addresses", eip_addresses)
         pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "internet_charge_type", internet_charge_type)
@@ -1269,6 +1272,14 @@ class GetNetworkPackagesPackageResult(dict):
         The creation time of network package.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="eipAddresses")
+    def eip_addresses(self) -> Sequence[str]:
+        """
+        The public IP address list of the network packet.
+        """
+        return pulumi.get(self, "eip_addresses")
 
     @property
     @pulumi.getter(name="expiredTime")

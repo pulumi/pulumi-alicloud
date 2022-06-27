@@ -55,7 +55,7 @@ class SynchronizationJobArgs:
         The set of arguments for constructing a SynchronizationJob resource.
         :param pulumi.Input[bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
-        :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         :param pulumi.Input[str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         :param pulumi.Input[str] destination_endpoint_instance_type: The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
@@ -193,7 +193,7 @@ class SynchronizationJobArgs:
     @pulumi.getter(name="dbList")
     def db_list(self) -> pulumi.Input[str]:
         """
-        Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         """
         return pulumi.get(self, "db_list")
 
@@ -674,7 +674,7 @@ class _SynchronizationJobState:
         :param pulumi.Input[str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
         :param pulumi.Input[bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
-        :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         :param pulumi.Input[bool] delay_notice: The delay notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
@@ -833,7 +833,7 @@ class _SynchronizationJobState:
     @pulumi.getter(name="dbList")
     def db_list(self) -> Optional[pulumi.Input[str]]:
         """
-        Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         """
         return pulumi.get(self, "db_list")
 
@@ -1368,7 +1368,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
         :param pulumi.Input[bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
-        :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         :param pulumi.Input[bool] delay_notice: The delay notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
@@ -1660,7 +1660,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
         :param pulumi.Input[bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
-        :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        :param pulumi.Input[str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         :param pulumi.Input[bool] delay_notice: The delay notice. Valid values: `true`, `false`.
         :param pulumi.Input[str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
@@ -1774,7 +1774,7 @@ class SynchronizationJob(pulumi.CustomResource):
     @pulumi.getter(name="dbList")
     def db_list(self) -> pulumi.Output[str]:
         """
-        Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+        Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
         """
         return pulumi.get(self, "db_list")
 

@@ -9,8 +9,10 @@ from .get_instance_attachments import *
 from .get_instances import *
 from .get_service import *
 from .get_tables import *
+from .get_tunnels import *
 from .instance import *
 from .instance_attachment import *
 from .table import *
+from .tunnel import *
 from ._inputs import *
 from . import outputs

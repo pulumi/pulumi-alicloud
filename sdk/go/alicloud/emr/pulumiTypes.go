@@ -13,6 +13,12 @@ import (
 type ClusterBootstrapAction struct {
 	// bootstrap action args, e.g. "--a=b".
 	Arg *string `pulumi:"arg"`
+	// bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+	ExecutionFailStrategy *string `pulumi:"executionFailStrategy"`
+	// bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+	ExecutionMoment *string `pulumi:"executionMoment"`
+	// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
+	ExecutionTarget *string `pulumi:"executionTarget"`
 	// bootstrap action name.
 	Name *string `pulumi:"name"`
 	// bootstrap action path, e.g. "oss://bucket/path".
@@ -33,6 +39,12 @@ type ClusterBootstrapActionInput interface {
 type ClusterBootstrapActionArgs struct {
 	// bootstrap action args, e.g. "--a=b".
 	Arg pulumi.StringPtrInput `pulumi:"arg"`
+	// bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+	ExecutionFailStrategy pulumi.StringPtrInput `pulumi:"executionFailStrategy"`
+	// bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+	ExecutionMoment pulumi.StringPtrInput `pulumi:"executionMoment"`
+	// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
+	ExecutionTarget pulumi.StringPtrInput `pulumi:"executionTarget"`
 	// bootstrap action name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// bootstrap action path, e.g. "oss://bucket/path".
@@ -93,6 +105,21 @@ func (o ClusterBootstrapActionOutput) ToClusterBootstrapActionOutputWithContext(
 // bootstrap action args, e.g. "--a=b".
 func (o ClusterBootstrapActionOutput) Arg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Arg }).(pulumi.StringPtrOutput)
+}
+
+// bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+func (o ClusterBootstrapActionOutput) ExecutionFailStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.ExecutionFailStrategy }).(pulumi.StringPtrOutput)
+}
+
+// bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+func (o ClusterBootstrapActionOutput) ExecutionMoment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.ExecutionMoment }).(pulumi.StringPtrOutput)
+}
+
+// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
+func (o ClusterBootstrapActionOutput) ExecutionTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.ExecutionTarget }).(pulumi.StringPtrOutput)
 }
 
 // bootstrap action name.

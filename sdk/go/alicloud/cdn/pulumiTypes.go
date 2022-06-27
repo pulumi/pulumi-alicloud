@@ -1594,6 +1594,121 @@ func (o DomainReferConfigPtrOutput) ReferType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetBlockedRegionsRegion struct {
+	// The region to which the country belongs.
+	Continent string `pulumi:"continent"`
+	// National region abbreviation.
+	CountriesAndRegions string `pulumi:"countriesAndRegions"`
+	// The name of the country and region.
+	CountriesAndRegionsName string `pulumi:"countriesAndRegionsName"`
+}
+
+// GetBlockedRegionsRegionInput is an input type that accepts GetBlockedRegionsRegionArgs and GetBlockedRegionsRegionOutput values.
+// You can construct a concrete instance of `GetBlockedRegionsRegionInput` via:
+//
+//          GetBlockedRegionsRegionArgs{...}
+type GetBlockedRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetBlockedRegionsRegionOutput() GetBlockedRegionsRegionOutput
+	ToGetBlockedRegionsRegionOutputWithContext(context.Context) GetBlockedRegionsRegionOutput
+}
+
+type GetBlockedRegionsRegionArgs struct {
+	// The region to which the country belongs.
+	Continent pulumi.StringInput `pulumi:"continent"`
+	// National region abbreviation.
+	CountriesAndRegions pulumi.StringInput `pulumi:"countriesAndRegions"`
+	// The name of the country and region.
+	CountriesAndRegionsName pulumi.StringInput `pulumi:"countriesAndRegionsName"`
+}
+
+func (GetBlockedRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockedRegionsRegion)(nil)).Elem()
+}
+
+func (i GetBlockedRegionsRegionArgs) ToGetBlockedRegionsRegionOutput() GetBlockedRegionsRegionOutput {
+	return i.ToGetBlockedRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetBlockedRegionsRegionArgs) ToGetBlockedRegionsRegionOutputWithContext(ctx context.Context) GetBlockedRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockedRegionsRegionOutput)
+}
+
+// GetBlockedRegionsRegionArrayInput is an input type that accepts GetBlockedRegionsRegionArray and GetBlockedRegionsRegionArrayOutput values.
+// You can construct a concrete instance of `GetBlockedRegionsRegionArrayInput` via:
+//
+//          GetBlockedRegionsRegionArray{ GetBlockedRegionsRegionArgs{...} }
+type GetBlockedRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetBlockedRegionsRegionArrayOutput() GetBlockedRegionsRegionArrayOutput
+	ToGetBlockedRegionsRegionArrayOutputWithContext(context.Context) GetBlockedRegionsRegionArrayOutput
+}
+
+type GetBlockedRegionsRegionArray []GetBlockedRegionsRegionInput
+
+func (GetBlockedRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBlockedRegionsRegion)(nil)).Elem()
+}
+
+func (i GetBlockedRegionsRegionArray) ToGetBlockedRegionsRegionArrayOutput() GetBlockedRegionsRegionArrayOutput {
+	return i.ToGetBlockedRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetBlockedRegionsRegionArray) ToGetBlockedRegionsRegionArrayOutputWithContext(ctx context.Context) GetBlockedRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBlockedRegionsRegionArrayOutput)
+}
+
+type GetBlockedRegionsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetBlockedRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBlockedRegionsRegion)(nil)).Elem()
+}
+
+func (o GetBlockedRegionsRegionOutput) ToGetBlockedRegionsRegionOutput() GetBlockedRegionsRegionOutput {
+	return o
+}
+
+func (o GetBlockedRegionsRegionOutput) ToGetBlockedRegionsRegionOutputWithContext(ctx context.Context) GetBlockedRegionsRegionOutput {
+	return o
+}
+
+// The region to which the country belongs.
+func (o GetBlockedRegionsRegionOutput) Continent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlockedRegionsRegion) string { return v.Continent }).(pulumi.StringOutput)
+}
+
+// National region abbreviation.
+func (o GetBlockedRegionsRegionOutput) CountriesAndRegions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlockedRegionsRegion) string { return v.CountriesAndRegions }).(pulumi.StringOutput)
+}
+
+// The name of the country and region.
+func (o GetBlockedRegionsRegionOutput) CountriesAndRegionsName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBlockedRegionsRegion) string { return v.CountriesAndRegionsName }).(pulumi.StringOutput)
+}
+
+type GetBlockedRegionsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBlockedRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBlockedRegionsRegion)(nil)).Elem()
+}
+
+func (o GetBlockedRegionsRegionArrayOutput) ToGetBlockedRegionsRegionArrayOutput() GetBlockedRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetBlockedRegionsRegionArrayOutput) ToGetBlockedRegionsRegionArrayOutputWithContext(ctx context.Context) GetBlockedRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetBlockedRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetBlockedRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBlockedRegionsRegion {
+		return vs[0].([]GetBlockedRegionsRegion)[vs[1].(int)]
+	}).(GetBlockedRegionsRegionOutput)
+}
+
 type GetRealTimeLogDeliveriesDelivery struct {
 	// Real-Time Log Service Domain.
 	Domain string `pulumi:"domain"`
@@ -1757,6 +1872,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainParameterFilterConfigPtrInput)(nil)).Elem(), DomainParameterFilterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainReferConfigInput)(nil)).Elem(), DomainReferConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainReferConfigPtrInput)(nil)).Elem(), DomainReferConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockedRegionsRegionInput)(nil)).Elem(), GetBlockedRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockedRegionsRegionArrayInput)(nil)).Elem(), GetBlockedRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRealTimeLogDeliveriesDeliveryInput)(nil)).Elem(), GetRealTimeLogDeliveriesDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRealTimeLogDeliveriesDeliveryArrayInput)(nil)).Elem(), GetRealTimeLogDeliveriesDeliveryArray{})
 	pulumi.RegisterOutputType(DomainAuthConfigOutput{})
@@ -1779,6 +1896,8 @@ func init() {
 	pulumi.RegisterOutputType(DomainParameterFilterConfigPtrOutput{})
 	pulumi.RegisterOutputType(DomainReferConfigOutput{})
 	pulumi.RegisterOutputType(DomainReferConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetBlockedRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetBlockedRegionsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetRealTimeLogDeliveriesDeliveryOutput{})
 	pulumi.RegisterOutputType(GetRealTimeLogDeliveriesDeliveryArrayOutput{})
 }

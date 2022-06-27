@@ -110,7 +110,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     public readonly dataSynchronization!: pulumi.Output<boolean>;
     /**
-     * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+     * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
      */
     public readonly dbList!: pulumi.Output<string>;
     /**
@@ -400,7 +400,7 @@ export interface SynchronizationJobState {
      */
     dataSynchronization?: pulumi.Input<boolean>;
     /**
-     * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+     * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
      */
     dbList?: pulumi.Input<string>;
     /**
@@ -564,7 +564,7 @@ export interface SynchronizationJobArgs {
      */
     dataSynchronization: pulumi.Input<boolean>;
     /**
-     * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
+     * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `dbList` can be modified.
      */
     dbList: pulumi.Input<string>;
     /**

@@ -10,6 +10,1057 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ClusterAdditionalVolume struct {
+	// The queue of the nodes to which the additional file system is attached.
+	JobQueue *string `pulumi:"jobQueue"`
+	// The local directory on which the additional file system is mounted.
+	LocalDirectory *string `pulumi:"localDirectory"`
+	// The type of the cluster. Valid value: `PublicCloud`.
+	Location *string `pulumi:"location"`
+	// The remote directory to which the additional file system is mounted.
+	RemoteDirectory *string `pulumi:"remoteDirectory"`
+	// The roles. See the following `Block roles`.
+	Roles []ClusterAdditionalVolumeRole `pulumi:"roles"`
+	// The ID of the additional file system.
+	VolumeId *string `pulumi:"volumeId"`
+	// The mount options of the file system.
+	VolumeMountOption *string `pulumi:"volumeMountOption"`
+	// The mount target of the additional file system.
+	VolumeMountpoint *string `pulumi:"volumeMountpoint"`
+	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	VolumeProtocol *string `pulumi:"volumeProtocol"`
+	// The type of the additional shared storage. Only NAS file systems are supported.
+	VolumeType *string `pulumi:"volumeType"`
+}
+
+// ClusterAdditionalVolumeInput is an input type that accepts ClusterAdditionalVolumeArgs and ClusterAdditionalVolumeOutput values.
+// You can construct a concrete instance of `ClusterAdditionalVolumeInput` via:
+//
+//          ClusterAdditionalVolumeArgs{...}
+type ClusterAdditionalVolumeInput interface {
+	pulumi.Input
+
+	ToClusterAdditionalVolumeOutput() ClusterAdditionalVolumeOutput
+	ToClusterAdditionalVolumeOutputWithContext(context.Context) ClusterAdditionalVolumeOutput
+}
+
+type ClusterAdditionalVolumeArgs struct {
+	// The queue of the nodes to which the additional file system is attached.
+	JobQueue pulumi.StringPtrInput `pulumi:"jobQueue"`
+	// The local directory on which the additional file system is mounted.
+	LocalDirectory pulumi.StringPtrInput `pulumi:"localDirectory"`
+	// The type of the cluster. Valid value: `PublicCloud`.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The remote directory to which the additional file system is mounted.
+	RemoteDirectory pulumi.StringPtrInput `pulumi:"remoteDirectory"`
+	// The roles. See the following `Block roles`.
+	Roles ClusterAdditionalVolumeRoleArrayInput `pulumi:"roles"`
+	// The ID of the additional file system.
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+	// The mount options of the file system.
+	VolumeMountOption pulumi.StringPtrInput `pulumi:"volumeMountOption"`
+	// The mount target of the additional file system.
+	VolumeMountpoint pulumi.StringPtrInput `pulumi:"volumeMountpoint"`
+	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	VolumeProtocol pulumi.StringPtrInput `pulumi:"volumeProtocol"`
+	// The type of the additional shared storage. Only NAS file systems are supported.
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (ClusterAdditionalVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAdditionalVolume)(nil)).Elem()
+}
+
+func (i ClusterAdditionalVolumeArgs) ToClusterAdditionalVolumeOutput() ClusterAdditionalVolumeOutput {
+	return i.ToClusterAdditionalVolumeOutputWithContext(context.Background())
+}
+
+func (i ClusterAdditionalVolumeArgs) ToClusterAdditionalVolumeOutputWithContext(ctx context.Context) ClusterAdditionalVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAdditionalVolumeOutput)
+}
+
+// ClusterAdditionalVolumeArrayInput is an input type that accepts ClusterAdditionalVolumeArray and ClusterAdditionalVolumeArrayOutput values.
+// You can construct a concrete instance of `ClusterAdditionalVolumeArrayInput` via:
+//
+//          ClusterAdditionalVolumeArray{ ClusterAdditionalVolumeArgs{...} }
+type ClusterAdditionalVolumeArrayInput interface {
+	pulumi.Input
+
+	ToClusterAdditionalVolumeArrayOutput() ClusterAdditionalVolumeArrayOutput
+	ToClusterAdditionalVolumeArrayOutputWithContext(context.Context) ClusterAdditionalVolumeArrayOutput
+}
+
+type ClusterAdditionalVolumeArray []ClusterAdditionalVolumeInput
+
+func (ClusterAdditionalVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAdditionalVolume)(nil)).Elem()
+}
+
+func (i ClusterAdditionalVolumeArray) ToClusterAdditionalVolumeArrayOutput() ClusterAdditionalVolumeArrayOutput {
+	return i.ToClusterAdditionalVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAdditionalVolumeArray) ToClusterAdditionalVolumeArrayOutputWithContext(ctx context.Context) ClusterAdditionalVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAdditionalVolumeArrayOutput)
+}
+
+type ClusterAdditionalVolumeOutput struct{ *pulumi.OutputState }
+
+func (ClusterAdditionalVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAdditionalVolume)(nil)).Elem()
+}
+
+func (o ClusterAdditionalVolumeOutput) ToClusterAdditionalVolumeOutput() ClusterAdditionalVolumeOutput {
+	return o
+}
+
+func (o ClusterAdditionalVolumeOutput) ToClusterAdditionalVolumeOutputWithContext(ctx context.Context) ClusterAdditionalVolumeOutput {
+	return o
+}
+
+// The queue of the nodes to which the additional file system is attached.
+func (o ClusterAdditionalVolumeOutput) JobQueue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.JobQueue }).(pulumi.StringPtrOutput)
+}
+
+// The local directory on which the additional file system is mounted.
+func (o ClusterAdditionalVolumeOutput) LocalDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.LocalDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The type of the cluster. Valid value: `PublicCloud`.
+func (o ClusterAdditionalVolumeOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The remote directory to which the additional file system is mounted.
+func (o ClusterAdditionalVolumeOutput) RemoteDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.RemoteDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The roles. See the following `Block roles`.
+func (o ClusterAdditionalVolumeOutput) Roles() ClusterAdditionalVolumeRoleArrayOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) []ClusterAdditionalVolumeRole { return v.Roles }).(ClusterAdditionalVolumeRoleArrayOutput)
+}
+
+// The ID of the additional file system.
+func (o ClusterAdditionalVolumeOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
+}
+
+// The mount options of the file system.
+func (o ClusterAdditionalVolumeOutput) VolumeMountOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeMountOption }).(pulumi.StringPtrOutput)
+}
+
+// The mount target of the additional file system.
+func (o ClusterAdditionalVolumeOutput) VolumeMountpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeMountpoint }).(pulumi.StringPtrOutput)
+}
+
+// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+func (o ClusterAdditionalVolumeOutput) VolumeProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The type of the additional shared storage. Only NAS file systems are supported.
+func (o ClusterAdditionalVolumeOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type ClusterAdditionalVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAdditionalVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAdditionalVolume)(nil)).Elem()
+}
+
+func (o ClusterAdditionalVolumeArrayOutput) ToClusterAdditionalVolumeArrayOutput() ClusterAdditionalVolumeArrayOutput {
+	return o
+}
+
+func (o ClusterAdditionalVolumeArrayOutput) ToClusterAdditionalVolumeArrayOutputWithContext(ctx context.Context) ClusterAdditionalVolumeArrayOutput {
+	return o
+}
+
+func (o ClusterAdditionalVolumeArrayOutput) Index(i pulumi.IntInput) ClusterAdditionalVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAdditionalVolume {
+		return vs[0].([]ClusterAdditionalVolume)[vs[1].(int)]
+	}).(ClusterAdditionalVolumeOutput)
+}
+
+type ClusterAdditionalVolumeRole struct {
+	// The type of the nodes to which the additional file system is attached.
+	Name *string `pulumi:"name"`
+}
+
+// ClusterAdditionalVolumeRoleInput is an input type that accepts ClusterAdditionalVolumeRoleArgs and ClusterAdditionalVolumeRoleOutput values.
+// You can construct a concrete instance of `ClusterAdditionalVolumeRoleInput` via:
+//
+//          ClusterAdditionalVolumeRoleArgs{...}
+type ClusterAdditionalVolumeRoleInput interface {
+	pulumi.Input
+
+	ToClusterAdditionalVolumeRoleOutput() ClusterAdditionalVolumeRoleOutput
+	ToClusterAdditionalVolumeRoleOutputWithContext(context.Context) ClusterAdditionalVolumeRoleOutput
+}
+
+type ClusterAdditionalVolumeRoleArgs struct {
+	// The type of the nodes to which the additional file system is attached.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ClusterAdditionalVolumeRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAdditionalVolumeRole)(nil)).Elem()
+}
+
+func (i ClusterAdditionalVolumeRoleArgs) ToClusterAdditionalVolumeRoleOutput() ClusterAdditionalVolumeRoleOutput {
+	return i.ToClusterAdditionalVolumeRoleOutputWithContext(context.Background())
+}
+
+func (i ClusterAdditionalVolumeRoleArgs) ToClusterAdditionalVolumeRoleOutputWithContext(ctx context.Context) ClusterAdditionalVolumeRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAdditionalVolumeRoleOutput)
+}
+
+// ClusterAdditionalVolumeRoleArrayInput is an input type that accepts ClusterAdditionalVolumeRoleArray and ClusterAdditionalVolumeRoleArrayOutput values.
+// You can construct a concrete instance of `ClusterAdditionalVolumeRoleArrayInput` via:
+//
+//          ClusterAdditionalVolumeRoleArray{ ClusterAdditionalVolumeRoleArgs{...} }
+type ClusterAdditionalVolumeRoleArrayInput interface {
+	pulumi.Input
+
+	ToClusterAdditionalVolumeRoleArrayOutput() ClusterAdditionalVolumeRoleArrayOutput
+	ToClusterAdditionalVolumeRoleArrayOutputWithContext(context.Context) ClusterAdditionalVolumeRoleArrayOutput
+}
+
+type ClusterAdditionalVolumeRoleArray []ClusterAdditionalVolumeRoleInput
+
+func (ClusterAdditionalVolumeRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAdditionalVolumeRole)(nil)).Elem()
+}
+
+func (i ClusterAdditionalVolumeRoleArray) ToClusterAdditionalVolumeRoleArrayOutput() ClusterAdditionalVolumeRoleArrayOutput {
+	return i.ToClusterAdditionalVolumeRoleArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAdditionalVolumeRoleArray) ToClusterAdditionalVolumeRoleArrayOutputWithContext(ctx context.Context) ClusterAdditionalVolumeRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAdditionalVolumeRoleArrayOutput)
+}
+
+type ClusterAdditionalVolumeRoleOutput struct{ *pulumi.OutputState }
+
+func (ClusterAdditionalVolumeRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAdditionalVolumeRole)(nil)).Elem()
+}
+
+func (o ClusterAdditionalVolumeRoleOutput) ToClusterAdditionalVolumeRoleOutput() ClusterAdditionalVolumeRoleOutput {
+	return o
+}
+
+func (o ClusterAdditionalVolumeRoleOutput) ToClusterAdditionalVolumeRoleOutputWithContext(ctx context.Context) ClusterAdditionalVolumeRoleOutput {
+	return o
+}
+
+// The type of the nodes to which the additional file system is attached.
+func (o ClusterAdditionalVolumeRoleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAdditionalVolumeRole) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterAdditionalVolumeRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAdditionalVolumeRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAdditionalVolumeRole)(nil)).Elem()
+}
+
+func (o ClusterAdditionalVolumeRoleArrayOutput) ToClusterAdditionalVolumeRoleArrayOutput() ClusterAdditionalVolumeRoleArrayOutput {
+	return o
+}
+
+func (o ClusterAdditionalVolumeRoleArrayOutput) ToClusterAdditionalVolumeRoleArrayOutputWithContext(ctx context.Context) ClusterAdditionalVolumeRoleArrayOutput {
+	return o
+}
+
+func (o ClusterAdditionalVolumeRoleArrayOutput) Index(i pulumi.IntInput) ClusterAdditionalVolumeRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAdditionalVolumeRole {
+		return vs[0].([]ClusterAdditionalVolumeRole)[vs[1].(int)]
+	}).(ClusterAdditionalVolumeRoleOutput)
+}
+
+type ClusterApplication struct {
+	// The tag of the software.
+	Tag *string `pulumi:"tag"`
+}
+
+// ClusterApplicationInput is an input type that accepts ClusterApplicationArgs and ClusterApplicationOutput values.
+// You can construct a concrete instance of `ClusterApplicationInput` via:
+//
+//          ClusterApplicationArgs{...}
+type ClusterApplicationInput interface {
+	pulumi.Input
+
+	ToClusterApplicationOutput() ClusterApplicationOutput
+	ToClusterApplicationOutputWithContext(context.Context) ClusterApplicationOutput
+}
+
+type ClusterApplicationArgs struct {
+	// The tag of the software.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (ClusterApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterApplication)(nil)).Elem()
+}
+
+func (i ClusterApplicationArgs) ToClusterApplicationOutput() ClusterApplicationOutput {
+	return i.ToClusterApplicationOutputWithContext(context.Background())
+}
+
+func (i ClusterApplicationArgs) ToClusterApplicationOutputWithContext(ctx context.Context) ClusterApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterApplicationOutput)
+}
+
+// ClusterApplicationArrayInput is an input type that accepts ClusterApplicationArray and ClusterApplicationArrayOutput values.
+// You can construct a concrete instance of `ClusterApplicationArrayInput` via:
+//
+//          ClusterApplicationArray{ ClusterApplicationArgs{...} }
+type ClusterApplicationArrayInput interface {
+	pulumi.Input
+
+	ToClusterApplicationArrayOutput() ClusterApplicationArrayOutput
+	ToClusterApplicationArrayOutputWithContext(context.Context) ClusterApplicationArrayOutput
+}
+
+type ClusterApplicationArray []ClusterApplicationInput
+
+func (ClusterApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterApplication)(nil)).Elem()
+}
+
+func (i ClusterApplicationArray) ToClusterApplicationArrayOutput() ClusterApplicationArrayOutput {
+	return i.ToClusterApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterApplicationArray) ToClusterApplicationArrayOutputWithContext(ctx context.Context) ClusterApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterApplicationArrayOutput)
+}
+
+type ClusterApplicationOutput struct{ *pulumi.OutputState }
+
+func (ClusterApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterApplication)(nil)).Elem()
+}
+
+func (o ClusterApplicationOutput) ToClusterApplicationOutput() ClusterApplicationOutput {
+	return o
+}
+
+func (o ClusterApplicationOutput) ToClusterApplicationOutputWithContext(ctx context.Context) ClusterApplicationOutput {
+	return o
+}
+
+// The tag of the software.
+func (o ClusterApplicationOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterApplication) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type ClusterApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterApplication)(nil)).Elem()
+}
+
+func (o ClusterApplicationArrayOutput) ToClusterApplicationArrayOutput() ClusterApplicationArrayOutput {
+	return o
+}
+
+func (o ClusterApplicationArrayOutput) ToClusterApplicationArrayOutputWithContext(ctx context.Context) ClusterApplicationArrayOutput {
+	return o
+}
+
+func (o ClusterApplicationArrayOutput) Index(i pulumi.IntInput) ClusterApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterApplication {
+		return vs[0].([]ClusterApplication)[vs[1].(int)]
+	}).(ClusterApplicationOutput)
+}
+
+type ClusterPostInstallScript struct {
+	// The parameter that is used to run the script after the cluster is created.
+	Args *string `pulumi:"args"`
+	// The URL that is used to download the script after the cluster is created.
+	Url *string `pulumi:"url"`
+}
+
+// ClusterPostInstallScriptInput is an input type that accepts ClusterPostInstallScriptArgs and ClusterPostInstallScriptOutput values.
+// You can construct a concrete instance of `ClusterPostInstallScriptInput` via:
+//
+//          ClusterPostInstallScriptArgs{...}
+type ClusterPostInstallScriptInput interface {
+	pulumi.Input
+
+	ToClusterPostInstallScriptOutput() ClusterPostInstallScriptOutput
+	ToClusterPostInstallScriptOutputWithContext(context.Context) ClusterPostInstallScriptOutput
+}
+
+type ClusterPostInstallScriptArgs struct {
+	// The parameter that is used to run the script after the cluster is created.
+	Args pulumi.StringPtrInput `pulumi:"args"`
+	// The URL that is used to download the script after the cluster is created.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ClusterPostInstallScriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPostInstallScript)(nil)).Elem()
+}
+
+func (i ClusterPostInstallScriptArgs) ToClusterPostInstallScriptOutput() ClusterPostInstallScriptOutput {
+	return i.ToClusterPostInstallScriptOutputWithContext(context.Background())
+}
+
+func (i ClusterPostInstallScriptArgs) ToClusterPostInstallScriptOutputWithContext(ctx context.Context) ClusterPostInstallScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPostInstallScriptOutput)
+}
+
+// ClusterPostInstallScriptArrayInput is an input type that accepts ClusterPostInstallScriptArray and ClusterPostInstallScriptArrayOutput values.
+// You can construct a concrete instance of `ClusterPostInstallScriptArrayInput` via:
+//
+//          ClusterPostInstallScriptArray{ ClusterPostInstallScriptArgs{...} }
+type ClusterPostInstallScriptArrayInput interface {
+	pulumi.Input
+
+	ToClusterPostInstallScriptArrayOutput() ClusterPostInstallScriptArrayOutput
+	ToClusterPostInstallScriptArrayOutputWithContext(context.Context) ClusterPostInstallScriptArrayOutput
+}
+
+type ClusterPostInstallScriptArray []ClusterPostInstallScriptInput
+
+func (ClusterPostInstallScriptArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPostInstallScript)(nil)).Elem()
+}
+
+func (i ClusterPostInstallScriptArray) ToClusterPostInstallScriptArrayOutput() ClusterPostInstallScriptArrayOutput {
+	return i.ToClusterPostInstallScriptArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterPostInstallScriptArray) ToClusterPostInstallScriptArrayOutputWithContext(ctx context.Context) ClusterPostInstallScriptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPostInstallScriptArrayOutput)
+}
+
+type ClusterPostInstallScriptOutput struct{ *pulumi.OutputState }
+
+func (ClusterPostInstallScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPostInstallScript)(nil)).Elem()
+}
+
+func (o ClusterPostInstallScriptOutput) ToClusterPostInstallScriptOutput() ClusterPostInstallScriptOutput {
+	return o
+}
+
+func (o ClusterPostInstallScriptOutput) ToClusterPostInstallScriptOutputWithContext(ctx context.Context) ClusterPostInstallScriptOutput {
+	return o
+}
+
+// The parameter that is used to run the script after the cluster is created.
+func (o ClusterPostInstallScriptOutput) Args() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPostInstallScript) *string { return v.Args }).(pulumi.StringPtrOutput)
+}
+
+// The URL that is used to download the script after the cluster is created.
+func (o ClusterPostInstallScriptOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPostInstallScript) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPostInstallScriptArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterPostInstallScriptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPostInstallScript)(nil)).Elem()
+}
+
+func (o ClusterPostInstallScriptArrayOutput) ToClusterPostInstallScriptArrayOutput() ClusterPostInstallScriptArrayOutput {
+	return o
+}
+
+func (o ClusterPostInstallScriptArrayOutput) ToClusterPostInstallScriptArrayOutputWithContext(ctx context.Context) ClusterPostInstallScriptArrayOutput {
+	return o
+}
+
+func (o ClusterPostInstallScriptArrayOutput) Index(i pulumi.IntInput) ClusterPostInstallScriptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterPostInstallScript {
+		return vs[0].([]ClusterPostInstallScript)[vs[1].(int)]
+	}).(ClusterPostInstallScriptOutput)
+}
+
+type GetClustersCluster struct {
+	// The server type of the account.
+	AccountType  string                          `pulumi:"accountType"`
+	Applications []GetClustersClusterApplication `pulumi:"applications"`
+	// The version number of the client used by the cluster.
+	ClientVersion string `pulumi:"clientVersion"`
+	// The id of E-HPC Cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of E-HPC cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The number of compute nodes in the cluster.
+	ComputeCount int `pulumi:"computeCount"`
+	// Cluster compute node specifications.
+	ComputeInstanceType string `pulumi:"computeInstanceType"`
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// Cluster deployment mode. Possible values:
+	// - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+	// - Advanced:HA mode deployment.
+	// - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+	// - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+	// - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+	DeployMode string `pulumi:"deployMode"`
+	// The description of E-HPC cluster.
+	Description string `pulumi:"description"`
+	// Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+	HaEnable bool `pulumi:"haEnable"`
+	// The ID of the Cluster.
+	Id string `pulumi:"id"`
+	// The ID of the Image.
+	ImageId string `pulumi:"imageId"`
+	// The type of the image.
+	ImageOwnerAlias string `pulumi:"imageOwnerAlias"`
+	// The number of cluster login nodes. Only configuration 1 is supported.
+	LoginCount int `pulumi:"loginCount"`
+	// Cluster login node specifications.
+	LoginInstanceType string `pulumi:"loginInstanceType"`
+	ManagerCount      int    `pulumi:"managerCount"`
+	// The instance type of manager nodes.
+	ManagerInstanceType string `pulumi:"managerInstanceType"`
+	// The image tag of the operating system.
+	OsTag              string                                `pulumi:"osTag"`
+	PostInstallScripts []GetClustersClusterPostInstallScript `pulumi:"postInstallScripts"`
+	// Mount the remote directory of the shared storage.
+	RemoteDirectory string `pulumi:"remoteDirectory"`
+	// The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+	SccClusterId string `pulumi:"sccClusterId"`
+	// Dispatch server type.
+	SchedulerType string `pulumi:"schedulerType"`
+	// The ID of the security group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+	VolumeId string `pulumi:"volumeId"`
+	// The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+	VolumeMountpoint string `pulumi:"volumeMountpoint"`
+	// The type of the protocol that is used by the file system.
+	VolumeProtocol string `pulumi:"volumeProtocol"`
+	// The type of the network shared storage. Valid value: NAS.
+	VolumeType string `pulumi:"volumeType"`
+	// The ID of the VPC network.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	ZoneId    string `pulumi:"zoneId"`
+}
+
+// GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
+// You can construct a concrete instance of `GetClustersClusterInput` via:
+//
+//          GetClustersClusterArgs{...}
+type GetClustersClusterInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterOutput() GetClustersClusterOutput
+	ToGetClustersClusterOutputWithContext(context.Context) GetClustersClusterOutput
+}
+
+type GetClustersClusterArgs struct {
+	// The server type of the account.
+	AccountType  pulumi.StringInput                      `pulumi:"accountType"`
+	Applications GetClustersClusterApplicationArrayInput `pulumi:"applications"`
+	// The version number of the client used by the cluster.
+	ClientVersion pulumi.StringInput `pulumi:"clientVersion"`
+	// The id of E-HPC Cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of E-HPC cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The number of compute nodes in the cluster.
+	ComputeCount pulumi.IntInput `pulumi:"computeCount"`
+	// Cluster compute node specifications.
+	ComputeInstanceType pulumi.StringInput `pulumi:"computeInstanceType"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Cluster deployment mode. Possible values:
+	// - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+	// - Advanced:HA mode deployment.
+	// - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+	// - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+	// - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+	DeployMode pulumi.StringInput `pulumi:"deployMode"`
+	// The description of E-HPC cluster.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+	HaEnable pulumi.BoolInput `pulumi:"haEnable"`
+	// The ID of the Cluster.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Image.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// The type of the image.
+	ImageOwnerAlias pulumi.StringInput `pulumi:"imageOwnerAlias"`
+	// The number of cluster login nodes. Only configuration 1 is supported.
+	LoginCount pulumi.IntInput `pulumi:"loginCount"`
+	// Cluster login node specifications.
+	LoginInstanceType pulumi.StringInput `pulumi:"loginInstanceType"`
+	ManagerCount      pulumi.IntInput    `pulumi:"managerCount"`
+	// The instance type of manager nodes.
+	ManagerInstanceType pulumi.StringInput `pulumi:"managerInstanceType"`
+	// The image tag of the operating system.
+	OsTag              pulumi.StringInput                            `pulumi:"osTag"`
+	PostInstallScripts GetClustersClusterPostInstallScriptArrayInput `pulumi:"postInstallScripts"`
+	// Mount the remote directory of the shared storage.
+	RemoteDirectory pulumi.StringInput `pulumi:"remoteDirectory"`
+	// The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+	SccClusterId pulumi.StringInput `pulumi:"sccClusterId"`
+	// Dispatch server type.
+	SchedulerType pulumi.StringInput `pulumi:"schedulerType"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+	VolumeId pulumi.StringInput `pulumi:"volumeId"`
+	// The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+	VolumeMountpoint pulumi.StringInput `pulumi:"volumeMountpoint"`
+	// The type of the protocol that is used by the file system.
+	VolumeProtocol pulumi.StringInput `pulumi:"volumeProtocol"`
+	// The type of the network shared storage. Valid value: NAS.
+	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+	// The ID of the VPC network.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	ZoneId    pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetClustersClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersCluster)(nil)).Elem()
+}
+
+func (i GetClustersClusterArgs) ToGetClustersClusterOutput() GetClustersClusterOutput {
+	return i.ToGetClustersClusterOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx context.Context) GetClustersClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterOutput)
+}
+
+// GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterArrayInput` via:
+//
+//          GetClustersClusterArray{ GetClustersClusterArgs{...} }
+type GetClustersClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput
+	ToGetClustersClusterArrayOutputWithContext(context.Context) GetClustersClusterArrayOutput
+}
+
+type GetClustersClusterArray []GetClustersClusterInput
+
+func (GetClustersClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersCluster)(nil)).Elem()
+}
+
+func (i GetClustersClusterArray) ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput {
+	return i.ToGetClustersClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterArray) ToGetClustersClusterArrayOutputWithContext(ctx context.Context) GetClustersClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterArrayOutput)
+}
+
+type GetClustersClusterOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersCluster)(nil)).Elem()
+}
+
+func (o GetClustersClusterOutput) ToGetClustersClusterOutput() GetClustersClusterOutput {
+	return o
+}
+
+func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx context.Context) GetClustersClusterOutput {
+	return o
+}
+
+// The server type of the account.
+func (o GetClustersClusterOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.AccountType }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) Applications() GetClustersClusterApplicationArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterApplication { return v.Applications }).(GetClustersClusterApplicationArrayOutput)
+}
+
+// The version number of the client used by the cluster.
+func (o GetClustersClusterOutput) ClientVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClientVersion }).(pulumi.StringOutput)
+}
+
+// The id of E-HPC Cluster.
+func (o GetClustersClusterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name of E-HPC cluster.
+func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The number of compute nodes in the cluster.
+func (o GetClustersClusterOutput) ComputeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersCluster) int { return v.ComputeCount }).(pulumi.IntOutput)
+}
+
+// Cluster compute node specifications.
+func (o GetClustersClusterOutput) ComputeInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ComputeInstanceType }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource.
+func (o GetClustersClusterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Cluster deployment mode. Possible values:
+// - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+// - Advanced:HA mode deployment.
+// - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+// - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+// - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+func (o GetClustersClusterOutput) DeployMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DeployMode }).(pulumi.StringOutput)
+}
+
+// The description of E-HPC cluster.
+func (o GetClustersClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+func (o GetClustersClusterOutput) HaEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.HaEnable }).(pulumi.BoolOutput)
+}
+
+// The ID of the Cluster.
+func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Image.
+func (o GetClustersClusterOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The type of the image.
+func (o GetClustersClusterOutput) ImageOwnerAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ImageOwnerAlias }).(pulumi.StringOutput)
+}
+
+// The number of cluster login nodes. Only configuration 1 is supported.
+func (o GetClustersClusterOutput) LoginCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersCluster) int { return v.LoginCount }).(pulumi.IntOutput)
+}
+
+// Cluster login node specifications.
+func (o GetClustersClusterOutput) LoginInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.LoginInstanceType }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) ManagerCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersCluster) int { return v.ManagerCount }).(pulumi.IntOutput)
+}
+
+// The instance type of manager nodes.
+func (o GetClustersClusterOutput) ManagerInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ManagerInstanceType }).(pulumi.StringOutput)
+}
+
+// The image tag of the operating system.
+func (o GetClustersClusterOutput) OsTag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.OsTag }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) PostInstallScripts() GetClustersClusterPostInstallScriptArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterPostInstallScript { return v.PostInstallScripts }).(GetClustersClusterPostInstallScriptArrayOutput)
+}
+
+// Mount the remote directory of the shared storage.
+func (o GetClustersClusterOutput) RemoteDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.RemoteDirectory }).(pulumi.StringOutput)
+}
+
+// The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+func (o GetClustersClusterOutput) SccClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.SccClusterId }).(pulumi.StringOutput)
+}
+
+// Dispatch server type.
+func (o GetClustersClusterOutput) SchedulerType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.SchedulerType }).(pulumi.StringOutput)
+}
+
+// The ID of the security group.
+func (o GetClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+func (o GetClustersClusterOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+// The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+func (o GetClustersClusterOutput) VolumeMountpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VolumeMountpoint }).(pulumi.StringOutput)
+}
+
+// The type of the protocol that is used by the file system.
+func (o GetClustersClusterOutput) VolumeProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VolumeProtocol }).(pulumi.StringOutput)
+}
+
+// The type of the network shared storage. Valid value: NAS.
+func (o GetClustersClusterOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VolumeType }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC network.
+func (o GetClustersClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetClustersClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersCluster)(nil)).Elem()
+}
+
+func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutputWithContext(ctx context.Context) GetClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersCluster {
+		return vs[0].([]GetClustersCluster)[vs[1].(int)]
+	}).(GetClustersClusterOutput)
+}
+
+type GetClustersClusterApplication struct {
+	Tag string `pulumi:"tag"`
+}
+
+// GetClustersClusterApplicationInput is an input type that accepts GetClustersClusterApplicationArgs and GetClustersClusterApplicationOutput values.
+// You can construct a concrete instance of `GetClustersClusterApplicationInput` via:
+//
+//          GetClustersClusterApplicationArgs{...}
+type GetClustersClusterApplicationInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterApplicationOutput() GetClustersClusterApplicationOutput
+	ToGetClustersClusterApplicationOutputWithContext(context.Context) GetClustersClusterApplicationOutput
+}
+
+type GetClustersClusterApplicationArgs struct {
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetClustersClusterApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterApplication)(nil)).Elem()
+}
+
+func (i GetClustersClusterApplicationArgs) ToGetClustersClusterApplicationOutput() GetClustersClusterApplicationOutput {
+	return i.ToGetClustersClusterApplicationOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterApplicationArgs) ToGetClustersClusterApplicationOutputWithContext(ctx context.Context) GetClustersClusterApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterApplicationOutput)
+}
+
+// GetClustersClusterApplicationArrayInput is an input type that accepts GetClustersClusterApplicationArray and GetClustersClusterApplicationArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterApplicationArrayInput` via:
+//
+//          GetClustersClusterApplicationArray{ GetClustersClusterApplicationArgs{...} }
+type GetClustersClusterApplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterApplicationArrayOutput() GetClustersClusterApplicationArrayOutput
+	ToGetClustersClusterApplicationArrayOutputWithContext(context.Context) GetClustersClusterApplicationArrayOutput
+}
+
+type GetClustersClusterApplicationArray []GetClustersClusterApplicationInput
+
+func (GetClustersClusterApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterApplication)(nil)).Elem()
+}
+
+func (i GetClustersClusterApplicationArray) ToGetClustersClusterApplicationArrayOutput() GetClustersClusterApplicationArrayOutput {
+	return i.ToGetClustersClusterApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterApplicationArray) ToGetClustersClusterApplicationArrayOutputWithContext(ctx context.Context) GetClustersClusterApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterApplicationArrayOutput)
+}
+
+type GetClustersClusterApplicationOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterApplication)(nil)).Elem()
+}
+
+func (o GetClustersClusterApplicationOutput) ToGetClustersClusterApplicationOutput() GetClustersClusterApplicationOutput {
+	return o
+}
+
+func (o GetClustersClusterApplicationOutput) ToGetClustersClusterApplicationOutputWithContext(ctx context.Context) GetClustersClusterApplicationOutput {
+	return o
+}
+
+func (o GetClustersClusterApplicationOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterApplication) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterApplication)(nil)).Elem()
+}
+
+func (o GetClustersClusterApplicationArrayOutput) ToGetClustersClusterApplicationArrayOutput() GetClustersClusterApplicationArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterApplicationArrayOutput) ToGetClustersClusterApplicationArrayOutputWithContext(ctx context.Context) GetClustersClusterApplicationArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterApplicationArrayOutput) Index(i pulumi.IntInput) GetClustersClusterApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterApplication {
+		return vs[0].([]GetClustersClusterApplication)[vs[1].(int)]
+	}).(GetClustersClusterApplicationOutput)
+}
+
+type GetClustersClusterPostInstallScript struct {
+	Args string `pulumi:"args"`
+	Url  string `pulumi:"url"`
+}
+
+// GetClustersClusterPostInstallScriptInput is an input type that accepts GetClustersClusterPostInstallScriptArgs and GetClustersClusterPostInstallScriptOutput values.
+// You can construct a concrete instance of `GetClustersClusterPostInstallScriptInput` via:
+//
+//          GetClustersClusterPostInstallScriptArgs{...}
+type GetClustersClusterPostInstallScriptInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterPostInstallScriptOutput() GetClustersClusterPostInstallScriptOutput
+	ToGetClustersClusterPostInstallScriptOutputWithContext(context.Context) GetClustersClusterPostInstallScriptOutput
+}
+
+type GetClustersClusterPostInstallScriptArgs struct {
+	Args pulumi.StringInput `pulumi:"args"`
+	Url  pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetClustersClusterPostInstallScriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterPostInstallScript)(nil)).Elem()
+}
+
+func (i GetClustersClusterPostInstallScriptArgs) ToGetClustersClusterPostInstallScriptOutput() GetClustersClusterPostInstallScriptOutput {
+	return i.ToGetClustersClusterPostInstallScriptOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterPostInstallScriptArgs) ToGetClustersClusterPostInstallScriptOutputWithContext(ctx context.Context) GetClustersClusterPostInstallScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterPostInstallScriptOutput)
+}
+
+// GetClustersClusterPostInstallScriptArrayInput is an input type that accepts GetClustersClusterPostInstallScriptArray and GetClustersClusterPostInstallScriptArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterPostInstallScriptArrayInput` via:
+//
+//          GetClustersClusterPostInstallScriptArray{ GetClustersClusterPostInstallScriptArgs{...} }
+type GetClustersClusterPostInstallScriptArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterPostInstallScriptArrayOutput() GetClustersClusterPostInstallScriptArrayOutput
+	ToGetClustersClusterPostInstallScriptArrayOutputWithContext(context.Context) GetClustersClusterPostInstallScriptArrayOutput
+}
+
+type GetClustersClusterPostInstallScriptArray []GetClustersClusterPostInstallScriptInput
+
+func (GetClustersClusterPostInstallScriptArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterPostInstallScript)(nil)).Elem()
+}
+
+func (i GetClustersClusterPostInstallScriptArray) ToGetClustersClusterPostInstallScriptArrayOutput() GetClustersClusterPostInstallScriptArrayOutput {
+	return i.ToGetClustersClusterPostInstallScriptArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterPostInstallScriptArray) ToGetClustersClusterPostInstallScriptArrayOutputWithContext(ctx context.Context) GetClustersClusterPostInstallScriptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterPostInstallScriptArrayOutput)
+}
+
+type GetClustersClusterPostInstallScriptOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterPostInstallScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterPostInstallScript)(nil)).Elem()
+}
+
+func (o GetClustersClusterPostInstallScriptOutput) ToGetClustersClusterPostInstallScriptOutput() GetClustersClusterPostInstallScriptOutput {
+	return o
+}
+
+func (o GetClustersClusterPostInstallScriptOutput) ToGetClustersClusterPostInstallScriptOutputWithContext(ctx context.Context) GetClustersClusterPostInstallScriptOutput {
+	return o
+}
+
+func (o GetClustersClusterPostInstallScriptOutput) Args() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterPostInstallScript) string { return v.Args }).(pulumi.StringOutput)
+}
+
+func (o GetClustersClusterPostInstallScriptOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterPostInstallScript) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterPostInstallScriptArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterPostInstallScriptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterPostInstallScript)(nil)).Elem()
+}
+
+func (o GetClustersClusterPostInstallScriptArrayOutput) ToGetClustersClusterPostInstallScriptArrayOutput() GetClustersClusterPostInstallScriptArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterPostInstallScriptArrayOutput) ToGetClustersClusterPostInstallScriptArrayOutputWithContext(ctx context.Context) GetClustersClusterPostInstallScriptArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterPostInstallScriptArrayOutput) Index(i pulumi.IntInput) GetClustersClusterPostInstallScriptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterPostInstallScript {
+		return vs[0].([]GetClustersClusterPostInstallScript)[vs[1].(int)]
+	}).(GetClustersClusterPostInstallScriptOutput)
+}
+
 type GetJobTemplatesTemplate struct {
 	// Queue Jobs, Is of the Form: 1-10:2.
 	ArrayRequest string `pulumi:"arrayRequest"`
@@ -270,8 +1321,36 @@ func (o GetJobTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTempl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAdditionalVolumeInput)(nil)).Elem(), ClusterAdditionalVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAdditionalVolumeArrayInput)(nil)).Elem(), ClusterAdditionalVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAdditionalVolumeRoleInput)(nil)).Elem(), ClusterAdditionalVolumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAdditionalVolumeRoleArrayInput)(nil)).Elem(), ClusterAdditionalVolumeRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterApplicationInput)(nil)).Elem(), ClusterApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterApplicationArrayInput)(nil)).Elem(), ClusterApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPostInstallScriptInput)(nil)).Elem(), ClusterPostInstallScriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPostInstallScriptArrayInput)(nil)).Elem(), ClusterPostInstallScriptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterApplicationInput)(nil)).Elem(), GetClustersClusterApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterApplicationArrayInput)(nil)).Elem(), GetClustersClusterApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterPostInstallScriptInput)(nil)).Elem(), GetClustersClusterPostInstallScriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterPostInstallScriptArrayInput)(nil)).Elem(), GetClustersClusterPostInstallScriptArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplatesTemplateInput)(nil)).Elem(), GetJobTemplatesTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplatesTemplateArrayInput)(nil)).Elem(), GetJobTemplatesTemplateArray{})
+	pulumi.RegisterOutputType(ClusterAdditionalVolumeOutput{})
+	pulumi.RegisterOutputType(ClusterAdditionalVolumeArrayOutput{})
+	pulumi.RegisterOutputType(ClusterAdditionalVolumeRoleOutput{})
+	pulumi.RegisterOutputType(ClusterAdditionalVolumeRoleArrayOutput{})
+	pulumi.RegisterOutputType(ClusterApplicationOutput{})
+	pulumi.RegisterOutputType(ClusterApplicationArrayOutput{})
+	pulumi.RegisterOutputType(ClusterPostInstallScriptOutput{})
+	pulumi.RegisterOutputType(ClusterPostInstallScriptArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterApplicationOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterApplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterPostInstallScriptOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterPostInstallScriptArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetJobTemplatesTemplateArrayOutput{})
 }

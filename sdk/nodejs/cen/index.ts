@@ -19,6 +19,7 @@ export * from "./getRegionRouteEntries";
 export * from "./getRouteEntries";
 export * from "./getRouteMaps";
 export * from "./getRouteServices";
+export * from "./getTrafficMarkingPolicies";
 export * from "./getTransitRouterAvailableResources";
 export * from "./getTransitRouterPeerAttachments";
 export * from "./getTransitRouterRouteEntries";
@@ -37,6 +38,7 @@ export * from "./privateZone";
 export * from "./routeEntry";
 export * from "./routeMap";
 export * from "./routeService";
+export * from "./trafficMarkingPolicy";
 export * from "./transitRouter";
 export * from "./transitRouterPeerAttachment";
 export * from "./transitRouterRouteEntry";
@@ -59,6 +61,7 @@ import { PrivateZone } from "./privateZone";
 import { RouteEntry } from "./routeEntry";
 import { RouteMap } from "./routeMap";
 import { RouteService } from "./routeService";
+import { TrafficMarkingPolicy } from "./trafficMarkingPolicy";
 import { TransitRouter } from "./transitRouter";
 import { TransitRouterPeerAttachment } from "./transitRouterPeerAttachment";
 import { TransitRouterRouteEntry } from "./transitRouterRouteEntry";
@@ -95,6 +98,8 @@ const _module = {
                 return new RouteMap(name, <any>undefined, { urn })
             case "alicloud:cen/routeService:RouteService":
                 return new RouteService(name, <any>undefined, { urn })
+            case "alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy":
+                return new TrafficMarkingPolicy(name, <any>undefined, { urn })
             case "alicloud:cen/transitRouter:TransitRouter":
                 return new TransitRouter(name, <any>undefined, { urn })
             case "alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment":
@@ -129,6 +134,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cen/privateZone", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/routeEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/routeMap", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/routeService", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/trafficMarkingPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterPeerAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterRouteEntry", _module)

@@ -2959,7 +2959,7 @@ type GetTriggersTrigger struct {
 	Name string `pulumi:"name"`
 	// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	SourceArn string `pulumi:"sourceArn"`
-	// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http` and `mnsTopic`.
+	// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mnsTopic`, `cdnEvents` and `eventbridge`.
 	Type string `pulumi:"type"`
 }
 
@@ -2989,7 +2989,7 @@ type GetTriggersTriggerArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	SourceArn pulumi.StringInput `pulumi:"sourceArn"`
-	// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http` and `mnsTopic`.
+	// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mnsTopic`, `cdnEvents` and `eventbridge`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3079,7 +3079,7 @@ func (o GetTriggersTriggerOutput) SourceArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggersTrigger) string { return v.SourceArn }).(pulumi.StringOutput)
 }
 
-// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http` and `mnsTopic`.
+// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mnsTopic`, `cdnEvents` and `eventbridge`.
 func (o GetTriggersTriggerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggersTrigger) string { return v.Type }).(pulumi.StringOutput)
 }

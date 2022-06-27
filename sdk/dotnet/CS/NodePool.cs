@@ -465,7 +465,7 @@ namespace Pulumi.AliCloud.CS
     /// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+    ///  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/nodePool:NodePool")]
@@ -482,6 +482,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// </summary>
+        [Output("cisEnabled")]
+        public Output<bool?> CisEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The id of kubernetes cluster.
@@ -682,6 +688,13 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        /// </summary>
+        [Output("socEnabled")]
+        public Output<bool?> SocEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         /// </summary>
         [Output("spotPriceLimits")]
@@ -822,6 +835,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// </summary>
+        [Input("cisEnabled")]
+        public Input<bool>? CisEnabled { get; set; }
 
         /// <summary>
         /// The id of kubernetes cluster.
@@ -1045,6 +1064,13 @@ namespace Pulumi.AliCloud.CS
             set => _securityGroupIds = value;
         }
 
+        /// <summary>
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        /// </summary>
+        [Input("socEnabled")]
+        public Input<bool>? SocEnabled { get; set; }
+
         [Input("spotPriceLimits")]
         private InputList<Inputs.NodePoolSpotPriceLimitArgs>? _spotPriceLimits;
 
@@ -1165,6 +1191,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// </summary>
+        [Input("cisEnabled")]
+        public Input<bool>? CisEnabled { get; set; }
 
         /// <summary>
         /// The id of kubernetes cluster.
@@ -1393,6 +1425,13 @@ namespace Pulumi.AliCloud.CS
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        /// <summary>
+        /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        /// &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        /// </summary>
+        [Input("socEnabled")]
+        public Input<bool>? SocEnabled { get; set; }
 
         [Input("spotPriceLimits")]
         private InputList<Inputs.NodePoolSpotPriceLimitGetArgs>? _spotPriceLimits;

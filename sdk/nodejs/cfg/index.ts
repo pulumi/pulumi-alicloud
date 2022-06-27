@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./aggregateCompliancePack";
 export * from "./aggregateConfigRule";
+export * from "./aggregateDelivery";
 export * from "./aggregator";
 export * from "./compliancePack";
 export * from "./configurationRecorder";
@@ -14,6 +15,7 @@ export * from "./delivery";
 export * from "./deliveryChannel";
 export * from "./getAggregateCompliancePacks";
 export * from "./getAggregateConfigRules";
+export * from "./getAggregateDeliveries";
 export * from "./getAggregators";
 export * from "./getCompliancePacks";
 export * from "./getConfigurationRecorders";
@@ -25,6 +27,7 @@ export * from "./rule";
 // Import resources to register:
 import { AggregateCompliancePack } from "./aggregateCompliancePack";
 import { AggregateConfigRule } from "./aggregateConfigRule";
+import { AggregateDelivery } from "./aggregateDelivery";
 import { Aggregator } from "./aggregator";
 import { CompliancePack } from "./compliancePack";
 import { ConfigurationRecorder } from "./configurationRecorder";
@@ -40,6 +43,8 @@ const _module = {
                 return new AggregateCompliancePack(name, <any>undefined, { urn })
             case "alicloud:cfg/aggregateConfigRule:AggregateConfigRule":
                 return new AggregateConfigRule(name, <any>undefined, { urn })
+            case "alicloud:cfg/aggregateDelivery:AggregateDelivery":
+                return new AggregateDelivery(name, <any>undefined, { urn })
             case "alicloud:cfg/aggregator:Aggregator":
                 return new Aggregator(name, <any>undefined, { urn })
             case "alicloud:cfg/compliancePack:CompliancePack":
@@ -59,6 +64,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregateCompliancePack", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregateConfigRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregateDelivery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregator", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/compliancePack", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/configurationRecorder", _module)

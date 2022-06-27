@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Ots
     ///             TimeToLive = -1,
     ///             MaxVersion = 1,
     ///             DeviationCellVersionInSec = "1",
+    ///             EnableSse = true,
+    ///             SseKeyType = "SSE_KMS_SERVICE",
     ///         });
     ///     }
     /// 
@@ -86,6 +88,12 @@ namespace Pulumi.AliCloud.Ots
         public Output<string?> DeviationCellVersionInSec { get; private set; } = null!;
 
         /// <summary>
+        /// Whether enable OTS server side encryption. Default value is false.
+        /// </summary>
+        [Output("enableSse")]
+        public Output<bool?> EnableSse { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the OTS instance in which table will located.
         /// </summary>
         [Output("instanceName")]
@@ -102,6 +110,12 @@ namespace Pulumi.AliCloud.Ots
         /// </summary>
         [Output("primaryKeys")]
         public Output<ImmutableArray<Outputs.TablePrimaryKey>> PrimaryKeys { get; private set; } = null!;
+
+        /// <summary>
+        /// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        /// </summary>
+        [Output("sseKeyType")]
+        public Output<string?> SseKeyType { get; private set; } = null!;
 
         /// <summary>
         /// The table name of the OTS instance. If changed, a new table would be created.
@@ -168,6 +182,12 @@ namespace Pulumi.AliCloud.Ots
         public Input<string>? DeviationCellVersionInSec { get; set; }
 
         /// <summary>
+        /// Whether enable OTS server side encryption. Default value is false.
+        /// </summary>
+        [Input("enableSse")]
+        public Input<bool>? EnableSse { get; set; }
+
+        /// <summary>
         /// The name of the OTS instance in which table will located.
         /// </summary>
         [Input("instanceName", required: true)]
@@ -190,6 +210,12 @@ namespace Pulumi.AliCloud.Ots
             get => _primaryKeys ?? (_primaryKeys = new InputList<Inputs.TablePrimaryKeyArgs>());
             set => _primaryKeys = value;
         }
+
+        /// <summary>
+        /// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        /// </summary>
+        [Input("sseKeyType")]
+        public Input<string>? SseKeyType { get; set; }
 
         /// <summary>
         /// The table name of the OTS instance. If changed, a new table would be created.
@@ -217,6 +243,12 @@ namespace Pulumi.AliCloud.Ots
         public Input<string>? DeviationCellVersionInSec { get; set; }
 
         /// <summary>
+        /// Whether enable OTS server side encryption. Default value is false.
+        /// </summary>
+        [Input("enableSse")]
+        public Input<bool>? EnableSse { get; set; }
+
+        /// <summary>
         /// The name of the OTS instance in which table will located.
         /// </summary>
         [Input("instanceName")]
@@ -239,6 +271,12 @@ namespace Pulumi.AliCloud.Ots
             get => _primaryKeys ?? (_primaryKeys = new InputList<Inputs.TablePrimaryKeyGetArgs>());
             set => _primaryKeys = value;
         }
+
+        /// <summary>
+        /// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        /// </summary>
+        [Input("sseKeyType")]
+        public Input<string>? SseKeyType { get; set; }
 
         /// <summary>
         /// The table name of the OTS instance. If changed, a new table would be created.

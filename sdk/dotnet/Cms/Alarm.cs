@@ -31,11 +31,6 @@ namespace Pulumi.AliCloud.Cms
     ///             {
     ///                 "test-group",
     ///             },
-    ///             Dimensions = 
-    ///             {
-    ///                 { "device", "/dev/vda1,/dev/vdb1" },
-    ///                 { "instanceId", "i-bp1247,i-bp11gd" },
-    ///             },
     ///             EffectiveInterval = "0:00-2:00",
     ///             EscalationsCritical = new AliCloud.Cms.Inputs.AlarmEscalationsCriticalArgs
     ///             {
@@ -44,7 +39,19 @@ namespace Pulumi.AliCloud.Cms
     ///                 Threshold = "35",
     ///                 Times = 2,
     ///             },
-    ///             Metric = "disk_writebytes",
+    ///             MetricDimensions = 
+    ///             {
+    ///                 new AliCloud.Cms.Inputs.AlarmMetricDimensionArgs
+    ///                 {
+    ///                     Key = "instanceId",
+    ///                     Value = "i-bp1247jeep0y53nu3bnk",
+    ///                 },
+    ///                 new AliCloud.Cms.Inputs.AlarmMetricDimensionArgs
+    ///                 {
+    ///                     Key = "device",
+    ///                     Value = "/dev/vda1",
+    ///                 },
+    ///             },
     ///             Period = 900,
     ///             Project = "acs_ecs_dashboard",
     ///             Webhook = $"https://{data.Alicloud_account.Current.Id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/",
@@ -72,7 +79,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableArray<string>> ContactGroups { get; private set; } = null!;
 
         /// <summary>
-        /// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
@@ -118,6 +125,12 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         [Output("metric")]
         public Output<string> Metric { get; private set; } = null!;
+
+        /// <summary>
+        /// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// </summary>
+        [Output("metricDimensions")]
+        public Output<ImmutableArray<Outputs.AlarmMetricDimension>> MetricDimensions { get; private set; } = null!;
 
         /// <summary>
         /// The alarm rule name.
@@ -243,12 +256,13 @@ namespace Pulumi.AliCloud.Cms
             set => _contactGroups = value;
         }
 
-        [Input("dimensions", required: true)]
+        [Input("dimensions")]
         private InputMap<object>? _dimensions;
 
         /// <summary>
-        /// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         /// </summary>
+        [Obsolete(@"Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.")]
         public InputMap<object> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputMap<object>());
@@ -296,6 +310,18 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         [Input("metric", required: true)]
         public Input<string> Metric { get; set; } = null!;
+
+        [Input("metricDimensions")]
+        private InputList<Inputs.AlarmMetricDimensionArgs>? _metricDimensions;
+
+        /// <summary>
+        /// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// </summary>
+        public InputList<Inputs.AlarmMetricDimensionArgs> MetricDimensions
+        {
+            get => _metricDimensions ?? (_metricDimensions = new InputList<Inputs.AlarmMetricDimensionArgs>());
+            set => _metricDimensions = value;
+        }
 
         /// <summary>
         /// The alarm rule name.
@@ -380,8 +406,9 @@ namespace Pulumi.AliCloud.Cms
         private InputMap<object>? _dimensions;
 
         /// <summary>
-        /// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// Field `dimensions` has been deprecated from version 1.95.0. Use `metric_dimensions` instead.
         /// </summary>
+        [Obsolete(@"Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.")]
         public InputMap<object> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputMap<object>());
@@ -429,6 +456,18 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         [Input("metric")]
         public Input<string>? Metric { get; set; }
+
+        [Input("metricDimensions")]
+        private InputList<Inputs.AlarmMetricDimensionGetArgs>? _metricDimensions;
+
+        /// <summary>
+        /// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        /// </summary>
+        public InputList<Inputs.AlarmMetricDimensionGetArgs> MetricDimensions
+        {
+            get => _metricDimensions ?? (_metricDimensions = new InputList<Inputs.AlarmMetricDimensionGetArgs>());
+            set => _metricDimensions = value;
+        }
 
         /// <summary>
         /// The alarm rule name.

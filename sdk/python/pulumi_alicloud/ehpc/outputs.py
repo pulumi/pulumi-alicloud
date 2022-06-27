@@ -7,10 +7,629 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'ClusterAdditionalVolume',
+    'ClusterAdditionalVolumeRole',
+    'ClusterApplication',
+    'ClusterPostInstallScript',
+    'GetClustersClusterResult',
+    'GetClustersClusterApplicationResult',
+    'GetClustersClusterPostInstallScriptResult',
     'GetJobTemplatesTemplateResult',
 ]
+
+@pulumi.output_type
+class ClusterAdditionalVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobQueue":
+            suggest = "job_queue"
+        elif key == "localDirectory":
+            suggest = "local_directory"
+        elif key == "remoteDirectory":
+            suggest = "remote_directory"
+        elif key == "volumeId":
+            suggest = "volume_id"
+        elif key == "volumeMountOption":
+            suggest = "volume_mount_option"
+        elif key == "volumeMountpoint":
+            suggest = "volume_mountpoint"
+        elif key == "volumeProtocol":
+            suggest = "volume_protocol"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAdditionalVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAdditionalVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAdditionalVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_queue: Optional[str] = None,
+                 local_directory: Optional[str] = None,
+                 location: Optional[str] = None,
+                 remote_directory: Optional[str] = None,
+                 roles: Optional[Sequence['outputs.ClusterAdditionalVolumeRole']] = None,
+                 volume_id: Optional[str] = None,
+                 volume_mount_option: Optional[str] = None,
+                 volume_mountpoint: Optional[str] = None,
+                 volume_protocol: Optional[str] = None,
+                 volume_type: Optional[str] = None):
+        """
+        :param str job_queue: The queue of the nodes to which the additional file system is attached.
+        :param str local_directory: The local directory on which the additional file system is mounted.
+        :param str location: The type of the cluster. Valid value: `PublicCloud`.
+        :param str remote_directory: The remote directory to which the additional file system is mounted.
+        :param Sequence['ClusterAdditionalVolumeRoleArgs'] roles: The roles. See the following `Block roles`.
+        :param str volume_id: The ID of the additional file system.
+        :param str volume_mount_option: The mount options of the file system.
+        :param str volume_mountpoint: The mount target of the additional file system.
+        :param str volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        :param str volume_type: The type of the additional shared storage. Only NAS file systems are supported.
+        """
+        if job_queue is not None:
+            pulumi.set(__self__, "job_queue", job_queue)
+        if local_directory is not None:
+            pulumi.set(__self__, "local_directory", local_directory)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if remote_directory is not None:
+            pulumi.set(__self__, "remote_directory", remote_directory)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+        if volume_mount_option is not None:
+            pulumi.set(__self__, "volume_mount_option", volume_mount_option)
+        if volume_mountpoint is not None:
+            pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
+        if volume_protocol is not None:
+            pulumi.set(__self__, "volume_protocol", volume_protocol)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="jobQueue")
+    def job_queue(self) -> Optional[str]:
+        """
+        The queue of the nodes to which the additional file system is attached.
+        """
+        return pulumi.get(self, "job_queue")
+
+    @property
+    @pulumi.getter(name="localDirectory")
+    def local_directory(self) -> Optional[str]:
+        """
+        The local directory on which the additional file system is mounted.
+        """
+        return pulumi.get(self, "local_directory")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        The type of the cluster. Valid value: `PublicCloud`.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="remoteDirectory")
+    def remote_directory(self) -> Optional[str]:
+        """
+        The remote directory to which the additional file system is mounted.
+        """
+        return pulumi.get(self, "remote_directory")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence['outputs.ClusterAdditionalVolumeRole']]:
+        """
+        The roles. See the following `Block roles`.
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[str]:
+        """
+        The ID of the additional file system.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @property
+    @pulumi.getter(name="volumeMountOption")
+    def volume_mount_option(self) -> Optional[str]:
+        """
+        The mount options of the file system.
+        """
+        return pulumi.get(self, "volume_mount_option")
+
+    @property
+    @pulumi.getter(name="volumeMountpoint")
+    def volume_mountpoint(self) -> Optional[str]:
+        """
+        The mount target of the additional file system.
+        """
+        return pulumi.get(self, "volume_mountpoint")
+
+    @property
+    @pulumi.getter(name="volumeProtocol")
+    def volume_protocol(self) -> Optional[str]:
+        """
+        The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        """
+        return pulumi.get(self, "volume_protocol")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[str]:
+        """
+        The type of the additional shared storage. Only NAS file systems are supported.
+        """
+        return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class ClusterAdditionalVolumeRole(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: The type of the nodes to which the additional file system is attached.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The type of the nodes to which the additional file system is attached.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ClusterApplication(dict):
+    def __init__(__self__, *,
+                 tag: Optional[str] = None):
+        """
+        :param str tag: The tag of the software.
+        """
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        The tag of the software.
+        """
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class ClusterPostInstallScript(dict):
+    def __init__(__self__, *,
+                 args: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str args: The parameter that is used to run the script after the cluster is created.
+        :param str url: The URL that is used to download the script after the cluster is created.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[str]:
+        """
+        The parameter that is used to run the script after the cluster is created.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The URL that is used to download the script after the cluster is created.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetClustersClusterResult(dict):
+    def __init__(__self__, *,
+                 account_type: str,
+                 applications: Sequence['outputs.GetClustersClusterApplicationResult'],
+                 client_version: str,
+                 cluster_id: str,
+                 cluster_name: str,
+                 compute_count: int,
+                 compute_instance_type: str,
+                 create_time: str,
+                 deploy_mode: str,
+                 description: str,
+                 ha_enable: bool,
+                 id: str,
+                 image_id: str,
+                 image_owner_alias: str,
+                 login_count: int,
+                 login_instance_type: str,
+                 manager_count: int,
+                 manager_instance_type: str,
+                 os_tag: str,
+                 post_install_scripts: Sequence['outputs.GetClustersClusterPostInstallScriptResult'],
+                 remote_directory: str,
+                 scc_cluster_id: str,
+                 scheduler_type: str,
+                 security_group_id: str,
+                 status: str,
+                 volume_id: str,
+                 volume_mountpoint: str,
+                 volume_protocol: str,
+                 volume_type: str,
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param str account_type: The server type of the account.
+        :param str client_version: The version number of the client used by the cluster.
+        :param str cluster_id: The id of E-HPC Cluster.
+        :param str cluster_name: The name of E-HPC cluster.
+        :param int compute_count: The number of compute nodes in the cluster.
+        :param str compute_instance_type: Cluster compute node specifications.
+        :param str create_time: The creation time of the resource.
+        :param str deploy_mode: Cluster deployment mode. Possible values:
+               - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+               - Advanced:HA mode deployment.
+               - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+               - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+               - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+        :param str description: The description of E-HPC cluster.
+        :param bool ha_enable: Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+        :param str id: The ID of the Cluster.
+        :param str image_id: The ID of the Image.
+        :param str image_owner_alias: The type of the image.
+        :param int login_count: The number of cluster login nodes. Only configuration 1 is supported.
+        :param str login_instance_type: Cluster login node specifications.
+        :param str manager_instance_type: The instance type of manager nodes.
+        :param str os_tag: The image tag of the operating system.
+        :param str remote_directory: Mount the remote directory of the shared storage.
+        :param str scc_cluster_id: The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+        :param str scheduler_type: Dispatch server type.
+        :param str security_group_id: The ID of the security group.
+        :param str status: The status of the resource.
+        :param str volume_id: The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+        :param str volume_mountpoint: The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+        :param str volume_protocol: The type of the protocol that is used by the file system.
+        :param str volume_type: The type of the network shared storage. Valid value: NAS.
+        :param str vpc_id: The ID of the VPC network.
+        :param str vswitch_id: The vswitch id.
+        """
+        pulumi.set(__self__, "account_type", account_type)
+        pulumi.set(__self__, "applications", applications)
+        pulumi.set(__self__, "client_version", client_version)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "compute_count", compute_count)
+        pulumi.set(__self__, "compute_instance_type", compute_instance_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deploy_mode", deploy_mode)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ha_enable", ha_enable)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "image_owner_alias", image_owner_alias)
+        pulumi.set(__self__, "login_count", login_count)
+        pulumi.set(__self__, "login_instance_type", login_instance_type)
+        pulumi.set(__self__, "manager_count", manager_count)
+        pulumi.set(__self__, "manager_instance_type", manager_instance_type)
+        pulumi.set(__self__, "os_tag", os_tag)
+        pulumi.set(__self__, "post_install_scripts", post_install_scripts)
+        pulumi.set(__self__, "remote_directory", remote_directory)
+        pulumi.set(__self__, "scc_cluster_id", scc_cluster_id)
+        pulumi.set(__self__, "scheduler_type", scheduler_type)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
+        pulumi.set(__self__, "volume_protocol", volume_protocol)
+        pulumi.set(__self__, "volume_type", volume_type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> str:
+        """
+        The server type of the account.
+        """
+        return pulumi.get(self, "account_type")
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Sequence['outputs.GetClustersClusterApplicationResult']:
+        return pulumi.get(self, "applications")
+
+    @property
+    @pulumi.getter(name="clientVersion")
+    def client_version(self) -> str:
+        """
+        The version number of the client used by the cluster.
+        """
+        return pulumi.get(self, "client_version")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The id of E-HPC Cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The name of E-HPC cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="computeCount")
+    def compute_count(self) -> int:
+        """
+        The number of compute nodes in the cluster.
+        """
+        return pulumi.get(self, "compute_count")
+
+    @property
+    @pulumi.getter(name="computeInstanceType")
+    def compute_instance_type(self) -> str:
+        """
+        Cluster compute node specifications.
+        """
+        return pulumi.get(self, "compute_instance_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deployMode")
+    def deploy_mode(self) -> str:
+        """
+        Cluster deployment mode. Possible values:
+        - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+        - Advanced:HA mode deployment.
+        - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+        - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+        - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+        """
+        return pulumi.get(self, "deploy_mode")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of E-HPC cluster.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="haEnable")
+    def ha_enable(self) -> bool:
+        """
+        Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+        """
+        return pulumi.get(self, "ha_enable")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Cluster.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        The ID of the Image.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageOwnerAlias")
+    def image_owner_alias(self) -> str:
+        """
+        The type of the image.
+        """
+        return pulumi.get(self, "image_owner_alias")
+
+    @property
+    @pulumi.getter(name="loginCount")
+    def login_count(self) -> int:
+        """
+        The number of cluster login nodes. Only configuration 1 is supported.
+        """
+        return pulumi.get(self, "login_count")
+
+    @property
+    @pulumi.getter(name="loginInstanceType")
+    def login_instance_type(self) -> str:
+        """
+        Cluster login node specifications.
+        """
+        return pulumi.get(self, "login_instance_type")
+
+    @property
+    @pulumi.getter(name="managerCount")
+    def manager_count(self) -> int:
+        return pulumi.get(self, "manager_count")
+
+    @property
+    @pulumi.getter(name="managerInstanceType")
+    def manager_instance_type(self) -> str:
+        """
+        The instance type of manager nodes.
+        """
+        return pulumi.get(self, "manager_instance_type")
+
+    @property
+    @pulumi.getter(name="osTag")
+    def os_tag(self) -> str:
+        """
+        The image tag of the operating system.
+        """
+        return pulumi.get(self, "os_tag")
+
+    @property
+    @pulumi.getter(name="postInstallScripts")
+    def post_install_scripts(self) -> Sequence['outputs.GetClustersClusterPostInstallScriptResult']:
+        return pulumi.get(self, "post_install_scripts")
+
+    @property
+    @pulumi.getter(name="remoteDirectory")
+    def remote_directory(self) -> str:
+        """
+        Mount the remote directory of the shared storage.
+        """
+        return pulumi.get(self, "remote_directory")
+
+    @property
+    @pulumi.getter(name="sccClusterId")
+    def scc_cluster_id(self) -> str:
+        """
+        The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+        """
+        return pulumi.get(self, "scc_cluster_id")
+
+    @property
+    @pulumi.getter(name="schedulerType")
+    def scheduler_type(self) -> str:
+        """
+        Dispatch server type.
+        """
+        return pulumi.get(self, "scheduler_type")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> str:
+        """
+        The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @property
+    @pulumi.getter(name="volumeMountpoint")
+    def volume_mountpoint(self) -> str:
+        """
+        The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+        """
+        return pulumi.get(self, "volume_mountpoint")
+
+    @property
+    @pulumi.getter(name="volumeProtocol")
+    def volume_protocol(self) -> str:
+        """
+        The type of the protocol that is used by the file system.
+        """
+        return pulumi.get(self, "volume_protocol")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> str:
+        """
+        The type of the network shared storage. Valid value: NAS.
+        """
+        return pulumi.get(self, "volume_type")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC network.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetClustersClusterApplicationResult(dict):
+    def __init__(__self__, *,
+                 tag: str):
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetClustersClusterPostInstallScriptResult(dict):
+    def __init__(__self__, *,
+                 args: str,
+                 url: str):
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def args(self) -> str:
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
 
 @pulumi.output_type
 class GetJobTemplatesTemplateResult(dict):

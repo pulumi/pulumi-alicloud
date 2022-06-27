@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
         /// </summary>
         [Output("enableAutoSnapshot")]
-        public Output<bool?> EnableAutoSnapshot { get; private set; } = null!;
+        public Output<bool> EnableAutoSnapshot { get; private set; } = null!;
 
         [Output("encryptAlgorithm")]
         public Output<string?> EncryptAlgorithm { get; private set; } = null!;

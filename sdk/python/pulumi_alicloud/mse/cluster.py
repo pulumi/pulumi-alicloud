@@ -18,11 +18,11 @@ class ClusterArgs:
                  cluster_version: pulumi.Input[str],
                  instance_count: pulumi.Input[int],
                  net_type: pulumi.Input[str],
+                 pub_network_flow: pulumi.Input[str],
                  acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cluster_alias_name: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
-                 pub_network_flow: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -36,11 +36,11 @@ class ClusterArgs:
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[int] instance_count: The count of instance.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
+        :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
-        :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
@@ -49,6 +49,7 @@ class ClusterArgs:
         pulumi.set(__self__, "cluster_version", cluster_version)
         pulumi.set(__self__, "instance_count", instance_count)
         pulumi.set(__self__, "net_type", net_type)
+        pulumi.set(__self__, "pub_network_flow", pub_network_flow)
         if acl_entry_lists is not None:
             pulumi.set(__self__, "acl_entry_lists", acl_entry_lists)
         if cluster_alias_name is not None:
@@ -57,8 +58,6 @@ class ClusterArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if private_slb_specification is not None:
             pulumi.set(__self__, "private_slb_specification", private_slb_specification)
-        if pub_network_flow is not None:
-            pulumi.set(__self__, "pub_network_flow", pub_network_flow)
         if pub_slb_specification is not None:
             pulumi.set(__self__, "pub_slb_specification", pub_slb_specification)
         if vswitch_id is not None:
@@ -129,10 +128,22 @@ class ClusterArgs:
         pulumi.set(self, "net_type", value)
 
     @property
+    @pulumi.getter(name="pubNetworkFlow")
+    def pub_network_flow(self) -> pulumi.Input[str]:
+        """
+        The public network bandwidth. `0` means no access to the public network.
+        """
+        return pulumi.get(self, "pub_network_flow")
+
+    @pub_network_flow.setter
+    def pub_network_flow(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pub_network_flow", value)
+
+    @property
     @pulumi.getter(name="aclEntryLists")
     def acl_entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The whitelist.
+        The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         """
         return pulumi.get(self, "acl_entry_lists")
 
@@ -175,18 +186,6 @@ class ClusterArgs:
     @private_slb_specification.setter
     def private_slb_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_slb_specification", value)
-
-    @property
-    @pulumi.getter(name="pubNetworkFlow")
-    def pub_network_flow(self) -> Optional[pulumi.Input[str]]:
-        """
-        The public network bandwidth. `0` means no access to the public network.
-        """
-        return pulumi.get(self, "pub_network_flow")
-
-    @pub_network_flow.setter
-    def pub_network_flow(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pub_network_flow", value)
 
     @property
     @pulumi.getter(name="pubSlbSpecification")
@@ -232,7 +231,7 @@ class _ClusterState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_id: (Available in v1.162.0+)  The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
@@ -284,7 +283,7 @@ class _ClusterState:
     @pulumi.getter(name="aclEntryLists")
     def acl_entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The whitelist.
+        The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         """
         return pulumi.get(self, "acl_entry_lists")
 
@@ -504,7 +503,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
                `MSE_SC_1_2_200_c`：1C2G
@@ -616,6 +615,8 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'net_type'")
             __props__.__dict__["net_type"] = net_type
             __props__.__dict__["private_slb_specification"] = private_slb_specification
+            if pub_network_flow is None and not opts.urn:
+                raise TypeError("Missing required property 'pub_network_flow'")
             __props__.__dict__["pub_network_flow"] = pub_network_flow
             __props__.__dict__["pub_slb_specification"] = pub_slb_specification
             __props__.__dict__["vswitch_id"] = vswitch_id
@@ -652,7 +653,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_id: (Available in v1.162.0+)  The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. Valid values:
@@ -695,7 +696,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="aclEntryLists")
     def acl_entry_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The whitelist.
+        The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         """
         return pulumi.get(self, "acl_entry_lists")
 
@@ -777,7 +778,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pubNetworkFlow")
-    def pub_network_flow(self) -> pulumi.Output[Optional[str]]:
+    def pub_network_flow(self) -> pulumi.Output[str]:
         """
         The public network bandwidth. `0` means no access to the public network.
         """

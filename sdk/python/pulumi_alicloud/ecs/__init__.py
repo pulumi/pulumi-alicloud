@@ -19,6 +19,7 @@ from .ecs_disk import *
 from .ecs_disk_attachment import *
 from .ecs_image_component import *
 from .ecs_image_pipeline import *
+from .ecs_instance_set import *
 from .ecs_invocation import *
 from .ecs_key_pair import *
 from .ecs_key_pair_attachment import *

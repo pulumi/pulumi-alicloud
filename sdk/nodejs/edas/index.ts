@@ -13,10 +13,12 @@ export * from "./deployGroup";
 export * from "./getApplications";
 export * from "./getClusters";
 export * from "./getDeployGroups";
+export * from "./getNamespaces";
 export * from "./getService";
 export * from "./instanceClusterAttachment";
 export * from "./k8sApplication";
 export * from "./k8sCluster";
+export * from "./namespace";
 export * from "./slbAttachment";
 
 // Import resources to register:
@@ -28,6 +30,7 @@ import { DeployGroup } from "./deployGroup";
 import { InstanceClusterAttachment } from "./instanceClusterAttachment";
 import { K8sApplication } from "./k8sApplication";
 import { K8sCluster } from "./k8sCluster";
+import { Namespace } from "./namespace";
 import { SlbAttachment } from "./slbAttachment";
 
 const _module = {
@@ -50,6 +53,8 @@ const _module = {
                 return new K8sApplication(name, <any>undefined, { urn })
             case "alicloud:edas/k8sCluster:K8sCluster":
                 return new K8sCluster(name, <any>undefined, { urn })
+            case "alicloud:edas/namespace:Namespace":
+                return new Namespace(name, <any>undefined, { urn })
             case "alicloud:edas/slbAttachment:SlbAttachment":
                 return new SlbAttachment(name, <any>undefined, { urn })
             default:
@@ -65,4 +70,5 @@ pulumi.runtime.registerResourceModule("alicloud", "edas/deployGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "edas/instanceClusterAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "edas/k8sApplication", _module)
 pulumi.runtime.registerResourceModule("alicloud", "edas/k8sCluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "edas/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "edas/slbAttachment", _module)

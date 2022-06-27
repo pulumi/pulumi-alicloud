@@ -164,8 +164,8 @@ type ContainerGroup struct {
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The restart policy of the container group. Default to `Always`.
-	RestartPolicy pulumi.StringPtrOutput `pulumi:"restartPolicy"`
+	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
+	RestartPolicy pulumi.StringOutput `pulumi:"restartPolicy"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The status of container group.
@@ -263,7 +263,7 @@ type containerGroupState struct {
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The restart policy of the container group. Default to `Always`.
+	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -322,7 +322,7 @@ type ContainerGroupState struct {
 	RamRoleName pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The restart policy of the container group. Default to `Always`.
+	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy pulumi.StringPtrInput
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringPtrInput
@@ -381,7 +381,7 @@ type containerGroupArgs struct {
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The restart policy of the container group. Default to `Always`.
+	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -435,7 +435,7 @@ type ContainerGroupArgs struct {
 	RamRoleName pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The restart policy of the container group. Default to `Always`.
+	// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
 	RestartPolicy pulumi.StringPtrInput
 	// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
 	SecurityGroupId pulumi.StringInput

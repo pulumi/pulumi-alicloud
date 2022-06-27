@@ -1554,6 +1554,229 @@ func (o GetAggregateConfigRulesRuleComplianceArrayOutput) Index(i pulumi.IntInpu
 	}).(GetAggregateConfigRulesRuleComplianceOutput)
 }
 
+type GetAggregateDeliveriesDelivery struct {
+	// The Aliyun User Id.
+	AccountId string `pulumi:"accountId"`
+	// The ID of the Aggregator.
+	AggregatorId string `pulumi:"aggregatorId"`
+	// Open or close delivery configuration change history.
+	ConfigurationItemChangeNotification bool `pulumi:"configurationItemChangeNotification"`
+	// Open or close timed snapshot of shipping resources.
+	ConfigurationSnapshot bool `pulumi:"configurationSnapshot"`
+	// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+	DeliveryChannelAssumeRoleArn string `pulumi:"deliveryChannelAssumeRoleArn"`
+	// The rule attached to the delivery method.
+	DeliveryChannelCondition string `pulumi:"deliveryChannelCondition"`
+	// The ID of the delivery method.
+	DeliveryChannelId string `pulumi:"deliveryChannelId"`
+	// The name of the delivery method.
+	DeliveryChannelName string `pulumi:"deliveryChannelName"`
+	// The ARN of the delivery destination.
+	DeliveryChannelTargetArn string `pulumi:"deliveryChannelTargetArn"`
+	// The type of the delivery method.
+	DeliveryChannelType string `pulumi:"deliveryChannelType"`
+	// The description of the delivery method.
+	Description string `pulumi:"description"`
+	// The ID of the Aggregate Delivery.
+	Id string `pulumi:"id"`
+	// Open or close non-compliance events of delivery resources.
+	NonCompliantNotification bool `pulumi:"nonCompliantNotification"`
+	// The oss ARN of the delivery channel when the value data oversized limit.
+	OversizedDataOssTargetArn string `pulumi:"oversizedDataOssTargetArn"`
+	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+	Status int `pulumi:"status"`
+}
+
+// GetAggregateDeliveriesDeliveryInput is an input type that accepts GetAggregateDeliveriesDeliveryArgs and GetAggregateDeliveriesDeliveryOutput values.
+// You can construct a concrete instance of `GetAggregateDeliveriesDeliveryInput` via:
+//
+//          GetAggregateDeliveriesDeliveryArgs{...}
+type GetAggregateDeliveriesDeliveryInput interface {
+	pulumi.Input
+
+	ToGetAggregateDeliveriesDeliveryOutput() GetAggregateDeliveriesDeliveryOutput
+	ToGetAggregateDeliveriesDeliveryOutputWithContext(context.Context) GetAggregateDeliveriesDeliveryOutput
+}
+
+type GetAggregateDeliveriesDeliveryArgs struct {
+	// The Aliyun User Id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The ID of the Aggregator.
+	AggregatorId pulumi.StringInput `pulumi:"aggregatorId"`
+	// Open or close delivery configuration change history.
+	ConfigurationItemChangeNotification pulumi.BoolInput `pulumi:"configurationItemChangeNotification"`
+	// Open or close timed snapshot of shipping resources.
+	ConfigurationSnapshot pulumi.BoolInput `pulumi:"configurationSnapshot"`
+	// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+	DeliveryChannelAssumeRoleArn pulumi.StringInput `pulumi:"deliveryChannelAssumeRoleArn"`
+	// The rule attached to the delivery method.
+	DeliveryChannelCondition pulumi.StringInput `pulumi:"deliveryChannelCondition"`
+	// The ID of the delivery method.
+	DeliveryChannelId pulumi.StringInput `pulumi:"deliveryChannelId"`
+	// The name of the delivery method.
+	DeliveryChannelName pulumi.StringInput `pulumi:"deliveryChannelName"`
+	// The ARN of the delivery destination.
+	DeliveryChannelTargetArn pulumi.StringInput `pulumi:"deliveryChannelTargetArn"`
+	// The type of the delivery method.
+	DeliveryChannelType pulumi.StringInput `pulumi:"deliveryChannelType"`
+	// The description of the delivery method.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Aggregate Delivery.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Open or close non-compliance events of delivery resources.
+	NonCompliantNotification pulumi.BoolInput `pulumi:"nonCompliantNotification"`
+	// The oss ARN of the delivery channel when the value data oversized limit.
+	OversizedDataOssTargetArn pulumi.StringInput `pulumi:"oversizedDataOssTargetArn"`
+	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+	Status pulumi.IntInput `pulumi:"status"`
+}
+
+func (GetAggregateDeliveriesDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAggregateDeliveriesDelivery)(nil)).Elem()
+}
+
+func (i GetAggregateDeliveriesDeliveryArgs) ToGetAggregateDeliveriesDeliveryOutput() GetAggregateDeliveriesDeliveryOutput {
+	return i.ToGetAggregateDeliveriesDeliveryOutputWithContext(context.Background())
+}
+
+func (i GetAggregateDeliveriesDeliveryArgs) ToGetAggregateDeliveriesDeliveryOutputWithContext(ctx context.Context) GetAggregateDeliveriesDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateDeliveriesDeliveryOutput)
+}
+
+// GetAggregateDeliveriesDeliveryArrayInput is an input type that accepts GetAggregateDeliveriesDeliveryArray and GetAggregateDeliveriesDeliveryArrayOutput values.
+// You can construct a concrete instance of `GetAggregateDeliveriesDeliveryArrayInput` via:
+//
+//          GetAggregateDeliveriesDeliveryArray{ GetAggregateDeliveriesDeliveryArgs{...} }
+type GetAggregateDeliveriesDeliveryArrayInput interface {
+	pulumi.Input
+
+	ToGetAggregateDeliveriesDeliveryArrayOutput() GetAggregateDeliveriesDeliveryArrayOutput
+	ToGetAggregateDeliveriesDeliveryArrayOutputWithContext(context.Context) GetAggregateDeliveriesDeliveryArrayOutput
+}
+
+type GetAggregateDeliveriesDeliveryArray []GetAggregateDeliveriesDeliveryInput
+
+func (GetAggregateDeliveriesDeliveryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAggregateDeliveriesDelivery)(nil)).Elem()
+}
+
+func (i GetAggregateDeliveriesDeliveryArray) ToGetAggregateDeliveriesDeliveryArrayOutput() GetAggregateDeliveriesDeliveryArrayOutput {
+	return i.ToGetAggregateDeliveriesDeliveryArrayOutputWithContext(context.Background())
+}
+
+func (i GetAggregateDeliveriesDeliveryArray) ToGetAggregateDeliveriesDeliveryArrayOutputWithContext(ctx context.Context) GetAggregateDeliveriesDeliveryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAggregateDeliveriesDeliveryArrayOutput)
+}
+
+type GetAggregateDeliveriesDeliveryOutput struct{ *pulumi.OutputState }
+
+func (GetAggregateDeliveriesDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAggregateDeliveriesDelivery)(nil)).Elem()
+}
+
+func (o GetAggregateDeliveriesDeliveryOutput) ToGetAggregateDeliveriesDeliveryOutput() GetAggregateDeliveriesDeliveryOutput {
+	return o
+}
+
+func (o GetAggregateDeliveriesDeliveryOutput) ToGetAggregateDeliveriesDeliveryOutputWithContext(ctx context.Context) GetAggregateDeliveriesDeliveryOutput {
+	return o
+}
+
+// The Aliyun User Id.
+func (o GetAggregateDeliveriesDeliveryOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The ID of the Aggregator.
+func (o GetAggregateDeliveriesDeliveryOutput) AggregatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.AggregatorId }).(pulumi.StringOutput)
+}
+
+// Open or close delivery configuration change history.
+func (o GetAggregateDeliveriesDeliveryOutput) ConfigurationItemChangeNotification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) bool { return v.ConfigurationItemChangeNotification }).(pulumi.BoolOutput)
+}
+
+// Open or close timed snapshot of shipping resources.
+func (o GetAggregateDeliveriesDeliveryOutput) ConfigurationSnapshot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) bool { return v.ConfigurationSnapshot }).(pulumi.BoolOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
+func (o GetAggregateDeliveriesDeliveryOutput) DeliveryChannelAssumeRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.DeliveryChannelAssumeRoleArn }).(pulumi.StringOutput)
+}
+
+// The rule attached to the delivery method.
+func (o GetAggregateDeliveriesDeliveryOutput) DeliveryChannelCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.DeliveryChannelCondition }).(pulumi.StringOutput)
+}
+
+// The ID of the delivery method.
+func (o GetAggregateDeliveriesDeliveryOutput) DeliveryChannelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.DeliveryChannelId }).(pulumi.StringOutput)
+}
+
+// The name of the delivery method.
+func (o GetAggregateDeliveriesDeliveryOutput) DeliveryChannelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.DeliveryChannelName }).(pulumi.StringOutput)
+}
+
+// The ARN of the delivery destination.
+func (o GetAggregateDeliveriesDeliveryOutput) DeliveryChannelTargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.DeliveryChannelTargetArn }).(pulumi.StringOutput)
+}
+
+// The type of the delivery method.
+func (o GetAggregateDeliveriesDeliveryOutput) DeliveryChannelType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.DeliveryChannelType }).(pulumi.StringOutput)
+}
+
+// The description of the delivery method.
+func (o GetAggregateDeliveriesDeliveryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Aggregate Delivery.
+func (o GetAggregateDeliveriesDeliveryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Open or close non-compliance events of delivery resources.
+func (o GetAggregateDeliveriesDeliveryOutput) NonCompliantNotification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) bool { return v.NonCompliantNotification }).(pulumi.BoolOutput)
+}
+
+// The oss ARN of the delivery channel when the value data oversized limit.
+func (o GetAggregateDeliveriesDeliveryOutput) OversizedDataOssTargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) string { return v.OversizedDataOssTargetArn }).(pulumi.StringOutput)
+}
+
+// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
+func (o GetAggregateDeliveriesDeliveryOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAggregateDeliveriesDelivery) int { return v.Status }).(pulumi.IntOutput)
+}
+
+type GetAggregateDeliveriesDeliveryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAggregateDeliveriesDeliveryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAggregateDeliveriesDelivery)(nil)).Elem()
+}
+
+func (o GetAggregateDeliveriesDeliveryArrayOutput) ToGetAggregateDeliveriesDeliveryArrayOutput() GetAggregateDeliveriesDeliveryArrayOutput {
+	return o
+}
+
+func (o GetAggregateDeliveriesDeliveryArrayOutput) ToGetAggregateDeliveriesDeliveryArrayOutputWithContext(ctx context.Context) GetAggregateDeliveriesDeliveryArrayOutput {
+	return o
+}
+
+func (o GetAggregateDeliveriesDeliveryArrayOutput) Index(i pulumi.IntInput) GetAggregateDeliveriesDeliveryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAggregateDeliveriesDelivery {
+		return vs[0].([]GetAggregateDeliveriesDelivery)[vs[1].(int)]
+	}).(GetAggregateDeliveriesDeliveryOutput)
+}
+
 type GetAggregatorsAggregator struct {
 	// Aggregator account uid.
 	AccountId string `pulumi:"accountId"`
@@ -3225,6 +3448,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregateConfigRulesRuleArrayInput)(nil)).Elem(), GetAggregateConfigRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregateConfigRulesRuleComplianceInput)(nil)).Elem(), GetAggregateConfigRulesRuleComplianceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregateConfigRulesRuleComplianceArrayInput)(nil)).Elem(), GetAggregateConfigRulesRuleComplianceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregateDeliveriesDeliveryInput)(nil)).Elem(), GetAggregateDeliveriesDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregateDeliveriesDeliveryArrayInput)(nil)).Elem(), GetAggregateDeliveriesDeliveryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregatorsAggregatorInput)(nil)).Elem(), GetAggregatorsAggregatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregatorsAggregatorArrayInput)(nil)).Elem(), GetAggregatorsAggregatorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregatorsAggregatorAggregatorAccountInput)(nil)).Elem(), GetAggregatorsAggregatorAggregatorAccountArgs{})
@@ -3269,6 +3494,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAggregateConfigRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetAggregateConfigRulesRuleComplianceOutput{})
 	pulumi.RegisterOutputType(GetAggregateConfigRulesRuleComplianceArrayOutput{})
+	pulumi.RegisterOutputType(GetAggregateDeliveriesDeliveryOutput{})
+	pulumi.RegisterOutputType(GetAggregateDeliveriesDeliveryArrayOutput{})
 	pulumi.RegisterOutputType(GetAggregatorsAggregatorOutput{})
 	pulumi.RegisterOutputType(GetAggregatorsAggregatorArrayOutput{})
 	pulumi.RegisterOutputType(GetAggregatorsAggregatorAggregatorAccountOutput{})

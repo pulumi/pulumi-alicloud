@@ -19,6 +19,7 @@ from .get_region_route_entries import *
 from .get_route_entries import *
 from .get_route_maps import *
 from .get_route_services import *
+from .get_traffic_marking_policies import *
 from .get_transit_router_available_resources import *
 from .get_transit_router_peer_attachments import *
 from .get_transit_router_route_entries import *
@@ -37,6 +38,7 @@ from .private_zone import *
 from .route_entry import *
 from .route_map import *
 from .route_service import *
+from .traffic_marking_policy import *
 from .transit_router import *
 from .transit_router_peer_attachment import *
 from .transit_router_route_entry import *

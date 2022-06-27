@@ -54,7 +54,7 @@ type ManagedKubernetes struct {
 	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrOutput `pulumi:"enableSsh"`
@@ -237,7 +237,7 @@ type managedKubernetesState struct {
 	CustomSan *string `pulumi:"customSan"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh *bool `pulumi:"enableSsh"`
@@ -389,7 +389,7 @@ type ManagedKubernetesState struct {
 	CustomSan pulumi.StringPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
-	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrInput
@@ -541,7 +541,7 @@ type managedKubernetesArgs struct {
 	CustomSan *string `pulumi:"customSan"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh *bool `pulumi:"enableSsh"`
@@ -677,7 +677,7 @@ type ManagedKubernetesArgs struct {
 	CustomSan pulumi.StringPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
-	// Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+	// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
 	// Enable login to the node through SSH. Default to `false`.
 	EnableSsh pulumi.BoolPtrInput

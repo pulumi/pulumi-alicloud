@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EcsImageComponent{}
 	case "alicloud:ecs/ecsImagePipeline:EcsImagePipeline":
 		r = &EcsImagePipeline{}
+	case "alicloud:ecs/ecsInstanceSet:EcsInstanceSet":
+		r = &EcsInstanceSet{}
 	case "alicloud:ecs/ecsInvocation:EcsInvocation":
 		r = &EcsInvocation{}
 	case "alicloud:ecs/ecsKeyPair:EcsKeyPair":
@@ -190,6 +192,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/ecsImagePipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/ecsInstanceSet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

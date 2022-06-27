@@ -65,6 +65,8 @@ import (
 // 			TimeToLive:                -1,
 // 			MaxVersion:                pulumi.Int(1),
 // 			DeviationCellVersionInSec: pulumi.String("1"),
+// 			EnableSse:                 pulumi.Bool(true),
+// 			SseKeyType:                pulumi.String("SSE_KMS_SERVICE"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -86,12 +88,16 @@ type Table struct {
 
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrOutput `pulumi:"deviationCellVersionInSec"`
+	// Whether enable OTS server side encryption. Default value is false.
+	EnableSse pulumi.BoolPtrOutput `pulumi:"enableSse"`
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion pulumi.IntOutput `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
 	PrimaryKeys TablePrimaryKeyArrayOutput `pulumi:"primaryKeys"`
+	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	SseKeyType pulumi.StringPtrOutput `pulumi:"sseKeyType"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringOutput `pulumi:"tableName"`
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -144,12 +150,16 @@ func GetTable(ctx *pulumi.Context,
 type tableState struct {
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec *string `pulumi:"deviationCellVersionInSec"`
+	// Whether enable OTS server side encryption. Default value is false.
+	EnableSse *bool `pulumi:"enableSse"`
 	// The name of the OTS instance in which table will located.
 	InstanceName *string `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion *int `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
 	PrimaryKeys []TablePrimaryKey `pulumi:"primaryKeys"`
+	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	SseKeyType *string `pulumi:"sseKeyType"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName *string `pulumi:"tableName"`
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -159,12 +169,16 @@ type tableState struct {
 type TableState struct {
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrInput
+	// Whether enable OTS server side encryption. Default value is false.
+	EnableSse pulumi.BoolPtrInput
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringPtrInput
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion pulumi.IntPtrInput
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
 	PrimaryKeys TablePrimaryKeyArrayInput
+	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	SseKeyType pulumi.StringPtrInput
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringPtrInput
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -178,12 +192,16 @@ func (TableState) ElementType() reflect.Type {
 type tableArgs struct {
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec *string `pulumi:"deviationCellVersionInSec"`
+	// Whether enable OTS server side encryption. Default value is false.
+	EnableSse *bool `pulumi:"enableSse"`
 	// The name of the OTS instance in which table will located.
 	InstanceName string `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion int `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
 	PrimaryKeys []TablePrimaryKey `pulumi:"primaryKeys"`
+	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	SseKeyType *string `pulumi:"sseKeyType"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName string `pulumi:"tableName"`
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -194,12 +212,16 @@ type tableArgs struct {
 type TableArgs struct {
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrInput
+	// Whether enable OTS server side encryption. Default value is false.
+	EnableSse pulumi.BoolPtrInput
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringInput
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion pulumi.IntInput
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
 	PrimaryKeys TablePrimaryKeyArrayInput
+	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	SseKeyType pulumi.StringPtrInput
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringInput
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.

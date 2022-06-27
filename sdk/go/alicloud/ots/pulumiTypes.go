@@ -116,6 +116,139 @@ func (o TablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) TablePrimaryKeyOutp
 	}).(TablePrimaryKeyOutput)
 }
 
+type TunnelChannel struct {
+	// The id of the channel.
+	ChannelId *string `pulumi:"channelId"`
+	// The latest consumption time of the channel, unix time in nanosecond.
+	ChannelRpo *int `pulumi:"channelRpo"`
+	// The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+	ChannelStatus *string `pulumi:"channelStatus"`
+	// The type of the channel, valid values: `BaseData`, `Stream`.
+	ChannelType *string `pulumi:"channelType"`
+	// The client id of the channel.
+	ClientId *string `pulumi:"clientId"`
+}
+
+// TunnelChannelInput is an input type that accepts TunnelChannelArgs and TunnelChannelOutput values.
+// You can construct a concrete instance of `TunnelChannelInput` via:
+//
+//          TunnelChannelArgs{...}
+type TunnelChannelInput interface {
+	pulumi.Input
+
+	ToTunnelChannelOutput() TunnelChannelOutput
+	ToTunnelChannelOutputWithContext(context.Context) TunnelChannelOutput
+}
+
+type TunnelChannelArgs struct {
+	// The id of the channel.
+	ChannelId pulumi.StringPtrInput `pulumi:"channelId"`
+	// The latest consumption time of the channel, unix time in nanosecond.
+	ChannelRpo pulumi.IntPtrInput `pulumi:"channelRpo"`
+	// The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+	ChannelStatus pulumi.StringPtrInput `pulumi:"channelStatus"`
+	// The type of the channel, valid values: `BaseData`, `Stream`.
+	ChannelType pulumi.StringPtrInput `pulumi:"channelType"`
+	// The client id of the channel.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+}
+
+func (TunnelChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelChannel)(nil)).Elem()
+}
+
+func (i TunnelChannelArgs) ToTunnelChannelOutput() TunnelChannelOutput {
+	return i.ToTunnelChannelOutputWithContext(context.Background())
+}
+
+func (i TunnelChannelArgs) ToTunnelChannelOutputWithContext(ctx context.Context) TunnelChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelChannelOutput)
+}
+
+// TunnelChannelArrayInput is an input type that accepts TunnelChannelArray and TunnelChannelArrayOutput values.
+// You can construct a concrete instance of `TunnelChannelArrayInput` via:
+//
+//          TunnelChannelArray{ TunnelChannelArgs{...} }
+type TunnelChannelArrayInput interface {
+	pulumi.Input
+
+	ToTunnelChannelArrayOutput() TunnelChannelArrayOutput
+	ToTunnelChannelArrayOutputWithContext(context.Context) TunnelChannelArrayOutput
+}
+
+type TunnelChannelArray []TunnelChannelInput
+
+func (TunnelChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelChannel)(nil)).Elem()
+}
+
+func (i TunnelChannelArray) ToTunnelChannelArrayOutput() TunnelChannelArrayOutput {
+	return i.ToTunnelChannelArrayOutputWithContext(context.Background())
+}
+
+func (i TunnelChannelArray) ToTunnelChannelArrayOutputWithContext(ctx context.Context) TunnelChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelChannelArrayOutput)
+}
+
+type TunnelChannelOutput struct{ *pulumi.OutputState }
+
+func (TunnelChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelChannel)(nil)).Elem()
+}
+
+func (o TunnelChannelOutput) ToTunnelChannelOutput() TunnelChannelOutput {
+	return o
+}
+
+func (o TunnelChannelOutput) ToTunnelChannelOutputWithContext(ctx context.Context) TunnelChannelOutput {
+	return o
+}
+
+// The id of the channel.
+func (o TunnelChannelOutput) ChannelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelChannel) *string { return v.ChannelId }).(pulumi.StringPtrOutput)
+}
+
+// The latest consumption time of the channel, unix time in nanosecond.
+func (o TunnelChannelOutput) ChannelRpo() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TunnelChannel) *int { return v.ChannelRpo }).(pulumi.IntPtrOutput)
+}
+
+// The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+func (o TunnelChannelOutput) ChannelStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelChannel) *string { return v.ChannelStatus }).(pulumi.StringPtrOutput)
+}
+
+// The type of the channel, valid values: `BaseData`, `Stream`.
+func (o TunnelChannelOutput) ChannelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelChannel) *string { return v.ChannelType }).(pulumi.StringPtrOutput)
+}
+
+// The client id of the channel.
+func (o TunnelChannelOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelChannel) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+type TunnelChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (TunnelChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelChannel)(nil)).Elem()
+}
+
+func (o TunnelChannelArrayOutput) ToTunnelChannelArrayOutput() TunnelChannelArrayOutput {
+	return o
+}
+
+func (o TunnelChannelArrayOutput) ToTunnelChannelArrayOutputWithContext(ctx context.Context) TunnelChannelArrayOutput {
+	return o
+}
+
+func (o TunnelChannelArrayOutput) Index(i pulumi.IntInput) TunnelChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelChannel {
+		return vs[0].([]TunnelChannel)[vs[1].(int)]
+	}).(TunnelChannelOutput)
+}
+
 type GetInstanceAttachmentsAttachment struct {
 	// The domain of the instance attachment.
 	Domain string `pulumi:"domain"`
@@ -774,9 +907,331 @@ func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesT
 	}).(GetTablesTablePrimaryKeyOutput)
 }
 
+type GetTunnelsTunnel struct {
+	// The channels of OTS tunnel. Each element contains the following attributes:
+	Channels []GetTunnelsTunnelChannel `pulumi:"channels"`
+	// The creation time of the Tunnel.
+	CreateTime int `pulumi:"createTime"`
+	// Whether the tunnel has expired.
+	Expired bool `pulumi:"expired"`
+	// The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
+	Id string `pulumi:"id"`
+	// The name of OTS instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The name of OTS table.
+	TableName string `pulumi:"tableName"`
+	// The tunnel id of the OTS which could not be changed.
+	TunnelId string `pulumi:"tunnelId"`
+	// The tunnel name of the OTS which could not be changed.
+	TunnelName string `pulumi:"tunnelName"`
+	// The latest consumption time of the tunnel, unix time in nanosecond.
+	TunnelRpo int `pulumi:"tunnelRpo"`
+	// The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
+	TunnelStage string `pulumi:"tunnelStage"`
+	// The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
+	TunnelType string `pulumi:"tunnelType"`
+}
+
+// GetTunnelsTunnelInput is an input type that accepts GetTunnelsTunnelArgs and GetTunnelsTunnelOutput values.
+// You can construct a concrete instance of `GetTunnelsTunnelInput` via:
+//
+//          GetTunnelsTunnelArgs{...}
+type GetTunnelsTunnelInput interface {
+	pulumi.Input
+
+	ToGetTunnelsTunnelOutput() GetTunnelsTunnelOutput
+	ToGetTunnelsTunnelOutputWithContext(context.Context) GetTunnelsTunnelOutput
+}
+
+type GetTunnelsTunnelArgs struct {
+	// The channels of OTS tunnel. Each element contains the following attributes:
+	Channels GetTunnelsTunnelChannelArrayInput `pulumi:"channels"`
+	// The creation time of the Tunnel.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// Whether the tunnel has expired.
+	Expired pulumi.BoolInput `pulumi:"expired"`
+	// The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of OTS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The name of OTS table.
+	TableName pulumi.StringInput `pulumi:"tableName"`
+	// The tunnel id of the OTS which could not be changed.
+	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
+	// The tunnel name of the OTS which could not be changed.
+	TunnelName pulumi.StringInput `pulumi:"tunnelName"`
+	// The latest consumption time of the tunnel, unix time in nanosecond.
+	TunnelRpo pulumi.IntInput `pulumi:"tunnelRpo"`
+	// The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
+	TunnelStage pulumi.StringInput `pulumi:"tunnelStage"`
+	// The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
+	TunnelType pulumi.StringInput `pulumi:"tunnelType"`
+}
+
+func (GetTunnelsTunnelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTunnelsTunnel)(nil)).Elem()
+}
+
+func (i GetTunnelsTunnelArgs) ToGetTunnelsTunnelOutput() GetTunnelsTunnelOutput {
+	return i.ToGetTunnelsTunnelOutputWithContext(context.Background())
+}
+
+func (i GetTunnelsTunnelArgs) ToGetTunnelsTunnelOutputWithContext(ctx context.Context) GetTunnelsTunnelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTunnelsTunnelOutput)
+}
+
+// GetTunnelsTunnelArrayInput is an input type that accepts GetTunnelsTunnelArray and GetTunnelsTunnelArrayOutput values.
+// You can construct a concrete instance of `GetTunnelsTunnelArrayInput` via:
+//
+//          GetTunnelsTunnelArray{ GetTunnelsTunnelArgs{...} }
+type GetTunnelsTunnelArrayInput interface {
+	pulumi.Input
+
+	ToGetTunnelsTunnelArrayOutput() GetTunnelsTunnelArrayOutput
+	ToGetTunnelsTunnelArrayOutputWithContext(context.Context) GetTunnelsTunnelArrayOutput
+}
+
+type GetTunnelsTunnelArray []GetTunnelsTunnelInput
+
+func (GetTunnelsTunnelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTunnelsTunnel)(nil)).Elem()
+}
+
+func (i GetTunnelsTunnelArray) ToGetTunnelsTunnelArrayOutput() GetTunnelsTunnelArrayOutput {
+	return i.ToGetTunnelsTunnelArrayOutputWithContext(context.Background())
+}
+
+func (i GetTunnelsTunnelArray) ToGetTunnelsTunnelArrayOutputWithContext(ctx context.Context) GetTunnelsTunnelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTunnelsTunnelArrayOutput)
+}
+
+type GetTunnelsTunnelOutput struct{ *pulumi.OutputState }
+
+func (GetTunnelsTunnelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTunnelsTunnel)(nil)).Elem()
+}
+
+func (o GetTunnelsTunnelOutput) ToGetTunnelsTunnelOutput() GetTunnelsTunnelOutput {
+	return o
+}
+
+func (o GetTunnelsTunnelOutput) ToGetTunnelsTunnelOutputWithContext(ctx context.Context) GetTunnelsTunnelOutput {
+	return o
+}
+
+// The channels of OTS tunnel. Each element contains the following attributes:
+func (o GetTunnelsTunnelOutput) Channels() GetTunnelsTunnelChannelArrayOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) []GetTunnelsTunnelChannel { return v.Channels }).(GetTunnelsTunnelChannelArrayOutput)
+}
+
+// The creation time of the Tunnel.
+func (o GetTunnelsTunnelOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// Whether the tunnel has expired.
+func (o GetTunnelsTunnelOutput) Expired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) bool { return v.Expired }).(pulumi.BoolOutput)
+}
+
+// The resource ID. The value is `<instance_name>:<table_name>:<tunnel_name>`.
+func (o GetTunnelsTunnelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of OTS instance.
+func (o GetTunnelsTunnelOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The name of OTS table.
+func (o GetTunnelsTunnelOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+// The tunnel id of the OTS which could not be changed.
+func (o GetTunnelsTunnelOutput) TunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) string { return v.TunnelId }).(pulumi.StringOutput)
+}
+
+// The tunnel name of the OTS which could not be changed.
+func (o GetTunnelsTunnelOutput) TunnelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) string { return v.TunnelName }).(pulumi.StringOutput)
+}
+
+// The latest consumption time of the tunnel, unix time in nanosecond.
+func (o GetTunnelsTunnelOutput) TunnelRpo() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) int { return v.TunnelRpo }).(pulumi.IntOutput)
+}
+
+// The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
+func (o GetTunnelsTunnelOutput) TunnelStage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) string { return v.TunnelStage }).(pulumi.StringOutput)
+}
+
+// The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
+func (o GetTunnelsTunnelOutput) TunnelType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnel) string { return v.TunnelType }).(pulumi.StringOutput)
+}
+
+type GetTunnelsTunnelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTunnelsTunnelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTunnelsTunnel)(nil)).Elem()
+}
+
+func (o GetTunnelsTunnelArrayOutput) ToGetTunnelsTunnelArrayOutput() GetTunnelsTunnelArrayOutput {
+	return o
+}
+
+func (o GetTunnelsTunnelArrayOutput) ToGetTunnelsTunnelArrayOutputWithContext(ctx context.Context) GetTunnelsTunnelArrayOutput {
+	return o
+}
+
+func (o GetTunnelsTunnelArrayOutput) Index(i pulumi.IntInput) GetTunnelsTunnelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTunnelsTunnel {
+		return vs[0].([]GetTunnelsTunnel)[vs[1].(int)]
+	}).(GetTunnelsTunnelOutput)
+}
+
+type GetTunnelsTunnelChannel struct {
+	// The id of the channel.
+	ChannelId string `pulumi:"channelId"`
+	// The latest consumption time of the channel, unix time in nanosecond
+	ChannelRpo int `pulumi:"channelRpo"`
+	// The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+	ChannelStatus string `pulumi:"channelStatus"`
+	// The type of the channel, valid values: `BaseData`, `Stream`.
+	ChannelType string `pulumi:"channelType"`
+	// The client id of the channel.
+	ClientId string `pulumi:"clientId"`
+}
+
+// GetTunnelsTunnelChannelInput is an input type that accepts GetTunnelsTunnelChannelArgs and GetTunnelsTunnelChannelOutput values.
+// You can construct a concrete instance of `GetTunnelsTunnelChannelInput` via:
+//
+//          GetTunnelsTunnelChannelArgs{...}
+type GetTunnelsTunnelChannelInput interface {
+	pulumi.Input
+
+	ToGetTunnelsTunnelChannelOutput() GetTunnelsTunnelChannelOutput
+	ToGetTunnelsTunnelChannelOutputWithContext(context.Context) GetTunnelsTunnelChannelOutput
+}
+
+type GetTunnelsTunnelChannelArgs struct {
+	// The id of the channel.
+	ChannelId pulumi.StringInput `pulumi:"channelId"`
+	// The latest consumption time of the channel, unix time in nanosecond
+	ChannelRpo pulumi.IntInput `pulumi:"channelRpo"`
+	// The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+	ChannelStatus pulumi.StringInput `pulumi:"channelStatus"`
+	// The type of the channel, valid values: `BaseData`, `Stream`.
+	ChannelType pulumi.StringInput `pulumi:"channelType"`
+	// The client id of the channel.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+}
+
+func (GetTunnelsTunnelChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTunnelsTunnelChannel)(nil)).Elem()
+}
+
+func (i GetTunnelsTunnelChannelArgs) ToGetTunnelsTunnelChannelOutput() GetTunnelsTunnelChannelOutput {
+	return i.ToGetTunnelsTunnelChannelOutputWithContext(context.Background())
+}
+
+func (i GetTunnelsTunnelChannelArgs) ToGetTunnelsTunnelChannelOutputWithContext(ctx context.Context) GetTunnelsTunnelChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTunnelsTunnelChannelOutput)
+}
+
+// GetTunnelsTunnelChannelArrayInput is an input type that accepts GetTunnelsTunnelChannelArray and GetTunnelsTunnelChannelArrayOutput values.
+// You can construct a concrete instance of `GetTunnelsTunnelChannelArrayInput` via:
+//
+//          GetTunnelsTunnelChannelArray{ GetTunnelsTunnelChannelArgs{...} }
+type GetTunnelsTunnelChannelArrayInput interface {
+	pulumi.Input
+
+	ToGetTunnelsTunnelChannelArrayOutput() GetTunnelsTunnelChannelArrayOutput
+	ToGetTunnelsTunnelChannelArrayOutputWithContext(context.Context) GetTunnelsTunnelChannelArrayOutput
+}
+
+type GetTunnelsTunnelChannelArray []GetTunnelsTunnelChannelInput
+
+func (GetTunnelsTunnelChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTunnelsTunnelChannel)(nil)).Elem()
+}
+
+func (i GetTunnelsTunnelChannelArray) ToGetTunnelsTunnelChannelArrayOutput() GetTunnelsTunnelChannelArrayOutput {
+	return i.ToGetTunnelsTunnelChannelArrayOutputWithContext(context.Background())
+}
+
+func (i GetTunnelsTunnelChannelArray) ToGetTunnelsTunnelChannelArrayOutputWithContext(ctx context.Context) GetTunnelsTunnelChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTunnelsTunnelChannelArrayOutput)
+}
+
+type GetTunnelsTunnelChannelOutput struct{ *pulumi.OutputState }
+
+func (GetTunnelsTunnelChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTunnelsTunnelChannel)(nil)).Elem()
+}
+
+func (o GetTunnelsTunnelChannelOutput) ToGetTunnelsTunnelChannelOutput() GetTunnelsTunnelChannelOutput {
+	return o
+}
+
+func (o GetTunnelsTunnelChannelOutput) ToGetTunnelsTunnelChannelOutputWithContext(ctx context.Context) GetTunnelsTunnelChannelOutput {
+	return o
+}
+
+// The id of the channel.
+func (o GetTunnelsTunnelChannelOutput) ChannelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnelChannel) string { return v.ChannelId }).(pulumi.StringOutput)
+}
+
+// The latest consumption time of the channel, unix time in nanosecond
+func (o GetTunnelsTunnelChannelOutput) ChannelRpo() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTunnelsTunnelChannel) int { return v.ChannelRpo }).(pulumi.IntOutput)
+}
+
+// The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+func (o GetTunnelsTunnelChannelOutput) ChannelStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnelChannel) string { return v.ChannelStatus }).(pulumi.StringOutput)
+}
+
+// The type of the channel, valid values: `BaseData`, `Stream`.
+func (o GetTunnelsTunnelChannelOutput) ChannelType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnelChannel) string { return v.ChannelType }).(pulumi.StringOutput)
+}
+
+// The client id of the channel.
+func (o GetTunnelsTunnelChannelOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTunnelsTunnelChannel) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+type GetTunnelsTunnelChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTunnelsTunnelChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTunnelsTunnelChannel)(nil)).Elem()
+}
+
+func (o GetTunnelsTunnelChannelArrayOutput) ToGetTunnelsTunnelChannelArrayOutput() GetTunnelsTunnelChannelArrayOutput {
+	return o
+}
+
+func (o GetTunnelsTunnelChannelArrayOutput) ToGetTunnelsTunnelChannelArrayOutputWithContext(ctx context.Context) GetTunnelsTunnelChannelArrayOutput {
+	return o
+}
+
+func (o GetTunnelsTunnelChannelArrayOutput) Index(i pulumi.IntInput) GetTunnelsTunnelChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTunnelsTunnelChannel {
+		return vs[0].([]GetTunnelsTunnelChannel)[vs[1].(int)]
+	}).(GetTunnelsTunnelChannelOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TablePrimaryKeyInput)(nil)).Elem(), TablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TablePrimaryKeyArrayInput)(nil)).Elem(), TablePrimaryKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelChannelInput)(nil)).Elem(), TunnelChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelChannelArrayInput)(nil)).Elem(), TunnelChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentArrayInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
@@ -785,8 +1240,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableArrayInput)(nil)).Elem(), GetTablesTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelInput)(nil)).Elem(), GetTunnelsTunnelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelArrayInput)(nil)).Elem(), GetTunnelsTunnelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelChannelInput)(nil)).Elem(), GetTunnelsTunnelChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTunnelsTunnelChannelArrayInput)(nil)).Elem(), GetTunnelsTunnelChannelArray{})
 	pulumi.RegisterOutputType(TablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(TablePrimaryKeyArrayOutput{})
+	pulumi.RegisterOutputType(TunnelChannelOutput{})
+	pulumi.RegisterOutputType(TunnelChannelArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachmentsAttachmentOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
@@ -795,4 +1256,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTablesTableArrayOutput{})
 	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTunnelsTunnelOutput{})
+	pulumi.RegisterOutputType(GetTunnelsTunnelArrayOutput{})
+	pulumi.RegisterOutputType(GetTunnelsTunnelChannelOutput{})
+	pulumi.RegisterOutputType(GetTunnelsTunnelChannelArrayOutput{})
 }

@@ -20,6 +20,7 @@ class NodePoolArgs:
                  vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cis_enabled: Optional[pulumi.Input[bool]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  desired_size: Optional[pulumi.Input[int]] = None,
@@ -50,6 +51,7 @@ class NodePoolArgs:
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 soc_enabled: Optional[pulumi.Input[bool]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -69,6 +71,7 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[int] desired_size: The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
@@ -99,6 +102,8 @@ class NodePoolArgs:
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+               > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -119,6 +124,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cis_enabled is not None:
+            pulumi.set(__self__, "cis_enabled", cis_enabled)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deployment_set_id is not None:
@@ -188,6 +195,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if soc_enabled is not None:
+            pulumi.set(__self__, "soc_enabled", soc_enabled)
         if spot_price_limits is not None:
             pulumi.set(__self__, "spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
@@ -272,6 +281,18 @@ class NodePoolArgs:
     @auto_renew_period.setter
     def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="cisEnabled")
+    def cis_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        """
+        return pulumi.get(self, "cis_enabled")
+
+    @cis_enabled.setter
+    def cis_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cis_enabled", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -634,6 +655,19 @@ class NodePoolArgs:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="socEnabled")
+    def soc_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        """
+        return pulumi.get(self, "soc_enabled")
+
+    @soc_enabled.setter
+    def soc_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "soc_enabled", value)
+
+    @property
     @pulumi.getter(name="spotPriceLimits")
     def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]]:
         """
@@ -783,6 +817,7 @@ class _NodePoolState:
     def __init__(__self__, *,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cis_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
@@ -816,6 +851,7 @@ class _NodePoolState:
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 soc_enabled: Optional[pulumi.Input[bool]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -834,6 +870,7 @@ class _NodePoolState:
         Input properties used for looking up and filtering NodePool resources.
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -867,6 +904,8 @@ class _NodePoolState:
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+               > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -886,6 +925,8 @@ class _NodePoolState:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cis_enabled is not None:
+            pulumi.set(__self__, "cis_enabled", cis_enabled)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if data_disks is not None:
@@ -961,6 +1002,8 @@ class _NodePoolState:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if soc_enabled is not None:
+            pulumi.set(__self__, "soc_enabled", soc_enabled)
         if spot_price_limits is not None:
             pulumi.set(__self__, "spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
@@ -1013,6 +1056,18 @@ class _NodePoolState:
     @auto_renew_period.setter
     def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="cisEnabled")
+    def cis_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        """
+        return pulumi.get(self, "cis_enabled")
+
+    @cis_enabled.setter
+    def cis_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cis_enabled", value)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1411,6 +1466,19 @@ class _NodePoolState:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="socEnabled")
+    def soc_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        """
+        return pulumi.get(self, "soc_enabled")
+
+    @soc_enabled.setter
+    def soc_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "soc_enabled", value)
+
+    @property
     @pulumi.getter(name="spotPriceLimits")
     def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]]:
         """
@@ -1586,6 +1654,7 @@ class NodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cis_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
@@ -1618,6 +1687,7 @@ class NodePool(pulumi.CustomResource):
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 soc_enabled: Optional[pulumi.Input[bool]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1888,13 +1958,14 @@ class NodePool(pulumi.CustomResource):
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
 
         ```sh
-         $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+         $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -1927,6 +1998,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+               > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -2203,7 +2276,7 @@ class NodePool(pulumi.CustomResource):
         Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
 
         ```sh
-         $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+         $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -2223,6 +2296,7 @@ class NodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 cis_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
@@ -2255,6 +2329,7 @@ class NodePool(pulumi.CustomResource):
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 soc_enabled: Optional[pulumi.Input[bool]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -2282,6 +2357,7 @@ class NodePool(pulumi.CustomResource):
 
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
+            __props__.__dict__["cis_enabled"] = cis_enabled
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
@@ -2327,6 +2403,7 @@ class NodePool(pulumi.CustomResource):
                 pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["soc_enabled"] = soc_enabled
             __props__.__dict__["spot_price_limits"] = spot_price_limits
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["system_disk_category"] = system_disk_category
@@ -2356,6 +2433,7 @@ class NodePool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
+            cis_enabled: Optional[pulumi.Input[bool]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
@@ -2389,6 +2467,7 @@ class NodePool(pulumi.CustomResource):
             scaling_policy: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            soc_enabled: Optional[pulumi.Input[bool]] = None,
             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -2412,6 +2491,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -2445,6 +2525,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
         :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+               > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -2466,6 +2548,7 @@ class NodePool(pulumi.CustomResource):
 
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["cis_enabled"] = cis_enabled
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deployment_set_id"] = deployment_set_id
@@ -2499,6 +2582,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["scaling_policy"] = scaling_policy
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["soc_enabled"] = soc_enabled
         __props__.__dict__["spot_price_limits"] = spot_price_limits
         __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["system_disk_category"] = system_disk_category
@@ -2530,6 +2614,14 @@ class NodePool(pulumi.CustomResource):
         Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         """
         return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="cisEnabled")
+    def cis_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        """
+        return pulumi.get(self, "cis_enabled")
 
     @property
     @pulumi.getter(name="clusterId")
@@ -2794,6 +2886,15 @@ class NodePool(pulumi.CustomResource):
         Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         """
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="socEnabled")
+    def soc_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+        > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        """
+        return pulumi.get(self, "soc_enabled")
 
     @property
     @pulumi.getter(name="spotPriceLimits")

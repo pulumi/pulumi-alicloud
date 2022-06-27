@@ -65,9 +65,19 @@ export class Vault extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
+     */
+    public readonly encryptType!: pulumi.Output<string>;
+    /**
+     * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
+     */
+    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    /**
      * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
-     * `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+     * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
+     * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
      */
     public readonly redundancyType!: pulumi.Output<string>;
     /**
@@ -101,6 +111,8 @@ export class Vault extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as VaultState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptType"] = state ? state.encryptType : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vaultName"] = state ? state.vaultName : undefined;
@@ -112,6 +124,8 @@ export class Vault extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vaultName'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptType"] = args ? args.encryptType : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
             resourceInputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
@@ -132,9 +146,19 @@ export interface VaultState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
+     */
+    encryptType?: pulumi.Input<string>;
+    /**
+     * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
      * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
-     * `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+     * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
+     * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
      */
     redundancyType?: pulumi.Input<string>;
     /**
@@ -164,9 +188,19 @@ export interface VaultArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
+     */
+    encryptType?: pulumi.Input<string>;
+    /**
+     * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
      * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * `LRS` -  means locally redundant storage, data will be stored on different storage devices in the same zone.
-     * `ZRS` -  means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
+     * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
+     * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
      */
     redundancyType?: pulumi.Input<string>;
     /**

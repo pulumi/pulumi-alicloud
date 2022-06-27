@@ -112,8 +112,11 @@ class ProviderEndpointArgs:
                  eais: Optional[pulumi.Input[str]] = None,
                  eci: Optional[pulumi.Input[str]] = None,
                  ecs: Optional[pulumi.Input[str]] = None,
+                 edas: Optional[pulumi.Input[str]] = None,
+                 edasschedulerx: Optional[pulumi.Input[str]] = None,
                  edsuser: Optional[pulumi.Input[str]] = None,
                  ehpc: Optional[pulumi.Input[str]] = None,
+                 ehs: Optional[pulumi.Input[str]] = None,
                  eipanycast: Optional[pulumi.Input[str]] = None,
                  elasticsearch: Optional[pulumi.Input[str]] = None,
                  emr: Optional[pulumi.Input[str]] = None,
@@ -267,10 +270,16 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if edas is not None:
+            pulumi.set(__self__, "edas", edas)
+        if edasschedulerx is not None:
+            pulumi.set(__self__, "edasschedulerx", edasschedulerx)
         if edsuser is not None:
             pulumi.set(__self__, "edsuser", edsuser)
         if ehpc is not None:
             pulumi.set(__self__, "ehpc", ehpc)
+        if ehs is not None:
+            pulumi.set(__self__, "ehs", ehs)
         if eipanycast is not None:
             pulumi.set(__self__, "eipanycast", eipanycast)
         if elasticsearch is not None:
@@ -800,6 +809,24 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def edas(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "edas")
+
+    @edas.setter
+    def edas(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edas", value)
+
+    @property
+    @pulumi.getter
+    def edasschedulerx(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "edasschedulerx")
+
+    @edasschedulerx.setter
+    def edasschedulerx(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edasschedulerx", value)
+
+    @property
+    @pulumi.getter
     def edsuser(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "edsuser")
 
@@ -815,6 +842,15 @@ class ProviderEndpointArgs:
     @ehpc.setter
     def ehpc(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ehpc", value)
+
+    @property
+    @pulumi.getter
+    def ehs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ehs")
+
+    @ehs.setter
+    def ehs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ehs", value)
 
     @property
     @pulumi.getter

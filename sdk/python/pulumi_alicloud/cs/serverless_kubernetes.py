@@ -58,7 +58,7 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -246,7 +246,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
@@ -546,7 +546,7 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -724,7 +724,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
@@ -1096,7 +1096,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -1333,7 +1333,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet  eip for API Server. Default to false.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id` and `vswitch_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
@@ -1452,7 +1452,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable cluster to support rrsa. Default to `false`. See [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 

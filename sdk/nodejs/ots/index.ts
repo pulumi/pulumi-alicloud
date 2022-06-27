@@ -9,14 +9,17 @@ export * from "./getInstanceAttachments";
 export * from "./getInstances";
 export * from "./getService";
 export * from "./getTables";
+export * from "./getTunnels";
 export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./table";
+export * from "./tunnel";
 
 // Import resources to register:
 import { Instance } from "./instance";
 import { InstanceAttachment } from "./instanceAttachment";
 import { Table } from "./table";
+import { Tunnel } from "./tunnel";
 
 const _module = {
     version: utilities.getVersion(),
@@ -28,6 +31,8 @@ const _module = {
                 return new InstanceAttachment(name, <any>undefined, { urn })
             case "alicloud:ots/table:Table":
                 return new Table(name, <any>undefined, { urn })
+            case "alicloud:ots/tunnel:Tunnel":
+                return new Tunnel(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -36,3 +41,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "ots/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ots/instanceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ots/table", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ots/tunnel", _module)

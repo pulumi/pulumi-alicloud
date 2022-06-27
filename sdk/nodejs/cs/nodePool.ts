@@ -278,7 +278,7 @@ import * as utilities from "../utilities";
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
  *
  * ```sh
- *  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_node_pool.custom_nodepool cluster_id:nodepool_id
+ *  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
  * ```
  */
 export class NodePool extends pulumi.CustomResource {
@@ -317,6 +317,10 @@ export class NodePool extends pulumi.CustomResource {
      * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    /**
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     */
+    public readonly cisEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The id of kubernetes cluster.
      */
@@ -456,6 +460,11 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+     */
+    public readonly socEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
      */
     public readonly spotPriceLimits!: pulumi.Output<outputs.cs.NodePoolSpotPriceLimit[]>;
@@ -527,6 +536,7 @@ export class NodePool extends pulumi.CustomResource {
             const state = argsOrState as NodePoolState | undefined;
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["cisEnabled"] = state ? state.cisEnabled : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
@@ -560,6 +570,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["scalingPolicy"] = state ? state.scalingPolicy : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["socEnabled"] = state ? state.socEnabled : undefined;
             resourceInputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
@@ -587,6 +598,7 @@ export class NodePool extends pulumi.CustomResource {
             }
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["cisEnabled"] = args ? args.cisEnabled : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
@@ -619,6 +631,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["scalingPolicy"] = args ? args.scalingPolicy : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["socEnabled"] = args ? args.socEnabled : undefined;
             resourceInputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
             resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
@@ -652,6 +665,10 @@ export interface NodePoolState {
      * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
      */
     autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     */
+    cisEnabled?: pulumi.Input<boolean>;
     /**
      * The id of kubernetes cluster.
      */
@@ -791,6 +808,11 @@ export interface NodePoolState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+     */
+    socEnabled?: pulumi.Input<boolean>;
+    /**
      * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
      */
     spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
@@ -860,6 +882,10 @@ export interface NodePoolArgs {
      * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
      */
     autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     */
+    cisEnabled?: pulumi.Input<boolean>;
     /**
      * The id of kubernetes cluster.
      */
@@ -994,6 +1020,11 @@ export interface NodePoolArgs {
      * Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+     */
+    socEnabled?: pulumi.Input<boolean>;
     /**
      * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
      */

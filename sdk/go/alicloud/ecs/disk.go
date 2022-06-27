@@ -68,7 +68,7 @@ type Disk struct {
 	DiskName    pulumi.StringOutput    `pulumi:"diskName"`
 	DryRun      pulumi.BoolPtrOutput   `pulumi:"dryRun"`
 	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
-	EnableAutoSnapshot pulumi.BoolPtrOutput   `pulumi:"enableAutoSnapshot"`
+	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted  pulumi.BoolPtrOutput `pulumi:"encrypted"`

@@ -10,6 +10,7 @@ from .. import _utilities
 
 __all__ = [
     'TablePrimaryKeyArgs',
+    'TunnelChannelArgs',
 ]
 
 @pulumi.input_type
@@ -47,5 +48,92 @@ class TablePrimaryKeyArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class TunnelChannelArgs:
+    def __init__(__self__, *,
+                 channel_id: Optional[pulumi.Input[str]] = None,
+                 channel_rpo: Optional[pulumi.Input[int]] = None,
+                 channel_status: Optional[pulumi.Input[str]] = None,
+                 channel_type: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] channel_id: The id of the channel.
+        :param pulumi.Input[int] channel_rpo: The latest consumption time of the channel, unix time in nanosecond.
+        :param pulumi.Input[str] channel_status: The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+        :param pulumi.Input[str] channel_type: The type of the channel, valid values: `BaseData`, `Stream`.
+        :param pulumi.Input[str] client_id: The client id of the channel.
+        """
+        if channel_id is not None:
+            pulumi.set(__self__, "channel_id", channel_id)
+        if channel_rpo is not None:
+            pulumi.set(__self__, "channel_rpo", channel_rpo)
+        if channel_status is not None:
+            pulumi.set(__self__, "channel_status", channel_status)
+        if channel_type is not None:
+            pulumi.set(__self__, "channel_type", channel_type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+
+    @property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the channel.
+        """
+        return pulumi.get(self, "channel_id")
+
+    @channel_id.setter
+    def channel_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel_id", value)
+
+    @property
+    @pulumi.getter(name="channelRpo")
+    def channel_rpo(self) -> Optional[pulumi.Input[int]]:
+        """
+        The latest consumption time of the channel, unix time in nanosecond.
+        """
+        return pulumi.get(self, "channel_rpo")
+
+    @channel_rpo.setter
+    def channel_rpo(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "channel_rpo", value)
+
+    @property
+    @pulumi.getter(name="channelStatus")
+    def channel_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+        """
+        return pulumi.get(self, "channel_status")
+
+    @channel_status.setter
+    def channel_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel_status", value)
+
+    @property
+    @pulumi.getter(name="channelType")
+    def channel_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the channel, valid values: `BaseData`, `Stream`.
+        """
+        return pulumi.get(self, "channel_type")
+
+    @channel_type.setter
+    def channel_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel_type", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client id of the channel.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
 
 

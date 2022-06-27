@@ -34,10 +34,6 @@ import (
 // 			ContactGroups: pulumi.StringArray{
 // 				pulumi.String("test-group"),
 // 			},
-// 			Dimensions: pulumi.AnyMap{
-// 				"device":     pulumi.Any("/dev/vda1,/dev/vdb1"),
-// 				"instanceId": pulumi.Any("i-bp1247,i-bp11gd"),
-// 			},
 // 			EffectiveInterval: pulumi.String("0:00-2:00"),
 // 			EscalationsCritical: &cms.AlarmEscalationsCriticalArgs{
 // 				ComparisonOperator: pulumi.String("<="),
@@ -45,7 +41,16 @@ import (
 // 				Threshold:          pulumi.String("35"),
 // 				Times:              pulumi.Int(2),
 // 			},
-// 			Metric:  pulumi.String("disk_writebytes"),
+// 			MetricDimensions: cms.AlarmMetricDimensionArray{
+// 				&cms.AlarmMetricDimensionArgs{
+// 					Key:   pulumi.String("instanceId"),
+// 					Value: pulumi.String("i-bp1247jeep0y53nu3bnk"),
+// 				},
+// 				&cms.AlarmMetricDimensionArgs{
+// 					Key:   pulumi.String("device"),
+// 					Value: pulumi.String("/dev/vda1"),
+// 				},
+// 			},
 // 			Period:  pulumi.Int(900),
 // 			Project: pulumi.String("acs_ecs_dashboard"),
 // 			Webhook: pulumi.String(fmt.Sprintf("%v%v%v", "https://", data.Alicloud_account.Current.Id, ".eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")),
@@ -70,7 +75,9 @@ type Alarm struct {
 
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayOutput `pulumi:"contactGroups"`
-	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	//
+	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
 	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
@@ -88,6 +95,8 @@ type Alarm struct {
 	EscalationsWarn AlarmEscalationsWarnPtrOutput `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringOutput `pulumi:"metric"`
+	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	MetricDimensions AlarmMetricDimensionArrayOutput `pulumi:"metricDimensions"`
 	// The alarm rule name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
@@ -132,9 +141,6 @@ func NewAlarm(ctx *pulumi.Context,
 	if args.ContactGroups == nil {
 		return nil, errors.New("invalid value for required argument 'ContactGroups'")
 	}
-	if args.Dimensions == nil {
-		return nil, errors.New("invalid value for required argument 'Dimensions'")
-	}
 	if args.Metric == nil {
 		return nil, errors.New("invalid value for required argument 'Metric'")
 	}
@@ -165,7 +171,9 @@ func GetAlarm(ctx *pulumi.Context,
 type alarmState struct {
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups []string `pulumi:"contactGroups"`
-	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	//
+	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
@@ -183,6 +191,8 @@ type alarmState struct {
 	EscalationsWarn *AlarmEscalationsWarn `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric *string `pulumi:"metric"`
+	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	MetricDimensions []AlarmMetricDimension `pulumi:"metricDimensions"`
 	// The alarm rule name.
 	Name *string `pulumi:"name"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
@@ -220,7 +230,9 @@ type alarmState struct {
 type AlarmState struct {
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayInput
-	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	//
+	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
 	Dimensions pulumi.MapInput
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
@@ -238,6 +250,8 @@ type AlarmState struct {
 	EscalationsWarn AlarmEscalationsWarnPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringPtrInput
+	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	MetricDimensions AlarmMetricDimensionArrayInput
 	// The alarm rule name.
 	Name pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
@@ -279,7 +293,9 @@ func (AlarmState) ElementType() reflect.Type {
 type alarmArgs struct {
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups []string `pulumi:"contactGroups"`
-	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	//
+	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
@@ -297,6 +313,8 @@ type alarmArgs struct {
 	EscalationsWarn *AlarmEscalationsWarn `pulumi:"escalationsWarn"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric string `pulumi:"metric"`
+	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	MetricDimensions []AlarmMetricDimension `pulumi:"metricDimensions"`
 	// The alarm rule name.
 	Name *string `pulumi:"name"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
@@ -333,7 +351,9 @@ type alarmArgs struct {
 type AlarmArgs struct {
 	// List contact groups of the alarm rule, which must have been created on the console.
 	ContactGroups pulumi.StringArrayInput
-	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Field `dimensions` has been deprecated from version 1.95.0. Use `metricDimensions` instead.
+	//
+	// Deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.
 	Dimensions pulumi.MapInput
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
@@ -351,6 +371,8 @@ type AlarmArgs struct {
 	EscalationsWarn AlarmEscalationsWarnPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringInput
+	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	MetricDimensions AlarmMetricDimensionArrayInput
 	// The alarm rule name.
 	Name pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.

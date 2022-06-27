@@ -19,6 +19,7 @@ __all__ = [
     'DomainPage404Config',
     'DomainParameterFilterConfig',
     'DomainReferConfig',
+    'GetBlockedRegionsRegionResult',
     'GetRealTimeLogDeliveriesDeliveryResult',
 ]
 
@@ -689,6 +690,46 @@ class DomainReferConfig(dict):
         Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
         """
         return pulumi.get(self, "refer_type")
+
+
+@pulumi.output_type
+class GetBlockedRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 continent: str,
+                 countries_and_regions: str,
+                 countries_and_regions_name: str):
+        """
+        :param str continent: The region to which the country belongs.
+        :param str countries_and_regions: National region abbreviation.
+        :param str countries_and_regions_name: The name of the country and region.
+        """
+        pulumi.set(__self__, "continent", continent)
+        pulumi.set(__self__, "countries_and_regions", countries_and_regions)
+        pulumi.set(__self__, "countries_and_regions_name", countries_and_regions_name)
+
+    @property
+    @pulumi.getter
+    def continent(self) -> str:
+        """
+        The region to which the country belongs.
+        """
+        return pulumi.get(self, "continent")
+
+    @property
+    @pulumi.getter(name="countriesAndRegions")
+    def countries_and_regions(self) -> str:
+        """
+        National region abbreviation.
+        """
+        return pulumi.get(self, "countries_and_regions")
+
+    @property
+    @pulumi.getter(name="countriesAndRegionsName")
+    def countries_and_regions_name(self) -> str:
+        """
+        The name of the country and region.
+        """
+        return pulumi.get(self, "countries_and_regions_name")
 
 
 @pulumi.output_type

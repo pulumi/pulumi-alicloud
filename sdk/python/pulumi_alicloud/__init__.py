@@ -205,6 +205,8 @@ if typing.TYPE_CHECKING:
     sag = __sag
     import pulumi_alicloud.scdn as __scdn
     scdn = __scdn
+    import pulumi_alicloud.schedulerx as __schedulerx
+    schedulerx = __schedulerx
     import pulumi_alicloud.sddp as __sddp
     sddp = __sddp
     import pulumi_alicloud.securitycenter as __securitycenter
@@ -323,6 +325,7 @@ else:
     sae = _utilities.lazy_import('pulumi_alicloud.sae')
     sag = _utilities.lazy_import('pulumi_alicloud.sag')
     scdn = _utilities.lazy_import('pulumi_alicloud.scdn')
+    schedulerx = _utilities.lazy_import('pulumi_alicloud.schedulerx')
     sddp = _utilities.lazy_import('pulumi_alicloud.sddp')
     securitycenter = _utilities.lazy_import('pulumi_alicloud.securitycenter')
     servicemesh = _utilities.lazy_import('pulumi_alicloud.servicemesh')
@@ -974,6 +977,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cen/trafficMarkingPolicy",
+  "fqn": "pulumi_alicloud.cen",
+  "classes": {
+   "alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy": "TrafficMarkingPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cen/transitRouter",
   "fqn": "pulumi_alicloud.cen",
   "classes": {
@@ -1058,6 +1069,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cfg",
   "classes": {
    "alicloud:cfg/aggregateConfigRule:AggregateConfigRule": "AggregateConfigRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cfg/aggregateDelivery",
+  "fqn": "pulumi_alicloud.cfg",
+  "classes": {
+   "alicloud:cfg/aggregateDelivery:AggregateDelivery": "AggregateDelivery"
   }
  },
  {
@@ -2190,6 +2209,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ecs/ecsInstanceSet",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/ecsInstanceSet:EcsInstanceSet": "EcsInstanceSet"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ecs/ecsInvocation",
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
@@ -2494,6 +2521,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "edas/namespace",
+  "fqn": "pulumi_alicloud.edas",
+  "classes": {
+   "alicloud:edas/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "edas/slbAttachment",
   "fqn": "pulumi_alicloud.edas",
   "classes": {
@@ -2578,6 +2613,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eds",
   "classes": {
    "alicloud:eds/user:User": "User"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ehpc/cluster",
+  "fqn": "pulumi_alicloud.ehpc",
+  "classes": {
+   "alicloud:ehpc/cluster:Cluster": "Cluster"
   }
  },
  {
@@ -3670,6 +3713,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ots/tunnel",
+  "fqn": "pulumi_alicloud.ots",
+  "classes": {
+   "alicloud:ots/tunnel:Tunnel": "Tunnel"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "polardb/account",
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
@@ -4442,6 +4493,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.scdn",
   "classes": {
    "alicloud:scdn/domainConfig:DomainConfig": "DomainConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "schedulerx/namespace",
+  "fqn": "pulumi_alicloud.schedulerx",
+  "classes": {
+   "alicloud:schedulerx/namespace:Namespace": "Namespace"
   }
  },
  {

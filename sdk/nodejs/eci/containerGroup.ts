@@ -202,9 +202,9 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The restart policy of the container group. Default to `Always`.
+     * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      */
-    public readonly restartPolicy!: pulumi.Output<string | undefined>;
+    public readonly restartPolicy!: pulumi.Output<string>;
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
@@ -404,7 +404,7 @@ export interface ContainerGroupState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The restart policy of the container group. Default to `Always`.
+     * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      */
     restartPolicy?: pulumi.Input<string>;
     /**
@@ -512,7 +512,7 @@ export interface ContainerGroupArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The restart policy of the container group. Default to `Always`.
+     * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      */
     restartPolicy?: pulumi.Input<string>;
     /**

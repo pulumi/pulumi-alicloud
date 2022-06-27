@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The public IP address list of the network packet.
+        /// </summary>
+        public readonly ImmutableArray<string> EipAddresses;
+        /// <summary>
         /// The expired time of package.
         /// </summary>
         public readonly string ExpiredTime;
@@ -56,6 +60,8 @@ namespace Pulumi.AliCloud.Eds.Outputs
 
             string createTime,
 
+            ImmutableArray<string> eipAddresses,
+
             string expiredTime,
 
             string id,
@@ -72,6 +78,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         {
             Bandwidth = bandwidth;
             CreateTime = createTime;
+            EipAddresses = eipAddresses;
             ExpiredTime = expiredTime;
             Id = id;
             InternetChargeType = internetChargeType;

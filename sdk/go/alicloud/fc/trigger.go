@@ -41,7 +41,7 @@ type Trigger struct {
 	SourceArn pulumi.StringPtrOutput `pulumi:"sourceArn"`
 	// The Function Compute trigger ID.
 	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
-	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -103,7 +103,7 @@ type triggerState struct {
 	SourceArn *string `pulumi:"sourceArn"`
 	// The Function Compute trigger ID.
 	TriggerId *string `pulumi:"triggerId"`
-	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	Type *string `pulumi:"type"`
 }
 
@@ -128,7 +128,7 @@ type TriggerState struct {
 	SourceArn pulumi.StringPtrInput
 	// The Function Compute trigger ID.
 	TriggerId pulumi.StringPtrInput
-	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	Type pulumi.StringPtrInput
 }
 
@@ -153,7 +153,7 @@ type triggerArgs struct {
 	Service string `pulumi:"service"`
 	// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	SourceArn *string `pulumi:"sourceArn"`
-	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	Type string `pulumi:"type"`
 }
 
@@ -175,7 +175,7 @@ type TriggerArgs struct {
 	Service pulumi.StringInput
 	// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	SourceArn pulumi.StringPtrInput
-	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
 	Type pulumi.StringInput
 }
 

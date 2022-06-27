@@ -13,6 +13,7 @@ __all__ = [
     'AlarmEscalationsCritical',
     'AlarmEscalationsInfo',
     'AlarmEscalationsWarn',
+    'AlarmMetricDimension',
     'DynamicTagGroupMatchExpress',
     'GroupMetricRuleEscalations',
     'GroupMetricRuleEscalationsCritical',
@@ -263,6 +264,37 @@ class AlarmEscalationsWarn(dict):
         Critical level alarm retry times. Default to 3.
         """
         return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class AlarmMetricDimension(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The Key of metric_dimensions.
+        :param str value: The Value of metric_dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The Key of metric_dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The Value of metric_dimensions.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

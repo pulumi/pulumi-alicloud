@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> TriggerId { get; private set; } = null!;
 
         /// <summary>
-        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
+        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? SourceArn { get; set; }
 
         /// <summary>
-        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
+        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? TriggerId { get; set; }
 
         /// <summary>
-        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
+        /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

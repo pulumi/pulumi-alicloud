@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ResourceShareId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource type of should shared, valid value `VSwitch`.
+        /// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> ResourceShareId { get; set; } = null!;
 
         /// <summary>
-        /// The resource type of should shared, valid value `VSwitch`.
+        /// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The resource type of should shared, valid value `VSwitch`.
+        /// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

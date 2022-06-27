@@ -109,10 +109,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        /// Indicates whether to enable creating snapshot automatically.
         /// </summary>
         [Output("enableAutoSnapshot")]
-        public Output<bool?> EnableAutoSnapshot { get; private set; } = null!;
+        public Output<bool> EnableAutoSnapshot { get; private set; } = null!;
 
         [Output("encryptAlgorithm")]
         public Output<string?> EncryptAlgorithm { get; private set; } = null!;
@@ -311,7 +311,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        /// Indicates whether to enable creating snapshot automatically.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable creating snapshot automatically. Default value: `false`.
+        /// Indicates whether to enable creating snapshot automatically.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
