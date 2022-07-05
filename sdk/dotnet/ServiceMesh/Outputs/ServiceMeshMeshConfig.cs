@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly Outputs.ServiceMeshMeshConfigAudit? Audit;
         /// <summary>
+        /// The configuration of the control plane logging.
+        /// </summary>
+        public readonly Outputs.ServiceMeshMeshConfigControlPlaneLog? ControlPlaneLog;
+        /// <summary>
         /// Whether to enable the use of a custom zipkin.
         /// </summary>
         public readonly bool? CustomizedZipkin;
@@ -68,6 +72,8 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
 
             Outputs.ServiceMeshMeshConfigAudit? audit,
 
+            Outputs.ServiceMeshMeshConfigControlPlaneLog? controlPlaneLog,
+
             bool? customizedZipkin,
 
             bool? enableLocalityLb,
@@ -90,6 +96,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         {
             AccessLog = accessLog;
             Audit = audit;
+            ControlPlaneLog = controlPlaneLog;
             CustomizedZipkin = customizedZipkin;
             EnableLocalityLb = enableLocalityLb;
             Kiali = kiali;

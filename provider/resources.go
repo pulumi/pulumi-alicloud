@@ -324,7 +324,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cddc_dedicated_host_account": {Tok: resource(cddcMod, "DedicatedHostAccount")},
 
 			//CDN
-			"alicloud_cdn_domain":                 {Tok: resource(cdnMod, "Domain")},
+			"alicloud_cdn_domain": {
+				Tok: resource(cdnMod, "Domain"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
 			"alicloud_cdn_domain_config":          {Tok: resource(cdnMod, "DomainConfig")},
 			"alicloud_cdn_domain_new":             {Tok: resource(cdnMod, "DomainNew")},
 			"alicloud_cdn_real_time_log_delivery": {Tok: resource(cdnMod, "RealTimeLogDelivery")},
@@ -678,16 +683,18 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_namespace":                   {Tok: resource(edasMod, "Namespace")},
 
 			// Eds
-			"alicloud_ecd_policy_group":       {Tok: resource(edsMod, "EcdPolicyGroup")},
-			"alicloud_ecd_simple_office_site": {Tok: resource(edsMod, "SimpleOfficeSite")},
-			"alicloud_ecd_nas_file_system":    {Tok: resource(edsMod, "NasFileSystem")},
-			"alicloud_ecd_desktop":            {Tok: resource(edsMod, "Desktop")},
-			"alicloud_ecd_network_package":    {Tok: resource(edsMod, "NetworkPackage")},
-			"alicloud_ecd_user":               {Tok: resource(edsMod, "User")},
-			"alicloud_ecd_image":              {Tok: resource(edsMod, "Image")},
-			"alicloud_ecd_command":            {Tok: resource(edsMod, "Command")},
-			"alicloud_ecd_snapshot":           {Tok: resource(edsMod, "Snapshot")},
-			"alicloud_ecd_bundle":             {Tok: resource(edsMod, "Bundle")},
+			"alicloud_ecd_policy_group":           {Tok: resource(edsMod, "EcdPolicyGroup")},
+			"alicloud_ecd_simple_office_site":     {Tok: resource(edsMod, "SimpleOfficeSite")},
+			"alicloud_ecd_nas_file_system":        {Tok: resource(edsMod, "NasFileSystem")},
+			"alicloud_ecd_desktop":                {Tok: resource(edsMod, "Desktop")},
+			"alicloud_ecd_network_package":        {Tok: resource(edsMod, "NetworkPackage")},
+			"alicloud_ecd_user":                   {Tok: resource(edsMod, "User")},
+			"alicloud_ecd_image":                  {Tok: resource(edsMod, "Image")},
+			"alicloud_ecd_command":                {Tok: resource(edsMod, "Command")},
+			"alicloud_ecd_snapshot":               {Tok: resource(edsMod, "Snapshot")},
+			"alicloud_ecd_bundle":                 {Tok: resource(edsMod, "Bundle")},
+			"alicloud_ecd_ad_connector_directory": {Tok: resource(edsMod, "AdConnectorDirectory")},
+			"alicloud_ecd_ram_directory":          {Tok: resource(edsMod, "RamDirectory")},
 
 			// Ehpc
 			"alicloud_ehpc_job_template": {Tok: resource(ehpcMod, "JobTemplate")},
@@ -1068,7 +1075,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_smartag_flow_log": {Tok: resource(sagMod, "SmartagFlowLog")},
 
 			// ServiceMesh
-			"alicloud_service_mesh_service_mesh": {Tok: resource(serviceMeshMod, "ServiceMesh")},
+			"alicloud_service_mesh_service_mesh":    {Tok: resource(serviceMeshMod, "ServiceMesh")},
+			"alicloud_service_mesh_user_permission": {Tok: resource(serviceMeshMod, "UserPermission")},
 
 			// Sas
 			"alicloud_simple_application_server_instance":      {Tok: resource(sasMod, "Instance")},
@@ -1590,17 +1598,20 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_edas_namespaces":    {Tok: dataSource(edasMod, "getNamespaces")},
 
 			// Eds
-			"alicloud_ecd_policy_groups":       {Tok: dataSource(edsMod, "getPolicyGroups")},
-			"alicloud_ecd_simple_office_sites": {Tok: dataSource(edsMod, "getSimpleOfficeSites")},
-			"alicloud_ecd_nas_file_systems":    {Tok: dataSource(edsMod, "getNasFileSystems")},
-			"alicloud_ecd_bundles":             {Tok: dataSource(edsMod, "getBundles")},
-			"alicloud_ecd_desktops":            {Tok: dataSource(edsMod, "getDesktops")},
-			"alicloud_ecd_network_packages":    {Tok: dataSource(edsMod, "getNetworkPackages")},
-			"alicloud_ecd_users":               {Tok: dataSource(edsMod, "getUsers")},
-			"alicloud_ecd_images":              {Tok: dataSource(edsMod, "getImages")},
-			"alicloud_ecd_commands":            {Tok: dataSource(edsMod, "getCommands")},
-			"alicloud_ecd_snapshots":           {Tok: dataSource(edsMod, "getSnapshots")},
-			"alicloud_ecd_desktop_types":       {Tok: dataSource(edsMod, "getDesktopTypes")},
+			"alicloud_ecd_policy_groups":            {Tok: dataSource(edsMod, "getPolicyGroups")},
+			"alicloud_ecd_simple_office_sites":      {Tok: dataSource(edsMod, "getSimpleOfficeSites")},
+			"alicloud_ecd_nas_file_systems":         {Tok: dataSource(edsMod, "getNasFileSystems")},
+			"alicloud_ecd_bundles":                  {Tok: dataSource(edsMod, "getBundles")},
+			"alicloud_ecd_desktops":                 {Tok: dataSource(edsMod, "getDesktops")},
+			"alicloud_ecd_network_packages":         {Tok: dataSource(edsMod, "getNetworkPackages")},
+			"alicloud_ecd_users":                    {Tok: dataSource(edsMod, "getUsers")},
+			"alicloud_ecd_images":                   {Tok: dataSource(edsMod, "getImages")},
+			"alicloud_ecd_commands":                 {Tok: dataSource(edsMod, "getCommands")},
+			"alicloud_ecd_snapshots":                {Tok: dataSource(edsMod, "getSnapshots")},
+			"alicloud_ecd_desktop_types":            {Tok: dataSource(edsMod, "getDesktopTypes")},
+			"alicloud_ecd_ad_connector_directories": {Tok: dataSource(edsMod, "getAdConnectorDirectories")},
+			"alicloud_ecd_ram_directories":          {Tok: dataSource(edsMod, "getRamDirectories")},
+			"alicloud_ecd_zones":                    {Tok: dataSource(edsMod, "getZones")},
 
 			// Ehpc
 			"alicloud_ehpc_job_templates": {Tok: dataSource(ehpcMod, "getJobTemplates")},
@@ -1883,8 +1894,9 @@ func Provider() tfbridge.ProviderInfo {
 					Markdown: []byte(" "),
 				},
 			},
-			"alicloud_rds_accounts": {Tok: dataSource(rdsMod, "getAccounts")},
-			"alicloud_rds_backups":  {Tok: dataSource(rdsMod, "getRdsBackups")},
+			"alicloud_rds_accounts":              {Tok: dataSource(rdsMod, "getAccounts")},
+			"alicloud_rds_backups":               {Tok: dataSource(rdsMod, "getRdsBackups")},
+			"alicloud_rds_modify_parameter_logs": {Tok: dataSource(rdsMod, "getModifyParameterLogs")},
 
 			// ResourceManager
 			"alicloud_resource_manager_folders":          {Tok: dataSource(resourceManagerMod, "getFolders")},

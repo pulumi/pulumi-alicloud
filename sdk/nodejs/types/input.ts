@@ -1115,56 +1115,23 @@ export namespace cddc {
 
 export namespace cdn {
     export interface DomainAuthConfig {
-        /**
-         * Auth type of the auth config. Valid values are  `noAuth`, `typeA`, `typeB` and `typeC`. Default value is `noAuth`.
-         */
         authType?: pulumi.Input<string>;
-        /**
-         * Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-         */
         masterKey?: pulumi.Input<string>;
-        /**
-         * Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-         */
         slaveKey?: pulumi.Input<string>;
-        /**
-         * Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `authType` is `typeB` or `typeC`.
-         */
         timeout?: pulumi.Input<number>;
     }
 
     export interface DomainCacheConfig {
-        /**
-         * Cache content of the cache config. It's value is a path string when the `cacheType` is `path`. When the `cacheType` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-         */
         cacheContent: pulumi.Input<string>;
         cacheId?: pulumi.Input<string>;
-        /**
-         * Cache type of the cache config. Valid values are `suffix` and `path`.
-         */
         cacheType: pulumi.Input<string>;
-        /**
-         * Cache time of the cache config.
-         */
         ttl: pulumi.Input<number>;
-        /**
-         * Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-         */
         weight?: pulumi.Input<number>;
     }
 
     export interface DomainCertificateConfig {
-        /**
-         * The SSL private key. This is required if `serverCertificateStatus` is `on`
-         */
         privateKey?: pulumi.Input<string>;
-        /**
-         * The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
-         */
         serverCertificate?: pulumi.Input<string>;
-        /**
-         * This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-         */
         serverCertificateStatus?: pulumi.Input<string>;
     }
 
@@ -1181,13 +1148,7 @@ export namespace cdn {
 
     export interface DomainHttpHeaderConfig {
         headerId?: pulumi.Input<string>;
-        /**
-         * Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-         */
         headerKey: pulumi.Input<string>;
-        /**
-         * Header value of the http header.
-         */
         headerValue: pulumi.Input<string>;
     }
 
@@ -1242,40 +1203,19 @@ export namespace cdn {
     }
 
     export interface DomainPage404Config {
-        /**
-         * Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `pageType` value is `charity` and It can not be set when `pageType` value is `default`.
-         */
         customPageUrl?: pulumi.Input<string>;
         errorCode?: pulumi.Input<string>;
-        /**
-         * Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-         */
         pageType?: pulumi.Input<string>;
     }
 
     export interface DomainParameterFilterConfig {
-        /**
-         * This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
-         */
         enable?: pulumi.Input<string>;
-        /**
-         * Reserved parameters of `parameterFilterConfig`. It's a list of string and consists of at most 10 items.
-         */
         hashKeyArgs?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface DomainReferConfig {
-        /**
-         * This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
-         */
         allowEmpty?: pulumi.Input<string>;
-        /**
-         * A list of domain names of the refer config.
-         */
         referLists: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-         */
         referType?: pulumi.Input<string>;
     }
 
@@ -1486,17 +1426,6 @@ export namespace cms {
          * Critical level alarm retry times. Default to 3.
          */
         times?: pulumi.Input<number>;
-    }
-
-    export interface AlarmMetricDimension {
-        /**
-         * The Key of metric_dimensions.
-         */
-        key?: pulumi.Input<string>;
-        /**
-         * The Value of metric_dimensions.
-         */
-        value?: pulumi.Input<string>;
     }
 
     export interface DynamicTagGroupMatchExpress {
@@ -1723,7 +1652,6 @@ export namespace cms {
          */
         slsUserId?: pulumi.Input<string>;
     }
-
 }
 
 export namespace config {
@@ -6263,6 +6191,10 @@ export namespace servicemesh {
          */
         audit?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigAudit>;
         /**
+         * The configuration of the control plane logging.
+         */
+        controlPlaneLog?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog>;
+        /**
          * Whether to enable the use of a custom zipkin.
          */
         customizedZipkin?: pulumi.Input<boolean>;
@@ -6309,9 +6241,24 @@ export namespace servicemesh {
          * Whether to enable Service grid audit.
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigAudit {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project?: pulumi.Input<string>;
+    }
+
+    export interface ServiceMeshMeshConfigControlPlaneLog {
         /**
          * Whether to enable Service grid audit.
          */
@@ -6422,6 +6369,32 @@ export namespace servicemesh {
          * The list of Virtual Switch.
          */
         vswitcheList: pulumi.Input<string>;
+    }
+
+    export interface UserPermissionPermission {
+        /**
+         * Whether the grant object is a RAM role.
+         */
+        isCustom?: pulumi.Input<boolean>;
+        /**
+         * Whether the grant object is an entity.
+         */
+        isRamRole?: pulumi.Input<boolean>;
+        /**
+         * The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
+         * - `istio-admin`:  The administrator.
+         * - `istio-ops`: The administrator of the service mesh resource.
+         * - `istio-readonly`: The read only permission.
+         */
+        roleName?: pulumi.Input<string>;
+        /**
+         * The role type. Valid Value: `custom`.
+         */
+        roleType?: pulumi.Input<string>;
+        /**
+         * The service mesh id.
+         */
+        serviceMeshId?: pulumi.Input<string>;
     }
 }
 

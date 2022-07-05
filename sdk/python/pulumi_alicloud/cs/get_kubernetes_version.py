@@ -92,8 +92,51 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
 
     > **NOTE:** Available in 1.170.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+        kubernetes_version="1.22.3-aliyun.1",
+        profile="Default")
+    pulumi.export("metadata", default.metadatas)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cs.get_kubernetes_version(cluster_type="Kubernetes",
+        kubernetes_version="1.22.3-aliyun.1",
+        profile="Default")
+    pulumi.export("metadata", default.metadatas)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+        kubernetes_version="1.22.3-aliyun.1",
+        profile="Serverless")
+    pulumi.export("metadata", default.metadatas)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+        kubernetes_version="1.20.11-aliyunedge.1",
+        profile="Edge")
+    pulumi.export("metadata", default.metadatas)
+    ```
+
 
     :param str cluster_type: The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
+    :param str kubernetes_version: The ACK released kubernetes version.
     :param str profile: The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
     """
     __args__ = dict()
@@ -124,8 +167,51 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
 
     > **NOTE:** Available in 1.170.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+        kubernetes_version="1.22.3-aliyun.1",
+        profile="Default")
+    pulumi.export("metadata", default.metadatas)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cs.get_kubernetes_version(cluster_type="Kubernetes",
+        kubernetes_version="1.22.3-aliyun.1",
+        profile="Default")
+    pulumi.export("metadata", default.metadatas)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+        kubernetes_version="1.22.3-aliyun.1",
+        profile="Serverless")
+    pulumi.export("metadata", default.metadatas)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+        kubernetes_version="1.20.11-aliyunedge.1",
+        profile="Edge")
+    pulumi.export("metadata", default.metadatas)
+    ```
+
 
     :param str cluster_type: The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
+    :param str kubernetes_version: The ACK released kubernetes version.
     :param str profile: The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
     """
     ...

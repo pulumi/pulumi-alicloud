@@ -14,13 +14,7 @@ namespace Pulumi.AliCloud.Cdn.Outputs
     public sealed class DomainHttpHeaderConfig
     {
         public readonly string? HeaderId;
-        /// <summary>
-        /// Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-        /// </summary>
         public readonly string HeaderKey;
-        /// <summary>
-        /// Header value of the http header.
-        /// </summary>
         public readonly string HeaderValue;
 
         [OutputConstructor]

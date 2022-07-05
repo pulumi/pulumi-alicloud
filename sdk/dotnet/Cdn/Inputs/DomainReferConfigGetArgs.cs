@@ -12,27 +12,17 @@ namespace Pulumi.AliCloud.Cdn.Inputs
 
     public sealed class DomainReferConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
-        /// </summary>
         [Input("allowEmpty")]
         public Input<string>? AllowEmpty { get; set; }
 
         [Input("referLists", required: true)]
         private InputList<string>? _referLists;
-
-        /// <summary>
-        /// A list of domain names of the refer config.
-        /// </summary>
         public InputList<string> ReferLists
         {
             get => _referLists ?? (_referLists = new InputList<string>());
             set => _referLists = value;
         }
 
-        /// <summary>
-        /// Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-        /// </summary>
         [Input("referType")]
         public Input<string>? ReferType { get; set; }
 

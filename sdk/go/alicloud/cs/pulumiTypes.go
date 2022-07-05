@@ -6289,7 +6289,7 @@ func (o GetKubernetesPermissionPermissionArrayOutput) Index(i pulumi.IntInput) G
 type GetKubernetesVersionMetadata struct {
 	// The list of supported runtime.
 	Runtimes []GetKubernetesVersionMetadataRuntime `pulumi:"runtimes"`
-	// The ACK released kubernetes version.
+	// The runtime version.
 	Version string `pulumi:"version"`
 }
 
@@ -6307,7 +6307,7 @@ type GetKubernetesVersionMetadataInput interface {
 type GetKubernetesVersionMetadataArgs struct {
 	// The list of supported runtime.
 	Runtimes GetKubernetesVersionMetadataRuntimeArrayInput `pulumi:"runtimes"`
-	// The ACK released kubernetes version.
+	// The runtime version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -6367,7 +6367,7 @@ func (o GetKubernetesVersionMetadataOutput) Runtimes() GetKubernetesVersionMetad
 	return o.ApplyT(func(v GetKubernetesVersionMetadata) []GetKubernetesVersionMetadataRuntime { return v.Runtimes }).(GetKubernetesVersionMetadataRuntimeArrayOutput)
 }
 
-// The ACK released kubernetes version.
+// The runtime version.
 func (o GetKubernetesVersionMetadataOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesVersionMetadata) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -6395,7 +6395,7 @@ func (o GetKubernetesVersionMetadataArrayOutput) Index(i pulumi.IntInput) GetKub
 type GetKubernetesVersionMetadataRuntime struct {
 	// The runtime name.
 	Name string `pulumi:"name"`
-	// The ACK released kubernetes version.
+	// The runtime version.
 	Version string `pulumi:"version"`
 }
 
@@ -6413,7 +6413,7 @@ type GetKubernetesVersionMetadataRuntimeInput interface {
 type GetKubernetesVersionMetadataRuntimeArgs struct {
 	// The runtime name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ACK released kubernetes version.
+	// The runtime version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -6473,7 +6473,7 @@ func (o GetKubernetesVersionMetadataRuntimeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesVersionMetadataRuntime) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ACK released kubernetes version.
+// The runtime version.
 func (o GetKubernetesVersionMetadataRuntimeOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesVersionMetadataRuntime) string { return v.Version }).(pulumi.StringOutput)
 }

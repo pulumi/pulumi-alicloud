@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Cdn.Outputs
     [OutputType]
     public sealed class DomainCertificateConfig
     {
-        /// <summary>
-        /// The SSL private key. This is required if `server_certificate_status` is `on`
-        /// </summary>
         public readonly string? PrivateKey;
-        /// <summary>
-        /// The SSL server certificate string. This is required if `server_certificate_status` is `on`
-        /// </summary>
         public readonly string? ServerCertificate;
-        /// <summary>
-        /// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-        /// </summary>
         public readonly string? ServerCertificateStatus;
 
         [OutputConstructor]

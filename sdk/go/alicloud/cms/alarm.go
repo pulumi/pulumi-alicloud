@@ -41,19 +41,10 @@ import (
 // 				Threshold:          pulumi.String("35"),
 // 				Times:              pulumi.Int(2),
 // 			},
-// 			MetricDimensions: cms.AlarmMetricDimensionArray{
-// 				&cms.AlarmMetricDimensionArgs{
-// 					Key:   pulumi.String("instanceId"),
-// 					Value: pulumi.String("i-bp1247jeep0y53nu3bnk"),
-// 				},
-// 				&cms.AlarmMetricDimensionArgs{
-// 					Key:   pulumi.String("device"),
-// 					Value: pulumi.String("/dev/vda1"),
-// 				},
-// 			},
-// 			Period:  pulumi.Int(900),
-// 			Project: pulumi.String("acs_ecs_dashboard"),
-// 			Webhook: pulumi.String(fmt.Sprintf("%v%v%v", "https://", data.Alicloud_account.Current.Id, ".eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")),
+// 			MetricDimensions: pulumi.String("[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]"),
+// 			Period:           pulumi.Int(900),
+// 			Project:          pulumi.String("acs_ecs_dashboard"),
+// 			Webhook:          pulumi.String(fmt.Sprintf("%v%v%v", "https://", data.Alicloud_account.Current.Id, ".eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/")),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -96,7 +87,7 @@ type Alarm struct {
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringOutput `pulumi:"metric"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-	MetricDimensions AlarmMetricDimensionArrayOutput `pulumi:"metricDimensions"`
+	MetricDimensions pulumi.StringOutput `pulumi:"metricDimensions"`
 	// The alarm rule name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
@@ -192,7 +183,7 @@ type alarmState struct {
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric *string `pulumi:"metric"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-	MetricDimensions []AlarmMetricDimension `pulumi:"metricDimensions"`
+	MetricDimensions *string `pulumi:"metricDimensions"`
 	// The alarm rule name.
 	Name *string `pulumi:"name"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
@@ -251,7 +242,7 @@ type AlarmState struct {
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringPtrInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-	MetricDimensions AlarmMetricDimensionArrayInput
+	MetricDimensions pulumi.StringPtrInput
 	// The alarm rule name.
 	Name pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
@@ -314,7 +305,7 @@ type alarmArgs struct {
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric string `pulumi:"metric"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-	MetricDimensions []AlarmMetricDimension `pulumi:"metricDimensions"`
+	MetricDimensions *string `pulumi:"metricDimensions"`
 	// The alarm rule name.
 	Name *string `pulumi:"name"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
@@ -372,7 +363,7 @@ type AlarmArgs struct {
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-	MetricDimensions AlarmMetricDimensionArrayInput
+	MetricDimensions pulumi.StringPtrInput
 	// The alarm rule name.
 	Name pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.

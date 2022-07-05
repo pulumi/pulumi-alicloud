@@ -12,18 +12,11 @@ namespace Pulumi.AliCloud.Cdn.Inputs
 
     public sealed class DomainParameterFilterConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Input("enable")]
         public Input<string>? Enable { get; set; }
 
         [Input("hashKeyArgs")]
         private InputList<string>? _hashKeyArgs;
-
-        /// <summary>
-        /// Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        /// </summary>
         public InputList<string> HashKeyArgs
         {
             get => _hashKeyArgs ?? (_hashKeyArgs = new InputList<string>());

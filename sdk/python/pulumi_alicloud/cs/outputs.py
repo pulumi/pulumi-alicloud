@@ -3006,7 +3006,7 @@ class GetKubernetesVersionMetadataResult(dict):
                  version: str):
         """
         :param Sequence['GetKubernetesVersionMetadataRuntimeArgs'] runtimes: The list of supported runtime.
-        :param str version: The ACK released kubernetes version.
+        :param str version: The runtime version.
         """
         pulumi.set(__self__, "runtimes", runtimes)
         pulumi.set(__self__, "version", version)
@@ -3023,7 +3023,7 @@ class GetKubernetesVersionMetadataResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        The ACK released kubernetes version.
+        The runtime version.
         """
         return pulumi.get(self, "version")
 
@@ -3035,7 +3035,7 @@ class GetKubernetesVersionMetadataRuntimeResult(dict):
                  version: str):
         """
         :param str name: The runtime name.
-        :param str version: The ACK released kubernetes version.
+        :param str version: The runtime version.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "version", version)
@@ -3052,7 +3052,7 @@ class GetKubernetesVersionMetadataRuntimeResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        The ACK released kubernetes version.
+        The runtime version.
         """
         return pulumi.get(self, "version")
 

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:eds/adConnectorDirectory:AdConnectorDirectory":
+		r = &AdConnectorDirectory{}
 	case "alicloud:eds/bundle:Bundle":
 		r = &Bundle{}
 	case "alicloud:eds/command:Command":
@@ -35,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NasFileSystem{}
 	case "alicloud:eds/networkPackage:NetworkPackage":
 		r = &NetworkPackage{}
+	case "alicloud:eds/ramDirectory:RamDirectory":
+		r = &RamDirectory{}
 	case "alicloud:eds/simpleOfficeSite:SimpleOfficeSite":
 		r = &SimpleOfficeSite{}
 	case "alicloud:eds/snapshot:Snapshot":
@@ -54,6 +58,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eds/adConnectorDirectory",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eds/bundle",
@@ -87,6 +96,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eds/networkPackage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eds/ramDirectory",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -85,7 +85,7 @@ export class Account extends pulumi.CustomResource {
      */
     public /*out*/ readonly modifyTime!: pulumi.Output<string>;
     /**
-     * Settlement account ID. If the value is empty, the current account will be used for settlement.
+     * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
      */
     public readonly payerAccountId!: pulumi.Output<string | undefined>;
     /**
@@ -174,7 +174,7 @@ export interface AccountState {
      */
     modifyTime?: pulumi.Input<string>;
     /**
-     * Settlement account ID. If the value is empty, the current account will be used for settlement.
+     * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
      */
     payerAccountId?: pulumi.Input<string>;
     /**
@@ -208,7 +208,7 @@ export interface AccountArgs {
      */
     folderId?: pulumi.Input<string>;
     /**
-     * Settlement account ID. If the value is empty, the current account will be used for settlement.
+     * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
      */
     payerAccountId?: pulumi.Input<string>;
 }

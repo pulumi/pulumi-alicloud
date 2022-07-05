@@ -11,158 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cdn.NewDomain(ctx, "domain", &cdn.DomainArgs{
-// 			DomainName: pulumi.Any(your_cdn_domain_name),
-// 			CdnType:    pulumi.String("web"),
-// 			SourceType: pulumi.String("domain"),
-// 			Sources: pulumi.StringArray{
-// 				pulumi.Any(your_cdn_domain_source1),
-// 				pulumi.Any(your_cdn_domain_source2),
-// 			},
-// 			OptimizeEnable:     pulumi.String("off"),
-// 			PageCompressEnable: pulumi.String("off"),
-// 			RangeEnable:        pulumi.String("off"),
-// 			VideoSeekEnable:    pulumi.String("off"),
-// 			BlockIps: pulumi.StringArray{
-// 				pulumi.String("1.2.3.4"),
-// 				pulumi.String("111.222.111.111"),
-// 			},
-// 			ParameterFilterConfig: &cdn.DomainParameterFilterConfigArgs{
-// 				Enable: pulumi.String("on"),
-// 				HashKeyArgs: pulumi.StringArray{
-// 					pulumi.String("hello"),
-// 					pulumi.String("youyouyou"),
-// 				},
-// 			},
-// 			Page404Config: &cdn.DomainPage404ConfigArgs{
-// 				PageType:      pulumi.String("other"),
-// 				CustomPageUrl: pulumi.String(fmt.Sprintf("%v%v%v", "http://", your_cdn_domain_name, "/notfound/")),
-// 			},
-// 			ReferConfig: &cdn.DomainReferConfigArgs{
-// 				ReferType: pulumi.String("block"),
-// 				ReferLists: pulumi.StringArray{
-// 					pulumi.String("www.xxxx.com"),
-// 					pulumi.String("www.xxxx.cn"),
-// 				},
-// 				AllowEmpty: pulumi.String("off"),
-// 			},
-// 			AuthConfig: &cdn.DomainAuthConfigArgs{
-// 				AuthType:  pulumi.String("type_a"),
-// 				MasterKey: pulumi.String("helloworld1"),
-// 				SlaveKey:  pulumi.String("helloworld2"),
-// 			},
-// 			HttpHeaderConfigs: cdn.DomainHttpHeaderConfigArray{
-// 				&cdn.DomainHttpHeaderConfigArgs{
-// 					HeaderKey:   pulumi.String("Content-Type"),
-// 					HeaderValue: pulumi.String("text/plain"),
-// 				},
-// 				&cdn.DomainHttpHeaderConfigArgs{
-// 					HeaderKey:   pulumi.String("Access-Control-Allow-Origin"),
-// 					HeaderValue: pulumi.String("*"),
-// 				},
-// 			},
-// 			CacheConfigs: cdn.DomainCacheConfigArray{
-// 				&cdn.DomainCacheConfigArgs{
-// 					CacheContent: pulumi.String("/hello/world"),
-// 					Ttl:          pulumi.Int(1000),
-// 					CacheType:    pulumi.String("path"),
-// 				},
-// 				&cdn.DomainCacheConfigArgs{
-// 					CacheContent: pulumi.String("/hello/world/youyou"),
-// 					Ttl:          pulumi.Int(1000),
-// 					CacheType:    pulumi.String("path"),
-// 				},
-// 				&cdn.DomainCacheConfigArgs{
-// 					CacheContent: pulumi.String("txt,jpg,png"),
-// 					Ttl:          pulumi.Int(2000),
-// 					CacheType:    pulumi.String("suffix"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// The auth config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	AuthConfig DomainAuthConfigPtrOutput `pulumi:"authConfig"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	BlockIps pulumi.StringArrayOutput `pulumi:"blockIps"`
-	// The cache configs of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CacheConfigs DomainCacheConfigArrayOutput `pulumi:"cacheConfigs"`
-	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType pulumi.StringOutput `pulumi:"cdnType"`
+	CdnType      pulumi.StringOutput          `pulumi:"cdnType"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CertificateConfig DomainCertificateConfigPtrOutput `pulumi:"certificateConfig"`
-	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// The http header configs of the accelerated domain.
-	//
+	DomainName        pulumi.StringOutput              `pulumi:"domainName"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	HttpHeaderConfigs DomainHttpHeaderConfigArrayOutput `pulumi:"httpHeaderConfigs"`
-	// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	OptimizeEnable pulumi.StringPtrOutput `pulumi:"optimizeEnable"`
-	// The error page config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	Page404Config DomainPage404ConfigPtrOutput `pulumi:"page404Config"`
-	// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	PageCompressEnable pulumi.StringPtrOutput `pulumi:"pageCompressEnable"`
-	// The parameter filter config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ParameterFilterConfig DomainParameterFilterConfigPtrOutput `pulumi:"parameterFilterConfig"`
-	// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	RangeEnable pulumi.StringPtrOutput `pulumi:"rangeEnable"`
-	// The refer config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ReferConfig DomainReferConfigPtrOutput `pulumi:"referConfig"`
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-	Scope pulumi.StringOutput `pulumi:"scope"`
-	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `sourceType` is `oss`.
-	//
+	Scope       pulumi.StringOutput        `pulumi:"scope"`
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
 	SourcePort pulumi.IntPtrOutput `pulumi:"sourcePort"`
-	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
 	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
-	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
 	Sources pulumi.StringArrayOutput `pulumi:"sources"`
-	// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	VideoSeekEnable pulumi.StringPtrOutput `pulumi:"videoSeekEnable"`
 }
@@ -202,131 +84,73 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// The auth config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	AuthConfig *DomainAuthConfig `pulumi:"authConfig"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	BlockIps []string `pulumi:"blockIps"`
-	// The cache configs of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CacheConfigs []DomainCacheConfig `pulumi:"cacheConfigs"`
-	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType *string `pulumi:"cdnType"`
+	CdnType      *string             `pulumi:"cdnType"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CertificateConfig *DomainCertificateConfig `pulumi:"certificateConfig"`
-	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-	DomainName *string `pulumi:"domainName"`
-	// The http header configs of the accelerated domain.
-	//
+	DomainName        *string                  `pulumi:"domainName"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	HttpHeaderConfigs []DomainHttpHeaderConfig `pulumi:"httpHeaderConfigs"`
-	// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	OptimizeEnable *string `pulumi:"optimizeEnable"`
-	// The error page config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	Page404Config *DomainPage404Config `pulumi:"page404Config"`
-	// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	PageCompressEnable *string `pulumi:"pageCompressEnable"`
-	// The parameter filter config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ParameterFilterConfig *DomainParameterFilterConfig `pulumi:"parameterFilterConfig"`
-	// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	RangeEnable *string `pulumi:"rangeEnable"`
-	// The refer config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ReferConfig *DomainReferConfig `pulumi:"referConfig"`
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-	Scope *string `pulumi:"scope"`
-	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `sourceType` is `oss`.
-	//
+	Scope       *string            `pulumi:"scope"`
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
 	SourcePort *int `pulumi:"sourcePort"`
-	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
 	SourceType *string `pulumi:"sourceType"`
-	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
 	Sources []string `pulumi:"sources"`
-	// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	VideoSeekEnable *string `pulumi:"videoSeekEnable"`
 }
 
 type DomainState struct {
-	// The auth config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	AuthConfig DomainAuthConfigPtrInput
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	BlockIps pulumi.StringArrayInput
-	// The cache configs of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CacheConfigs DomainCacheConfigArrayInput
-	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType pulumi.StringPtrInput
+	CdnType      pulumi.StringPtrInput
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CertificateConfig DomainCertificateConfigPtrInput
-	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-	DomainName pulumi.StringPtrInput
-	// The http header configs of the accelerated domain.
-	//
+	DomainName        pulumi.StringPtrInput
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	HttpHeaderConfigs DomainHttpHeaderConfigArrayInput
-	// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	OptimizeEnable pulumi.StringPtrInput
-	// The error page config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	Page404Config DomainPage404ConfigPtrInput
-	// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	PageCompressEnable pulumi.StringPtrInput
-	// The parameter filter config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ParameterFilterConfig DomainParameterFilterConfigPtrInput
-	// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	RangeEnable pulumi.StringPtrInput
-	// The refer config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ReferConfig DomainReferConfigPtrInput
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-	Scope pulumi.StringPtrInput
-	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `sourceType` is `oss`.
-	//
+	Scope       pulumi.StringPtrInput
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
 	SourcePort pulumi.IntPtrInput
-	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
 	SourceType pulumi.StringPtrInput
-	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
 	Sources pulumi.StringArrayInput
-	// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	VideoSeekEnable pulumi.StringPtrInput
 }
@@ -336,132 +160,74 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The auth config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	AuthConfig *DomainAuthConfig `pulumi:"authConfig"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	BlockIps []string `pulumi:"blockIps"`
-	// The cache configs of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CacheConfigs []DomainCacheConfig `pulumi:"cacheConfigs"`
-	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType string `pulumi:"cdnType"`
+	CdnType      string              `pulumi:"cdnType"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CertificateConfig *DomainCertificateConfig `pulumi:"certificateConfig"`
-	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-	DomainName string `pulumi:"domainName"`
-	// The http header configs of the accelerated domain.
-	//
+	DomainName        string                   `pulumi:"domainName"`
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	HttpHeaderConfigs []DomainHttpHeaderConfig `pulumi:"httpHeaderConfigs"`
-	// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	OptimizeEnable *string `pulumi:"optimizeEnable"`
-	// The error page config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	Page404Config *DomainPage404Config `pulumi:"page404Config"`
-	// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	PageCompressEnable *string `pulumi:"pageCompressEnable"`
-	// The parameter filter config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ParameterFilterConfig *DomainParameterFilterConfig `pulumi:"parameterFilterConfig"`
-	// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	RangeEnable *string `pulumi:"rangeEnable"`
-	// The refer config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ReferConfig *DomainReferConfig `pulumi:"referConfig"`
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-	Scope *string `pulumi:"scope"`
-	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `sourceType` is `oss`.
-	//
+	Scope       *string            `pulumi:"scope"`
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
 	SourcePort *int `pulumi:"sourcePort"`
-	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
 	SourceType *string `pulumi:"sourceType"`
-	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
 	Sources []string `pulumi:"sources"`
-	// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	VideoSeekEnable *string `pulumi:"videoSeekEnable"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The auth config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	AuthConfig DomainAuthConfigPtrInput
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	BlockIps pulumi.StringArrayInput
-	// The cache configs of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CacheConfigs DomainCacheConfigArrayInput
-	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType pulumi.StringInput
+	CdnType      pulumi.StringInput
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	CertificateConfig DomainCertificateConfigPtrInput
-	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-	DomainName pulumi.StringInput
-	// The http header configs of the accelerated domain.
-	//
+	DomainName        pulumi.StringInput
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	HttpHeaderConfigs DomainHttpHeaderConfigArrayInput
-	// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	OptimizeEnable pulumi.StringPtrInput
-	// The error page config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	Page404Config DomainPage404ConfigPtrInput
-	// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	PageCompressEnable pulumi.StringPtrInput
-	// The parameter filter config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ParameterFilterConfig DomainParameterFilterConfigPtrInput
-	// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	RangeEnable pulumi.StringPtrInput
-	// The refer config of the accelerated domain.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	ReferConfig DomainReferConfigPtrInput
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-	Scope pulumi.StringPtrInput
-	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `sourceType` is `oss`.
-	//
+	Scope       pulumi.StringPtrInput
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
 	SourcePort pulumi.IntPtrInput
-	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
 	SourceType pulumi.StringPtrInput
-	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdnType` value is not `liveStream`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
 	Sources pulumi.StringArrayInput
-	// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-	//
 	// Deprecated: Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
 	VideoSeekEnable pulumi.StringPtrInput
 }

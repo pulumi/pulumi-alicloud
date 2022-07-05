@@ -9,209 +9,60 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cdn
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Add a CDN Accelerated Domain with configs.
-    ///         var domain = new AliCloud.Cdn.Domain("domain", new AliCloud.Cdn.DomainArgs
-    ///         {
-    ///             DomainName = your_cdn_domain_name,
-    ///             CdnType = "web",
-    ///             SourceType = "domain",
-    ///             Sources = 
-    ///             {
-    ///                 your_cdn_domain_source1,
-    ///                 your_cdn_domain_source2,
-    ///             },
-    ///             OptimizeEnable = "off",
-    ///             PageCompressEnable = "off",
-    ///             RangeEnable = "off",
-    ///             VideoSeekEnable = "off",
-    ///             BlockIps = 
-    ///             {
-    ///                 "1.2.3.4",
-    ///                 "111.222.111.111",
-    ///             },
-    ///             ParameterFilterConfig = new AliCloud.Cdn.Inputs.DomainParameterFilterConfigArgs
-    ///             {
-    ///                 Enable = "on",
-    ///                 HashKeyArgs = 
-    ///                 {
-    ///                     "hello",
-    ///                     "youyouyou",
-    ///                 },
-    ///             },
-    ///             Page404Config = new AliCloud.Cdn.Inputs.DomainPage404ConfigArgs
-    ///             {
-    ///                 PageType = "other",
-    ///                 CustomPageUrl = $"http://{your_cdn_domain_name}/notfound/",
-    ///             },
-    ///             ReferConfig = new AliCloud.Cdn.Inputs.DomainReferConfigArgs
-    ///             {
-    ///                 ReferType = "block",
-    ///                 ReferLists = 
-    ///                 {
-    ///                     "www.xxxx.com",
-    ///                     "www.xxxx.cn",
-    ///                 },
-    ///                 AllowEmpty = "off",
-    ///             },
-    ///             AuthConfig = new AliCloud.Cdn.Inputs.DomainAuthConfigArgs
-    ///             {
-    ///                 AuthType = "type_a",
-    ///                 MasterKey = "helloworld1",
-    ///                 SlaveKey = "helloworld2",
-    ///             },
-    ///             HttpHeaderConfigs = 
-    ///             {
-    ///                 new AliCloud.Cdn.Inputs.DomainHttpHeaderConfigArgs
-    ///                 {
-    ///                     HeaderKey = "Content-Type",
-    ///                     HeaderValue = "text/plain",
-    ///                 },
-    ///                 new AliCloud.Cdn.Inputs.DomainHttpHeaderConfigArgs
-    ///                 {
-    ///                     HeaderKey = "Access-Control-Allow-Origin",
-    ///                     HeaderValue = "*",
-    ///                 },
-    ///             },
-    ///             CacheConfigs = 
-    ///             {
-    ///                 new AliCloud.Cdn.Inputs.DomainCacheConfigArgs
-    ///                 {
-    ///                     CacheContent = "/hello/world",
-    ///                     Ttl = 1000,
-    ///                     CacheType = "path",
-    ///                 },
-    ///                 new AliCloud.Cdn.Inputs.DomainCacheConfigArgs
-    ///                 {
-    ///                     CacheContent = "/hello/world/youyou",
-    ///                     Ttl = 1000,
-    ///                     CacheType = "path",
-    ///                 },
-    ///                 new AliCloud.Cdn.Inputs.DomainCacheConfigArgs
-    ///                 {
-    ///                     CacheContent = "txt,jpg,png",
-    ///                     Ttl = 2000,
-    ///                     CacheType = "suffix",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     [AliCloudResourceType("alicloud:cdn/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The auth config of the accelerated domain.
-        /// </summary>
         [Output("authConfig")]
         public Output<Outputs.DomainAuthConfig?> AuthConfig { get; private set; } = null!;
 
         [Output("blockIps")]
         public Output<ImmutableArray<string>> BlockIps { get; private set; } = null!;
 
-        /// <summary>
-        /// The cache configs of the accelerated domain.
-        /// </summary>
         [Output("cacheConfigs")]
         public Output<ImmutableArray<Outputs.DomainCacheConfig>> CacheConfigs { get; private set; } = null!;
 
-        /// <summary>
-        /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        /// </summary>
         [Output("cdnType")]
         public Output<string> CdnType { get; private set; } = null!;
 
         [Output("certificateConfig")]
         public Output<Outputs.DomainCertificateConfig?> CertificateConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
 
-        /// <summary>
-        /// The http header configs of the accelerated domain.
-        /// </summary>
         [Output("httpHeaderConfigs")]
         public Output<ImmutableArray<Outputs.DomainHttpHeaderConfig>> HttpHeaderConfigs { get; private set; } = null!;
 
-        /// <summary>
-        /// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        /// </summary>
         [Output("optimizeEnable")]
         public Output<string?> OptimizeEnable { get; private set; } = null!;
 
-        /// <summary>
-        /// The error page config of the accelerated domain.
-        /// </summary>
         [Output("page404Config")]
         public Output<Outputs.DomainPage404Config?> Page404Config { get; private set; } = null!;
 
-        /// <summary>
-        /// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Output("pageCompressEnable")]
         public Output<string?> PageCompressEnable { get; private set; } = null!;
 
-        /// <summary>
-        /// The parameter filter config of the accelerated domain.
-        /// </summary>
         [Output("parameterFilterConfig")]
         public Output<Outputs.DomainParameterFilterConfig?> ParameterFilterConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Output("rangeEnable")]
         public Output<string?> RangeEnable { get; private set; } = null!;
 
-        /// <summary>
-        /// The refer config of the accelerated domain.
-        /// </summary>
         [Output("referConfig")]
         public Output<Outputs.DomainReferConfig?> ReferConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
-        /// <summary>
-        /// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        /// </summary>
         [Output("sourcePort")]
         public Output<int?> SourcePort { get; private set; } = null!;
 
-        /// <summary>
-        /// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        /// </summary>
         [Output("sourceType")]
         public Output<string?> SourceType { get; private set; } = null!;
 
-        /// <summary>
-        /// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<string>> Sources { get; private set; } = null!;
 
-        /// <summary>
-        /// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Output("videoSeekEnable")]
         public Output<string?> VideoSeekEnable { get; private set; } = null!;
 
@@ -261,9 +112,6 @@ namespace Pulumi.AliCloud.Cdn
 
     public sealed class DomainArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The auth config of the accelerated domain.
-        /// </summary>
         [Input("authConfig")]
         public Input<Inputs.DomainAuthConfigArgs>? AuthConfig { get; set; }
 
@@ -278,10 +126,6 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("cacheConfigs")]
         private InputList<Inputs.DomainCacheConfigArgs>? _cacheConfigs;
-
-        /// <summary>
-        /// The cache configs of the accelerated domain.
-        /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<Inputs.DomainCacheConfigArgs> CacheConfigs
         {
@@ -289,27 +133,17 @@ namespace Pulumi.AliCloud.Cdn
             set => _cacheConfigs = value;
         }
 
-        /// <summary>
-        /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        /// </summary>
         [Input("cdnType", required: true)]
         public Input<string> CdnType { get; set; } = null!;
 
         [Input("certificateConfig")]
         public Input<Inputs.DomainCertificateConfigArgs>? CertificateConfig { get; set; }
 
-        /// <summary>
-        /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
 
         [Input("httpHeaderConfigs")]
         private InputList<Inputs.DomainHttpHeaderConfigArgs>? _httpHeaderConfigs;
-
-        /// <summary>
-        /// The http header configs of the accelerated domain.
-        /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<Inputs.DomainHttpHeaderConfigArgs> HttpHeaderConfigs
         {
@@ -317,66 +151,35 @@ namespace Pulumi.AliCloud.Cdn
             set => _httpHeaderConfigs = value;
         }
 
-        /// <summary>
-        /// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        /// </summary>
         [Input("optimizeEnable")]
         public Input<string>? OptimizeEnable { get; set; }
 
-        /// <summary>
-        /// The error page config of the accelerated domain.
-        /// </summary>
         [Input("page404Config")]
         public Input<Inputs.DomainPage404ConfigArgs>? Page404Config { get; set; }
 
-        /// <summary>
-        /// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Input("pageCompressEnable")]
         public Input<string>? PageCompressEnable { get; set; }
 
-        /// <summary>
-        /// The parameter filter config of the accelerated domain.
-        /// </summary>
         [Input("parameterFilterConfig")]
         public Input<Inputs.DomainParameterFilterConfigArgs>? ParameterFilterConfig { get; set; }
 
-        /// <summary>
-        /// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Input("rangeEnable")]
         public Input<string>? RangeEnable { get; set; }
 
-        /// <summary>
-        /// The refer config of the accelerated domain.
-        /// </summary>
         [Input("referConfig")]
         public Input<Inputs.DomainReferConfigArgs>? ReferConfig { get; set; }
 
-        /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
-        /// <summary>
-        /// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        /// </summary>
         [Input("sourcePort")]
         public Input<int>? SourcePort { get; set; }
 
-        /// <summary>
-        /// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 
         [Input("sources")]
         private InputList<string>? _sources;
-
-        /// <summary>
-        /// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_new` configuration `sources` argument instead.")]
         public InputList<string> Sources
         {
@@ -384,9 +187,6 @@ namespace Pulumi.AliCloud.Cdn
             set => _sources = value;
         }
 
-        /// <summary>
-        /// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Input("videoSeekEnable")]
         public Input<string>? VideoSeekEnable { get; set; }
 
@@ -397,9 +197,6 @@ namespace Pulumi.AliCloud.Cdn
 
     public sealed class DomainState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The auth config of the accelerated domain.
-        /// </summary>
         [Input("authConfig")]
         public Input<Inputs.DomainAuthConfigGetArgs>? AuthConfig { get; set; }
 
@@ -414,10 +211,6 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("cacheConfigs")]
         private InputList<Inputs.DomainCacheConfigGetArgs>? _cacheConfigs;
-
-        /// <summary>
-        /// The cache configs of the accelerated domain.
-        /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<Inputs.DomainCacheConfigGetArgs> CacheConfigs
         {
@@ -425,27 +218,17 @@ namespace Pulumi.AliCloud.Cdn
             set => _cacheConfigs = value;
         }
 
-        /// <summary>
-        /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        /// </summary>
         [Input("cdnType")]
         public Input<string>? CdnType { get; set; }
 
         [Input("certificateConfig")]
         public Input<Inputs.DomainCertificateConfigGetArgs>? CertificateConfig { get; set; }
 
-        /// <summary>
-        /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
         [Input("httpHeaderConfigs")]
         private InputList<Inputs.DomainHttpHeaderConfigGetArgs>? _httpHeaderConfigs;
-
-        /// <summary>
-        /// The http header configs of the accelerated domain.
-        /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<Inputs.DomainHttpHeaderConfigGetArgs> HttpHeaderConfigs
         {
@@ -453,66 +236,35 @@ namespace Pulumi.AliCloud.Cdn
             set => _httpHeaderConfigs = value;
         }
 
-        /// <summary>
-        /// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        /// </summary>
         [Input("optimizeEnable")]
         public Input<string>? OptimizeEnable { get; set; }
 
-        /// <summary>
-        /// The error page config of the accelerated domain.
-        /// </summary>
         [Input("page404Config")]
         public Input<Inputs.DomainPage404ConfigGetArgs>? Page404Config { get; set; }
 
-        /// <summary>
-        /// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Input("pageCompressEnable")]
         public Input<string>? PageCompressEnable { get; set; }
 
-        /// <summary>
-        /// The parameter filter config of the accelerated domain.
-        /// </summary>
         [Input("parameterFilterConfig")]
         public Input<Inputs.DomainParameterFilterConfigGetArgs>? ParameterFilterConfig { get; set; }
 
-        /// <summary>
-        /// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Input("rangeEnable")]
         public Input<string>? RangeEnable { get; set; }
 
-        /// <summary>
-        /// The refer config of the accelerated domain.
-        /// </summary>
         [Input("referConfig")]
         public Input<Inputs.DomainReferConfigGetArgs>? ReferConfig { get; set; }
 
-        /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
-        /// <summary>
-        /// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        /// </summary>
         [Input("sourcePort")]
         public Input<int>? SourcePort { get; set; }
 
-        /// <summary>
-        /// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 
         [Input("sources")]
         private InputList<string>? _sources;
-
-        /// <summary>
-        /// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_new` configuration `sources` argument instead.")]
         public InputList<string> Sources
         {
@@ -520,9 +272,6 @@ namespace Pulumi.AliCloud.Cdn
             set => _sources = value;
         }
 
-        /// <summary>
-        /// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         [Input("videoSeekEnable")]
         public Input<string>? VideoSeekEnable { get; set; }
 

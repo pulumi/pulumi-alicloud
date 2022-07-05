@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Cdn.Outputs
     [OutputType]
     public sealed class DomainParameterFilterConfig
     {
-        /// <summary>
-        /// This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.
-        /// </summary>
         public readonly string? Enable;
-        /// <summary>
-        /// Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        /// </summary>
         public readonly ImmutableArray<string> HashKeyArgs;
 
         [OutputConstructor]

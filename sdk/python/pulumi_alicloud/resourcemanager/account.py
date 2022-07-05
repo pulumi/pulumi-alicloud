@@ -22,7 +22,7 @@ class AccountArgs:
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
-        :param pulumi.Input[str] payer_account_id: Settlement account ID. If the value is empty, the current account will be used for settlement.
+        :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         """
         pulumi.set(__self__, "display_name", display_name)
         if account_name_prefix is not None:
@@ -72,7 +72,7 @@ class AccountArgs:
     @pulumi.getter(name="payerAccountId")
     def payer_account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Settlement account ID. If the value is empty, the current account will be used for settlement.
+        The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         """
         return pulumi.get(self, "payer_account_id")
 
@@ -102,7 +102,7 @@ class _AccountState:
         :param pulumi.Input[str] join_method: Ways for members to join the resource directory. Valid values: `invited`, `created`.
         :param pulumi.Input[str] join_time: The time when the member joined the resource directory.
         :param pulumi.Input[str] modify_time: The modification time of the invitation.
-        :param pulumi.Input[str] payer_account_id: Settlement account ID. If the value is empty, the current account will be used for settlement.
+        :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         :param pulumi.Input[str] resource_directory_id: Resource directory ID.
         :param pulumi.Input[str] status: Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
         :param pulumi.Input[str] type: Member type. The value of `ResourceAccount` indicates the resource account.
@@ -204,7 +204,7 @@ class _AccountState:
     @pulumi.getter(name="payerAccountId")
     def payer_account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Settlement account ID. If the value is empty, the current account will be used for settlement.
+        The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         """
         return pulumi.get(self, "payer_account_id")
 
@@ -291,7 +291,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] account_name_prefix: The name prefix of account.
         :param pulumi.Input[str] display_name: Member name. The length is 2 ~ 50 characters or Chinese characters, which can include Chinese characters, English letters, numbers, underscores (_), dots (.) And dashes (-).
         :param pulumi.Input[str] folder_id: The ID of the parent folder.
-        :param pulumi.Input[str] payer_account_id: Settlement account ID. If the value is empty, the current account will be used for settlement.
+        :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         """
         ...
     @overload
@@ -402,7 +402,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] join_method: Ways for members to join the resource directory. Valid values: `invited`, `created`.
         :param pulumi.Input[str] join_time: The time when the member joined the resource directory.
         :param pulumi.Input[str] modify_time: The modification time of the invitation.
-        :param pulumi.Input[str] payer_account_id: Settlement account ID. If the value is empty, the current account will be used for settlement.
+        :param pulumi.Input[str] payer_account_id: The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         :param pulumi.Input[str] resource_directory_id: Resource directory ID.
         :param pulumi.Input[str] status: Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
         :param pulumi.Input[str] type: Member type. The value of `ResourceAccount` indicates the resource account.
@@ -475,7 +475,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="payerAccountId")
     def payer_account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Settlement account ID. If the value is empty, the current account will be used for settlement.
+        The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         """
         return pulumi.get(self, "payer_account_id")
 

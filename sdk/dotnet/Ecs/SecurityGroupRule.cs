@@ -31,6 +31,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
+        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// </summary>
+        [Output("ipv6CidrIp")]
+        public Output<string?> Ipv6CidrIp { get; private set; } = null!;
+
+        /// <summary>
         /// Network type, can be either `internet` or `intranet`, the default value is `internet`.
         /// </summary>
         [Output("nicType")]
@@ -50,7 +56,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> PortRange { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
         /// </summary>
         [Output("prefixListId")]
         public Output<string> PrefixListId { get; private set; } = null!;
@@ -150,6 +156,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> IpProtocol { get; set; } = null!;
 
         /// <summary>
+        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// </summary>
+        [Input("ipv6CidrIp")]
+        public Input<string>? Ipv6CidrIp { get; set; }
+
+        /// <summary>
         /// Network type, can be either `internet` or `intranet`, the default value is `internet`.
         /// </summary>
         [Input("nicType")]
@@ -169,7 +181,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
         /// </summary>
         [Input("prefixListId")]
         public Input<string>? PrefixListId { get; set; }
@@ -230,6 +242,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
+        /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// </summary>
+        [Input("ipv6CidrIp")]
+        public Input<string>? Ipv6CidrIp { get; set; }
+
+        /// <summary>
         /// Network type, can be either `internet` or `intranet`, the default value is `internet`.
         /// </summary>
         [Input("nicType")]
@@ -249,7 +267,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
         /// </summary>
         [Input("prefixListId")]
         public Input<string>? PrefixListId { get; set; }

@@ -18,6 +18,12 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The Service grid audit that to the project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
         public ServiceMeshMeshConfigAccessLogGetArgs()
         {
         }

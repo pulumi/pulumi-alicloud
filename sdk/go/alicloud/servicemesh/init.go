@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:servicemesh/serviceMesh:ServiceMesh":
 		r = &ServiceMesh{}
+	case "alicloud:servicemesh/userPermission:UserPermission":
+		r = &UserPermission{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"servicemesh/serviceMesh",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"servicemesh/userPermission",
 		&module{version},
 	)
 }

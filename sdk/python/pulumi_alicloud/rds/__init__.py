@@ -14,6 +14,7 @@ from .get_accounts import *
 from .get_instance_classes import *
 from .get_instance_engines import *
 from .get_instances import *
+from .get_modify_parameter_logs import *
 from .get_rds_backups import *
 from .get_rds_parameter_groups import *
 from .get_zones import *
