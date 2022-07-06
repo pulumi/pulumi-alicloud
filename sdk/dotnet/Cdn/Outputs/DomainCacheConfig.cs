@@ -13,22 +13,10 @@ namespace Pulumi.AliCloud.Cdn.Outputs
     [OutputType]
     public sealed class DomainCacheConfig
     {
-        /// <summary>
-        /// Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-        /// </summary>
         public readonly string CacheContent;
         public readonly string? CacheId;
-        /// <summary>
-        /// Cache type of the cache config. Valid values are `suffix` and `path`.
-        /// </summary>
         public readonly string CacheType;
-        /// <summary>
-        /// Cache time of the cache config.
-        /// </summary>
         public readonly int Ttl;
-        /// <summary>
-        /// Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-        /// </summary>
         public readonly int? Weight;
 
         [OutputConstructor]

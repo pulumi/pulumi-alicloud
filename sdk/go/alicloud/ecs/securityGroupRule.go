@@ -20,6 +20,8 @@ type SecurityGroupRule struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
+	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	Ipv6CidrIp pulumi.StringPtrOutput `pulumi:"ipv6CidrIp"`
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType pulumi.StringOutput `pulumi:"nicType"`
 	// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
@@ -27,7 +29,7 @@ type SecurityGroupRule struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange pulumi.StringPtrOutput `pulumi:"portRange"`
-	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
 	PrefixListId pulumi.StringOutput `pulumi:"prefixListId"`
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
@@ -85,6 +87,8 @@ type securityGroupRuleState struct {
 	Description *string `pulumi:"description"`
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol *string `pulumi:"ipProtocol"`
+	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	Ipv6CidrIp *string `pulumi:"ipv6CidrIp"`
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType *string `pulumi:"nicType"`
 	// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
@@ -92,7 +96,7 @@ type securityGroupRuleState struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange *string `pulumi:"portRange"`
-	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
 	PrefixListId *string `pulumi:"prefixListId"`
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority *int `pulumi:"priority"`
@@ -113,6 +117,8 @@ type SecurityGroupRuleState struct {
 	Description pulumi.StringPtrInput
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol pulumi.StringPtrInput
+	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	Ipv6CidrIp pulumi.StringPtrInput
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType pulumi.StringPtrInput
 	// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
@@ -120,7 +126,7 @@ type SecurityGroupRuleState struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange pulumi.StringPtrInput
-	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
 	PrefixListId pulumi.StringPtrInput
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority pulumi.IntPtrInput
@@ -145,6 +151,8 @@ type securityGroupRuleArgs struct {
 	Description *string `pulumi:"description"`
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol string `pulumi:"ipProtocol"`
+	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	Ipv6CidrIp *string `pulumi:"ipv6CidrIp"`
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType *string `pulumi:"nicType"`
 	// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
@@ -152,7 +160,7 @@ type securityGroupRuleArgs struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange *string `pulumi:"portRange"`
-	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
 	PrefixListId *string `pulumi:"prefixListId"`
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority *int `pulumi:"priority"`
@@ -174,6 +182,8 @@ type SecurityGroupRuleArgs struct {
 	Description pulumi.StringPtrInput
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol pulumi.StringInput
+	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	Ipv6CidrIp pulumi.StringPtrInput
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType pulumi.StringPtrInput
 	// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
@@ -181,7 +191,7 @@ type SecurityGroupRuleArgs struct {
 	// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 	// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
 	PortRange pulumi.StringPtrInput
-	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+	// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
 	PrefixListId pulumi.StringPtrInput
 	// Authorization policy priority, with parameter values: `1-100`, default value: 1.
 	Priority pulumi.IntPtrInput

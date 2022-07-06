@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesVersionMetadataRuntimeResult> Runtimes;
         /// <summary>
-        /// The ACK released kubernetes version.
+        /// The runtime version.
         /// </summary>
         public readonly string Version;
 

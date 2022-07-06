@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigAuditResult> Audits;
         /// <summary>
+        /// The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigControlPlaneLogResult> ControlPlaneLogs;
+        /// <summary>
         /// Whether or not to enable the use of a custom zipkin.
         /// </summary>
         public readonly bool CustomizedZipkin;
@@ -76,6 +80,8 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
 
             ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigAuditResult> audits,
 
+            ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigControlPlaneLogResult> controlPlaneLogs,
+
             bool customizedZipkin,
 
             bool enableLocalityLb,
@@ -102,6 +108,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         {
             AccessLogs = accessLogs;
             Audits = audits;
+            ControlPlaneLogs = controlPlaneLogs;
             CustomizedZipkin = customizedZipkin;
             EnableLocalityLb = enableLocalityLb;
             IncludeIpRanges = includeIpRanges;

@@ -45,6 +45,10 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
+     * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+     */
+    public readonly ipv6CidrIp!: pulumi.Output<string | undefined>;
+    /**
      * Network type, can be either `internet` or `intranet`, the default value is `internet`.
      */
     public readonly nicType!: pulumi.Output<string>;
@@ -58,7 +62,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly portRange!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
      */
     public readonly prefixListId!: pulumi.Output<string>;
     /**
@@ -98,6 +102,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["cidrIp"] = state ? state.cidrIp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["ipv6CidrIp"] = state ? state.ipv6CidrIp : undefined;
             resourceInputs["nicType"] = state ? state.nicType : undefined;
             resourceInputs["policy"] = state ? state.policy : undefined;
             resourceInputs["portRange"] = state ? state.portRange : undefined;
@@ -121,6 +126,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["cidrIp"] = args ? args.cidrIp : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["ipv6CidrIp"] = args ? args.ipv6CidrIp : undefined;
             resourceInputs["nicType"] = args ? args.nicType : undefined;
             resourceInputs["policy"] = args ? args.policy : undefined;
             resourceInputs["portRange"] = args ? args.portRange : undefined;
@@ -153,6 +159,10 @@ export interface SecurityGroupRuleState {
      */
     ipProtocol?: pulumi.Input<string>;
     /**
+     * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+     */
+    ipv6CidrIp?: pulumi.Input<string>;
+    /**
      * Network type, can be either `internet` or `intranet`, the default value is `internet`.
      */
     nicType?: pulumi.Input<string>;
@@ -166,7 +176,7 @@ export interface SecurityGroupRuleState {
      */
     portRange?: pulumi.Input<string>;
     /**
-     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
      */
     prefixListId?: pulumi.Input<string>;
     /**
@@ -208,6 +218,10 @@ export interface SecurityGroupRuleArgs {
      */
     ipProtocol: pulumi.Input<string>;
     /**
+     * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+     */
+    ipv6CidrIp?: pulumi.Input<string>;
+    /**
      * Network type, can be either `internet` or `intranet`, the default value is `internet`.
      */
     nicType?: pulumi.Input<string>;
@@ -221,7 +235,7 @@ export interface SecurityGroupRuleArgs {
      */
     portRange?: pulumi.Input<string>;
     /**
-     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
      */
     prefixListId?: pulumi.Input<string>;
     /**

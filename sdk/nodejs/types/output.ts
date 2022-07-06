@@ -4357,56 +4357,23 @@ export namespace cddc {
 
 export namespace cdn {
     export interface DomainAuthConfig {
-        /**
-         * Auth type of the auth config. Valid values are  `noAuth`, `typeA`, `typeB` and `typeC`. Default value is `noAuth`.
-         */
         authType?: string;
-        /**
-         * Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-         */
         masterKey: string;
-        /**
-         * Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-         */
         slaveKey: string;
-        /**
-         * Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `authType` is `typeB` or `typeC`.
-         */
         timeout?: number;
     }
 
     export interface DomainCacheConfig {
-        /**
-         * Cache content of the cache config. It's value is a path string when the `cacheType` is `path`. When the `cacheType` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-         */
         cacheContent: string;
         cacheId: string;
-        /**
-         * Cache type of the cache config. Valid values are `suffix` and `path`.
-         */
         cacheType: string;
-        /**
-         * Cache time of the cache config.
-         */
         ttl: number;
-        /**
-         * Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-         */
         weight?: number;
     }
 
     export interface DomainCertificateConfig {
-        /**
-         * The SSL private key. This is required if `serverCertificateStatus` is `on`
-         */
         privateKey?: string;
-        /**
-         * The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
-         */
         serverCertificate?: string;
-        /**
-         * This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-         */
         serverCertificateStatus?: string;
     }
 
@@ -4423,13 +4390,7 @@ export namespace cdn {
 
     export interface DomainHttpHeaderConfig {
         headerId: string;
-        /**
-         * Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-         */
         headerKey: string;
-        /**
-         * Header value of the http header.
-         */
         headerValue: string;
     }
 
@@ -4484,40 +4445,19 @@ export namespace cdn {
     }
 
     export interface DomainPage404Config {
-        /**
-         * Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `pageType` value is `charity` and It can not be set when `pageType` value is `default`.
-         */
         customPageUrl?: string;
         errorCode: string;
-        /**
-         * Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-         */
         pageType?: string;
     }
 
     export interface DomainParameterFilterConfig {
-        /**
-         * This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
-         */
         enable?: string;
-        /**
-         * Reserved parameters of `parameterFilterConfig`. It's a list of string and consists of at most 10 items.
-         */
         hashKeyArgs: string[];
     }
 
     export interface DomainReferConfig {
-        /**
-         * This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
-         */
         allowEmpty?: string;
-        /**
-         * A list of domain names of the refer config.
-         */
         referLists: string[];
-        /**
-         * Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-         */
         referType?: string;
     }
 
@@ -7503,17 +7443,6 @@ export namespace cms {
         times?: number;
     }
 
-    export interface AlarmMetricDimension {
-        /**
-         * The Key of metric_dimensions.
-         */
-        key?: string;
-        /**
-         * The Value of metric_dimensions.
-         */
-        value?: string;
-    }
-
     export interface DynamicTagGroupMatchExpress {
         /**
          * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
@@ -8271,7 +8200,6 @@ export namespace cms {
          */
         slsUserId?: string;
     }
-
 }
 
 export namespace config {
@@ -9173,7 +9101,7 @@ export namespace cs {
          */
         runtimes: outputs.cs.GetKubernetesVersionMetadataRuntime[];
         /**
-         * The ACK released kubernetes version.
+         * The runtime version.
          */
         version: string;
     }
@@ -9184,7 +9112,7 @@ export namespace cs {
          */
         name: string;
         /**
-         * The ACK released kubernetes version.
+         * The runtime version.
          */
         version: string;
     }
@@ -17027,6 +16955,112 @@ export namespace eds {
         type?: string;
     }
 
+    export interface GetAdConnectorDirectoriesDirectory {
+        /**
+         * The ID of the ad connector directory.
+         */
+        adConnectorDirectoryId: string;
+        /**
+         * The AD connectors.
+         */
+        adConnectors: outputs.eds.GetAdConnectorDirectoriesDirectoryAdConnector[];
+        /**
+         * The CreateTime of resource.
+         */
+        createTime: string;
+        /**
+         * The ID of the security group.
+         */
+        customSecurityGroupId: string;
+        /**
+         * The name of directory.
+         */
+        directoryName: string;
+        /**
+         * The name of the domain.
+         */
+        directoryType: string;
+        /**
+         * The address of DNSAddress.
+         */
+        dnsAddresses: string[];
+        /**
+         * The username of DNS.
+         */
+        dnsUserName: string;
+        /**
+         * The name of the domain.
+         */
+        domainName: string;
+        /**
+         * domain admin user name.
+         */
+        domainUserName: string;
+        /**
+         * Whether to grant local administrator rights to users who use cloud desktops.
+         */
+        enableAdminAccess: boolean;
+        /**
+         * The ID of the Ad Connector Directory.
+         */
+        id: string;
+        /**
+         * Whether MFA authentication is enabled. After all AD users in this directory log on to the cloud desktop, enter the correct password and then enter the dynamic verification code generated by the MFA device.
+         */
+        mfaEnabled: boolean;
+        /**
+         * The status of directory.
+         */
+        status: string;
+        /**
+         * The Enterprise already has the DNS address of the AD subdomain.
+         */
+        subDnsAddresses: string[];
+        /**
+         * The Enterprise already has a fully qualified domain name (FQDN) of an AD subdomain, with both a host name and a domain name.
+         */
+        subDomainName: string;
+        /**
+         * The trust password.
+         */
+        trustPassword: string;
+        /**
+         * The ID of the vpc.
+         */
+        vpcId: string;
+        /**
+         * List of VSwitch IDs in the directory.
+         */
+        vswitchIds: string[];
+    }
+
+    export interface GetAdConnectorDirectoriesDirectoryAdConnector {
+        /**
+         * The address of AD connector.
+         */
+        adConnectorAddress: string;
+        /**
+         * The status of connector.
+         */
+        connectorStatus: string;
+        /**
+         * The ID of the network interface.
+         */
+        networkInterfaceId: string;
+        /**
+         * The AD Connector specifications.
+         */
+        specification: string;
+        /**
+         * The AD Connector control trust password.
+         */
+        trustKey: string;
+        /**
+         * The ID of VSwitch.
+         */
+        vswitchId: string;
+    }
+
     export interface GetBundlesBundle {
         /**
          * The bundle id of the bundle.
@@ -17586,6 +17620,155 @@ export namespace eds {
         type: string;
     }
 
+    export interface GetRamDirectoriesDirectory {
+        /**
+         * The AD connectors.
+         */
+        adConnectors: outputs.eds.GetRamDirectoriesDirectoryAdConnector[];
+        /**
+         * The CreateTime of resource.
+         */
+        createTime: string;
+        /**
+         * The id of the custom security group.
+         */
+        customSecurityGroupId: string;
+        /**
+         * The desktop access type.
+         */
+        desktopAccessType: string;
+        /**
+         * The desktop vpc endpoint.
+         */
+        desktopVpcEndpoint: string;
+        /**
+         * The directory type.
+         */
+        directoryType: string;
+        /**
+         * The address of DNSAddress.
+         */
+        dnsAddresses: string[];
+        /**
+         * The username of DNS.
+         */
+        dnsUserName: string;
+        /**
+         * The name of the domain.
+         */
+        domainName: string;
+        /**
+         * The domain password.
+         */
+        domainPassword: string;
+        /**
+         * The username of the domain.
+         */
+        domainUserName: string;
+        /**
+         * Whether to enable admin access.
+         */
+        enableAdminAccess: boolean;
+        /**
+         * Whether to enable cross desktop access.
+         */
+        enableCrossDesktopAccess: boolean;
+        /**
+         * Whether enable internet access.
+         */
+        enableInternetAccess: boolean;
+        /**
+         * The ids of filesystem.
+         */
+        fileSystemIds: string[];
+        /**
+         * The ID of the Ram Directory.
+         */
+        id: string;
+        /**
+         * The register log information.
+         */
+        logs: outputs.eds.GetRamDirectoriesDirectoryLog[];
+        /**
+         * Whether to enable MFA.
+         */
+        mfaEnabled: boolean;
+        /**
+         * The ID of ram directory.
+         */
+        ramDirectoryId: string;
+        /**
+         * The name of directory.
+         */
+        ramDirectoryName: string;
+        /**
+         * Whether to enable SSO.
+         */
+        ssoEnabled: boolean;
+        /**
+         * The status of directory.
+         */
+        status: string;
+        /**
+         * The address of sub DNS.
+         */
+        subDnsAddresses: string[];
+        /**
+         * The Name of the sub-domain.
+         */
+        subDomainName: string;
+        /**
+         * The trust password.
+         */
+        trustPassword: string;
+        /**
+         * The ID of the vpc.
+         */
+        vpcId: string;
+        /**
+         * List of VSwitch IDs in the directory.
+         */
+        vswitchIds: string[];
+    }
+
+    export interface GetRamDirectoriesDirectoryAdConnector {
+        /**
+         * The address of AD connector.
+         */
+        adConnectorAddress: string;
+        /**
+         * The status of connector.
+         */
+        connectorStatus: string;
+        /**
+         * The ID of the network interface.
+         */
+        networkInterfaceId: string;
+        /**
+         * The ID of VSwitch.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetRamDirectoriesDirectoryLog {
+        /**
+         * The level of log.
+         */
+        level: string;
+        /**
+         * The message of log.
+         */
+        message: string;
+        /**
+         * The step of log.
+         */
+        step: string;
+        /**
+         * The time stamp of log.
+         */
+        timeStamp: string;
+    }
+
     export interface GetSimpleOfficeSitesSite {
         /**
          * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
@@ -17785,6 +17968,13 @@ export namespace eds {
          * The status of the resource.
          */
         status: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * String to filter results by zone id.
+         */
+        zoneId: string;
     }
 
 }
@@ -28438,6 +28628,31 @@ export namespace rds {
         parameterValue: string;
     }
 
+    export interface GetModifyParameterLogsLog {
+        /**
+         * The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
+         */
+        modifyTime: string;
+        /**
+         * The new value of the parameter.
+         */
+        newParameterValue: string;
+        /**
+         * The original value of the parameter.
+         */
+        oldParameterValue: string;
+        /**
+         * The name of the parameter.
+         */
+        parameterName: string;
+        /**
+         * The status of the new value specified for the parameter. Valid values:
+         * * **Applied**: The new value has taken effect.
+         * * **Syncing**: The new value is being applied and has not taken effect.
+         */
+        status: string;
+    }
+
     export interface GetRdsBackupsBackup {
         /**
          * The backup download url.
@@ -31343,6 +31558,10 @@ export namespace servicemesh {
          */
         audits: outputs.servicemesh.GetServiceMeshesMeshMeshConfigAudit[];
         /**
+         * The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+         */
+        controlPlaneLogs: outputs.servicemesh.GetServiceMeshesMeshMeshConfigControlPlaneLog[];
+        /**
          * Whether or not to enable the use of a custom zipkin.
          */
         customizedZipkin: boolean;
@@ -31397,9 +31616,24 @@ export namespace servicemesh {
          * Whether to enable Service grid audit.
          */
         enabled: boolean;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project: string;
     }
 
     export interface GetServiceMeshesMeshMeshConfigAudit {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project: string;
+    }
+
+    export interface GetServiceMeshesMeshMeshConfigControlPlaneLog {
         /**
          * Whether to enable Service grid audit.
          */
@@ -31599,6 +31833,10 @@ export namespace servicemesh {
          */
         audit: outputs.servicemesh.ServiceMeshMeshConfigAudit;
         /**
+         * The configuration of the control plane logging.
+         */
+        controlPlaneLog?: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
+        /**
          * Whether to enable the use of a custom zipkin.
          */
         customizedZipkin?: boolean;
@@ -31645,6 +31883,10 @@ export namespace servicemesh {
          * Whether to enable Service grid audit.
          */
         enabled: boolean;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project?: string;
     }
 
     export interface ServiceMeshMeshConfigAudit {
@@ -31656,6 +31898,17 @@ export namespace servicemesh {
          * The Service grid audit that to the project.
          */
         project: string;
+    }
+
+    export interface ServiceMeshMeshConfigControlPlaneLog {
+        /**
+         * Whether to enable Service grid audit.
+         */
+        enabled: boolean;
+        /**
+         * The Service grid audit that to the project.
+         */
+        project?: string;
     }
 
     export interface ServiceMeshMeshConfigKiali {
@@ -31760,6 +32013,31 @@ export namespace servicemesh {
         vswitcheList: string;
     }
 
+    export interface UserPermissionPermission {
+        /**
+         * Whether the grant object is a RAM role.
+         */
+        isCustom: boolean;
+        /**
+         * Whether the grant object is an entity.
+         */
+        isRamRole: boolean;
+        /**
+         * The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
+         * - `istio-admin`:  The administrator.
+         * - `istio-ops`: The administrator of the service mesh resource.
+         * - `istio-readonly`: The read only permission.
+         */
+        roleName: string;
+        /**
+         * The role type. Valid Value: `custom`.
+         */
+        roleType: string;
+        /**
+         * The service mesh id.
+         */
+        serviceMeshId: string;
+    }
 }
 
 export namespace simpleapplicationserver {

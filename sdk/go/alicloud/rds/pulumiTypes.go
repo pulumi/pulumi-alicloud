@@ -2606,6 +2606,145 @@ func (o GetInstancesInstanceParameterArrayOutput) Index(i pulumi.IntInput) GetIn
 	}).(GetInstancesInstanceParameterOutput)
 }
 
+type GetModifyParameterLogsLog struct {
+	// The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The new value of the parameter.
+	NewParameterValue string `pulumi:"newParameterValue"`
+	// The original value of the parameter.
+	OldParameterValue string `pulumi:"oldParameterValue"`
+	// The name of the parameter.
+	ParameterName string `pulumi:"parameterName"`
+	// The status of the new value specified for the parameter. Valid values:
+	// * **Applied**: The new value has taken effect.
+	// * **Syncing**: The new value is being applied and has not taken effect.
+	Status string `pulumi:"status"`
+}
+
+// GetModifyParameterLogsLogInput is an input type that accepts GetModifyParameterLogsLogArgs and GetModifyParameterLogsLogOutput values.
+// You can construct a concrete instance of `GetModifyParameterLogsLogInput` via:
+//
+//          GetModifyParameterLogsLogArgs{...}
+type GetModifyParameterLogsLogInput interface {
+	pulumi.Input
+
+	ToGetModifyParameterLogsLogOutput() GetModifyParameterLogsLogOutput
+	ToGetModifyParameterLogsLogOutputWithContext(context.Context) GetModifyParameterLogsLogOutput
+}
+
+type GetModifyParameterLogsLogArgs struct {
+	// The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The new value of the parameter.
+	NewParameterValue pulumi.StringInput `pulumi:"newParameterValue"`
+	// The original value of the parameter.
+	OldParameterValue pulumi.StringInput `pulumi:"oldParameterValue"`
+	// The name of the parameter.
+	ParameterName pulumi.StringInput `pulumi:"parameterName"`
+	// The status of the new value specified for the parameter. Valid values:
+	// * **Applied**: The new value has taken effect.
+	// * **Syncing**: The new value is being applied and has not taken effect.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetModifyParameterLogsLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetModifyParameterLogsLog)(nil)).Elem()
+}
+
+func (i GetModifyParameterLogsLogArgs) ToGetModifyParameterLogsLogOutput() GetModifyParameterLogsLogOutput {
+	return i.ToGetModifyParameterLogsLogOutputWithContext(context.Background())
+}
+
+func (i GetModifyParameterLogsLogArgs) ToGetModifyParameterLogsLogOutputWithContext(ctx context.Context) GetModifyParameterLogsLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetModifyParameterLogsLogOutput)
+}
+
+// GetModifyParameterLogsLogArrayInput is an input type that accepts GetModifyParameterLogsLogArray and GetModifyParameterLogsLogArrayOutput values.
+// You can construct a concrete instance of `GetModifyParameterLogsLogArrayInput` via:
+//
+//          GetModifyParameterLogsLogArray{ GetModifyParameterLogsLogArgs{...} }
+type GetModifyParameterLogsLogArrayInput interface {
+	pulumi.Input
+
+	ToGetModifyParameterLogsLogArrayOutput() GetModifyParameterLogsLogArrayOutput
+	ToGetModifyParameterLogsLogArrayOutputWithContext(context.Context) GetModifyParameterLogsLogArrayOutput
+}
+
+type GetModifyParameterLogsLogArray []GetModifyParameterLogsLogInput
+
+func (GetModifyParameterLogsLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetModifyParameterLogsLog)(nil)).Elem()
+}
+
+func (i GetModifyParameterLogsLogArray) ToGetModifyParameterLogsLogArrayOutput() GetModifyParameterLogsLogArrayOutput {
+	return i.ToGetModifyParameterLogsLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetModifyParameterLogsLogArray) ToGetModifyParameterLogsLogArrayOutputWithContext(ctx context.Context) GetModifyParameterLogsLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetModifyParameterLogsLogArrayOutput)
+}
+
+type GetModifyParameterLogsLogOutput struct{ *pulumi.OutputState }
+
+func (GetModifyParameterLogsLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetModifyParameterLogsLog)(nil)).Elem()
+}
+
+func (o GetModifyParameterLogsLogOutput) ToGetModifyParameterLogsLogOutput() GetModifyParameterLogsLogOutput {
+	return o
+}
+
+func (o GetModifyParameterLogsLogOutput) ToGetModifyParameterLogsLogOutputWithContext(ctx context.Context) GetModifyParameterLogsLogOutput {
+	return o
+}
+
+// The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
+func (o GetModifyParameterLogsLogOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModifyParameterLogsLog) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The new value of the parameter.
+func (o GetModifyParameterLogsLogOutput) NewParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModifyParameterLogsLog) string { return v.NewParameterValue }).(pulumi.StringOutput)
+}
+
+// The original value of the parameter.
+func (o GetModifyParameterLogsLogOutput) OldParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModifyParameterLogsLog) string { return v.OldParameterValue }).(pulumi.StringOutput)
+}
+
+// The name of the parameter.
+func (o GetModifyParameterLogsLogOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModifyParameterLogsLog) string { return v.ParameterName }).(pulumi.StringOutput)
+}
+
+// The status of the new value specified for the parameter. Valid values:
+// * **Applied**: The new value has taken effect.
+// * **Syncing**: The new value is being applied and has not taken effect.
+func (o GetModifyParameterLogsLogOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetModifyParameterLogsLog) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetModifyParameterLogsLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetModifyParameterLogsLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetModifyParameterLogsLog)(nil)).Elem()
+}
+
+func (o GetModifyParameterLogsLogArrayOutput) ToGetModifyParameterLogsLogArrayOutput() GetModifyParameterLogsLogArrayOutput {
+	return o
+}
+
+func (o GetModifyParameterLogsLogArrayOutput) ToGetModifyParameterLogsLogArrayOutputWithContext(ctx context.Context) GetModifyParameterLogsLogArrayOutput {
+	return o
+}
+
+func (o GetModifyParameterLogsLogArrayOutput) Index(i pulumi.IntInput) GetModifyParameterLogsLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetModifyParameterLogsLog {
+		return vs[0].([]GetModifyParameterLogsLog)[vs[1].(int)]
+	}).(GetModifyParameterLogsLogOutput)
+}
+
 type GetRdsBackupsBackup struct {
 	// The backup download url.
 	BackupDownloadUrl string `pulumi:"backupDownloadUrl"`
@@ -3325,6 +3464,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceParameterInput)(nil)).Elem(), GetInstancesInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceParameterArrayInput)(nil)).Elem(), GetInstancesInstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetModifyParameterLogsLogInput)(nil)).Elem(), GetModifyParameterLogsLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetModifyParameterLogsLogArrayInput)(nil)).Elem(), GetModifyParameterLogsLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsBackupsBackupInput)(nil)).Elem(), GetRdsBackupsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsBackupsBackupArrayInput)(nil)).Elem(), GetRdsBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupInput)(nil)).Elem(), GetRdsParameterGroupsGroupArgs{})
@@ -3366,6 +3507,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceParameterOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetModifyParameterLogsLogOutput{})
+	pulumi.RegisterOutputType(GetModifyParameterLogsLogArrayOutput{})
 	pulumi.RegisterOutputType(GetRdsBackupsBackupOutput{})
 	pulumi.RegisterOutputType(GetRdsBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupOutput{})

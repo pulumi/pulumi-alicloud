@@ -12,27 +12,15 @@ namespace Pulumi.AliCloud.Cdn.Inputs
 
     public sealed class DomainAuthConfigArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
-        /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
 
-        /// <summary>
-        /// Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        /// </summary>
         [Input("masterKey")]
         public Input<string>? MasterKey { get; set; }
 
-        /// <summary>
-        /// Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        /// </summary>
         [Input("slaveKey")]
         public Input<string>? SlaveKey { get; set; }
 
-        /// <summary>
-        /// Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
-        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 

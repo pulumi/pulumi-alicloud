@@ -15,15 +15,9 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         [Input("headerId")]
         public Input<string>? HeaderId { get; set; }
 
-        /// <summary>
-        /// Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-        /// </summary>
         [Input("headerKey", required: true)]
         public Input<string> HeaderKey { get; set; } = null!;
 
-        /// <summary>
-        /// Header value of the http header.
-        /// </summary>
         [Input("headerValue", required: true)]
         public Input<string> HeaderValue { get; set; } = null!;
 

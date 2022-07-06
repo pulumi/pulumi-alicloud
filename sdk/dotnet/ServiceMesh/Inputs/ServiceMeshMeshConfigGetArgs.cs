@@ -25,6 +25,12 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<Inputs.ServiceMeshMeshConfigAuditGetArgs>? Audit { get; set; }
 
         /// <summary>
+        /// The configuration of the control plane logging.
+        /// </summary>
+        [Input("controlPlaneLog")]
+        public Input<Inputs.ServiceMeshMeshConfigControlPlaneLogGetArgs>? ControlPlaneLog { get; set; }
+
+        /// <summary>
         /// Whether to enable the use of a custom zipkin.
         /// </summary>
         [Input("customizedZipkin")]

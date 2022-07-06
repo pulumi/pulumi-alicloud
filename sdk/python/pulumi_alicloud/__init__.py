@@ -2537,6 +2537,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eds/adConnectorDirectory",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/adConnectorDirectory:AdConnectorDirectory": "AdConnectorDirectory"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eds/bundle",
   "fqn": "pulumi_alicloud.eds",
   "classes": {
@@ -2589,6 +2597,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eds",
   "classes": {
    "alicloud:eds/networkPackage:NetworkPackage": "NetworkPackage"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eds/ramDirectory",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/ramDirectory:RamDirectory": "RamDirectory"
   }
  },
  {
@@ -4557,6 +4573,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.servicemesh",
   "classes": {
    "alicloud:servicemesh/serviceMesh:ServiceMesh": "ServiceMesh"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "servicemesh/userPermission",
+  "fqn": "pulumi_alicloud.servicemesh",
+  "classes": {
+   "alicloud:servicemesh/userPermission:UserPermission": "UserPermission"
   }
  },
  {

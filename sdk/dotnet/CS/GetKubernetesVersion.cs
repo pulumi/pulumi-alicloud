@@ -15,6 +15,100 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides the details of the Kubernetes version supported by ACK.
         /// 
         /// &gt; **NOTE:** Available in 1.170.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
+        ///         {
+        ///             ClusterType = "ManagedKubernetes",
+        ///             KubernetesVersion = "1.22.3-aliyun.1",
+        ///             Profile = "Default",
+        ///         }));
+        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
+        ///     }
+        /// 
+        ///     [Output("metadata")]
+        ///     public Output&lt;string&gt; Metadata { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
+        ///         {
+        ///             ClusterType = "Kubernetes",
+        ///             KubernetesVersion = "1.22.3-aliyun.1",
+        ///             Profile = "Default",
+        ///         }));
+        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
+        ///     }
+        /// 
+        ///     [Output("metadata")]
+        ///     public Output&lt;string&gt; Metadata { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
+        ///         {
+        ///             ClusterType = "ManagedKubernetes",
+        ///             KubernetesVersion = "1.22.3-aliyun.1",
+        ///             Profile = "Serverless",
+        ///         }));
+        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
+        ///     }
+        /// 
+        ///     [Output("metadata")]
+        ///     public Output&lt;string&gt; Metadata { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
+        ///         {
+        ///             ClusterType = "ManagedKubernetes",
+        ///             KubernetesVersion = "1.20.11-aliyunedge.1",
+        ///             Profile = "Edge",
+        ///         }));
+        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
+        ///     }
+        /// 
+        ///     [Output("metadata")]
+        ///     public Output&lt;string&gt; Metadata { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesVersionResult> InvokeAsync(GetKubernetesVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionArgs(), options.WithDefaults());
@@ -23,6 +117,100 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides the details of the Kubernetes version supported by ACK.
         /// 
         /// &gt; **NOTE:** Available in 1.170.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
+        ///         {
+        ///             ClusterType = "ManagedKubernetes",
+        ///             KubernetesVersion = "1.22.3-aliyun.1",
+        ///             Profile = "Default",
+        ///         }));
+        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
+        ///     }
+        /// 
+        ///     [Output("metadata")]
+        ///     public Output&lt;string&gt; Metadata { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
+        ///         {
+        ///             ClusterType = "Kubernetes",
+        ///             KubernetesVersion = "1.22.3-aliyun.1",
+        ///             Profile = "Default",
+        ///         }));
+        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
+        ///     }
+        /// 
+        ///     [Output("metadata")]
+        ///     public Output&lt;string&gt; Metadata { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
+        ///         {
+        ///             ClusterType = "ManagedKubernetes",
+        ///             KubernetesVersion = "1.22.3-aliyun.1",
+        ///             Profile = "Serverless",
+        ///         }));
+        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
+        ///     }
+        /// 
+        ///     [Output("metadata")]
+        ///     public Output&lt;string&gt; Metadata { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
+        ///         {
+        ///             ClusterType = "ManagedKubernetes",
+        ///             KubernetesVersion = "1.20.11-aliyunedge.1",
+        ///             Profile = "Edge",
+        ///         }));
+        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
+        ///     }
+        /// 
+        ///     [Output("metadata")]
+        ///     public Output&lt;string&gt; Metadata { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesVersionResult> Invoke(GetKubernetesVersionInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionInvokeArgs(), options.WithDefaults());
@@ -37,6 +225,9 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterType", required: true)]
         public string ClusterType { get; set; } = null!;
 
+        /// <summary>
+        /// The ACK released kubernetes version.
+        /// </summary>
         [Input("kubernetesVersion")]
         public string? KubernetesVersion { get; set; }
 
@@ -59,6 +250,9 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterType", required: true)]
         public Input<string> ClusterType { get; set; } = null!;
 
+        /// <summary>
+        /// The ACK released kubernetes version.
+        /// </summary>
         [Input("kubernetesVersion")]
         public Input<string>? KubernetesVersion { get; set; }
 

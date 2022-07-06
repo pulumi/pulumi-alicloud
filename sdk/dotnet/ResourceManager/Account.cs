@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ModifyTime { get; private set; } = null!;
 
         /// <summary>
-        /// Settlement account ID. If the value is empty, the current account will be used for settlement.
+        /// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         /// </summary>
         [Output("payerAccountId")]
         public Output<string?> PayerAccountId { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? FolderId { get; set; }
 
         /// <summary>
-        /// Settlement account ID. If the value is empty, the current account will be used for settlement.
+        /// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         /// </summary>
         [Input("payerAccountId")]
         public Input<string>? PayerAccountId { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ModifyTime { get; set; }
 
         /// <summary>
-        /// Settlement account ID. If the value is empty, the current account will be used for settlement.
+        /// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         /// </summary>
         [Input("payerAccountId")]
         public Input<string>? PayerAccountId { get; set; }

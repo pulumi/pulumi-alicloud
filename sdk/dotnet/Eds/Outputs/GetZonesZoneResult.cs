@@ -7,29 +7,21 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.Cms.Outputs
+namespace Pulumi.AliCloud.Eds.Outputs
 {
 
     [OutputType]
-    public sealed class AlarmMetricDimension
+    public sealed class GetZonesZoneResult
     {
         /// <summary>
-        /// The Key of metric_dimensions.
+        /// String to filter results by zone id.
         /// </summary>
-        public readonly string? Key;
-        /// <summary>
-        /// The Value of metric_dimensions.
-        /// </summary>
-        public readonly string? Value;
+        public readonly string ZoneId;
 
         [OutputConstructor]
-        private AlarmMetricDimension(
-            string? key,
-
-            string? value)
+        private GetZonesZoneResult(string zoneId)
         {
-            Key = key;
-            Value = value;
+            ZoneId = zoneId;
         }
     }
 }

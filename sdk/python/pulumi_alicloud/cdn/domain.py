@@ -35,22 +35,6 @@ class DomainArgs:
                  video_seek_enable: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
-        :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input['DomainAuthConfigArgs'] auth_config: The auth config of the accelerated domain.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]] cache_configs: The cache configs of the accelerated domain.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]] http_header_configs: The http header configs of the accelerated domain.
-        :param pulumi.Input[str] optimize_enable: Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        :param pulumi.Input['DomainPage404ConfigArgs'] page404_config: The error page config of the accelerated domain.
-        :param pulumi.Input[str] page_compress_enable: Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        :param pulumi.Input['DomainParameterFilterConfigArgs'] parameter_filter_config: The parameter filter config of the accelerated domain.
-        :param pulumi.Input[str] range_enable: Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        :param pulumi.Input['DomainReferConfigArgs'] refer_config: The refer config of the accelerated domain.
-        :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        :param pulumi.Input[int] source_port: Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        :param pulumi.Input[str] source_type: Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        :param pulumi.Input[str] video_seek_enable: Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
         """
         pulumi.set(__self__, "cdn_type", cdn_type)
         pulumi.set(__self__, "domain_name", domain_name)
@@ -135,9 +119,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="cdnType")
     def cdn_type(self) -> pulumi.Input[str]:
-        """
-        Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        """
         return pulumi.get(self, "cdn_type")
 
     @cdn_type.setter
@@ -147,9 +128,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Input[str]:
-        """
-        Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -159,9 +137,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> Optional[pulumi.Input['DomainAuthConfigArgs']]:
-        """
-        The auth config of the accelerated domain.
-        """
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
@@ -180,9 +155,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="cacheConfigs")
     def cache_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
-        """
-        The cache configs of the accelerated domain.
-        """
         return pulumi.get(self, "cache_configs")
 
     @cache_configs.setter
@@ -201,9 +173,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="httpHeaderConfigs")
     def http_header_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
-        """
-        The http header configs of the accelerated domain.
-        """
         return pulumi.get(self, "http_header_configs")
 
     @http_header_configs.setter
@@ -213,9 +182,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="optimizeEnable")
     def optimize_enable(self) -> Optional[pulumi.Input[str]]:
-        """
-        Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        """
         return pulumi.get(self, "optimize_enable")
 
     @optimize_enable.setter
@@ -225,9 +191,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="page404Config")
     def page404_config(self) -> Optional[pulumi.Input['DomainPage404ConfigArgs']]:
-        """
-        The error page config of the accelerated domain.
-        """
         return pulumi.get(self, "page404_config")
 
     @page404_config.setter
@@ -237,9 +200,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="pageCompressEnable")
     def page_compress_enable(self) -> Optional[pulumi.Input[str]]:
-        """
-        Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "page_compress_enable")
 
     @page_compress_enable.setter
@@ -249,9 +209,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="parameterFilterConfig")
     def parameter_filter_config(self) -> Optional[pulumi.Input['DomainParameterFilterConfigArgs']]:
-        """
-        The parameter filter config of the accelerated domain.
-        """
         return pulumi.get(self, "parameter_filter_config")
 
     @parameter_filter_config.setter
@@ -261,9 +218,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="rangeEnable")
     def range_enable(self) -> Optional[pulumi.Input[str]]:
-        """
-        Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "range_enable")
 
     @range_enable.setter
@@ -273,9 +227,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="referConfig")
     def refer_config(self) -> Optional[pulumi.Input['DomainReferConfigArgs']]:
-        """
-        The refer config of the accelerated domain.
-        """
         return pulumi.get(self, "refer_config")
 
     @refer_config.setter
@@ -285,9 +236,6 @@ class DomainArgs:
     @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
-        """
-        Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -297,9 +245,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        """
         return pulumi.get(self, "source_port")
 
     @source_port.setter
@@ -309,9 +254,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
@@ -321,9 +263,6 @@ class DomainArgs:
     @property
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        """
         return pulumi.get(self, "sources")
 
     @sources.setter
@@ -333,9 +272,6 @@ class DomainArgs:
     @property
     @pulumi.getter(name="videoSeekEnable")
     def video_seek_enable(self) -> Optional[pulumi.Input[str]]:
-        """
-        Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "video_seek_enable")
 
     @video_seek_enable.setter
@@ -366,22 +302,6 @@ class _DomainState:
                  video_seek_enable: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
-        :param pulumi.Input['DomainAuthConfigArgs'] auth_config: The auth config of the accelerated domain.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]] cache_configs: The cache configs of the accelerated domain.
-        :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]] http_header_configs: The http header configs of the accelerated domain.
-        :param pulumi.Input[str] optimize_enable: Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        :param pulumi.Input['DomainPage404ConfigArgs'] page404_config: The error page config of the accelerated domain.
-        :param pulumi.Input[str] page_compress_enable: Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        :param pulumi.Input['DomainParameterFilterConfigArgs'] parameter_filter_config: The parameter filter config of the accelerated domain.
-        :param pulumi.Input[str] range_enable: Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        :param pulumi.Input['DomainReferConfigArgs'] refer_config: The refer config of the accelerated domain.
-        :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        :param pulumi.Input[int] source_port: Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        :param pulumi.Input[str] source_type: Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        :param pulumi.Input[str] video_seek_enable: Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
         """
         if auth_config is not None:
             warnings.warn("""Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.""", DeprecationWarning)
@@ -468,9 +388,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> Optional[pulumi.Input['DomainAuthConfigArgs']]:
-        """
-        The auth config of the accelerated domain.
-        """
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
@@ -489,9 +406,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="cacheConfigs")
     def cache_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
-        """
-        The cache configs of the accelerated domain.
-        """
         return pulumi.get(self, "cache_configs")
 
     @cache_configs.setter
@@ -501,9 +415,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="cdnType")
     def cdn_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        """
         return pulumi.get(self, "cdn_type")
 
     @cdn_type.setter
@@ -522,9 +433,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -534,9 +442,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="httpHeaderConfigs")
     def http_header_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
-        """
-        The http header configs of the accelerated domain.
-        """
         return pulumi.get(self, "http_header_configs")
 
     @http_header_configs.setter
@@ -546,9 +451,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="optimizeEnable")
     def optimize_enable(self) -> Optional[pulumi.Input[str]]:
-        """
-        Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        """
         return pulumi.get(self, "optimize_enable")
 
     @optimize_enable.setter
@@ -558,9 +460,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="page404Config")
     def page404_config(self) -> Optional[pulumi.Input['DomainPage404ConfigArgs']]:
-        """
-        The error page config of the accelerated domain.
-        """
         return pulumi.get(self, "page404_config")
 
     @page404_config.setter
@@ -570,9 +469,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="pageCompressEnable")
     def page_compress_enable(self) -> Optional[pulumi.Input[str]]:
-        """
-        Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "page_compress_enable")
 
     @page_compress_enable.setter
@@ -582,9 +478,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="parameterFilterConfig")
     def parameter_filter_config(self) -> Optional[pulumi.Input['DomainParameterFilterConfigArgs']]:
-        """
-        The parameter filter config of the accelerated domain.
-        """
         return pulumi.get(self, "parameter_filter_config")
 
     @parameter_filter_config.setter
@@ -594,9 +487,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="rangeEnable")
     def range_enable(self) -> Optional[pulumi.Input[str]]:
-        """
-        Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "range_enable")
 
     @range_enable.setter
@@ -606,9 +496,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="referConfig")
     def refer_config(self) -> Optional[pulumi.Input['DomainReferConfigArgs']]:
-        """
-        The refer config of the accelerated domain.
-        """
         return pulumi.get(self, "refer_config")
 
     @refer_config.setter
@@ -618,9 +505,6 @@ class _DomainState:
     @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
-        """
-        Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -630,9 +514,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        """
         return pulumi.get(self, "source_port")
 
     @source_port.setter
@@ -642,9 +523,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
@@ -654,9 +532,6 @@ class _DomainState:
     @property
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        """
         return pulumi.get(self, "sources")
 
     @sources.setter
@@ -666,9 +541,6 @@ class _DomainState:
     @property
     @pulumi.getter(name="videoSeekEnable")
     def video_seek_enable(self) -> Optional[pulumi.Input[str]]:
-        """
-        Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "video_seek_enable")
 
     @video_seek_enable.setter
@@ -701,100 +573,9 @@ class Domain(pulumi.CustomResource):
                  video_seek_enable: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Add a CDN Accelerated Domain with configs.
-        domain = alicloud.cdn.Domain("domain",
-            domain_name=your_cdn_domain_name,
-            cdn_type="web",
-            source_type="domain",
-            sources=[
-                your_cdn_domain_source1,
-                your_cdn_domain_source2,
-            ],
-            optimize_enable="off",
-            page_compress_enable="off",
-            range_enable="off",
-            video_seek_enable="off",
-            block_ips=[
-                "1.2.3.4",
-                "111.222.111.111",
-            ],
-            parameter_filter_config=alicloud.cdn.DomainParameterFilterConfigArgs(
-                enable="on",
-                hash_key_args=[
-                    "hello",
-                    "youyouyou",
-                ],
-            ),
-            page404_config=alicloud.cdn.DomainPage404ConfigArgs(
-                page_type="other",
-                custom_page_url=f"http://{your_cdn_domain_name}/notfound/",
-            ),
-            refer_config=alicloud.cdn.DomainReferConfigArgs(
-                refer_type="block",
-                refer_lists=[
-                    "www.xxxx.com",
-                    "www.xxxx.cn",
-                ],
-                allow_empty="off",
-            ),
-            auth_config=alicloud.cdn.DomainAuthConfigArgs(
-                auth_type="type_a",
-                master_key="helloworld1",
-                slave_key="helloworld2",
-            ),
-            http_header_configs=[
-                alicloud.cdn.DomainHttpHeaderConfigArgs(
-                    header_key="Content-Type",
-                    header_value="text/plain",
-                ),
-                alicloud.cdn.DomainHttpHeaderConfigArgs(
-                    header_key="Access-Control-Allow-Origin",
-                    header_value="*",
-                ),
-            ],
-            cache_configs=[
-                alicloud.cdn.DomainCacheConfigArgs(
-                    cache_content="/hello/world",
-                    ttl=1000,
-                    cache_type="path",
-                ),
-                alicloud.cdn.DomainCacheConfigArgs(
-                    cache_content="/hello/world/youyou",
-                    ttl=1000,
-                    cache_type="path",
-                ),
-                alicloud.cdn.DomainCacheConfigArgs(
-                    cache_content="txt,jpg,png",
-                    ttl=2000,
-                    cache_type="suffix",
-                ),
-            ])
-        ```
-
+        Create a Domain resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DomainAuthConfigArgs']] auth_config: The auth config of the accelerated domain.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainCacheConfigArgs']]]] cache_configs: The cache configs of the accelerated domain.
-        :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainHttpHeaderConfigArgs']]]] http_header_configs: The http header configs of the accelerated domain.
-        :param pulumi.Input[str] optimize_enable: Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        :param pulumi.Input[pulumi.InputType['DomainPage404ConfigArgs']] page404_config: The error page config of the accelerated domain.
-        :param pulumi.Input[str] page_compress_enable: Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        :param pulumi.Input[pulumi.InputType['DomainParameterFilterConfigArgs']] parameter_filter_config: The parameter filter config of the accelerated domain.
-        :param pulumi.Input[str] range_enable: Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        :param pulumi.Input[pulumi.InputType['DomainReferConfigArgs']] refer_config: The refer config of the accelerated domain.
-        :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        :param pulumi.Input[int] source_port: Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        :param pulumi.Input[str] source_type: Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        :param pulumi.Input[str] video_seek_enable: Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
         """
         ...
     @overload
@@ -803,82 +584,7 @@ class Domain(pulumi.CustomResource):
                  args: DomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Add a CDN Accelerated Domain with configs.
-        domain = alicloud.cdn.Domain("domain",
-            domain_name=your_cdn_domain_name,
-            cdn_type="web",
-            source_type="domain",
-            sources=[
-                your_cdn_domain_source1,
-                your_cdn_domain_source2,
-            ],
-            optimize_enable="off",
-            page_compress_enable="off",
-            range_enable="off",
-            video_seek_enable="off",
-            block_ips=[
-                "1.2.3.4",
-                "111.222.111.111",
-            ],
-            parameter_filter_config=alicloud.cdn.DomainParameterFilterConfigArgs(
-                enable="on",
-                hash_key_args=[
-                    "hello",
-                    "youyouyou",
-                ],
-            ),
-            page404_config=alicloud.cdn.DomainPage404ConfigArgs(
-                page_type="other",
-                custom_page_url=f"http://{your_cdn_domain_name}/notfound/",
-            ),
-            refer_config=alicloud.cdn.DomainReferConfigArgs(
-                refer_type="block",
-                refer_lists=[
-                    "www.xxxx.com",
-                    "www.xxxx.cn",
-                ],
-                allow_empty="off",
-            ),
-            auth_config=alicloud.cdn.DomainAuthConfigArgs(
-                auth_type="type_a",
-                master_key="helloworld1",
-                slave_key="helloworld2",
-            ),
-            http_header_configs=[
-                alicloud.cdn.DomainHttpHeaderConfigArgs(
-                    header_key="Content-Type",
-                    header_value="text/plain",
-                ),
-                alicloud.cdn.DomainHttpHeaderConfigArgs(
-                    header_key="Access-Control-Allow-Origin",
-                    header_value="*",
-                ),
-            ],
-            cache_configs=[
-                alicloud.cdn.DomainCacheConfigArgs(
-                    cache_content="/hello/world",
-                    ttl=1000,
-                    cache_type="path",
-                ),
-                alicloud.cdn.DomainCacheConfigArgs(
-                    cache_content="/hello/world/youyou",
-                    ttl=1000,
-                    cache_type="path",
-                ),
-                alicloud.cdn.DomainCacheConfigArgs(
-                    cache_content="txt,jpg,png",
-                    ttl=2000,
-                    cache_type="suffix",
-                ),
-            ])
-        ```
-
+        Create a Domain resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1026,22 +732,6 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DomainAuthConfigArgs']] auth_config: The auth config of the accelerated domain.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainCacheConfigArgs']]]] cache_configs: The cache configs of the accelerated domain.
-        :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainHttpHeaderConfigArgs']]]] http_header_configs: The http header configs of the accelerated domain.
-        :param pulumi.Input[str] optimize_enable: Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        :param pulumi.Input[pulumi.InputType['DomainPage404ConfigArgs']] page404_config: The error page config of the accelerated domain.
-        :param pulumi.Input[str] page_compress_enable: Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        :param pulumi.Input[pulumi.InputType['DomainParameterFilterConfigArgs']] parameter_filter_config: The parameter filter config of the accelerated domain.
-        :param pulumi.Input[str] range_enable: Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        :param pulumi.Input[pulumi.InputType['DomainReferConfigArgs']] refer_config: The refer config of the accelerated domain.
-        :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        :param pulumi.Input[int] source_port: Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        :param pulumi.Input[str] source_type: Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sources: Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        :param pulumi.Input[str] video_seek_enable: Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1070,9 +760,6 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> pulumi.Output[Optional['outputs.DomainAuthConfig']]:
-        """
-        The auth config of the accelerated domain.
-        """
         return pulumi.get(self, "auth_config")
 
     @property
@@ -1083,17 +770,11 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="cacheConfigs")
     def cache_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DomainCacheConfig']]]:
-        """
-        The cache configs of the accelerated domain.
-        """
         return pulumi.get(self, "cache_configs")
 
     @property
     @pulumi.getter(name="cdnType")
     def cdn_type(self) -> pulumi.Output[str]:
-        """
-        Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-        """
         return pulumi.get(self, "cdn_type")
 
     @property
@@ -1104,104 +785,65 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
-        """
-        Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter(name="httpHeaderConfigs")
     def http_header_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DomainHttpHeaderConfig']]]:
-        """
-        The http header configs of the accelerated domain.
-        """
         return pulumi.get(self, "http_header_configs")
 
     @property
     @pulumi.getter(name="optimizeEnable")
     def optimize_enable(self) -> pulumi.Output[Optional[str]]:
-        """
-        Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-        """
         return pulumi.get(self, "optimize_enable")
 
     @property
     @pulumi.getter(name="page404Config")
     def page404_config(self) -> pulumi.Output[Optional['outputs.DomainPage404Config']]:
-        """
-        The error page config of the accelerated domain.
-        """
         return pulumi.get(self, "page404_config")
 
     @property
     @pulumi.getter(name="pageCompressEnable")
     def page_compress_enable(self) -> pulumi.Output[Optional[str]]:
-        """
-        Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "page_compress_enable")
 
     @property
     @pulumi.getter(name="parameterFilterConfig")
     def parameter_filter_config(self) -> pulumi.Output[Optional['outputs.DomainParameterFilterConfig']]:
-        """
-        The parameter filter config of the accelerated domain.
-        """
         return pulumi.get(self, "parameter_filter_config")
 
     @property
     @pulumi.getter(name="rangeEnable")
     def range_enable(self) -> pulumi.Output[Optional[str]]:
-        """
-        Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "range_enable")
 
     @property
     @pulumi.getter(name="referConfig")
     def refer_config(self) -> pulumi.Output[Optional['outputs.DomainReferConfig']]:
-        """
-        The refer config of the accelerated domain.
-        """
         return pulumi.get(self, "refer_config")
 
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
-        """
-        Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-        """
         return pulumi.get(self, "scope")
 
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> pulumi.Output[Optional[int]]:
-        """
-        Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-        """
         return pulumi.get(self, "source_port")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-        """
         return pulumi.get(self, "source_type")
 
     @property
     @pulumi.getter
     def sources(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-        """
         return pulumi.get(self, "sources")
 
     @property
     @pulumi.getter(name="videoSeekEnable")
     def video_seek_enable(self) -> pulumi.Output[Optional[str]]:
-        """
-        Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "video_seek_enable")
 

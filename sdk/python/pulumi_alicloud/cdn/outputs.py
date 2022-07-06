@@ -51,12 +51,6 @@ class DomainAuthConfig(dict):
                  master_key: Optional[str] = None,
                  slave_key: Optional[str] = None,
                  timeout: Optional[int] = None):
-        """
-        :param str auth_type: Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
-        :param str master_key: Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        :param str slave_key: Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        :param int timeout: Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
-        """
         if auth_type is not None:
             pulumi.set(__self__, "auth_type", auth_type)
         if master_key is not None:
@@ -69,33 +63,21 @@ class DomainAuthConfig(dict):
     @property
     @pulumi.getter(name="authType")
     def auth_type(self) -> Optional[str]:
-        """
-        Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
-        """
         return pulumi.get(self, "auth_type")
 
     @property
     @pulumi.getter(name="masterKey")
     def master_key(self) -> Optional[str]:
-        """
-        Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        """
         return pulumi.get(self, "master_key")
 
     @property
     @pulumi.getter(name="slaveKey")
     def slave_key(self) -> Optional[str]:
-        """
-        Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        """
         return pulumi.get(self, "slave_key")
 
     @property
     @pulumi.getter
     def timeout(self) -> Optional[int]:
-        """
-        Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
-        """
         return pulumi.get(self, "timeout")
 
 
@@ -128,12 +110,6 @@ class DomainCacheConfig(dict):
                  ttl: int,
                  cache_id: Optional[str] = None,
                  weight: Optional[int] = None):
-        """
-        :param str cache_content: Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-        :param str cache_type: Cache type of the cache config. Valid values are `suffix` and `path`.
-        :param int ttl: Cache time of the cache config.
-        :param int weight: Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-        """
         pulumi.set(__self__, "cache_content", cache_content)
         pulumi.set(__self__, "cache_type", cache_type)
         pulumi.set(__self__, "ttl", ttl)
@@ -145,25 +121,16 @@ class DomainCacheConfig(dict):
     @property
     @pulumi.getter(name="cacheContent")
     def cache_content(self) -> str:
-        """
-        Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-        """
         return pulumi.get(self, "cache_content")
 
     @property
     @pulumi.getter(name="cacheType")
     def cache_type(self) -> str:
-        """
-        Cache type of the cache config. Valid values are `suffix` and `path`.
-        """
         return pulumi.get(self, "cache_type")
 
     @property
     @pulumi.getter
     def ttl(self) -> int:
-        """
-        Cache time of the cache config.
-        """
         return pulumi.get(self, "ttl")
 
     @property
@@ -174,9 +141,6 @@ class DomainCacheConfig(dict):
     @property
     @pulumi.getter
     def weight(self) -> Optional[int]:
-        """
-        Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-        """
         return pulumi.get(self, "weight")
 
 
@@ -207,11 +171,6 @@ class DomainCertificateConfig(dict):
                  private_key: Optional[str] = None,
                  server_certificate: Optional[str] = None,
                  server_certificate_status: Optional[str] = None):
-        """
-        :param str private_key: The SSL private key. This is required if `server_certificate_status` is `on`
-        :param str server_certificate: The SSL server certificate string. This is required if `server_certificate_status` is `on`
-        :param str server_certificate_status: This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-        """
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if server_certificate is not None:
@@ -222,25 +181,16 @@ class DomainCertificateConfig(dict):
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[str]:
-        """
-        The SSL private key. This is required if `server_certificate_status` is `on`
-        """
         return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> Optional[str]:
-        """
-        The SSL server certificate string. This is required if `server_certificate_status` is `on`
-        """
         return pulumi.get(self, "server_certificate")
 
     @property
     @pulumi.getter(name="serverCertificateStatus")
     def server_certificate_status(self) -> Optional[str]:
-        """
-        This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-        """
         return pulumi.get(self, "server_certificate_status")
 
 
@@ -319,10 +269,6 @@ class DomainHttpHeaderConfig(dict):
                  header_key: str,
                  header_value: str,
                  header_id: Optional[str] = None):
-        """
-        :param str header_key: Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-        :param str header_value: Header value of the http header.
-        """
         pulumi.set(__self__, "header_key", header_key)
         pulumi.set(__self__, "header_value", header_value)
         if header_id is not None:
@@ -331,17 +277,11 @@ class DomainHttpHeaderConfig(dict):
     @property
     @pulumi.getter(name="headerKey")
     def header_key(self) -> str:
-        """
-        Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-        """
         return pulumi.get(self, "header_key")
 
     @property
     @pulumi.getter(name="headerValue")
     def header_value(self) -> str:
-        """
-        Header value of the http header.
-        """
         return pulumi.get(self, "header_value")
 
     @property
@@ -548,10 +488,6 @@ class DomainPage404Config(dict):
                  custom_page_url: Optional[str] = None,
                  error_code: Optional[str] = None,
                  page_type: Optional[str] = None):
-        """
-        :param str custom_page_url: Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `page_type` value is `charity` and It can not be set when `page_type` value is `default`.
-        :param str page_type: Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-        """
         if custom_page_url is not None:
             pulumi.set(__self__, "custom_page_url", custom_page_url)
         if error_code is not None:
@@ -562,9 +498,6 @@ class DomainPage404Config(dict):
     @property
     @pulumi.getter(name="customPageUrl")
     def custom_page_url(self) -> Optional[str]:
-        """
-        Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `page_type` value is `charity` and It can not be set when `page_type` value is `default`.
-        """
         return pulumi.get(self, "custom_page_url")
 
     @property
@@ -575,9 +508,6 @@ class DomainPage404Config(dict):
     @property
     @pulumi.getter(name="pageType")
     def page_type(self) -> Optional[str]:
-        """
-        Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-        """
         return pulumi.get(self, "page_type")
 
 
@@ -603,10 +533,6 @@ class DomainParameterFilterConfig(dict):
     def __init__(__self__, *,
                  enable: Optional[str] = None,
                  hash_key_args: Optional[Sequence[str]] = None):
-        """
-        :param str enable: This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.
-        :param Sequence[str] hash_key_args: Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if hash_key_args is not None:
@@ -615,17 +541,11 @@ class DomainParameterFilterConfig(dict):
     @property
     @pulumi.getter
     def enable(self) -> Optional[str]:
-        """
-        This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.
-        """
         return pulumi.get(self, "enable")
 
     @property
     @pulumi.getter(name="hashKeyArgs")
     def hash_key_args(self) -> Optional[Sequence[str]]:
-        """
-        Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        """
         return pulumi.get(self, "hash_key_args")
 
 
@@ -656,11 +576,6 @@ class DomainReferConfig(dict):
                  refer_lists: Sequence[str],
                  allow_empty: Optional[str] = None,
                  refer_type: Optional[str] = None):
-        """
-        :param Sequence[str] refer_lists: A list of domain names of the refer config.
-        :param str allow_empty: This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
-        :param str refer_type: Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-        """
         pulumi.set(__self__, "refer_lists", refer_lists)
         if allow_empty is not None:
             pulumi.set(__self__, "allow_empty", allow_empty)
@@ -670,25 +585,16 @@ class DomainReferConfig(dict):
     @property
     @pulumi.getter(name="referLists")
     def refer_lists(self) -> Sequence[str]:
-        """
-        A list of domain names of the refer config.
-        """
         return pulumi.get(self, "refer_lists")
 
     @property
     @pulumi.getter(name="allowEmpty")
     def allow_empty(self) -> Optional[str]:
-        """
-        This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
-        """
         return pulumi.get(self, "allow_empty")
 
     @property
     @pulumi.getter(name="referType")
     def refer_type(self) -> Optional[str]:
-        """
-        Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-        """
         return pulumi.get(self, "refer_type")
 
 

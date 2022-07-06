@@ -27,6 +27,7 @@ __all__ = [
     'GetInstanceEnginesInstanceEngineZoneIdResult',
     'GetInstancesInstanceResult',
     'GetInstancesInstanceParameterResult',
+    'GetModifyParameterLogsLogResult',
     'GetRdsBackupsBackupResult',
     'GetRdsParameterGroupsGroupResult',
     'GetRdsParameterGroupsGroupParamDetailResult',
@@ -1555,6 +1556,72 @@ class GetInstancesInstanceParameterResult(dict):
         The default value of the parameter.
         """
         return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class GetModifyParameterLogsLogResult(dict):
+    def __init__(__self__, *,
+                 modify_time: str,
+                 new_parameter_value: str,
+                 old_parameter_value: str,
+                 parameter_name: str,
+                 status: str):
+        """
+        :param str modify_time: The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
+        :param str new_parameter_value: The new value of the parameter.
+        :param str old_parameter_value: The original value of the parameter.
+        :param str parameter_name: The name of the parameter.
+        :param str status: The status of the new value specified for the parameter. Valid values:
+               * **Applied**: The new value has taken effect.
+               * **Syncing**: The new value is being applied and has not taken effect.
+        """
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "new_parameter_value", new_parameter_value)
+        pulumi.set(__self__, "old_parameter_value", old_parameter_value)
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> str:
+        """
+        The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @property
+    @pulumi.getter(name="newParameterValue")
+    def new_parameter_value(self) -> str:
+        """
+        The new value of the parameter.
+        """
+        return pulumi.get(self, "new_parameter_value")
+
+    @property
+    @pulumi.getter(name="oldParameterValue")
+    def old_parameter_value(self) -> str:
+        """
+        The original value of the parameter.
+        """
+        return pulumi.get(self, "old_parameter_value")
+
+    @property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> str:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the new value specified for the parameter. Valid values:
+        * **Applied**: The new value has taken effect.
+        * **Syncing**: The new value is being applied and has not taken effect.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

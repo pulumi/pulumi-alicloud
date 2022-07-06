@@ -15,18 +15,21 @@ __all__ = [
     'ServiceMeshMeshConfig',
     'ServiceMeshMeshConfigAccessLog',
     'ServiceMeshMeshConfigAudit',
+    'ServiceMeshMeshConfigControlPlaneLog',
     'ServiceMeshMeshConfigKiali',
     'ServiceMeshMeshConfigOpa',
     'ServiceMeshMeshConfigPilot',
     'ServiceMeshMeshConfigProxy',
     'ServiceMeshMeshConfigSidecarInjector',
     'ServiceMeshNetwork',
+    'UserPermissionPermission',
     'GetServiceMeshesMeshResult',
     'GetServiceMeshesMeshEndpointResult',
     'GetServiceMeshesMeshLoadBalancerResult',
     'GetServiceMeshesMeshMeshConfigResult',
     'GetServiceMeshesMeshMeshConfigAccessLogResult',
     'GetServiceMeshesMeshMeshConfigAuditResult',
+    'GetServiceMeshesMeshMeshConfigControlPlaneLogResult',
     'GetServiceMeshesMeshMeshConfigKialiResult',
     'GetServiceMeshesMeshMeshConfigOpaResult',
     'GetServiceMeshesMeshMeshConfigPilotResult',
@@ -151,6 +154,8 @@ class ServiceMeshMeshConfig(dict):
         suggest = None
         if key == "accessLog":
             suggest = "access_log"
+        elif key == "controlPlaneLog":
+            suggest = "control_plane_log"
         elif key == "customizedZipkin":
             suggest = "customized_zipkin"
         elif key == "enableLocalityLb":
@@ -174,6 +179,7 @@ class ServiceMeshMeshConfig(dict):
     def __init__(__self__, *,
                  access_log: Optional['outputs.ServiceMeshMeshConfigAccessLog'] = None,
                  audit: Optional['outputs.ServiceMeshMeshConfigAudit'] = None,
+                 control_plane_log: Optional['outputs.ServiceMeshMeshConfigControlPlaneLog'] = None,
                  customized_zipkin: Optional[bool] = None,
                  enable_locality_lb: Optional[bool] = None,
                  kiali: Optional['outputs.ServiceMeshMeshConfigKiali'] = None,
@@ -187,6 +193,7 @@ class ServiceMeshMeshConfig(dict):
         """
         :param 'ServiceMeshMeshConfigAccessLogArgs' access_log: The configuration of the access logging.
         :param 'ServiceMeshMeshConfigAuditArgs' audit: The configuration of the audit. See the following `Block audit`.
+        :param 'ServiceMeshMeshConfigControlPlaneLogArgs' control_plane_log: The configuration of the control plane logging.
         :param bool customized_zipkin: Whether to enable the use of a custom zipkin.
         :param bool enable_locality_lb: The enable locality lb.
         :param 'ServiceMeshMeshConfigKialiArgs' kiali: The configuration of the Kiali. See the following `Block kiali`.
@@ -202,6 +209,8 @@ class ServiceMeshMeshConfig(dict):
             pulumi.set(__self__, "access_log", access_log)
         if audit is not None:
             pulumi.set(__self__, "audit", audit)
+        if control_plane_log is not None:
+            pulumi.set(__self__, "control_plane_log", control_plane_log)
         if customized_zipkin is not None:
             pulumi.set(__self__, "customized_zipkin", customized_zipkin)
         if enable_locality_lb is not None:
@@ -238,6 +247,14 @@ class ServiceMeshMeshConfig(dict):
         The configuration of the audit. See the following `Block audit`.
         """
         return pulumi.get(self, "audit")
+
+    @property
+    @pulumi.getter(name="controlPlaneLog")
+    def control_plane_log(self) -> Optional['outputs.ServiceMeshMeshConfigControlPlaneLog']:
+        """
+        The configuration of the control plane logging.
+        """
+        return pulumi.get(self, "control_plane_log")
 
     @property
     @pulumi.getter(name="customizedZipkin")
@@ -323,12 +340,16 @@ class ServiceMeshMeshConfig(dict):
 @pulumi.output_type
 class ServiceMeshMeshConfigAccessLog(dict):
     def __init__(__self__, *,
-                 enabled: Optional[bool] = None):
+                 enabled: Optional[bool] = None,
+                 project: Optional[str] = None):
         """
         :param bool enabled: Whether to enable Service grid audit.
+        :param str project: The Service grid audit that to the project.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -338,9 +359,48 @@ class ServiceMeshMeshConfigAccessLog(dict):
         """
         return pulumi.get(self, "enabled")
 
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        """
+        The Service grid audit that to the project.
+        """
+        return pulumi.get(self, "project")
+
 
 @pulumi.output_type
 class ServiceMeshMeshConfigAudit(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 project: Optional[str] = None):
+        """
+        :param bool enabled: Whether to enable Service grid audit.
+        :param str project: The Service grid audit that to the project.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether to enable Service grid audit.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        """
+        The Service grid audit that to the project.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class ServiceMeshMeshConfigControlPlaneLog(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  project: Optional[str] = None):
@@ -776,6 +836,104 @@ class ServiceMeshNetwork(dict):
 
 
 @pulumi.output_type
+class UserPermissionPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isCustom":
+            suggest = "is_custom"
+        elif key == "isRamRole":
+            suggest = "is_ram_role"
+        elif key == "roleName":
+            suggest = "role_name"
+        elif key == "roleType":
+            suggest = "role_type"
+        elif key == "serviceMeshId":
+            suggest = "service_mesh_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserPermissionPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserPermissionPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserPermissionPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_custom: Optional[bool] = None,
+                 is_ram_role: Optional[bool] = None,
+                 role_name: Optional[str] = None,
+                 role_type: Optional[str] = None,
+                 service_mesh_id: Optional[str] = None):
+        """
+        :param bool is_custom: Whether the grant object is a RAM role.
+        :param bool is_ram_role: Whether the grant object is an entity.
+        :param str role_name: The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
+               - `istio-admin`:  The administrator.
+               - `istio-ops`: The administrator of the service mesh resource.
+               - `istio-readonly`: The read only permission.
+        :param str role_type: The role type. Valid Value: `custom`.
+        :param str service_mesh_id: The service mesh id.
+        """
+        if is_custom is not None:
+            pulumi.set(__self__, "is_custom", is_custom)
+        if is_ram_role is not None:
+            pulumi.set(__self__, "is_ram_role", is_ram_role)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+        if role_type is not None:
+            pulumi.set(__self__, "role_type", role_type)
+        if service_mesh_id is not None:
+            pulumi.set(__self__, "service_mesh_id", service_mesh_id)
+
+    @property
+    @pulumi.getter(name="isCustom")
+    def is_custom(self) -> Optional[bool]:
+        """
+        Whether the grant object is a RAM role.
+        """
+        return pulumi.get(self, "is_custom")
+
+    @property
+    @pulumi.getter(name="isRamRole")
+    def is_ram_role(self) -> Optional[bool]:
+        """
+        Whether the grant object is an entity.
+        """
+        return pulumi.get(self, "is_ram_role")
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[str]:
+        """
+        The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
+        - `istio-admin`:  The administrator.
+        - `istio-ops`: The administrator of the service mesh resource.
+        - `istio-readonly`: The read only permission.
+        """
+        return pulumi.get(self, "role_name")
+
+    @property
+    @pulumi.getter(name="roleType")
+    def role_type(self) -> Optional[str]:
+        """
+        The role type. Valid Value: `custom`.
+        """
+        return pulumi.get(self, "role_type")
+
+    @property
+    @pulumi.getter(name="serviceMeshId")
+    def service_mesh_id(self) -> Optional[str]:
+        """
+        The service mesh id.
+        """
+        return pulumi.get(self, "service_mesh_id")
+
+
+@pulumi.output_type
 class GetServiceMeshesMeshResult(dict):
     def __init__(__self__, *,
                  clusters: Sequence[str],
@@ -1054,6 +1212,7 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
     def __init__(__self__, *,
                  access_logs: Sequence['outputs.GetServiceMeshesMeshMeshConfigAccessLogResult'],
                  audits: Sequence['outputs.GetServiceMeshesMeshMeshConfigAuditResult'],
+                 control_plane_logs: Sequence['outputs.GetServiceMeshesMeshMeshConfigControlPlaneLogResult'],
                  customized_zipkin: bool,
                  enable_locality_lb: bool,
                  include_ip_ranges: str,
@@ -1069,6 +1228,7 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
         """
         :param Sequence['GetServiceMeshesMeshMeshConfigAccessLogArgs'] access_logs: The configuration of the access logging.
         :param Sequence['GetServiceMeshesMeshMeshConfigAuditArgs'] audits: The configuration of the Service grid audit.
+        :param Sequence['GetServiceMeshesMeshMeshConfigControlPlaneLogArgs'] control_plane_logs: The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
         :param bool customized_zipkin: Whether or not to enable the use of a custom zipkin.
         :param bool enable_locality_lb: Whether to enable service can access the service through the nearest node access.
         :param str include_ip_ranges: The IP ADDRESS range.
@@ -1084,6 +1244,7 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
         """
         pulumi.set(__self__, "access_logs", access_logs)
         pulumi.set(__self__, "audits", audits)
+        pulumi.set(__self__, "control_plane_logs", control_plane_logs)
         pulumi.set(__self__, "customized_zipkin", customized_zipkin)
         pulumi.set(__self__, "enable_locality_lb", enable_locality_lb)
         pulumi.set(__self__, "include_ip_ranges", include_ip_ranges)
@@ -1112,6 +1273,14 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
         The configuration of the Service grid audit.
         """
         return pulumi.get(self, "audits")
+
+    @property
+    @pulumi.getter(name="controlPlaneLogs")
+    def control_plane_logs(self) -> Sequence['outputs.GetServiceMeshesMeshMeshConfigControlPlaneLogResult']:
+        """
+        The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+        """
+        return pulumi.get(self, "control_plane_logs")
 
     @property
     @pulumi.getter(name="customizedZipkin")
@@ -1213,11 +1382,14 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
 @pulumi.output_type
 class GetServiceMeshesMeshMeshConfigAccessLogResult(dict):
     def __init__(__self__, *,
-                 enabled: bool):
+                 enabled: bool,
+                 project: str):
         """
         :param bool enabled: Whether to enable Service grid audit.
+        :param str project: The Service grid audit that to the project.
         """
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -1227,9 +1399,46 @@ class GetServiceMeshesMeshMeshConfigAccessLogResult(dict):
         """
         return pulumi.get(self, "enabled")
 
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The Service grid audit that to the project.
+        """
+        return pulumi.get(self, "project")
+
 
 @pulumi.output_type
 class GetServiceMeshesMeshMeshConfigAuditResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 project: str):
+        """
+        :param bool enabled: Whether to enable Service grid audit.
+        :param str project: The Service grid audit that to the project.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether to enable Service grid audit.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The Service grid audit that to the project.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GetServiceMeshesMeshMeshConfigControlPlaneLogResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  project: str):

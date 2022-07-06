@@ -14,6 +14,7 @@ export * from "./getAccounts";
 export * from "./getInstanceClasses";
 export * from "./getInstanceEngines";
 export * from "./getInstances";
+export * from "./getModifyParameterLogs";
 export * from "./getRdsBackups";
 export * from "./getRdsParameterGroups";
 export * from "./getZones";

@@ -26,16 +26,7 @@ import * as utilities from "../utilities";
  *         threshold: "35",
  *         times: 2,
  *     },
- *     metricDimensions: [
- *         {
- *             key: "instanceId",
- *             value: "i-bp1247jeep0y53nu3bnk",
- *         },
- *         {
- *             key: "device",
- *             value: "/dev/vda1",
- *         },
- *     ],
+ *     metricDimensions: "[{\"instanceId\":\"i-bp1247jeep0y53nu3bnk\",\"device\":\"/dev/vda1\"},{\"instanceId\":\"i-bp11gdcik8z6dl5jm84p\",\"device\":\"/dev/vdb1\"}]",
  *     period: 900,
  *     project: "acs_ecs_dashboard",
  *     webhook: pulumi.interpolate`https://${alicloud_account_current.id}.eu-central-1.fc.aliyuncs.com/2016-08-15/proxy/Terraform/AlarmEndpointMock/`,
@@ -121,7 +112,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    public readonly metricDimensions!: pulumi.Output<outputs.cms.AlarmMetricDimension[]>;
+    public readonly metricDimensions!: pulumi.Output<string>;
     /**
      * The alarm rule name.
      */
@@ -296,7 +287,7 @@ export interface AlarmState {
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    metricDimensions?: pulumi.Input<pulumi.Input<inputs.cms.AlarmMetricDimension>[]>;
+    metricDimensions?: pulumi.Input<string>;
     /**
      * The alarm rule name.
      */
@@ -400,7 +391,7 @@ export interface AlarmArgs {
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    metricDimensions?: pulumi.Input<pulumi.Input<inputs.cms.AlarmMetricDimension>[]>;
+    metricDimensions?: pulumi.Input<string>;
     /**
      * The alarm rule name.
      */

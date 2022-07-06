@@ -8,9 +8,11 @@ import * as utilities from "../utilities";
 export * from "./getServiceMeshes";
 export * from "./getVersions";
 export * from "./serviceMesh";
+export * from "./userPermission";
 
 // Import resources to register:
 import { ServiceMesh } from "./serviceMesh";
+import { UserPermission } from "./userPermission";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,9 +20,12 @@ const _module = {
         switch (type) {
             case "alicloud:servicemesh/serviceMesh:ServiceMesh":
                 return new ServiceMesh(name, <any>undefined, { urn })
+            case "alicloud:servicemesh/userPermission:UserPermission":
+                return new UserPermission(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "servicemesh/serviceMesh", _module)
+pulumi.runtime.registerResourceModule("alicloud", "servicemesh/userPermission", _module)

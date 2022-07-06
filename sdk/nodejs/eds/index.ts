@@ -5,10 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./adConnectorDirectory";
 export * from "./bundle";
 export * from "./command";
 export * from "./desktop";
 export * from "./ecdPolicyGroup";
+export * from "./getAdConnectorDirectories";
 export * from "./getBundles";
 export * from "./getCommands";
 export * from "./getDesktopTypes";
@@ -17,17 +19,21 @@ export * from "./getImages";
 export * from "./getNasFileSystems";
 export * from "./getNetworkPackages";
 export * from "./getPolicyGroups";
+export * from "./getRamDirectories";
 export * from "./getSimpleOfficeSites";
 export * from "./getSnapshots";
 export * from "./getUsers";
+export * from "./getZones";
 export * from "./image";
 export * from "./nasFileSystem";
 export * from "./networkPackage";
+export * from "./ramDirectory";
 export * from "./simpleOfficeSite";
 export * from "./snapshot";
 export * from "./user";
 
 // Import resources to register:
+import { AdConnectorDirectory } from "./adConnectorDirectory";
 import { Bundle } from "./bundle";
 import { Command } from "./command";
 import { Desktop } from "./desktop";
@@ -35,6 +41,7 @@ import { EcdPolicyGroup } from "./ecdPolicyGroup";
 import { Image } from "./image";
 import { NasFileSystem } from "./nasFileSystem";
 import { NetworkPackage } from "./networkPackage";
+import { RamDirectory } from "./ramDirectory";
 import { SimpleOfficeSite } from "./simpleOfficeSite";
 import { Snapshot } from "./snapshot";
 import { User } from "./user";
@@ -43,6 +50,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:eds/adConnectorDirectory:AdConnectorDirectory":
+                return new AdConnectorDirectory(name, <any>undefined, { urn })
             case "alicloud:eds/bundle:Bundle":
                 return new Bundle(name, <any>undefined, { urn })
             case "alicloud:eds/command:Command":
@@ -57,6 +66,8 @@ const _module = {
                 return new NasFileSystem(name, <any>undefined, { urn })
             case "alicloud:eds/networkPackage:NetworkPackage":
                 return new NetworkPackage(name, <any>undefined, { urn })
+            case "alicloud:eds/ramDirectory:RamDirectory":
+                return new RamDirectory(name, <any>undefined, { urn })
             case "alicloud:eds/simpleOfficeSite:SimpleOfficeSite":
                 return new SimpleOfficeSite(name, <any>undefined, { urn })
             case "alicloud:eds/snapshot:Snapshot":
@@ -68,6 +79,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "eds/adConnectorDirectory", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/bundle", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/command", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/desktop", _module)
@@ -75,6 +87,7 @@ pulumi.runtime.registerResourceModule("alicloud", "eds/ecdPolicyGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/image", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/nasFileSystem", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/networkPackage", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eds/ramDirectory", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/simpleOfficeSite", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/snapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/user", _module)

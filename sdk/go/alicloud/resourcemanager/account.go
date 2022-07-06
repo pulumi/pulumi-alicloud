@@ -68,7 +68,7 @@ type Account struct {
 	JoinTime pulumi.StringOutput `pulumi:"joinTime"`
 	// The modification time of the invitation.
 	ModifyTime pulumi.StringOutput `pulumi:"modifyTime"`
-	// Settlement account ID. If the value is empty, the current account will be used for settlement.
+	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId pulumi.StringPtrOutput `pulumi:"payerAccountId"`
 	// Resource directory ID.
 	ResourceDirectoryId pulumi.StringOutput `pulumi:"resourceDirectoryId"`
@@ -122,7 +122,7 @@ type accountState struct {
 	JoinTime *string `pulumi:"joinTime"`
 	// The modification time of the invitation.
 	ModifyTime *string `pulumi:"modifyTime"`
-	// Settlement account ID. If the value is empty, the current account will be used for settlement.
+	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId *string `pulumi:"payerAccountId"`
 	// Resource directory ID.
 	ResourceDirectoryId *string `pulumi:"resourceDirectoryId"`
@@ -145,7 +145,7 @@ type AccountState struct {
 	JoinTime pulumi.StringPtrInput
 	// The modification time of the invitation.
 	ModifyTime pulumi.StringPtrInput
-	// Settlement account ID. If the value is empty, the current account will be used for settlement.
+	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId pulumi.StringPtrInput
 	// Resource directory ID.
 	ResourceDirectoryId pulumi.StringPtrInput
@@ -166,7 +166,7 @@ type accountArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the parent folder.
 	FolderId *string `pulumi:"folderId"`
-	// Settlement account ID. If the value is empty, the current account will be used for settlement.
+	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId *string `pulumi:"payerAccountId"`
 }
 
@@ -178,7 +178,7 @@ type AccountArgs struct {
 	DisplayName pulumi.StringInput
 	// The ID of the parent folder.
 	FolderId pulumi.StringPtrInput
-	// Settlement account ID. If the value is empty, the current account will be used for settlement.
+	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId pulumi.StringPtrInput
 }
 

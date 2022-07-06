@@ -17,11 +17,19 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// Whether to enable Service grid audit.
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The Service grid audit that to the project.
+        /// </summary>
+        public readonly string? Project;
 
         [OutputConstructor]
-        private ServiceMeshMeshConfigAccessLog(bool? enabled)
+        private ServiceMeshMeshConfigAccessLog(
+            bool? enabled,
+
+            string? project)
         {
             Enabled = enabled;
+            Project = project;
         }
     }
 }

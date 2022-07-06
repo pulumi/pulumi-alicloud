@@ -13,6 +13,104 @@ import (
 // This data source provides the details of the Kubernetes version supported by ACK.
 //
 // > **NOTE:** Available in 1.170.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
+// 			ClusterType:       "ManagedKubernetes",
+// 			KubernetesVersion: pulumi.StringRef("1.22.3-aliyun.1"),
+// 			Profile:           pulumi.StringRef("Default"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("metadata", _default.Metadatas)
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
+// 			ClusterType:       "Kubernetes",
+// 			KubernetesVersion: pulumi.StringRef("1.22.3-aliyun.1"),
+// 			Profile:           pulumi.StringRef("Default"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("metadata", _default.Metadatas)
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
+// 			ClusterType:       "ManagedKubernetes",
+// 			KubernetesVersion: pulumi.StringRef("1.22.3-aliyun.1"),
+// 			Profile:           pulumi.StringRef("Serverless"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("metadata", _default.Metadatas)
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
+// 			ClusterType:       "ManagedKubernetes",
+// 			KubernetesVersion: pulumi.StringRef("1.20.11-aliyunedge.1"),
+// 			Profile:           pulumi.StringRef("Edge"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("metadata", _default.Metadatas)
+// 		return nil
+// 	})
+// }
+// ```
 func GetKubernetesVersion(ctx *pulumi.Context, args *GetKubernetesVersionArgs, opts ...pulumi.InvokeOption) (*GetKubernetesVersionResult, error) {
 	var rv GetKubernetesVersionResult
 	err := ctx.Invoke("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args, &rv, opts...)
@@ -25,7 +123,8 @@ func GetKubernetesVersion(ctx *pulumi.Context, args *GetKubernetesVersionArgs, o
 // A collection of arguments for invoking getKubernetesVersion.
 type GetKubernetesVersionArgs struct {
 	// The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
-	ClusterType       string  `pulumi:"clusterType"`
+	ClusterType string `pulumi:"clusterType"`
+	// The ACK released kubernetes version.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
 	Profile *string `pulumi:"profile"`
@@ -58,7 +157,8 @@ func GetKubernetesVersionOutput(ctx *pulumi.Context, args GetKubernetesVersionOu
 // A collection of arguments for invoking getKubernetesVersion.
 type GetKubernetesVersionOutputArgs struct {
 	// The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
-	ClusterType       pulumi.StringInput    `pulumi:"clusterType"`
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The ACK released kubernetes version.
 	KubernetesVersion pulumi.StringPtrInput `pulumi:"kubernetesVersion"`
 	// The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`

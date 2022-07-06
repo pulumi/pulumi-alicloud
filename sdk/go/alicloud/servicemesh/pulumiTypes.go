@@ -338,6 +338,8 @@ type ServiceMeshMeshConfig struct {
 	AccessLog *ServiceMeshMeshConfigAccessLog `pulumi:"accessLog"`
 	// The configuration of the audit. See the following `Block audit`.
 	Audit *ServiceMeshMeshConfigAudit `pulumi:"audit"`
+	// The configuration of the control plane logging.
+	ControlPlaneLog *ServiceMeshMeshConfigControlPlaneLog `pulumi:"controlPlaneLog"`
 	// Whether to enable the use of a custom zipkin.
 	CustomizedZipkin *bool `pulumi:"customizedZipkin"`
 	// The enable locality lb.
@@ -376,6 +378,8 @@ type ServiceMeshMeshConfigArgs struct {
 	AccessLog ServiceMeshMeshConfigAccessLogPtrInput `pulumi:"accessLog"`
 	// The configuration of the audit. See the following `Block audit`.
 	Audit ServiceMeshMeshConfigAuditPtrInput `pulumi:"audit"`
+	// The configuration of the control plane logging.
+	ControlPlaneLog ServiceMeshMeshConfigControlPlaneLogPtrInput `pulumi:"controlPlaneLog"`
 	// Whether to enable the use of a custom zipkin.
 	CustomizedZipkin pulumi.BoolPtrInput `pulumi:"customizedZipkin"`
 	// The enable locality lb.
@@ -485,6 +489,11 @@ func (o ServiceMeshMeshConfigOutput) Audit() ServiceMeshMeshConfigAuditPtrOutput
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigAudit { return v.Audit }).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
+// The configuration of the control plane logging.
+func (o ServiceMeshMeshConfigOutput) ControlPlaneLog() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigControlPlaneLog { return v.ControlPlaneLog }).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
+}
+
 // Whether to enable the use of a custom zipkin.
 func (o ServiceMeshMeshConfigOutput) CustomizedZipkin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *bool { return v.CustomizedZipkin }).(pulumi.BoolPtrOutput)
@@ -577,6 +586,16 @@ func (o ServiceMeshMeshConfigPtrOutput) Audit() ServiceMeshMeshConfigAuditPtrOut
 		}
 		return v.Audit
 	}).(ServiceMeshMeshConfigAuditPtrOutput)
+}
+
+// The configuration of the control plane logging.
+func (o ServiceMeshMeshConfigPtrOutput) ControlPlaneLog() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigControlPlaneLog {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneLog
+	}).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
 }
 
 // Whether to enable the use of a custom zipkin.
@@ -682,6 +701,8 @@ func (o ServiceMeshMeshConfigPtrOutput) Tracing() pulumi.BoolPtrOutput {
 type ServiceMeshMeshConfigAccessLog struct {
 	// Whether to enable Service grid audit.
 	Enabled *bool `pulumi:"enabled"`
+	// The Service grid audit that to the project.
+	Project *string `pulumi:"project"`
 }
 
 // ServiceMeshMeshConfigAccessLogInput is an input type that accepts ServiceMeshMeshConfigAccessLogArgs and ServiceMeshMeshConfigAccessLogOutput values.
@@ -698,6 +719,8 @@ type ServiceMeshMeshConfigAccessLogInput interface {
 type ServiceMeshMeshConfigAccessLogArgs struct {
 	// Whether to enable Service grid audit.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The Service grid audit that to the project.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (ServiceMeshMeshConfigAccessLogArgs) ElementType() reflect.Type {
@@ -782,6 +805,11 @@ func (o ServiceMeshMeshConfigAccessLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The Service grid audit that to the project.
+func (o ServiceMeshMeshConfigAccessLogOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
 type ServiceMeshMeshConfigAccessLogPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMeshConfigAccessLogPtrOutput) ElementType() reflect.Type {
@@ -814,6 +842,16 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Enabled() pulumi.BoolPtrOutput 
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The Service grid audit that to the project.
+func (o ServiceMeshMeshConfigAccessLogPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceMeshMeshConfigAudit struct {
@@ -965,6 +1003,162 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
 // The Service grid audit that to the project.
 func (o ServiceMeshMeshConfigAuditPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceMeshMeshConfigControlPlaneLog struct {
+	// Whether to enable Service grid audit.
+	Enabled *bool `pulumi:"enabled"`
+	// The Service grid audit that to the project.
+	Project *string `pulumi:"project"`
+}
+
+// ServiceMeshMeshConfigControlPlaneLogInput is an input type that accepts ServiceMeshMeshConfigControlPlaneLogArgs and ServiceMeshMeshConfigControlPlaneLogOutput values.
+// You can construct a concrete instance of `ServiceMeshMeshConfigControlPlaneLogInput` via:
+//
+//          ServiceMeshMeshConfigControlPlaneLogArgs{...}
+type ServiceMeshMeshConfigControlPlaneLogInput interface {
+	pulumi.Input
+
+	ToServiceMeshMeshConfigControlPlaneLogOutput() ServiceMeshMeshConfigControlPlaneLogOutput
+	ToServiceMeshMeshConfigControlPlaneLogOutputWithContext(context.Context) ServiceMeshMeshConfigControlPlaneLogOutput
+}
+
+type ServiceMeshMeshConfigControlPlaneLogArgs struct {
+	// Whether to enable Service grid audit.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The Service grid audit that to the project.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (ServiceMeshMeshConfigControlPlaneLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMeshConfigControlPlaneLog)(nil)).Elem()
+}
+
+func (i ServiceMeshMeshConfigControlPlaneLogArgs) ToServiceMeshMeshConfigControlPlaneLogOutput() ServiceMeshMeshConfigControlPlaneLogOutput {
+	return i.ToServiceMeshMeshConfigControlPlaneLogOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshMeshConfigControlPlaneLogArgs) ToServiceMeshMeshConfigControlPlaneLogOutputWithContext(ctx context.Context) ServiceMeshMeshConfigControlPlaneLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigControlPlaneLogOutput)
+}
+
+func (i ServiceMeshMeshConfigControlPlaneLogArgs) ToServiceMeshMeshConfigControlPlaneLogPtrOutput() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return i.ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshMeshConfigControlPlaneLogArgs) ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigControlPlaneLogOutput).ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(ctx)
+}
+
+// ServiceMeshMeshConfigControlPlaneLogPtrInput is an input type that accepts ServiceMeshMeshConfigControlPlaneLogArgs, ServiceMeshMeshConfigControlPlaneLogPtr and ServiceMeshMeshConfigControlPlaneLogPtrOutput values.
+// You can construct a concrete instance of `ServiceMeshMeshConfigControlPlaneLogPtrInput` via:
+//
+//          ServiceMeshMeshConfigControlPlaneLogArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceMeshMeshConfigControlPlaneLogPtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshMeshConfigControlPlaneLogPtrOutput() ServiceMeshMeshConfigControlPlaneLogPtrOutput
+	ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(context.Context) ServiceMeshMeshConfigControlPlaneLogPtrOutput
+}
+
+type serviceMeshMeshConfigControlPlaneLogPtrType ServiceMeshMeshConfigControlPlaneLogArgs
+
+func ServiceMeshMeshConfigControlPlaneLogPtr(v *ServiceMeshMeshConfigControlPlaneLogArgs) ServiceMeshMeshConfigControlPlaneLogPtrInput {
+	return (*serviceMeshMeshConfigControlPlaneLogPtrType)(v)
+}
+
+func (*serviceMeshMeshConfigControlPlaneLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMeshConfigControlPlaneLog)(nil)).Elem()
+}
+
+func (i *serviceMeshMeshConfigControlPlaneLogPtrType) ToServiceMeshMeshConfigControlPlaneLogPtrOutput() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return i.ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMeshMeshConfigControlPlaneLogPtrType) ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
+}
+
+type ServiceMeshMeshConfigControlPlaneLogOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMeshConfigControlPlaneLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMeshConfigControlPlaneLog)(nil)).Elem()
+}
+
+func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToServiceMeshMeshConfigControlPlaneLogOutput() ServiceMeshMeshConfigControlPlaneLogOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToServiceMeshMeshConfigControlPlaneLogOutputWithContext(ctx context.Context) ServiceMeshMeshConfigControlPlaneLogOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToServiceMeshMeshConfigControlPlaneLogPtrOutput() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return o.ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigControlPlaneLog) *ServiceMeshMeshConfigControlPlaneLog {
+		return &v
+	}).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
+}
+
+// Whether to enable Service grid audit.
+func (o ServiceMeshMeshConfigControlPlaneLogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Service grid audit that to the project.
+func (o ServiceMeshMeshConfigControlPlaneLogOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type ServiceMeshMeshConfigControlPlaneLogPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMeshConfigControlPlaneLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMeshConfigControlPlaneLog)(nil)).Elem()
+}
+
+func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) ToServiceMeshMeshConfigControlPlaneLogPtrOutput() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) ToServiceMeshMeshConfigControlPlaneLogPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigControlPlaneLogPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Elem() ServiceMeshMeshConfigControlPlaneLogOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) ServiceMeshMeshConfigControlPlaneLog {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigControlPlaneLog
+		return ret
+	}).(ServiceMeshMeshConfigControlPlaneLogOutput)
+}
+
+// Whether to enable Service grid audit.
+func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Service grid audit that to the project.
+func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *string {
 		if v == nil {
 			return nil
 		}
@@ -2079,6 +2273,148 @@ func (o ServiceMeshNetworkPtrOutput) VswitcheList() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type UserPermissionPermission struct {
+	// Whether the grant object is a RAM role.
+	IsCustom *bool `pulumi:"isCustom"`
+	// Whether the grant object is an entity.
+	IsRamRole *bool `pulumi:"isRamRole"`
+	// The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
+	// - `istio-admin`:  The administrator.
+	// - `istio-ops`: The administrator of the service mesh resource.
+	// - `istio-readonly`: The read only permission.
+	RoleName *string `pulumi:"roleName"`
+	// The role type. Valid Value: `custom`.
+	RoleType *string `pulumi:"roleType"`
+	// The service mesh id.
+	ServiceMeshId *string `pulumi:"serviceMeshId"`
+}
+
+// UserPermissionPermissionInput is an input type that accepts UserPermissionPermissionArgs and UserPermissionPermissionOutput values.
+// You can construct a concrete instance of `UserPermissionPermissionInput` via:
+//
+//          UserPermissionPermissionArgs{...}
+type UserPermissionPermissionInput interface {
+	pulumi.Input
+
+	ToUserPermissionPermissionOutput() UserPermissionPermissionOutput
+	ToUserPermissionPermissionOutputWithContext(context.Context) UserPermissionPermissionOutput
+}
+
+type UserPermissionPermissionArgs struct {
+	// Whether the grant object is a RAM role.
+	IsCustom pulumi.BoolPtrInput `pulumi:"isCustom"`
+	// Whether the grant object is an entity.
+	IsRamRole pulumi.BoolPtrInput `pulumi:"isRamRole"`
+	// The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
+	// - `istio-admin`:  The administrator.
+	// - `istio-ops`: The administrator of the service mesh resource.
+	// - `istio-readonly`: The read only permission.
+	RoleName pulumi.StringPtrInput `pulumi:"roleName"`
+	// The role type. Valid Value: `custom`.
+	RoleType pulumi.StringPtrInput `pulumi:"roleType"`
+	// The service mesh id.
+	ServiceMeshId pulumi.StringPtrInput `pulumi:"serviceMeshId"`
+}
+
+func (UserPermissionPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPermissionPermission)(nil)).Elem()
+}
+
+func (i UserPermissionPermissionArgs) ToUserPermissionPermissionOutput() UserPermissionPermissionOutput {
+	return i.ToUserPermissionPermissionOutputWithContext(context.Background())
+}
+
+func (i UserPermissionPermissionArgs) ToUserPermissionPermissionOutputWithContext(ctx context.Context) UserPermissionPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionPermissionOutput)
+}
+
+// UserPermissionPermissionArrayInput is an input type that accepts UserPermissionPermissionArray and UserPermissionPermissionArrayOutput values.
+// You can construct a concrete instance of `UserPermissionPermissionArrayInput` via:
+//
+//          UserPermissionPermissionArray{ UserPermissionPermissionArgs{...} }
+type UserPermissionPermissionArrayInput interface {
+	pulumi.Input
+
+	ToUserPermissionPermissionArrayOutput() UserPermissionPermissionArrayOutput
+	ToUserPermissionPermissionArrayOutputWithContext(context.Context) UserPermissionPermissionArrayOutput
+}
+
+type UserPermissionPermissionArray []UserPermissionPermissionInput
+
+func (UserPermissionPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPermissionPermission)(nil)).Elem()
+}
+
+func (i UserPermissionPermissionArray) ToUserPermissionPermissionArrayOutput() UserPermissionPermissionArrayOutput {
+	return i.ToUserPermissionPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i UserPermissionPermissionArray) ToUserPermissionPermissionArrayOutputWithContext(ctx context.Context) UserPermissionPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionPermissionArrayOutput)
+}
+
+type UserPermissionPermissionOutput struct{ *pulumi.OutputState }
+
+func (UserPermissionPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPermissionPermission)(nil)).Elem()
+}
+
+func (o UserPermissionPermissionOutput) ToUserPermissionPermissionOutput() UserPermissionPermissionOutput {
+	return o
+}
+
+func (o UserPermissionPermissionOutput) ToUserPermissionPermissionOutputWithContext(ctx context.Context) UserPermissionPermissionOutput {
+	return o
+}
+
+// Whether the grant object is a RAM role.
+func (o UserPermissionPermissionOutput) IsCustom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPermissionPermission) *bool { return v.IsCustom }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the grant object is an entity.
+func (o UserPermissionPermissionOutput) IsRamRole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPermissionPermission) *bool { return v.IsRamRole }).(pulumi.BoolPtrOutput)
+}
+
+// The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
+// - `istio-admin`:  The administrator.
+// - `istio-ops`: The administrator of the service mesh resource.
+// - `istio-readonly`: The read only permission.
+func (o UserPermissionPermissionOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionPermission) *string { return v.RoleName }).(pulumi.StringPtrOutput)
+}
+
+// The role type. Valid Value: `custom`.
+func (o UserPermissionPermissionOutput) RoleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionPermission) *string { return v.RoleType }).(pulumi.StringPtrOutput)
+}
+
+// The service mesh id.
+func (o UserPermissionPermissionOutput) ServiceMeshId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionPermission) *string { return v.ServiceMeshId }).(pulumi.StringPtrOutput)
+}
+
+type UserPermissionPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (UserPermissionPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPermissionPermission)(nil)).Elem()
+}
+
+func (o UserPermissionPermissionArrayOutput) ToUserPermissionPermissionArrayOutput() UserPermissionPermissionArrayOutput {
+	return o
+}
+
+func (o UserPermissionPermissionArrayOutput) ToUserPermissionPermissionArrayOutputWithContext(ctx context.Context) UserPermissionPermissionArrayOutput {
+	return o
+}
+
+func (o UserPermissionPermissionArrayOutput) Index(i pulumi.IntInput) UserPermissionPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPermissionPermission {
+		return vs[0].([]UserPermissionPermission)[vs[1].(int)]
+	}).(UserPermissionPermissionOutput)
+}
+
 type GetServiceMeshesMesh struct {
 	// Cluster List.
 	Clusters []string `pulumi:"clusters"`
@@ -2555,6 +2891,8 @@ type GetServiceMeshesMeshMeshConfig struct {
 	AccessLogs []GetServiceMeshesMeshMeshConfigAccessLog `pulumi:"accessLogs"`
 	// The configuration of the Service grid audit.
 	Audits []GetServiceMeshesMeshMeshConfigAudit `pulumi:"audits"`
+	// The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+	ControlPlaneLogs []GetServiceMeshesMeshMeshConfigControlPlaneLog `pulumi:"controlPlaneLogs"`
 	// Whether or not to enable the use of a custom zipkin.
 	CustomizedZipkin bool `pulumi:"customizedZipkin"`
 	// Whether to enable service can access the service through the nearest node access.
@@ -2597,6 +2935,8 @@ type GetServiceMeshesMeshMeshConfigArgs struct {
 	AccessLogs GetServiceMeshesMeshMeshConfigAccessLogArrayInput `pulumi:"accessLogs"`
 	// The configuration of the Service grid audit.
 	Audits GetServiceMeshesMeshMeshConfigAuditArrayInput `pulumi:"audits"`
+	// The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+	ControlPlaneLogs GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput `pulumi:"controlPlaneLogs"`
 	// Whether or not to enable the use of a custom zipkin.
 	CustomizedZipkin pulumi.BoolInput `pulumi:"customizedZipkin"`
 	// Whether to enable service can access the service through the nearest node access.
@@ -2682,6 +3022,13 @@ func (o GetServiceMeshesMeshMeshConfigOutput) AccessLogs() GetServiceMeshesMeshM
 // The configuration of the Service grid audit.
 func (o GetServiceMeshesMeshMeshConfigOutput) Audits() GetServiceMeshesMeshMeshConfigAuditArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfig) []GetServiceMeshesMeshMeshConfigAudit { return v.Audits }).(GetServiceMeshesMeshMeshConfigAuditArrayOutput)
+}
+
+// The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+func (o GetServiceMeshesMeshMeshConfigOutput) ControlPlaneLogs() GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput {
+	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfig) []GetServiceMeshesMeshMeshConfigControlPlaneLog {
+		return v.ControlPlaneLogs
+	}).(GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput)
 }
 
 // Whether or not to enable the use of a custom zipkin.
@@ -2771,6 +3118,8 @@ func (o GetServiceMeshesMeshMeshConfigArrayOutput) Index(i pulumi.IntInput) GetS
 type GetServiceMeshesMeshMeshConfigAccessLog struct {
 	// Whether to enable Service grid audit.
 	Enabled bool `pulumi:"enabled"`
+	// The Service grid audit that to the project.
+	Project string `pulumi:"project"`
 }
 
 // GetServiceMeshesMeshMeshConfigAccessLogInput is an input type that accepts GetServiceMeshesMeshMeshConfigAccessLogArgs and GetServiceMeshesMeshMeshConfigAccessLogOutput values.
@@ -2787,6 +3136,8 @@ type GetServiceMeshesMeshMeshConfigAccessLogInput interface {
 type GetServiceMeshesMeshMeshConfigAccessLogArgs struct {
 	// Whether to enable Service grid audit.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The Service grid audit that to the project.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (GetServiceMeshesMeshMeshConfigAccessLogArgs) ElementType() reflect.Type {
@@ -2843,6 +3194,11 @@ func (o GetServiceMeshesMeshMeshConfigAccessLogOutput) ToGetServiceMeshesMeshMes
 // Whether to enable Service grid audit.
 func (o GetServiceMeshesMeshMeshConfigAccessLogOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigAccessLog) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The Service grid audit that to the project.
+func (o GetServiceMeshesMeshMeshConfigAccessLogOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigAccessLog) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type GetServiceMeshesMeshMeshConfigAccessLogArrayOutput struct{ *pulumi.OutputState }
@@ -2969,6 +3325,112 @@ func (o GetServiceMeshesMeshMeshConfigAuditArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMeshesMeshMeshConfigAudit {
 		return vs[0].([]GetServiceMeshesMeshMeshConfigAudit)[vs[1].(int)]
 	}).(GetServiceMeshesMeshMeshConfigAuditOutput)
+}
+
+type GetServiceMeshesMeshMeshConfigControlPlaneLog struct {
+	// Whether to enable Service grid audit.
+	Enabled bool `pulumi:"enabled"`
+	// The Service grid audit that to the project.
+	Project string `pulumi:"project"`
+}
+
+// GetServiceMeshesMeshMeshConfigControlPlaneLogInput is an input type that accepts GetServiceMeshesMeshMeshConfigControlPlaneLogArgs and GetServiceMeshesMeshMeshConfigControlPlaneLogOutput values.
+// You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigControlPlaneLogInput` via:
+//
+//          GetServiceMeshesMeshMeshConfigControlPlaneLogArgs{...}
+type GetServiceMeshesMeshMeshConfigControlPlaneLogInput interface {
+	pulumi.Input
+
+	ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutput() GetServiceMeshesMeshMeshConfigControlPlaneLogOutput
+	ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutputWithContext(context.Context) GetServiceMeshesMeshMeshConfigControlPlaneLogOutput
+}
+
+type GetServiceMeshesMeshMeshConfigControlPlaneLogArgs struct {
+	// Whether to enable Service grid audit.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The Service grid audit that to the project.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (GetServiceMeshesMeshMeshConfigControlPlaneLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMeshesMeshMeshConfigControlPlaneLog)(nil)).Elem()
+}
+
+func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArgs) ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutput() GetServiceMeshesMeshMeshConfigControlPlaneLogOutput {
+	return i.ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutputWithContext(context.Background())
+}
+
+func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArgs) ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigControlPlaneLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigControlPlaneLogOutput)
+}
+
+// GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput is an input type that accepts GetServiceMeshesMeshMeshConfigControlPlaneLogArray and GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput values.
+// You can construct a concrete instance of `GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput` via:
+//
+//          GetServiceMeshesMeshMeshConfigControlPlaneLogArray{ GetServiceMeshesMeshMeshConfigControlPlaneLogArgs{...} }
+type GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput() GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput
+	ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutputWithContext(context.Context) GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput
+}
+
+type GetServiceMeshesMeshMeshConfigControlPlaneLogArray []GetServiceMeshesMeshMeshConfigControlPlaneLogInput
+
+func (GetServiceMeshesMeshMeshConfigControlPlaneLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMeshesMeshMeshConfigControlPlaneLog)(nil)).Elem()
+}
+
+func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArray) ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput() GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput {
+	return i.ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceMeshesMeshMeshConfigControlPlaneLogArray) ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput)
+}
+
+type GetServiceMeshesMeshMeshConfigControlPlaneLogOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMeshesMeshMeshConfigControlPlaneLog)(nil)).Elem()
+}
+
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutput() GetServiceMeshesMeshMeshConfigControlPlaneLogOutput {
+	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) ToGetServiceMeshesMeshMeshConfigControlPlaneLogOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigControlPlaneLogOutput {
+	return o
+}
+
+// Whether to enable Service grid audit.
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigControlPlaneLog) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The Service grid audit that to the project.
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigControlPlaneLog) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMeshesMeshMeshConfigControlPlaneLog)(nil)).Elem()
+}
+
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput() GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput {
+	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) ToGetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutputWithContext(ctx context.Context) GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput {
+	return o
+}
+
+func (o GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) Index(i pulumi.IntInput) GetServiceMeshesMeshMeshConfigControlPlaneLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMeshesMeshMeshConfigControlPlaneLog {
+		return vs[0].([]GetServiceMeshesMeshMeshConfigControlPlaneLog)[vs[1].(int)]
+	}).(GetServiceMeshesMeshMeshConfigControlPlaneLogOutput)
 }
 
 type GetServiceMeshesMeshMeshConfigKiali struct {
@@ -4075,6 +4537,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigAccessLogPtrInput)(nil)).Elem(), ServiceMeshMeshConfigAccessLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigAuditInput)(nil)).Elem(), ServiceMeshMeshConfigAuditArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigAuditPtrInput)(nil)).Elem(), ServiceMeshMeshConfigAuditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigControlPlaneLogInput)(nil)).Elem(), ServiceMeshMeshConfigControlPlaneLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigControlPlaneLogPtrInput)(nil)).Elem(), ServiceMeshMeshConfigControlPlaneLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigKialiInput)(nil)).Elem(), ServiceMeshMeshConfigKialiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigKialiPtrInput)(nil)).Elem(), ServiceMeshMeshConfigKialiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigOpaInput)(nil)).Elem(), ServiceMeshMeshConfigOpaArgs{})
@@ -4087,6 +4551,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorPtrInput)(nil)).Elem(), ServiceMeshMeshConfigSidecarInjectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshNetworkInput)(nil)).Elem(), ServiceMeshNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshNetworkPtrInput)(nil)).Elem(), ServiceMeshNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionPermissionInput)(nil)).Elem(), UserPermissionPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionPermissionArrayInput)(nil)).Elem(), UserPermissionPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshInput)(nil)).Elem(), GetServiceMeshesMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshArrayInput)(nil)).Elem(), GetServiceMeshesMeshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshEndpointInput)(nil)).Elem(), GetServiceMeshesMeshEndpointArgs{})
@@ -4099,6 +4565,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigAccessLogArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigAccessLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigAuditInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigAuditArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigAuditArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigAuditArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigControlPlaneLogInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigControlPlaneLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigControlPlaneLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigKialiInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigKialiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigKialiArrayInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigKialiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMeshesMeshMeshConfigOpaInput)(nil)).Elem(), GetServiceMeshesMeshMeshConfigOpaArgs{})
@@ -4127,6 +4595,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigAccessLogPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigAuditOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigAuditPtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMeshConfigControlPlaneLogOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMeshConfigControlPlaneLogPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigKialiOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigKialiPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigOpaOutput{})
@@ -4139,6 +4609,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigSidecarInjectorPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshNetworkOutput{})
 	pulumi.RegisterOutputType(ServiceMeshNetworkPtrOutput{})
+	pulumi.RegisterOutputType(UserPermissionPermissionOutput{})
+	pulumi.RegisterOutputType(UserPermissionPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshEndpointOutput{})
@@ -4151,6 +4623,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigAccessLogArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigAuditOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigAuditArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigControlPlaneLogOutput{})
+	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigKialiOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigKialiArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceMeshesMeshMeshConfigOpaOutput{})
