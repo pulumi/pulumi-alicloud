@@ -152,6 +152,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        /// </summary>
+        [Output("excludeInstanceFilter")]
+        public Output<Outputs.EcsInstanceSetExcludeInstanceFilter?> ExcludeInstanceFilter { get; private set; } = null!;
+
+        /// <summary>
         /// The hostname of instance.
         /// </summary>
         [Output("hostName")]
@@ -471,6 +477,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        /// </summary>
+        [Input("excludeInstanceFilter")]
+        public Input<Inputs.EcsInstanceSetExcludeInstanceFilterArgs>? ExcludeInstanceFilter { get; set; }
+
+        /// <summary>
         /// The hostname of instance.
         /// </summary>
         [Input("hostName")]
@@ -761,6 +773,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        /// </summary>
+        [Input("excludeInstanceFilter")]
+        public Input<Inputs.EcsInstanceSetExcludeInstanceFilterGetArgs>? ExcludeInstanceFilter { get; set; }
 
         /// <summary>
         /// The hostname of instance.

@@ -71,11 +71,14 @@ namespace Pulumi.AliCloud.Vpc
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// This parameter is used for resource destroy. Default value is `false`.
+        /// </summary>
         [Output("force")]
         public Output<string?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
@@ -188,11 +191,14 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// This parameter is used for resource destroy. Default value is `false`.
+        /// </summary>
         [Input("force")]
         public Input<string>? Force { get; set; }
 
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -260,11 +266,14 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// This parameter is used for resource destroy. Default value is `false`.
+        /// </summary>
         [Input("force")]
         public Input<string>? Force { get; set; }
 
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }

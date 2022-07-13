@@ -3018,6 +3018,17 @@ export namespace ecs {
         snapshotId?: pulumi.Input<string>;
     }
 
+    export interface EcsInstanceSetExcludeInstanceFilter {
+        /**
+         * The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface EcsInstanceSetNetworkInterface {
         /**
          * The description of ENI.
@@ -3169,12 +3180,12 @@ export namespace ecs {
         lockReason?: pulumi.Input<string>;
     }
 
-    export interface GetEcsDisksOperationLockArgs {
-        lockReason?: pulumi.Input<string>;
-    }
-
     export interface GetEcsDisksOperationLock {
         lockReason?: string;
+    }
+
+    export interface GetEcsDisksOperationLockArgs {
+        lockReason?: pulumi.Input<string>;
     }
 
     export interface ImageDiskDeviceMapping {
@@ -3377,12 +3388,24 @@ export namespace ecs {
          */
         size?: pulumi.Input<number>;
     }
+
 }
 
 export namespace edas {
 }
 
 export namespace eds {
+    export interface CustomPropertyPropertyValue {
+        /**
+         * The value of an attribute.
+         */
+        propertyValue?: pulumi.Input<string>;
+        /**
+         * The value of an attribute id.
+         */
+        propertyValueId?: pulumi.Input<string>;
+    }
+
     export interface EcdPolicyGroupAuthorizeAccessPolicyRule {
         /**
          * The cidrip of authorize access rule.
@@ -4457,7 +4480,7 @@ export namespace log {
     export interface AlertGroupConfiguration {
         fields?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
          */
         type: pulumi.Input<string>;
     }
@@ -4468,7 +4491,7 @@ export namespace log {
          */
         condition: pulumi.Input<string>;
         /**
-         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
          */
         type: pulumi.Input<string>;
     }
@@ -4502,7 +4525,7 @@ export namespace log {
          */
         serviceUri?: pulumi.Input<string>;
         /**
-         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
          */
         type: pulumi.Input<string>;
     }
@@ -4577,6 +4600,35 @@ export namespace log {
          * default Custom. No need to configure this parameter.
          */
         timeSpanType?: pulumi.Input<string>;
+    }
+
+    export interface AlertSchedule {
+        /**
+         * Cron expression when type is Cron.
+         */
+        cronExpression?: pulumi.Input<string>;
+        /**
+         * Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+         */
+        dayOfWeek?: pulumi.Input<number>;
+        delay?: pulumi.Input<number>;
+        /**
+         * Hour of day when type is Weekly/Daily.
+         */
+        hour?: pulumi.Input<number>;
+        /**
+         * Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+         */
+        interval?: pulumi.Input<string>;
+        runImmediately?: pulumi.Input<boolean>;
+        /**
+         * Time zone for schedule.
+         */
+        timeZone?: pulumi.Input<string>;
+        /**
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface AlertSeverityConfiguration {
@@ -5556,6 +5608,25 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface InstanceBabelfishConfig {
+        /**
+         * specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
+         */
+        babelfishEnabled: pulumi.Input<string>;
+        /**
+         * The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+         */
+        masterUserPassword: pulumi.Input<string>;
+        /**
+         * The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+         */
+        masterUsername: pulumi.Input<string>;
+        /**
+         * The migration mode of the instance. Valid values: **single-db** and **multi-db**.
+         */
+        migrationMode: pulumi.Input<string>;
+    }
+
     export interface InstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;

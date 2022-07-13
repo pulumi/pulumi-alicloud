@@ -45,7 +45,7 @@ type Instance struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
 	DeploymentSetGroupNo pulumi.StringOutput `pulumi:"deploymentSetGroupNo"`
-	// The ID of the deployment set to which to deploy the instance.
+	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// The description of the data disk.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -220,7 +220,7 @@ type instanceState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
 	DeploymentSetGroupNo *string `pulumi:"deploymentSetGroupNo"`
-	// The ID of the deployment set to which to deploy the instance.
+	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
@@ -358,7 +358,7 @@ type InstanceState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
 	DeploymentSetGroupNo pulumi.StringPtrInput
-	// The ID of the deployment set to which to deploy the instance.
+	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId pulumi.StringPtrInput
 	// The description of the data disk.
 	Description pulumi.StringPtrInput
@@ -498,7 +498,7 @@ type instanceArgs struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The ID of the deployment set to which to deploy the instance.
+	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
@@ -633,7 +633,7 @@ type InstanceArgs struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
-	// The ID of the deployment set to which to deploy the instance.
+	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId pulumi.StringPtrInput
 	// The description of the data disk.
 	Description pulumi.StringPtrInput

@@ -27,6 +27,7 @@ class EcsInstanceSetArgs:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_instance_filter: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -73,6 +74,7 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
+        :param pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs'] exclude_instance_filter: The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
         :param pulumi.Input[str] host_name: The hostname of instance.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
@@ -132,6 +134,8 @@ class EcsInstanceSetArgs:
             pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if exclude_instance_filter is not None:
+            pulumi.set(__self__, "exclude_instance_filter", exclude_instance_filter)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
         if hpc_cluster_id is not None:
@@ -338,6 +342,18 @@ class EcsInstanceSetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="excludeInstanceFilter")
+    def exclude_instance_filter(self) -> Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]:
+        """
+        The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        """
+        return pulumi.get(self, "exclude_instance_filter")
+
+    @exclude_instance_filter.setter
+    def exclude_instance_filter(self, value: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]):
+        pulumi.set(self, "exclude_instance_filter", value)
 
     @property
     @pulumi.getter(name="hostName")
@@ -719,6 +735,7 @@ class _EcsInstanceSetState:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_instance_filter: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -766,6 +783,7 @@ class _EcsInstanceSetState:
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
+        :param pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs'] exclude_instance_filter: The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
         :param pulumi.Input[str] host_name: The hostname of instance.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance.
@@ -826,6 +844,8 @@ class _EcsInstanceSetState:
             pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if exclude_instance_filter is not None:
+            pulumi.set(__self__, "exclude_instance_filter", exclude_instance_filter)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
         if hpc_cluster_id is not None:
@@ -1004,6 +1024,18 @@ class _EcsInstanceSetState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="excludeInstanceFilter")
+    def exclude_instance_filter(self) -> Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]:
+        """
+        The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        """
+        return pulumi.get(self, "exclude_instance_filter")
+
+    @exclude_instance_filter.setter
+    def exclude_instance_filter(self, value: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]):
+        pulumi.set(self, "exclude_instance_filter", value)
 
     @property
     @pulumi.getter(name="hostName")
@@ -1435,6 +1467,7 @@ class EcsInstanceSet(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_instance_filter: Optional[pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -1531,6 +1564,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
+        :param pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']] exclude_instance_filter: The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
         :param pulumi.Input[str] host_name: The hostname of instance.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance.
@@ -1651,6 +1685,7 @@ class EcsInstanceSet(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 exclude_instance_filter: Optional[pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -1705,6 +1740,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
+            __props__.__dict__["exclude_instance_filter"] = exclude_instance_filter
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id
             if image_id is None and not opts.urn:
@@ -1764,6 +1800,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            exclude_instance_filter: Optional[pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             hpc_cluster_id: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
@@ -1816,6 +1853,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
+        :param pulumi.Input[pulumi.InputType['EcsInstanceSetExcludeInstanceFilterArgs']] exclude_instance_filter: The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
         :param pulumi.Input[str] host_name: The hostname of instance.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance.
@@ -1871,6 +1909,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["description"] = description
+        __props__.__dict__["exclude_instance_filter"] = exclude_instance_filter
         __props__.__dict__["host_name"] = host_name
         __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id
         __props__.__dict__["image_id"] = image_id
@@ -1980,6 +2019,14 @@ class EcsInstanceSet(pulumi.CustomResource):
         The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="excludeInstanceFilter")
+    def exclude_instance_filter(self) -> pulumi.Output[Optional['outputs.EcsInstanceSetExcludeInstanceFilter']]:
+        """
+        The instances that need to be excluded from the Instance Set. See the following `Block exclude_instance_filter`.
+        """
+        return pulumi.get(self, "exclude_instance_filter")
 
     @property
     @pulumi.getter(name="hostName")

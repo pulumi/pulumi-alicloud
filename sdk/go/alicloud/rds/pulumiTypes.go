@@ -10,6 +10,130 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceBabelfishConfig struct {
+	// specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
+	BabelfishEnabled string `pulumi:"babelfishEnabled"`
+	// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+	MasterUserPassword string `pulumi:"masterUserPassword"`
+	// The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+	MasterUsername string `pulumi:"masterUsername"`
+	// The migration mode of the instance. Valid values: **single-db** and **multi-db**.
+	MigrationMode string `pulumi:"migrationMode"`
+}
+
+// InstanceBabelfishConfigInput is an input type that accepts InstanceBabelfishConfigArgs and InstanceBabelfishConfigOutput values.
+// You can construct a concrete instance of `InstanceBabelfishConfigInput` via:
+//
+//          InstanceBabelfishConfigArgs{...}
+type InstanceBabelfishConfigInput interface {
+	pulumi.Input
+
+	ToInstanceBabelfishConfigOutput() InstanceBabelfishConfigOutput
+	ToInstanceBabelfishConfigOutputWithContext(context.Context) InstanceBabelfishConfigOutput
+}
+
+type InstanceBabelfishConfigArgs struct {
+	// specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
+	BabelfishEnabled pulumi.StringInput `pulumi:"babelfishEnabled"`
+	// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+	MasterUserPassword pulumi.StringInput `pulumi:"masterUserPassword"`
+	// The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+	MasterUsername pulumi.StringInput `pulumi:"masterUsername"`
+	// The migration mode of the instance. Valid values: **single-db** and **multi-db**.
+	MigrationMode pulumi.StringInput `pulumi:"migrationMode"`
+}
+
+func (InstanceBabelfishConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBabelfishConfig)(nil)).Elem()
+}
+
+func (i InstanceBabelfishConfigArgs) ToInstanceBabelfishConfigOutput() InstanceBabelfishConfigOutput {
+	return i.ToInstanceBabelfishConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceBabelfishConfigArgs) ToInstanceBabelfishConfigOutputWithContext(ctx context.Context) InstanceBabelfishConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBabelfishConfigOutput)
+}
+
+// InstanceBabelfishConfigArrayInput is an input type that accepts InstanceBabelfishConfigArray and InstanceBabelfishConfigArrayOutput values.
+// You can construct a concrete instance of `InstanceBabelfishConfigArrayInput` via:
+//
+//          InstanceBabelfishConfigArray{ InstanceBabelfishConfigArgs{...} }
+type InstanceBabelfishConfigArrayInput interface {
+	pulumi.Input
+
+	ToInstanceBabelfishConfigArrayOutput() InstanceBabelfishConfigArrayOutput
+	ToInstanceBabelfishConfigArrayOutputWithContext(context.Context) InstanceBabelfishConfigArrayOutput
+}
+
+type InstanceBabelfishConfigArray []InstanceBabelfishConfigInput
+
+func (InstanceBabelfishConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBabelfishConfig)(nil)).Elem()
+}
+
+func (i InstanceBabelfishConfigArray) ToInstanceBabelfishConfigArrayOutput() InstanceBabelfishConfigArrayOutput {
+	return i.ToInstanceBabelfishConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceBabelfishConfigArray) ToInstanceBabelfishConfigArrayOutputWithContext(ctx context.Context) InstanceBabelfishConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBabelfishConfigArrayOutput)
+}
+
+type InstanceBabelfishConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceBabelfishConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBabelfishConfig)(nil)).Elem()
+}
+
+func (o InstanceBabelfishConfigOutput) ToInstanceBabelfishConfigOutput() InstanceBabelfishConfigOutput {
+	return o
+}
+
+func (o InstanceBabelfishConfigOutput) ToInstanceBabelfishConfigOutputWithContext(ctx context.Context) InstanceBabelfishConfigOutput {
+	return o
+}
+
+// specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
+func (o InstanceBabelfishConfigOutput) BabelfishEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceBabelfishConfig) string { return v.BabelfishEnabled }).(pulumi.StringOutput)
+}
+
+// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+func (o InstanceBabelfishConfigOutput) MasterUserPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceBabelfishConfig) string { return v.MasterUserPassword }).(pulumi.StringOutput)
+}
+
+// The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+func (o InstanceBabelfishConfigOutput) MasterUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceBabelfishConfig) string { return v.MasterUsername }).(pulumi.StringOutput)
+}
+
+// The migration mode of the instance. Valid values: **single-db** and **multi-db**.
+func (o InstanceBabelfishConfigOutput) MigrationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceBabelfishConfig) string { return v.MigrationMode }).(pulumi.StringOutput)
+}
+
+type InstanceBabelfishConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceBabelfishConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBabelfishConfig)(nil)).Elem()
+}
+
+func (o InstanceBabelfishConfigArrayOutput) ToInstanceBabelfishConfigArrayOutput() InstanceBabelfishConfigArrayOutput {
+	return o
+}
+
+func (o InstanceBabelfishConfigArrayOutput) ToInstanceBabelfishConfigArrayOutputWithContext(ctx context.Context) InstanceBabelfishConfigArrayOutput {
+	return o
+}
+
+func (o InstanceBabelfishConfigArrayOutput) Index(i pulumi.IntInput) InstanceBabelfishConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceBabelfishConfig {
+		return vs[0].([]InstanceBabelfishConfig)[vs[1].(int)]
+	}).(InstanceBabelfishConfigOutput)
+}
+
 type InstanceParameter struct {
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
@@ -3431,6 +3555,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBabelfishConfigInput)(nil)).Elem(), InstanceBabelfishConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBabelfishConfigArrayInput)(nil)).Elem(), InstanceBabelfishConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterInput)(nil)).Elem(), InstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePgHbaConfInput)(nil)).Elem(), InstancePgHbaConfArgs{})
@@ -3474,6 +3600,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupParamDetailArrayInput)(nil)).Elem(), GetRdsParameterGroupsGroupParamDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(InstanceBabelfishConfigOutput{})
+	pulumi.RegisterOutputType(InstanceBabelfishConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceParameterOutput{})
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(InstancePgHbaConfOutput{})

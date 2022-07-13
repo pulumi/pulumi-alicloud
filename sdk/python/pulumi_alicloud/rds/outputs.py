@@ -10,6 +10,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'InstanceBabelfishConfig',
     'InstanceParameter',
     'InstancePgHbaConf',
     'RdsCloneDbInstanceParameter',
@@ -33,6 +34,80 @@ __all__ = [
     'GetRdsParameterGroupsGroupParamDetailResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class InstanceBabelfishConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "babelfishEnabled":
+            suggest = "babelfish_enabled"
+        elif key == "masterUserPassword":
+            suggest = "master_user_password"
+        elif key == "masterUsername":
+            suggest = "master_username"
+        elif key == "migrationMode":
+            suggest = "migration_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceBabelfishConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceBabelfishConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceBabelfishConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 babelfish_enabled: str,
+                 master_user_password: str,
+                 master_username: str,
+                 migration_mode: str):
+        """
+        :param str babelfish_enabled: specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
+        :param str master_user_password: The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+        :param str master_username: The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+        :param str migration_mode: The migration mode of the instance. Valid values: **single-db** and **multi-db**.
+        """
+        pulumi.set(__self__, "babelfish_enabled", babelfish_enabled)
+        pulumi.set(__self__, "master_user_password", master_user_password)
+        pulumi.set(__self__, "master_username", master_username)
+        pulumi.set(__self__, "migration_mode", migration_mode)
+
+    @property
+    @pulumi.getter(name="babelfishEnabled")
+    def babelfish_enabled(self) -> str:
+        """
+        specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
+        """
+        return pulumi.get(self, "babelfish_enabled")
+
+    @property
+    @pulumi.getter(name="masterUserPassword")
+    def master_user_password(self) -> str:
+        """
+        The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+        """
+        return pulumi.get(self, "master_user_password")
+
+    @property
+    @pulumi.getter(name="masterUsername")
+    def master_username(self) -> str:
+        """
+        The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+        """
+        return pulumi.get(self, "master_username")
+
+    @property
+    @pulumi.getter(name="migrationMode")
+    def migration_mode(self) -> str:
+        """
+        The migration mode of the instance. Valid values: **single-db** and **multi-db**.
+        """
+        return pulumi.get(self, "migration_mode")
+
 
 @pulumi.output_type
 class InstanceParameter(dict):

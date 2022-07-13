@@ -55,6 +55,14 @@ import (
 // 			AlertDisplayname: pulumi.String("tf-test-alert-displayname"),
 // 			Condition:        pulumi.String("count> 100"),
 // 			Dashboard:        pulumi.String("tf-test-dashboard"),
+// 			Schedule: &log.AlertScheduleArgs{
+// 				Type:           pulumi.String("FixedRate"),
+// 				Interval:       pulumi.String("5m"),
+// 				Hour:           pulumi.Int(0),
+// 				DayOfWeek:      pulumi.Int(0),
+// 				Delay:          pulumi.Int(0),
+// 				RunImmediately: pulumi.Bool(false),
+// 			},
 // 			QueryLists: log.AlertQueryListArray{
 // 				&log.AlertQueryListArgs{
 // 					Logstore:   pulumi.String("tf-test-logstore"),
@@ -135,9 +143,15 @@ import (
 // 			NoDataFire:       pulumi.Bool(false),
 // 			NoDataSeverity:   pulumi.Int(8),
 // 			SendResolved:     pulumi.Bool(true),
-// 			ScheduleInterval: pulumi.String("5m"),
-// 			ScheduleType:     pulumi.String("FixedRate"),
 // 			AutoAnnotation:   pulumi.Bool(true),
+// 			Schedule: &log.AlertScheduleArgs{
+// 				Type:           pulumi.String("FixedRate"),
+// 				Interval:       pulumi.String("5m"),
+// 				Hour:           pulumi.Int(0),
+// 				DayOfWeek:      pulumi.Int(0),
+// 				Delay:          pulumi.Int(0),
+// 				RunImmediately: pulumi.Bool(false),
+// 			},
 // 			QueryLists: log.AlertQueryListArray{
 // 				&log.AlertQueryListArgs{
 // 					Store:        pulumi.String("tf-test-logstore"),
@@ -283,10 +297,16 @@ type Alert struct {
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// Multiple conditions for configured alarm query.
 	QueryLists AlertQueryListArrayOutput `pulumi:"queryLists"`
-	// Execution interval. 60 seconds minimum, such as 60s, 1h.
-	ScheduleInterval pulumi.StringPtrOutput `pulumi:"scheduleInterval"`
-	// Default FixedRate. No need to configure this parameter.
-	ScheduleType pulumi.StringPtrOutput `pulumi:"scheduleType"`
+	// schedule for alert.
+	Schedule AlertSchedulePtrOutput `pulumi:"schedule"`
+	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+	//
+	// Deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
+	ScheduleInterval pulumi.StringOutput `pulumi:"scheduleInterval"`
+	// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+	//
+	// Deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
+	ScheduleType pulumi.StringOutput `pulumi:"scheduleType"`
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved pulumi.BoolPtrOutput `pulumi:"sendResolved"`
 	// Severity configuration for new alert.
@@ -297,7 +317,7 @@ type Alert struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling pulumi.StringPtrOutput `pulumi:"throttling"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The version of alert, new alert is 2.0.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
@@ -386,9 +406,15 @@ type alertState struct {
 	ProjectName *string `pulumi:"projectName"`
 	// Multiple conditions for configured alarm query.
 	QueryLists []AlertQueryList `pulumi:"queryLists"`
-	// Execution interval. 60 seconds minimum, such as 60s, 1h.
+	// schedule for alert.
+	Schedule *AlertSchedule `pulumi:"schedule"`
+	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+	//
+	// Deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
 	ScheduleInterval *string `pulumi:"scheduleInterval"`
-	// Default FixedRate. No need to configure this parameter.
+	// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+	//
+	// Deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
 	ScheduleType *string `pulumi:"scheduleType"`
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved *bool `pulumi:"sendResolved"`
@@ -400,7 +426,7 @@ type alertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling *string `pulumi:"throttling"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type *string `pulumi:"type"`
 	// The version of alert, new alert is 2.0.
 	Version *string `pulumi:"version"`
@@ -449,9 +475,15 @@ type AlertState struct {
 	ProjectName pulumi.StringPtrInput
 	// Multiple conditions for configured alarm query.
 	QueryLists AlertQueryListArrayInput
-	// Execution interval. 60 seconds minimum, such as 60s, 1h.
+	// schedule for alert.
+	Schedule AlertSchedulePtrInput
+	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+	//
+	// Deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
 	ScheduleInterval pulumi.StringPtrInput
-	// Default FixedRate. No need to configure this parameter.
+	// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+	//
+	// Deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
 	ScheduleType pulumi.StringPtrInput
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved pulumi.BoolPtrInput
@@ -463,7 +495,7 @@ type AlertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling pulumi.StringPtrInput
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringPtrInput
 	// The version of alert, new alert is 2.0.
 	Version pulumi.StringPtrInput
@@ -516,9 +548,15 @@ type alertArgs struct {
 	ProjectName string `pulumi:"projectName"`
 	// Multiple conditions for configured alarm query.
 	QueryLists []AlertQueryList `pulumi:"queryLists"`
-	// Execution interval. 60 seconds minimum, such as 60s, 1h.
+	// schedule for alert.
+	Schedule *AlertSchedule `pulumi:"schedule"`
+	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+	//
+	// Deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
 	ScheduleInterval *string `pulumi:"scheduleInterval"`
-	// Default FixedRate. No need to configure this parameter.
+	// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+	//
+	// Deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
 	ScheduleType *string `pulumi:"scheduleType"`
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved *bool `pulumi:"sendResolved"`
@@ -530,7 +568,7 @@ type alertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling *string `pulumi:"throttling"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type *string `pulumi:"type"`
 	// The version of alert, new alert is 2.0.
 	Version *string `pulumi:"version"`
@@ -580,9 +618,15 @@ type AlertArgs struct {
 	ProjectName pulumi.StringInput
 	// Multiple conditions for configured alarm query.
 	QueryLists AlertQueryListArrayInput
-	// Execution interval. 60 seconds minimum, such as 60s, 1h.
+	// schedule for alert.
+	Schedule AlertSchedulePtrInput
+	// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+	//
+	// Deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
 	ScheduleInterval pulumi.StringPtrInput
-	// Default FixedRate. No need to configure this parameter.
+	// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+	//
+	// Deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
 	ScheduleType pulumi.StringPtrInput
 	// when new alert is resolved, whether to notify, default is false.
 	SendResolved pulumi.BoolPtrInput
@@ -594,7 +638,7 @@ type AlertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling pulumi.StringPtrInput
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringPtrInput
 	// The version of alert, new alert is 2.0.
 	Version pulumi.StringPtrInput

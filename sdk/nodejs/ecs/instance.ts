@@ -83,7 +83,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly deploymentSetGroupNo!: pulumi.Output<string>;
     /**
-     * The ID of the deployment set to which to deploy the instance.
+     * The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
      */
     public readonly deploymentSetId!: pulumi.Output<string | undefined>;
     /**
@@ -467,7 +467,7 @@ export interface InstanceState {
      */
     deploymentSetGroupNo?: pulumi.Input<string>;
     /**
-     * The ID of the deployment set to which to deploy the instance.
+     * The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
      */
     deploymentSetId?: pulumi.Input<string>;
     /**
@@ -708,7 +708,7 @@ export interface InstanceArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The ID of the deployment set to which to deploy the instance.
+     * The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
      */
     deploymentSetId?: pulumi.Input<string>;
     /**

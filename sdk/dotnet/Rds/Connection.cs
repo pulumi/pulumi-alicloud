@@ -75,6 +75,12 @@ namespace Pulumi.AliCloud.Rds
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>
+        /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        /// </summary>
+        [Output("babelfishPort")]
+        public Output<string> BabelfishPort { get; private set; } = null!;
+
+        /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
         /// </summary>
         [Output("connectionPrefix")]
@@ -151,6 +157,12 @@ namespace Pulumi.AliCloud.Rds
     public sealed class ConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        /// </summary>
+        [Input("babelfishPort")]
+        public Input<string>? BabelfishPort { get; set; }
+
+        /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
         /// </summary>
         [Input("connectionPrefix")]
@@ -175,6 +187,12 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class ConnectionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        /// </summary>
+        [Input("babelfishPort")]
+        public Input<string>? BabelfishPort { get; set; }
+
         /// <summary>
         /// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to &lt;instance_id&gt; + 'tf'.
         /// </summary>

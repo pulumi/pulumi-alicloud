@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string? ServiceUri;
         /// <summary>
-        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        /// including FixedRate,Hourly,Daily,Weekly,Cron.
         /// </summary>
         public readonly string Type;
 

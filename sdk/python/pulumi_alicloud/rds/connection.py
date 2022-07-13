@@ -14,15 +14,19 @@ __all__ = ['ConnectionArgs', 'Connection']
 class ConnectionArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
+                 babelfish_port: Optional[pulumi.Input[str]] = None,
                  connection_prefix: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
+        :param pulumi.Input[str] babelfish_port: The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [1000-5999]. Default to 3306.
         """
         pulumi.set(__self__, "instance_id", instance_id)
+        if babelfish_port is not None:
+            pulumi.set(__self__, "babelfish_port", babelfish_port)
         if connection_prefix is not None:
             pulumi.set(__self__, "connection_prefix", connection_prefix)
         if port is not None:
@@ -39,6 +43,18 @@ class ConnectionArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="babelfishPort")
+    def babelfish_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        """
+        return pulumi.get(self, "babelfish_port")
+
+    @babelfish_port.setter
+    def babelfish_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "babelfish_port", value)
 
     @property
     @pulumi.getter(name="connectionPrefix")
@@ -68,6 +84,7 @@ class ConnectionArgs:
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
+                 babelfish_port: Optional[pulumi.Input[str]] = None,
                  connection_prefix: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -75,12 +92,15 @@ class _ConnectionState:
                  port: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[str] babelfish_port: The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] connection_string: Connection instance string.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] ip_address: The ip address of connection string.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [1000-5999]. Default to 3306.
         """
+        if babelfish_port is not None:
+            pulumi.set(__self__, "babelfish_port", babelfish_port)
         if connection_prefix is not None:
             pulumi.set(__self__, "connection_prefix", connection_prefix)
         if connection_string is not None:
@@ -91,6 +111,18 @@ class _ConnectionState:
             pulumi.set(__self__, "ip_address", ip_address)
         if port is not None:
             pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="babelfishPort")
+    def babelfish_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        """
+        return pulumi.get(self, "babelfish_port")
+
+    @babelfish_port.setter
+    def babelfish_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "babelfish_port", value)
 
     @property
     @pulumi.getter(name="connectionPrefix")
@@ -158,6 +190,7 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 babelfish_port: Optional[pulumi.Input[str]] = None,
                  connection_prefix: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
@@ -212,6 +245,7 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] babelfish_port: The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [1000-5999]. Default to 3306.
@@ -285,6 +319,7 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 babelfish_port: Optional[pulumi.Input[str]] = None,
                  connection_prefix: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
@@ -300,6 +335,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            __props__.__dict__["babelfish_port"] = babelfish_port
             __props__.__dict__["connection_prefix"] = connection_prefix
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
@@ -317,6 +353,7 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            babelfish_port: Optional[pulumi.Input[str]] = None,
             connection_prefix: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
@@ -329,6 +366,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] babelfish_port: The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] connection_string: Connection instance string.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
@@ -339,12 +377,21 @@ class Connection(pulumi.CustomResource):
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
+        __props__.__dict__["babelfish_port"] = babelfish_port
         __props__.__dict__["connection_prefix"] = connection_prefix
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["port"] = port
         return Connection(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="babelfishPort")
+    def babelfish_port(self) -> pulumi.Output[str]:
+        """
+        The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        """
+        return pulumi.get(self, "babelfish_port")
 
     @property
     @pulumi.getter(name="connectionPrefix")

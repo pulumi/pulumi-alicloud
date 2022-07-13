@@ -36,6 +36,14 @@ import * as utilities from "../utilities";
  *     alertDisplayname: "tf-test-alert-displayname",
  *     condition: "count> 100",
  *     dashboard: "tf-test-dashboard",
+ *     schedule: {
+ *         type: "FixedRate",
+ *         interval: "5m",
+ *         hour: 0,
+ *         dayOfWeek: 0,
+ *         delay: 0,
+ *         runImmediately: false,
+ *     },
  *     queryLists: [{
  *         logstore: "tf-test-logstore",
  *         chartTitle: "chart_title",
@@ -94,9 +102,15 @@ import * as utilities from "../utilities";
  *     noDataFire: false,
  *     noDataSeverity: 8,
  *     sendResolved: true,
- *     scheduleInterval: "5m",
- *     scheduleType: "FixedRate",
  *     autoAnnotation: true,
+ *     schedule: {
+ *         type: "FixedRate",
+ *         interval: "5m",
+ *         hour: 0,
+ *         dayOfWeek: 0,
+ *         delay: 0,
+ *         runImmediately: false,
+ *     },
  *     queryLists: [
  *         {
  *             store: "tf-test-logstore",
@@ -293,13 +307,21 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly queryLists!: pulumi.Output<outputs.log.AlertQueryList[]>;
     /**
-     * Execution interval. 60 seconds minimum, such as 60s, 1h.
+     * schedule for alert.
      */
-    public readonly scheduleInterval!: pulumi.Output<string | undefined>;
+    public readonly schedule!: pulumi.Output<outputs.log.AlertSchedule | undefined>;
     /**
-     * Default FixedRate. No need to configure this parameter.
+     * Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+     *
+     * @deprecated Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
-    public readonly scheduleType!: pulumi.Output<string | undefined>;
+    public readonly scheduleInterval!: pulumi.Output<string>;
+    /**
+     * Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+     *
+     * @deprecated Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
+     */
+    public readonly scheduleType!: pulumi.Output<string>;
     /**
      * when new alert is resolved, whether to notify, default is false.
      */
@@ -319,7 +341,7 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly throttling!: pulumi.Output<string | undefined>;
     /**
-     * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+     * including FixedRate,Hourly,Daily,Weekly,Cron.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -358,6 +380,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["policyConfiguration"] = state ? state.policyConfiguration : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
             resourceInputs["queryLists"] = state ? state.queryLists : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["scheduleInterval"] = state ? state.scheduleInterval : undefined;
             resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
             resourceInputs["sendResolved"] = state ? state.sendResolved : undefined;
@@ -398,6 +421,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["policyConfiguration"] = args ? args.policyConfiguration : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
             resourceInputs["queryLists"] = args ? args.queryLists : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["scheduleInterval"] = args ? args.scheduleInterval : undefined;
             resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
             resourceInputs["sendResolved"] = args ? args.sendResolved : undefined;
@@ -495,11 +519,19 @@ export interface AlertState {
      */
     queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
     /**
-     * Execution interval. 60 seconds minimum, such as 60s, 1h.
+     * schedule for alert.
+     */
+    schedule?: pulumi.Input<inputs.log.AlertSchedule>;
+    /**
+     * Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+     *
+     * @deprecated Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
     scheduleInterval?: pulumi.Input<string>;
     /**
-     * Default FixedRate. No need to configure this parameter.
+     * Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+     *
+     * @deprecated Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
     scheduleType?: pulumi.Input<string>;
     /**
@@ -521,7 +553,7 @@ export interface AlertState {
      */
     throttling?: pulumi.Input<string>;
     /**
-     * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+     * including FixedRate,Hourly,Daily,Weekly,Cron.
      */
     type?: pulumi.Input<string>;
     /**
@@ -613,11 +645,19 @@ export interface AlertArgs {
      */
     queryLists: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
     /**
-     * Execution interval. 60 seconds minimum, such as 60s, 1h.
+     * schedule for alert.
+     */
+    schedule?: pulumi.Input<inputs.log.AlertSchedule>;
+    /**
+     * Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+     *
+     * @deprecated Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
     scheduleInterval?: pulumi.Input<string>;
     /**
-     * Default FixedRate. No need to configure this parameter.
+     * Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
+     *
+     * @deprecated Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
     scheduleType?: pulumi.Input<string>;
     /**
@@ -639,7 +679,7 @@ export interface AlertArgs {
      */
     throttling?: pulumi.Input<string>;
     /**
-     * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+     * including FixedRate,Hourly,Daily,Weekly,Cron.
      */
     type?: pulumi.Input<string>;
     /**

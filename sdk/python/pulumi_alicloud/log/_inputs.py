@@ -16,6 +16,7 @@ __all__ = [
     'AlertNotificationListArgs',
     'AlertPolicyConfigurationArgs',
     'AlertQueryListArgs',
+    'AlertScheduleArgs',
     'AlertSeverityConfigurationArgs',
     'EtlEtlSinkArgs',
     'OssShipperParquetConfigArgs',
@@ -70,7 +71,7 @@ class AlertGroupConfigurationArgs:
                  type: pulumi.Input[str],
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         """
         pulumi.set(__self__, "type", type)
         if fields is not None:
@@ -80,7 +81,7 @@ class AlertGroupConfigurationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        including FixedRate,Hourly,Daily,Weekly,Cron.
         """
         return pulumi.get(self, "type")
 
@@ -105,7 +106,7 @@ class AlertJoinConfigurationArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] condition: Join condition.
-        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "type", type)
@@ -126,7 +127,7 @@ class AlertJoinConfigurationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        including FixedRate,Hourly,Daily,Weekly,Cron.
         """
         return pulumi.get(self, "type")
 
@@ -182,7 +183,7 @@ class AlertNotificationListArgs:
                  service_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] content: Notice content of alarm.
-        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: Email address list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mobile_lists: SMS sending mobile number.
         :param pulumi.Input[str] service_uri: Request address.
@@ -212,7 +213,7 @@ class AlertNotificationListArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        including FixedRate,Hourly,Daily,Weekly,Cron.
         """
         return pulumi.get(self, "type")
 
@@ -523,6 +524,132 @@ class AlertQueryListArgs:
     @time_span_type.setter
     def time_span_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_span_type", value)
+
+
+@pulumi.input_type
+class AlertScheduleArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 cron_expression: Optional[pulumi.Input[str]] = None,
+                 day_of_week: Optional[pulumi.Input[int]] = None,
+                 delay: Optional[pulumi.Input[int]] = None,
+                 hour: Optional[pulumi.Input[int]] = None,
+                 interval: Optional[pulumi.Input[str]] = None,
+                 run_immediately: Optional[pulumi.Input[bool]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param pulumi.Input[str] cron_expression: Cron expression when type is Cron.
+        :param pulumi.Input[int] day_of_week: Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+        :param pulumi.Input[int] hour: Hour of day when type is Weekly/Daily.
+        :param pulumi.Input[str] interval: Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+        :param pulumi.Input[str] time_zone: Time zone for schedule.
+        """
+        pulumi.set(__self__, "type", type)
+        if cron_expression is not None:
+            pulumi.set(__self__, "cron_expression", cron_expression)
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if hour is not None:
+            pulumi.set(__self__, "hour", hour)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if run_immediately is not None:
+            pulumi.set(__self__, "run_immediately", run_immediately)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        including FixedRate,Hourly,Daily,Weekly,Cron.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cron expression when type is Cron.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> Optional[pulumi.Input[int]]:
+        """
+        Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "delay", value)
+
+    @property
+    @pulumi.getter
+    def hour(self) -> Optional[pulumi.Input[int]]:
+        """
+        Hour of day when type is Weekly/Daily.
+        """
+        return pulumi.get(self, "hour")
+
+    @hour.setter
+    def hour(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hour", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter(name="runImmediately")
+    def run_immediately(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "run_immediately")
+
+    @run_immediately.setter
+    def run_immediately(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_immediately", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time zone for schedule.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
 
 @pulumi.input_type

@@ -49,6 +49,15 @@ namespace Pulumi.AliCloud.Log
     ///             AlertDisplayname = "tf-test-alert-displayname",
     ///             Condition = "count&gt; 100",
     ///             Dashboard = "tf-test-dashboard",
+    ///             Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
+    ///             {
+    ///                 Type = "FixedRate",
+    ///                 Interval = "5m",
+    ///                 Hour = 0,
+    ///                 DayOfWeek = 0,
+    ///                 Delay = 0,
+    ///                 RunImmediately = false,
+    ///             },
     ///             QueryLists = 
     ///             {
     ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
@@ -129,9 +138,16 @@ namespace Pulumi.AliCloud.Log
     ///             NoDataFire = false,
     ///             NoDataSeverity = 8,
     ///             SendResolved = true,
-    ///             ScheduleInterval = "5m",
-    ///             ScheduleType = "FixedRate",
     ///             AutoAnnotation = true,
+    ///             Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
+    ///             {
+    ///                 Type = "FixedRate",
+    ///                 Interval = "5m",
+    ///                 Hour = 0,
+    ///                 DayOfWeek = 0,
+    ///                 Delay = 0,
+    ///                 RunImmediately = false,
+    ///             },
     ///             QueryLists = 
     ///             {
     ///                 new AliCloud.Log.Inputs.AlertQueryListArgs
@@ -360,16 +376,22 @@ namespace Pulumi.AliCloud.Log
         public Output<ImmutableArray<Outputs.AlertQueryList>> QueryLists { get; private set; } = null!;
 
         /// <summary>
-        /// Execution interval. 60 seconds minimum, such as 60s, 1h.
+        /// schedule for alert.
         /// </summary>
-        [Output("scheduleInterval")]
-        public Output<string?> ScheduleInterval { get; private set; } = null!;
+        [Output("schedule")]
+        public Output<Outputs.AlertSchedule?> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Default FixedRate. No need to configure this parameter.
+        /// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+        /// </summary>
+        [Output("scheduleInterval")]
+        public Output<string> ScheduleInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         /// </summary>
         [Output("scheduleType")]
-        public Output<string?> ScheduleType { get; private set; } = null!;
+        public Output<string> ScheduleType { get; private set; } = null!;
 
         /// <summary>
         /// when new alert is resolved, whether to notify, default is false.
@@ -396,7 +418,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> Throttling { get; private set; } = null!;
 
         /// <summary>
-        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        /// including FixedRate,Hourly,Daily,Weekly,Cron.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -590,13 +612,19 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Execution interval. 60 seconds minimum, such as 60s, 1h.
+        /// schedule for alert.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.AlertScheduleArgs>? Schedule { get; set; }
+
+        /// <summary>
+        /// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         /// </summary>
         [Input("scheduleInterval")]
         public Input<string>? ScheduleInterval { get; set; }
 
         /// <summary>
-        /// Default FixedRate. No need to configure this parameter.
+        /// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }
@@ -632,7 +660,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Throttling { get; set; }
 
         /// <summary>
-        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        /// including FixedRate,Hourly,Daily,Weekly,Cron.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -787,13 +815,19 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Execution interval. 60 seconds minimum, such as 60s, 1h.
+        /// schedule for alert.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.AlertScheduleGetArgs>? Schedule { get; set; }
+
+        /// <summary>
+        /// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         /// </summary>
         [Input("scheduleInterval")]
         public Input<string>? ScheduleInterval { get; set; }
 
         /// <summary>
-        /// Default FixedRate. No need to configure this parameter.
+        /// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }
@@ -829,7 +863,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Throttling { get; set; }
 
         /// <summary>
-        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        /// including FixedRate,Hourly,Daily,Weekly,Cron.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

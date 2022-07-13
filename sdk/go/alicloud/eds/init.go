@@ -23,10 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:eds/adConnectorDirectory:AdConnectorDirectory":
 		r = &AdConnectorDirectory{}
+	case "alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite":
+		r = &AdConnectorOfficeSite{}
 	case "alicloud:eds/bundle:Bundle":
 		r = &Bundle{}
 	case "alicloud:eds/command:Command":
 		r = &Command{}
+	case "alicloud:eds/customProperty:CustomProperty":
+		r = &CustomProperty{}
 	case "alicloud:eds/desktop:Desktop":
 		r = &Desktop{}
 	case "alicloud:eds/ecdPolicyGroup:EcdPolicyGroup":
@@ -65,12 +69,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"eds/adConnectorOfficeSite",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"eds/bundle",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eds/command",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eds/customProperty",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -130,6 +130,10 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+     */
+    public readonly excludeInstanceFilter!: pulumi.Output<outputs.ecs.EcsInstanceSetExcludeInstanceFilter | undefined>;
+    /**
      * The hostname of instance.
      */
     public readonly hostName!: pulumi.Output<string>;
@@ -295,6 +299,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["excludeInstanceFilter"] = state ? state.excludeInstanceFilter : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
             resourceInputs["hpcClusterId"] = state ? state.hpcClusterId : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
@@ -349,6 +354,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["excludeInstanceFilter"] = args ? args.excludeInstanceFilter : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
             resourceInputs["hpcClusterId"] = args ? args.hpcClusterId : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
@@ -431,6 +437,10 @@ export interface EcsInstanceSetState {
      * The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+     */
+    excludeInstanceFilter?: pulumi.Input<inputs.ecs.EcsInstanceSetExcludeInstanceFilter>;
     /**
      * The hostname of instance.
      */
@@ -618,6 +628,10 @@ export interface EcsInstanceSetArgs {
      * The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+     */
+    excludeInstanceFilter?: pulumi.Input<inputs.ecs.EcsInstanceSetExcludeInstanceFilter>;
     /**
      * The hostname of instance.
      */

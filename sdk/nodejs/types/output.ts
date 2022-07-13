@@ -13734,6 +13734,17 @@ export namespace ecs {
         snapshotId?: string;
     }
 
+    export interface EcsInstanceSetExcludeInstanceFilter {
+        /**
+         * The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+         */
+        key: string;
+        /**
+         * The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+         */
+        values: string[];
+    }
+
     export interface EcsInstanceSetNetworkInterface {
         /**
          * The description of ENI.
@@ -16747,6 +16758,7 @@ export namespace ecs {
          */
         size: number;
     }
+
 }
 
 export namespace edas {
@@ -16913,6 +16925,17 @@ export namespace edas {
 }
 
 export namespace eds {
+    export interface CustomPropertyPropertyValue {
+        /**
+         * The value of an attribute.
+         */
+        propertyValue?: string;
+        /**
+         * The value of an attribute id.
+         */
+        propertyValueId: string;
+    }
+
     export interface EcdPolicyGroupAuthorizeAccessPolicyRule {
         /**
          * The cidrip of authorize access rule.
@@ -17059,6 +17082,167 @@ export namespace eds {
          * The ID of VSwitch.
          */
         vswitchId: string;
+    }
+
+    export interface GetAdConnectorOfficeSitesSite {
+        /**
+         * The Name of the ad connector office site.
+         */
+        adConnectorOfficeSiteName: string;
+        /**
+         * AD Connector Collection of Information.
+         */
+        adConnectors: outputs.eds.GetAdConnectorOfficeSitesSiteAdConnector[];
+        /**
+         * The Internet Bandwidth Peak. Possible Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+         */
+        bandwidth: number;
+        /**
+         * Cloud Enterprise Network Instance Id.
+         */
+        cenId: string;
+        /**
+         * Workspace Corresponds to the Security Office Network of IPv4 Segment.
+         */
+        cidrBlock: string;
+        /**
+         * Workspace Creation Time.
+         */
+        createTime: string;
+        /**
+         * Security Group ID.
+         */
+        customSecurityGroupId: string;
+        /**
+         * The method that is used to connect the client to cloud desktops.
+         */
+        desktopAccessType: string;
+        /**
+         * The endpoint that is used to connect to cloud desktops over a VPC.
+         */
+        desktopVpcEndpoint: string;
+        /**
+         * Enterprise Ad Corresponding DNS Address.
+         */
+        dnsAddresses: string[];
+        /**
+         * The Easy-to-Use DNS Name.
+         */
+        dnsUserName: string;
+        /**
+         * Enterprise of Ad Domain Name.
+         */
+        domainName: string;
+        /**
+         * The Domain Administrator's Username.
+         */
+        domainUserName: string;
+        /**
+         * Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+         */
+        enableAdminAccess: boolean;
+        /**
+         * Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. After the feature is enabled, the cloud desktops in the same workspace can access each other.
+         */
+        enableCrossDesktopAccess: boolean;
+        /**
+         * Whether the Open Internet Access Function.
+         */
+        enableInternetAccess: boolean;
+        /**
+         * NAS File System ID.
+         */
+        fileSystemIds: string[];
+        /**
+         * The ID of the Ad Connector Office Site.
+         */
+        id: string;
+        /**
+         * Registered Log Information.
+         */
+        logs: outputs.eds.GetAdConnectorOfficeSitesSiteLog[];
+        /**
+         * Whether to Enable Multi-Factor Authentication MFA.
+         */
+        mfaEnabled: boolean;
+        /**
+         * The ID of the Internet Access.
+         */
+        networkPackageId: string;
+        /**
+         * The ID of the Workspace.
+         */
+        officeSiteId: string;
+        /**
+         * Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+         */
+        officeSiteType: string;
+        /**
+         * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+         */
+        ssoEnabled: boolean;
+        /**
+         * The workspace status.
+         */
+        status: string;
+        /**
+         * Sub-Domain DNS Address.
+         */
+        subDomainDnsAddresses: string[];
+        /**
+         * The AD Domain DNS Name.
+         */
+        subDomainName: string;
+        /**
+         * The AD Trust Password.
+         */
+        trustPassword: string;
+        /**
+         * Security Office VPC ID.
+         */
+        vpcId: string;
+        /**
+         * The vswitch ids.
+         */
+        vswitchIds: string[];
+    }
+
+    export interface GetAdConnectorOfficeSitesSiteAdConnector {
+        /**
+         * AD Connector across Zones, Its Connection Addresses.
+         */
+        adConnectorAddress: string;
+        /**
+         * AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
+         */
+        connectorStatus: string;
+        /**
+         * AD Connector Mount of the Card ID.
+         */
+        networkInterfaceId: string;
+        /**
+         * AD Connector in the Network Corresponding to the ID of the VSwitch in.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetAdConnectorOfficeSitesSiteLog {
+        /**
+         * Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
+         */
+        level: string;
+        /**
+         * The Log Details.
+         */
+        message: string;
+        /**
+         * Log Information Corresponding to the Step.
+         */
+        step: string;
+        /**
+         * Log Print Time.
+         */
+        timeStamp: string;
     }
 
     export interface GetBundlesBundle {
@@ -17210,6 +17394,36 @@ export namespace eds {
          * If You Use the invocation Indicates That the Call of the Time.
          */
         stopTime: string;
+    }
+
+    export interface GetCustomPropertiesProperty {
+        /**
+         * The first ID of the resource.
+         */
+        customPropertyId: string;
+        /**
+         * The ID of the Custom Property.
+         */
+        id: string;
+        /**
+         * The Custom attribute key.
+         */
+        propertyKey: string;
+        /**
+         * Custom attribute sets the value of.
+         */
+        propertyValues: outputs.eds.GetCustomPropertiesPropertyPropertyValue[];
+    }
+
+    export interface GetCustomPropertiesPropertyPropertyValue {
+        /**
+         * The value of an attribute.
+         */
+        propertyValue: string;
+        /**
+         * The value of an attribute id.
+         */
+        propertyValueId: string;
     }
 
     export interface GetDesktopTypesType {
@@ -23566,7 +23780,7 @@ export namespace log {
     export interface AlertGroupConfiguration {
         fields?: string[];
         /**
-         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
          */
         type: string;
     }
@@ -23577,7 +23791,7 @@ export namespace log {
          */
         condition: string;
         /**
-         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
          */
         type: string;
     }
@@ -23611,7 +23825,7 @@ export namespace log {
          */
         serviceUri?: string;
         /**
-         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
          */
         type: string;
     }
@@ -23686,6 +23900,35 @@ export namespace log {
          * default Custom. No need to configure this parameter.
          */
         timeSpanType?: string;
+    }
+
+    export interface AlertSchedule {
+        /**
+         * Cron expression when type is Cron.
+         */
+        cronExpression?: string;
+        /**
+         * Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+         */
+        dayOfWeek?: number;
+        delay?: number;
+        /**
+         * Hour of day when type is Weekly/Daily.
+         */
+        hour?: number;
+        /**
+         * Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+         */
+        interval?: string;
+        runImmediately?: boolean;
+        /**
+         * Time zone for schedule.
+         */
+        timeZone?: string;
+        /**
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         */
+        type: string;
     }
 
     export interface AlertSeverityConfiguration {
@@ -28787,6 +29030,25 @@ export namespace rds {
         multiZoneIds: string[];
     }
 
+    export interface InstanceBabelfishConfig {
+        /**
+         * specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
+         */
+        babelfishEnabled: string;
+        /**
+         * The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+         */
+        masterUserPassword: string;
+        /**
+         * The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+         */
+        masterUsername: string;
+        /**
+         * The migration mode of the instance. Valid values: **single-db** and **multi-db**.
+         */
+        migrationMode: string;
+    }
+
     export interface InstanceParameter {
         name: string;
         value: string;
@@ -28931,6 +29193,7 @@ export namespace rds {
         name: string;
         value: string;
     }
+
 }
 
 export namespace resourcemanager {

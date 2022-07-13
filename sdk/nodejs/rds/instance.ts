@@ -65,6 +65,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly autoUpgradeMinorVersion!: pulumi.Output<string>;
     /**
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     */
+    public readonly babelfishConfigs!: pulumi.Output<outputs.rds.InstanceBabelfishConfig[]>;
+    /**
+     * The TDS port of the instance for which Babelfish is enabled.
+     */
+    public readonly babelfishPort!: pulumi.Output<string>;
+    /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
@@ -385,6 +393,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["autoUpgradeMinorVersion"] = state ? state.autoUpgradeMinorVersion : undefined;
+            resourceInputs["babelfishConfigs"] = state ? state.babelfishConfigs : undefined;
+            resourceInputs["babelfishPort"] = state ? state.babelfishPort : undefined;
             resourceInputs["caType"] = state ? state.caType : undefined;
             resourceInputs["clientCaCert"] = state ? state.clientCaCert : undefined;
             resourceInputs["clientCaEnabled"] = state ? state.clientCaEnabled : undefined;
@@ -464,6 +474,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["autoUpgradeMinorVersion"] = args ? args.autoUpgradeMinorVersion : undefined;
+            resourceInputs["babelfishConfigs"] = args ? args.babelfishConfigs : undefined;
+            resourceInputs["babelfishPort"] = args ? args.babelfishPort : undefined;
             resourceInputs["caType"] = args ? args.caType : undefined;
             resourceInputs["clientCaCert"] = args ? args.clientCaCert : undefined;
             resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
@@ -557,6 +569,14 @@ export interface InstanceState {
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
      */
     autoUpgradeMinorVersion?: pulumi.Input<string>;
+    /**
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     */
+    babelfishConfigs?: pulumi.Input<pulumi.Input<inputs.rds.InstanceBabelfishConfig>[]>;
+    /**
+     * The TDS port of the instance for which Babelfish is enabled.
+     */
+    babelfishPort?: pulumi.Input<string>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
      * - aliyun: a cloud certificate
@@ -888,6 +908,14 @@ export interface InstanceArgs {
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
      */
     autoUpgradeMinorVersion?: pulumi.Input<string>;
+    /**
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     */
+    babelfishConfigs?: pulumi.Input<pulumi.Input<inputs.rds.InstanceBabelfishConfig>[]>;
+    /**
+     * The TDS port of the instance for which Babelfish is enabled.
+     */
+    babelfishPort?: pulumi.Input<string>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
      * - aliyun: a cloud certificate

@@ -35,6 +35,10 @@ type Instance struct {
 	// - Auto: Instances are automatically upgraded to a higher minor version.
 	// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
 	AutoUpgradeMinorVersion pulumi.StringOutput `pulumi:"autoUpgradeMinorVersion"`
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	BabelfishConfigs InstanceBabelfishConfigArrayOutput `pulumi:"babelfishConfigs"`
+	// The TDS port of the instance for which Babelfish is enabled.
+	BabelfishPort pulumi.StringOutput `pulumi:"babelfishPort"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -279,6 +283,10 @@ type instanceState struct {
 	// - Auto: Instances are automatically upgraded to a higher minor version.
 	// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
 	AutoUpgradeMinorVersion *string `pulumi:"autoUpgradeMinorVersion"`
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	BabelfishConfigs []InstanceBabelfishConfig `pulumi:"babelfishConfigs"`
+	// The TDS port of the instance for which Babelfish is enabled.
+	BabelfishPort *string `pulumi:"babelfishPort"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -483,6 +491,10 @@ type InstanceState struct {
 	// - Auto: Instances are automatically upgraded to a higher minor version.
 	// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
 	AutoUpgradeMinorVersion pulumi.StringPtrInput
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	BabelfishConfigs InstanceBabelfishConfigArrayInput
+	// The TDS port of the instance for which Babelfish is enabled.
+	BabelfishPort pulumi.StringPtrInput
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -691,6 +703,10 @@ type instanceArgs struct {
 	// - Auto: Instances are automatically upgraded to a higher minor version.
 	// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
 	AutoUpgradeMinorVersion *string `pulumi:"autoUpgradeMinorVersion"`
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	BabelfishConfigs []InstanceBabelfishConfig `pulumi:"babelfishConfigs"`
+	// The TDS port of the instance for which Babelfish is enabled.
+	BabelfishPort *string `pulumi:"babelfishPort"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -892,6 +908,10 @@ type InstanceArgs struct {
 	// - Auto: Instances are automatically upgraded to a higher minor version.
 	// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
 	AutoUpgradeMinorVersion pulumi.StringPtrInput
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	BabelfishConfigs InstanceBabelfishConfigArrayInput
+	// The TDS port of the instance for which Babelfish is enabled.
+	BabelfishPort pulumi.StringPtrInput
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate

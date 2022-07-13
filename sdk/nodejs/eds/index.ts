@@ -6,13 +6,17 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./adConnectorDirectory";
+export * from "./adConnectorOfficeSite";
 export * from "./bundle";
 export * from "./command";
+export * from "./customProperty";
 export * from "./desktop";
 export * from "./ecdPolicyGroup";
 export * from "./getAdConnectorDirectories";
+export * from "./getAdConnectorOfficeSites";
 export * from "./getBundles";
 export * from "./getCommands";
+export * from "./getCustomProperties";
 export * from "./getDesktopTypes";
 export * from "./getDesktops";
 export * from "./getImages";
@@ -34,8 +38,10 @@ export * from "./user";
 
 // Import resources to register:
 import { AdConnectorDirectory } from "./adConnectorDirectory";
+import { AdConnectorOfficeSite } from "./adConnectorOfficeSite";
 import { Bundle } from "./bundle";
 import { Command } from "./command";
+import { CustomProperty } from "./customProperty";
 import { Desktop } from "./desktop";
 import { EcdPolicyGroup } from "./ecdPolicyGroup";
 import { Image } from "./image";
@@ -52,10 +58,14 @@ const _module = {
         switch (type) {
             case "alicloud:eds/adConnectorDirectory:AdConnectorDirectory":
                 return new AdConnectorDirectory(name, <any>undefined, { urn })
+            case "alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite":
+                return new AdConnectorOfficeSite(name, <any>undefined, { urn })
             case "alicloud:eds/bundle:Bundle":
                 return new Bundle(name, <any>undefined, { urn })
             case "alicloud:eds/command:Command":
                 return new Command(name, <any>undefined, { urn })
+            case "alicloud:eds/customProperty:CustomProperty":
+                return new CustomProperty(name, <any>undefined, { urn })
             case "alicloud:eds/desktop:Desktop":
                 return new Desktop(name, <any>undefined, { urn })
             case "alicloud:eds/ecdPolicyGroup:EcdPolicyGroup":
@@ -80,8 +90,10 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "eds/adConnectorDirectory", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eds/adConnectorOfficeSite", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/bundle", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/command", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eds/customProperty", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/desktop", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/ecdPolicyGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eds/image", _module)

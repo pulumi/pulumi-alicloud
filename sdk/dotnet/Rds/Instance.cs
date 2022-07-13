@@ -52,6 +52,18 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> AutoUpgradeMinorVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// </summary>
+        [Output("babelfishConfigs")]
+        public Output<ImmutableArray<Outputs.InstanceBabelfishConfig>> BabelfishConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// The TDS port of the instance for which Babelfish is enabled.
+        /// </summary>
+        [Output("babelfishPort")]
+        public Output<string> BabelfishPort { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
@@ -550,6 +562,24 @@ namespace Pulumi.AliCloud.Rds
         [Input("autoUpgradeMinorVersion")]
         public Input<string>? AutoUpgradeMinorVersion { get; set; }
 
+        [Input("babelfishConfigs")]
+        private InputList<Inputs.InstanceBabelfishConfigArgs>? _babelfishConfigs;
+
+        /// <summary>
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// </summary>
+        public InputList<Inputs.InstanceBabelfishConfigArgs> BabelfishConfigs
+        {
+            get => _babelfishConfigs ?? (_babelfishConfigs = new InputList<Inputs.InstanceBabelfishConfigArgs>());
+            set => _babelfishConfigs = value;
+        }
+
+        /// <summary>
+        /// The TDS port of the instance for which Babelfish is enabled.
+        /// </summary>
+        [Input("babelfishPort")]
+        public Input<string>? BabelfishPort { get; set; }
+
         /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
         /// - aliyun: a cloud certificate
@@ -1027,6 +1057,24 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("autoUpgradeMinorVersion")]
         public Input<string>? AutoUpgradeMinorVersion { get; set; }
+
+        [Input("babelfishConfigs")]
+        private InputList<Inputs.InstanceBabelfishConfigGetArgs>? _babelfishConfigs;
+
+        /// <summary>
+        /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// </summary>
+        public InputList<Inputs.InstanceBabelfishConfigGetArgs> BabelfishConfigs
+        {
+            get => _babelfishConfigs ?? (_babelfishConfigs = new InputList<Inputs.InstanceBabelfishConfigGetArgs>());
+            set => _babelfishConfigs = value;
+        }
+
+        /// <summary>
+        /// The TDS port of the instance for which Babelfish is enabled.
+        /// </summary>
+        [Input("babelfishPort")]
+        public Input<string>? BabelfishPort { get; set; }
 
         /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:

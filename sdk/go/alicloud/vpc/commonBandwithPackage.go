@@ -59,8 +59,9 @@ type CommonBandwithPackage struct {
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// The description of the common bandwidth package instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Force       pulumi.StringPtrOutput `pulumi:"force"`
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+	// This parameter is used for resource destroy. Default value is `false`.
+	Force pulumi.StringPtrOutput `pulumi:"force"`
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
 	Isp pulumi.StringPtrOutput `pulumi:"isp"`
@@ -120,8 +121,9 @@ type commonBandwithPackageState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The description of the common bandwidth package instance.
 	Description *string `pulumi:"description"`
-	Force       *string `pulumi:"force"`
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+	// This parameter is used for resource destroy. Default value is `false`.
+	Force *string `pulumi:"force"`
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
 	Isp *string `pulumi:"isp"`
@@ -150,8 +152,9 @@ type CommonBandwithPackageState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The description of the common bandwidth package instance.
 	Description pulumi.StringPtrInput
-	Force       pulumi.StringPtrInput
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+	// This parameter is used for resource destroy. Default value is `false`.
+	Force pulumi.StringPtrInput
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType pulumi.StringPtrInput
 	// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
 	Isp pulumi.StringPtrInput
@@ -184,8 +187,9 @@ type commonBandwithPackageArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The description of the common bandwidth package instance.
 	Description *string `pulumi:"description"`
-	Force       *string `pulumi:"force"`
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+	// This parameter is used for resource destroy. Default value is `false`.
+	Force *string `pulumi:"force"`
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
 	Isp *string `pulumi:"isp"`
@@ -213,8 +217,9 @@ type CommonBandwithPackageArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The description of the common bandwidth package instance.
 	Description pulumi.StringPtrInput
-	Force       pulumi.StringPtrInput
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+	// This parameter is used for resource destroy. Default value is `false`.
+	Force pulumi.StringPtrInput
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType pulumi.StringPtrInput
 	// The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
 	Isp pulumi.StringPtrInput

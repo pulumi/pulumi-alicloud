@@ -9,9 +9,49 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'CustomPropertyPropertyValueArgs',
     'EcdPolicyGroupAuthorizeAccessPolicyRuleArgs',
     'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs',
 ]
+
+@pulumi.input_type
+class CustomPropertyPropertyValueArgs:
+    def __init__(__self__, *,
+                 property_value: Optional[pulumi.Input[str]] = None,
+                 property_value_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] property_value: The value of an attribute.
+        :param pulumi.Input[str] property_value_id: The value of an attribute id.
+        """
+        if property_value is not None:
+            pulumi.set(__self__, "property_value", property_value)
+        if property_value_id is not None:
+            pulumi.set(__self__, "property_value_id", property_value_id)
+
+    @property
+    @pulumi.getter(name="propertyValue")
+    def property_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of an attribute.
+        """
+        return pulumi.get(self, "property_value")
+
+    @property_value.setter
+    def property_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property_value", value)
+
+    @property
+    @pulumi.getter(name="propertyValueId")
+    def property_value_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of an attribute id.
+        """
+        return pulumi.get(self, "property_value_id")
+
+    @property_value_id.setter
+    def property_value_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property_value_id", value)
+
 
 @pulumi.input_type
 class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs:
