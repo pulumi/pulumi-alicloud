@@ -83,6 +83,10 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
+     * The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+     */
+    public readonly babelfishPort!: pulumi.Output<string>;
+    /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
      */
     public readonly connectionPrefix!: pulumi.Output<string>;
@@ -116,6 +120,7 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            resourceInputs["babelfishPort"] = state ? state.babelfishPort : undefined;
             resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
@@ -126,6 +131,7 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            resourceInputs["babelfishPort"] = args ? args.babelfishPort : undefined;
             resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
@@ -141,6 +147,10 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
+    /**
+     * The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+     */
+    babelfishPort?: pulumi.Input<string>;
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
      */
@@ -167,6 +177,10 @@ export interface ConnectionState {
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
+    /**
+     * The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+     */
+    babelfishPort?: pulumi.Input<string>;
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
      */

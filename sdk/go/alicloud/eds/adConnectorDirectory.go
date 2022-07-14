@@ -13,7 +13,7 @@ import (
 
 // Provides a ECD Ad Connector Directory resource.
 //
-// For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://help.aliyun.com/document_detail/436215.html).
+// For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://help.aliyun.com/document_detail/436791.html).
 //
 // > **NOTE:** Available in v1.174.0+.
 //

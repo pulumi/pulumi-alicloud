@@ -118,7 +118,7 @@ func (o AlertAnnotationArrayOutput) Index(i pulumi.IntInput) AlertAnnotationOutp
 
 type AlertGroupConfiguration struct {
 	Fields []string `pulumi:"fields"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type string `pulumi:"type"`
 }
 
@@ -135,7 +135,7 @@ type AlertGroupConfigurationInput interface {
 
 type AlertGroupConfigurationArgs struct {
 	Fields pulumi.StringArrayInput `pulumi:"fields"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -220,7 +220,7 @@ func (o AlertGroupConfigurationOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AlertGroupConfiguration) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
 
-// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+// including FixedRate,Hourly,Daily,Weekly,Cron.
 func (o AlertGroupConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertGroupConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -258,7 +258,7 @@ func (o AlertGroupConfigurationPtrOutput) Fields() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+// including FixedRate,Hourly,Daily,Weekly,Cron.
 func (o AlertGroupConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertGroupConfiguration) *string {
 		if v == nil {
@@ -271,7 +271,7 @@ func (o AlertGroupConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
 type AlertJoinConfiguration struct {
 	// Join condition.
 	Condition string `pulumi:"condition"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type string `pulumi:"type"`
 }
 
@@ -289,7 +289,7 @@ type AlertJoinConfigurationInput interface {
 type AlertJoinConfigurationArgs struct {
 	// Join condition.
 	Condition pulumi.StringInput `pulumi:"condition"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -349,7 +349,7 @@ func (o AlertJoinConfigurationOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertJoinConfiguration) string { return v.Condition }).(pulumi.StringOutput)
 }
 
-// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+// including FixedRate,Hourly,Daily,Weekly,Cron.
 func (o AlertJoinConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertJoinConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -489,7 +489,7 @@ type AlertNotificationList struct {
 	MobileLists []string `pulumi:"mobileLists"`
 	// Request address.
 	ServiceUri *string `pulumi:"serviceUri"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type string `pulumi:"type"`
 }
 
@@ -513,7 +513,7 @@ type AlertNotificationListArgs struct {
 	MobileLists pulumi.StringArrayInput `pulumi:"mobileLists"`
 	// Request address.
 	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
-	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -588,7 +588,7 @@ func (o AlertNotificationListOutput) ServiceUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertNotificationList) *string { return v.ServiceUri }).(pulumi.StringPtrOutput)
 }
 
-// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+// including FixedRate,Hourly,Daily,Weekly,Cron.
 func (o AlertNotificationListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertNotificationList) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -997,6 +997,268 @@ func (o AlertQueryListArrayOutput) Index(i pulumi.IntInput) AlertQueryListOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertQueryList {
 		return vs[0].([]AlertQueryList)[vs[1].(int)]
 	}).(AlertQueryListOutput)
+}
+
+type AlertSchedule struct {
+	// Cron expression when type is Cron.
+	CronExpression *string `pulumi:"cronExpression"`
+	// Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+	DayOfWeek *int `pulumi:"dayOfWeek"`
+	Delay     *int `pulumi:"delay"`
+	// Hour of day when type is Weekly/Daily.
+	Hour *int `pulumi:"hour"`
+	// Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+	Interval       *string `pulumi:"interval"`
+	RunImmediately *bool   `pulumi:"runImmediately"`
+	// Time zone for schedule.
+	TimeZone *string `pulumi:"timeZone"`
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	Type string `pulumi:"type"`
+}
+
+// AlertScheduleInput is an input type that accepts AlertScheduleArgs and AlertScheduleOutput values.
+// You can construct a concrete instance of `AlertScheduleInput` via:
+//
+//          AlertScheduleArgs{...}
+type AlertScheduleInput interface {
+	pulumi.Input
+
+	ToAlertScheduleOutput() AlertScheduleOutput
+	ToAlertScheduleOutputWithContext(context.Context) AlertScheduleOutput
+}
+
+type AlertScheduleArgs struct {
+	// Cron expression when type is Cron.
+	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
+	// Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+	DayOfWeek pulumi.IntPtrInput `pulumi:"dayOfWeek"`
+	Delay     pulumi.IntPtrInput `pulumi:"delay"`
+	// Hour of day when type is Weekly/Daily.
+	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	// Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+	Interval       pulumi.StringPtrInput `pulumi:"interval"`
+	RunImmediately pulumi.BoolPtrInput   `pulumi:"runImmediately"`
+	// Time zone for schedule.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AlertScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertSchedule)(nil)).Elem()
+}
+
+func (i AlertScheduleArgs) ToAlertScheduleOutput() AlertScheduleOutput {
+	return i.ToAlertScheduleOutputWithContext(context.Background())
+}
+
+func (i AlertScheduleArgs) ToAlertScheduleOutputWithContext(ctx context.Context) AlertScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertScheduleOutput)
+}
+
+func (i AlertScheduleArgs) ToAlertSchedulePtrOutput() AlertSchedulePtrOutput {
+	return i.ToAlertSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i AlertScheduleArgs) ToAlertSchedulePtrOutputWithContext(ctx context.Context) AlertSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertScheduleOutput).ToAlertSchedulePtrOutputWithContext(ctx)
+}
+
+// AlertSchedulePtrInput is an input type that accepts AlertScheduleArgs, AlertSchedulePtr and AlertSchedulePtrOutput values.
+// You can construct a concrete instance of `AlertSchedulePtrInput` via:
+//
+//          AlertScheduleArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertSchedulePtrInput interface {
+	pulumi.Input
+
+	ToAlertSchedulePtrOutput() AlertSchedulePtrOutput
+	ToAlertSchedulePtrOutputWithContext(context.Context) AlertSchedulePtrOutput
+}
+
+type alertSchedulePtrType AlertScheduleArgs
+
+func AlertSchedulePtr(v *AlertScheduleArgs) AlertSchedulePtrInput {
+	return (*alertSchedulePtrType)(v)
+}
+
+func (*alertSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertSchedule)(nil)).Elem()
+}
+
+func (i *alertSchedulePtrType) ToAlertSchedulePtrOutput() AlertSchedulePtrOutput {
+	return i.ToAlertSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *alertSchedulePtrType) ToAlertSchedulePtrOutputWithContext(ctx context.Context) AlertSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertSchedulePtrOutput)
+}
+
+type AlertScheduleOutput struct{ *pulumi.OutputState }
+
+func (AlertScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertSchedule)(nil)).Elem()
+}
+
+func (o AlertScheduleOutput) ToAlertScheduleOutput() AlertScheduleOutput {
+	return o
+}
+
+func (o AlertScheduleOutput) ToAlertScheduleOutputWithContext(ctx context.Context) AlertScheduleOutput {
+	return o
+}
+
+func (o AlertScheduleOutput) ToAlertSchedulePtrOutput() AlertSchedulePtrOutput {
+	return o.ToAlertSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o AlertScheduleOutput) ToAlertSchedulePtrOutputWithContext(ctx context.Context) AlertSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertSchedule) *AlertSchedule {
+		return &v
+	}).(AlertSchedulePtrOutput)
+}
+
+// Cron expression when type is Cron.
+func (o AlertScheduleOutput) CronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertSchedule) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
+}
+
+// Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+func (o AlertScheduleOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertSchedule) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
+}
+
+func (o AlertScheduleOutput) Delay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertSchedule) *int { return v.Delay }).(pulumi.IntPtrOutput)
+}
+
+// Hour of day when type is Weekly/Daily.
+func (o AlertScheduleOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertSchedule) *int { return v.Hour }).(pulumi.IntPtrOutput)
+}
+
+// Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+func (o AlertScheduleOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertSchedule) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertScheduleOutput) RunImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertSchedule) *bool { return v.RunImmediately }).(pulumi.BoolPtrOutput)
+}
+
+// Time zone for schedule.
+func (o AlertScheduleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+// including FixedRate,Hourly,Daily,Weekly,Cron.
+func (o AlertScheduleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertSchedule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AlertSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertSchedule)(nil)).Elem()
+}
+
+func (o AlertSchedulePtrOutput) ToAlertSchedulePtrOutput() AlertSchedulePtrOutput {
+	return o
+}
+
+func (o AlertSchedulePtrOutput) ToAlertSchedulePtrOutputWithContext(ctx context.Context) AlertSchedulePtrOutput {
+	return o
+}
+
+func (o AlertSchedulePtrOutput) Elem() AlertScheduleOutput {
+	return o.ApplyT(func(v *AlertSchedule) AlertSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret AlertSchedule
+		return ret
+	}).(AlertScheduleOutput)
+}
+
+// Cron expression when type is Cron.
+func (o AlertSchedulePtrOutput) CronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CronExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+func (o AlertSchedulePtrOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertSchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DayOfWeek
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AlertSchedulePtrOutput) Delay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertSchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Hour of day when type is Weekly/Daily.
+func (o AlertSchedulePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertSchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+func (o AlertSchedulePtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertSchedulePtrOutput) RunImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertSchedule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunImmediately
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time zone for schedule.
+func (o AlertSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// including FixedRate,Hourly,Daily,Weekly,Cron.
+func (o AlertSchedulePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type AlertSeverityConfiguration struct {
@@ -2588,6 +2850,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConfigurationPtrInput)(nil)).Elem(), AlertPolicyConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertQueryListInput)(nil)).Elem(), AlertQueryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertQueryListArrayInput)(nil)).Elem(), AlertQueryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertScheduleInput)(nil)).Elem(), AlertScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertSchedulePtrInput)(nil)).Elem(), AlertScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertSeverityConfigurationInput)(nil)).Elem(), AlertSeverityConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertSeverityConfigurationArrayInput)(nil)).Elem(), AlertSeverityConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlEtlSinkInput)(nil)).Elem(), EtlEtlSinkArgs{})
@@ -2624,6 +2888,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertQueryListOutput{})
 	pulumi.RegisterOutputType(AlertQueryListArrayOutput{})
+	pulumi.RegisterOutputType(AlertScheduleOutput{})
+	pulumi.RegisterOutputType(AlertSchedulePtrOutput{})
 	pulumi.RegisterOutputType(AlertSeverityConfigurationOutput{})
 	pulumi.RegisterOutputType(AlertSeverityConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(EtlEtlSinkOutput{})

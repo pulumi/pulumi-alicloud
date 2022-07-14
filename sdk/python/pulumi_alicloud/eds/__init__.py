@@ -6,13 +6,17 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .ad_connector_directory import *
+from .ad_connector_office_site import *
 from .bundle import *
 from .command import *
+from .custom_property import *
 from .desktop import *
 from .ecd_policy_group import *
 from .get_ad_connector_directories import *
+from .get_ad_connector_office_sites import *
 from .get_bundles import *
 from .get_commands import *
+from .get_custom_properties import *
 from .get_desktop_types import *
 from .get_desktops import *
 from .get_images import *

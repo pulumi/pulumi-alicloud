@@ -10,15 +10,21 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'CustomPropertyPropertyValue',
     'EcdPolicyGroupAuthorizeAccessPolicyRule',
     'EcdPolicyGroupAuthorizeSecurityPolicyRule',
     'GetAdConnectorDirectoriesDirectoryResult',
     'GetAdConnectorDirectoriesDirectoryAdConnectorResult',
+    'GetAdConnectorOfficeSitesSiteResult',
+    'GetAdConnectorOfficeSitesSiteAdConnectorResult',
+    'GetAdConnectorOfficeSitesSiteLogResult',
     'GetBundlesBundleResult',
     'GetBundlesBundleDesktopTypeAttributeResult',
     'GetBundlesBundleDiskResult',
     'GetCommandsCommandResult',
     'GetCommandsCommandInvokeDesktopResult',
+    'GetCustomPropertiesPropertyResult',
+    'GetCustomPropertiesPropertyPropertyValueResult',
     'GetDesktopTypesTypeResult',
     'GetDesktopsDesktopResult',
     'GetImagesImageResult',
@@ -35,6 +41,56 @@ __all__ = [
     'GetUsersUserResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class CustomPropertyPropertyValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyValue":
+            suggest = "property_value"
+        elif key == "propertyValueId":
+            suggest = "property_value_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomPropertyPropertyValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomPropertyPropertyValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomPropertyPropertyValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 property_value: Optional[str] = None,
+                 property_value_id: Optional[str] = None):
+        """
+        :param str property_value: The value of an attribute.
+        :param str property_value_id: The value of an attribute id.
+        """
+        if property_value is not None:
+            pulumi.set(__self__, "property_value", property_value)
+        if property_value_id is not None:
+            pulumi.set(__self__, "property_value_id", property_value_id)
+
+    @property
+    @pulumi.getter(name="propertyValue")
+    def property_value(self) -> Optional[str]:
+        """
+        The value of an attribute.
+        """
+        return pulumi.get(self, "property_value")
+
+    @property
+    @pulumi.getter(name="propertyValueId")
+    def property_value_id(self) -> Optional[str]:
+        """
+        The value of an attribute id.
+        """
+        return pulumi.get(self, "property_value_id")
+
 
 @pulumi.output_type
 class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
@@ -486,6 +542,445 @@ class GetAdConnectorDirectoriesDirectoryAdConnectorResult(dict):
 
 
 @pulumi.output_type
+class GetAdConnectorOfficeSitesSiteResult(dict):
+    def __init__(__self__, *,
+                 ad_connector_office_site_name: str,
+                 ad_connectors: Sequence['outputs.GetAdConnectorOfficeSitesSiteAdConnectorResult'],
+                 bandwidth: int,
+                 cen_id: str,
+                 cidr_block: str,
+                 create_time: str,
+                 custom_security_group_id: str,
+                 desktop_access_type: str,
+                 desktop_vpc_endpoint: str,
+                 dns_addresses: Sequence[str],
+                 dns_user_name: str,
+                 domain_name: str,
+                 domain_user_name: str,
+                 enable_admin_access: bool,
+                 enable_cross_desktop_access: bool,
+                 enable_internet_access: bool,
+                 file_system_ids: Sequence[str],
+                 id: str,
+                 logs: Sequence['outputs.GetAdConnectorOfficeSitesSiteLogResult'],
+                 mfa_enabled: bool,
+                 network_package_id: str,
+                 office_site_id: str,
+                 office_site_type: str,
+                 sso_enabled: bool,
+                 status: str,
+                 sub_domain_dns_addresses: Sequence[str],
+                 sub_domain_name: str,
+                 trust_password: str,
+                 vpc_id: str,
+                 vswitch_ids: Sequence[str]):
+        """
+        :param str ad_connector_office_site_name: The Name of the ad connector office site.
+        :param Sequence['GetAdConnectorOfficeSitesSiteAdConnectorArgs'] ad_connectors: AD Connector Collection of Information.
+        :param int bandwidth: The Internet Bandwidth Peak. Possible Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        :param str cen_id: Cloud Enterprise Network Instance Id.
+        :param str cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
+        :param str create_time: Workspace Creation Time.
+        :param str custom_security_group_id: Security Group ID.
+        :param str desktop_access_type: The method that is used to connect the client to cloud desktops.
+        :param str desktop_vpc_endpoint: The endpoint that is used to connect to cloud desktops over a VPC.
+        :param Sequence[str] dns_addresses: Enterprise Ad Corresponding DNS Address.
+        :param str dns_user_name: The Easy-to-Use DNS Name.
+        :param str domain_name: Enterprise of Ad Domain Name.
+        :param str domain_user_name: The Domain Administrator's Username.
+        :param bool enable_admin_access: Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+        :param bool enable_cross_desktop_access: Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. After the feature is enabled, the cloud desktops in the same workspace can access each other.
+        :param bool enable_internet_access: Whether the Open Internet Access Function.
+        :param Sequence[str] file_system_ids: NAS File System ID.
+        :param str id: The ID of the Ad Connector Office Site.
+        :param Sequence['GetAdConnectorOfficeSitesSiteLogArgs'] logs: Registered Log Information.
+        :param bool mfa_enabled: Whether to Enable Multi-Factor Authentication MFA.
+        :param str network_package_id: The ID of the Internet Access.
+        :param str office_site_id: The ID of the Workspace.
+        :param str office_site_type: Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+        :param bool sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+        :param str status: The workspace status.
+        :param Sequence[str] sub_domain_dns_addresses: Sub-Domain DNS Address.
+        :param str sub_domain_name: The AD Domain DNS Name.
+        :param str trust_password: The AD Trust Password.
+        :param str vpc_id: Security Office VPC ID.
+        :param Sequence[str] vswitch_ids: The vswitch ids.
+        """
+        pulumi.set(__self__, "ad_connector_office_site_name", ad_connector_office_site_name)
+        pulumi.set(__self__, "ad_connectors", ad_connectors)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
+        pulumi.set(__self__, "desktop_access_type", desktop_access_type)
+        pulumi.set(__self__, "desktop_vpc_endpoint", desktop_vpc_endpoint)
+        pulumi.set(__self__, "dns_addresses", dns_addresses)
+        pulumi.set(__self__, "dns_user_name", dns_user_name)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "domain_user_name", domain_user_name)
+        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
+        pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
+        pulumi.set(__self__, "enable_internet_access", enable_internet_access)
+        pulumi.set(__self__, "file_system_ids", file_system_ids)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
+        pulumi.set(__self__, "network_package_id", network_package_id)
+        pulumi.set(__self__, "office_site_id", office_site_id)
+        pulumi.set(__self__, "office_site_type", office_site_type)
+        pulumi.set(__self__, "sso_enabled", sso_enabled)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "sub_domain_dns_addresses", sub_domain_dns_addresses)
+        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
+        pulumi.set(__self__, "trust_password", trust_password)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @property
+    @pulumi.getter(name="adConnectorOfficeSiteName")
+    def ad_connector_office_site_name(self) -> str:
+        """
+        The Name of the ad connector office site.
+        """
+        return pulumi.get(self, "ad_connector_office_site_name")
+
+    @property
+    @pulumi.getter(name="adConnectors")
+    def ad_connectors(self) -> Sequence['outputs.GetAdConnectorOfficeSitesSiteAdConnectorResult']:
+        """
+        AD Connector Collection of Information.
+        """
+        return pulumi.get(self, "ad_connectors")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The Internet Bandwidth Peak. Possible Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> str:
+        """
+        Cloud Enterprise Network Instance Id.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        Workspace Corresponds to the Security Office Network of IPv4 Segment.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Workspace Creation Time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customSecurityGroupId")
+    def custom_security_group_id(self) -> str:
+        """
+        Security Group ID.
+        """
+        return pulumi.get(self, "custom_security_group_id")
+
+    @property
+    @pulumi.getter(name="desktopAccessType")
+    def desktop_access_type(self) -> str:
+        """
+        The method that is used to connect the client to cloud desktops.
+        """
+        return pulumi.get(self, "desktop_access_type")
+
+    @property
+    @pulumi.getter(name="desktopVpcEndpoint")
+    def desktop_vpc_endpoint(self) -> str:
+        """
+        The endpoint that is used to connect to cloud desktops over a VPC.
+        """
+        return pulumi.get(self, "desktop_vpc_endpoint")
+
+    @property
+    @pulumi.getter(name="dnsAddresses")
+    def dns_addresses(self) -> Sequence[str]:
+        """
+        Enterprise Ad Corresponding DNS Address.
+        """
+        return pulumi.get(self, "dns_addresses")
+
+    @property
+    @pulumi.getter(name="dnsUserName")
+    def dns_user_name(self) -> str:
+        """
+        The Easy-to-Use DNS Name.
+        """
+        return pulumi.get(self, "dns_user_name")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        Enterprise of Ad Domain Name.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter(name="domainUserName")
+    def domain_user_name(self) -> str:
+        """
+        The Domain Administrator's Username.
+        """
+        return pulumi.get(self, "domain_user_name")
+
+    @property
+    @pulumi.getter(name="enableAdminAccess")
+    def enable_admin_access(self) -> bool:
+        """
+        Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+        """
+        return pulumi.get(self, "enable_admin_access")
+
+    @property
+    @pulumi.getter(name="enableCrossDesktopAccess")
+    def enable_cross_desktop_access(self) -> bool:
+        """
+        Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. After the feature is enabled, the cloud desktops in the same workspace can access each other.
+        """
+        return pulumi.get(self, "enable_cross_desktop_access")
+
+    @property
+    @pulumi.getter(name="enableInternetAccess")
+    def enable_internet_access(self) -> bool:
+        """
+        Whether the Open Internet Access Function.
+        """
+        return pulumi.get(self, "enable_internet_access")
+
+    @property
+    @pulumi.getter(name="fileSystemIds")
+    def file_system_ids(self) -> Sequence[str]:
+        """
+        NAS File System ID.
+        """
+        return pulumi.get(self, "file_system_ids")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ad Connector Office Site.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Sequence['outputs.GetAdConnectorOfficeSitesSiteLogResult']:
+        """
+        Registered Log Information.
+        """
+        return pulumi.get(self, "logs")
+
+    @property
+    @pulumi.getter(name="mfaEnabled")
+    def mfa_enabled(self) -> bool:
+        """
+        Whether to Enable Multi-Factor Authentication MFA.
+        """
+        return pulumi.get(self, "mfa_enabled")
+
+    @property
+    @pulumi.getter(name="networkPackageId")
+    def network_package_id(self) -> str:
+        """
+        The ID of the Internet Access.
+        """
+        return pulumi.get(self, "network_package_id")
+
+    @property
+    @pulumi.getter(name="officeSiteId")
+    def office_site_id(self) -> str:
+        """
+        The ID of the Workspace.
+        """
+        return pulumi.get(self, "office_site_id")
+
+    @property
+    @pulumi.getter(name="officeSiteType")
+    def office_site_type(self) -> str:
+        """
+        Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+        """
+        return pulumi.get(self, "office_site_type")
+
+    @property
+    @pulumi.getter(name="ssoEnabled")
+    def sso_enabled(self) -> bool:
+        """
+        Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+        """
+        return pulumi.get(self, "sso_enabled")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The workspace status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="subDomainDnsAddresses")
+    def sub_domain_dns_addresses(self) -> Sequence[str]:
+        """
+        Sub-Domain DNS Address.
+        """
+        return pulumi.get(self, "sub_domain_dns_addresses")
+
+    @property
+    @pulumi.getter(name="subDomainName")
+    def sub_domain_name(self) -> str:
+        """
+        The AD Domain DNS Name.
+        """
+        return pulumi.get(self, "sub_domain_name")
+
+    @property
+    @pulumi.getter(name="trustPassword")
+    def trust_password(self) -> str:
+        """
+        The AD Trust Password.
+        """
+        return pulumi.get(self, "trust_password")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        Security Office VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Sequence[str]:
+        """
+        The vswitch ids.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class GetAdConnectorOfficeSitesSiteAdConnectorResult(dict):
+    def __init__(__self__, *,
+                 ad_connector_address: str,
+                 connector_status: str,
+                 network_interface_id: str,
+                 vswitch_id: str):
+        """
+        :param str ad_connector_address: AD Connector across Zones, Its Connection Addresses.
+        :param str connector_status: AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
+        :param str network_interface_id: AD Connector Mount of the Card ID.
+        :param str vswitch_id: AD Connector in the Network Corresponding to the ID of the VSwitch in.
+        """
+        pulumi.set(__self__, "ad_connector_address", ad_connector_address)
+        pulumi.set(__self__, "connector_status", connector_status)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="adConnectorAddress")
+    def ad_connector_address(self) -> str:
+        """
+        AD Connector across Zones, Its Connection Addresses.
+        """
+        return pulumi.get(self, "ad_connector_address")
+
+    @property
+    @pulumi.getter(name="connectorStatus")
+    def connector_status(self) -> str:
+        """
+        AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
+        """
+        return pulumi.get(self, "connector_status")
+
+    @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> str:
+        """
+        AD Connector Mount of the Card ID.
+        """
+        return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        AD Connector in the Network Corresponding to the ID of the VSwitch in.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetAdConnectorOfficeSitesSiteLogResult(dict):
+    def __init__(__self__, *,
+                 level: str,
+                 message: str,
+                 step: str,
+                 time_stamp: str):
+        """
+        :param str level: Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
+        :param str message: The Log Details.
+        :param str step: Log Information Corresponding to the Step.
+        :param str time_stamp: Log Print Time.
+        """
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "step", step)
+        pulumi.set(__self__, "time_stamp", time_stamp)
+
+    @property
+    @pulumi.getter
+    def level(self) -> str:
+        """
+        Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
+        """
+        return pulumi.get(self, "level")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        The Log Details.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def step(self) -> str:
+        """
+        Log Information Corresponding to the Step.
+        """
+        return pulumi.get(self, "step")
+
+    @property
+    @pulumi.getter(name="timeStamp")
+    def time_stamp(self) -> str:
+        """
+        Log Print Time.
+        """
+        return pulumi.get(self, "time_stamp")
+
+
+@pulumi.output_type
 class GetBundlesBundleResult(dict):
     def __init__(__self__, *,
                  bundle_id: str,
@@ -892,6 +1387,86 @@ class GetCommandsCommandInvokeDesktopResult(dict):
         If You Use the invocation Indicates That the Call of the Time.
         """
         return pulumi.get(self, "stop_time")
+
+
+@pulumi.output_type
+class GetCustomPropertiesPropertyResult(dict):
+    def __init__(__self__, *,
+                 custom_property_id: str,
+                 id: str,
+                 property_key: str,
+                 property_values: Sequence['outputs.GetCustomPropertiesPropertyPropertyValueResult']):
+        """
+        :param str custom_property_id: The first ID of the resource.
+        :param str id: The ID of the Custom Property.
+        :param str property_key: The Custom attribute key.
+        :param Sequence['GetCustomPropertiesPropertyPropertyValueArgs'] property_values: Custom attribute sets the value of.
+        """
+        pulumi.set(__self__, "custom_property_id", custom_property_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "property_key", property_key)
+        pulumi.set(__self__, "property_values", property_values)
+
+    @property
+    @pulumi.getter(name="customPropertyId")
+    def custom_property_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "custom_property_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Custom Property.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="propertyKey")
+    def property_key(self) -> str:
+        """
+        The Custom attribute key.
+        """
+        return pulumi.get(self, "property_key")
+
+    @property
+    @pulumi.getter(name="propertyValues")
+    def property_values(self) -> Sequence['outputs.GetCustomPropertiesPropertyPropertyValueResult']:
+        """
+        Custom attribute sets the value of.
+        """
+        return pulumi.get(self, "property_values")
+
+
+@pulumi.output_type
+class GetCustomPropertiesPropertyPropertyValueResult(dict):
+    def __init__(__self__, *,
+                 property_value: str,
+                 property_value_id: str):
+        """
+        :param str property_value: The value of an attribute.
+        :param str property_value_id: The value of an attribute id.
+        """
+        pulumi.set(__self__, "property_value", property_value)
+        pulumi.set(__self__, "property_value_id", property_value_id)
+
+    @property
+    @pulumi.getter(name="propertyValue")
+    def property_value(self) -> str:
+        """
+        The value of an attribute.
+        """
+        return pulumi.get(self, "property_value")
+
+    @property
+    @pulumi.getter(name="propertyValueId")
+    def property_value_id(self) -> str:
+        """
+        The value of an attribute id.
+        """
+        return pulumi.get(self, "property_value_id")
 
 
 @pulumi.output_type

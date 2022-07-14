@@ -75,9 +75,12 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      * The description of the common bandwidth package instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * This parameter is used for resource destroy. Default value is `false`.
+     */
     public readonly force!: pulumi.Output<string | undefined>;
     /**
-     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -177,9 +180,12 @@ export interface CommonBandwithPackageState {
      * The description of the common bandwidth package instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * This parameter is used for resource destroy. Default value is `false`.
+     */
     force?: pulumi.Input<string>;
     /**
-     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
@@ -232,9 +238,12 @@ export interface CommonBandwithPackageArgs {
      * The description of the common bandwidth package instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * This parameter is used for resource destroy. Default value is `false`.
+     */
     force?: pulumi.Input<string>;
     /**
-     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
      */
     internetChargeType?: pulumi.Input<string>;
     /**

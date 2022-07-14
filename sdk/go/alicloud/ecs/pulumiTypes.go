@@ -412,6 +412,162 @@ func (o EcsInstanceSetDataDiskArrayOutput) Index(i pulumi.IntInput) EcsInstanceS
 	}).(EcsInstanceSetDataDiskOutput)
 }
 
+type EcsInstanceSetExcludeInstanceFilter struct {
+	// The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+	Key string `pulumi:"key"`
+	// The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+	Values []string `pulumi:"values"`
+}
+
+// EcsInstanceSetExcludeInstanceFilterInput is an input type that accepts EcsInstanceSetExcludeInstanceFilterArgs and EcsInstanceSetExcludeInstanceFilterOutput values.
+// You can construct a concrete instance of `EcsInstanceSetExcludeInstanceFilterInput` via:
+//
+//          EcsInstanceSetExcludeInstanceFilterArgs{...}
+type EcsInstanceSetExcludeInstanceFilterInput interface {
+	pulumi.Input
+
+	ToEcsInstanceSetExcludeInstanceFilterOutput() EcsInstanceSetExcludeInstanceFilterOutput
+	ToEcsInstanceSetExcludeInstanceFilterOutputWithContext(context.Context) EcsInstanceSetExcludeInstanceFilterOutput
+}
+
+type EcsInstanceSetExcludeInstanceFilterArgs struct {
+	// The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (EcsInstanceSetExcludeInstanceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsInstanceSetExcludeInstanceFilter)(nil)).Elem()
+}
+
+func (i EcsInstanceSetExcludeInstanceFilterArgs) ToEcsInstanceSetExcludeInstanceFilterOutput() EcsInstanceSetExcludeInstanceFilterOutput {
+	return i.ToEcsInstanceSetExcludeInstanceFilterOutputWithContext(context.Background())
+}
+
+func (i EcsInstanceSetExcludeInstanceFilterArgs) ToEcsInstanceSetExcludeInstanceFilterOutputWithContext(ctx context.Context) EcsInstanceSetExcludeInstanceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetExcludeInstanceFilterOutput)
+}
+
+func (i EcsInstanceSetExcludeInstanceFilterArgs) ToEcsInstanceSetExcludeInstanceFilterPtrOutput() EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return i.ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i EcsInstanceSetExcludeInstanceFilterArgs) ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(ctx context.Context) EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetExcludeInstanceFilterOutput).ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(ctx)
+}
+
+// EcsInstanceSetExcludeInstanceFilterPtrInput is an input type that accepts EcsInstanceSetExcludeInstanceFilterArgs, EcsInstanceSetExcludeInstanceFilterPtr and EcsInstanceSetExcludeInstanceFilterPtrOutput values.
+// You can construct a concrete instance of `EcsInstanceSetExcludeInstanceFilterPtrInput` via:
+//
+//          EcsInstanceSetExcludeInstanceFilterArgs{...}
+//
+//  or:
+//
+//          nil
+type EcsInstanceSetExcludeInstanceFilterPtrInput interface {
+	pulumi.Input
+
+	ToEcsInstanceSetExcludeInstanceFilterPtrOutput() EcsInstanceSetExcludeInstanceFilterPtrOutput
+	ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(context.Context) EcsInstanceSetExcludeInstanceFilterPtrOutput
+}
+
+type ecsInstanceSetExcludeInstanceFilterPtrType EcsInstanceSetExcludeInstanceFilterArgs
+
+func EcsInstanceSetExcludeInstanceFilterPtr(v *EcsInstanceSetExcludeInstanceFilterArgs) EcsInstanceSetExcludeInstanceFilterPtrInput {
+	return (*ecsInstanceSetExcludeInstanceFilterPtrType)(v)
+}
+
+func (*ecsInstanceSetExcludeInstanceFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EcsInstanceSetExcludeInstanceFilter)(nil)).Elem()
+}
+
+func (i *ecsInstanceSetExcludeInstanceFilterPtrType) ToEcsInstanceSetExcludeInstanceFilterPtrOutput() EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return i.ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *ecsInstanceSetExcludeInstanceFilterPtrType) ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(ctx context.Context) EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EcsInstanceSetExcludeInstanceFilterPtrOutput)
+}
+
+type EcsInstanceSetExcludeInstanceFilterOutput struct{ *pulumi.OutputState }
+
+func (EcsInstanceSetExcludeInstanceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EcsInstanceSetExcludeInstanceFilter)(nil)).Elem()
+}
+
+func (o EcsInstanceSetExcludeInstanceFilterOutput) ToEcsInstanceSetExcludeInstanceFilterOutput() EcsInstanceSetExcludeInstanceFilterOutput {
+	return o
+}
+
+func (o EcsInstanceSetExcludeInstanceFilterOutput) ToEcsInstanceSetExcludeInstanceFilterOutputWithContext(ctx context.Context) EcsInstanceSetExcludeInstanceFilterOutput {
+	return o
+}
+
+func (o EcsInstanceSetExcludeInstanceFilterOutput) ToEcsInstanceSetExcludeInstanceFilterPtrOutput() EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return o.ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (o EcsInstanceSetExcludeInstanceFilterOutput) ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(ctx context.Context) EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsInstanceSetExcludeInstanceFilter) *EcsInstanceSetExcludeInstanceFilter {
+		return &v
+	}).(EcsInstanceSetExcludeInstanceFilterPtrOutput)
+}
+
+// The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+func (o EcsInstanceSetExcludeInstanceFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v EcsInstanceSetExcludeInstanceFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+func (o EcsInstanceSetExcludeInstanceFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EcsInstanceSetExcludeInstanceFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type EcsInstanceSetExcludeInstanceFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (EcsInstanceSetExcludeInstanceFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EcsInstanceSetExcludeInstanceFilter)(nil)).Elem()
+}
+
+func (o EcsInstanceSetExcludeInstanceFilterPtrOutput) ToEcsInstanceSetExcludeInstanceFilterPtrOutput() EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return o
+}
+
+func (o EcsInstanceSetExcludeInstanceFilterPtrOutput) ToEcsInstanceSetExcludeInstanceFilterPtrOutputWithContext(ctx context.Context) EcsInstanceSetExcludeInstanceFilterPtrOutput {
+	return o
+}
+
+func (o EcsInstanceSetExcludeInstanceFilterPtrOutput) Elem() EcsInstanceSetExcludeInstanceFilterOutput {
+	return o.ApplyT(func(v *EcsInstanceSetExcludeInstanceFilter) EcsInstanceSetExcludeInstanceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret EcsInstanceSetExcludeInstanceFilter
+		return ret
+	}).(EcsInstanceSetExcludeInstanceFilterOutput)
+}
+
+// The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+func (o EcsInstanceSetExcludeInstanceFilterPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EcsInstanceSetExcludeInstanceFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+func (o EcsInstanceSetExcludeInstanceFilterPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsInstanceSetExcludeInstanceFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type EcsInstanceSetNetworkInterface struct {
 	// The description of ENI.
 	Description *string `pulumi:"description"`
@@ -14041,6 +14197,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeArrayInput)(nil)).Elem(), DedicatedHostNetworkAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetDataDiskInput)(nil)).Elem(), EcsInstanceSetDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetDataDiskArrayInput)(nil)).Elem(), EcsInstanceSetDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetExcludeInstanceFilterInput)(nil)).Elem(), EcsInstanceSetExcludeInstanceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetExcludeInstanceFilterPtrInput)(nil)).Elem(), EcsInstanceSetExcludeInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetNetworkInterfaceInput)(nil)).Elem(), EcsInstanceSetNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetNetworkInterfaceArrayInput)(nil)).Elem(), EcsInstanceSetNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateDataDiskInput)(nil)).Elem(), EcsLaunchTemplateDataDiskArgs{})
@@ -14190,6 +14348,8 @@ func init() {
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeArrayOutput{})
 	pulumi.RegisterOutputType(EcsInstanceSetDataDiskOutput{})
 	pulumi.RegisterOutputType(EcsInstanceSetDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(EcsInstanceSetExcludeInstanceFilterOutput{})
+	pulumi.RegisterOutputType(EcsInstanceSetExcludeInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(EcsInstanceSetNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(EcsInstanceSetNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateDataDiskOutput{})

@@ -10,6 +10,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type CustomPropertyPropertyValue struct {
+	// The value of an attribute.
+	PropertyValue *string `pulumi:"propertyValue"`
+	// The value of an attribute id.
+	PropertyValueId *string `pulumi:"propertyValueId"`
+}
+
+// CustomPropertyPropertyValueInput is an input type that accepts CustomPropertyPropertyValueArgs and CustomPropertyPropertyValueOutput values.
+// You can construct a concrete instance of `CustomPropertyPropertyValueInput` via:
+//
+//          CustomPropertyPropertyValueArgs{...}
+type CustomPropertyPropertyValueInput interface {
+	pulumi.Input
+
+	ToCustomPropertyPropertyValueOutput() CustomPropertyPropertyValueOutput
+	ToCustomPropertyPropertyValueOutputWithContext(context.Context) CustomPropertyPropertyValueOutput
+}
+
+type CustomPropertyPropertyValueArgs struct {
+	// The value of an attribute.
+	PropertyValue pulumi.StringPtrInput `pulumi:"propertyValue"`
+	// The value of an attribute id.
+	PropertyValueId pulumi.StringPtrInput `pulumi:"propertyValueId"`
+}
+
+func (CustomPropertyPropertyValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPropertyPropertyValue)(nil)).Elem()
+}
+
+func (i CustomPropertyPropertyValueArgs) ToCustomPropertyPropertyValueOutput() CustomPropertyPropertyValueOutput {
+	return i.ToCustomPropertyPropertyValueOutputWithContext(context.Background())
+}
+
+func (i CustomPropertyPropertyValueArgs) ToCustomPropertyPropertyValueOutputWithContext(ctx context.Context) CustomPropertyPropertyValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPropertyPropertyValueOutput)
+}
+
+// CustomPropertyPropertyValueArrayInput is an input type that accepts CustomPropertyPropertyValueArray and CustomPropertyPropertyValueArrayOutput values.
+// You can construct a concrete instance of `CustomPropertyPropertyValueArrayInput` via:
+//
+//          CustomPropertyPropertyValueArray{ CustomPropertyPropertyValueArgs{...} }
+type CustomPropertyPropertyValueArrayInput interface {
+	pulumi.Input
+
+	ToCustomPropertyPropertyValueArrayOutput() CustomPropertyPropertyValueArrayOutput
+	ToCustomPropertyPropertyValueArrayOutputWithContext(context.Context) CustomPropertyPropertyValueArrayOutput
+}
+
+type CustomPropertyPropertyValueArray []CustomPropertyPropertyValueInput
+
+func (CustomPropertyPropertyValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomPropertyPropertyValue)(nil)).Elem()
+}
+
+func (i CustomPropertyPropertyValueArray) ToCustomPropertyPropertyValueArrayOutput() CustomPropertyPropertyValueArrayOutput {
+	return i.ToCustomPropertyPropertyValueArrayOutputWithContext(context.Background())
+}
+
+func (i CustomPropertyPropertyValueArray) ToCustomPropertyPropertyValueArrayOutputWithContext(ctx context.Context) CustomPropertyPropertyValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPropertyPropertyValueArrayOutput)
+}
+
+type CustomPropertyPropertyValueOutput struct{ *pulumi.OutputState }
+
+func (CustomPropertyPropertyValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPropertyPropertyValue)(nil)).Elem()
+}
+
+func (o CustomPropertyPropertyValueOutput) ToCustomPropertyPropertyValueOutput() CustomPropertyPropertyValueOutput {
+	return o
+}
+
+func (o CustomPropertyPropertyValueOutput) ToCustomPropertyPropertyValueOutputWithContext(ctx context.Context) CustomPropertyPropertyValueOutput {
+	return o
+}
+
+// The value of an attribute.
+func (o CustomPropertyPropertyValueOutput) PropertyValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomPropertyPropertyValue) *string { return v.PropertyValue }).(pulumi.StringPtrOutput)
+}
+
+// The value of an attribute id.
+func (o CustomPropertyPropertyValueOutput) PropertyValueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomPropertyPropertyValue) *string { return v.PropertyValueId }).(pulumi.StringPtrOutput)
+}
+
+type CustomPropertyPropertyValueArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomPropertyPropertyValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomPropertyPropertyValue)(nil)).Elem()
+}
+
+func (o CustomPropertyPropertyValueArrayOutput) ToCustomPropertyPropertyValueArrayOutput() CustomPropertyPropertyValueArrayOutput {
+	return o
+}
+
+func (o CustomPropertyPropertyValueArrayOutput) ToCustomPropertyPropertyValueArrayOutputWithContext(ctx context.Context) CustomPropertyPropertyValueArrayOutput {
+	return o
+}
+
+func (o CustomPropertyPropertyValueArrayOutput) Index(i pulumi.IntInput) CustomPropertyPropertyValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomPropertyPropertyValue {
+		return vs[0].([]CustomPropertyPropertyValue)[vs[1].(int)]
+	}).(CustomPropertyPropertyValueOutput)
+}
+
 type EcdPolicyGroupAuthorizeAccessPolicyRule struct {
 	// The cidrip of authorize access rule.
 	CidrIp *string `pulumi:"cidrIp"`
@@ -668,6 +774,614 @@ func (o GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAdConnectorDirectoriesDirectoryAdConnector {
 		return vs[0].([]GetAdConnectorDirectoriesDirectoryAdConnector)[vs[1].(int)]
 	}).(GetAdConnectorDirectoriesDirectoryAdConnectorOutput)
+}
+
+type GetAdConnectorOfficeSitesSite struct {
+	// The Name of the ad connector office site.
+	AdConnectorOfficeSiteName string `pulumi:"adConnectorOfficeSiteName"`
+	// AD Connector Collection of Information.
+	AdConnectors []GetAdConnectorOfficeSitesSiteAdConnector `pulumi:"adConnectors"`
+	// The Internet Bandwidth Peak. Possible Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	Bandwidth int `pulumi:"bandwidth"`
+	// Cloud Enterprise Network Instance Id.
+	CenId string `pulumi:"cenId"`
+	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// Workspace Creation Time.
+	CreateTime string `pulumi:"createTime"`
+	// Security Group ID.
+	CustomSecurityGroupId string `pulumi:"customSecurityGroupId"`
+	// The method that is used to connect the client to cloud desktops.
+	DesktopAccessType string `pulumi:"desktopAccessType"`
+	// The endpoint that is used to connect to cloud desktops over a VPC.
+	DesktopVpcEndpoint string `pulumi:"desktopVpcEndpoint"`
+	// Enterprise Ad Corresponding DNS Address.
+	DnsAddresses []string `pulumi:"dnsAddresses"`
+	// The Easy-to-Use DNS Name.
+	DnsUserName string `pulumi:"dnsUserName"`
+	// Enterprise of Ad Domain Name.
+	DomainName string `pulumi:"domainName"`
+	// The Domain Administrator's Username.
+	DomainUserName string `pulumi:"domainUserName"`
+	// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+	EnableAdminAccess bool `pulumi:"enableAdminAccess"`
+	// Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. After the feature is enabled, the cloud desktops in the same workspace can access each other.
+	EnableCrossDesktopAccess bool `pulumi:"enableCrossDesktopAccess"`
+	// Whether the Open Internet Access Function.
+	EnableInternetAccess bool `pulumi:"enableInternetAccess"`
+	// NAS File System ID.
+	FileSystemIds []string `pulumi:"fileSystemIds"`
+	// The ID of the Ad Connector Office Site.
+	Id string `pulumi:"id"`
+	// Registered Log Information.
+	Logs []GetAdConnectorOfficeSitesSiteLog `pulumi:"logs"`
+	// Whether to Enable Multi-Factor Authentication MFA.
+	MfaEnabled bool `pulumi:"mfaEnabled"`
+	// The ID of the Internet Access.
+	NetworkPackageId string `pulumi:"networkPackageId"`
+	// The ID of the Workspace.
+	OfficeSiteId string `pulumi:"officeSiteId"`
+	// Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+	OfficeSiteType string `pulumi:"officeSiteType"`
+	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+	SsoEnabled bool `pulumi:"ssoEnabled"`
+	// The workspace status.
+	Status string `pulumi:"status"`
+	// Sub-Domain DNS Address.
+	SubDomainDnsAddresses []string `pulumi:"subDomainDnsAddresses"`
+	// The AD Domain DNS Name.
+	SubDomainName string `pulumi:"subDomainName"`
+	// The AD Trust Password.
+	TrustPassword string `pulumi:"trustPassword"`
+	// Security Office VPC ID.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch ids.
+	VswitchIds []string `pulumi:"vswitchIds"`
+}
+
+// GetAdConnectorOfficeSitesSiteInput is an input type that accepts GetAdConnectorOfficeSitesSiteArgs and GetAdConnectorOfficeSitesSiteOutput values.
+// You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteInput` via:
+//
+//          GetAdConnectorOfficeSitesSiteArgs{...}
+type GetAdConnectorOfficeSitesSiteInput interface {
+	pulumi.Input
+
+	ToGetAdConnectorOfficeSitesSiteOutput() GetAdConnectorOfficeSitesSiteOutput
+	ToGetAdConnectorOfficeSitesSiteOutputWithContext(context.Context) GetAdConnectorOfficeSitesSiteOutput
+}
+
+type GetAdConnectorOfficeSitesSiteArgs struct {
+	// The Name of the ad connector office site.
+	AdConnectorOfficeSiteName pulumi.StringInput `pulumi:"adConnectorOfficeSiteName"`
+	// AD Connector Collection of Information.
+	AdConnectors GetAdConnectorOfficeSitesSiteAdConnectorArrayInput `pulumi:"adConnectors"`
+	// The Internet Bandwidth Peak. Possible Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// Cloud Enterprise Network Instance Id.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// Workspace Corresponds to the Security Office Network of IPv4 Segment.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// Workspace Creation Time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Security Group ID.
+	CustomSecurityGroupId pulumi.StringInput `pulumi:"customSecurityGroupId"`
+	// The method that is used to connect the client to cloud desktops.
+	DesktopAccessType pulumi.StringInput `pulumi:"desktopAccessType"`
+	// The endpoint that is used to connect to cloud desktops over a VPC.
+	DesktopVpcEndpoint pulumi.StringInput `pulumi:"desktopVpcEndpoint"`
+	// Enterprise Ad Corresponding DNS Address.
+	DnsAddresses pulumi.StringArrayInput `pulumi:"dnsAddresses"`
+	// The Easy-to-Use DNS Name.
+	DnsUserName pulumi.StringInput `pulumi:"dnsUserName"`
+	// Enterprise of Ad Domain Name.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The Domain Administrator's Username.
+	DomainUserName pulumi.StringInput `pulumi:"domainUserName"`
+	// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+	EnableAdminAccess pulumi.BoolInput `pulumi:"enableAdminAccess"`
+	// Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. After the feature is enabled, the cloud desktops in the same workspace can access each other.
+	EnableCrossDesktopAccess pulumi.BoolInput `pulumi:"enableCrossDesktopAccess"`
+	// Whether the Open Internet Access Function.
+	EnableInternetAccess pulumi.BoolInput `pulumi:"enableInternetAccess"`
+	// NAS File System ID.
+	FileSystemIds pulumi.StringArrayInput `pulumi:"fileSystemIds"`
+	// The ID of the Ad Connector Office Site.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Registered Log Information.
+	Logs GetAdConnectorOfficeSitesSiteLogArrayInput `pulumi:"logs"`
+	// Whether to Enable Multi-Factor Authentication MFA.
+	MfaEnabled pulumi.BoolInput `pulumi:"mfaEnabled"`
+	// The ID of the Internet Access.
+	NetworkPackageId pulumi.StringInput `pulumi:"networkPackageId"`
+	// The ID of the Workspace.
+	OfficeSiteId pulumi.StringInput `pulumi:"officeSiteId"`
+	// Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+	OfficeSiteType pulumi.StringInput `pulumi:"officeSiteType"`
+	// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+	SsoEnabled pulumi.BoolInput `pulumi:"ssoEnabled"`
+	// The workspace status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Sub-Domain DNS Address.
+	SubDomainDnsAddresses pulumi.StringArrayInput `pulumi:"subDomainDnsAddresses"`
+	// The AD Domain DNS Name.
+	SubDomainName pulumi.StringInput `pulumi:"subDomainName"`
+	// The AD Trust Password.
+	TrustPassword pulumi.StringInput `pulumi:"trustPassword"`
+	// Security Office VPC ID.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch ids.
+	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
+}
+
+func (GetAdConnectorOfficeSitesSiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdConnectorOfficeSitesSite)(nil)).Elem()
+}
+
+func (i GetAdConnectorOfficeSitesSiteArgs) ToGetAdConnectorOfficeSitesSiteOutput() GetAdConnectorOfficeSitesSiteOutput {
+	return i.ToGetAdConnectorOfficeSitesSiteOutputWithContext(context.Background())
+}
+
+func (i GetAdConnectorOfficeSitesSiteArgs) ToGetAdConnectorOfficeSitesSiteOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteOutput)
+}
+
+// GetAdConnectorOfficeSitesSiteArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteArray and GetAdConnectorOfficeSitesSiteArrayOutput values.
+// You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteArrayInput` via:
+//
+//          GetAdConnectorOfficeSitesSiteArray{ GetAdConnectorOfficeSitesSiteArgs{...} }
+type GetAdConnectorOfficeSitesSiteArrayInput interface {
+	pulumi.Input
+
+	ToGetAdConnectorOfficeSitesSiteArrayOutput() GetAdConnectorOfficeSitesSiteArrayOutput
+	ToGetAdConnectorOfficeSitesSiteArrayOutputWithContext(context.Context) GetAdConnectorOfficeSitesSiteArrayOutput
+}
+
+type GetAdConnectorOfficeSitesSiteArray []GetAdConnectorOfficeSitesSiteInput
+
+func (GetAdConnectorOfficeSitesSiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAdConnectorOfficeSitesSite)(nil)).Elem()
+}
+
+func (i GetAdConnectorOfficeSitesSiteArray) ToGetAdConnectorOfficeSitesSiteArrayOutput() GetAdConnectorOfficeSitesSiteArrayOutput {
+	return i.ToGetAdConnectorOfficeSitesSiteArrayOutputWithContext(context.Background())
+}
+
+func (i GetAdConnectorOfficeSitesSiteArray) ToGetAdConnectorOfficeSitesSiteArrayOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteArrayOutput)
+}
+
+type GetAdConnectorOfficeSitesSiteOutput struct{ *pulumi.OutputState }
+
+func (GetAdConnectorOfficeSitesSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdConnectorOfficeSitesSite)(nil)).Elem()
+}
+
+func (o GetAdConnectorOfficeSitesSiteOutput) ToGetAdConnectorOfficeSitesSiteOutput() GetAdConnectorOfficeSitesSiteOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteOutput) ToGetAdConnectorOfficeSitesSiteOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteOutput {
+	return o
+}
+
+// The Name of the ad connector office site.
+func (o GetAdConnectorOfficeSitesSiteOutput) AdConnectorOfficeSiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.AdConnectorOfficeSiteName }).(pulumi.StringOutput)
+}
+
+// AD Connector Collection of Information.
+func (o GetAdConnectorOfficeSitesSiteOutput) AdConnectors() GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) []GetAdConnectorOfficeSitesSiteAdConnector {
+		return v.AdConnectors
+	}).(GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput)
+}
+
+// The Internet Bandwidth Peak. Possible Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+func (o GetAdConnectorOfficeSitesSiteOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// Cloud Enterprise Network Instance Id.
+func (o GetAdConnectorOfficeSitesSiteOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// Workspace Corresponds to the Security Office Network of IPv4 Segment.
+func (o GetAdConnectorOfficeSitesSiteOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// Workspace Creation Time.
+func (o GetAdConnectorOfficeSitesSiteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Security Group ID.
+func (o GetAdConnectorOfficeSitesSiteOutput) CustomSecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.CustomSecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The method that is used to connect the client to cloud desktops.
+func (o GetAdConnectorOfficeSitesSiteOutput) DesktopAccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.DesktopAccessType }).(pulumi.StringOutput)
+}
+
+// The endpoint that is used to connect to cloud desktops over a VPC.
+func (o GetAdConnectorOfficeSitesSiteOutput) DesktopVpcEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.DesktopVpcEndpoint }).(pulumi.StringOutput)
+}
+
+// Enterprise Ad Corresponding DNS Address.
+func (o GetAdConnectorOfficeSitesSiteOutput) DnsAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) []string { return v.DnsAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The Easy-to-Use DNS Name.
+func (o GetAdConnectorOfficeSitesSiteOutput) DnsUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.DnsUserName }).(pulumi.StringOutput)
+}
+
+// Enterprise of Ad Domain Name.
+func (o GetAdConnectorOfficeSitesSiteOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The Domain Administrator's Username.
+func (o GetAdConnectorOfficeSitesSiteOutput) DomainUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.DomainUserName }).(pulumi.StringOutput)
+}
+
+// Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
+func (o GetAdConnectorOfficeSitesSiteOutput) EnableAdminAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) bool { return v.EnableAdminAccess }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the desktop communication feature is enabled for cloud desktops in the same workspace. After the feature is enabled, the cloud desktops in the same workspace can access each other.
+func (o GetAdConnectorOfficeSitesSiteOutput) EnableCrossDesktopAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) bool { return v.EnableCrossDesktopAccess }).(pulumi.BoolOutput)
+}
+
+// Whether the Open Internet Access Function.
+func (o GetAdConnectorOfficeSitesSiteOutput) EnableInternetAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) bool { return v.EnableInternetAccess }).(pulumi.BoolOutput)
+}
+
+// NAS File System ID.
+func (o GetAdConnectorOfficeSitesSiteOutput) FileSystemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) []string { return v.FileSystemIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the Ad Connector Office Site.
+func (o GetAdConnectorOfficeSitesSiteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Registered Log Information.
+func (o GetAdConnectorOfficeSitesSiteOutput) Logs() GetAdConnectorOfficeSitesSiteLogArrayOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) []GetAdConnectorOfficeSitesSiteLog { return v.Logs }).(GetAdConnectorOfficeSitesSiteLogArrayOutput)
+}
+
+// Whether to Enable Multi-Factor Authentication MFA.
+func (o GetAdConnectorOfficeSitesSiteOutput) MfaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) bool { return v.MfaEnabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the Internet Access.
+func (o GetAdConnectorOfficeSitesSiteOutput) NetworkPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.NetworkPackageId }).(pulumi.StringOutput)
+}
+
+// The ID of the Workspace.
+func (o GetAdConnectorOfficeSitesSiteOutput) OfficeSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.OfficeSiteId }).(pulumi.StringOutput)
+}
+
+// Workspace Account System Type. Possible Values: Simple: Convenient Account. AD_CONNECTOR: Enterprise Ad Account.
+func (o GetAdConnectorOfficeSitesSiteOutput) OfficeSiteType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.OfficeSiteType }).(pulumi.StringOutput)
+}
+
+// Whether to Enable Single Sign-on (SSO) for User-Based SSO.
+func (o GetAdConnectorOfficeSitesSiteOutput) SsoEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) bool { return v.SsoEnabled }).(pulumi.BoolOutput)
+}
+
+// The workspace status.
+func (o GetAdConnectorOfficeSitesSiteOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Sub-Domain DNS Address.
+func (o GetAdConnectorOfficeSitesSiteOutput) SubDomainDnsAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) []string { return v.SubDomainDnsAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The AD Domain DNS Name.
+func (o GetAdConnectorOfficeSitesSiteOutput) SubDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.SubDomainName }).(pulumi.StringOutput)
+}
+
+// The AD Trust Password.
+func (o GetAdConnectorOfficeSitesSiteOutput) TrustPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.TrustPassword }).(pulumi.StringOutput)
+}
+
+// Security Office VPC ID.
+func (o GetAdConnectorOfficeSitesSiteOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch ids.
+func (o GetAdConnectorOfficeSitesSiteOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSite) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
+type GetAdConnectorOfficeSitesSiteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAdConnectorOfficeSitesSiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAdConnectorOfficeSitesSite)(nil)).Elem()
+}
+
+func (o GetAdConnectorOfficeSitesSiteArrayOutput) ToGetAdConnectorOfficeSitesSiteArrayOutput() GetAdConnectorOfficeSitesSiteArrayOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteArrayOutput) ToGetAdConnectorOfficeSitesSiteArrayOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteArrayOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteArrayOutput) Index(i pulumi.IntInput) GetAdConnectorOfficeSitesSiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAdConnectorOfficeSitesSite {
+		return vs[0].([]GetAdConnectorOfficeSitesSite)[vs[1].(int)]
+	}).(GetAdConnectorOfficeSitesSiteOutput)
+}
+
+type GetAdConnectorOfficeSitesSiteAdConnector struct {
+	// AD Connector across Zones, Its Connection Addresses.
+	AdConnectorAddress string `pulumi:"adConnectorAddress"`
+	// AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
+	ConnectorStatus string `pulumi:"connectorStatus"`
+	// AD Connector Mount of the Card ID.
+	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
+	// AD Connector in the Network Corresponding to the ID of the VSwitch in.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetAdConnectorOfficeSitesSiteAdConnectorInput is an input type that accepts GetAdConnectorOfficeSitesSiteAdConnectorArgs and GetAdConnectorOfficeSitesSiteAdConnectorOutput values.
+// You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteAdConnectorInput` via:
+//
+//          GetAdConnectorOfficeSitesSiteAdConnectorArgs{...}
+type GetAdConnectorOfficeSitesSiteAdConnectorInput interface {
+	pulumi.Input
+
+	ToGetAdConnectorOfficeSitesSiteAdConnectorOutput() GetAdConnectorOfficeSitesSiteAdConnectorOutput
+	ToGetAdConnectorOfficeSitesSiteAdConnectorOutputWithContext(context.Context) GetAdConnectorOfficeSitesSiteAdConnectorOutput
+}
+
+type GetAdConnectorOfficeSitesSiteAdConnectorArgs struct {
+	// AD Connector across Zones, Its Connection Addresses.
+	AdConnectorAddress pulumi.StringInput `pulumi:"adConnectorAddress"`
+	// AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
+	ConnectorStatus pulumi.StringInput `pulumi:"connectorStatus"`
+	// AD Connector Mount of the Card ID.
+	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
+	// AD Connector in the Network Corresponding to the ID of the VSwitch in.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetAdConnectorOfficeSitesSiteAdConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdConnectorOfficeSitesSiteAdConnector)(nil)).Elem()
+}
+
+func (i GetAdConnectorOfficeSitesSiteAdConnectorArgs) ToGetAdConnectorOfficeSitesSiteAdConnectorOutput() GetAdConnectorOfficeSitesSiteAdConnectorOutput {
+	return i.ToGetAdConnectorOfficeSitesSiteAdConnectorOutputWithContext(context.Background())
+}
+
+func (i GetAdConnectorOfficeSitesSiteAdConnectorArgs) ToGetAdConnectorOfficeSitesSiteAdConnectorOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteAdConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteAdConnectorOutput)
+}
+
+// GetAdConnectorOfficeSitesSiteAdConnectorArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteAdConnectorArray and GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput values.
+// You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteAdConnectorArrayInput` via:
+//
+//          GetAdConnectorOfficeSitesSiteAdConnectorArray{ GetAdConnectorOfficeSitesSiteAdConnectorArgs{...} }
+type GetAdConnectorOfficeSitesSiteAdConnectorArrayInput interface {
+	pulumi.Input
+
+	ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutput() GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput
+	ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutputWithContext(context.Context) GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput
+}
+
+type GetAdConnectorOfficeSitesSiteAdConnectorArray []GetAdConnectorOfficeSitesSiteAdConnectorInput
+
+func (GetAdConnectorOfficeSitesSiteAdConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAdConnectorOfficeSitesSiteAdConnector)(nil)).Elem()
+}
+
+func (i GetAdConnectorOfficeSitesSiteAdConnectorArray) ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutput() GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput {
+	return i.ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetAdConnectorOfficeSitesSiteAdConnectorArray) ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput)
+}
+
+type GetAdConnectorOfficeSitesSiteAdConnectorOutput struct{ *pulumi.OutputState }
+
+func (GetAdConnectorOfficeSitesSiteAdConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdConnectorOfficeSitesSiteAdConnector)(nil)).Elem()
+}
+
+func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) ToGetAdConnectorOfficeSitesSiteAdConnectorOutput() GetAdConnectorOfficeSitesSiteAdConnectorOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) ToGetAdConnectorOfficeSitesSiteAdConnectorOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteAdConnectorOutput {
+	return o
+}
+
+// AD Connector across Zones, Its Connection Addresses.
+func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) AdConnectorAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteAdConnector) string { return v.AdConnectorAddress }).(pulumi.StringOutput)
+}
+
+// AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
+func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) ConnectorStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteAdConnector) string { return v.ConnectorStatus }).(pulumi.StringOutput)
+}
+
+// AD Connector Mount of the Card ID.
+func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteAdConnector) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+// AD Connector in the Network Corresponding to the ID of the VSwitch in.
+func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteAdConnector) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAdConnectorOfficeSitesSiteAdConnector)(nil)).Elem()
+}
+
+func (o GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput) ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutput() GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput) ToGetAdConnectorOfficeSitesSiteAdConnectorArrayOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput) Index(i pulumi.IntInput) GetAdConnectorOfficeSitesSiteAdConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAdConnectorOfficeSitesSiteAdConnector {
+		return vs[0].([]GetAdConnectorOfficeSitesSiteAdConnector)[vs[1].(int)]
+	}).(GetAdConnectorOfficeSitesSiteAdConnectorOutput)
+}
+
+type GetAdConnectorOfficeSitesSiteLog struct {
+	// Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
+	Level string `pulumi:"level"`
+	// The Log Details.
+	Message string `pulumi:"message"`
+	// Log Information Corresponding to the Step.
+	Step string `pulumi:"step"`
+	// Log Print Time.
+	TimeStamp string `pulumi:"timeStamp"`
+}
+
+// GetAdConnectorOfficeSitesSiteLogInput is an input type that accepts GetAdConnectorOfficeSitesSiteLogArgs and GetAdConnectorOfficeSitesSiteLogOutput values.
+// You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteLogInput` via:
+//
+//          GetAdConnectorOfficeSitesSiteLogArgs{...}
+type GetAdConnectorOfficeSitesSiteLogInput interface {
+	pulumi.Input
+
+	ToGetAdConnectorOfficeSitesSiteLogOutput() GetAdConnectorOfficeSitesSiteLogOutput
+	ToGetAdConnectorOfficeSitesSiteLogOutputWithContext(context.Context) GetAdConnectorOfficeSitesSiteLogOutput
+}
+
+type GetAdConnectorOfficeSitesSiteLogArgs struct {
+	// Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
+	Level pulumi.StringInput `pulumi:"level"`
+	// The Log Details.
+	Message pulumi.StringInput `pulumi:"message"`
+	// Log Information Corresponding to the Step.
+	Step pulumi.StringInput `pulumi:"step"`
+	// Log Print Time.
+	TimeStamp pulumi.StringInput `pulumi:"timeStamp"`
+}
+
+func (GetAdConnectorOfficeSitesSiteLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdConnectorOfficeSitesSiteLog)(nil)).Elem()
+}
+
+func (i GetAdConnectorOfficeSitesSiteLogArgs) ToGetAdConnectorOfficeSitesSiteLogOutput() GetAdConnectorOfficeSitesSiteLogOutput {
+	return i.ToGetAdConnectorOfficeSitesSiteLogOutputWithContext(context.Background())
+}
+
+func (i GetAdConnectorOfficeSitesSiteLogArgs) ToGetAdConnectorOfficeSitesSiteLogOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteLogOutput)
+}
+
+// GetAdConnectorOfficeSitesSiteLogArrayInput is an input type that accepts GetAdConnectorOfficeSitesSiteLogArray and GetAdConnectorOfficeSitesSiteLogArrayOutput values.
+// You can construct a concrete instance of `GetAdConnectorOfficeSitesSiteLogArrayInput` via:
+//
+//          GetAdConnectorOfficeSitesSiteLogArray{ GetAdConnectorOfficeSitesSiteLogArgs{...} }
+type GetAdConnectorOfficeSitesSiteLogArrayInput interface {
+	pulumi.Input
+
+	ToGetAdConnectorOfficeSitesSiteLogArrayOutput() GetAdConnectorOfficeSitesSiteLogArrayOutput
+	ToGetAdConnectorOfficeSitesSiteLogArrayOutputWithContext(context.Context) GetAdConnectorOfficeSitesSiteLogArrayOutput
+}
+
+type GetAdConnectorOfficeSitesSiteLogArray []GetAdConnectorOfficeSitesSiteLogInput
+
+func (GetAdConnectorOfficeSitesSiteLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAdConnectorOfficeSitesSiteLog)(nil)).Elem()
+}
+
+func (i GetAdConnectorOfficeSitesSiteLogArray) ToGetAdConnectorOfficeSitesSiteLogArrayOutput() GetAdConnectorOfficeSitesSiteLogArrayOutput {
+	return i.ToGetAdConnectorOfficeSitesSiteLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetAdConnectorOfficeSitesSiteLogArray) ToGetAdConnectorOfficeSitesSiteLogArrayOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAdConnectorOfficeSitesSiteLogArrayOutput)
+}
+
+type GetAdConnectorOfficeSitesSiteLogOutput struct{ *pulumi.OutputState }
+
+func (GetAdConnectorOfficeSitesSiteLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdConnectorOfficeSitesSiteLog)(nil)).Elem()
+}
+
+func (o GetAdConnectorOfficeSitesSiteLogOutput) ToGetAdConnectorOfficeSitesSiteLogOutput() GetAdConnectorOfficeSitesSiteLogOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteLogOutput) ToGetAdConnectorOfficeSitesSiteLogOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteLogOutput {
+	return o
+}
+
+// Log Level. Possible Values: Info: Information Error: Error Warn: Warning.
+func (o GetAdConnectorOfficeSitesSiteLogOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteLog) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The Log Details.
+func (o GetAdConnectorOfficeSitesSiteLogOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteLog) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Log Information Corresponding to the Step.
+func (o GetAdConnectorOfficeSitesSiteLogOutput) Step() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteLog) string { return v.Step }).(pulumi.StringOutput)
+}
+
+// Log Print Time.
+func (o GetAdConnectorOfficeSitesSiteLogOutput) TimeStamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteLog) string { return v.TimeStamp }).(pulumi.StringOutput)
+}
+
+type GetAdConnectorOfficeSitesSiteLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAdConnectorOfficeSitesSiteLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAdConnectorOfficeSitesSiteLog)(nil)).Elem()
+}
+
+func (o GetAdConnectorOfficeSitesSiteLogArrayOutput) ToGetAdConnectorOfficeSitesSiteLogArrayOutput() GetAdConnectorOfficeSitesSiteLogArrayOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteLogArrayOutput) ToGetAdConnectorOfficeSitesSiteLogArrayOutputWithContext(ctx context.Context) GetAdConnectorOfficeSitesSiteLogArrayOutput {
+	return o
+}
+
+func (o GetAdConnectorOfficeSitesSiteLogArrayOutput) Index(i pulumi.IntInput) GetAdConnectorOfficeSitesSiteLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAdConnectorOfficeSitesSiteLog {
+		return vs[0].([]GetAdConnectorOfficeSitesSiteLog)[vs[1].(int)]
+	}).(GetAdConnectorOfficeSitesSiteLogOutput)
 }
 
 type GetBundlesBundle struct {
@@ -1414,6 +2128,238 @@ func (o GetCommandsCommandInvokeDesktopArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCommandsCommandInvokeDesktop {
 		return vs[0].([]GetCommandsCommandInvokeDesktop)[vs[1].(int)]
 	}).(GetCommandsCommandInvokeDesktopOutput)
+}
+
+type GetCustomPropertiesProperty struct {
+	// The first ID of the resource.
+	CustomPropertyId string `pulumi:"customPropertyId"`
+	// The ID of the Custom Property.
+	Id string `pulumi:"id"`
+	// The Custom attribute key.
+	PropertyKey string `pulumi:"propertyKey"`
+	// Custom attribute sets the value of.
+	PropertyValues []GetCustomPropertiesPropertyPropertyValue `pulumi:"propertyValues"`
+}
+
+// GetCustomPropertiesPropertyInput is an input type that accepts GetCustomPropertiesPropertyArgs and GetCustomPropertiesPropertyOutput values.
+// You can construct a concrete instance of `GetCustomPropertiesPropertyInput` via:
+//
+//          GetCustomPropertiesPropertyArgs{...}
+type GetCustomPropertiesPropertyInput interface {
+	pulumi.Input
+
+	ToGetCustomPropertiesPropertyOutput() GetCustomPropertiesPropertyOutput
+	ToGetCustomPropertiesPropertyOutputWithContext(context.Context) GetCustomPropertiesPropertyOutput
+}
+
+type GetCustomPropertiesPropertyArgs struct {
+	// The first ID of the resource.
+	CustomPropertyId pulumi.StringInput `pulumi:"customPropertyId"`
+	// The ID of the Custom Property.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Custom attribute key.
+	PropertyKey pulumi.StringInput `pulumi:"propertyKey"`
+	// Custom attribute sets the value of.
+	PropertyValues GetCustomPropertiesPropertyPropertyValueArrayInput `pulumi:"propertyValues"`
+}
+
+func (GetCustomPropertiesPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomPropertiesProperty)(nil)).Elem()
+}
+
+func (i GetCustomPropertiesPropertyArgs) ToGetCustomPropertiesPropertyOutput() GetCustomPropertiesPropertyOutput {
+	return i.ToGetCustomPropertiesPropertyOutputWithContext(context.Background())
+}
+
+func (i GetCustomPropertiesPropertyArgs) ToGetCustomPropertiesPropertyOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomPropertiesPropertyOutput)
+}
+
+// GetCustomPropertiesPropertyArrayInput is an input type that accepts GetCustomPropertiesPropertyArray and GetCustomPropertiesPropertyArrayOutput values.
+// You can construct a concrete instance of `GetCustomPropertiesPropertyArrayInput` via:
+//
+//          GetCustomPropertiesPropertyArray{ GetCustomPropertiesPropertyArgs{...} }
+type GetCustomPropertiesPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomPropertiesPropertyArrayOutput() GetCustomPropertiesPropertyArrayOutput
+	ToGetCustomPropertiesPropertyArrayOutputWithContext(context.Context) GetCustomPropertiesPropertyArrayOutput
+}
+
+type GetCustomPropertiesPropertyArray []GetCustomPropertiesPropertyInput
+
+func (GetCustomPropertiesPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomPropertiesProperty)(nil)).Elem()
+}
+
+func (i GetCustomPropertiesPropertyArray) ToGetCustomPropertiesPropertyArrayOutput() GetCustomPropertiesPropertyArrayOutput {
+	return i.ToGetCustomPropertiesPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomPropertiesPropertyArray) ToGetCustomPropertiesPropertyArrayOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomPropertiesPropertyArrayOutput)
+}
+
+type GetCustomPropertiesPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetCustomPropertiesPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomPropertiesProperty)(nil)).Elem()
+}
+
+func (o GetCustomPropertiesPropertyOutput) ToGetCustomPropertiesPropertyOutput() GetCustomPropertiesPropertyOutput {
+	return o
+}
+
+func (o GetCustomPropertiesPropertyOutput) ToGetCustomPropertiesPropertyOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetCustomPropertiesPropertyOutput) CustomPropertyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPropertiesProperty) string { return v.CustomPropertyId }).(pulumi.StringOutput)
+}
+
+// The ID of the Custom Property.
+func (o GetCustomPropertiesPropertyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPropertiesProperty) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Custom attribute key.
+func (o GetCustomPropertiesPropertyOutput) PropertyKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPropertiesProperty) string { return v.PropertyKey }).(pulumi.StringOutput)
+}
+
+// Custom attribute sets the value of.
+func (o GetCustomPropertiesPropertyOutput) PropertyValues() GetCustomPropertiesPropertyPropertyValueArrayOutput {
+	return o.ApplyT(func(v GetCustomPropertiesProperty) []GetCustomPropertiesPropertyPropertyValue {
+		return v.PropertyValues
+	}).(GetCustomPropertiesPropertyPropertyValueArrayOutput)
+}
+
+type GetCustomPropertiesPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomPropertiesPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomPropertiesProperty)(nil)).Elem()
+}
+
+func (o GetCustomPropertiesPropertyArrayOutput) ToGetCustomPropertiesPropertyArrayOutput() GetCustomPropertiesPropertyArrayOutput {
+	return o
+}
+
+func (o GetCustomPropertiesPropertyArrayOutput) ToGetCustomPropertiesPropertyArrayOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyArrayOutput {
+	return o
+}
+
+func (o GetCustomPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) GetCustomPropertiesPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomPropertiesProperty {
+		return vs[0].([]GetCustomPropertiesProperty)[vs[1].(int)]
+	}).(GetCustomPropertiesPropertyOutput)
+}
+
+type GetCustomPropertiesPropertyPropertyValue struct {
+	// The value of an attribute.
+	PropertyValue string `pulumi:"propertyValue"`
+	// The value of an attribute id.
+	PropertyValueId string `pulumi:"propertyValueId"`
+}
+
+// GetCustomPropertiesPropertyPropertyValueInput is an input type that accepts GetCustomPropertiesPropertyPropertyValueArgs and GetCustomPropertiesPropertyPropertyValueOutput values.
+// You can construct a concrete instance of `GetCustomPropertiesPropertyPropertyValueInput` via:
+//
+//          GetCustomPropertiesPropertyPropertyValueArgs{...}
+type GetCustomPropertiesPropertyPropertyValueInput interface {
+	pulumi.Input
+
+	ToGetCustomPropertiesPropertyPropertyValueOutput() GetCustomPropertiesPropertyPropertyValueOutput
+	ToGetCustomPropertiesPropertyPropertyValueOutputWithContext(context.Context) GetCustomPropertiesPropertyPropertyValueOutput
+}
+
+type GetCustomPropertiesPropertyPropertyValueArgs struct {
+	// The value of an attribute.
+	PropertyValue pulumi.StringInput `pulumi:"propertyValue"`
+	// The value of an attribute id.
+	PropertyValueId pulumi.StringInput `pulumi:"propertyValueId"`
+}
+
+func (GetCustomPropertiesPropertyPropertyValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomPropertiesPropertyPropertyValue)(nil)).Elem()
+}
+
+func (i GetCustomPropertiesPropertyPropertyValueArgs) ToGetCustomPropertiesPropertyPropertyValueOutput() GetCustomPropertiesPropertyPropertyValueOutput {
+	return i.ToGetCustomPropertiesPropertyPropertyValueOutputWithContext(context.Background())
+}
+
+func (i GetCustomPropertiesPropertyPropertyValueArgs) ToGetCustomPropertiesPropertyPropertyValueOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyPropertyValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomPropertiesPropertyPropertyValueOutput)
+}
+
+// GetCustomPropertiesPropertyPropertyValueArrayInput is an input type that accepts GetCustomPropertiesPropertyPropertyValueArray and GetCustomPropertiesPropertyPropertyValueArrayOutput values.
+// You can construct a concrete instance of `GetCustomPropertiesPropertyPropertyValueArrayInput` via:
+//
+//          GetCustomPropertiesPropertyPropertyValueArray{ GetCustomPropertiesPropertyPropertyValueArgs{...} }
+type GetCustomPropertiesPropertyPropertyValueArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomPropertiesPropertyPropertyValueArrayOutput() GetCustomPropertiesPropertyPropertyValueArrayOutput
+	ToGetCustomPropertiesPropertyPropertyValueArrayOutputWithContext(context.Context) GetCustomPropertiesPropertyPropertyValueArrayOutput
+}
+
+type GetCustomPropertiesPropertyPropertyValueArray []GetCustomPropertiesPropertyPropertyValueInput
+
+func (GetCustomPropertiesPropertyPropertyValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomPropertiesPropertyPropertyValue)(nil)).Elem()
+}
+
+func (i GetCustomPropertiesPropertyPropertyValueArray) ToGetCustomPropertiesPropertyPropertyValueArrayOutput() GetCustomPropertiesPropertyPropertyValueArrayOutput {
+	return i.ToGetCustomPropertiesPropertyPropertyValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomPropertiesPropertyPropertyValueArray) ToGetCustomPropertiesPropertyPropertyValueArrayOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyPropertyValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomPropertiesPropertyPropertyValueArrayOutput)
+}
+
+type GetCustomPropertiesPropertyPropertyValueOutput struct{ *pulumi.OutputState }
+
+func (GetCustomPropertiesPropertyPropertyValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomPropertiesPropertyPropertyValue)(nil)).Elem()
+}
+
+func (o GetCustomPropertiesPropertyPropertyValueOutput) ToGetCustomPropertiesPropertyPropertyValueOutput() GetCustomPropertiesPropertyPropertyValueOutput {
+	return o
+}
+
+func (o GetCustomPropertiesPropertyPropertyValueOutput) ToGetCustomPropertiesPropertyPropertyValueOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyPropertyValueOutput {
+	return o
+}
+
+// The value of an attribute.
+func (o GetCustomPropertiesPropertyPropertyValueOutput) PropertyValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPropertiesPropertyPropertyValue) string { return v.PropertyValue }).(pulumi.StringOutput)
+}
+
+// The value of an attribute id.
+func (o GetCustomPropertiesPropertyPropertyValueOutput) PropertyValueId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPropertiesPropertyPropertyValue) string { return v.PropertyValueId }).(pulumi.StringOutput)
+}
+
+type GetCustomPropertiesPropertyPropertyValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomPropertiesPropertyPropertyValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomPropertiesPropertyPropertyValue)(nil)).Elem()
+}
+
+func (o GetCustomPropertiesPropertyPropertyValueArrayOutput) ToGetCustomPropertiesPropertyPropertyValueArrayOutput() GetCustomPropertiesPropertyPropertyValueArrayOutput {
+	return o
+}
+
+func (o GetCustomPropertiesPropertyPropertyValueArrayOutput) ToGetCustomPropertiesPropertyPropertyValueArrayOutputWithContext(ctx context.Context) GetCustomPropertiesPropertyPropertyValueArrayOutput {
+	return o
+}
+
+func (o GetCustomPropertiesPropertyPropertyValueArrayOutput) Index(i pulumi.IntInput) GetCustomPropertiesPropertyPropertyValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomPropertiesPropertyPropertyValue {
+		return vs[0].([]GetCustomPropertiesPropertyPropertyValue)[vs[1].(int)]
+	}).(GetCustomPropertiesPropertyPropertyValueOutput)
 }
 
 type GetDesktopTypesType struct {
@@ -4364,6 +5310,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomPropertyPropertyValueInput)(nil)).Elem(), CustomPropertyPropertyValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomPropertyPropertyValueArrayInput)(nil)).Elem(), CustomPropertyPropertyValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeAccessPolicyRuleInput)(nil)).Elem(), EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput)(nil)).Elem(), EcdPolicyGroupAuthorizeAccessPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeSecurityPolicyRuleInput)(nil)).Elem(), EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{})
@@ -4372,6 +5320,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorDirectoriesDirectoryArrayInput)(nil)).Elem(), GetAdConnectorDirectoriesDirectoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorDirectoriesDirectoryAdConnectorInput)(nil)).Elem(), GetAdConnectorDirectoriesDirectoryAdConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorDirectoriesDirectoryAdConnectorArrayInput)(nil)).Elem(), GetAdConnectorDirectoriesDirectoryAdConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorOfficeSitesSiteInput)(nil)).Elem(), GetAdConnectorOfficeSitesSiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorOfficeSitesSiteArrayInput)(nil)).Elem(), GetAdConnectorOfficeSitesSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorOfficeSitesSiteAdConnectorInput)(nil)).Elem(), GetAdConnectorOfficeSitesSiteAdConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorOfficeSitesSiteAdConnectorArrayInput)(nil)).Elem(), GetAdConnectorOfficeSitesSiteAdConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorOfficeSitesSiteLogInput)(nil)).Elem(), GetAdConnectorOfficeSitesSiteLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAdConnectorOfficeSitesSiteLogArrayInput)(nil)).Elem(), GetAdConnectorOfficeSitesSiteLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleInput)(nil)).Elem(), GetBundlesBundleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleArrayInput)(nil)).Elem(), GetBundlesBundleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleDesktopTypeAttributeInput)(nil)).Elem(), GetBundlesBundleDesktopTypeAttributeArgs{})
@@ -4382,6 +5336,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandArrayInput)(nil)).Elem(), GetCommandsCommandArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInvokeDesktopInput)(nil)).Elem(), GetCommandsCommandInvokeDesktopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInvokeDesktopArrayInput)(nil)).Elem(), GetCommandsCommandInvokeDesktopArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomPropertiesPropertyInput)(nil)).Elem(), GetCustomPropertiesPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomPropertiesPropertyArrayInput)(nil)).Elem(), GetCustomPropertiesPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomPropertiesPropertyPropertyValueInput)(nil)).Elem(), GetCustomPropertiesPropertyPropertyValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomPropertiesPropertyPropertyValueArrayInput)(nil)).Elem(), GetCustomPropertiesPropertyPropertyValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopTypesTypeInput)(nil)).Elem(), GetDesktopTypesTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopTypesTypeArrayInput)(nil)).Elem(), GetDesktopTypesTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopInput)(nil)).Elem(), GetDesktopsDesktopArgs{})
@@ -4412,6 +5370,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(CustomPropertyPropertyValueOutput{})
+	pulumi.RegisterOutputType(CustomPropertyPropertyValueArrayOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput{})
@@ -4420,6 +5380,12 @@ func init() {
 	pulumi.RegisterOutputType(GetAdConnectorDirectoriesDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(GetAdConnectorDirectoriesDirectoryAdConnectorOutput{})
 	pulumi.RegisterOutputType(GetAdConnectorDirectoriesDirectoryAdConnectorArrayOutput{})
+	pulumi.RegisterOutputType(GetAdConnectorOfficeSitesSiteOutput{})
+	pulumi.RegisterOutputType(GetAdConnectorOfficeSitesSiteArrayOutput{})
+	pulumi.RegisterOutputType(GetAdConnectorOfficeSitesSiteAdConnectorOutput{})
+	pulumi.RegisterOutputType(GetAdConnectorOfficeSitesSiteAdConnectorArrayOutput{})
+	pulumi.RegisterOutputType(GetAdConnectorOfficeSitesSiteLogOutput{})
+	pulumi.RegisterOutputType(GetAdConnectorOfficeSitesSiteLogArrayOutput{})
 	pulumi.RegisterOutputType(GetBundlesBundleOutput{})
 	pulumi.RegisterOutputType(GetBundlesBundleArrayOutput{})
 	pulumi.RegisterOutputType(GetBundlesBundleDesktopTypeAttributeOutput{})
@@ -4430,6 +5396,10 @@ func init() {
 	pulumi.RegisterOutputType(GetCommandsCommandArrayOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandInvokeDesktopOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandInvokeDesktopArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomPropertiesPropertyOutput{})
+	pulumi.RegisterOutputType(GetCustomPropertiesPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomPropertiesPropertyPropertyValueOutput{})
+	pulumi.RegisterOutputType(GetCustomPropertiesPropertyPropertyValueArrayOutput{})
 	pulumi.RegisterOutputType(GetDesktopTypesTypeOutput{})
 	pulumi.RegisterOutputType(GetDesktopTypesTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetDesktopsDesktopOutput{})

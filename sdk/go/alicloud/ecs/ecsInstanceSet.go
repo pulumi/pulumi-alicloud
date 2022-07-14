@@ -45,6 +45,8 @@ type EcsInstanceSet struct {
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	ExcludeInstanceFilter EcsInstanceSetExcludeInstanceFilterPtrOutput `pulumi:"excludeInstanceFilter"`
 	// The hostname of instance.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
@@ -180,6 +182,8 @@ type ecsInstanceSetState struct {
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description *string `pulumi:"description"`
+	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	ExcludeInstanceFilter *EcsInstanceSetExcludeInstanceFilter `pulumi:"excludeInstanceFilter"`
 	// The hostname of instance.
 	HostName *string `pulumi:"hostName"`
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
@@ -278,6 +282,8 @@ type EcsInstanceSetState struct {
 	DeploymentSetId pulumi.StringPtrInput
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description pulumi.StringPtrInput
+	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	ExcludeInstanceFilter EcsInstanceSetExcludeInstanceFilterPtrInput
 	// The hostname of instance.
 	HostName pulumi.StringPtrInput
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
@@ -380,6 +386,8 @@ type ecsInstanceSetArgs struct {
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description *string `pulumi:"description"`
+	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	ExcludeInstanceFilter *EcsInstanceSetExcludeInstanceFilter `pulumi:"excludeInstanceFilter"`
 	// The hostname of instance.
 	HostName *string `pulumi:"hostName"`
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
@@ -477,6 +485,8 @@ type EcsInstanceSetArgs struct {
 	DeploymentSetId pulumi.StringPtrInput
 	// The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
 	Description pulumi.StringPtrInput
+	// The instances that need to be excluded from the Instance Set. See the following `Block excludeInstanceFilter`.
+	ExcludeInstanceFilter EcsInstanceSetExcludeInstanceFilterPtrInput
 	// The hostname of instance.
 	HostName pulumi.StringPtrInput
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.

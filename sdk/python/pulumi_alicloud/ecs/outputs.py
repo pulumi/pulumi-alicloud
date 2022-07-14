@@ -13,6 +13,7 @@ __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfig',
     'DedicatedHostNetworkAttribute',
     'EcsInstanceSetDataDisk',
+    'EcsInstanceSetExcludeInstanceFilter',
     'EcsInstanceSetNetworkInterface',
     'EcsLaunchTemplateDataDisk',
     'EcsLaunchTemplateNetworkInterfaces',
@@ -350,6 +351,35 @@ class EcsInstanceSetDataDisk(dict):
         The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class EcsInstanceSetExcludeInstanceFilter(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 values: Sequence[str]):
+        """
+        :param str key: The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+        :param Sequence[str] values: The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

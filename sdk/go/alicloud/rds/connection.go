@@ -95,6 +95,8 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	BabelfishPort pulumi.StringOutput `pulumi:"babelfishPort"`
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringOutput `pulumi:"connectionPrefix"`
 	// Connection instance string.
@@ -139,6 +141,8 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
+	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	BabelfishPort *string `pulumi:"babelfishPort"`
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
 	// Connection instance string.
@@ -152,6 +156,8 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
+	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	BabelfishPort pulumi.StringPtrInput
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringPtrInput
 	// Connection instance string.
@@ -169,6 +175,8 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
+	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	BabelfishPort *string `pulumi:"babelfishPort"`
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
 	// The Id of instance that can run database.
@@ -179,6 +187,8 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
+	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	BabelfishPort pulumi.StringPtrInput
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringPtrInput
 	// The Id of instance that can run database.

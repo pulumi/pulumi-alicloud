@@ -32,7 +32,8 @@ class CommonBandwithPackageArgs:
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
-        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        :param pulumi.Input[str] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
@@ -117,6 +118,9 @@ class CommonBandwithPackageArgs:
     @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[str]]:
+        """
+        This parameter is used for resource destroy. Default value is `false`.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -127,7 +131,7 @@ class CommonBandwithPackageArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -219,7 +223,8 @@ class _CommonBandwithPackageState:
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
-        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        :param pulumi.Input[str] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
@@ -308,6 +313,9 @@ class _CommonBandwithPackageState:
     @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[str]]:
+        """
+        This parameter is used for resource destroy. Default value is `false`.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -318,7 +326,7 @@ class _CommonBandwithPackageState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -448,7 +456,8 @@ class CommonBandwithPackage(pulumi.CustomResource):
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
-        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        :param pulumi.Input[str] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
@@ -575,7 +584,8 @@ class CommonBandwithPackage(pulumi.CustomResource):
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
-        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        :param pulumi.Input[str] force: This parameter is used for resource destroy. Default value is `false`.
+        :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         :param pulumi.Input[str] isp: The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
@@ -638,13 +648,16 @@ class CommonBandwithPackage(pulumi.CustomResource):
     @property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[str]]:
+        """
+        This parameter is used for resource destroy. Default value is `false`.
+        """
         return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`.
+        The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
         """
         return pulumi.get(self, "internet_charge_type")
 

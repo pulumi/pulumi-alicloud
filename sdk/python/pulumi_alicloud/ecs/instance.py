@@ -86,7 +86,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
+        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -386,7 +386,7 @@ class InstanceArgs:
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the deployment set to which to deploy the instance.
+        The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         """
         return pulumi.get(self, "deployment_set_id")
 
@@ -980,7 +980,7 @@ class _InstanceState:
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] deployment_set_group_no: (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
-        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
+        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -1267,7 +1267,7 @@ class _InstanceState:
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the deployment set to which to deploy the instance.
+        The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         """
         return pulumi.get(self, "deployment_set_id")
 
@@ -1918,7 +1918,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
-        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
+        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -2229,7 +2229,7 @@ class Instance(pulumi.CustomResource):
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] deployment_set_group_no: (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
-        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
+        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -2425,7 +2425,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the deployment set to which to deploy the instance.
+        The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         """
         return pulumi.get(self, "deployment_set_id")
 

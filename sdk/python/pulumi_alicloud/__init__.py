@@ -2545,6 +2545,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eds/adConnectorOfficeSite",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite": "AdConnectorOfficeSite"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eds/bundle",
   "fqn": "pulumi_alicloud.eds",
   "classes": {
@@ -2557,6 +2565,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eds",
   "classes": {
    "alicloud:eds/command:Command": "Command"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eds/customProperty",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/customProperty:CustomProperty": "CustomProperty"
   }
  },
  {

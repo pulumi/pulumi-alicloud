@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> DeploymentSetGroupNo { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the deployment set to which to deploy the instance.
+        /// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         /// </summary>
         [Output("deploymentSetId")]
         public Output<string?> DeploymentSetId { get; private set; } = null!;
@@ -465,7 +465,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The ID of the deployment set to which to deploy the instance.
+        /// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         /// </summary>
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }
@@ -845,7 +845,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetGroupNo { get; set; }
 
         /// <summary>
-        /// The ID of the deployment set to which to deploy the instance.
+        /// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
         /// </summary>
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }

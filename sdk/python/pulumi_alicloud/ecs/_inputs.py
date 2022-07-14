@@ -12,6 +12,7 @@ __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfigArgs',
     'DedicatedHostNetworkAttributeArgs',
     'EcsInstanceSetDataDiskArgs',
+    'EcsInstanceSetExcludeInstanceFilterArgs',
     'EcsInstanceSetNetworkInterfaceArgs',
     'EcsLaunchTemplateDataDiskArgs',
     'EcsLaunchTemplateNetworkInterfacesArgs',
@@ -281,6 +282,43 @@ class EcsInstanceSetDataDiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_id", value)
+
+
+@pulumi.input_type
+class EcsInstanceSetExcludeInstanceFilterArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] key: The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type

@@ -33,6 +33,7 @@ class AlertArgs:
                  notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]] = None,
                  notify_threshold: Optional[pulumi.Input[int]] = None,
                  policy_configuration: Optional[pulumi.Input['AlertPolicyConfigurationArgs']] = None,
+                 schedule: Optional[pulumi.Input['AlertScheduleArgs']] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
@@ -60,13 +61,14 @@ class AlertArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
         :param pulumi.Input[int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         :param pulumi.Input['AlertPolicyConfigurationArgs'] policy_configuration: Policy configuration for new alert.
-        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
-        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
+        :param pulumi.Input['AlertScheduleArgs'] schedule: schedule for alert.
+        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
         :param pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]] severity_configurations: Severity configuration for new alert.
         :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
-        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
         pulumi.set(__self__, "alert_displayname", alert_displayname)
@@ -113,8 +115,16 @@ class AlertArgs:
             pulumi.set(__self__, "notify_threshold", notify_threshold)
         if policy_configuration is not None:
             pulumi.set(__self__, "policy_configuration", policy_configuration)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if schedule_interval is not None:
+            warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
+            pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
         if schedule_interval is not None:
             pulumi.set(__self__, "schedule_interval", schedule_interval)
+        if schedule_type is not None:
+            warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
+            pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
         if schedule_type is not None:
             pulumi.set(__self__, "schedule_type", schedule_type)
         if send_resolved is not None:
@@ -347,10 +357,22 @@ class AlertArgs:
         pulumi.set(self, "policy_configuration", value)
 
     @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['AlertScheduleArgs']]:
+        """
+        schedule for alert.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['AlertScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+    @property
     @pulumi.getter(name="scheduleInterval")
     def schedule_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Execution interval. 60 seconds minimum, such as 60s, 1h.
+        Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         """
         return pulumi.get(self, "schedule_interval")
 
@@ -362,7 +384,7 @@ class AlertArgs:
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Default FixedRate. No need to configure this parameter.
+        Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         """
         return pulumi.get(self, "schedule_type")
 
@@ -422,7 +444,7 @@ class AlertArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        including FixedRate,Hourly,Daily,Weekly,Cron.
         """
         return pulumi.get(self, "type")
 
@@ -464,6 +486,7 @@ class _AlertState:
                  policy_configuration: Optional[pulumi.Input['AlertPolicyConfigurationArgs']] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  query_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]] = None,
+                 schedule: Optional[pulumi.Input['AlertScheduleArgs']] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
@@ -491,13 +514,14 @@ class _AlertState:
         :param pulumi.Input['AlertPolicyConfigurationArgs'] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] project_name: The project name.
         :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
-        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
+        :param pulumi.Input['AlertScheduleArgs'] schedule: schedule for alert.
+        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
         :param pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]] severity_configurations: Severity configuration for new alert.
         :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
-        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
         if alert_description is not None:
@@ -548,8 +572,16 @@ class _AlertState:
             pulumi.set(__self__, "project_name", project_name)
         if query_lists is not None:
             pulumi.set(__self__, "query_lists", query_lists)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if schedule_interval is not None:
+            warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
+            pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
         if schedule_interval is not None:
             pulumi.set(__self__, "schedule_interval", schedule_interval)
+        if schedule_type is not None:
+            warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
+            pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
         if schedule_type is not None:
             pulumi.set(__self__, "schedule_type", schedule_type)
         if send_resolved is not None:
@@ -782,10 +814,22 @@ class _AlertState:
         pulumi.set(self, "query_lists", value)
 
     @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['AlertScheduleArgs']]:
+        """
+        schedule for alert.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['AlertScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+    @property
     @pulumi.getter(name="scheduleInterval")
     def schedule_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Execution interval. 60 seconds minimum, such as 60s, 1h.
+        Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         """
         return pulumi.get(self, "schedule_interval")
 
@@ -797,7 +841,7 @@ class _AlertState:
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Default FixedRate. No need to configure this parameter.
+        Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         """
         return pulumi.get(self, "schedule_type")
 
@@ -857,7 +901,7 @@ class _AlertState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        including FixedRate,Hourly,Daily,Weekly,Cron.
         """
         return pulumi.get(self, "type")
 
@@ -901,6 +945,7 @@ class Alert(pulumi.CustomResource):
                  policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
@@ -940,6 +985,14 @@ class Alert(pulumi.CustomResource):
             alert_displayname="tf-test-alert-displayname",
             condition="count> 100",
             dashboard="tf-test-dashboard",
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
             query_lists=[alicloud.log.AlertQueryListArgs(
                 logstore="tf-test-logstore",
                 chart_title="chart_title",
@@ -996,9 +1049,15 @@ class Alert(pulumi.CustomResource):
             no_data_fire=False,
             no_data_severity=8,
             send_resolved=True,
-            schedule_interval="5m",
-            schedule_type="FixedRate",
             auto_annotation=True,
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
             query_lists=[
                 alicloud.log.AlertQueryListArgs(
                     store="tf-test-logstore",
@@ -1106,13 +1165,14 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] project_name: The project name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
-        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
+        :param pulumi.Input[pulumi.InputType['AlertScheduleArgs']] schedule: schedule for alert.
+        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]] severity_configurations: Severity configuration for new alert.
         :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
-        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
         ...
@@ -1151,6 +1211,14 @@ class Alert(pulumi.CustomResource):
             alert_displayname="tf-test-alert-displayname",
             condition="count> 100",
             dashboard="tf-test-dashboard",
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
             query_lists=[alicloud.log.AlertQueryListArgs(
                 logstore="tf-test-logstore",
                 chart_title="chart_title",
@@ -1207,9 +1275,15 @@ class Alert(pulumi.CustomResource):
             no_data_fire=False,
             no_data_severity=8,
             send_resolved=True,
-            schedule_interval="5m",
-            schedule_type="FixedRate",
             auto_annotation=True,
+            schedule=alicloud.log.AlertScheduleArgs(
+                type="FixedRate",
+                interval="5m",
+                hour=0,
+                day_of_week=0,
+                delay=0,
+                run_immediately=False,
+            ),
             query_lists=[
                 alicloud.log.AlertQueryListArgs(
                     store="tf-test-logstore",
@@ -1331,6 +1405,7 @@ class Alert(pulumi.CustomResource):
                  policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
                  schedule_interval: Optional[pulumi.Input[str]] = None,
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  send_resolved: Optional[pulumi.Input[bool]] = None,
@@ -1389,7 +1464,14 @@ class Alert(pulumi.CustomResource):
             if query_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'query_lists'")
             __props__.__dict__["query_lists"] = query_lists
+            __props__.__dict__["schedule"] = schedule
+            if schedule_interval is not None and not opts.urn:
+                warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
+                pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
             __props__.__dict__["schedule_interval"] = schedule_interval
+            if schedule_type is not None and not opts.urn:
+                warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
+                pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
             __props__.__dict__["schedule_type"] = schedule_type
             __props__.__dict__["send_resolved"] = send_resolved
             __props__.__dict__["severity_configurations"] = severity_configurations
@@ -1428,6 +1510,7 @@ class Alert(pulumi.CustomResource):
             policy_configuration: Optional[pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
             query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]]] = None,
+            schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
             schedule_interval: Optional[pulumi.Input[str]] = None,
             schedule_type: Optional[pulumi.Input[str]] = None,
             send_resolved: Optional[pulumi.Input[bool]] = None,
@@ -1460,13 +1543,14 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AlertPolicyConfigurationArgs']] policy_configuration: Policy configuration for new alert.
         :param pulumi.Input[str] project_name: The project name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertQueryListArgs']]]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h.
-        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter.
+        :param pulumi.Input[pulumi.InputType['AlertScheduleArgs']] schedule: schedule for alert.
+        :param pulumi.Input[str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
+        :param pulumi.Input[str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[bool] send_resolved: when new alert is resolved, whether to notify, default is false.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertSeverityConfigurationArgs']]]] severity_configurations: Severity configuration for new alert.
         :param pulumi.Input[int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
-        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1491,6 +1575,7 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["policy_configuration"] = policy_configuration
         __props__.__dict__["project_name"] = project_name
         __props__.__dict__["query_lists"] = query_lists
+        __props__.__dict__["schedule"] = schedule
         __props__.__dict__["schedule_interval"] = schedule_interval
         __props__.__dict__["schedule_type"] = schedule_type
         __props__.__dict__["send_resolved"] = send_resolved
@@ -1643,18 +1728,26 @@ class Alert(pulumi.CustomResource):
         return pulumi.get(self, "query_lists")
 
     @property
-    @pulumi.getter(name="scheduleInterval")
-    def schedule_interval(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter
+    def schedule(self) -> pulumi.Output[Optional['outputs.AlertSchedule']]:
         """
-        Execution interval. 60 seconds minimum, such as 60s, 1h.
+        schedule for alert.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="scheduleInterval")
+    def schedule_interval(self) -> pulumi.Output[str]:
+        """
+        Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         """
         return pulumi.get(self, "schedule_interval")
 
     @property
     @pulumi.getter(name="scheduleType")
-    def schedule_type(self) -> pulumi.Output[Optional[str]]:
+    def schedule_type(self) -> pulumi.Output[str]:
         """
-        Default FixedRate. No need to configure this parameter.
+        Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         """
         return pulumi.get(self, "schedule_type")
 
@@ -1694,7 +1787,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        including FixedRate,Hourly,Daily,Weekly,Cron.
         """
         return pulumi.get(self, "type")
 

@@ -23,6 +23,8 @@ class InstanceArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+                 babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]] = None,
+                 babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -100,6 +102,8 @@ class InstanceArgs:
         :param pulumi.Input[str] auto_upgrade_minor_version: The upgrade method to use. Valid values:
                - Auto: Instances are automatically upgraded to a higher minor version.
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -225,6 +229,10 @@ class InstanceArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if auto_upgrade_minor_version is not None:
             pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
+        if babelfish_configs is not None:
+            pulumi.set(__self__, "babelfish_configs", babelfish_configs)
+        if babelfish_port is not None:
+            pulumi.set(__self__, "babelfish_port", babelfish_port)
         if ca_type is not None:
             pulumi.set(__self__, "ca_type", ca_type)
         if client_ca_cert is not None:
@@ -446,6 +454,30 @@ class InstanceArgs:
     @auto_upgrade_minor_version.setter
     def auto_upgrade_minor_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_upgrade_minor_version", value)
+
+    @property
+    @pulumi.getter(name="babelfishConfigs")
+    def babelfish_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]]:
+        """
+        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        """
+        return pulumi.get(self, "babelfish_configs")
+
+    @babelfish_configs.setter
+    def babelfish_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]]):
+        pulumi.set(self, "babelfish_configs", value)
+
+    @property
+    @pulumi.getter(name="babelfishPort")
+    def babelfish_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TDS port of the instance for which Babelfish is enabled.
+        """
+        return pulumi.get(self, "babelfish_port")
+
+    @babelfish_port.setter
+    def babelfish_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "babelfish_port", value)
 
     @property
     @pulumi.getter(name="caType")
@@ -1166,6 +1198,8 @@ class _InstanceState:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+                 babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]] = None,
+                 babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -1239,6 +1273,8 @@ class _InstanceState:
         :param pulumi.Input[str] auto_upgrade_minor_version: The upgrade method to use. Valid values:
                - Auto: Instances are automatically upgraded to a higher minor version.
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -1372,6 +1408,10 @@ class _InstanceState:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if auto_upgrade_minor_version is not None:
             pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
+        if babelfish_configs is not None:
+            pulumi.set(__self__, "babelfish_configs", babelfish_configs)
+        if babelfish_port is not None:
+            pulumi.set(__self__, "babelfish_port", babelfish_port)
         if ca_type is not None:
             pulumi.set(__self__, "ca_type", ca_type)
         if client_ca_cert is not None:
@@ -1551,6 +1591,30 @@ class _InstanceState:
     @auto_upgrade_minor_version.setter
     def auto_upgrade_minor_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_upgrade_minor_version", value)
+
+    @property
+    @pulumi.getter(name="babelfishConfigs")
+    def babelfish_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]]:
+        """
+        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        """
+        return pulumi.get(self, "babelfish_configs")
+
+    @babelfish_configs.setter
+    def babelfish_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]]):
+        pulumi.set(self, "babelfish_configs", value)
+
+    @property
+    @pulumi.getter(name="babelfishPort")
+    def babelfish_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TDS port of the instance for which Babelfish is enabled.
+        """
+        return pulumi.get(self, "babelfish_port")
+
+    @babelfish_port.setter
+    def babelfish_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "babelfish_port", value)
 
     @property
     @pulumi.getter(name="caType")
@@ -2351,6 +2415,8 @@ class Instance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+                 babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
+                 babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -2432,6 +2498,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] auto_upgrade_minor_version: The upgrade method to use. Valid values:
                - Auto: Instances are automatically upgraded to a higher minor version.
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -2589,6 +2657,8 @@ class Instance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+                 babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
+                 babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -2664,6 +2734,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["auto_upgrade_minor_version"] = auto_upgrade_minor_version
+            __props__.__dict__["babelfish_configs"] = babelfish_configs
+            __props__.__dict__["babelfish_port"] = babelfish_port
             __props__.__dict__["ca_type"] = ca_type
             __props__.__dict__["client_ca_cert"] = client_ca_cert
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
@@ -2750,6 +2822,8 @@ class Instance(pulumi.CustomResource):
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+            babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
+            babelfish_port: Optional[pulumi.Input[str]] = None,
             ca_type: Optional[pulumi.Input[str]] = None,
             client_ca_cert: Optional[pulumi.Input[str]] = None,
             client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -2828,6 +2902,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] auto_upgrade_minor_version: The upgrade method to use. Valid values:
                - Auto: Instances are automatically upgraded to a higher minor version.
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -2961,6 +3037,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["auto_upgrade_minor_version"] = auto_upgrade_minor_version
+        __props__.__dict__["babelfish_configs"] = babelfish_configs
+        __props__.__dict__["babelfish_port"] = babelfish_port
         __props__.__dict__["ca_type"] = ca_type
         __props__.__dict__["client_ca_cert"] = client_ca_cert
         __props__.__dict__["client_ca_enabled"] = client_ca_enabled
@@ -3061,6 +3139,22 @@ class Instance(pulumi.CustomResource):
         - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
         """
         return pulumi.get(self, "auto_upgrade_minor_version")
+
+    @property
+    @pulumi.getter(name="babelfishConfigs")
+    def babelfish_configs(self) -> pulumi.Output[Sequence['outputs.InstanceBabelfishConfig']]:
+        """
+        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        """
+        return pulumi.get(self, "babelfish_configs")
+
+    @property
+    @pulumi.getter(name="babelfishPort")
+    def babelfish_port(self) -> pulumi.Output[str]:
+        """
+        The TDS port of the instance for which Babelfish is enabled.
+        """
+        return pulumi.get(self, "babelfish_port")
 
     @property
     @pulumi.getter(name="caType")
