@@ -25,6 +25,7 @@ __all__ = [
     'LaunchTemplateDataDisk',
     'LaunchTemplateNetworkInterfaces',
     'LaunchTemplateSystemDisk',
+    'GetActivationsActivationResult',
     'GetAutoSnapshotPoliciesPolicyResult',
     'GetCommandsCommandResult',
     'GetDedicatedHostsHostResult',
@@ -1529,6 +1530,134 @@ class LaunchTemplateSystemDisk(dict):
         - ephemeral_ssd: [5, 800]
         """
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetActivationsActivationResult(dict):
+    def __init__(__self__, *,
+                 activation_id: str,
+                 create_time: str,
+                 deregistered_count: int,
+                 description: str,
+                 disabled: bool,
+                 id: str,
+                 instance_count: int,
+                 instance_name: str,
+                 ip_address_range: str,
+                 registered_count: int,
+                 time_to_live_in_hours: int):
+        """
+        :param str activation_id: The ID of the activation code.
+        :param str create_time: The time when the activation code was created.
+        :param int deregistered_count: The number of instances that have been logged out.
+        :param str description: Description of the corresponding activation code.
+        :param bool disabled: Indicates whether the activation code is disabled.
+        :param str id: The ID of the Activation.
+        :param int instance_count: The maximum number of times the activation code is used to register a managed instance.
+        :param str instance_name: The default prefix of the instance name.
+        :param str ip_address_range: The IP address of the host that allows the activation code to be used.
+        :param int registered_count: The number of instances that were registered.
+        :param int time_to_live_in_hours: The validity period of the activation code. Unit: hours.
+        """
+        pulumi.set(__self__, "activation_id", activation_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deregistered_count", deregistered_count)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_count", instance_count)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "ip_address_range", ip_address_range)
+        pulumi.set(__self__, "registered_count", registered_count)
+        pulumi.set(__self__, "time_to_live_in_hours", time_to_live_in_hours)
+
+    @property
+    @pulumi.getter(name="activationId")
+    def activation_id(self) -> str:
+        """
+        The ID of the activation code.
+        """
+        return pulumi.get(self, "activation_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the activation code was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deregisteredCount")
+    def deregistered_count(self) -> int:
+        """
+        The number of instances that have been logged out.
+        """
+        return pulumi.get(self, "deregistered_count")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the corresponding activation code.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Indicates whether the activation code is disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Activation.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceCount")
+    def instance_count(self) -> int:
+        """
+        The maximum number of times the activation code is used to register a managed instance.
+        """
+        return pulumi.get(self, "instance_count")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The default prefix of the instance name.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="ipAddressRange")
+    def ip_address_range(self) -> str:
+        """
+        The IP address of the host that allows the activation code to be used.
+        """
+        return pulumi.get(self, "ip_address_range")
+
+    @property
+    @pulumi.getter(name="registeredCount")
+    def registered_count(self) -> int:
+        """
+        The number of instances that were registered.
+        """
+        return pulumi.get(self, "registered_count")
+
+    @property
+    @pulumi.getter(name="timeToLiveInHours")
+    def time_to_live_in_hours(self) -> int:
+        """
+        The validity period of the activation code. Unit: hours.
+        """
+        return pulumi.get(self, "time_to_live_in_hours")
 
 
 @pulumi.output_type

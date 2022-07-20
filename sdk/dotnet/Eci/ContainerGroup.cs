@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.Eci
         /// The amount of CPU resources allocated to the container.
         /// </summary>
         [Output("cpu")]
-        public Output<double?> Cpu { get; private set; } = null!;
+        public Output<double> Cpu { get; private set; } = null!;
 
         /// <summary>
         /// The structure of dnsConfig.
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Eci
         /// The amount of memory resources allocated to the container.
         /// </summary>
         [Output("memory")]
-        public Output<double?> Memory { get; private set; } = null!;
+        public Output<double> Memory { get; private set; } = null!;
 
         /// <summary>
         /// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.

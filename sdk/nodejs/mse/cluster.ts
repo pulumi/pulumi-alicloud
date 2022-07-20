@@ -101,6 +101,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly instanceCount!: pulumi.Output<number>;
     /**
+     * The version of MSE. Valid values: `mseBasic` or `msePro`.
+     */
+    public readonly mseVersion!: pulumi.Output<string>;
+    /**
      * The type of network. Valid values: "privatenet" and "pubnet".
      */
     public readonly netType!: pulumi.Output<string>;
@@ -146,6 +150,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterVersion"] = state ? state.clusterVersion : undefined;
             resourceInputs["diskType"] = state ? state.diskType : undefined;
             resourceInputs["instanceCount"] = state ? state.instanceCount : undefined;
+            resourceInputs["mseVersion"] = state ? state.mseVersion : undefined;
             resourceInputs["netType"] = state ? state.netType : undefined;
             resourceInputs["privateSlbSpecification"] = state ? state.privateSlbSpecification : undefined;
             resourceInputs["pubNetworkFlow"] = state ? state.pubNetworkFlow : undefined;
@@ -179,6 +184,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterVersion"] = args ? args.clusterVersion : undefined;
             resourceInputs["diskType"] = args ? args.diskType : undefined;
             resourceInputs["instanceCount"] = args ? args.instanceCount : undefined;
+            resourceInputs["mseVersion"] = args ? args.mseVersion : undefined;
             resourceInputs["netType"] = args ? args.netType : undefined;
             resourceInputs["privateSlbSpecification"] = args ? args.privateSlbSpecification : undefined;
             resourceInputs["pubNetworkFlow"] = args ? args.pubNetworkFlow : undefined;
@@ -232,6 +238,10 @@ export interface ClusterState {
      * The count of instance.
      */
     instanceCount?: pulumi.Input<number>;
+    /**
+     * The version of MSE. Valid values: `mseBasic` or `msePro`.
+     */
+    mseVersion?: pulumi.Input<string>;
     /**
      * The type of network. Valid values: "privatenet" and "pubnet".
      */
@@ -294,6 +304,10 @@ export interface ClusterArgs {
      * The count of instance.
      */
     instanceCount: pulumi.Input<number>;
+    /**
+     * The version of MSE. Valid values: `mseBasic` or `msePro`.
+     */
+    mseVersion?: pulumi.Input<string>;
     /**
      * The type of network. Valid values: "privatenet" and "pubnet".
      */

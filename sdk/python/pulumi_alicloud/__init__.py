@@ -2097,6 +2097,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ecs/activation",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/activation:Activation": "Activation"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ecs/autoProvisioningGroup",
   "fqn": "pulumi_alicloud.ecs",
   "classes": {

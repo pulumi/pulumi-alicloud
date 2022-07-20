@@ -3172,12 +3172,12 @@ export namespace ecs {
         lockReason?: string;
     }
 
-    export interface GetDisksOperationLock {
-        lockReason?: string;
-    }
-
     export interface GetDisksOperationLockArgs {
         lockReason?: pulumi.Input<string>;
+    }
+
+    export interface GetDisksOperationLock {
+        lockReason?: string;
     }
 
     export interface GetEcsDisksOperationLock {

@@ -4041,6 +4041,333 @@ func (o GetGroupMetricRulesRuleEscalationWarnArrayOutput) Index(i pulumi.IntInpu
 	}).(GetGroupMetricRulesRuleEscalationWarnOutput)
 }
 
+type GetHybridMonitorDatasData struct {
+	// The label of the time dimension.
+	Labels []GetHybridMonitorDatasDataLabel `pulumi:"labels"`
+	// The name of the monitoring indicator.
+	MetricName string `pulumi:"metricName"`
+	// The metric values that are collected at different timestamps.
+	Values []GetHybridMonitorDatasDataValue `pulumi:"values"`
+}
+
+// GetHybridMonitorDatasDataInput is an input type that accepts GetHybridMonitorDatasDataArgs and GetHybridMonitorDatasDataOutput values.
+// You can construct a concrete instance of `GetHybridMonitorDatasDataInput` via:
+//
+//          GetHybridMonitorDatasDataArgs{...}
+type GetHybridMonitorDatasDataInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorDatasDataOutput() GetHybridMonitorDatasDataOutput
+	ToGetHybridMonitorDatasDataOutputWithContext(context.Context) GetHybridMonitorDatasDataOutput
+}
+
+type GetHybridMonitorDatasDataArgs struct {
+	// The label of the time dimension.
+	Labels GetHybridMonitorDatasDataLabelArrayInput `pulumi:"labels"`
+	// The name of the monitoring indicator.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The metric values that are collected at different timestamps.
+	Values GetHybridMonitorDatasDataValueArrayInput `pulumi:"values"`
+}
+
+func (GetHybridMonitorDatasDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorDatasData)(nil)).Elem()
+}
+
+func (i GetHybridMonitorDatasDataArgs) ToGetHybridMonitorDatasDataOutput() GetHybridMonitorDatasDataOutput {
+	return i.ToGetHybridMonitorDatasDataOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorDatasDataArgs) ToGetHybridMonitorDatasDataOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataOutput)
+}
+
+// GetHybridMonitorDatasDataArrayInput is an input type that accepts GetHybridMonitorDatasDataArray and GetHybridMonitorDatasDataArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorDatasDataArrayInput` via:
+//
+//          GetHybridMonitorDatasDataArray{ GetHybridMonitorDatasDataArgs{...} }
+type GetHybridMonitorDatasDataArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorDatasDataArrayOutput() GetHybridMonitorDatasDataArrayOutput
+	ToGetHybridMonitorDatasDataArrayOutputWithContext(context.Context) GetHybridMonitorDatasDataArrayOutput
+}
+
+type GetHybridMonitorDatasDataArray []GetHybridMonitorDatasDataInput
+
+func (GetHybridMonitorDatasDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorDatasData)(nil)).Elem()
+}
+
+func (i GetHybridMonitorDatasDataArray) ToGetHybridMonitorDatasDataArrayOutput() GetHybridMonitorDatasDataArrayOutput {
+	return i.ToGetHybridMonitorDatasDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorDatasDataArray) ToGetHybridMonitorDatasDataArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataArrayOutput)
+}
+
+type GetHybridMonitorDatasDataOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorDatasDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorDatasData)(nil)).Elem()
+}
+
+func (o GetHybridMonitorDatasDataOutput) ToGetHybridMonitorDatasDataOutput() GetHybridMonitorDatasDataOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataOutput) ToGetHybridMonitorDatasDataOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataOutput {
+	return o
+}
+
+// The label of the time dimension.
+func (o GetHybridMonitorDatasDataOutput) Labels() GetHybridMonitorDatasDataLabelArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorDatasData) []GetHybridMonitorDatasDataLabel { return v.Labels }).(GetHybridMonitorDatasDataLabelArrayOutput)
+}
+
+// The name of the monitoring indicator.
+func (o GetHybridMonitorDatasDataOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorDatasData) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The metric values that are collected at different timestamps.
+func (o GetHybridMonitorDatasDataOutput) Values() GetHybridMonitorDatasDataValueArrayOutput {
+	return o.ApplyT(func(v GetHybridMonitorDatasData) []GetHybridMonitorDatasDataValue { return v.Values }).(GetHybridMonitorDatasDataValueArrayOutput)
+}
+
+type GetHybridMonitorDatasDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorDatasDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorDatasData)(nil)).Elem()
+}
+
+func (o GetHybridMonitorDatasDataArrayOutput) ToGetHybridMonitorDatasDataArrayOutput() GetHybridMonitorDatasDataArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataArrayOutput) ToGetHybridMonitorDatasDataArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorDatasDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorDatasData {
+		return vs[0].([]GetHybridMonitorDatasData)[vs[1].(int)]
+	}).(GetHybridMonitorDatasDataOutput)
+}
+
+type GetHybridMonitorDatasDataLabel struct {
+	// Label key.
+	Key string `pulumi:"key"`
+	// Label value.
+	Value string `pulumi:"value"`
+}
+
+// GetHybridMonitorDatasDataLabelInput is an input type that accepts GetHybridMonitorDatasDataLabelArgs and GetHybridMonitorDatasDataLabelOutput values.
+// You can construct a concrete instance of `GetHybridMonitorDatasDataLabelInput` via:
+//
+//          GetHybridMonitorDatasDataLabelArgs{...}
+type GetHybridMonitorDatasDataLabelInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorDatasDataLabelOutput() GetHybridMonitorDatasDataLabelOutput
+	ToGetHybridMonitorDatasDataLabelOutputWithContext(context.Context) GetHybridMonitorDatasDataLabelOutput
+}
+
+type GetHybridMonitorDatasDataLabelArgs struct {
+	// Label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Label value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetHybridMonitorDatasDataLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorDatasDataLabel)(nil)).Elem()
+}
+
+func (i GetHybridMonitorDatasDataLabelArgs) ToGetHybridMonitorDatasDataLabelOutput() GetHybridMonitorDatasDataLabelOutput {
+	return i.ToGetHybridMonitorDatasDataLabelOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorDatasDataLabelArgs) ToGetHybridMonitorDatasDataLabelOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataLabelOutput)
+}
+
+// GetHybridMonitorDatasDataLabelArrayInput is an input type that accepts GetHybridMonitorDatasDataLabelArray and GetHybridMonitorDatasDataLabelArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorDatasDataLabelArrayInput` via:
+//
+//          GetHybridMonitorDatasDataLabelArray{ GetHybridMonitorDatasDataLabelArgs{...} }
+type GetHybridMonitorDatasDataLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorDatasDataLabelArrayOutput() GetHybridMonitorDatasDataLabelArrayOutput
+	ToGetHybridMonitorDatasDataLabelArrayOutputWithContext(context.Context) GetHybridMonitorDatasDataLabelArrayOutput
+}
+
+type GetHybridMonitorDatasDataLabelArray []GetHybridMonitorDatasDataLabelInput
+
+func (GetHybridMonitorDatasDataLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorDatasDataLabel)(nil)).Elem()
+}
+
+func (i GetHybridMonitorDatasDataLabelArray) ToGetHybridMonitorDatasDataLabelArrayOutput() GetHybridMonitorDatasDataLabelArrayOutput {
+	return i.ToGetHybridMonitorDatasDataLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorDatasDataLabelArray) ToGetHybridMonitorDatasDataLabelArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataLabelArrayOutput)
+}
+
+type GetHybridMonitorDatasDataLabelOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorDatasDataLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorDatasDataLabel)(nil)).Elem()
+}
+
+func (o GetHybridMonitorDatasDataLabelOutput) ToGetHybridMonitorDatasDataLabelOutput() GetHybridMonitorDatasDataLabelOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataLabelOutput) ToGetHybridMonitorDatasDataLabelOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataLabelOutput {
+	return o
+}
+
+// Label key.
+func (o GetHybridMonitorDatasDataLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorDatasDataLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Label value.
+func (o GetHybridMonitorDatasDataLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorDatasDataLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorDatasDataLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorDatasDataLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorDatasDataLabel)(nil)).Elem()
+}
+
+func (o GetHybridMonitorDatasDataLabelArrayOutput) ToGetHybridMonitorDatasDataLabelArrayOutput() GetHybridMonitorDatasDataLabelArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataLabelArrayOutput) ToGetHybridMonitorDatasDataLabelArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataLabelArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataLabelArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorDatasDataLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorDatasDataLabel {
+		return vs[0].([]GetHybridMonitorDatasDataLabel)[vs[1].(int)]
+	}).(GetHybridMonitorDatasDataLabelOutput)
+}
+
+type GetHybridMonitorDatasDataValue struct {
+	// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+	Ts string `pulumi:"ts"`
+	// Label value.
+	Value string `pulumi:"value"`
+}
+
+// GetHybridMonitorDatasDataValueInput is an input type that accepts GetHybridMonitorDatasDataValueArgs and GetHybridMonitorDatasDataValueOutput values.
+// You can construct a concrete instance of `GetHybridMonitorDatasDataValueInput` via:
+//
+//          GetHybridMonitorDatasDataValueArgs{...}
+type GetHybridMonitorDatasDataValueInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorDatasDataValueOutput() GetHybridMonitorDatasDataValueOutput
+	ToGetHybridMonitorDatasDataValueOutputWithContext(context.Context) GetHybridMonitorDatasDataValueOutput
+}
+
+type GetHybridMonitorDatasDataValueArgs struct {
+	// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+	Ts pulumi.StringInput `pulumi:"ts"`
+	// Label value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetHybridMonitorDatasDataValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorDatasDataValue)(nil)).Elem()
+}
+
+func (i GetHybridMonitorDatasDataValueArgs) ToGetHybridMonitorDatasDataValueOutput() GetHybridMonitorDatasDataValueOutput {
+	return i.ToGetHybridMonitorDatasDataValueOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorDatasDataValueArgs) ToGetHybridMonitorDatasDataValueOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataValueOutput)
+}
+
+// GetHybridMonitorDatasDataValueArrayInput is an input type that accepts GetHybridMonitorDatasDataValueArray and GetHybridMonitorDatasDataValueArrayOutput values.
+// You can construct a concrete instance of `GetHybridMonitorDatasDataValueArrayInput` via:
+//
+//          GetHybridMonitorDatasDataValueArray{ GetHybridMonitorDatasDataValueArgs{...} }
+type GetHybridMonitorDatasDataValueArrayInput interface {
+	pulumi.Input
+
+	ToGetHybridMonitorDatasDataValueArrayOutput() GetHybridMonitorDatasDataValueArrayOutput
+	ToGetHybridMonitorDatasDataValueArrayOutputWithContext(context.Context) GetHybridMonitorDatasDataValueArrayOutput
+}
+
+type GetHybridMonitorDatasDataValueArray []GetHybridMonitorDatasDataValueInput
+
+func (GetHybridMonitorDatasDataValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorDatasDataValue)(nil)).Elem()
+}
+
+func (i GetHybridMonitorDatasDataValueArray) ToGetHybridMonitorDatasDataValueArrayOutput() GetHybridMonitorDatasDataValueArrayOutput {
+	return i.ToGetHybridMonitorDatasDataValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetHybridMonitorDatasDataValueArray) ToGetHybridMonitorDatasDataValueArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHybridMonitorDatasDataValueArrayOutput)
+}
+
+type GetHybridMonitorDatasDataValueOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorDatasDataValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHybridMonitorDatasDataValue)(nil)).Elem()
+}
+
+func (o GetHybridMonitorDatasDataValueOutput) ToGetHybridMonitorDatasDataValueOutput() GetHybridMonitorDatasDataValueOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataValueOutput) ToGetHybridMonitorDatasDataValueOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataValueOutput {
+	return o
+}
+
+// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+func (o GetHybridMonitorDatasDataValueOutput) Ts() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorDatasDataValue) string { return v.Ts }).(pulumi.StringOutput)
+}
+
+// Label value.
+func (o GetHybridMonitorDatasDataValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHybridMonitorDatasDataValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetHybridMonitorDatasDataValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHybridMonitorDatasDataValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHybridMonitorDatasDataValue)(nil)).Elem()
+}
+
+func (o GetHybridMonitorDatasDataValueArrayOutput) ToGetHybridMonitorDatasDataValueArrayOutput() GetHybridMonitorDatasDataValueArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataValueArrayOutput) ToGetHybridMonitorDatasDataValueArrayOutputWithContext(ctx context.Context) GetHybridMonitorDatasDataValueArrayOutput {
+	return o
+}
+
+func (o GetHybridMonitorDatasDataValueArrayOutput) Index(i pulumi.IntInput) GetHybridMonitorDatasDataValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHybridMonitorDatasDataValue {
+		return vs[0].([]GetHybridMonitorDatasDataValue)[vs[1].(int)]
+	}).(GetHybridMonitorDatasDataValueOutput)
+}
+
 type GetMetricRuleTemplatesTemplate struct {
 	// The details of alert rules that are generated based on the alert template.
 	AlertTemplates []GetMetricRuleTemplatesTemplateAlertTemplate `pulumi:"alertTemplates"`
@@ -5711,6 +6038,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationInfoArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationWarnInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationWarnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationWarnArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationWarnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataInput)(nil)).Elem(), GetHybridMonitorDatasDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataArrayInput)(nil)).Elem(), GetHybridMonitorDatasDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataLabelInput)(nil)).Elem(), GetHybridMonitorDatasDataLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataLabelArrayInput)(nil)).Elem(), GetHybridMonitorDatasDataLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataValueInput)(nil)).Elem(), GetHybridMonitorDatasDataValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHybridMonitorDatasDataValueArrayInput)(nil)).Elem(), GetHybridMonitorDatasDataValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateArrayInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateArgs{})
@@ -5785,6 +6118,12 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationWarnArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorDatasDataOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorDatasDataArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorDatasDataLabelOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorDatasDataLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorDatasDataValueOutput{})
+	pulumi.RegisterOutputType(GetHybridMonitorDatasDataValueArrayOutput{})
 	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetMetricRuleTemplatesTemplateAlertTemplateOutput{})

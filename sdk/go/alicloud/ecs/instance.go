@@ -131,19 +131,30 @@ type Instance struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringOutput `pulumi:"stoppedMode"`
-	SubnetId    pulumi.StringOutput `pulumi:"subnetId"`
+	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
+	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
+	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+	// - `true`: encrypts the system disk.
+	// - `false`: does not encrypt the system disk.
+	SystemDiskEncrypted pulumi.BoolPtrOutput `pulumi:"systemDiskEncrypted"`
+	// The ID of the Key Management Service (KMS) key to be used for the system disk.
+	SystemDiskKmsKeyId pulumi.StringPtrOutput `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel pulumi.StringOutput `pulumi:"systemDiskPerformanceLevel"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	SystemDiskStorageClusterId pulumi.StringPtrOutput `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -306,19 +317,30 @@ type instanceState struct {
 	Status *string `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode *string `pulumi:"stoppedMode"`
-	SubnetId    *string `pulumi:"subnetId"`
+	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
+	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+	// - `true`: encrypts the system disk.
+	// - `false`: does not encrypt the system disk.
+	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
+	// The ID of the Key Management Service (KMS) key to be used for the system disk.
+	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	SystemDiskStorageClusterId *string `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -444,19 +466,30 @@ type InstanceState struct {
 	Status pulumi.StringPtrInput
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringPtrInput
-	SubnetId    pulumi.StringPtrInput
+	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
+	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
+	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+	// - `true`: encrypts the system disk.
+	// - `false`: does not encrypt the system disk.
+	SystemDiskEncrypted pulumi.BoolPtrInput
+	// The ID of the Key Management Service (KMS) key to be used for the system disk.
+	SystemDiskKmsKeyId pulumi.StringPtrInput
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	SystemDiskStorageClusterId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -582,19 +615,30 @@ type instanceArgs struct {
 	Status *string `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode *string `pulumi:"stoppedMode"`
-	SubnetId    *string `pulumi:"subnetId"`
+	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
+	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+	// - `true`: encrypts the system disk.
+	// - `false`: does not encrypt the system disk.
+	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
+	// The ID of the Key Management Service (KMS) key to be used for the system disk.
+	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	SystemDiskStorageClusterId *string `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -717,19 +761,30 @@ type InstanceArgs struct {
 	Status pulumi.StringPtrInput
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringPtrInput
-	SubnetId    pulumi.StringPtrInput
+	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
+	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
+	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+	// - `true`: encrypts the system disk.
+	// - `false`: does not encrypt the system disk.
+	SystemDiskEncrypted pulumi.BoolPtrInput
+	// The ID of the Key Management Service (KMS) key to be used for the system disk.
+	SystemDiskKmsKeyId pulumi.StringPtrInput
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	SystemDiskStorageClusterId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.

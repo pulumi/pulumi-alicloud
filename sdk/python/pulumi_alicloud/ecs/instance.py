@@ -61,9 +61,13 @@ class InstanceArgs:
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
+                 system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -131,9 +135,15 @@ class InstanceArgs:
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+               - `true`: encrypts the system disk.
+               - `false`: does not encrypt the system disk.
+        :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
+        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -234,6 +244,9 @@ class InstanceArgs:
         if stopped_mode is not None:
             pulumi.set(__self__, "stopped_mode", stopped_mode)
         if subnet_id is not None:
+            warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
+            pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
+        if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if system_disk_auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
@@ -241,12 +254,20 @@ class InstanceArgs:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
             pulumi.set(__self__, "system_disk_description", system_disk_description)
+        if system_disk_encrypt_algorithm is not None:
+            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+        if system_disk_encrypted is not None:
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_kms_key_id is not None:
+            pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
         if system_disk_name is not None:
             pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
             pulumi.set(__self__, "system_disk_size", system_disk_size)
+        if system_disk_storage_cluster_id is not None:
+            pulumi.set(__self__, "system_disk_storage_cluster_id", system_disk_storage_cluster_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_data is not None:
@@ -818,6 +839,44 @@ class InstanceArgs:
         pulumi.set(self, "system_disk_description", value)
 
     @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @system_disk_encrypt_algorithm.setter
+    def system_disk_encrypt_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_encrypt_algorithm", value)
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+        - `true`: encrypts the system disk.
+        - `false`: does not encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @system_disk_encrypted.setter
+    def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKeyId")
+    def system_disk_kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Key Management Service (KMS) key to be used for the system disk.
+        """
+        return pulumi.get(self, "system_disk_kms_key_id")
+
+    @system_disk_kms_key_id.setter
+    def system_disk_kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_kms_key_id", value)
+
+    @property
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -852,6 +911,18 @@ class InstanceArgs:
     @system_disk_size.setter
     def system_disk_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "system_disk_size", value)
+
+    @property
+    @pulumi.getter(name="systemDiskStorageClusterId")
+    def system_disk_storage_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        """
+        return pulumi.get(self, "system_disk_storage_cluster_id")
+
+    @system_disk_storage_cluster_id.setter
+    def system_disk_storage_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_storage_cluster_id", value)
 
     @property
     @pulumi.getter
@@ -957,9 +1028,13 @@ class _InstanceState:
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
+                 system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1029,9 +1104,15 @@ class _InstanceState:
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+               - `true`: encrypts the system disk.
+               - `false`: does not encrypt the system disk.
+        :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
+        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1139,6 +1220,9 @@ class _InstanceState:
         if stopped_mode is not None:
             pulumi.set(__self__, "stopped_mode", stopped_mode)
         if subnet_id is not None:
+            warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
+            pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
+        if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if system_disk_auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
@@ -1146,12 +1230,20 @@ class _InstanceState:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
             pulumi.set(__self__, "system_disk_description", system_disk_description)
+        if system_disk_encrypt_algorithm is not None:
+            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+        if system_disk_encrypted is not None:
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_kms_key_id is not None:
+            pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
         if system_disk_name is not None:
             pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
             pulumi.set(__self__, "system_disk_size", system_disk_size)
+        if system_disk_storage_cluster_id is not None:
+            pulumi.set(__self__, "system_disk_storage_cluster_id", system_disk_storage_cluster_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_data is not None:
@@ -1747,6 +1839,44 @@ class _InstanceState:
         pulumi.set(self, "system_disk_description", value)
 
     @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @system_disk_encrypt_algorithm.setter
+    def system_disk_encrypt_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_encrypt_algorithm", value)
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+        - `true`: encrypts the system disk.
+        - `false`: does not encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @system_disk_encrypted.setter
+    def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKeyId")
+    def system_disk_kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Key Management Service (KMS) key to be used for the system disk.
+        """
+        return pulumi.get(self, "system_disk_kms_key_id")
+
+    @system_disk_kms_key_id.setter
+    def system_disk_kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_kms_key_id", value)
+
+    @property
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1781,6 +1911,18 @@ class _InstanceState:
     @system_disk_size.setter
     def system_disk_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "system_disk_size", value)
+
+    @property
+    @pulumi.getter(name="systemDiskStorageClusterId")
+    def system_disk_storage_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        """
+        return pulumi.get(self, "system_disk_storage_cluster_id")
+
+    @system_disk_storage_cluster_id.setter
+    def system_disk_storage_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_storage_cluster_id", value)
 
     @property
     @pulumi.getter
@@ -1886,9 +2028,13 @@ class Instance(pulumi.CustomResource):
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
+                 system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1966,9 +2112,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+               - `true`: encrypts the system disk.
+               - `false`: does not encrypt the system disk.
+        :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
+        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -2054,9 +2206,13 @@ class Instance(pulumi.CustomResource):
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
+                 system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -2130,13 +2286,20 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["status"] = status
             __props__.__dict__["stopped_mode"] = stopped_mode
+            if subnet_id is not None and not opts.urn:
+                warnings.warn("""Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """, DeprecationWarning)
+                pulumi.log.warn("""subnet_id is deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. """)
             __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
             __props__.__dict__["system_disk_category"] = system_disk_category
             __props__.__dict__["system_disk_description"] = system_disk_description
+            __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
+            __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
+            __props__.__dict__["system_disk_kms_key_id"] = system_disk_kms_key_id
             __props__.__dict__["system_disk_name"] = system_disk_name
             __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
             __props__.__dict__["system_disk_size"] = system_disk_size
+            __props__.__dict__["system_disk_storage_cluster_id"] = system_disk_storage_cluster_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["volume_tags"] = volume_tags
@@ -2201,9 +2364,13 @@ class Instance(pulumi.CustomResource):
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_description: Optional[pulumi.Input[str]] = None,
+            system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+            system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+            system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
+            system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -2278,9 +2445,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+               - `true`: encrypts the system disk.
+               - `false`: does not encrypt the system disk.
+        :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
         :param pulumi.Input[int] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
+        :param pulumi.Input[str] system_disk_storage_cluster_id: The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -2342,9 +2515,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
         __props__.__dict__["system_disk_category"] = system_disk_category
         __props__.__dict__["system_disk_description"] = system_disk_description
+        __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
+        __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
+        __props__.__dict__["system_disk_kms_key_id"] = system_disk_kms_key_id
         __props__.__dict__["system_disk_name"] = system_disk_name
         __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
         __props__.__dict__["system_disk_size"] = system_disk_size
+        __props__.__dict__["system_disk_storage_cluster_id"] = system_disk_storage_cluster_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["volume_tags"] = volume_tags
@@ -2745,6 +2922,32 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "system_disk_description")
 
     @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> pulumi.Output[Optional[str]]:
+        """
+        The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+        - `true`: encrypts the system disk.
+        - `false`: does not encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKeyId")
+    def system_disk_kms_key_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the Key Management Service (KMS) key to be used for the system disk.
+        """
+        return pulumi.get(self, "system_disk_kms_key_id")
+
+    @property
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> pulumi.Output[Optional[str]]:
         """
@@ -2767,6 +2970,14 @@ class Instance(pulumi.CustomResource):
         Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
         """
         return pulumi.get(self, "system_disk_size")
+
+    @property
+    @pulumi.getter(name="systemDiskStorageClusterId")
+    def system_disk_storage_cluster_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        """
+        return pulumi.get(self, "system_disk_storage_cluster_id")
 
     @property
     @pulumi.getter

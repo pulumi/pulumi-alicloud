@@ -669,6 +669,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_invocation":                      {Tok: resource(ecsMod, "EcsInvocation")},
 			"alicloud_ecs_network_interface_permission":    {Tok: resource(ecsMod, "EcsNetworkInterfacePermission")},
 			"alicloud_ecs_instance_set":                    {Tok: resource(ecsMod, "EcsInstanceSet")},
+			"alicloud_ecs_activation":                      {Tok: resource(ecsMod, "Activation")},
 
 			// Edas
 			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
@@ -1427,6 +1428,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cms_dynamic_tag_groups":    {Tok: dataSource(cmsMod, "getDynamicTagGroups")},
 			"alicloud_cms_namespaces":            {Tok: dataSource(cmsMod, "getNamespaces")},
 			"alicloud_cms_sls_groups":            {Tok: dataSource(cmsMod, "getSlsGroups")},
+			"alicloud_cms_hybrid_monitor_datas":  {Tok: dataSource(cmsMod, "getHybridMonitorDatas")},
 
 			// Config
 			"alicloud_config_configuration_recorders":    {Tok: dataSource(cfgMod, "getConfigurationRecorders")},
@@ -1591,6 +1593,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_image_pipelines":               {Tok: dataSource(ecsMod, "getEcsImagePipeline")},
 			"alicloud_ecs_invocations":                   {Tok: dataSource(ecsMod, "getEcsInvocations")},
 			"alicloud_ecs_network_interface_permissions": {Tok: dataSource(ecsMod, "getEcsNetworkInterfacePermissions")},
+			"alicloud_ecs_activations":                   {Tok: dataSource(ecsMod, "getActivations")},
 
 			// Edas
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},

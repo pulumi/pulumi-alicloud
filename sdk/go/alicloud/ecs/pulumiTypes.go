@@ -2615,6 +2615,193 @@ func (o LaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetActivationsActivation struct {
+	// The ID of the activation code.
+	ActivationId string `pulumi:"activationId"`
+	// The time when the activation code was created.
+	CreateTime string `pulumi:"createTime"`
+	// The number of instances that have been logged out.
+	DeregisteredCount int `pulumi:"deregisteredCount"`
+	// Description of the corresponding activation code.
+	Description string `pulumi:"description"`
+	// Indicates whether the activation code is disabled.
+	Disabled bool `pulumi:"disabled"`
+	// The ID of the Activation.
+	Id string `pulumi:"id"`
+	// The maximum number of times the activation code is used to register a managed instance.
+	InstanceCount int `pulumi:"instanceCount"`
+	// The default prefix of the instance name.
+	InstanceName string `pulumi:"instanceName"`
+	// The IP address of the host that allows the activation code to be used.
+	IpAddressRange string `pulumi:"ipAddressRange"`
+	// The number of instances that were registered.
+	RegisteredCount int `pulumi:"registeredCount"`
+	// The validity period of the activation code. Unit: hours.
+	TimeToLiveInHours int `pulumi:"timeToLiveInHours"`
+}
+
+// GetActivationsActivationInput is an input type that accepts GetActivationsActivationArgs and GetActivationsActivationOutput values.
+// You can construct a concrete instance of `GetActivationsActivationInput` via:
+//
+//          GetActivationsActivationArgs{...}
+type GetActivationsActivationInput interface {
+	pulumi.Input
+
+	ToGetActivationsActivationOutput() GetActivationsActivationOutput
+	ToGetActivationsActivationOutputWithContext(context.Context) GetActivationsActivationOutput
+}
+
+type GetActivationsActivationArgs struct {
+	// The ID of the activation code.
+	ActivationId pulumi.StringInput `pulumi:"activationId"`
+	// The time when the activation code was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The number of instances that have been logged out.
+	DeregisteredCount pulumi.IntInput `pulumi:"deregisteredCount"`
+	// Description of the corresponding activation code.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Indicates whether the activation code is disabled.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// The ID of the Activation.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The maximum number of times the activation code is used to register a managed instance.
+	InstanceCount pulumi.IntInput `pulumi:"instanceCount"`
+	// The default prefix of the instance name.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The IP address of the host that allows the activation code to be used.
+	IpAddressRange pulumi.StringInput `pulumi:"ipAddressRange"`
+	// The number of instances that were registered.
+	RegisteredCount pulumi.IntInput `pulumi:"registeredCount"`
+	// The validity period of the activation code. Unit: hours.
+	TimeToLiveInHours pulumi.IntInput `pulumi:"timeToLiveInHours"`
+}
+
+func (GetActivationsActivationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActivationsActivation)(nil)).Elem()
+}
+
+func (i GetActivationsActivationArgs) ToGetActivationsActivationOutput() GetActivationsActivationOutput {
+	return i.ToGetActivationsActivationOutputWithContext(context.Background())
+}
+
+func (i GetActivationsActivationArgs) ToGetActivationsActivationOutputWithContext(ctx context.Context) GetActivationsActivationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActivationsActivationOutput)
+}
+
+// GetActivationsActivationArrayInput is an input type that accepts GetActivationsActivationArray and GetActivationsActivationArrayOutput values.
+// You can construct a concrete instance of `GetActivationsActivationArrayInput` via:
+//
+//          GetActivationsActivationArray{ GetActivationsActivationArgs{...} }
+type GetActivationsActivationArrayInput interface {
+	pulumi.Input
+
+	ToGetActivationsActivationArrayOutput() GetActivationsActivationArrayOutput
+	ToGetActivationsActivationArrayOutputWithContext(context.Context) GetActivationsActivationArrayOutput
+}
+
+type GetActivationsActivationArray []GetActivationsActivationInput
+
+func (GetActivationsActivationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActivationsActivation)(nil)).Elem()
+}
+
+func (i GetActivationsActivationArray) ToGetActivationsActivationArrayOutput() GetActivationsActivationArrayOutput {
+	return i.ToGetActivationsActivationArrayOutputWithContext(context.Background())
+}
+
+func (i GetActivationsActivationArray) ToGetActivationsActivationArrayOutputWithContext(ctx context.Context) GetActivationsActivationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActivationsActivationArrayOutput)
+}
+
+type GetActivationsActivationOutput struct{ *pulumi.OutputState }
+
+func (GetActivationsActivationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActivationsActivation)(nil)).Elem()
+}
+
+func (o GetActivationsActivationOutput) ToGetActivationsActivationOutput() GetActivationsActivationOutput {
+	return o
+}
+
+func (o GetActivationsActivationOutput) ToGetActivationsActivationOutputWithContext(ctx context.Context) GetActivationsActivationOutput {
+	return o
+}
+
+// The ID of the activation code.
+func (o GetActivationsActivationOutput) ActivationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivationsActivation) string { return v.ActivationId }).(pulumi.StringOutput)
+}
+
+// The time when the activation code was created.
+func (o GetActivationsActivationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivationsActivation) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The number of instances that have been logged out.
+func (o GetActivationsActivationOutput) DeregisteredCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActivationsActivation) int { return v.DeregisteredCount }).(pulumi.IntOutput)
+}
+
+// Description of the corresponding activation code.
+func (o GetActivationsActivationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivationsActivation) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates whether the activation code is disabled.
+func (o GetActivationsActivationOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetActivationsActivation) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the Activation.
+func (o GetActivationsActivationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivationsActivation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The maximum number of times the activation code is used to register a managed instance.
+func (o GetActivationsActivationOutput) InstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActivationsActivation) int { return v.InstanceCount }).(pulumi.IntOutput)
+}
+
+// The default prefix of the instance name.
+func (o GetActivationsActivationOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivationsActivation) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The IP address of the host that allows the activation code to be used.
+func (o GetActivationsActivationOutput) IpAddressRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActivationsActivation) string { return v.IpAddressRange }).(pulumi.StringOutput)
+}
+
+// The number of instances that were registered.
+func (o GetActivationsActivationOutput) RegisteredCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActivationsActivation) int { return v.RegisteredCount }).(pulumi.IntOutput)
+}
+
+// The validity period of the activation code. Unit: hours.
+func (o GetActivationsActivationOutput) TimeToLiveInHours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActivationsActivation) int { return v.TimeToLiveInHours }).(pulumi.IntOutput)
+}
+
+type GetActivationsActivationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActivationsActivationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActivationsActivation)(nil)).Elem()
+}
+
+func (o GetActivationsActivationArrayOutput) ToGetActivationsActivationArrayOutput() GetActivationsActivationArrayOutput {
+	return o
+}
+
+func (o GetActivationsActivationArrayOutput) ToGetActivationsActivationArrayOutputWithContext(ctx context.Context) GetActivationsActivationArrayOutput {
+	return o
+}
+
+func (o GetActivationsActivationArrayOutput) Index(i pulumi.IntInput) GetActivationsActivationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActivationsActivation {
+		return vs[0].([]GetActivationsActivation)[vs[1].(int)]
+	}).(GetActivationsActivationOutput)
+}
+
 type GetAutoSnapshotPoliciesPolicy struct {
 	// The ID of the Auto Snapshot Policy.
 	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
@@ -14221,6 +14408,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateNetworkInterfacesPtrInput)(nil)).Elem(), LaunchTemplateNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateSystemDiskInput)(nil)).Elem(), LaunchTemplateSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateSystemDiskPtrInput)(nil)).Elem(), LaunchTemplateSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActivationsActivationInput)(nil)).Elem(), GetActivationsActivationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActivationsActivationArrayInput)(nil)).Elem(), GetActivationsActivationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyArrayInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInput)(nil)).Elem(), GetCommandsCommandArgs{})
@@ -14372,6 +14561,8 @@ func init() {
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesPtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSystemDiskOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSystemDiskPtrOutput{})
+	pulumi.RegisterOutputType(GetActivationsActivationOutput{})
+	pulumi.RegisterOutputType(GetActivationsActivationArrayOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandOutput{})

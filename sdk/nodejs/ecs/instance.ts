@@ -236,6 +236,9 @@ export class Instance extends pulumi.CustomResource {
      * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      */
     public readonly stoppedMode!: pulumi.Output<string>;
+    /**
+     * @deprecated Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. 
+     */
     public readonly subnetId!: pulumi.Output<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
@@ -250,6 +253,20 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskDescription!: pulumi.Output<string | undefined>;
     /**
+     * The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+     */
+    public readonly systemDiskEncryptAlgorithm!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+     * - `true`: encrypts the system disk.
+     * - `false`: does not encrypt the system disk.
+     */
+    public readonly systemDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the Key Management Service (KMS) key to be used for the system disk.
+     */
+    public readonly systemDiskKmsKeyId!: pulumi.Output<string | undefined>;
+    /**
      * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
     public readonly systemDiskName!: pulumi.Output<string | undefined>;
@@ -261,6 +278,10 @@ export class Instance extends pulumi.CustomResource {
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
     public readonly systemDiskSize!: pulumi.Output<number | undefined>;
+    /**
+     * The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+     */
+    public readonly systemDiskStorageClusterId!: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -343,9 +364,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
+            resourceInputs["systemDiskEncryptAlgorithm"] = state ? state.systemDiskEncryptAlgorithm : undefined;
+            resourceInputs["systemDiskEncrypted"] = state ? state.systemDiskEncrypted : undefined;
+            resourceInputs["systemDiskKmsKeyId"] = state ? state.systemDiskKmsKeyId : undefined;
             resourceInputs["systemDiskName"] = state ? state.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
             resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
+            resourceInputs["systemDiskStorageClusterId"] = state ? state.systemDiskStorageClusterId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["volumeTags"] = state ? state.volumeTags : undefined;
@@ -407,9 +432,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
+            resourceInputs["systemDiskEncryptAlgorithm"] = args ? args.systemDiskEncryptAlgorithm : undefined;
+            resourceInputs["systemDiskEncrypted"] = args ? args.systemDiskEncrypted : undefined;
+            resourceInputs["systemDiskKmsKeyId"] = args ? args.systemDiskKmsKeyId : undefined;
             resourceInputs["systemDiskName"] = args ? args.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
             resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
+            resourceInputs["systemDiskStorageClusterId"] = args ? args.systemDiskStorageClusterId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["volumeTags"] = args ? args.volumeTags : undefined;
@@ -620,6 +649,9 @@ export interface InstanceState {
      * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      */
     stoppedMode?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. 
+     */
     subnetId?: pulumi.Input<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
@@ -634,6 +666,20 @@ export interface InstanceState {
      */
     systemDiskDescription?: pulumi.Input<string>;
     /**
+     * The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+     */
+    systemDiskEncryptAlgorithm?: pulumi.Input<string>;
+    /**
+     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+     * - `true`: encrypts the system disk.
+     * - `false`: does not encrypt the system disk.
+     */
+    systemDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Key Management Service (KMS) key to be used for the system disk.
+     */
+    systemDiskKmsKeyId?: pulumi.Input<string>;
+    /**
      * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
     systemDiskName?: pulumi.Input<string>;
@@ -645,6 +691,10 @@ export interface InstanceState {
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
     systemDiskSize?: pulumi.Input<number>;
+    /**
+     * The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+     */
+    systemDiskStorageClusterId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -857,6 +907,9 @@ export interface InstanceArgs {
      * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      */
     stoppedMode?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace. 
+     */
     subnetId?: pulumi.Input<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
@@ -871,6 +924,20 @@ export interface InstanceArgs {
      */
     systemDiskDescription?: pulumi.Input<string>;
     /**
+     * The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+     */
+    systemDiskEncryptAlgorithm?: pulumi.Input<string>;
+    /**
+     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+     * - `true`: encrypts the system disk.
+     * - `false`: does not encrypt the system disk.
+     */
+    systemDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Key Management Service (KMS) key to be used for the system disk.
+     */
+    systemDiskKmsKeyId?: pulumi.Input<string>;
+    /**
      * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
     systemDiskName?: pulumi.Input<string>;
@@ -882,6 +949,10 @@ export interface InstanceArgs {
      * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
      */
     systemDiskSize?: pulumi.Input<number>;
+    /**
+     * The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+     */
+    systemDiskStorageClusterId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

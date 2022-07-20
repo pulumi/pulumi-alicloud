@@ -108,6 +108,12 @@ namespace Pulumi.AliCloud.Mse
         public Output<int> InstanceCount { get; private set; } = null!;
 
         /// <summary>
+        /// The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        /// </summary>
+        [Output("mseVersion")]
+        public Output<string> MseVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The type of network. Valid values: "privatenet" and "pubnet".
         /// </summary>
         [Output("netType")]
@@ -242,6 +248,12 @@ namespace Pulumi.AliCloud.Mse
         public Input<int> InstanceCount { get; set; } = null!;
 
         /// <summary>
+        /// The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        /// </summary>
+        [Input("mseVersion")]
+        public Input<string>? MseVersion { get; set; }
+
+        /// <summary>
         /// The type of network. Valid values: "privatenet" and "pubnet".
         /// </summary>
         [Input("netType", required: true)]
@@ -335,6 +347,12 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Input("instanceCount")]
         public Input<int>? InstanceCount { get; set; }
+
+        /// <summary>
+        /// The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        /// </summary>
+        [Input("mseVersion")]
+        public Input<string>? MseVersion { get; set; }
 
         /// <summary>
         /// The type of network. Valid values: "privatenet" and "pubnet".

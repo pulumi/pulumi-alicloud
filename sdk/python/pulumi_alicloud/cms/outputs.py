@@ -35,6 +35,9 @@ __all__ = [
     'GetGroupMetricRulesRuleEscalationCriticalResult',
     'GetGroupMetricRulesRuleEscalationInfoResult',
     'GetGroupMetricRulesRuleEscalationWarnResult',
+    'GetHybridMonitorDatasDataResult',
+    'GetHybridMonitorDatasDataLabelResult',
+    'GetHybridMonitorDatasDataValueResult',
     'GetMetricRuleTemplatesTemplateResult',
     'GetMetricRuleTemplatesTemplateAlertTemplateResult',
     'GetMetricRuleTemplatesTemplateAlertTemplateEscalationResult',
@@ -1808,6 +1811,104 @@ class GetGroupMetricRulesRuleEscalationWarnResult(dict):
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class GetHybridMonitorDatasDataResult(dict):
+    def __init__(__self__, *,
+                 labels: Sequence['outputs.GetHybridMonitorDatasDataLabelResult'],
+                 metric_name: str,
+                 values: Sequence['outputs.GetHybridMonitorDatasDataValueResult']):
+        """
+        :param Sequence['GetHybridMonitorDatasDataLabelArgs'] labels: The label of the time dimension.
+        :param str metric_name: The name of the monitoring indicator.
+        :param Sequence['GetHybridMonitorDatasDataValueArgs'] values: The metric values that are collected at different timestamps.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Sequence['outputs.GetHybridMonitorDatasDataLabelResult']:
+        """
+        The label of the time dimension.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> str:
+        """
+        The name of the monitoring indicator.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence['outputs.GetHybridMonitorDatasDataValueResult']:
+        """
+        The metric values that are collected at different timestamps.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetHybridMonitorDatasDataLabelResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Label key.
+        :param str value: Label value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Label key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Label value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetHybridMonitorDatasDataValueResult(dict):
+    def __init__(__self__, *,
+                 ts: str,
+                 value: str):
+        """
+        :param str ts: The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+        :param str value: Label value.
+        """
+        pulumi.set(__self__, "ts", ts)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def ts(self) -> str:
+        """
+        The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+        """
+        return pulumi.get(self, "ts")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Label value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

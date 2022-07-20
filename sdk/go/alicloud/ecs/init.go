@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:ecs/activation:Activation":
+		r = &Activation{}
 	case "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
 		r = &AutoProvisioningGroup{}
 	case "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy":
@@ -124,6 +126,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ecs/activation",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ecs/autoProvisioningGroup",

@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./activation";
 export * from "./autoProvisioningGroup";
 export * from "./autoSnapshotPolicy";
 export * from "./command";
@@ -34,6 +35,7 @@ export * from "./ecsSnapshotGroup";
 export * from "./eip";
 export * from "./eipAddress";
 export * from "./eipAssociation";
+export * from "./getActivations";
 export * from "./getAutoSnapshotPolicies";
 export * from "./getCommands";
 export * from "./getDedicatedHosts";
@@ -82,6 +84,7 @@ export * from "./snapshotPolicy";
 export * from "./storageCapacityUnit";
 
 // Import resources to register:
+import { Activation } from "./activation";
 import { AutoProvisioningGroup } from "./autoProvisioningGroup";
 import { AutoSnapshotPolicy } from "./autoSnapshotPolicy";
 import { Command } from "./command";
@@ -132,6 +135,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:ecs/activation:Activation":
+                return new Activation(name, <any>undefined, { urn })
             case "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup":
                 return new AutoProvisioningGroup(name, <any>undefined, { urn })
             case "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy":
@@ -227,6 +232,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "ecs/activation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/autoProvisioningGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/autoSnapshotPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/command", _module)

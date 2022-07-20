@@ -319,6 +319,26 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskDescription { get; private set; } = null!;
 
         /// <summary>
+        /// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        /// </summary>
+        [Output("systemDiskEncryptAlgorithm")]
+        public Output<string?> SystemDiskEncryptAlgorithm { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+        /// - `true`: encrypts the system disk.
+        /// - `false`: does not encrypt the system disk.
+        /// </summary>
+        [Output("systemDiskEncrypted")]
+        public Output<bool?> SystemDiskEncrypted { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Key Management Service (KMS) key to be used for the system disk.
+        /// </summary>
+        [Output("systemDiskKmsKeyId")]
+        public Output<string?> SystemDiskKmsKeyId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         /// </summary>
         [Output("systemDiskName")]
@@ -335,6 +355,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("systemDiskSize")]
         public Output<int?> SystemDiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        /// </summary>
+        [Output("systemDiskStorageClusterId")]
+        public Output<string?> SystemDiskStorageClusterId { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -720,6 +746,26 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
+        /// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        /// </summary>
+        [Input("systemDiskEncryptAlgorithm")]
+        public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
+
+        /// <summary>
+        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+        /// - `true`: encrypts the system disk.
+        /// - `false`: does not encrypt the system disk.
+        /// </summary>
+        [Input("systemDiskEncrypted")]
+        public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The ID of the Key Management Service (KMS) key to be used for the system disk.
+        /// </summary>
+        [Input("systemDiskKmsKeyId")]
+        public Input<string>? SystemDiskKmsKeyId { get; set; }
+
+        /// <summary>
         /// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         /// </summary>
         [Input("systemDiskName")]
@@ -736,6 +782,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
+
+        /// <summary>
+        /// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        /// </summary>
+        [Input("systemDiskStorageClusterId")]
+        public Input<string>? SystemDiskStorageClusterId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -1106,6 +1158,26 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
+        /// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
+        /// </summary>
+        [Input("systemDiskEncryptAlgorithm")]
+        public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
+
+        /// <summary>
+        /// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
+        /// - `true`: encrypts the system disk.
+        /// - `false`: does not encrypt the system disk.
+        /// </summary>
+        [Input("systemDiskEncrypted")]
+        public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The ID of the Key Management Service (KMS) key to be used for the system disk.
+        /// </summary>
+        [Input("systemDiskKmsKeyId")]
+        public Input<string>? SystemDiskKmsKeyId { get; set; }
+
+        /// <summary>
         /// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         /// </summary>
         [Input("systemDiskName")]
@@ -1122,6 +1194,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
+
+        /// <summary>
+        /// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+        /// </summary>
+        [Input("systemDiskStorageClusterId")]
+        public Input<string>? SystemDiskStorageClusterId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

@@ -133,7 +133,7 @@ type ContainerGroup struct {
 	// The list of containers.
 	Containers ContainerGroupContainerArrayOutput `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container.
-	Cpu pulumi.Float64PtrOutput `pulumi:"cpu"`
+	Cpu pulumi.Float64Output `pulumi:"cpu"`
 	// The structure of dnsConfig.
 	DnsConfig ContainerGroupDnsConfigPtrOutput `pulumi:"dnsConfig"`
 	// The security context of the container group.
@@ -157,7 +157,7 @@ type ContainerGroup struct {
 	// (Available in v1.170.0+) The Private IP of the container group.
 	IntranetIp pulumi.StringOutput `pulumi:"intranetIp"`
 	// The amount of memory resources allocated to the container.
-	Memory pulumi.Float64PtrOutput `pulumi:"memory"`
+	Memory pulumi.Float64Output `pulumi:"memory"`
 	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
 	PlainHttpRegistry pulumi.StringPtrOutput `pulumi:"plainHttpRegistry"`
 	// The RAM role that the container group assumes. ECI and ECS share the same RAM role.

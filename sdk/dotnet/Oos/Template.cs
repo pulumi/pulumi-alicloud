@@ -111,6 +111,12 @@ namespace Pulumi.AliCloud.Oos
         public Output<bool> HasTrigger { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of resource group which the template belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
         /// </summary>
         [Output("shareType")]
@@ -228,6 +234,12 @@ namespace Pulumi.AliCloud.Oos
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of resource group which the template belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -294,6 +306,12 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Input("hasTrigger")]
         public Input<bool>? HasTrigger { get; set; }
+
+        /// <summary>
+        /// The ID of resource group which the template belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.

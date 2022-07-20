@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .activation import *
 from .auto_provisioning_group import *
 from .auto_snapshot_policy import *
 from .command import *
@@ -34,6 +35,7 @@ from .ecs_snapshot_group import *
 from .eip import *
 from .eip_address import *
 from .eip_association import *
+from .get_activations import *
 from .get_auto_snapshot_policies import *
 from .get_commands import *
 from .get_dedicated_hosts import *
