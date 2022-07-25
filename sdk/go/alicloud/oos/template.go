@@ -68,6 +68,8 @@ type Template struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Is it triggered successfully.
 	HasTrigger pulumi.BoolOutput `pulumi:"hasTrigger"`
+	// The ID of resource group which the template belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
 	ShareType pulumi.StringOutput `pulumi:"shareType"`
 	// A mapping of tags to assign to the resource.
@@ -137,6 +139,8 @@ type templateState struct {
 	Description *string `pulumi:"description"`
 	// Is it triggered successfully.
 	HasTrigger *bool `pulumi:"hasTrigger"`
+	// The ID of resource group which the template belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
 	ShareType *string `pulumi:"shareType"`
 	// A mapping of tags to assign to the resource.
@@ -172,6 +176,8 @@ type TemplateState struct {
 	Description pulumi.StringPtrInput
 	// Is it triggered successfully.
 	HasTrigger pulumi.BoolPtrInput
+	// The ID of resource group which the template belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
 	ShareType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -203,6 +209,8 @@ type templateArgs struct {
 	AutoDeleteExecutions *bool `pulumi:"autoDeleteExecutions"`
 	// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
 	Content string `pulumi:"content"`
+	// The ID of resource group which the template belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
@@ -217,6 +225,8 @@ type TemplateArgs struct {
 	AutoDeleteExecutions pulumi.BoolPtrInput
 	// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
 	Content pulumi.StringInput
+	// The ID of resource group which the template belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.

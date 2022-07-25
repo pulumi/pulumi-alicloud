@@ -32,10 +32,12 @@ class InstanceArgs:
                  phoenix_node_count: Optional[pulumi.Input[int]] = None,
                  phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  search_engine_node_count: Optional[pulumi.Input[int]] = None,
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
@@ -61,10 +63,12 @@ class InstanceArgs:
         :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
         :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
@@ -105,6 +109,8 @@ class InstanceArgs:
             pulumi.set(__self__, "phoenix_node_specification", phoenix_node_specification)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if search_engine_node_count is not None:
             pulumi.set(__self__, "search_engine_node_count", search_engine_node_count)
         if search_engine_specification is not None:
@@ -113,6 +119,8 @@ class InstanceArgs:
             pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
         if table_engine_specification is not None:
             pulumi.set(__self__, "table_engine_specification", table_engine_specification)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if time_series_engine_node_count is not None:
             pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
         if time_serires_engine_specification is not None:
@@ -354,6 +362,18 @@ class InstanceArgs:
         pulumi.set(self, "pricing_cycle", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="searchEngineNodeCount")
     def search_engine_node_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -400,6 +420,18 @@ class InstanceArgs:
     @table_engine_specification.setter
     def table_engine_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "table_engine_specification", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="timeSeriesEngineNodeCount")
@@ -476,11 +508,13 @@ class _InstanceState:
                  phoenix_node_count: Optional[pulumi.Input[int]] = None,
                  phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  search_engine_node_count: Optional[pulumi.Input[int]] = None,
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
@@ -511,11 +545,13 @@ class _InstanceState:
         :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
         :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
@@ -568,6 +604,8 @@ class _InstanceState:
             pulumi.set(__self__, "phoenix_node_specification", phoenix_node_specification)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if search_engine_node_count is not None:
             pulumi.set(__self__, "search_engine_node_count", search_engine_node_count)
         if search_engine_specification is not None:
@@ -578,6 +616,8 @@ class _InstanceState:
             pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
         if table_engine_specification is not None:
             pulumi.set(__self__, "table_engine_specification", table_engine_specification)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if time_series_engine_node_count is not None:
             pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
         if time_serires_engine_specification is not None:
@@ -869,6 +909,18 @@ class _InstanceState:
         pulumi.set(self, "pricing_cycle", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="searchEngineNodeCount")
     def search_engine_node_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -927,6 +979,18 @@ class _InstanceState:
     @table_engine_specification.setter
     def table_engine_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "table_engine_specification", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="timeSeriesEngineNodeCount")
@@ -1012,10 +1076,12 @@ class Instance(pulumi.CustomResource):
                  phoenix_node_count: Optional[pulumi.Input[int]] = None,
                  phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  search_engine_node_count: Optional[pulumi.Input[int]] = None,
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
@@ -1059,10 +1125,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
         :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
@@ -1125,10 +1193,12 @@ class Instance(pulumi.CustomResource):
                  phoenix_node_count: Optional[pulumi.Input[int]] = None,
                  phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  search_engine_node_count: Optional[pulumi.Input[int]] = None,
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
@@ -1168,10 +1238,12 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["phoenix_node_count"] = phoenix_node_count
             __props__.__dict__["phoenix_node_specification"] = phoenix_node_specification
             __props__.__dict__["pricing_cycle"] = pricing_cycle
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["search_engine_node_count"] = search_engine_node_count
             __props__.__dict__["search_engine_specification"] = search_engine_specification
             __props__.__dict__["table_engine_node_count"] = table_engine_node_count
             __props__.__dict__["table_engine_specification"] = table_engine_specification
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["time_series_engine_node_count"] = time_series_engine_node_count
             __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
             if upgrade_type is not None and not opts.urn:
@@ -1221,11 +1293,13 @@ class Instance(pulumi.CustomResource):
             phoenix_node_count: Optional[pulumi.Input[int]] = None,
             phoenix_node_specification: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             search_engine_node_count: Optional[pulumi.Input[int]] = None,
             search_engine_specification: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             table_engine_node_count: Optional[pulumi.Input[int]] = None,
             table_engine_specification: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
             time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
             upgrade_type: Optional[pulumi.Input[str]] = None,
@@ -1261,11 +1335,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
         :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
         :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
         :param pulumi.Input[str] time_serires_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
@@ -1299,11 +1375,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["phoenix_node_count"] = phoenix_node_count
         __props__.__dict__["phoenix_node_specification"] = phoenix_node_specification
         __props__.__dict__["pricing_cycle"] = pricing_cycle
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["search_engine_node_count"] = search_engine_node_count
         __props__.__dict__["search_engine_specification"] = search_engine_specification
         __props__.__dict__["status"] = status
         __props__.__dict__["table_engine_node_count"] = table_engine_node_count
         __props__.__dict__["table_engine_specification"] = table_engine_specification
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["time_series_engine_node_count"] = time_series_engine_node_count
         __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
         __props__.__dict__["upgrade_type"] = upgrade_type
@@ -1496,6 +1574,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "pricing_cycle")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter(name="searchEngineNodeCount")
     def search_engine_node_count(self) -> pulumi.Output[int]:
         """
@@ -1534,6 +1620,14 @@ class Instance(pulumi.CustomResource):
         The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="timeSeriesEngineNodeCount")

@@ -13,6 +13,7 @@ from .get_alarm_contact_groups import *
 from .get_alarm_contacts import *
 from .get_dynamic_tag_groups import *
 from .get_group_metric_rules import *
+from .get_hybrid_monitor_datas import *
 from .get_metric_rule_templates import *
 from .get_monitor_group_instances import *
 from .get_monitor_groups import *

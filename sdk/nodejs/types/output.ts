@@ -7718,6 +7718,43 @@ export namespace cms {
         times: number;
     }
 
+    export interface GetHybridMonitorDatasData {
+        /**
+         * The label of the time dimension.
+         */
+        labels: outputs.cms.GetHybridMonitorDatasDataLabel[];
+        /**
+         * The name of the monitoring indicator.
+         */
+        metricName: string;
+        /**
+         * The metric values that are collected at different timestamps.
+         */
+        values: outputs.cms.GetHybridMonitorDatasDataValue[];
+    }
+
+    export interface GetHybridMonitorDatasDataLabel {
+        /**
+         * Label key.
+         */
+        key: string;
+        /**
+         * Label value.
+         */
+        value: string;
+    }
+
+    export interface GetHybridMonitorDatasDataValue {
+        /**
+         * The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+         */
+        ts: string;
+        /**
+         * Label value.
+         */
+        value: string;
+    }
+
     export interface GetMetricRuleTemplatesTemplate {
         /**
          * The details of alert rules that are generated based on the alert template.
@@ -13872,6 +13909,53 @@ export namespace ecs {
          * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
          */
         description?: string;
+    }
+
+    export interface GetActivationsActivation {
+        /**
+         * The ID of the activation code.
+         */
+        activationId: string;
+        /**
+         * The time when the activation code was created.
+         */
+        createTime: string;
+        /**
+         * The number of instances that have been logged out.
+         */
+        deregisteredCount: number;
+        /**
+         * Description of the corresponding activation code.
+         */
+        description: string;
+        /**
+         * Indicates whether the activation code is disabled.
+         */
+        disabled: boolean;
+        /**
+         * The ID of the Activation.
+         */
+        id: string;
+        /**
+         * The maximum number of times the activation code is used to register a managed instance.
+         */
+        instanceCount: number;
+        /**
+         * The default prefix of the instance name.
+         */
+        instanceName: string;
+        /**
+         * The IP address of the host that allows the activation code to be used.
+         */
+        ipAddressRange: string;
+        /**
+         * The number of instances that were registered.
+         */
+        registeredCount: number;
+        /**
+         * The validity period of the activation code. Unit: hours.
+         */
+        timeToLiveInHours: number;
     }
 
     export interface GetAutoSnapshotPoliciesPolicy {

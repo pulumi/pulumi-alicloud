@@ -13,6 +13,7 @@ export * from "./getAlarmContactGroups";
 export * from "./getAlarmContacts";
 export * from "./getDynamicTagGroups";
 export * from "./getGroupMetricRules";
+export * from "./getHybridMonitorDatas";
 export * from "./getMetricRuleTemplates";
 export * from "./getMonitorGroupInstances";
 export * from "./getMonitorGroups";

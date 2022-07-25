@@ -1314,7 +1314,7 @@ class ContainerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cpu(self) -> pulumi.Output[Optional[float]]:
+    def cpu(self) -> pulumi.Output[float]:
         """
         The amount of CPU resources allocated to the container.
         """
@@ -1410,7 +1410,7 @@ class ContainerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def memory(self) -> pulumi.Output[Optional[float]]:
+    def memory(self) -> pulumi.Output[float]:
         """
         The amount of memory resources allocated to the container.
         """

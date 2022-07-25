@@ -16,6 +16,7 @@ class TemplateArgs:
                  content: pulumi.Input[str],
                  template_name: pulumi.Input[str],
                  auto_delete_executions: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version_name: Optional[pulumi.Input[str]] = None):
         """
@@ -23,6 +24,7 @@ class TemplateArgs:
         :param pulumi.Input[str] content: The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
         :param pulumi.Input[str] template_name: The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
         :param pulumi.Input[bool] auto_delete_executions: When deleting a template, whether to delete its related executions. Default to `false`.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the template belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_name: The name of template version.
         """
@@ -30,6 +32,8 @@ class TemplateArgs:
         pulumi.set(__self__, "template_name", template_name)
         if auto_delete_executions is not None:
             pulumi.set(__self__, "auto_delete_executions", auto_delete_executions)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if version_name is not None:
@@ -72,6 +76,18 @@ class TemplateArgs:
         pulumi.set(self, "auto_delete_executions", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of resource group which the template belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -105,6 +121,7 @@ class _TemplateState:
                  created_date: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  has_trigger: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  share_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  template_format: Optional[pulumi.Input[str]] = None,
@@ -123,6 +140,7 @@ class _TemplateState:
         :param pulumi.Input[str] created_date: The time when the template is created.
         :param pulumi.Input[str] description: The description of the template.
         :param pulumi.Input[bool] has_trigger: Is it triggered successfully.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the template belongs.
         :param pulumi.Input[str] share_type: The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_format: The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
@@ -146,6 +164,8 @@ class _TemplateState:
             pulumi.set(__self__, "description", description)
         if has_trigger is not None:
             pulumi.set(__self__, "has_trigger", has_trigger)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if share_type is not None:
             pulumi.set(__self__, "share_type", share_type)
         if tags is not None:
@@ -238,6 +258,18 @@ class _TemplateState:
     @has_trigger.setter
     def has_trigger(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "has_trigger", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of resource group which the template belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter(name="shareType")
@@ -367,6 +399,7 @@ class Template(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_delete_executions: Optional[pulumi.Input[bool]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  version_name: Optional[pulumi.Input[str]] = None,
@@ -427,6 +460,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_delete_executions: When deleting a template, whether to delete its related executions. Default to `false`.
         :param pulumi.Input[str] content: The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the template belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_name: The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
         :param pulumi.Input[str] version_name: The name of template version.
@@ -506,6 +540,7 @@ class Template(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_delete_executions: Optional[pulumi.Input[bool]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  template_name: Optional[pulumi.Input[str]] = None,
                  version_name: Optional[pulumi.Input[str]] = None,
@@ -525,6 +560,7 @@ class Template(pulumi.CustomResource):
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
@@ -557,6 +593,7 @@ class Template(pulumi.CustomResource):
             created_date: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             has_trigger: Optional[pulumi.Input[bool]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             share_type: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             template_format: Optional[pulumi.Input[str]] = None,
@@ -580,6 +617,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[str] created_date: The time when the template is created.
         :param pulumi.Input[str] description: The description of the template.
         :param pulumi.Input[bool] has_trigger: Is it triggered successfully.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the template belongs.
         :param pulumi.Input[str] share_type: The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] template_format: The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
@@ -601,6 +639,7 @@ class Template(pulumi.CustomResource):
         __props__.__dict__["created_date"] = created_date
         __props__.__dict__["description"] = description
         __props__.__dict__["has_trigger"] = has_trigger
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["share_type"] = share_type
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template_format"] = template_format
@@ -660,6 +699,14 @@ class Template(pulumi.CustomResource):
         Is it triggered successfully.
         """
         return pulumi.get(self, "has_trigger")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of resource group which the template belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="shareType")

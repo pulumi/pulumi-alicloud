@@ -109,6 +109,10 @@ export class Template extends pulumi.CustomResource {
      */
     public /*out*/ readonly hasTrigger!: pulumi.Output<boolean>;
     /**
+     * The ID of resource group which the template belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
      */
     public /*out*/ readonly shareType!: pulumi.Output<string>;
@@ -168,6 +172,7 @@ export class Template extends pulumi.CustomResource {
             resourceInputs["createdDate"] = state ? state.createdDate : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["hasTrigger"] = state ? state.hasTrigger : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["shareType"] = state ? state.shareType : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["templateFormat"] = state ? state.templateFormat : undefined;
@@ -188,6 +193,7 @@ export class Template extends pulumi.CustomResource {
             }
             resourceInputs["autoDeleteExecutions"] = args ? args.autoDeleteExecutions : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["templateName"] = args ? args.templateName : undefined;
             resourceInputs["versionName"] = args ? args.versionName : undefined;
@@ -236,6 +242,10 @@ export interface TemplateState {
      * Is it triggered successfully.
      */
     hasTrigger?: pulumi.Input<boolean>;
+    /**
+     * The ID of resource group which the template belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
      */
@@ -290,6 +300,10 @@ export interface TemplateArgs {
      * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
     content: pulumi.Input<string>;
+    /**
+     * The ID of resource group which the template belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

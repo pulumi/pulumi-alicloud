@@ -75,6 +75,8 @@ type Instance struct {
 	PhoenixNodeSpecification pulumi.StringOutput `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The count of search engine.
 	SearchEngineNodeCount pulumi.IntOutput `pulumi:"searchEngineNodeCount"`
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -85,6 +87,8 @@ type Instance struct {
 	TableEngineNodeCount pulumi.IntOutput `pulumi:"tableEngineNodeCount"`
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TableEngineSpecification pulumi.StringOutput `pulumi:"tableEngineSpecification"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntOutput `pulumi:"timeSeriesEngineNodeCount"`
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -183,6 +187,8 @@ type instanceState struct {
 	PhoenixNodeSpecification *string `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The count of search engine.
 	SearchEngineNodeCount *int `pulumi:"searchEngineNodeCount"`
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -193,6 +199,8 @@ type instanceState struct {
 	TableEngineNodeCount *int `pulumi:"tableEngineNodeCount"`
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TableEngineSpecification *string `pulumi:"tableEngineSpecification"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount *int `pulumi:"timeSeriesEngineNodeCount"`
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -254,6 +262,8 @@ type InstanceState struct {
 	PhoenixNodeSpecification pulumi.StringPtrInput
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The count of search engine.
 	SearchEngineNodeCount pulumi.IntPtrInput
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -264,6 +274,8 @@ type InstanceState struct {
 	TableEngineNodeCount pulumi.IntPtrInput
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TableEngineSpecification pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntPtrInput
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -319,6 +331,8 @@ type instanceArgs struct {
 	PhoenixNodeSpecification *string `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The count of search engine.
 	SearchEngineNodeCount *int `pulumi:"searchEngineNodeCount"`
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -327,6 +341,8 @@ type instanceArgs struct {
 	TableEngineNodeCount *int `pulumi:"tableEngineNodeCount"`
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TableEngineSpecification *string `pulumi:"tableEngineSpecification"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount *int `pulumi:"timeSeriesEngineNodeCount"`
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -379,6 +395,8 @@ type InstanceArgs struct {
 	PhoenixNodeSpecification pulumi.StringPtrInput
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The count of search engine.
 	SearchEngineNodeCount pulumi.IntPtrInput
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
@@ -387,6 +405,8 @@ type InstanceArgs struct {
 	TableEngineNodeCount pulumi.IntPtrInput
 	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	TableEngineSpecification pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntPtrInput
 	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.

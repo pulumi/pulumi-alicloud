@@ -78,6 +78,8 @@ type Cluster struct {
 	DiskType pulumi.StringPtrOutput `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount pulumi.IntOutput `pulumi:"instanceCount"`
+	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	MseVersion pulumi.StringOutput `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringOutput `pulumi:"netType"`
 	// The specification of private network SLB.
@@ -159,6 +161,8 @@ type clusterState struct {
 	DiskType *string `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount *int `pulumi:"instanceCount"`
+	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	MseVersion *string `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType *string `pulumi:"netType"`
 	// The specification of private network SLB.
@@ -194,6 +198,8 @@ type ClusterState struct {
 	DiskType pulumi.StringPtrInput
 	// The count of instance.
 	InstanceCount pulumi.IntPtrInput
+	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	MseVersion pulumi.StringPtrInput
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringPtrInput
 	// The specification of private network SLB.
@@ -231,6 +237,8 @@ type clusterArgs struct {
 	DiskType *string `pulumi:"diskType"`
 	// The count of instance.
 	InstanceCount int `pulumi:"instanceCount"`
+	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	MseVersion *string `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType string `pulumi:"netType"`
 	// The specification of private network SLB.
@@ -263,6 +271,8 @@ type ClusterArgs struct {
 	DiskType pulumi.StringPtrInput
 	// The count of instance.
 	InstanceCount pulumi.IntInput
+	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	MseVersion pulumi.StringPtrInput
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringInput
 	// The specification of private network SLB.

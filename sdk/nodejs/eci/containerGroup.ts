@@ -140,7 +140,7 @@ export class ContainerGroup extends pulumi.CustomResource {
     /**
      * The amount of CPU resources allocated to the container.
      */
-    public readonly cpu!: pulumi.Output<number | undefined>;
+    public readonly cpu!: pulumi.Output<number>;
     /**
      * The structure of dnsConfig.
      */
@@ -188,7 +188,7 @@ export class ContainerGroup extends pulumi.CustomResource {
     /**
      * The amount of memory resources allocated to the container.
      */
-    public readonly memory!: pulumi.Output<number | undefined>;
+    public readonly memory!: pulumi.Output<number>;
     /**
      * The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
      */

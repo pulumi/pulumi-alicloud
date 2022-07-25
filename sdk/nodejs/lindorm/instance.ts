@@ -142,6 +142,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly pricingCycle!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The count of search engine.
      */
     public readonly searchEngineNodeCount!: pulumi.Output<number>;
@@ -161,6 +165,10 @@ export class Instance extends pulumi.CustomResource {
      * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
     public readonly tableEngineSpecification!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The count of time series engine.
      */
@@ -220,11 +228,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["phoenixNodeCount"] = state ? state.phoenixNodeCount : undefined;
             resourceInputs["phoenixNodeSpecification"] = state ? state.phoenixNodeSpecification : undefined;
             resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["searchEngineNodeCount"] = state ? state.searchEngineNodeCount : undefined;
             resourceInputs["searchEngineSpecification"] = state ? state.searchEngineSpecification : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tableEngineNodeCount"] = state ? state.tableEngineNodeCount : undefined;
             resourceInputs["tableEngineSpecification"] = state ? state.tableEngineSpecification : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timeSeriesEngineNodeCount"] = state ? state.timeSeriesEngineNodeCount : undefined;
             resourceInputs["timeSeriresEngineSpecification"] = state ? state.timeSeriresEngineSpecification : undefined;
             resourceInputs["upgradeType"] = state ? state.upgradeType : undefined;
@@ -259,10 +269,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["phoenixNodeCount"] = args ? args.phoenixNodeCount : undefined;
             resourceInputs["phoenixNodeSpecification"] = args ? args.phoenixNodeSpecification : undefined;
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["searchEngineNodeCount"] = args ? args.searchEngineNodeCount : undefined;
             resourceInputs["searchEngineSpecification"] = args ? args.searchEngineSpecification : undefined;
             resourceInputs["tableEngineNodeCount"] = args ? args.tableEngineNodeCount : undefined;
             resourceInputs["tableEngineSpecification"] = args ? args.tableEngineSpecification : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeSeriesEngineNodeCount"] = args ? args.timeSeriesEngineNodeCount : undefined;
             resourceInputs["timeSeriresEngineSpecification"] = args ? args.timeSeriresEngineSpecification : undefined;
             resourceInputs["upgradeType"] = args ? args.upgradeType : undefined;
@@ -377,6 +389,10 @@ export interface InstanceState {
      */
     pricingCycle?: pulumi.Input<string>;
     /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The count of search engine.
      */
     searchEngineNodeCount?: pulumi.Input<number>;
@@ -396,6 +412,10 @@ export interface InstanceState {
      * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
     tableEngineSpecification?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The count of time series engine.
      */
@@ -497,6 +517,10 @@ export interface InstanceArgs {
      */
     pricingCycle?: pulumi.Input<string>;
     /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The count of search engine.
      */
     searchEngineNodeCount?: pulumi.Input<number>;
@@ -512,6 +536,10 @@ export interface InstanceArgs {
      * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
     tableEngineSpecification?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The count of time series engine.
      */

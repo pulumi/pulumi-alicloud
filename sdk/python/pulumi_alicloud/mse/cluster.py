@@ -22,6 +22,7 @@ class ClusterArgs:
                  acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cluster_alias_name: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 mse_version: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
@@ -40,6 +41,7 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_basic` or `mse_pro`.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
@@ -56,6 +58,8 @@ class ClusterArgs:
             pulumi.set(__self__, "cluster_alias_name", cluster_alias_name)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if mse_version is not None:
+            pulumi.set(__self__, "mse_version", mse_version)
         if private_slb_specification is not None:
             pulumi.set(__self__, "private_slb_specification", private_slb_specification)
         if pub_slb_specification is not None:
@@ -176,6 +180,18 @@ class ClusterArgs:
         pulumi.set(self, "disk_type", value)
 
     @property
+    @pulumi.getter(name="mseVersion")
+    def mse_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        """
+        return pulumi.get(self, "mse_version")
+
+    @mse_version.setter
+    def mse_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mse_version", value)
+
+    @property
     @pulumi.getter(name="privateSlbSpecification")
     def private_slb_specification(self) -> Optional[pulumi.Input[str]]:
         """
@@ -223,6 +239,7 @@ class _ClusterState:
                  cluster_version: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
+                 mse_version: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
@@ -243,6 +260,7 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_basic` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
@@ -266,6 +284,8 @@ class _ClusterState:
             pulumi.set(__self__, "disk_type", disk_type)
         if instance_count is not None:
             pulumi.set(__self__, "instance_count", instance_count)
+        if mse_version is not None:
+            pulumi.set(__self__, "mse_version", mse_version)
         if net_type is not None:
             pulumi.set(__self__, "net_type", net_type)
         if private_slb_specification is not None:
@@ -380,6 +400,18 @@ class _ClusterState:
         pulumi.set(self, "instance_count", value)
 
     @property
+    @pulumi.getter(name="mseVersion")
+    def mse_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        """
+        return pulumi.get(self, "mse_version")
+
+    @mse_version.setter
+    def mse_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mse_version", value)
+
+    @property
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -464,6 +496,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_version: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
+                 mse_version: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
@@ -514,6 +547,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_basic` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
@@ -579,6 +613,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_version: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
+                 mse_version: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
@@ -611,6 +646,7 @@ class Cluster(pulumi.CustomResource):
             if instance_count is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_count'")
             __props__.__dict__["instance_count"] = instance_count
+            __props__.__dict__["mse_version"] = mse_version
             if net_type is None and not opts.urn:
                 raise TypeError("Missing required property 'net_type'")
             __props__.__dict__["net_type"] = net_type
@@ -640,6 +676,7 @@ class Cluster(pulumi.CustomResource):
             cluster_version: Optional[pulumi.Input[str]] = None,
             disk_type: Optional[pulumi.Input[str]] = None,
             instance_count: Optional[pulumi.Input[int]] = None,
+            mse_version: Optional[pulumi.Input[str]] = None,
             net_type: Optional[pulumi.Input[str]] = None,
             private_slb_specification: Optional[pulumi.Input[str]] = None,
             pub_network_flow: Optional[pulumi.Input[str]] = None,
@@ -665,6 +702,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_basic` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
@@ -684,6 +722,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_version"] = cluster_version
         __props__.__dict__["disk_type"] = disk_type
         __props__.__dict__["instance_count"] = instance_count
+        __props__.__dict__["mse_version"] = mse_version
         __props__.__dict__["net_type"] = net_type
         __props__.__dict__["private_slb_specification"] = private_slb_specification
         __props__.__dict__["pub_network_flow"] = pub_network_flow
@@ -759,6 +798,14 @@ class Cluster(pulumi.CustomResource):
         The count of instance.
         """
         return pulumi.get(self, "instance_count")
+
+    @property
+    @pulumi.getter(name="mseVersion")
+    def mse_version(self) -> pulumi.Output[str]:
+        """
+        The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        """
+        return pulumi.get(self, "mse_version")
 
     @property
     @pulumi.getter(name="netType")
