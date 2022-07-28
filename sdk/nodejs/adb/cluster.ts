@@ -113,7 +113,7 @@ export class Cluster extends pulumi.CustomResource {
      * The description of cluster.
      */
     public readonly description!: pulumi.Output<string>;
-    public readonly elasticIoResource!: pulumi.Output<number | undefined>;
+    public readonly elasticIoResource!: pulumi.Output<number>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
@@ -150,6 +150,7 @@ export class Cluster extends pulumi.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -194,6 +195,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -224,6 +226,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
@@ -312,6 +315,7 @@ export interface ClusterState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -395,6 +399,7 @@ export interface ClusterArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */

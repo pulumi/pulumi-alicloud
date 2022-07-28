@@ -88,6 +88,7 @@ class ProviderEndpointArgs:
                  cds: Optional[pulumi.Input[str]] = None,
                  clickhouse: Optional[pulumi.Input[str]] = None,
                  cloudauth: Optional[pulumi.Input[str]] = None,
+                 cloudfw: Optional[pulumi.Input[str]] = None,
                  cloudphone: Optional[pulumi.Input[str]] = None,
                  cloudsso: Optional[pulumi.Input[str]] = None,
                  cms: Optional[pulumi.Input[str]] = None,
@@ -109,6 +110,7 @@ class ProviderEndpointArgs:
                  dns: Optional[pulumi.Input[str]] = None,
                  drds: Optional[pulumi.Input[str]] = None,
                  dts: Optional[pulumi.Input[str]] = None,
+                 dysms: Optional[pulumi.Input[str]] = None,
                  eais: Optional[pulumi.Input[str]] = None,
                  eci: Optional[pulumi.Input[str]] = None,
                  ecs: Optional[pulumi.Input[str]] = None,
@@ -222,6 +224,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "clickhouse", clickhouse)
         if cloudauth is not None:
             pulumi.set(__self__, "cloudauth", cloudauth)
+        if cloudfw is not None:
+            pulumi.set(__self__, "cloudfw", cloudfw)
         if cloudphone is not None:
             pulumi.set(__self__, "cloudphone", cloudphone)
         if cloudsso is not None:
@@ -264,6 +268,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "drds", drds)
         if dts is not None:
             pulumi.set(__self__, "dts", dts)
+        if dysms is not None:
+            pulumi.set(__self__, "dysms", dysms)
         if eais is not None:
             pulumi.set(__self__, "eais", eais)
         if eci is not None:
@@ -593,6 +599,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
+    def cloudfw(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloudfw")
+
+    @cloudfw.setter
+    def cloudfw(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloudfw", value)
+
+    @property
+    @pulumi.getter
     def cloudphone(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudphone")
 
@@ -779,6 +794,15 @@ class ProviderEndpointArgs:
     @dts.setter
     def dts(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dts", value)
+
+    @property
+    @pulumi.getter
+    def dysms(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dysms")
+
+    @dysms.setter
+    def dysms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dysms", value)
 
     @property
     @pulumi.getter

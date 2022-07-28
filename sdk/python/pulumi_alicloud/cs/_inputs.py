@@ -1004,11 +1004,11 @@ class KubernetesWorkerDataDiskArgs:
                  size: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] auto_snapshot_policy_id: Worker node data disk auto snapshot policy.
+        :param pulumi.Input[str] auto_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
         :param pulumi.Input[str] category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         :param pulumi.Input[str] encrypted: Specifies whether to encrypt data disks. Valid values: true and false.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
-        :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param pulumi.Input[str] performance_level: (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[str] size: The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
         """
         if auto_snapshot_policy_id is not None:
@@ -1034,7 +1034,7 @@ class KubernetesWorkerDataDiskArgs:
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker node data disk auto snapshot policy.
+        (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
@@ -1100,7 +1100,7 @@ class KubernetesWorkerDataDiskArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -1518,11 +1518,11 @@ class ManagedKubernetesWorkerDataDiskArgs:
                  size: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] auto_snapshot_policy_id: Worker node data disk auto snapshot policy.
+        :param pulumi.Input[str] auto_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
         :param pulumi.Input[str] category: The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         :param pulumi.Input[str] encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
-        :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param pulumi.Input[str] performance_level: (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[str] size: The size of a data disk, at least 40. Unit: GiB.
         """
         if auto_snapshot_policy_id is not None:
@@ -1548,7 +1548,7 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker node data disk auto snapshot policy.
+        (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
@@ -1614,7 +1614,7 @@ class ManagedKubernetesWorkerDataDiskArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -1651,9 +1651,9 @@ class ManagedKubernetesWorkerNodeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the node.
+        :param pulumi.Input[str] id: (Deprecated from version 1.177.0) ID of the node.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
-        :param pulumi.Input[str] private_ip: The private IP address of node.
+        :param pulumi.Input[str] private_ip: (Deprecated from version 1.177.0) The private IP address of node.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -1666,7 +1666,7 @@ class ManagedKubernetesWorkerNodeArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the node.
+        (Deprecated from version 1.177.0) ID of the node.
         """
         return pulumi.get(self, "id")
 
@@ -1690,7 +1690,7 @@ class ManagedKubernetesWorkerNodeArgs:
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The private IP address of node.
+        (Deprecated from version 1.177.0) The private IP address of node.
         """
         return pulumi.get(self, "private_ip")
 
@@ -2070,7 +2070,7 @@ class NodePoolSpotPriceLimitArgs:
                  price_limit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] instance_type: Spot instance type.
-        :param pulumi.Input[str] price_limit: The maximum hourly price of the spot instance.
+        :param pulumi.Input[str] price_limit: The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
         """
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
@@ -2093,7 +2093,7 @@ class NodePoolSpotPriceLimitArgs:
     @pulumi.getter(name="priceLimit")
     def price_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum hourly price of the spot instance.
+        The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
         """
         return pulumi.get(self, "price_limit")
 

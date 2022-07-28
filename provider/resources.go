@@ -130,6 +130,7 @@ const (
 	securityCenterMod      = "SecurityCenter"
 	schedulerXMod          = "SchedulerX"
 	slbMod                 = "Slb"
+	smsMod                 = "Sms"
 	tagMod                 = "Tag"
 	tsdbMod                = "Tsdb"
 	vpcMod                 = "Vpc"
@@ -386,6 +387,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cloud_firewall_control_policy":       {Tok: resource(cloudFirewallMod, "ControlPolicy")},
 			"alicloud_cloud_firewall_control_policy_order": {Tok: resource(cloudFirewallMod, "ControlPolicyOrder")},
 			"alicloud_cloud_firewall_instance":             {Tok: resource(cloudFirewallMod, "Instance")},
+			"alicloud_cloud_firewall_address_book":         {Tok: resource(cloudFirewallMod, "AddressBook")},
 
 			// CloudStorageGateway
 			"alicloud_cloud_storage_gateway_storage_bundle": {Tok: resource(cloudStorageGatewayMod, "StorageBundle")},
@@ -805,6 +807,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbr_server_backup_plan": {Tok: resource(hbrMod, "ServerBackupPlan")},
 			"alicloud_hbr_replication_vault":  {Tok: resource(hbrMod, "ReplicationVault")},
 			"alicloud_hbr_ots_backup_plan":    {Tok: resource(hbrMod, "OtsBackupPlan")},
+			"alicloud_hbr_hana_instance":      {Tok: resource(hbrMod, "HanaInstance")},
 
 			// Iot
 			"alicloud_iot_device_group": {Tok: resource(iotMod, "DeviceGroup")},
@@ -1138,6 +1141,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_slb_acl_entry_attachment":           {Tok: resource(slbMod, "AclEntryAttachment")},
 			"alicloud_slb_server_group_server_attachment": {Tok: resource(slbMod, "ServerGroupServerAttachment")},
 
+			// sms
+			"alicloud_sms_short_url": {Tok: resource(smsMod, "ShortUrl")},
+
 			// Tsdb
 			"alicloud_tsdb_instance": {Tok: resource(tsdbMod, "Instance")},
 
@@ -1387,6 +1393,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Cloudfirewall
 			"alicloud_cloud_firewall_control_policies": {Tok: dataSource(cloudFirewallMod, "getControlPolicies")},
 			"alicloud_cloud_firewall_instances":        {Tok: dataSource(cloudFirewallMod, "getInstances")},
+			"alicloud_cloud_firewall_address_books":    {Tok: dataSource(cloudFirewallMod, "getAddressBooks")},
 
 			// CloudStorageGateway
 			"alicloud_cloud_storage_gateway_storage_bundles": {
@@ -1719,6 +1726,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbr_replication_vault_regions": {Tok: dataSource(hbrMod, "getReplicationVaultRegions")},
 			"alicloud_hbr_ots_backup_plans":          {Tok: dataSource(hbrMod, "getOtsBackupPlans")},
 			"alicloud_hbr_ots_snapshots":             {Tok: dataSource(hbrMod, "getOtsSnapshots")},
+			"alicloud_hbr_hana_instances":            {Tok: dataSource(hbrMod, "getHanaInstances")},
 
 			// iot
 			"alicloud_iot_service":       {Tok: dataSource(iotMod, "getService")},

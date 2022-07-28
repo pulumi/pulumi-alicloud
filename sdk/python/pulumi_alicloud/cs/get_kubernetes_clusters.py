@@ -21,7 +21,7 @@ class GetKubernetesClustersResult:
     """
     A collection of values returned by getKubernetesClusters.
     """
-    def __init__(__self__, clusters=None, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
+    def __init__(__self__, clusters=None, enable_details=None, id=None, ids=None, kube_config_file_prefix=None, name_regex=None, names=None, output_file=None):
         if clusters and not isinstance(clusters, list):
             raise TypeError("Expected argument 'clusters' to be a list")
         pulumi.set(__self__, "clusters", clusters)
@@ -34,6 +34,9 @@ class GetKubernetesClustersResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if kube_config_file_prefix and not isinstance(kube_config_file_prefix, str):
+            raise TypeError("Expected argument 'kube_config_file_prefix' to be a str")
+        pulumi.set(__self__, "kube_config_file_prefix", kube_config_file_prefix)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -74,6 +77,11 @@ class GetKubernetesClustersResult:
         return pulumi.get(self, "ids")
 
     @property
+    @pulumi.getter(name="kubeConfigFilePrefix")
+    def kube_config_file_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "kube_config_file_prefix")
+
+    @property
     @pulumi.getter(name="nameRegex")
     def name_regex(self) -> Optional[str]:
         return pulumi.get(self, "name_regex")
@@ -102,6 +110,7 @@ class AwaitableGetKubernetesClustersResult(GetKubernetesClustersResult):
             enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
+            kube_config_file_prefix=self.kube_config_file_prefix,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file)
@@ -109,6 +118,7 @@ class AwaitableGetKubernetesClustersResult(GetKubernetesClustersResult):
 
 def get_kubernetes_clusters(enable_details: Optional[bool] = None,
                             ids: Optional[Sequence[str]] = None,
+                            kube_config_file_prefix: Optional[str] = None,
                             name_regex: Optional[str] = None,
                             output_file: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClustersResult:
@@ -117,24 +127,29 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.34.0+.
 
+    > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    k8s_clusters = alicloud.cs.get_kubernetes_clusters(name_regex="my-first-k8s",
+    k8s_clusters = alicloud.cs.get_kubernetes_clusters(kube_config_file_prefix="~/.kube/k8s",
+        name_regex="my-first-k8s",
         output_file="my-first-k8s-json")
     pulumi.export("output", k8s_clusters.clusters)
     ```
 
 
     :param Sequence[str] ids: Cluster IDs to filter.
+    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
     :param str name_regex: A regex string to filter results by cluster name.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['kubeConfigFilePrefix'] = kube_config_file_prefix
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     if opts is None:
@@ -148,6 +163,7 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
         enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
+        kube_config_file_prefix=__ret__.kube_config_file_prefix,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
@@ -156,6 +172,7 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
 @_utilities.lift_output_func(get_kubernetes_clusters)
 def get_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                   kube_config_file_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesClustersResult]:
@@ -164,19 +181,23 @@ def get_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optiona
 
     > **NOTE:** Available in v1.34.0+.
 
+    > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    k8s_clusters = alicloud.cs.get_kubernetes_clusters(name_regex="my-first-k8s",
+    k8s_clusters = alicloud.cs.get_kubernetes_clusters(kube_config_file_prefix="~/.kube/k8s",
+        name_regex="my-first-k8s",
         output_file="my-first-k8s-json")
     pulumi.export("output", k8s_clusters.clusters)
     ```
 
 
     :param Sequence[str] ids: Cluster IDs to filter.
+    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
     :param str name_regex: A regex string to filter results by cluster name.
     """
     ...

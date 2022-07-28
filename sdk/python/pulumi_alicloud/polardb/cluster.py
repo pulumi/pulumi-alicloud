@@ -36,6 +36,7 @@ class ClusterArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -69,6 +70,7 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -117,6 +119,8 @@ class ClusterArgs:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
+        if sub_category is not None:
+            pulumi.set(__self__, "sub_category", sub_category)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
@@ -383,6 +387,18 @@ class ClusterArgs:
         pulumi.set(self, "security_ips", value)
 
     @property
+    @pulumi.getter(name="subCategory")
+    def sub_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+        """
+        return pulumi.get(self, "sub_category")
+
+    @sub_category.setter
+    def sub_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_category", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -460,6 +476,7 @@ class _ClusterState:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -494,6 +511,7 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -547,6 +565,8 @@ class _ClusterState:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
+        if sub_category is not None:
+            pulumi.set(__self__, "sub_category", sub_category)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
@@ -825,6 +845,18 @@ class _ClusterState:
         pulumi.set(self, "security_ips", value)
 
     @property
+    @pulumi.getter(name="subCategory")
+    def sub_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+        """
+        return pulumi.get(self, "sub_category")
+
+    @sub_category.setter
+    def sub_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_category", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -903,6 +935,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -997,6 +1030,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1108,6 +1142,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sub_category: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1151,6 +1186,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["security_ips"] = security_ips
+            __props__.__dict__["sub_category"] = sub_category
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1188,6 +1224,7 @@ class Cluster(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            sub_category: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -1227,6 +1264,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] sub_category: The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1262,6 +1300,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["security_ips"] = security_ips
+        __props__.__dict__["sub_category"] = sub_category
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1447,6 +1486,14 @@ class Cluster(pulumi.CustomResource):
         List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ips")
+
+    @property
+    @pulumi.getter(name="subCategory")
+    def sub_category(self) -> pulumi.Output[str]:
+        """
+        The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+        """
+        return pulumi.get(self, "sub_category")
 
     @property
     @pulumi.getter

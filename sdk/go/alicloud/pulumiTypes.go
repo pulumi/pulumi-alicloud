@@ -209,6 +209,7 @@ type ProviderEndpoint struct {
 	Cds                 *string `pulumi:"cds"`
 	Clickhouse          *string `pulumi:"clickhouse"`
 	Cloudauth           *string `pulumi:"cloudauth"`
+	Cloudfw             *string `pulumi:"cloudfw"`
 	Cloudphone          *string `pulumi:"cloudphone"`
 	Cloudsso            *string `pulumi:"cloudsso"`
 	Cms                 *string `pulumi:"cms"`
@@ -230,6 +231,7 @@ type ProviderEndpoint struct {
 	Dns                 *string `pulumi:"dns"`
 	Drds                *string `pulumi:"drds"`
 	Dts                 *string `pulumi:"dts"`
+	Dysms               *string `pulumi:"dysms"`
 	Eais                *string `pulumi:"eais"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
@@ -337,6 +339,7 @@ type ProviderEndpointArgs struct {
 	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
 	Clickhouse          pulumi.StringPtrInput `pulumi:"clickhouse"`
 	Cloudauth           pulumi.StringPtrInput `pulumi:"cloudauth"`
+	Cloudfw             pulumi.StringPtrInput `pulumi:"cloudfw"`
 	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
 	Cloudsso            pulumi.StringPtrInput `pulumi:"cloudsso"`
 	Cms                 pulumi.StringPtrInput `pulumi:"cms"`
@@ -358,6 +361,7 @@ type ProviderEndpointArgs struct {
 	Dns                 pulumi.StringPtrInput `pulumi:"dns"`
 	Drds                pulumi.StringPtrInput `pulumi:"drds"`
 	Dts                 pulumi.StringPtrInput `pulumi:"dts"`
+	Dysms               pulumi.StringPtrInput `pulumi:"dysms"`
 	Eais                pulumi.StringPtrInput `pulumi:"eais"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
@@ -564,6 +568,10 @@ func (o ProviderEndpointOutput) Cloudauth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudauth }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Cloudfw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudfw }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Cloudphone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudphone }).(pulumi.StringPtrOutput)
 }
@@ -646,6 +654,10 @@ func (o ProviderEndpointOutput) Drds() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Dts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dts }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Dysms() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dysms }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Eais() pulumi.StringPtrOutput {

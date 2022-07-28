@@ -276,6 +276,7 @@ namespace Pulumi.AliCloud
                 public string? Cds { get; set; } = null!;
                 public string? Clickhouse { get; set; } = null!;
                 public string? Cloudauth { get; set; } = null!;
+                public string? Cloudfw { get; set; } = null!;
                 public string? Cloudphone { get; set; } = null!;
                 public string? Cloudsso { get; set; } = null!;
                 public string? Cms { get; set; } = null!;
@@ -297,6 +298,7 @@ namespace Pulumi.AliCloud
                 public string? Dns { get; set; } = null!;
                 public string? Drds { get; set; } = null!;
                 public string? Dts { get; set; } = null!;
+                public string? Dysms { get; set; } = null!;
                 public string? Eais { get; set; } = null!;
                 public string? Eci { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;

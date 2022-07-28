@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
         /// 
+        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -30,6 +32,7 @@ namespace Pulumi.AliCloud.CS
         ///     {
         ///         var k8sClusters = Output.Create(AliCloud.CS.GetManagedKubernetesClusters.InvokeAsync(new AliCloud.CS.GetManagedKubernetesClustersArgs
         ///         {
+        ///             KubeConfigFilePrefix = "~/.kube/managed",
         ///             NameRegex = "my-first-k8s",
         ///             OutputFile = "my-first-k8s-json",
         ///         }));
@@ -51,6 +54,8 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
         /// 
+        /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -65,6 +70,7 @@ namespace Pulumi.AliCloud.CS
         ///     {
         ///         var k8sClusters = Output.Create(AliCloud.CS.GetManagedKubernetesClusters.InvokeAsync(new AliCloud.CS.GetManagedKubernetesClustersArgs
         ///         {
+        ///             KubeConfigFilePrefix = "~/.kube/managed",
         ///             NameRegex = "my-first-k8s",
         ///             OutputFile = "my-first-k8s-json",
         ///         }));
@@ -101,6 +107,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+        /// </summary>
+        [Input("kubeConfigFilePrefix")]
+        public string? KubeConfigFilePrefix { get; set; }
+
+        /// <summary>
         /// A regex string to filter results by cluster name.
         /// </summary>
         [Input("nameRegex")]
@@ -130,6 +142,12 @@ namespace Pulumi.AliCloud.CS
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
+
+        /// <summary>
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+        /// </summary>
+        [Input("kubeConfigFilePrefix")]
+        public Input<string>? KubeConfigFilePrefix { get; set; }
 
         /// <summary>
         /// A regex string to filter results by cluster name.
@@ -162,6 +180,7 @@ namespace Pulumi.AliCloud.CS
         /// A list of matched Kubernetes clusters' ids.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly string? KubeConfigFilePrefix;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of matched Kubernetes clusters' names.
@@ -179,6 +198,8 @@ namespace Pulumi.AliCloud.CS
 
             ImmutableArray<string> ids,
 
+            string? kubeConfigFilePrefix,
+
             string? nameRegex,
 
             ImmutableArray<string> names,
@@ -189,6 +210,7 @@ namespace Pulumi.AliCloud.CS
             EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
+            KubeConfigFilePrefix = kubeConfigFilePrefix;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;

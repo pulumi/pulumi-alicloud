@@ -14,6 +14,8 @@ import (
 //
 // > **NOTE:** Available in v1.34.0+.
 //
+// > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
+//
 // ## Example Usage
 //
 // ```go
@@ -27,8 +29,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		k8sClusters, err := cs.GetKubernetesClusters(ctx, &cs.GetKubernetesClustersArgs{
-// 			NameRegex:  pulumi.StringRef("my-first-k8s"),
-// 			OutputFile: pulumi.StringRef("my-first-k8s-json"),
+// 			KubeConfigFilePrefix: pulumi.StringRef("~/.kube/k8s"),
+// 			NameRegex:            pulumi.StringRef("my-first-k8s"),
+// 			OutputFile:           pulumi.StringRef("my-first-k8s-json"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -52,6 +55,8 @@ type GetKubernetesClustersArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids []string `pulumi:"ids"`
+	// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+	KubeConfigFilePrefix *string `pulumi:"kubeConfigFilePrefix"`
 	// A regex string to filter results by cluster name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -65,8 +70,9 @@ type GetKubernetesClustersResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of matched Kubernetes clusters' ids.
-	Ids       []string `pulumi:"ids"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Ids                  []string `pulumi:"ids"`
+	KubeConfigFilePrefix *string  `pulumi:"kubeConfigFilePrefix"`
+	NameRegex            *string  `pulumi:"nameRegex"`
 	// A list of matched Kubernetes clusters' names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -90,6 +96,8 @@ type GetKubernetesClustersOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+	KubeConfigFilePrefix pulumi.StringPtrInput `pulumi:"kubeConfigFilePrefix"`
 	// A regex string to filter results by cluster name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -131,6 +139,10 @@ func (o GetKubernetesClustersResultOutput) Id() pulumi.StringOutput {
 // A list of matched Kubernetes clusters' ids.
 func (o GetKubernetesClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubernetesClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetKubernetesClustersResultOutput) KubeConfigFilePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKubernetesClustersResult) *string { return v.KubeConfigFilePrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o GetKubernetesClustersResultOutput) NameRegex() pulumi.StringPtrOutput {

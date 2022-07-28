@@ -82,6 +82,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> InstanceName { get; private set; } = null!;
 
         /// <summary>
+        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+        /// </summary>
+        [Output("instancePatternInfos")]
+        public Output<ImmutableArray<Outputs.ScalingConfigurationInstancePatternInfo>> InstancePatternInfos { get; private set; } = null!;
+
+        /// <summary>
         /// Resource type of an ECS instance.
         /// </summary>
         [Output("instanceType")]
@@ -382,6 +388,18 @@ namespace Pulumi.AliCloud.Ess
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
+        [Input("instancePatternInfos")]
+        private InputList<Inputs.ScalingConfigurationInstancePatternInfoArgs>? _instancePatternInfos;
+
+        /// <summary>
+        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+        /// </summary>
+        public InputList<Inputs.ScalingConfigurationInstancePatternInfoArgs> InstancePatternInfos
+        {
+            get => _instancePatternInfos ?? (_instancePatternInfos = new InputList<Inputs.ScalingConfigurationInstancePatternInfoArgs>());
+            set => _instancePatternInfos = value;
+        }
+
         /// <summary>
         /// Resource type of an ECS instance.
         /// </summary>
@@ -673,6 +691,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
+
+        [Input("instancePatternInfos")]
+        private InputList<Inputs.ScalingConfigurationInstancePatternInfoGetArgs>? _instancePatternInfos;
+
+        /// <summary>
+        /// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+        /// </summary>
+        public InputList<Inputs.ScalingConfigurationInstancePatternInfoGetArgs> InstancePatternInfos
+        {
+            get => _instancePatternInfos ?? (_instancePatternInfos = new InputList<Inputs.ScalingConfigurationInstancePatternInfoGetArgs>());
+            set => _instancePatternInfos = value;
+        }
 
         /// <summary>
         /// Resource type of an ECS instance.

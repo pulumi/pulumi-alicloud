@@ -21,6 +21,7 @@ class NodePoolArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cis_enabled: Optional[pulumi.Input[bool]] = None,
+                 cpu_policy: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  desired_size: Optional[pulumi.Input[int]] = None,
@@ -35,6 +36,7 @@ class NodePoolArgs:
                  keep_instance_name: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
                  management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -44,6 +46,7 @@ class NodePoolArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -60,6 +63,7 @@ class NodePoolArgs:
                  system_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
+                 system_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
                  unschedulable: Optional[pulumi.Input[bool]] = None,
@@ -72,6 +76,7 @@ class NodePoolArgs:
         :param pulumi.Input[bool] auto_renew: Enable Node payment auto-renew, default is `false`.
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[int] desired_size: The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
@@ -86,15 +91,17 @@ class NodePoolArgs:
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         :param pulumi.Input['NodePoolManagementArgs'] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
-        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -104,14 +111,15 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
                > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
-        :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+        :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
         :param pulumi.Input[str] system_disk_kms_key: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[str] system_disk_snapshot_policy_id: The system disk snapshot policy id.
         :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes.
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
@@ -126,6 +134,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if cis_enabled is not None:
             pulumi.set(__self__, "cis_enabled", cis_enabled)
+        if cpu_policy is not None:
+            pulumi.set(__self__, "cpu_policy", cpu_policy)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deployment_set_id is not None:
@@ -154,6 +164,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "key_name", key_name)
         if kms_encrypted_password is not None:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if management is not None:
@@ -178,6 +190,8 @@ class NodePoolArgs:
             pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
+        if rds_instances is not None:
+            pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if runtime_name is not None:
@@ -213,6 +227,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
             pulumi.set(__self__, "system_disk_size", system_disk_size)
+        if system_disk_snapshot_policy_id is not None:
+            pulumi.set(__self__, "system_disk_snapshot_policy_id", system_disk_snapshot_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -293,6 +309,18 @@ class NodePoolArgs:
     @cis_enabled.setter
     def cis_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "cis_enabled", value)
+
+    @property
+    @pulumi.getter(name="cpuPolicy")
+    def cpu_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+        """
+        return pulumi.get(self, "cpu_policy")
+
+    @cpu_policy.setter
+    def cpu_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_policy", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -463,6 +491,18 @@ class NodePoolArgs:
         pulumi.set(self, "kms_encrypted_password", value)
 
     @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]]:
         """
@@ -514,7 +554,7 @@ class NodePoolArgs:
     @pulumi.getter(name="nodeNameMode")
     def node_name_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
         return pulumi.get(self, "node_name_mode")
 
@@ -569,6 +609,18 @@ class NodePoolArgs:
     @platform.setter
     def platform(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "platform", value)
+
+    @property
+    @pulumi.getter(name="rdsInstances")
+    def rds_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        """
+        return pulumi.get(self, "rds_instances")
+
+    @rds_instances.setter
+    def rds_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rds_instances", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -671,7 +723,7 @@ class NodePoolArgs:
     @pulumi.getter(name="spotPriceLimits")
     def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]]:
         """
-        The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         """
         return pulumi.get(self, "spot_price_limits")
 
@@ -683,7 +735,7 @@ class NodePoolArgs:
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -695,7 +747,7 @@ class NodePoolArgs:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -764,6 +816,18 @@ class NodePoolArgs:
         pulumi.set(self, "system_disk_size", value)
 
     @property
+    @pulumi.getter(name="systemDiskSnapshotPolicyId")
+    def system_disk_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The system disk snapshot policy id.
+        """
+        return pulumi.get(self, "system_disk_snapshot_policy_id")
+
+    @system_disk_snapshot_policy_id.setter
+    def system_disk_snapshot_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_snapshot_policy_id", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -819,6 +883,7 @@ class _NodePoolState:
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cis_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cpu_policy: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  desired_size: Optional[pulumi.Input[int]] = None,
@@ -834,6 +899,7 @@ class _NodePoolState:
                  keep_instance_name: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
                  management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -843,6 +909,7 @@ class _NodePoolState:
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -860,6 +927,7 @@ class _NodePoolState:
                  system_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
+                 system_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
                  unschedulable: Optional[pulumi.Input[bool]] = None,
@@ -872,6 +940,7 @@ class _NodePoolState:
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[int] desired_size: The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
@@ -887,15 +956,17 @@ class _NodePoolState:
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         :param pulumi.Input['NodePoolManagementArgs'] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
-        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -906,14 +977,15 @@ class _NodePoolState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
                > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
-        :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+        :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
         :param pulumi.Input[str] system_disk_kms_key: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[str] system_disk_snapshot_policy_id: The system disk snapshot policy id.
         :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes.
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
@@ -929,6 +1001,8 @@ class _NodePoolState:
             pulumi.set(__self__, "cis_enabled", cis_enabled)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if cpu_policy is not None:
+            pulumi.set(__self__, "cpu_policy", cpu_policy)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deployment_set_id is not None:
@@ -959,6 +1033,8 @@ class _NodePoolState:
             pulumi.set(__self__, "key_name", key_name)
         if kms_encrypted_password is not None:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if management is not None:
@@ -983,6 +1059,8 @@ class _NodePoolState:
             pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
+        if rds_instances is not None:
+            pulumi.set(__self__, "rds_instances", rds_instances)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if runtime_name is not None:
@@ -1020,6 +1098,8 @@ class _NodePoolState:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
             pulumi.set(__self__, "system_disk_size", system_disk_size)
+        if system_disk_snapshot_policy_id is not None:
+            pulumi.set(__self__, "system_disk_snapshot_policy_id", system_disk_snapshot_policy_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -1080,6 +1160,18 @@ class _NodePoolState:
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="cpuPolicy")
+    def cpu_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+        """
+        return pulumi.get(self, "cpu_policy")
+
+    @cpu_policy.setter
+    def cpu_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_policy", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -1262,6 +1354,18 @@ class _NodePoolState:
         pulumi.set(self, "kms_encrypted_password", value)
 
     @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]]:
         """
@@ -1313,7 +1417,7 @@ class _NodePoolState:
     @pulumi.getter(name="nodeNameMode")
     def node_name_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
         return pulumi.get(self, "node_name_mode")
 
@@ -1368,6 +1472,18 @@ class _NodePoolState:
     @platform.setter
     def platform(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "platform", value)
+
+    @property
+    @pulumi.getter(name="rdsInstances")
+    def rds_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        """
+        return pulumi.get(self, "rds_instances")
+
+    @rds_instances.setter
+    def rds_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rds_instances", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -1482,7 +1598,7 @@ class _NodePoolState:
     @pulumi.getter(name="spotPriceLimits")
     def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]]:
         """
-        The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         """
         return pulumi.get(self, "spot_price_limits")
 
@@ -1494,7 +1610,7 @@ class _NodePoolState:
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1506,7 +1622,7 @@ class _NodePoolState:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -1573,6 +1689,18 @@ class _NodePoolState:
     @system_disk_size.setter
     def system_disk_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "system_disk_size", value)
+
+    @property
+    @pulumi.getter(name="systemDiskSnapshotPolicyId")
+    def system_disk_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The system disk snapshot policy id.
+        """
+        return pulumi.get(self, "system_disk_snapshot_policy_id")
+
+    @system_disk_snapshot_policy_id.setter
+    def system_disk_snapshot_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_snapshot_policy_id", value)
 
     @property
     @pulumi.getter
@@ -1656,6 +1784,7 @@ class NodePool(pulumi.CustomResource):
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cis_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cpu_policy: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  desired_size: Optional[pulumi.Input[int]] = None,
@@ -1671,6 +1800,7 @@ class NodePool(pulumi.CustomResource):
                  keep_instance_name: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodePoolManagementArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1680,6 +1810,7 @@ class NodePool(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -1696,6 +1827,7 @@ class NodePool(pulumi.CustomResource):
                  system_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
+                 system_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
                  unschedulable: Optional[pulumi.Input[bool]] = None,
@@ -1734,12 +1866,9 @@ class NodePool(pulumi.CustomResource):
             default_managed_kubernetes = alicloud.cs.ManagedKubernetes("defaultManagedKubernetes",
                 cluster_spec="ack.pro.small",
                 is_enterprise_security_group=True,
-                worker_number=2,
-                password="Hello1234",
                 pod_cidr="172.20.0.0/16",
                 service_cidr="172.21.0.0/20",
-                worker_vswitch_ids=[default_switch.id],
-                worker_instance_types=[default_instance_types.instance_types[0].id])
+                worker_vswitch_ids=[default_switch.id])
         ```
 
         Create a node pool.
@@ -1967,6 +2096,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[int] desired_size: The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
@@ -1982,15 +2112,17 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
-        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -2000,14 +2132,15 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
                > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
-        :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+        :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
         :param pulumi.Input[str] system_disk_kms_key: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[str] system_disk_snapshot_policy_id: The system disk snapshot policy id.
         :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
@@ -2052,12 +2185,9 @@ class NodePool(pulumi.CustomResource):
             default_managed_kubernetes = alicloud.cs.ManagedKubernetes("defaultManagedKubernetes",
                 cluster_spec="ack.pro.small",
                 is_enterprise_security_group=True,
-                worker_number=2,
-                password="Hello1234",
                 pod_cidr="172.20.0.0/16",
                 service_cidr="172.21.0.0/20",
-                worker_vswitch_ids=[default_switch.id],
-                worker_instance_types=[default_instance_types.instance_types[0].id])
+                worker_vswitch_ids=[default_switch.id])
         ```
 
         Create a node pool.
@@ -2298,6 +2428,7 @@ class NodePool(pulumi.CustomResource):
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  cis_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cpu_policy: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  desired_size: Optional[pulumi.Input[int]] = None,
@@ -2313,6 +2444,7 @@ class NodePool(pulumi.CustomResource):
                  keep_instance_name: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
                  management: Optional[pulumi.Input[pulumi.InputType['NodePoolManagementArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2322,6 +2454,7 @@ class NodePool(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
@@ -2338,6 +2471,7 @@ class NodePool(pulumi.CustomResource):
                  system_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
+                 system_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
                  unschedulable: Optional[pulumi.Input[bool]] = None,
@@ -2361,6 +2495,7 @@ class NodePool(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["cpu_policy"] = cpu_policy
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["desired_size"] = desired_size
@@ -2378,6 +2513,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["keep_instance_name"] = keep_instance_name
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+            __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["labels"] = labels
             __props__.__dict__["management"] = management
             __props__.__dict__["name"] = name
@@ -2393,6 +2529,7 @@ class NodePool(pulumi.CustomResource):
                 warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
                 pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
             __props__.__dict__["platform"] = platform
+            __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["runtime_name"] = runtime_name
             __props__.__dict__["runtime_version"] = runtime_version
@@ -2412,6 +2549,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["system_disk_kms_key"] = system_disk_kms_key
             __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
             __props__.__dict__["system_disk_size"] = system_disk_size
+            __props__.__dict__["system_disk_snapshot_policy_id"] = system_disk_snapshot_policy_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
             __props__.__dict__["unschedulable"] = unschedulable
@@ -2435,6 +2573,7 @@ class NodePool(pulumi.CustomResource):
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             cis_enabled: Optional[pulumi.Input[bool]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
+            cpu_policy: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
             desired_size: Optional[pulumi.Input[int]] = None,
@@ -2450,6 +2589,7 @@ class NodePool(pulumi.CustomResource):
             keep_instance_name: Optional[pulumi.Input[bool]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+            kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]]] = None,
             management: Optional[pulumi.Input[pulumi.InputType['NodePoolManagementArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -2459,6 +2599,7 @@ class NodePool(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
             platform: Optional[pulumi.Input[str]] = None,
+            rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             runtime_name: Optional[pulumi.Input[str]] = None,
             runtime_version: Optional[pulumi.Input[str]] = None,
@@ -2476,6 +2617,7 @@ class NodePool(pulumi.CustomResource):
             system_disk_kms_key: Optional[pulumi.Input[str]] = None,
             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
+            system_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
             unschedulable: Optional[pulumi.Input[bool]] = None,
@@ -2493,6 +2635,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
         :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[int] desired_size: The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
@@ -2508,15 +2651,17 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+        :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolLabelArgs']]]] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         :param pulumi.Input[pulumi.InputType['NodePoolManagementArgs']] management: Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         :param pulumi.Input[str] name: The name of node pool.
         :param pulumi.Input[int] node_count: The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
-        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
@@ -2527,14 +2672,15 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
                > **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
-        :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
+        :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
         :param pulumi.Input[str] system_disk_kms_key: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         :param pulumi.Input[str] system_disk_performance_level: The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[str] system_disk_snapshot_policy_id: The system disk snapshot policy id.
         :param pulumi.Input[Mapping[str, Any]] tags: A Map of tags to assign to the resource. It will be applied for ECS instances finally.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes.
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
@@ -2550,6 +2696,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["cis_enabled"] = cis_enabled
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["cpu_policy"] = cpu_policy
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["desired_size"] = desired_size
@@ -2565,6 +2712,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["keep_instance_name"] = keep_instance_name
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
+        __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         __props__.__dict__["labels"] = labels
         __props__.__dict__["management"] = management
         __props__.__dict__["name"] = name
@@ -2574,6 +2722,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["platform"] = platform
+        __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["runtime_name"] = runtime_name
         __props__.__dict__["runtime_version"] = runtime_version
@@ -2591,6 +2740,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["system_disk_kms_key"] = system_disk_kms_key
         __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
         __props__.__dict__["system_disk_size"] = system_disk_size
+        __props__.__dict__["system_disk_snapshot_policy_id"] = system_disk_snapshot_policy_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
         __props__.__dict__["unschedulable"] = unschedulable
@@ -2630,6 +2780,14 @@ class NodePool(pulumi.CustomResource):
         The id of kubernetes cluster.
         """
         return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="cpuPolicy")
+    def cpu_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+        """
+        return pulumi.get(self, "cpu_policy")
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -2752,6 +2910,14 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "kms_encrypted_password")
 
     @property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolLabel']]]:
         """
@@ -2761,7 +2927,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def management(self) -> pulumi.Output['outputs.NodePoolManagement']:
+    def management(self) -> pulumi.Output[Optional['outputs.NodePoolManagement']]:
         """
         Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         """
@@ -2787,7 +2953,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="nodeNameMode")
     def node_name_mode(self) -> pulumi.Output[str]:
         """
-        Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
         return pulumi.get(self, "node_name_mode")
 
@@ -2822,6 +2988,14 @@ class NodePool(pulumi.CustomResource):
         The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         """
         return pulumi.get(self, "platform")
+
+    @property
+    @pulumi.getter(name="rdsInstances")
+    def rds_instances(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        """
+        return pulumi.get(self, "rds_instances")
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -2898,17 +3072,17 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotPriceLimits")
-    def spot_price_limits(self) -> pulumi.Output[Sequence['outputs.NodePoolSpotPriceLimit']]:
+    def spot_price_limits(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolSpotPriceLimit']]]:
         """
-        The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         """
         return pulumi.get(self, "spot_price_limits")
 
     @property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> pulumi.Output[str]:
+    def spot_strategy(self) -> pulumi.Output[Optional[str]]:
         """
-        The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -2916,7 +3090,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -2959,6 +3133,14 @@ class NodePool(pulumi.CustomResource):
         The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         """
         return pulumi.get(self, "system_disk_size")
+
+    @property
+    @pulumi.getter(name="systemDiskSnapshotPolicyId")
+    def system_disk_snapshot_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The system disk snapshot policy id.
+        """
+        return pulumi.get(self, "system_disk_snapshot_policy_id")
 
     @property
     @pulumi.getter

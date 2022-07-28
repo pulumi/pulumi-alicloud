@@ -110,6 +110,12 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
+     * Indicate how to check instance ready to use.
+     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+     */
+    public readonly bootCheckOsWithAssistant!: pulumi.Output<boolean | undefined>;
+    /**
      * The list of data disks created with instance. See the following `Block dataDisks`.
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.EcsInstanceSetDataDisk[] | undefined>;
@@ -294,6 +300,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
             resourceInputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["bootCheckOsWithAssistant"] = state ? state.bootCheckOsWithAssistant : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -349,6 +356,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
             resourceInputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["bootCheckOsWithAssistant"] = args ? args.bootCheckOsWithAssistant : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["dedicatedHostId"] = args ? args.dedicatedHostId : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
@@ -417,6 +425,12 @@ export interface EcsInstanceSetState {
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      */
     autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * Indicate how to check instance ready to use.
+     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+     */
+    bootCheckOsWithAssistant?: pulumi.Input<boolean>;
     /**
      * The list of data disks created with instance. See the following `Block dataDisks`.
      */
@@ -608,6 +622,12 @@ export interface EcsInstanceSetArgs {
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      */
     autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * Indicate how to check instance ready to use.
+     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+     */
+    bootCheckOsWithAssistant?: pulumi.Input<boolean>;
     /**
      * The list of data disks created with instance. See the following `Block dataDisks`.
      */

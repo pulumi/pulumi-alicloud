@@ -75,7 +75,7 @@ type Instance struct {
 
 	// The instance name.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// The Instance Type. Valid values: `professional`, `vip`.
+	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
 	InstanceType pulumi.StringOutput    `pulumi:"instanceType"`
 	Logistics    pulumi.StringPtrOutput `pulumi:"logistics"`
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
@@ -153,7 +153,7 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The instance name.
 	InstanceName *string `pulumi:"instanceName"`
-	// The Instance Type. Valid values: `professional`, `vip`.
+	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
 	InstanceType *string `pulumi:"instanceType"`
 	Logistics    *string `pulumi:"logistics"`
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
@@ -188,7 +188,7 @@ type instanceState struct {
 type InstanceState struct {
 	// The instance name.
 	InstanceName pulumi.StringPtrInput
-	// The Instance Type. Valid values: `professional`, `vip`.
+	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
 	InstanceType pulumi.StringPtrInput
 	Logistics    pulumi.StringPtrInput
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
@@ -227,7 +227,7 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The instance name.
 	InstanceName *string `pulumi:"instanceName"`
-	// The Instance Type. Valid values: `professional`, `vip`.
+	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
 	InstanceType string  `pulumi:"instanceType"`
 	Logistics    *string `pulumi:"logistics"`
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
@@ -261,7 +261,7 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The instance name.
 	InstanceName pulumi.StringPtrInput
-	// The Instance Type. Valid values: `professional`, `vip`.
+	// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
 	InstanceType pulumi.StringInput
 	Logistics    pulumi.StringPtrInput
 	// The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.

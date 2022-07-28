@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cloudfirewall/addressBook:AddressBook":
+		r = &AddressBook{}
 	case "alicloud:cloudfirewall/controlPolicy:ControlPolicy":
 		r = &ControlPolicy{}
 	case "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
@@ -40,6 +42,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/addressBook",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/controlPolicy",

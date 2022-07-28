@@ -228,6 +228,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
+        /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+        /// </summary>
+        [Output("subCategory")]
+        public Output<string> SubCategory { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -455,6 +461,12 @@ namespace Pulumi.AliCloud.PolarDB
             set => _securityIps = value;
         }
 
+        /// <summary>
+        /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+        /// </summary>
+        [Input("subCategory")]
+        public Input<string>? SubCategory { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -655,6 +667,12 @@ namespace Pulumi.AliCloud.PolarDB
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+        /// </summary>
+        [Input("subCategory")]
+        public Input<string>? SubCategory { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

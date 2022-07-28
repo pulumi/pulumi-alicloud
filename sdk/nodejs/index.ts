@@ -117,6 +117,7 @@ import * as securitycenter from "./securitycenter";
 import * as servicemesh from "./servicemesh";
 import * as simpleapplicationserver from "./simpleapplicationserver";
 import * as slb from "./slb";
+import * as sms from "./sms";
 import * as tag from "./tag";
 import * as tsdb from "./tsdb";
 import * as types from "./types";
@@ -225,6 +226,7 @@ export {
     servicemesh,
     simpleapplicationserver,
     slb,
+    sms,
     tag,
     tsdb,
     types,

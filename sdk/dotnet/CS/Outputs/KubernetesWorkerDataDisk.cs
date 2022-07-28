@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class KubernetesWorkerDataDisk
     {
         /// <summary>
-        /// Worker node data disk auto snapshot policy.
+        /// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>

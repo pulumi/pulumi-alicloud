@@ -72,6 +72,7 @@ class Endpoints(dict):
                  cds: Optional[str] = None,
                  clickhouse: Optional[str] = None,
                  cloudauth: Optional[str] = None,
+                 cloudfw: Optional[str] = None,
                  cloudphone: Optional[str] = None,
                  cloudsso: Optional[str] = None,
                  cms: Optional[str] = None,
@@ -93,6 +94,7 @@ class Endpoints(dict):
                  dns: Optional[str] = None,
                  drds: Optional[str] = None,
                  dts: Optional[str] = None,
+                 dysms: Optional[str] = None,
                  eais: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
@@ -206,6 +208,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "clickhouse", clickhouse)
         if cloudauth is not None:
             pulumi.set(__self__, "cloudauth", cloudauth)
+        if cloudfw is not None:
+            pulumi.set(__self__, "cloudfw", cloudfw)
         if cloudphone is not None:
             pulumi.set(__self__, "cloudphone", cloudphone)
         if cloudsso is not None:
@@ -248,6 +252,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "drds", drds)
         if dts is not None:
             pulumi.set(__self__, "dts", dts)
+        if dysms is not None:
+            pulumi.set(__self__, "dysms", dysms)
         if eais is not None:
             pulumi.set(__self__, "eais", eais)
         if eci is not None:
@@ -497,6 +503,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def cloudfw(self) -> Optional[str]:
+        return pulumi.get(self, "cloudfw")
+
+    @property
+    @pulumi.getter
     def cloudphone(self) -> Optional[str]:
         return pulumi.get(self, "cloudphone")
 
@@ -599,6 +610,11 @@ class Endpoints(dict):
     @pulumi.getter
     def dts(self) -> Optional[str]:
         return pulumi.get(self, "dts")
+
+    @property
+    @pulumi.getter
+    def dysms(self) -> Optional[str]:
+        return pulumi.get(self, "dysms")
 
     @property
     @pulumi.getter

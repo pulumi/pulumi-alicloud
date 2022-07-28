@@ -187,6 +187,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
+     * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+     */
+    public readonly subCategory!: pulumi.Output<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -242,6 +246,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
+            resourceInputs["subCategory"] = state ? state.subCategory : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -278,6 +283,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["subCategory"] = args ? args.subCategory : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -385,6 +391,10 @@ export interface ClusterState {
      * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+     */
+    subCategory?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -499,6 +509,10 @@ export interface ClusterArgs {
      * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+     */
+    subCategory?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

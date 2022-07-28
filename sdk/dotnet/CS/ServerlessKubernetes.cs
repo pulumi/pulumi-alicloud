@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.CS
     ///         }));
     ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
     ///         {
+    ///             VpcName = name,
     ///             CidrBlock = "10.1.0.0/21",
     ///         });
     ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs

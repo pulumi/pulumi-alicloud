@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesWorkerNode
     {
         /// <summary>
-        /// ID of the node.
+        /// (Deprecated from version 1.177.0) ID of the node.
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The private IP address of node.
+        /// (Deprecated from version 1.177.0) The private IP address of node.
         /// </summary>
         public readonly string? PrivateIp;
 

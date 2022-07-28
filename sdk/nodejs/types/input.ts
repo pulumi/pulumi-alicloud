@@ -32,6 +32,7 @@ export interface ProviderEndpoint {
     cds?: pulumi.Input<string>;
     clickhouse?: pulumi.Input<string>;
     cloudauth?: pulumi.Input<string>;
+    cloudfw?: pulumi.Input<string>;
     cloudphone?: pulumi.Input<string>;
     cloudsso?: pulumi.Input<string>;
     cms?: pulumi.Input<string>;
@@ -53,6 +54,7 @@ export interface ProviderEndpoint {
     dns?: pulumi.Input<string>;
     drds?: pulumi.Input<string>;
     dts?: pulumi.Input<string>;
+    dysms?: pulumi.Input<string>;
     eais?: pulumi.Input<string>;
     eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
@@ -1336,6 +1338,17 @@ export namespace cloudconnect {
 }
 
 export namespace cloudfirewall {
+    export interface AddressBookEcsTag {
+        /**
+         * The key of ECS tag that to be matched.
+         */
+        tagKey?: pulumi.Input<string>;
+        /**
+         * The value of ECS tag that to be matched.
+         */
+        tagValue?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace cloudsso {
@@ -2054,7 +2067,7 @@ export namespace cs {
 
     export interface KubernetesWorkerDataDisk {
         /**
-         * Worker node data disk auto snapshot policy.
+         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
          */
         autoSnapshotPolicyId?: pulumi.Input<string>;
         /**
@@ -2072,7 +2085,7 @@ export namespace cs {
          */
         name?: pulumi.Input<string>;
         /**
-         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
@@ -2178,7 +2191,7 @@ export namespace cs {
 
     export interface ManagedKubernetesWorkerDataDisk {
         /**
-         * Worker node data disk auto snapshot policy.
+         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
          */
         autoSnapshotPolicyId?: pulumi.Input<string>;
         /**
@@ -2196,7 +2209,7 @@ export namespace cs {
          */
         name?: pulumi.Input<string>;
         /**
-         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
@@ -2208,7 +2221,7 @@ export namespace cs {
 
     export interface ManagedKubernetesWorkerNode {
         /**
-         * ID of the node.
+         * (Deprecated from version 1.177.0) ID of the node.
          */
         id?: pulumi.Input<string>;
         /**
@@ -2216,7 +2229,7 @@ export namespace cs {
          */
         name?: pulumi.Input<string>;
         /**
-         * The private IP address of node.
+         * (Deprecated from version 1.177.0) The private IP address of node.
          */
         privateIp?: pulumi.Input<string>;
     }
@@ -2318,7 +2331,7 @@ export namespace cs {
          */
         instanceType?: pulumi.Input<string>;
         /**
-         * The maximum hourly price of the spot instance.
+         * The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
          */
         priceLimit?: pulumi.Input<string>;
     }
@@ -3913,6 +3926,13 @@ export namespace ess {
         snapshotId?: pulumi.Input<string>;
     }
 
+    export interface ScalingConfigurationInstancePatternInfo {
+        cores?: pulumi.Input<number>;
+        instanceFamilyLevel?: pulumi.Input<string>;
+        maxPrice?: pulumi.Input<number>;
+        memory?: pulumi.Input<number>;
+    }
+
     export interface ScalingConfigurationSpotPriceLimit {
         /**
          * Resource type of an ECS instance.
@@ -4334,17 +4354,6 @@ export namespace hbr {
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface GetServerBackupPlansFilter {
-        /**
-         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
-         */
-        key?: string;
-        /**
-         * Set of values that are accepted for the given field.
-         */
-        values?: string[];
-    }
-
     export interface GetServerBackupPlansFilterArgs {
         /**
          * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
@@ -4354,6 +4363,17 @@ export namespace hbr {
          * Set of values that are accepted for the given field.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetServerBackupPlansFilter {
+        /**
+         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+         */
+        key?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
     }
 
     export interface OtsBackupPlanOtsDetail {

@@ -40,6 +40,7 @@ import (
 // 			return err
 // 		}
 // 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// 			VpcName:   pulumi.String(name),
 // 			CidrBlock: pulumi.String("10.1.0.0/21"),
 // 		})
 // 		if err != nil {

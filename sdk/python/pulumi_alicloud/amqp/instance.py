@@ -29,7 +29,7 @@ class InstanceArgs:
                  storage_size: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `vip`.
+        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
         :param pulumi.Input[str] payment_type: The payment type. Valid values: `Subscription`.
         :param pulumi.Input[str] queue_capacity: The queue capacity. The smallest value is 50 and the step size 5.
@@ -74,7 +74,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
         """
-        The Instance Type. Valid values: `professional`, `vip`.
+        The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -260,7 +260,7 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `vip`.
+        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
@@ -324,7 +324,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Instance Type. Valid values: `professional`, `vip`.
+        The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -556,7 +556,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `vip`.
+        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
@@ -721,7 +721,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `vip`.
+        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
         :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
@@ -771,7 +771,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The Instance Type. Valid values: `professional`, `vip`.
+        The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         """
         return pulumi.get(self, "instance_type")
 

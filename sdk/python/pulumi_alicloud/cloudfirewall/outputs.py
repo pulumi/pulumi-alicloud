@@ -7,11 +7,203 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'AddressBookEcsTag',
+    'GetAddressBooksBookResult',
+    'GetAddressBooksBookEcsTagResult',
     'GetControlPoliciesPolicyResult',
     'GetInstancesInstanceResult',
 ]
+
+@pulumi.output_type
+class AddressBookEcsTag(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddressBookEcsTag. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddressBookEcsTag.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddressBookEcsTag.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: Optional[str] = None,
+                 tag_value: Optional[str] = None):
+        """
+        :param str tag_key: The key of ECS tag that to be matched.
+        :param str tag_value: The value of ECS tag that to be matched.
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[str]:
+        """
+        The key of ECS tag that to be matched.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[str]:
+        """
+        The value of ECS tag that to be matched.
+        """
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class GetAddressBooksBookResult(dict):
+    def __init__(__self__, *,
+                 address_lists: Sequence[str],
+                 auto_add_tag_ecs: int,
+                 description: str,
+                 group_name: str,
+                 group_type: str,
+                 group_uuid: str,
+                 id: str,
+                 tag_relation: str,
+                 ecs_tags: Optional[Sequence['outputs.GetAddressBooksBookEcsTagResult']] = None):
+        """
+        :param Sequence[str] address_lists: The addresses in the Address Book.
+        :param int auto_add_tag_ecs: Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
+        :param str description: The description of the Address Book.
+        :param str group_name: The name of the Address Book.
+        :param str group_type: The type of the Address Book.
+        :param str group_uuid: The ID of the Address Book.
+        :param str id: The ID of the Address Book.
+        :param str tag_relation: One or more tags for the relationship between.
+        :param Sequence['GetAddressBooksBookEcsTagArgs'] ecs_tags: The logical relation among the ECS tags that to be matchedh.
+        """
+        pulumi.set(__self__, "address_lists", address_lists)
+        pulumi.set(__self__, "auto_add_tag_ecs", auto_add_tag_ecs)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
+        pulumi.set(__self__, "group_uuid", group_uuid)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tag_relation", tag_relation)
+        if ecs_tags is not None:
+            pulumi.set(__self__, "ecs_tags", ecs_tags)
+
+    @property
+    @pulumi.getter(name="addressLists")
+    def address_lists(self) -> Sequence[str]:
+        """
+        The addresses in the Address Book.
+        """
+        return pulumi.get(self, "address_lists")
+
+    @property
+    @pulumi.getter(name="autoAddTagEcs")
+    def auto_add_tag_ecs(self) -> int:
+        """
+        Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
+        """
+        return pulumi.get(self, "auto_add_tag_ecs")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Address Book.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        """
+        The name of the Address Book.
+        """
+        return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter(name="groupType")
+    def group_type(self) -> str:
+        """
+        The type of the Address Book.
+        """
+        return pulumi.get(self, "group_type")
+
+    @property
+    @pulumi.getter(name="groupUuid")
+    def group_uuid(self) -> str:
+        """
+        The ID of the Address Book.
+        """
+        return pulumi.get(self, "group_uuid")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Address Book.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="tagRelation")
+    def tag_relation(self) -> str:
+        """
+        One or more tags for the relationship between.
+        """
+        return pulumi.get(self, "tag_relation")
+
+    @property
+    @pulumi.getter(name="ecsTags")
+    def ecs_tags(self) -> Optional[Sequence['outputs.GetAddressBooksBookEcsTagResult']]:
+        """
+        The logical relation among the ECS tags that to be matchedh.
+        """
+        return pulumi.get(self, "ecs_tags")
+
+
+@pulumi.output_type
+class GetAddressBooksBookEcsTagResult(dict):
+    def __init__(__self__, *,
+                 tag_key: Optional[str] = None,
+                 tag_value: Optional[str] = None):
+        """
+        :param str tag_key: The key of ECS tag that to be matched.
+        :param str tag_value: The value of ECS tag that to be matched.
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[str]:
+        """
+        The key of ECS tag that to be matched.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[str]:
+        """
+        The value of ECS tag that to be matched.
+        """
+        return pulumi.get(self, "tag_value")
+
 
 @pulumi.output_type
 class GetControlPoliciesPolicyResult(dict):

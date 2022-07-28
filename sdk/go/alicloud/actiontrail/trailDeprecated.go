@@ -72,7 +72,7 @@ type TrailDeprecated struct {
 	SlsWriteRoleArn pulumi.StringOutput    `pulumi:"slsWriteRoleArn"`
 	Status          pulumi.StringPtrOutput `pulumi:"status"`
 	TrailName       pulumi.StringOutput    `pulumi:"trailName"`
-	TrailRegion     pulumi.StringPtrOutput `pulumi:"trailRegion"`
+	TrailRegion     pulumi.StringOutput    `pulumi:"trailRegion"`
 }
 
 // NewTrailDeprecated registers a new resource with the given unique name, arguments, and options.

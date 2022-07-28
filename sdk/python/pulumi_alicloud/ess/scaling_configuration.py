@@ -26,6 +26,7 @@ class ScalingConfigurationArgs:
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -68,6 +69,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
@@ -124,6 +126,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "instance_ids", instance_ids)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
+        if instance_pattern_infos is not None:
+            pulumi.set(__self__, "instance_pattern_infos", instance_pattern_infos)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if instance_types is not None:
@@ -317,6 +321,18 @@ class ScalingConfigurationArgs:
     @instance_name.setter
     def instance_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="instancePatternInfos")
+    def instance_pattern_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]:
+        """
+        intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+        """
+        return pulumi.get(self, "instance_pattern_infos")
+
+    @instance_pattern_infos.setter
+    def instance_pattern_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]):
+        pulumi.set(self, "instance_pattern_infos", value)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -682,6 +698,7 @@ class _ScalingConfigurationState:
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -724,6 +741,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
@@ -780,6 +798,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "instance_ids", instance_ids)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
+        if instance_pattern_infos is not None:
+            pulumi.set(__self__, "instance_pattern_infos", instance_pattern_infos)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if instance_types is not None:
@@ -963,6 +983,18 @@ class _ScalingConfigurationState:
     @instance_name.setter
     def instance_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="instancePatternInfos")
+    def instance_pattern_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]:
+        """
+        intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+        """
+        return pulumi.get(self, "instance_pattern_infos")
+
+    @instance_pattern_infos.setter
+    def instance_pattern_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]):
+        pulumi.set(self, "instance_pattern_infos", value)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -1342,6 +1374,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1394,6 +1427,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
@@ -1467,6 +1501,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1522,6 +1557,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                 pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
             __props__.__dict__["instance_ids"] = instance_ids
             __props__.__dict__["instance_name"] = instance_name
+            __props__.__dict__["instance_pattern_infos"] = instance_pattern_infos
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -1577,6 +1613,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             image_name: Optional[pulumi.Input[str]] = None,
             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
+            instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1624,6 +1661,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
@@ -1671,6 +1709,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["image_name"] = image_name
         __props__.__dict__["instance_ids"] = instance_ids
         __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["instance_pattern_infos"] = instance_pattern_infos
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -1782,6 +1821,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         """
         return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="instancePatternInfos")
+    def instance_pattern_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationInstancePatternInfo']]]:
+        """
+        intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+        """
+        return pulumi.get(self, "instance_pattern_infos")
 
     @property
     @pulumi.getter(name="instanceType")

@@ -217,6 +217,8 @@ if typing.TYPE_CHECKING:
     simpleapplicationserver = __simpleapplicationserver
     import pulumi_alicloud.slb as __slb
     slb = __slb
+    import pulumi_alicloud.sms as __sms
+    sms = __sms
     import pulumi_alicloud.tag as __tag
     tag = __tag
     import pulumi_alicloud.tsdb as __tsdb
@@ -331,6 +333,7 @@ else:
     servicemesh = _utilities.lazy_import('pulumi_alicloud.servicemesh')
     simpleapplicationserver = _utilities.lazy_import('pulumi_alicloud.simpleapplicationserver')
     slb = _utilities.lazy_import('pulumi_alicloud.slb')
+    sms = _utilities.lazy_import('pulumi_alicloud.sms')
     tag = _utilities.lazy_import('pulumi_alicloud.tag')
     tsdb = _utilities.lazy_import('pulumi_alicloud.tsdb')
     videosurveillance = _utilities.lazy_import('pulumi_alicloud.videosurveillance')
@@ -1181,6 +1184,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudconnect",
   "classes": {
    "alicloud:cloudconnect/networkGrant:NetworkGrant": "NetworkGrant"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudfirewall/addressBook",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/addressBook:AddressBook": "AddressBook"
   }
  },
  {
@@ -3097,6 +3108,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "hbr/hanaInstance",
+  "fqn": "pulumi_alicloud.hbr",
+  "classes": {
+   "alicloud:hbr/hanaInstance:HanaInstance": "HanaInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "hbr/nasBackupPlan",
   "fqn": "pulumi_alicloud.hbr",
   "classes": {
@@ -4757,6 +4776,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.slb",
   "classes": {
    "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy": "TlsCipherPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sms/shortUrl",
+  "fqn": "pulumi_alicloud.sms",
+  "classes": {
+   "alicloud:sms/shortUrl:ShortUrl": "ShortUrl"
   }
  },
  {

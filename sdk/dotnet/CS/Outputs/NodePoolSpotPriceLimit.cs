@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// The maximum hourly price of the spot instance.
+        /// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
         /// </summary>
         public readonly string? PriceLimit;
 

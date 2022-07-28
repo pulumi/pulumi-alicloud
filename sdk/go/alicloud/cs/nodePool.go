@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// 		_, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 // 			AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
 // 			CpuCoreCount:       pulumi.IntRef(2),
 // 			MemorySize:         pulumi.Float64Ref(4),
@@ -76,15 +76,10 @@ import (
 // 			__res, err := cs.NewManagedKubernetes(ctx, fmt.Sprintf("defaultManagedKubernetes-%v", key0), &cs.ManagedKubernetesArgs{
 // 				ClusterSpec:               pulumi.String("ack.pro.small"),
 // 				IsEnterpriseSecurityGroup: pulumi.Bool(true),
-// 				WorkerNumber:              pulumi.Int(2),
-// 				Password:                  pulumi.String("Hello1234"),
 // 				PodCidr:                   pulumi.String("172.20.0.0/16"),
 // 				ServiceCidr:               pulumi.String("172.21.0.0/20"),
 // 				WorkerVswitchIds: pulumi.StringArray{
 // 					defaultSwitch.ID(),
-// 				},
-// 				WorkerInstanceTypes: pulumi.StringArray{
-// 					pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 // 				},
 // 			})
 // 			if err != nil {
@@ -501,6 +496,8 @@ type NodePool struct {
 	CisEnabled pulumi.BoolPtrOutput `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -531,17 +528,19 @@ type NodePool struct {
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels NodePoolLabelArrayOutput `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
-	Management NodePoolManagementOutput `pulumi:"management"`
+	Management NodePoolManagementPtrOutput `pulumi:"management"`
 	// The name of node pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
 	NodeNameMode pulumi.StringOutput `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
@@ -553,6 +552,8 @@ type NodePool struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringOutput `pulumi:"platform"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -574,11 +575,11 @@ type NodePool struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrOutput `pulumi:"socEnabled"`
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
-	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
@@ -590,6 +591,8 @@ type NodePool struct {
 	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
+	// The system disk snapshot policy id.
+	SystemDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskSnapshotPolicyId"`
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
@@ -650,6 +653,8 @@ type nodePoolState struct {
 	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+	CpuPolicy *string `pulumi:"cpuPolicy"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -680,6 +685,8 @@ type nodePoolState struct {
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels []NodePoolLabel `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
@@ -690,7 +697,7 @@ type nodePoolState struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount *int `pulumi:"nodeCount"`
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
@@ -702,6 +709,8 @@ type nodePoolState struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform *string `pulumi:"platform"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -723,11 +732,11 @@ type nodePoolState struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
@@ -739,6 +748,8 @@ type nodePoolState struct {
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
+	// The system disk snapshot policy id.
+	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
@@ -762,6 +773,8 @@ type NodePoolState struct {
 	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+	CpuPolicy pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayInput
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -792,6 +805,8 @@ type NodePoolState struct {
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext pulumi.MapInput
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels NodePoolLabelArrayInput
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
@@ -802,7 +817,7 @@ type NodePoolState struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntPtrInput
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
@@ -814,6 +829,8 @@ type NodePoolState struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringPtrInput
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -835,11 +852,11 @@ type NodePoolState struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrInput
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
@@ -851,6 +868,8 @@ type NodePoolState struct {
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrInput
+	// The system disk snapshot policy id.
+	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags pulumi.MapInput
 	// A List of Kubernetes taints to assign to the nodes.
@@ -878,6 +897,8 @@ type nodePoolArgs struct {
 	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+	CpuPolicy *string `pulumi:"cpuPolicy"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -908,6 +929,8 @@ type nodePoolArgs struct {
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels []NodePoolLabel `pulumi:"labels"`
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
@@ -918,7 +941,7 @@ type nodePoolArgs struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount *int `pulumi:"nodeCount"`
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
@@ -930,6 +953,8 @@ type nodePoolArgs struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform *string `pulumi:"platform"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -949,11 +974,11 @@ type nodePoolArgs struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
@@ -965,6 +990,8 @@ type nodePoolArgs struct {
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
+	// The system disk snapshot policy id.
+	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes.
@@ -987,6 +1014,8 @@ type NodePoolArgs struct {
 	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
+	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+	CpuPolicy pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayInput
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
@@ -1017,6 +1046,8 @@ type NodePoolArgs struct {
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext pulumi.MapInput
 	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
 	Labels NodePoolLabelArrayInput
 	// Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
@@ -1027,7 +1058,7 @@ type NodePoolArgs struct {
 	//
 	// Deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
 	NodeCount pulumi.IntPtrInput
-	// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
 	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
@@ -1039,6 +1070,8 @@ type NodePoolArgs struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringPtrInput
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -1058,11 +1091,11 @@ type NodePoolArgs struct {
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrInput
-	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput
-	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
@@ -1074,6 +1107,8 @@ type NodePoolArgs struct {
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrInput
+	// The system disk snapshot policy id.
+	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
 	// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
 	Tags pulumi.MapInput
 	// A List of Kubernetes taints to assign to the nodes.

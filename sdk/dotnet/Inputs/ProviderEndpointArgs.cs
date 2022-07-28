@@ -72,6 +72,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("cloudauth")]
         public Input<string>? Cloudauth { get; set; }
 
+        [Input("cloudfw")]
+        public Input<string>? Cloudfw { get; set; }
+
         [Input("cloudphone")]
         public Input<string>? Cloudphone { get; set; }
 
@@ -134,6 +137,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("dts")]
         public Input<string>? Dts { get; set; }
+
+        [Input("dysms")]
+        public Input<string>? Dysms { get; set; }
 
         [Input("eais")]
         public Input<string>? Eais { get; set; }

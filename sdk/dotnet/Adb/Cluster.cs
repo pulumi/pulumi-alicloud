@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> Description { get; private set; } = null!;
 
         [Output("elasticIoResource")]
-        public Output<int?> ElasticIoResource { get; private set; } = null!;
+        public Output<int> ElasticIoResource { get; private set; } = null!;
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -179,6 +179,9 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -354,6 +357,9 @@ namespace Pulumi.AliCloud.Adb
             set => _tags = value;
         }
 
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
         /// </summary>
@@ -497,6 +503,9 @@ namespace Pulumi.AliCloud.Adb
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
