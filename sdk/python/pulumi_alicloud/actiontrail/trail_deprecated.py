@@ -701,6 +701,6 @@ class TrailDeprecated(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trailRegion")
-    def trail_region(self) -> pulumi.Output[Optional[str]]:
+    def trail_region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "trail_region")
 

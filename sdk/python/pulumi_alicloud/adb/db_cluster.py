@@ -33,6 +33,7 @@ class DBClusterArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -58,6 +59,7 @@ class DBClusterArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
@@ -105,6 +107,8 @@ class DBClusterArgs:
             pulumi.set(__self__, "security_ips", security_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -350,6 +354,18 @@ class DBClusterArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc ID of the resource.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -399,6 +415,7 @@ class _DBClusterState:
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -426,6 +443,7 @@ class _DBClusterState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
@@ -479,6 +497,8 @@ class _DBClusterState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -748,6 +768,18 @@ class _DBClusterState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc ID of the resource.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -797,6 +829,7 @@ class DBCluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -884,6 +917,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
@@ -989,6 +1023,7 @@ class DBCluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1033,6 +1068,7 @@ class DBCluster(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
@@ -1069,6 +1105,7 @@ class DBCluster(pulumi.CustomResource):
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'DBCluster':
         """
@@ -1101,6 +1138,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
@@ -1130,6 +1168,7 @@ class DBCluster(pulumi.CustomResource):
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return DBCluster(resource_name, opts=opts, __props__=__props__)
@@ -1216,7 +1255,7 @@ class DBCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticIoResource")
-    def elastic_io_resource(self) -> pulumi.Output[Optional[int]]:
+    def elastic_io_resource(self) -> pulumi.Output[int]:
         """
         The elastic io resource.
         """
@@ -1308,6 +1347,14 @@ class DBCluster(pulumi.CustomResource):
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The vpc ID of the resource.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

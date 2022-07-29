@@ -120,9 +120,9 @@ export class Trail extends pulumi.CustomResource {
      */
     public readonly trailName!: pulumi.Output<string>;
     /**
-     * The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+     * The regions to which the trail is applied. Default to `All`.
      */
-    public readonly trailRegion!: pulumi.Output<string | undefined>;
+    public readonly trailRegion!: pulumi.Output<string>;
 
     /**
      * Create a Trail resource with the given unique name, arguments, and options.
@@ -230,7 +230,7 @@ export interface TrailState {
      */
     trailName?: pulumi.Input<string>;
     /**
-     * The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+     * The regions to which the trail is applied. Default to `All`.
      */
     trailRegion?: pulumi.Input<string>;
 }
@@ -294,7 +294,7 @@ export interface TrailArgs {
      */
     trailName?: pulumi.Input<string>;
     /**
-     * The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+     * The regions to which the trail is applied. Default to `All`.
      */
     trailRegion?: pulumi.Input<string>;
 }

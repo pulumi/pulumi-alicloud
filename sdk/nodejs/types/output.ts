@@ -6346,6 +6346,67 @@ export namespace cloudconnect {
 }
 
 export namespace cloudfirewall {
+    export interface AddressBookEcsTag {
+        /**
+         * The key of ECS tag that to be matched.
+         */
+        tagKey?: string;
+        /**
+         * The value of ECS tag that to be matched.
+         */
+        tagValue?: string;
+    }
+
+    export interface GetAddressBooksBook {
+        /**
+         * The addresses in the Address Book.
+         */
+        addressLists: string[];
+        /**
+         * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
+         */
+        autoAddTagEcs: number;
+        /**
+         * The description of the Address Book.
+         */
+        description: string;
+        /**
+         * The logical relation among the ECS tags that to be matchedh.
+         */
+        ecsTags?: outputs.cloudfirewall.GetAddressBooksBookEcsTag[];
+        /**
+         * The name of the Address Book.
+         */
+        groupName: string;
+        /**
+         * The type of the Address Book.
+         */
+        groupType: string;
+        /**
+         * The ID of the Address Book.
+         */
+        groupUuid: string;
+        /**
+         * The ID of the Address Book.
+         */
+        id: string;
+        /**
+         * One or more tags for the relationship between.
+         */
+        tagRelation: string;
+    }
+
+    export interface GetAddressBooksBookEcsTag {
+        /**
+         * The key of ECS tag that to be matched.
+         */
+        tagKey?: string;
+        /**
+         * The value of ECS tag that to be matched.
+         */
+        tagValue?: string;
+    }
+
     export interface GetControlPoliciesPolicy {
         /**
          * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -8268,6 +8329,7 @@ export namespace config {
         cds?: string;
         clickhouse?: string;
         cloudauth?: string;
+        cloudfw?: string;
         cloudphone?: string;
         cloudsso?: string;
         cms?: string;
@@ -8289,6 +8351,7 @@ export namespace config {
         dns?: string;
         drds?: string;
         dts?: string;
+        dysms?: string;
         eais?: string;
         eci?: string;
         ecs?: string;
@@ -9630,7 +9693,7 @@ export namespace cs {
 
     export interface KubernetesWorkerDataDisk {
         /**
-         * Worker node data disk auto snapshot policy.
+         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
          */
         autoSnapshotPolicyId?: string;
         /**
@@ -9648,7 +9711,7 @@ export namespace cs {
          */
         name?: string;
         /**
-         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
         performanceLevel?: string;
         /**
@@ -9754,7 +9817,7 @@ export namespace cs {
 
     export interface ManagedKubernetesWorkerDataDisk {
         /**
-         * Worker node data disk auto snapshot policy.
+         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
          */
         autoSnapshotPolicyId?: string;
         /**
@@ -9772,7 +9835,7 @@ export namespace cs {
          */
         name?: string;
         /**
-         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
         performanceLevel?: string;
         /**
@@ -9784,7 +9847,7 @@ export namespace cs {
 
     export interface ManagedKubernetesWorkerNode {
         /**
-         * ID of the node.
+         * (Deprecated from version 1.177.0) ID of the node.
          */
         id: string;
         /**
@@ -9792,7 +9855,7 @@ export namespace cs {
          */
         name: string;
         /**
-         * The private IP address of node.
+         * (Deprecated from version 1.177.0) The private IP address of node.
          */
         privateIp: string;
     }
@@ -9894,7 +9957,7 @@ export namespace cs {
          */
         instanceType?: string;
         /**
-         * The maximum hourly price of the spot instance.
+         * The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
          */
         priceLimit?: string;
     }
@@ -19960,6 +20023,13 @@ export namespace ess {
         snapshotId?: string;
     }
 
+    export interface ScalingConfigurationInstancePatternInfo {
+        cores?: number;
+        instanceFamilyLevel?: string;
+        maxPrice?: number;
+        memory?: number;
+    }
+
     export interface ScalingConfigurationSpotPriceLimit {
         /**
          * Resource type of an ECS instance.
@@ -22329,6 +22399,61 @@ export namespace hbr {
         vaultId: string;
     }
 
+    export interface GetHanaInstancesInstance {
+        /**
+         * The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+         */
+        alertSetting: string;
+        /**
+         * The ID of the SAP HANA instance.
+         */
+        hanaInstanceId: string;
+        /**
+         * The name of the SAP HANA instance.
+         */
+        hanaName: string;
+        /**
+         * The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+         */
+        host: string;
+        /**
+         * The ID of the Hana Instance. The value formats as `<vault_id>:<hana_instance_id>`.
+         */
+        id: string;
+        /**
+         * The instance number of the SAP HANA system.
+         */
+        instanceNumber: number;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The status of the SAP HANA instance.
+         */
+        status: string;
+        /**
+         * The status information.
+         */
+        statusMessage: string;
+        /**
+         * Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
+         */
+        useSsl: boolean;
+        /**
+         * The username of the SYSTEMDB database.
+         */
+        userName: string;
+        /**
+         * Indicates whether the SSL certificate of the SAP HANA instance is verified.
+         */
+        validateCertificate: boolean;
+        /**
+         * The ID of the backup vault.
+         */
+        vaultId: string;
+    }
+
     export interface GetNasBackupPlansPlan {
         /**
          * Backup type. Valid values: `COMPLETE`.
@@ -23078,6 +23203,7 @@ export namespace hbr {
          */
         timeoutInSeconds?: number;
     }
+
 }
 
 export namespace imm {

@@ -99,7 +99,7 @@ export class TrailDeprecated extends pulumi.CustomResource {
     public readonly slsWriteRoleArn!: pulumi.Output<string>;
     public readonly status!: pulumi.Output<string | undefined>;
     public readonly trailName!: pulumi.Output<string>;
-    public readonly trailRegion!: pulumi.Output<string | undefined>;
+    public readonly trailRegion!: pulumi.Output<string>;
 
     /**
      * Create a TrailDeprecated resource with the given unique name, arguments, and options.

@@ -105,7 +105,7 @@ type Cluster struct {
 	DbNodeStorage pulumi.IntOutput `pulumi:"dbNodeStorage"`
 	// The description of cluster.
 	Description       pulumi.StringOutput `pulumi:"description"`
-	ElasticIoResource pulumi.IntPtrOutput `pulumi:"elasticIoResource"`
+	ElasticIoResource pulumi.IntOutput    `pulumi:"elasticIoResource"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput    `pulumi:"maintainTime"`
 	Mode         pulumi.StringOutput    `pulumi:"mode"`
@@ -127,7 +127,8 @@ type Cluster struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags  pulumi.MapOutput    `pulumi:"tags"`
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
@@ -210,7 +211,8 @@ type clusterState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags  map[string]interface{} `pulumi:"tags"`
+	VpcId *string                `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
@@ -259,7 +261,8 @@ type ClusterState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags  pulumi.MapInput
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB cluster.
@@ -309,7 +312,8 @@ type clusterArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags  map[string]interface{} `pulumi:"tags"`
+	VpcId *string                `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
@@ -356,7 +360,8 @@ type ClusterArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags pulumi.MapInput
+	Tags  pulumi.MapInput
+	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB cluster.

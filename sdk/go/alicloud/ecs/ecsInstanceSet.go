@@ -35,6 +35,10 @@ type EcsInstanceSet struct {
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	// Indicate how to check instance ready to use.
+	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+	BootCheckOsWithAssistant pulumi.BoolPtrOutput `pulumi:"bootCheckOsWithAssistant"`
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks EcsInstanceSetDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
@@ -172,6 +176,10 @@ type ecsInstanceSetState struct {
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Indicate how to check instance ready to use.
+	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+	BootCheckOsWithAssistant *bool `pulumi:"bootCheckOsWithAssistant"`
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks []EcsInstanceSetDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
@@ -272,6 +280,10 @@ type EcsInstanceSetState struct {
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// Indicate how to check instance ready to use.
+	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+	BootCheckOsWithAssistant pulumi.BoolPtrInput
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks EcsInstanceSetDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
@@ -376,6 +388,10 @@ type ecsInstanceSetArgs struct {
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Indicate how to check instance ready to use.
+	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+	BootCheckOsWithAssistant *bool `pulumi:"bootCheckOsWithAssistant"`
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks []EcsInstanceSetDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
@@ -475,6 +491,10 @@ type EcsInstanceSetArgs struct {
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// Indicate how to check instance ready to use.
+	// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+	// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
+	BootCheckOsWithAssistant pulumi.BoolPtrInput
 	// The list of data disks created with instance. See the following `Block dataDisks`.
 	DataDisks EcsInstanceSetDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.

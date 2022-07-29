@@ -40,7 +40,7 @@ class TrailArgs:
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
         :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
-        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Default to `All`.
         """
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
@@ -226,7 +226,7 @@ class TrailArgs:
     @pulumi.getter(name="trailRegion")
     def trail_region(self) -> Optional[pulumi.Input[str]]:
         """
-        The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        The regions to which the trail is applied. Default to `All`.
         """
         return pulumi.get(self, "trail_region")
 
@@ -265,7 +265,7 @@ class _TrailState:
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
         :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
-        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Default to `All`.
         """
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
@@ -451,7 +451,7 @@ class _TrailState:
     @pulumi.getter(name="trailRegion")
     def trail_region(self) -> Optional[pulumi.Input[str]]:
         """
-        The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        The regions to which the trail is applied. Default to `All`.
         """
         return pulumi.get(self, "trail_region")
 
@@ -525,7 +525,7 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
         :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
-        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Default to `All`.
         """
         ...
     @overload
@@ -669,7 +669,7 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
         :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
-        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        :param pulumi.Input[str] trail_region: The regions to which the trail is applied. Default to `All`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -788,9 +788,9 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trailRegion")
-    def trail_region(self) -> pulumi.Output[Optional[str]]:
+    def trail_region(self) -> pulumi.Output[str]:
         """
-        The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        The regions to which the trail is applied. Default to `All`.
         """
         return pulumi.get(self, "trail_region")
 

@@ -10,6 +10,387 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AddressBookEcsTag struct {
+	// The key of ECS tag that to be matched.
+	TagKey *string `pulumi:"tagKey"`
+	// The value of ECS tag that to be matched.
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// AddressBookEcsTagInput is an input type that accepts AddressBookEcsTagArgs and AddressBookEcsTagOutput values.
+// You can construct a concrete instance of `AddressBookEcsTagInput` via:
+//
+//          AddressBookEcsTagArgs{...}
+type AddressBookEcsTagInput interface {
+	pulumi.Input
+
+	ToAddressBookEcsTagOutput() AddressBookEcsTagOutput
+	ToAddressBookEcsTagOutputWithContext(context.Context) AddressBookEcsTagOutput
+}
+
+type AddressBookEcsTagArgs struct {
+	// The key of ECS tag that to be matched.
+	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	// The value of ECS tag that to be matched.
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (AddressBookEcsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookEcsTag)(nil)).Elem()
+}
+
+func (i AddressBookEcsTagArgs) ToAddressBookEcsTagOutput() AddressBookEcsTagOutput {
+	return i.ToAddressBookEcsTagOutputWithContext(context.Background())
+}
+
+func (i AddressBookEcsTagArgs) ToAddressBookEcsTagOutputWithContext(ctx context.Context) AddressBookEcsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookEcsTagOutput)
+}
+
+// AddressBookEcsTagArrayInput is an input type that accepts AddressBookEcsTagArray and AddressBookEcsTagArrayOutput values.
+// You can construct a concrete instance of `AddressBookEcsTagArrayInput` via:
+//
+//          AddressBookEcsTagArray{ AddressBookEcsTagArgs{...} }
+type AddressBookEcsTagArrayInput interface {
+	pulumi.Input
+
+	ToAddressBookEcsTagArrayOutput() AddressBookEcsTagArrayOutput
+	ToAddressBookEcsTagArrayOutputWithContext(context.Context) AddressBookEcsTagArrayOutput
+}
+
+type AddressBookEcsTagArray []AddressBookEcsTagInput
+
+func (AddressBookEcsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressBookEcsTag)(nil)).Elem()
+}
+
+func (i AddressBookEcsTagArray) ToAddressBookEcsTagArrayOutput() AddressBookEcsTagArrayOutput {
+	return i.ToAddressBookEcsTagArrayOutputWithContext(context.Background())
+}
+
+func (i AddressBookEcsTagArray) ToAddressBookEcsTagArrayOutputWithContext(ctx context.Context) AddressBookEcsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookEcsTagArrayOutput)
+}
+
+type AddressBookEcsTagOutput struct{ *pulumi.OutputState }
+
+func (AddressBookEcsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookEcsTag)(nil)).Elem()
+}
+
+func (o AddressBookEcsTagOutput) ToAddressBookEcsTagOutput() AddressBookEcsTagOutput {
+	return o
+}
+
+func (o AddressBookEcsTagOutput) ToAddressBookEcsTagOutputWithContext(ctx context.Context) AddressBookEcsTagOutput {
+	return o
+}
+
+// The key of ECS tag that to be matched.
+func (o AddressBookEcsTagOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddressBookEcsTag) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+}
+
+// The value of ECS tag that to be matched.
+func (o AddressBookEcsTagOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddressBookEcsTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type AddressBookEcsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (AddressBookEcsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressBookEcsTag)(nil)).Elem()
+}
+
+func (o AddressBookEcsTagArrayOutput) ToAddressBookEcsTagArrayOutput() AddressBookEcsTagArrayOutput {
+	return o
+}
+
+func (o AddressBookEcsTagArrayOutput) ToAddressBookEcsTagArrayOutputWithContext(ctx context.Context) AddressBookEcsTagArrayOutput {
+	return o
+}
+
+func (o AddressBookEcsTagArrayOutput) Index(i pulumi.IntInput) AddressBookEcsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddressBookEcsTag {
+		return vs[0].([]AddressBookEcsTag)[vs[1].(int)]
+	}).(AddressBookEcsTagOutput)
+}
+
+type GetAddressBooksBook struct {
+	// The addresses in the Address Book.
+	AddressLists []string `pulumi:"addressLists"`
+	// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
+	AutoAddTagEcs int `pulumi:"autoAddTagEcs"`
+	// The description of the Address Book.
+	Description string `pulumi:"description"`
+	// The logical relation among the ECS tags that to be matchedh.
+	EcsTags []GetAddressBooksBookEcsTag `pulumi:"ecsTags"`
+	// The name of the Address Book.
+	GroupName string `pulumi:"groupName"`
+	// The type of the Address Book.
+	GroupType string `pulumi:"groupType"`
+	// The ID of the Address Book.
+	GroupUuid string `pulumi:"groupUuid"`
+	// The ID of the Address Book.
+	Id string `pulumi:"id"`
+	// One or more tags for the relationship between.
+	TagRelation string `pulumi:"tagRelation"`
+}
+
+// GetAddressBooksBookInput is an input type that accepts GetAddressBooksBookArgs and GetAddressBooksBookOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookInput` via:
+//
+//          GetAddressBooksBookArgs{...}
+type GetAddressBooksBookInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookOutput() GetAddressBooksBookOutput
+	ToGetAddressBooksBookOutputWithContext(context.Context) GetAddressBooksBookOutput
+}
+
+type GetAddressBooksBookArgs struct {
+	// The addresses in the Address Book.
+	AddressLists pulumi.StringArrayInput `pulumi:"addressLists"`
+	// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
+	AutoAddTagEcs pulumi.IntInput `pulumi:"autoAddTagEcs"`
+	// The description of the Address Book.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The logical relation among the ECS tags that to be matchedh.
+	EcsTags GetAddressBooksBookEcsTagArrayInput `pulumi:"ecsTags"`
+	// The name of the Address Book.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The type of the Address Book.
+	GroupType pulumi.StringInput `pulumi:"groupType"`
+	// The ID of the Address Book.
+	GroupUuid pulumi.StringInput `pulumi:"groupUuid"`
+	// The ID of the Address Book.
+	Id pulumi.StringInput `pulumi:"id"`
+	// One or more tags for the relationship between.
+	TagRelation pulumi.StringInput `pulumi:"tagRelation"`
+}
+
+func (GetAddressBooksBookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBook)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookArgs) ToGetAddressBooksBookOutput() GetAddressBooksBookOutput {
+	return i.ToGetAddressBooksBookOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookArgs) ToGetAddressBooksBookOutputWithContext(ctx context.Context) GetAddressBooksBookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookOutput)
+}
+
+// GetAddressBooksBookArrayInput is an input type that accepts GetAddressBooksBookArray and GetAddressBooksBookArrayOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookArrayInput` via:
+//
+//          GetAddressBooksBookArray{ GetAddressBooksBookArgs{...} }
+type GetAddressBooksBookArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookArrayOutput() GetAddressBooksBookArrayOutput
+	ToGetAddressBooksBookArrayOutputWithContext(context.Context) GetAddressBooksBookArrayOutput
+}
+
+type GetAddressBooksBookArray []GetAddressBooksBookInput
+
+func (GetAddressBooksBookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBook)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookArray) ToGetAddressBooksBookArrayOutput() GetAddressBooksBookArrayOutput {
+	return i.ToGetAddressBooksBookArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookArray) ToGetAddressBooksBookArrayOutputWithContext(ctx context.Context) GetAddressBooksBookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookArrayOutput)
+}
+
+type GetAddressBooksBookOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBook)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookOutput) ToGetAddressBooksBookOutput() GetAddressBooksBookOutput {
+	return o
+}
+
+func (o GetAddressBooksBookOutput) ToGetAddressBooksBookOutputWithContext(ctx context.Context) GetAddressBooksBookOutput {
+	return o
+}
+
+// The addresses in the Address Book.
+func (o GetAddressBooksBookOutput) AddressLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) []string { return v.AddressLists }).(pulumi.StringArrayOutput)
+}
+
+// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
+func (o GetAddressBooksBookOutput) AutoAddTagEcs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) int { return v.AutoAddTagEcs }).(pulumi.IntOutput)
+}
+
+// The description of the Address Book.
+func (o GetAddressBooksBookOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The logical relation among the ECS tags that to be matchedh.
+func (o GetAddressBooksBookOutput) EcsTags() GetAddressBooksBookEcsTagArrayOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) []GetAddressBooksBookEcsTag { return v.EcsTags }).(GetAddressBooksBookEcsTagArrayOutput)
+}
+
+// The name of the Address Book.
+func (o GetAddressBooksBookOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The type of the Address Book.
+func (o GetAddressBooksBookOutput) GroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupType }).(pulumi.StringOutput)
+}
+
+// The ID of the Address Book.
+func (o GetAddressBooksBookOutput) GroupUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupUuid }).(pulumi.StringOutput)
+}
+
+// The ID of the Address Book.
+func (o GetAddressBooksBookOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// One or more tags for the relationship between.
+func (o GetAddressBooksBookOutput) TagRelation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.TagRelation }).(pulumi.StringOutput)
+}
+
+type GetAddressBooksBookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBook)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookArrayOutput) ToGetAddressBooksBookArrayOutput() GetAddressBooksBookArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookArrayOutput) ToGetAddressBooksBookArrayOutputWithContext(ctx context.Context) GetAddressBooksBookArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBook {
+		return vs[0].([]GetAddressBooksBook)[vs[1].(int)]
+	}).(GetAddressBooksBookOutput)
+}
+
+type GetAddressBooksBookEcsTag struct {
+	// The key of ECS tag that to be matched.
+	TagKey *string `pulumi:"tagKey"`
+	// The value of ECS tag that to be matched.
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// GetAddressBooksBookEcsTagInput is an input type that accepts GetAddressBooksBookEcsTagArgs and GetAddressBooksBookEcsTagOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookEcsTagInput` via:
+//
+//          GetAddressBooksBookEcsTagArgs{...}
+type GetAddressBooksBookEcsTagInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookEcsTagOutput() GetAddressBooksBookEcsTagOutput
+	ToGetAddressBooksBookEcsTagOutputWithContext(context.Context) GetAddressBooksBookEcsTagOutput
+}
+
+type GetAddressBooksBookEcsTagArgs struct {
+	// The key of ECS tag that to be matched.
+	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	// The value of ECS tag that to be matched.
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (GetAddressBooksBookEcsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookEcsTag)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookEcsTagArgs) ToGetAddressBooksBookEcsTagOutput() GetAddressBooksBookEcsTagOutput {
+	return i.ToGetAddressBooksBookEcsTagOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookEcsTagArgs) ToGetAddressBooksBookEcsTagOutputWithContext(ctx context.Context) GetAddressBooksBookEcsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookEcsTagOutput)
+}
+
+// GetAddressBooksBookEcsTagArrayInput is an input type that accepts GetAddressBooksBookEcsTagArray and GetAddressBooksBookEcsTagArrayOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookEcsTagArrayInput` via:
+//
+//          GetAddressBooksBookEcsTagArray{ GetAddressBooksBookEcsTagArgs{...} }
+type GetAddressBooksBookEcsTagArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookEcsTagArrayOutput() GetAddressBooksBookEcsTagArrayOutput
+	ToGetAddressBooksBookEcsTagArrayOutputWithContext(context.Context) GetAddressBooksBookEcsTagArrayOutput
+}
+
+type GetAddressBooksBookEcsTagArray []GetAddressBooksBookEcsTagInput
+
+func (GetAddressBooksBookEcsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookEcsTag)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookEcsTagArray) ToGetAddressBooksBookEcsTagArrayOutput() GetAddressBooksBookEcsTagArrayOutput {
+	return i.ToGetAddressBooksBookEcsTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookEcsTagArray) ToGetAddressBooksBookEcsTagArrayOutputWithContext(ctx context.Context) GetAddressBooksBookEcsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookEcsTagArrayOutput)
+}
+
+type GetAddressBooksBookEcsTagOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookEcsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookEcsTag)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookEcsTagOutput) ToGetAddressBooksBookEcsTagOutput() GetAddressBooksBookEcsTagOutput {
+	return o
+}
+
+func (o GetAddressBooksBookEcsTagOutput) ToGetAddressBooksBookEcsTagOutputWithContext(ctx context.Context) GetAddressBooksBookEcsTagOutput {
+	return o
+}
+
+// The key of ECS tag that to be matched.
+func (o GetAddressBooksBookEcsTagOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAddressBooksBookEcsTag) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+}
+
+// The value of ECS tag that to be matched.
+func (o GetAddressBooksBookEcsTagOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAddressBooksBookEcsTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type GetAddressBooksBookEcsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookEcsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookEcsTag)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookEcsTagArrayOutput) ToGetAddressBooksBookEcsTagArrayOutput() GetAddressBooksBookEcsTagArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookEcsTagArrayOutput) ToGetAddressBooksBookEcsTagArrayOutputWithContext(ctx context.Context) GetAddressBooksBookEcsTagArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookEcsTagArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookEcsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBookEcsTag {
+		return vs[0].([]GetAddressBooksBookEcsTag)[vs[1].(int)]
+	}).(GetAddressBooksBookEcsTagOutput)
+}
+
 type GetControlPoliciesPolicy struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction string `pulumi:"aclAction"`
@@ -454,10 +835,22 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookEcsTagInput)(nil)).Elem(), AddressBookEcsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookEcsTagArrayInput)(nil)).Elem(), AddressBookEcsTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookInput)(nil)).Elem(), GetAddressBooksBookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookArrayInput)(nil)).Elem(), GetAddressBooksBookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookEcsTagInput)(nil)).Elem(), GetAddressBooksBookEcsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookEcsTagArrayInput)(nil)).Elem(), GetAddressBooksBookEcsTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPoliciesPolicyInput)(nil)).Elem(), GetControlPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPoliciesPolicyArrayInput)(nil)).Elem(), GetControlPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterOutputType(AddressBookEcsTagOutput{})
+	pulumi.RegisterOutputType(AddressBookEcsTagArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookEcsTagOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookEcsTagArrayOutput{})
 	pulumi.RegisterOutputType(GetControlPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetControlPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

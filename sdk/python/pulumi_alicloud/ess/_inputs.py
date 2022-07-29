@@ -22,6 +22,7 @@ __all__ = [
     'EciScalingConfigurationVolumeArgs',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs',
     'ScalingConfigurationDataDiskArgs',
+    'ScalingConfigurationInstancePatternInfoArgs',
     'ScalingConfigurationSpotPriceLimitArgs',
     'ScalingGroupVServerGroupsVserverGroupArgs',
     'ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs',
@@ -1180,6 +1181,59 @@ class ScalingConfigurationDataDiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_id", value)
+
+
+@pulumi.input_type
+class ScalingConfigurationInstancePatternInfoArgs:
+    def __init__(__self__, *,
+                 cores: Optional[pulumi.Input[int]] = None,
+                 instance_family_level: Optional[pulumi.Input[str]] = None,
+                 max_price: Optional[pulumi.Input[float]] = None,
+                 memory: Optional[pulumi.Input[float]] = None):
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if instance_family_level is not None:
+            pulumi.set(__self__, "instance_family_level", instance_family_level)
+        if max_price is not None:
+            pulumi.set(__self__, "max_price", max_price)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cores(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "cores")
+
+    @cores.setter
+    def cores(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cores", value)
+
+    @property
+    @pulumi.getter(name="instanceFamilyLevel")
+    def instance_family_level(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_family_level")
+
+    @instance_family_level.setter
+    def instance_family_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_family_level", value)
+
+    @property
+    @pulumi.getter(name="maxPrice")
+    def max_price(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "max_price")
+
+    @max_price.setter
+    def max_price(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_price", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory", value)
 
 
 @pulumi.input_type

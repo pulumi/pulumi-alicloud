@@ -43,6 +43,8 @@ type ScalingConfiguration struct {
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	InstancePatternInfos ScalingConfigurationInstancePatternInfoArrayOutput `pulumi:"instancePatternInfos"`
 	// Resource type of an ECS instance.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// Resource types of an ECS instance.
@@ -163,6 +165,8 @@ type scalingConfigurationState struct {
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName *string `pulumi:"instanceName"`
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	InstancePatternInfos []ScalingConfigurationInstancePatternInfo `pulumi:"instancePatternInfos"`
 	// Resource type of an ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
 	// Resource types of an ECS instance.
@@ -252,6 +256,8 @@ type ScalingConfigurationState struct {
 	InstanceIds pulumi.StringArrayInput
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrInput
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	InstancePatternInfos ScalingConfigurationInstancePatternInfoArrayInput
 	// Resource type of an ECS instance.
 	InstanceType pulumi.StringPtrInput
 	// Resource types of an ECS instance.
@@ -345,6 +351,8 @@ type scalingConfigurationArgs struct {
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName *string `pulumi:"instanceName"`
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	InstancePatternInfos []ScalingConfigurationInstancePatternInfo `pulumi:"instancePatternInfos"`
 	// Resource type of an ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
 	// Resource types of an ECS instance.
@@ -435,6 +443,8 @@ type ScalingConfigurationArgs struct {
 	InstanceIds pulumi.StringArrayInput
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrInput
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	InstancePatternInfos ScalingConfigurationInstancePatternInfoArrayInput
 	// Resource type of an ECS instance.
 	InstanceType pulumi.StringPtrInput
 	// Resource types of an ECS instance.

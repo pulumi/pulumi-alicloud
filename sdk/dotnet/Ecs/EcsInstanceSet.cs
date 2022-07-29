@@ -122,6 +122,14 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// Indicate how to check instance ready to use.
+        /// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+        /// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
+        /// </summary>
+        [Output("bootCheckOsWithAssistant")]
+        public Output<bool?> BootCheckOsWithAssistant { get; private set; } = null!;
+
+        /// <summary>
         /// The list of data disks created with instance. See the following `Block data_disks`.
         /// </summary>
         [Output("dataDisks")]
@@ -440,6 +448,14 @@ namespace Pulumi.AliCloud.Ecs
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
+        /// <summary>
+        /// Indicate how to check instance ready to use.
+        /// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+        /// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
+        /// </summary>
+        [Input("bootCheckOsWithAssistant")]
+        public Input<bool>? BootCheckOsWithAssistant { get; set; }
+
         [Input("dataDisks")]
         private InputList<Inputs.EcsInstanceSetDataDiskArgs>? _dataDisks;
 
@@ -737,6 +753,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// Indicate how to check instance ready to use.
+        /// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+        /// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
+        /// </summary>
+        [Input("bootCheckOsWithAssistant")]
+        public Input<bool>? BootCheckOsWithAssistant { get; set; }
 
         [Input("dataDisks")]
         private InputList<Inputs.EcsInstanceSetDataDiskGetArgs>? _dataDisks;

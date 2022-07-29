@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The Instance Type. Valid values: `professional`, `vip`.
+        /// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The Instance Type. Valid values: `professional`, `vip`.
+        /// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The Instance Type. Valid values: `professional`, `vip`.
+        /// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

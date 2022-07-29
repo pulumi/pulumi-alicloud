@@ -155,6 +155,8 @@ type Cluster struct {
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
+	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+	SubCategory pulumi.StringOutput `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -257,6 +259,8 @@ type clusterState struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
+	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+	SubCategory *string `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -322,6 +326,8 @@ type ClusterState struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
+	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+	SubCategory pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -389,6 +395,8 @@ type clusterArgs struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
+	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+	SubCategory *string `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -453,6 +461,8 @@ type ClusterArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
+	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
+	SubCategory pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.

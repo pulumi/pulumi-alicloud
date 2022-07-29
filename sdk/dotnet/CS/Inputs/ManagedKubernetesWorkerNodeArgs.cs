@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ManagedKubernetesWorkerNodeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the node.
+        /// (Deprecated from version 1.177.0) ID of the node.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The private IP address of node.
+        /// (Deprecated from version 1.177.0) The private IP address of node.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }

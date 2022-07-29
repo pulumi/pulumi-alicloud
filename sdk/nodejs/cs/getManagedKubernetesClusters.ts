@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.35.0+
  *
+ * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,6 +20,7 @@ import * as utilities from "../utilities";
  *
  * // Declare the data source
  * const k8sClusters = pulumi.output(alicloud.cs.getManagedKubernetesClusters({
+ *     kubeConfigFilePrefix: "~/.kube/managed",
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
  * }));
@@ -35,6 +38,7 @@ export function getManagedKubernetesClusters(args?: GetManagedKubernetesClusters
     return pulumi.runtime.invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
+        "kubeConfigFilePrefix": args.kubeConfigFilePrefix,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
@@ -49,6 +53,10 @@ export interface GetManagedKubernetesClustersArgs {
      * Cluster IDs to filter.
      */
     ids?: string[];
+    /**
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     */
+    kubeConfigFilePrefix?: string;
     /**
      * A regex string to filter results by cluster name.
      */
@@ -73,6 +81,7 @@ export interface GetManagedKubernetesClustersResult {
      * A list of matched Kubernetes clusters' ids.
      */
     readonly ids: string[];
+    readonly kubeConfigFilePrefix?: string;
     readonly nameRegex?: string;
     /**
      * A list of matched Kubernetes clusters' names.
@@ -94,6 +103,10 @@ export interface GetManagedKubernetesClustersOutputArgs {
      * Cluster IDs to filter.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     */
+    kubeConfigFilePrefix?: pulumi.Input<string>;
     /**
      * A regex string to filter results by cluster name.
      */

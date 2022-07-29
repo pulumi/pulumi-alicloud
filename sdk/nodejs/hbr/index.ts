@@ -10,6 +10,7 @@ export * from "./ecsBackupPlan";
 export * from "./getBackupJobs";
 export * from "./getEcsBackupClients";
 export * from "./getEcsBackupPlans";
+export * from "./getHanaInstances";
 export * from "./getNasBackupPlans";
 export * from "./getOssBackupPlans";
 export * from "./getOtsBackupPlans";
@@ -19,6 +20,7 @@ export * from "./getRestoreJobs";
 export * from "./getServerBackupPlans";
 export * from "./getSnapshots";
 export * from "./getVaults";
+export * from "./hanaInstance";
 export * from "./nasBackupPlan";
 export * from "./ossBackupPlan";
 export * from "./otsBackupPlan";
@@ -30,6 +32,7 @@ export * from "./vault";
 // Import resources to register:
 import { EcsBackupClient } from "./ecsBackupClient";
 import { EcsBackupPlan } from "./ecsBackupPlan";
+import { HanaInstance } from "./hanaInstance";
 import { NasBackupPlan } from "./nasBackupPlan";
 import { OssBackupPlan } from "./ossBackupPlan";
 import { OtsBackupPlan } from "./otsBackupPlan";
@@ -46,6 +49,8 @@ const _module = {
                 return new EcsBackupClient(name, <any>undefined, { urn })
             case "alicloud:hbr/ecsBackupPlan:EcsBackupPlan":
                 return new EcsBackupPlan(name, <any>undefined, { urn })
+            case "alicloud:hbr/hanaInstance:HanaInstance":
+                return new HanaInstance(name, <any>undefined, { urn })
             case "alicloud:hbr/nasBackupPlan:NasBackupPlan":
                 return new NasBackupPlan(name, <any>undefined, { urn })
             case "alicloud:hbr/ossBackupPlan:OssBackupPlan":
@@ -67,6 +72,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupClient", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupPlan", _module)
+pulumi.runtime.registerResourceModule("alicloud", "hbr/hanaInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/nasBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ossBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/otsBackupPlan", _module)

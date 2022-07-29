@@ -85,6 +85,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
+     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+     */
+    public readonly instancePatternInfos!: pulumi.Output<outputs.ess.ScalingConfigurationInstancePatternInfo[] | undefined>;
+    /**
      * Resource type of an ECS instance.
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
@@ -232,6 +236,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["imageName"] = state ? state.imageName : undefined;
             resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["instancePatternInfos"] = state ? state.instancePatternInfos : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
@@ -277,6 +282,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["imageName"] = args ? args.imageName : undefined;
             resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["instancePatternInfos"] = args ? args.instancePatternInfos : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
@@ -359,6 +365,10 @@ export interface ScalingConfigurationState {
      * Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
      */
     instanceName?: pulumi.Input<string>;
+    /**
+     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+     */
+    instancePatternInfos?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstancePatternInfo>[]>;
     /**
      * Resource type of an ECS instance.
      */
@@ -531,6 +541,10 @@ export interface ScalingConfigurationArgs {
      * Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
      */
     instanceName?: pulumi.Input<string>;
+    /**
+     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+     */
+    instancePatternInfos?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstancePatternInfo>[]>;
     /**
      * Resource type of an ECS instance.
      */

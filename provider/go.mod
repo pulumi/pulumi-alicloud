@@ -12,7 +12,7 @@ replace (
 )
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.177.0
+	github.com/aliyun/terraform-provider-alicloud v1.178.0
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.21.0
 	github.com/pulumi/pulumi/sdk/v3 v3.30.0
@@ -78,7 +78,7 @@ require (
 	github.com/clbanning/mxj/v2 v2.5.5 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
-	github.com/denverdino/aliyungo v0.0.0-20220531124911-7183b75c63d4 // indirect
+	github.com/denverdino/aliyungo v0.0.0-20220714084452-7034e8b75db5 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.2.0 // indirect
 	github.com/dustin/go-humanize v1.0.0 // indirect

@@ -33,6 +33,7 @@ class ClusterArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -100,6 +101,8 @@ class ClusterArgs:
             pulumi.set(__self__, "security_ips", security_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -330,6 +333,15 @@ class ClusterArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -379,6 +391,7 @@ class _ClusterState:
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -453,6 +466,8 @@ class _ClusterState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -704,6 +719,15 @@ class _ClusterState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -753,6 +777,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -904,6 +929,7 @@ class Cluster(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -948,6 +974,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
@@ -984,6 +1011,7 @@ class Cluster(pulumi.CustomResource):
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -1039,6 +1067,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -1119,7 +1148,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticIoResource")
-    def elastic_io_resource(self) -> pulumi.Output[Optional[int]]:
+    def elastic_io_resource(self) -> pulumi.Output[int]:
         return pulumi.get(self, "elastic_io_resource")
 
     @property
@@ -1199,6 +1228,11 @@ class Cluster(pulumi.CustomResource):
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

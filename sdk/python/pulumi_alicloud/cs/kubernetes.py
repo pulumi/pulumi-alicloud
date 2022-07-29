@@ -17,9 +17,6 @@ class KubernetesArgs:
     def __init__(__self__, *,
                  master_instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  master_vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 worker_instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 worker_number: pulumi.Input[int],
-                 worker_vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
@@ -85,24 +82,27 @@ class KubernetesArgs:
                  worker_disk_size: Optional[pulumi.Input[int]] = None,
                  worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 worker_number: Optional[pulumi.Input[int]] = None,
                  worker_period: Optional[pulumi.Input[int]] = None,
-                 worker_period_unit: Optional[pulumi.Input[str]] = None):
+                 worker_period_unit: Optional[pulumi.Input[str]] = None,
+                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Kubernetes resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        :param pulumi.Input[str] cpu_policy: (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
-        :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        :param pulumi.Input[bool] exclude_autoscaler_nodes: (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -123,43 +123,45 @@ class KubernetesArgs:
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
-        :param pulumi.Input[str] node_port_range: The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+        :param pulumi.Input[str] node_port_range: (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         :param pulumi.Input[str] os_type: The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] platform: The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-        :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesTaintArgs']]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesTaintArgs']]] taints: (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-        :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        :param pulumi.Input[str] user_data: (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-        :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-        :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
-        :param pulumi.Input[str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
-        :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
-        :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-        :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
+        :param pulumi.Input[bool] worker_auto_renew: (Optional) Enable worker payment auto-renew, defaults to false.
+        :param pulumi.Input[int] worker_auto_renew_period: (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]] worker_data_disks: (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[str] worker_disk_category: (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] worker_disk_performance_level: (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param pulumi.Input[int] worker_disk_size: (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+        :param pulumi.Input[str] worker_disk_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+        :param pulumi.Input[str] worker_instance_charge_type: (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        :param pulumi.Input[int] worker_number: (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        :param pulumi.Input[int] worker_period: (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        :param pulumi.Input[str] worker_period_unit: (Optional) Worker payment period unit, the valid value is `Month`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: (Optional) The vswitches used by workers.
         """
         pulumi.set(__self__, "master_instance_types", master_instance_types)
         pulumi.set(__self__, "master_vswitch_ids", master_vswitch_ids)
-        pulumi.set(__self__, "worker_instance_types", worker_instance_types)
-        pulumi.set(__self__, "worker_number", worker_number)
-        pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
         if api_audiences is not None:
@@ -175,6 +177,9 @@ class KubernetesArgs:
         if cluster_domain is not None:
             pulumi.set(__self__, "cluster_domain", cluster_domain)
         if cpu_policy is not None:
+            warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
+        if cpu_policy is not None:
             pulumi.set(__self__, "cpu_policy", cpu_policy)
         if custom_san is not None:
             pulumi.set(__self__, "custom_san", custom_san)
@@ -182,6 +187,9 @@ class KubernetesArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_ssh is not None:
             pulumi.set(__self__, "enable_ssh", enable_ssh)
+        if exclude_autoscaler_nodes is not None:
+            warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+            pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
         if exclude_autoscaler_nodes is not None:
             pulumi.set(__self__, "exclude_autoscaler_nodes", exclude_autoscaler_nodes)
         if image_id is not None:
@@ -232,6 +240,9 @@ class KubernetesArgs:
         if node_name_mode is not None:
             pulumi.set(__self__, "node_name_mode", node_name_mode)
         if node_port_range is not None:
+            warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+            pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+        if node_port_range is not None:
             pulumi.set(__self__, "node_port_range", node_port_range)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
@@ -264,39 +275,96 @@ class KubernetesArgs:
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
+            warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
+        if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if user_ca is not None:
             pulumi.set(__self__, "user_ca", user_ca)
         if user_data is not None:
+            warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
+        if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if worker_auto_renew is not None:
+            warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
+        if worker_auto_renew is not None:
             pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
+        if worker_auto_renew_period is not None:
+            warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
         if worker_auto_renew_period is not None:
             pulumi.set(__self__, "worker_auto_renew_period", worker_auto_renew_period)
         if worker_data_disk_category is not None:
+            warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
+        if worker_data_disk_category is not None:
             pulumi.set(__self__, "worker_data_disk_category", worker_data_disk_category)
+        if worker_data_disk_size is not None:
+            warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
         if worker_data_disk_size is not None:
             pulumi.set(__self__, "worker_data_disk_size", worker_data_disk_size)
         if worker_data_disks is not None:
+            warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
+        if worker_data_disks is not None:
             pulumi.set(__self__, "worker_data_disks", worker_data_disks)
+        if worker_disk_category is not None:
+            warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
         if worker_disk_category is not None:
             pulumi.set(__self__, "worker_disk_category", worker_disk_category)
         if worker_disk_performance_level is not None:
+            warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
+        if worker_disk_performance_level is not None:
             pulumi.set(__self__, "worker_disk_performance_level", worker_disk_performance_level)
+        if worker_disk_size is not None:
+            warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
         if worker_disk_size is not None:
             pulumi.set(__self__, "worker_disk_size", worker_disk_size)
         if worker_disk_snapshot_policy_id is not None:
+            warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
+        if worker_disk_snapshot_policy_id is not None:
             pulumi.set(__self__, "worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
         if worker_instance_charge_type is not None:
+            warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
+        if worker_instance_charge_type is not None:
             pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
+        if worker_instance_types is not None:
+            warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
+        if worker_instance_types is not None:
+            pulumi.set(__self__, "worker_instance_types", worker_instance_types)
+        if worker_number is not None:
+            warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
+        if worker_number is not None:
+            pulumi.set(__self__, "worker_number", worker_number)
+        if worker_period is not None:
+            warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
         if worker_period is not None:
             pulumi.set(__self__, "worker_period", worker_period)
         if worker_period_unit is not None:
+            warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
+        if worker_period_unit is not None:
             pulumi.set(__self__, "worker_period_unit", worker_period_unit)
+        if worker_vswitch_ids is not None:
+            warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
+        if worker_vswitch_ids is not None:
+            pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
 
     @property
     @pulumi.getter(name="masterInstanceTypes")
@@ -313,6 +381,9 @@ class KubernetesArgs:
     @property
     @pulumi.getter(name="masterVswitchIds")
     def master_vswitch_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
+        """
         return pulumi.get(self, "master_vswitch_ids")
 
     @master_vswitch_ids.setter
@@ -320,41 +391,11 @@ class KubernetesArgs:
         pulumi.set(self, "master_vswitch_ids", value)
 
     @property
-    @pulumi.getter(name="workerInstanceTypes")
-    def worker_instance_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        """
-        return pulumi.get(self, "worker_instance_types")
-
-    @worker_instance_types.setter
-    def worker_instance_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "worker_instance_types", value)
-
-    @property
-    @pulumi.getter(name="workerNumber")
-    def worker_number(self) -> pulumi.Input[int]:
-        """
-        The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-        """
-        return pulumi.get(self, "worker_number")
-
-    @worker_number.setter
-    def worker_number(self, value: pulumi.Input[int]):
-        pulumi.set(self, "worker_number", value)
-
-    @property
-    @pulumi.getter(name="workerVswitchIds")
-    def worker_vswitch_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "worker_vswitch_ids")
-
-    @worker_vswitch_ids.setter
-    def worker_vswitch_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "worker_vswitch_ids", value)
-
-    @property
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]]]:
+        """
+        The addon you want to install in cluster.
+        """
         return pulumi.get(self, "addons")
 
     @addons.setter
@@ -365,7 +406,7 @@ class KubernetesArgs:
     @pulumi.getter(name="apiAudiences")
     def api_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "api_audiences")
 
@@ -437,7 +478,7 @@ class KubernetesArgs:
     @pulumi.getter(name="cpuPolicy")
     def cpu_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
         return pulumi.get(self, "cpu_policy")
 
@@ -485,7 +526,7 @@ class KubernetesArgs:
     @pulumi.getter(name="excludeAutoscalerNodes")
     def exclude_autoscaler_nodes(self) -> Optional[pulumi.Input[bool]]:
         """
-        Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
@@ -746,7 +787,7 @@ class KubernetesArgs:
     @pulumi.getter(name="nodeNameMode")
     def node_name_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
+        Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
         return pulumi.get(self, "node_name_mode")
 
@@ -758,7 +799,7 @@ class KubernetesArgs:
     @pulumi.getter(name="nodePortRange")
     def node_port_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
         return pulumi.get(self, "node_port_range")
 
@@ -806,7 +847,7 @@ class KubernetesArgs:
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
         return pulumi.get(self, "pod_cidr")
 
@@ -818,7 +859,7 @@ class KubernetesArgs:
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -899,7 +940,7 @@ class KubernetesArgs:
     @pulumi.getter(name="serviceAccountIssuer")
     def service_account_issuer(self) -> Optional[pulumi.Input[str]]:
         """
-        The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "service_account_issuer")
 
@@ -947,7 +988,7 @@ class KubernetesArgs:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesTaintArgs']]]]:
         """
-        Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
         return pulumi.get(self, "taints")
 
@@ -983,7 +1024,7 @@ class KubernetesArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
         return pulumi.get(self, "user_data")
 
@@ -1007,7 +1048,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerAutoRenew")
     def worker_auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable worker payment auto-renew, defaults to false.
+        (Optional) Enable worker payment auto-renew, defaults to false.
         """
         return pulumi.get(self, "worker_auto_renew")
 
@@ -1019,7 +1060,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
+        (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         return pulumi.get(self, "worker_auto_renew_period")
 
@@ -1030,6 +1071,9 @@ class KubernetesArgs:
     @property
     @pulumi.getter(name="workerDataDiskCategory")
     def worker_data_disk_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data disk category of worker, use `worker_data_disks` to instead it.
+        """
         return pulumi.get(self, "worker_data_disk_category")
 
     @worker_data_disk_category.setter
@@ -1039,6 +1083,9 @@ class KubernetesArgs:
     @property
     @pulumi.getter(name="workerDataDiskSize")
     def worker_data_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The data disk size of worker, use `worker_data_disks` to instead it.
+        """
         return pulumi.get(self, "worker_data_disk_size")
 
     @worker_data_disk_size.setter
@@ -1049,7 +1096,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerDataDisks")
     def worker_data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]]]:
         """
-        The data disk configurations of worker nodes, such as the disk type and disk size.
+        (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
         return pulumi.get(self, "worker_data_disks")
 
@@ -1061,7 +1108,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerDiskCategory")
     def worker_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "worker_disk_category")
 
@@ -1073,7 +1120,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerDiskPerformanceLevel")
     def worker_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
         return pulumi.get(self, "worker_disk_performance_level")
 
@@ -1085,7 +1132,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerDiskSize")
     def worker_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
+        (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
         return pulumi.get(self, "worker_disk_size")
 
@@ -1097,7 +1144,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerDiskSnapshotPolicyId")
     def worker_disk_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker node system disk auto snapshot policy.
+        (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
@@ -1109,7 +1156,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerInstanceChargeType")
     def worker_instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         """
         return pulumi.get(self, "worker_instance_charge_type")
 
@@ -1118,10 +1165,34 @@ class KubernetesArgs:
         pulumi.set(self, "worker_instance_charge_type", value)
 
     @property
+    @pulumi.getter(name="workerInstanceTypes")
+    def worker_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        """
+        return pulumi.get(self, "worker_instance_types")
+
+    @worker_instance_types.setter
+    def worker_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "worker_instance_types", value)
+
+    @property
+    @pulumi.getter(name="workerNumber")
+    def worker_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        """
+        return pulumi.get(self, "worker_number")
+
+    @worker_number.setter
+    def worker_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "worker_number", value)
+
+    @property
     @pulumi.getter(name="workerPeriod")
     def worker_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
         return pulumi.get(self, "worker_period")
 
@@ -1133,13 +1204,25 @@ class KubernetesArgs:
     @pulumi.getter(name="workerPeriodUnit")
     def worker_period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker payment period unit, the valid value is `Month`.
+        (Optional) Worker payment period unit, the valid value is `Month`.
         """
         return pulumi.get(self, "worker_period_unit")
 
     @worker_period_unit.setter
     def worker_period_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "worker_period_unit", value)
+
+    @property
+    @pulumi.getter(name="workerVswitchIds")
+    def worker_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Optional) The vswitches used by workers.
+        """
+        return pulumi.get(self, "worker_vswitch_ids")
+
+    @worker_vswitch_ids.setter
+    def worker_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "worker_vswitch_ids", value)
 
 
 @pulumi.input_type
@@ -1229,7 +1312,8 @@ class _KubernetesState:
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Kubernetes resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]] addons: The addon you want to install in cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         :param pulumi.Input['KubernetesCertificateAuthorityArgs'] certificate_authority: (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -1237,11 +1321,11 @@ class _KubernetesState:
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input['KubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
-        :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        :param pulumi.Input[str] cpu_policy: (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
-        :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        :param pulumi.Input[bool] exclude_autoscaler_nodes: (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -1261,47 +1345,53 @@ class _KubernetesState:
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesMasterNodeArgs']]] master_nodes: List of cluster master nodes.
         :param pulumi.Input[int] master_period: Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] master_period_unit: Master payment period unit, the valid value is `Month`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
-        :param pulumi.Input[str] node_port_range: The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+        :param pulumi.Input[str] node_port_range: (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         :param pulumi.Input[str] os_type: The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] platform: The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-        :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        :param pulumi.Input[str] slb_id: The ID of load balancer.
+        :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesTaintArgs']]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesTaintArgs']]] taints: (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-        :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        :param pulumi.Input[str] user_data: (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
-        :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-        :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
-        :param pulumi.Input[str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
-        :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerNodeArgs']]] worker_nodes: List of cluster worker nodes.
-        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-        :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-        :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
+        :param pulumi.Input[bool] worker_auto_renew: (Optional) Enable worker payment auto-renew, defaults to false.
+        :param pulumi.Input[int] worker_auto_renew_period: (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]] worker_data_disks: (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[str] worker_disk_category: (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] worker_disk_performance_level: (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param pulumi.Input[int] worker_disk_size: (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+        :param pulumi.Input[str] worker_disk_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+        :param pulumi.Input[str] worker_instance_charge_type: (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerNodeArgs']]] worker_nodes: (Deprecated from version 1.177.0)List of cluster worker nodes.
+        :param pulumi.Input[int] worker_number: (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        :param pulumi.Input[int] worker_period: (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        :param pulumi.Input[str] worker_period_unit: (Optional) Worker payment period unit, the valid value is `Month`.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: (Optional) The vswitches used by workers.
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
@@ -1322,6 +1412,9 @@ class _KubernetesState:
         if connections is not None:
             pulumi.set(__self__, "connections", connections)
         if cpu_policy is not None:
+            warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
+        if cpu_policy is not None:
             pulumi.set(__self__, "cpu_policy", cpu_policy)
         if custom_san is not None:
             pulumi.set(__self__, "custom_san", custom_san)
@@ -1329,6 +1422,9 @@ class _KubernetesState:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_ssh is not None:
             pulumi.set(__self__, "enable_ssh", enable_ssh)
+        if exclude_autoscaler_nodes is not None:
+            warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+            pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
         if exclude_autoscaler_nodes is not None:
             pulumi.set(__self__, "exclude_autoscaler_nodes", exclude_autoscaler_nodes)
         if image_id is not None:
@@ -1387,6 +1483,9 @@ class _KubernetesState:
         if node_name_mode is not None:
             pulumi.set(__self__, "node_name_mode", node_name_mode)
         if node_port_range is not None:
+            warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+            pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+        if node_port_range is not None:
             pulumi.set(__self__, "node_port_range", node_port_range)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
@@ -1428,11 +1527,17 @@ class _KubernetesState:
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
+            warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
+        if taints is not None:
             pulumi.set(__self__, "taints", taints)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if user_ca is not None:
             pulumi.set(__self__, "user_ca", user_ca)
+        if user_data is not None:
+            warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if version is not None:
@@ -1440,43 +1545,94 @@ class _KubernetesState:
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if worker_auto_renew is not None:
+            warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
+        if worker_auto_renew is not None:
             pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
+        if worker_auto_renew_period is not None:
+            warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
         if worker_auto_renew_period is not None:
             pulumi.set(__self__, "worker_auto_renew_period", worker_auto_renew_period)
         if worker_data_disk_category is not None:
+            warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
+        if worker_data_disk_category is not None:
             pulumi.set(__self__, "worker_data_disk_category", worker_data_disk_category)
+        if worker_data_disk_size is not None:
+            warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
         if worker_data_disk_size is not None:
             pulumi.set(__self__, "worker_data_disk_size", worker_data_disk_size)
         if worker_data_disks is not None:
+            warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
+        if worker_data_disks is not None:
             pulumi.set(__self__, "worker_data_disks", worker_data_disks)
+        if worker_disk_category is not None:
+            warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
         if worker_disk_category is not None:
             pulumi.set(__self__, "worker_disk_category", worker_disk_category)
         if worker_disk_performance_level is not None:
+            warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
+        if worker_disk_performance_level is not None:
             pulumi.set(__self__, "worker_disk_performance_level", worker_disk_performance_level)
+        if worker_disk_size is not None:
+            warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
         if worker_disk_size is not None:
             pulumi.set(__self__, "worker_disk_size", worker_disk_size)
         if worker_disk_snapshot_policy_id is not None:
+            warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
+        if worker_disk_snapshot_policy_id is not None:
             pulumi.set(__self__, "worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
+        if worker_instance_charge_type is not None:
+            warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
         if worker_instance_charge_type is not None:
             pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
         if worker_instance_types is not None:
+            warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
+        if worker_instance_types is not None:
             pulumi.set(__self__, "worker_instance_types", worker_instance_types)
+        if worker_nodes is not None:
+            warnings.warn("""Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+            pulumi.log.warn("""worker_nodes is deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
         if worker_nodes is not None:
             pulumi.set(__self__, "worker_nodes", worker_nodes)
         if worker_number is not None:
+            warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
+        if worker_number is not None:
             pulumi.set(__self__, "worker_number", worker_number)
         if worker_period is not None:
+            warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
+        if worker_period is not None:
             pulumi.set(__self__, "worker_period", worker_period)
+        if worker_period_unit is not None:
+            warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
         if worker_period_unit is not None:
             pulumi.set(__self__, "worker_period_unit", worker_period_unit)
         if worker_ram_role_name is not None:
             pulumi.set(__self__, "worker_ram_role_name", worker_ram_role_name)
+        if worker_vswitch_ids is not None:
+            warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
+            pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
         if worker_vswitch_ids is not None:
             pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
 
     @property
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]]]:
+        """
+        The addon you want to install in cluster.
+        """
         return pulumi.get(self, "addons")
 
     @addons.setter
@@ -1487,7 +1643,7 @@ class _KubernetesState:
     @pulumi.getter(name="apiAudiences")
     def api_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "api_audiences")
 
@@ -1583,7 +1739,7 @@ class _KubernetesState:
     @pulumi.getter(name="cpuPolicy")
     def cpu_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
         return pulumi.get(self, "cpu_policy")
 
@@ -1631,7 +1787,7 @@ class _KubernetesState:
     @pulumi.getter(name="excludeAutoscalerNodes")
     def exclude_autoscaler_nodes(self) -> Optional[pulumi.Input[bool]]:
         """
-        Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
@@ -1870,6 +2026,9 @@ class _KubernetesState:
     @property
     @pulumi.getter(name="masterVswitchIds")
     def master_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
+        """
         return pulumi.get(self, "master_vswitch_ids")
 
     @master_vswitch_ids.setter
@@ -1937,7 +2096,7 @@ class _KubernetesState:
     @pulumi.getter(name="nodeNameMode")
     def node_name_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
+        Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
         return pulumi.get(self, "node_name_mode")
 
@@ -1949,7 +2108,7 @@ class _KubernetesState:
     @pulumi.getter(name="nodePortRange")
     def node_port_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
         return pulumi.get(self, "node_port_range")
 
@@ -1997,7 +2156,7 @@ class _KubernetesState:
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
         return pulumi.get(self, "pod_cidr")
 
@@ -2009,7 +2168,7 @@ class _KubernetesState:
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -2090,7 +2249,7 @@ class _KubernetesState:
     @pulumi.getter(name="serviceAccountIssuer")
     def service_account_issuer(self) -> Optional[pulumi.Input[str]]:
         """
-        The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "service_account_issuer")
 
@@ -2113,6 +2272,9 @@ class _KubernetesState:
     @property
     @pulumi.getter(name="slbId")
     def slb_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of load balancer.
+        """
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
@@ -2122,6 +2284,9 @@ class _KubernetesState:
     @property
     @pulumi.getter(name="slbInternet")
     def slb_internet(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public ip of load balancer.
+        """
         return pulumi.get(self, "slb_internet")
 
     @slb_internet.setter
@@ -2168,7 +2333,7 @@ class _KubernetesState:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesTaintArgs']]]]:
         """
-        Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
         return pulumi.get(self, "taints")
 
@@ -2204,7 +2369,7 @@ class _KubernetesState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
         return pulumi.get(self, "user_data")
 
@@ -2240,7 +2405,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerAutoRenew")
     def worker_auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable worker payment auto-renew, defaults to false.
+        (Optional) Enable worker payment auto-renew, defaults to false.
         """
         return pulumi.get(self, "worker_auto_renew")
 
@@ -2252,7 +2417,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
+        (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         return pulumi.get(self, "worker_auto_renew_period")
 
@@ -2263,6 +2428,9 @@ class _KubernetesState:
     @property
     @pulumi.getter(name="workerDataDiskCategory")
     def worker_data_disk_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The data disk category of worker, use `worker_data_disks` to instead it.
+        """
         return pulumi.get(self, "worker_data_disk_category")
 
     @worker_data_disk_category.setter
@@ -2272,6 +2440,9 @@ class _KubernetesState:
     @property
     @pulumi.getter(name="workerDataDiskSize")
     def worker_data_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The data disk size of worker, use `worker_data_disks` to instead it.
+        """
         return pulumi.get(self, "worker_data_disk_size")
 
     @worker_data_disk_size.setter
@@ -2282,7 +2453,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerDataDisks")
     def worker_data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]]]:
         """
-        The data disk configurations of worker nodes, such as the disk type and disk size.
+        (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
         return pulumi.get(self, "worker_data_disks")
 
@@ -2294,7 +2465,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerDiskCategory")
     def worker_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "worker_disk_category")
 
@@ -2306,7 +2477,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerDiskPerformanceLevel")
     def worker_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
         return pulumi.get(self, "worker_disk_performance_level")
 
@@ -2318,7 +2489,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerDiskSize")
     def worker_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
+        (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
         return pulumi.get(self, "worker_disk_size")
 
@@ -2330,7 +2501,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerDiskSnapshotPolicyId")
     def worker_disk_snapshot_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker node system disk auto snapshot policy.
+        (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
@@ -2342,7 +2513,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerInstanceChargeType")
     def worker_instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         """
         return pulumi.get(self, "worker_instance_charge_type")
 
@@ -2354,7 +2525,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerInstanceTypes")
     def worker_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         """
         return pulumi.get(self, "worker_instance_types")
 
@@ -2366,7 +2537,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerNodeArgs']]]]:
         """
-        List of cluster worker nodes.
+        (Deprecated from version 1.177.0)List of cluster worker nodes.
         """
         return pulumi.get(self, "worker_nodes")
 
@@ -2378,7 +2549,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerNumber")
     def worker_number(self) -> Optional[pulumi.Input[int]]:
         """
-        The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
         return pulumi.get(self, "worker_number")
 
@@ -2390,7 +2561,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerPeriod")
     def worker_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
         return pulumi.get(self, "worker_period")
 
@@ -2402,7 +2573,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerPeriodUnit")
     def worker_period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Worker payment period unit, the valid value is `Month`.
+        (Optional) Worker payment period unit, the valid value is `Month`.
         """
         return pulumi.get(self, "worker_period_unit")
 
@@ -2425,6 +2596,9 @@ class _KubernetesState:
     @property
     @pulumi.getter(name="workerVswitchIds")
     def worker_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Optional) The vswitches used by workers.
+        """
         return pulumi.get(self, "worker_vswitch_ids")
 
     @worker_vswitch_ids.setter
@@ -2521,17 +2695,18 @@ class Kubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAddonArgs']]]] addons: The addon you want to install in cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        :param pulumi.Input[str] cpu_policy: (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
-        :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        :param pulumi.Input[bool] exclude_autoscaler_nodes: (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -2550,42 +2725,46 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[int] master_period: Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] master_period_unit: Master payment period unit, the valid value is `Month`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
-        :param pulumi.Input[str] node_port_range: The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+        :param pulumi.Input[str] node_port_range: (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         :param pulumi.Input[str] os_type: The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] platform: The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-        :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesTaintArgs']]]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesTaintArgs']]]] taints: (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-        :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        :param pulumi.Input[str] user_data: (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-        :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-        :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
-        :param pulumi.Input[str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
-        :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-        :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-        :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
+        :param pulumi.Input[bool] worker_auto_renew: (Optional) Enable worker payment auto-renew, defaults to false.
+        :param pulumi.Input[int] worker_auto_renew_period: (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[str] worker_disk_category: (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] worker_disk_performance_level: (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param pulumi.Input[int] worker_disk_size: (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+        :param pulumi.Input[str] worker_disk_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+        :param pulumi.Input[str] worker_instance_charge_type: (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        :param pulumi.Input[int] worker_number: (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        :param pulumi.Input[int] worker_period: (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        :param pulumi.Input[str] worker_period_unit: (Optional) Worker payment period unit, the valid value is `Month`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: (Optional) The vswitches used by workers.
         """
         ...
     @overload
@@ -2708,10 +2887,16 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
             __props__.__dict__["cluster_domain"] = cluster_domain
+            if cpu_policy is not None and not opts.urn:
+                warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
             __props__.__dict__["cpu_policy"] = cpu_policy
             __props__.__dict__["custom_san"] = custom_san
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable_ssh"] = enable_ssh
+            if exclude_autoscaler_nodes is not None and not opts.urn:
+                warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+                pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
             __props__.__dict__["exclude_autoscaler_nodes"] = exclude_autoscaler_nodes
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
@@ -2744,6 +2929,9 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["new_nat_gateway"] = new_nat_gateway
             __props__.__dict__["node_cidr_mask"] = node_cidr_mask
             __props__.__dict__["node_name_mode"] = node_name_mode
+            if node_port_range is not None and not opts.urn:
+                warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+                pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
             __props__.__dict__["node_port_range"] = node_port_range
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["password"] = password
@@ -2760,31 +2948,76 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["service_cidr"] = service_cidr
             __props__.__dict__["slb_internet_enabled"] = slb_internet_enabled
             __props__.__dict__["tags"] = tags
+            if taints is not None and not opts.urn:
+                warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
             __props__.__dict__["taints"] = taints
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["user_ca"] = user_ca
+            if user_data is not None and not opts.urn:
+                warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["version"] = version
+            if worker_auto_renew is not None and not opts.urn:
+                warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
             __props__.__dict__["worker_auto_renew"] = worker_auto_renew
+            if worker_auto_renew_period is not None and not opts.urn:
+                warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
             __props__.__dict__["worker_auto_renew_period"] = worker_auto_renew_period
+            if worker_data_disk_category is not None and not opts.urn:
+                warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
             __props__.__dict__["worker_data_disk_category"] = worker_data_disk_category
+            if worker_data_disk_size is not None and not opts.urn:
+                warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
             __props__.__dict__["worker_data_disk_size"] = worker_data_disk_size
+            if worker_data_disks is not None and not opts.urn:
+                warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
             __props__.__dict__["worker_data_disks"] = worker_data_disks
+            if worker_disk_category is not None and not opts.urn:
+                warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
             __props__.__dict__["worker_disk_category"] = worker_disk_category
+            if worker_disk_performance_level is not None and not opts.urn:
+                warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
             __props__.__dict__["worker_disk_performance_level"] = worker_disk_performance_level
+            if worker_disk_size is not None and not opts.urn:
+                warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
             __props__.__dict__["worker_disk_size"] = worker_disk_size
+            if worker_disk_snapshot_policy_id is not None and not opts.urn:
+                warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
             __props__.__dict__["worker_disk_snapshot_policy_id"] = worker_disk_snapshot_policy_id
+            if worker_instance_charge_type is not None and not opts.urn:
+                warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
             __props__.__dict__["worker_instance_charge_type"] = worker_instance_charge_type
-            if worker_instance_types is None and not opts.urn:
-                raise TypeError("Missing required property 'worker_instance_types'")
+            if worker_instance_types is not None and not opts.urn:
+                warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
             __props__.__dict__["worker_instance_types"] = worker_instance_types
-            if worker_number is None and not opts.urn:
-                raise TypeError("Missing required property 'worker_number'")
+            if worker_number is not None and not opts.urn:
+                warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
             __props__.__dict__["worker_number"] = worker_number
+            if worker_period is not None and not opts.urn:
+                warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
             __props__.__dict__["worker_period"] = worker_period
+            if worker_period_unit is not None and not opts.urn:
+                warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
             __props__.__dict__["worker_period_unit"] = worker_period_unit
-            if worker_vswitch_ids is None and not opts.urn:
-                raise TypeError("Missing required property 'worker_vswitch_ids'")
+            if worker_vswitch_ids is not None and not opts.urn:
+                warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
+                pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
             __props__.__dict__["worker_vswitch_ids"] = worker_vswitch_ids
             __props__.__dict__["certificate_authority"] = None
             __props__.__dict__["connections"] = None
@@ -2895,7 +3128,8 @@ class Kubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAddonArgs']]]] addons: The addon you want to install in cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         :param pulumi.Input[pulumi.InputType['KubernetesCertificateAuthorityArgs']] certificate_authority: (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -2903,11 +3137,11 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectionsArgs']] connections: Map of kubernetes cluster connection information.
-        :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        :param pulumi.Input[str] cpu_policy: (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
-        :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        :param pulumi.Input[bool] exclude_autoscaler_nodes: (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. Default to `true`.
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
@@ -2927,47 +3161,53 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesMasterNodeArgs']]]] master_nodes: List of cluster master nodes.
         :param pulumi.Input[int] master_period: Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] master_period_unit: Master payment period unit, the valid value is `Month`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] master_vswitch_ids: The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
-        :param pulumi.Input[str] node_port_range: The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+        :param pulumi.Input[str] node_port_range: (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         :param pulumi.Input[str] os_type: The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] platform: The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
-        :param pulumi.Input[str] pod_cidr: - [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']] runtime: The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        :param pulumi.Input[str] slb_id: The ID of load balancer.
+        :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesTaintArgs']]]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesTaintArgs']]]] taints: (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-        :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        :param pulumi.Input[str] user_data: (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
-        :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
-        :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
-        :param pulumi.Input[str] worker_disk_snapshot_policy_id: Worker node system disk auto snapshot policy.
-        :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
-        :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-        :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
-        :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
+        :param pulumi.Input[bool] worker_auto_renew: (Optional) Enable worker payment auto-renew, defaults to false.
+        :param pulumi.Input[int] worker_auto_renew_period: (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
+        :param pulumi.Input[str] worker_disk_category: (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] worker_disk_performance_level: (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param pulumi.Input[int] worker_disk_size: (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+        :param pulumi.Input[str] worker_disk_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+        :param pulumi.Input[str] worker_instance_charge_type: (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]] worker_nodes: (Deprecated from version 1.177.0)List of cluster worker nodes.
+        :param pulumi.Input[int] worker_number: (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        :param pulumi.Input[int] worker_period: (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        :param pulumi.Input[str] worker_period_unit: (Optional) Worker payment period unit, the valid value is `Month`.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: (Optional) The vswitches used by workers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3060,13 +3300,16 @@ class Kubernetes(pulumi.CustomResource):
     @property
     @pulumi.getter
     def addons(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesAddon']]]:
+        """
+        The addon you want to install in cluster.
+        """
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="apiAudiences")
     def api_audiences(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "api_audiences")
 
@@ -3130,7 +3373,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="cpuPolicy")
     def cpu_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+        (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
         return pulumi.get(self, "cpu_policy")
 
@@ -3162,7 +3405,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="excludeAutoscalerNodes")
     def exclude_autoscaler_nodes(self) -> pulumi.Output[Optional[bool]]:
         """
-        Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+        (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
@@ -3321,6 +3564,9 @@ class Kubernetes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="masterVswitchIds")
     def master_vswitch_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
+        """
         return pulumi.get(self, "master_vswitch_ids")
 
     @property
@@ -3364,15 +3610,15 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="nodeNameMode")
     def node_name_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be `aliyun.com00055test`.
+        Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         """
         return pulumi.get(self, "node_name_mode")
 
     @property
     @pulumi.getter(name="nodePortRange")
-    def node_port_range(self) -> pulumi.Output[Optional[str]]:
+    def node_port_range(self) -> pulumi.Output[str]:
         """
-        The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+        (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
         return pulumi.get(self, "node_port_range")
 
@@ -3404,7 +3650,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> pulumi.Output[Optional[str]]:
         """
-        - [Flannel Specific] The CIDR block for the pod network when using Flannel.
+        [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
         return pulumi.get(self, "pod_cidr")
 
@@ -3412,7 +3658,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="podVswitchIds")
     def pod_vswitch_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        - [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
@@ -3465,7 +3711,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountIssuer")
     def service_account_issuer(self) -> pulumi.Output[Optional[str]]:
         """
-        The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "service_account_issuer")
 
@@ -3480,11 +3726,17 @@ class Kubernetes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="slbId")
     def slb_id(self) -> pulumi.Output[str]:
+        """
+        The ID of load balancer.
+        """
         return pulumi.get(self, "slb_id")
 
     @property
     @pulumi.getter(name="slbInternet")
     def slb_internet(self) -> pulumi.Output[str]:
+        """
+        The public ip of load balancer.
+        """
         return pulumi.get(self, "slb_internet")
 
     @property
@@ -3515,7 +3767,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesTaint']]]:
         """
-        Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+        (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
         return pulumi.get(self, "taints")
 
@@ -3539,7 +3791,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+        (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
         return pulumi.get(self, "user_data")
 
@@ -3563,33 +3815,39 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerAutoRenew")
     def worker_auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable worker payment auto-renew, defaults to false.
+        (Optional) Enable worker payment auto-renew, defaults to false.
         """
         return pulumi.get(self, "worker_auto_renew")
 
     @property
     @pulumi.getter(name="workerAutoRenewPeriod")
-    def worker_auto_renew_period(self) -> pulumi.Output[Optional[int]]:
+    def worker_auto_renew_period(self) -> pulumi.Output[int]:
         """
-        Worker payment auto-renew period,, it can be one of {1, 2, 3, 6, 12}.
+        (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         return pulumi.get(self, "worker_auto_renew_period")
 
     @property
     @pulumi.getter(name="workerDataDiskCategory")
     def worker_data_disk_category(self) -> pulumi.Output[Optional[str]]:
+        """
+        The data disk category of worker, use `worker_data_disks` to instead it.
+        """
         return pulumi.get(self, "worker_data_disk_category")
 
     @property
     @pulumi.getter(name="workerDataDiskSize")
     def worker_data_disk_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        The data disk size of worker, use `worker_data_disks` to instead it.
+        """
         return pulumi.get(self, "worker_data_disk_size")
 
     @property
     @pulumi.getter(name="workerDataDisks")
     def worker_data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesWorkerDataDisk']]]:
         """
-        The data disk configurations of worker nodes, such as the disk type and disk size.
+        (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
         return pulumi.get(self, "worker_data_disks")
 
@@ -3597,7 +3855,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerDiskCategory")
     def worker_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "worker_disk_category")
 
@@ -3605,15 +3863,15 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerDiskPerformanceLevel")
     def worker_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
         """
-        Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
         return pulumi.get(self, "worker_disk_performance_level")
 
     @property
     @pulumi.getter(name="workerDiskSize")
-    def worker_disk_size(self) -> pulumi.Output[Optional[int]]:
+    def worker_disk_size(self) -> pulumi.Output[int]:
         """
-        The system disk size of worker node. Its valid value range [40~500] in GB. Default to 40.
+        (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
         return pulumi.get(self, "worker_disk_size")
 
@@ -3621,7 +3879,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerDiskSnapshotPolicyId")
     def worker_disk_snapshot_policy_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Worker node system disk auto snapshot policy.
+        (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
@@ -3629,15 +3887,15 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerInstanceChargeType")
     def worker_instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+        (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
         """
         return pulumi.get(self, "worker_instance_charge_type")
 
     @property
     @pulumi.getter(name="workerInstanceTypes")
-    def worker_instance_types(self) -> pulumi.Output[Sequence[str]]:
+    def worker_instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         """
         return pulumi.get(self, "worker_instance_types")
 
@@ -3645,31 +3903,31 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> pulumi.Output[Sequence['outputs.KubernetesWorkerNode']]:
         """
-        List of cluster worker nodes.
+        (Deprecated from version 1.177.0)List of cluster worker nodes.
         """
         return pulumi.get(self, "worker_nodes")
 
     @property
     @pulumi.getter(name="workerNumber")
-    def worker_number(self) -> pulumi.Output[int]:
+    def worker_number(self) -> pulumi.Output[Optional[int]]:
         """
-        The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+        (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
         return pulumi.get(self, "worker_number")
 
     @property
     @pulumi.getter(name="workerPeriod")
-    def worker_period(self) -> pulumi.Output[Optional[int]]:
+    def worker_period(self) -> pulumi.Output[int]:
         """
-        Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+        (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
         return pulumi.get(self, "worker_period")
 
     @property
     @pulumi.getter(name="workerPeriodUnit")
-    def worker_period_unit(self) -> pulumi.Output[Optional[str]]:
+    def worker_period_unit(self) -> pulumi.Output[str]:
         """
-        Worker payment period unit, the valid value is `Month`.
+        (Optional) Worker payment period unit, the valid value is `Month`.
         """
         return pulumi.get(self, "worker_period_unit")
 
@@ -3683,6 +3941,9 @@ class Kubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workerVswitchIds")
-    def worker_vswitch_ids(self) -> pulumi.Output[Sequence[str]]:
+    def worker_vswitch_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        (Optional) The vswitches used by workers.
+        """
         return pulumi.get(self, "worker_vswitch_ids")
 

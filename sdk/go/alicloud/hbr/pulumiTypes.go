@@ -1548,6 +1548,211 @@ func (o GetEcsBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetEcsBackupP
 	}).(GetEcsBackupPlansPlanOutput)
 }
 
+type GetHanaInstancesInstance struct {
+	// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+	AlertSetting string `pulumi:"alertSetting"`
+	// The ID of the SAP HANA instance.
+	HanaInstanceId string `pulumi:"hanaInstanceId"`
+	// The name of the SAP HANA instance.
+	HanaName string `pulumi:"hanaName"`
+	// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+	Host string `pulumi:"host"`
+	// The ID of the Hana Instance. The value formats as `<vault_id>:<hana_instance_id>`.
+	Id string `pulumi:"id"`
+	// The instance number of the SAP HANA system.
+	InstanceNumber int `pulumi:"instanceNumber"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The status of the SAP HANA instance.
+	Status string `pulumi:"status"`
+	// The status information.
+	StatusMessage string `pulumi:"statusMessage"`
+	// Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
+	UseSsl bool `pulumi:"useSsl"`
+	// The username of the SYSTEMDB database.
+	UserName string `pulumi:"userName"`
+	// Indicates whether the SSL certificate of the SAP HANA instance is verified.
+	ValidateCertificate bool `pulumi:"validateCertificate"`
+	// The ID of the backup vault.
+	VaultId string `pulumi:"vaultId"`
+}
+
+// GetHanaInstancesInstanceInput is an input type that accepts GetHanaInstancesInstanceArgs and GetHanaInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetHanaInstancesInstanceInput` via:
+//
+//          GetHanaInstancesInstanceArgs{...}
+type GetHanaInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetHanaInstancesInstanceOutput() GetHanaInstancesInstanceOutput
+	ToGetHanaInstancesInstanceOutputWithContext(context.Context) GetHanaInstancesInstanceOutput
+}
+
+type GetHanaInstancesInstanceArgs struct {
+	// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+	AlertSetting pulumi.StringInput `pulumi:"alertSetting"`
+	// The ID of the SAP HANA instance.
+	HanaInstanceId pulumi.StringInput `pulumi:"hanaInstanceId"`
+	// The name of the SAP HANA instance.
+	HanaName pulumi.StringInput `pulumi:"hanaName"`
+	// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The ID of the Hana Instance. The value formats as `<vault_id>:<hana_instance_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The instance number of the SAP HANA system.
+	InstanceNumber pulumi.IntInput `pulumi:"instanceNumber"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The status of the SAP HANA instance.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The status information.
+	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
+	// Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
+	UseSsl pulumi.BoolInput `pulumi:"useSsl"`
+	// The username of the SYSTEMDB database.
+	UserName pulumi.StringInput `pulumi:"userName"`
+	// Indicates whether the SSL certificate of the SAP HANA instance is verified.
+	ValidateCertificate pulumi.BoolInput `pulumi:"validateCertificate"`
+	// The ID of the backup vault.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
+}
+
+func (GetHanaInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHanaInstancesInstance)(nil)).Elem()
+}
+
+func (i GetHanaInstancesInstanceArgs) ToGetHanaInstancesInstanceOutput() GetHanaInstancesInstanceOutput {
+	return i.ToGetHanaInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetHanaInstancesInstanceArgs) ToGetHanaInstancesInstanceOutputWithContext(ctx context.Context) GetHanaInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHanaInstancesInstanceOutput)
+}
+
+// GetHanaInstancesInstanceArrayInput is an input type that accepts GetHanaInstancesInstanceArray and GetHanaInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetHanaInstancesInstanceArrayInput` via:
+//
+//          GetHanaInstancesInstanceArray{ GetHanaInstancesInstanceArgs{...} }
+type GetHanaInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetHanaInstancesInstanceArrayOutput() GetHanaInstancesInstanceArrayOutput
+	ToGetHanaInstancesInstanceArrayOutputWithContext(context.Context) GetHanaInstancesInstanceArrayOutput
+}
+
+type GetHanaInstancesInstanceArray []GetHanaInstancesInstanceInput
+
+func (GetHanaInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHanaInstancesInstance)(nil)).Elem()
+}
+
+func (i GetHanaInstancesInstanceArray) ToGetHanaInstancesInstanceArrayOutput() GetHanaInstancesInstanceArrayOutput {
+	return i.ToGetHanaInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetHanaInstancesInstanceArray) ToGetHanaInstancesInstanceArrayOutputWithContext(ctx context.Context) GetHanaInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHanaInstancesInstanceArrayOutput)
+}
+
+type GetHanaInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetHanaInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHanaInstancesInstance)(nil)).Elem()
+}
+
+func (o GetHanaInstancesInstanceOutput) ToGetHanaInstancesInstanceOutput() GetHanaInstancesInstanceOutput {
+	return o
+}
+
+func (o GetHanaInstancesInstanceOutput) ToGetHanaInstancesInstanceOutputWithContext(ctx context.Context) GetHanaInstancesInstanceOutput {
+	return o
+}
+
+// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+func (o GetHanaInstancesInstanceOutput) AlertSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.AlertSetting }).(pulumi.StringOutput)
+}
+
+// The ID of the SAP HANA instance.
+func (o GetHanaInstancesInstanceOutput) HanaInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.HanaInstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the SAP HANA instance.
+func (o GetHanaInstancesInstanceOutput) HanaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.HanaName }).(pulumi.StringOutput)
+}
+
+// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+func (o GetHanaInstancesInstanceOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The ID of the Hana Instance. The value formats as `<vault_id>:<hana_instance_id>`.
+func (o GetHanaInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The instance number of the SAP HANA system.
+func (o GetHanaInstancesInstanceOutput) InstanceNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) int { return v.InstanceNumber }).(pulumi.IntOutput)
+}
+
+// The ID of the resource group.
+func (o GetHanaInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the SAP HANA instance.
+func (o GetHanaInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The status information.
+func (o GetHanaInstancesInstanceOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
+func (o GetHanaInstancesInstanceOutput) UseSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) bool { return v.UseSsl }).(pulumi.BoolOutput)
+}
+
+// The username of the SYSTEMDB database.
+func (o GetHanaInstancesInstanceOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+// Indicates whether the SSL certificate of the SAP HANA instance is verified.
+func (o GetHanaInstancesInstanceOutput) ValidateCertificate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) bool { return v.ValidateCertificate }).(pulumi.BoolOutput)
+}
+
+// The ID of the backup vault.
+func (o GetHanaInstancesInstanceOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaInstancesInstance) string { return v.VaultId }).(pulumi.StringOutput)
+}
+
+type GetHanaInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHanaInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHanaInstancesInstance)(nil)).Elem()
+}
+
+func (o GetHanaInstancesInstanceArrayOutput) ToGetHanaInstancesInstanceArrayOutput() GetHanaInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetHanaInstancesInstanceArrayOutput) ToGetHanaInstancesInstanceArrayOutputWithContext(ctx context.Context) GetHanaInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetHanaInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetHanaInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHanaInstancesInstance {
+		return vs[0].([]GetHanaInstancesInstance)[vs[1].(int)]
+	}).(GetHanaInstancesInstanceOutput)
+}
+
 type GetNasBackupPlansPlan struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`
@@ -4094,6 +4299,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupClientsClientArrayInput)(nil)).Elem(), GetEcsBackupClientsClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupPlansPlanInput)(nil)).Elem(), GetEcsBackupPlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupPlansPlanArrayInput)(nil)).Elem(), GetEcsBackupPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaInstancesInstanceInput)(nil)).Elem(), GetHanaInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaInstancesInstanceArrayInput)(nil)).Elem(), GetHanaInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasBackupPlansPlanInput)(nil)).Elem(), GetNasBackupPlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasBackupPlansPlanArrayInput)(nil)).Elem(), GetNasBackupPlansPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOssBackupPlansPlanInput)(nil)).Elem(), GetOssBackupPlansPlanArgs{})
@@ -4134,6 +4341,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsBackupClientsClientArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetHanaInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetHanaInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetNasBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetNasBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetOssBackupPlansPlanOutput{})

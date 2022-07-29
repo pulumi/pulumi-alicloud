@@ -5,13 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./addressBook";
 export * from "./controlPolicy";
 export * from "./controlPolicyOrder";
+export * from "./getAddressBooks";
 export * from "./getControlPolicies";
 export * from "./getInstances";
 export * from "./instance";
 
 // Import resources to register:
+import { AddressBook } from "./addressBook";
 import { ControlPolicy } from "./controlPolicy";
 import { ControlPolicyOrder } from "./controlPolicyOrder";
 import { Instance } from "./instance";
@@ -20,6 +23,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cloudfirewall/addressBook:AddressBook":
+                return new AddressBook(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/controlPolicy:ControlPolicy":
                 return new ControlPolicy(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
@@ -31,6 +36,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/addressBook", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicyOrder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instance", _module)

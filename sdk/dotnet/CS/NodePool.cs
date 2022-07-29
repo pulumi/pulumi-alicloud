@@ -60,17 +60,11 @@ namespace Pulumi.AliCloud.CS
     ///             {
     ///                 ClusterSpec = "ack.pro.small",
     ///                 IsEnterpriseSecurityGroup = true,
-    ///                 WorkerNumber = 2,
-    ///                 Password = "Hello1234",
     ///                 PodCidr = "172.20.0.0/16",
     ///                 ServiceCidr = "172.21.0.0/20",
     ///                 WorkerVswitchIds = 
     ///                 {
     ///                     defaultSwitch.Id,
-    ///                 },
-    ///                 WorkerInstanceTypes = 
-    ///                 {
-    ///                     defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
     ///                 },
     ///             }));
     ///         }
@@ -496,6 +490,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+        /// </summary>
+        [Output("cpuPolicy")]
+        public Output<string?> CpuPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The data disk configurations of worker nodes, such as the disk type and disk size.
         /// </summary>
         [Output("dataDisks")]
@@ -586,6 +586,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
 
         /// <summary>
+        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// </summary>
+        [Output("kmsEncryptionContext")]
+        public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
         /// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
         /// </summary>
         [Output("labels")]
@@ -595,7 +601,7 @@ namespace Pulumi.AliCloud.CS
         /// Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. Detailed below.
         /// </summary>
         [Output("management")]
-        public Output<Outputs.NodePoolManagement> Management { get; private set; } = null!;
+        public Output<Outputs.NodePoolManagement?> Management { get; private set; } = null!;
 
         /// <summary>
         /// The name of node pool.
@@ -610,7 +616,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        /// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         /// </summary>
         [Output("nodeNameMode")]
         public Output<string> NodeNameMode { get; private set; } = null!;
@@ -638,6 +644,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("platform")]
         public Output<string> Platform { get; private set; } = null!;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
+        [Output("rdsInstances")]
+        public Output<ImmutableArray<string>> RdsInstances { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -695,19 +707,19 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> SocEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         /// </summary>
         [Output("spotPriceLimits")]
         public Output<ImmutableArray<Outputs.NodePoolSpotPriceLimit>> SpotPriceLimits { get; private set; } = null!;
 
         /// <summary>
-        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
         /// </summary>
         [Output("spotStrategy")]
-        public Output<string> SpotStrategy { get; private set; } = null!;
+        public Output<string?> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
@@ -741,6 +753,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("systemDiskSize")]
         public Output<int?> SystemDiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The system disk snapshot policy id.
+        /// </summary>
+        [Output("systemDiskSnapshotPolicyId")]
+        public Output<string?> SystemDiskSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// A Map of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -847,6 +865,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+        /// </summary>
+        [Input("cpuPolicy")]
+        public Input<string>? CpuPolicy { get; set; }
 
         [Input("dataDisks")]
         private InputList<Inputs.NodePoolDataDiskArgs>? _dataDisks;
@@ -956,6 +980,18 @@ namespace Pulumi.AliCloud.CS
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
 
+        [Input("kmsEncryptionContext")]
+        private InputMap<object>? _kmsEncryptionContext;
+
+        /// <summary>
+        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// </summary>
+        public InputMap<object> KmsEncryptionContext
+        {
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            set => _kmsEncryptionContext = value;
+        }
+
         [Input("labels")]
         private InputList<Inputs.NodePoolLabelArgs>? _labels;
 
@@ -987,7 +1023,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        /// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         /// </summary>
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
@@ -1015,6 +1051,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
+
+        [Input("rdsInstances")]
+        private InputList<string>? _rdsInstances;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
+        public InputList<string> RdsInstances
+        {
+            get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
+            set => _rdsInstances = value;
+        }
 
         /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -1075,7 +1123,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolSpotPriceLimitArgs>? _spotPriceLimits;
 
         /// <summary>
-        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         /// </summary>
         public InputList<Inputs.NodePoolSpotPriceLimitArgs> SpotPriceLimits
         {
@@ -1084,13 +1132,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1124,6 +1172,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
+
+        /// <summary>
+        /// The system disk snapshot policy id.
+        /// </summary>
+        [Input("systemDiskSnapshotPolicyId")]
+        public Input<string>? SystemDiskSnapshotPolicyId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -1203,6 +1257,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+        /// </summary>
+        [Input("cpuPolicy")]
+        public Input<string>? CpuPolicy { get; set; }
 
         [Input("dataDisks")]
         private InputList<Inputs.NodePoolDataDiskGetArgs>? _dataDisks;
@@ -1312,6 +1372,18 @@ namespace Pulumi.AliCloud.CS
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
 
+        [Input("kmsEncryptionContext")]
+        private InputMap<object>? _kmsEncryptionContext;
+
+        /// <summary>
+        /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        /// </summary>
+        public InputMap<object> KmsEncryptionContext
+        {
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<object>());
+            set => _kmsEncryptionContext = value;
+        }
+
         [Input("labels")]
         private InputList<Inputs.NodePoolLabelGetArgs>? _labels;
 
@@ -1343,7 +1415,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
-        /// Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+        /// Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
         /// </summary>
         [Input("nodeNameMode")]
         public Input<string>? NodeNameMode { get; set; }
@@ -1371,6 +1443,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
+
+        [Input("rdsInstances")]
+        private InputList<string>? _rdsInstances;
+
+        /// <summary>
+        /// RDS instance list, You can choose which RDS instances whitelist to add instances to.
+        /// </summary>
+        public InputList<string> RdsInstances
+        {
+            get => _rdsInstances ?? (_rdsInstances = new InputList<string>());
+            set => _rdsInstances = value;
+        }
 
         /// <summary>
         /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
@@ -1437,7 +1521,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.NodePoolSpotPriceLimitGetArgs>? _spotPriceLimits;
 
         /// <summary>
-        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+        /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
         /// </summary>
         public InputList<Inputs.NodePoolSpotPriceLimitGetArgs> SpotPriceLimits
         {
@@ -1446,13 +1530,13 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+        /// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1486,6 +1570,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
+
+        /// <summary>
+        /// The system disk snapshot policy id.
+        /// </summary>
+        [Input("systemDiskSnapshotPolicyId")]
+        public Input<string>? SystemDiskSnapshotPolicyId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

@@ -127,7 +127,7 @@ type DBCluster struct {
 	// The description of DBCluster.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The elastic io resource.
-	ElasticIoResource pulumi.IntPtrOutput `pulumi:"elasticIoResource"`
+	ElasticIoResource pulumi.IntOutput `pulumi:"elasticIoResource"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -153,6 +153,8 @@ type DBCluster struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The vpc ID of the resource.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID of the resource.
@@ -243,6 +245,8 @@ type dbclusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The vpc ID of the resource.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the resource.
@@ -299,6 +303,8 @@ type DBClusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The vpc ID of the resource.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the resource.
@@ -355,6 +361,8 @@ type dbclusterArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The vpc ID of the resource.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the resource.
@@ -408,6 +416,8 @@ type DBClusterArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The vpc ID of the resource.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the resource.

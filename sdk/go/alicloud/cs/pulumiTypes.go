@@ -2229,7 +2229,7 @@ func (o KubernetesTaintArrayOutput) Index(i pulumi.IntInput) KubernetesTaintOutp
 }
 
 type KubernetesWorkerDataDisk struct {
-	// Worker node data disk auto snapshot policy.
+	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
@@ -2239,7 +2239,7 @@ type KubernetesWorkerDataDisk struct {
 	KmsKeyId  *string `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	Size       *string `pulumi:"size"`
@@ -2258,7 +2258,7 @@ type KubernetesWorkerDataDiskInput interface {
 }
 
 type KubernetesWorkerDataDiskArgs struct {
-	// Worker node data disk auto snapshot policy.
+	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
@@ -2268,7 +2268,7 @@ type KubernetesWorkerDataDiskArgs struct {
 	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
 	Size       pulumi.StringPtrInput `pulumi:"size"`
@@ -2326,7 +2326,7 @@ func (o KubernetesWorkerDataDiskOutput) ToKubernetesWorkerDataDiskOutputWithCont
 	return o
 }
 
-// Worker node data disk auto snapshot policy.
+// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 func (o KubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -2354,7 +2354,7 @@ func (o KubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 func (o KubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
@@ -3438,7 +3438,7 @@ func (o ManagedKubernetesTaintArrayOutput) Index(i pulumi.IntInput) ManagedKuber
 }
 
 type ManagedKubernetesWorkerDataDisk struct {
-	// Worker node data disk auto snapshot policy.
+	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
@@ -3448,7 +3448,7 @@ type ManagedKubernetesWorkerDataDisk struct {
 	KmsKeyId  *string `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of a data disk, at least 40. Unit: GiB.
 	Size       *string `pulumi:"size"`
@@ -3467,7 +3467,7 @@ type ManagedKubernetesWorkerDataDiskInput interface {
 }
 
 type ManagedKubernetesWorkerDataDiskArgs struct {
-	// Worker node data disk auto snapshot policy.
+	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
@@ -3477,7 +3477,7 @@ type ManagedKubernetesWorkerDataDiskArgs struct {
 	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of a data disk, at least 40. Unit: GiB.
 	Size       pulumi.StringPtrInput `pulumi:"size"`
@@ -3535,7 +3535,7 @@ func (o ManagedKubernetesWorkerDataDiskOutput) ToManagedKubernetesWorkerDataDisk
 	return o
 }
 
-// Worker node data disk auto snapshot policy.
+// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 func (o ManagedKubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -3563,7 +3563,7 @@ func (o ManagedKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 func (o ManagedKubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
@@ -3598,11 +3598,11 @@ func (o ManagedKubernetesWorkerDataDiskArrayOutput) Index(i pulumi.IntInput) Man
 }
 
 type ManagedKubernetesWorkerNode struct {
-	// ID of the node.
+	// (Deprecated from version 1.177.0) ID of the node.
 	Id *string `pulumi:"id"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
-	// The private IP address of node.
+	// (Deprecated from version 1.177.0) The private IP address of node.
 	PrivateIp *string `pulumi:"privateIp"`
 }
 
@@ -3618,11 +3618,11 @@ type ManagedKubernetesWorkerNodeInput interface {
 }
 
 type ManagedKubernetesWorkerNodeArgs struct {
-	// ID of the node.
+	// (Deprecated from version 1.177.0) ID of the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The private IP address of node.
+	// (Deprecated from version 1.177.0) The private IP address of node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
 }
 
@@ -3677,7 +3677,7 @@ func (o ManagedKubernetesWorkerNodeOutput) ToManagedKubernetesWorkerNodeOutputWi
 	return o
 }
 
-// ID of the node.
+// (Deprecated from version 1.177.0) ID of the node.
 func (o ManagedKubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -3687,7 +3687,7 @@ func (o ManagedKubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The private IP address of node.
+// (Deprecated from version 1.177.0) The private IP address of node.
 func (o ManagedKubernetesWorkerNodeOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -4426,7 +4426,7 @@ func (o NodePoolScalingConfigPtrOutput) Type() pulumi.StringPtrOutput {
 type NodePoolSpotPriceLimit struct {
 	// Spot instance type.
 	InstanceType *string `pulumi:"instanceType"`
-	// The maximum hourly price of the spot instance.
+	// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
 	PriceLimit *string `pulumi:"priceLimit"`
 }
 
@@ -4444,7 +4444,7 @@ type NodePoolSpotPriceLimitInput interface {
 type NodePoolSpotPriceLimitArgs struct {
 	// Spot instance type.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	// The maximum hourly price of the spot instance.
+	// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
 	PriceLimit pulumi.StringPtrInput `pulumi:"priceLimit"`
 }
 
@@ -4504,7 +4504,7 @@ func (o NodePoolSpotPriceLimitOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolSpotPriceLimit) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
-// The maximum hourly price of the spot instance.
+// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
 func (o NodePoolSpotPriceLimitOutput) PriceLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolSpotPriceLimit) *string { return v.PriceLimit }).(pulumi.StringPtrOutput)
 }

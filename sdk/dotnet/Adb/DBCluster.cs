@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Adb
         /// The elastic io resource.
         /// </summary>
         [Output("elasticIoResource")]
-        public Output<int?> ElasticIoResource { get; private set; } = null!;
+        public Output<int> ElasticIoResource { get; private set; } = null!;
 
         /// <summary>
         /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -217,6 +217,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The vpc ID of the resource.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The vswitch id.
@@ -408,6 +414,12 @@ namespace Pulumi.AliCloud.Adb
         }
 
         /// <summary>
+        /// The vpc ID of the resource.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The vswitch id.
         /// </summary>
         [Input("vswitchId")]
@@ -568,6 +580,12 @@ namespace Pulumi.AliCloud.Adb
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The vpc ID of the resource.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The vswitch id.

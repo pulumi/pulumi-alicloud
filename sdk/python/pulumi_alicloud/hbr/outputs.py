@@ -18,6 +18,7 @@ __all__ = [
     'GetBackupJobsJobOtsDetailResult',
     'GetEcsBackupClientsClientResult',
     'GetEcsBackupPlansPlanResult',
+    'GetHanaInstancesInstanceResult',
     'GetNasBackupPlansPlanResult',
     'GetOssBackupPlansPlanResult',
     'GetOtsBackupPlansPlanResult',
@@ -1188,6 +1189,156 @@ class GetEcsBackupPlansPlanResult(dict):
     def vault_id(self) -> str:
         """
         The ID of Backup vault.
+        """
+        return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
+class GetHanaInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 alert_setting: str,
+                 hana_instance_id: str,
+                 hana_name: str,
+                 host: str,
+                 id: str,
+                 instance_number: int,
+                 resource_group_id: str,
+                 status: str,
+                 status_message: str,
+                 use_ssl: bool,
+                 user_name: str,
+                 validate_certificate: bool,
+                 vault_id: str):
+        """
+        :param str alert_setting: The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+        :param str hana_instance_id: The ID of the SAP HANA instance.
+        :param str hana_name: The name of the SAP HANA instance.
+        :param str host: The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+        :param str id: The ID of the Hana Instance. The value formats as `<vault_id>:<hana_instance_id>`.
+        :param int instance_number: The instance number of the SAP HANA system.
+        :param str resource_group_id: The ID of the resource group.
+        :param str status: The status of the SAP HANA instance.
+        :param str status_message: The status information.
+        :param bool use_ssl: Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
+        :param str user_name: The username of the SYSTEMDB database.
+        :param bool validate_certificate: Indicates whether the SSL certificate of the SAP HANA instance is verified.
+        :param str vault_id: The ID of the backup vault.
+        """
+        pulumi.set(__self__, "alert_setting", alert_setting)
+        pulumi.set(__self__, "hana_instance_id", hana_instance_id)
+        pulumi.set(__self__, "hana_name", hana_name)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_number", instance_number)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_message", status_message)
+        pulumi.set(__self__, "use_ssl", use_ssl)
+        pulumi.set(__self__, "user_name", user_name)
+        pulumi.set(__self__, "validate_certificate", validate_certificate)
+        pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="alertSetting")
+    def alert_setting(self) -> str:
+        """
+        The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
+        """
+        return pulumi.get(self, "alert_setting")
+
+    @property
+    @pulumi.getter(name="hanaInstanceId")
+    def hana_instance_id(self) -> str:
+        """
+        The ID of the SAP HANA instance.
+        """
+        return pulumi.get(self, "hana_instance_id")
+
+    @property
+    @pulumi.getter(name="hanaName")
+    def hana_name(self) -> str:
+        """
+        The name of the SAP HANA instance.
+        """
+        return pulumi.get(self, "hana_name")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Hana Instance. The value formats as `<vault_id>:<hana_instance_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceNumber")
+    def instance_number(self) -> int:
+        """
+        The instance number of the SAP HANA system.
+        """
+        return pulumi.get(self, "instance_number")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the SAP HANA instance.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> str:
+        """
+        The status information.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter(name="useSsl")
+    def use_ssl(self) -> bool:
+        """
+        Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
+        """
+        return pulumi.get(self, "use_ssl")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        The username of the SYSTEMDB database.
+        """
+        return pulumi.get(self, "user_name")
+
+    @property
+    @pulumi.getter(name="validateCertificate")
+    def validate_certificate(self) -> bool:
+        """
+        Indicates whether the SSL certificate of the SAP HANA instance is verified.
+        """
+        return pulumi.get(self, "validate_certificate")
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> str:
+        """
+        The ID of the backup vault.
         """
         return pulumi.get(self, "vault_id")
 

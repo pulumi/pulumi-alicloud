@@ -126,10 +126,10 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string> TrailName { get; private set; } = null!;
 
         /// <summary>
-        /// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        /// The regions to which the trail is applied. Default to `All`.
         /// </summary>
         [Output("trailRegion")]
-        public Output<string?> TrailRegion { get; private set; } = null!;
+        public Output<string> TrailRegion { get; private set; } = null!;
 
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? TrailName { get; set; }
 
         /// <summary>
-        /// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        /// The regions to which the trail is applied. Default to `All`.
         /// </summary>
         [Input("trailRegion")]
         public Input<string>? TrailRegion { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? TrailName { get; set; }
 
         /// <summary>
-        /// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+        /// The regions to which the trail is applied. Default to `All`.
         /// </summary>
         [Input("trailRegion")]
         public Input<string>? TrailRegion { get; set; }

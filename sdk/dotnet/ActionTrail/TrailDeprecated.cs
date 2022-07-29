@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string> TrailName { get; private set; } = null!;
 
         [Output("trailRegion")]
-        public Output<string?> TrailRegion { get; private set; } = null!;
+        public Output<string> TrailRegion { get; private set; } = null!;
 
 
         /// <summary>

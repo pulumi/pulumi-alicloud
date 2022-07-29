@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The maximum hourly price of the spot instance.
+        /// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
         /// </summary>
         [Input("priceLimit")]
         public Input<string>? PriceLimit { get; set; }

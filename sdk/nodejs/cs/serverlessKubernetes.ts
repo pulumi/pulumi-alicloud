@@ -19,7 +19,10 @@ import * as utilities from "../utilities";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "10.1.0.0/21"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.1.0.0/21",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vswitchName: name,
  *     vpcId: defaultNetwork.id,

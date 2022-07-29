@@ -1781,6 +1781,118 @@ func (o ScalingConfigurationDataDiskArrayOutput) Index(i pulumi.IntInput) Scalin
 	}).(ScalingConfigurationDataDiskOutput)
 }
 
+type ScalingConfigurationInstancePatternInfo struct {
+	Cores               *int     `pulumi:"cores"`
+	InstanceFamilyLevel *string  `pulumi:"instanceFamilyLevel"`
+	MaxPrice            *float64 `pulumi:"maxPrice"`
+	Memory              *float64 `pulumi:"memory"`
+}
+
+// ScalingConfigurationInstancePatternInfoInput is an input type that accepts ScalingConfigurationInstancePatternInfoArgs and ScalingConfigurationInstancePatternInfoOutput values.
+// You can construct a concrete instance of `ScalingConfigurationInstancePatternInfoInput` via:
+//
+//          ScalingConfigurationInstancePatternInfoArgs{...}
+type ScalingConfigurationInstancePatternInfoInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationInstancePatternInfoOutput() ScalingConfigurationInstancePatternInfoOutput
+	ToScalingConfigurationInstancePatternInfoOutputWithContext(context.Context) ScalingConfigurationInstancePatternInfoOutput
+}
+
+type ScalingConfigurationInstancePatternInfoArgs struct {
+	Cores               pulumi.IntPtrInput     `pulumi:"cores"`
+	InstanceFamilyLevel pulumi.StringPtrInput  `pulumi:"instanceFamilyLevel"`
+	MaxPrice            pulumi.Float64PtrInput `pulumi:"maxPrice"`
+	Memory              pulumi.Float64PtrInput `pulumi:"memory"`
+}
+
+func (ScalingConfigurationInstancePatternInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationInstancePatternInfo)(nil)).Elem()
+}
+
+func (i ScalingConfigurationInstancePatternInfoArgs) ToScalingConfigurationInstancePatternInfoOutput() ScalingConfigurationInstancePatternInfoOutput {
+	return i.ToScalingConfigurationInstancePatternInfoOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationInstancePatternInfoArgs) ToScalingConfigurationInstancePatternInfoOutputWithContext(ctx context.Context) ScalingConfigurationInstancePatternInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationInstancePatternInfoOutput)
+}
+
+// ScalingConfigurationInstancePatternInfoArrayInput is an input type that accepts ScalingConfigurationInstancePatternInfoArray and ScalingConfigurationInstancePatternInfoArrayOutput values.
+// You can construct a concrete instance of `ScalingConfigurationInstancePatternInfoArrayInput` via:
+//
+//          ScalingConfigurationInstancePatternInfoArray{ ScalingConfigurationInstancePatternInfoArgs{...} }
+type ScalingConfigurationInstancePatternInfoArrayInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationInstancePatternInfoArrayOutput() ScalingConfigurationInstancePatternInfoArrayOutput
+	ToScalingConfigurationInstancePatternInfoArrayOutputWithContext(context.Context) ScalingConfigurationInstancePatternInfoArrayOutput
+}
+
+type ScalingConfigurationInstancePatternInfoArray []ScalingConfigurationInstancePatternInfoInput
+
+func (ScalingConfigurationInstancePatternInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationInstancePatternInfo)(nil)).Elem()
+}
+
+func (i ScalingConfigurationInstancePatternInfoArray) ToScalingConfigurationInstancePatternInfoArrayOutput() ScalingConfigurationInstancePatternInfoArrayOutput {
+	return i.ToScalingConfigurationInstancePatternInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationInstancePatternInfoArray) ToScalingConfigurationInstancePatternInfoArrayOutputWithContext(ctx context.Context) ScalingConfigurationInstancePatternInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationInstancePatternInfoArrayOutput)
+}
+
+type ScalingConfigurationInstancePatternInfoOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationInstancePatternInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationInstancePatternInfo)(nil)).Elem()
+}
+
+func (o ScalingConfigurationInstancePatternInfoOutput) ToScalingConfigurationInstancePatternInfoOutput() ScalingConfigurationInstancePatternInfoOutput {
+	return o
+}
+
+func (o ScalingConfigurationInstancePatternInfoOutput) ToScalingConfigurationInstancePatternInfoOutputWithContext(ctx context.Context) ScalingConfigurationInstancePatternInfoOutput {
+	return o
+}
+
+func (o ScalingConfigurationInstancePatternInfoOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+func (o ScalingConfigurationInstancePatternInfoOutput) InstanceFamilyLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *string { return v.InstanceFamilyLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o ScalingConfigurationInstancePatternInfoOutput) MaxPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *float64 { return v.MaxPrice }).(pulumi.Float64PtrOutput)
+}
+
+func (o ScalingConfigurationInstancePatternInfoOutput) Memory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
+}
+
+type ScalingConfigurationInstancePatternInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationInstancePatternInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationInstancePatternInfo)(nil)).Elem()
+}
+
+func (o ScalingConfigurationInstancePatternInfoArrayOutput) ToScalingConfigurationInstancePatternInfoArrayOutput() ScalingConfigurationInstancePatternInfoArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationInstancePatternInfoArrayOutput) ToScalingConfigurationInstancePatternInfoArrayOutputWithContext(ctx context.Context) ScalingConfigurationInstancePatternInfoArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationInstancePatternInfoArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationInstancePatternInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationInstancePatternInfo {
+		return vs[0].([]ScalingConfigurationInstancePatternInfo)[vs[1].(int)]
+	}).(ScalingConfigurationInstancePatternInfoOutput)
+}
+
 type ScalingConfigurationSpotPriceLimit struct {
 	// Resource type of an ECS instance.
 	InstanceType *string  `pulumi:"instanceType"`
@@ -3948,6 +4060,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput)(nil)).Elem(), EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskInput)(nil)).Elem(), ScalingConfigurationDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskArrayInput)(nil)).Elem(), ScalingConfigurationDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstancePatternInfoInput)(nil)).Elem(), ScalingConfigurationInstancePatternInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstancePatternInfoArrayInput)(nil)).Elem(), ScalingConfigurationInstancePatternInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupArgs{})
@@ -4000,6 +4114,8 @@ func init() {
 	pulumi.RegisterOutputType(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationInstancePatternInfoOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationInstancePatternInfoArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupOutput{})

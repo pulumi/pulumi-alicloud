@@ -23,6 +23,7 @@ __all__ = [
     'EciScalingConfigurationVolume',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath',
     'ScalingConfigurationDataDisk',
+    'ScalingConfigurationInstancePatternInfo',
     'ScalingConfigurationSpotPriceLimit',
     'ScalingGroupVServerGroupsVserverGroup',
     'ScalingGroupVServerGroupsVserverGroupVserverAttribute',
@@ -1059,6 +1060,62 @@ class ScalingConfigurationDataDisk(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class ScalingConfigurationInstancePatternInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceFamilyLevel":
+            suggest = "instance_family_level"
+        elif key == "maxPrice":
+            suggest = "max_price"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingConfigurationInstancePatternInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingConfigurationInstancePatternInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingConfigurationInstancePatternInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cores: Optional[int] = None,
+                 instance_family_level: Optional[str] = None,
+                 max_price: Optional[float] = None,
+                 memory: Optional[float] = None):
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if instance_family_level is not None:
+            pulumi.set(__self__, "instance_family_level", instance_family_level)
+        if max_price is not None:
+            pulumi.set(__self__, "max_price", max_price)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cores(self) -> Optional[int]:
+        return pulumi.get(self, "cores")
+
+    @property
+    @pulumi.getter(name="instanceFamilyLevel")
+    def instance_family_level(self) -> Optional[str]:
+        return pulumi.get(self, "instance_family_level")
+
+    @property
+    @pulumi.getter(name="maxPrice")
+    def max_price(self) -> Optional[float]:
+        return pulumi.get(self, "max_price")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[float]:
+        return pulumi.get(self, "memory")
 
 
 @pulumi.output_type

@@ -85,8 +85,8 @@ type Trail struct {
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// The name of the trail to be created, which must be unique for an account.
 	TrailName pulumi.StringOutput `pulumi:"trailName"`
-	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
-	TrailRegion pulumi.StringPtrOutput `pulumi:"trailRegion"`
+	// The regions to which the trail is applied. Default to `All`.
+	TrailRegion pulumi.StringOutput `pulumi:"trailRegion"`
 }
 
 // NewTrail registers a new resource with the given unique name, arguments, and options.
@@ -148,7 +148,7 @@ type trailState struct {
 	Status *string `pulumi:"status"`
 	// The name of the trail to be created, which must be unique for an account.
 	TrailName *string `pulumi:"trailName"`
-	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	// The regions to which the trail is applied. Default to `All`.
 	TrailRegion *string `pulumi:"trailRegion"`
 }
 
@@ -183,7 +183,7 @@ type TrailState struct {
 	Status pulumi.StringPtrInput
 	// The name of the trail to be created, which must be unique for an account.
 	TrailName pulumi.StringPtrInput
-	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	// The regions to which the trail is applied. Default to `All`.
 	TrailRegion pulumi.StringPtrInput
 }
 
@@ -222,7 +222,7 @@ type trailArgs struct {
 	Status *string `pulumi:"status"`
 	// The name of the trail to be created, which must be unique for an account.
 	TrailName *string `pulumi:"trailName"`
-	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	// The regions to which the trail is applied. Default to `All`.
 	TrailRegion *string `pulumi:"trailRegion"`
 }
 
@@ -258,7 +258,7 @@ type TrailArgs struct {
 	Status pulumi.StringPtrInput
 	// The name of the trail to be created, which must be unique for an account.
 	TrailName pulumi.StringPtrInput
-	// The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
+	// The regions to which the trail is applied. Default to `All`.
 	TrailRegion pulumi.StringPtrInput
 }
 

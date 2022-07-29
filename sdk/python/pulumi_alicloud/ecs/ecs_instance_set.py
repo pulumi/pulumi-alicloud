@@ -22,6 +22,7 @@ class EcsInstanceSetArgs:
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 boot_check_os_with_assistant: Optional[pulumi.Input[bool]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]] = None,
                  dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -69,6 +70,9 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
+               - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+               - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
@@ -124,6 +128,8 @@ class EcsInstanceSetArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if boot_check_os_with_assistant is not None:
+            pulumi.set(__self__, "boot_check_os_with_assistant", boot_check_os_with_assistant)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if dedicated_host_id is not None:
@@ -282,6 +288,20 @@ class EcsInstanceSetArgs:
     @auto_renew_period.setter
     def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="bootCheckOsWithAssistant")
+    def boot_check_os_with_assistant(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicate how to check instance ready to use.
+        - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+        - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
+        """
+        return pulumi.get(self, "boot_check_os_with_assistant")
+
+    @boot_check_os_with_assistant.setter
+    def boot_check_os_with_assistant(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "boot_check_os_with_assistant", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -730,6 +750,7 @@ class _EcsInstanceSetState:
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 boot_check_os_with_assistant: Optional[pulumi.Input[bool]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]] = None,
                  dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -778,6 +799,9 @@ class _EcsInstanceSetState:
         :param pulumi.Input[int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
+               - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+               - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
@@ -834,6 +858,8 @@ class _EcsInstanceSetState:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if boot_check_os_with_assistant is not None:
+            pulumi.set(__self__, "boot_check_os_with_assistant", boot_check_os_with_assistant)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if dedicated_host_id is not None:
@@ -964,6 +990,20 @@ class _EcsInstanceSetState:
     @auto_renew_period.setter
     def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="bootCheckOsWithAssistant")
+    def boot_check_os_with_assistant(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicate how to check instance ready to use.
+        - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+        - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
+        """
+        return pulumi.get(self, "boot_check_os_with_assistant")
+
+    @boot_check_os_with_assistant.setter
+    def boot_check_os_with_assistant(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "boot_check_os_with_assistant", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -1462,6 +1502,7 @@ class EcsInstanceSet(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 boot_check_os_with_assistant: Optional[pulumi.Input[bool]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]]] = None,
                  dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1559,6 +1600,9 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
+               - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+               - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
@@ -1680,6 +1724,7 @@ class EcsInstanceSet(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
+                 boot_check_os_with_assistant: Optional[pulumi.Input[bool]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]]] = None,
                  dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1735,6 +1780,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             __props__.__dict__["auto_release_time"] = auto_release_time
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
+            __props__.__dict__["boot_check_os_with_assistant"] = boot_check_os_with_assistant
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["dedicated_host_id"] = dedicated_host_id
             __props__.__dict__["deletion_protection"] = deletion_protection
@@ -1795,6 +1841,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             auto_release_time: Optional[pulumi.Input[str]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
+            boot_check_os_with_assistant: Optional[pulumi.Input[bool]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]]] = None,
             dedicated_host_id: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1848,6 +1895,9 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
+               - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+               - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
@@ -1904,6 +1954,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         __props__.__dict__["auto_release_time"] = auto_release_time
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["boot_check_os_with_assistant"] = boot_check_os_with_assistant
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["dedicated_host_id"] = dedicated_host_id
         __props__.__dict__["deletion_protection"] = deletion_protection
@@ -1979,6 +2030,16 @@ class EcsInstanceSet(pulumi.CustomResource):
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         """
         return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="bootCheckOsWithAssistant")
+    def boot_check_os_with_assistant(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicate how to check instance ready to use.
+        - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
+        - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
+        """
+        return pulumi.get(self, "boot_check_os_with_assistant")
 
     @property
     @pulumi.getter(name="dataDisks")

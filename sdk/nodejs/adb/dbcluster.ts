@@ -139,7 +139,7 @@ export class DBCluster extends pulumi.CustomResource {
     /**
      * The elastic io resource.
      */
-    public readonly elasticIoResource!: pulumi.Output<number | undefined>;
+    public readonly elasticIoResource!: pulumi.Output<number>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
@@ -186,6 +186,10 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * The vpc ID of the resource.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
      * The vswitch id.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
@@ -229,6 +233,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -259,6 +264,7 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
@@ -365,6 +371,10 @@ export interface DBClusterState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
+     * The vpc ID of the resource.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
      * The vswitch id.
      */
     vswitchId?: pulumi.Input<string>;
@@ -461,6 +471,10 @@ export interface DBClusterArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The vpc ID of the resource.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */

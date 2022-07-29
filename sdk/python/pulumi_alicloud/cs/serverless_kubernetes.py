@@ -1041,7 +1041,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
         if name is None:
             name = "ask-example"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="10.1.0.0/21")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vswitch_name=name,
             vpc_id=default_network.id,
@@ -1138,7 +1140,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
         if name is None:
             name = "ask-example"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="10.1.0.0/21")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vswitch_name=name,
             vpc_id=default_network.id,

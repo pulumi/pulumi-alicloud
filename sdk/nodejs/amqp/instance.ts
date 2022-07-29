@@ -83,7 +83,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * The Instance Type. Valid values: `professional`, `vip`.
+     * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
      */
     public readonly instanceType!: pulumi.Output<string>;
     public readonly logistics!: pulumi.Output<string | undefined>;
@@ -214,7 +214,7 @@ export interface InstanceState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The Instance Type. Valid values: `professional`, `vip`.
+     * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
      */
     instanceType?: pulumi.Input<string>;
     logistics?: pulumi.Input<string>;
@@ -280,7 +280,7 @@ export interface InstanceArgs {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The Instance Type. Valid values: `professional`, `vip`.
+     * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
      */
     instanceType: pulumi.Input<string>;
     logistics?: pulumi.Input<string>;

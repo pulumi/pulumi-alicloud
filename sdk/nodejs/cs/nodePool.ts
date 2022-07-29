@@ -41,12 +41,9 @@ import * as utilities from "../utilities";
  *     defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("defaultManagedKubernetes", {
  *         clusterSpec: "ack.pro.small",
  *         isEnterpriseSecurityGroup: true,
- *         workerNumber: 2,
- *         password: "Hello1234",
  *         podCidr: "172.20.0.0/16",
  *         serviceCidr: "172.21.0.0/20",
  *         workerVswitchIds: [defaultSwitch.id],
- *         workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id)],
  *     });
  * }
  * ```
@@ -326,6 +323,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
+     * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+     */
+    public readonly cpuPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
     public readonly dataDisks!: pulumi.Output<outputs.cs.NodePoolDataDisk[] | undefined>;
@@ -386,13 +387,17 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
     /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+     */
+    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
      */
     public readonly labels!: pulumi.Output<outputs.cs.NodePoolLabel[] | undefined>;
     /**
      * Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
      */
-    public readonly management!: pulumi.Output<outputs.cs.NodePoolManagement>;
+    public readonly management!: pulumi.Output<outputs.cs.NodePoolManagement | undefined>;
     /**
      * The name of node pool.
      */
@@ -404,7 +409,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
-     * Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+     * Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
      */
     public readonly nodeNameMode!: pulumi.Output<string>;
     /**
@@ -425,6 +430,10 @@ export class NodePool extends pulumi.CustomResource {
      * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
      */
     public readonly platform!: pulumi.Output<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
+    public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
@@ -465,15 +474,15 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly socEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
      */
-    public readonly spotPriceLimits!: pulumi.Output<outputs.cs.NodePoolSpotPriceLimit[]>;
+    public readonly spotPriceLimits!: pulumi.Output<outputs.cs.NodePoolSpotPriceLimit[] | undefined>;
     /**
-     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
      */
-    public readonly spotStrategy!: pulumi.Output<string>;
+    public readonly spotStrategy!: pulumi.Output<string | undefined>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
     /**
@@ -496,6 +505,10 @@ export class NodePool extends pulumi.CustomResource {
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     public readonly systemDiskSize!: pulumi.Output<number | undefined>;
+    /**
+     * The system disk snapshot policy id.
+     */
+    public readonly systemDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
      * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
      */
@@ -538,6 +551,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["cisEnabled"] = state ? state.cisEnabled : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["cpuPolicy"] = state ? state.cpuPolicy : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             resourceInputs["desiredSize"] = state ? state.desiredSize : undefined;
@@ -553,6 +567,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["keepInstanceName"] = state ? state.keepInstanceName : undefined;
             resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["management"] = state ? state.management : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -562,6 +577,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
             resourceInputs["platform"] = state ? state.platform : undefined;
+            resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["runtimeName"] = state ? state.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
@@ -579,6 +595,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["systemDiskKmsKey"] = state ? state.systemDiskKmsKey : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
             resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
+            resourceInputs["systemDiskSnapshotPolicyId"] = state ? state.systemDiskSnapshotPolicyId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
             resourceInputs["unschedulable"] = state ? state.unschedulable : undefined;
@@ -600,6 +617,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["cisEnabled"] = args ? args.cisEnabled : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["cpuPolicy"] = args ? args.cpuPolicy : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             resourceInputs["desiredSize"] = args ? args.desiredSize : undefined;
@@ -615,6 +633,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["keepInstanceName"] = args ? args.keepInstanceName : undefined;
             resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["management"] = args ? args.management : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -624,6 +643,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
             resourceInputs["platform"] = args ? args.platform : undefined;
+            resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["runtimeName"] = args ? args.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
@@ -640,6 +660,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["systemDiskKmsKey"] = args ? args.systemDiskKmsKey : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
             resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
+            resourceInputs["systemDiskSnapshotPolicyId"] = args ? args.systemDiskSnapshotPolicyId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
             resourceInputs["unschedulable"] = args ? args.unschedulable : undefined;
@@ -673,6 +694,10 @@ export interface NodePoolState {
      * The id of kubernetes cluster.
      */
     clusterId?: pulumi.Input<string>;
+    /**
+     * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+     */
+    cpuPolicy?: pulumi.Input<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
@@ -734,6 +759,10 @@ export interface NodePoolState {
      */
     kmsEncryptedPassword?: pulumi.Input<string>;
     /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+     */
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
@@ -752,7 +781,7 @@ export interface NodePoolState {
      */
     nodeCount?: pulumi.Input<number>;
     /**
-     * Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+     * Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
      */
     nodeNameMode?: pulumi.Input<string>;
     /**
@@ -773,6 +802,10 @@ export interface NodePoolState {
      * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
      */
     platform?: pulumi.Input<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
+    rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
@@ -813,15 +846,15 @@ export interface NodePoolState {
      */
     socEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
      */
     spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
     /**
-     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
      */
     spotStrategy?: pulumi.Input<string>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -844,6 +877,10 @@ export interface NodePoolState {
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     systemDiskSize?: pulumi.Input<number>;
+    /**
+     * The system disk snapshot policy id.
+     */
+    systemDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
      * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
      */
@@ -890,6 +927,10 @@ export interface NodePoolArgs {
      * The id of kubernetes cluster.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+     */
+    cpuPolicy?: pulumi.Input<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
@@ -951,6 +992,10 @@ export interface NodePoolArgs {
      */
     kmsEncryptedPassword?: pulumi.Input<string>;
     /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+     */
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
@@ -969,7 +1014,7 @@ export interface NodePoolArgs {
      */
     nodeCount?: pulumi.Input<number>;
     /**
-     * Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+     * Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
      */
     nodeNameMode?: pulumi.Input<string>;
     /**
@@ -990,6 +1035,10 @@ export interface NodePoolArgs {
      * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
      */
     platform?: pulumi.Input<string>;
+    /**
+     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     */
+    rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
@@ -1026,15 +1075,15 @@ export interface NodePoolArgs {
      */
     socEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
+     * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
      */
     spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
     /**
-     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
      */
     spotStrategy?: pulumi.Input<string>;
     /**
-     * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+     * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -1057,6 +1106,10 @@ export interface NodePoolArgs {
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
     systemDiskSize?: pulumi.Input<number>;
+    /**
+     * The system disk snapshot policy id.
+     */
+    systemDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
      * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
      */
